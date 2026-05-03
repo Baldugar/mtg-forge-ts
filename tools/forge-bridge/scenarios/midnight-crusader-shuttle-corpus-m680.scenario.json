@@ -1,0 +1,23 @@
+{
+  "id": "midnight-crusader-shuttle-corpus-m680",
+  "description": "M6 corpus — Midnight Crusader Shuttle; in-hand parse.",
+  "seed": 63400,
+  "cards": {
+    "Midnight Crusader Shuttle": "Name:Midnight Crusader Shuttle\nManaCost:4\nTypes:Artifact Vehicle\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigVillainousChoice | TriggerDescription$ Midnight Entity — Whenever CARDNAME attacks, defending player faces a villainous choice — That player sacrifices a creature, or you gain control of a creature of your choice that player controls until end of turn. If you gain control of a creature this way, tap it, and it's attacking that player.\nSVar:TrigVillainousChoice:DB$ VillainousChoice | Defined$ TriggeredDefendingPlayer | Choices$ DBSacrifice,DBGainControl\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ 1 | SacValid$ Creature | Defined$ Remembered | SpellDescription$ That player sacrifices a creature.\nSVar:DBGainControl:DB$ GainControl | Defined$ ChosenCard | Choices$ Creature.RememberedPlayerCtrl | ChoiceTitle$ Choose a creature that player controls | NewController$ You | LoseControl$ EOT | RememberControlled$ True | SubAbility$ DBTap | SpellDescription$ You gain control of a creature of your choice that player controls until end of turn. If you gain control of a creature this way, tap it, and it's attacking that player.\nSVar:DBTap:DB$ Tap | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.YouCtrl | SubAbility$ DBSetAttacking\nSVar:DBSetAttacking:DB$ ChangeCombatants | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.YouCtrl | Attacking$ RememberedPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Midnight Entity — Whenever Midnight Crusader Shuttle attacks, defending player faces a villainous choice — That player sacrifices a creature, or you gain control of a creature of your choice that player controls until end of turn. If you gain control of a creature this way, tap it, and it's attacking that player.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Crusader Shuttle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

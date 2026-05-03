@@ -1,0 +1,23 @@
+{
+  "id": "purifying-dragon-corpus-m680",
+  "description": "M6 corpus — Purifying Dragon; in-hand parse.",
+  "seed": 63839,
+  "cards": {
+    "Purifying Dragon": "Name:Purifying Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to target creature an opponent controls. If that creature is a Zombie, CARDNAME deals 2 damage to that creature instead.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | NumDmg$ X\nSVar:X:Targeted$Valid Creature.Zombie/Plus.1\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Purifying Dragon attacks, it deals 1 damage to target creature defending player controls. If that creature is a Zombie, Purifying Dragon deals 2 damage to that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purifying Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

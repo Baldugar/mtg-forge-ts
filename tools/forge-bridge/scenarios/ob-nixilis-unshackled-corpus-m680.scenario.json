@@ -1,0 +1,23 @@
+{
+  "id": "ob-nixilis-unshackled-corpus-m680",
+  "description": "M6 corpus — Ob Nixilis, Unshackled; in-hand parse.",
+  "seed": 63593,
+  "cards": {
+    "Ob Nixilis, Unshackled": "Name:Ob Nixilis, Unshackled\nManaCost:4 B B\nTypes:Legendary Creature Demon\nPT:4/4\nK:Flying\nK:Trample\nT:Mode$ SearchedLibrary | ValidPlayer$ Player.Opponent | SearchOwnLibrary$ True | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent searches their library, that player sacrifices a creature and loses 10 life.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 10\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.Other | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ DeathGift | TriggerDescription$ Whenever another creature dies, put a +1/+1 counter on CARDNAME.\nSVar:DeathGift:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying, trample\\nWhenever an opponent searches their library, that player sacrifices a creature and loses 10 life.\\nWhenever another creature dies, put a +1/+1 counter on Ob Nixilis, Unshackled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis, Unshackled"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

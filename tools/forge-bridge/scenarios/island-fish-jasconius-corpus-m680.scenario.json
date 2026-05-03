@@ -1,0 +1,23 @@
+{
+  "id": "island-fish-jasconius-corpus-m680",
+  "description": "M6 corpus — Island Fish Jasconius; in-hand parse.",
+  "seed": 62999,
+  "cards": {
+    "Island Fish Jasconius": "Name:Island Fish Jasconius\nManaCost:4 U U U\nTypes:Creature Fish\nPT:6/8\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ This creature can't attack unless defending player controls an Island.\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice this creature.\nSVar:TrigSac:DB$ Sacrifice\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may pay {U}{U}{U}. If you do, untap this creature.\nSVar:TrigUntap:AB$ Untap | Cost$ U U U | Defined$ Self\nSVar:NeedsToPlay:Island.YouCtrl\nDeckHas:Ability$Sacrifice\nOracle:This creature doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may pay {U}{U}{U}. If you do, untap this creature.\\nThis creature can't attack unless defending player controls an Island.\\nWhen you control no Islands, sacrifice this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Island Fish Jasconius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

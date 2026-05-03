@@ -1,0 +1,23 @@
+{
+  "id": "death-spark-corpus-m680",
+  "description": "M6 corpus — Death Spark; in-hand parse.",
+  "seed": 62116,
+  "cards": {
+    "Death Spark": "Name:Death Spark\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Creature.YouOwn+DirectlyAbove | PresentZone$ Graveyard | PresentCompare$ EQ1 | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard with a creature card directly above it, you may pay {1}. If you do, return CARDNAME to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:Death Spark deals 1 damage to any target.\\nAt the beginning of your upkeep, if Death Spark is in your graveyard with a creature card directly above it, you may pay {1}. If you do, return Death Spark to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Spark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

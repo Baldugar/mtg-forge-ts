@@ -1,0 +1,23 @@
+{
+  "id": "roc-egg-corpus-m680",
+  "description": "M6 corpus — Roc Egg; in-hand parse.",
+  "seed": 64025,
+  "cards": {
+    "Roc Egg": "Name:Roc Egg\nManaCost:2 W\nTypes:Creature Bird Egg\nPT:0/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 3/3 white Bird creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_3_3_bird_flying | TokenOwner$ TriggeredCardController\nSVar:SacMe:4\nDeckHas:Ability$Token\nOracle:Defender (This creature can't attack.)\\nWhen Roc Egg dies, create a 3/3 white Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roc Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

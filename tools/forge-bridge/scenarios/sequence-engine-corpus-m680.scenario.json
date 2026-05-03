@@ -1,0 +1,23 @@
+{
+  "id": "sequence-engine-corpus-m680",
+  "description": "M6 corpus — Sequence Engine; in-hand parse.",
+  "seed": 64210,
+  "cards": {
+    "Sequence Engine": "Name:Sequence Engine\nManaCost:2 G\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ X T | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.cmcEQX | TgtPrompt$ Select target creature card from a graveyard | SubAbility$ DBToken | SorcerySpeed$ True | SpellDescription$ Exile target creature card with mana value X from a graveyard. Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it. Activate only as a sorcery.\nSVar:DBToken:DB$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:X:Count$xPaid\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Counters\nOracle:{X}, {T}: Exile target creature card with mana value X from a graveyard. Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sequence Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

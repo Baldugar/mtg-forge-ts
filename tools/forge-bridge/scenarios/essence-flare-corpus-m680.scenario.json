@@ -1,0 +1,23 @@
+{
+  "id": "essence-flare-corpus-m680",
+  "description": "M6 corpus — Essence Flare; in-hand parse.",
+  "seed": 62366,
+  "cards": {
+    "Essence Flare": "Name:Essence Flare\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | Description$ Enchanted creature gets +2/+0.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, put a -0/-1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ M0M1 | CounterNum$ 1\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets +2/+0.\\nAt the beginning of the upkeep of enchanted creature's controller, put a -0/-1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Essence Flare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

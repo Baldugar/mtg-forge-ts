@@ -1,0 +1,23 @@
+{
+  "id": "luminarch-aspirant-corpus-m680",
+  "description": "M6 corpus — Luminarch Aspirant; in-hand parse.",
+  "seed": 63287,
+  "cards": {
+    "Luminarch Aspirant": "Name:Luminarch Aspirant\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luminarch Aspirant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

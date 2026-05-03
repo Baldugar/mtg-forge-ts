@@ -1,0 +1,23 @@
+{
+  "id": "blade-of-the-swarm-corpus-m680",
+  "description": "M6 corpus — Blade of the Swarm; in-hand parse.",
+  "seed": 61697,
+  "cards": {
+    "Blade of the Swarm": "Name:Blade of the Swarm\nManaCost:3 B\nTypes:Creature Insect Assassin\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBChangeZone\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on this creature.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | ValidTgts$ Card.withWarp | TgtPrompt$ Select target exiled card with warp | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target exiled card with warp on the bottom of its owner's library.\nDeckHas:Ability$Counters\nOracle:When this creature enters, choose one —\\n• Put two +1/+1 counters on this creature.\\n• Put target exiled card with warp on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blade of the Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

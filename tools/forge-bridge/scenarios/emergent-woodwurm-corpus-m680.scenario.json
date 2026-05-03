@@ -1,0 +1,23 @@
+{
+  "id": "emergent-woodwurm-corpus-m680",
+  "description": "M6 corpus — Emergent Woodwurm; in-hand parse.",
+  "seed": 62321,
+  "cards": {
+    "Emergent Woodwurm": "Name:Emergent Woodwurm\nManaCost:6 G\nTypes:Creature Wurm\nPT:4/4\nK:Backup:3:BackupAbility\nSVar:BackupAbility:DB$ Animate | Triggers$ AttackTrig | sVars$ AE\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever this creature attacks, look at the top X cards of your library, where X is its power. You may put a permanent card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Permanent.cmcLEX | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever this creature attacks, look at the top X cards of your library, where X is its power. You may put a permanent card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:X:TriggeredAttacker$CardPower\nSVar:HasAttackEffect:TRUE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Backup 3 (When this creature enters, put three +1/+1 counters on target creature. If that's another creature, it gains the following abilities until end of turn.)\\nWhenever this creature attacks, look at the top X cards of your library, where X is its power. You may put a permanent card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emergent Woodwurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thwart-the-grave-corpus-m680",
+  "description": "M6 corpus — Thwart the Grave; in-hand parse.",
+  "seed": 64744,
+  "cards": {
+    "Thwart the Grave": "Name:Thwart the Grave\nManaCost:4 B B\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:X:Count$Party\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBPartyReturn | SpellDescription$ Return target creature card and up to one target Cleric, Rogue, Warrior, or Wizard card from your graveyard to the battlefield.\nSVar:DBPartyReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Cleric+YouOwn,Creature.Rogue+YouOwn,Creature.Warrior+YouOwn,Creature.Wizard+YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one target Cleric, Rogue, Warrior, or Wizard creature card in your graveyard\nDeckHas:Ability$Party|Graveyard\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:This spell costs {1} less to cast for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\\nReturn target creature card and up to one target Cleric, Rogue, Warrior, or Wizard creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thwart the Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

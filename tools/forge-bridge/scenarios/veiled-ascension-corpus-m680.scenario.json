@@ -1,0 +1,23 @@
+{
+  "id": "veiled-ascension-corpus-m680",
+  "description": "M6 corpus — Veiled Ascension; in-hand parse.",
+  "seed": 64902,
+  "cards": {
+    "Veiled Ascension": "Name:Veiled Ascension\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a flying counter on each face-down creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.faceDown+YouCtrl | CounterType$ Flying | CounterNum$ 1\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.faceDown+YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ Flying | CounterNum$ 1 | SpellDescription$ Face-down creatures you control enter with a flying counter on them.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCloak | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may cloak the top card of your library.\nSVar:TrigCloak:DB$ Cloak | Amount$ 1 | Defined$ TopOfLibrary\nOracle:When Veiled Ascension enters, put a flying counter on each face-down creature you control.\\nFace-down creatures you control enter with a flying counter on them.\\nAt the beginning of your upkeep, you may cloak the top card of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veiled Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

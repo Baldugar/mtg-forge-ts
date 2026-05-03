@@ -1,0 +1,23 @@
+{
+  "id": "farmstead-corpus-m680",
+  "description": "M6 corpus — Farmstead; in-hand parse.",
+  "seed": 62439,
+  "cards": {
+    "Farmstead": "Name:Farmstead\nManaCost:W W W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddTrigger$ TriggerGainLife | AddSVar$ FarmsteadGainLife | Description$ Enchanted land has \"At the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\"\nSVar:TriggerGainLife:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ FarmsteadGainLife | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Enchanted land has \"At the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\"\nSVar:FarmsteadGainLife:AB$ GainLife | Cost$ W W | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Enchant land\\nEnchanted land has \"At the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farmstead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

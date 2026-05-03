@@ -1,0 +1,23 @@
+{
+  "id": "luxa-river-shrine-corpus-m680",
+  "description": "M6 corpus — Luxa River Shrine; in-hand parse.",
+  "seed": 63295,
+  "cards": {
+    "Luxa River Shrine": "Name:Luxa River Shrine\nManaCost:3\nTypes:Artifact\nA:AB$ GainLife | Cost$ 1 T | LifeAmount$ 1 | SubAbility$ DBPutCounter | SpellDescription$ You gain 1 life. Put a brick counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ BRICK | CounterNum$ 1\nA:AB$ GainLife | Cost$ T | LifeAmount$ 2 | CheckSVar$ X | SVarCompare$ GE3 | SpellDescription$ You gain 2 life. Activate only if there are three or more brick counters on CARDNAME.\nSVar:X:Count$CardCounters.BRICK\nOracle:{1}, {T}: You gain 1 life. Put a brick counter on Luxa River Shrine.\\n{T}: You gain 2 life. Activate only if there are three or more brick counters on Luxa River Shrine.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luxa River Shrine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

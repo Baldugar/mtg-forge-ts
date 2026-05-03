@@ -1,0 +1,23 @@
+{
+  "id": "drowner-initiate-corpus-m680",
+  "description": "M6 corpus — Drowner Initiate; in-hand parse.",
+  "seed": 62248,
+  "cards": {
+    "Drowner Initiate": "Name:Drowner Initiate\nManaCost:U\nTypes:Creature Merfolk Wizard\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.Blue | TriggerZones$ Battlefield | Execute$ TrigMill | OptionalDecider$ You | TriggerDescription$ Whenever a player casts a blue spell, you may pay {1}. If you do, target player mills two cards.\nSVar:TrigMill:AB$ Mill | Cost$ 1 | ValidTgts$ Player | NumCards$ 2\nOracle:Whenever a player casts a blue spell, you may pay {1}. If you do, target player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drowner Initiate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

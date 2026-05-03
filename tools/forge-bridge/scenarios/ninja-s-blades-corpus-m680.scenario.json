@@ -1,0 +1,23 @@
+{
+  "id": "ninja-s-blades-corpus-m680",
+  "description": "M6 corpus — Ninja's Blades; in-hand parse.",
+  "seed": 63569,
+  "cards": {
+    "Ninja's Blades": "Name:Ninja's Blades\nManaCost:2 B\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddType$ Ninja | AddTrigger$ TrigDamageDone | Description$ Equipped creature gets +1/+1, is a Ninja in addition to its other types, and has \"Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.\"\nSVar:TrigDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Equip:2:Flavor Mutsunokami\nSVar:X:Remembered$CardManaCost\nDeckHas:Ability$Token & Type$Ninja\nOracle:Job select\\nEquipped creature gets +1/+1, is a Ninja in addition to its other types, and has \"Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.\"\\nMutsunokami — Equip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ninja's Blades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

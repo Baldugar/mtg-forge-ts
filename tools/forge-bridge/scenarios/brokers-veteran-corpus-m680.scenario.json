@@ -1,0 +1,23 @@
+{
+  "id": "brokers-veteran-corpus-m680",
+  "description": "M6 corpus — Brokers Veteran; in-hand parse.",
+  "seed": 61802,
+  "cards": {
+    "Brokers Veteran": "Name:Brokers Veteran\nManaCost:1 U\nTypes:Creature Human Soldier\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a shield counter on target creature you control. (If that creature would be dealt damage or destroyed, remove a shield counter from it instead.)\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ SHIELD\nDeckHas:Ability$Counters\nOracle:When Brokers Veteran dies, put a shield counter on target creature you control. (If that creature would be dealt damage or destroyed, remove a shield counter from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brokers Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

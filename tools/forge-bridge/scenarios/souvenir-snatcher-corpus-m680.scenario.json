@@ -1,0 +1,23 @@
+{
+  "id": "souvenir-snatcher-corpus-m680",
+  "description": "M6 corpus — Souvenir Snatcher; in-hand parse.",
+  "seed": 64379,
+  "cards": {
+    "Souvenir Snatcher": "Name:Souvenir Snatcher\nManaCost:4 U\nTypes:Creature Bird\nPT:4/4\nK:Mutate:5 U\nK:Flying\nT:Mode$ Mutates | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever this creature mutates, gain control of target noncreature artifact.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Artifact.nonCreature | TgtPrompt$ Select target artifact\nOracle:Mutate {5}{U} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nFlying\\nWhenever this creature mutates, gain control of target noncreature artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Souvenir Snatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

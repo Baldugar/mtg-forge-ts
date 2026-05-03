@@ -1,0 +1,23 @@
+{
+  "id": "declaration-in-stone-corpus-m680",
+  "description": "M6 corpus — Declaration in Stone; in-hand parse.",
+  "seed": 62126,
+  "cards": {
+    "Declaration in Stone": "Name:Declaration in Stone\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | SubAbility$ DBExile | AILogic$ SameName | SpellDescription$ Exile target creature and all other creatures its controller controls with the same name as that creature. That player investigates for each nontoken creature exiled this way. | StackDescription$ SpellDescription\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | Defined$ TargetedController | ChangeType$ TargetedCard.Self,Creature.NotDefinedTargeted+sharesNameWith Targeted | Shuffle$ True | RememberLKI$ True | AILogic$ Always | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | Num$ X | Defined$ RememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.!token\nOracle:Exile target creature and all other creatures its controller controls with the same name as that creature. That player investigates for each nontoken creature exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Declaration in Stone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

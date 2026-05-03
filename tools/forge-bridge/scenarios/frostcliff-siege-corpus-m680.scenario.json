@@ -1,0 +1,23 @@
+{
+  "id": "frostcliff-siege-corpus-m680",
+  "description": "M6 corpus — Frostcliff Siege; in-hand parse.",
+  "seed": 62574,
+  "cards": {
+    "Frostcliff Siege": "Name:Frostcliff Siege\nManaCost:1 U R\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Jeskai,Temur | Defined$ You | SetChosenMode$ True | ShowChoice$ ExceptSelf | SpellDescription$ As this enchantment enters, choose Jeskai or Temur.\nSVar:Jeskai:DB$ Pump | SpellDescription$ Jeskai\nSVar:Temur:DB$ Pump | SpellDescription$ Temur\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeJeskai | AddTrigger$ JeskaiTrigger | Description$ • Jeskai — Whenever one or more creatures you control deal combat damage to a player, draw a card.\nSVar:JeskaiTrigger:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigDraw | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeTemur | AddStaticAbility$ TemurStatic | Description$ • Temur — Creatures you control get +1/+0 and have trample and haste.\nSVar:TemurStatic:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddKeyword$ Trample & Haste | Description$ Creatures you control get +1/+0 and have trample and haste.\nSVar:PlayMain1:TRUE\nOracle:As this enchantment enters, choose Jeskai or Temur.\\n• Jeskai — Whenever one or more creatures you control deal combat damage to a player, draw a card.\\n• Temur — Creatures you control get +1/+0 and have trample and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frostcliff Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

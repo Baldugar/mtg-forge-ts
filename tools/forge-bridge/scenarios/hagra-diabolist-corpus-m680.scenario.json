@@ -1,0 +1,23 @@
+{
+  "id": "hagra-diabolist-corpus-m680",
+  "description": "M6 corpus — Hagra Diabolist; in-hand parse.",
+  "seed": 62768,
+  "cards": {
+    "Hagra Diabolist": "Name:Hagra Diabolist\nManaCost:4 B\nTypes:Creature Ogre Shaman Ally\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have target player lose life equal to the number of Allies you control.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ NumAllies | TgtPrompt$ Select a target player.\nSVar:NumAllies:Count$Valid Ally.YouCtrl\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Hagra Diabolist or another Ally you control enters, you may have target player lose life equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hagra Diabolist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

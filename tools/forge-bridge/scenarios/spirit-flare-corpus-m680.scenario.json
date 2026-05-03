@@ -1,0 +1,23 @@
+{
+  "id": "spirit-flare-corpus-m680",
+  "description": "M6 corpus — Spirit Flare; in-hand parse.",
+  "seed": 64413,
+  "cards": {
+    "Spirit Flare": "Name:Spirit Flare\nManaCost:3 W\nTypes:Instant\nK:Flashback:1 W PayLife<3>\nA:SP$ Tap | TgtPrompt$ Select target untapped creature you control | ValidTgts$ Creature.untapped+YouCtrl | SubAbility$ SpiritDmg | SpellDescription$ Tap target untapped creature you control. If you do, it deals damage equal to its power to target attacking or blocking creature an opponent controls.\nSVar:SpiritDmg:DB$ DealDamage | ValidTgts$ Creature.attacking+OppCtrl,Creature.blocking+OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target attacking or blocking creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Tap target untapped creature you control. If you do, it deals damage equal to its power to target attacking or blocking creature an opponent controls.\\nFlashback—{1}{W}, Pay 3 life. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Flare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "beastie-beatdown-corpus-m680",
+  "description": "M6 corpus — Beastie Beatdown; in-hand parse.",
+  "seed": 61664,
+  "cards": {
+    "Beastie Beatdown": "Name:Beastie Beatdown\nManaCost:R G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | Condition$ Delirium | AILogic$ Fight | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBDealDamage | SpellDescription$ Choose target creature you control and target creature an opponent controls. Delirium — If there are four or more card types among cards in your graveyard, put two +1/+1 counters on the creature you control. The creature you control deals damage equal to its power to the creature an opponent controls.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Choose target creature you control and target creature an opponent controls.\\nDelirium — If there are four or more card types among cards in your graveyard, put two +1/+1 counters on the creature you control.\\nThe creature you control deals damage equal to its power to the creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beastie Beatdown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "aura-graft-corpus-m680",
+  "description": "M6 corpus — Aura Graft; in-hand parse.",
+  "seed": 61600,
+  "cards": {
+    "Aura Graft": "Name:Aura Graft\nManaCost:1 U\nTypes:Instant\nA:SP$ GainControl | ValidTgts$ Aura.AttachedTo Permanent | TgtPrompt$ Select target Aura attached to a permanent | SubAbility$ ReEnchant | StackDescription$ SpellDescription | SpellDescription$ Gain control of target Aura that's attached to a permanent. Attach it to another permanent it can enchant.\nSVar:ReEnchant:DB$ Attach | Object$ ParentTarget | Move$ True | Choices$ Permanent | StackDescription$ None\nAI:RemoveDeck:All\nOracle:Gain control of target Aura that's attached to a permanent. Attach it to another permanent it can enchant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aura Graft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

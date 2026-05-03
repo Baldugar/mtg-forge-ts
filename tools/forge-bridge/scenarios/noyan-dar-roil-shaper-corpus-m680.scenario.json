@@ -1,0 +1,23 @@
+{
+  "id": "noyan-dar-roil-shaper-corpus-m680",
+  "description": "M6 corpus — Noyan Dar, Roil Shaper; in-hand parse.",
+  "seed": 63581,
+  "cards": {
+    "Noyan Dar, Roil Shaper": "Name:Noyan Dar, Roil Shaper\nManaCost:3 W U\nTypes:Legendary Creature Merfolk Ally\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever you cast an instant or sorcery spell, you may put three +1/+1 counters on target land you control. If you do, that land becomes a 0/0 Elemental creature with haste that's still a land.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | CounterType$ P1P1 | CounterNum$ 3 | RememberCards$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Haste | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Instant,Sorcery\nOracle:Whenever you cast an instant or sorcery spell, you may put three +1/+1 counters on target land you control. If you do, that land becomes a 0/0 Elemental creature with haste that's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noyan Dar, Roil Shaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

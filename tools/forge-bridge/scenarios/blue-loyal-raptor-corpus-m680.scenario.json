@@ -1,0 +1,23 @@
+{
+  "id": "blue-loyal-raptor-corpus-m680",
+  "description": "M6 corpus — Blue, Loyal Raptor; in-hand parse.",
+  "seed": 61733,
+  "cards": {
+    "Blue, Loyal Raptor": "Name:Blue, Loyal Raptor\nManaCost:2 G U\nTypes:Legendary Creature Dinosaur\nPT:5/4\nK:Partner with:Owen Grady, Raptor Trainer\nR:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Dinosaur.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ EnterWithCounters | ReplacementResult$ Updated | Description$ For each kind of counter on CARDNAME, each other Dinosaur you control enters with a counter of that kind on it.\nSVar:EnterWithCounters:DB$ PutCounter | ETB$ True | CounterType$ EachFromSource | EachFromSource$ Self | Defined$ ReplacedCard | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters & Type$Dinosaur\nOracle:Partner with Owen Grady, Raptor Trainer (When this creature enters, target player may put Owen into their hand from their library, then shuffle.)\\nFor each kind of counter on Blue, Loyal Raptor, each other Dinosaur you control enters with a counter of that kind on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blue, Loyal Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

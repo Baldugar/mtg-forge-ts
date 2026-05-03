@@ -1,0 +1,23 @@
+{
+  "id": "aven-tactician-corpus-m680",
+  "description": "M6 corpus — Aven Tactician; in-hand parse.",
+  "seed": 61617,
+  "cards": {
+    "Aven Tactician": "Name:Aven Tactician\nManaCost:4 W\nTypes:Creature Bird Soldier\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBolster | TriggerDescription$ When CARDNAME enters, bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)\nSVar:TrigBolster:DB$ PutCounter | Bolster$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Aven Tactician enters, bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

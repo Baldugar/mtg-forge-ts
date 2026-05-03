@@ -1,0 +1,23 @@
+{
+  "id": "kronch-wrangler-corpus-m680",
+  "description": "M6 corpus — Kronch Wrangler; in-hand parse.",
+  "seed": 63155,
+  "cards": {
+    "Kronch Wrangler": "Name:Kronch Wrangler\nManaCost:1 G\nTypes:Creature Human Warrior\nPT:2/1\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerGE4+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control with power 4 or greater enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Creature.powerGE4\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever a creature you control with power 4 or greater enters, put a +1/+1 counter on Kronch Wrangler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kronch Wrangler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

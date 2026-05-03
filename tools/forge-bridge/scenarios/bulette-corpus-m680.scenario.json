@@ -1,0 +1,23 @@
+{
+  "id": "bulette-corpus-m680",
+  "description": "M6 corpus — Bulette; in-hand parse.",
+  "seed": 61812,
+  "cards": {
+    "Bulette": "Name:Bulette\nManaCost:3 G\nTypes:Creature Beast\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Morbid | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if a creature died this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:Morbid:Count$Morbid.1.0\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, if a creature died this turn, put a +1/+1 counter on Bulette.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bulette"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

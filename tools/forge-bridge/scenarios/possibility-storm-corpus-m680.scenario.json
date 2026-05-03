@@ -1,0 +1,23 @@
+{
+  "id": "possibility-storm-corpus-m680",
+  "description": "M6 corpus — Possibility Storm; in-hand parse.",
+  "seed": 63777,
+  "cards": {
+    "Possibility Storm": "Name:Possibility Storm\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromTheirHand | Execute$ TrigExileSpell | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell from their hand, that player exiles it, then exiles cards from the top of their library until they exile a card that shares a card type with it. That player may cast that card without paying its mana cost. Then they put all cards exiled with CARDNAME on the bottom of their library in a random order.\nSVar:TrigExileSpell:DB$ ChangeZone | Defined$ TriggeredCardLKICopy | Origin$ Stack | Destination$ Exile | SubAbility$ DBDig | Imprint$ True\nSVar:DBDig:DB$ DigUntil | Defined$ TriggeredCardController | Valid$ Card.sharesCardTypeWith TriggeredCardLKICopy | ValidDescription$ shares a card type with exiled card | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | ImprintRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | Controller$ TriggeredCardController | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZoneAll | Origin$ Exile | ChangeType$ Card.IsRemembered,Card.IsImprinted | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBPossibilityCleanup\nSVar:DBPossibilityCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Whenever a player casts a spell from their hand, that player exiles it, then exiles cards from the top of their library until they exile a card that shares a card type with it. That player may cast that card without paying its mana cost. Then they put all cards exiled with Possibility Storm on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Possibility Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

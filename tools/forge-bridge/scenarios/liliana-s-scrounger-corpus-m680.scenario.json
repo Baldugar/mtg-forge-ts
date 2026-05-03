@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-scrounger-corpus-m680",
+  "description": "M6 corpus — Liliana's Scrounger; in-hand parse.",
+  "seed": 63242,
+  "cards": {
+    "Liliana's Scrounger": "Name:Liliana's Scrounger\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each end step, if a creature died this turn, you may put a loyalty counter on a Liliana planeswalker you control.\nSVar:TrigPutCounter:DB$ PutCounter | Choices$ Planeswalker.Liliana+YouCtrl | CounterType$ LOYALTY | CounterNum$ 1\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckNeeds:Type$Liliana\nOracle:At the beginning of each end step, if a creature died this turn, you may put a loyalty counter on a Liliana planeswalker you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Scrounger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

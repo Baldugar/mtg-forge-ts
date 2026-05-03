@@ -1,0 +1,23 @@
+{
+  "id": "ichorplate-golem-corpus-m680",
+  "description": "M6 corpus — Ichorplate Golem; in-hand parse.",
+  "seed": 62898,
+  "cards": {
+    "Ichorplate Golem": "Name:Ichorplate Golem\nManaCost:3\nTypes:Artifact Creature Phyrexian Golem\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Creature.YouCtrl+counters_GE1_OIL | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control enters, if it has one or more oil counters on it, put an oil counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | ConditionDefined$ TriggeredCard | ConditionPresent$ Creature.counters_GE1_OIL | CounterNum$ 1 | CounterType$ OIL\nS:Mode$ Continuous | AddPower$ 1 | AddToughness$ 1 | Affected$ Creature.YouCtrl+counters_GE1_OIL | Description$ Creatures you control with oil counters on them get +1/+1.\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control enters, if it has one or more oil counters on it, put an oil counter on it.\\nCreatures you control with oil counters on them get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichorplate Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

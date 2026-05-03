@@ -1,0 +1,23 @@
+{
+  "id": "rotisserie-elemental-corpus-m680",
+  "description": "M6 corpus — Rotisserie Elemental; in-hand parse.",
+  "seed": 64047,
+  "cards": {
+    "Rotisserie Elemental": "Name:Rotisserie Elemental\nManaCost:R\nTypes:Creature Elemental\nPT:1/1\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a skewer counter on CARDNAME. Then you may sacrifice it. If you do, exile the top X cards of your library, where X is the number of skewer counters on CARDNAME. You may play those cards this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SKEWER | CounterNum$ 1 | SubAbility$ DBMaySac\nSVar:DBMaySac:DB$ Sacrifice | SacValid$ Card.Self | RememberSacrificed$ True | Optional$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | ConditionDefined$ Remembered | ConditionPresent$ Card | Defined$ You | DestinationZone$ Exile | DigNum$ X | ChangeNum$ All | Imprint$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Imprinted | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$CardCounters.SKEWER\nDeckHas:Ability$Sacrifice|Counters\nOracle:Menace\\nWhenever Rotisserie Elemental deals combat damage to a player, put a skewer counter on Rotisserie Elemental. Then you may sacrifice it. If you do, exile the top X cards of your library, where X is the number of skewer counters on Rotisserie Elemental. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotisserie Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

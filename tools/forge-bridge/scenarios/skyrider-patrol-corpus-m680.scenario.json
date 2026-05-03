@@ -1,0 +1,23 @@
+{
+  "id": "skyrider-patrol-corpus-m680",
+  "description": "M6 corpus — Skyrider Patrol; in-hand parse.",
+  "seed": 64312,
+  "cards": {
+    "Skyrider Patrol": "Name:Skyrider Patrol\nManaCost:2 G U\nTypes:Creature Elf Scout\nPT:2/3\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPayCost | TriggerDescription$ At the beginning of combat on your turn, you may pay {G}{U}. When you do, put a +1/+1 counter on another target creature you control, and that creature gains flying until end of turn.\nSVar:TrigPayCost:AB$ ImmediateTrigger | Cost$ G U | Execute$ TrigPutCounter | TriggerDescription$ When you pay {G}{U}, put a +1/+1 counter on another target creature you control, and that creature gains flying until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ TrigPump\nSVar:TrigPump:DB$ Pump | Defined$ Targeted | KW$ Flying\nDeckHas:Ability$Counters\nOracle:Flying\\nAt the beginning of combat on your turn, you may pay {G}{U}. When you do, put a +1/+1 counter on another target creature you control, and that creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyrider Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

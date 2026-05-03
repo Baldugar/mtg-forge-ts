@@ -1,0 +1,23 @@
+{
+  "id": "release-the-ants-corpus-m680",
+  "description": "M6 corpus — Release the Ants; in-hand parse.",
+  "seed": 63944,
+  "cards": {
+    "Release the Ants": "Name:Release the Ants\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | SubAbility$ DBClash | SpellDescription$ CARDNAME deals 1 damage to any target. Clash with an opponent. If you win, return CARDNAME to its owner's hand.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand\nOracle:Release the Ants deals 1 damage to any target. Clash with an opponent. If you win, return Release the Ants to its owner's hand. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Release the Ants"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

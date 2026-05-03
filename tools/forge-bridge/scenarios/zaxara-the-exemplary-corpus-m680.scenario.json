@@ -1,0 +1,23 @@
+{
+  "id": "zaxara-the-exemplary-corpus-m680",
+  "description": "M6 corpus — Zaxara, the Exemplary; in-hand parse.",
+  "seed": 65121,
+  "cards": {
+    "Zaxara, the Exemplary": "Name:Zaxara, the Exemplary\nManaCost:1 B G U\nTypes:Legendary Creature Nightmare Hydra\nPT:2/3\nK:Deathtouch\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nT:Mode$ SpellCast | ValidCard$ Card.hasXCost | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a spell with {X} in its mana cost, create a 0/0 green Hydra creature token, then put X +1/+1 counters on it.\nSVar:TrigToken:DB$ Token | TokenScript$ g_0_0_hydra | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Deathtouch\\n{T}: Add two mana of any one color.\\nWhenever you cast a spell with {X} in its mana cost, create a 0/0 green Hydra creature token, then put X +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zaxara, the Exemplary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

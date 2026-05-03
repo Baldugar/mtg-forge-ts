@@ -1,0 +1,23 @@
+{
+  "id": "deadbridge-shaman-corpus-m680",
+  "description": "M6 corpus — Deadbridge Shaman; in-hand parse.",
+  "seed": 62102,
+  "cards": {
+    "Deadbridge Shaman": "Name:Deadbridge Shaman\nManaCost:2 B\nTypes:Creature Elf Shaman\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Deadbridge Shaman dies, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadbridge Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

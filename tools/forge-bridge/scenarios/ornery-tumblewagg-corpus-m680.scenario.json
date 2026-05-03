@@ -1,0 +1,23 @@
+{
+  "id": "ornery-tumblewagg-corpus-m680",
+  "description": "M6 corpus — Ornery Tumblewagg; in-hand parse.",
+  "seed": 63657,
+  "cards": {
+    "Ornery Tumblewagg": "Name:Ornery Tumblewagg\nManaCost:2 G\nTypes:Creature Brushwagg Mount\nPT:2/2\nK:Saddle:2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigDoubleCounters | TriggerDescription$ Whenever CARDNAME attacks while saddled, double the number of +1/+1 counters on target creature.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | ValidTgts$ Creature | CounterType$ P1P1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on target creature.\\nWhenever Ornery Tumblewagg attacks while saddled, double the number of +1/+1 counters on target creature.\\nSaddle 2 (Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ornery Tumblewagg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

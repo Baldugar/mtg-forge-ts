@@ -1,0 +1,23 @@
+{
+  "id": "pith-driller-corpus-m680",
+  "description": "M6 corpus — Pith Driller; in-hand parse.",
+  "seed": 63760,
+  "cards": {
+    "Pith Driller": "Name:Pith Driller\nManaCost:4 BP\nTypes:Artifact Creature Phyrexian Horror\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nOracle:({B/P} can be paid with either {B} or 2 life.)\\nWhen Pith Driller enters, put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pith Driller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-leyline-of-resonance-corpus-m680",
+  "description": "M6 corpus — A-Leyline of Resonance; in-hand parse.",
+  "seed": 64081,
+  "cards": {
+    "A-Leyline of Resonance": "Name:A-Leyline of Resonance\nManaCost:2 R R\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigCopy | ValidActivatingPlayer$ You | IsSingleTarget$ True | TriggerZones$ Battlefield | TargetsValid$ Creature.YouCtrl+inZoneBattlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell that targets only a single creature you control, you may pay {1}. If you do, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:AB$ CopySpellAbility | Cost$ 1 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | Controller$ You\nOracle:If Leyline of Resonance is in your opening hand, you may begin the game with it on the battlefield.\\nWhenever you cast an instant or sorcery spell that targets only a single creature you control, you may pay {1}. If you do, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Leyline of Resonance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

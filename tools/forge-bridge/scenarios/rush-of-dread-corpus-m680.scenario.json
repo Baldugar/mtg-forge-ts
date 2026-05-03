@@ -1,0 +1,23 @@
+{
+  "id": "rush-of-dread-corpus-m680",
+  "description": "M6 corpus — Rush of Dread; in-hand parse.",
+  "seed": 64062,
+  "cards": {
+    "Rush of Dread": "Name:Rush of Dread\nManaCost:1 B B\nTypes:Sorcery\nK:Spree\nA:SP$ Charm | Choices$ DBSacrifice,DBDiscard,DBLoseLife | MinCharmNum$ 1 | CharmNum$ 3\nSVar:DBSacrifice:DB$ Sacrifice | ModeCost$ 1 | ValidTgts$ Opponent | Amount$ ThisTargetedPlayer$Valid Creature.YouCtrl/HalfUp | SacValid$ Creature | Mode$ TgtChoose | SpellDescription$ Target opponent sacrifices half the creatures they control, rounded up.\nSVar:DBDiscard:DB$ Discard | ModeCost$ 2 | ValidTgts$ Opponent | NumCards$ ThisTargetedPlayer$CardsInHand/HalfUp | Mode$ TgtChoose | SpellDescription$ Target opponent discards half the cards in their hand, rounded up.\nSVar:DBLoseLife:DB$ LoseLife | ModeCost$ 2 | ValidTgts$ Opponent | LifeAmount$ ThisTargetedPlayer$LifeTotal/HalfUp | SpellDescription$ Target opponent loses half their life, rounded up.\nOracle:Spree (Choose one or more additional costs.)\\n+ {1} — Target opponent sacrifices half the creatures they control, rounded up.\\n+ {2} — Target opponent discards half the cards in their hand, rounded up.\\n+ {2} — Target opponent loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rush of Dread"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

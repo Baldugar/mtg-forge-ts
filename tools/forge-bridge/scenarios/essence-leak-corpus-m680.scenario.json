@@ -1,0 +1,23 @@
+{
+  "id": "essence-leak-corpus-m680",
+  "description": "M6 corpus — Essence Leak; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Essence Leak": "Name:Essence Leak\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Permanent\nSVar:AttachAITgts:Card.cmcGE1+Green,Card.cmcGE1+Red\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Permanent.AttachedBy+Red,Permanent.AttachedBy+Green | AddTrigger$ TrigEssencePhase | AddSVar$ TrigEssenceLeak | Description$ As long as enchanted permanent is red or green, it has \"At the beginning of your upkeep, sacrifice this permanent unless you pay its mana cost.\"\nSVar:TrigEssencePhase:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigEssenceLeak | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice this permanent unless you pay its mana cost.\nSVar:TrigEssenceLeak:DB$ Sacrifice | UnlessCost$ DefinedCost_Self | UnlessPayer$ You\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Enchant permanent\\nAs long as enchanted permanent is red or green, it has \"At the beginning of your upkeep, sacrifice this permanent unless you pay its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Essence Leak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

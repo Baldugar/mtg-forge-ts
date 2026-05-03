@@ -1,0 +1,23 @@
+{
+  "id": "bishop-of-the-bloodstained-corpus-m680",
+  "description": "M6 corpus — Bishop of the Bloodstained; in-hand parse.",
+  "seed": 61688,
+  "cards": {
+    "Bishop of the Bloodstained": "Name:Bishop of the Bloodstained\nManaCost:3 B B\nTypes:Creature Vampire Cleric\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target opponent loses 1 life for each Vampire you control.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:Count$Valid Creature.Vampire+YouCtrl\nDeckHints:Type$Vampire\nOracle:When Bishop of the Bloodstained enters, target opponent loses 1 life for each Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bishop of the Bloodstained"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

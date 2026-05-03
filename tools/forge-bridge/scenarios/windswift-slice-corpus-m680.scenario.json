@@ -1,0 +1,23 @@
+{
+  "id": "windswift-slice-corpus-m680",
+  "description": "M6 corpus — Windswift Slice; in-hand parse.",
+  "seed": 65063,
+  "cards": {
+    "Windswift Slice": "Name:Windswift Slice\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | ExcessSVar$ Excess | NumDmg$ X | DamageSource$ ParentTarget | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_elf_warrior | TokenAmount$ Excess | SpellDescription$ Create a number of 1/1 green Elf Warrior creature tokens equal to the amount of excess damage dealt this way.\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$Token & Type$Elf|Warrior\nOracle:Target creature you control deals damage equal to its power to target creature you don't control. Create a number of 1/1 green Elf Warrior creature tokens equal to the amount of excess damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windswift Slice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

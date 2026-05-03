@@ -1,0 +1,23 @@
+{
+  "id": "maelstrom-djinn-corpus-m680",
+  "description": "M6 corpus — Maelstrom Djinn; in-hand parse.",
+  "seed": 63299,
+  "cards": {
+    "Maelstrom Djinn": "Name:Maelstrom Djinn\nManaCost:7 U\nTypes:Creature Djinn\nPT:5/6\nK:Flying\nK:Morph:2 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDjinnVanishing | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, put two time counters on it and it gains vanishing.\nSVar:TrigDjinnVanishing:DB$ PutCounter | CounterType$ TIME | CounterNum$ 2 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Vanishing | Duration$ Permanent\nOracle:Flying\\nMorph {2}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Maelstrom Djinn is turned face up, put two time counters on it and it gains vanishing. (At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maelstrom Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

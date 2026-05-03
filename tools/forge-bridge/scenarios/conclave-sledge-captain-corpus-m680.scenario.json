@@ -1,0 +1,23 @@
+{
+  "id": "conclave-sledge-captain-corpus-m680",
+  "description": "M6 corpus — Conclave Sledge-Captain; in-hand parse.",
+  "seed": 61974,
+  "cards": {
+    "Conclave Sledge-Captain": "Name:Conclave Sledge-Captain\nManaCost:5 G\nTypes:Creature Elephant Soldier\nPT:4/4\nK:Backup:1:BackupAbilities\nK:Backup:1:BackupAbilities\nK:Backup:1:BackupAbilities\nSVar:BackupAbilities:DB$ Animate | Keywords$ Trample | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Backup 1, backup 1, backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following abilities until end of turn. Each backup ability triggers separately.)\\nTrample\\nWhenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conclave Sledge-Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-shrine-corpus-m680",
+  "description": "M6 corpus — Cephalid Shrine; in-hand parse.",
+  "seed": 61884,
+  "cards": {
+    "Cephalid Shrine": "Name:Cephalid Shrine\nManaCost:1 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player casts a spell, counter that spell unless that player pays {X}, where X is the number of cards in all graveyards with the same name as the spell.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ X | UnlessPayer$ TriggeredActivator\nSVar:X:Count$ValidGraveyard Card.sharesNameWith TriggeredCard\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, counter that spell unless that player pays {X}, where X is the number of cards in all graveyards with the same name as the spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Shrine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soulstinger-corpus-m680",
+  "description": "M6 corpus — Soulstinger; in-hand parse.",
+  "seed": 64375,
+  "cards": {
+    "Soulstinger": "Name:Soulstinger\nManaCost:3 B\nTypes:Creature Scorpion Demon\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter1 | TriggerDescription$ When CARDNAME enters, put two -1/-1 counters on target creature you control.\nSVar:TrigPutCounter1:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter2 | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies, you may put a -1/-1 counter on target creature for each -1/-1 counter on CARDNAME.\nSVar:TrigPutCounter2:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ X\nSVar:X:TriggeredCard$CardCounters.M1M1\nOracle:When Soulstinger enters, put two -1/-1 counters on target creature you control.\\nWhen Soulstinger dies, you may put a -1/-1 counter on target creature for each -1/-1 counter on Soulstinger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulstinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

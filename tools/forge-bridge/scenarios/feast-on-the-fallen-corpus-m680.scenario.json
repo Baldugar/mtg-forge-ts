@@ -1,0 +1,23 @@
+{
+  "id": "feast-on-the-fallen-corpus-m680",
+  "description": "M6 corpus — Feast on the Fallen; in-hand parse.",
+  "seed": 62456,
+  "cards": {
+    "Feast on the Fallen": "Name:Feast on the Fallen\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each upkeep, if an opponent lost life last turn, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:PlayerCountOpponents$LifeLostLastTurn\nOracle:At the beginning of each upkeep, if an opponent lost life last turn, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feast on the Fallen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

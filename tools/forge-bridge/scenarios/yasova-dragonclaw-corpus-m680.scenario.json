@@ -1,0 +1,23 @@
+{
+  "id": "yasova-dragonclaw-corpus-m680",
+  "description": "M6 corpus — Yasova Dragonclaw; in-hand parse.",
+  "seed": 65107,
+  "cards": {
+    "Yasova Dragonclaw": "Name:Yasova Dragonclaw\nManaCost:2 G\nTypes:Legendary Creature Human Warrior\nPT:4/2\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of combat on your turn, you may pay {1}{U/R}{U/R}. If you do, gain control of target creature an opponent controls with power less than CARDNAME's power until end of turn, untap that creature, and it gains haste until end of turn.\nSVar:TrigChange:AB$ GainControl | Cost$ 1 UR UR | TgtPrompt$ Choose target creature an opponent controls with power less than CARDNAME's power. | ValidTgts$ Creature.OppCtrl+powerLTX | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Gain control of target creature an opponent controls with power less than CARDNAME's power until end of turn, untap that creature, and it gains haste until end of turn.\nSVar:X:Count$CardPower\nOracle:Trample\\nAt the beginning of combat on your turn, you may pay {1}{U/R}{U/R}. If you do, gain control of target creature an opponent controls with power less than Yasova Dragonclaw's power until end of turn, untap that creature, and it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yasova Dragonclaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

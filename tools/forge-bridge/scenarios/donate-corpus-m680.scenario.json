@@ -1,0 +1,23 @@
+{
+  "id": "donate-corpus-m680",
+  "description": "M6 corpus — Donate; in-hand parse.",
+  "seed": 62204,
+  "cards": {
+    "Donate": "Name:Donate\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBGiveControl | AILogic$ DonateTargetPlayer | SpellDescription$ Target player gains control of target permanent you control. | StackDescription$ None\nSVar:DBGiveControl:DB$ GainControl | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | Defined$ Targeted | NewController$ ParentTarget | AILogic$ DonateTargetPerm\nAI:RemoveDeck:Random\nSVar:DoNotDiscardIfAble:TRUE\nOracle:Target player gains control of target permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Donate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

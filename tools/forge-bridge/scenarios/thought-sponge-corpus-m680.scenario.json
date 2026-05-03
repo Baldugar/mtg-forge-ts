@@ -1,0 +1,23 @@
+{
+  "id": "thought-sponge-corpus-m680",
+  "description": "M6 corpus — Thought Sponge; in-hand parse.",
+  "seed": 64714,
+  "cards": {
+    "Thought Sponge": "Name:Thought Sponge\nManaCost:3 U\nTypes:Creature Sponge\nPT:1/1\nK:Flash\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a number of +1/+1 counters on it equal to the greatest number of cards an opponent has drawn this turn.\nSVar:X:PlayerCountOpponents$HighestCardsDrawn\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw cards equal to its power.\nSVar:TrigDraw:DB$ Draw | NumCards$ XPower\nSVar:XPower:TriggeredCard$CardPower\nOracle:Flash\\nThought Sponge enters with a number of +1/+1 counters on it equal to the greatest number of cards an opponent has drawn this turn.\\nWhen Thought Sponge dies, draw cards equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thought Sponge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

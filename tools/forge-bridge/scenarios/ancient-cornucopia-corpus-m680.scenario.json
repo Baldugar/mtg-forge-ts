@@ -1,0 +1,23 @@
+{
+  "id": "ancient-cornucopia-corpus-m680",
+  "description": "M6 corpus — Ancient Cornucopia; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Ancient Cornucopia": "Name:Ancient Cornucopia\nManaCost:2 G\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.nonColorless | ValidActivatingPlayer$ You | Execute$ TrigGainLife | ResolvedLimit$ 1 | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell that's one or more colors, you may gain 1 life for each of that spell's colors. Do this only once each turn.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:TriggeredCard$CardNumColors\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$LifeGain\nOracle:Whenever you cast a spell that's one or more colors, you may gain 1 life for each of that spell's colors. Do this only once each turn.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Cornucopia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

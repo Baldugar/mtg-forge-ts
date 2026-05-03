@@ -1,0 +1,23 @@
+{
+  "id": "take-down-corpus-m680",
+  "description": "M6 corpus — Take Down; in-hand parse.",
+  "seed": 64579,
+  "cards": {
+    "Take Down": "Name:Take Down\nManaCost:G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDealDamage,DBDamageAll\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature with flying.\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature.withFlying | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to each creature with flying.\nOracle:Choose one —\\n• Take Down deals 4 damage to target creature with flying.\\n• Take Down deals 1 damage to each creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "teferi-s-tutelage-corpus-m680",
+  "description": "M6 corpus — Teferi's Tutelage; in-hand parse.",
+  "seed": 64603,
+  "cards": {
+    "Teferi's Tutelage": "Name:Teferi's Tutelage\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ Drawn | ValidCard$ Card.YouOwn | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever you draw a card, target opponent mills two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nOracle:When Teferi's Tutelage enters, draw a card, then discard a card.\\nWhenever you draw a card, target opponent mills two cards. (They put the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi's Tutelage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

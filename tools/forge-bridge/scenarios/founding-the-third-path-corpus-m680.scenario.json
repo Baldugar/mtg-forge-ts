@@ -1,0 +1,23 @@
+{
+  "id": "founding-the-third-path-corpus-m680",
+  "description": "M6 corpus — Founding the Third Path; in-hand parse.",
+  "seed": 62552,
+  "cards": {
+    "Founding the Third Path": "Name:Founding the Third Path\nManaCost:1 U\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:DBPlayFree,DBMill,DBCopy\nSVar:DBPlayFree:DB$ Play | Valid$ Card.YouOwn | ValidSA$ Instant.cmcEQ1,Instant.cmcEQ2,Sorcery.cmcEQ1,Sorcery.cmcEQ2 | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True | SpellDescription$ You may cast an instant or sorcery spell with mana value 1 or 2 from your hand without paying its mana cost.\nSVar:DBMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player | SpellDescription$ Target player mills four cards.\nSVar:DBCopy:DB$ ChangeZone | TargetMax$ 1 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose up to one target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Exile target instant or sorcery card from your graveyard. Copy it. You may cast the copy.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Optional$ True | CopyCard$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|Graveyard\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI — You may cast an instant or sorcery spell with mana value 1 or 2 from your hand without paying its mana cost.\\nII — Target player mills four cards.\\nIII — Exile target instant or sorcery card from your graveyard. Copy it. You may cast the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Founding the Third Path"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

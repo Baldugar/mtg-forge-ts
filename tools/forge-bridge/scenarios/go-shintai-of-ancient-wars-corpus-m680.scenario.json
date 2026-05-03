@@ -1,0 +1,23 @@
+{
+  "id": "go-shintai-of-ancient-wars-corpus-m680",
+  "description": "M6 corpus — Go-Shintai of Ancient Wars; in-hand parse.",
+  "seed": 62672,
+  "cards": {
+    "Go-Shintai of Ancient Wars": "Name:Go-Shintai of Ancient Wars\nManaCost:2 R\nTypes:Legendary Enchantment Creature Shrine\nPT:2/2\nK:First Strike\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of your end step, you may pay {1}. When you do, CARDNAME deals X damage to target player or planeswalker, where X is the number of Shrines you control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigDealDamage | SpellDescription$ CARDNAME deals X damage to target player or planeswalker, where X is the number of Shrines you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHints:Type$Shrine\nOracle:First strike\\nAt the beginning of your end step, you may pay {1}. When you do, Go-Shintai of Ancient Wars deals X damage to target player or planeswalker, where X is the number of Shrines you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Go-Shintai of Ancient Wars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tend-to-the-kiln-corpus-m680",
+  "description": "M6 corpus — Tend to the Kiln; in-hand parse.",
+  "seed": 64616,
+  "cards": {
+    "Tend to the Kiln": "Name:Tend to the Kiln\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimateAll | TriggerDescription$ When this enchantment enters, all non-Elemental instant and sorcery cards you own perpetually become Elemental kindreds in addition to their other types.\nSVar:TrigAnimateAll:DB$ AnimateAll | ValidCards$ Instant.nonElemental+YouOwn,Sorcery.nonElemental+YouOwn | Types$ Kindred,Elemental | Zone$ All | Duration$ Perpetual\nT:Mode$ SpellCast | ValidCard$ Elemental | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast an Elemental spell, put a flame counter on this enchantment. Then if it has three or more flame counters on it, remove them, conjure a card named Flamebraider onto the battlefield, and it gains haste and \"At the beginning of the end step, sacrifice this creature.\"\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FLAME | CounterNum$ 1 | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ FlameTimer | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ FLAME | CounterNum$ All | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Flamebraider | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Animate | Defined$ Remembered | Keywords$ Haste | Triggers$ PhaseTrig | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:PhaseTrig:Mode$ Phase | Phase$ End of Turn | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, sacrifice this creature.\nSVar:TrigSacrifice:DB$ Sacrifice\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nSVar:FlameTimer:Count$Valid Card.Self+counters_GE3_FLAME\nOracle:When this enchantment enters, all non-Elemental instant and sorcery cards you own perpetually become Elemental kindreds in addition to their other types.\\nWhenever you cast an Elemental spell, put a flame counter on this enchantment. Then if it has three or more flame counters on it, remove them, conjure a card named Flamebraider onto the battlefield, and it gains haste and \"At the beginning of the end step, sacrifice this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tend to the Kiln"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

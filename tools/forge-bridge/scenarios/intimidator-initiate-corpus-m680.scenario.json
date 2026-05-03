@@ -1,0 +1,23 @@
+{
+  "id": "intimidator-initiate-corpus-m680",
+  "description": "M6 corpus — Intimidator Initiate; in-hand parse.",
+  "seed": 62958,
+  "cards": {
+    "Intimidator Initiate": "Name:Intimidator Initiate\nManaCost:R\nTypes:Creature Goblin Shaman\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.Red | TriggerZones$ Battlefield | Execute$ TrigPumpCurse | OptionalDecider$ You | TriggerDescription$ Whenever a player casts a red spell, you may pay {1}. If you do, target creature can't block this turn.\nSVar:TrigPumpCurse:AB$ Pump | Cost$ 1 | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nSVar:PlayMain1:TRUE\nOracle:Whenever a player casts a red spell, you may pay {1}. If you do, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intimidator Initiate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "aunt-may-corpus-m680",
+  "description": "M6 corpus — Aunt May; in-hand parse.",
+  "seed": 61598,
+  "cards": {
+    "Aunt May": "Name:Aunt May\nVariant:UniversesWithin:FlavorName:Zora, Spider Fancier\nManaCost:W\nTypes:Legendary Creature Human Citizen\nPT:0/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control enters, you gain 1 life. If it's a Spider, put a +1/+1 counter on it.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy.Spider | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$LifeGain|Counters\nDeckHints:Type$Spider\nOracle:Whenever another creature you control enters, you gain 1 life. If it's a Spider, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aunt May"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

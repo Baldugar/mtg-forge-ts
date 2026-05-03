@@ -1,0 +1,23 @@
+{
+  "id": "gnoll-hunter-corpus-m680",
+  "description": "M6 corpus — Gnoll Hunter; in-hand parse.",
+  "seed": 62668,
+  "cards": {
+    "Gnoll Hunter": "Name:Gnoll Hunter\nManaCost:1 G\nTypes:Creature Gnoll\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nDeckHas:Ability$Counters\nOracle:Pack tactics — Whenever Gnoll Hunter attacks, if you attacked with creatures with total power 6 or greater this combat, put a +1/+1 counter on Gnoll Hunter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gnoll Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

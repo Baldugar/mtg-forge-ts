@@ -1,0 +1,23 @@
+{
+  "id": "codespell-cleric-corpus-m680",
+  "description": "M6 corpus — Codespell Cleric; in-hand parse.",
+  "seed": 61953,
+  "cards": {
+    "Codespell Cleric": "Name:Codespell Cleric\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | ConditionYouCastThisTurn$ EQ2 | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, if it was the second spell you cast this turn, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Vigilance\\nWhen Codespell Cleric enters, if it was the second spell you cast this turn, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Codespell Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

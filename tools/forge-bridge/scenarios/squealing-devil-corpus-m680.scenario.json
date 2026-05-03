@@ -1,0 +1,23 @@
+{
+  "id": "squealing-devil-corpus-m680",
+  "description": "M6 corpus — Squealing Devil; in-hand parse.",
+  "seed": 64437,
+  "cards": {
+    "Squealing Devil": "Name:Squealing Devil\nManaCost:1 R\nTypes:Creature Devil\nPT:2/1\nK:Fear\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may pay {X}. If you do, target creature gets +X/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | ManaNotSpent$ B | TriggerDescription$ When CARDNAME enters, sacrifice it unless {B} was spent to cast it.\nSVar:TrigPump:AB$ Pump | Cost$ X | ValidTgts$ Creature | NumAtt$ +X | SpellDescription$ Target creature gets +X/+0 until end of turn.\nSVar:X:Count$xPaid\nSVar:TrigSac:DB$ Sacrifice\nSVar:ManaNeededToAvoidNegativeEffect:black\nAI:RemoveDeck:All\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhen Squealing Devil enters, you may pay {X}. If you do, target creature gets +X/+0 until end of turn.\\nWhen Squealing Devil enters, sacrifice it unless {B} was spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Squealing Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

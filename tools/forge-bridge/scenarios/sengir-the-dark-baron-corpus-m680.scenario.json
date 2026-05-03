@@ -1,0 +1,23 @@
+{
+  "id": "sengir-the-dark-baron-corpus-m680",
+  "description": "M6 corpus — Sengir, the Dark Baron; in-hand parse.",
+  "seed": 64204,
+  "cards": {
+    "Sengir, the Dark Baron": "Name:Sengir, the Dark Baron\nManaCost:4 B B\nTypes:Legendary Creature Vampire Noble\nPT:4/4\nK:Flying\nK:Partner\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature dies, put two +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nT:Mode$ LosesGame | ValidPlayer$ Player.Other | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another player loses the game, you gain life equal to that player's life total as the turn began.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredPlayer$LifeStartedThisTurnWith\nDeckHas:Ability$Counters|LifeGain\nOracle:Flying\\nWhenever another creature dies, put two +1/+1 counters on Sengir, the Dark Baron.\\nWhenever another player loses the game, you gain life equal to that player's life total as the turn began.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sengir, the Dark Baron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

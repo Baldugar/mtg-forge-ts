@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-squirrel-whacker-corpus-m680",
+  "description": "M6 corpus — Vedalken Squirrel-Whacker; in-hand parse.",
+  "seed": 64901,
+  "cards": {
+    "Vedalken Squirrel-Whacker": "Name:Vedalken Squirrel-Whacker\nManaCost:3 U\nTypes:Creature Vedalken Guest\nPT:*/*\nK:ETBReplacement:Other:TrigRoll\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ diePwr | SubAbility$ RollTough | SpellDescription$ As CARDNAME enters, roll a six-sided die twice. Its base power becomes the first result and its base toughness becomes the second result.\nSVar:RollTough:DB$ RollDice | ResultSVar$ dieTgn | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Power$ diePwr | Toughness$ dieTgn | Duration$ Permanent\nR:Event$ RollDice | ActiveZones$ Battlefield | ValidPlayer$ You | ValidSides$ 6 | ReplaceWith$ SwapRoll | Description$ If you would roll one or more six-sided dice, instead roll them and you may exchange one result with this creature's base power or base toughness.\nSVar:SwapRoll:DB$ ReplaceEffect | VarName$ DicePTExchanges | VarType$ CardSet | VarValue$ Self\nAI:RemoveDeck:All\nOracle:As this creature enters, roll a six-sided die twice. Its base power becomes the first result and its base toughness becomes the second result.\\nIf you would roll one or more six-sided dice, instead roll them and you may exchange one result with this creature's base power or base toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Squirrel-Whacker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

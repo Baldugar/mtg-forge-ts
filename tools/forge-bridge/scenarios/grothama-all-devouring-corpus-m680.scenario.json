@@ -1,0 +1,23 @@
+{
+  "id": "grothama-all-devouring-corpus-m680",
+  "description": "M6 corpus — Grothama, All-Devouring; in-hand parse.",
+  "seed": 62733,
+  "cards": {
+    "Grothama, All-Devouring": "Name:Grothama, All-Devouring\nManaCost:3 G G\nTypes:Legendary Creature Wurm\nPT:10/8\nS:Mode$ Continuous | Affected$ Creature.Other | AddTrigger$ GrothamaAttack | AddSVar$ HasAttackEffect | Description$ Other creatures have \"Whenever this creature attacks, you may have it fight CARDNAME.\"\nSVar:GrothamaAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ GrothamaFight | OptionalDecider$ You | TriggerDescription$ Whenever this creature attacks, ABILITY.\nSVar:GrothamaFight:DB$ Fight | Defined$ TriggeredAttackerLKICopy & OriginalHost | AILogic$ Grothama | SpellDescription$ You may have it fight ORIGINALHOST.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ When NICKNAME leaves the battlefield, each player draws cards equal to the amount of damage dealt to NICKNAME this turn by sources they controlled.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | Defined$ Remembered | NumCards$ X\nSVar:X:TriggeredCard$TotalDamageThisTurn Card.RememberedPlayerCtrl\nSVar:HasAttackEffect:TRUE\nOracle:Other creatures have \"Whenever this creature attacks, you may have it fight Grothama, All-Devouring.\"\\nWhen Grothama leaves the battlefield, each player draws cards equal to the amount of damage dealt to Grothama this turn by sources they controlled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grothama, All-Devouring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mephitic-draught-corpus-m680",
+  "description": "M6 corpus — Mephitic Draught; in-hand parse.",
+  "seed": 63384,
+  "cards": {
+    "Mephitic Draught": "Name:Mephitic Draught\nManaCost:1 B\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, you draw a card and you lose 1 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nAI:RemoveDeck:Random\nSVar:SacMe:4\nOracle:When Mephitic Draught enters or is put into a graveyard from the battlefield, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mephitic Draught"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

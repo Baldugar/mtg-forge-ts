@@ -1,0 +1,23 @@
+{
+  "id": "purraj-of-urborg-corpus-m680",
+  "description": "M6 corpus — Purraj of Urborg; in-hand parse.",
+  "seed": 63842,
+  "cards": {
+    "Purraj of Urborg": "Name:Purraj of Urborg\nManaCost:3 B B\nTypes:Legendary Creature Cat Warrior\nPT:2/3\nS:Mode$ Continuous | Affected$ Card.Self+attacking | AddKeyword$ First Strike | Description$ CARDNAME has first strike as long as it's attacking.\nT:Mode$ SpellCast | ValidCard$ Card.Black | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a player casts a black spell, you may pay {B}. If you do, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ B | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Purraj of Urborg has first strike as long as it's attacking.\\nWhenever a player casts a black spell, you may pay {B}. If you do, put a +1/+1 counter on Purraj of Urborg.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purraj of Urborg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

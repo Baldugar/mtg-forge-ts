@@ -1,0 +1,23 @@
+{
+  "id": "eirdu-carrier-of-dawn-corpus-m680",
+  "description": "M6 corpus — Eirdu, Carrier of Dawn; in-hand parse.",
+  "seed": 62289,
+  "cards": {
+    "Eirdu, Carrier of Dawn": "Name:Eirdu, Carrier of Dawn\nManaCost:3 W W\nTypes:Legendary Creature Elemental God\nPT:5/5\nK:Flying\nK:Lifelink\nS:Mode$ Continuous | Affected$ Card.Creature+YouCtrl+wasCast | AffectedZone$ Stack | AddKeyword$ Convoke | Description$ Creature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {B}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ B | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nDeckHas:Ability$LifeGain|Counters\nOracle:Flying, lifelink\\nCreature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)\\nAt the beginning of your first main phase, you may pay {B}. If you do, transform Eirdu.\n\nALTERNATE\n\nName:Isilu, Carrier of Twilight\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Elemental God\nPT:5/5\nK:Flying\nK:Lifelink\nS:Mode$ Continuous | Affected$ Card.Creature+YouCtrl+!token+Other | AffectedZone$ Battlefield | AddKeyword$ Persist | Description$ Each other nontoken creature you control has persist. (When it dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {W}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ W | Defined$ Self | Mode$ Transform\nOracle:Flying, lifelink\\nEach other nontoken creature you control has persist. (When it dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.) At the beginning of your first main phase, you may pay {W}. If you do, transform Isilu.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eirdu, Carrier of Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

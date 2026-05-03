@@ -1,0 +1,23 @@
+{
+  "id": "faebloom-trick-corpus-m680",
+  "description": "M6 corpus — Faebloom Trick; in-hand parse.",
+  "seed": 62422,
+  "cards": {
+    "Faebloom Trick": "Name:Faebloom Trick\nManaCost:2 U\nTypes:Instant\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_faerie_flying | TokenOwner$ You | RememberOriginalTokens$ True | SubAbility$ DBImmediateTrig | SpellDescription$ Create two 1/1 blue Faerie creature tokens with flying. When you do, tap target creature an opponent controls.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | TriggerAmount$ Remembered$Amount/DivideEvenlyDown.2 | Execute$ TrigTap | SubAbility$ DBCleanup | TriggerDescription$ When you do, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Create two 1/1 blue Faerie creature tokens with flying. When you do, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faebloom Trick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

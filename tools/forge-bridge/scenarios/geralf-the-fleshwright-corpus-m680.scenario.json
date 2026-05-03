@@ -1,0 +1,23 @@
+{
+  "id": "geralf-the-fleshwright-corpus-m680",
+  "description": "M6 corpus — Geralf, the Fleshwright; in-hand parse.",
+  "seed": 62624,
+  "cards": {
+    "Geralf, the Fleshwright": "Name:Geralf, the Fleshwright\nManaCost:2 U\nTypes:Legendary Creature Human Warlock\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | ActivatorThisTurnCast$ GT1 | Execute$ TrigToken | TriggerDescription$ Whenever you cast a spell during your turn other than your first spell that turn, create a 2/2 blue and black Zombie Rogue creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ ub_2_2_zombie_rogue | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Zombie.YouCtrl | Execute$ DBPutCounter | TriggerDescription$ Whenever a Zombie you control enters, put a +1/+1 counter on it for each other Zombie that entered the battlefield under your control this turn.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCard | CounterNum$ X | CounterType$ P1P1\nSVar:X:Count$ThisTurnEntered_Battlefield_Zombie.YouCtrl+!TriggeredCard\nDeckHas:Ability$Token|Counters & Type$Zombie|Rogue & Color$Black\nDeckHints:Type$Zombie\nOracle:Whenever you cast a spell during your turn other than your first spell that turn, create a 2/2 blue and black Zombie Rogue creature token.\\nWhenever a Zombie you control enters, put a +1/+1 counter on it for each other Zombie that entered the battlefield under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geralf, the Fleshwright"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

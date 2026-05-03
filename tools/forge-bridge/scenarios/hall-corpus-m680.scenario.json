@@ -1,0 +1,23 @@
+{
+  "id": "hall-corpus-m680",
+  "description": "M6 corpus — Hall; in-hand parse.",
+  "seed": 62773,
+  "cards": {
+    "Hall": "Name:Hall\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nA:AB$ Investigate | Cost$ 4 T | SpellDescription$ Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nDeckHints:Ability$Investigate|Token\nOracle:Hall enters tapped.\\n{T}: Add {R} or {W}.\\n{4}, {T}: Investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

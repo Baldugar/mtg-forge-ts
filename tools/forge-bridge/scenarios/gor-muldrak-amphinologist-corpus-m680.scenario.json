@@ -1,0 +1,23 @@
+{
+  "id": "gor-muldrak-amphinologist-corpus-m680",
+  "description": "M6 corpus — Gor Muldrak, Amphinologist; in-hand parse.",
+  "seed": 62705,
+  "cards": {
+    "Gor Muldrak, Amphinologist": "Name:Gor Muldrak, Amphinologist\nManaCost:1 G U\nTypes:Legendary Creature Human Scout\nPT:3/2\nS:Mode$ Continuous | Affected$ You,Permanent.YouCtrl | AddKeyword$ Protection:Salamander | Description$ You and permanents you control have protection from Salamanders.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, each player who controls the fewest creatures creates a 4/3 blue Salamander Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ u_4_3_salamander_warrior | TokenOwner$ Player.controlsCreature_EQX\nSVar:X:PlayerCountPlayers$LowestValid Creature.YouCtrl\nDeckHas:Ability$Token\nOracle:You and permanents you control have protection from Salamanders.\\nAt the beginning of your end step, each player who controls the fewest creatures creates a 4/3 blue Salamander Warrior creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gor Muldrak, Amphinologist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

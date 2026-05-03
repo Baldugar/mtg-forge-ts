@@ -1,0 +1,23 @@
+{
+  "id": "warping-wurm-corpus-m680",
+  "description": "M6 corpus — Warping Wurm; in-hand parse.",
+  "seed": 65004,
+  "cards": {
+    "Warping Wurm": "Name:Warping Wurm\nManaCost:2 G U\nTypes:Creature Wurm\nPT:1/1\nK:Phasing\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigWarp | TriggerDescription$ At the beginning of your upkeep, CARDNAME phases out unless you pay {2}{G}{U}.\nSVar:TrigWarp:DB$ Phases | UnlessCost$ 2 G U | UnlessPayer$ You | Defined$ Self\nT:Mode$ PhaseIn | ValidCard$ Card.Self | Execute$ TrigBuff | TriggerDescription$ Whenever CARDNAME phases in, put a +1/+1 counter on it.\nSVar:TrigBuff:DB$ PutCounter | Defined$ Valid Card.Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Phasing (This phases in or out before you untap during each of your untap steps. While it's phased out, it's treated as though it doesn't exist.)\\nAt the beginning of your upkeep, Warping Wurm phases out unless you pay {2}{G}{U}.\\nWhenever Warping Wurm phases in, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warping Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

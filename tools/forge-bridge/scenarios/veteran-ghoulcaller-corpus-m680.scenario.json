@@ -1,0 +1,23 @@
+{
+  "id": "veteran-ghoulcaller-corpus-m680",
+  "description": "M6 corpus — Veteran Ghoulcaller; in-hand parse.",
+  "seed": 64933,
+  "cards": {
+    "Veteran Ghoulcaller": "Name:Veteran Ghoulcaller\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Hand | ValidCard$ Card.YouOwn | TriggerZones$ Battlefield | Execute$ TrigConjure | TriggerDescription$ Whenever a card in your graveyard is put into your hand, conjure a duplicate of that card into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredCard | Zone$ Hand\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Graveyard\nOracle:Menace\\nWhenever a card in your graveyard is put into your hand, conjure a duplicate of that card into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Ghoulcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

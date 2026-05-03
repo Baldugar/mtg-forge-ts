@@ -1,0 +1,23 @@
+{
+  "id": "tenacious-dead-corpus-m680",
+  "description": "M6 corpus — Tenacious Dead; in-hand parse.",
+  "seed": 64614,
+  "cards": {
+    "Tenacious Dead": "Name:Tenacious Dead\nManaCost:B\nTypes:Creature Skeleton Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, you may pay {1}{B}. If you do, return it to the battlefield tapped under its owner's control.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 B | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nOracle:When Tenacious Dead dies, you may pay {1}{B}. If you do, return it to the battlefield tapped under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tenacious Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

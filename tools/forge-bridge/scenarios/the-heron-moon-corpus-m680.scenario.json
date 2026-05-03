@@ -1,0 +1,23 @@
+{
+  "id": "the-heron-moon-corpus-m680",
+  "description": "M6 corpus — The Heron Moon; in-hand parse.",
+  "seed": 64660,
+  "cards": {
+    "The Heron Moon": "Name:The Heron Moon\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChangeZoneAll | Cost$ 1 T | ValidTgts$ Opponent | ChangeType$ Card.BottomLibrary | Origin$ Library | Destination$ Exile | SpellDescription$ Exile the bottom card of target opponent's library.\nT:Mode$ ChangesZoneAll | ValidCards$ Card.OppOwn+!token+nonCopiedSpell | Destination$ Exile | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more cards an opponent owns are put into exile, put a release counter on CARDNAME. Then if it has thirteen or more release counters on it, sacrifice it and create a copy of Emrakul, the Promised End. Cast it without paying its mana cost.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ RELEASE | Defined$ Self | CounterNum$ 1 | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | RememberSacrificed$ True | ConditionPresent$ Card.Self+counters_GE13_RELEASE | SubAbility$ DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | ChooseFromList$ Emrakul; the Promised End | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCast | StackDescription$ None\nSVar:DBCast:DB$ Play | CopyFromChosenName$ True | Mandatory$ True | WithoutManaCost$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nDeckHas:Ability$Mana.Colorless\nOracle:{T}: Add {C}.\\n{1}, {T}: Exile the bottom card of target opponent's library.\\nWhenever one or more cards an opponent owns are put into exile, put a release counter on The Heron Moon. Then if it has thirteen or more release counters on it, sacrifice it and create a copy of Emrakul, the Promised End. Cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Heron Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

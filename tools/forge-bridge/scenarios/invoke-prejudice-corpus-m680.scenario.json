@@ -1,0 +1,23 @@
+{
+  "id": "invoke-prejudice-corpus-m680",
+  "description": "M6 corpus — Invoke Prejudice; in-hand parse.",
+  "seed": 62978,
+  "cards": {
+    "Invoke Prejudice": "Name:Invoke Prejudice\nManaCost:U U U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature.OppCtrl+!SharesColorWith Valid Creature.YouCtrl | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a creature spell that doesn't share a color with a creature you control, counter that spell unless that player pays {X}, where X is its mana value.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ X | UnlessPayer$ TriggeredActivator\nSVar:X:TriggeredCard$CardManaCost\nOracle:Whenever an opponent casts a creature spell that doesn't share a color with a creature you control, counter that spell unless that player pays {X}, where X is its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invoke Prejudice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

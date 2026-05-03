@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-empires-corpus-m680",
+  "description": "M6 corpus — Crown of Empires; in-hand parse.",
+  "seed": 62043,
+  "cards": {
+    "Crown of Empires": "Name:Crown of Empires\nManaCost:2\nTypes:Artifact\nA:AB$ Tap | Cost$ 3 T | ValidTgts$ Creature | ConditionCheckSVar$ M12Complete | ConditionSVarCompare$ EQ0 | SubAbility$ DBControl | SpellDescription$ Tap target creature. Gain control of that creature instead if you control artifacts named Scepter of Empires and Throne of Empires.\nSVar:DBControl:DB$ GainControl | Defined$ Targeted | ConditionCheckSVar$ M12Complete\nSVar:M12Complete:Count$Compare AllM12Empires GT0.1.0\nSVar:AllM12Empires:SVar$X/Times.Y\nSVar:X:Count$Valid Artifact.namedScepter of Empires+YouCtrl\nSVar:Y:Count$Valid Artifact.namedThrone of Empires+YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Name$Scepter of Empires|Throne of Empires\nOracle:{3}, {T}: Tap target creature. Gain control of that creature instead if you control artifacts named Scepter of Empires and Throne of Empires.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Empires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

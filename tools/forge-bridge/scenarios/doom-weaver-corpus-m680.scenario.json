@@ -1,0 +1,23 @@
+{
+  "id": "doom-weaver-corpus-m680",
+  "description": "M6 corpus — Doom Weaver; in-hand parse.",
+  "seed": 62210,
+  "cards": {
+    "Doom Weaver": "Name:Doom Weaver\nManaCost:4 B B\nTypes:Creature Spider Horror\nPT:1/8\nK:Reach\nK:Soulbond\nS:Mode$ Continuous | Affected$ Creature.PairedWith,Creature.Self+Paired | AddTrigger$ DiesTrigger | Description$ As long as CARDNAME is paired with another creature, each of those creatures has \"When this creature dies, draw cards equal to its power.\"\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature dies, draw cards equal to its power.\nSVar:TrigDraw:DB$ Draw | NumCards$ XPower\nSVar:XPower:TriggeredCard$CardPower\nSVar:BuffedBy:Creature\nOracle:Reach\\nSoulbond (You may pair this creature with another unpaired creature when either enters. They remain paired for as long as you control both of them.)\\nAs long as Doom Weaver is paired with another creature, each of those creatures has \"When this creature dies, draw cards equal to its power.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doom Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

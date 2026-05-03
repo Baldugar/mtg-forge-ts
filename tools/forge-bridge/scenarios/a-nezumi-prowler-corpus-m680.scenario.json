@@ -1,0 +1,23 @@
+{
+  "id": "a-nezumi-prowler-corpus-m680",
+  "description": "M6 corpus — A-Nezumi Prowler; in-hand parse.",
+  "seed": 64085,
+  "cards": {
+    "A-Nezumi Prowler": "Name:A-Nezumi Prowler\nManaCost:1 B\nTypes:Artifact Creature Rat Ninja\nPT:3/1\nK:Ninjutsu:1 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a deathtouch counter and a lifelink counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterTypes$ Deathtouch,Lifelink | CounterNum$ 1\nDeckHas:Ability$Counters|LifeGain\nOracle:Ninjutsu {1}{B}\\nWhen Nezumi Prowler enters, put a deathtouch counter and a lifelink counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Nezumi Prowler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

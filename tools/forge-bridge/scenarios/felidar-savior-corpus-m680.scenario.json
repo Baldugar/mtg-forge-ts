@@ -1,0 +1,23 @@
+{
+  "id": "felidar-savior-corpus-m680",
+  "description": "M6 corpus — Felidar Savior; in-hand parse.",
+  "seed": 62461,
+  "cards": {
+    "Felidar Savior": "Name:Felidar Savior\nManaCost:3 W\nTypes:Creature Cat Beast\nPT:2/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When this creature enters, put a +1/+1 counter on each of up to two other target creatures you control.\nSVar:TrigPutCounters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select up to two other target creatures you control\nDeckHas:Ability$LifeGain|Counters\nOracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen this creature enters, put a +1/+1 counter on each of up to two other target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Felidar Savior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

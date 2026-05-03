@@ -1,0 +1,23 @@
+{
+  "id": "aragorn-the-uniter-corpus-m680",
+  "description": "M6 corpus — Aragorn, the Uniter; in-hand parse.",
+  "seed": 61535,
+  "cards": {
+    "Aragorn, the Uniter": "Name:Aragorn, the Uniter\nManaCost:R G W U\nTypes:Legendary Creature Human Noble\nPT:5/5\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a white spell, create a 1/1 white Human Soldier creature token.\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever you cast a blue spell, scry 2.\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a red spell, CARDNAME deals 3 damage to target opponent.\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a green spell, target creature gets +4/+4 until end of turn.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 3\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +4 | NumDef$ +4\nDeckHas:Ability$Token & Type$Soldier\nOracle:Whenever you cast a white spell, create a 1/1 white Human Soldier creature token.\\nWhenever you cast a blue spell, scry 2.\\nWhenever you cast a red spell, Aragorn, the Uniter deals 3 damage to target opponent.\\nWhenever you cast a green spell, target creature gets +4/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aragorn, the Uniter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

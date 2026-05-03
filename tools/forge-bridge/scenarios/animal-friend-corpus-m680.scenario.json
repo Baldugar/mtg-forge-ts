@@ -1,0 +1,23 @@
+{
+  "id": "animal-friend-corpus-m680",
+  "description": "M6 corpus — Animal Friend; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Animal Friend": "Name:Animal Friend\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ AttackTrig | Description$ Enchanted creature has \"Whenever this creature attacks, create a 1/1 green Squirrel creature token. Put a +1/+1 counter on that token for each Aura and Equipment attached to this creature other than CARDNAME.\"\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this creature attacks, create a 1/1 green Squirrel creature token. Put a +1/+1 counter on that token for each Aura and Equipment attached to this creature other than ORIGINALHOST.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_squirrel | RememberTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Equipment.Attached,Aura.Attached+NotDefinedOriginalHost\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Equipment|Aura\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, create a 1/1 green Squirrel creature token. Put a +1/+1 counter on that token for each Aura and Equipment attached to this creature other than Animal Friend.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animal Friend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

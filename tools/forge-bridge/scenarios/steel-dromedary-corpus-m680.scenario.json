@@ -1,0 +1,23 @@
+{
+  "id": "steel-dromedary-corpus-m680",
+  "description": "M6 corpus — Steel Dromedary; in-hand parse.",
+  "seed": 64458,
+  "cards": {
+    "Steel Dromedary": "Name:Steel Dromedary\nManaCost:3\nTypes:Artifact Creature Camel\nPT:2/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ CamelTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two +1/+1 counters on it.\nSVar:CamelTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self+counters_GE1_P1P1 | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step if it has a +1/+1 counter on it.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMoveCounter | TriggerDescription$ At the beginning of combat on your turn, you may move a +1/+1 counter from CARDNAME onto target creature.\nSVar:TrigMoveCounter:DB$ MoveCounter | ValidTgts$ Creature | Source$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Steel Dromedary enters tapped with two +1/+1 counters on it.\\nSteel Dromedary doesn't untap during your untap step if it has a +1/+1 counter on it.\\nAt the beginning of combat on your turn, you may move a +1/+1 counter from Steel Dromedary onto target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steel Dromedary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

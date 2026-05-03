@@ -1,0 +1,23 @@
+{
+  "id": "mountain-titan-corpus-m680",
+  "description": "M6 corpus — Mountain Titan; in-hand parse.",
+  "seed": 63484,
+  "cards": {
+    "Mountain Titan": "Name:Mountain Titan\nManaCost:2 B R\nTypes:Creature Giant\nPT:2/2\nA:AB$ Effect | Cost$ 1 R R | Triggers$ TrigSpellCast | RememberObjects$ Self | SpellDescription$ Until end of turn, whenever you cast a black spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Command | TriggerDescription$ Whenever you cast a black spell, put a +1/+1 counter on EFFECTSOURCE.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card.Black\nAI:RemoveDeck:All\nOracle:{1}{R}{R}: Until end of turn, whenever you cast a black spell, put a +1/+1 counter on Mountain Titan.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mountain Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

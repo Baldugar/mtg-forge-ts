@@ -1,0 +1,23 @@
+{
+  "id": "sunstar-lightsmith-corpus-m680",
+  "description": "M6 corpus — Sunstar Lightsmith; in-hand parse.",
+  "seed": 64520,
+  "cards": {
+    "Sunstar Lightsmith": "Name:Sunstar Lightsmith\nManaCost:3 W\nTypes:Creature Human Artificer\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put a +1/+1 counter on this creature and draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:BuffedBy:Card\nDeckHas:Ability$Counters\nOracle:Whenever you cast your second spell each turn, put a +1/+1 counter on this creature and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunstar Lightsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

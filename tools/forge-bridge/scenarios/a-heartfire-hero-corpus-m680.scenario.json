@@ -1,0 +1,23 @@
+{
+  "id": "a-heartfire-hero-corpus-m680",
+  "description": "M6 corpus — A-Heartfire Hero; in-hand parse.",
+  "seed": 64077,
+  "cards": {
+    "A-Heartfire Hero": "Name:A-Heartfire Hero\nManaCost:R\nTypes:Creature Mouse Soldier\nPT:0/1\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | Valiant$ True | Execute$ TrigCounter | TriggerDescription$ Valiant — Whenever CARDNAME becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamageDies | TriggerDescription$ When CARDNAME dies, it deals damage equal to its power to each opponent.\nSVar:TrigDamageDies:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Valiant — Whenever Heartfire Hero becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.\\nWhen Heartfire Hero dies, it deals damage equal to its power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Heartfire Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

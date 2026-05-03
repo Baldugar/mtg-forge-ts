@@ -1,0 +1,23 @@
+{
+  "id": "mind-maggots-corpus-m680",
+  "description": "M6 corpus — Mind Maggots; in-hand parse.",
+  "seed": 63414,
+  "cards": {
+    "Mind Maggots": "Name:Mind Maggots\nManaCost:3 B\nTypes:Creature Insect\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard any number of creature cards. For each card discarded this way, put two +1/+1 counters on CARDNAME.\nSVar:TrigDiscard:DB$ Discard | DiscardValid$ Creature | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ MindMaggotsPutCounter\nSVar:MindMaggotsPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize/Twice\nDeckHas:Ability$Counters|Discard\nDeckHints:Ability$Graveyard\nOracle:When Mind Maggots enters, discard any number of creature cards. For each card discarded this way, put two +1/+1 counters on Mind Maggots.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Maggots"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

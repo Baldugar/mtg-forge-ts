@@ -1,0 +1,23 @@
+{
+  "id": "nova-hellkite-corpus-m680",
+  "description": "M6 corpus — Nova Hellkite; in-hand parse.",
+  "seed": 63578,
+  "cards": {
+    "Nova Hellkite": "Name:Nova Hellkite\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/5\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this creature enters, it deals 1 damage to target creature an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 1\nK:Warp:2 R\nOracle:Flying, haste\\nWhen this creature enters, it deals 1 damage to target creature an opponent controls.\\nWarp {2}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nova Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

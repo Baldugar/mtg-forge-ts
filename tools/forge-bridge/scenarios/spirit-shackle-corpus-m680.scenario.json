@@ -1,0 +1,23 @@
+{
+  "id": "spirit-shackle-corpus-m680",
+  "description": "M6 corpus — Spirit Shackle; in-hand parse.",
+  "seed": 64414,
+  "cards": {
+    "Spirit Shackle": "Name:Spirit Shackle\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever enchanted creature becomes tapped, put a -0/-2 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ M0M2 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nWhenever enchanted creature becomes tapped, put a -0/-2 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Shackle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

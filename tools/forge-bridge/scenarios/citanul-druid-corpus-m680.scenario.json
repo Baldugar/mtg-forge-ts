@@ -1,0 +1,23 @@
+{
+  "id": "citanul-druid-corpus-m680",
+  "description": "M6 corpus — Citanul Druid; in-hand parse.",
+  "seed": 61926,
+  "cards": {
+    "Citanul Druid": "Name:Citanul Druid\nManaCost:1 G\nTypes:Creature Human Druid\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent casts an artifact spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever an opponent casts an artifact spell, put a +1/+1 counter on Citanul Druid.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Citanul Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

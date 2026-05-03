@@ -1,0 +1,23 @@
+{
+  "id": "skemfar-shadowsage-corpus-m680",
+  "description": "M6 corpus — Skemfar Shadowsage; in-hand parse.",
+  "seed": 64297,
+  "cards": {
+    "Skemfar Shadowsage": "Name:Skemfar Shadowsage\nManaCost:3 B\nTypes:Creature Elf Cleric\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBLoseLife,DBGainLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SpellDescription$ Each opponent loses X life, where X is the greatest number of creatures you control that have a creature type in common.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SpellDescription$ You gain X life, where X is the greatest number of creatures you control that have a creature type in common.\nSVar:X:Count$MostProminentCreatureType Creature.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:When Skemfar Shadowsage enters, choose one —\\n• Each opponent loses X life, where X is the greatest number of creatures you control that have a creature type in common.\\n• You gain X life, where X is the greatest number of creatures you control that have a creature type in common.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skemfar Shadowsage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

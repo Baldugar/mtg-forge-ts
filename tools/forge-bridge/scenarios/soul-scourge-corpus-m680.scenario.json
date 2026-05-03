@@ -1,0 +1,23 @@
+{
+  "id": "soul-scourge-corpus-m680",
+  "description": "M6 corpus — Soul Scourge; in-hand parse.",
+  "seed": 64366,
+  "cards": {
+    "Soul Scourge": "Name:Soul Scourge\nManaCost:4 B\nTypes:Creature Nightmare Horror\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target player loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 3 | RememberTargets$ True | ForgetOtherTargets$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME leaves the battlefield, that player gains 3 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ Remembered | LifeAmount$ 3\nOracle:Flying\\nWhen Soul Scourge enters, target player loses 3 life.\\nWhen Soul Scourge leaves the battlefield, that player gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

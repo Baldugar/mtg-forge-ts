@@ -1,0 +1,23 @@
+{
+  "id": "runaway-boulder-corpus-m680",
+  "description": "M6 corpus — Runaway Boulder; in-hand parse.",
+  "seed": 64059,
+  "cards": {
+    "Runaway Boulder": "Name:Runaway Boulder\nManaCost:6\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 6 damage to target creature an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 6\nK:Cycling:2\nDeckHas:Ability$Discard\nOracle:Flash\\nWhen Runaway Boulder enters, it deals 6 damage to target creature an opponent controls.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runaway Boulder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

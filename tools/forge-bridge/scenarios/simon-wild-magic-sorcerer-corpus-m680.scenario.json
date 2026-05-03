@@ -1,0 +1,23 @@
+{
+  "id": "simon-wild-magic-sorcerer-corpus-m680",
+  "description": "M6 corpus — Simon, Wild Magic Sorcerer; in-hand parse.",
+  "seed": 64286,
+  "cards": {
+    "Simon, Wild Magic Sorcerer": "Name:Simon, Wild Magic Sorcerer\nVariant:UniversesWithin:FlavorName:Mathise, Surge Channeler\nManaCost:2 U\nTypes:Legendary Creature Human Elf Shaman Sorcerer\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Instant.cmcGE3,Sorcery.cmcGE3 | ValidActivatingPlayer$ You | Execute$ TrigRollDice | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell with mana value 3 or greater, ABILITY\nSVar:TrigRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:EachDraw,10-19:YouDraw,20:Copy | SpellDescription$ Roll a d20.\nSVar:EachDraw:DB$ Draw | Defined$ Player | SpellDescription$ 1—9 VERT Each player draws a card.\nSVar:YouDraw:DB$ Draw | SpellDescription$ 10—19 VERT You draw a card.\nSVar:Copy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | SpellDescription$ 20 VERT Copy that spell. You may choose new targets for the copy.\nSVar:BuffedBy:Instant.cmcGE3,Sorcery.cmcGE3\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell with mana value 3 or greater, roll a d20.\\n1-9 | Each player draws a card.\\n10-19 | You draw a card.\\n20 | Copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Simon, Wild Magic Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

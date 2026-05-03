@@ -1,0 +1,23 @@
+{
+  "id": "verdant-succession-corpus-m680",
+  "description": "M6 corpus — Verdant Succession; in-hand parse.",
+  "seed": 64929,
+  "cards": {
+    "Verdant Succession": "Name:Verdant Succession\nManaCost:4 G\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.Green+!token | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigSearch | TriggerDescription$ Whenever a green nontoken creature dies, that creature's controller may search their library for a card with the same name as that creature, put it onto the battlefield, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | DefinedPlayer$ TriggeredCardController | ChangeType$ Triggered.sameName | ChangeNum$ 1 | Origin$ Library | Destination$ Battlefield | Optional$ You | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:Whenever a green nontoken creature dies, that creature's controller may search their library for a card with the same name as that creature, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdant Succession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

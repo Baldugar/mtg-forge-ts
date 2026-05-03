@@ -1,0 +1,23 @@
+{
+  "id": "prishe-s-wanderings-corpus-m680",
+  "description": "M6 corpus — Prishe's Wanderings; in-hand parse.",
+  "seed": 63806,
+  "cards": {
+    "Prishe's Wanderings": "Name:Prishe's Wanderings\nManaCost:2 G\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic,Town | Tapped$ True | ChangeNum$ 1 | RememberSearched$ True | SubAbility$ DBImmediateTrigger | SpellDescription$ Search your library for a basic land card or Town card, put it onto the battlefield tapped, then shuffle. When you search your library this way, put a +1/+1 counter on target creature you control.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigPutCounter | ConditionCheckSVar$ Count$RememberedSize | SubAbility$ DBCleanup | TriggerDescription$ When you search your library this way, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nDeckHints:Type$Town\nOracle:Search your library for a basic land card or Town card, put it onto the battlefield tapped, then shuffle. When you search your library this way, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prishe's Wanderings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

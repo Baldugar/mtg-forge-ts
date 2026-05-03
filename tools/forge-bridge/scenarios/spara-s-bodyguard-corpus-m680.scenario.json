@@ -1,0 +1,23 @@
+{
+  "id": "spara-s-bodyguard-corpus-m680",
+  "description": "M6 corpus — Spara's Bodyguard; in-hand parse.",
+  "seed": 64384,
+  "cards": {
+    "Spara's Bodyguard": "Name:Spara's Bodyguard\nManaCost:G W U\nTypes:Creature Rhino Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may choose a creature card in your hand. If you do, it perpetually gains \"This creature enters with an additional shield counter on it.\" Otherwise, put a shield counter on CARDNAME.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ You may choose a creature card in your hand | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Count$ChosenSize | TrueSubAbility$ DBAnimate | FalseSubAbility$ DBAddCounter\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Replacements$ ETBShield | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:ETBShield:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBExtraCounter | ReplacementResult$ Updated | Description$ This creature enters with an additional shield counter on it.\nSVar:DBExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ SHIELD | CounterNum$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:DBAddCounter:DB$ PutCounter | CounterType$ SHIELD\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of each combat, CARDNAME gets +1/+1 until end of turn for each shield counter among other creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl+Other$CardCounters.SHIELD\nDeckHas:Ability$Counters\nOracle:When Spara's Bodyguard enters, you may choose a creature card in your hand. If you do, it perpetually gains \"This creature enters with an additional shield counter on it.\" Otherwise, put a shield counter on Spara's Bodyguard.\\nAt the beginning of each combat, Spara's Bodyguard gets +1/+1 until end of turn for each shield counter among other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spara's Bodyguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

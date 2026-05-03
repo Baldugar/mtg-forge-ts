@@ -1,0 +1,23 @@
+{
+  "id": "river-song-corpus-m680",
+  "description": "M6 corpus — River Song; in-hand parse.",
+  "seed": 64013,
+  "cards": {
+    "River Song": "Name:River Song\nManaCost:1 U R\nTypes:Legendary Creature Human Time Lord Rogue\nPT:2/2\nS:Mode$ Continuous | Affected$ You | AddKeyword$ You draw cards from the bottom of your library instead of the top of your library. | Description$ Meet in Reverse — You draw cards from the bottom of your library rather than the top.\nT:Mode$ Scry | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Spoilers — Whenever an opponent scries, surveils, or searches their library, put a +1/+1 counter on CARDNAME. Then CARDNAME deals damage to that player equal to its power.\nT:Mode$ Surveil | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Spoilers — Whenever an opponent scries, surveils, or searches their library, put a +1/+1 counter on CARDNAME. Then CARDNAME deals damage to that player equal to its power.\nT:Mode$ SearchedLibrary | SearchOwnLibrary$ True | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Spoilers — Whenever an opponent scries, surveils, or searches their library, put a +1/+1 counter on CARDNAME. Then CARDNAME deals damage to that player equal to its power.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Meet in Reverse — You draw cards from the bottom of your library rather than the top.\\nSpoilers — Whenever an opponent scries, surveils, or searches their library, put a +1/+1 counter on River Song. Then River Song deals damage to that player equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "River Song"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

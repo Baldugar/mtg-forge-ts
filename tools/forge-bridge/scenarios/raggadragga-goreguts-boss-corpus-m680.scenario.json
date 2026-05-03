@@ -1,0 +1,23 @@
+{
+  "id": "raggadragga-goreguts-boss-corpus-m680",
+  "description": "M6 corpus — Raggadragga, Goreguts Boss; in-hand parse.",
+  "seed": 63880,
+  "cards": {
+    "Raggadragga, Goreguts Boss": "Name:Raggadragga, Goreguts Boss\nManaCost:2 R G\nTypes:Legendary Creature Human Boar\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+hasManaAbility | AddPower$ 2 | AddToughness$ 2 | Description$ Each creature you control with a mana ability gets +2/+2.\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+hasManaAbility | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever a creature you control with a mana ability attacks, untap it.\nSVar:TrigUntap:DB$ Untap | Defined$ TriggeredAttacker\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ValidSA$ Spell.ManaSpent GE7 | Execute$ TrigUntap2 | TriggerDescription$ Whenever you cast a spell, if at least seven mana was spent to cast it, untap target creature. It gets +7/+7 and gains trample until end of turn.\nSVar:TrigUntap2:DB$ Untap | ValidTgts$ Creature | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | NumAtt$ +7 | NumDef$ +7 | KW$ Trample\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Creature.hasManaAbility\nOracle:Each creature you control with a mana ability gets +2/+2.\\nWhenever a creature you control with a mana ability attacks, untap it.\\nWhenever you cast a spell, if at least seven mana was spent to cast it, untap target creature. It gets +7/+7 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raggadragga, Goreguts Boss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

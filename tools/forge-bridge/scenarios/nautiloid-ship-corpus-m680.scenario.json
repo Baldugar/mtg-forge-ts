@@ -1,0 +1,23 @@
+{
+  "id": "nautiloid-ship-corpus-m680",
+  "description": "M6 corpus — Nautiloid Ship; in-hand parse.",
+  "seed": 63522,
+  "cards": {
+    "Nautiloid Ship": "Name:Nautiloid Ship\nManaCost:4\nTypes:Artifact Vehicle\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileGrave | TriggerDescription$ When CARDNAME enters, exile target player's graveyard.\nSVar:TrigExileGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | RememberChanged$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigPut | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may put a creature card exiled with CARDNAME onto the battlefield under your control.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Hidden$ True | ChangeType$ Creature.IsRemembered | SelectPrompt$ Select a creature card exiled with CARDNAME | GainControl$ True\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:3\nSVar:NeedsToPlayVar:X GE2\nSVar:X:PlayerCountOpponents$HighestValidGraveyard Creature.YouOwn\nOracle:Flying\\nWhen Nautiloid Ship enters, exile target player's graveyard.\\nWhenever Nautiloid Ship deals combat damage to a player, you may put a creature card exiled with Nautiloid Ship onto the battlefield under your control.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nautiloid Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

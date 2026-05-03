@@ -1,0 +1,23 @@
+{
+  "id": "rootwise-survivor-corpus-m680",
+  "description": "M6 corpus — Rootwise Survivor; in-hand parse.",
+  "seed": 64038,
+  "cards": {
+    "Rootwise Survivor": "Name:Rootwise Survivor\nTypes:Creature Human Survivor\nManaCost:3 G G\nPT:3/4\nK:Haste\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, put three +1/+1 counters on up to one target land you control. That land becomes a 0/0 Elemental creature in addition to its other types. It gains haste until your next turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Duration$ Permanent | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | KW$ Haste | Defined$ Targeted | Duration$ UntilYourNextTurn\nOracle:Haste\\nSurvival — At the beginning of your second main phase, if Rootwise Survivor is tapped, put three +1/+1 counters on up to one target land you control. That land becomes a 0/0 Elemental creature in addition to its other types. It gains haste until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rootwise Survivor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

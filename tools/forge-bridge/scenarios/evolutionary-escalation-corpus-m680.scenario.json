@@ -1,0 +1,23 @@
+{
+  "id": "evolutionary-escalation-corpus-m680",
+  "description": "M6 corpus — Evolutionary Escalation; in-hand parse.",
+  "seed": 62383,
+  "cards": {
+    "Evolutionary Escalation": "Name:Evolutionary Escalation\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put three +1/+1 counters on target creature you control and three +1/+1 counters on target creature an opponent controls.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature opponent controls | CounterType$ P1P1 | CounterNum$ 3 | AILogic$ BoonCounterOnOppCreature\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, put three +1/+1 counters on target creature you control and three +1/+1 counters on target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evolutionary Escalation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

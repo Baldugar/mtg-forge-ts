@@ -1,0 +1,23 @@
+{
+  "id": "the-first-doctor-corpus-m680",
+  "description": "M6 corpus — The First Doctor; in-hand parse.",
+  "seed": 64655,
+  "cards": {
+    "The First Doctor": "Name:The First Doctor\nManaCost:1 W U\nTypes:Legendary Creature Time Lord Doctor\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library and/or graveyard for a card named TARDIS, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedTARDIS\nT:Mode$ SpellCast | ValidCard$ Card.withCascade | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell with cascade, put a +1/+1 counter on target artifact or creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature,Artifact | TgtPrompt$ Select target artifact or creature | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Name$TARDIS\nDeckNeeds:Keyword$Cascade\nOracle:When The First Doctor enters, search your library and/or graveyard for a card named TARDIS, reveal it, and put it into your hand. If you search your library this way, shuffle.\\nWhenever you cast a spell with cascade, put a +1/+1 counter on target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The First Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

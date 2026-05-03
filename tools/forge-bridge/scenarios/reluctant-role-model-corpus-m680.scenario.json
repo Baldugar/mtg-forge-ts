@@ -1,0 +1,23 @@
+{
+  "id": "reluctant-role-model-corpus-m680",
+  "description": "M6 corpus — Reluctant Role Model; in-hand parse.",
+  "seed": 63950,
+  "cards": {
+    "Reluctant Role Model": "Name:Reluctant Role Model\nManaCost:1 W\nTypes:Creature Human Survivor\nPT:2/2\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigPutCounter1 | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, put a flying, lifelink, or +1/+1 counter on it.\nSVar:TrigPutCounter1:DB$ PutCounter | CounterType$ Flying,Lifelink,P1P1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+HasCounters,Creature.Other+YouCtrl+HasCounters | TriggerZones$ Battlefield | Execute$ TrigPutCounter2 | TriggerDescription$ Whenever CARDNAME or another creature you control dies, if it had counters on it, put those counters on up to one target creature.\nSVar:TrigPutCounter2:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nOracle:Survival — At the beginning of your second main phase, if Reluctant Role Model is tapped, put a flying, lifelink, or +1/+1 counter on it.\\nWhenever Reluctant Role Model or another creature you control dies, if it had counters on it, put those counters on up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reluctant Role Model"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

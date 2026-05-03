@@ -1,0 +1,23 @@
+{
+  "id": "magnetic-snuffler-corpus-m680",
+  "description": "M6 corpus — Magnetic Snuffler; in-hand parse.",
+  "seed": 63310,
+  "cards": {
+    "Magnetic Snuffler": "Name:Magnetic Snuffler\nManaCost:5\nTypes:Artifact Creature Construct\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target Equipment card from your graveyard to the battlefield attached to CARDNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Equipment.YouOwn | TgtPrompt$ Select target Equipment card from your graveyard | AttachedTo$ Self\nT:Mode$ Sacrificed | ValidCard$ Artifact | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an artifact, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Type$Artifact|Clue|Map|Treasure|Food & Ability$Sacrifice|Graveyard|Counters\nDeckNeeds:Type$Equipment\nOracle:When Magnetic Snuffler enters, return target Equipment card from your graveyard to the battlefield attached to Magnetic Snuffler.\\nWhenever you sacrifice an artifact, put a +1/+1 counter on Magnetic Snuffler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magnetic Snuffler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

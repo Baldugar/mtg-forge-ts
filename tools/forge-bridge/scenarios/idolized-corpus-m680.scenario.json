@@ -1,0 +1,23 @@
+{
+  "id": "idolized-corpus-m680",
+  "description": "M6 corpus — Idolized; in-hand parse.",
+  "seed": 62900,
+  "cards": {
+    "Idolized": "Name:Idolized\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddTrigger$ AttackTrig | Description$ Enchanted creature has \"Whenever this creature attacks alone, it gets +X/+X until end of turn, where X is the number of nonland permanents you control.\"\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | Alone$ True | TriggerDescription$ Whenever this creature attacks alone, it gets +X/+X until end of turn, where X is the number of nonland permanents you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Permanent.nonLand+YouCtrl\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks alone, it gets +X/+X until end of turn, where X is the number of nonland permanents you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Idolized"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

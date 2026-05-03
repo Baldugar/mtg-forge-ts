@@ -1,0 +1,23 @@
+{
+  "id": "hangarback-assembler-corpus-m680",
+  "description": "M6 corpus — Hangarback Assembler; in-hand parse.",
+  "seed": 62782,
+  "cards": {
+    "Hangarback Assembler": "Name:Hangarback Assembler\nManaCost:1 W\nTypes:Artifact\nK:Start your engines\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When this artifact enters, conjure a card named Hangarback Walker onto the battlefield, then put a +1/+1 counter on it.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Hangarback Walker | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddTrigger$ PhaseTrig | Description$ Max speed — At the beginning of your end step, put a +1/+1 counter on each artifact creature and/or Vehicle you control.\nSVar:PhaseTrig:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Max speed — At the beginning of your end step, put a +1/+1 counter on each artifact creature and/or Vehicle you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.Artifact+YouCtrl,Vehicle.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:Start your engines!\\nWhen this artifact enters, conjure a card named Hangarback Walker onto the battlefield, then put a +1/+1 counter on it.\\nMax speed — At the beginning of your end step, put a +1/+1 counter on each artifact creature and/or Vehicle you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hangarback Assembler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

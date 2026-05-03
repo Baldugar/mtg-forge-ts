@@ -1,0 +1,23 @@
+{
+  "id": "goblinslide-corpus-m680",
+  "description": "M6 corpus — Goblinslide; in-hand parse.",
+  "seed": 62693,
+  "cards": {
+    "Goblinslide": "Name:Goblinslide\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an noncreature spell you may pay {1}. If you do, create a 1/1 red Goblin creature token with haste.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenScript$ r_1_1_goblin_haste | TokenOwner$ You\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Whenever you cast a noncreature spell, you may pay {1}. If you do, create a 1/1 red Goblin creature token with haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblinslide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

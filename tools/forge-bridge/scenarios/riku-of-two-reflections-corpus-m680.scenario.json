@@ -1,0 +1,23 @@
+{
+  "id": "riku-of-two-reflections-corpus-m680",
+  "description": "M6 corpus — Riku of Two Reflections; in-hand parse.",
+  "seed": 63990,
+  "cards": {
+    "Riku of Two Reflections": "Name:Riku of Two Reflections\nManaCost:2 G U R\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigCopySpell | TriggerDescription$ Whenever you cast an instant or sorcery spell, you may pay {U}{R}. If you do, copy that spell. You may choose new targets for the copy.\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigCopy | OptionalDecider$ You | TriggerDescription$ Whenever another nontoken creature you control enters, you may pay {G}{U}. If you do, create a token that's a copy of that creature.\nSVar:TrigCopySpell:AB$ CopySpellAbility | Cost$ U R | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ G U | Defined$ TriggeredCardLKICopy\nOracle:Whenever you cast an instant or sorcery spell, you may pay {U}{R}. If you do, copy that spell. You may choose new targets for the copy.\\nWhenever another nontoken creature you control enters, you may pay {G}{U}. If you do, create a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riku of Two Reflections"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

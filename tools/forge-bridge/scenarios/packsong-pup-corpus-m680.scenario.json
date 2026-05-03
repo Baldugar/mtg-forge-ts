@@ -1,0 +1,23 @@
+{
+  "id": "packsong-pup-corpus-m680",
+  "description": "M6 corpus — Packsong Pup; in-hand parse.",
+  "seed": 63680,
+  "cards": {
+    "Packsong Pup": "Name:Packsong Pup\nManaCost:1 G\nTypes:Creature Wolf\nPT:1/1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Wolf.Other+YouCtrl,Werewolf.Other+YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, if you control another Wolf or Werewolf, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain life equal to its power.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters|LifeGain\nDeckNeeds:Type$Wolf|Werewolf\nOracle:At the beginning of combat on your turn, if you control another Wolf or Werewolf, put a +1/+1 counter on Packsong Pup.\\nWhen Packsong Pup dies, you gain life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Packsong Pup"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

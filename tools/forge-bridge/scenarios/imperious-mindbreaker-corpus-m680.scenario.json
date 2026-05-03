@@ -1,0 +1,23 @@
+{
+  "id": "imperious-mindbreaker-corpus-m680",
+  "description": "M6 corpus — Imperious Mindbreaker; in-hand parse.",
+  "seed": 62910,
+  "cards": {
+    "Imperious Mindbreaker": "Name:Imperious Mindbreaker\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:1/4\nK:Soulbond\nS:Mode$ Continuous | Affected$ Creature.PairedWith,Creature.Self+Paired | AddTrigger$ AttackTrig | AddSVar$ AE & TrigMill | Description$ As long as CARDNAME is paired with another creature, each of those creatures has \"Whenever this creature attacks, each opponent mills cards equal to its toughness.\"\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever this creature attacks, each opponent mills cards equal to its toughness.\nSVar:TrigMill:DB$ Mill | NumCards$ X | Defined$ Player.Opponent\nSVar:X:TriggeredAttacker$CardToughness\nSVar:AE:SVar:HasAttackEffect:TRUE\nSVar:BuffedBy:Creature\nDeckHas:Ability$Mill\nOracle:Soulbond (You may pair this creature with another unpaired creature when either enters. They remain paired for as long as you control both of them.)\\nAs long as Imperious Mindbreaker is paired with another creature, each of those creatures has \"Whenever this creature attacks, each opponent mills cards equal to its toughness.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imperious Mindbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

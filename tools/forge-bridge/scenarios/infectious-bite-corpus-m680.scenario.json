@@ -1,0 +1,23 @@
+{
+  "id": "infectious-bite-corpus-m680",
+  "description": "M6 corpus — Infectious Bite; in-hand parse.",
+  "seed": 62924,
+  "cards": {
+    "Infectious Bite": "Name:Infectious Bite\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBFight | StackDescription$ Target creature you control [{c:ThisTargetedCard}] | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control. Each opponent gets a poison counter.\nSVar:DBFight:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | DamageSource$ ParentTarget | TgtPrompt$ Choose target creature you don't control | NumDmg$ X | SubAbility$ DBPoison\nSVar:DBPoison:DB$ Poison | Defined$ Player.Opponent | Num$ 1\nSVar:X:ParentTargeted$CardPower\nDeckHints:Ability$Proliferate & Keyword$Infect|Toxic\nOracle:Target creature you control deals damage equal to its power to target creature you don't control. Each opponent gets a poison counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infectious Bite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kefnet-s-last-word-corpus-m680",
+  "description": "M6 corpus — Kefnet's Last Word; in-hand parse.",
+  "seed": 63100,
+  "cards": {
+    "Kefnet's Last Word": "Name:Kefnet's Last Word\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Artifact,Creature,Enchantment | TgtPrompt$ Select target artifact, creature, or enchantment | SubAbility$ DBNoUntap | SpellDescription$ Gain control of target artifact, creature or enchantment.\nSVar:DBNoUntap:DB$ Effect | ReplacementEffects$ DontUntap | Duration$ UntilTheEndOfYourNextUntap | SpellDescription$ Lands you control don't untap during your next untap step.\nSVar:DontUntap:Event$ Untap | ValidCard$ Land.YouCtrl | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ Lands you control don't untap during your next untap step.\nOracle:Gain control of target artifact, creature, or enchantment. Lands you control don't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kefnet's Last Word"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

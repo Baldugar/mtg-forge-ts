@@ -1,0 +1,23 @@
+{
+  "id": "ate-o-clock-corpus-m680",
+  "description": "M6 corpus — Ate-o'-Clock; in-hand parse.",
+  "seed": 61592,
+  "cards": {
+    "Ate-o'-Clock": "Name:Ate-o'-Clock\nManaCost:2 G\nTypes:Instant\nK:Replicate:2 G\nA:SP$ CopyPermanent | Populate$ True | SubAbility$ DBProlif | SpellDescription$ Populate. Proliferate. Investigate. Regenerate target creature.\nSVar:DBProlif:DB$ Proliferate | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | SubAbility$ DBRegen\nSVar:DBRegen:DB$ Regenerate | ValidTgts$ Creature | TgtPrompt$ Select target creature\nDeckHas:Ability$Proliferate\nDeckHints:Ability$Token|Counters\nOracle:Populate. Proliferate. Investigate.\\nRegenerate target creature.\\nReplicate {2}{G} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copy.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ate-o'-Clock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

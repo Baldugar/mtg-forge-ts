@@ -1,0 +1,23 @@
+{
+  "id": "attuned-hunter-corpus-m680",
+  "description": "M6 corpus — Attuned Hunter; in-hand parse.",
+  "seed": 61597,
+  "cards": {
+    "Attuned Hunter": "Name:Attuned Hunter\nManaCost:2 G\nTypes:Creature Human Ranger\nPT:3/3\nK:Trample\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more cards leave your graveyard during your turn, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | Defined$ Self | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever one or more cards leave your graveyard during your turn, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Attuned Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

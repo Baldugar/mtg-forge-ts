@@ -1,0 +1,23 @@
+{
+  "id": "swindler-s-scheme-corpus-m680",
+  "description": "M6 corpus — Swindler's Scheme; in-hand parse.",
+  "seed": 64541,
+  "cards": {
+    "Swindler's Scheme": "Name:Swindler's Scheme\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidActivatingPlayer$ Opponent | ValidCard$ Card.wasCastFromTheirHand | Execute$ TrigReveal | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever an opponent casts a spell from their hand, you may reveal the top card of your library. If it shares a card type with that spell, counter that spell and that opponent may cast the revealed card without paying its mana cost.\nSVar:TrigReveal:DB$ PeekAndReveal | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBCounter\nSVar:DBCounter:DB$ Counter | Defined$ TriggeredSpellAbility | ConditionDefined$ Remembered | ConditionPresent$ Card.sharesCardTypeWith TriggeredCard | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | WithoutManaCost$ True | Controller$ TriggeredActivator | Optional$ True | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.sharesCardTypeWith TriggeredCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever an opponent casts a spell from their hand, you may reveal the top card of your library. If it shares a card type with that spell, counter that spell and that opponent may cast the revealed card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swindler's Scheme"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "guardian-scalelord-corpus-m680",
+  "description": "M6 corpus — Guardian Scalelord; in-hand parse.",
+  "seed": 62749,
+  "cards": {
+    "Guardian Scalelord": "Name:Guardian Scalelord\nManaCost:4 W\nTypes:Creature Dragon\nPT:3/4\nK:Backup:1:BackupAbilities\nSVar:BackupAbilities:DB$ Animate | Keywords$ Flying | Triggers$ AttackTrig | sVars$ AE\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Whenever this creature attacks, return target nonland permanent card with mana value X or less from your graveyard to the battlefield, where X is this creature's power.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+cmcLEX+YouOwn | TgtPrompt$ Select target nonland permanent card with mana value X or less | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:TriggeredAttacker$CardPower\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Whenever this creature attacks, return target nonland permanent card with mana value X or less from your graveyard to the battlefield, where X is this creature's power.\nSVar:HasAttackEffect:TRUE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following abilities until end of turn.)\\nFlying\\nWhenever this creature attacks, return target nonland permanent card with mana value X or less from your graveyard to the battlefield, where X is this creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Scalelord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

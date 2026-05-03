@@ -1,0 +1,23 @@
+{
+  "id": "thundering-mightmare-corpus-m680",
+  "description": "M6 corpus — Thundering Mightmare; in-hand parse.",
+  "seed": 64738,
+  "cards": {
+    "Thundering Mightmare": "Name:Thundering Mightmare\nManaCost:4 G\nTypes:Creature Horse Spirit\nPT:3/3\nK:Soulbond\nS:Mode$ Continuous | Affected$ Creature.PairedWith,Creature.Self+Paired | AddTrigger$ CastTrigger | Description$ As long as CARDNAME is paired with another creature, each of those creatures has \"Whenever an opponent casts a spell, put a +1/+1 counter on this creature.\"\nSVar:CastTrigger:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent casts a spell, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Creature\nDeckHas:Ability$Counters\nOracle:Soulbond (You may pair this creature with another unpaired creature when either enters. They remain paired for as long as you control both of them.)\\nAs long as Thundering Mightmare is paired with another creature, each of those creatures has \"Whenever an opponent casts a spell, put a +1/+1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Mightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

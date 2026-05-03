@@ -1,0 +1,23 @@
+{
+  "id": "shard-of-the-void-dragon-corpus-m680",
+  "description": "M6 corpus — Shard of the Void Dragon; in-hand parse.",
+  "seed": 64238,
+  "cards": {
+    "Shard of the Void Dragon": "Name:Shard of the Void Dragon\nManaCost:4 B B B\nTypes:Creature C'tan\nPT:7/7\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Sphere of the Void Dragon — Whenever CARDNAME attacks, each opponent sacrifices a nonland permanent.\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ 1 | SacValid$ Permanent.nonLand | Defined$ Opponent\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Artifact | Execute$ TrigCounter | TriggerDescription$ Matter Absorption — Whenever an artifact is put into a graveyard from the battlefield or is put into exile from the battlefield, put two +1/+1 counters on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact|Clue|Treasure\nOracle:Flying\\nSphere of the Void Dragon — Whenever Shard of the Void Dragon attacks, each opponent sacrifices a nonland permanent.\\nMatter Absorption — Whenever an artifact is put into a graveyard from the battlefield or is put into exile from the battlefield, put two +1/+1 counters on Shard of the Void Dragon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shard of the Void Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

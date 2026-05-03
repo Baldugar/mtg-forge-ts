@@ -1,0 +1,23 @@
+{
+  "id": "feral-ghoul-corpus-m680",
+  "description": "M6 corpus — Feral Ghoul; in-hand parse.",
+  "seed": 62467,
+  "cards": {
+    "Feral Ghoul": "Name:Feral Ghoul\nManaCost:2 B\nTypes:Creature Zombie Mutant\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerDescription$ When CARDNAME dies, each opponent gets a number of rad counters equal to its power.\nSVar:TrigRadiation:DB$ Radiation | Defined$ Opponent | Num$ TriggeredCard$CardPower\nDeckHas:Ability$Counters\nDeckHints:Ability$Sacrifice\nOracle:Menace\\nWhenever another creature you control dies, put a +1/+1 counter on Feral Ghoul.\\nWhen Feral Ghoul dies, each opponent gets a number of rad counters equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feral Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "slith-predator-corpus-m680",
+  "description": "M6 corpus — Slith Predator; in-hand parse.",
+  "seed": 64330,
+  "cards": {
+    "Slith Predator": "Name:Slith Predator\nManaCost:G G\nTypes:Creature Slith\nPT:1/1\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Trample\\nWhenever Slith Predator deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slith Predator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

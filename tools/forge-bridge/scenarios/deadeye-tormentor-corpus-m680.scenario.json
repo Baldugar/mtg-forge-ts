@@ -1,0 +1,23 @@
+{
+  "id": "deadeye-tormentor-corpus-m680",
+  "description": "M6 corpus — Deadeye Tormentor; in-hand parse.",
+  "seed": 62103,
+  "cards": {
+    "Deadeye Tormentor": "Name:Deadeye Tormentor\nManaCost:2 B\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigDiscard | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Deadeye Tormentor enters, if you attacked this turn, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadeye Tormentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "embalmed-ascendant-corpus-m680",
+  "description": "M6 corpus — Embalmed Ascendant; in-hand parse.",
+  "seed": 62317,
+  "cards": {
+    "Embalmed Ascendant": "Name:Embalmed Ascendant\nManaCost:1 W B\nTypes:Creature Zombie\nPT:1/2\nK:Start your engines\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddTrigger$ DiesTrig | Description$ Max speed — Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Max speed — Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$LifeGain|Token\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nWhen this creature enters, create a 2/2 black Zombie creature token.\\nMax speed — Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embalmed Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

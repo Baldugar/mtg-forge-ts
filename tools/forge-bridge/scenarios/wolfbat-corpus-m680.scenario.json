@@ -1,0 +1,23 @@
+{
+  "id": "wolfbat-corpus-m680",
+  "description": "M6 corpus — Wolfbat; in-hand parse.",
+  "seed": 65083,
+  "cards": {
+    "Wolfbat": "Name:Wolfbat\nManaCost:2 B\nTypes:Creature Wolf Bat\nPT:2/2\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Graveyard | Execute$ TrigChangeZone | TriggerDescription$ Whenever you draw your second card each turn, you may pay {B}. If you do, return this card from your graveyard to the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:TrigChangeZone:AB$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ FINALITY\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you draw your second card each turn, you may pay {B}. If you do, return this card from your graveyard to the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfbat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

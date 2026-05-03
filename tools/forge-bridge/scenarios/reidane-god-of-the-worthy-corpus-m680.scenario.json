@@ -1,0 +1,23 @@
+{
+  "id": "reidane-god-of-the-worthy-corpus-m680",
+  "description": "M6 corpus — Reidane, God of the Worthy; in-hand parse.",
+  "seed": 63940,
+  "cards": {
+    "Reidane, God of the Worthy": "Name:Reidane, God of the Worthy\nManaCost:2 W\nTypes:Legendary Creature God\nPT:2/3\nK:Flying\nK:Vigilance\nR:Event$ Moved | ValidCard$ Land.Snow+OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Snow lands your opponents control enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nS:Mode$ RaiseCost | ValidCard$ Card.nonCreature+cmcGE4 | Type$ Spell | Activator$ Opponent | Amount$ 2 | Description$ Noncreature spells your opponents cast with mana value 4 or greater cost {2} more to cast.\nAlternateMode:Modal\nOracle:Flying, vigilance\\nSnow lands your opponents control enter tapped.\\nNoncreature spells your opponents cast with mana value 4 or greater cost {2} more to cast.\n\nALTERNATE\n\nName:Valkmira, Protector's Shield\nManaCost:3 W\nTypes:Legendary Artifact\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ You,Permanent.YouCtrl | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a source an opponent controls would deal damage to you or a permanent you control, prevent 1 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 1\nT:Mode$ BecomesTarget | ValidSource$ SpellAbility.OppCtrl | ValidTarget$ You,Permanent.YouCtrl+Other+inZoneBattlefield | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever you or another permanent you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless its controller pays {1}.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSourceSA | UnlessCost$ 1 | UnlessPayer$ TriggeredSourceSAController\nOracle:If a source an opponent controls would deal damage to you or a permanent you control, prevent 1 of that damage.\\nWhenever you or another permanent you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless its controller pays {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reidane, God of the Worthy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

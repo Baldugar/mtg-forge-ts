@@ -1,0 +1,23 @@
+{
+  "id": "marketback-walker-corpus-m680",
+  "description": "M6 corpus — Marketback Walker; in-hand parse.",
+  "seed": 63344,
+  "cards": {
+    "Marketback Walker": "Name:Marketback Walker\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nK:etbCounter:P1P1:X\nA:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on this creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature dies, draw a card for each +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | NumCards$ Y\nSVar:X:Count$xPaid\nSVar:Y:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Token\nOracle:This creature enters with X +1/+1 counters on it.\\n{4}: Put a +1/+1 counter on this creature.\\nWhen this creature dies, draw a card for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marketback Walker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

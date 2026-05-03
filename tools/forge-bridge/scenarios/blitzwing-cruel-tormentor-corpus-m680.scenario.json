@@ -1,0 +1,23 @@
+{
+  "id": "blitzwing-cruel-tormentor-corpus-m680",
+  "description": "M6 corpus — Blitzwing, Cruel Tormentor; in-hand parse.",
+  "seed": 61711,
+  "cards": {
+    "Blitzwing, Cruel Tormentor": "Name:Blitzwing, Cruel Tormentor\nManaCost:5 B\nTypes:Legendary Artifact Creature Robot\nPT:6/5\nK:More Than Meets the Eye:3 B\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, target opponent loses life equal to the life that player lost this turn. If no life is lost this way, convert NICKNAME.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | SubAbility$ DBConvert\nSVar:DBConvert:DB$ SetState | Mode$ Transform | ConditionCheckSVar$ AFLifeLost | ConditionSVarCompare$ EQ0\nSVar:X:TargetedPlayer$LifeLostThisTurn\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {3}{B} (You may cast this card converted for {3}{B}.)\\nAt the beginning of your end step, target opponent loses life equal to the life that player lost this turn. If no life is lost this way, convert Blitzwing.\n\nALTERNATE\n\nName:Blitzwing, Adaptive Assailant\nManaCost:no cost\nColors:black\nTypes:Legendary Artifact Vehicle\nPT:3/5\nK:Living metal\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigRandomPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose flying or indestructible at random. NICKNAME gains that ability until end of turn.\nSVar:TrigRandomPump:DB$ Pump | Defined$ Self | KW$ Flying & Indestructible | RandomKeyword$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigConvert | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, convert it.\nSVar:TrigConvert:DB$ SetState | Mode$ Transform\nSVar:HasAttackEffect:TRUE\nDeckHas:Keyword$Flying|Indestructible\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nAt the beginning of combat on your turn, choose flying or indestructible at random. Blitzwing gains that ability until end of turn.\\nWhenever Blitzwing deals combat damage to a player, convert it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blitzwing, Cruel Tormentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

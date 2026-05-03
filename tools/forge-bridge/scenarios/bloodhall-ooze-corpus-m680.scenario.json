@@ -1,0 +1,23 @@
+{
+  "id": "bloodhall-ooze-corpus-m680",
+  "description": "M6 corpus — Bloodhall Ooze; in-hand parse.",
+  "seed": 61726,
+  "cards": {
+    "Bloodhall Ooze": "Name:Bloodhall Ooze\nManaCost:R\nTypes:Creature Ooze\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.Black+YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, if you control a black permanent, you may put a +1/+1 counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.Green+YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, if you control a green permanent, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Color$Black|Green\nOracle:At the beginning of your upkeep, if you control a black permanent, you may put a +1/+1 counter on Bloodhall Ooze.\\nAt the beginning of your upkeep, if you control a green permanent, you may put a +1/+1 counter on Bloodhall Ooze.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodhall Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "miriam-herd-whisperer-corpus-m680",
+  "description": "M6 corpus — Miriam, Herd Whisperer; in-hand parse.",
+  "seed": 63428,
+  "cards": {
+    "Miriam, Herd Whisperer": "Name:Miriam, Herd Whisperer\nManaCost:G W\nTypes:Legendary Creature Human Druid\nPT:3/2\nS:Mode$ Continuous | Affected$ Mount.YouCtrl,Vehicle.YouCtrl | AddKeyword$ Hexproof | Condition$ PlayerTurn | Description$ During your turn, Mounts and Vehicles you control have hexproof.\nT:Mode$ Attacks | ValidCard$ Mount.YouCtrl,Vehicle.YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Mount or Vehicle you control attacks, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckNeeds:Type$Mount|Vehicle\nOracle:During your turn, Mounts and Vehicles you control have hexproof.\\nWhenever a Mount or Vehicle you control attacks, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miriam, Herd Whisperer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

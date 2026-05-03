@@ -1,0 +1,23 @@
+{
+  "id": "needletooth-raptor-corpus-m680",
+  "description": "M6 corpus — Needletooth Raptor; in-hand parse.",
+  "seed": 63536,
+  "cards": {
+    "Needletooth Raptor": "Name:Needletooth Raptor\nManaCost:3 R\nTypes:Creature Dinosaur\nPT:2/2\nT:Mode$ DamageDoneOnce | Execute$ DealDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, it deals 5 damage to target creature an opponent controls.\nSVar:DealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 5\nSVar:HasCombatEffect:TRUE\nOracle:Enrage — Whenever Needletooth Raptor is dealt damage, it deals 5 damage to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Needletooth Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

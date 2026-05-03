@@ -1,0 +1,23 @@
+{
+  "id": "primeval-bounty-corpus-m680",
+  "description": "M6 corpus — Primeval Bounty; in-hand parse.",
+  "seed": 63803,
+  "cards": {
+    "Primeval Bounty": "Name:Primeval Bounty\nManaCost:5 G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ BountysGift | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, create a 3/3 green Beast creature token.\nSVar:BountysGift:DB$ Token | TokenScript$ g_3_3_beast | TokenOwner$ You\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put three +1/+1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 3 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Landfall — Whenever a land you control enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nSVar:BuffedBy:nonCreature\nOracle:Whenever you cast a creature spell, create a 3/3 green Beast creature token.\\nWhenever you cast a noncreature spell, put three +1/+1 counters on target creature you control.\\nLandfall — Whenever a land you control enters, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Bounty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

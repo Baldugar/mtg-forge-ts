@@ -1,0 +1,23 @@
+{
+  "id": "eroded-canyon-corpus-m680",
+  "description": "M6 corpus — Eroded Canyon; in-hand parse.",
+  "seed": 62358,
+  "cards": {
+    "Eroded Canyon": "Name:Eroded Canyon\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nOracle:Eroded Canyon enters tapped.\\nWhen Eroded Canyon enters, it deals 1 damage to target opponent.\\n{T}:Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eroded Canyon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "aven-courier-corpus-m680",
+  "description": "M6 corpus — Aven Courier; in-hand parse.",
+  "seed": 61612,
+  "cards": {
+    "Aven Courier": "Name:Aven Courier\nManaCost:1 U\nTypes:Creature Bird Advisor\nPT:1/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, choose a counter on a permanent you control. Put a counter of that kind on target permanent you control if it doesn't have a counter of that kind on it.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | CounterType$ ExistingCounter | Choices$ Permanent.YouCtrl+HasCounters | PutOnDefined$ Targeted | OnlyNewKind$ True\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Ability$Counters\nOracle:Flying\\nWhenever Aven Courier attacks, choose a counter on a permanent you control. Put a counter of that kind on target permanent you control if it doesn't have a counter of that kind on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Courier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

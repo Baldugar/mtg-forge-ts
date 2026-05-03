@@ -1,0 +1,23 @@
+{
+  "id": "door-of-destinies-corpus-m680",
+  "description": "M6 corpus — Door of Destinies; in-hand parse.",
+  "seed": 62211,
+  "cards": {
+    "Door of Destinies": "Name:Door of Destinies\nManaCost:4\nTypes:Artifact\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nT:Mode$ SpellCast | ValidCard$ Card.ChosenType | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell of the chosen type, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ X | AddToughness$ X | Description$ Creatures you control of the chosen type get +1/+1 for each charge counter on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nSVar:BuffedBy:Creature\nAI:RemoveDeck:Random\nOracle:As Door of Destinies enters, choose a creature type.\\nWhenever you cast a spell of the chosen type, put a charge counter on Door of Destinies.\\nCreatures you control of the chosen type get +1/+1 for each charge counter on Door of Destinies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Door of Destinies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

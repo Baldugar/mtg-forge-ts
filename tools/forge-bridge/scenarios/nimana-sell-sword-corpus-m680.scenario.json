@@ -1,0 +1,23 @@
+{
+  "id": "nimana-sell-sword-corpus-m680",
+  "description": "M6 corpus — Nimana Sell-Sword; in-hand parse.",
+  "seed": 63563,
+  "cards": {
+    "Nimana Sell-Sword": "Name:Nimana Sell-Sword\nManaCost:3 B\nTypes:Creature Human Warrior Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Whenever Nimana Sell-Sword or another Ally you control enters, you may put a +1/+1 counter on Nimana Sell-Sword.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimana Sell-Sword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

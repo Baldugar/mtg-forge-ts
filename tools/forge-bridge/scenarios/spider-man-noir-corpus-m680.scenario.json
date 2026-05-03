@@ -1,0 +1,23 @@
+{
+  "id": "spider-man-noir-corpus-m680",
+  "description": "M6 corpus — Spider-Man Noir; in-hand parse.",
+  "seed": 64404,
+  "cards": {
+    "Spider-Man Noir": "Name:Spider-Man Noir\nVariant:UniversesWithin:FlavorName:Kroble, Envoy of the Bog\nManaCost:4 B\nTypes:Legendary Creature Spider Human Hero\nPT:4/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control attacks alone, put a +1/+1 counter on it. Then surveil X, where X is the number of counters on it. (Look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBSurveil\nSVar:DBSurveil:DB$ Surveil | Amount$ X\nSVar:X:TriggeredAttacker$CardCounters.ALL\nOracle:Menace\\nWhenever a creature you control attacks alone, put a +1/+1 counter on it. Then surveil X, where X is the number of counters on it. (Look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Man Noir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-marauders-corpus-m680",
+  "description": "M6 corpus — Falkenrath Marauders; in-hand parse.",
+  "seed": 62429,
+  "cards": {
+    "Falkenrath Marauders": "Name:Falkenrath Marauders\nManaCost:3 R R\nTypes:Creature Vampire Warrior\nPT:2/2\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put two +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nOracle:Flying, haste\\nWhenever Falkenrath Marauders deals combat damage to a player, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Marauders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

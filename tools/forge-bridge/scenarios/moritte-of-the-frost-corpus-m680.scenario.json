@@ -1,0 +1,23 @@
+{
+  "id": "moritte-of-the-frost-corpus-m680",
+  "description": "M6 corpus — Moritte of the Frost; in-hand parse.",
+  "seed": 63475,
+  "cards": {
+    "Moritte of the Frost": "Name:Moritte of the Frost\nManaCost:2 G U U\nTypes:Legendary Snow Creature Shapeshifter\nPT:0/0\nK:Changeling\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Permanent.Other+YouCtrl | AddTypes$ Legendary & Snow | SubAbility$ DBConditionEffect | AddKeywords$ Changeling | SpellDescription$ You may have CARDNAME enter as a copy of a permanent you control, except it's legendary and snow in addition to its other types and, if it's a creature, it enters with two additional +1/+1 counters on it and has changeling.\nSVar:DBConditionEffect:DB$ Effect | RememberObjects$ Self | ReplacementEffects$ ETBCreat\nSVar:ETBCreat:Event$ Moved | ValidCard$ Creature.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ If it's a creature, it enters with two additional +1/+1 counters on it.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ 2 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHas:Ability$Counters\nOracle:Changeling (This card is every creature type.)\\nYou may have Moritte of the Frost enter as a copy of a permanent you control, except it's legendary and snow in addition to its other types and, if it's a creature, it enters with two additional +1/+1 counters on it and has changeling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moritte of the Frost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

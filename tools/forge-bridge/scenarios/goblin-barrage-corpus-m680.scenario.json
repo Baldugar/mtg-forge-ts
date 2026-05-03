@@ -1,0 +1,23 @@
+{
+  "id": "goblin-barrage-corpus-m680",
+  "description": "M6 corpus — Goblin Barrage; in-hand parse.",
+  "seed": 62681,
+  "cards": {
+    "Goblin Barrage": "Name:Goblin Barrage\nManaCost:3 R\nTypes:Sorcery\nK:Kicker:Sac<1/Artifact;Goblin/artifact or Goblin>\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 4 damage to target creature. If this spell was kicked, it also deals 4 damage to target player or planeswalker.\nSVar:DBDealDamage:DB$ DealDamage | Condition$ Kicked | ValidTgts$ Player,Planeswalker | NumDmg$ 4 | TargetMin$ X | TargetMax$ X | TgtPrompt$ Select target player or planeswalker\nSVar:X:Count$Kicked.1.0\nSVar:AIPreference:SacCost$Creature.Goblin+token,Creature.Goblin+cmcLE1,Artifact.token,Artifact.cmcEQ1\nDeckHints:Type$Goblin|Artifact\nOracle:Kicker—Sacrifice an artifact or Goblin. (You may sacrifice an artifact or Goblin in addition to any other costs as you cast this spell.)\\nGoblin Barrage deals 4 damage to target creature. If this spell was kicked, it also deals 4 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Barrage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

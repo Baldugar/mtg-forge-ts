@@ -1,0 +1,23 @@
+{
+  "id": "naya-sojourners-corpus-m680",
+  "description": "M6 corpus — Naya Sojourners; in-hand parse.",
+  "seed": 63524,
+  "cards": {
+    "Naya Sojourners": "Name:Naya Sojourners\nManaCost:2 R G W\nTypes:Creature Elf Shaman\nPT:5/3\nK:Cycling:2 G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME or it dies, you may put a +1/+1 counter on target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When you cycle CARDNAME or it dies, you may put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nOracle:When you cycle Naya Sojourners or it dies, you may put a +1/+1 counter on target creature.\\nCycling {2}{G} ({2}{G}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naya Sojourners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

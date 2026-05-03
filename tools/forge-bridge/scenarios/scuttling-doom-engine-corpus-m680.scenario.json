@@ -1,0 +1,23 @@
+{
+  "id": "scuttling-doom-engine-corpus-m680",
+  "description": "M6 corpus — Scuttling Doom Engine; in-hand parse.",
+  "seed": 64167,
+  "cards": {
+    "Scuttling Doom Engine": "Name:Scuttling Doom Engine\nManaCost:6\nTypes:Artifact Creature Construct\nPT:6/6\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 6 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | NumDmg$ 6\nOracle:Scuttling Doom Engine can't be blocked by creatures with power 2 or less.\\nWhen Scuttling Doom Engine dies, it deals 6 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scuttling Doom Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

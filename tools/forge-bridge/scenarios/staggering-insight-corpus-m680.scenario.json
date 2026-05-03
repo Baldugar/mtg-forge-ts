@@ -1,0 +1,23 @@
+{
+  "id": "staggering-insight-corpus-m680",
+  "description": "M6 corpus — Staggering Insight; in-hand parse.",
+  "seed": 64439,
+  "cards": {
+    "Staggering Insight": "Name:Staggering Insight\nManaCost:W U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Lifelink | AddTrigger$ TriggerDamageDone | Description$ Enchanted creature gets +1/+1 and has lifelink and \"Whenever this creature deals combat damage to a player, draw a card.\"\nSVar:TriggerDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | CombatDamage$ True | ValidTarget$ Player | Execute$ DBDraw | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$LifeGain\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has lifelink and \"Whenever this creature deals combat damage to a player, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staggering Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

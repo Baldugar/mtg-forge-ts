@@ -1,0 +1,23 @@
+{
+  "id": "osteomancer-adept-corpus-m680",
+  "description": "M6 corpus — Osteomancer Adept; in-hand parse.",
+  "seed": 63662,
+  "cards": {
+    "Osteomancer Adept": "Name:Osteomancer Adept\nManaCost:1 B\nTypes:Creature Squirrel Warlock\nPT:2/2\nK:Deathtouch\nA:AB$ Effect | Cost$ T | StaticAbilities$ MayCast | Triggers$ StaticCast | SpellDescription$ Until end of turn, you may cast creature spells from your graveyard by foraging in addition to paying their other costs. If you cast a spell this way, that creature enters with a finality counter on it. (To forage, exile three cards from your graveyard or sacrifice a Food. If a creature with a finality counter on it would die, exile it instead.)\nSVar:MayCast:Mode$ Continuous | Affected$ Creature.nonLand+YouOwn | MayPlay$ True | AffectedZone$ Graveyard | RaiseCost$ Forage | Description$ Until end of turn, you may cast creature spells from your graveyard by foraging in addition to paying their other costs. If you cast a spell this way, that creature enters with a finality counter on it. (To forage, exile three cards from your graveyard or sacrifice a Food. If a creature with a finality counter on it would die, exile it instead.)\nSVar:StaticCast:Mode$ SpellCast | ValidCard$ Card.CastSa Spell.MayPlaySource | Execute$ TrigEffect | Static$ True | TriggerZones$ Command\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | Origin$ Stack | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBCounter\nSVar:ETBCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ FINALITY | CounterNum$ 1 | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHas:Ability$Counters\nDeckHints:Ability$Graveyard & Type$Food\nOracle:Deathtouch\\n{T}: Until end of turn, you may cast creature spells from your graveyard by foraging in addition to paying their other costs. If you cast a spell this way, that creature enters with a finality counter on it. (To forage, exile three cards from your graveyard or sacrifice a Food. If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Osteomancer Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

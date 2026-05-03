@@ -1,0 +1,23 @@
+{
+  "id": "the-twelfth-doctor-corpus-m680",
+  "description": "M6 corpus — The Twelfth Doctor; in-hand parse.",
+  "seed": 64696,
+  "cards": {
+    "The Twelfth Doctor": "Name:The Twelfth Doctor\nManaCost:3 U R\nTypes:Legendary Creature Time Lord Doctor\nPT:4/4\nS:Mode$ Continuous | Affected$ Card.YouCtrl+!wasCastFromYourHand | AffectedZone$ Stack | CheckSVar$ X | SVarCompare$ EQ0 | AddKeyword$ Demonstrate | Description$ The first spell you cast from anywhere other than your hand each turn has demonstrate. (When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. A copy of a permanent spell becomes a token.)\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+!wasCastFromYourHand\nT:Mode$ SpellCopy | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you copy a spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:The first spell you cast from anywhere other than your hand each turn has demonstrate. (When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. A copy of a permanent spell becomes a token.)\\nWhenever you copy a spell, put a +1/+1 counter on The Twelfth Doctor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Twelfth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

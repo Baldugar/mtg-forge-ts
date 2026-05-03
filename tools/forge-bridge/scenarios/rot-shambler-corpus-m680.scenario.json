@@ -1,0 +1,23 @@
+{
+  "id": "rot-shambler-corpus-m680",
+  "description": "M6 corpus — Rot Shambler; in-hand parse.",
+  "seed": 64043,
+  "cards": {
+    "Rot Shambler": "Name:Rot Shambler\nManaCost:1 G\nTypes:Creature Fungus\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever another creature you control dies, put a +1/+1 counter on Rot Shambler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rot Shambler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

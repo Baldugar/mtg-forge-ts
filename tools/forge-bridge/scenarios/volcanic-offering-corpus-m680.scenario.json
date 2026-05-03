@@ -1,0 +1,23 @@
+{
+  "id": "volcanic-offering-corpus-m680",
+  "description": "M6 corpus — Volcanic Offering; in-hand parse.",
+  "seed": 64974,
+  "cards": {
+    "Volcanic Offering": "Name:Volcanic Offering\nManaCost:4 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Land.nonBasic+YouDontCtrl | TgtPrompt$ Select target nonbasic land you don't control | AILogic$ Destroy | IsCurse$ True | RememberTargets$ True | SubAbility$ DBDestroyLand | SpellDescription$ Destroy target nonbasic land you don't control and target nonbasic land of an opponent's choice you don't control.\nSVar:DBDestroyLand:DB$ Pump | TargetingPlayer$ Player.Opponent | ValidTgts$ Land.nonBasic+YouDontCtrl | TgtPrompt$ Select target nonbasic land the caster of this spell don't control | AILogic$ Destroy | IsCurse$ True | RememberTargets$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Remembered | AILogic$ Always | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumDmg$ 7 | DamageMap$ True | SubAbility$ DBDamage2 | SpellDescription$ CARDNAME deals 7 damage to target creature you don't control and 7 damage to target creature of an opponent's choice you don't control.\nSVar:DBDamage2:DB$ DealDamage | TargetingPlayer$ Player.Opponent | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature the caster of this spell don't control | NumDmg$ 7 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target nonbasic land you don't control and target nonbasic land of an opponent's choice you don't control.\\nVolcanic Offering deals 7 damage to target creature you don't control and 7 damage to target creature of an opponent's choice you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volcanic Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "marshland-hordemaster-corpus-m680",
+  "description": "M6 corpus — Marshland Hordemaster; in-hand parse.",
+  "seed": 63349,
+  "cards": {
+    "Marshland Hordemaster": "Name:Marshland Hordemaster\nManaCost:B R\nTypes:Creature Lizard Warlock\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Lizard.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigBattleCry | TriggerDescription$ Whenever CARDNAME or another Lizard you control enters, CARDNAME perpetually gains battle cry.\nSVar:TrigBattleCry:DB$ Pump | Defined$ Self | KW$ Battle cry | Duration$ Perpetual\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Lizard.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another Lizard you control dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Whenever Marshland Hordemaster or another Lizard you control enters, Marshland Hordemaster perpetually gains battle cry.\\nWhenever Marshland Hordemaster or another Lizard you control dies, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marshland Hordemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

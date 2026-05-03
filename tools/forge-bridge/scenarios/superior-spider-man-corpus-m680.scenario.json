@@ -1,0 +1,23 @@
+{
+  "id": "superior-spider-man-corpus-m680",
+  "description": "M6 corpus — Superior Spider-Man; in-hand parse.",
+  "seed": 64525,
+  "cards": {
+    "Superior Spider-Man": "Name:Superior Spider-Man\nVariant:UniversesWithin:FlavorName:Kavaero, Mind-Bitten\nManaCost:2 U B\nTypes:Legendary Creature Spider Human Hero\nPT:4/4\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | ChoiceZone$ Graveyard | NewName$ Superior Spider-Man | AddTypes$ Spider & Human & Hero | SetPower$ 4 | SetToughness$ 4 | RememberCloneOrigin$ True | SubAbility$ DBImmediateTrig | SpellDescription$ Mind Swap — You may have CARDNAME enter as a copy of any creature card in a graveyard, except his name is Superior Spider-Man and he's a 4/4 Spider Human Hero in addition to his other types. When you do, exile that card.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | Execute$ TrigExile | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | TriggerDescription$ When you do, exile that card.\nSVar:TrigExile:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mind Swap — You may have Superior Spider-Man enter as a copy of any creature card in a graveyard, except his name is Superior Spider-Man and he's a 4/4 Spider Human Hero in addition to his other types. When you do, exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Superior Spider-Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "guardian-of-tazeem-corpus-m680",
+  "description": "M6 corpus — Guardian of Tazeem; in-hand parse.",
+  "seed": 62747,
+  "cards": {
+    "Guardian of Tazeem": "Name:Guardian of Tazeem\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:4/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Landfall — Whenever a land you control enters, tap target creature an opponent controls. If that land is an Island, that creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | ConditionDefined$ TriggeredCard | ConditionPresent$ Island\nSVar:BuffedBy:Land\nOracle:Flying\\nLandfall — Whenever a land you control enters, tap target creature an opponent controls. If that land is an Island, that creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian of Tazeem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

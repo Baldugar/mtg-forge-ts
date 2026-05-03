@@ -1,0 +1,23 @@
+{
+  "id": "rage-forger-corpus-m680",
+  "description": "M6 corpus — Rage Forger; in-hand parse.",
+  "seed": 63878,
+  "cards": {
+    "Rage Forger": "Name:Rage Forger\nManaCost:2 R\nTypes:Creature Elemental Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter each other Shaman creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.Shaman+StrictlyOther+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+counters_GE1_P1P1 | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it attacks, you may have that creature deal 1 damage to target player or planeswalker.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | DamageSource$ TriggeredAttacker\nOracle:When Rage Forger enters, put a +1/+1 counter on each other Shaman creature you control.\\nWhenever a creature you control with a +1/+1 counter on it attacks, you may have that creature deal 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rage Forger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

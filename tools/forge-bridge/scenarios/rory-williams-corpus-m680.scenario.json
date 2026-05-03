@@ -1,0 +1,23 @@
+{
+  "id": "rory-williams-corpus-m680",
+  "description": "M6 corpus — Rory Williams; in-hand parse.",
+  "seed": 64039,
+  "cards": {
+    "Rory Williams": "Name:Rory Williams\nManaCost:W U\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Partner with:Amy Pond\nK:First Strike\nK:Lifelink\nT:Mode$ SpellCast | ValidCard$ Card.Self+!wasCastFromExile | Execute$ TrigExile | TriggerDescription$ The Last Centurion — When you cast this spell from anywhere other than exile, exile it with three time counters on it. It gains suspend. Then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredSpellAbility | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3 | RememberChanged$ True | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ Pump | Defined$ Remembered | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nDeckHas:Ability$LifeGain|Investigate|Token|Sacrifice & Type$Artifact|Clue\nOracle:Partner with Amy Pond\\nFirst strike, lifelink\\nThe Last Centurion — When you cast this spell from anywhere other than exile, exile it with three time counters on it. It gains suspend. Then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rory Williams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

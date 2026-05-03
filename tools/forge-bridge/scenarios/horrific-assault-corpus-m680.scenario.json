@@ -1,0 +1,23 @@
+{
+  "id": "horrific-assault-corpus-m680",
+  "description": "M6 corpus — Horrific Assault; in-hand parse.",
+  "seed": 62864,
+  "cards": {
+    "Horrific Assault": "Name:Horrific Assault\nManaCost:G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature or planeswalker you don't control. If you control an Eldrazi, you gain 3 life.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature or planeswalker you don't control | NumDmg$ X | DamageSource$ ParentTarget | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | ConditionPresent$ Eldrazi.YouCtrl\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$LifeGain\nOracle:Target creature you control deals damage equal to its power to target creature or planeswalker you don't control. If you control an Eldrazi, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horrific Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

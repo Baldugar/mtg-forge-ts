@@ -1,0 +1,23 @@
+{
+  "id": "daredevil-dragster-corpus-m680",
+  "description": "M6 corpus — Daredevil Dragster; in-hand parse.",
+  "seed": 62083,
+  "cards": {
+    "Daredevil Dragster": "Name:Daredevil Dragster\nManaCost:3\nTypes:Artifact Vehicle\nPT:4/4\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | IsPresent$ Card.Self+attackedThisCombat,Card.Self+blockedThisCombat | NoResolvingCheck$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At end of combat, if CARDNAME attacked or blocked this combat, put a velocity counter on it. Then if it has two or more velocity counters on it, sacrifice it and draw two cards.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ VELOCITY | CounterNum$ 1 | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | RememberSacrificed$ True | ConditionPresent$ Card.Self+counters_GE2_VELOCITY | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nOracle:At end of combat, if Daredevil Dragster attacked or blocked this combat, put a velocity counter on it. Then if it has two or more velocity counters on it, sacrifice it and draw two cards.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daredevil Dragster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

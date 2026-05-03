@@ -1,0 +1,23 @@
+{
+  "id": "shortcut-to-mushrooms-corpus-m680",
+  "description": "M6 corpus — Shortcut to Mushrooms; in-hand parse.",
+  "seed": 64261,
+  "cards": {
+    "Shortcut to Mushrooms": "Name:Shortcut to Mushrooms\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTempt | TriggerDescription$ When CARDNAME enters, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Revolt$ True | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Shortcut to Mushrooms enters, the Ring tempts you.\\nAt the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shortcut to Mushrooms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

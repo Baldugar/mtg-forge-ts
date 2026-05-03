@@ -1,0 +1,23 @@
+{
+  "id": "anax-hardened-in-the-forge-corpus-m680",
+  "description": "M6 corpus — Anax, Hardened in the Forge; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Anax, Hardened in the Forge": "Name:Anax, Hardened in the Forge\nManaCost:1 R R\nTypes:Legendary Enchantment Creature Demigod\nPT:*/3\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ NICKNAME's power is equal to your devotion to red.\nSVar:X:Count$Devotion.Red\nSVar:BuffedBy:Permanent.Red\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+!token+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME or another nontoken creature you control dies, create a 1/1 red Satyr creature token with \"This creature can't block.\" If the creature had power 4 or greater, create two of those tokens instead.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ r_1_1_satyr_noblock\nSVar:Y:Count$Compare Z GE4.2.1\nSVar:Z:TriggeredCard$CardPower\nDeckHas:Ability$Token & Type$Satyr\nOracle:Anax's power is equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts toward your devotion to red.)\\nWhenever Anax or another nontoken creature you control dies, create a 1/1 red Satyr creature token with \"This creature can't block.\" If the creature had power 4 or greater, create two of those tokens instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anax, Hardened in the Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

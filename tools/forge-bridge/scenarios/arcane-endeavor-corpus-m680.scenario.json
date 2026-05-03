@@ -1,0 +1,23 @@
+{
+  "id": "arcane-endeavor-corpus-m680",
+  "description": "M6 corpus — Arcane Endeavor; in-hand parse.",
+  "seed": 61542,
+  "cards": {
+    "Arcane Endeavor": "Name:Arcane Endeavor\nManaCost:5 U U\nTypes:Sorcery\nA:SP$ RollDice | Amount$ 2 | Sides$ 8 | ChosenSVar$ X | OtherSVar$ Y | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Roll two d8 and choose one result. Draw cards equal to that result. Then you may cast an instant or sorcery spell with mana value less than or equal to the other result from your hand without paying its mana cost.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBPlay | StackDescription$ None\nSVar:DBPlay:DB$ Play | Valid$ Card.YouOwn | ValidSA$ Instant.cmcLEY,Sorcery.cmcLEY | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nOracle:Roll two d8 and choose one result. Draw cards equal to that result. Then you may cast an instant or sorcery spell with mana value less than or equal to the other result from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcane Endeavor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

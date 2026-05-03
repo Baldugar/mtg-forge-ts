@@ -1,0 +1,23 @@
+{
+  "id": "landslide-corpus-m680",
+  "description": "M6 corpus — Landslide; in-hand parse.",
+  "seed": 63185,
+  "cards": {
+    "Landslide": "Name:Landslide\nManaCost:R\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Mountain | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDamage | SpellDescription$ Sacrifice any number of Mountains. CARDNAME deals that much damage to target player or planeswalker.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ DmgX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Mountain.YouCtrl\nSVar:DmgX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sacrifice any number of Mountains. Landslide deals that much damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Landslide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

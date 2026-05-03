@@ -1,0 +1,23 @@
+{
+  "id": "reborn-hero-corpus-m680",
+  "description": "M6 corpus — Reborn Hero; in-hand parse.",
+  "seed": 63923,
+  "cards": {
+    "Reborn Hero": "Name:Reborn Hero\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nK:Vigilance\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TriggerBounce | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"When CARDNAME dies, you may pay {W}{W}. If you do, return CARDNAME to the battlefield under your control.\"\nSVar:TriggerBounce:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TriggeredBounce | Secondary$ True | TriggerDescription$ When CARDNAME dies, you may pay {W}{W}. If you do, return CARDNAME to the battlefield under your control.\nSVar:TriggeredBounce:AB$ ChangeZone | Cost$ W W | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nOracle:Vigilance\\nThreshold — As long as there are seven or more cards in your graveyard, Reborn Hero has \"When Reborn Hero dies, you may pay {W}{W}. If you do, return Reborn Hero to the battlefield under your control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reborn Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

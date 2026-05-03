@@ -1,0 +1,23 @@
+{
+  "id": "firemaw-kavu-corpus-m680",
+  "description": "M6 corpus — Firemaw Kavu; in-hand parse.",
+  "seed": 62497,
+  "cards": {
+    "Firemaw Kavu": "Name:Firemaw Kavu\nManaCost:5 R\nTypes:Creature Kavu\nPT:4/2\nK:Echo:5 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage2pts | TriggerDescription$ When CARDNAME enters, it deals 2 damage to target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDealDamage4pts | TriggerDescription$ When CARDNAME leaves the battlefield, it deals 4 damage to target creature.\nSVar:TrigDealDamage2pts:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nSVar:TrigDealDamage4pts:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 4\nSVar:PlayMain1:TRUE\nOracle:Echo {5}{R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Firemaw Kavu enters, it deals 2 damage to target creature.\\nWhen Firemaw Kavu leaves the battlefield, it deals 4 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firemaw Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

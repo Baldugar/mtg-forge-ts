@@ -1,0 +1,23 @@
+{
+  "id": "garbage-elemental-corpus-m680",
+  "description": "M6 corpus — Garbage Elemental; in-hand parse.",
+  "seed": 62600,
+  "cards": {
+    "Garbage Elemental": "Name:Garbage Elemental\nManaCost:4 R\nTypes:Creature Elemental\nOracle:<Unsupported Variant>\n\n# --- VARIANT B ---\n\nVariant:B:Types:Creature Elemental Rigger\nVariant:B:PT:3/1\nVariant:B:K:Undying\nVariant:B:T:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigAssemble | TriggerDescription$ When CARDNAME enters, it assembles a Contraption.\nVariant:B:SVar:TrigAssemble:DB$ AssembleContraption\nVariant:B:Oracle:When Garbage Elemental enters, it assembles a Contraption. (Put the top card of your Contraption deck face up onto one of your sprockets.)\\nUndying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\n\n# --- VARIANT C ---\n\nVariant:C:PT:3/2\nVariant:C:K:Battle cry\nVariant:C:T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | TriggerDescription$ When CARDNAME enters, roll two six-sided dice. Create a number of 1/1 red Goblin creature tokens equal to the difference between those results.\nVariant:C:SVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | Sides$ 6 | Amount$ 2 | UseDifferenceBetweenRolls$ True | SubAbility$ DBToken\nVariant:C:SVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ Result\nVariant:C:Oracle:Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\\nWhen Garbage Elemental enters, roll two six-sided dice. Create a number of 1/1 red Goblin creature tokens equal to the difference between those results.\n\n# --- VARIANT D ---\n\nVariant:D:PT:3/3\nVariant:D:K:Cascade\nVariant:D:T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | TriggerDescription$ When CARDNAME enters, roll a six-sided die. CARDNAME deals damage equal to the result to target opponent or planeswalker.\nVariant:D:SVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBDamage\nVariant:D:SVar:DBDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ Result | AIExpectAmount$ 2\nVariant:D:Oracle:Cascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\\nWhen Garbage Elemental enters, roll a six-sided die. Garbage Elemental deals damage equal to the result to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garbage Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "renegade-silent-corpus-m680",
+  "description": "M6 corpus — Renegade Silent; in-hand parse.",
+  "seed": 63952,
+  "cards": {
+    "Renegade Silent": "Name:Renegade Silent\nManaCost:3 U\nTypes:Creature Alien Horror\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGoad | TriggerDescription$ At the beginning of your end step, goad up to one target creature you don't control and put a +1/+1 counter on CARDNAME. CARDNAME phases out. (Treat it and anything attached to it as though they don't exist until your next turn.)\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPhase\nSVar:DBPhase:DB$ Phases | Defined$ Self\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, goad up to one target creature you don't control and put a +1/+1 counter on Renegade Silent. Renegade Silent phases out. (Treat it and anything attached to it as though they don't exist until your next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renegade Silent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hissing-iguanar-corpus-m680",
+  "description": "M6 corpus — Hissing Iguanar; in-hand parse.",
+  "seed": 62839,
+  "cards": {
+    "Hissing Iguanar": "Name:Hissing Iguanar\nManaCost:2 R\nTypes:Creature Lizard\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDealDamage | TriggerDescription$ Whenever another creature dies, you may have CARDNAME deal 1 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nOracle:Whenever another creature dies, you may have Hissing Iguanar deal 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hissing Iguanar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

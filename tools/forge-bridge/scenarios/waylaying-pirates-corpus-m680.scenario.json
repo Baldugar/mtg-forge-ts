@@ -1,0 +1,23 @@
+{
+  "id": "waylaying-pirates-corpus-m680",
+  "description": "M6 corpus — Waylaying Pirates; in-hand parse.",
+  "seed": 65010,
+  "cards": {
+    "Waylaying Pirates": "Name:Waylaying Pirates\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBTap | IsPresent$ Artifact.YouCtrl | TriggerDescription$ When CARDNAME enters, if you control an artifact, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBTap:DB$ Tap | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | SubAbility$ DBCounter | TgtPrompt$ Select target artifact or creature an opponent controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nDeckHints:Type$Artifact\nOracle:When Waylaying Pirates enters, if you control an artifact, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waylaying Pirates"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

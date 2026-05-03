@@ -1,0 +1,23 @@
+{
+  "id": "wild-growth-corpus-m680",
+  "description": "M6 corpus — Wild Growth; in-hand parse.",
+  "seed": 65043,
+  "cards": {
+    "Wild Growth": "Name:Wild Growth\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 1 | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nOracle:Enchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

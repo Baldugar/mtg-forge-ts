@@ -1,0 +1,23 @@
+{
+  "id": "halana-and-alena-partners-corpus-m680",
+  "description": "M6 corpus — Halana and Alena, Partners; in-hand parse.",
+  "seed": 62769,
+  "cards": {
+    "Halana and Alena, Partners": "Name:Halana and Alena, Partners\nManaCost:2 R G\nTypes:Legendary Creature Human Ranger\nPT:2/3\nK:Reach\nK:First Strike\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is NICKNAME's power. That creature gains haste until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters\nOracle:First strike, reach\\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halana and Alena, Partners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

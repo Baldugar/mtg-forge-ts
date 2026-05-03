@@ -1,0 +1,23 @@
+{
+  "id": "jasconian-isle-corpus-m680",
+  "description": "M6 corpus — Jasconian Isle; in-hand parse.",
+  "seed": 63028,
+  "cards": {
+    "Jasconian Isle": "Name:Jasconian Isle\nManaCost:no cost\nColors:blue\nTypes:Land Creature Island Fish\nPT:3/4\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may pay {U}{U}. If you do, untap CARDNAME.\nSVar:TrigUntap:AB$ Untap | Cost$ U U | Defined$ Self\nOracle:(Jasconian Isle isn't a spell, it's affected by summoning sickness, it's blue, and it has \"{T}: Add {U}.\")\\nJasconian Isle enters tapped.\\nJasconian Isle doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may pay {U}{U}. If you do, untap Jasconian Isle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jasconian Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

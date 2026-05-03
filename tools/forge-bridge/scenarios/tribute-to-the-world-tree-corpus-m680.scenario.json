@@ -1,0 +1,23 @@
+{
+  "id": "tribute-to-the-world-tree-corpus-m680",
+  "description": "M6 corpus — Tribute to the World Tree; in-hand parse.",
+  "seed": 64800,
+  "cards": {
+    "Tribute to the World Tree": "Name:Tribute to the World Tree\nManaCost:G G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Whenever a creature you control enters, draw a card if its power is 3 or greater. Otherwise, put two +1/+1 counters on it.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE3 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBPutCounter\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 2\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control enters, draw a card if its power is 3 or greater. Otherwise, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tribute to the World Tree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

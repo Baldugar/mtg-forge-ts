@@ -1,0 +1,23 @@
+{
+  "id": "archmage-ascension-corpus-m680",
+  "description": "M6 corpus — Archmage Ascension; in-hand parse.",
+  "seed": 61551,
+  "cards": {
+    "Archmage Ascension": "Name:Archmage Ascension\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | SVarCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ At the beginning of each end step, if you drew two or more cards this turn, you may put a quest counter on CARDNAME.\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Tutor | IsPresent$ Card.Self+counters_GE6_QUEST | Optional$ True | Description$ As long as CARDNAME has six or more quest counters on it, if you would draw a card, you may instead search your library for a card, put that card into your hand, then shuffle.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:Tutor:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ValidCard$ Card.YouOwn\nSVar:X:Count$YouDrewThisTurn\n# TODO: improve AI tutoring logic\nAI:RemoveDeck:Random\nSVar:MaxQuestEffect:6\nOracle:At the beginning of each end step, if you drew two or more cards this turn, you may put a quest counter on Archmage Ascension.\\nAs long as Archmage Ascension has six or more quest counters on it, if you would draw a card, you may instead search your library for a card, put that card into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archmage Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "martial-impetus-corpus-m680",
+  "description": "M6 corpus — Martial Impetus; in-hand parse.",
+  "seed": 63351,
+  "cards": {
+    "Martial Impetus": "Name:Martial Impetus\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Goad$ True | Description$ Enchanted creature gets +1/+1 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever enchanted creature attacks, each other creature that's attacking one of your opponents gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.!TriggeredAttacker+attacking Opponent | NumAtt$ +1 | NumDef$ +1\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\\nWhenever enchanted creature attacks, each other creature that's attacking one of your opponents gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martial Impetus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

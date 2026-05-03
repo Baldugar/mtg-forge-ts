@@ -1,0 +1,23 @@
+{
+  "id": "willbreaker-corpus-m680",
+  "description": "M6 corpus — Willbreaker; in-hand parse.",
+  "seed": 65056,
+  "cards": {
+    "Willbreaker": "Name:Willbreaker\nManaCost:3 U U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ BecomesTarget | ValidTarget$ Creature.OppCtrl+inZoneBattlefield | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever a creature an opponent controls becomes the target of a spell or ability you control, gain control of that creature for as long as you control CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | Defined$ TriggeredTargetLKICopy | NewController$ You | LoseControl$ LeavesPlay,LoseControl\nOracle:Whenever a creature an opponent controls becomes the target of a spell or ability you control, gain control of that creature for as long as you control Willbreaker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Willbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

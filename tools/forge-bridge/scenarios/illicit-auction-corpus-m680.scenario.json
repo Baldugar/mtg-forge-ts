@@ -1,0 +1,23 @@
+{
+  "id": "illicit-auction-corpus-m680",
+  "description": "M6 corpus — Illicit Auction; in-hand parse.",
+  "seed": 62903,
+  "cards": {
+    "Illicit Auction": "Name:Illicit Auction\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ BidLife | ValidTgts$ Creature | AILogic$ Min | AIBidMax$ 8 | BidSubAbility$ DBLoseLife | SpellDescription$ Each player may bid life for control of target creature. You start the bidding with a bid of 0. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid and gains control of the creature. (This effect lasts indefinitely.)\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X | SubAbility$ DBControl\nSVar:DBControl:DB$ GainControl | Defined$ Targeted | NewController$ Remembered\nSVar:X:Count$ChosenNumber\nOracle:Each player may bid life for control of target creature. You start the bidding with a bid of 0. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid and gains control of the creature. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illicit Auction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

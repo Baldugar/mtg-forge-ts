@@ -1,0 +1,23 @@
+{
+  "id": "axelrod-gunnarson-corpus-m680",
+  "description": "M6 corpus — Axelrod Gunnarson; in-hand parse.",
+  "seed": 61622,
+  "cards": {
+    "Axelrod Gunnarson": "Name:Axelrod Gunnarson\nManaCost:4 B B R R\nTypes:Legendary Creature Giant\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | Execute$ DBGainLife | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, you gain 1 life and NICKNAME deals 1 damage to target player or planeswalker.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nDeckHas:Ability$LifeGain\nOracle:Trample\\nWhenever a creature dealt damage by Axelrod Gunnarson this turn dies, you gain 1 life and Axelrod deals 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Axelrod Gunnarson"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

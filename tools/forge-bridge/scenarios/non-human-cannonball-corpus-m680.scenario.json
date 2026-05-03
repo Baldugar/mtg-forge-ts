@@ -1,0 +1,23 @@
+{
+  "id": "non-human-cannonball-corpus-m680",
+  "description": "M6 corpus — Non-Human Cannonball; in-hand parse.",
+  "seed": 63574,
+  "cards": {
+    "Non-Human Cannonball": "Name:Non-Human Cannonball\nManaCost:2 R\nTypes:Artifact Creature Clown Robot\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigRoll | TriggerDescription$ When CARDNAME dies, roll a six-sided die. If the result is 4 or less, CARDNAME deals that much damage to you.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | ResultSubAbilities$ 1-4:DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ Result | AIExpectAmount$ 3\nOracle:When Non-Human Cannonball dies, roll a six-sided die. If the result is 4 or less, Non-Human Cannonball deals that much damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Non-Human Cannonball"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

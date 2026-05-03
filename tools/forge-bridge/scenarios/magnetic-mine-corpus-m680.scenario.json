@@ -1,0 +1,23 @@
+{
+  "id": "magnetic-mine-corpus-m680",
+  "description": "M6 corpus — Magnetic Mine; in-hand parse.",
+  "seed": 63309,
+  "cards": {
+    "Magnetic Mine": "Name:Magnetic Mine\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.Other | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever another artifact is put into a graveyard from the battlefield, CARDNAME deals 2 damage to that artifact's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever another artifact is put into a graveyard from the battlefield, Magnetic Mine deals 2 damage to that artifact's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magnetic Mine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "water-weird-corpus-m680",
+  "description": "M6 corpus — Water Weird; in-hand parse.",
+  "seed": 65008,
+  "cards": {
+    "Water Weird": "Name:Water Weird\nManaCost:3 U\nTypes:Creature Elemental Weird\nPT:3/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on CARDNAME if the top card of your library is a nonland card. Otherwise, you may mill a card.\nSVar:TrigReveal:DB$ PeekAndReveal | PeekAmount$ 1 | NoPeek$ True | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | CounterNum$ 1 | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | CounterType$ P1P1 | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ 1 | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nA:AB$ Pump | Cost$ 1 U | NumAtt$ +1 | NumDef$ -1 | SpellDescription$ CARDNAME gets +1/-1 until end of turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Whenever Water Weird deals combat damage to a player, put a +1/+1 counter on Water Weird if the top card of your library is a nonland card. Otherwise, you may mill a card.\\n{1}{U}: Water Weird gets +1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Water Weird"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

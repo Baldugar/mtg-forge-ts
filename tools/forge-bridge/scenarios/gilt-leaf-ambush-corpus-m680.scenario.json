@@ -1,0 +1,23 @@
+{
+  "id": "gilt-leaf-ambush-corpus-m680",
+  "description": "M6 corpus — Gilt-Leaf Ambush; in-hand parse.",
+  "seed": 62642,
+  "cards": {
+    "Gilt-Leaf Ambush": "Name:Gilt-Leaf Ambush\nManaCost:2 G\nTypes:Kindred Instant Elf\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ g_1_1_elf_warrior | TokenOwner$ You | SubAbility$ DBClash | RememberTokens$ True | SpellDescription$ Create two 1/1 green Elf Warrior creature tokens. Clash with an opponent. If you win, those creatures gain deathtouch until end of turn.\nSVar:DBClash:DB$ Clash | WinSubAbility$ AdditionalPump\nSVar:AdditionalPump:DB$ PumpAll | ValidCards$ Creature.IsRemembered | KW$ Deathtouch | SubAbility$ DBCleanUp\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nOracle:Create two 1/1 green Elf Warrior creature tokens. Clash with an opponent. If you win, those creatures gain deathtouch until end of turn. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value. Any amount of damage a creature with deathtouch deals to a creature is enough to destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilt-Leaf Ambush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

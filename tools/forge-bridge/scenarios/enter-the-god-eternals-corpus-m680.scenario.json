@@ -1,0 +1,23 @@
+{
+  "id": "enter-the-god-eternals-corpus-m680",
+  "description": "M6 corpus — Enter the God-Eternals; in-hand parse.",
+  "seed": 62342,
+  "cards": {
+    "Enter the God-Eternals": "Name:Enter the God-Eternals\nManaCost:2 U U B\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.) | StackDescription$ CARDNAME deals 4 damage to target creature.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBMill | StackDescription$ You gain life equal to the damage dealt this way.\nSVar:X:Count$TotalDamageDoneByThisTurn\nSVar:DBMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player | SubAbility$ DBAmass | StackDescription$ Target player mills four cards.\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ 4\nDeckHints:Ability$Amass & Type$Zombie\nDeckHas:Ability$Amass|Counters|Token|LifeGain|Graveyard\nOracle:Enter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enter the God-Eternals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

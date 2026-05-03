@@ -1,0 +1,23 @@
+{
+  "id": "zephyr-singer-corpus-m680",
+  "description": "M6 corpus — Zephyr Singer; in-hand parse.",
+  "seed": 65126,
+  "cards": {
+    "Zephyr Singer": "Name:Zephyr Singer\nManaCost:2 U U\nTypes:Creature Siren Pirate\nPT:3/4\nK:Convoke\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a flying counter on each creature that convoked it.\nSVar:TrigPutCounterAll:DB$ PutCounter | Defined$ Convoked | CounterType$ Flying | CounterNum$ 1 | AILogic$ Always\nDeckHas:Ability$Counters\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nFlying, vigilance\\nWhen Zephyr Singer enters, put a flying counter on each creature that convoked it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zephyr Singer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

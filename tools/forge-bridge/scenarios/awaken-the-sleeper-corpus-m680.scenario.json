@@ -1,0 +1,23 @@
+{
+  "id": "awaken-the-sleeper-corpus-m680",
+  "description": "M6 corpus — Awaken the Sleeper; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Awaken the Sleeper": "Name:Awaken the Sleeper\nManaCost:3 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ ChompEquip | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:ChompEquip:DB$ DestroyAll | ValidCards$ Targeted.Equipment+Attached | ValidDescription$ each equipment equipped to target creature | Optional$ True | SpellDescription$ If it's equipped, you may destroy all Equipment attached to that creature.\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If it's equipped, you may destroy all Equipment attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awaken the Sleeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

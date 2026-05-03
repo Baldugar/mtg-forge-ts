@@ -1,0 +1,23 @@
+{
+  "id": "sleeper-agent-corpus-m680",
+  "description": "M6 corpus — Sleeper Agent; in-hand parse.",
+  "seed": 64321,
+  "cards": {
+    "Sleeper Agent": "Name:Sleeper Agent\nManaCost:B\nTypes:Creature Phyrexian Minion\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, target opponent gains control of it.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to you.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 2\nSVar:NeedsToPlay:Creature.YouCtrl+toughnessGT3,Creature.YouCtrl+powerGE3\nAI:RemoveDeck:Random\nOracle:When Sleeper Agent enters, target opponent gains control of it.\\nAt the beginning of your upkeep, Sleeper Agent deals 2 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleeper Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

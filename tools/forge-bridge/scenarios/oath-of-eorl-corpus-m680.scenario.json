@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-eorl-corpus-m680",
+  "description": "M6 corpus — Oath of Eorl; in-hand parse.",
+  "seed": 63588,
+  "cards": {
+    "Oath of Eorl": "Name:Oath of Eorl\nManaCost:3 R W\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBTokenBis,DBCounter\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenAmount$ 2 | SpellDescription$ Create two 1/1 white Human Soldier creature tokens.\nSVar:DBTokenBis:DB$ Token | TokenScript$ r_2_2_human_knight_trample_haste | TokenAmount$ 2 | SpellDescription$ Create two 2/2 red Human Knight creature tokens with trample and haste.\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Human | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Put an indestructible counter on up to one target Human. | CounterType$ Indestructible | CounterNum$ 1 | SubAbility$ DBMonarch | SpellDescription$ Put an indestructible counter on up to one target Human. You become the monarch.\nSVar:DBMonarch:DB$ BecomeMonarch\nDeckHas:Ability$Counters|Token & Type$Knight|Soldier|Human\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create two 1/1 white Human Soldier creature tokens.\\nII — Create two 2/2 red Human Knight creature tokens with trample and haste.\\nIII — Put an indestructible counter on up to one target Human. You become the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Eorl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

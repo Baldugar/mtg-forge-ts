@@ -1,0 +1,23 @@
+{
+  "id": "energy-bolt-corpus-m680",
+  "description": "M6 corpus — Energy Bolt; in-hand parse.",
+  "seed": 62338,
+  "cards": {
+    "Energy Bolt": "Name:Energy Bolt\nManaCost:X R W\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDmg,DBGainLife\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target player or planeswalker.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | LifeAmount$ X | SpellDescription$ Target player gains X life.\nSVar:X:Count$xPaid\nOracle:Choose one —\\n• Energy Bolt deals X damage to target player or planeswalker.\\n• Target player gains X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "windcrag-siege-corpus-m680",
+  "description": "M6 corpus — Windcrag Siege; in-hand parse.",
+  "seed": 65060,
+  "cards": {
+    "Windcrag Siege": "Name:Windcrag Siege\nManaCost:1 R W\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Mardu,Jeskai | Defined$ You | SetChosenMode$ True | AILogic$ Dragons | ShowChoice$ ExceptSelf | SpellDescription$ As this enchantment enters, choose Mardu or Jeskai.\nSVar:Mardu:DB$ Pump | SpellDescription$ Mardu\nSVar:Jeskai:DB$ Pump | SpellDescription$ Jeskai\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeMardu | AddStaticAbility$ MarduHarmonicon | Description$ • Mardu — If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeJeskai | AddTrigger$ JeskaiTrigger | Description$ • Jeskai — At the beginning of your upkeep, create a 1/1 red Goblin creature token. It gains lifelink and haste until end of turn.\nSVar:MarduHarmonicon:Mode$ Panharmonicon | ValidMode$ Attacks,AttackersDeclared,AttackersDeclaredOneTarget | ValidCard$ Permanent.YouCtrl | ValidCause$ Creature | Secondary$ True | Description$ If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nSVar:JeskaiTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ At the beginning of your upkeep, create a 1/1 red Goblin creature token. It gains lifelink and haste until end of turn.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | PumpKeywords$ Lifelink & Haste | PumpDuration$ EOT\nDeckHas:Ability$Token\nOracle:As this enchantment enters, choose Mardu or Jeskai.\\n• Mardu — If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\\n• Jeskai — At the beginning of your upkeep, create a 1/1 red Goblin creature token. It gains lifelink and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windcrag Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

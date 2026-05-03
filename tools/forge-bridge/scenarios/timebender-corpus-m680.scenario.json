@@ -1,0 +1,23 @@
+{
+  "id": "timebender-corpus-m680",
+  "description": "M6 corpus — Timebender; in-hand parse.",
+  "seed": 64752,
+  "cards": {
+    "Timebender": "Name:Timebender\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nK:Morph:U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ LoseTime,GainTime\nSVar:LoseTime:DB$ RemoveCounter | ValidTgts$ Permanent.inZoneBattlefield,Card.suspended | AITgts$ Permanent.counters_GE1_TIME+inZoneBattlefield+YouDontCtrl,Card.suspended+YouCtrl | TgtPrompt$ Select target permanent or suspended card. | CounterType$ TIME | CounterNum$ 2 | TgtZone$ Battlefield,Exile | SpellDescription$ Remove two time counters from target permanent or suspended card.\nSVar:GainTime:DB$ PutCounter | ValidTgts$ Permanent.counters_GE1_TIME+inZoneBattlefield,Card.suspended | AITgts$ Permanent.counters_GE1_TIME+inZoneBattlefield+YouCtrl,Card.suspended+YouDontCtrl | TgtPrompt$ Select target permanent with a time counter on it or suspended card. | CounterType$ TIME | CounterNum$ 2 | TgtZone$ Battlefield,Exile | SpellDescription$ Put two time counters target permanent with a time counter on it or suspended card.\nAI:RemoveDeck:All\nOracle:Morph {U}\\nWhen Timebender is turned face up, choose one —\\n• Remove two time counters from target permanent or suspended card.\\n• Put two time counters on target permanent with a time counter on it or suspended card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timebender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

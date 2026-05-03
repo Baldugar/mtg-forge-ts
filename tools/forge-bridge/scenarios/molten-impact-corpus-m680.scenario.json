@@ -1,0 +1,23 @@
+{
+  "id": "molten-impact-corpus-m680",
+  "description": "M6 corpus — Molten Impact; in-hand parse.",
+  "seed": 63460,
+  "cards": {
+    "Molten Impact": "Name:Molten Impact\nManaCost:1 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 4 | ExcessSVar$ Excess | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals 4 damage to target creature or planeswalker.\nSVar:DBEffect:DB$ Effect | ConditionCheckSVar$ Excess | SetChosenNumber$ Excess | Triggers$ NextSpell | Duration$ Permanent | SpellDescription$ If excess damage was dealt this way, when you cast your next instant or sorcery spell, CARDNAME deals damage equal to the excess to target creature or planeswalker an opponent controls.\nSVar:NextSpell:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigDamage | OneOff$ True | TriggerDescription$ If excess damage was dealt this way, when you cast your next instant or sorcery spell, CARDNAME deals damage equal to the excess to target creature or planeswalker an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ X\nSVar:X:Count$ChosenNumber\nOracle:Molten Impact deals 4 damage to target creature or planeswalker. If excess damage was dealt this way, when you cast your next instant or sorcery spell, Molten Impact deals damage equal to the excess to target creature or planeswalker an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Impact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

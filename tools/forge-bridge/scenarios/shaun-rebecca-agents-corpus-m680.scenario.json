@@ -1,0 +1,23 @@
+{
+  "id": "shaun-rebecca-agents-corpus-m680",
+  "description": "M6 corpus — Shaun & Rebecca, Agents; in-hand parse.",
+  "seed": 64246,
+  "cards": {
+    "Shaun & Rebecca, Agents": "Name:Shaun & Rebecca, Agents\nManaCost:1 G W U\nTypes:Legendary Creature Human Assassin Scientist\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your graveyard, hand, and library for a card named The Animus and put it onto the battlefield, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | OriginAlternative$ Graveyard,Hand | Hidden$ True | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.namedThe Animus | ChangeNum$ 1 | ShuffleNonMandatory$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SubAbility$ DBImmediateTrig | SpellDescription$ Add {C}. When you do, mill two cards.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | Execute$ TrigMill | TriggerDescription$ When you do, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2\nDeckHints:Name$The Animus\nDeckHas:Ability$Mill\nOracle:Vigilance\\nWhen Shaun & Rebecca, Agents enters, search your graveyard, hand, and library for a card named The Animus and put it onto the battlefield, then shuffle.\\n{T}: Add {C}. When you do, mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaun & Rebecca, Agents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

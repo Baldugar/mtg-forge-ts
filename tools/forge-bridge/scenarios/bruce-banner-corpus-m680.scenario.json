@@ -1,0 +1,23 @@
+{
+  "id": "bruce-banner-corpus-m680",
+  "description": "M6 corpus — Bruce Banner; in-hand parse.",
+  "seed": 61807,
+  "cards": {
+    "Bruce Banner": "Name:Bruce Banner\nManaCost:U\nTypes:Legendary Creature Human Scientist Hero\nPT:1/1\nA:AB$ Draw | Cost$ X X T | NumCards$ X | SorcerySpeed$ True | SpellDescription$ Draw X cards. Activate only as a sorcery.\nA:AB$ SetState | Cost$ 2 R R G G | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery.\nSVar:X:Count$xPaid\nAlternateMode:Modal\nOracle:{X}{X}, {T}: Draw X cards. Activate only as a sorcery.\\n{2}{R}{R}{G}{G}: Transform Bruce Banner. Activate only as a sorcery.\n\nALTERNATE\n\nName:The Incredible Hulk\nManaCost:2 R R G G\nTypes:Legendary Creature Gamma Berserker Hero\nPT:8/8\nK:Reach\nK:Trample\nT:Mode$ DamageDoneOnce | Execute$ TrigPutCounter | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, put a +1/+1 counter on him. If he's attacking, untap him and there is an additional combat phase after this phase.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Self | ConditionDefined$ TriggeredTargetLKICopy | ConditionPresent$ Creature.attacking | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat | ConditionDefined$ TriggeredTargetLKICopy | ConditionPresent$ Creature.attacking\nSVar:HasCombatEffect:TRUE\nOracle:Reach, trample\\nEnrage — Whenever The Incredible Hulk is dealt damage, put a +1/+1 counter on him. If he's attacking, untap him and there is an additional combat phase after this phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bruce Banner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

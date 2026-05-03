@@ -1,0 +1,23 @@
+{
+  "id": "wild-dogs-corpus-m680",
+  "description": "M6 corpus — Wild Dogs; in-hand parse.",
+  "seed": 65041,
+  "cards": {
+    "Wild Dogs": "Name:Wild Dogs\nManaCost:G\nTypes:Creature Dog\nPT:2/1\nK:Cycling:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | APlayerHasMoreLifeThanEachOther$ True | Execute$ TrigOppControl | TriggerDescription$ At the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of CARDNAME.\nSVar:TrigOppControl:DB$ GainControl | Defined$ Self | NewController$ Player.withMostLife\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of Wild Dogs.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Dogs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scute-mob-corpus-m680",
+  "description": "M6 corpus — Scute Mob; in-hand parse.",
+  "seed": 64166,
+  "cards": {
+    "Scute Mob": "Name:Scute Mob\nManaCost:G\nTypes:Creature Insect\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Land.YouCtrl | PresentCompare$ GE5 | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, if you control five or more lands, put four +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 4\nOracle:At the beginning of your upkeep, if you control five or more lands, put four +1/+1 counters on Scute Mob.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scute Mob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mausoleum-harpy-corpus-m680",
+  "description": "M6 corpus — Mausoleum Harpy; in-hand parse.",
+  "seed": 63370,
+  "cards": {
+    "Mausoleum Harpy": "Name:Mausoleum Harpy\nManaCost:4 B\nTypes:Creature Harpy\nPT:3/3\nK:Flying\nK:Ascend\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.Other+YouCtrl | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Blessing$ True | TriggerDescription$ Whenever another creature you control dies, if you have the city's blessing, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nAscend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nWhenever another creature you control dies, if you have the city's blessing, put a +1/+1 counter on Mausoleum Harpy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mausoleum Harpy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fertilid-s-favor-corpus-m680",
+  "description": "M6 corpus — Fertilid's Favor; in-hand parse.",
+  "seed": 62471,
+  "cards": {
+    "Fertilid's Favor": "Name:Fertilid's Favor\nManaCost:3 G\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Player | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBCounter | Chooser$ Targeted | SpellDescription$ Target player searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles. Put two +1/+1 counters on up to one target artifact or creature.\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Creature,Artifact | TgtPrompt$ Select up to one target creature or artifact | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 2\nDeckHas:Ability$Counters\nOracle:Target player searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles. Put two +1/+1 counters on up to one target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fertilid's Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

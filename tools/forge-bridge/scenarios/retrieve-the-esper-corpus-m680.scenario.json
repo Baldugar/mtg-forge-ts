@@ -1,0 +1,23 @@
+{
+  "id": "retrieve-the-esper-corpus-m680",
+  "description": "M6 corpus — Retrieve the Esper; in-hand parse.",
+  "seed": 63973,
+  "cards": {
+    "Retrieve the Esper": "Name:Retrieve the Esper\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Token | TokenScript$ u_3_3_a_robot_warrior | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBPutCounter | SpellDescription$ Create a 3/3 blue Robot Warrior artifact creature token. Then if this spell was cast from a graveyard, put two +1/+1 counters on that token.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 2 | ConditionDefined$ Self | ConditionPresent$ Card.wasCastFromGraveyard | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flashback:5 U\nOracle:Create a 3/3 blue Robot Warrior artifact creature token. Then if this spell was cast from a graveyard, put two +1/+1 counters on that token.\\nFlashback {5}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retrieve the Esper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

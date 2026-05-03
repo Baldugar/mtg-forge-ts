@@ -1,0 +1,23 @@
+{
+  "id": "sink-into-takenuma-corpus-m680",
+  "description": "M6 corpus — Sink into Takenuma; in-hand parse.",
+  "seed": 64291,
+  "cards": {
+    "Sink into Takenuma": "Name:Sink into Takenuma\nManaCost:3 B\nTypes:Sorcery Arcane\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Swamp.YouCtrl | ChangeNum$ X | Hidden$ True | RememberChanged$ True | SubAbility$ DBDiscard | SpellDescription$ Sweep — Return any number of Swamps you control to their owner's hand. Target player discards a card for each Swamp returned this way.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ Y | Mode$ TgtChoose | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Swamp.YouCtrl\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sweep — Return any number of Swamps you control to their owner's hand. Target player discards a card for each Swamp returned this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sink into Takenuma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

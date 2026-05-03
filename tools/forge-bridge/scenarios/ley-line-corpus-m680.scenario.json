@@ -1,0 +1,23 @@
+{
+  "id": "ley-line-corpus-m680",
+  "description": "M6 corpus — Ley Line; in-hand parse.",
+  "seed": 63217,
+  "cards": {
+    "Ley Line": "Name:Ley Line\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | OptionalDecider$ TriggeredPlayer | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each player's upkeep, that player may put a +1/+1 counter on target creature of their choice.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | TargetingPlayer$ TriggeredPlayer | Placer$ TriggeredPlayer\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player may put a +1/+1 counter on target creature of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ley Line"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

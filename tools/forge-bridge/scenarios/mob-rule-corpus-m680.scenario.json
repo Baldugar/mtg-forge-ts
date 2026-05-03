@@ -1,0 +1,23 @@
+{
+  "id": "mob-rule-corpus-m680",
+  "description": "M6 corpus — Mob Rule; in-hand parse.",
+  "seed": 63450,
+  "cards": {
+    "Mob Rule": "Name:Mob Rule\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBBig,DBSmall\nSVar:DBBig:DB$ GainControl | AllValid$ Creature.powerGE4 | Untap$ True | AddKWs$ Haste | LoseControl$ EOT | SpellDescription$ Gain control of all creatures with power 4 or greater until end of turn. Untap them. They gain haste until end of turn.\nSVar:DBSmall:DB$ GainControl | AllValid$ Creature.powerLE3 | Untap$ True | AddKWs$ Haste | LoseControl$ EOT | SpellDescription$ Gain control of all creatures with power 3 or less until end of turn. Untap them. They gain haste until end of turn.\nOracle:Choose one —\\n• Gain control of all creatures with power 4 or greater until end of turn. Untap those creatures. They gain haste until end of turn.\\n• Gain control of all creatures with power 3 or less until end of turn. Untap those creatures. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mob Rule"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

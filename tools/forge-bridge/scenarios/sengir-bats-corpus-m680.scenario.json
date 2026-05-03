@@ -1,0 +1,23 @@
+{
+  "id": "sengir-bats-corpus-m680",
+  "description": "M6 corpus — Sengir Bats; in-hand parse.",
+  "seed": 64202,
+  "cards": {
+    "Sengir Bats": "Name:Sengir Bats\nManaCost:1 B B\nTypes:Creature Bat\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhenever a creature dealt damage by Sengir Bats this turn dies, put a +1/+1 counter on Sengir Bats.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sengir Bats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

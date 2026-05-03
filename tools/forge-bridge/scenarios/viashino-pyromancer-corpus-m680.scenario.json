@@ -1,0 +1,23 @@
+{
+  "id": "viashino-pyromancer-corpus-m680",
+  "description": "M6 corpus — Viashino Pyromancer; in-hand parse.",
+  "seed": 64942,
+  "cards": {
+    "Viashino Pyromancer": "Name:Viashino Pyromancer\nManaCost:1 R\nTypes:Creature Lizard Wizard\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker\nOracle:When Viashino Pyromancer enters, it deals 2 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viashino Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

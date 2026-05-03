@@ -1,0 +1,23 @@
+{
+  "id": "archery-training-corpus-m680",
+  "description": "M6 corpus — Archery Training; in-hand parse.",
+  "seed": 61549,
+  "cards": {
+    "Archery Training": "Name:Archery Training\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put an arrow counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ ARROW | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ ArcheryDamage | Description$ Enchanted creature has \"{T}: This creature deals X damage to target attacking or blocking creature, where X is the number of arrow counters on CARDNAME.\"\nSVar:ArcheryDamage:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ ArcheryX | SpellDescription$ CARDNAME deals X damage to target attacking or blocking creature, where X is the number of arrow counters on ORIGINALHOST.\nSVar:ArcheryX:OriginalHost$CardCounters.ARROW\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nAt the beginning of your upkeep, you may put an arrow counter on Archery Training.\\nEnchanted creature has \"{T}: This creature deals X damage to target attacking or blocking creature, where X is the number of arrow counters on Archery Training.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archery Training"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

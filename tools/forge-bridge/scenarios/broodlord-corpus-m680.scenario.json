@@ -1,0 +1,23 @@
+{
+  "id": "broodlord-corpus-m680",
+  "description": "M6 corpus — Broodlord; in-hand parse.",
+  "seed": 61804,
+  "cards": {
+    "Broodlord": "Name:Broodlord\nManaCost:3 X G\nTypes:Creature Tyranid\nPT:3/3\nK:Ravenous\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ Brood Telepathy — When CARDNAME enters, distribute X +1/+1 counters among any number of other target creatures you control.\nSVar:TrigPutCounters:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select any number of other target creatures you control | CounterType$ P1P1 | CounterNum$ X | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nBrood Telepathy — When Broodlord enters, distribute X +1/+1 counters among any number of other target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

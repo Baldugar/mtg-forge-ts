@@ -1,0 +1,23 @@
+{
+  "id": "hallowed-respite-corpus-m680",
+  "description": "M6 corpus — Hallowed Respite; in-hand parse.",
+  "seed": 62776,
+  "cards": {
+    "Hallowed Respite": "Name:Hallowed Respite\nManaCost:W U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature.nonLegendary | TgtPrompt$ Select target nonlegendary creature | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | SubAbility$ DBReturn | StackDescription$ Exile {c:Targeted}, | SpellDescription$ Exile target nonlegendary creature, then return it to the battlefield under its owner's control. If it entered under your control, put a +1/+1 counter on it. Otherwise, tap it.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBBranch | StackDescription$ then return it to the battlefield under its owner's control.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ PutCounter | FalseSubAbility$ Tap | StackDescription$ If it entered under your control, put a +1/+1 counter on it. Otherwise, tap it.\nSVar:PutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:Tap:DB$ Tap | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature.YouCtrl\nK:Flashback:1 W U\nDeckHas:Ability$Graveyard|Counters\nOracle:Exile target nonlegendary creature, then return it to the battlefield under its owner's control. If it entered under your control, put a +1/+1 counter on it. Otherwise, tap it.\\nFlashback {1}{W}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hallowed Respite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

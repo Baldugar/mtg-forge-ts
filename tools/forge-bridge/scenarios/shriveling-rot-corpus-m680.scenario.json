@@ -1,0 +1,23 @@
+{
+  "id": "shriveling-rot-corpus-m680",
+  "description": "M6 corpus — Shriveling Rot; in-hand parse.",
+  "seed": 64268,
+  "cards": {
+    "Shriveling Rot": "Name:Shriveling Rot\nManaCost:2 B B\nTypes:Instant\nK:Entwine:2 B\nA:SP$ Charm | Choices$ DBEffect,DBEffect2\nSVar:DBEffect:DB$ Effect | Name$ Shriveling Rot's Effect — Deadly Toxin | Triggers$ Trig1 | SpellDescription$ Until end of turn, whenever a creature is dealt damage, destroy it.\nSVar:DBEffect2:DB$ Effect | Name$ Shriveling Rot's Effect — Stench of Death | Triggers$ Trig2 | SpellDescription$ Until end of turn, whenever a creature dies, that creature's controller loses life equal to its toughness.\nSVar:Trig1:Mode$ DamageDoneOnce | ValidTarget$ Creature | Execute$ SVar1 | TriggerDescription$ Whenever a creature is dealt damage, destroy it.\nSVar:SVar1:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:Trig2:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | Execute$ SVar2 | TriggerDescription$ Whenever a creature dies, that creature's controller loses life equal to its toughness.\nSVar:SVar2:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Until end of turn, whenever a creature is dealt damage, destroy it.\\n• Until end of turn, whenever a creature dies, that creature's controller loses life equal to its toughness.\\nEntwine {2}{B} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shriveling Rot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

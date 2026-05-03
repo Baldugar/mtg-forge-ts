@@ -1,0 +1,23 @@
+{
+  "id": "venom-eddie-brock-corpus-m680",
+  "description": "M6 corpus — Venom, Eddie Brock; in-hand parse.",
+  "seed": 64920,
+  "cards": {
+    "Venom, Eddie Brock": "Name:Venom, Eddie Brock\nManaCost:4 B B\nTypes:Legendary Creature Symbiote Villain\nPT:6/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature dies, put a +1/+1 counter on NICKNAME. If that creature was a Villain, draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ TriggeredCardLKICopy | ConditionPresent$ Villain\nDeckHints:Type$Villain\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever another creature dies, put a +1/+1 counter on Venom. If that creature was a Villain, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venom, Eddie Brock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

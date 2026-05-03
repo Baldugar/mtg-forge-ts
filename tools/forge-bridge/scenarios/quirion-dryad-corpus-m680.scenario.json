@@ -1,0 +1,23 @@
+{
+  "id": "quirion-dryad-corpus-m680",
+  "description": "M6 corpus — Quirion Dryad; in-hand parse.",
+  "seed": 63873,
+  "cards": {
+    "Quirion Dryad": "Name:Quirion Dryad\nManaCost:1 G\nTypes:Creature Dryad\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.White,Card.Blue,Card.Black,Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell that's white, blue, black, or red, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card.White,Card.Blue,Card.Black,Card.Red\nDeckHas:Ability$Counters\nDeckNeeds:Color$White|Blue|Black|Red\nOracle:Whenever you cast a spell that's white, blue, black, or red, put a +1/+1 counter on Quirion Dryad.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quirion Dryad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

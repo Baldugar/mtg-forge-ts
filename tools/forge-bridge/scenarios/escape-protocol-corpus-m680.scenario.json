@@ -1,0 +1,23 @@
+{
+  "id": "escape-protocol-corpus-m680",
+  "description": "M6 corpus — Escape Protocol; in-hand parse.",
+  "seed": 62360,
+  "cards": {
+    "Escape Protocol": "Name:Escape Protocol\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ Cycled | ValidCard$ Card.YouOwn | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cycle a card, you may pay {1}. When you do, exile target artifact or creature you control, then return it to the battlefield under its owner's control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigExile | TriggerDescription$ When you do, exile target creature or artifact you control, then return it to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl,Artifact.YouCtrl | TgtPrompt$ Select target creature or artifact you control | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever you cycle a card, you may pay {1}. When you do, exile target artifact or creature you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Escape Protocol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

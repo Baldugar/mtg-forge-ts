@@ -1,0 +1,23 @@
+{
+  "id": "boom-scholar-corpus-m680",
+  "description": "M6 corpus — Boom Scholar; in-hand parse.",
+  "seed": 61750,
+  "cards": {
+    "Boom Scholar": "Name:Boom Scholar\nManaCost:1 R G\nTypes:Creature Goblin Advisor\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Permanent.YouCtrl+Other | ValidSpell$ Activated.Exhaust | Amount$ 2 | AffectedZone$ Battlefield | Description$ Exhaust abilities of other permanents you control cost {2} less to activate.\nA:AB$ PumpAll | Cost$ 4 R G | ValidCards$ Creature.YouCtrl,Vehicle.YouCtrl | KW$ Trample | Exhaust$ True | SubAbility$ DBPutCounter | SpellDescription$ Creatures and Vehicles you control gain trample until end of turn. Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nOracle:Exhaust abilities of other permanents you control cost {2} less to activate.\\nExhaust — {4}{R}{G}: Creatures and Vehicles you control gain trample until end of turn. Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boom Scholar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

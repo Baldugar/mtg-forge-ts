@@ -1,0 +1,23 @@
+{
+  "id": "thrasher-brute-corpus-m680",
+  "description": "M6 corpus — Thrasher Brute; in-hand parse.",
+  "seed": 64723,
+  "cards": {
+    "Thrasher Brute": "Name:Thrasher Brute\nManaCost:3 B\nTypes:Creature Orc Warrior\nPT:4/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Warrior.Other+YourTeamCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigDrain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another Warrior enters under your team's control, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:BuffedBy:Warrior\nOracle:Whenever Thrasher Brute or another Warrior enters under your team's control, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thrasher Brute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

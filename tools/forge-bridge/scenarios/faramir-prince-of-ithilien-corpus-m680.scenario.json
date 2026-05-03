@@ -1,0 +1,23 @@
+{
+  "id": "faramir-prince-of-ithilien-corpus-m680",
+  "description": "M6 corpus — Faramir, Prince of Ithilien; in-hand parse.",
+  "seed": 62437,
+  "cards": {
+    "Faramir, Prince of Ithilien": "Name:Faramir, Prince of Ithilien\nManaCost:2 W U\nTypes:Legendary Creature Human Noble\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChooseOpp | TriggerDescription$ At the beginning of your end step, choose an opponent. At the beginning of that player's next end step, you draw a card if they didn't attack you that turn. Otherwise, create three 1/1 white Human Soldier creature tokens.\nSVar:TrigChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | SubAbility$ DBDelayTrig\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.IsTriggerRemembered | RememberObjects$ ChosenPlayer | SubAbility$ DBCleanup | Execute$ TrigBranch | TriggerDescription$ At the beginning of that player's next end step, you draw a card if they didn't attack you that turn. Otherwise, create three 1/1 white Human Soldier creature tokens.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ DBToken | FalseSubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenAmount$ 3\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nSVar:X:PlayerCountDefinedTriggeredPlayer$HasPropertyattackedYouTheirCurrentTurn\nAI:RemoveDeck:All\nDeckHas:Ability$Token & Type$Soldier\nOracle:At the beginning of your end step, choose an opponent. At the beginning of that player's next end step, you draw a card if they didn't attack you that turn. Otherwise, create three 1/1 white Human Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faramir, Prince of Ithilien"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

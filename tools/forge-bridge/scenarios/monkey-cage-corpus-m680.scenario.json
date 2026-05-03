@@ -1,0 +1,23 @@
+{
+  "id": "monkey-cage-corpus-m680",
+  "description": "M6 corpus — Monkey Cage; in-hand parse.",
+  "seed": 63469,
+  "cards": {
+    "Monkey Cage": "Name:Monkey Cage\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When a creature enters, sacrifice CARDNAME and create X 2/2 green Monkey creature tokens, where X is that creature's mana value.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBToken | RememberSacrificed$ True\nSVar:DBToken:DB$ Token | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | TokenAmount$ X | TokenScript$ g_2_2_monkey | TokenOwner$ You\nSVar:X:TriggeredCard$CardManaCost\nDeckHas:Ability$Sacrifice|Token & Type$Monkey & Color$Green\nOracle:When a creature enters, sacrifice Monkey Cage and create X 2/2 green Monkey creature tokens, where X is that creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monkey Cage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

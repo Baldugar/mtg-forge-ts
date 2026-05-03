@@ -1,0 +1,23 @@
+{
+  "id": "armistice-corpus-m680",
+  "description": "M6 corpus — Armistice; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Armistice": "Name:Armistice\nManaCost:2 W\nTypes:Enchantment\nA:AB$ Draw | Cost$ 3 W W | SpellDescription$ You draw a card and target opponent gains 3 life. | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to gain life | LifeAmount$ 3\nSVar:NonStackingEffect:True\nOracle:{3}{W}{W}: You draw a card and target opponent gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armistice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

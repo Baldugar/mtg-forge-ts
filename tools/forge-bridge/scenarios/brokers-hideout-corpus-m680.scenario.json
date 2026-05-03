@@ -1,0 +1,23 @@
+{
+  "id": "brokers-hideout-corpus-m680",
+  "description": "M6 corpus — Brokers Hideout; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Brokers Hideout": "Name:Brokers Hideout\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerDescription$ When CARDNAME enters, sacrifice it. When you do, search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Self | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ DBChangeZone | SubAbility$ DBCleanup | TriggerDescription$ Search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Forest.Basic,Plains.Basic,Island.Basic | ChangeTypeDesc$ basic Forest, Plains, or Island | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:When Brokers Hideout enters, sacrifice it. When you do, search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brokers Hideout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

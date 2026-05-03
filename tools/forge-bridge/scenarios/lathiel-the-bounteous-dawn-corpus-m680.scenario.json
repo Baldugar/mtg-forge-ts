@@ -1,0 +1,23 @@
+{
+  "id": "lathiel-the-bounteous-dawn-corpus-m680",
+  "description": "M6 corpus — Lathiel, the Bounteous Dawn; in-hand parse.",
+  "seed": 63193,
+  "cards": {
+    "Lathiel, the Bounteous Dawn": "Name:Lathiel, the Bounteous Dawn\nManaCost:2 G W\nTypes:Legendary Creature Unicorn\nPT:2/2\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other | TgtPrompt$ Select any number of other target creatures to distribute counters to | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X | DividedUpTo$ True\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Counters|LifeGain\nOracle:Lifelink\\nAt the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lathiel, the Bounteous Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

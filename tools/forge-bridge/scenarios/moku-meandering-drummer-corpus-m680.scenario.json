@@ -1,0 +1,23 @@
+{
+  "id": "moku-meandering-drummer-corpus-m680",
+  "description": "M6 corpus — Moku, Meandering Drummer; in-hand parse.",
+  "seed": 63454,
+  "cards": {
+    "Moku, Meandering Drummer": "Name:Moku, Meandering Drummer\nManaCost:1 R\nTypes:Legendary Creature Human Bard Ally\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a noncreature spell, you may pay {1}. If you do, NICKNAME gets +2/+1 and creatures you control gain haste until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ 1 | Defined$ Self | NumAtt$ +2 | NumDef$ +1 | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Haste\nOracle:Whenever you cast a noncreature spell, you may pay {1}. If you do, Moku gets +2/+1 and creatures you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moku, Meandering Drummer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

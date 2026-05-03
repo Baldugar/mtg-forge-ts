@@ -1,0 +1,23 @@
+{
+  "id": "sludge-monster-corpus-m680",
+  "description": "M6 corpus — Sludge Monster; in-hand parse.",
+  "seed": 64332,
+  "cards": {
+    "Sludge Monster": "Name:Sludge Monster\nManaCost:3 U U\nTypes:Creature Horror\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME enters or attacks, put a slime counter on up to one other target creature.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put a slime counter on up to one other target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | TargetMin$ 0 | TargetMax$ 1 | AITgts$ Creature.nonHorror+OppCtrl+counters_LT1_SLIME | IsCurse$ True | CounterType$ SLIME | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.nonHorror+counters_GE1_SLIME | RemoveAllAbilities$ True | SetPower$ 2 | SetToughness$ 2 | Description$ Non-Horror creatures with slime counters on them lose all abilities and have base power and toughness 2/2.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever Sludge Monster enters or attacks, put a slime counter on up to one other target creature.\\nNon-Horror creatures with slime counters on them lose all abilities and have base power and toughness 2/2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sludge Monster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "donna-noble-corpus-m680",
+  "description": "M6 corpus — Donna Noble; in-hand parse.",
+  "seed": 62208,
+  "cards": {
+    "Donna Noble": "Name:Donna Noble\nManaCost:3 R\nTypes:Legendary Creature Human\nPT:2/4\nK:Soulbond\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self,Creature.PairedWith | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME or a creature it's paired with is dealt damage, NICKNAME deals that much damage to target opponent.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nK:Doctor's companion\nOracle:Soulbond (You may pair this creature with another unpaired creature when either enters. They remain paired for as long as you control both of them.)\\nWhenever Donna or a creature it's paired with is dealt damage, Donna deals that much damage to target opponent.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Donna Noble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

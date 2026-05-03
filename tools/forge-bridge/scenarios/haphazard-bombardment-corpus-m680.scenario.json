@@ -1,0 +1,23 @@
+{
+  "id": "haphazard-bombardment-corpus-m680",
+  "description": "M6 corpus — Haphazard Bombardment; in-hand parse.",
+  "seed": 62785,
+  "cards": {
+    "Haphazard Bombardment": "Name:Haphazard Bombardment\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBPutCounter | TriggerDescription$ When CARDNAME enters, choose four nonenchantment permanents you don't control and put an aim counter on each of them.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Permanent.YouDontCtrl+nonEnchantment | ChoiceAmount$ 4 | Defined$ ChosenCard | CounterType$ AIM | CounterNum$ 1 | IsCurse$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouDontCtrl+counters_GE1_AIM | PresentCompare$ GE2 | Execute$ TrigDestroy | TriggerDescription$ At the beginning of your end step, if two or more permanents you don't control have an aim counter on them, destroy one of those permanents at random.\nSVar:TrigDestroy:DB$ ChooseCard | Amount$ 1 | AtRandom$ True | Choices$ Permanent.YouDontCtrl+counters_GE1_AIM+withoutIndestructible | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When Haphazard Bombardment enters, choose four nonenchantment permanents you don't control and put an aim counter on each of them.\\nAt the beginning of your end step, if two or more permanents you don't control have an aim counter on them, destroy one of those permanents at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haphazard Bombardment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

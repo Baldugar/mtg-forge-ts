@@ -1,0 +1,23 @@
+{
+  "id": "murasa-pyromancer-corpus-m680",
+  "description": "M6 corpus — Murasa Pyromancer; in-hand parse.",
+  "seed": 63490,
+  "cards": {
+    "Murasa Pyromancer": "Name:Murasa Pyromancer\nManaCost:4 R R\nTypes:Creature Human Shaman Ally\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have CARDNAME deal damage to target creature equal to the number of Allies you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ NumAllies\nSVar:NumAllies:Count$Valid Ally.YouCtrl\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Murasa Pyromancer or another Ally you control enters, you may have Murasa Pyromancer deal damage to target creature equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murasa Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

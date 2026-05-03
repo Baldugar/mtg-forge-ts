@@ -1,0 +1,23 @@
+{
+  "id": "summon-esper-ramuh-corpus-m680",
+  "description": "M6 corpus — Summon: Esper Ramuh; in-hand parse.",
+  "seed": 64501,
+  "cards": {
+    "Summon: Esper Ramuh": "Name:Summon: Esper Ramuh\nManaCost:2 R R\nTypes:Enchantment Creature Saga Wizard\nPT:3/3\nK:Chapter:3:DBJudgmentBolt,DBPumpAll,DBPumpAll\nSVar:DBJudgmentBolt:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | SpellDescription$ Judgment Bolt — This creature deals damage equal to the number of noncreature, nonland cards in your graveyard to target creature an opponent controls.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Wizard.YouCtrl | NumAtt$ +1 | SpellDescription$ Wizards you control get +1/+0 until end of turn.\nSVar:X:Count$ValidGraveyard Card.nonCreature+nonLand+YouOwn\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Judgment Bolt — This creature deals damage equal to the number of noncreature, nonland cards in your graveyard to target creature an opponent controls.\\nII, III — Wizards you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Esper Ramuh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-way-corpus-m680",
+  "description": "M6 corpus — Nature's Way; in-hand parse.",
+  "seed": 63520,
+  "cards": {
+    "Nature's Way": "Name:Nature's Way\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | KW$ Vigilance & Trample | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control gains vigilance and trample until end of turn. It deals damage equal to its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gains vigilance and trample until end of turn. It deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

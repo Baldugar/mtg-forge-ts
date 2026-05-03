@@ -1,0 +1,23 @@
+{
+  "id": "prize-pig-corpus-m680",
+  "description": "M6 corpus — Prize Pig; in-hand parse.",
+  "seed": 63811,
+  "cards": {
+    "Prize Pig": "Name:Prize Pig\nManaCost:1 G\nTypes:Creature Boar\nPT:0/3\nT:Mode$ LifeGained | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put that many ribbon counters on CARDNAME. Then if there are three or more ribbon counters on CARDNAME, remove those counters and untap it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ RIBBON | CounterNum$ Y | SubAbility$ DBRemoveCounters\nSVar:DBRemoveCounters:DB$ RemoveCounter | CounterType$ RIBBON | CounterNum$ All | RememberRemoved$ True | ConditionDefined$ Self | ConditionPresent$ Card.counters_GE3_RIBBON | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nSVar:Y:TriggerCount$LifeAmount\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Counters\nOracle:Whenever you gain life, put that many ribbon counters on Prize Pig. Then if there are three or more ribbon counters on Prize Pig, remove those counters and untap it.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prize Pig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

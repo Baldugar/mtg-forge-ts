@@ -1,0 +1,23 @@
+{
+  "id": "necrosynthesis-corpus-m680",
+  "description": "M6 corpus — Necrosynthesis; in-hand parse.",
+  "seed": 63533,
+  "cards": {
+    "Necrosynthesis": "Name:Necrosynthesis\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ DiesTrig | Description$ Enchanted creature has \"Whenever another creature dies, put a +1/+1 counter on this creature.\"\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature dies, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EnchantedBy | Execute$ TrigDig | TriggerDescription$ When enchanted creature dies, look at the top X cards of your library, where X is its power. Put one of those cards into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | RestRandomOrder$ True\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nEnchanted creature has \"Whenever another creature dies, put a +1/+1 counter on this creature.\"\\nWhen enchanted creature dies, look at the top X cards of your library, where X is its power. Put one of those cards into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrosynthesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

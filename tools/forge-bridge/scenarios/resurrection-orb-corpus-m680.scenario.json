@@ -1,0 +1,23 @@
+{
+  "id": "resurrection-orb-corpus-m680",
+  "description": "M6 corpus — Resurrection Orb; in-hand parse.",
+  "seed": 63968,
+  "cards": {
+    "Resurrection Orb": "Name:Resurrection Orb\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Lifelink | Description$ Equipped creature has lifelink.\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ DelTrig | TriggerDescription$ Whenever equipped creature dies, return that card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | RememberObjects$ TriggeredCard | Execute$ TrigReturn | TriggerDescription$ Return equipped creature from the graveyard to the battlefield at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield\nK:Equip:4\nDeckHas:Keyword$Lifelink & Ability$LifeGain\nOracle:Equipped creature has lifelink.\\nWhenever equipped creature dies, return that card to the battlefield under its owner's control at the beginning of the next end step.\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resurrection Orb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

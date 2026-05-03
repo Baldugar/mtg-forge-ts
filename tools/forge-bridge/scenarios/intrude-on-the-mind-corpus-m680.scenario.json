@@ -1,0 +1,23 @@
+{
+  "id": "intrude-on-the-mind-corpus-m680",
+  "description": "M6 corpus — Intrude on the Mind; in-hand parse.",
+  "seed": 62960,
+  "cards": {
+    "Intrude on the Mind": "Name:Intrude on the Mind\nManaCost:3 U U\nTypes:Instant\nA:SP$ PeekAndReveal | PeekAmount$ 5 | RememberRevealed$ True | NoPeek$ True | SubAbility$ DBTwoPiles | SpellDescription$ Reveal the top five cards of your library and separate them into two piles. An opponent chooses one of those piles. Put that pile into your hand and the other into your graveyard. Create a 0/0 colorless Thopter artifact creature token with flying, then put a +1/+1 counter on it for each card put into your graveyard this way.\nSVar:DBTwoPiles:DB$ TwoPiles | Chooser$ Opponent | DefinedCards$ Remembered | Separator$ You | ChosenPile$ DBHand | UnchosenPile$ DBGrave | AILogic$ Worst\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_0_0_a_thopter_flying | ImprintTokens$ True | SubAbility$ DBPutCounters\nSVar:DBPutCounters:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$ValidGraveyard Card.IsRemembered\nOracle:Reveal the top five cards of your library and separate them into two piles. An opponent chooses one of those piles. Put that pile into your hand and the other into your graveyard. Create a 0/0 colorless Thopter artifact creature token with flying, then put a +1/+1 counter on it for each card put into your graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intrude on the Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

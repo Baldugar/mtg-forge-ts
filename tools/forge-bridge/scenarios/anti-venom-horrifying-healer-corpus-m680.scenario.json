@@ -1,0 +1,23 @@
+{
+  "id": "anti-venom-horrifying-healer-corpus-m680",
+  "description": "M6 corpus — Anti-Venom, Horrifying Healer; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Anti-Venom, Horrifying Healer": "Name:Anti-Venom, Horrifying Healer\nVariant:UniversesWithin:FlavorName:Verilax the Havenskin\nManaCost:W W W W W\nTypes:Legendary Creature Symbiote Hero\nPT:5/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCast | Origin$ Any | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When NICKNAME enters, if he was cast, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to NICKNAME, prevent that damage and put that many +1/+1 counters on him.\nSVar:Counters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.\\nIf damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anti-Venom, Horrifying Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

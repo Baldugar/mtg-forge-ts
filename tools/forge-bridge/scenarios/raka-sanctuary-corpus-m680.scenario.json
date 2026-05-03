@@ -1,0 +1,23 @@
+{
+  "id": "raka-sanctuary-corpus-m680",
+  "description": "M6 corpus — Raka Sanctuary; in-hand parse.",
+  "seed": 63885,
+  "cards": {
+    "Raka Sanctuary": "Name:Raka Sanctuary\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouCtrl+White,Permanent.YouCtrl+Blue | Execute$ TrigDmg | TriggerDescription$ At the beginning of your upkeep, if you control a white or blue permanent, CARDNAME deals 1 damage to target creature. If you control a white permanent and a blue permanent, CARDNAME deals 3 damage instead.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ D\nSVar:Y:Count$Valid Permanent.White+YouCtrl/LimitMax.1\nSVar:Z:Count$Valid Permanent.Blue+YouCtrl/LimitMax.1\nSVar:X:SVar$Y/Plus.Z\nSVar:D:Count$Compare X EQ2.3.1\nDeckNeeds:Color$White|Blue\nOracle:At the beginning of your upkeep, if you control a white or blue permanent, Raka Sanctuary deals 1 damage to target creature. If you control a white permanent and a blue permanent, Raka Sanctuary deals 3 damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raka Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

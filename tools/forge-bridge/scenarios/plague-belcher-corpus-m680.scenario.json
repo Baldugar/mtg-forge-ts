@@ -1,0 +1,23 @@
+{
+  "id": "plague-belcher-corpus-m680",
+  "description": "M6 corpus — Plague Belcher; in-hand parse.",
+  "seed": 63761,
+  "cards": {
+    "Plague Belcher": "Name:Plague Belcher\nManaCost:2 B\nTypes:Creature Zombie Beast\nPT:5/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two -1/-1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Zombie.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another Zombie you control dies, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nDeckHints:Type$Zombie\nOracle:Menace\\nWhen Plague Belcher enters, put two -1/-1 counters on target creature you control.\\nWhenever another Zombie you control dies, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Belcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

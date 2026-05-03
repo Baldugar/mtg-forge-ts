@@ -1,0 +1,23 @@
+{
+  "id": "exploding-barrel-corpus-m680",
+  "description": "M6 corpus — Exploding Barrel; in-hand parse.",
+  "seed": 62397,
+  "cards": {
+    "Exploding Barrel": "Name:Exploding Barrel\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SubAbility$ DBPutCounter | SpellDescription$ Add one mana of any color. Put a pressure counter on this artifact.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PRESSURE | CounterNum$ 1\nA:AB$ DealDamage | Cost$ 8 T | ValidTgts$ Creature | NumDmg$ 20 | ReduceCost$ X | SorcerySpeed$ True | StackDescription$ CARDNAME deals 20 damage to {c:TargetedCard}. | SpellDescription$ It deals 20 damage to target creature. This ability costs {1} less to activate for each pressure counter on this artifact. Activate only as a sorcery.\nSVar:X:Count$CardCounters.PRESSURE\nOracle:{T}: Add one mana of any color. Put a pressure counter on this artifact.\\n{8}, {T}, Sacrifice this artifact: It deals 20 damage to target creature. This ability costs {1} less to activate for each pressure counter on this artifact. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exploding Barrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nine-fingers-keene-corpus-m680",
+  "description": "M6 corpus — Nine-Fingers Keene; in-hand parse.",
+  "seed": 63566,
+  "cards": {
+    "Nine-Fingers Keene": "Name:Nine-Fingers Keene\nManaCost:1 B G U\nTypes:Legendary Creature Human Rogue\nPT:4/4\nK:Menace\nK:Ward:PayLife<9>\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigPeek | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, look at the top nine cards of your library. You may put a Gate card from among them onto the battlefield. Then if you control nine or more Gates, put the rest into your hand. Otherwise, put the rest on the bottom of your library in a random order.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 9 | NoReveal$ True | RememberPeeked$ True | SubAbility$ PickOne\nSVar:PickOne:DB$ ChooseCard | Defined$ You | Amount$ 1 | ChoiceTitle$ Choose a Gate card to put onto the battlefield | Choices$ Card.Gate+IsRemembered | ChoiceZone$ Library | SubAbility$ MoveChosen\nSVar:MoveChosen:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Defined$ ChosenCard | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE9 | TrueSubAbility$ DBHand | FalseSubAbility$ DBBottom | SubAbility$ DBCleanup\nSVar:DBBottom:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True\nSVar:DBHand:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Hand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:X:Count$Valid Gate.YouCtrl\nDeckNeeds:Type$Gate\nOracle:Menace\\nWard—Pay 9 life.\\nWhenever Nine-Fingers Keene deals combat damage to a player, look at the top nine cards of your library. You may put a Gate card from among them onto the battlefield. Then if you control nine or more Gates, put the rest into your hand. Otherwise, put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nine-Fingers Keene"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

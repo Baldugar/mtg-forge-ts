@@ -1,0 +1,23 @@
+{
+  "id": "thendar-the-overminer-corpus-m680",
+  "description": "M6 corpus — Thendar, the Overminer; in-hand parse.",
+  "seed": 64700,
+  "cards": {
+    "Thendar, the Overminer": "Name:Thendar, the Overminer\nManaCost:2 R R\nTypes:Legendary Creature Kavu Pirate\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Land.nonBasic | Execute$ TrigConjure | TriggerDescription$ Whenever a nonbasic land is put into a graveyard from the battlefield, its controller conjures a card named Wastes onto the battlefield tapped.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Defined$ TriggeredCardController | Name$ Wastes | Zone$ Battlefield | Tapped$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | Execute$ TrigDestroy | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, destroy up to one target nonbasic land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select up to one target nonbasic land | TargetMin$ 0 | TargetMax$ 1\nOracle:Menace\\nWhenever a nonbasic land is put into a graveyard from the battlefield, its controller conjures a card named Wastes onto the battlefield tapped.\\nAt the beginning of your end step, if you control two or more tapped creatures, destroy up to one target nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thendar, the Overminer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

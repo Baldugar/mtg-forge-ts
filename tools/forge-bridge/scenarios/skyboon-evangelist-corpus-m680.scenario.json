@@ -1,0 +1,23 @@
+{
+  "id": "skyboon-evangelist-corpus-m680",
+  "description": "M6 corpus — Skyboon Evangelist; in-hand parse.",
+  "seed": 64306,
+  "cards": {
+    "Skyboon Evangelist": "Name:Skyboon Evangelist\nManaCost:4 W\nTypes:Creature Bird Advisor\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, support 6. (Put a +1/+1 counter on each of up to six other target creatures.)\nSVar:TrigPut:DB$ PutCounter | Support$ 6\nT:Mode$ Attacks | ValidCard$ Creature.HasCounters | Attacked$ Player.Opponent | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature with a counter on it attacks one of your opponents, that creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Flying\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Flying\\nWhen Skyboon Evangelist enters, support 6. (Put a +1/+1 counter on each of up to six other target creatures.)\\nWhenever a creature with a counter on it attacks one of your opponents, that creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyboon Evangelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

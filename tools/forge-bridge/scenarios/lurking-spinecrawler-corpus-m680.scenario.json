@@ -1,0 +1,23 @@
+{
+  "id": "lurking-spinecrawler-corpus-m680",
+  "description": "M6 corpus — Lurking Spinecrawler; in-hand parse.",
+  "seed": 63292,
+  "cards": {
+    "Lurking Spinecrawler": "Name:Lurking Spinecrawler\nManaCost:3 B\nTypes:Creature Horror\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may choose a nonland card in your hand. If you do, that card perpetually incorporates {1}{B} and gains \"When you cast this spell, each opponent sacrifices a creature. Each opponent who can't discards a card.\"\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.nonLand+YouOwn | ChoiceTitle$ You may choose a nonland card in your hand | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Incorporate$ 1 B | Triggers$ CastTrig | Duration$ Perpetual | SubAbility$ DBCleanChosen\nSVar:DBCleanChosen:DB$ Cleanup | ClearChosenCard$ True\nSVar:CastTrig:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When you cast this spell, each opponent sacrifices a creature. Each opponent who can't discards a card.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ OppNonRememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you cast a multicolored spell, for each of that spell's colors, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ TriggeredCard$CardNumColors | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ TriggeredCard$CardNumColors\nSVar:BuffedBy:Card.MultiColor\nDeckHas:Ability$LifeGain\nOracle:When Lurking Spinecrawler enters, you may choose a nonland card in your hand. If you do, that card perpetually incorporates {1}{B} and gains \"When you cast this spell, each opponent sacrifices a creature. Each opponent who can't discards a card.\"\\nWhenever you cast a multicolored spell, for each of that spell's colors, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurking Spinecrawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

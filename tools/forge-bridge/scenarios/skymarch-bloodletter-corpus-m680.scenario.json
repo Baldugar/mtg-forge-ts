@@ -1,0 +1,23 @@
+{
+  "id": "skymarch-bloodletter-corpus-m680",
+  "description": "M6 corpus — Skymarch Bloodletter; in-hand parse.",
+  "seed": 64311,
+  "cards": {
+    "Skymarch Bloodletter": "Name:Skymarch Bloodletter\nManaCost:2 B\nTypes:Creature Vampire Soldier\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Flying\\nWhen Skymarch Bloodletter enters, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skymarch Bloodletter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

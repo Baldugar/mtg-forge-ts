@@ -1,0 +1,23 @@
+{
+  "id": "rose-tyler-corpus-m680",
+  "description": "M6 corpus — Rose Tyler; in-hand parse.",
+  "seed": 64041,
+  "cards": {
+    "Rose Tyler": "Name:Rose Tyler\nManaCost:1 W\nTypes:Legendary Creature Human\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each time counter on it.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Bad Wolf — Whenever CARDNAME attacks, put a time counter on it for each suspended card you own and each other permanent you control with a time counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ Y\nSVar:X:Count$CardCounters.TIME\nSVar:Y:Count$ValidExile Card.suspended+YouOwn/Plus.Z\nSVar:Z:Count$Valid Permanent.Other+YouCtrl+counters_GE1_TIME\nK:Doctor's companion\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Keyword$Suspend|Vanishing\nOracle:Rose Tyler gets +1/+1 for each time counter on it.\\nBad Wolf — Whenever Rose Tyler attacks, put a time counter on it for each suspended card you own and each other permanent you control with a time counter on it.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rose Tyler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

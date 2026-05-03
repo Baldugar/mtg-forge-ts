@@ -1,0 +1,23 @@
+{
+  "id": "expedition-diviner-corpus-m680",
+  "description": "M6 corpus — Expedition Diviner; in-hand parse.",
+  "seed": 62393,
+  "cards": {
+    "Expedition Diviner": "Name:Expedition Diviner\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:3/2\nK:Flying\nS:Mode$ Continuous | IsPresent$ Wizard.YouCtrl+Other | Affected$ Card.Self | AddTrigger$ DeathTrig | AddSVar$ TrigDraw | Description$ As long as you control another Wizard, CARDNAME has \"When this creature dies, draw a card.\"\nSVar:DeathTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:BuffedBy:Wizard\nDeckHints:Type$Wizard\nOracle:Flying\\nAs long as you control another Wizard, Expedition Diviner has \"When this creature dies, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expedition Diviner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

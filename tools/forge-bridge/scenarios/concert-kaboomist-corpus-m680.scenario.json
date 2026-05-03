@@ -1,0 +1,23 @@
+{
+  "id": "concert-kaboomist-corpus-m680",
+  "description": "M6 corpus — Concert Kaboomist; in-hand parse.",
+  "seed": 61972,
+  "cards": {
+    "Concert Kaboomist": "Name:Concert Kaboomist\nManaCost:1 R R\nTypes:Creature Goblin Artificer\nPT:4/2\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters or is turned face up, it deals X damage to target opponent, where X is the number of noncreature spells you've cast since the beginning of your last turn.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When CARDNAME enters or is turned face up, it deals X damage to target opponent, where X is the number of noncreature spells you've cast since the beginning of your last turn.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ Count$CastSinceBeginningOfYourLastTurn_Card.nonCreature+YouCtrl\nK:Disguise:R\nOracle:Trample\\nWhen Concert Kaboomist enters or is turned face up, it deals X damage to target opponent, where X is the number of noncreature spells you've cast since the beginning of your last turn.\\nDisguise {R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Concert Kaboomist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

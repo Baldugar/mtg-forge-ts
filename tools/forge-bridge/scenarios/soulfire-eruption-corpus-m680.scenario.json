@@ -1,0 +1,23 @@
+{
+  "id": "soulfire-eruption-corpus-m680",
+  "description": "M6 corpus — Soulfire Eruption; in-hand parse.",
+  "seed": 64371,
+  "cards": {
+    "Soulfire Eruption": "Name:Soulfire Eruption\nManaCost:6 R R R\nTypes:Sorcery\nA:SP$ RepeatEach | ValidTgts$ Any | TgtPrompt$ Choose any number of target creatures, planeswalkers, and/or players | TargetMin$ 0 | TargetMax$ MaxTgt | RepeatSubAbility$ DBDig | RepeatTargeted$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Choose any number of target creatures, planeswalkers, and/or players. For each of them, exile the top card of your library, then CARDNAME deals damage equal to that card's mana value to that permanent or player. You may play the exiled cards until the end of your next turn.\nSVar:DBDig:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ImprintRevealed$ True | Reveal$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STMayPlay | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ ValidExile Card.ExiledWithSource | ForgetOnMoved$ Exile\nSVar:STMayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ You may play the exiled cards until the end of your next turn.\nSVar:MaxTgt:SVar$MaxPlayers/Plus.MaxCreaturesAndPW\nSVar:MaxPlayers:PlayerCountPlayers$Amount\nSVar:MaxCreaturesAndPW:Count$Valid Creature,Planeswalker\nSVar:X:Imprinted$CardManaCost\nOracle:Choose any number of target creatures, planeswalkers, and/or players. For each of them, exile the top card of your library, then Soulfire Eruption deals damage equal to that card's mana value to that permanent or player. You may play the exiled cards until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulfire Eruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

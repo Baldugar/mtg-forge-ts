@@ -1,0 +1,23 @@
+{
+  "id": "summon-fenrir-corpus-m680",
+  "description": "M6 corpus — Summon: Fenrir; in-hand parse.",
+  "seed": 64502,
+  "cards": {
+    "Summon: Fenrir": "Name:Summon: Fenrir\nManaCost:2 G\nTypes:Enchantment Creature Saga Wolf\nPT:3/2\nK:Chapter:3:DBFetch,DBCast,DBDraw\nSVar:DBFetch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ChangeNum$ 1 | SpellDescription$ Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:DBCast:DB$ Effect | Triggers$ SpellCast | SpellDescription$ Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | OneOff$ True | Execute$ TrigEffect | TriggerDescription$ When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ TriggeredCard | ReplacementEffects$ ETBCreat | ExileOnMoved$ Stack\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ 1\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | ConditionCheckSVar$ YourFerocity | ConditionSVarCompare$ GEOppsFerocity | SpellDescription$ Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.\nSVar:YourFerocity:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:OppsFerocity:Count$Valid Creature.YouDontCtrl$GreatestCardPower\nDeckHas:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\\nII — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.\\nIII — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Fenrir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

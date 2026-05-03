@@ -1,0 +1,23 @@
+{
+  "id": "proud-pack-rhino-corpus-m680",
+  "description": "M6 corpus — Proud Pack-Rhino; in-hand parse.",
+  "seed": 63821,
+  "cards": {
+    "Proud Pack-Rhino": "Name:Proud Pack-Rhino\nManaCost:2 W\nTypes:Creature Rhino\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBProliferate\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Permanent | CounterType$ SHIELD | CounterNum$ 1 | SpellDescription$ Put a shield counter on target permanent. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\nSVar:DBProliferate:DB$ Proliferate | SpellDescription$ Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nDeckHas:Ability$Counters|Proliferate\nOracle:When Proud Pack-Rhino enters, choose one —\\n• Put a shield counter on target permanent. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\n• Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Proud Pack-Rhino"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

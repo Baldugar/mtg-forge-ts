@@ -1,0 +1,23 @@
+{
+  "id": "last-night-together-corpus-m680",
+  "description": "M6 corpus — Last Night Together; in-hand parse.",
+  "seed": 63189,
+  "cards": {
+    "Last Night Together": "Name:Last Night Together\nManaCost:3 R G\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Creature | TgtPrompt$ Choose two target creatures | TargetMin$ 2 | TargetMax$ 2 | Amount$ 2 | Defined$ You | DefinedCards$ Targeted | SubAbility$ DBUntap | SpellDescription$ Choose two target creatures.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted | SubAbility$ DBPutCounter | SpellDescription$ Untap them.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPump | SpellDescription$ Put two +1/+1 counters on each of them.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Vigilance & Indestructible & Haste | SubAbility$ DBAddCombat | SpellDescription$ They gain vigilance, indestructible, and haste until end of turn.\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | ExtraPhaseDelayedTrigger$ DelTrigStatic | ExtraPhaseDelayedTriggerExcute$ TrigEffect | ConditionPhases$ Main1,Main2 | SpellDescription$ After this main phase, there is an additional combat phase. Only the chosen creatures can attack during that combat phase.\nSVar:DelTrigStatic:Mode$ Phase | Static$ True | Phase$ BeginCombat | TriggerDescription$ After this main phase, there is an additional combat phase. Only the chosen creatures can attack during that combat phase.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ ForbidAttack | Duration$ UntilEndOfCombat\nSVar:ForbidAttack:Mode$ CantAttack | ValidCard$ Creature.nonChosenCard | Description$ CARDNAME can't attack.\nDeckHas:Ability$Counters\nOracle:Choose two target creatures. Untap them. Put two +1/+1 counters on each of them. They gain vigilance, indestructible, and haste until end of turn. After this main phase, there is an additional combat phase. Only the chosen creatures can attack during that combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last Night Together"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

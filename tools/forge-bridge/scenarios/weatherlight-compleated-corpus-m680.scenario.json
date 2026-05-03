@@ -1,0 +1,23 @@
+{
+  "id": "weatherlight-compleated-corpus-m680",
+  "description": "M6 corpus — Weatherlight Compleated; in-hand parse.",
+  "seed": 65015,
+  "cards": {
+    "Weatherlight Compleated": "Name:Weatherlight Compleated\nManaCost:2\nTypes:Legendary Artifact Vehicle\nPT:5/5\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE4_PHYRESIS | AddType$ Creature & Phyrexian | Description$ As long as CARDNAME has four or more phyresis counters on it, it's a Phyrexian creature in addition to its other types.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control dies, put a phyresis counter on CARDNAME. Then draw a card if it has seven or more phyresis counters on it. If it doesn't, scry 1.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PHYRESIS | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Self | ConditionPresent$ Card.Self+counters_GE7_PHYRESIS | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1 | ConditionDefined$ Self | ConditionPresent$ Card.Self+counters_LE6_PHYRESIS\nDeckHints:Ability$Graveyard|Sacrifice & Type$Phyrexian\nDeckHas:Ability$Counters\nOracle:Flying\\nAs long as Weatherlight Compleated has four or more phyresis counters on it, it's a Phyrexian creature in addition to its other types.\\nWhenever a creature you control dies, put a phyresis counter on Weatherlight Compleated. Then draw a card if it has seven or more phyresis counters on it. If it doesn't, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weatherlight Compleated"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

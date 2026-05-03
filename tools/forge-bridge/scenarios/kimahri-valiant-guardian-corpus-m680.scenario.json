@@ -1,0 +1,23 @@
+{
+  "id": "kimahri-valiant-guardian-corpus-m680",
+  "description": "M6 corpus — Kimahri, Valiant Guardian; in-hand parse.",
+  "seed": 63123,
+  "cards": {
+    "Kimahri, Valiant Guardian": "Name:Kimahri, Valiant Guardian\nManaCost:2 G U\nTypes:Legendary Creature Cat Warrior\nPT:3/3\nK:Vigilance\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ RonsoCounter | TriggerDescription$ Ronso Rage — At the beginning of combat on your turn, put a +1/+1 counter on NICKNAME and tap target creature an opponent controls. Then you may have NICKNAME become a copy of that creature, except its name is Kimahri, Valiant Guardian and it has vigilance and this ability.\nSVar:RonsoCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ RonsoTap\nSVar:RonsoTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls. | SubAbility$ RonsoClone\nSVar:RonsoClone:DB$ Clone | Defined$ Targeted | NewName$ Kimahri, Valiant Guardian | GainThisAbility$ True | AddKeywords$ Vigilance | Optional$ True | AddSVars$ RonsoCounter,RonsoTap,RonsoClone | AILogic$ IfDefinedCreatureIsBetter\nOracle:Vigilance\\nRonso Rage — At the beginning of combat on your turn, put a +1/+1 counter on Kimahri and tap target creature an opponent controls. Then you may have Kimahri become a copy of that creature, except its name is Kimahri, Valiant Guardian and it has vigilance and this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kimahri, Valiant Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

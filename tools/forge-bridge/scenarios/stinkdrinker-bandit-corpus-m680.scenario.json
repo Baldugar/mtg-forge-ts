@@ -1,0 +1,23 @@
+{
+  "id": "stinkdrinker-bandit-corpus-m680",
+  "description": "M6 corpus — Stinkdrinker Bandit; in-hand parse.",
+  "seed": 64466,
+  "cards": {
+    "Stinkdrinker Bandit": "Name:Stinkdrinker Bandit\nManaCost:3 B\nTypes:Creature Goblin Rogue\nPT:2/1\nK:Prowl:1 B\nT:Mode$ AttackerUnblocked | ValidCard$ Rogue.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Rogue you control attacks and isn't blocked, it gets +2/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +2 | NumDef$ +1 | Defined$ TriggeredAttacker\nAI:RemoveDeck:Random\nDeckNeeds:Type$Rogue\nOracle:Prowl {1}{B} (You may cast this for its prowl cost if you dealt combat damage to a player this turn with a Goblin or Rogue.)\\nWhenever a Rogue you control attacks and isn't blocked, it gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stinkdrinker Bandit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

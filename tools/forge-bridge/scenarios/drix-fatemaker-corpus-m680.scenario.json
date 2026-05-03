@@ -1,0 +1,23 @@
+{
+  "id": "drix-fatemaker-corpus-m680",
+  "description": "M6 corpus — Drix Fatemaker; in-hand parse.",
+  "seed": 62240,
+  "cards": {
+    "Drix Fatemaker": "Name:Drix Fatemaker\nManaCost:3 G\nTypes:Creature Drix Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature enters, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Trample | Description$ Each creature you control with a +1/+1 counter on it has trample.\nK:Warp:1 G\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When this creature enters, put a +1/+1 counter on target creature.\\nEach creature you control with a +1/+1 counter on it has trample.\\nWarp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drix Fatemaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gatta-and-luzzu-corpus-m680",
+  "description": "M6 corpus — Gatta and Luzzu; in-hand parse.",
+  "seed": 62607,
+  "cards": {
+    "Gatta and Luzzu": "Name:Gatta and Luzzu\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:1/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, choose target creature you control. If damage would be dealt to that creature this turn, prevent that damage and put that many +1/+1 counters on it.\nSVar:TrigEffect:DB$ Effect | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | ReplacementEffects$ DamageEvent | ExileOnMoved$ Battlefield | RememberObjects$ Targeted\nSVar:DamageEvent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Card.IsRemembered | ReplaceWith$ Counters | Description$ If damage would be dealt to that creature this turn, prevent that damage and put that many +1/+1 counters on it.\nSVar:Counters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nOracle:Flash\\nWhen Gatta and Luzzu enters, choose target creature you control. If damage would be dealt to that creature this turn, prevent that damage and put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gatta and Luzzu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

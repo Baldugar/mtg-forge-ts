@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-shackles-corpus-m680",
+  "description": "M6 corpus — Vedalken Shackles; in-hand parse.",
+  "seed": 64900,
+  "cards": {
+    "Vedalken Shackles": "Name:Vedalken Shackles\nManaCost:3\nTypes:Artifact\nK:You may choose not to untap CARDNAME during your untap step.\nA:AB$ GainControl | Cost$ 2 T | ValidTgts$ Creature.powerLEX | TgtPrompt$ Select target creature with power less than or equal to the number of Islands you control | LoseControl$ Untap,LeavesPlay | SpellDescription$ Gain control of target creature with power less than or equal to the number of Islands you control for as long as CARDNAME remains tapped.\nSVar:X:Count$Valid Island.YouCtrl\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:You may choose not to untap Vedalken Shackles during your untap step.\\n{2}, {T}: Gain control of target creature with power less than or equal to the number of Islands you control for as long as Vedalken Shackles remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Shackles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

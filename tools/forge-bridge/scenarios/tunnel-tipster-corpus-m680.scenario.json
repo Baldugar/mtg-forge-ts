@@ -1,0 +1,23 @@
+{
+  "id": "tunnel-tipster-corpus-m680",
+  "description": "M6 corpus — Tunnel Tipster; in-hand parse.",
+  "seed": 64817,
+  "cards": {
+    "Tunnel Tipster": "Name:Tunnel Tipster\nManaCost:1 G\nTypes:Creature Mole Scout\nPT:1/1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ FaceDown | Execute$ TrigPutCounters | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if a face-down creature entered the battlefield under your control this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nSVar:FaceDown:Count$ThisTurnEntered_Battlefield_Creature.faceDown+YouCtrl\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, if a face-down creature entered the battlefield under your control this turn, put a +1/+1 counter on Tunnel Tipster.\\n{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tunnel Tipster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

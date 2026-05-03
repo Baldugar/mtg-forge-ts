@@ -1,0 +1,23 @@
+{
+  "id": "exuberant-firestoker-corpus-m680",
+  "description": "M6 corpus — Exuberant Firestoker; in-hand parse.",
+  "seed": 62408,
+  "cards": {
+    "Exuberant Firestoker": "Name:Exuberant Firestoker\nManaCost:2 R\nTypes:Creature Human Druid Shaman\nPT:1/1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | IsPresent$ Creature.powerGE5+YouCtrl | Execute$ TrigDamage | TriggerDescription$ At the beginning of your end step, if you control a creature with power 5 or greater, you may have CARDNAME deal 2 damage to target player or planeswalker.\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 2\nOracle:At the beginning of your end step, if you control a creature with power 5 or greater, you may have Exuberant Firestoker deal 2 damage to target player or planeswalker.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exuberant Firestoker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

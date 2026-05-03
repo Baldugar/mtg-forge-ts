@@ -1,0 +1,23 @@
+{
+  "id": "wyll-blade-of-frontiers-corpus-m680",
+  "description": "M6 corpus — Wyll, Blade of Frontiers; in-hand parse.",
+  "seed": 65101,
+  "cards": {
+    "Wyll, Blade of Frontiers": "Name:Wyll, Blade of Frontiers\nManaCost:1 R\nTypes:Legendary Creature Human Warlock\nPT:1/1\nR:Event$ RollDice | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ PlusRoll | Description$ If you would roll one or more dice, instead roll that many dice plus one and ignore the lowest roll.\nSVar:PlusRoll:DB$ ReplaceEffect | VarName$ Number | VarValue$ ReplaceCount$Number/Plus.1 | SubAbility$ IgnoreLowest\nSVar:IgnoreLowest:DB$ ReplaceEffect | VarName$ Ignore | VarValue$ ReplaceCount$Ignore/Plus.1\nT:Mode$ RolledDieOnce | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPut | TriggerDescription$ Whenever you roll one or more dice, put a +1/+1 counter on CARDNAME.\nSVar:TrigPut:DB$ PutCounter | CounterType$ P1P1\nK:Choose a Background\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:If you would roll one or more dice, instead roll that many dice plus one and ignore the lowest roll.\\nWhenever you roll one or more dice, put a +1/+1 counter on Wyll, Blade of Frontiers.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wyll, Blade of Frontiers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

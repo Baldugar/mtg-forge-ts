@@ -1,0 +1,23 @@
+{
+  "id": "emeria-captain-corpus-m680",
+  "description": "M6 corpus — Emeria Captain; in-hand parse.",
+  "seed": 62322,
+  "cards": {
+    "Emeria Captain": "Name:Emeria Captain\nManaCost:3 W\nTypes:Creature Angel Warrior\nPT:1/1\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on it for each creature in your party.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterNum$ X | CounterType$ P1P1\nSVar:X:Count$Party\nSVar:BuffedBy:Cleric,Rogue,Wizard\nDeckHas:Ability$Party|Counters\nDeckHints:Type$Cleric|Rogue|Wizard\nOracle:Flying, vigilance\\nWhen Emeria Captain enters, put a +1/+1 counter on it for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emeria Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

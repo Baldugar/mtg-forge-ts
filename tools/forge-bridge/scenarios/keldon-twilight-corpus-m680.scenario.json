@@ -1,0 +1,23 @@
+{
+  "id": "keldon-twilight-corpus-m680",
+  "description": "M6 corpus — Keldon Twilight; in-hand parse.",
+  "seed": 63105,
+  "cards": {
+    "Keldon Twilight": "Name:Keldon Twilight\nManaCost:1 B R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | CheckSVar$ AttackedThisTurn | SVarCompare$ EQ0 | TriggerDescription$ At the beginning of each player's end step, if no creatures attacked this turn, that player sacrifices a creature they controlled since the beginning of the turn.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature.!firstTurnControlled\nSVar:AttackedThisTurn:PlayerCountPlayers$AttackersDeclared\nOracle:At the beginning of each player's end step, if no creatures attacked this turn, that player sacrifices a creature they controlled since the beginning of the turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

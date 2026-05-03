@@ -1,0 +1,23 @@
+{
+  "id": "blessed-alliance-corpus-m680",
+  "description": "M6 corpus — Blessed Alliance; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Blessed Alliance": "Name:Blessed Alliance\nManaCost:1 W\nTypes:Instant\nK:Escalate:2\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 3 | Choices$ DBGainLife,DBUntap,DBSacrifice\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | TgtPrompt$ Select target player (to gain 4 life) | LifeAmount$ 4 | SpellDescription$ Target player gains 4 life.\nSVar:DBUntap:DB$ Untap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | SpellDescription$ Untap up to two target creatures.\nSVar:DBSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | TgtPrompt$ Select target player (to sacrifice an attacking creature) | SacValid$ Creature.attacking | SacMessage$ Creature | SpellDescription$ Target opponent sacrifices an attacking creature.\nOracle:Escalate {2} (Pay this cost for each mode chosen beyond the first.)\\nChoose one or more —\\n• Target player gains 4 life.\\n• Untap up to two target creatures.\\n• Target opponent sacrifices an attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessed Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rashmi-eternities-crafter-corpus-m680",
+  "description": "M6 corpus — Rashmi, Eternities Crafter; in-hand parse.",
+  "seed": 63901,
+  "cards": {
+    "Rashmi, Eternities Crafter": "Name:Rashmi, Eternities Crafter\nManaCost:2 G U\nTypes:Legendary Creature Elf Druid\nPT:2/3\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | ValidCard$ Card | Execute$ DBReveal | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first spell each turn, reveal the top card of your library. You may cast it without paying its mana cost if it's a spell with lesser mana value. If you don't cast it, put it into your hand.\nSVar:DBReveal:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card | RememberRevealed$ True | SubAbility$ DBMayCast\nSVar:DBMayCast:DB$ Play | Defined$ Remembered | ForgetRemembered$ True | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GTY | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | NoShuffle$ True | ForgetChanged$ True\nSVar:X:TriggeredCard$CardManaCost\nSVar:Y:Remembered$CardManaCost\nOracle:Whenever you cast your first spell each turn, reveal the top card of your library. You may cast it without paying its mana cost if it's a spell with lesser mana value. If you don't cast it, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rashmi, Eternities Crafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

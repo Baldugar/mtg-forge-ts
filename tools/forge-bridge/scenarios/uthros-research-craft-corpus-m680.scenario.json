@@ -1,0 +1,23 @@
+{
+  "id": "uthros-research-craft-corpus-m680",
+  "description": "M6 corpus — Uthros Research Craft; in-hand parse.",
+  "seed": 64871,
+  "cards": {
+    "Uthros Research Craft": "Name:Uthros Research Craft\nManaCost:2 U\nTypes:Artifact Spacecraft\nPT:0/8\nK:Station:12\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE3_CHARGE | AddTrigger$ CastTrig | Description$ STATION 3+ Whenever you cast an artifact spell, draw a card. Put a charge counter on this Spacecraft.\nSVar:CastTrig:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell, draw a card. Put a charge counter on this Spacecraft.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE12_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddStaticAbility$ CraftStatic | Description$ STATION 12+ Flying,,,This Spacecraft gets +1/+0 for each artifact you control.\nSVar:CraftStatic:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ This Spacecraft gets +1/+0 for each artifact you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 12+.)\\nSTATION 3+\\nWhenever you cast an artifact spell, draw a card. Put a charge counter on this Spacecraft.\\nSTATION 12+\\nFlying\\nThis Spacecraft gets +1/+0 for each artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uthros Research Craft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

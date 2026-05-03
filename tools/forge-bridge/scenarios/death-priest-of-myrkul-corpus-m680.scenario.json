@@ -1,0 +1,23 @@
+{
+  "id": "death-priest-of-myrkul-corpus-m680",
+  "description": "M6 corpus — Death-Priest of Myrkul; in-hand parse.",
+  "seed": 62115,
+  "cards": {
+    "Death-Priest of Myrkul": "Name:Death-Priest of Myrkul\nManaCost:2 B B\nTypes:Creature Tiefling Cleric\nPT:2/2\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl,Skeleton.YouCtrl,Vampire.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Skeletons, Vampires, and Zombies you control get +1/+1.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if a creature died this turn, you may pay {1}. If you do, create a 1/1 black Skeleton creature token.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenScript$ b_1_1_skeleton | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nDeckHints:Type$Skeleton|Zombie|Vampire\nOracle:Skeletons, Vampires, and Zombies you control get +1/+1.\\nAt the beginning of your end step, if a creature died this turn, you may pay {1}. If you do, create a 1/1 black Skeleton creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death-Priest of Myrkul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragon-cultist-corpus-m680",
+  "description": "M6 corpus — Dragon Cultist; in-hand parse.",
+  "seed": 62220,
+  "cards": {
+    "Dragon Cultist": "Name:Dragon Cultist\nManaCost:4 R\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ TrigDragon | Description$ Commander creatures you own have \"At the beginning of your end step, if a source you controlled dealt 5 or more damage this turn, create a 4/4 red Dragon creature token with flying.\"\nSVar:TrigDragon:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckDefinedPlayer$ You.damageDoneSingleSource GE5 | Execute$ DBDragon | TriggerDescription$ At the beginning of your end step, if a source you controlled dealt 5 or more damage this turn, create a 4/4 red Dragon creature token with flying.\nSVar:DBDragon:DB$ Token | TokenScript$ r_4_4_dragon_flying\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Dragon\nOracle:Commander creatures you own have \"At the beginning of your end step, if a source you controlled dealt 5 or more damage this turn, create a 4/4 red Dragon creature token with flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Cultist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

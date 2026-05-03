@@ -1,0 +1,23 @@
+{
+  "id": "spark-double-corpus-m680",
+  "description": "M6 corpus — Spark Double; in-hand parse.",
+  "seed": 64385,
+  "cards": {
+    "Spark Double": "Name:Spark Double\nManaCost:3 U\nTypes:Creature Illusion\nPT:0/0\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other+YouCtrl,Planeswalker.Other+YouCtrl | NonLegendary$ True | SubAbility$ DBConditionEffect | SpellDescription$ You may have CARDNAME enter as a copy of a creature or planeswalker you control, except it enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker, and it isn't legendary if that permanent is legendary.\nSVar:DBConditionEffect:DB$ Effect | RememberObjects$ Self | ReplacementEffects$ ETBCreatPlans\nSVar:ETBCreatPlans:Event$ Moved | ValidCard$ Creature.IsRemembered,Planeswalker.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ It enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedNewCard.Creature | CounterType$ P1P1 | ETB$ True | CounterNum$ 1 | SubAbility$ DBPutLOYALTY\nSVar:DBPutLOYALTY:DB$ PutCounter | Defined$ ReplacedNewCard.Planeswalker | CounterType$ LOYALTY | ETB$ True | CounterNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:Count$Valid Creature.YouCtrl/Plus.Z1\nSVar:Z1:Count$Valid Planeswalker.YouCtrl\nDeckHas:Ability$Counters\nOracle:You may have Spark Double enter as a copy of a creature or planeswalker you control, except it enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker, and it isn't legendary if that permanent is legendary.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spark Double"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

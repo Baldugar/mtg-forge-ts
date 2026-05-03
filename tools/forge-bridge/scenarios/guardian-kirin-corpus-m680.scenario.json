@@ -1,0 +1,23 @@
+{
+  "id": "guardian-kirin-corpus-m680",
+  "description": "M6 corpus — Guardian Kirin; in-hand parse.",
+  "seed": 62746,
+  "cards": {
+    "Guardian Kirin": "Name:Guardian Kirin\nManaCost:3 W\nTypes:Creature Kirin\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever another creature you control dies, put a +1/+1 counter on Guardian Kirin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Kirin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

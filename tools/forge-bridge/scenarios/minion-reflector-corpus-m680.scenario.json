@@ -1,0 +1,23 @@
+{
+  "id": "minion-reflector-corpus-m680",
+  "description": "M6 corpus — Minion Reflector; in-hand parse.",
+  "seed": 63421,
+  "cards": {
+    "Minion Reflector": "Name:Minion Reflector\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigCopy | OptionalDecider$ You | TriggerDescription$ Whenever a nontoken creature you control enters, you may pay {2}. If you do, create a token that's a copy of that creature, except it has haste and \"At the beginning of the end step, sacrifice this permanent.\"\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ 2 | Defined$ TriggeredCardLKICopy | AddKeywords$ Haste | AtEOTTrig$ Sacrifice\nSVar:BuffedBy:Creature\nOracle:Whenever a nontoken creature you control enters, you may pay {2}. If you do, create a token that's a copy of that creature, except it has haste and \"At the beginning of the end step, sacrifice this permanent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion Reflector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

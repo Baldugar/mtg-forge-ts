@@ -1,0 +1,23 @@
+{
+  "id": "spoils-of-adventure-corpus-m680",
+  "description": "M6 corpus — Spoils of Adventure; in-hand parse.",
+  "seed": 64426,
+  "cards": {
+    "Spoils of Adventure": "Name:Spoils of Adventure\nManaCost:4 W U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature in your party.\nSVar:X:Count$Party\nA:SP$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw | SpellDescription$ You gain 3 life and draw three cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 3\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:This spell costs {1} less to cast for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\\nYou gain 3 life and draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spoils of Adventure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

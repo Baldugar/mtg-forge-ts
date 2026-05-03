@@ -1,0 +1,23 @@
+{
+  "id": "ezuri-claw-of-progress-corpus-m680",
+  "description": "M6 corpus — Ezuri, Claw of Progress; in-hand parse.",
+  "seed": 62417,
+  "cards": {
+    "Ezuri, Claw of Progress": "Name:Ezuri, Claw of Progress\nManaCost:2 G U\nTypes:Legendary Creature Phyrexian Elf Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control with power 2 or less enters, you get an experience counter.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPutCounter2 | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is the number of experience counters you have.\nSVar:TrigPutCounter2:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$YourCountersExperience\nSVar:BuffedBy:Creature.powerLE2\nOracle:Whenever a creature you control with power 2 or less enters, you get an experience counter.\\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is the number of experience counters you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ezuri, Claw of Progress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

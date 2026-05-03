@@ -1,0 +1,23 @@
+{
+  "id": "paired-tactician-corpus-m680",
+  "description": "M6 corpus — Paired Tactician; in-hand parse.",
+  "seed": 63684,
+  "cards": {
+    "Paired Tactician": "Name:Paired Tactician\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Warrior.attacking+Other | NoResolvingCheck$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME and at least one other Warrior attack, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Warrior\nOracle:Whenever Paired Tactician and at least one other Warrior attack, put a +1/+1 counter on Paired Tactician.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paired Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hellkite-charger-corpus-m680",
+  "description": "M6 corpus — Hellkite Charger; in-hand parse.",
+  "seed": 62815,
+  "cards": {
+    "Hellkite Charger": "Name:Hellkite Charger\nManaCost:4 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, you may pay {5}{R}{R}. If you do, untap all attacking creatures and after this phase, there is an additional combat phase.\nSVar:TrigUntap:AB$ UntapAll | Cost$ 5 R R | ValidCards$ Creature.attacking | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nSVar:PlayMain1:TRUE\nOracle:Flying, haste\\nWhenever Hellkite Charger attacks, you may pay {5}{R}{R}. If you do, untap all attacking creatures and after this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellkite Charger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

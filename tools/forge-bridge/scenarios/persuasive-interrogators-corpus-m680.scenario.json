@@ -1,0 +1,23 @@
+{
+  "id": "persuasive-interrogators-corpus-m680",
+  "description": "M6 corpus — Persuasive Interrogators; in-hand parse.",
+  "seed": 63726,
+  "cards": {
+    "Persuasive Interrogators": "Name:Persuasive Interrogators\nManaCost:4 B B\nTypes:Creature Gorgon Detective\nPT:5/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue | TriggerZones$ Battlefield | Execute$ TrigPoison | TriggerDescription$ Whenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)\nSVar:TrigPoison:DB$ Poison | ValidTgts$ Opponent | Num$ 2\nDeckHas:Ability$Investigate|Token & Type$Artifact|Clue\nDeckHints:Ability$Sacrifice & Type$Clue\nOracle:When Persuasive Interrogators enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Persuasive Interrogators"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

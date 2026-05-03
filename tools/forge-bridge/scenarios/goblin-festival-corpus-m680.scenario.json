@@ -1,0 +1,23 @@
+{
+  "id": "goblin-festival-corpus-m680",
+  "description": "M6 corpus — Goblin Festival; in-hand parse.",
+  "seed": 62686,
+  "cards": {
+    "Goblin Festival": "Name:Goblin Festival\nManaCost:1 R\nTypes:Enchantment\nA:AB$ DealDamage | Cost$ 2 | NumDmg$ 1 | ValidTgts$ Any | SubAbility$ ControlFlip | SpellDescription$ CARDNAME deals 1 damage to any target. Flip a coin. If you lose the flip, choose one of your opponents. That player gains control of CARDNAME.\nSVar:ControlFlip:DB$ FlipACoin | Defined$ You | LoseSubAbility$ ChooseOpp\nSVar:ChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | AILogic$ Curse | SubAbility$ LoseControl\nSVar:LoseControl:DB$ GainControl | Defined$ Self | NewController$ ChosenPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nOracle:{2}: Goblin Festival deals 1 damage to any target. Flip a coin. If you lose the flip, choose one of your opponents. That player gains control of Goblin Festival.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Festival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

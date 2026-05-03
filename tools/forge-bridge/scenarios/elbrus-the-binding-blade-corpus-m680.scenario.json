@@ -1,0 +1,23 @@
+{
+  "id": "elbrus-the-binding-blade-corpus-m680",
+  "description": "M6 corpus — Elbrus, the Binding Blade; in-hand parse.",
+  "seed": 62290,
+  "cards": {
+    "Elbrus, the Binding Blade": "Name:Elbrus, the Binding Blade\nManaCost:7\nTypes:Legendary Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Equipped creature gets +1/+0.\\nWhen equipped creature deals combat damage to a player, unattach Elbrus, the Binding Blade, then transform it.\\nEquip {1}\n\nALTERNATE\n\nName:Withengar Unbound\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Demon\nPT:13/13\nK:Flying\nK:Trample\nK:Intimidate\nT:Mode$ LosesGame | Execute$ TrigCounter | TriggerDescription$ Whenever a player loses the game, put thirteen +1/+1 counters on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 13\nOracle:Flying, intimidate, trample (A creature with intimidate can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhenever a player loses the game, put thirteen +1/+1 counters on Withengar Unbound.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elbrus, the Binding Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

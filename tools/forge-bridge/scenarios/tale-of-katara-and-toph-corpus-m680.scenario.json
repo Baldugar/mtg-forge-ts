@@ -1,0 +1,23 @@
+{
+  "id": "tale-of-katara-and-toph-corpus-m680",
+  "description": "M6 corpus — Tale of Katara and Toph; in-hand parse.",
+  "seed": 64583,
+  "cards": {
+    "Tale of Katara and Toph": "Name:Tale of Katara and Toph\nManaCost:2 G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddTrigger$ TapTrig | Description$ Creatures you control have \"Whenever this creature becomes tapped for the first time during each of your turns, put a +1/+1 counter on it.\"\nSVar:TapTrig:Mode$ Taps | ValidCard$ Card.Self | FirstTime$ True | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature becomes tapped for the first time during each of your turns, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nOracle:Creatures you control have \"Whenever this creature becomes tapped for the first time during each of your turns, put a +1/+1 counter on it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tale of Katara and Toph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

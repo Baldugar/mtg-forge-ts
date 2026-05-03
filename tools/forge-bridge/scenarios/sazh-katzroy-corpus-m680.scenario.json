@@ -1,0 +1,23 @@
+{
+  "id": "sazh-katzroy-corpus-m680",
+  "description": "M6 corpus — Sazh Katzroy; in-hand parse.",
+  "seed": 64140,
+  "cards": {
+    "Sazh Katzroy": "Name:Sazh Katzroy\nManaCost:3 G\nTypes:Legendary Creature Human Pilot\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Bird or basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Bird,Land.Basic | ShuffleNonMandatory$ True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on target creature, then double the number of +1/+1 counters on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBMultiplyCounter\nSVar:DBMultiplyCounter:DB$ MultiplyCounter | Defined$ Targeted | CounterType$ P1P1\nOracle:When Sazh Katzroy enters, you may search your library for a Bird or basic land card, reveal it, put it into your hand, then shuffle.\\nWhenever Sazh Katzroy attacks, put a +1/+1 counter on target creature, then double the number of +1/+1 counters on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sazh Katzroy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "taj-nar-swordsmith-corpus-m680",
+  "description": "M6 corpus — Taj-Nar Swordsmith; in-hand parse.",
+  "seed": 64576,
+  "cards": {
+    "Taj-Nar Swordsmith": "Name:Taj-Nar Swordsmith\nManaCost:3 W\nTypes:Creature Cat Soldier\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may pay {X}. If you do, search your library for an Equipment card with mana value X or less, put that card onto the battlefield, then shuffle.\nSVar:TrigChange:AB$ ChangeZone | Cost$ X | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Equipment+cmcLEX | ChangeNum$ 1\nSVar:X:Count$xPaid\nOracle:When Taj-Nar Swordsmith enters, you may pay {X}. If you do, search your library for an Equipment card with mana value X or less, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taj-Nar Swordsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

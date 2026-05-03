@@ -1,0 +1,23 @@
+{
+  "id": "nightmare-sower-corpus-m680",
+  "description": "M6 corpus — Nightmare Sower; in-hand parse.",
+  "seed": 63555,
+  "cards": {
+    "Nightmare Sower": "Name:Nightmare Sower\nManaCost:3 B\nTypes:Creature Faerie Assassin\nPT:2/3\nK:Flying\nK:Lifelink\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell during an opponent's turn, put a -1/-1 counter on up to one target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nOracle:Flying, lifelink\\nWhenever you cast a spell during an opponent's turn, put a -1/-1 counter on up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightmare Sower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

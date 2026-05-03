@@ -1,0 +1,23 @@
+{
+  "id": "mikey-don-party-planners-corpus-m680",
+  "description": "M6 corpus — Mikey & Don, Party Planners; in-hand parse.",
+  "seed": 63404,
+  "cards": {
+    "Mikey & Don, Party Planners": "Name:Mikey & Don, Party Planners\nManaCost:2 GU GU\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:3/3\nK:Ward:2\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Land.TopLibrary+YouOwn,Mutant.TopLibrary+YouOwn,Ninja.TopLibrary+YouOwn,Turtle.TopLibrary+YouOwn | AffectedZone$ Library | MayPlay$ True | Description$ You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.\nT:Mode$ SpellCast | ValidCard$ Creature | ValidSA$ Spell.MayPlaySource | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEffect | Secondary$ True | Static$ True | TriggerDescription$ If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | Origin$ Stack | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBCounter\nSVar:ETBCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHas:Ability$Counters\nDeckHints:Type$Mutant|Ninja|Turtle\nOracle:Ward {2}\\nYou may look at the top card of your library any time.\\nYou may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mikey & Don, Party Planners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

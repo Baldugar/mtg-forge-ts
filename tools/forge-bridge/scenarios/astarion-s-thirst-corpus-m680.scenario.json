@@ -1,0 +1,23 @@
+{
+  "id": "astarion-s-thirst-corpus-m680",
+  "description": "M6 corpus — Astarion's Thirst; in-hand parse.",
+  "seed": 61590,
+  "cards": {
+    "Astarion's Thirst": "Name:Astarion's Thirst\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBPutCounter | SpellDescription$ Exile target creature.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl+IsCommander | CounterType$ P1P1 | CounterNum$ X | StackDescription$ SpellDescription | SpellDescription$ Put X +1/+1 counters on a commander creature you control, where X is the power of the creature exiled this way.\nSVar:X:Targeted$CardPower\nDeckHas:Ability$Counters\nOracle:Exile target creature. Put X +1/+1 counters on a commander creature you control, where X is the power of the creature exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astarion's Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

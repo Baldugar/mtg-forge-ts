@@ -1,0 +1,23 @@
+{
+  "id": "glacial-dragonhunt-corpus-m680",
+  "description": "M6 corpus — Glacial Dragonhunt; in-hand parse.",
+  "seed": 62649,
+  "cards": {
+    "Glacial Dragonhunt": "Name:Glacial Dragonhunt\nManaCost:U R\nTypes:Sorcery\nA:SP$ Draw | SubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Draw a card, then you may discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | Optional$ True | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBImmediateTrig | StackDescription$ None\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | Execute$ TrigDamage | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ When you discard a nonland card this way, CARDNAME deals 3 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Creature\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Harmonize:4 U R\nOracle:Draw a card, then you may discard a card. When you discard a nonland card this way, Glacial Dragonhunt deals 3 damage to target creature.\\nHarmonize {4}{U}{R} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glacial Dragonhunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

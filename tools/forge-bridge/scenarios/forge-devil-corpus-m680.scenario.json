@@ -1,0 +1,23 @@
+{
+  "id": "forge-devil-corpus-m680",
+  "description": "M6 corpus — Forge Devil; in-hand parse.",
+  "seed": 62539,
+  "cards": {
+    "Forge Devil": "Name:Forge Devil\nManaCost:R\nTypes:Creature Devil\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target creature and 1 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | DamageMap$ True | SubAbility$ DBDamageYou\nSVar:DBDamageYou:DB$ DealDamage | Defined$ You | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:When Forge Devil enters, it deals 1 damage to target creature and 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forge Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

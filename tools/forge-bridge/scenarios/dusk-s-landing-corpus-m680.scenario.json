@@ -1,0 +1,23 @@
+{
+  "id": "dusk-s-landing-corpus-m680",
+  "description": "M6 corpus — Dusk's Landing; in-hand parse.",
+  "seed": 62260,
+  "cards": {
+    "Dusk's Landing": "Name:Dusk's Landing\nManaCost:B\nTypes:Sorcery\nA:SP$ Branch | BranchConditionSVar$ LifeCheck | BranchConditionSVarCompare$ GE2 | FalseSubAbility$ DBDraw | TrueSubAbility$ DBSeek | SpellDescription$ Draw a card. If an opponent lost life this turn and you gained life this turn, seek two Vampire cards instead.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:DBSeek:DB$ Seek | Num$ 2 | Type$ Vampire | SpellDescription$ Seek two Vampire cards.\nSVar:LifeCheck:SVar$Y/Plus.X\nSVar:X:Count$LifeOppsLostThisTurn/LimitMax.1\nSVar:Y:Count$LifeYouGainedThisTurn/LimitMax.1\nDeckNeeds:Type$Vampire & Ability$LifeGain\nOracle:Draw a card. If an opponent lost life this turn and you gained life this turn, seek two Vampire cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dusk's Landing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

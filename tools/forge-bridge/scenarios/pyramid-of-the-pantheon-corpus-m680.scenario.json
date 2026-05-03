@@ -1,0 +1,23 @@
+{
+  "id": "pyramid-of-the-pantheon-corpus-m680",
+  "description": "M6 corpus — Pyramid of the Pantheon; in-hand parse.",
+  "seed": 63845,
+  "cards": {
+    "Pyramid of the Pantheon": "Name:Pyramid of the Pantheon\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ 2 T | Produced$ Any | SubAbility$ DBPutCounter | SpellDescription$ Add one mana of any color. Put a brick counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ BRICK | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | CheckSVar$ X | SVarCompare$ GE3 | SpellDescription$ Add three mana of any one color. Activate only if there are three or more brick counters on CARDNAME.\nSVar:X:Count$CardCounters.BRICK\nOracle:{2}, {T}: Add one mana of any color. Put a brick counter on Pyramid of the Pantheon.\\n{T}: Add three mana of any one color. Activate only if there are three or more brick counters on Pyramid of the Pantheon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyramid of the Pantheon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grasping-longneck-corpus-m680",
+  "description": "M6 corpus — Grasping Longneck; in-hand parse.",
+  "seed": 62711,
+  "cards": {
+    "Grasping Longneck": "Name:Grasping Longneck\nManaCost:2 G\nTypes:Enchantment Creature Horror\nPT:4/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, you gain 2 life.\nSVar:TrigSac:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 2\nOracle:Reach\\nWhen Grasping Longneck dies, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grasping Longneck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ravager-s-mace-corpus-m680",
+  "description": "M6 corpus — Ravager's Mace; in-hand parse.",
+  "seed": 63905,
+  "cards": {
+    "Ravager's Mace": "Name:Ravager's Mace\nManaCost:1 B R\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddKeyword$ Menace | Description$ Equipped creature gets +1/+0 for each creature in your party and has menace. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:X:Count$Party\nK:Equip:2 B R\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:When Ravager's Mace enters, attach it to target creature you control.\\nEquipped creature gets +1/+0 for each creature in your party and has menace. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\\nEquip {2}{B}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravager's Mace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

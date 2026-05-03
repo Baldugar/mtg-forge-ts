@@ -1,0 +1,23 @@
+{
+  "id": "mysterious-stranger-corpus-m680",
+  "description": "M6 corpus — Mysterious Stranger; in-hand parse.",
+  "seed": 63506,
+  "cards": {
+    "Mysterious Stranger": "Name:Mysterious Stranger\nManaCost:2 R R\nTypes:Creature Human Rogue\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, for each graveyard with an instant or sorcery card in it, exile target instant or sorcery card from that graveyard. If two or more cards are exiled this way, choose one of them at random and copy it. You may cast the copy without paying its mana cost.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Instant,Sorcery | TgtPrompt$ For each player, select a target instant or sorcery card from their graveyard. | TargetMin$ OneEach | TargetMax$ OneEach | TargetsWithDifferentControllers$ True | RememberChanged$ True | SubAbility$ ChooseRandom\nSVar:ChooseRandom:DB$ ChooseCard | Choices$ Card.IsRemembered | ChoiceZone$ Exile | Defined$ You | Amount$ 1 | AtRandom$ True | ConditionCheckSVar$ CountExiled | ConditionSVarCompare$ GE2 | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.ChosenCard | ValidSA$ Spell | ValidZone$ Exile | WithoutManaCost$ True | Optional$ True | CopyCard$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:OneEach:PlayerCountPlayers$HasPropertyHasCardsInGraveyard_Instant,Sorcery_GE1\nSVar:CountExiled:Count$ValidExile Card.IsRemembered\nOracle:Flash\\nWhen Mysterious Stranger enters, for each graveyard with an instant or sorcery card in it, exile target instant or sorcery card from that graveyard. If two or more cards are exiled this way, choose one of them at random and copy it. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mysterious Stranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

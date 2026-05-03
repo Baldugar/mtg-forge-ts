@@ -1,0 +1,23 @@
+{
+  "id": "illicit-masquerade-corpus-m680",
+  "description": "M6 corpus — Illicit Masquerade; in-hand parse.",
+  "seed": 62904,
+  "cards": {
+    "Illicit Masquerade": "Name:Illicit Masquerade\nManaCost:3 B\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCountersAll | TriggerDescription$ When CARDNAME enters, put an impostor counter on each creature you control.\nSVar:TrigPutCountersAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ IMPOSTOR | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Creature.YouCtrl+counters_GE1_IMPOSTOR | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with an impostor counter on it dies, exile it. Return up to one other target creature card from your graveyard to the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredCard | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose up to one other target creature card in your graveyard | ValidTgts$ Creature.YouOwn+!TriggeredCard | TargetMin$ 0 | TargetMax$ 1\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Ability$Graveyard|Discard|Mill\nOracle:Flash\\nWhen Illicit Masquerade enters, put an impostor counter on each creature you control.\\nWhenever a creature you control with an impostor counter on it dies, exile it. Return up to one other target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illicit Masquerade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

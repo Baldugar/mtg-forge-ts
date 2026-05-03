@@ -1,0 +1,23 @@
+{
+  "id": "elite-arcanist-corpus-m680",
+  "description": "M6 corpus — Elite Arcanist; in-hand parse.",
+  "seed": 62303,
+  "cards": {
+    "Elite Arcanist": "Name:Elite Arcanist\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, you may exile an instant card from your hand.\nSVar:TrigExile:DB$ ChangeZone | RememberChanged$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant | ChangeNum$ 1\nA:AB$ Play | Cost$ X T | Valid$ Card.IsRemembered+ExiledWithSource | ValidSA$ Spell | ValidZone$ Exile | Amount$ All | WithoutManaCost$ True | Optional$ True | CopyCard$ True | SpellDescription$ Copy the exiled card. You may cast the copy without paying its mana cost. X is the mana value of the exiled card.\nSVar:X:Remembered$CardManaCost\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered+ExiledWithSource | Origin$ Exile | Destination$ Any | Execute$ ForgetCard | Static$ True\nSVar:ForgetCard:DB$ Cleanup | ForgetDefined$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\n# Amount$ All | CopyOnce$ True for Strionic Resonator\nAI:RemoveDeck:All\nOracle:When Elite Arcanist enters, you may exile an instant card from your hand.\\n{X}, {T}: Copy the exiled card. You may cast the copy without paying its mana cost. X is the mana value of the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elite Arcanist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

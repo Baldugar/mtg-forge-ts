@@ -1,0 +1,23 @@
+{
+  "id": "call-of-the-death-dweller-corpus-m680",
+  "description": "M6 corpus — Call of the Death-Dweller; in-hand parse.",
+  "seed": 61840,
+  "cards": {
+    "Call of the Death-Dweller": "Name:Call of the Death-Dweller\nManaCost:2 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 2 | MaxTotalTargetCMC$ 3 | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select up to two target creature cards with total mana value 3 or less | SubAbility$ DBPutCounter | RememberChanged$ True | StackDescription$ SpellDescription | SpellDescription$ Return up to two target creature cards with total mana value 3 or less from your graveyard to the battlefield. Put a deathtouch counter on either of them. Then put a menace counter on either of them.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.IsRemembered | ChoiceTitle$ Choose a creature to put a deathtouch counter on | CounterType$ Deathtouch | CounterNum$ 1 | SubAbility$ DBPutCounter2 | StackDescription$ None\nSVar:DBPutCounter2:DB$ PutCounter | Choices$ Creature.IsRemembered | ChoiceTitle$ Choose a creature to put a menace counter on | CounterType$ Menace | CounterNum$ 1 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Return up to two target creature cards with total mana value 3 or less from your graveyard to the battlefield. Put a deathtouch counter on either of them. Then put a menace counter on either of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call of the Death-Dweller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

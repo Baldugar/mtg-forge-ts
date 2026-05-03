@@ -1,0 +1,23 @@
+{
+  "id": "sibylline-soothsayer-corpus-m680",
+  "description": "M6 corpus — Sibylline Soothsayer; in-hand parse.",
+  "seed": 64270,
+  "cards": {
+    "Sibylline Soothsayer": "Name:Sibylline Soothsayer\nManaCost:2 R\nTypes:Creature Human Warlock\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Temporal Foresight — When CARDNAME enters, reveal cards from the top of your library until you reveal a nonland card with mana value 3 or greater. Exile that card with three time counters on it. If it doesn't have suspend, it gains suspend. Put the rest of the revealed cards on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Card.nonLand+cmcGE3 | ValidDescription$ nonland permanent with mana value 3 or greater | FoundDestination$ Exile | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberFound$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ TIME | CounterNum$ 3 | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ Pump | Defined$ Remembered.withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Temporal Foresight — When Sibylline Soothsayer enters, reveal cards from the top of your library until you reveal a nonland card with mana value 3 or greater. Exile that card with three time counters on it. If it doesn't have suspend, it gains suspend. Put the rest of the revealed cards on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibylline Soothsayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

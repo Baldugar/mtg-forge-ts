@@ -1,0 +1,23 @@
+{
+  "id": "owyn-lady-of-rohan-corpus-m680",
+  "description": "M6 corpus — Éowyn, Lady of Rohan; in-hand parse.",
+  "seed": 62348,
+  "cards": {
+    "Éowyn, Lady of Rohan": "Name:Éowyn, Lady of Rohan\nManaCost:2 W\nTypes:Legendary Creature Human Noble\nPT:2/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature gains your choice of first strike or vigilance until end of turn. If that creature is equipped, it gains first strike and vigilance until end of turn instead.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ Equipped | FalseSubAbility$ NotEquipped\nSVar:Equipped:DB$ Pump | Defined$ Targeted | KW$ First Strike & Vigilance\nSVar:NotEquipped:DB$ Pump | KWChoice$ First Strike,Vigilance | Defined$ Targeted\nSVar:X:Targeted$Valid Card.equipped\nS:Mode$ ReduceCost | ValidCard$ Card | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 1 | Description$ Equip abilities you activate cost {1} less to activate.\nDeckHints:Type$Equipment\nOracle:At the beginning of combat on your turn, target creature gains your choice of first strike or vigilance until end of turn. If that creature is equipped, it gains first strike and vigilance until end of turn instead.\\nEquip abilities you activate cost {1} less to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Éowyn, Lady of Rohan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-doom-corpus-m680",
+  "description": "M6 corpus — Crown of Doom; in-hand parse.",
+  "seed": 62042,
+  "cards": {
+    "Crown of Doom": "Name:Crown of Doom\nManaCost:3\nTypes:Artifact\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ You,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature attacks you or a planeswalker you control, it gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +2\nA:AB$ GainControl | Cost$ 2 | Defined$ Self | ValidTgts$ Player.!CardOwner | TgtPrompt$ Select target player other than the owner | PlayerTurn$ True | SpellDescription$ Target player other than CARDNAME's owner gains control of it. Activate only during your turn.\nAI:RemoveDeck:All\nOracle:Whenever a creature attacks you or a planeswalker you control, it gets +2/+0 until end of turn.\\n{2}: Target player other than Crown of Doom's owner gains control of it. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

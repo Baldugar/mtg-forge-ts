@@ -1,0 +1,23 @@
+{
+  "id": "odric-s-outrider-corpus-m680",
+  "description": "M6 corpus — Odric's Outrider; in-hand parse.",
+  "seed": 63605,
+  "cards": {
+    "Odric's Outrider": "Name:Odric's Outrider\nManaCost:3 W\nTypes:Creature Human Knight\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another creature you control dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever Odric's Outrider or another creature you control dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Odric's Outrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

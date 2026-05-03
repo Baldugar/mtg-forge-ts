@@ -1,0 +1,23 @@
+{
+  "id": "brass-gnat-corpus-m680",
+  "description": "M6 corpus — Brass Gnat; in-hand parse.",
+  "seed": 61772,
+  "cards": {
+    "Brass Gnat": "Name:Brass Gnat\nManaCost:1\nTypes:Artifact Creature Insect\nPT:1/1\nK:Flying\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may pay {1}. If you do, untap this creature.\nSVar:TrigUntap:AB$ Untap | Cost$ 1 | Defined$ Self\nOracle:Flying\\nThis creature doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may pay {1}. If you do, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brass Gnat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

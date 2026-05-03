@@ -1,0 +1,23 @@
+{
+  "id": "bane-of-progress-corpus-m680",
+  "description": "M6 corpus — Bane of Progress; in-hand parse.",
+  "seed": 61644,
+  "cards": {
+    "Bane of Progress": "Name:Bane of Progress\nManaCost:4 G G\nTypes:Creature Elemental\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy all artifacts and enchantments. Put a +1/+1 counter on CARDNAME for each permanent destroyed this way.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Artifact,Enchantment | RememberDestroyed$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:Y:Count$Valid Artifact.OppCtrl,Enchantment.OppCtrl\nSVar:NeedsToPlayVar:Y GE2\nAI:RemoveDeck:Random\nOracle:When Bane of Progress enters, destroy all artifacts and enchantments. Put a +1/+1 counter on Bane of Progress for each permanent destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bane of Progress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

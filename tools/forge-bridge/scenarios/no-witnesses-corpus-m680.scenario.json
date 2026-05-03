@@ -1,0 +1,23 @@
+{
+  "id": "no-witnesses-corpus-m680",
+  "description": "M6 corpus — No Witnesses; in-hand parse.",
+  "seed": 63572,
+  "cards": {
+    "No Witnesses": "Name:No Witnesses\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ Investigate | Num$ 1 | Defined$ Player.withMostTypeCreature | SubAbility$ DBDestroyAll | SpellDescription$ Each player who controls the most creatures investigates. Then destroy all creatures. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature\nAI:RemoveDeck:Random\nOracle:Each player who controls the most creatures investigates. Then destroy all creatures. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "No Witnesses"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

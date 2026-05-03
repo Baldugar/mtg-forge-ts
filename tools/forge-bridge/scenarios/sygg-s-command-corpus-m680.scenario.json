@@ -1,0 +1,23 @@
+{
+  "id": "sygg-s-command-corpus-m680",
+  "description": "M6 corpus — Sygg's Command; in-hand parse.",
+  "seed": 64550,
+  "cards": {
+    "Sygg's Command": "Name:Sygg's Command\nManaCost:1 W U\nTypes:Kindred Sorcery Merfolk\nA:SP$ Charm | Choices$ DBCopy,DBPumpAll,DBDraw,DBTap | CharmNum$ 2\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Merfolk.YouCtrl | TgtPrompt$ Select target Merfolk you control | SpellDescription$ Create a token that's a copy of target Merfolk you control.\nSVar:DBPumpAll:DB$ PumpAll | ValidTgts$ Player | TgtPrompt$ Select target player to have each creature they control gain lifelink | ValidCards$ Creature | KW$ Lifelink | SpellDescription$ Creatures target player controls gain lifelink until end of turn.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | TgtPrompt$ Select target player to draw a card | SpellDescription$ Target player draws a card.\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | SubAbility$ DBPutCounter | SpellDescription$ Tap target creature. Put a stun counter on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ ParentTarget | CounterType$ STUN | CounterNum$ 1\nDeckHas:Ability$Token\nDeckHints:Type$Merfolk\nOracle:Choose two —\\n• Create a token that's a copy of target Merfolk you control.\\n• Creatures target player controls gain lifelink until end of turn.\\n• Target player draws a card.\\n• Tap target creature. Put a stun counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sygg's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

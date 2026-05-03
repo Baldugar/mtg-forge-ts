@@ -1,0 +1,23 @@
+{
+  "id": "pooling-venom-corpus-m680",
+  "description": "M6 corpus — Pooling Venom; in-hand parse.",
+  "seed": 63773,
+  "cards": {
+    "Pooling Venom": "Name:Pooling Venom\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLose | TriggerDescription$ Whenever enchanted land becomes tapped, its controller loses 2 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2\nA:AB$ Destroy | Cost$ 3 B | Defined$ Enchanted | SpellDescription$ Destroy enchanted land.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\nWhenever enchanted land becomes tapped, its controller loses 2 life.\\n{3}{B}: Destroy enchanted land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pooling Venom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

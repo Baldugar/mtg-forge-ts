@@ -1,0 +1,23 @@
+{
+  "id": "coveted-falcon-corpus-m680",
+  "description": "M6 corpus — Coveted Falcon; in-hand parse.",
+  "seed": 62023,
+  "cards": {
+    "Coveted Falcon": "Name:Coveted Falcon\nManaCost:1 U U\nTypes:Artifact Creature Bird\nPT:1/4\nK:Flying\nK:Disguise:1 U\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSteal | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, gain control of target permanent you own but don't control.\nSVar:TrigSteal:DB$ GainControl | TgtPrompt$ Choose target permanent you own but don't control | ValidTgts$ Permanent.YouOwn+YouDontCtrl\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDonate | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, target opponent gains control of any number of target permanents you control. Draw a card for each one they gained control of this way.\nSVar:TrigDonate:DB$ Pump | ValidTgts$ Opponent | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select any number of target permanents you control | TargetMin$ 0 | TargetMax$ X | NewController$ ParentTarget | RememberControlled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.YouCtrl\nSVar:Y:Remembered$Amount\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Coveted Falcon attacks, gain control of target permanent you own but don't control.\\nDisguise {1}{U}\\nWhen Coveted Falcon is turned face up, target opponent gains control of any number of target permanents you control. Draw a card for each one they gained control of this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coveted Falcon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

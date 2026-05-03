@@ -1,0 +1,23 @@
+{
+  "id": "rogue-refiner-corpus-m680",
+  "description": "M6 corpus — Rogue Refiner; in-hand parse.",
+  "seed": 64030,
+  "cards": {
+    "Rogue Refiner": "Name:Rogue Refiner\nManaCost:1 G U\nTypes:Creature Human Rogue\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card and you get {E}{E} (two energy counters).\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nOracle:When Rogue Refiner enters, draw a card and you get {E}{E} (two energy counters).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rogue Refiner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "trade-route-envoy-corpus-m680",
+  "description": "M6 corpus — Trade Route Envoy; in-hand parse.",
+  "seed": 64781,
+  "cards": {
+    "Trade Route Envoy": "Name:Trade Route Envoy\nManaCost:3 G\nTypes:Creature Dog Soldier\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card if you control a creature with a counter on it. If you don't draw a card this way, put a +1/+1 counter on this creature.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionPresent$ Creature.YouCtrl+HasCounters | RememberDrawn$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When this creature enters, draw a card if you control a creature with a counter on it. If you don't draw a card this way, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trade Route Envoy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

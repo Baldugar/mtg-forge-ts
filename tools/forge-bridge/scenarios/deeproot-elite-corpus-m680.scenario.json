@@ -1,0 +1,23 @@
+{
+  "id": "deeproot-elite-corpus-m680",
+  "description": "M6 corpus — Deeproot Elite; in-hand parse.",
+  "seed": 62137,
+  "cards": {
+    "Deeproot Elite": "Name:Deeproot Elite\nManaCost:1 G\nTypes:Creature Merfolk Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Merfolk.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Merfolk you control enters, put a +1/+1 counter on target Merfolk you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Merfolk.YouCtrl | TgtPrompt$ Select target Merfolk | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Merfolk\nDeckHas:Ability$Counters\nOracle:Whenever another Merfolk you control enters, put a +1/+1 counter on target Merfolk you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deeproot Elite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necromaster-dragon-corpus-m680",
+  "description": "M6 corpus — Necromaster Dragon; in-hand parse.",
+  "seed": 63527,
+  "cards": {
+    "Necromaster Dragon": "Name:Necromaster Dragon\nManaCost:3 U B\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}. If you do, create a 2/2 black Zombie creature token and each opponent mills two cards.\nSVar:TrigToken:AB$ Token | Cost$ 2 | TokenScript$ b_2_2_zombie | TokenOwner$ You | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ Player.Opponent | NumCards$ 2\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever Necromaster Dragon deals combat damage to a player, you may pay {2}. If you do, create a 2/2 black Zombie creature token and each opponent mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromaster Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

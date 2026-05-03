@@ -1,0 +1,23 @@
+{
+  "id": "defiant-ogre-corpus-m680",
+  "description": "M6 corpus — Defiant Ogre; in-hand parse.",
+  "seed": 62140,
+  "cards": {
+    "Defiant Ogre": "Name:Defiant Ogre\nManaCost:5 R\nTypes:Creature Ogre Warrior\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBDestroy\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nDeckHas:Ability$Counters\nOracle:When Defiant Ogre enters, choose one —\\n• Put a +1/+1 counter on Defiant Ogre.\\n• Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiant Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

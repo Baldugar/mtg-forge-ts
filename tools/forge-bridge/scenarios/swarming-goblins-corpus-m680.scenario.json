@@ -1,0 +1,23 @@
+{
+  "id": "swarming-goblins-corpus-m680",
+  "description": "M6 corpus — Swarming Goblins; in-hand parse.",
+  "seed": 64537,
+  "cards": {
+    "Swarming Goblins": "Name:Swarming Goblins\nManaCost:4 R\nTypes:Creature Goblin\nPT:4/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:Token1,10-19:Token2,20:Token3 | SpellDescription$ roll a d20.\nSVar:Token1:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ 1—9 VERT Create a 1/1 red Goblin creature token.\nSVar:Token2:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ 10—19 VERT Create two of those tokens.\nSVar:Token3:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ 20 VERT Create three of those tokens.\nDeckHas:Ability$Token\nOracle:When Swarming Goblins enters, roll a d20.\\n1—9 | Create a 1/1 red Goblin creature token.\\n10—19 | Create two of those tokens.\\n20 | Create three of those tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swarming Goblins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

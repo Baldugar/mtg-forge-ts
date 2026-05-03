@@ -1,0 +1,23 @@
+{
+  "id": "sanity-grinding-corpus-m680",
+  "description": "M6 corpus — Sanity Grinding; in-hand parse.",
+  "seed": 64123,
+  "cards": {
+    "Sanity Grinding": "Name:Sanity Grinding\nManaCost:U U U\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 10 | Reveal$ True | ChangeNum$ 0 | RememberRevealed$ True | SubAbility$ MillTargeted | SpellDescription$ Chroma — Reveal the top ten cards of your library. For each blue mana symbol in the mana costs of the revealed cards, target opponent mills a card. Then put the cards you revealed this way on the bottom of your library in any order.\nSVar:MillTargeted:DB$ Mill | NumCards$ X | ValidTgts$ Opponent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$ChromaSource.Blue\nOracle:Chroma — Reveal the top ten cards of your library. For each blue mana symbol in the mana costs of the revealed cards, target opponent mills a card. Then put the cards you revealed this way on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanity Grinding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

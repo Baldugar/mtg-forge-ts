@@ -1,0 +1,23 @@
+{
+  "id": "sunshower-druid-corpus-m680",
+  "description": "M6 corpus — Sunshower Druid; in-hand parse.",
+  "seed": 64519,
+  "cards": {
+    "Sunshower Druid": "Name:Sunshower Druid\nManaCost:G\nTypes:Creature Frog Druid\nPT:0/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Sunshower Druid enters, put a +1/+1 counter on target creature and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunshower Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

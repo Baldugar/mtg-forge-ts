@@ -1,0 +1,23 @@
+{
+  "id": "valgavoth-harrower-of-souls-corpus-m680",
+  "description": "M6 corpus — Valgavoth, Harrower of Souls; in-hand parse.",
+  "seed": 64878,
+  "cards": {
+    "Valgavoth, Harrower of Souls": "Name:Valgavoth, Harrower of Souls\nManaCost:2 B R\nTypes:Legendary Creature Elder Demon\nPT:4/4\nK:Flying\nK:Ward:PayLife<2>\nT:Mode$ LifeLost | ValidPlayer$ Opponent.Active | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on CARDNAME and draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWard — Pay 2 life.\\nWhenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth, Harrower of Souls and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valgavoth, Harrower of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

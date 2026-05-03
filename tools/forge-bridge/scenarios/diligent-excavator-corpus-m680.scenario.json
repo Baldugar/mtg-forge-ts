@@ -1,0 +1,23 @@
+{
+  "id": "diligent-excavator-corpus-m680",
+  "description": "M6 corpus — Diligent Excavator; in-hand parse.",
+  "seed": 62167,
+  "cards": {
+    "Diligent Excavator": "Name:Diligent Excavator\nManaCost:1 U\nTypes:Creature Human Artificer\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a historic spell, target player mills two cards. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player\nDeckHas:Ability$Graveyard\nOracle:Whenever you cast a historic spell, target player mills two cards. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diligent Excavator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

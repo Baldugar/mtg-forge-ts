@@ -1,0 +1,23 @@
+{
+  "id": "hapatra-vizier-of-poisons-corpus-m680",
+  "description": "M6 corpus — Hapatra, Vizier of Poisons; in-hand parse.",
+  "seed": 62784,
+  "cards": {
+    "Hapatra, Vizier of Poisons": "Name:Hapatra, Vizier of Poisons\nManaCost:B G\nTypes:Legendary Creature Human Cleric\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nT:Mode$ CounterAddedOnce | ValidCard$ Creature | ValidSource$ You | CounterType$ M1M1 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you put one or more -1/-1 counters on a creature, create a 1/1 green Snake creature token with deathtouch.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_snake_deathtouch | TokenOwner$ You\nDeckHas:Ability$Counters|Token\nOracle:Whenever Hapatra, Vizier of Poisons deals combat damage to a player, you may put a -1/-1 counter on target creature.\\nWhenever you put one or more -1/-1 counters on a creature, create a 1/1 green Snake creature token with deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hapatra, Vizier of Poisons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

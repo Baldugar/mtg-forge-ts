@@ -1,0 +1,23 @@
+{
+  "id": "underwater-tunnel-corpus-m680",
+  "description": "M6 corpus — Underwater Tunnel; in-hand parse.",
+  "seed": 64847,
+  "cards": {
+    "Underwater Tunnel": "Name:Underwater Tunnel\nManaCost:U\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ TrigSurveil | TriggerDescription$ When you unlock this door, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nAlternateMode:Split\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhen you unlock this door, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n\nALTERNATE\n\nName:Slimy Aquarium\nManaCost:3 U\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ TrigDread | TriggerDescription$ When you unlock this door, manifest dread, then put a +1/+1 counter on that creature.\nSVar:TrigDread:DB$ ManifestDread | Amount$ 1 | RememberManifested$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ RememberedCard | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhen you unlock this door, manifest dread, then put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underwater Tunnel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

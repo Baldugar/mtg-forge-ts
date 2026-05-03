@@ -1,0 +1,23 @@
+{
+  "id": "enthralling-victor-corpus-m680",
+  "description": "M6 corpus — Enthralling Victor; in-hand parse.",
+  "seed": 62343,
+  "cards": {
+    "Enthralling Victor": "Name:Enthralling Victor\nManaCost:3 R\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target creature an opponent controls with power 2 or less until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)\nSVar:TrigChange:DB$ GainControl | TgtPrompt$ Choose target creature an opponent controls with power 2 or less | ValidTgts$ Creature.OppCtrl+powerLE2 | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Gain control of target creature an opponent controls with power 2 or less until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:When Enthralling Victor enters, gain control of target creature an opponent controls with power 2 or less until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enthralling Victor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

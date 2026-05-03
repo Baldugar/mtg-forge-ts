@@ -1,0 +1,23 @@
+{
+  "id": "fire-omen-crane-corpus-m680",
+  "description": "M6 corpus — Fire-Omen Crane; in-hand parse.",
+  "seed": 62493,
+  "cards": {
+    "Fire-Omen Crane": "Name:Fire-Omen Crane\nManaCost:3 R R\nTypes:Creature Bird Spirit\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to target creature an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 1\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhenever Fire-Omen Crane attacks, it deals 1 damage to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire-Omen Crane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

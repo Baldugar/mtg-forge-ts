@@ -1,0 +1,23 @@
+{
+  "id": "warcry-phoenix-corpus-m680",
+  "description": "M6 corpus — Warcry Phoenix; in-hand parse.",
+  "seed": 65000,
+  "cards": {
+    "Warcry Phoenix": "Name:Warcry Phoenix\nManaCost:3 R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nK:Haste\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature | ValidAttackersAmount$ GE3 | Execute$ TrigReturn | TriggerZones$ Graveyard | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with three or more creatures, you may pay {2}{R}. If you do, return CARDNAME from your graveyard to the battlefield tapped and attacking.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 2 R | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Attacking$ True\nOracle:Flying, haste\\nWhenever you attack with three or more creatures, you may pay {2}{R}. If you do, return Warcry Phoenix from your graveyard to the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warcry Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

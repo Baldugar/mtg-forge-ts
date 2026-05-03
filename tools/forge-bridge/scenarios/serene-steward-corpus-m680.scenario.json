@@ -1,0 +1,23 @@
+{
+  "id": "serene-steward-corpus-m680",
+  "description": "M6 corpus — Serene Steward; in-hand parse.",
+  "seed": 64212,
+  "cards": {
+    "Serene Steward": "Name:Serene Steward\nManaCost:1 W\nTypes:Creature Human Cleric Ally\nPT:2/2\nT:Mode$ LifeGained | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you gain life, you may pay {W}. If you do, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ W | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:Random\nDeckHints:Ability$LifeGain\nOracle:Whenever you gain life, you may pay {W}. If you do, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serene Steward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

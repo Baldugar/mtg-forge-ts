@@ -1,0 +1,23 @@
+{
+  "id": "reckoner-shakedown-corpus-m680",
+  "description": "M6 corpus — Reckoner Shakedown; in-hand parse.",
+  "seed": 63926,
+  "cards": {
+    "Reckoner Shakedown": "Name:Reckoner Shakedown\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose | SpellDescription$ Target opponent reveals their hand.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Amount$ 1 | Choices$ Card.nonLand+IsRemembered | ChoiceDesc$ nonland | FromDesc$ it | SubAbility$ DBBranch | ChoiceTitle$ You may choose a nonland card | SpellDescription$ You may choose a nonland card from it.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Count$ChosenSize | TrueSubAbility$ DBDiscard | FalseSubAbility$ DBPutCounter | StackDescription$ If they do, {p:Targeted} discards that card. If they don't, they put two +1/+1 counters on a creature or Vehicle they control. | SpellDescription$ If you do, that player discards that card. If you don't, put two +1/+1 counters on a creature or Vehicle you control.\nSVar:DBDiscard:DB$ Discard | DefinedCards$ ChosenCard | Defined$ Targeted | Mode$ Defined | SubAbility$ DBCleanup\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl,Vehicle.YouCtrl | ChoiceTitle$ Choose a creature or Vehicle you control | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHas:Ability$Discard|Counters\nDeckHints:Type$Creature|Vehicle\nOracle:Target opponent reveals their hand. You may choose a nonland card from it. If you do, that player discards that card. If you don't, put two +1/+1 counters on a creature or Vehicle you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckoner Shakedown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

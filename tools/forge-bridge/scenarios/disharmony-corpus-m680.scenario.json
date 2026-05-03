@@ -1,0 +1,23 @@
+{
+  "id": "disharmony-corpus-m680",
+  "description": "M6 corpus — Disharmony; in-hand parse.",
+  "seed": 62185,
+  "cards": {
+    "Disharmony": "Name:Disharmony\nManaCost:2 R\nTypes:Instant\nText:Cast CARDNAME only during combat before blockers are declared.\nA:SP$ Untap | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | ActivationPhases$ BeginCombat->Declare Attackers | SpellDescription$ Untap target attacking creature and remove it from combat. Gain control of that creature until end of turn. | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ Targeted | LoseControl$ EOT | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Targeted\nAI:RemoveDeck:All\nOracle:Cast this spell only during combat before blockers are declared.\\nUntap target attacking creature and remove it from combat. Gain control of that creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disharmony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

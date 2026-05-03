@@ -1,0 +1,23 @@
+{
+  "id": "leaf-crowned-visionary-corpus-m680",
+  "description": "M6 corpus — Leaf-Crowned Visionary; in-hand parse.",
+  "seed": 63204,
+  "cards": {
+    "Leaf-Crowned Visionary": "Name:Leaf-Crowned Visionary\nManaCost:G G\nTypes:Creature Elf Druid\nPT:1/1\nS:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Elf.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Elves you control get +1/+1.\nT:Mode$ SpellCast | ValidCard$ Elf | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Whenever you cast an Elf spell, you may pay {G}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ G\nAI:RemoveDeck:Random\nDeckNeeds:Type$Elf\nDeckHints:Type$Elf\nOracle:Other Elves you control get +1/+1.\\nWhenever you cast an Elf spell, you may pay {G}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leaf-Crowned Visionary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

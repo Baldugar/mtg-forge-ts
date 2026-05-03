@@ -1,0 +1,23 @@
+{
+  "id": "max-the-daredevil-corpus-m680",
+  "description": "M6 corpus — Max, the Daredevil; in-hand parse.",
+  "seed": 63371,
+  "cards": {
+    "Max, the Daredevil": "Name:Max, the Daredevil\nVariant:UniversesWithin:FlavorName:Elmar, Ulvenwald Informant\nManaCost:1 R G\nTypes:Legendary Creature Human\nPT:3/2\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, untap target creature, then investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nK:Partner:Friends forever\nDeckHas:Ability$Investigate|Token|Sacrifice\nOracle:Haste\\nWhenever you cast your second spell each turn, untap target creature, then investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nPartner—Friends forever (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Max, the Daredevil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

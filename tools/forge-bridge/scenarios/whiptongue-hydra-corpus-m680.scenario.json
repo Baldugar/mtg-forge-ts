@@ -1,0 +1,23 @@
+{
+  "id": "whiptongue-hydra-corpus-m680",
+  "description": "M6 corpus — Whiptongue Hydra; in-hand parse.",
+  "seed": 65030,
+  "cards": {
+    "Whiptongue Hydra": "Name:Whiptongue Hydra\nManaCost:5 G\nTypes:Creature Lizard Hydra\nPT:4/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy all creatures with flying. Put a +1/+1 counter on CARDNAME for each creature destroyed this way.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.withFlying | RememberDestroyed$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Counters\nOracle:Reach\\nWhen Whiptongue Hydra enters, destroy all creatures with flying. Put a +1/+1 counter on Whiptongue Hydra for each creature destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whiptongue Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

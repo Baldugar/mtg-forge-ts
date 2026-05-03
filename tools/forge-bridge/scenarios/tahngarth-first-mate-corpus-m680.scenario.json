@@ -1,0 +1,23 @@
+{
+  "id": "tahngarth-first-mate-corpus-m680",
+  "description": "M6 corpus — Tahngarth, First Mate; in-hand parse.",
+  "seed": 64570,
+  "cards": {
+    "Tahngarth, First Mate": "Name:Tahngarth, First Mate\nManaCost:2 R G\nTypes:Legendary Creature Minotaur Warrior\nPT:5/5\nS:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ CARDNAME can't be blocked by more than one creature.\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player.Opponent | Execute$ TrigGainControl | TriggerZones$ Battlefield | OptionalDecider$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerDescription$ Whenever an opponent attacks with one or more creatures, if NICKNAME is tapped, you may have that opponent gain control of NICKNAME until end of combat. If you do, choose a player or planeswalker that opponent is attacking. NICKNAME is attacking that player or planeswalker.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | NewController$ TriggeredAttackingPlayer | LoseControl$ EndOfCombat | RememberControlled$ True | SubAbility$ DBAttack\nSVar:DBAttack:DB$ ChangeCombatants | Defined$ Remembered | Attacking$ .Defending & Valid Planeswalker.Defending | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Tahngarth, First Mate can't be blocked by more than one creature.\\nWhenever an opponent attacks with one or more creatures, if Tahngarth is tapped, you may have that opponent gain control of Tahngarth until end of combat. If you do, choose a player or planeswalker that opponent is attacking. Tahngarth is attacking that player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tahngarth, First Mate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

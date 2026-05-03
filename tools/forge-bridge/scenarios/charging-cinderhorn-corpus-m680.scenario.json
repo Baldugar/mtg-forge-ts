@@ -1,0 +1,23 @@
+{
+  "id": "charging-cinderhorn-corpus-m680",
+  "description": "M6 corpus — Charging Cinderhorn; in-hand parse.",
+  "seed": 61905,
+  "cards": {
+    "Charging Cinderhorn": "Name:Charging Cinderhorn\nManaCost:3 R\nTypes:Creature Elemental Ox\nPT:4/2\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | CheckSVar$ AttackedThisTurn | SVarCompare$ EQ0 | TriggerDescription$ At the beginning of each player's end step, if no creatures attacked this turn, put a fury counter on CARDNAME. Then CARDNAME deals damage equal to the number of fury counters on it to that player.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FURY | CounterNum$ 1 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:AttackedThisTurn:PlayerCountPlayers$AttackersDeclared\nSVar:X:Count$CardCounters.FURY\nOracle:Haste\\nAt the beginning of each player's end step, if no creatures attacked this turn, put a fury counter on Charging Cinderhorn. Then Charging Cinderhorn deals damage equal to the number of fury counters on it to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charging Cinderhorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

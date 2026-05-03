@@ -1,0 +1,23 @@
+{
+  "id": "starke-of-rath-corpus-m680",
+  "description": "M6 corpus — Starke of Rath; in-hand parse.",
+  "seed": 64449,
+  "cards": {
+    "Starke of Rath": "Name:Starke of Rath\nManaCost:1 R R\nTypes:Legendary Creature Human Rogue\nPT:2/2\nA:AB$ Destroy | Cost$ T | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature | SubAbility$ TrigControl | SpellDescription$ Destroy target artifact or creature.\nSVar:TrigControl:DB$ GainControl | Defined$ Self | NewController$ TargetedController | SpellDescription$ That permanent's controller gains control of CARDNAME. (This effect lasts indefinitely.)\nAI:RemoveDeck:All\nOracle:{T}: Destroy target artifact or creature. That permanent's controller gains control of Starke of Rath. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starke of Rath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

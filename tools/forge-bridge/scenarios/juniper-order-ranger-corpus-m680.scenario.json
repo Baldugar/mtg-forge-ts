@@ -1,0 +1,23 @@
+{
+  "id": "juniper-order-ranger-corpus-m680",
+  "description": "M6 corpus — Juniper Order Ranger; in-hand parse.",
+  "seed": 63062,
+  "cards": {
+    "Juniper Order Ranger": "Name:Juniper Order Ranger\nManaCost:3 G W\nTypes:Creature Human Knight Ranger\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control enters, put a +1/+1 counter on that creature and a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy & Self | CounterType$ P1P1\nSVar:BuffedBy:Creature\nDeckHas:Ability$Counters\nOracle:Whenever another creature you control enters, put a +1/+1 counter on that creature and a +1/+1 counter on Juniper Order Ranger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Juniper Order Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

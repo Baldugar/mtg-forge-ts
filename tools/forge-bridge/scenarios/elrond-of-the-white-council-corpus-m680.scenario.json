@@ -1,0 +1,23 @@
+{
+  "id": "elrond-of-the-white-council-corpus-m680",
+  "description": "M6 corpus — Elrond of the White Council; in-hand parse.",
+  "seed": 62308,
+  "cards": {
+    "Elrond of the White Council": "Name:Elrond of the White Council\nManaCost:3 G U\nTypes:Legendary Creature Elf Noble\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Secret council — When CARDNAME enters, each player secretly votes for fellowship or aid, then those votes are revealed. For each fellowship vote, the voter chooses a creature they control. You gain control of each creature chosen this way, and they gain \"This creature can't attack its owner.\" Then for each aid vote, put a +1/+1 counter on each creature you control.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Secretly$ True | Choices$ Fellowship,AidPlus | EachVote$ True | SubAbility$ DBGainControl\nSVar:Fellowship:DB$ ChooseCard | Defined$ Remembered | Amount$ 1 | Choices$ Creature.RememberedPlayerCtrl | ChoiceTitle$ Choose a creature you control | ImprintChosen$ True | Mandatory$ True | SpellDescription$ Fellowship\nSVar:AidPlus:DB$ StoreSVar | SVar$ Aid | Type$ CountSVar | Expression$ Aid/Plus.1 | SpellDescription$ Aid\nSVar:DBGainControl:DB$ GainControl | Defined$ Imprinted | NewController$ You | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Imprinted | staticAbilities$ CantAttackOwner | SubAbility$ DBPutCounter\nSVar:CantAttackOwner:Mode$ CantAttack | ValidCard$ Card.Self | Target$ Player.CardOwner | Description$ This creature can't attack its owner.\nSVar:DBPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ Aid | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearChosenCard$ True | SubAbility$ DBClearSVar\nSVar:DBClearSVar:DB$ StoreSVar | SVar$ Aid | Type$ Number | Expression$ 0\nSVar:Aid:Number$0\nDeckHas:Ability$Counters\nOracle:Secret council — When Elrond of the White Council enters, each player secretly votes for fellowship or aid, then those votes are revealed. For each fellowship vote, the voter chooses a creature they control. You gain control of each creature chosen this way, and they gain \"This creature can't attack its owner.\" Then for each aid vote, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elrond of the White Council"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

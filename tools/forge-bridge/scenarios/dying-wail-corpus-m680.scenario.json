@@ -1,0 +1,23 @@
+{
+  "id": "dying-wail-corpus-m680",
+  "description": "M6 corpus — Dying Wail; in-hand parse.",
+  "seed": 62270,
+  "cards": {
+    "Dying Wail": "Name:Dying Wail\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDiscard | TriggerDescription$ When enchanted creature dies, target player discards two cards.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose\nOracle:Enchant creature\\nWhen enchanted creature dies, target player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dying Wail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

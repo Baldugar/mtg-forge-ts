@@ -1,0 +1,23 @@
+{
+  "id": "yorvo-lord-of-garenbrig-corpus-m680",
+  "description": "M6 corpus — Yorvo, Lord of Garenbrig; in-hand parse.",
+  "seed": 65111,
+  "cards": {
+    "Yorvo, Lord of Garenbrig": "Name:Yorvo, Lord of Garenbrig\nManaCost:G G G\nTypes:Legendary Creature Giant Noble\nPT:0/0\nK:etbCounter:P1P1:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl+Green | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another green creature you control enters, put a +1/+1 counter on NICKNAME. Then if that creature's power is greater than NICKNAME's power, put another +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GTY\nSVar:X:TriggeredCard$CardPower\nSVar:Y:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Yorvo, Lord of Garenbrig enters with four +1/+1 counters on it.\\nWhenever another green creature you control enters, put a +1/+1 counter on Yorvo. Then if that creature's power is greater than Yorvo's power, put another +1/+1 counter on Yorvo.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yorvo, Lord of Garenbrig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

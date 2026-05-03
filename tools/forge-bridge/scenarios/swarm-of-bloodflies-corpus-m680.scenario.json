@@ -1,0 +1,23 @@
+{
+  "id": "swarm-of-bloodflies-corpus-m680",
+  "description": "M6 corpus — Swarm of Bloodflies; in-hand parse.",
+  "seed": 64536,
+  "cards": {
+    "Swarm of Bloodflies": "Name:Swarm of Bloodflies\nManaCost:4 B\nTypes:Creature Insect\nPT:0/0\nK:Flying\nK:etbCounter:P1P1:2\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.Other | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nSwarm of Bloodflies enters with two +1/+1 counters on it.\\nWhenever another creature dies, put a +1/+1 counter on Swarm of Bloodflies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swarm of Bloodflies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

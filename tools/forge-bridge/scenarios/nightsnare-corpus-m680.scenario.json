@@ -1,0 +1,23 @@
+{
+  "id": "nightsnare-corpus-m680",
+  "description": "M6 corpus — Nightsnare; in-hand parse.",
+  "seed": 63558,
+  "cards": {
+    "Nightsnare": "Name:Nightsnare\nManaCost:3 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose | SpellDescription$ Target opponent reveals their hand.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Amount$ 1 | Choices$ Card.nonLand+IsRemembered | ChoiceDesc$ nonland | FromDesc$ it | SubAbility$ DBBranch | ChoiceTitle$ You may choose a nonland card | SpellDescription$ You may choose a nonland card from it.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Count$ChosenSize | TrueSubAbility$ DBDiscard | FalseSubAbility$ DBDiscard2 | StackDescription$ If they do, {p:Targeted} discards that card. If they don't, {p:Targeted} discards two cards. | SpellDescription$ If you do, that player discards that card. If you don't, that player discards two cards.\nSVar:DBDiscard:DB$ Discard | DefinedCards$ ChosenCard | Defined$ Targeted | Mode$ Defined | SubAbility$ DBCleanup\nSVar:DBDiscard2:DB$ Discard | Defined$ Targeted | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHas:Ability$Discard\nOracle:Target opponent reveals their hand. You may choose a nonland card from it. If you do, that player discards that card. If you don't, that player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightsnare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

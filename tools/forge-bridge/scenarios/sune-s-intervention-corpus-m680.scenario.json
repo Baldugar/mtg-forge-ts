@@ -1,0 +1,23 @@
+{
+  "id": "sune-s-intervention-corpus-m680",
+  "description": "M6 corpus — Sune's Intervention; in-hand parse.",
+  "seed": 64515,
+  "cards": {
+    "Sune's Intervention": "Name:Sune's Intervention\nManaCost:4 W W\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 5 | Choices$ KnightTokens,SeekCard,DestroyArtifact,DestroyEnchantment,GainLife\nSVar:KnightTokens:DB$ Token | TokenOwner$ You | TokenScript$ w_2_2_knight | TokenAmount$ 2 | SpellDescription$ Create two 2/2 white Knight creature tokens.\nSVar:SeekCard:DB$ Seek | Type$ Card.Permanent+nonLand+cmcLE3 | SpellDescription$ Seek a nonland permanent card with mana value 3 or less.\nSVar:DestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DestroyEnchantment:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:GainLife:DB$ GainLife | ValidTgts$ Player | TgtPrompt$ Select target player to gain 3 life | LifeAmount$ 3 | SpellDescription$ Target player gains 3 life.\nOracle:Choose one or more —\\n• Create two 2/2 white Knight creature tokens.\\n• Seek a nonland permanent card with mana value 3 or less.\\n• Destroy target artifact.\\n• Destroy target enchantment.\\n• Target player gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sune's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

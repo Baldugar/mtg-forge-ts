@@ -1,0 +1,23 @@
+{
+  "id": "woodland-guidance-corpus-m680",
+  "description": "M6 corpus — Woodland Guidance; in-hand parse.",
+  "seed": 65088,
+  "cards": {
+    "Woodland Guidance": "Name:Woodland Guidance\nManaCost:3 G\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Card.YouCtrl | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBClash | SpellDescription$ Return target card from your graveyard to your hand. Clash with an opponent. If you win, untap all Forests you control. Exile CARDNAME.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBUntap | SubAbility$ DBExile\nSVar:DBUntap:DB$ UntapAll | ValidCards$ Forest.YouCtrl\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Stack | Destination$ Exile\nOracle:Return target card from your graveyard to your hand. Clash with an opponent. If you win, untap all Forests you control. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\\nExile Woodland Guidance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodland Guidance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

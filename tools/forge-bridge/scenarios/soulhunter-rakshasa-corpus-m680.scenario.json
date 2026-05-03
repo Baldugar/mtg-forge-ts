@@ -1,0 +1,23 @@
+{
+  "id": "soulhunter-rakshasa-corpus-m680",
+  "description": "M6 corpus — Soulhunter Rakshasa; in-hand parse.",
+  "seed": 64374,
+  "cards": {
+    "Soulhunter Rakshasa": "Name:Soulhunter Rakshasa\nManaCost:3 B B\nTypes:Creature Demon\nPT:5/5\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.wasCastFromYourHandByYou+Self | Execute$ TrigDmg | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, it deals 1 damage to target opponent for each Swamp you control.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ Count$Valid Swamp.YouCtrl\nOracle:Soulhunter Rakshasa can't block.\\nWhen Soulhunter Rakshasa enters, if you cast it from your hand, it deals 1 damage to target opponent for each Swamp you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulhunter Rakshasa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ram-through-corpus-m680",
+  "description": "M6 corpus — Ram Through; in-hand parse.",
+  "seed": 63890,
+  "cards": {
+    "Ram Through": "Name:Ram Through\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ SpellDescription | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control. If the creature you control has trample, excess damage is dealt to that creature's controller instead.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget | ExcessDamage$ ThisTargetedController | ExcessDamageCondition$ Card.withTrample | StackDescription$ None\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target creature you don't control. If the creature you control has trample, excess damage is dealt to that creature's controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ram Through"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

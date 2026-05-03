@@ -1,0 +1,23 @@
+{
+  "id": "the-mouth-of-sauron-corpus-m680",
+  "description": "M6 corpus — The Mouth of Sauron; in-hand parse.",
+  "seed": 64675,
+  "cards": {
+    "The Mouth of Sauron": "Name:The Mouth of Sauron\nManaCost:3 U B\nTypes:Legendary Creature Human Advisor\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills three cards. Then amass Orcs X, where X is the number of instant and sorcery cards in that player's graveyard. (Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player | SubAbility$ DBAmass\nSVar:DBAmass:DB$ Amass | Type$ Orc | Num$ X\nSVar:X:TargetedPlayer$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nDeckHas:Ability$Token|Counters & Type$Orc|Army|Treasure\nOracle:When The Mouth of Sauron enters, target player mills three cards. Then amass Orcs X, where X is the number of instant and sorcery cards in that player's graveyard. (Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Mouth of Sauron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

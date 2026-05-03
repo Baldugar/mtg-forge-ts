@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-exterminator-corpus-m680",
+  "description": "M6 corpus — Falkenrath Exterminator; in-hand parse.",
+  "seed": 62428,
+  "cards": {
+    "Falkenrath Exterminator": "Name:Falkenrath Exterminator\nManaCost:1 R\nTypes:Creature Vampire Archer\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nA:AB$ DealDamage | Cost$ 2 R | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target creature equal to the number of +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$CardCounters.P1P1\nOracle:Whenever Falkenrath Exterminator deals combat damage to a player, put a +1/+1 counter on it.\\n{2}{R}: Falkenrath Exterminator deals damage to target creature equal to the number of +1/+1 counters on Falkenrath Exterminator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Exterminator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

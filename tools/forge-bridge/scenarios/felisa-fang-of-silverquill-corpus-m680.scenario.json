@@ -1,0 +1,23 @@
+{
+  "id": "felisa-fang-of-silverquill-corpus-m680",
+  "description": "M6 corpus — Felisa, Fang of Silverquill; in-hand parse.",
+  "seed": 62462,
+  "cards": {
+    "Felisa, Fang of Silverquill": "Name:Felisa, Fang of Silverquill\nManaCost:2 W B\nTypes:Legendary Creature Vampire Wizard\nPT:3/2\nK:Flying\nK:Mentor\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token+HasCounters | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, if it had counters on it, create X tapped 2/1 white and black Inkling creature tokens with flying, where X is the number of counters it had on it.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ wb_2_1_inkling_flying | TokenTapped$ True\nSVar:X:TriggeredCard$CardCounters.ALL\nDeckHas:Ability$Token|Counters\nOracle:Flying\\nMentor (Whenever this creature attacks, put a +1/+1 counter on target attacking creature with lesser power.)\\nWhenever a nontoken creature you control dies, if it had counters on it, create X tapped 2/1 white and black Inkling creature tokens with flying, where X is the number of counters it had on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Felisa, Fang of Silverquill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

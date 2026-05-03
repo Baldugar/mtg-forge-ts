@@ -1,0 +1,23 @@
+{
+  "id": "splash-lasher-corpus-m680",
+  "description": "M6 corpus — Splash Lasher; in-hand parse.",
+  "seed": 64423,
+  "cards": {
+    "Splash Lasher": "Name:Splash Lasher\nManaCost:3 U\nTypes:Creature Frog Wizard\nPT:3/3\nK:Offspring:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nOracle:Offspring {1}{U} (You may pay an additional {1}{U} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nWhen this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splash Lasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

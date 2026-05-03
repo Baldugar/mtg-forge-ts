@@ -1,0 +1,23 @@
+{
+  "id": "weakstone-s-subjugation-corpus-m680",
+  "description": "M6 corpus — Weakstone's Subjugation; in-hand parse.",
+  "seed": 65013,
+  "cards": {
+    "Weakstone's Subjugation": "Name:Weakstone's Subjugation\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, you may pay {3}. If you do, tap enchanted permanent.\nSVar:TrigTap:AB$ Tap | Cost$ 3 | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nOracle:Enchant artifact or creature\\nWhen Weakstone's Subjugation enters, you may pay {3}. If you do, tap enchanted permanent.\\nEnchanted permanent doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weakstone's Subjugation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

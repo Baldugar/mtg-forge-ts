@@ -1,0 +1,23 @@
+{
+  "id": "blood-tyrant-corpus-m680",
+  "description": "M6 corpus — Blood Tyrant; in-hand parse.",
+  "seed": 61718,
+  "cards": {
+    "Blood Tyrant": "Name:Blood Tyrant\nManaCost:4 U B R\nTypes:Creature Vampire\nPT:5/5\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, each player loses 1 life. Put a +1/+1 counter on CARDNAME for each 1 life lost this way.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ AFLifeLost\nT:Mode$ LosesGame | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player loses the game, put five +1/+1 counters on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 5\nSVar:AFLifeLost:Number$0\nOracle:Flying, trample\\nAt the beginning of your upkeep, each player loses 1 life. Put a +1/+1 counter on Blood Tyrant for each 1 life lost this way.\\nWhenever a player loses the game, put five +1/+1 counters on Blood Tyrant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

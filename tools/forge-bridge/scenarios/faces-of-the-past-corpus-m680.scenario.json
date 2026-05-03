@@ -1,0 +1,23 @@
+{
+  "id": "faces-of-the-past-corpus-m680",
+  "description": "M6 corpus — Faces of the Past; in-hand parse.",
+  "seed": 62421,
+  "cards": {
+    "Faces of the Past": "Name:Faces of the Past\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigTaporUntapAll | TriggerDescription$ Whenever a creature dies, tap all untapped creatures that share a creature type with it or untap all tapped creatures that share a creature type with it.\nSVar:TrigTaporUntapAll:DB$ TaporUntapAll | ValidCards$ TriggeredCard.sharesCreatureTypeWith | ValidMessage$ creatures that share a creature type with the triggered creature\nAI:RemoveDeck:Random\nOracle:Whenever a creature dies, tap all untapped creatures that share a creature type with it or untap all tapped creatures that share a creature type with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faces of the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stall-for-time-corpus-m680",
+  "description": "M6 corpus — Stall for Time; in-hand parse.",
+  "seed": 64442,
+  "cards": {
+    "Stall for Time": "Name:Stall for Time\nManaCost:2 W\nTypes:Instant\nK:Kicker:1 U\nA:SP$ Tap | TgtPrompt$ Select up to two target creatures | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | SubAbility$ DBCounter | SpellDescription$ Tap up to two target creatures. If this spell was kicked, put a stun counter on each of those creatures. (If a permanent with a stun counter on it would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Condition$ Kicked | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nDeckHas:Ability$Counters\nDeckHints:Color$Blue\nOracle:Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\\nTap up to two target creatures. If this spell was kicked, put a stun counter on each of those creatures. (If a permanent with a stun counter on it would become untapped, remove one from it instead.)\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stall for Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

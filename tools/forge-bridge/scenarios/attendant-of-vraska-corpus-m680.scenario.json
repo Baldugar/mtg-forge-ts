@@ -1,0 +1,23 @@
+{
+  "id": "attendant-of-vraska-corpus-m680",
+  "description": "M6 corpus — Attendant of Vraska; in-hand parse.",
+  "seed": 61595,
+  "cards": {
+    "Attendant of Vraska": "Name:Attendant of Vraska\nManaCost:1 B G\nTypes:Creature Zombie Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | IsPresent$ Planeswalker.Vraska+YouCtrl | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, if you control a Vraska planeswalker, you gain life equal to CARDNAME's power.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardPower\nDeckNeeds:Type$Vraska\nOracle:When Attendant of Vraska dies, if you control a Vraska planeswalker, you gain life equal to Attendant of Vraska's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Attendant of Vraska"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

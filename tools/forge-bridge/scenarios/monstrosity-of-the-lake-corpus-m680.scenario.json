@@ -1,0 +1,23 @@
+{
+  "id": "monstrosity-of-the-lake-corpus-m680",
+  "description": "M6 corpus — Monstrosity of the Lake; in-hand parse.",
+  "seed": 63471,
+  "cards": {
+    "Monstrosity of the Lake": "Name:Monstrosity of the Lake\nManaCost:4 U\nTypes:Legendary Creature Kraken\nPT:4/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, you may pay {5}. If you do, tap all creatures your opponents control, then put a stun counter on each of those creatures. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTapAll:AB$ TapAll | Cost$ 5 | ValidCards$ Creature.OppCtrl | RememberTapped$ True | SubAbility$ DBStun\nSVar:DBStun:DB$ PutCounter | CounterType$ STUN | CounterNum$ 1 | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:TypeCycling:Island:2\nDeckHas:Ability$Counters|Discard\nOracle:When Monstrosity of the Lake enters, you may pay {5}. If you do, tap all creatures your opponents control, then put a stun counter on each of those creatures. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nIslandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monstrosity of the Lake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

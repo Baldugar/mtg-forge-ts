@@ -1,0 +1,23 @@
+{
+  "id": "exultant-cultist-corpus-m680",
+  "description": "M6 corpus — Exultant Cultist; in-hand parse.",
+  "seed": 62410,
+  "cards": {
+    "Exultant Cultist": "Name:Exultant Cultist\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nSVar:SacMe:1\nOracle:When Exultant Cultist dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exultant Cultist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

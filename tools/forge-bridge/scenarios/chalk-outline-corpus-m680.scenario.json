@@ -1,0 +1,23 @@
+{
+  "id": "chalk-outline-corpus-m680",
+  "description": "M6 corpus — Chalk Outline; in-hand parse.",
+  "seed": 61890,
+  "cards": {
+    "Chalk Outline": "Name:Chalk Outline\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more creature cards leave your graveyard, create a 2/2 white and blue Detective creature token, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_detective | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nDeckHas:Ability$Token|Investigate & Type$Clue|Artifact|Detective & Color$White|Blue\nOracle:Whenever one or more creature cards leave your graveyard, create a 2/2 white and blue Detective creature token, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chalk Outline"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

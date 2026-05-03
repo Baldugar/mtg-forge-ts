@@ -1,0 +1,23 @@
+{
+  "id": "bogardan-phoenix-corpus-m680",
+  "description": "M6 corpus — Bogardan Phoenix; in-hand parse.",
+  "seed": 61741,
+  "cards": {
+    "Bogardan Phoenix": "Name:Bogardan Phoenix\nManaCost:2 R R R\nTypes:Creature Phoenix\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+counters_EQ0_DEATH | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, exile it if it had a death counter on it. Otherwise, return it to the battlefield under your control and put a death counter on it.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+counters_GE1_DEATH | Execute$ DBExile | Secondary$ True | TriggerDescription$ When CARDNAME dies, exile it if it had a death counter on it. Otherwise, return it to the battlefield under your control and put a death counter on it.\nSVar:DBExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCard | CounterType$ DEATH | CounterNum$ 1\nOracle:Flying\\nWhen Bogardan Phoenix dies, exile it if it had a death counter on it. Otherwise, return it to the battlefield under your control and put a death counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bogardan Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

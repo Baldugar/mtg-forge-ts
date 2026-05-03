@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-the-skyclaves-corpus-m680",
+  "description": "M6 corpus — Scourge of the Skyclaves; in-hand parse.",
+  "seed": 64152,
+  "cards": {
+    "Scourge of the Skyclaves": "Name:Scourge of the Skyclaves\nManaCost:1 B\nTypes:Creature Demon\nPT:*/*\nK:Kicker:4 B\nT:Mode$ SpellCast | ValidCard$ Card.Self+kicked | Execute$ TrigLoseLife | TriggerDescription$ When you cast CARDNAME, if it was kicked, each player loses half their life, rounded up.\nSVar:TrigLoseLife:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | AILifeThreshold$ 1\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ HalfUp\nSVar:HalfUp:PlayerCountRemembered$LifeTotal/HalfUp\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to 20 minus the highest life total among players.\nSVar:Y:PlayerCountPlayers$HighestLifeTotal\nSVar:X:SVar$Y/NMinus.20\nOracle:Kicker {4}{B}\\nWhen you cast this spell, if it was kicked, each player loses half their life, rounded up.\\nScourge of the Skyclaves's power and toughness are each equal to 20 minus the highest life total among players.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of the Skyclaves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

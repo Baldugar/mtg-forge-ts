@@ -1,0 +1,23 @@
+{
+  "id": "lifeblood-hydra-corpus-m680",
+  "description": "M6 corpus — Lifeblood Hydra; in-hand parse.",
+  "seed": 63226,
+  "cards": {
+    "Lifeblood Hydra": "Name:Lifeblood Hydra\nManaCost:X G G G\nTypes:Creature Hydra\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, you gain life and draw cards equal to its power.\nSVar:TrigSac:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ XPower | SubAbility$ DBDrawCards\nSVar:DBDrawCards:DB$ Draw | NumCards$ XPower\nSVar:XPower:TriggeredCard$CardPower\nOracle:Trample\\nLifeblood Hydra enters with X +1/+1 counters on it.\\nWhen Lifeblood Hydra dies, you gain life and draw cards equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifeblood Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

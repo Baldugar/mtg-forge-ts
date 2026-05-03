@@ -1,0 +1,23 @@
+{
+  "id": "strata-scythe-corpus-m680",
+  "description": "M6 corpus — Strata Scythe; in-hand parse.",
+  "seed": 64478,
+  "cards": {
+    "Strata Scythe": "Name:Strata Scythe\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ Imprint — When CARDNAME enters, search your library for a land card, exile it, then shuffle.\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Library | Destination$ Exile | ChangeType$ Land | ChangeNum$ 1\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each land on the battlefield with the same name as the exiled card.\nSVar:X:Count$Valid Land.sharesNameWith Imprinted\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Card.Self | Destination$ Any | Execute$ DBCleanup | Static$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsImprinted+ExiledWithSourceLKI | Origin$ Exile | Execute$ DBForget | Static$ True\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nAI:RemoveDeck:Random\nOracle:Imprint — When Strata Scythe enters, search your library for a land card, exile it, then shuffle.\\nEquipped creature gets +1/+1 for each land on the battlefield with the same name as the exiled card.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strata Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

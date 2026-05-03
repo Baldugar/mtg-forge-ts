@@ -1,0 +1,23 @@
+{
+  "id": "invocation-of-saint-traft-corpus-m680",
+  "description": "M6 corpus — Invocation of Saint Traft; in-hand parse.",
+  "seed": 62976,
+  "cards": {
+    "Invocation of Saint Traft": "Name:Invocation of Saint Traft\nManaCost:1 W U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ SaintTraftTrig | AddSVar$ SaintTraftToken | Description$ Enchanted creature has \"Whenever this creature attacks, create a 4/4 white Angel creature token with flying that's tapped and attacking. Exile that token at end of combat.\"\nSVar:SaintTraftTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ SaintTraftToken | TriggerDescription$ Whenever this creature attacks, put a 4/4 white Angel creature token with flying onto the battlefield tapped and attacking. Exile that token at end of combat.\nSVar:SaintTraftToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenTapped$ True | TokenAttacking$ True | AtEOT$ ExileCombat\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, create a 4/4 white Angel creature token with flying that's tapped and attacking. Exile that token at end of combat.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invocation of Saint Traft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

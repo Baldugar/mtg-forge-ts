@@ -1,0 +1,23 @@
+{
+  "id": "galadriel-elven-queen-corpus-m680",
+  "description": "M6 corpus — Galadriel, Elven-Queen; in-hand parse.",
+  "seed": 62593,
+  "cards": {
+    "Galadriel, Elven-Queen": "Name:Galadriel, Elven-Queen\nManaCost:2 G U\nTypes:Legendary Creature Elf Noble\nPT:4/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | CheckSVar$ ElfEntered | TriggerZones$ Battlefield | Execute$ TrigVote | TriggerDescription$ Will of the council — At the beginning of combat on your turn, if another Elf entered the battlefield under your control this turn, starting with you, each player votes for dominion or guidance. If dominion gets more votes, the Ring tempts you, then you put a +1/+1 counter on your Ring-bearer. If guidance gets more votes or the vote is tied, draw a card.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Choices$ DBTempt,DBDraw | VoteTiedAbility$ DBDraw\nSVar:DBTempt:DB$ RingTemptsYou | SubAbility$ DBPutCounter | SpellDescription$ Dominion\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Card.IsRingbearer+YouCtrl | Mandatory$ True | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBDraw:DB$ Draw | SpellDescription$ Guidance\nSVar:ElfEntered:Count$ThisTurnEntered_Battlefield_Creature.Elf+StrictlyOther+YouCtrl\nDeckHas:Ability$Counters\nDeckNeeds:Type$Elf\nOracle:Will of the council — At the beginning of combat on your turn, if another Elf entered the battlefield under your control this turn, starting with you, each player votes for dominion or guidance. If dominion gets more votes, the Ring tempts you, then you put a +1/+1 counter on your Ring-bearer. If guidance gets more votes or the vote is tied, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galadriel, Elven-Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

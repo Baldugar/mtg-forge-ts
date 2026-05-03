@@ -1,0 +1,23 @@
+{
+  "id": "unstable-mutation-corpus-m680",
+  "description": "M6 corpus — Unstable Mutation; in-hand parse.",
+  "seed": 64858,
+  "cards": {
+    "Unstable Mutation": "Name:Unstable Mutation\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, put a -1/-1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ M1M1 | CounterNum$ 1\nOracle:Enchant creature\\nEnchanted creature gets +3/+3.\\nAt the beginning of the upkeep of enchanted creature's controller, put a -1/-1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unstable Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lazav-familiar-stranger-corpus-m680",
+  "description": "M6 corpus — Lazav, Familiar Stranger; in-hand parse.",
+  "seed": 63201,
+  "cards": {
+    "Lazav, Familiar Stranger": "Name:Lazav, Familiar Stranger\nManaCost:1 U B\nTypes:Legendary Creature Shapeshifter\nPT:1/4\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivationLimit$ 1 | TriggerDescription$ Whenever you commit a crime, put a +1/+1 counter on CARDNAME. Then you may exile a card from a graveyard. If a creature card was exiled this way, you may have NICKNAME become a copy of that card until end of turn. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | ChangeType$ Card | Origin$ Graveyard | Optional$ True | Hidden$ True | Destination$ Exile | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ Clone | Defined$ Remembered.Creature | CloneTarget$ Self | Optional$ True | Duration$ UntilEndOfTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nDeckHints:Ability$Mill|Graveyard\nOracle:Whenever you commit a crime, put a +1/+1 counter on Lazav, Familiar Stranger. Then you may exile a card from a graveyard. If a creature card was exiled this way, you may have Lazav become a copy of that card until end of turn. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lazav, Familiar Stranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

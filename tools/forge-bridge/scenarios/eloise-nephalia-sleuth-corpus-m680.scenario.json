@@ -1,0 +1,23 @@
+{
+  "id": "eloise-nephalia-sleuth-corpus-m680",
+  "description": "M6 corpus — Eloise, Nephalia Sleuth; in-hand parse.",
+  "seed": 62306,
+  "cards": {
+    "Eloise, Nephalia Sleuth": "Name:Eloise, Nephalia Sleuth\nManaCost:3 U B\nTypes:Legendary Creature Human Rogue\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever another creature you control dies, investigate (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Permanent.token+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ DBSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a token, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:DBSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Investigate|Token\nOracle:Whenever another creature you control dies, investigate (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a token, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eloise, Nephalia Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

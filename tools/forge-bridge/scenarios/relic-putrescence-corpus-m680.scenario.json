@@ -1,0 +1,23 @@
+{
+  "id": "relic-putrescence-corpus-m680",
+  "description": "M6 corpus — Relic Putrescence; in-hand parse.",
+  "seed": 63948,
+  "cards": {
+    "Relic Putrescence": "Name:Relic Putrescence\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPoison | TriggerDescription$ Whenever enchanted artifact becomes tapped, its controller gets a poison counter.\nSVar:TrigPoison:DB$ Poison | Defined$ TriggeredCardController | Num$ 1\nAI:RemoveDeck:Random\nOracle:Enchant artifact\\nWhenever enchanted artifact becomes tapped, its controller gets a poison counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic Putrescence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

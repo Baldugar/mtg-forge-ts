@@ -1,0 +1,23 @@
+{
+  "id": "wyll-s-reversal-corpus-m680",
+  "description": "M6 corpus — Wyll's Reversal; in-hand parse.",
+  "seed": 65102,
+  "cards": {
+    "Wyll's Reversal": "Name:Wyll's Reversal\nManaCost:2 R\nTypes:Instant\nA:SP$ Pump | TargetType$ SpellAbility.numTargets GE1 | TgtZone$ Stack | ValidTgts$ Card,Emblem | TgtPrompt$ Select target spell or ability with one or more targets | SubAbility$ RollD20 | StackDescription$ {p:You} chooses {s:Targeted}. | SpellDescription$ Choose target spell or ability with one or more targets.\nSVar:RollD20:DB$ RollDice | Sides$ 20 | Modifier$ Y | ResultSubAbilities$ 1-14:ChooseNew,Else:ChooseAndCopy | StackDescription$ SpellDescription | SpellDescription$ Roll a d20 and add the greatest power among creatures you control.\nSVar:ChooseNew:DB$ ChangeTargets | Defined$ Targeted | Optional$ True | SpellDescription$ 1—14 VERT You may choose new targets for that spell or ability.\nSVar:ChooseAndCopy:DB$ ChangeTargets | Defined$ Targeted | Optional$ True | SubAbility$ DBCopy | SpellDescription$ 15+ VERT You may choose new targets for that spell or ability.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Targeted | Controller$ You | MayChooseTarget$ True\nSVar:Y:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Choose target spell or ability with one or more targets. Roll a d20 and add the greatest power among creatures you control.\\n1-14 | You may choose new targets for that spell or ability.\\n15+ | You may choose new targets for that spell or ability. Then copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wyll's Reversal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

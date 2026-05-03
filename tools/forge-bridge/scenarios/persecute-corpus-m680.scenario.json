@@ -1,0 +1,23 @@
+{
+  "id": "persecute-corpus-m680",
+  "description": "M6 corpus — Persecute; in-hand parse.",
+  "seed": 63723,
+  "cards": {
+    "Persecute": "Name:Persecute\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ ChooseColor | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBRevealDiscard | SpellDescription$ Choose a color. Target player reveals their hand and discards all cards of that color.\nSVar:DBRevealDiscard:DB$ Discard | Mode$ RevealDiscardAll | DiscardValid$ Card.ChosenColor | ValidTgts$ Player | TgtPrompt$ Select target player\nOracle:Choose a color. Target player reveals their hand and discards all cards of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Persecute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

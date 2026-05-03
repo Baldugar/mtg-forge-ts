@@ -1,0 +1,23 @@
+{
+  "id": "reckless-air-strike-corpus-m680",
+  "description": "M6 corpus — Reckless Air Strike; in-hand parse.",
+  "seed": 63924,
+  "cards": {
+    "Reckless Air Strike": "Name:Reckless Air Strike\nManaCost:R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDmg1,DBDestroy\nSVar:DBDmg1:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying. | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature with flying.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nOracle:Choose one —\\n• Reckless Air Strike deals 3 damage to target creature with flying.\\n• Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Air Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

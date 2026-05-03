@@ -1,0 +1,23 @@
+{
+  "id": "lust-for-war-corpus-m680",
+  "description": "M6 corpus — Lust for War; in-hand parse.",
+  "seed": 63294,
+  "cards": {
+    "Lust for War": "Name:Lust for War\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ MustAttack | ValidCreature$ Creature.EnchantedBy | Description$ Enchanted creature attacks each combat if able.\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted creature becomes tapped, CARDNAME deals 3 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 3\nOracle:Enchant creature\\nWhenever enchanted creature becomes tapped, Lust for War deals 3 damage to that creature's controller.\\nEnchanted creature attacks each combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lust for War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

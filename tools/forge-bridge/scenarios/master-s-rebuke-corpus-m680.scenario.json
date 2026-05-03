@@ -1,0 +1,23 @@
+{
+  "id": "master-s-rebuke-corpus-m680",
+  "description": "M6 corpus — Master's Rebuke; in-hand parse.",
+  "seed": 63366,
+  "cards": {
+    "Master's Rebuke": "Name:Master's Rebuke\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ RebukeDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.\nSVar:RebukeDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature or planeswalker you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master's Rebuke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

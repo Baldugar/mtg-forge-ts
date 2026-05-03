@@ -1,0 +1,23 @@
+{
+  "id": "briarknit-kami-corpus-m680",
+  "description": "M6 corpus — Briarknit Kami; in-hand parse.",
+  "seed": 61784,
+  "cards": {
+    "Briarknit Kami": "Name:Briarknit Kami\nManaCost:3 G G\nTypes:Creature Spirit\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Arcane,Spirit\nAI:RemoveDeck:Random\nOracle:Whenever you cast a Spirit or Arcane spell, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Briarknit Kami"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

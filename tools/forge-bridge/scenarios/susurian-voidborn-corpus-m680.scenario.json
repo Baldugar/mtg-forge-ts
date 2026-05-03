@@ -1,0 +1,23 @@
+{
+  "id": "susurian-voidborn-corpus-m680",
+  "description": "M6 corpus — Susurian Voidborn; in-hand parse.",
+  "seed": 64535,
+  "cards": {
+    "Susurian Voidborn": "Name:Susurian Voidborn\nManaCost:2 B\nTypes:Creature Vampire Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl,Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature or another creature or artifact you control dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nK:Warp:B\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever this creature or another creature or artifact you control dies, target opponent loses 1 life and you gain 1 life.\\nWarp {B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Susurian Voidborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

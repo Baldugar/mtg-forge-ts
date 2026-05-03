@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-glorifier-corpus-m680",
+  "description": "M6 corpus — Sanguine Glorifier; in-hand parse.",
+  "seed": 64121,
+  "cards": {
+    "Sanguine Glorifier": "Name:Sanguine Glorifier\nManaCost:3 W\nTypes:Creature Vampire Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target Vampire you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Permanent.Vampire+Other+YouCtrl | TgtPrompt$ Select another target Vampire you control | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Sanguine Glorifier enters, put a +1/+1 counter on another target Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Glorifier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

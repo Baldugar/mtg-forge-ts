@@ -1,0 +1,23 @@
+{
+  "id": "dormant-grove-corpus-m680",
+  "description": "M6 corpus — Dormant Grove; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Dormant Grove": "Name:Dormant Grove\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if that creature has toughness 6 or greater, transform CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionDefined$ Targeted | ConditionPresent$ Creature.toughnessGE6\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if that creature has toughness 6 or greater, transform Dormant Grove.\n\nALTERNATE\n\nName:Gnarled Grovestrider\nManaCost:no cost\nColors:green\nTypes:Creature Treefolk\nPT:3/6\nK:Vigilance\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Vigilance | Description$ Other creatures you control have vigilance.\nOracle:Vigilance\\nOther creatures you control have vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dormant Grove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

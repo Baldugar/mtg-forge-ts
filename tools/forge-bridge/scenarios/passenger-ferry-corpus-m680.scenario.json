@@ -1,0 +1,23 @@
+{
+  "id": "passenger-ferry-corpus-m680",
+  "description": "M6 corpus — Passenger Ferry; in-hand parse.",
+  "seed": 63701,
+  "cards": {
+    "Passenger Ferry": "Name:Passenger Ferry\nVariant:UniversesWithin:FlavorName:Carriage of Dreams\nManaCost:3\nTypes:Artifact Vehicle\nPT:4/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ When this Vehicle attacks, you may pay {U}. When you do, another target attacking creature can't be blocked this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ U | Execute$ TrigUnblockable | TriggerDescription$ When you do, another target attacking creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.Other+attacking | TgtPrompt$ Select another target attacking creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nOracle:When this Vehicle attacks, you may pay {U}. When you do, another target attacking creature can't be blocked this turn.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Passenger Ferry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

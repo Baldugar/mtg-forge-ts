@@ -1,0 +1,23 @@
+{
+  "id": "archpriest-of-iona-corpus-m680",
+  "description": "M6 corpus — Archpriest of Iona; in-hand parse.",
+  "seed": 61555,
+  "cards": {
+    "Archpriest of Iona": "Name:Archpriest of Iona\nManaCost:W\nTypes:Creature Human Cleric\nPT:*/2\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of creatures in your party.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ EQ4 | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, if you have a full party, target creature gets +1/+1 and gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Flying\nSVar:X:Count$Party\nSVar:BuffedBy:Rogue,Warrior,Wizard\nDeckHas:Ability$Party\nDeckHints:Type$Rogue|Warrior|Wizard\nOracle:Archpriest of Iona's power is equal to the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\\nAt the beginning of combat on your turn, if you have a full party, target creature gets +1/+1 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archpriest of Iona"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

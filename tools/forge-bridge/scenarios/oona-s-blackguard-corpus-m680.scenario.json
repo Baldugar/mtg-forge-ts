@@ -1,0 +1,23 @@
+{
+  "id": "oona-s-blackguard-corpus-m680",
+  "description": "M6 corpus — Oona's Blackguard; in-hand parse.",
+  "seed": 63629,
+  "cards": {
+    "Oona's Blackguard": "Name:Oona's Blackguard\nManaCost:1 B\nTypes:Creature Faerie Rogue\nPT:1/1\nK:Flying\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Rogue+Other+YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Each other Rogue creature you control enters with an additional +1/+1 counter on it.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+counters_GE1_P1P1 | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigDiscardOpp | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it deals combat damage to a player, that player discards a card.\nSVar:TrigDiscardOpp:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard|Counters\nDeckNeeds:Type$Rogue\nOracle:Flying\\nEach other Rogue creature you control enters with an additional +1/+1 counter on it.\\nWhenever a creature you control with a +1/+1 counter on it deals combat damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oona's Blackguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

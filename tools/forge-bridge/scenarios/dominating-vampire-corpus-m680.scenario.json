@@ -1,0 +1,23 @@
+{
+  "id": "dominating-vampire-corpus-m680",
+  "description": "M6 corpus — Dominating Vampire; in-hand parse.",
+  "seed": 62200,
+  "cards": {
+    "Dominating Vampire": "Name:Dominating Vampire\nManaCost:1 R R\nTypes:Creature Vampire\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, gain control of target creature with mana value less than or equal to the number of Vampires you control until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | TgtPrompt$ Select target creature with mana value less than or equal to the number of Vampires you control | ValidTgts$ Creature.cmcLEX | LoseControl$ EOT | Untap$ True | AddKWs$ Haste\nSVar:X:Count$Valid Vampire.YouCtrl\nSVar:PlayMain1:OPPONENTCREATURES\nDeckHints:Type$Vampire\nOracle:When Dominating Vampire enters, gain control of target creature with mana value less than or equal to the number of Vampires you control until end of turn. Untap that creature. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dominating Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

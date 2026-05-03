@@ -1,0 +1,23 @@
+{
+  "id": "sahagin-corpus-m680",
+  "description": "M6 corpus — Sahagin; in-hand parse.",
+  "seed": 64108,
+  "cards": {
+    "Sahagin": "Name:Sahagin\nManaCost:1 U\nTypes:Creature Merfolk Warrior\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ValidSA$ Spell.ManaSpent GE4 | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, if at least four mana was spent to cast it, put a +1/+1 counter on this creature and it can't be blocked this turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever you cast a noncreature spell, if at least four mana was spent to cast it, put a +1/+1 counter on this creature and it can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sahagin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

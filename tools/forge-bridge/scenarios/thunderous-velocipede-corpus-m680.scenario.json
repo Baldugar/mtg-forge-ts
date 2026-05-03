@@ -1,0 +1,23 @@
+{
+  "id": "thunderous-velocipede-corpus-m680",
+  "description": "M6 corpus — Thunderous Velocipede; in-hand parse.",
+  "seed": 64741,
+  "cards": {
+    "Thunderous Velocipede": "Name:Thunderous Velocipede\nManaCost:1 G G\nTypes:Artifact Vehicle\nPT:5/5\nK:Trample\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.YouCtrl+Other,Vehicle.YouCtrl+Other\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Each other Vehicle and creature you control enters with an additional +1/+1 counter on it if its mana value is 4 or less. Otherwise, it enters with three additional +1/+1 counters on it.\nSVar:X:Count$Compare ReplacedCard$CardManaCost LE4.1.3\nK:Crew:3\nOracle:Trample\\nEach other Vehicle and creature you control enters with an additional +1/+1 counter on it if its mana value is 4 or less. Otherwise, it enters with three additional +1/+1 counters on it.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderous Velocipede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "markov-retribution-corpus-m680",
+  "description": "M6 corpus — Markov Retribution; in-hand parse.",
+  "seed": 63347,
+  "cards": {
+    "Markov Retribution": "Name:Markov Retribution\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBPumpAll,DBBite\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SpellDescription$ Creatures you control get +1/+0 until end of turn.\nSVar:DBBite:DB$ Pump | ValidTgts$ Vampire.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target Vampire you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target Vampire you control deals damage equal to its power to another target creature.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature | AILogic$ PowerDmg | TgtPrompt$ Select another target creature | TargetUnique$ True | NumDmg$ X | DamageSource$ ParentTarget | StackDescription$ {c:ParentTarget} deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:ParentTargeted$CardPower\nDeckHints:Type$Vampire\nOracle:Choose one or both —\\n• Creatures you control get +1/+0 until end of turn.\\n• Target Vampire you control deals damage equal to its power to another target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Markov Retribution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

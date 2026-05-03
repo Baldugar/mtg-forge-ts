@@ -1,0 +1,23 @@
+{
+  "id": "azula-ruthless-firebender-corpus-m680",
+  "description": "M6 corpus — Azula, Ruthless Firebender; in-hand parse.",
+  "seed": 61632,
+  "cards": {
+    "Azula, Ruthless Firebender": "Name:Azula, Ruthless Firebender\nManaCost:2 B\nTypes:Legendary Creature Human Noble\nPT:3/3\nK:Firebending:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever NICKNAME attacks, you may discard a card. Then you get an experience counter for each player who discarded a card this turn.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | Optional$ True | NumCards$ 1 | SubAbility$ DBExperience\nSVar:DBExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ X\nA:AB$ Pump | Cost$ 2 B | Defined$ Self | NumAtt$ +Y | NumDef$ +Y | KW$ Menace | SpellDescription$ Until end of turn, NICKNAME gets +1/+1 for each experience counter you have and gains menace.\nSVar:X:PlayerCountPlayers$ConditionGE1 CardsDiscardedThisTurn\nSVar:Y:Count$YourCountersExperience\nOracle:Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)\\nWhenever Azula attacks, you may discard a card. Then you get an experience counter for each player who discarded a card this turn.\\n{2}{B}: Until end of turn, Azula gets +1/+1 for each experience counter you have and gains menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azula, Ruthless Firebender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

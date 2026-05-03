@@ -1,0 +1,23 @@
+{
+  "id": "master-chef-corpus-m680",
+  "description": "M6 corpus — Master Chef; in-hand parse.",
+  "seed": 63361,
+  "cards": {
+    "Master Chef": "Name:Master Chef\nManaCost:2 G\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddReplacementEffect$ This & Other | Description$ Commander creatures you own have \"This creature enters with an additional +1/+1 counter on it\" and \"Other creatures you control enter with an additional +1/+1 counter on them.\"\nSVar:This:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ExtraCounter | ReplacementResult$ Updated | Description$ This creature enters with an additional +1/+1 counter on it.\nSVar:Other:Event$ Moved | ValidCard$ Creature.Other+YouCtrl | ActiveZones$ Battlefield | Destination$ Battlefield | ReplaceWith$ ExtraCounter | ReplacementResult$ Updated | Description$ Other creatures you control enter with an additional +1/+1 counter on them.\nSVar:ExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Counters\nOracle:Commander creatures you own have \"This creature enters with an additional +1/+1 counter on it\" and \"Other creatures you control enter with an additional +1/+1 counter on them.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master Chef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chaos-dragon-corpus-m680",
+  "description": "M6 corpus — Chaos Dragon; in-hand parse.",
+  "seed": 61899,
+  "cards": {
+    "Chaos Dragon": "Name:Chaos Dragon\nManaCost:1 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ At the beginning of combat on your turn, each player rolls a d20. If one or more opponents had the highest result, CARDNAME can't attack those players or planeswalkers they control this combat.\nSVar:TrigRollDice:DB$ RollDice | Defined$ Player | Sides$ 20 | RememberHighestPlayer$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantAttack | RememberObjects$ Player.Opponent+IsRemembered | Duration$ UntilEndOfCombat | SubAbility$ DBCleanup\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Card.EffectSource | Target$ Player.IsRemembered,Planeswalker.RememberedPlayerCtrl | Description$ EFFECTSOURCE can't attack those players or planeswalkers they control this combat.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying, haste\\nChaos Dragon attacks each combat if able.\\nAt the beginning of combat on your turn, each player rolls a d20. If one or more opponents had the highest result, Chaos Dragon can't attack those players or planeswalkers they control this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaos Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

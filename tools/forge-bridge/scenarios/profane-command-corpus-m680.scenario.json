@@ -1,0 +1,23 @@
+{
+  "id": "profane-command-corpus-m680",
+  "description": "M6 corpus — Profane Command; in-hand parse.",
+  "seed": 63813,
+  "cards": {
+    "Profane Command": "Name:Profane Command\nManaCost:X B B\nTypes:Sorcery\nA:SP$ Charm | Announce$ X | Choices$ DBLose,DBChange,DBWeaken,DBSearch | CharmNum$ 2\nSVar:DBLose:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select target player to lose life | LifeAmount$ X | SpellDescription$ Target player loses X life.\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card with mana value X or less in your graveyard | ValidTgts$ Creature.YouCtrl+cmcLEX | SpellDescription$ Return target creature card with mana value X or less from your graveyard to the battlefield.\nSVar:DBWeaken:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature to get -X/-X | IsCurse$ True | NumAtt$ -X | NumDef$ -X | SpellDescription$ Target creature gets -X/-X until end of turn.\nSVar:DBSearch:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ X | KW$ Fear | TgtPrompt$ Select up to X target creatures to gain fear | SpellDescription$ Up to X target creatures gain fear until end of turn. (They can't be blocked except by artifact creatures and/or black creatures.)\nSVar:X:Count$xPaid\n# X Will get overwritten by Announce\nAI:RemoveDeck:All\nOracle:Choose two —\\n• Target player loses X life.\\n• Return target creature card with mana value X or less from your graveyard to the battlefield.\\n• Target creature gets -X/-X until end of turn.\\n• Up to X target creatures gain fear until end of turn. (They can't be blocked except by artifact creatures and/or black creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Profane Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

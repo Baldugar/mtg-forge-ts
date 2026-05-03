@@ -1,0 +1,23 @@
+{
+  "id": "cathartic-pyre-corpus-m680",
+  "description": "M6 corpus — Cathartic Pyre; in-hand parse.",
+  "seed": 61867,
+  "cards": {
+    "Cathartic Pyre": "Name:Cathartic Pyre\nManaCost:1 R\nTypes:Instant\nA:SP$ Charm | Choices$ DBDmg,DBDisc\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature or planeswalker.\nSVar:DBDisc:DB$ Discard | Mode$ TgtChoose | NumCards$ 2 | Optional$ True | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard up to two cards, then draw that many cards.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Choose one —\\n• Cathartic Pyre deals 3 damage to target creature or planeswalker.\\n• Discard up to two cards, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cathartic Pyre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

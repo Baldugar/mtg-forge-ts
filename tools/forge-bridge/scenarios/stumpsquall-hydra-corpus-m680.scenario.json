@@ -1,0 +1,23 @@
+{
+  "id": "stumpsquall-hydra-corpus-m680",
+  "description": "M6 corpus — Stumpsquall Hydra; in-hand parse.",
+  "seed": 64492,
+  "cards": {
+    "Stumpsquall Hydra": "Name:Stumpsquall Hydra\nManaCost:X G G G\nTypes:Creature Hydra\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, distribute X +1/+1 counters among it and any number of commanders.\nSVar:TrigPutCounter:DB$ PutCounter | Choices$ Card.Self,Card.IsCommander | ChoiceTitle$ Choose this card and/or any number of commanders to distribute counters to | ChoiceAmount$ X | MinChoiceAmount$ 1 | CounterType$ P1P1 | CounterNum$ X | DividedAsYouChoose$ X\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Stumpsquall Hydra enters, distribute X +1/+1 counters among it and any number of commanders.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stumpsquall Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

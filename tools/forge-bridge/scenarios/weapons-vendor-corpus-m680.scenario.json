@@ -1,0 +1,23 @@
+{
+  "id": "weapons-vendor-corpus-m680",
+  "description": "M6 corpus — Weapons Vendor; in-hand parse.",
+  "seed": 65014,
+  "cards": {
+    "Weapons Vendor": "Name:Weapons Vendor\nManaCost:3 W\nTypes:Creature Human Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Equipment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigImmediateTrigger | TriggerDescription$ At the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.\nSVar:TrigImmediateTrigger:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigPump | TriggerDescription$ When you do, attach target Equipment you control to target creature you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TgtPrompt$ Select target equipment you control | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nDeckHints:Type$Equipment\nOracle:When this creature enters, draw a card.\\nAt the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weapons Vendor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

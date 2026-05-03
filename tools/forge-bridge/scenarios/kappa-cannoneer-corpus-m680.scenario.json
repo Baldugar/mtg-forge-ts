@@ -1,0 +1,23 @@
+{
+  "id": "kappa-cannoneer-corpus-m680",
+  "description": "M6 corpus — Kappa Cannoneer; in-hand parse.",
+  "seed": 63076,
+  "cards": {
+    "Kappa Cannoneer": "Name:Kappa Cannoneer\nManaCost:5 U\nTypes:Artifact Creature Turtle Warrior\nPT:4/4\nK:Improvise\nK:Ward:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | IsPresent$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an artifact you control enters, put a +1/+1 counter on CARDNAME and it can't be blocked this turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Counters\nDeckNeeds:Type$Artifact\nOracle:Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\\nWard {4}\\nWhenever an artifact you control enters, put a +1/+1 counter on Kappa Cannoneer and it can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kappa Cannoneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

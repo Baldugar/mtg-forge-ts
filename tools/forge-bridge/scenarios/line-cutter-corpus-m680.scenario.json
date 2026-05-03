@@ -1,0 +1,23 @@
+{
+  "id": "line-cutter-corpus-m680",
+  "description": "M6 corpus — Line Cutter; in-hand parse.",
+  "seed": 63246,
+  "cards": {
+    "Line Cutter": "Name:Line Cutter\nManaCost:3 B\nTypes:Creature Human Rogue Guest\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ When CARDNAME enters the battlefield, roll to visit your Attractions.\nSVar:TrigRollDice:DB$ RollDice | Sides$ 6 | ToVisitYourAttractions$ True\nOracle:When Line Cutter enters the battlefield, roll to visit your Attractions.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Line Cutter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

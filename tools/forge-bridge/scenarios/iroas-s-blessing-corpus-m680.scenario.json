@@ -1,0 +1,23 @@
+{
+  "id": "iroas-s-blessing-corpus-m680",
+  "description": "M6 corpus — Iroas's Blessing; in-hand parse.",
+  "seed": 62985,
+  "cards": {
+    "Iroas's Blessing": "Name:Iroas's Blessing\nManaCost:3 R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to target creature or planeswalker an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ 4\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nOracle:Enchant creature you control\\nWhen Iroas's Blessing enters, it deals 4 damage to target creature or planeswalker an opponent controls.\\nEnchanted creature gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iroas's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

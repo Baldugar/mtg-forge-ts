@@ -1,0 +1,23 @@
+{
+  "id": "earth-kingdom-soldier-corpus-m680",
+  "description": "M6 corpus — Earth Kingdom Soldier; in-hand parse.",
+  "seed": 62274,
+  "cards": {
+    "Earth Kingdom Soldier": "Name:Earth Kingdom Soldier\nManaCost:4 GW\nTypes:Creature Human Soldier\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When this creature enters, put a +1/+1 counter on each of up to two target creatures you control.\nSVar:TrigPut:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target Creature you control | CounterType$ P1P1 | CounterNum$ 1\nOracle:Vigilance\\nWhen this creature enters, put a +1/+1 counter on each of up to two target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earth Kingdom Soldier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

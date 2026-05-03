@@ -1,0 +1,23 @@
+{
+  "id": "triumph-of-cruelty-corpus-m680",
+  "description": "M6 corpus — Triumph of Cruelty; in-hand parse.",
+  "seed": 64802,
+  "cards": {
+    "Triumph of Cruelty": "Name:Triumph of Cruelty\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCruelDiscard | TriggerDescription$ At the beginning of your upkeep, target opponent discards a card if you control the creature with the greatest power or tied for the greatest power.\nSVar:TrigCruelDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | ConditionCheckSVar$ YourCruelty | ConditionSVarCompare$ GEOppsCruelty\nSVar:YourCruelty:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:OppsCruelty:Count$Valid Creature.YouDontCtrl$GreatestCardPower\nOracle:At the beginning of your upkeep, target opponent discards a card if you control the creature with the greatest power or tied for the greatest power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triumph of Cruelty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "iron-bully-corpus-m680",
+  "description": "M6 corpus — Iron Bully; in-hand parse.",
+  "seed": 62988,
+  "cards": {
+    "Iron Bully": "Name:Iron Bully\nManaCost:3\nTypes:Artifact Creature Golem\nPT:1/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Iron Bully enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron Bully"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

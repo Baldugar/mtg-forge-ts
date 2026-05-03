@@ -1,0 +1,23 @@
+{
+  "id": "gravelighter-corpus-m680",
+  "description": "M6 corpus — Gravelighter; in-hand parse.",
+  "seed": 62714,
+  "cards": {
+    "Gravelighter": "Name:Gravelighter\nManaCost:2 B\nTypes:Creature Spirit\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerDescription$ When CARDNAME enters, draw a card if a creature died this turn. Otherwise, each player sacrifices a creature.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBDraw | FalseSubAbility$ DBSac\nSVar:DBDraw:DB$ Draw\nSVar:DBSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nWhen Gravelighter enters, draw a card if a creature died this turn. Otherwise, each player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravelighter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

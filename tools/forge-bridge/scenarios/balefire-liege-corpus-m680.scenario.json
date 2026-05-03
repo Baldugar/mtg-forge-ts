@@ -1,0 +1,23 @@
+{
+  "id": "balefire-liege-corpus-m680",
+  "description": "M6 corpus — Balefire Liege; in-hand parse.",
+  "seed": 61637,
+  "cards": {
+    "Balefire Liege": "Name:Balefire Liege\nManaCost:2 RW RW RW\nTypes:Creature Spirit Horror\nPT:2/4\nS:Mode$ Continuous | Affected$ Creature.Red+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other red creatures you control get +1/+1.\nS:Mode$ Continuous | Affected$ Creature.White+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other white creatures you control get +1/+1.\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a red spell, CARDNAME deals 3 damage to target player or planeswalker.\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a white spell, you gain 3 life.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Card.Red,Card.White\nOracle:Other red creatures you control get +1/+1.\\nOther white creatures you control get +1/+1.\\nWhenever you cast a red spell, Balefire Liege deals 3 damage to target player or planeswalker.\\nWhenever you cast a white spell, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balefire Liege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

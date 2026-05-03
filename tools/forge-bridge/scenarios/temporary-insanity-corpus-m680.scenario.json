@@ -1,0 +1,23 @@
+{
+  "id": "temporary-insanity-corpus-m680",
+  "description": "M6 corpus — Temporary Insanity; in-hand parse.",
+  "seed": 64612,
+  "cards": {
+    "Temporary Insanity": "Name:Temporary Insanity\nManaCost:3 R\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature.powerLTX | TgtPrompt$ Select target creature with power less than or equal to the number of cards in your graveyard | SubAbility$ DBChange | SpellDescription$ Untap target creature with power less than the number of cards in your graveyard and gain control of it until end of turn. That creature gains haste until end of turn.\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Untap target creature with power less than the number of cards in your graveyard and gain control of it until end of turn. That creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temporary Insanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

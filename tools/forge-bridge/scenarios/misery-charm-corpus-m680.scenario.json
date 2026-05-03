@@ -1,0 +1,23 @@
+{
+  "id": "misery-charm-corpus-m680",
+  "description": "M6 corpus — Misery Charm; in-hand parse.",
+  "seed": 63438,
+  "cards": {
+    "Misery Charm": "Name:Misery Charm\nManaCost:B\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBChangeZone,DBLoseLife\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.Cleric | TgtPrompt$ Select target cleric. | SpellDescription$ Destroy target Cleric.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature.Cleric | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target Cleric card from your graveyard to your hand.\nSVar:DBLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player to lose 2 life | LifeAmount$ 2 | SpellDescription$ Target player loses 2 life.\nDeckNeeds:Type$Cleric\nOracle:Choose one —\\n• Destroy target Cleric.\\n• Return target Cleric card from your graveyard to your hand.\\n• Target player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Misery Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

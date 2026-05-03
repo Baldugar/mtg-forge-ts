@@ -1,0 +1,23 @@
+{
+  "id": "fireblade-artist-corpus-m680",
+  "description": "M6 corpus — Fireblade Artist; in-hand parse.",
+  "seed": 62495,
+  "cards": {
+    "Fireblade Artist": "Name:Fireblade Artist\nManaCost:B R\nTypes:Creature Human Shaman\nPT:2/2\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ At the beginning of your upkeep, you may sacrifice a creature. When you do, CARDNAME deals 2 damage to target opponent or planeswalker.\nSVar:TrigSacrifice:DB$ Sacrifice | Optional$ True | SacValid$ Creature | Amount$ 1 | RememberSacrificed$ True | SubAbility$ TrigImmediate\nSVar:TrigImmediate:DB$ ImmediateTrigger | Execute$ TrigDealDamage | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | TriggerDescription$ When you do, CARDNAME deals 2 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Haste\\nAt the beginning of your upkeep, you may sacrifice a creature. When you do, Fireblade Artist deals 2 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fireblade Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

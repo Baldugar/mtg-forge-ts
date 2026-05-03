@@ -1,0 +1,23 @@
+{
+  "id": "illusions-of-grandeur-corpus-m680",
+  "description": "M6 corpus — Illusions of Grandeur; in-hand parse.",
+  "seed": 62905,
+  "cards": {
+    "Illusions of Grandeur": "Name:Illusions of Grandeur\nManaCost:3 U\nTypes:Enchantment\nK:Cumulative upkeep:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 20 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME leaves the battlefield, you lose 20 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 20\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 20\nSVar:AICastPreference:MustHaveInHand$ Donate | MaxControlled$ 1 | NumManaSourcesNextTurn$ 5 | AlwaysCastIfLifeBelow$ 4\nSVar:DonateMe:5\nSVar:PlayMain1:TRUE\nSVar:DoNotDiscardIfAble:TRUE\nAI:RemoveDeck:Random\nDeckNeeds:Name$Donate|Harmless Offering|Zedruu the Greathearted\nOracle:Cumulative upkeep {2} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen Illusions of Grandeur enters, you gain 20 life.\\nWhen Illusions of Grandeur leaves the battlefield, you lose 20 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illusions of Grandeur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

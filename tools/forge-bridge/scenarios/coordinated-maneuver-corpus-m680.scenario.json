@@ -1,0 +1,23 @@
+{
+  "id": "coordinated-maneuver-corpus-m680",
+  "description": "M6 corpus — Coordinated Maneuver; in-hand parse.",
+  "seed": 62005,
+  "cards": {
+    "Coordinated Maneuver": "Name:Coordinated Maneuver\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBDamage,DBDestroy\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of creatures you control to target creature or planeswalker.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:Choose one —\\n• Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.\\n• Destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coordinated Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thalia-s-lieutenant-corpus-m680",
+  "description": "M6 corpus — Thalia's Lieutenant; in-hand parse.",
+  "seed": 64631,
+  "cards": {
+    "Thalia's Lieutenant": "Name:Thalia's Lieutenant\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other Human you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Human.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Human.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Human you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Human\nDeckHints:Type$Human\nDeckHas:Ability$Counters\nOracle:When Thalia's Lieutenant enters, put a +1/+1 counter on each other Human you control.\\nWhenever another Human you control enters, put a +1/+1 counter on Thalia's Lieutenant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalia's Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

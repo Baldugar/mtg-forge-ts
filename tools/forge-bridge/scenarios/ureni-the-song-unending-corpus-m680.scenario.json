@@ -1,0 +1,23 @@
+{
+  "id": "ureni-the-song-unending-corpus-m680",
+  "description": "M6 corpus — Ureni, the Song Unending; in-hand parse.",
+  "seed": 64866,
+  "cards": {
+    "Ureni, the Song Unending": "Name:Ureni, the Song Unending\nManaCost:5 G U R\nTypes:Legendary Creature Spirit Dragon\nPT:10/10\nK:Flying\nK:Protection from white\nK:Protection from black\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When NICKNAME enters, it deals X damage divided as you choose among any number of target creatures and/or planeswalkers your opponents control, where X is the number of lands you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select any number of target creatures and/or planeswalkers an opponent controls | NumDmg$ X | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X\nSVar:X:Count$Valid Land.YouCtrl\nOracle:Flying, protection from white and from black\\nWhen Ureni enters, it deals X damage divided as you choose among any number of target creatures and/or planeswalkers your opponents control, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ureni, the Song Unending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

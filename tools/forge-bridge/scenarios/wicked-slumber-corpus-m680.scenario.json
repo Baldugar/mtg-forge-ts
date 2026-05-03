@@ -1,0 +1,23 @@
+{
+  "id": "wicked-slumber-corpus-m680",
+  "description": "M6 corpus — Wicked Slumber; in-hand parse.",
+  "seed": 65036,
+  "cards": {
+    "Wicked Slumber": "Name:Wicked Slumber\nManaCost:3 U\nTypes:Instant\nK:Convoke\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBCounter | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | StackDescription$ Tap {c:Targeted}. {p:You} puts a stun counter on a creature targeted by this spell. Then {p:You} puts a stun counter on a creature targeted by this spell. | SpellDescription$ Tap up to two target creatures. Put a stun counter on either of them. Then put a stun counter on either of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Choices$ Card.targetedBy | ChoiceTitle$ Choose a creature targeted by this spell | CounterType$ STUN | CounterNum$ 1 | SubAbility$ DBCounterBis | StackDescription$ None\nSVar:DBCounterBis:DB$ PutCounter | Choices$ Card.targetedBy | ChoiceTitle$ Choose a creature targeted by this spell | CounterType$ STUN | CounterNum$ 1 | StackDescription$ None\nDeckHas:Ability$Counters\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nTap up to two target creatures. Put a stun counter on either of them. Then put a stun counter on either of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wicked Slumber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

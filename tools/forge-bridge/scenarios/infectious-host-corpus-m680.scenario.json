@@ -1,0 +1,23 @@
+{
+  "id": "infectious-host-corpus-m680",
+  "description": "M6 corpus — Infectious Host; in-hand parse.",
+  "seed": 62925,
+  "cards": {
+    "Infectious Host": "Name:Infectious Host\nManaCost:2 B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, target player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 2\nOracle:When Infectious Host dies, target player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infectious Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

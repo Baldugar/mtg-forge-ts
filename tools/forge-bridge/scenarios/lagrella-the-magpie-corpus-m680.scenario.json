@@ -1,0 +1,23 @@
+{
+  "id": "lagrella-the-magpie-corpus-m680",
+  "description": "M6 corpus — Lagrella, the Magpie; in-hand parse.",
+  "seed": 63181,
+  "cards": {
+    "Lagrella, the Magpie": "Name:Lagrella, the Magpie\nManaCost:G W U\nTypes:Legendary Creature Human Soldier\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile any number of other target creatures controlled by different players until NICKNAME leaves the battlefield. When an exiled card enters under your control this way, put two +1/+1 counters on it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ MaxTgt | TargetsWithDifferentControllers$ True | Duration$ UntilHostLeavesPlay | ReturnAbility$ DBReturn | ReturnValid$ Card.IsTriggerRemembered+YouCtrl\nSVar:DBReturn:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ When an exiled card enters under your control this way, put two +1/+1 counters on it.\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:When Lagrella, the Magpie enters, exile any number of other target creatures controlled by different players until Lagrella leaves the battlefield. When an exiled card enters under your control this way, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lagrella, the Magpie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "desert-warfare-corpus-m680",
+  "description": "M6 corpus — Desert Warfare; in-hand parse.",
+  "seed": 62156,
+  "cards": {
+    "Desert Warfare": "Name:Desert Warfare\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Desert.YouCtrl | Execute$ TrigDelay | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Desert and whenever a Desert card is put into your graveyard from your hand or library, put that card onto the battlefield under your control at the beginning of your next end step.\nT:Mode$ ChangesZone | ValidCard$ Desert.YouOwn | Origin$ Hand,Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigDelay | Secondary$ True | TriggerDescription$ Whenever you sacrifice a Desert and whenever a Desert card is put into your graveyard from your hand or library, put that card onto the battlefield under your control at the beginning of your next end step.\nSVar:TrigDelay:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Put that card onto the battlefield under your control at the beginning of your next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Spawner>TriggeredCard | GainControl$ True | Origin$ Graveyard | Destination$ Battlefield\nT:Mode$ Phase | IsPresent$ Desert.YouCtrl | PresentCompare$ GE5 | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, if you control five or more Deserts, create that many 1/1 red, green, and white Sand Warrior creature tokens. They gain haste.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | PumpKeywords$ Haste | TokenScript$ rgw_1_1_sand_warrior | TokenOwner$ You\nSVar:X:Count$Valid Desert.YouCtrl\nDeckHas:Ability$Token & Type$Sand|Warrior\nDeckNeeds:Type$Desert\nOracle:Whenever you sacrifice a Desert and whenever a Desert card is put into your graveyard from your hand or library, put that card onto the battlefield under your control at the beginning of your next end step.\\nAt the beginning of combat on your turn, if you control five or more Deserts, create that many 1/1 red, green, and white Sand Warrior creature tokens. They gain haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desert Warfare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

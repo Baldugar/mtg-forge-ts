@@ -1,0 +1,23 @@
+{
+  "id": "kazandu-blademaster-corpus-m680",
+  "description": "M6 corpus — Kazandu Blademaster; in-hand parse.",
+  "seed": 63093,
+  "cards": {
+    "Kazandu Blademaster": "Name:Kazandu Blademaster\nManaCost:W W\nTypes:Creature Human Soldier Ally\nPT:1/1\nK:First Strike\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:First strike, vigilance\\nWhenever Kazandu Blademaster or another Ally you control enters, you may put a +1/+1 counter on Kazandu Blademaster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kazandu Blademaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

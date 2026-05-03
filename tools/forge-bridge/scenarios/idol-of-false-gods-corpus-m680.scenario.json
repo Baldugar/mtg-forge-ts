@@ -1,0 +1,23 @@
+{
+  "id": "idol-of-false-gods-corpus-m680",
+  "description": "M6 corpus — Idol of False Gods; in-hand parse.",
+  "seed": 62899,
+  "cards": {
+    "Idol of False Gods": "Name:Idol of False Gods\nManaCost:2\nTypes:Kindred Artifact Eldrazi\nA:AB$ Token | Cost$ 1 C T | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You | SpellDescription$ Create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Eldrazi.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Eldrazi you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_P1P1 | SetPower$ 0 | SetToughness$ 0 | AddType$ Creature | AddKeyword$ Annihilator:2 | Description$ As long as CARDNAME has eight or more +1/+1 counters on it, it's a 0/0 creature in addition to its other types and it has annihilator 2.\nDeckHints:Ability$Graveyard|Sacrifice & Type$Eldrazi\nDeckHas:Ability$Counters|Token\nOracle:{1}{C}, {T}: Create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\\nWhenever another Eldrazi you control dies, put a +1/+1 counter on Idol of False Gods.\\nAs long as Idol of False Gods has eight or more +1/+1 counters on it, it's a 0/0 creature in addition to its other types and it has annihilator 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Idol of False Gods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

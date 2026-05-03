@@ -1,0 +1,23 @@
+{
+  "id": "gavony-silversmith-corpus-m680",
+  "description": "M6 corpus — Gavony Silversmith; in-hand parse.",
+  "seed": 62611,
+  "cards": {
+    "Gavony Silversmith": "Name:Gavony Silversmith\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each of up to two target creatures.\nSVar:TrigPut:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Gavony Silversmith enters, put a +1/+1 counter on each of up to two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gavony Silversmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

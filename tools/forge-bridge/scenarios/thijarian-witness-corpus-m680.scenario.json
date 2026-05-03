@@ -1,0 +1,23 @@
+{
+  "id": "thijarian-witness-corpus-m680",
+  "description": "M6 corpus — Thijarian Witness; in-hand parse.",
+  "seed": 64709,
+  "cards": {
+    "Thijarian Witness": "Name:Thijarian Witness\nManaCost:1 G\nTypes:Creature Alien Cleric\nPT:0/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+attackingAlone,Creature.Other+blockingAlone | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever another creature dies, if it was attacking or blocking alone, exile it and investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ TrigInvestigate\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Clue|Artifact\nOracle:Flash\\nBear Witness — Whenever another creature dies, if it was attacking or blocking alone, exile it and investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thijarian Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

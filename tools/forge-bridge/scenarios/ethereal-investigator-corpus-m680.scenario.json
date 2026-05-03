@@ -1,0 +1,23 @@
+{
+  "id": "ethereal-investigator-corpus-m680",
+  "description": "M6 corpus — Ethereal Investigator; in-hand parse.",
+  "seed": 62377,
+  "cards": {
+    "Ethereal Investigator": "Name:Ethereal Investigator\nManaCost:3 U\nTypes:Creature Spirit\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate X times, where X is the number of opponents you have. (To investigate, create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Num$ X\nSVar:X:PlayerCountOpponents$Amount\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you draw your second card each turn, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying\nDeckHas:Ability$Token|Sacrifice\nOracle:Flying\\nWhen Ethereal Investigator enters, investigate X times, where X is the number of opponents you have. (To investigate, create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you draw your second card each turn, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethereal Investigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vigor-corpus-m680",
+  "description": "M6 corpus — Vigor; in-hand parse.",
+  "seed": 64945,
+  "cards": {
+    "Vigor": "Name:Vigor\nManaCost:3 G G G\nTypes:Creature Elemental Incarnation\nPT:6/6\nK:Trample\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Creature.YouCtrl+Other | ReplaceWith$ Counters | PreventionEffect$ True | ExecuteMode$ PerTarget | Description$ If damage would be dealt to another creature you control, prevent that damage. Put a +1/+1 counter on that creature for each 1 damage prevented this way.\nSVar:Counters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nOracle:Trample\\nIf damage would be dealt to another creature you control, prevent that damage. Put a +1/+1 counter on that creature for each 1 damage prevented this way.\\nWhen Vigor is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vigor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

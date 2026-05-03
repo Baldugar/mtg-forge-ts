@@ -1,0 +1,23 @@
+{
+  "id": "pharika-s-spawn-corpus-m680",
+  "description": "M6 corpus — Pharika's Spawn; in-hand parse.",
+  "seed": 63731,
+  "cards": {
+    "Pharika's Spawn": "Name:Pharika's Spawn\nManaCost:3 B\nTypes:Creature Gorgon\nPT:3/4\nK:Escape:5 B ExileFromGrave<3/Card.Other/other>\nR:Event$ Moved | ValidCard$ Card.Self+escaped | Destination$ Battlefield | ReplaceWith$ ETBCounters | ReplacementResult$ Updated | Description$ CARDNAME escapes with two +1/+1 counters on it. When it enters this way, each opponent sacrifices a non-Gorgon creature.\nSVar:ETBCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | ETB$ True | CounterNum$ 2 | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ DBSac | TriggerDescription$ When it enters this way, each opponent sacrifices a non-Gorgon creature.\nSVar:DBSac:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature.nonGorgon\nDeckHas:Ability$Counters\nOracle:Escape—{5}{B}, Exile three other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\\nPharika's Spawn escapes with two +1/+1 counters on it. When it enters this way, each opponent sacrifices a non-Gorgon creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pharika's Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

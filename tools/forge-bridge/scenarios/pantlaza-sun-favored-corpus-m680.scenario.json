@@ -1,0 +1,23 @@
+{
+  "id": "pantlaza-sun-favored-corpus-m680",
+  "description": "M6 corpus — Pantlaza, Sun-Favored; in-hand parse.",
+  "seed": 63691,
+  "cards": {
+    "Pantlaza, Sun-Favored": "Name:Pantlaza, Sun-Favored\nManaCost:2 R G W\nTypes:Legendary Creature Dinosaur\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Dinosaur.YouCtrl+Other | OptionalDecider$ You | ResolvedLimit$ 1 | Execute$ TrigDiscover | TriggerDescription$ Whenever CARDNAME or another Dinosaur you control enters, you may discover X, where X is that creature's toughness. Do this only once each turn. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nSVar:TrigDiscover:DB$ Discover | Num$ X\nSVar:X:TriggeredCard$CardToughness\nDeckHints:Type$Dinosaur\nOracle:Whenever Pantlaza, Sun-Favored or another Dinosaur you control enters, you may discover X, where X is that creature's toughness. Do this only once each turn. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pantlaza, Sun-Favored"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

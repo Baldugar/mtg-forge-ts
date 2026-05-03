@@ -1,0 +1,23 @@
+{
+  "id": "infinite-hourglass-corpus-m680",
+  "description": "M6 corpus — Infinite Hourglass; in-hand parse.",
+  "seed": 62934,
+  "cards": {
+    "Infinite Hourglass": "Name:Infinite Hourglass\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a time counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature | AddPower$ X | Description$ All creatures get +1/+0 for each time counter on CARDNAME.\nSVar:X:Count$CardCounters.TIME\n# TODO: Improve the AI for this\nA:AB$ RemoveCounter | Cost$ 3 | CounterType$ TIME | CounterNum$ 1 | ActivationPhases$ Upkeep | Activator$ Player | AILogic$ Never | SpellDescription$ Remove a time counter from CARDNAME. Any player may activate this ability but only during any upkeep step.\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, put a time counter on Infinite Hourglass.\\nAll creatures get +1/+0 for each time counter on Infinite Hourglass.\\n{3}: Remove a time counter from Infinite Hourglass. Any player may activate this ability but only during any upkeep step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infinite Hourglass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

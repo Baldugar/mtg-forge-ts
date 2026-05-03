@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-tyrannosaurus-corpus-m680",
+  "description": "M6 corpus — Ravenous Tyrannosaurus; in-hand parse.",
+  "seed": 63913,
+  "cards": {
+    "Ravenous Tyrannosaurus": "Name:Ravenous Tyrannosaurus\nManaCost:4 R G\nTypes:Creature Dinosaur\nPT:6/6\nK:Devour:3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExchangeDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage equal to its power to up to one other target creature. Excess damage is dealt to that creature's controller instead.\nSVar:TrigExchangeDamage:DB$ DealDamage | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target other creature | NumDmg$ MyX | ExcessDamage$ TargetedController\nSVar:MyX:Count$CardPower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice|Counters\nOracle:Devour 3 (As this enters, you may sacrifice any number of creatures. This creature enters with three times that many +1/+1 counters on it.)\\nWhenever Ravenous Tyrannosaurus attacks, it deals damage equal to its power to up to one other target creature. Excess damage is dealt to that creature's controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Tyrannosaurus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crosis-the-purger-corpus-m680",
+  "description": "M6 corpus — Crosis, the Purger; in-hand parse.",
+  "seed": 62039,
+  "cards": {
+    "Crosis, the Purger": "Name:Crosis, the Purger\nManaCost:3 U B R\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}{B}. If you do, choose a color, then that player reveals their hand and discards all cards of that color.\nSVar:TrigChoose:AB$ ChooseColor | Cost$ 2 B | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBRevealDiscard\nSVar:DBRevealDiscard:DB$ Discard | Mode$ RevealDiscardAll | DiscardValid$ Card.ChosenColor | Defined$ TriggeredTarget\nOracle:Flying\\nWhenever Crosis, the Purger deals combat damage to a player, you may pay {2}{B}. If you do, choose a color, then that player reveals their hand and discards all cards of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crosis, the Purger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

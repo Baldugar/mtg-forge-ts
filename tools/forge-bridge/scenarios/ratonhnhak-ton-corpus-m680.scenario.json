@@ -1,0 +1,23 @@
+{
+  "id": "ratonhnhak-ton-corpus-m680",
+  "description": "M6 corpus — Ratonhnhaké:ton; in-hand parse.",
+  "seed": 63903,
+  "cards": {
+    "Ratonhnhaké:ton": "Name:Ratonhnhaké:ton\nManaCost:W U B\nTypes:Legendary Creature Human Assassin\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Hexproof | IsPresent$ Card.Self+dealtDamagetoAny | PresentCompare$ EQ0 | Description$ As long as CARDNAME hasn't dealt damage yet, it has hexproof and can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | Secondary$ True | IsPresent$ Card.Self+dealtDamagetoAny | PresentCompare$ EQ0 | Description$ As long as CARDNAME hasn't dealt damage yet, it has hexproof and can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a 1/1 black Assassin creature token with menace. When you do, return target Equipment card from your graveyard to the battlefield, then attach it to that token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_assassin_menace | RememberOriginalTokens$ True | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ TrigChangeZone | TriggerAmount$ Remembered$Amount | RememberEach$ True | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ When you do, return target Equipment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Equipment.YouCtrl | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ Targeted | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:As long as Ratonhnhaké:ton hasn't dealt damage yet, it has hexproof and can't be blocked.\\nWhenever Ratonhnhaké:ton deals combat damage to a player, create a 1/1 black Assassin creature token with menace. When you do, return target Equipment card from your graveyard to the battlefield, then attach it to that token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ratonhnhaké:ton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

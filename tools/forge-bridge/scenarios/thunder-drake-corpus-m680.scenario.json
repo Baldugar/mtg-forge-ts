@@ -1,0 +1,23 @@
+{
+  "id": "thunder-drake-corpus-m680",
+  "description": "M6 corpus — Thunder Drake; in-hand parse.",
+  "seed": 64734,
+  "cards": {
+    "Thunder Drake": "Name:Thunder Drake\nManaCost:3 U\nTypes:Creature Elemental Drake\nPT:2/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you cast your second spell each turn, put a +1/+1 counter on Thunder Drake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunder Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

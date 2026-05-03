@@ -1,0 +1,23 @@
+{
+  "id": "vengeant-vampire-corpus-m680",
+  "description": "M6 corpus — Vengeant Vampire; in-hand parse.",
+  "seed": 64913,
+  "cards": {
+    "Vengeant Vampire": "Name:Vengeant Vampire\nManaCost:4 B B\nTypes:Creature Vampire\nPT:4/4\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy target creature an opponent controls and you gain 4 life.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.Creature+OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 4\nOracle:Lifelink\\nWhen Vengeant Vampire dies, destroy target creature an opponent controls and you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeant Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

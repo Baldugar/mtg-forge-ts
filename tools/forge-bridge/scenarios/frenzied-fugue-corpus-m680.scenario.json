@@ -1,0 +1,23 @@
+{
+  "id": "frenzied-fugue-corpus-m680",
+  "description": "M6 corpus — Frenzied Fugue; in-hand parse.",
+  "seed": 62562,
+  "cards": {
+    "Frenzied Fugue": "Name:Frenzied Fugue\nManaCost:3 R\nTypes:Enchantment Aura\nK:Enchant:Permanent\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Execute$ TrigGainControl | Origin$ Any | Destination$ Battlefield | TriggerDescription$ When CARDNAME enters or at the beginning of your upkeep, gain control of enchanted permanent until end of turn. Untap that permanent. It gains haste until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl | Secondary$ True | TriggerDescription$ When CARDNAME enters or at the beginning of your upkeep, gain control of enchanted permanent until end of turn. Untap that permanent. It gains haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Enchanted | Untap$ True | AddKWs$ Haste | LoseControl$ EOT\nOracle:Enchant permanent\\nWhen Frenzied Fugue enters or at the beginning of your upkeep, gain control of enchanted permanent until end of turn. Untap that permanent. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frenzied Fugue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

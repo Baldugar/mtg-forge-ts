@@ -1,0 +1,23 @@
+{
+  "id": "oskar-rubbish-reclaimer-corpus-m680",
+  "description": "M6 corpus — Oskar, Rubbish Reclaimer; in-hand parse.",
+  "seed": 63660,
+  "cards": {
+    "Oskar, Rubbish Reclaimer": "Name:Oskar, Rubbish Reclaimer\nManaCost:3 U B\nTypes:Legendary Creature Human Wizard\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each different mana value among cards in your graveyard.\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nT:Mode$ Discarded | ValidPlayer$ You | ValidCard$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigPlay | TriggerDescription$ Whenever you discard a nonland card, you may cast it from your graveyard.\nSVar:TrigPlay:DB$ Play | Defined$ TriggeredCard | ValidSA$ Spell | Controller$ You | Optional$ True | Amount$ All\nDeckHas:Ability$Graveyard\nDeckNeeds:Ability$Discard\nOracle:This spell costs {1} less to cast for each different mana value among cards in your graveyard.\\nWhenever you discard a nonland card, you may cast it from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oskar, Rubbish Reclaimer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jace-s-mindseeker-corpus-m680",
+  "description": "M6 corpus — Jace's Mindseeker; in-hand parse.",
+  "seed": 63012,
+  "cards": {
+    "Jace's Mindseeker": "Name:Jace's Mindseeker\nManaCost:4 U U\nTypes:Creature Fish Illusion\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ MindFishing | TriggerDescription$ When CARDNAME enters, target opponent mills five cards. You may cast an instant or sorcery card from among them without paying its mana cost.\nSVar:MindFishing:DB$ Mill | NumCards$ 5 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to mill | RememberMilled$ True | SubAbility$ FishyCast\nSVar:FishyCast:DB$ Play | ValidZone$ Graveyard,Exile | Valid$ Instant.IsRemembered,Sorcery.IsRemembered | Controller$ You | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Amount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen Jace's Mindseeker enters, target opponent mills five cards. You may cast an instant or sorcery spell from among them without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace's Mindseeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

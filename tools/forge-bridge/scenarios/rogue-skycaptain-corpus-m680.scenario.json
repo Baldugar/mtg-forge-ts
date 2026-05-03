@@ -1,0 +1,23 @@
+{
+  "id": "rogue-skycaptain-corpus-m680",
+  "description": "M6 corpus — Rogue Skycaptain; in-hand parse.",
+  "seed": 64031,
+  "cards": {
+    "Rogue Skycaptain": "Name:Rogue Skycaptain\nManaCost:2 R\nTypes:Creature Human Rogue Mercenary\nPT:3/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a wage counter on CARDNAME. You may pay {2} for each wage counter on it. If you don't, remove all wage counters from CARDNAME and an opponent gains control of it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ WAGE | CounterNum$ 1 | SubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | CounterNum$ All | CounterType$ WAGE | Defined$ Self | UnlessCost$ Y | UnlessPayer$ You | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBChooseOpp\nSVar:DBChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ DBDonate\nSVar:DBDonate:DB$ GainControl | Defined$ Self | NewController$ Player.Chosen | SubAbility$ DBReset\nSVar:DBReset:DB$ Cleanup | ClearChosenPlayer$ True\nSVar:Y:Count$CardCounters.WAGE/Twice\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Flying\\nAt the beginning of your upkeep, put a wage counter on Rogue Skycaptain. You may pay {2} for each wage counter on it. If you don't, remove all wage counters from Rogue Skycaptain and an opponent gains control of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rogue Skycaptain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

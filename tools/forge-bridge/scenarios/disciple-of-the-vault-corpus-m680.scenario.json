@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-the-vault-corpus-m680",
+  "description": "M6 corpus — Disciple of the Vault; in-hand parse.",
+  "seed": 62182,
+  "cards": {
+    "Disciple of the Vault": "Name:Disciple of the Vault\nManaCost:B\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigLoseLife | TriggerDescription$ Whenever an artifact is put into a graveyard from the battlefield, you may have target opponent lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1\nOracle:Whenever an artifact is put into a graveyard from the battlefield, you may have target opponent lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of the Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

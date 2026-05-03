@@ -1,0 +1,23 @@
+{
+  "id": "spider-man-india-corpus-m680",
+  "description": "M6 corpus — Spider-Man India; in-hand parse.",
+  "seed": 64403,
+  "cards": {
+    "Spider-Man India": "Name:Spider-Man India\nVariant:UniversesWithin:FlavorName:Alessos and Pras, Acrobats\nManaCost:3 G W\nTypes:Legendary Creature Spider Human Hero\nPT:4/4\nK:Web-slinging:1 G W\nT:Mode$ SpellCast | ValidCard$ Card.Creature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Pavitr's Sevā — Whenever you cast a creature spell, put a +1/+1 counter on target creature you control. It gains flying until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Flying\nOracle:Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)\\nPavitr's Sevā — Whenever you cast a creature spell, put a +1/+1 counter on target creature you control. It gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Man India"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

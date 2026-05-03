@@ -1,0 +1,23 @@
+{
+  "id": "gutter-grime-corpus-m680",
+  "description": "M6 corpus — Gutter Grime; in-hand parse.",
+  "seed": 62757,
+  "cards": {
+    "Gutter Grime": "Name:Gutter Grime\nManaCost:4 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a nontoken creature you control dies, put a slime counter on CARDNAME, then create a green Ooze creature token with \"This creature's power and toughness are each equal to the number of slime counters on CARDNAME.\"\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SLIME | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ g_x_x_ooze_gutter_grime | TokenOwner$ You | RememberSource$ True\nAI:RemoveDeck:Random\nOracle:Whenever a nontoken creature you control dies, put a slime counter on Gutter Grime, then create a green Ooze creature token with \"This creature's power and toughness are each equal to the number of slime counters on Gutter Grime.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gutter Grime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

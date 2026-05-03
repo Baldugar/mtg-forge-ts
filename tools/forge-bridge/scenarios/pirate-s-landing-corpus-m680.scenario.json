@@ -1,0 +1,23 @@
+{
+  "id": "pirate-s-landing-corpus-m680",
+  "description": "M6 corpus — Pirate's Landing; in-hand parse.",
+  "seed": 63759,
+  "cards": {
+    "Pirate's Landing": "Name:Pirate's Landing\nManaCost:R\nTypes:Sorcery\nA:SP$ Branch | BranchConditionSVar$ TreasureCheck | BranchConditionSVarCompare$ GE1 | FalseSubAbility$ DBDraw | TrueSubAbility$ DBSeek | SpellDescription$ Draw a card. If mana from a Treasure was spent to cast this spell, seek a Pirate card instead.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:DBSeek:DB$ Seek | Type$ Pirate | SpellDescription$ Seek a Pirate card.\nSVar:TreasureCheck:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nDeckNeeds:Type$Pirate|Treasure\nOracle:Draw a card. If mana from a Treasure was spent to cast this spell, seek a Pirate card instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pirate's Landing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

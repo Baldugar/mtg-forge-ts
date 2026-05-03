@@ -1,0 +1,23 @@
+{
+  "id": "tourach-dread-cantor-corpus-m680",
+  "description": "M6 corpus — Tourach, Dread Cantor; in-hand parse.",
+  "seed": 64777,
+  "cards": {
+    "Tourach, Dread Cantor": "Name:Tourach, Dread Cantor\nManaCost:1 B\nTypes:Legendary Creature Human Cleric\nPT:2/1\nK:Kicker:B B\nK:Protection from white\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever an opponent discards a card, put a +1/+1 counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, if it was kicked, target opponent discards two cards at random.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ Random\nDeckHas:Ability$Counters\nOracle:Kicker {B}{B} (You may pay an additional {B}{B} as you cast this spell.)\\nProtection from white\\nWhenever an opponent discards a card, put a +1/+1 counter on Tourach, Dread Cantor.\\nWhen Tourach enters, if it was kicked, target opponent discards two cards at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tourach, Dread Cantor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

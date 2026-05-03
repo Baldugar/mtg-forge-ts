@@ -1,0 +1,23 @@
+{
+  "id": "dying-wish-corpus-m680",
+  "description": "M6 corpus — Dying Wish; in-hand parse.",
+  "seed": 62271,
+  "cards": {
+    "Dying Wish": "Name:Dying Wish\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLose | TriggerDescription$ When enchanted creature dies, target player loses X life and you gain X life, where X is its power.\nSVar:TrigLose:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardPower\nOracle:Enchant creature you control\\nWhen enchanted creature dies, target player loses X life and you gain X life, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dying Wish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

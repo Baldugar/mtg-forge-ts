@@ -1,0 +1,23 @@
+{
+  "id": "instill-furor-corpus-m680",
+  "description": "M6 corpus — Instill Furor; in-hand parse.",
+  "seed": 62951,
+  "cards": {
+    "Instill Furor": "Name:Instill Furor\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ EOTTrigger | AddSVar$ InstillTrigSac & MustAttack | Description$ Enchanted creature has \"At the beginning of your end step, sacrifice this creature unless it attacked this turn.\"\nSVar:EOTTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ InstillTrigSac | TriggerDescription$ At the beginning of your end step, sacrifice this creature unless it attacked this turn.\nSVar:InstillTrigSac:DB$ Sacrifice | ConditionPresent$ Card.Self+!attackedThisTurn | ConditionCompare$ GE1\nSVar:MustAttack:True\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your end step, sacrifice this creature unless it attacked this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Instill Furor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

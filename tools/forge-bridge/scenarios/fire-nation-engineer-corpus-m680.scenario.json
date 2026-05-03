@@ -1,0 +1,23 @@
+{
+  "id": "fire-nation-engineer-corpus-m680",
+  "description": "M6 corpus — Fire Nation Engineer; in-hand parse.",
+  "seed": 62491,
+  "cards": {
+    "Fire Nation Engineer": "Name:Fire Nation Engineer\nManaCost:2 B\nTypes:Creature Human Artificer\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigPutCounter | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, put a +1/+1 counter on another target creature or Vehicle you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl,Vehicle.Other+YouCtrl | TgtPrompt$ Select another target creature or Vehicle you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:RaidTest:Count$AttackersDeclared\nDeckHas:Ability$Counters\nOracle:Raid — At the beginning of your end step, if you attacked this turn, put a +1/+1 counter on another target creature or Vehicle you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Nation Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

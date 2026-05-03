@@ -1,0 +1,23 @@
+{
+  "id": "liege-of-the-tangle-corpus-m680",
+  "description": "M6 corpus — Liege of the Tangle; in-hand parse.",
+  "seed": 63224,
+  "cards": {
+    "Liege of the Tangle": "Name:Liege of the Tangle\nManaCost:6 G G\nTypes:Creature Elemental\nPT:8/8\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may choose any number of target lands you control and put an awakening counter on each of them. Each of those lands is an 8/8 green Elemental creature for as long as it has an awakening counter on it. They're still lands.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Land.YouCtrl | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select lands you control | CounterType$ AWAKENING | CounterNum$ 1 | SubAbility$ DBEffect\nSVar:X:Count$Valid Land.YouCtrl\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ TangleStatic | ForgetOnMoved$ Battlefield | ForgetCounter$ AWAKENING | Duration$ Permanent\nSVar:TangleStatic:Mode$ Continuous | Affected$ Card.IsRemembered | SetPower$ 8 | SetToughness$ 8 | AddType$ Creature & Elemental | RemoveCreatureTypes$ True | SetColor$ Green | Description$ Each of those lands is an 8/8 green Elemental creature for as long as it has an awakening counter on it. They're still lands.\nSVar:MustBeBlocked:True\nOracle:Trample\\nWhenever Liege of the Tangle deals combat damage to a player, you may choose any number of target lands you control and put an awakening counter on each of them. Each of those lands is an 8/8 green Elemental creature for as long as it has an awakening counter on it. They're still lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liege of the Tangle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

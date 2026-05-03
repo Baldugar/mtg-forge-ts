@@ -1,0 +1,23 @@
+{
+  "id": "kheru-lich-lord-corpus-m680",
+  "description": "M6 corpus — Kheru Lich Lord; in-hand parse.",
+  "seed": 63118,
+  "cards": {
+    "Kheru Lich Lord": "Name:Kheru Lich Lord\nManaCost:3 B G U\nTypes:Creature Zombie Wizard\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChangZone | TriggerDescription$ At the beginning of your upkeep, you may pay {2}{B}. If you do, return a creature card at random from your graveyard to the battlefield. It gains flying, trample, and haste. Exile that card at the beginning of your next end step. If it would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:TrigChangZone:AB$ ChangeZone | Cost$ 2 B | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | Mandatory$ True | AtRandom$ True | RememberChanged$ True | SubAbility$ DBUnearthed\nSVar:DBUnearthed:DB$ Animate | Defined$ Remembered | Keywords$ Flying & Trample & Haste | LeaveBattlefield$ Exile | sVars$ KheruMustAttack | Duration$ Permanent | SubAbility$ DBCleanup | AtEOT$ YourExile | StackDescription$ It gains flying, trample, and haste. Exile that card at the beginning of your next end step. If it would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:KheruMustAttack:SVar:MustAttack:True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, you may pay {2}{B}. If you do, return a creature card at random from your graveyard to the battlefield. It gains flying, trample, and haste. Exile that card at the beginning of your next end step. If it would leave the battlefield, exile it instead of putting it anywhere else.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kheru Lich Lord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

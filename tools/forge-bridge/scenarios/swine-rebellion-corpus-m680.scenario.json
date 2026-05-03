@@ -1,0 +1,23 @@
+{
+  "id": "swine-rebellion-corpus-m680",
+  "description": "M6 corpus — Swine Rebellion; in-hand parse.",
+  "seed": 64542,
+  "cards": {
+    "Swine Rebellion": "Name:Swine Rebellion\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE3 | TrueSubAbility$ DBConjureAll | FalseSubAbility$ DBConjureTwo | SpellDescription$ If you control three or more Boars with different names, conjure each card from the Three Pigs spellbook onto the battlefield. If you control two or fewer Boars with different names, conjure two cards of your choice from the Three Pigs spellbook into your hand, then put one of them onto the battlefield.\nSVar:DBConjureAll:DB$ MakeCard | Conjure$ True | Names$ First Little Pig,Second Little Pig,Third Little Pig | Zone$ Battlefield\nSVar:DBConjureTwo:DB$ MakeCard | Conjure$ True | SpellbookName$ the Three Pigs | Spellbook$ First Little Pig,Second Little Pig,Third Little Pig | SpellbookAmount$ 2 | RememberMade$ True | Zone$ Hand | SubAbility$ DBPutBattlefield\nSVar:DBPutBattlefield:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Card.IsRemembered | ChangeNum$ 1 | Mandatory$ True | SelectPrompt$ Select a card to put onto the battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Boar.YouCtrl$DifferentCardNames\nDeckHints:Type$Boar\nDeckHas:Type$Boar\nOracle:If you control three or more Boars with different names, conjure each card from the Three Pigs spellbook onto the battlefield.\\nIf you control two or fewer Boars with different names, conjure two cards of your choice from the Three Pigs spellbook into your hand, then put one of them onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swine Rebellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

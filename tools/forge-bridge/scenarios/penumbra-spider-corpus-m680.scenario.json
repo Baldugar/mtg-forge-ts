@@ -1,0 +1,23 @@
+{
+  "id": "penumbra-spider-corpus-m680",
+  "description": "M6 corpus — Penumbra Spider; in-hand parse.",
+  "seed": 63718,
+  "cards": {
+    "Penumbra Spider": "Name:Penumbra Spider\nManaCost:2 G G\nTypes:Creature Spider\nPT:2/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 2/4 black Spider creature token with reach.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_4_spider_reach | TokenOwner$ TriggeredCardController\nOracle:Reach\\nWhen Penumbra Spider dies, create a 2/4 black Spider creature token with reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Penumbra Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

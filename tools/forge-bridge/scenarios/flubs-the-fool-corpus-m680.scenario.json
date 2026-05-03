@@ -1,0 +1,23 @@
+{
+  "id": "flubs-the-fool-corpus-m680",
+  "description": "M6 corpus — Flubs, the Fool; in-hand parse.",
+  "seed": 62522,
+  "cards": {
+    "Flubs, the Fool": "Name:Flubs, the Fool\nManaCost:G U R\nTypes:Legendary Creature Frog Scout\nPT:0/5\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | Execute$ TrigBranch | TriggerZones$ Battlefield | TriggerDescription$ Whenever you play a land or cast a spell, draw a card if you have no cards in hand. Otherwise, discard a card.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | Secondary$ True | TriggerDescription$ Whenever you play a land or cast a spell, draw a card if you have no cards in hand. Otherwise, discard a card.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ0 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBDiscard\nSVar:DBDraw:DB$ Draw\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:You may play an additional land on each of your turns.\\nWhenever you play a land or cast a spell, draw a card if you have no cards in hand. Otherwise, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flubs, the Fool"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

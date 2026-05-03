@@ -1,0 +1,23 @@
+{
+  "id": "hollow-marauder-corpus-m680",
+  "description": "M6 corpus — Hollow Marauder; in-hand parse.",
+  "seed": 62846,
+  "cards": {
+    "Hollow Marauder": "Name:Hollow Marauder\nManaCost:6 B\nTypes:Creature Specter Rogue\nPT:4/2\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, any number of target opponents each discard a card. For each of those opponents who didn't discard a card with mana value 4 or greater, draw a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | RememberDiscarded$ True | Mode$ TgtChoose | TgtPrompt$ Select any number of target opponents | TargetMin$ 0 | TargetMax$ MaxTgt | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | Defined$ You\nSVar:Y:TargetedPlayer$Amount/Minus.Remembered$Valid Card.cmcGE4\nSVar:MaxTgt:PlayerCountOpponents$Amount\nDeckHints:Ability$Graveyard|Mill\nDeckHas:Ability$Discard\nOracle:This spell costs {1} less to cast for each creature card in your graveyard.\\nFlying\\nWhen Hollow Marauder enters, any number of target opponents each discard a card. For each of those opponents who didn't discard a card with mana value 4 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollow Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

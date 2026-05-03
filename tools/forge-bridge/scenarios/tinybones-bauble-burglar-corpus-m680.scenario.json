@@ -1,0 +1,23 @@
+{
+  "id": "tinybones-bauble-burglar-corpus-m680",
+  "description": "M6 corpus — Tinybones, Bauble Burglar; in-hand parse.",
+  "seed": 64754,
+  "cards": {
+    "Tinybones, Bauble Burglar": "Name:Tinybones, Bauble Burglar\nManaCost:1 B\nTypes:Legendary Creature Skeleton Rogue\nPT:1/3\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever an opponent discards a card, exile it from their graveyard with a stash counter on it.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile | WithCountersType$ STASH\nS:Mode$ Continuous | Condition$ PlayerTurn | MayPlay$ True | Affected$ Card.YouDontOwn+counters_GE1_STASH | AffectedZone$ Exile | MayPlayIgnoreType$ True | Description$ During your turn, you may play cards you don't own with stash counters on them from exile, and mana of any type can be spent to cast those spells.\nA:AB$ Discard | Cost$ 3 B T | Defined$ Opponent | Mode$ TgtChoose | SorcerySpeed$ True | SpellDescription$ Each opponent discards a card. Activate only as a sorcery.\nOracle:Whenever an opponent discards a card, exile it from their graveyard with a stash counter on it.\\nDuring your turn, you may play cards you don't own with stash counters on them from exile, and mana of any type can be spent to cast those spells.\\n{3}{B}, {T}: Each opponent discards a card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinybones, Bauble Burglar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

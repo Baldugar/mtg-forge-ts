@@ -1,0 +1,23 @@
+{
+  "id": "blue-mage-s-cane-corpus-m680",
+  "description": "M6 corpus — Blue Mage's Cane; in-hand parse.",
+  "seed": 61734,
+  "cards": {
+    "Blue Mage's Cane": "Name:Blue Mage's Cane\nManaCost:2 U\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddToughness$ 2 | AddType$ Wizard | AddTrigger$ TrigAttack | AddSVar$ AE | Description$ Equipped creature gets +0/+2, is a Wizard in addition to its other types, and has \"Whenever this creature attacks, exile up to one target instant or sorcery card from defending player's graveyard. If you do, copy it. You may cast the copy by paying {3} rather than paying its mana cost.\"\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever this creature attacks, exile up to one target instant or sorcery card from defending player's graveyard. If you do, copy it. You may cast the copy by paying {3} rather than paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ You | TargetMin$ 0 | TargetMax$ 1 | Destination$ Exile | ChangeNum$ 1 | ValidTgts$ Instant,Sorcery | TargetsWithDefinedController$ TriggeredDefendingPlayer | TgtPrompt$ Select target instant or sorcery card from the defending player's graveyard | Origin$ Graveyard | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | Controller$ You | CopyCard$ True | ValidSA$ Spell | Optional$ True | PlayCost$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Equip:2:Flavor Spirit of the Whalaqee\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Type$Wizard\nOracle:Job select\\nEquipped creature gets +0/+2, is a Wizard in addition to its other types, and has \"Whenever this creature attacks, exile up to one target instant or sorcery card from defending player's graveyard. If you do, copy it. You may cast the copy by paying {3} rather than paying its mana cost.\"\\nSpirit of the Whalaqee — Equip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blue Mage's Cane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

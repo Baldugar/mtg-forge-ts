@@ -1,0 +1,23 @@
+{
+  "id": "extractor-demon-corpus-m680",
+  "description": "M6 corpus — Extractor Demon; in-hand parse.",
+  "seed": 62407,
+  "cards": {
+    "Extractor Demon": "Name:Extractor Demon\nManaCost:4 B B\nTypes:Creature Demon\nPT:5/5\nK:Flying\nK:Unearth:2 B\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.Other | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMill | TriggerDescription$ Whenever another creature leaves the battlefield, you may have target player mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player\nOracle:Flying\\nWhenever another creature leaves the battlefield, you may have target player mill two cards.\\nUnearth {2}{B} ({2}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extractor Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wandermare-corpus-m680",
+  "description": "M6 corpus — Wandermare; in-hand parse.",
+  "seed": 64996,
+  "cards": {
+    "Wandermare": "Name:Wandermare\nManaCost:1 G W\nTypes:Creature Horse\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Creature.AdventureCard | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell that has an Adventure, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever you cast a creature spell that has an Adventure, put a +1/+1 counter on Wandermare. (It doesn't need to have gone on the adventure first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wandermare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

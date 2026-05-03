@@ -1,0 +1,23 @@
+{
+  "id": "orchard-elemental-corpus-m680",
+  "description": "M6 corpus — Orchard Elemental; in-hand parse.",
+  "seed": 63642,
+  "cards": {
+    "Orchard Elemental": "Name:Orchard Elemental\nManaCost:5 G\nTypes:Creature Elemental\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Council's dilemma — When CARDNAME enters, starting with you, each player votes for sprout or harvest. Put two +1/+1 counters on CARDNAME for each sprout vote. You gain 3 life for each harvest vote.\nSVar:TrigChangeZone:DB$ Vote | Defined$ Player | Choices$ DBVoteSprout,DBVoteHarvest | StoreVoteNum$ True | AILogic$ SproutOrHarvest\nSVar:DBVoteSprout:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ SVar$VoteNum/Times.2 | SpellDescription$ Sprout\nSVar:DBVoteHarvest:DB$ GainLife | LifeAmount$ SVar$VoteNum/Times.3 | Defined$ You | SpellDescription$ Harvest\nDeckHas:Ability$Counters|LifeGain\nOracle:Council's dilemma — When Orchard Elemental enters, starting with you, each player votes for sprout or harvest. Put two +1/+1 counters on Orchard Elemental for each sprout vote. You gain 3 life for each harvest vote.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orchard Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

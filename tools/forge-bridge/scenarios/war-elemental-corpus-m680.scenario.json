@@ -1,0 +1,23 @@
+{
+  "id": "war-elemental-corpus-m680",
+  "description": "M6 corpus — War Elemental; in-hand parse.",
+  "seed": 64998,
+  "cards": {
+    "War Elemental": "Name:War Elemental\nManaCost:R R R\nTypes:Creature Elemental\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless an opponent was dealt damage this turn.\nSVar:TrigSac:DB$ Sacrifice | ConditionCheckSVar$ WarElementalX | ConditionSVarCompare$ EQ0\nSVar:WarElementalX:PlayerCountRegisteredOpponents$HasPropertywasDealtDamageThisTurn\nT:Mode$ DamageDoneOnce | ValidSource$ Card | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent is dealt damage, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ WarElementalY\nSVar:WarElementalY:TriggerCount$DamageAmount\nSVar:NeedsToPlayVar:WarElementalX GE1\nOracle:When War Elemental enters, sacrifice it unless an opponent was dealt damage this turn.\\nWhenever an opponent is dealt damage, put that many +1/+1 counters on War Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "War Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

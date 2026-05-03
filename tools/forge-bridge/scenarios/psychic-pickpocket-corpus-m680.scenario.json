@@ -1,0 +1,23 @@
+{
+  "id": "psychic-pickpocket-corpus-m680",
+  "description": "M6 corpus — Psychic Pickpocket; in-hand parse.",
+  "seed": 63827,
+  "cards": {
+    "Psychic Pickpocket": "Name:Psychic Pickpocket\nManaCost:4 U\nTypes:Creature Octopus Rogue\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConnive | TriggerDescription$ When CARDNAME enters, it connives. When it connives this way, return up to one target nonland permanent to its owner's hand. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\nSVar:TrigConnive:DB$ Connive | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigReturn | TriggerDescription$ When it connives this way, return up to one target nonland permanent to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | TargetMax$ 1 | TargetMin$ 0 | Origin$ Battlefield | Destination$ Hand\nDeckHas:Ability$Discard|Counters\nOracle:When Psychic Pickpocket enters, it connives. When it connives this way, return up to one target nonland permanent to its owner's hand. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Pickpocket"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

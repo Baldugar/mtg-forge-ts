@@ -1,0 +1,23 @@
+{
+  "id": "bloodhunter-bat-corpus-m680",
+  "description": "M6 corpus — Bloodhunter Bat; in-hand parse.",
+  "seed": 61727,
+  "cards": {
+    "Bloodhunter Bat": "Name:Bloodhunter Bat\nManaCost:3 B\nTypes:Creature Bat\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target player loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Flying\\nWhen Bloodhunter Bat enters, target player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodhunter Bat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-nipton-lottery-corpus-m680",
+  "description": "M6 corpus — The Nipton Lottery; in-hand parse.",
+  "seed": 64678,
+  "cards": {
+    "The Nipton Lottery": "Name:The Nipton Lottery\nManaCost:2 B R\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ You | Amount$ 1 | Choices$ Creature | AtRandom$ True | SubAbility$ DBGainControl | SpellDescription$ Choose a creature at random. You gain control of that creature until end of turn. Untap it. It gains haste until end of turn. Then destroy all other creatures.\nSVar:DBGainControl:DB$ GainControl | Defined$ ChosenCard | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonChosenCard\nOracle:Choose a creature at random. You gain control of that creature until end of turn. Untap it. It gains haste until end of turn. Then destroy all other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Nipton Lottery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

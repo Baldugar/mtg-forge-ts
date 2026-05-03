@@ -1,0 +1,23 @@
+{
+  "id": "lavamancer-s-skill-corpus-m680",
+  "description": "M6 corpus — Lavamancer's Skill; in-hand parse.",
+  "seed": 63198,
+  "cards": {
+    "Lavamancer's Skill": "Name:Lavamancer's Skill\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonWizard | AddAbility$ Damage1 | Description$ Enchanted creature has \"{T}: This creature deals 1 damage to target creature.\"\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Wizard | AddAbility$ Damage2 | Description$ If enchanted creature is a Wizard, it has \"{T}: This creature deals 2 damage to target creature.\"\nSVar:Damage1:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target creature.\nSVar:Damage2:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target creature.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals 1 damage to target creature.\"\\nAs long as enchanted creature is a Wizard, it has \"{T}: This creature deals 2 damage to target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lavamancer's Skill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

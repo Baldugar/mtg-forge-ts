@@ -1,0 +1,23 @@
+{
+  "id": "reptilian-recruiter-corpus-m680",
+  "description": "M6 corpus — Reptilian Recruiter; in-hand parse.",
+  "seed": 63957,
+  "cards": {
+    "Reptilian Recruiter": "Name:Reptilian Recruiter\nManaCost:3 R R\nTypes:Creature Lizard Warrior\nPT:4/2\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, choose target creature. If that creature's power is 2 or less or if you control another Lizard, gain control of that creature until end of turn, untap it, and it gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | ConditionCheckSVar$ X\nSVar:X:Count$Valid Creature.targetedBy+powerLE2/Plus.Y\nSVar:Y:Count$Valid Lizard.Other+YouCtrl\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:Trample\\nWhen Reptilian Recruiter enters, choose target creature. If that creature's power is 2 or less or if you control another Lizard, gain control of that creature until end of turn, untap it, and it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reptilian Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

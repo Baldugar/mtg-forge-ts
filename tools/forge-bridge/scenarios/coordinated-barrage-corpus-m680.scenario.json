@@ -1,0 +1,23 @@
+{
+  "id": "coordinated-barrage-corpus-m680",
+  "description": "M6 corpus — Coordinated Barrage; in-hand parse.",
+  "seed": 62004,
+  "cards": {
+    "Coordinated Barrage": "Name:Coordinated Barrage\nManaCost:W\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDealDamage | SpellDescription$ Choose a creature type. CARDNAME deals damage to target attacking or blocking creature equal to the number of permanents you control of the chosen type.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ X\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl\nAI:RemoveDeck:All\nOracle:Choose a creature type. Coordinated Barrage deals damage to target attacking or blocking creature equal to the number of permanents you control of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coordinated Barrage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

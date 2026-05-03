@@ -1,0 +1,23 @@
+{
+  "id": "demon-of-wailing-agonies-corpus-m680",
+  "description": "M6 corpus — Demon of Wailing Agonies; in-hand parse.",
+  "seed": 62146,
+  "cards": {
+    "Demon of Wailing Agonies": "Name:Demon of Wailing Agonies\nManaCost:3 B B\nTypes:Creature Demon\nPT:4/4\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ TrigDealsCB | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Description$ Lieutenant — As long as you control your commander, CARDNAME gets +2/+2 and has \"Whenever CARDNAME deals combat damage to a player, that player sacrifices a creature.\"\nSVar:TrigDealsCB:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredTarget | SacValid$ Creature\nSVar:BuffedBy:Card.IsCommander\nAI:RemoveDeck:Random\nOracle:Flying\\nLieutenant — As long as you control your commander, Demon of Wailing Agonies gets +2/+2 and has \"Whenever Demon of Wailing Agonies deals combat damage to a player, that player sacrifices a creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demon of Wailing Agonies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

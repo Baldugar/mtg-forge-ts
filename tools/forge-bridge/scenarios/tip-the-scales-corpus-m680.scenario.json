@@ -1,0 +1,23 @@
+{
+  "id": "tip-the-scales-corpus-m680",
+  "description": "M6 corpus — Tip the Scales; in-hand parse.",
+  "seed": 64756,
+  "cards": {
+    "Tip the Scales": "Name:Tip the Scales\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Sacrifice | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger | SpellDescription$ Sacrifice a creature.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigPumpAll | ConditionDefined$ RememberedLKI | ConditionPresent$ Creature | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | SpellDescription$ When you do, all creatures get -X/-X until end of turn, where X is the sacrificed creature's toughness.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardToughness\nOracle:Sacrifice a creature. When you do, all creatures get -X/-X until end of turn, where X is the sacrificed creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tip the Scales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thorough-investigation-corpus-m680",
+  "description": "M6 corpus — Thorough Investigation; in-hand parse.",
+  "seed": 64711,
+  "cards": {
+    "Thorough Investigation": "Name:Thorough Investigation\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigInvestigate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidCard$ Clue.YouCtrl | Execute$ TrigVenture | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, venture into the dungeon.\nSVar:TrigVenture:DB$ Venture\nDeckHas:Ability$Investigate|Token\nOracle:Whenever you attack, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, venture into the dungeon. (Enter the first room or advance to the next room.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thorough Investigation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

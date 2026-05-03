@@ -1,0 +1,23 @@
+{
+  "id": "symbiotic-wurm-corpus-m680",
+  "description": "M6 corpus — Symbiotic Wurm; in-hand parse.",
+  "seed": 64557,
+  "cards": {
+    "Symbiotic Wurm": "Name:Symbiotic Wurm\nManaCost:5 G G G\nTypes:Creature Wurm\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create seven 1/1 green Insect creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 7 | TokenScript$ g_1_1_insect | TokenOwner$ TriggeredCardController\nOracle:When Symbiotic Wurm dies, create seven 1/1 green Insect creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Symbiotic Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

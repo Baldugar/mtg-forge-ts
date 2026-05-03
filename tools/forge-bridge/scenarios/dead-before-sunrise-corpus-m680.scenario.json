@@ -1,0 +1,23 @@
+{
+  "id": "dead-before-sunrise-corpus-m680",
+  "description": "M6 corpus — Dead Before Sunrise; in-hand parse.",
+  "seed": 62099,
+  "cards": {
+    "Dead Before Sunrise": "Name:Dead Before Sunrise\nManaCost:3 R\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl+Outlaw | NumAtt$ +1 | SubAbility$ DBAnimateAll | SpellDescription$ Until end of turn, outlaw creatures you control get +1/+0 and gain \"{T}: This creature deals damage equal to its power to target creature.\" (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl+Outlaw | Abilities$ Fight\nSVar:Fight:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ BrawlX | SpellDescription$ This creature deals damage equal to its power to target creature.\nSVar:BrawlX:Count$CardPower\nDeckHints:Type$Assassin|Mercenary|Pirate|Rogue|Warlock\nOracle:Until end of turn, outlaw creatures you control get +1/+0 and gain \"{T}: This creature deals damage equal to its power to target creature.\" (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dead Before Sunrise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

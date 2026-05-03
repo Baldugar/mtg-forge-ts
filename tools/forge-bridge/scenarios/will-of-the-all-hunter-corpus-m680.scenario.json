@@ -1,0 +1,23 @@
+{
+  "id": "will-of-the-all-hunter-corpus-m680",
+  "description": "M6 corpus — Will of the All-Hunter; in-hand parse.",
+  "seed": 65052,
+  "cards": {
+    "Will of the All-Hunter": "Name:Will of the All-Hunter\nManaCost:1 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | SubAbility$ DBBranch | StackDescription$ SpellDescription | SpellDescription$ Target creature gets +2/+2 until end of turn. If it's blocking, instead put two +1/+1 counters on it.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ PutCounter | FalseSubAbility$ Pump\nSVar:PutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 2\nSVar:Pump:DB$ Pump | Defined$ Targeted | NumAtt$ +2 | NumDef$ +2\nSVar:X:Targeted$Valid Creature.blocking\nK:Cycling:2\nDeckHas:Ability$Counters\nOracle:Target creature gets +2/+2 until end of turn. If it's blocking, instead put two +1/+1 counters on it.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Will of the All-Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

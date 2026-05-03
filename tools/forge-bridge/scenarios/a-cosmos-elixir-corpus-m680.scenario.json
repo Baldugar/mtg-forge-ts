@@ -1,0 +1,23 @@
+{
+  "id": "a-cosmos-elixir-corpus-m680",
+  "description": "M6 corpus — A-Cosmos Elixir; in-hand parse.",
+  "seed": 64071,
+  "cards": {
+    "A-Cosmos Elixir": "Name:A-Cosmos Elixir\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your end step, draw a card if your life total is greater than your starting life total. Otherwise, you gain 2 life and scry 1.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GTY | TrueSubAbility$ DBDraw | FalseSubAbility$ DBGainLife\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your end step, draw a card if your life total is greater than your starting life total. Otherwise, you gain 2 life and scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Cosmos Elixir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-regatha-corpus-m680",
+  "description": "M6 corpus — Invasion of Regatha; in-hand parse.",
+  "seed": 62969,
+  "cards": {
+    "Invasion of Regatha": "Name:Invasion of Regatha\nManaCost:2 R\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to another target battle or opponent and 1 damage to up to one target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Battle.Other,Opponent | TgtPrompt$ Select another target battle or opponent | NumDmg$ 4 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 1\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Regatha enters, it deals 4 damage to another target battle or opponent and 1 damage to up to one target creature.\n\nALTERNATE\n\nName:Disciples of the Inferno\nManaCost:no cost\nColors:red\nTypes:Creature Human Monk\nPT:4/4\nK:Prowess\nR:Event$ DamageDone | ValidSource$ Card.YouCtrl+nonCreature,Emblem.YouCtrl | ValidTarget$ Creature,Battle,Opponent | ReplaceWith$ DmgPlus2 | Description$ If a noncreature source you control would deal damage to a creature, battle, or opponent, it deals that much damage plus 2 instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.2\nSVar:BuffedBy:Card.nonCreature\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nIf a noncreature source you control would deal damage to a creature, battle, or opponent, it deals that much damage plus 2 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Regatha"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

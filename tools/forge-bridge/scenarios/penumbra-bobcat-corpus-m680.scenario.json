@@ -1,0 +1,23 @@
+{
+  "id": "penumbra-bobcat-corpus-m680",
+  "description": "M6 corpus — Penumbra Bobcat; in-hand parse.",
+  "seed": 63716,
+  "cards": {
+    "Penumbra Bobcat": "Name:Penumbra Bobcat\nManaCost:2 G\nTypes:Creature Cat\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 2/1 black Cat creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_1_cat | TokenOwner$ TriggeredCardController\nOracle:When Penumbra Bobcat dies, create a 2/1 black Cat creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Penumbra Bobcat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

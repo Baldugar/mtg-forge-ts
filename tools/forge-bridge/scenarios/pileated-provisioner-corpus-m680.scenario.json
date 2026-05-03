@@ -1,0 +1,23 @@
+{
+  "id": "pileated-provisioner-corpus-m680",
+  "description": "M6 corpus — Pileated Provisioner; in-hand parse.",
+  "seed": 63749,
+  "cards": {
+    "Pileated Provisioner": "Name:Pileated Provisioner\nManaCost:4 W\nTypes:Creature Bird Scout\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control without flying.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.YouCtrl+withoutFlying | TgtPrompt$ Select target creature you control without flying | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Pileated Provisioner enters, put a +1/+1 counter on target creature you control without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pileated Provisioner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

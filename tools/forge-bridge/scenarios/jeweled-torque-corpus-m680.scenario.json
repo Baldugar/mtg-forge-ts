@@ -1,0 +1,23 @@
+{
+  "id": "jeweled-torque-corpus-m680",
+  "description": "M6 corpus — Jeweled Torque; in-hand parse.",
+  "seed": 63041,
+  "cards": {
+    "Jeweled Torque": "Name:Jeweled Torque\nManaCost:2\nTypes:Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInGame\nT:Mode$ SpellCast | ValidCard$ Card.ChosenColor | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a spell of the chosen color, you may pay {2}. If you do, you gain 2 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ 2 | Defined$ You | LifeAmount$ 2\nOracle:As Jeweled Torque enters, choose a color.\\nWhenever a player casts a spell of the chosen color, you may pay {2}. If you do, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeweled Torque"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

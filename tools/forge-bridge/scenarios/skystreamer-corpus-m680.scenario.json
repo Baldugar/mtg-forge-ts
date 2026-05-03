@@ -1,0 +1,23 @@
+{
+  "id": "skystreamer-corpus-m680",
+  "description": "M6 corpus — Skystreamer; in-hand parse.",
+  "seed": 64315,
+  "cards": {
+    "Skystreamer": "Name:Skystreamer\nManaCost:4 W\nTypes:Creature Griffin\nPT:3/2\nK:Assist\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters, target player gains 4 life.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | LifeAmount$ 4 | SpellDescription$ Target player gains 4 life.\nDeckHas:Ability$LifeGain\nOracle:Assist (Another player can pay up to {4} of this spell's cost.)\\nFlying\\nWhen Skystreamer enters, target player gains 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skystreamer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

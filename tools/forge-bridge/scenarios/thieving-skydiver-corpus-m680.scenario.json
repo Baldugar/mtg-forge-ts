@@ -1,0 +1,23 @@
+{
+  "id": "thieving-skydiver-corpus-m680",
+  "description": "M6 corpus — Thieving Skydiver; in-hand parse.",
+  "seed": 64707,
+  "cards": {
+    "Thieving Skydiver": "Name:Thieving Skydiver\nManaCost:1 U\nTypes:Creature Merfolk Rogue\nPT:2/1\nK:Kicker:XMin1 X\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, gain control of target artifact with mana value X or less. If that artifact is an Equipment, attach it to CARDNAME.\nSVar:TrigKicker:DB$ GainControl | ValidTgts$ Artifact.cmcLEX | TgtPrompt$ Select target artifact with mana value X or less | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | Defined$ TriggeredCardLKICopy | ConditionDefined$ ParentTarget | ConditionPresent$ Card.Equipment | ConditionCompare$ GE1\nSVar:X:Count$xPaid\nOracle:Kicker {X}. X can't be 0. (You may pay an additional {X} as you cast this spell.)\\nFlying\\nWhen Thieving Skydiver enters, if it was kicked, gain control of target artifact with mana value X or less. If that artifact is an Equipment, attach it to Thieving Skydiver.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieving Skydiver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oriq-loremage-corpus-m680",
+  "description": "M6 corpus — Oriq Loremage; in-hand parse.",
+  "seed": 63655,
+  "cards": {
+    "Oriq Loremage": "Name:Oriq Loremage\nManaCost:2 B B\nTypes:Creature Human Warlock\nPT:3/3\nA:AB$ ChangeZone | Cost$ T | Origin$ Library | Destination$ Graveyard | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | RememberChanged$ True | SubAbility$ DBPutCounter | SpellDescription$ Search your library for a card, put it into your graveyard, then shuffle. If it's an instant or sorcery card, put a +1/+1 counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ IsInstantOrSorcery | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:IsInstantOrSorcery:Remembered$Valid Instant,Sorcery\nDeckHas:Ability$Counters\nOracle:{T}: Search your library for a card, put it into your graveyard, then shuffle. If it's an instant or sorcery card, put a +1/+1 counter on Oriq Loremage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oriq Loremage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

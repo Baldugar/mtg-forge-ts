@@ -1,0 +1,23 @@
+{
+  "id": "osgood-operation-double-corpus-m680",
+  "description": "M6 corpus — Osgood, Operation Double; in-hand parse.",
+  "seed": 63659,
+  "cards": {
+    "Osgood, Operation Double": "Name:Osgood, Operation Double\nManaCost:2 U U\nTypes:Legendary Creature Human Alien Shapeshifter\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, create a token that's a copy of it, except it isn't legendary.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | NonLegendary$ True\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | RestrictValid$ Spell.Artifact,Activated.Artifact+inZoneBattlefield | SpellDescription$ Add {C}. Spend this mana only to cast an artifact spell or activate an ability of an artifact.\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Paradox — Whenever you cast a spell from anywhere other than your hand, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Token & Type$Clue|Artifact\nDeckHints:Type$Artifact\nOracle:When you cast this spell, create a token that's a copy of it, except it isn't legendary.\\n{T}: Add {C}. Spend this mana only to cast an artifact spell or activate an ability of an artifact.\\nParadox — Whenever you cast a spell from anywhere other than your hand, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Osgood, Operation Double"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

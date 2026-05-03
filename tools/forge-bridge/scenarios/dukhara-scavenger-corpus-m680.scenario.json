@@ -1,0 +1,23 @@
+{
+  "id": "dukhara-scavenger-corpus-m680",
+  "description": "M6 corpus — Dukhara Scavenger; in-hand parse.",
+  "seed": 62255,
+  "cards": {
+    "Dukhara Scavenger": "Name:Dukhara Scavenger\nManaCost:5 B\nTypes:Creature Crocodile\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put target artifact or creature card from your graveyard on top of your library.\nSVar:TrigChange:DB$ ChangeZone | TgtPrompt$ Choose target artifact or creature card in your graveyard | ValidTgts$ Artifact,Creature | TargetsWithDefinedController$ TriggeredCardController | Origin$ Graveyard | Destination$ Library\nOracle:When Dukhara Scavenger enters, you may put target artifact or creature card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dukhara Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

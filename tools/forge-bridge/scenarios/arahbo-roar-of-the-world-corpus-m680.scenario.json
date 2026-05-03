@@ -1,0 +1,23 @@
+{
+  "id": "arahbo-roar-of-the-world-corpus-m680",
+  "description": "M6 corpus — Arahbo, Roar of the World; in-hand parse.",
+  "seed": 61536,
+  "cards": {
+    "Arahbo, Roar of the World": "Name:Arahbo, Roar of the World\nManaCost:3 G W\nTypes:Legendary Creature Cat Avatar\nPT:5/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.StrictlySelf | PresentZone$ Battlefield | Execute$ TrigPump1 | TriggerDescription$ Eminence — At the beginning of combat on your turn, if CARDNAME is in the command zone or on the battlefield, another target Cat you control gets +3/+3 until end of turn.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Command | IsPresent$ Card.StrictlySelf | PresentZone$ Command | Execute$ TrigPump1 | Secondary$ True\nSVar:TrigPump1:DB$ Pump | ValidTgts$ Creature.Cat+YouCtrl+Other | TgtPrompt$ Select another target Cat you control | NumAtt$ +3 | NumDef$ +3\nT:Mode$ Attacks | ValidCard$ Creature.Cat+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump2 | TriggerDescription$ Whenever another Cat you control attacks, you may pay {1}{G}{W}. If you do, it gains trample and gets +X/+X until end of turn, where X is its power.\nSVar:TrigPump2:AB$ Pump | Cost$ 1 G W | Defined$ TriggeredAttackerLKICopy | KW$ Trample | NumAtt$ +X | NumDef$ +X\nSVar:X:TriggeredAttacker$CardPower\nSVar:BuffedBy:Cat\nSVar:PlayMain1:TRUE\nDeckHints:Type$Cat\nOracle:Eminence — At the beginning of combat on your turn, if Arahbo, Roar of the World is in the command zone or on the battlefield, another target Cat you control gets +3/+3 until end of turn.\\nWhenever another Cat you control attacks, you may pay {1}{G}{W}. If you do, it gains trample and gets +X/+X until end of turn, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arahbo, Roar of the World"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

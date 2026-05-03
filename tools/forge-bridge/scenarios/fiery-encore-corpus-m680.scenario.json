@@ -1,0 +1,23 @@
+{
+  "id": "fiery-encore-corpus-m680",
+  "description": "M6 corpus — Fiery Encore; in-hand parse.",
+  "seed": 62482,
+  "cards": {
+    "Fiery Encore": "Name:Fiery Encore\nManaCost:4 R\nTypes:Sorcery\nA:SP$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw | RememberDiscarded$ True | SpellDescription$ Discard a card, then draw a card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | Execute$ TrigDealDamage | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | SpellDescription$ When you discard a nonland card this way, CARDNAME deals damage equal to that card's mana value to target creature or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X\nSVar:X:TriggerRemembered$CardManaCost\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Storm\nOracle:Discard a card, then draw a card. When you discard a nonland card this way, Fiery Encore deals damage equal to that card's mana value to target creature or planeswalker.\\nStorm (When you cast this spell, copy it for each spell cast before it this turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Encore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

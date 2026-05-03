@@ -1,0 +1,23 @@
+{
+  "id": "isu-the-abominable-corpus-m680",
+  "description": "M6 corpus — Isu the Abominable; in-hand parse.",
+  "seed": 63002,
+  "cards": {
+    "Isu the Abominable": "Name:Isu the Abominable\nManaCost:3 U U\nTypes:Legendary Snow Creature Yeti\nPT:5/5\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl+Snow | AffectedZone$ Library | MayPlay$ True | Description$ You may play snow lands and cast snow spells from the top of your library.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.Snow+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChoice | OptionalDecider$ You | TriggerDescription$ Whenever another snow permanent you control enters, you may pay {G}, {W}, or {U}. If you do, put a +1/+1 counter on CARDNAME.\nSVar:TrigChoice:DB$ GenericChoice | Choices$ PayG,PayW,PayU\nSVar:PayG:DB$ PutCounter | UnlessCost$ G | UnlessPayer$ You | UnlessSwitched$ True | CounterType$ P1P1 | SpellDescription$ {G}: Put a +1/+1 counter on CARDNAME.\nSVar:PayW:DB$ PutCounter | UnlessCost$ W | UnlessPayer$ You | UnlessSwitched$ True | CounterType$ P1P1 | SpellDescription$ {W}: Put a +1/+1 counter on CARDNAME.\nSVar:PayU:DB$ PutCounter | UnlessCost$ U | UnlessPayer$ You | UnlessSwitched$ True | CounterType$ P1P1 | SpellDescription$ {U}: Put a +1/+1 counter on CARDNAME.\nDeckHas:Ability$Counters\nDeckHints:Color$Blue|Green\nDeckNeeds:Type$Snow\nOracle:You may look at the top card of your library any time.\\nYou may play snow lands and cast snow spells from the top of your library.\\nWhenever another snow permanent you control enters, you may pay {G}, {W}, or {U}. If you do, put a +1/+1 counter on Isu the Abominable.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isu the Abominable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

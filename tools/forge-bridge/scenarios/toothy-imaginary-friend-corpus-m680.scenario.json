@@ -1,0 +1,23 @@
+{
+  "id": "toothy-imaginary-friend-corpus-m680",
+  "description": "M6 corpus — Toothy, Imaginary Friend; in-hand parse.",
+  "seed": 64769,
+  "cards": {
+    "Toothy, Imaginary Friend": "Name:Toothy, Imaginary Friend\nManaCost:3 U\nTypes:Legendary Creature Illusion\nPT:1/1\nK:Partner with:Pir, Imaginative Rascal:Pir\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME leaves the battlefield, draw a card for each +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:Partner with Pir, Imaginative Rascal (When this creature enters, target player may put Pir into their hand from their library, then shuffle.)\\nWhenever you draw a card, put a +1/+1 counter on Toothy, Imaginary Friend.\\nWhen Toothy leaves the battlefield, draw a card for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toothy, Imaginary Friend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

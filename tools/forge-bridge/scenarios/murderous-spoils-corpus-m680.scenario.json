@@ -1,0 +1,23 @@
+{
+  "id": "murderous-spoils-corpus-m680",
+  "description": "M6 corpus — Murderous Spoils; in-hand parse.",
+  "seed": 63493,
+  "cards": {
+    "Murderous Spoils": "Name:Murderous Spoils\nManaCost:5 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target non-black creature | SubAbility$ StealEquip | NoRegen$ True | SpellDescription$ Destroy target nonblack creature. It can't be regenerated. You gain control of all Equipment that were attached to it. (This effect lasts indefinitely.)\nSVar:StealEquip:DB$ GainControl | Defined$ AttachedTo Targeted.Equipment\nOracle:Destroy target nonblack creature. It can't be regenerated. You gain control of all Equipment that were attached to it. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murderous Spoils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

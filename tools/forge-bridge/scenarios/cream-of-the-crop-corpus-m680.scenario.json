@@ -1,0 +1,23 @@
+{
+  "id": "cream-of-the-crop-corpus-m680",
+  "description": "M6 corpus — Cream of the Crop; in-hand parse.",
+  "seed": 62033,
+  "cards": {
+    "Cream of the Crop": "Name:Cream of the Crop\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDig | TriggerDescription$ Whenever a creature you control enters, you may look at the top X cards of your library, where X is that creature's power. If you do, put one of those cards on top of your library and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | DestinationZone$ Library | LibraryPosition$ 0\nSVar:X:TriggeredCard$CardPower\nAI:RemoveDeck:All\nOracle:Whenever a creature you control enters, you may look at the top X cards of your library, where X is that creature's power. If you do, put one of those cards on top of your library and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cream of the Crop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

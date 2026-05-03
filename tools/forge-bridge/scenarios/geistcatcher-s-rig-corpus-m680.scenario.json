@@ -1,0 +1,23 @@
+{
+  "id": "geistcatcher-s-rig-corpus-m680",
+  "description": "M6 corpus — Geistcatcher's Rig; in-hand parse.",
+  "seed": 62616,
+  "cards": {
+    "Geistcatcher's Rig": "Name:Geistcatcher's Rig\nManaCost:6\nTypes:Artifact Creature Construct\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have it deal 4 damage to target creature with flying.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 4\nOracle:When Geistcatcher's Rig enters, you may have it deal 4 damage to target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geistcatcher's Rig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

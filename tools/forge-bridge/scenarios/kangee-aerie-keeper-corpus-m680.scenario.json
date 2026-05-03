@@ -1,0 +1,23 @@
+{
+  "id": "kangee-aerie-keeper-corpus-m680",
+  "description": "M6 corpus — Kangee, Aerie Keeper; in-hand parse.",
+  "seed": 63075,
+  "cards": {
+    "Kangee, Aerie Keeper": "Name:Kangee, Aerie Keeper\nManaCost:2 W U\nTypes:Legendary Creature Bird Wizard\nPT:2/2\nK:Kicker:X 2\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ FeatherDuster | TriggerDescription$ When CARDNAME enters, if it was kicked, put X feather counters on it.\nSVar:FeatherDuster:DB$ PutCounter | Defined$ Self | CounterType$ FEATHER | CounterNum$ X\nSVar:X:Count$xPaid\nS:Mode$ Continuous | Affected$ Creature.Bird+Other | AddPower$ Y | AddToughness$ Y | Description$ Other Bird creatures get +1/+1 for each feather counter on CARDNAME.\nSVar:Y:Count$CardCounters.FEATHER\nOracle:Kicker {X}{2} (You may pay an additional {X}{2} as you cast this spell.)\\nFlying\\nWhen Kangee, Aerie Keeper enters, if it was kicked, put X feather counters on it.\\nOther Bird creatures get +1/+1 for each feather counter on Kangee, Aerie Keeper.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kangee, Aerie Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

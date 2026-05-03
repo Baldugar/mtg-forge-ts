@@ -1,0 +1,23 @@
+{
+  "id": "kemuri-onna-corpus-m680",
+  "description": "M6 corpus — Kemuri-Onna; in-hand parse.",
+  "seed": 63111,
+  "cards": {
+    "Kemuri-Onna": "Name:Kemuri-Onna\nManaCost:4 B\nTypes:Creature Spirit\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards a card.\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may return CARDNAME to its owner's hand.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | TgtPrompt$ Select a player | NumCards$ 1 | Mode$ TgtChoose\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nOracle:When Kemuri-Onna enters, target player discards a card.\\nWhenever you cast a Spirit or Arcane spell, you may return Kemuri-Onna to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kemuri-Onna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

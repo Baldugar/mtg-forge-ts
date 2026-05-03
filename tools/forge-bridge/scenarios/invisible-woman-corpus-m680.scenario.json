@@ -1,0 +1,23 @@
+{
+  "id": "invisible-woman-corpus-m680",
+  "description": "M6 corpus — Invisible Woman; in-hand parse.",
+  "seed": 62975,
+  "cards": {
+    "Invisible Woman": "Name:Invisible Woman\nManaCost:2 W\nTypes:Legendary Creature Human Hero\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, if you've cast a noncreature spell this turn, create a 0/3 colorless Wall creature token with defender and reach.\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_3_wall_defender_reach | TokenOwner$ You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you may pay {R}{G}{W}{U}. When you do, target creature gets +1/+0 until end of turn for each creature you control and can't be blocked this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ R G W U | Execute$ TrigPump | TriggerDescription$ When you do, target creature gets +1/+0 until end of turn for each creature you control and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +Y | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:X:Count$ThisTurnCast_Card.nonCreature+YouCtrl\nSVar:Y:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, if you've cast a noncreature spell this turn, create a 0/3 colorless Wall creature token with defender and reach.\\nWhenever you attack, you may pay {R}{G}{W}{U}. When you do, target creature gets +1/+0 until end of turn for each creature you control and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invisible Woman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

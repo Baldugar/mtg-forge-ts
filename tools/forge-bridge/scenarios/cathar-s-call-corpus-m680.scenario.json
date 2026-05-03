@@ -1,0 +1,23 @@
+{
+  "id": "cathar-s-call-corpus-m680",
+  "description": "M6 corpus — Cathar's Call; in-hand parse.",
+  "seed": 61866,
+  "cards": {
+    "Cathar's Call": "Name:Cathar's Call\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Vigilance | AddTrigger$ CatharTrig | Description$ Enchanted creature has vigilance and \"At the beginning of your end step, create a 1/1 white Human creature token.\"\nSVar:CatharTrig:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 white Human creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature has vigilance and \"At the beginning of your end step, create a 1/1 white Human creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cathar's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

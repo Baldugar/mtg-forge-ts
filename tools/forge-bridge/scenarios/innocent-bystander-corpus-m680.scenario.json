@@ -1,0 +1,23 @@
+{
+  "id": "innocent-bystander-corpus-m680",
+  "description": "M6 corpus — Innocent Bystander; in-hand parse.",
+  "seed": 62939,
+  "cards": {
+    "Innocent Bystander": "Name:Innocent Bystander\nManaCost:1 R\nTypes:Creature Goblin Citizen\nPT:2/1\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | DamageAmount$ GE3 | Execute$ TrigInvestigate | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt 3 or more damage, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Token|Investigate|Sacrifice & Type$Artifact|Clue\nOracle:Whenever Innocent Bystander is dealt 3 or more damage, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Innocent Bystander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

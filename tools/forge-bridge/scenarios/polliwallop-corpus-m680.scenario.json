@@ -1,0 +1,23 @@
+{
+  "id": "polliwallop-corpus-m680",
+  "description": "M6 corpus — Polliwallop; in-hand parse.",
+  "seed": 63771,
+  "cards": {
+    "Polliwallop": "Name:Polliwallop\nManaCost:3 G\nTypes:Instant\nK:Affinity:Frog\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to twice its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ Y | DamageSource$ ParentTarget\nSVar:Y:ParentTargeted$CardPower/Twice\nOracle:Affinity for Frogs (This spell costs {1} less to cast for each Frog you control.)\\nTarget creature you control deals damage equal to twice its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polliwallop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "summon-knights-of-round-corpus-m680",
+  "description": "M6 corpus — Summon: Knights of Round; in-hand parse.",
+  "seed": 64504,
+  "cards": {
+    "Summon: Knights of Round": "Name:Summon: Knights of Round\nManaCost:6 W W\nTypes:Enchantment Creature Saga Knight\nPT:3/3\nK:Indestructible\nK:Chapter:5:TrigToken,TrigToken,TrigToken,TrigToken,TrigPumpAll\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_2_2_knight | TokenOwner$ You | SpellDescription$ Create three 2/2 white Knight creature tokens.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBPutCounter | SpellDescription$ Ultimate End — Other creatures you control get +2/+2 until end of turn. Put an indestructible counter on each of them.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Valid Creature.Other+YouCtrl | CounterType$ Indestructible | CounterNum$ 1\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after V.)\\nI, II, III, IV — Create three 2/2 white Knight creature tokens.\\nV — Ultimate End — Other creatures you control get +2/+2 until end of turn. Put an indestructible counter on each of them.\\nIndestructible\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Knights of Round"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

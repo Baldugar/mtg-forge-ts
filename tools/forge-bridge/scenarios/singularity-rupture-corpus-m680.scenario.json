@@ -1,0 +1,23 @@
+{
+  "id": "singularity-rupture-corpus-m680",
+  "description": "M6 corpus — Singularity Rupture; in-hand parse.",
+  "seed": 64290,
+  "cards": {
+    "Singularity Rupture": "Name:Singularity Rupture\nManaCost:3 U B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | SubAbility$ DBPump | SpellDescription$ Destroy all creatures, then any number of target players each mill half their library, rounded down.\nSVar:DBPump:DB$ Pump | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxTgt | TgtPrompt$ Select any number of target players | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Targeted | RepeatSubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ Remembered | NumCards$ X\nSVar:X:Count$ValidLibrary Card.RememberedPlayerOwn/HalfDown\nSVar:MaxTgt:PlayerCountPlayers$Amount\nDeckHas:Ability$Mill\nOracle:Destroy all creatures, then any number of target players each mill half their library, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Singularity Rupture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

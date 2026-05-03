@@ -1,0 +1,23 @@
+{
+  "id": "cragganwick-cremator-corpus-m680",
+  "description": "M6 corpus — Cragganwick Cremator; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Cragganwick Cremator": "Name:Cragganwick Cremator\nManaCost:2 R R\nTypes:Creature Giant Shaman\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard a card at random. If you discard a creature card this way, CARDNAME deals damage equal to that card's power to target player or planeswalker.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random | RememberDiscarded$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | ConditionCompare$ EQ1 | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nOracle:When Cragganwick Cremator enters, discard a card at random. If you discard a creature card this way, Cragganwick Cremator deals damage equal to that card's power to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cragganwick Cremator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

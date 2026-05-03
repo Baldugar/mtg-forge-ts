@@ -1,0 +1,23 @@
+{
+  "id": "mace-of-the-valiant-corpus-m680",
+  "description": "M6 corpus — Mace of the Valiant; in-hand parse.",
+  "seed": 63298,
+  "cards": {
+    "Mace of the Valiant": "Name:Mace of the Valiant\nManaCost:2 W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | AddKeyword$ Vigilance | Description$ Equipped creature gets +1/+1 for each charge counter on CARDNAME and has vigilance.\nSVar:X:Count$CardCounters.CHARGE\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control enters, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nK:Equip:3\nSVar:BuffedBy:Creature\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Equipped creature gets +1/+1 for each charge counter on Mace of the Valiant and has vigilance.\\nWhenever a creature you control enters, put a charge counter on Mace of the Valiant.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mace of the Valiant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

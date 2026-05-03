@@ -1,0 +1,23 @@
+{
+  "id": "quiet-contemplation-corpus-m680",
+  "description": "M6 corpus — Quiet Contemplation; in-hand parse.",
+  "seed": 63868,
+  "cards": {
+    "Quiet Contemplation": "Name:Quiet Contemplation\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | OptionalDecider$ You | TriggerDescription$ Whenever you cast a noncreature spell, you may pay {1}. If you do, tap target creature an opponent controls. It doesn't untap during its controller's next untap step.\nSVar:TrigTap:AB$ Tap | Cost$ 1 | ValidTgts$ Creature.OppCtrl | SubAbility$ DBPump | TgtPrompt$ Select target creature an opponent controls.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Whenever you cast a noncreature spell, you may pay {1}. If you do, tap target creature an opponent controls and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quiet Contemplation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

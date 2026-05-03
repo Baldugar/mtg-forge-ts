@@ -1,0 +1,23 @@
+{
+  "id": "gods-eye-gate-to-the-reikai-corpus-m680",
+  "description": "M6 corpus — Gods' Eye, Gate to the Reikai; in-hand parse.",
+  "seed": 62696,
+  "cards": {
+    "Gods' Eye, Gate to the Reikai": "Name:Gods' Eye, Gate to the Reikai\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, create a 1/1 colorless Spirit creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit | TokenOwner$ TriggeredCardController\nSVar:SacMe:1\nOracle:{T}: Add {C}.\\nWhen Gods' Eye, Gate to the Reikai is put into a graveyard from the battlefield, create a 1/1 colorless Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gods' Eye, Gate to the Reikai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

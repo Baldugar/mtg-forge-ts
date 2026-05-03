@@ -1,0 +1,23 @@
+{
+  "id": "wolf-strike-corpus-m680",
+  "description": "M6 corpus — Wolf Strike; in-hand parse.",
+  "seed": 65082,
+  "cards": {
+    "Wolf Strike": "Name:Wolf Strike\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | NumAtt$ +X | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | StackDescription$ {c:ThisTargetedCard} gets +2/+0 until end of turn if it's night. | SpellDescription$ Target creature you control gets +2/+0 until end of turn if it's night. Then it deals damage equal to its power to target creature you don't control.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ Y | DamageSource$ ParentTarget | StackDescription$ Then it deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:Count$Night.2.0\nSVar:Y:ParentTargeted$CardPower\nOracle:Target creature you control gets +2/+0 until end of turn if it's night. Then it deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolf Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

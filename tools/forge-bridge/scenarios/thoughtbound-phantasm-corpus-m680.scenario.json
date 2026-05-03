@@ -1,0 +1,23 @@
+{
+  "id": "thoughtbound-phantasm-corpus-m680",
+  "description": "M6 corpus — Thoughtbound Phantasm; in-hand parse.",
+  "seed": 64716,
+  "cards": {
+    "Thoughtbound Phantasm": "Name:Thoughtbound Phantasm\nManaCost:U\nTypes:Creature Spirit\nPT:2/2\nK:Defender\nT:Mode$ Surveil | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you surveil, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self+counters_GE3_P1P1 | Description$ As long as CARDNAME has three or more +1/+1 counters on it, it can attack as though it didn't have defender.\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Surveil\nOracle:Defender\\nWhenever you surveil, put a +1/+1 counter on Thoughtbound Phantasm.\\nAs long as Thoughtbound Phantasm has three or more +1/+1 counters on it, it can attack as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thoughtbound Phantasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "generous-patron-corpus-m680",
+  "description": "M6 corpus — Generous Patron; in-hand parse.",
+  "seed": 62620,
+  "cards": {
+    "Generous Patron": "Name:Generous Patron\nManaCost:2 G\nTypes:Creature Elf Advisor\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, support 2. (Put a +1/+1 counter on each of up to two other target creatures.)\nSVar:TrigPut:DB$ PutCounter | Support$ 2\nT:Mode$ CounterPlayerAddedAll | ValidObject$ Creature.YouDontCtrl+inRealZoneBattlefield | ValidSource$ You | TriggerZones$ Battlefield | Execute$ DBDraw | TriggerDescription$ Whenever you put one or more counters on a creature you don't control, draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:When Generous Patron enters, support 2. (Put a +1/+1 counter on each of up to two other target creatures.)\\nWhenever you put one or more counters on a creature you don't control, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Generous Patron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

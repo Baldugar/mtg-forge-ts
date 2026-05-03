@@ -1,0 +1,23 @@
+{
+  "id": "selhoff-occultist-corpus-m680",
+  "description": "M6 corpus — Selhoff Occultist; in-hand parse.",
+  "seed": 64196,
+  "cards": {
+    "Selhoff Occultist": "Name:Selhoff Occultist\nManaCost:2 U\nTypes:Creature Human Rogue\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME or another creature dies, target player mills a card.\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | ValidTgts$ Player\nOracle:Whenever Selhoff Occultist or another creature dies, target player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selhoff Occultist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

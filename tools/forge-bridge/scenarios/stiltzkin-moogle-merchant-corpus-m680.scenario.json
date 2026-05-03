@@ -1,0 +1,23 @@
+{
+  "id": "stiltzkin-moogle-merchant-corpus-m680",
+  "description": "M6 corpus — Stiltzkin, Moogle Merchant; in-hand parse.",
+  "seed": 64464,
+  "cards": {
+    "Stiltzkin, Moogle Merchant": "Name:Stiltzkin, Moogle Merchant\nManaCost:W\nTypes:Legendary Creature Moogle\nPT:1/2\nK:Lifelink\nA:AB$ Pump | Cost$ 2 T | ValidTgts$ Opponent | SubAbility$ DBGainControl | AILogic$ DonateTargetPerm | SpellDescription$ Target opponent gains control of another target permanent you control. If they do, you draw a card.\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Permanent.Other+YouCtrl | TgtPrompt$ Select another target permanent you control | NewController$ ParentTarget | RememberControlled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nOracle:Lifelink\\n{2}, {T}: Target opponent gains control of another target permanent you control. If they do, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stiltzkin, Moogle Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

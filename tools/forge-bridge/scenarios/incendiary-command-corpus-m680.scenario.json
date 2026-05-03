@@ -1,0 +1,23 @@
+{
+  "id": "incendiary-command-corpus-m680",
+  "description": "M6 corpus — Incendiary Command; in-hand parse.",
+  "seed": 62917,
+  "cards": {
+    "Incendiary Command": "Name:Incendiary Command\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDamageP,DBDamageC,DBDestroy,DBDiscard | CharmNum$ 2\nSVar:DBDamageP:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker.\nSVar:DBDamageC:DB$ DamageAll | ValidCards$ Creature | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to each creature.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land | SpellDescription$ Destroy target nonbasic land.\nSVar:DBDiscard:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBIncendiaryDiscard | SubAbility$ DBIncendiaryDraw | SpellDescription$ Each player discards all the cards in their hand, then draws that many cards.\nSVar:DBIncendiaryDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBIncendiaryDraw\nSVar:DBIncendiaryDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ CleanIncendiary\nSVar:CleanIncendiary:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Choose two —\\n• Incendiary Command deals 4 damage to target player or planeswalker.\\n• Incendiary Command deals 2 damage to each creature.\\n• Destroy target nonbasic land.\\n• Each player discards all the cards in their hand, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incendiary Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

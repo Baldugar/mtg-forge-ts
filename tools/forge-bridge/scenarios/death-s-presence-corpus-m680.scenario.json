@@ -1,0 +1,23 @@
+{
+  "id": "death-s-presence-corpus-m680",
+  "description": "M6 corpus — Death's Presence; in-hand parse.",
+  "seed": 62121,
+  "cards": {
+    "Death's Presence": "Name:Death's Presence\nManaCost:5 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control dies, put X +1/+1 counters on target creature you control, where X is the power of the creature that died.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardPower\nOracle:Whenever a creature you control dies, put X +1/+1 counters on target creature you control, where X is the power of the creature that died.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death's Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

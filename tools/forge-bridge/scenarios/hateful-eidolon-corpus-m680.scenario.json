@@ -1,0 +1,23 @@
+{
+  "id": "hateful-eidolon-corpus-m680",
+  "description": "M6 corpus — Hateful Eidolon; in-hand parse.",
+  "seed": 62795,
+  "cards": {
+    "Hateful Eidolon": "Name:Hateful Eidolon\nManaCost:B\nTypes:Enchantment Creature Spirit\nPT:1/2\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Creature.enchanted | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an enchanted creature dies, draw a card for each Aura you controlled that was attached to it.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggeredCard$AttachedTo Aura.YouCtrl\nSVar:EnchantMe:Multiple\nOracle:Lifelink\\nWhenever an enchanted creature dies, draw a card for each Aura you controlled that was attached to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hateful Eidolon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

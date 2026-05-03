@@ -1,0 +1,23 @@
+{
+  "id": "pyroceratops-corpus-m680",
+  "description": "M6 corpus — Pyroceratops; in-hand parse.",
+  "seed": 63849,
+  "cards": {
+    "Pyroceratops": "Name:Pyroceratops\nManaCost:3 R\nTypes:Creature Elemental Dinosaur\nPT:2/3\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:nonCreature\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever you cast a noncreature spell, put a +1/+1 counter on Pyroceratops.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyroceratops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

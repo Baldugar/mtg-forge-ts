@@ -1,0 +1,23 @@
+{
+  "id": "flamewake-phoenix-corpus-m680",
+  "description": "M6 corpus — Flamewake Phoenix; in-hand parse.",
+  "seed": 62509,
+  "cards": {
+    "Flamewake Phoenix": "Name:Flamewake Phoenix\nManaCost:1 R R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nK:Haste\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Creature.YouCtrl+powerGE4 | Execute$ TrigReturn | TriggerDescription$ Ferocious — At the beginning of combat on your turn, if you control a creature with power 4 or greater, you may pay {R}. If you do, return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ R | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nOracle:Flying, haste\\nFlamewake Phoenix attacks each combat if able.\\nFerocious — At the beginning of combat on your turn, if you control a creature with power 4 or greater, you may pay {R}. If you do, return Flamewake Phoenix from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamewake Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

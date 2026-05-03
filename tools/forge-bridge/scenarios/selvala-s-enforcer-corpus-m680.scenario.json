@@ -1,0 +1,23 @@
+{
+  "id": "selvala-s-enforcer-corpus-m680",
+  "description": "M6 corpus — Selvala's Enforcer; in-hand parse.",
+  "seed": 64199,
+  "cards": {
+    "Selvala's Enforcer": "Name:Selvala's Enforcer\nManaCost:3 G\nTypes:Creature Elf Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Parley — When CARDNAME enters, each player reveals the top card of their library. For each nonland card revealed this way, put a +1/+1 counter on CARDNAME. Then each player draws a card.\nSVar:TrigReveal:DB$ PeekAndReveal | Defined$ Player | RememberRevealed$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterNum$ X | CounterType$ P1P1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.nonLand\nOracle:Parley — When Selvala's Enforcer enters, each player reveals the top card of their library. For each nonland card revealed this way, put a +1/+1 counter on Selvala's Enforcer. Then each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selvala's Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

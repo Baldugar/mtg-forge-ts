@@ -1,0 +1,23 @@
+{
+  "id": "ugl-k-of-the-white-hand-corpus-m680",
+  "description": "M6 corpus — Uglúk of the White Hand; in-hand parse.",
+  "seed": 64831,
+  "cards": {
+    "Uglúk of the White Hand": "Name:Uglúk of the White Hand\nManaCost:2 B R\nTypes:Legendary Creature Orc Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME. If that creature was a Goblin or Orc, put two +1/+1 counters on NICKNAME instead.\nSVar:TrigGainCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$Valid Creature.Orc,Creature.Goblin/Plus.1\nDeckHas:Ability$Counters\nDeckHints:Type$Orc|Goblin\nOracle:Whenever another creature you control dies, put a +1/+1 counter on Uglúk of the White Hand. If that creature was a Goblin or Orc, put two +1/+1 counters on Uglúk instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uglúk of the White Hand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

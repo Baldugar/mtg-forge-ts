@@ -1,0 +1,23 @@
+{
+  "id": "hunter-s-edge-corpus-m680",
+  "description": "M6 corpus — Hunter's Edge; in-hand parse.",
+  "seed": 62880,
+  "cards": {
+    "Hunter's Edge": "Name:Hunter's Edge\nManaCost:3 G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | AILogic$ PowerDmg | StackDescription$ Put a +1/+1 counter on {c:ThisTargetedCard}. | SpellDescription$ Put a +1/+1 counter on target creature you control. Then that creature deals damage equal to its power to target creature you don't control.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget | AILogic$ PowerDmg | StackDescription$ Then {c:ParentTarget} deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature you control. Then that creature deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunter's Edge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

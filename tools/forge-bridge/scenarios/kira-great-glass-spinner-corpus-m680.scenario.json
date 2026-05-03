@@ -1,0 +1,23 @@
+{
+  "id": "kira-great-glass-spinner-corpus-m680",
+  "description": "M6 corpus — Kira, Great Glass-Spinner; in-hand parse.",
+  "seed": 63130,
+  "cards": {
+    "Kira, Great Glass-Spinner": "Name:Kira, Great Glass-Spinner\nManaCost:1 U U\nTypes:Legendary Creature Spirit\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddTrigger$ KiraGlassSpinnerTrig | AddSVar$ KiraGlassSpinnerCounter & Targeting | Description$ Creatures you control have \"Whenever this creature becomes the target of a spell or ability for the first time each turn, counter that spell or ability.\"\nSVar:KiraGlassSpinnerTrig:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | FirstTime$ True | Execute$ KiraGlassSpinnerCounter | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability for the first time each turn, counter that spell or ability.\nSVar:KiraGlassSpinnerCounter:DB$ Counter | Defined$ TriggeredSourceSA\nSVar:Targeting:Counter\nOracle:Flying\\nCreatures you control have \"Whenever this creature becomes the target of a spell or ability for the first time each turn, counter that spell or ability.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kira, Great Glass-Spinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

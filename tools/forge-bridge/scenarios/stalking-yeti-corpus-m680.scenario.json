@@ -1,0 +1,23 @@
+{
+  "id": "stalking-yeti-corpus-m680",
+  "description": "M6 corpus — Stalking Yeti; in-hand parse.",
+  "seed": 64441,
+  "cards": {
+    "Stalking Yeti": "Name:Stalking Yeti\nManaCost:2 R R\nTypes:Snow Creature Yeti\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Card.StrictlySelf | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if it's on the battlefield, it deals damage equal to its power to target creature an opponent controls and that creature deals damage equal to its power to CARDNAME.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Self | DamageSource$ Targeted | NumDmg$ Y\nA:AB$ ChangeZone | Cost$ 2 S | Origin$ Battlefield | Destination$ Hand | SorcerySpeed$ True | SpellDescription$ Return CARDNAME to its owner's hand. Activate only as a sorcery.\nSVar:X:Count$CardPower\nSVar:Y:Targeted$CardPower\nAI:RemoveDeck:All\nOracle:When Stalking Yeti enters, if it's on the battlefield, it deals damage equal to its power to target creature an opponent controls and that creature deals damage equal to its power to Stalking Yeti.\\n{2}{S}: Return Stalking Yeti to its owner's hand. Activate only as a sorcery. ({S} can be paid with one mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalking Yeti"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

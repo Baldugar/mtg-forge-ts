@@ -1,0 +1,23 @@
+{
+  "id": "restless-bivouac-corpus-m680",
+  "description": "M6 corpus — Restless Bivouac; in-hand parse.",
+  "seed": 63966,
+  "cards": {
+    "Restless Bivouac": "Name:Restless Bivouac\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nA:AB$ Animate | Cost$ 1 R W | Defined$ Self | Power$ 2 | Toughness$ 2 | Types$ Creature,Ox | Colors$ Red,White | OverwriteColors$ True | SpellDescription$ CARDNAME becomes a 2/2 red and white Ox creature until end of turn. It's still a land.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters & Type$Ox & Color$Red|White\nOracle:Restless Bivouac enters tapped.\\n{T}: Add {R} or {W}.\\n{1}{R}{W}: Restless Bivouac becomes a 2/2 red and white Ox creature until end of turn. It's still a land.\\nWhenever Restless Bivouac attacks, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Bivouac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

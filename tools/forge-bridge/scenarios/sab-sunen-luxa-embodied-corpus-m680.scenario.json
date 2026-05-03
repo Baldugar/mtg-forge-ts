@@ -1,0 +1,23 @@
+{
+  "id": "sab-sunen-luxa-embodied-corpus-m680",
+  "description": "M6 corpus — Sab-Sunen, Luxa Embodied; in-hand parse.",
+  "seed": 64098,
+  "cards": {
+    "Sab-Sunen, Luxa Embodied": "Name:Sab-Sunen, Luxa Embodied\nManaCost:3 G U\nTypes:Legendary Creature God\nPT:6/6\nK:Reach\nK:Trample\nK:Indestructible\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ EQ1 | Description$ NICKNAME can't attack or block unless it has an even number of counters on it. (Zero is even.)\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your first main phase, put a +1/+1 counter on NICKNAME. Then if it has an odd number of counters on it, draw two cards.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:X:Count$CardCounters.ALL/Mod.2\nDeckHas:Ability$Counters\nOracle:Reach, trample, indestructible\\nSab-Sunen can't attack or block unless it has an even number of counters on it. (Zero is even.)\\nAt the beginning of your first main phase, put a +1/+1 counter on Sab-Sunen. Then if it has an odd number of counters on it, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sab-Sunen, Luxa Embodied"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

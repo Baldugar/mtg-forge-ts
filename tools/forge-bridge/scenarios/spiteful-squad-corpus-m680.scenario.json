@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-squad-corpus-m680",
+  "description": "M6 corpus — Spiteful Squad; in-hand parse.",
+  "seed": 64421,
+  "cards": {
+    "Spiteful Squad": "Name:Spiteful Squad\nManaCost:2 W B\nTypes:Creature Human Warlock\nPT:0/0\nK:etbCounter:P1P1:2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put its counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nSVar:SacMe:2\nDeckHas:Ability$Counters\nOracle:Deathtouch\\nSpiteful Squad enters with two +1/+1 counters on it.\\nWhen Spiteful Squad dies, put its counters on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Squad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

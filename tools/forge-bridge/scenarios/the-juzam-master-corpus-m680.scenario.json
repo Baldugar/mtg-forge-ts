@@ -1,0 +1,23 @@
+{
+  "id": "the-juzam-master-corpus-m680",
+  "description": "M6 corpus — The Juzam Master; in-hand parse.",
+  "seed": 64662,
+  "cards": {
+    "The Juzam Master": "Name:The Juzam Master\nManaCost:2 B B\nTypes:Legendary Creature Human Wizard\nPT:4/5\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddTrigger$ JuzamTrigger | Description$ Creatures you control get +1/+0 and have \"At the beginning of your upkeep, this creature deals 1 damage to you.\"\nSVar:JuzamTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your upkeep, this creature deals 1 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:Creatures you control get +1/+0 and have \"At the beginning of your upkeep, this creature deals 1 damage to you.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Juzam Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

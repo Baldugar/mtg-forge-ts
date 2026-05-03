@@ -1,0 +1,23 @@
+{
+  "id": "smile-at-death-corpus-m680",
+  "description": "M6 corpus — Smile at Death; in-hand parse.",
+  "seed": 64337,
+  "cards": {
+    "Smile at Death": "Name:Smile at Death\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, return up to two target creature cards with power 2 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of those creatures.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.powerLE2+YouCtrl | TargetMin$ 0 | TargetMax$ 2 | SubAbility$ DBPutCounters | RememberChanged$ True | TgtPrompt$ Select up to two target creature cards with power 2 or less in your graveyard\nSVar:DBPutCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Discard|Mill|Sacrifice\nOracle:At the beginning of your upkeep, return up to two target creature cards with power 2 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smile at Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

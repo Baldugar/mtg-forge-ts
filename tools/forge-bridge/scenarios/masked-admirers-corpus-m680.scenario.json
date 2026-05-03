@@ -1,0 +1,23 @@
+{
+  "id": "masked-admirers-corpus-m680",
+  "description": "M6 corpus — Masked Admirers; in-hand parse.",
+  "seed": 63357,
+  "cards": {
+    "Masked Admirers": "Name:Masked Admirers\nManaCost:2 G G\nTypes:Creature Elf Shaman\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a creature spell, you may pay {G}{G}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:TrigReturn:AB$ ChangeZone | Cost$ G G | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:When Masked Admirers enters, draw a card.\\nWhenever you cast a creature spell, you may pay {G}{G}. If you do, return Masked Admirers from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Masked Admirers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mortuary-mire-corpus-m680",
+  "description": "M6 corpus — Mortuary Mire; in-hand parse.",
+  "seed": 63481,
+  "cards": {
+    "Mortuary Mire": "Name:Mortuary Mire\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put target creature card from your graveyard on top of your library.\nSVar:TrigChange:DB$ ChangeZone | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredCardController | Origin$ Graveyard | Destination$ Library | SpellDescription$ You may put target creature card from your graveyard on top of your library.\nOracle:Mortuary Mire enters tapped.\\nWhen Mortuary Mire enters, you may put target creature card from your graveyard on top of your library.\\n{T}: Add {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortuary Mire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

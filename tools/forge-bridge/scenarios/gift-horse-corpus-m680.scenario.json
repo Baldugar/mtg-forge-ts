@@ -1,0 +1,23 @@
+{
+  "id": "gift-horse-corpus-m680",
+  "description": "M6 corpus — Gift Horse; in-hand parse.",
+  "seed": 62640,
+  "cards": {
+    "Gift Horse": "Name:Gift Horse\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, roll two six-sided dice. Create a number of 1/1 red Goblin creature tokens equal to the difference between those results.\nSVar:TrigCrank:DB$ RollDice | ResultSVar$ Result | Sides$ 6 | Amount$ 2 | UseDifferenceBetweenRolls$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ Result\nOracle:Whenever you crank Gift Horse, roll two six-sided dice. Create a number of 1/1 red Goblin creature tokens equal to the difference between those results.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift Horse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

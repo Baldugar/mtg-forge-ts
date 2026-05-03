@@ -1,0 +1,23 @@
+{
+  "id": "thran-vigil-corpus-m680",
+  "description": "M6 corpus — Thran Vigil; in-hand parse.",
+  "seed": 64721,
+  "cards": {
+    "Thran Vigil": "Name:Thran Vigil\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZoneAll | Origin$ Graveyard | Destination$ Any | ValidCards$ Creature.YouOwn,Artifact.YouOwn | PlayerTurn$ True | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more artifact and/or creature cards leave your graveyard during your turn, put a +1/+1 counter on target creature you control.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.YouCtrl\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Graveyard\nOracle:Whenever one or more artifact and/or creature cards leave your graveyard during your turn, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thran Vigil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

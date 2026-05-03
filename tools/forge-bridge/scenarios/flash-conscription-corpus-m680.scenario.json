@@ -1,0 +1,23 @@
+{
+  "id": "flash-conscription-corpus-m680",
+  "description": "M6 corpus — Flash Conscription; in-hand parse.",
+  "seed": 62513,
+  "cards": {
+    "Flash Conscription": "Name:Flash Conscription\nManaCost:5 R\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature | SubAbility$ DBChange | SpellDescription$ Untap target creature and gain control of it until end of turn. That creature gains haste until end of turn. If {W} was spent to cast this spell, the creature gains \"Whenever this creature deals combat damage, you gain that much life\" until end of turn.\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ TrigDamage | ConditionManaSpent$ W\nSVar:TrigDamage:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ GainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage, you gain that much life.\nSVar:GainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nDeckHints:Color$White\nOracle:Untap target creature and gain control of it until end of turn. That creature gains haste until end of turn. If {W} was spent to cast this spell, the creature gains \"Whenever this creature deals combat damage, you gain that much life\" until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flash Conscription"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

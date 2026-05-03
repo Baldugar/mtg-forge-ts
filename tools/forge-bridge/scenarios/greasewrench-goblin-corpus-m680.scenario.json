@@ -1,0 +1,23 @@
+{
+  "id": "greasewrench-goblin-corpus-m680",
+  "description": "M6 corpus — Greasewrench Goblin; in-hand parse.",
+  "seed": 62719,
+  "cards": {
+    "Greasewrench Goblin": "Name:Greasewrench Goblin\nManaCost:R\nTypes:Creature Goblin Artificer\nPT:2/1\nA:AB$ Discard | Cost$ 2 R | Exhaust$ True | NumCards$ 2 | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard up to two cards, then draw that many cards. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Exhaust — {2}{R}: Discard up to two cards, then draw that many cards. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greasewrench Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

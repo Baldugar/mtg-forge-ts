@@ -1,0 +1,23 @@
+{
+  "id": "juniper-order-rootweaver-corpus-m680",
+  "description": "M6 corpus — Juniper Order Rootweaver; in-hand parse.",
+  "seed": 63063,
+  "cards": {
+    "Juniper Order Rootweaver": "Name:Juniper Order Rootweaver\nManaCost:1 W\nTypes:Creature Human Druid\nPT:2/2\nK:Kicker:G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, if it was kicked, put a +1/+1 counter on target creature you control.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nDeckHas:Ability$Counters\nDeckHints:Color$Green\nOracle:Kicker {G} (You may pay an additional {G} as you cast this spell.)\\nWhen Juniper Order Rootweaver enters, if it was kicked, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Juniper Order Rootweaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

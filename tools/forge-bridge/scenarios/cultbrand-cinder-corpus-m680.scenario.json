@@ -1,0 +1,23 @@
+{
+  "id": "cultbrand-cinder-corpus-m680",
+  "description": "M6 corpus — Cultbrand Cinder; in-hand parse.",
+  "seed": 62055,
+  "cards": {
+    "Cultbrand Cinder": "Name:Cultbrand Cinder\nManaCost:4 BR\nTypes:Creature Elemental Shaman\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:When Cultbrand Cinder enters, put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cultbrand Cinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

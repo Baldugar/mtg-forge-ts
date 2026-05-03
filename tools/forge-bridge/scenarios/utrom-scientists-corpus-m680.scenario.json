@@ -1,0 +1,23 @@
+{
+  "id": "utrom-scientists-corpus-m680",
+  "description": "M6 corpus — Utrom Scientists; in-hand parse.",
+  "seed": 64872,
+  "cards": {
+    "Utrom Scientists": "Name:Utrom Scientists\nManaCost:2 U\nTypes:Artifact Creature Utrom Robot Scientist\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nOracle:When this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Utrom Scientists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

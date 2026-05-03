@@ -1,0 +1,23 @@
+{
+  "id": "fleeting-memories-corpus-m680",
+  "description": "M6 corpus — Fleeting Memories; in-hand parse.",
+  "seed": 62517,
+  "cards": {
+    "Fleeting Memories": "Name:Fleeting Memories\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidCard$ Clue.YouCtrl | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, target player mills three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player | TgtPrompt$ Select target player\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token\nOracle:When Fleeting Memories enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, target player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleeting Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "icewrought-sentry-corpus-m680",
+  "description": "M6 corpus — Icewrought Sentry; in-hand parse.",
+  "seed": 62894,
+  "cards": {
+    "Icewrought Sentry": "Name:Icewrought Sentry\nManaCost:2 U\nTypes:Creature Elemental Soldier\nPT:2/3\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTrigger | TriggerDescription$ Whenever CARDNAME attacks, you may pay {1}{U}. When you do, tap target creature an opponent controls.\nSVar:TrigTrigger:AB$ ImmediateTrigger | Cost$ 1 U | Execute$ TrigTap | SpellDescription$ When you do, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nT:Mode$ Taps | ValidCard$ Creature.OppCtrl | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you tap an untapped creature an opponent controls, CARDNAME gets +2/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nOracle:Vigilance\\nWhenever Icewrought Sentry attacks, you may pay {1}{U}. When you do, tap target creature an opponent controls.\\nWhenever you tap an untapped creature an opponent controls, Icewrought Sentry gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icewrought Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

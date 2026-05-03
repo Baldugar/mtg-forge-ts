@@ -1,0 +1,23 @@
+{
+  "id": "ancient-silver-dragon-corpus-m680",
+  "description": "M6 corpus — Ancient Silver Dragon; in-hand parse.",
+  "seed": 61510,
+  "cards": {
+    "Ancient Silver Dragon": "Name:Ancient Silver Dragon\nManaCost:6 U U\nTypes:Creature Elder Dragon\nPT:8/8\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigRoll | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, roll a d20. Draw cards equal to the result. You have no maximum hand size for the rest of the game.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | Sides$ 20 | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ Result | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ Permanent | SpellDescription$ You have no maximum hand size for the rest of the game.\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size for the rest of the game.\nOracle:Flying\\nWhenever Ancient Silver Dragon deals combat damage to a player, roll a d20. Draw cards equal to the result. You have no maximum hand size for the rest of the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Silver Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

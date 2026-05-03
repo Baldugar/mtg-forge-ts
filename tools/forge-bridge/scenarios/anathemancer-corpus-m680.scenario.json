@@ -1,0 +1,23 @@
+{
+  "id": "anathemancer-corpus-m680",
+  "description": "M6 corpus — Anathemancer; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Anathemancer": "Name:Anathemancer\nManaCost:1 B R\nTypes:Creature Zombie Wizard\nPT:2/2\nK:Unearth:5 B R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals damage to target player equal to the number of nonbasic lands that player controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player | NumDmg$ X\nSVar:X:Count$Valid Land.nonBasic+TargetedPlayerCtrl\nOracle:When Anathemancer enters, it deals damage to target player equal to the number of nonbasic lands that player controls.\\nUnearth {5}{B}{R} ({5}{B}{R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anathemancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

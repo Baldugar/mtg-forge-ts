@@ -1,0 +1,23 @@
+{
+  "id": "lupine-prototype-corpus-m680",
+  "description": "M6 corpus — Lupine Prototype; in-hand parse.",
+  "seed": 63290,
+  "cards": {
+    "Lupine Prototype": "Name:Lupine Prototype\nManaCost:2\nTypes:Artifact Creature Wolf Construct\nPT:5/5\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | Description$ CARDNAME can't attack or block unless a player has no cards in hand.\nSVar:X:PlayerCountPlayers$LowestValidHand Card.YouOwn\nAI:RemoveDeck:Random\nOracle:Lupine Prototype can't attack or block unless a player has no cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lupine Prototype"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fractal-summoning-corpus-m680",
+  "description": "M6 corpus — Fractal Summoning; in-hand parse.",
+  "seed": 62554,
+  "cards": {
+    "Fractal Summoning": "Name:Fractal Summoning\nManaCost:X GU GU\nTypes:Sorcery Lesson\nA:SP$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SpellDescription$ Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it. | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fractal Summoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

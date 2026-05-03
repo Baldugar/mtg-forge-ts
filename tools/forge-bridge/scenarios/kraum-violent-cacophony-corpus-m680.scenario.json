@@ -1,0 +1,23 @@
+{
+  "id": "kraum-violent-cacophony-corpus-m680",
+  "description": "M6 corpus — Kraum, Violent Cacophony; in-hand parse.",
+  "seed": 63150,
+  "cards": {
+    "Kraum, Violent Cacophony": "Name:Kraum, Violent Cacophony\nManaCost:2 U R\nTypes:Legendary Creature Zombie Horror\nPT:2/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put a +1/+1 counter on CARDNAME and draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you cast your second spell each turn, put a +1/+1 counter on Kraum, Violent Cacophony and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kraum, Violent Cacophony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-vengeance-corpus-m680",
+  "description": "M6 corpus — Curse of Vengeance; in-hand parse.",
+  "seed": 62067,
+  "cards": {
+    "Curse of Vengeance": "Name:Curse of Vengeance\nManaCost:B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player.EnchantedBy | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player casts a spell, put a spite counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPITE | CounterNum$ 1\nT:Mode$ LosesGame | ValidPlayer$ Player.EnchantedBy | Execute$ TrigGainLife | TriggerDescription$ When enchanted player loses the game, you gain X life and draw X cards, where X is the number of spite counters on CARDNAME.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$CardCounters.SPITE\nDeckHas:Ability$Counters|LifeGain\nOracle:Enchant player\\nWhenever enchanted player casts a spell, put a spite counter on Curse of Vengeance.\\nWhen enchanted player loses the game, you gain X life and draw X cards, where X is the number of spite counters on Curse of Vengeance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Vengeance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ebon-dragon-corpus-m680",
+  "description": "M6 corpus — Ebon Dragon; in-hand parse.",
+  "seed": 62280,
+  "cards": {
+    "Ebon Dragon": "Name:Ebon Dragon\nManaCost:5 B B\nTypes:Creature Dragon\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may have target opponent discard a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nWhen Ebon Dragon enters, you may have target opponent discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ebon Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

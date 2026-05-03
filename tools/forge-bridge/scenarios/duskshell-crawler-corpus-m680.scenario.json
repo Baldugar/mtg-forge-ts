@@ -1,0 +1,23 @@
+{
+  "id": "duskshell-crawler-corpus-m680",
+  "description": "M6 corpus — Duskshell Crawler; in-hand parse.",
+  "seed": 62261,
+  "cards": {
+    "Duskshell Crawler": "Name:Duskshell Crawler\nManaCost:1 G\nTypes:Creature Insect\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ GoodWood | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:GoodWood:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Trample | Description$ Each creature you control with a +1/+1 counter on it has trample.\nDeckHas:Ability$Counters\nOracle:When Duskshell Crawler enters, put a +1/+1 counter on target creature.\\nEach creature you control with a +1/+1 counter on it has trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskshell Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "broodguard-elite-corpus-m680",
+  "description": "M6 corpus — Broodguard Elite; in-hand parse.",
+  "seed": 61803,
+  "cards": {
+    "Broodguard Elite": "Name:Broodguard Elite\nManaCost:X G G\nTypes:Creature Insect Knight\nPT:0/0\nK:etbCounter:P1P1:X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature leaves the battlefield, put its counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nK:Warp:X G\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:This creature enters with X +1/+1 counters on it.\\nWhen this creature leaves the battlefield, put its counters on target creature you control.\\nWarp {X}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodguard Elite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

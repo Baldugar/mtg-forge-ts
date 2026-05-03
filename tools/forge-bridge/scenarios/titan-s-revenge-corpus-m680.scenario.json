@@ -1,0 +1,23 @@
+{
+  "id": "titan-s-revenge-corpus-m680",
+  "description": "M6 corpus — Titan's Revenge; in-hand parse.",
+  "seed": 64760,
+  "cards": {
+    "Titan's Revenge": "Name:Titan's Revenge\nManaCost:X R R\nTypes:Sorcery\nA:SP$ DealDamage | NumDmg$ X | ValidTgts$ Any | SubAbility$ DBClash | SpellDescription$ CARDNAME deals X damage to any target. Clash with an opponent. If you win, return CARDNAME to it's owner's hand.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand\nSVar:X:Count$xPaid\nOracle:Titan's Revenge deals X damage to any target. Clash with an opponent. If you win, return Titan's Revenge to its owner's hand. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titan's Revenge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pugnacious-hammerskull-corpus-m680",
+  "description": "M6 corpus — Pugnacious Hammerskull; in-hand parse.",
+  "seed": 63833,
+  "cards": {
+    "Pugnacious Hammerskull": "Name:Pugnacious Hammerskull\nManaCost:2 G\nTypes:Creature Dinosaur\nPT:6/6\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Dinosaur.YouCtrl+Other | PresentCompare$ EQ0 | NoResolvingCheck$ True | TriggerZones$ Battlefield | Execute$ TrigStunCounter | TriggerDescription$ Whenever CARDNAME attacks while you don't control another Dinosaur, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigStunCounter:DB$ PutCounter | Defined$ Self | CounterType$ Stun | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckNeeds:Type$Dinosaur\nOracle:Whenever Pugnacious Hammerskull attacks while you don't control another Dinosaur, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pugnacious Hammerskull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

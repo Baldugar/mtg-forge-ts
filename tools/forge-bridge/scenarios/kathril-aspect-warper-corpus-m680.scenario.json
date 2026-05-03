@@ -1,0 +1,23 @@
+{
+  "id": "kathril-aspect-warper-corpus-m680",
+  "description": "M6 corpus — Kathril, Aspect Warper; in-hand parse.",
+  "seed": 63084,
+  "cards": {
+    "Kathril, Aspect Warper": "Name:Kathril, Aspect Warper\nManaCost:2 W B G\nTypes:Legendary Creature Nightmare Insect\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ PutKeywordCounter | TriggerDescription$ When CARDNAME enters, put a flying counter on any creature you control if a creature card in your graveyard has flying. Repeat this process for first strike, double strike, deathtouch, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance. Then put a +1/+1 counter on NICKNAME for each counter put on a creature this way.\nSVar:PutKeywordCounter:DB$ PutCounter | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature | SharedKeywords$ Flying & First Strike & Double Strike & Deathtouch & Hexproof & Indestructible & Lifelink & Menace & Reach & Trample & Vigilance | SharedKeywordsZone$ Graveyard | SharedRestrictions$ Creature.YouOwn | CounterNum$ 1 | RememberAmount$ True | SubAbility$ PutCounters\nSVar:PutCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nDeckHas:Ability$Counters|Graveyard\nOracle:When Kathril, Aspect Warper enters, put a flying counter on any creature you control if a creature card in your graveyard has flying. Repeat this process for first strike, double strike, deathtouch, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance. Then put a +1/+1 counter on Kathril for each counter put on a creature this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kathril, Aspect Warper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

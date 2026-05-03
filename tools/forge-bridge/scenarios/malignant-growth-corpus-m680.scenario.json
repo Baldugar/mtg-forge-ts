@@ -1,0 +1,23 @@
+{
+  "id": "malignant-growth-corpus-m680",
+  "description": "M6 corpus — Malignant Growth; in-hand parse.",
+  "seed": 63327,
+  "cards": {
+    "Malignant Growth": "Name:Malignant Growth\nManaCost:3 G U\nTypes:Enchantment\nK:Cumulative upkeep:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, put a growth counter on CARDNAME.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's draw step, that player draws an additional card for each growth counter on CARDNAME, then CARDNAME deals damage to the player equal to the number of cards they drew this way.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ GROWTH | CounterNum$ 1\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer | NumCards$ X | RememberDrawn$ AllReplaced | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ Remembered$Amount | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardCounters.GROWTH\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of your upkeep, put a growth counter on Malignant Growth.\\nAt the beginning of each opponent's draw step, that player draws an additional card for each growth counter on Malignant Growth, then Malignant Growth deals damage to the player equal to the number of cards they drew this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malignant Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

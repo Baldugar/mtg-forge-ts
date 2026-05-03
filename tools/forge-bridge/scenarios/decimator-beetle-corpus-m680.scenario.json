@@ -1,0 +1,23 @@
+{
+  "id": "decimator-beetle-corpus-m680",
+  "description": "M6 corpus — Decimator Beetle; in-hand parse.",
+  "seed": 62125,
+  "cards": {
+    "Decimator Beetle": "Name:Decimator Beetle\nManaCost:3 B G\nTypes:Creature Insect\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever CARDNAME attacks, remove a -1/-1 counter from target creature you control and put a -1/-1 counter on up to one target creature defending player controls.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | CounterNum$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature defending player controls | CounterType$ M1M1 | CounterNum$ 1 | TargetsWithDefinedController$ TriggeredDefendingPlayer\nOracle:When Decimator Beetle enters, put a -1/-1 counter on target creature you control.\\nWhenever Decimator Beetle attacks, remove a -1/-1 counter from target creature you control and put a -1/-1 counter on up to one target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decimator Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

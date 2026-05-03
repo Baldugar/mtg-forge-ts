@@ -1,0 +1,23 @@
+{
+  "id": "shaman-of-the-great-hunt-corpus-m680",
+  "description": "M6 corpus — Shaman of the Great Hunt; in-hand parse.",
+  "seed": 64228,
+  "cards": {
+    "Shaman of the Great Hunt": "Name:Shaman of the Great Hunt\nManaCost:3 R\nTypes:Creature Orc Shaman\nPT:4/2\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Draw | Cost$ 2 GU GU | NumCards$ X | PrecostDesc$ Ferocious — | SpellDescription$ Draw a card for each creature with power 4 or greater you control.\nSVar:X:Count$Valid Creature.powerGE4+YouCtrl\nOracle:Haste\\nWhenever a creature you control deals combat damage to a player, put a +1/+1 counter on it.\\nFerocious — {2}{G/U}{G/U}: Draw a card for each creature you control with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaman of the Great Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

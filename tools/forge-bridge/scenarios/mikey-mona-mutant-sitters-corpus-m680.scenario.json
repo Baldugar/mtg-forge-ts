@@ -1,0 +1,23 @@
+{
+  "id": "mikey-mona-mutant-sitters-corpus-m680",
+  "description": "M6 corpus — Mikey & Mona, Mutant Sitters; in-hand parse.",
+  "seed": 63405,
+  "cards": {
+    "Mikey & Mona, Mutant Sitters": "Name:Mikey & Mona, Mutant Sitters\nManaCost:2 G\nTypes:Legendary Creature Mutant Ninja Turtle Lizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enter, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBPutCounter,DBReturn | AdditionalDescription$ . Each mode must target a different player.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Player | TgtPrompt$ Select target player to put counters | Choices$ Creature.ControlledBy ThisTargetedPlayer | Chooser$ ThisTargetedPlayer | Placer$ ThisTargetedPlayer | ChoiceTitle$ Choose a creature you control | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Target player chooses a creature they control and puts two +1/+1 counters on it.\nSVar:DBReturn:DB$ ChangeZone | ValidTgts$ Player | TgtPrompt$ Select target player to return cards | TargetUnique$ True | Hidden$ True | Mandatory$ True | ChangeType$ Creature.OwnedBy ThisTargetedPlayer,Land.OwnedBy ThisTargetedPlayer | ChangeTypeDesc$ creature or land | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Target player returns a creature or land card from their graveyard to their hand.\nOracle:When Mikey & Mona enter, choose one or both. Each mode must target a different player.\\n• Target player chooses a creature they control and puts two +1/+1 counters on it.\\n• Target player returns a creature or land card from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mikey & Mona, Mutant Sitters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

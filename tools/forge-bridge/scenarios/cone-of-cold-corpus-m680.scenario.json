@@ -1,0 +1,23 @@
+{
+  "id": "cone-of-cold-corpus-m680",
+  "description": "M6 corpus — Cone of Cold; in-hand parse.",
+  "seed": 61977,
+  "cards": {
+    "Cone of Cold": "Name:Cone of Cold\nManaCost:3 U\nTypes:Sorcery\nA:SP$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBTapAll,10-19:TapAndLock,20:TapLockETBEffect | SpellDescription$ Roll a d20.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.OppCtrl | StackDescription$ SpellDescription | SpellDescription$ 1—9 VERT Tap all creatures your opponents control.\nSVar:TapAndLock:DB$ TapAll | ValidCards$ Creature.OppCtrl | SubAbility$ DBNoUntap | StackDescription$ SpellDescription | SpellDescription$ 10—19 VERT Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps.\nSVar:DBNoUntap:DB$ PumpAll | ValidCards$ Creature.OppCtrl | KW$ HIDDEN This card doesn't untap during your next untap step. | IsCurse$ True | Duration$ Permanent\nSVar:TapLockETBEffect:DB$ TapAll | ValidCards$ Creature.OppCtrl | SubAbility$ NoUntap | StackDescription$ SpellDescription | SpellDescription$ 20 VERT Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps.\nSVar:NoUntap:DB$ PumpAll | ValidCards$ Creature.OppCtrl | KW$ HIDDEN This card doesn't untap during your next untap step. | IsCurse$ True | Duration$ Permanent | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ TapLockETBTapped | Duration$ UntilYourNextTurn | StackDescription$ SpellDescription | SpellDescription$ 20 VERT Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps. Until your next turn, creatures your opponents control enter tapped.\nSVar:TapLockETBTapped:Event$ Moved | ValidCard$ Creature.OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nOracle:Roll a d20.\\n1—9 | Tap all creatures you opponents control.\\n10—19 | Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps.\\n20 | Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps. Until your next turn, creatures your opponents control enter tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cone of Cold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "temper-corpus-m680",
+  "description": "M6 corpus — Temper; in-hand parse.",
+  "seed": 64607,
+  "cards": {
+    "Temper": "Name:Temper\nManaCost:X 1 W\nTypes:Instant\nA:SP$ PreventDamage | ValidTgts$ Creature | Amount$ X | PreventionSubAbility$ EvenTemper | ShieldEffectTarget$ Targeted | SpellDescription$ Prevent the next X damage that would be dealt to target creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\nSVar:EvenTemper:DB$ PutCounter | Defined$ ShieldEffectTarget | CounterType$ P1P1 | CounterNum$ PreventedDamage | SpellDescription$ Put a +1/+1 counter on this creature for each 1 damage prevented this way.\nSVar:X:Count$xPaid\nOracle:Prevent the next X damage that would be dealt to target creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

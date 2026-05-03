@@ -1,0 +1,23 @@
+{
+  "id": "jugan-defends-the-temple-corpus-m680",
+  "description": "M6 corpus — Jugan Defends the Temple; in-hand parse.",
+  "seed": 63058,
+  "cards": {
+    "Jugan Defends the Temple": "Name:Jugan Defends the Temple\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBPutCounter,DBTransform\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_human_monk_g | SpellDescription$ Create a 1/1 green Human Monk creature token with \"{T}: Add {G}.\"\nSVar:DBPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each of up to two target creatures.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters|Token & Type$Human\nDeckHints:Type$Equipment|Aura & Ability$Counters\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Create a 1/1 green Human Monk creature token with \"{T}: Add {G}.\"\\nII — Put a +1/+1 counter on each of up to two target creatures.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Remnant of the Rising Star\nManaCost:no cost\nColors:green\nTypes:Enchantment Creature Dragon Spirit\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever another creature you control enters, you may pay {X}. When you do, put X +1/+1 counters on that creature.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ X | Execute$ TrigPutCounter | RememberObjects$ TriggeredCardLKICopy | TriggerDescription$ When you do, put X +1/+1 counters on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ DelayTriggerRememberedLKI | CounterType$ P1P1 | CounterNum$ X\nS:Mode$ Continuous | IsPresent$ Creature.modified+YouCtrl | PresentCompare$ GE5 | Affected$ Card.Self | AddPower$ 5 | AddToughness$ 5 | AddKeyword$ Trample | Description$ As long as you control five or more modified creatures, CARDNAME gets +5/+5 and has trample.\nSVar:X:Count$xPaid\nOracle:Flying\\nWhenever another creature you control enters, you may pay {X}. When you do, put X +1/+1 counters on that creature.\\nAs long as you control five or more modified creatures, Remnant of the Rising Star gets +5/+5 and has trample. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jugan Defends the Temple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

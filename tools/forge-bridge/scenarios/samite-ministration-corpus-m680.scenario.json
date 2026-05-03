@@ -1,0 +1,23 @@
+{
+  "id": "samite-ministration-corpus-m680",
+  "description": "M6 corpus — Samite Ministration; in-hand parse.",
+  "seed": 64112,
+  "cards": {
+    "Samite Ministration": "Name:Samite Ministration\nManaCost:1 W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Prevent all damage that would be dealt to you this turn by a source of your choice. Whenever damage from a black or red source is prevented this way this turn, you gain that much life.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RepDmg | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:RepDmg:Event$ DamageDone | ValidTarget$ You | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ DBTrigger | PreventionEffect$ True | Description$ Prevent all damage that would be dealt to you this turn by a source of your choice. Whenever damage from a black or red source is prevented this way this turn, you gain that much life.\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ GainLifeYou | ConditionCheckSVar$ Y | TriggerDescription$ Whenever damage from a black or red source is prevented this way this turn, you gain that much life.\nSVar:GainLifeYou:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Spawner>ReplaceCount$DamageAmount\nSVar:Y:ReplacedSource$Valid Card.BlackSource,Card.RedSource\nOracle:Prevent all damage that would be dealt to you this turn by a source of your choice. Whenever damage from a black or red source is prevented this way this turn, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Samite Ministration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

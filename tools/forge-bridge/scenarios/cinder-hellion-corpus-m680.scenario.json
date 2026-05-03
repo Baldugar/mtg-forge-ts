@@ -1,0 +1,23 @@
+{
+  "id": "cinder-hellion-corpus-m680",
+  "description": "M6 corpus — Cinder Hellion; in-hand parse.",
+  "seed": 61920,
+  "cards": {
+    "Cinder Hellion": "Name:Cinder Hellion\nManaCost:4 R\nTypes:Creature Hellion\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ 2\nOracle:Trample\\nWhen Cinder Hellion enters, it deals 2 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cinder Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "veteran-s-armaments-corpus-m680",
+  "description": "M6 corpus — Veteran's Armaments; in-hand parse.",
+  "seed": 64937,
+  "cards": {
+    "Veteran's Armaments": "Name:Veteran's Armaments\nManaCost:2\nTypes:Kindred Artifact Soldier Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddTrigger$ HeroAttack & HeroBlock | AddSVar$ HeroPump & ArmamentsX | Description$ Equipped creature has \"Whenever this creature attacks or blocks, it gets +1/+1 until end of turn for each attacking creature.\"\nSVar:HeroAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ HeroPump | TriggerDescription$ Whenever CARDNAME attacks or blocks, it gets +1/+1 until end of turn for each attacking creature.\nSVar:HeroBlock:Mode$ Blocks | ValidCard$ Card.Self | Execute$ HeroPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, it gets +1/+1 until end of turn for each attacking creature.\nSVar:HeroPump:DB$ Pump | Defined$ Self | NumAtt$ +ArmamentsX | NumDef$ +ArmamentsX\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Soldier | TriggerZones$ Battlefield | Execute$ HeroAttach | OptionalDecider$ You | TriggerDescription$ Whenever a Soldier creature enters, you may attach CARDNAME to it.\nSVar:HeroAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nSVar:ArmamentsX:Count$Valid Creature.attacking\nOracle:Equipped creature has \"Whenever this creature attacks or blocks, it gets +1/+1 until end of turn for each attacking creature.\"\\nWhenever a Soldier creature enters, you may attach Veteran's Armaments to it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran's Armaments"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

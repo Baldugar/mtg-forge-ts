@@ -1,0 +1,23 @@
+{
+  "id": "wicker-warcrawler-corpus-m680",
+  "description": "M6 corpus — Wicker Warcrawler; in-hand parse.",
+  "seed": 65037,
+  "cards": {
+    "Wicker Warcrawler": "Name:Wicker Warcrawler\nManaCost:5\nTypes:Artifact Creature Scarecrow\nPT:6/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME attacks or blocks, put a -1/-1 counter on it at end of combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrig | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, put a -1/-1 counter on it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigAddCounter | TriggerDescription$ Put a -1/-1 counter on CARDNAME.\nSVar:TrigAddCounter:DB$ PutCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:Whenever Wicker Warcrawler attacks or blocks, put a -1/-1 counter on it at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wicker Warcrawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

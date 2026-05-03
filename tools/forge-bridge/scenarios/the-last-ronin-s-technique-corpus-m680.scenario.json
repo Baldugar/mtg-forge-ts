@@ -1,0 +1,23 @@
+{
+  "id": "the-last-ronin-s-technique-corpus-m680",
+  "description": "M6 corpus — The Last Ronin's Technique; in-hand parse.",
+  "seed": 64664,
+  "cards": {
+    "The Last Ronin's Technique": "Name:The Last Ronin's Technique\nManaCost:3 W\nTypes:Instant\nK:Sneak:1 W\nA:SP$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ AttackingTokens | FalseSubAbility$ NormalTokens | SpellDescription$ Create three 1/1 white Ninja Turtle Spirit creature tokens. If this spell's sneak cost was paid, they enter tapped and attacking.\nSVar:NormalTokens:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_ninja_turtle_spirit | TokenOwner$ You\nSVar:AttackingTokens:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_ninja_turtle_spirit | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:X:Count$ValidStack Card.Self+sneaked\nOracle:Sneak {1}{W} (You may cast this spell for {1}{W} if you also return an unblocked attacker you control to hand during the declare blockers step.)\\nCreate three 1/1 white Ninja Turtle Spirit creature tokens. If this spell's sneak cost was paid, they enter tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Last Ronin's Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

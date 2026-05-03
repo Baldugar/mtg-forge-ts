@@ -1,0 +1,23 @@
+{
+  "id": "devouring-tendrils-corpus-m680",
+  "description": "M6 corpus — Devouring Tendrils; in-hand parse.",
+  "seed": 62162,
+  "cards": {
+    "Devouring Tendrils": "Name:Devouring Tendrils\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature or planeswalker you don't control. When the permanent you don't control dies this turn, you gain 2 life.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature or planeswalker you don't control | NumDmg$ X | DamageSource$ ParentTarget | SubAbility$ DBDelayedTrigger\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted.YouDontCtrl | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigGainLife | TriggerDescription$ When the permanent you don't control dies this turn, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$LifeGain\nOracle:Target creature you control deals damage equal to its power to target creature or planeswalker you don't control. When the permanent you don't control dies this turn, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devouring Tendrils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

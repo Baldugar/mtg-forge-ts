@@ -1,0 +1,23 @@
+{
+  "id": "havengul-lich-corpus-m680",
+  "description": "M6 corpus — Havengul Lich; in-hand parse.",
+  "seed": 62801,
+  "cards": {
+    "Havengul Lich": "Name:Havengul Lich\nManaCost:3 U B\nTypes:Creature Zombie Wizard\nPT:4/4\nA:AB$ Effect | Name$ Havengul Lich's Delayed Trigger | Cost$ 1 | ValidTgts$ Creature | TgtZone$ Graveyard | TgtPrompt$ Select target creature card | StaticAbilities$ STPlay | Triggers$ DTCast | RememberObjects$ Targeted | ExileOnMoved$ Graveyard | SpellDescription$ You may cast target creature card in a graveyard this turn. When you cast it this turn, CARDNAME gains all activated abilities of that card until end of turn.\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ Until end of turn, you may cast a creature card in a graveyard.\nSVar:DTCast:Mode$ SpellCast | ValidCard$ Card.IsRemembered+nonLand | Execute$ StealAbs | TriggerDescription$ When you cast that card this turn, EFFECTSOURCE gains all activated abilities of that card until end of turn.\nSVar:StealAbs:DB$ Effect | RememberObjects$ TriggeredCard | StaticAbilities$ STSteal\nSVar:STSteal:Mode$ Continuous | AffectedDefined$ EffectSource | GainsAbilitiesOfDefined$ RememberedLKI | Description$ EFFECTSOURCE gains all activated abilities of that card until end of turn.\nAI:RemoveDeck:All\nOracle:{1}: You may cast target creature card in a graveyard this turn. When you cast it this turn, Havengul Lich gains all activated abilities of that card until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havengul Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

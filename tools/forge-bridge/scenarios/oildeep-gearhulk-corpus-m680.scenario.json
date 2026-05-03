@@ -1,0 +1,23 @@
+{
+  "id": "oildeep-gearhulk-corpus-m680",
+  "description": "M6 corpus — Oildeep Gearhulk; in-hand parse.",
+  "seed": 63611,
+  "cards": {
+    "Oildeep Gearhulk": "Name:Oildeep Gearhulk\nManaCost:U U B B\nTypes:Artifact Creature Construct\nPT:4/4\nK:Lifelink\nK:Ward:1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When this creature enters, look at target player's hand. You may choose a card from it. If you do, that player discards that card, then draws a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | Mode$ RevealYouChoose | Optional$ True | DiscardValid$ Card | DiscardValidDesc$ card | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Targeted | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard\nOracle:Lifelink, ward {1}\\nWhen this creature enters, look at target player's hand. You may choose a card from it. If you do, that player discards that card, then draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oildeep Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

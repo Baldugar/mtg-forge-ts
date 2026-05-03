@@ -1,0 +1,23 @@
+{
+  "id": "shauku-endbringer-corpus-m680",
+  "description": "M6 corpus — Shauku, Endbringer; in-hand parse.",
+  "seed": 64245,
+  "cards": {
+    "Shauku, Endbringer": "Name:Shauku, Endbringer\nManaCost:5 B B\nTypes:Legendary Creature Vampire\nPT:5/5\nK:Flying\nS:Mode$ CantAttack | ValidCard$ Card.Self | IsPresent$ Creature | PresentCompare$ GT1 | Description$ CARDNAME can't attack if another creature is on the battlefield.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 3 life.\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCounter | SpellDescription$ Exile target creature and put a +1/+1 counter on NICKNAME.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 3\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self\n# TODO: This creature seems almost AI playable, except the AI won't play around it and will cast other creatures, which may not even be a necessarily bad thing. Maybe RemRandomDeck would suffice here.\nAI:RemoveDeck:All\nOracle:Flying\\nShauku, Endbringer can't attack if there's another creature on the battlefield.\\nAt the beginning of your upkeep, you lose 3 life.\\n{T}: Exile target creature and put a +1/+1 counter on Shauku.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shauku, Endbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-chalice-corpus-m680",
+  "description": "M6 corpus — Urza's Chalice; in-hand parse.",
+  "seed": 64868,
+  "cards": {
+    "Urza's Chalice": "Name:Urza's Chalice\nManaCost:1\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Artifact | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts an artifact spell, you may pay {1}. If you do, you gain 1 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ 1 | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckHints:Type$Artifact\nOracle:Whenever a player casts an artifact spell, you may pay {1}. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Chalice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

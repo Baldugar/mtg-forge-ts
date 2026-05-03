@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-scavenging-corpus-m680",
+  "description": "M6 corpus — Sylvan Scavenging; in-hand parse.",
+  "seed": 64551,
+  "cards": {
+    "Sylvan Scavenging": "Name:Sylvan Scavenging\nManaCost:1 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ At the beginning of your end step, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBToken\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | SpellDescription$ Put a +1/+1 counter on target creature you control.\nSVar:DBToken:DB$ Token | TokenScript$ g_3_3_raccoon | ConditionPresent$ Creature.powerGE4+YouCtrl | SpellDescription$ Create a 3/3 green Raccoon creature token if you control a creature with power 4 or greater.\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of your end step, choose one —\\n• Put a +1/+1 counter on target creature you control.\\n• Create a 3/3 green Raccoon creature token if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Scavenging"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "otterball-antics-corpus-m680",
+  "description": "M6 corpus — Otterball Antics; in-hand parse.",
+  "seed": 63664,
+  "cards": {
+    "Otterball Antics": "Name:Otterball Antics\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Token | TokenScript$ ur_1_1_otter_prowess | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBPutCounter | SpellDescription$ Create a 1/1 blue and red Otter creature token with prowess. If this spell was cast from anywhere other than your hand, put a +1/+1 counter on that creature. (Whenever you cast a noncreature spell, a creature with prowess gets +1/+1 until end of turn.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Self | ConditionPresent$ Card.wasCast+!wasCastFromHand | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flashback:3 U\nOracle:Create a 1/1 blue and red Otter creature token with prowess. If this spell was cast from anywhere other than your hand, put a +1/+1 counter on that creature. (Whenever you cast a noncreature spell, a creature with prowess gets +1/+1 until end of turn.)\\nFlashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Otterball Antics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

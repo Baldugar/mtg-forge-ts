@@ -1,0 +1,23 @@
+{
+  "id": "volatile-arsonist-corpus-m680",
+  "description": "M6 corpus — Volatile Arsonist; in-hand parse.",
+  "seed": 64973,
+  "cards": {
+    "Volatile Arsonist": "Name:Volatile Arsonist\nManaCost:3 R R\nTypes:Creature Human Werewolf\nPT:4/4\nK:Menace\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage1 | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\nSVar:TrigDamage1:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 1 | DamageMap$ True | SubAbility$ TrigDamage2\nSVar:TrigDamage2:DB$ DealDamage | ValidTgts$ Player | TgtPrompt$ Select up to one target player | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 1 | DamageMap$ True | SubAbility$ TrigDamage3\nSVar:TrigDamage3:DB$ DealDamage | ValidTgts$ Planeswalker | TgtPrompt$ Select up to one target planeswalker | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nK:Daybound\nAlternateMode:DoubleFaced\nOracle:Menace, haste\\nWhenever Volatile Arsonist attacks, it deals 1 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Dire-Strain Anarchist\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:5/5\nK:Menace\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage1 | TriggerDescription$ Whenever CARDNAME attacks, it deals 2 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\nSVar:TrigDamage1:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 2 | DamageMap$ True | SubAbility$ TrigDamage2\nSVar:TrigDamage2:DB$ DealDamage | ValidTgts$ Player | TgtPrompt$ Select up to one target player | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 2 | DamageMap$ True | SubAbility$ TrigDamage3\nSVar:TrigDamage3:DB$ DealDamage | ValidTgts$ Planeswalker | TgtPrompt$ Select up to one target planeswalker | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 2 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nK:Nightbound\nOracle:Menace, haste\\nWhenever Dire-Strain Anarchist attacks, it deals 2 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volatile Arsonist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

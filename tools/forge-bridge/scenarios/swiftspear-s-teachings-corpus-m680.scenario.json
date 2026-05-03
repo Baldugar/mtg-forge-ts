@@ -1,0 +1,23 @@
+{
+  "id": "swiftspear-s-teachings-corpus-m680",
+  "description": "M6 corpus — Swiftspear's Teachings; in-hand parse.",
+  "seed": 64539,
+  "cards": {
+    "Swiftspear's Teachings": "Name:Swiftspear's Teachings\nManaCost:R\nTypes:Sorcery\nA:SP$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast | SubAbility$ DBDraw | SpellDescription$ You get a one-time boon with \"When you cast a creature spell, it gains your choice of prowess or haste.\"\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigEffect | TriggerDescription$ When you cast a creature spell, it gains your choice of prowess or haste.\nSVar:TrigEffect:DB$ Pump | PumpZone$ Stack | Defined$ TriggeredCard | KWChoice$ Haste,Prowess | Duration$ Permanent\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:You get a one-time boon with \"When you cast a creature spell, it gains your choice of prowess or haste.\"\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swiftspear's Teachings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

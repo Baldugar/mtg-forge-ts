@@ -1,0 +1,23 @@
+{
+  "id": "infernal-pet-corpus-m680",
+  "description": "M6 corpus — Infernal Pet; in-hand parse.",
+  "seed": 62929,
+  "cards": {
+    "Infernal Pet": "Name:Infernal Pet\nManaCost:2 B\nTypes:Creature Imp\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ DBPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put a +1/+1 counter on CARDNAME and it gains flying until end of turn.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ TrigPump\nSVar:TrigPump:DB$ Pump | KW$ Flying | Defined$ Self\nSVar:BuffedBy:Card\nDeckHas:Ability$Counters\nOracle:Whenever you cast your second spell each turn, put a +1/+1 counter on Infernal Pet and it gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Pet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

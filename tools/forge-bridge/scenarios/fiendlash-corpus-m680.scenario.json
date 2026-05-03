@@ -1,0 +1,23 @@
+{
+  "id": "fiendlash-corpus-m680",
+  "description": "M6 corpus — Fiendlash; in-hand parse.",
+  "seed": 62480,
+  "cards": {
+    "Fiendlash": "Name:Fiendlash\nManaCost:1 R\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Reach | AddPower$ 2 | Description$ Equipped creature gets +2/+0 and has reach.\nT:Mode$ DamageDoneOnce | Execute$ TrigPump | ValidTarget$ Creature.EquippedBy | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature is dealt damage, it deals damage equal to its power to target player or planeswalker.\nSVar:TrigPump:DB$ Pump | RememberObjects$ TriggeredTargetLKICopy | SubAbility$ TrigDamage\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | DamageSource$ TriggeredTargetLKICopy | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nK:Equip:2 R\nOracle:Equipped creature gets +2/+0 and has reach.\\nWhenever equipped creature is dealt damage, it deals damage equal to its power to target player or planeswalker.\\nEquip {2}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiendlash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

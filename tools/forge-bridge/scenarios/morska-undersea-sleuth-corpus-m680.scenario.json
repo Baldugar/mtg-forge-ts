@@ -1,0 +1,23 @@
+{
+  "id": "morska-undersea-sleuth-corpus-m680",
+  "description": "M6 corpus — Morska, Undersea Sleuth; in-hand parse.",
+  "seed": 63477,
+  "cards": {
+    "Morska, Undersea Sleuth": "Name:Morska, Undersea Sleuth\nManaCost:G W U\nTypes:Legendary Creature Vedalken Fish Detective\nPT:2/3\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ At the beginning of your upkeep, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw your second card each turn, put two +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2\nDeckHas:Ability$Counters|Investigate|Token|Sacrifice & Type$Artifact|Clue\nOracle:You have no maximum hand size.\\nAt the beginning of your upkeep, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you draw your second card each turn, put two +1/+1 counters on Morska, Undersea Sleuth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morska, Undersea Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

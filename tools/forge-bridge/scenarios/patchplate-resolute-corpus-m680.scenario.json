@@ -1,0 +1,23 @@
+{
+  "id": "patchplate-resolute-corpus-m680",
+  "description": "M6 corpus — Patchplate Resolute; in-hand parse.",
+  "seed": 63703,
+  "cards": {
+    "Patchplate Resolute": "Name:Patchplate Resolute\nManaCost:3\nTypes:Artifact Creature Soldier\nPT:3/3\nK:Unearth:1 W\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigBoon | TriggerDescription$ When CARDNAME enters or leaves the battlefield, you get a boon with \"When you cast your next creature spell, that creature enters with an additional +1/+1 counter on it.\"\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigBoon | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, you get a boon with \"When you cast your next creature spell, that creature enters with an additional +1/+1 counter on it.\"\nSVar:TrigBoon:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ReplEffAddCounter | TriggerDescription$ When you cast your next creature spell, that creature enters with an additional +1/+1 counter on it.\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | SubAbility$ DBRemoveSelf\nSVar:DBRemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHas:Ability$Counters\nDeckHints:Color$White\nOracle:When Patchplate Resolute enters or leaves the battlefield, you get a boon with \"When you cast your next creature spell, that creature enters with an additional +1/+1 counter on it.\"\\nUnearth {1}{W}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patchplate Resolute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

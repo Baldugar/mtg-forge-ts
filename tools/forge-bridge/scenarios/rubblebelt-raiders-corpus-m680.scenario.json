@@ -1,0 +1,23 @@
+{
+  "id": "rubblebelt-raiders-corpus-m680",
+  "description": "M6 corpus — Rubblebelt Raiders; in-hand parse.",
+  "seed": 64054,
+  "cards": {
+    "Rubblebelt Raiders": "Name:Rubblebelt Raiders\nManaCost:1 RG RG RG\nTypes:Creature Human Warrior\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ RubblebeltWarCry | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on it for each attacking creature you control.\nSVar:RubblebeltWarCry:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Rubblebelt Raiders attacks, put a +1/+1 counter on it for each attacking creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rubblebelt Raiders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

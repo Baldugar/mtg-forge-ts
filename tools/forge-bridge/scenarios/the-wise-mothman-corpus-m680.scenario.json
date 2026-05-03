@@ -1,0 +1,23 @@
+{
+  "id": "the-wise-mothman-corpus-m680",
+  "description": "M6 corpus — The Wise Mothman; in-hand parse.",
+  "seed": 64698,
+  "cards": {
+    "The Wise Mothman": "Name:The Wise Mothman\nManaCost:1 B G U\nTypes:Legendary Creature Insect Mutant\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerDescription$ Whenever CARDNAME enters or attacks, each player gets a rad counter.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters attacks, each player gets a rad counter.\nSVar:TrigRadiation:DB$ Radiation | Defined$ Player | Num$ 1\nT:Mode$ MilledAll | ValidPlayer$ Player | ValidCard$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more nonland cards are milled, put a +1/+1 counter on each of up to X target creatures, where X is the number of nonland cards milled this way.\nSVar:TrigPutCounter:DB$ PutCounter | CounterNum$ 1 | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ TriggerCount$Amount | ValidTgts$ Creature | TgtPrompt$ Select up to X target creatures\nDeckHints:Ability$Mill\nDeckHas:Ability$Counters|Mill\nOracle:Flying\\nWhenever The Wise Mothman enters or attacks, each player gets a rad counter.\\nWhenever one or more nonland cards are milled, put a +1/+1 counter on each of up to X target creatures, where X is the number of nonland cards milled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wise Mothman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

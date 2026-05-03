@@ -1,0 +1,23 @@
+{
+  "id": "nesting-dovehawk-corpus-m680",
+  "description": "M6 corpus — Nesting Dovehawk; in-hand parse.",
+  "seed": 63542,
+  "cards": {
+    "Nesting Dovehawk": "Name:Nesting Dovehawk\nManaCost:3 W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPopulate | TriggerDescription$ At the beginning of combat on your turn, populate. (Create a token that's a copy of a creature token you control.)\nSVar:TrigPopulate:DB$ CopyPermanent | Populate$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature token you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters & Ability$Token\nDeckNeeds:Ability$Token\nOracle:Flying\\nAt the beginning of combat on your turn, populate. (Create a token that's a copy of a creature token you control.)\\nWhenever a creature token you control enters, put a +1/+1 counter on Nesting Dovehawk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nesting Dovehawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

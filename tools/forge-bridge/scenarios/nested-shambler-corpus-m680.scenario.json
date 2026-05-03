@@ -1,0 +1,23 @@
+{
+  "id": "nested-shambler-corpus-m680",
+  "description": "M6 corpus — Nested Shambler; in-hand parse.",
+  "seed": 63541,
+  "cards": {
+    "Nested Shambler": "Name:Nested Shambler\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create X tapped 1/1 green Squirrel creature tokens, where X is CARDNAME's power.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ g_1_1_squirrel | TokenAmount$ X | TokenTapped$ True\nSVar:X:TriggeredCard$CardPower\nSVar:EquipMe:Once\nDeckHas:Ability$Token\nDeckHints:Type$Equipment\nOracle:When Nested Shambler dies, create X tapped 1/1 green Squirrel creature tokens, where X is Nested Shambler's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nested Shambler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

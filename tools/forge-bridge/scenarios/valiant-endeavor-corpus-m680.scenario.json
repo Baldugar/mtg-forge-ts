@@ -1,0 +1,23 @@
+{
+  "id": "valiant-endeavor-corpus-m680",
+  "description": "M6 corpus — Valiant Endeavor; in-hand parse.",
+  "seed": 64880,
+  "cards": {
+    "Valiant Endeavor": "Name:Valiant Endeavor\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ RollDice | Amount$ 2 | Sides$ 6 | ChosenSVar$ X | OtherSVar$ Y | SubAbility$ DBDestroy | StackDescription$ SpellDescription | SpellDescription$ Roll two d6 and choose one result. Destroy each creature with power greater than or equal to that result. Then create a number of 2/2 white Knight creature tokens with vigilance equal to the other result.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.powerGEX | SubAbility$ DBToken | StackDescription$ None\nSVar:DBToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You | TokenAmount$ Y\nDeckHas:Ability$Token\nOracle:Roll two d6 and choose one result. Destroy each creature with power greater than or equal to that result. Then create a number of 2/2 white Knight creature tokens with vigilance equal to the other result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valiant Endeavor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shabraz-the-skyshark-corpus-m680",
+  "description": "M6 corpus — Shabraz, the Skyshark; in-hand parse.",
+  "seed": 64220,
+  "cards": {
+    "Shabraz, the Skyshark": "Name:Shabraz, the Skyshark\nManaCost:3 W U\nTypes:Legendary Creature Shark Bird\nPT:3/3\nK:Partner with:Brallin, Skyshark Rider:Brallin\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Pump | Cost$ WU | ValidTgts$ Human | TgtPrompt$ Select target Human | KW$ Flying | SpellDescription$ Target Human gains flying until end of turn.\nDeckHints:Type$Human\nDeckHas:Ability$Counters|LifeGain\nOracle:Partner with Brallin, Skyshark Rider\\nFlying\\nWhenever you draw a card, put a +1/+1 counter on Shabraz, the Skyshark and you gain 1 life.\\n{W/U}: Target Human gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shabraz, the Skyshark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

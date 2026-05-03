@@ -1,0 +1,23 @@
+{
+  "id": "contaminated-ground-corpus-m680",
+  "description": "M6 corpus — Contaminated Ground; in-hand parse.",
+  "seed": 61998,
+  "cards": {
+    "Contaminated Ground": "Name:Contaminated Ground\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:ChangeType\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddType$ Swamp | RemoveLandTypes$ True | Description$ Enchanted land is a Swamp.\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLose | TriggerDescription$ Whenever enchanted land becomes tapped, its controller loses 2 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2\nOracle:Enchant land\\nEnchanted land is a Swamp.\\nWhenever enchanted land becomes tapped, its controller loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contaminated Ground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

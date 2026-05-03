@@ -1,0 +1,23 @@
+{
+  "id": "withering-hex-corpus-m680",
+  "description": "M6 corpus — Withering Hex; in-hand parse.",
+  "seed": 65079,
+  "cards": {
+    "Withering Hex": "Name:Withering Hex\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Cycled | ValidCard$ Card | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player cycles a card, put a plague counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PLAGUE | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | AddToughness$ -X | Description$ Enchanted creature gets -1/-1 for each plague counter on CARDNAME.\nSVar:X:Count$CardCounters.PLAGUE\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nWhenever a player cycles a card, put a plague counter on Withering Hex.\\nEnchanted creature gets -1/-1 for each plague counter on Withering Hex.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Withering Hex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

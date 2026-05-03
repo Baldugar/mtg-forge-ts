@@ -1,0 +1,23 @@
+{
+  "id": "unexpected-request-corpus-m680",
+  "description": "M6 corpus — Unexpected Request; in-hand parse.",
+  "seed": 64849,
+  "cards": {
+    "Unexpected Request": "Name:Unexpected Request\nManaCost:2 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBAttach | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. You may attach an Equipment you control to that creature. If you do, unattach it at the beginning of the next end step.\nSVar:DBAttach:DB$ Attach | Optional$ True | Choices$ Equipment.YouCtrl | ChoiceTitle$ Choose an Equipment you control | Defined$ ParentTarget | RememberAttached$ True | SubAbility$ DBDelayTrig | StackDescription$ None\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ Remembered | Execute$ TrigUnattach | SubAbility$ DBCleanup | TriggerDescription$ If you do, unattach chosen Equipment at the beginning of the next end step.\nSVar:TrigUnattach:DB$ Unattach | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. You may attach an Equipment you control to that creature. If you do, unattach it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unexpected Request"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

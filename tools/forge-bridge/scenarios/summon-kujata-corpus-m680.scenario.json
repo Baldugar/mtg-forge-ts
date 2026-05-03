@@ -1,0 +1,23 @@
+{
+  "id": "summon-kujata-corpus-m680",
+  "description": "M6 corpus — Summon: Kujata; in-hand parse.",
+  "seed": 64505,
+  "cards": {
+    "Summon: Kujata": "Name:Summon: Kujata\nManaCost:5 R\nTypes:Enchantment Creature Saga Ox\nPT:7/5\nK:Chapter:3:DBLightning,DBIce,DBFire\nSVar:DBLightning:DB$ DealDamage | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | NumDmg$ 3 | SpellDescription$ Lightning — This creature deals 3 damage to each of up to two target creatures.\nSVar:DBIce:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 3 | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | TgtPrompt$ Select up to three target creatures | SpellDescription$ Ice — Up to three target creatures can't block this turn.\nSVar:DBFire:DB$ Discard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Fire — Discard a card, then draw two cards. When you discard a card this way, this creature deals damage equal to that card's mana value to each opponent.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | Execute$ TrigDealDamage | RememberObjects$ Remembered | TriggerDescription$ When you discard a card this way, this creature deals damage equal to that card's mana value to each opponent. | SubAbility$ DBCleanup\nSVar:TrigDealDamage:DB$ DamageAll | NumDmg$ X | ValidPlayers$ Player.Opponent\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Trample\nK:Haste\nSVar:X:TriggerRemembered$CardManaCost\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Lightning — This creature deals 3 damage to each of up to two target creatures.\\nII — Ice — Up to three target creatures can't block this turn.\\nIII — Fire — Discard a card, then draw two cards. When you discard a card this way, this creature deals damage equal to that card's mana value to each opponent.\\nTrample, haste\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Kujata"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

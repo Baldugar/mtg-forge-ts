@@ -1,0 +1,23 @@
+{
+  "id": "jeskai-charm-corpus-m680",
+  "description": "M6 corpus — Jeskai Charm; in-hand parse.",
+  "seed": 63036,
+  "cards": {
+    "Jeskai Charm": "Name:Jeskai Charm\nManaCost:U R W\nTypes:Instant\nA:SP$ Charm | Choices$ ChangeZone,DealDmg,PumpAll\nSVar:ChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Put target creature on top of its owner's library.\nSVar:DealDmg:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | AILogic$ ChoiceBurn | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target opponent or planeswalker.\nSVar:PumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Lifelink | SpellDescription$ Creatures you control get +1/+1 and gain lifelink until end of turn.\nOracle:Choose one —\\n• Put target creature on top of its owner's library.\\n• Jeskai Charm deals 4 damage to target opponent or planeswalker.\\n• Creatures you control get +1/+1 and gain lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeskai Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

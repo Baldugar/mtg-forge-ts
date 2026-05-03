@@ -1,0 +1,23 @@
+{
+  "id": "ms-bumbleflower-corpus-m680",
+  "description": "M6 corpus — Ms. Bumbleflower; in-hand parse.",
+  "seed": 63487,
+  "cards": {
+    "Ms. Bumbleflower": "Name:Ms. Bumbleflower\nManaCost:1 G W U\nTypes:Legendary Creature Rabbit Citizen\nPT:1/5\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, target opponent draws a card. Put a +1/+1 counter on target creature. It gains flying until end of turn. If this is the second time this ability has resolved this turn, you draw two cards.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to draw a card | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted.Creature | KW$ Flying | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2\nSVar:Resolved:Count$ResolvedThisTurn\nDeckHas:Ability$Counters\nOracle:Vigilance\\nWhenever you cast a spell, target opponent draws a card. Put a +1/+1 counter on target creature. It gains flying until end of turn. If this is the second time this ability has resolved this turn, you draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ms. Bumbleflower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

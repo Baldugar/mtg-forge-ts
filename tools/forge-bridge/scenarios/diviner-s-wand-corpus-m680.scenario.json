@@ -1,0 +1,23 @@
+{
+  "id": "diviner-s-wand-corpus-m680",
+  "description": "M6 corpus — Diviner's Wand; in-hand parse.",
+  "seed": 62193,
+  "cards": {
+    "Diviner's Wand": "Name:Diviner's Wand\nManaCost:3\nTypes:Kindred Artifact Wizard Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddAbility$ DivinerDraw | AddTrigger$ TrigDraw | AddSVar$ DivinerTrigPump | Description$ Equipped creature has \"Whenever you draw a card, this creature gets +1/+1 and gains flying until end of turn\" and \"{4}: Draw a card.\"\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Wizard | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a Wizard creature enters, you may attach CARDNAME to it.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nSVar:TrigDraw:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ DivinerTrigPump | TriggerDescription$ Whenever you draw a card, CARDNAME gets +1/+1 and gains flying until end of turn.\nSVar:DivinerTrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Flying\nSVar:DivinerDraw:AB$ Draw | Cost$ 4 | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Equipped creature has \"Whenever you draw a card, this creature gets +1/+1 and gains flying until end of turn\" and \"{4}: Draw a card.\"\\nWhenever a Wizard creature enters, you may attach Diviner's Wand to it.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diviner's Wand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

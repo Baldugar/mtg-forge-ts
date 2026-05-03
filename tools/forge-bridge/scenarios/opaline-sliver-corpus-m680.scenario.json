@@ -1,0 +1,23 @@
+{
+  "id": "opaline-sliver-corpus-m680",
+  "description": "M6 corpus — Opaline Sliver; in-hand parse.",
+  "seed": 63632,
+  "cards": {
+    "Opaline Sliver": "Name:Opaline Sliver\nManaCost:1 W U\nTypes:Creature Sliver\nPT:2/2\nS:Mode$ Continuous | Affected$ Sliver | AddTrigger$ OpalineTgtTrig | Description$ All Slivers have \"Whenever this permanent becomes the target of a spell an opponent controls, you may draw a card.\"\nSVar:OpalineTgtTrig:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell.OppCtrl | Execute$ OpalineTrigDraw | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME becomes the target of a spell an opponent controls, you may draw a card.\nSVar:OpalineTrigDraw:DB$ Draw | Defined$ You\nSVar:PlayMain1:TRUE\nOracle:All Slivers have \"Whenever this permanent becomes the target of a spell an opponent controls, you may draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Opaline Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

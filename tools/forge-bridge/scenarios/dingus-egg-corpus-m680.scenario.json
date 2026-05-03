@@ -1,0 +1,23 @@
+{
+  "id": "dingus-egg-corpus-m680",
+  "description": "M6 corpus — Dingus Egg; in-hand parse.",
+  "seed": 62169,
+  "cards": {
+    "Dingus Egg": "Name:Dingus Egg\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a land is put into a graveyard from the battlefield, CARDNAME deals 2 damage to that land's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a land is put into a graveyard from the battlefield, Dingus Egg deals 2 damage to that land's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dingus Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-rise-of-sozin-corpus-m680",
+  "description": "M6 corpus — The Rise of Sozin; in-hand parse.",
+  "seed": 64684,
+  "cards": {
+    "The Rise of Sozin": "Name:The Rise of Sozin\nManaCost:4 B B\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroyAll,DBNameCard,DBTransform\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | SpellDescription$ Destroy all creatures.\nSVar:DBNameCard:DB$ NameCard | Defined$ You | SubAbility$ DBExile | StackDescription$ REP Choose a_{p:You} chooses a & Search target opponent's_{p:You} searches {p:Targeted}'s & and exile_and exiles & That player_{p:Targeted} | SpellDescription$ Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles.\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Opponent | ChangeType$ Card.NamedCard | Origin$ Graveyard,Hand,Library | DefinedPlayer$ Targeted | Chooser$ You | Destination$ Exile | ChangeNum$ 4 | Hidden$ True\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Destroy all creatures.\\nII — Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Fire Lord Sozin\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Human Noble\nPT:5/5\nK:Menace\nK:Firebending:3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ X | Execute$ TrigChangeZone | TriggerDescription$ When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ Y | ValidTgts$ Creature.OwnedBy Spawner>TriggeredTarget | TgtPrompt$ Select any number of target creature cards with total mana value X or less from the damaged player's graveyard | MaxTotalTargetCMC$ X | GainControl$ True\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidGraveyard Creature.OwnedBy Spawner>TriggeredTarget\nOracle:Menace, firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)\\nWhenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Rise of Sozin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

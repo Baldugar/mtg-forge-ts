@@ -1,0 +1,23 @@
+{
+  "id": "gleam-of-authority-corpus-m680",
+  "description": "M6 corpus — Gleam of Authority; in-hand parse.",
+  "seed": 62653,
+  "cards": {
+    "Gleam of Authority": "Name:Gleam of Authority\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Vigilance | AddAbility$ ABBolster | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each +1/+1 counter on other creatures you control. Enchanted creature has vigilance and \"{W}, {T}: Bolster 1.\"\nSVar:ABBolster:AB$ PutCounter | Cost$ W T | Bolster$ 1\nSVar:X:Count$Valid Creature.YouCtrl+!EnchantedBy$CardCounters.P1P1\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 for each +1/+1 counter on other creatures you control.\\nEnchanted creature has vigilance and \"{W}, {T}: Bolster 1.\" (To bolster 1, choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gleam of Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

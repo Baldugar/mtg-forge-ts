@@ -1,0 +1,23 @@
+{
+  "id": "faerie-squadron-corpus-m680",
+  "description": "M6 corpus — Faerie Squadron; in-hand parse.",
+  "seed": 62424,
+  "cards": {
+    "Faerie Squadron": "Name:Faerie Squadron\nManaCost:U\nTypes:Creature Faerie\nPT:1/1\nK:Kicker:3 U\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ SquadronEnlist | Static$ True | TriggerDescription$ If CARDNAME was kicked, it enters with two +1/+1 counters on it and with flying.\nSVar:SquadronEnlist:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ SquadronLaunch\nSVar:SquadronLaunch:DB$ Pump | Defined$ Self | KW$ Flying | Duration$ Permanent\nOracle:Kicker {3}{U} (You may pay an additional {3}{U} as you cast this spell.)\\nIf Faerie Squadron was kicked, it enters with two +1/+1 counters on it and with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Squadron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

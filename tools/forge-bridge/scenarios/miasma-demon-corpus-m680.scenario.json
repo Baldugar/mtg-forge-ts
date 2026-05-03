@@ -1,0 +1,23 @@
+{
+  "id": "miasma-demon-corpus-m680",
+  "description": "M6 corpus — Miasma Demon; in-hand parse.",
+  "seed": 63396,
+  "cards": {
+    "Miasma Demon": "Name:Miasma Demon\nManaCost:4 B B\nTypes:Creature Demon\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard any number of cards. When you do, up to that many target creatures each get -2/-2 until end of turn.\nSVar:TrigDiscard:DB$ Discard | DiscardValid$ Card | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | RememberObjects$ Remembered | Execute$ TrigPump | SubAbility$ DBCleanup | TriggerDescription$ When you do, up to that many target creatures each get -2/-2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to that many target creatures | TargetMin$ 0 | TargetMax$ X | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True\nSVar:X:TriggerRemembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard|Graveyard\nOracle:Flying\\nWhen Miasma Demon enters, you may discard any number of cards. When you do, up to that many target creatures each get -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miasma Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

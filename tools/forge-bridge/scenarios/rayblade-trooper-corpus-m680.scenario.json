@@ -1,0 +1,23 @@
+{
+  "id": "rayblade-trooper-corpus-m680",
+  "description": "M6 corpus — Rayblade Trooper; in-hand parse.",
+  "seed": 63916,
+  "cards": {
+    "Rayblade Trooper": "Name:Rayblade Trooper\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When this creature enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl+counters_GE1_P1P1 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control with a +1/+1 counter on it dies, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier\nK:Warp:1 W\nDeckHas:Ability$Counters|Tokens\nOracle:When this creature enters, put a +1/+1 counter on target creature you control.\\nWhenever a nontoken creature you control with a +1/+1 counter on it dies, create a 1/1 white Human Soldier creature token.\\nWarp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rayblade Trooper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

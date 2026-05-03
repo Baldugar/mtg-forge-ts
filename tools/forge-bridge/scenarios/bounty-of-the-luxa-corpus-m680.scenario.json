@@ -1,0 +1,23 @@
+{
+  "id": "bounty-of-the-luxa-corpus-m680",
+  "description": "M6 corpus — Bounty of the Luxa; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "Bounty of the Luxa": "Name:Bounty of the Luxa\nManaCost:2 G U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemove | TriggerDescription$ At the beginning of your first main phase, remove all flood counters from CARDNAME. If no counters were removed this way, put a flood counter on CARDNAME and draw a card. Otherwise, add {C}{G}{U}.\nSVar:TrigRemove:DB$ RemoveCounter | CounterType$ FLOOD | CounterNum$ All | RememberRemoved$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | CounterType$ FLOOD | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBGetMana\nSVar:DBGetMana:DB$ Mana | Produced$ C G U | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nOracle:At the beginning of your first main phase, remove all flood counters from Bounty of the Luxa. If no counters were removed this way, put a flood counter on Bounty of the Luxa and draw a card. Otherwise, add {C}{G}{U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bounty of the Luxa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

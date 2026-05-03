@@ -1,0 +1,23 @@
+{
+  "id": "twisted-riddlekeeper-corpus-m680",
+  "description": "M6 corpus — Twisted Riddlekeeper; in-hand parse.",
+  "seed": 64827,
+  "cards": {
+    "Twisted Riddlekeeper": "Name:Twisted Riddlekeeper\nManaCost:8\nTypes:Creature Eldrazi Sphinx\nPT:5/5\nK:Flying\nK:Emerge:5 C U\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When you cast this spell, tap up to two target permanents. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Permanent | SubAbility$ DBCounter | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target permanents\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Emerge {5}{C}{U} (You may cast this spell by sacrificing a creature and paying the emerge cost reduced by that creature's mana value.)\\nWhen you cast this spell, tap up to two target permanents. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twisted Riddlekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

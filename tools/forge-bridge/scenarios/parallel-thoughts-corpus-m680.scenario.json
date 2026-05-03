@@ -1,0 +1,23 @@
+{
+  "id": "parallel-thoughts-corpus-m680",
+  "description": "M6 corpus — Parallel Thoughts; in-hand parse.",
+  "seed": 63696,
+  "cards": {
+    "Parallel Thoughts": "Name:Parallel Thoughts\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for seven cards, exile them in a face-down pile, and shuffle that pile. Then shuffle your library.\nSVar:TrigSearch:DB$ ChangeZone | ChangeNum$ 7 | ChangeType$ Card | Mandatory$ True | Origin$ Library | Destination$ Exile | ShuffleChangedPile$ True | ExileFaceDown$ True | RememberChanged$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Exile | Destination$ Any | Static$ True | Execute$ TrigForget\nSVar:TrigForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearRemembered$ True\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ RepParallelThoughts | Optional$ True | OptionalDecider$ You | Description$ If you would draw a card, you may instead put the top card of the pile you exiled into your hand.\nSVar:RepParallelThoughts:DB$ ChangeZone | Defined$ RememberedFirst | Origin$ Exile | Destination$ Hand\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:When Parallel Thoughts enters, search your library for seven cards, exile them in a face-down pile, and shuffle that pile. Then shuffle your library.\\nIf you would draw a card, you may instead put the top card of the pile you exiled into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallel Thoughts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

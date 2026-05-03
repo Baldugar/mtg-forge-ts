@@ -1,0 +1,23 @@
+{
+  "id": "yes-man-personal-securitron-corpus-m680",
+  "description": "M6 corpus — Yes Man, Personal Securitron; in-hand parse.",
+  "seed": 65109,
+  "cards": {
+    "Yes Man, Personal Securitron": "Name:Yes Man, Personal Securitron\nManaCost:2 W\nTypes:Legendary Artifact Creature Robot\nPT:2/2\nA:AB$ GainControl | Cost$ T | Defined$ Self | ValidTgts$ Opponent | SubAbility$ DBImmediateTrigger | PlayerTurn$ True | StackDescription$ SpellDescription | SpellDescription$ Target opponent gains control of CARDNAME. When they do, you draw two cards and put a quest counter on NICKNAME. Activate only during your turn.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Self | ConditionPresent$ Card.ControlledBy ParentTarget | Execute$ DBDraw | TriggerDescription$ When they do, you draw two cards and put a quest counter on NICKNAME.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Wild Card — When NICKNAME leaves the battlefield, its owner creates a tapped 1/1 white Soldier creature token for each quest counter on it.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_soldier | TokenOwner$ TriggeredCardOwner | TokenTapped$ True\nSVar:X:TriggeredCard$CardCounters.QUEST\nDeckHas:Ability$Counters|Token & Type$Soldier\nOracle:{T}: Target opponent gains control of Yes Man, Personal Securitron. When they do, you draw two cards and put a quest counter on Yes Man. Activate only during your turn.\\nWild Card — When Yes Man leaves the battlefield, its owner creates a tapped 1/1 white Soldier creature token for each quest counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yes Man, Personal Securitron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

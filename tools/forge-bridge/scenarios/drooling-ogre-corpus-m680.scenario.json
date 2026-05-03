@@ -1,0 +1,23 @@
+{
+  "id": "drooling-ogre-corpus-m680",
+  "description": "M6 corpus — Drooling Ogre; in-hand parse.",
+  "seed": 62245,
+  "cards": {
+    "Drooling Ogre": "Name:Drooling Ogre\nManaCost:1 R\nTypes:Creature Ogre\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Artifact | Execute$ TrigControl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an artifact spell, that player gains control of CARDNAME. (This effect lasts indefinitely.)\nSVar:TrigControl:DB$ GainControl | Defined$ Self | NewController$ TriggeredActivator\nAI:RemoveDeck:Random\nSVar:AntiBuffedBy:Artifact\nOracle:Whenever a player casts an artifact spell, that player gains control of Drooling Ogre. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drooling Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

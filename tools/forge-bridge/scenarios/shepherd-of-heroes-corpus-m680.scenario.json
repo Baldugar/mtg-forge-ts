@@ -1,0 +1,23 @@
+{
+  "id": "shepherd-of-heroes-corpus-m680",
+  "description": "M6 corpus — Shepherd of Heroes; in-hand parse.",
+  "seed": 64249,
+  "cards": {
+    "Shepherd of Heroes": "Name:Shepherd of Heroes\nManaCost:4 W\nTypes:Creature Angel Cleric\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Party/Twice\nDeckHas:Ability$Party\nDeckHints:Type$Rogue|Warrior|Wizard\nOracle:Flying\\nWhen Shepherd of Heroes enters, you gain 2 life for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shepherd of Heroes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

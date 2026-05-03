@@ -1,0 +1,23 @@
+{
+  "id": "rags-corpus-m680",
+  "description": "M6 corpus — Rags; in-hand parse.",
+  "seed": 63881,
+  "cards": {
+    "Rags": "Name:Rags\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ All creatures get -2/-2 until end of turn.\nAlternateMode:Split\nOracle:All creatures get -2/-2 until end of turn.\n\nALTERNATE\n\nName:Riches\nManaCost:5 U U\nTypes:Sorcery\nK:Aftermath\nA:SP$ ChooseCard | Defined$ Opponent | Amount$ 1 | Choices$ Creature | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose a creature to be stolen | AILogic$ WorstCard | Mandatory$ True | SubAbility$ StealChosen | SpellDescription$ Each opponent chooses a creature they control. You gain control of those creatures.\nSVar:StealChosen:DB$ GainControl | AllValid$ Permanent.ChosenCard\nSVar:NeedsToPlay:Creature.OppCtrl\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nEach opponent chooses a creature they control. You gain control of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rags"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

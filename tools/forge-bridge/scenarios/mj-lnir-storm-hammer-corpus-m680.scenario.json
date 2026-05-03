@@ -1,0 +1,23 @@
+{
+  "id": "mj-lnir-storm-hammer-corpus-m680",
+  "description": "M6 corpus — Mjölnir, Storm Hammer; in-hand parse.",
+  "seed": 63448,
+  "cards": {
+    "Mjölnir, Storm Hammer": "Name:Mjölnir, Storm Hammer\nManaCost:4\nTypes:Legendary Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When NICKNAME enters, attach it to target legendary creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.Legendary+YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigTap | TriggerDescription$ Whenever equipped creature attacks, tap target creature defending player controls and put a stun counter on it. Then NICKNAME deals damage to each opponent equal to the number of tapped creatures that opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | SubAbility$ DBCounter | TgtPrompt$ Select target creature defending player controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBDmg | DamageMap$ True\nSVar:DBDmg:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl+tapped\nK:Equip:4\nDeckHas:Ability$Counters\nOracle:When Mjölnir enters, attach it to target legendary creature you control.\\nWhenever equipped creature attacks, tap target creature defending player controls and put a stun counter on it. Then Mjölnir deals damage to each opponent equal to the number of tapped creatures that opponent controls.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mjölnir, Storm Hammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

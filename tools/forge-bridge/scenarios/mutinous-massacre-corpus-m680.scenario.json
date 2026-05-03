@@ -1,0 +1,23 @@
+{
+  "id": "mutinous-massacre-corpus-m680",
+  "description": "M6 corpus — Mutinous Massacre; in-hand parse.",
+  "seed": 63496,
+  "cards": {
+    "Mutinous Massacre": "Name:Mutinous Massacre\nManaCost:3 B B R R\nTypes:Sorcery\nA:SP$ ChooseEvenOdd | StackDescription$ SpellDescription | SubAbility$ DBDestroyAll | SpellDescription$ Choose odd or even. Destroy each creature with mana value of the chosen quality. Then gain control of all creatures until end of turn. Untap them. They gain haste until end of turn. (Zero is even.)\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.cmcChosenEvenOdd | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | AllValid$ Creature | Untap$ True | AddKWs$ Haste | LoseControl$ EOT\nOracle:Choose odd or even. Destroy each creature with mana value of the chosen quality. Then gain control of all creatures until end of turn. Untap them. They gain haste until end of turn. (Zero is even.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutinous Massacre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

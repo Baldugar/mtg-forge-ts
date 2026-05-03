@@ -1,0 +1,23 @@
+{
+  "id": "seismic-tutelage-corpus-m680",
+  "description": "M6 corpus — Seismic Tutelage; in-hand parse.",
+  "seed": 64192,
+  "cards": {
+    "Seismic Tutelage": "Name:Seismic Tutelage\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this Aura enters, put a +1/+1 counter on enchanted creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDoubleCounters | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, double the number of +1/+1 counters on it.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1\nOracle:Enchant creature\\nWhen this Aura enters, put a +1/+1 counter on enchanted creature.\\nWhenever enchanted creature attacks, double the number of +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seismic Tutelage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

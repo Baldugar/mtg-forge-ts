@@ -1,0 +1,23 @@
+{
+  "id": "involuntary-cooldown-corpus-m680",
+  "description": "M6 corpus — Involuntary Cooldown; in-hand parse.",
+  "seed": 62981,
+  "cards": {
+    "Involuntary Cooldown": "Name:Involuntary Cooldown\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Tap | ValidTgts$ Artifact,Creature | SubAbility$ DBCounter | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target artifacts and/or creatures | SpellDescription$ Tap up to two target artifacts and/or creatures. Put two stun counters on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 2\nDeckHas:Ability$Counters\nOracle:Tap up to two target artifacts and/or creatures. Put two stun counters on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Involuntary Cooldown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

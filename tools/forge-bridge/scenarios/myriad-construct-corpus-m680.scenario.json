@@ -1,0 +1,23 @@
+{
+  "id": "myriad-construct-corpus-m680",
+  "description": "M6 corpus — Myriad Construct; in-hand parse.",
+  "seed": 63501,
+  "cards": {
+    "Myriad Construct": "Name:Myriad Construct\nManaCost:4\nTypes:Artifact Creature Construct\nPT:4/4\nK:Kicker:3\nR:Event$ Moved | ValidCard$ Card.Self+kicked | Destination$ Battlefield | ReplaceWith$ DBPutCounter | ReplacementResult$ Updated | Description$ If CARDNAME was kicked, it enters with a +1/+1 counter on it for each nonbasic land your opponents control.\nSVar:DBPutCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Valid Land.nonBasic+OppCtrl\nSVar:NeedsToPlayKicked:Land.nonBasic+OppCtrl\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | ValidSource$ Spell | Execute$ TrigSac | TriggerDescription$ When CARDNAME becomes the target of a spell, sacrifice it and create a number of 1/1 colorless Construct artifact creature tokens equal to its power.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ Self | RememberSacrificed$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_1_1_a_construct | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:Y:RememberedLKI$CardPower\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Counters\nOracle:Kicker {3}\\nIf Myriad Construct was kicked, it enters with a +1/+1 counter on it for each nonbasic land your opponents control.\\nWhen Myriad Construct becomes the target of a spell, sacrifice it and create a number of 1/1 colorless Construct artifact creature tokens equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myriad Construct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

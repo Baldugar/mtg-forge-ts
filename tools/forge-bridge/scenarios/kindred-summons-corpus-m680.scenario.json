@@ -1,0 +1,23 @@
+{
+  "id": "kindred-summons-corpus-m680",
+  "description": "M6 corpus — Kindred Summons; in-hand parse.",
+  "seed": 63124,
+  "cards": {
+    "Kindred Summons": "Name:Kindred Summons\nManaCost:5 G G\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDigUntil | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. Reveal cards from the top of your library until you reveal X creature cards of the chosen type, where X is the number of creatures you control of that type. Put those cards onto the battlefield, then shuffle the rest of the revealed cards into your library.\nSVar:DBDigUntil:DB$ DigUntil | Amount$ X | ConditionCheckSVar$ X | Valid$ Creature.ChosenType+YouOwn | ValidDescription$ creature with chosen type | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | FoundDestination$ Battlefield | Shuffle$ True\nSVar:X:Count$Valid Creature.ChosenType+YouCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:MaxTypes GE2\nSVar:MaxTypes:Count$MostProminentCreatureType Creature.YouCtrl\nOracle:Choose a creature type. Reveal cards from the top of your library until you reveal X creature cards of the chosen type, where X is the number of creatures you control of that type. Put those cards onto the battlefield, then shuffle the rest of the revealed cards into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kindred Summons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

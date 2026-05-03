@@ -1,0 +1,23 @@
+{
+  "id": "ruinous-intrusion-corpus-m680",
+  "description": "M6 corpus — Ruinous Intrusion; in-hand parse.",
+  "seed": 64056,
+  "cards": {
+    "Ruinous Intrusion": "Name:Ruinous Intrusion\nManaCost:3 G\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Choose target artifact or enchantment | ValidTgts$ Artifact,Enchantment | SubAbility$ DBPutCounter | SpellDescription$ Exile target artifact or enchantment. Put X +1/+1 counters on target creature you control, where X is the mana value of the permanent exiled this way.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to put counters | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ParentTargeted$CardManaCost\nDeckHas:Ability$Counters\nOracle:Exile target artifact or enchantment. Put X +1/+1 counters on target creature you control, where X is the mana value of the permanent exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruinous Intrusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

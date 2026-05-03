@@ -1,0 +1,23 @@
+{
+  "id": "rime-chill-corpus-m680",
+  "description": "M6 corpus — Rime Chill; in-hand parse.",
+  "seed": 63991,
+  "cards": {
+    "Rime Chill": "Name:Rime Chill\nManaCost:6 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ Vivid — This spell costs {1} less to cast for each color among permanents you control.\nA:SP$ Tap | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | SubAbility$ DBPutCounter | SpellDescription$ Tap up to two target creatures. Put a stun counter on each of them. Draw a card.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ STUN | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — This spell costs {1} less to cast for each color among permanents you control.\\nTap up to two target creatures. Put a stun counter on each of them.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rime Chill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

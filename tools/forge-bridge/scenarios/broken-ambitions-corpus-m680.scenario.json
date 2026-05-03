@@ -1,0 +1,23 @@
+{
+  "id": "broken-ambitions-corpus-m680",
+  "description": "M6 corpus — Broken Ambitions; in-hand parse.",
+  "seed": 61798,
+  "cards": {
+    "Broken Ambitions": "Name:Broken Ambitions\nManaCost:X U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ X | SubAbility$ DBClash | SpellDescription$ Counter target spell unless its controller pays {X}. Clash with an opponent. If you win, that spell's controller mills four cards.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ TargetedController | NumCards$ 4\nSVar:X:Count$xPaid\nOracle:Counter target spell unless its controller pays {X}. Clash with an opponent. If you win, that spell's controller mills four cards. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broken Ambitions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

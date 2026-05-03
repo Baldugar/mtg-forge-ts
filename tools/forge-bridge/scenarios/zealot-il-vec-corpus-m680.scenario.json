@@ -1,0 +1,23 @@
+{
+  "id": "zealot-il-vec-corpus-m680",
+  "description": "M6 corpus — Zealot il-Vec; in-hand parse.",
+  "seed": 65122,
+  "cards": {
+    "Zealot il-Vec": "Name:Zealot il-Vec\nManaCost:2 W\nTypes:Creature Human Rebel\nPT:1/1\nK:Shadow\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may have it deal 1 damage to target creature. If you do, prevent all combat damage CARDNAME would deal this turn.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Prevent all combat damage that would be dealt by CARDNAME.\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Zealot il-Vec attacks and isn't blocked, you may have it deal 1 damage to target creature. If you do, prevent all combat damage Zealot il-Vec would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zealot il-Vec"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

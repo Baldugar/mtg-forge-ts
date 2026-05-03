@@ -1,0 +1,23 @@
+{
+  "id": "raiders-wake-corpus-m680",
+  "description": "M6 corpus — Raiders' Wake; in-hand parse.",
+  "seed": 63882,
+  "cards": {
+    "Raiders' Wake": "Name:Raiders' Wake\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an opponent discards a card, that player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ RaidTest | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Whenever an opponent discards a card, that player loses 2 life.\\nRaid — At the beginning of your end step, if you attacked this turn, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raiders' Wake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "feast-of-the-victorious-dead-corpus-m680",
+  "description": "M6 corpus — Feast of the Victorious Dead; in-hand parse.",
+  "seed": 62455,
+  "cards": {
+    "Feast of the Victorious Dead": "Name:Feast of the Victorious Dead\nManaCost:W B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Y | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your end step, if one or more creatures died this turn, you gain that much life and distribute that many +1/+1 counters among creatures you control.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose any number of creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ Y | DividedAsYouChoose$ Y | MinChoiceAmount$ 1 | ChoiceAmount$ Y\nSVar:Y:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$LifeGain|Counters\nDeckHints:Ability$Sacrifice\nOracle:At the beginning of your end step, if one or more creatures died this turn, you gain that much life and distribute that many +1/+1 counters among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feast of the Victorious Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

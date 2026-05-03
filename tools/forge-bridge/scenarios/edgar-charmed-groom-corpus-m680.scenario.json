@@ -1,0 +1,23 @@
+{
+  "id": "edgar-charmed-groom-corpus-m680",
+  "description": "M6 corpus — Edgar, Charmed Groom; in-hand parse.",
+  "seed": 62285,
+  "cards": {
+    "Edgar, Charmed Groom": "Name:Edgar, Charmed Groom\nManaCost:2 W B\nTypes:Legendary Creature Vampire Noble\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Vampire+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Vampires you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, return it to the battlefield transformed under its owner's control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Defined$ TriggeredNewCardLKICopy | Destination$ Battlefield | Transformed$ True\nDeckHints:Type$Vampire\nAlternateMode:DoubleFaced\nOracle:Other Vampires you control get +1/+1.\\nWhen Edgar, Charmed Groom dies, return it to the battlefield transformed under its owner's control.\n\nALTERNATE\n\nName:Edgar Markov's Coffin\nManaCost:no cost\nColors:white,black\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 1/1 white and black Vampire creature token with lifelink and put a bloodline counter on CARDNAME. Then if there are three or more bloodline counters on it, remove those counters and transform it.\nSVar:TrigToken:DB$ Token | TokenScript$ wb_1_1_vampire_lifelink | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ BLOODLINE | CounterNum$ 1 | SubAbility$ DBRemoveCounters\nSVar:DBRemoveCounters:DB$ RemoveCounter | ConditionPresent$ Card.Self+counters_GE3_BLOODLINE | CounterType$ BLOODLINE | CounterNum$ All | RememberRemoved$ True | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nDeckHas:Ability$Token|LifeGain|Counters\nOracle:At the beginning of your upkeep, create a 1/1 white and black Vampire creature token with lifelink and put a bloodline counter on Edgar Markov's Coffin. Then if there are three or more bloodline counters on it, remove those counters and transform it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edgar, Charmed Groom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

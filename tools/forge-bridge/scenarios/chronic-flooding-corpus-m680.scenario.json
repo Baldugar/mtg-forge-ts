@@ -1,0 +1,23 @@
+{
+  "id": "chronic-flooding-corpus-m680",
+  "description": "M6 corpus — Chronic Flooding; in-hand parse.",
+  "seed": 61918,
+  "cards": {
+    "Chronic Flooding": "Name:Chronic Flooding\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever enchanted land becomes tapped, its controller mills three cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredCardController | NumCards$ 3\nOracle:Enchant land\\nWhenever enchanted land becomes tapped, its controller mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chronic Flooding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

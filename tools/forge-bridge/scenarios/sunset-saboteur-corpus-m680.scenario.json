@@ -1,0 +1,23 @@
+{
+  "id": "sunset-saboteur-corpus-m680",
+  "description": "M6 corpus — Sunset Saboteur; in-hand parse.",
+  "seed": 64518,
+  "cards": {
+    "Sunset Saboteur": "Name:Sunset Saboteur\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:4/1\nK:Menace\nK:Ward:Discard<1/Card>\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature attacks, put a +1/+1 counter on target creature an opponent controls.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | CounterType$ P1P1 | CounterNum$ 1\nOracle:Menace\\nWard—Discard a card.\\nWhenever this creature attacks, put a +1/+1 counter on target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunset Saboteur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

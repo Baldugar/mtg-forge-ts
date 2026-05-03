@@ -1,0 +1,23 @@
+{
+  "id": "wurmskin-forger-corpus-m680",
+  "description": "M6 corpus — Wurmskin Forger; in-hand parse.",
+  "seed": 65100,
+  "cards": {
+    "Wurmskin Forger": "Name:Wurmskin Forger\nManaCost:5 G G\nTypes:Creature Elf Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, distribute three +1/+1 counters among one, two, or three target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute counters to | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3\nSVar:PlayMain1:TRUE\nOracle:When Wurmskin Forger enters, distribute three +1/+1 counters among one, two, or three target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wurmskin Forger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hag-hedge-mage-corpus-m680",
+  "description": "M6 corpus — Hag Hedge-Mage; in-hand parse.",
+  "seed": 62767,
+  "cards": {
+    "Hag Hedge-Mage": "Name:Hag Hedge-Mage\nManaCost:2 BG\nTypes:Creature Hag Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Swamp.YouCtrl | PresentCompare$ GE2 | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, if you control two or more Swamps, you may have target player discard a card.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Forest.YouCtrl | PresentCompare$ GE2 | OptionalDecider$ You | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if you control two or more Forests, you may put target card from your graveyard on top of your library.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0 | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouCtrl\nOracle:When Hag Hedge-Mage enters, if you control two or more Swamps, you may have target player discard a card.\\nWhen Hag Hedge-Mage enters, if you control two or more Forests, you may put target card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hag Hedge-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

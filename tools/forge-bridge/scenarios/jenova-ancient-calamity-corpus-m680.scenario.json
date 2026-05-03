@@ -1,0 +1,23 @@
+{
+  "id": "jenova-ancient-calamity-corpus-m680",
+  "description": "M6 corpus — Jenova, Ancient Calamity; in-hand parse.",
+  "seed": 63033,
+  "cards": {
+    "Jenova, Ancient Calamity": "Name:Jenova, Ancient Calamity\nManaCost:2 B G\nTypes:Legendary Creature Alien\nPT:1/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a number of +1/+1 counters equal to NICKNAME's power on up to one other target creature. That creature becomes a Mutant in addition to its other types.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select another target creature | CounterType$ P1P1 | CounterNum$ Count$CardPower | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Mutant | Duration$ Permanent\nT:Mode$ ChangesZone | ValidCard$ Mutant.YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigDraw | PlayerTurn$ True | TriggerDescription$ Whenever a Mutant you control dies during your turn, you draw cards equal to its power.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:At the beginning of combat on your turn, put a number of +1/+1 counters equal to Jenova's power on up to one other target creature. That creature becomes a Mutant in addition to its other types.\\nWhenever a Mutant you control dies during your turn, you draw cards equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jenova, Ancient Calamity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

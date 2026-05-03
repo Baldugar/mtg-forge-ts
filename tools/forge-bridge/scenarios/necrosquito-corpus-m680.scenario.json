@@ -1,0 +1,23 @@
+{
+  "id": "necrosquito-corpus-m680",
+  "description": "M6 corpus — Necrosquito; in-hand parse.",
+  "seed": 63532,
+  "cards": {
+    "Necrosquito": "Name:Necrosquito\nManaCost:3 B\nTypes:Creature Phyrexian Insect\nPT:0/0\nK:Flying\nK:etbCounter:OIL:2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each oil counter on it.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other,Artifact.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nSVar:X:Count$CardCounters.OIL\nDeckHas:Ability$Counters\nOracle:Flying\\nNecrosquito enters with two oil counters on it.\\nNecrosquito gets +1/+1 for each oil counter on it.\\nWhenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on Necrosquito.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrosquito"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

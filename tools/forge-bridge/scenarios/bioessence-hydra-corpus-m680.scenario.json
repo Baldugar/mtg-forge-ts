@@ -1,0 +1,23 @@
+{
+  "id": "bioessence-hydra-corpus-m680",
+  "description": "M6 corpus — Bioessence Hydra; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Bioessence Hydra": "Name:Bioessence Hydra\nManaCost:3 G U\nTypes:Creature Hydra Mutant\nPT:4/4\nK:Trample\nK:etbCounter:P1P1:Y:no Condition:CARDNAME enters with a +1/+1 counter on it for each loyalty counter on planeswalkers you control.\nSVar:Y:Count$Valid Planeswalker.YouCtrl$CardCounters.LOYALTY\nT:Mode$ CounterAddedAll | CounterType$ LOYALTY | Valid$ Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Z\nSVar:Z:TriggerCount$Amount\nDeckHints:Type$Planeswalker\nDeckHas:Ability$Counters\nOracle:Trample\\nBioessence Hydra enters with a +1/+1 counter on it for each loyalty counter on planeswalkers you control.\\nWhenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on Bioessence Hydra.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bioessence Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

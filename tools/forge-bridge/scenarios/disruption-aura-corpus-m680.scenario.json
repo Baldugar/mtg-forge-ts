@@ -1,0 +1,23 @@
+{
+  "id": "disruption-aura-corpus-m680",
+  "description": "M6 corpus — Disruption Aura; in-hand parse.",
+  "seed": 62189,
+  "cards": {
+    "Disruption Aura": "Name:Disruption Aura\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAITgts:Card.cmcGE1\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Artifact.EnchantedBy | AddTrigger$ TrigPhase | AddSVar$ TrigDisruptionAura | Description$ Enchanted artifact has \"At the beginning of your upkeep, sacrifice this artifact unless you pay its mana cost.\"\nSVar:TrigPhase:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDisruptionAura | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice this artifact unless you pay its mana cost.\nSVar:TrigDisruptionAura:DB$ Sacrifice | UnlessCost$ DefinedCost_Self | UnlessPayer$ You\nSVar:NonStackingAttachEffect:True\nOracle:Enchant artifact\\nEnchanted artifact has \"At the beginning of your upkeep, sacrifice this artifact unless you pay its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disruption Aura"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

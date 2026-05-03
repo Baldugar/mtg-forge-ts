@@ -1,0 +1,23 @@
+{
+  "id": "lifecrafter-s-bestiary-corpus-m680",
+  "description": "M6 corpus — Lifecrafter's Bestiary; in-hand parse.",
+  "seed": 63227,
+  "cards": {
+    "Lifecrafter's Bestiary": "Name:Lifecrafter's Bestiary\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ At the beginning of your upkeep, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast a creature spell, you may pay {G}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ G | NumCards$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nOracle:At the beginning of your upkeep, scry 1.\\nWhenever you cast a creature spell, you may pay {G}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifecrafter's Bestiary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

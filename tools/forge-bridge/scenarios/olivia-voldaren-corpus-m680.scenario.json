@@ -1,0 +1,23 @@
+{
+  "id": "olivia-voldaren-corpus-m680",
+  "description": "M6 corpus — Olivia Voldaren; in-hand parse.",
+  "seed": 63617,
+  "cards": {
+    "Olivia Voldaren": "Name:Olivia Voldaren\nManaCost:2 B R\nTypes:Legendary Creature Vampire\nPT:3/3\nK:Flying\nA:AB$ DealDamage | Cost$ 1 R | ValidTgts$ Creature.Other | NumDmg$ 1 | SubAbility$ Animate | SpellDescription$ CARDNAME deals 1 damage to another target creature. That creature becomes a Vampire in addition to its other types. Put a +1/+1 counter on CARDNAME.\nSVar:Animate:DB$ Animate | Defined$ Targeted | Types$ Vampire | Duration$ Permanent | SubAbility$ PutCounter\nSVar:PutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ GainControl | Cost$ 3 B B | ValidTgts$ Creature.Vampire | TgtPrompt$ Select target Vampire | LoseControl$ LeavesPlay,LoseControl | SpellDescription$ Gain control of target vampire for as long as you control CARDNAME.\nOracle:Flying\\n{1}{R}: Olivia Voldaren deals 1 damage to another target creature. That creature becomes a Vampire in addition to its other types. Put a +1/+1 counter on Olivia Voldaren.\\n{3}{B}{B}: Gain control of target Vampire for as long as you control Olivia Voldaren.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Olivia Voldaren"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "leinore-autumn-sovereign-corpus-m680",
+  "description": "M6 corpus — Leinore, Autumn Sovereign; in-hand parse.",
+  "seed": 63211,
+  "cards": {
+    "Leinore, Autumn Sovereign": "Name:Leinore, Autumn Sovereign\nManaCost:2 G W\nTypes:Legendary Creature Human Noble\nPT:0/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Coven — At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if you control three or more creatures with different powers, draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nDeckHas:Ability$Counters\nOracle:Coven — At the beginning of combat on your turn, put a +1/+1 counter on up to one creature you control. Then if you control three or more creatures with different powers, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leinore, Autumn Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

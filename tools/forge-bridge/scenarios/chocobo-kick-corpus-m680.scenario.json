@@ -1,0 +1,23 @@
+{
+  "id": "chocobo-kick-corpus-m680",
+  "description": "M6 corpus — Chocobo Kick; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Chocobo Kick": "Name:Chocobo Kick\nManaCost:1 G\nTypes:Sorcery\nK:Kicker:Return<1/Land>\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DBDealDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature an opponent control. If this spell was kicked, the creature you control deals twice that much damage instead.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:Count$Kicked.Y.Z\nSVar:Y:ParentTargeted$CardPower/Times.2\nSVar:Z:ParentTargeted$CardPower\nOracle:Kicker—Return a land you control to its owner's hand. (You may return a land you control to its owner's hand in addition to any other costs as you cast this spell.)\\nTarget creature you control deals damage equal to its power to target creature an opponent control. If this spell was kicked, the creature you control deals twice that much damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chocobo Kick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

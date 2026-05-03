@@ -1,0 +1,23 @@
+{
+  "id": "dirty-rat-corpus-m680",
+  "description": "M6 corpus — Dirty Rat; in-hand parse.",
+  "seed": 62179,
+  "cards": {
+    "Dirty Rat": "Name:Dirty Rat\nManaCost:1 B\nTypes:Host Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | Host$ True | TriggerDescription$ When this creature enters, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:When this creature enters, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dirty Rat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

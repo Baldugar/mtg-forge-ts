@@ -1,0 +1,23 @@
+{
+  "id": "ancient-cellarspawn-corpus-m680",
+  "description": "M6 corpus — Ancient Cellarspawn; in-hand parse.",
+  "seed": 61507,
+  "cards": {
+    "Ancient Cellarspawn": "Name:Ancient Cellarspawn\nManaCost:1 B B\nTypes:Enchantment Creature Horror\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Demon,Horror,Nightmare | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Each spell you cast that's a Demon, Horror, or Nightmare costs {1} less to cast.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | ValidSAonCard$ Spell.ManaSpent LTX | TriggerDescription$ Whenever you cast a spell, if the amount of mana spent to cast it was less than its mana value, target opponent loses life equal to the difference.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ SVar$Y/Minus.Z\nSVar:X:Count$CardManaCost\nSVar:Y:TriggeredCard$CardManaCost\nSVar:Z:TriggeredCard$CastTotalManaSpent\nOracle:Each spell you cast that's a Demon, Horror, or Nightmare costs {1} less to cast.\\nWhenever you cast a spell, if the amount of mana spent to cast it was less than its mana value, target opponent loses life equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Cellarspawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

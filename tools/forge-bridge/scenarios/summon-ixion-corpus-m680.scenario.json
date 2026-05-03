@@ -1,0 +1,23 @@
+{
+  "id": "summon-ixion-corpus-m680",
+  "description": "M6 corpus — Summon: Ixion; in-hand parse.",
+  "seed": 64503,
+  "cards": {
+    "Summon: Ixion": "Name:Summon: Ixion\nManaCost:2 W\nTypes:Enchantment Creature Saga Unicorn\nPT:3/3\nK:Chapter:3:DBAerospark,DBPutCounter,DBPutCounter\nSVar:DBAerospark:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay | SpellDescription$ Aerospark — Exile target creature an opponent controls until this Saga leaves the battlefield.\nSVar:DBPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to two target creatures you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife | SpellDescription$ Put a +1/+1 counter on each of up to two target creatures you control. You gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nK:First Strike\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Aerospark — Exile target creature an opponent controls until this Saga leaves the battlefield.\\nII, III — Put a +1/+1 counter on each of up to two target creatures you control. You gain 2 life.\\nFirst strike\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Ixion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crocodile-of-the-crossing-corpus-m680",
+  "description": "M6 corpus — Crocodile of the Crossing; in-hand parse.",
+  "seed": 62038,
+  "cards": {
+    "Crocodile of the Crossing": "Name:Crocodile of the Crossing\nManaCost:3 G\nTypes:Creature Crocodile\nPT:5/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nOracle:Haste\\nWhen Crocodile of the Crossing enters, put a -1/-1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crocodile of the Crossing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

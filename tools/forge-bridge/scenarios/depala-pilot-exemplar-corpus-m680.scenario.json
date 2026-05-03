@@ -1,0 +1,23 @@
+{
+  "id": "depala-pilot-exemplar-corpus-m680",
+  "description": "M6 corpus — Depala, Pilot Exemplar; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Depala, Pilot Exemplar": "Name:Depala, Pilot Exemplar\nManaCost:1 R W\nTypes:Legendary Creature Dwarf Pilot\nPT:3/3\nS:Mode$ Continuous | Affected$ Permanent.Dwarf+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Dwarves you control get +1/+1.\nS:Mode$ Continuous | Affected$ Creature.Vehicle+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Each Vehicle you control gets +1/+1 as long as it's a creature.\nT:Mode$ Taps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME becomes tapped, you may pay {X}. If you do, reveal the top X cards of your library, put all Dwarf and Vehicle cards from among them into your hand, then put the rest on the bottom of your library in a random order.\nSVar:TrigDig:AB$ Dig | Cost$ X | DigNum$ X | Reveal$ True | ChangeNum$ All | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | ChangeValid$ Dwarf,Vehicle | AILogic$ PayXButSaveMana.3\nSVar:X:Count$xPaid\nOracle:Other Dwarves you control get +1/+1.\\nEach Vehicle you control gets +1/+1 as long as it's a creature.\\nWhenever Depala, Pilot Exemplar becomes tapped, you may pay {X}. If you do, reveal the top X cards of your library, put all Dwarf and Vehicle cards from among them into your hand, then put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Depala, Pilot Exemplar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

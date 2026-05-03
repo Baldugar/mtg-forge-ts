@@ -1,0 +1,23 @@
+{
+  "id": "antique-collector-corpus-m680",
+  "description": "M6 corpus — Antique Collector; in-hand parse.",
+  "seed": 61528,
+  "cards": {
+    "Antique Collector": "Name:Antique Collector\nManaCost:1 G\nTypes:Creature Human Rogue\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimateAll | TriggerDescription$ When CARDNAME enters, creatures you control perpetually gain \"When this creature dies, you may shuffle it into its owner's library if it's in your graveyard. If you do, investigate.\"\nSVar:TrigAnimateAll:DB$ AnimateAll | Duration$ Perpetual | ValidCards$ Creature.YouCtrl | Triggers$ DiesTrigger\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | OptionalDecider$ You | TriggerDescription$ When this creature dies, you may shuffle it into its owner's library if it's in your graveyard. If you do, investigate.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredNewCardLKICopy | RememberChanged$ True | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Investigate|Token|Graveyard & Type$Artifact|Clue\nOracle:Antique Collector can't be blocked by creatures with power 2 or less.\\nWhen Antique Collector enters, creatures you control perpetually gain \"When this creature dies, you may shuffle it into its owner's library if it's in your graveyard. If you do, investigate.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Antique Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

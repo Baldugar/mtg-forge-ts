@@ -1,0 +1,23 @@
+{
+  "id": "the-alright-henge-corpus-m680",
+  "description": "M6 corpus — The Alright Henge; in-hand parse.",
+  "seed": 64639,
+  "cards": {
+    "The Alright Henge": "Name:The Alright Henge\nManaCost:3 G\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ 2 | SpellDescription$ Add {G}{G}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a nontoken creature enters the battlefield under your control, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:{T}: Add {G}{G}. You gain 2 life.\\nWhenever a nontoken creature enters the battlefield under your control, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Alright Henge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

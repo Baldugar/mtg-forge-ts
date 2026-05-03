@@ -1,0 +1,23 @@
+{
+  "id": "grim-feast-corpus-m680",
+  "description": "M6 corpus — Grim Feast; in-hand parse.",
+  "seed": 62724,
+  "cards": {
+    "Grim Feast": "Name:Grim Feast\nManaCost:1 B G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to you.\nT:Mode$ ChangesZone | ValidCard$ Creature.OppOwn | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature is put into an opponent's graveyard from the battlefield, you gain life equal to its toughness.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nSVar:AICastPreference:MaxControlled$ 1 | NeverCastIfLifeBelow$ 5\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, Grim Feast deals 1 damage to you.\\nWhenever a creature is put into an opponent's graveyard from the battlefield, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

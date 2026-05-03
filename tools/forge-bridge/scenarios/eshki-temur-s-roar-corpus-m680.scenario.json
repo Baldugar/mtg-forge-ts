@@ -1,0 +1,23 @@
+{
+  "id": "eshki-temur-s-roar-corpus-m680",
+  "description": "M6 corpus — Eshki, Temur's Roar; in-hand parse.",
+  "seed": 62362,
+  "cards": {
+    "Eshki, Temur's Roar": "Name:Eshki, Temur's Roar\nManaCost:G U R\nTypes:Legendary Creature Human Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, put a +1/+1 counter on NICKNAME. If that spell's power is 4 or greater, draw a card. If that spell's power is 6 or greater, NICKNAME deals damage equal to NICKNAME's power to each opponent.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ TriggeredSpellAbility$CardPower | ConditionSVarCompare$ GE4 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | ConditionCheckSVar$ TriggeredSpellAbility$CardPower | ConditionSVarCompare$ GE6 | NumDmg$ X\nSVar:X:Count$CardPower\nOracle:Whenever you cast a creature spell, put a +1/+1 counter on Eshki. If that spell's power is 4 or greater, draw a card. If that spell's power is 6 or greater, Eshki deals damage equal to Eshki's power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eshki, Temur's Roar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

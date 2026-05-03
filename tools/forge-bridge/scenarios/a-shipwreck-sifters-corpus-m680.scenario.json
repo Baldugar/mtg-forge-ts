@@ -1,0 +1,23 @@
+{
+  "id": "a-shipwreck-sifters-corpus-m680",
+  "description": "M6 corpus — A-Shipwreck Sifters; in-hand parse.",
+  "seed": 64091,
+  "cards": {
+    "A-Shipwreck Sifters": "Name:A-Shipwreck Sifters\nManaCost:1 U\nTypes:Creature Spirit\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Spirit.YouOwn,Card.YouOwn+withDisturb | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a Spirit or card with disturb is put into your graveyard from anywhere, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Discard|Counters\nDeckHints:Type$Spirit & Keyword$Disturb\nOracle:When Shipwreck Sifters enters, draw a card, then discard a card.\\nWhenever a Spirit or card with disturb is put into your graveyard from anywhere, put a +1/+1 counter on Shipwreck Sifters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Shipwreck Sifters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

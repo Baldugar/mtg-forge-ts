@@ -1,0 +1,23 @@
+{
+  "id": "shelinda-yevon-acolyte-corpus-m680",
+  "description": "M6 corpus — Shelinda, Yevon Acolyte; in-hand parse.",
+  "seed": 64248,
+  "cards": {
+    "Shelinda, Yevon Acolyte": "Name:Shelinda, Yevon Acolyte\nManaCost:G W\nTypes:Legendary Creature Human Cleric\nPT:2/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Whenever another creature you control enters, put a +1/+1 counter on that creature if its power is less than NICKNAME's power. Otherwise, put a +1/+1 counter on NICKNAME.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ LTY | TrueSubAbility$ PutCounterOne | FalseSubAbility$ PutCounterTwo\nSVar:PutCounterOne:DB$ PutCounter | Defined$ TriggeredCard | CounterType$ P1P1\nSVar:PutCounterTwo:DB$ PutCounter | Defined$ Self | CounterType$ P1P1\nSVar:X:TriggeredCard$CardPower\nSVar:Y:Count$CardPower\nOracle:Lifelink\\nWhenever another creature you control enters, put a +1/+1 counter on that creature if its power is less than Shelinda's power. Otherwise, put a +1/+1 counter on Shelinda.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shelinda, Yevon Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

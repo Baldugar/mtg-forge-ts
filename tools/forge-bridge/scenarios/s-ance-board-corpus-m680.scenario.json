@@ -1,0 +1,23 @@
+{
+  "id": "s-ance-board-corpus-m680",
+  "description": "M6 corpus — Séance Board; in-hand parse.",
+  "seed": 64173,
+  "cards": {
+    "Séance Board": "Name:Séance Board\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Morbid — At the beginning of each end step, if a creature died this turn, put a soul counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SOUL | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ Y | RestrictValid$ Spell.Instant,Spell.Sorcery,Spell.Demon,Spell.Spirit | SpellDescription$ Add X mana of any one color, where X is the number of soul counters on CARDNAME. Spend this mana only to cast instant, sorcery, Demon, and Spirit spells.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:Y:Count$CardCounters.SOUL\nOracle:Morbid — At the beginning of each end step, if a creature died this turn, put a soul counter on Séance Board.\\n{T}: Add X mana of any one color, where X is the number of soul counters on Séance Board. Spend this mana only to cast instant, sorcery, Demon, and Spirit spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Séance Board"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

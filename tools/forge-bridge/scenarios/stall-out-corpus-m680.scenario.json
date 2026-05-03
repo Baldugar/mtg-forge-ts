@@ -1,0 +1,23 @@
+{
+  "id": "stall-out-corpus-m680",
+  "description": "M6 corpus — Stall Out; in-hand parse.",
+  "seed": 64443,
+  "cards": {
+    "Stall Out": "Name:Stall Out\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Tap | ValidTgts$ Creature,Vehicle | SubAbility$ DBCounter | TgtPrompt$ Select target creature or Vehicle. | SpellDescription$ Tap target creature or Vehicle, then put three stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 3\nK:Cycling:2\nDeckHas:Ability$Counters\nOracle:Tap target creature or Vehicle, then put three stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stall Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

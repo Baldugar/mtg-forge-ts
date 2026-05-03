@@ -1,0 +1,23 @@
+{
+  "id": "conformer-shuriken-corpus-m680",
+  "description": "M6 corpus — Conformer Shuriken; in-hand parse.",
+  "seed": 61979,
+  "cards": {
+    "Conformer Shuriken": "Name:Conformer Shuriken\nManaCost:2\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddTrigger$ TrigAttack | AddSVar$ AE | Description$ Equipped creature has \"Whenever this creature attacks, tap target creature defending player controls. If that creature has greater power than this creature, put a number of +1/+1 counters on this creature equal to the difference.\"\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever this creature attacks, tap target creature defending player controls. If that creature has greater power than this creature, put a number of +1/+1 counters on this creature equal to the difference.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ Z\nSVar:X:Count$CardPower\nSVar:Y:ParentTargeted$CardPower\nSVar:Z:SVar$Y/Minus.X\nSVar:AE:SVar:HasAttackEffect:TRUE\nK:Equip:2\nOracle:Equipped creature has \"Whenever this creature attacks, tap target creature defending player controls. If that creature has greater power than this creature, put a number of +1/+1 counters on this creature equal to the difference.\"\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conformer Shuriken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

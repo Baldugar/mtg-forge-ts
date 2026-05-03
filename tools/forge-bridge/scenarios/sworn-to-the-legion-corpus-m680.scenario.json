@@ -1,0 +1,23 @@
+{
+  "id": "sworn-to-the-legion-corpus-m680",
+  "description": "M6 corpus — Sworn to the Legion; in-hand parse.",
+  "seed": 64548,
+  "cards": {
+    "Sworn to the Legion": "Name:Sworn to the Legion\nManaCost:4 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, nontoken creatures you control perpetually gain double team.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl+!token | Duration$ Perpetual | KW$ Double team\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCast | TriggerDescription$ Whenever you cast a creature spell, it perpetually gains double team.\nSVar:TrigCast:DB$ Pump | PumpZone$ Stack | Defined$ TriggeredCard | Duration$ Perpetual | KW$ Double team\nSVar:BuffedBy:Creature\nOracle:When Sworn to the Legion enters, nontoken creatures you control perpetually gain double team.\\nWhenever you cast a creature spell, it perpetually gains double team.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sworn to the Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

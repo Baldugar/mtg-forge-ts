@@ -1,0 +1,23 @@
+{
+  "id": "invigorating-boon-corpus-m680",
+  "description": "M6 corpus — Invigorating Boon; in-hand parse.",
+  "seed": 62974,
+  "cards": {
+    "Invigorating Boon": "Name:Invigorating Boon\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Cycled | ValidCard$ Card | Execute$ TrigPutCounter | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a player cycles a card, you may put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a player cycles a card, you may put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invigorating Boon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

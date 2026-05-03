@@ -1,0 +1,23 @@
+{
+  "id": "stromkirk-patrol-corpus-m680",
+  "description": "M6 corpus — Stromkirk Patrol; in-hand parse.",
+  "seed": 64486,
+  "cards": {
+    "Stromkirk Patrol": "Name:Stromkirk Patrol\nManaCost:4 B\nTypes:Creature Vampire Soldier\nPT:4/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever Stromkirk Patrol deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stromkirk Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

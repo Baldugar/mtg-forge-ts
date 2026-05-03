@@ -1,0 +1,23 @@
+{
+  "id": "ojer-taq-deepest-foundation-corpus-m680",
+  "description": "M6 corpus — Ojer Taq, Deepest Foundation; in-hand parse.",
+  "seed": 63614,
+  "cards": {
+    "Ojer Taq, Deepest Foundation": "Name:Ojer Taq, Deepest Foundation\nManaCost:4 W W\nTypes:Legendary Creature God\nPT:6/6\nK:Vigilance\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Creature.YouCtrl | ReplaceWith$ TripleToken | Description$ If one or more creature tokens would be created under your control, three times that many of those tokens are created instead.\nSVar:TripleToken:DB$ ReplaceToken | Type$ Amount | Amount$ Thrice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigTransform | TriggerDescription$ When NICKNAME dies, return it to the battlefield tapped and transformed under its owner's control.\nSVar:TrigTransform:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True | Tapped$ True\nDeckNeeds:Ability$Token\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nIf one or more creature tokens would be created under your control, three times that many of those tokens are created instead.\\nWhen Ojer Taq dies, return it to the battlefield tapped and transformed under its owner's control.\n\nALTERNATE\n\nName:Temple of Civilization\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ SetState | Cost$ 2 W T | CheckSVar$ X | SVarCompare$ GE3 | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only if you attacked with three or more creatures this turn and only as a sorcery.\nSVar:X:Count$AttackersDeclared\nOracle:(Transforms from Ojer Taq, Deepest Foundation.)\\n{T}: Add {W}.\\n{2}{W}, {T}: Transform Temple of Civilization. Activate only if you attacked with three or more creatures this turn and only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ojer Taq, Deepest Foundation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

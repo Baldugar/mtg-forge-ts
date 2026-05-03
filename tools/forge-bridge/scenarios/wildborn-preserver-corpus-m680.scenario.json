@@ -1,0 +1,23 @@
+{
+  "id": "wildborn-preserver-corpus-m680",
+  "description": "M6 corpus — Wildborn Preserver; in-hand parse.",
+  "seed": 65046,
+  "cards": {
+    "Wildborn Preserver": "Name:Wildborn Preserver\nManaCost:1 G\nTypes:Creature Elf Archer\nPT:2/2\nK:Flash\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.nonHuman+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever another non-Human creature you control enters, you may pay {X}. When you do, put X +1/+1 counters on CARDNAME.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ X | Execute$ TrigPutCounter | TriggerDescription$ When you do, put X +1/+1 counters on CARDNAME.\nSVar:X:Count$xPaid\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nDeckHas:Ability$Counters\nOracle:Flash\\nReach\\nWhenever another non-Human creature you control enters, you may pay {X}. When you do, put X +1/+1 counters on Wildborn Preserver.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildborn Preserver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "infested-thrinax-corpus-m680",
+  "description": "M6 corpus — Infested Thrinax; in-hand parse.",
+  "seed": 62931,
+  "cards": {
+    "Infested Thrinax": "Name:Infested Thrinax\nManaCost:3 B G\nTypes:Creature Lizard\nPT:4/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, until end of turn, whenever a nontoken creature you control dies, create a number of 1/1 green Saproling creature tokens equal to that creature's power.\nSVar:TrigEffect:DB$ Effect | Triggers$ DiesTrig\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, create a number of 1/1 green Saproling creature tokens equal to that creature's power.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Token & Type$Saproling\nOracle:Flash\\nWhen Infested Thrinax enters, until end of turn, whenever a nontoken creature you control dies, create a number of 1/1 green Saproling creature tokens equal to that creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infested Thrinax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

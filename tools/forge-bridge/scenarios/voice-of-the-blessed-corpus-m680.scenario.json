@@ -1,0 +1,23 @@
+{
+  "id": "voice-of-the-blessed-corpus-m680",
+  "description": "M6 corpus — Voice of the Blessed; in-hand parse.",
+  "seed": 64969,
+  "cards": {
+    "Voice of the Blessed": "Name:Voice of the Blessed\nManaCost:W W\nTypes:Creature Spirit Cleric\nPT:2/2\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE4_P1P1 | AddKeyword$ Flying & Vigilance | Description$ As long as CARDNAME has four or more +1/+1 counters on it, it has flying and vigilance.\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE10_P1P1 | AddKeyword$ Indestructible | Description$ As long as CARDNAME has ten or more +1/+1 counters on it, it has indestructible.\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Counters\nOracle:Whenever you gain life, put a +1/+1 counter on Voice of the Blessed.\\nAs long as Voice of the Blessed has four or more +1/+1 counters on it, it has flying and vigilance.\\nAs long as Voice of the Blessed has ten or more +1/+1 counters on it, it has indestructible.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voice of the Blessed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

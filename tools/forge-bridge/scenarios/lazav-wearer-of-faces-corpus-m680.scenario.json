@@ -1,0 +1,23 @@
+{
+  "id": "lazav-wearer-of-faces-corpus-m680",
+  "description": "M6 corpus — Lazav, Wearer of Faces; in-hand parse.",
+  "seed": 63202,
+  "cards": {
+    "Lazav, Wearer of Faces": "Name:Lazav, Wearer of Faces\nManaCost:U B\nTypes:Legendary Creature Shapeshifter Detective\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, exile target card from a graveyard, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue.YouCtrl | Execute$ TrigClone | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, you may have NICKNAME become a copy of a creature card exiled with it until end of turn.\nSVar:TrigClone:DB$ Clone | Choices$ Creature.ExiledWithSource | ChoiceZone$ Exile | Optional$ True | Duration$ UntilEndOfTurn\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Investigate|Token|Graveyard & Type$Artifact|Clue\nDeckHints:Ability$Graveyard\nOracle:Whenever Lazav, Wearer of Faces attacks, exile target card from a graveyard, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, you may have Lazav become a copy of a creature card exiled with it until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lazav, Wearer of Faces"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

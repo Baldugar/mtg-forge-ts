@@ -1,0 +1,23 @@
+{
+  "id": "keldon-marauders-corpus-m680",
+  "description": "M6 corpus — Keldon Marauders; in-hand parse.",
+  "seed": 63103,
+  "cards": {
+    "Keldon Marauders": "Name:Keldon Marauders\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:3/3\nK:Vanishing:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target player or planeswalker.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME leaves the battlefield, it deals 1 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nOracle:Vanishing 2 (This creature enters with two time counters on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhen Keldon Marauders enters or leaves the battlefield, it deals 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Marauders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

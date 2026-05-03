@@ -1,0 +1,23 @@
+{
+  "id": "loxodon-peacekeeper-corpus-m680",
+  "description": "M6 corpus — Loxodon Peacekeeper; in-hand parse.",
+  "seed": 63277,
+  "cards": {
+    "Loxodon Peacekeeper": "Name:Loxodon Peacekeeper\nManaCost:1 W\nTypes:Creature Elephant Soldier\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ At the beginning of your upkeep, the player with the lowest life total gains control of CARDNAME. If two or more players are tied for lowest life total, you choose one of them, and that player gains control of CARDNAME.\nSVar:TrigGainControl:DB$ ChoosePlayer | Defined$ You | Choices$ Player.withLowestLife | ChoiceTitle$ Choose an player with lowest life total | AILogic$ Pump | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ Self | NewController$ Player.Chosen\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, the player with the lowest life total gains control of Loxodon Peacekeeper. If two or more players are tied for lowest life total, you choose one of them, and that player gains control of Loxodon Peacekeeper.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loxodon Peacekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

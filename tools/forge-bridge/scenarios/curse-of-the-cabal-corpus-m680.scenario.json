@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-the-cabal-corpus-m680",
+  "description": "M6 corpus — Curse of the Cabal; in-hand parse.",
+  "seed": 62066,
+  "cards": {
+    "Curse of the Cabal": "Name:Curse of the Cabal\nManaCost:9 B\nTypes:Sorcery\nK:Suspend:2:2 B B\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigCursePayUP | TriggerZones$ Exile | IsPresent$ Card.suspended+Self | PresentZone$ Exile | TriggerDescription$ At the beginning of each player's upkeep, if CARDNAME is suspended, that player may sacrifice a permanent. If the player does, put two time counters on CARDNAME.\nA:SP$ Sacrifice | ValidTgts$ Player | Amount$ CurseX | SacValid$ Permanent | SpellDescription$ Target player sacrifices half the permanents they control, rounded down.\nSVar:TrigCursePayUP:DB$ Sacrifice | Amount$ 1 | SacValid$ Permanent | Defined$ TriggeredPlayer | Optional$ True | AILogic$ OpponentOnly | RememberSacrificed$ True | SubAbility$ DBCursePutCounter\nSVar:DBCursePutCounter:DB$ PutCounter | CounterType$ TIME | CounterNum$ 2 | ConditionCheckSVar$ CurseY | ConditionSVarCompare$ GT0 | SubAbility$ DBCurseCleanup\nSVar:DBCurseCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CurseX:TargetedPlayer$Valid Permanent.YouCtrl/HalfDown\nSVar:CurseY:Remembered$Amount\nOracle:Target player sacrifices half the permanents they control, rounded down.\\nSuspend 2—{2}{B}{B} (Rather than cast this card from your hand, you may pay {2}{B}{B} and exile it with two time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\\nAt the beginning of each player's upkeep, if Curse of the Cabal is suspended, that player may sacrifice a permanent. If the player does, put two time counters on Curse of the Cabal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of the Cabal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

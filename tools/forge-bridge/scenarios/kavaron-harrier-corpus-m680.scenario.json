@@ -1,0 +1,23 @@
+{
+  "id": "kavaron-harrier-corpus-m680",
+  "description": "M6 corpus — Kavaron Harrier; in-hand parse.",
+  "seed": 63086,
+  "cards": {
+    "Kavaron Harrier": "Name:Kavaron Harrier\nManaCost:R\nTypes:Artifact Creature Robot Soldier\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTokenAttacking | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, you may pay {2}. If you do, create a 2/2 colorless Robot artifact creature token that's tapped and attacking. Sacrifice that token at end of combat.\nSVar:TrigTokenAttacking:AB$ Token | Cost$ 2 | TokenScript$ c_2_2_a_robot | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True | AtEOT$ SacrificeCombat\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature attacks, you may pay {2}. If you do, create a 2/2 colorless Robot artifact creature token that's tapped and attacking. Sacrifice that token at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kavaron Harrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

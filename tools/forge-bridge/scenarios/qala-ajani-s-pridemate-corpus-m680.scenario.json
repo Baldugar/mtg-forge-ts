@@ -1,0 +1,23 @@
+{
+  "id": "qala-ajani-s-pridemate-corpus-m680",
+  "description": "M6 corpus — Qala, Ajani's Pridemate; in-hand parse.",
+  "seed": 63853,
+  "cards": {
+    "Qala, Ajani's Pridemate": "Name:Qala, Ajani's Pridemate\nManaCost:3 W\nTypes:Legendary Creature Cat Warrior\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, other attacking creatures you control get +X/+0 until end of turn, where X is the number of counters on NICKNAME.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +X\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ GainLife | Cost$ 3 W | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nSVar:X:Count$CardCounters.ALL\nDeckHas:Ability$Counters & LifeGain\nOracle:Whenever Qala, Ajani's Pridemate attacks, other attacking creatures you control get +X/+0 until end of turn, where X is the number of counters on Qala.\\nWhenever you gain life, put a +1/+1 counter on Qala.\\n{3}{W}: You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Qala, Ajani's Pridemate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

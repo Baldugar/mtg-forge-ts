@@ -1,0 +1,23 @@
+{
+  "id": "rothga-bonded-engulfer-corpus-m680",
+  "description": "M6 corpus — Rothga, Bonded Engulfer; in-hand parse.",
+  "seed": 64046,
+  "cards": {
+    "Rothga, Bonded Engulfer": "Name:Rothga, Bonded Engulfer\nManaCost:2 G G\nTypes:Legendary Creature Phyrexian Beast\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, you get a boon with \"When you cast your next creature spell, it perpetually gets +X/+X, where X is its power.\"\nSVar:TrigEffect:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigEffectBis | TriggerDescription$ When you cast your next creature spell, it perpetually gets +X/+X, where X is its power.\nSVar:TrigEffectBis:DB$ Pump | PumpZone$ Stack | Defined$ TriggeredCard | NumAtt$ +X | NumDef$ +X | Duration$ Perpetual\nSVar:X:TriggeredSpellAbility$CardPower\nOracle:Trample\\nWhen Rothga, Bonded Engulfer enters, you get a boon with \"When you cast your next creature spell, it perpetually gets +X/+X, where X is its power.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rothga, Bonded Engulfer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

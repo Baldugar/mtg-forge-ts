@@ -1,0 +1,23 @@
+{
+  "id": "heliod-s-intervention-corpus-m680",
+  "description": "M6 corpus — Heliod's Intervention; in-hand parse.",
+  "seed": 62813,
+  "cards": {
+    "Heliod's Intervention": "Name:Heliod's Intervention\nManaCost:X W W\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBGainLife\nSVar:DBDestroy:DB$ Destroy | TargetMin$ X | TargetMax$ X | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select X target artifacts and/or enchantments | SpellDescription$ Destroy X target artifacts and/or enchantments.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | LifeAmount$ XX | SpellDescription$ Target player gains twice X life.\nSVar:X:Count$xPaid\nSVar:XX:SVar$X/Twice\nDeckHas:Ability$LifeGain\nOracle:Choose one —\\n• Destroy X target artifacts and/or enchantments.\\n• Target player gains twice X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heliod's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

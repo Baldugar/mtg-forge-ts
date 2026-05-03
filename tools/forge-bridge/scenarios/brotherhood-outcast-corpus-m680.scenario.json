@@ -1,0 +1,23 @@
+{
+  "id": "brotherhood-outcast-corpus-m680",
+  "description": "M6 corpus — Brotherhood Outcast; in-hand parse.",
+  "seed": 61805,
+  "cards": {
+    "Brotherhood Outcast": "Name:Brotherhood Outcast\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBChangeZone,DBPutCounter\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Card.Aura+YouCtrl+cmcLE3,Card.Equipment+YouCtrl+cmcLE3 | SpellDescription$ Return target Aura or Equipment card with mana value 3 or less from your graveyard to the battlefield.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ SHIELD | SpellDescription$ Put a shield counter on target creature. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\nDeckHas:Ability$Graveyard|Counters\nDeckNeeds:Type$Equipment|Aura\nOracle:When Brotherhood Outcast enters, choose one —\\n• Return target Aura or Equipment card with mana value 3 or less from your graveyard to the battlefield.\\n• Put a shield counter on target creature. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brotherhood Outcast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

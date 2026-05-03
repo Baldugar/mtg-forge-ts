@@ -1,0 +1,23 @@
+{
+  "id": "malamet-veteran-corpus-m680",
+  "description": "M6 corpus — Malamet Veteran; in-hand parse.",
+  "seed": 63321,
+  "cards": {
+    "Malamet Veteran": "Name:Malamet Veteran\nManaCost:4 G\nTypes:Creature Cat Warrior\nPT:5/4\nK:Trample\nT:Mode$ Attacks | CheckSVar$ X | SVarCompare$ GE4 | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Descend 4 — Whenever CARDNAME attacks, if there are four or more permanent cards in your graveyard, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Sacrifice|Discard|Mill|Dredge|Graveyard\nOracle:Trample\\nDescend 4 — Whenever Malamet Veteran attacks, if there are four or more permanent cards in your graveyard, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malamet Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

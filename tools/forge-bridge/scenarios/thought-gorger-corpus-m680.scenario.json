@@ -1,0 +1,23 @@
+{
+  "id": "thought-gorger-corpus-m680",
+  "description": "M6 corpus — Thought Gorger; in-hand parse.",
+  "seed": 64712,
+  "cards": {
+    "Thought Gorger": "Name:Thought Gorger\nManaCost:2 B B\nTypes:Creature Horror\nPT:2/2\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EatMyThoughts | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on it for each card in your hand. If you do, discard your hand.\nSVar:EatMyThoughts:DB$ PutCounter | Defined$ Self | CounterNum$ OldThoughts | CounterType$ P1P1 | RememberCards$ True | SubAbility$ GorgeOnThoughts\nSVar:GorgeOnThoughts:DB$ Discard | Mode$ Hand | Defined$ You | ConditionDescription$ If you do, | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:OldThoughts:Count$ValidHand Card.YouOwn\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ BringBackThoughts | TriggerDescription$ When CARDNAME leaves the battlefield, draw a card for each +1/+1 counter on it.\nSVar:BringBackThoughts:DB$ Draw | NumCards$ Disgorge | Defined$ TriggeredCardController\nSVar:Disgorge:TriggeredCard$CardCounters.P1P1\nAI:RemoveDeck:All\nOracle:Trample\\nWhen Thought Gorger enters, put a +1/+1 counter on it for each card in your hand. If you do, discard your hand.\\nWhen Thought Gorger leaves the battlefield, draw a card for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thought Gorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

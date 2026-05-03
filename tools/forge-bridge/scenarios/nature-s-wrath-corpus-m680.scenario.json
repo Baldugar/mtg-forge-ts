@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-wrath-corpus-m680",
+  "description": "M6 corpus — Nature's Wrath; in-hand parse.",
+  "seed": 63521,
+  "cards": {
+    "Nature's Wrath": "Name:Nature's Wrath\nManaCost:4 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {G}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ G\nT:Mode$ ChangesZone | ValidCard$ Island,Card.Blue | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigSacrificeBlue | TriggerDescription$ Whenever a player puts an Island or blue permanent onto the battlefield, that player sacrifices an Island or blue permanent.\nSVar:TrigSacrificeBlue:DB$ Sacrifice | Defined$ TriggeredCardController | SacValid$ Island,Card.Blue | SacMessage$ Island or a blue permanent\nT:Mode$ ChangesZone | ValidCard$ Swamp,Card.Black | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigSacrificeBlack | TriggerDescription$ Whenever a player puts an Swamp or black permanent onto the battlefield, that player sacrifices a Swamp or black permanent.\nSVar:TrigSacrificeBlack:DB$ Sacrifice | Defined$ TriggeredCardController | SacValid$ Swamp,Card.Black | SacMessage$ Swamp or a black permanent\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, sacrifice Nature's Wrath unless you pay {G}.\\nWhenever a player puts an Island or blue permanent onto the battlefield, that player sacrifices an Island or blue permanent.\\nWhenever a player puts a Swamp or black permanent onto the battlefield, that player sacrifices a Swamp or black permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

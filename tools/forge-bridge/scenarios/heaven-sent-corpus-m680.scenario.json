@@ -1,0 +1,23 @@
+{
+  "id": "heaven-sent-corpus-m680",
+  "description": "M6 corpus — Heaven Sent; in-hand parse.",
+  "seed": 62808,
+  "cards": {
+    "Heaven Sent": "Name:Heaven Sent\nManaCost:U R\nTypes:Enchantment Saga\nK:Chapter:3:DBInvestigate,DBInvestigate,DBDamage\nSVar:DBInvestigate:DB$ Investigate | SpellDescription$ Investigate.\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1 | SubAbility$ DBBranch | SpellDescription$ CARDNAME deals 1 damage to each opponent. Then if an opponent has 0 or less life, draw seven cards. Otherwise, exile CARDNAME and you may cast it this turn.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ LE0 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBCastAgain\nSVar:X:PlayerCountOpponents$LowestLifeTotal\nSVar:DBDraw:DB$ Draw | NumCards$ 7\nSVar:DBCastAgain:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Self | StaticAbilities$ Play | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast it this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Clue|Artifact\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Investigate.\\nIII — Heaven Sent deals 1 damage to each opponent. Then if an opponent has 0 or less life, draw seven cards. Otherwise, exile Heaven Sent and you may cast it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heaven Sent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

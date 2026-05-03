@@ -1,0 +1,23 @@
+{
+  "id": "kenku-artificer-corpus-m680",
+  "description": "M6 corpus — Kenku Artificer; in-hand parse.",
+  "seed": 63112,
+  "cards": {
+    "Kenku Artificer": "Name:Kenku Artificer\nManaCost:2 U\nTypes:Creature Bird Artificer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Homunculus Servant — When CARDNAME enters, put three +1/+1 counters on up to one target noncreature artifact. That artifact becomes a 0/0 Homunculus artifact creature with flying.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select up to one noncreature artifact | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ TrigAnimate\nSVar:TrigAnimate:DB$ Animate | Defined$ Targeted | Keywords$ Flying | Power$ 0 | Toughness$ 0 | Types$ Artifact,Creature,Homunculus | RemoveCreatureTypes$ True | Duration$ Permanent\nDeckHas:Ability$Counters & Type$Homunculus\nDeckNeeds:Type$Artifact\nOracle:Homunculus Servant — When Kenku Artificer enters, put three +1/+1 counters on up to one target noncreature artifact. That artifact becomes a 0/0 Homunculus artifact creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kenku Artificer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

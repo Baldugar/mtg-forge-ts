@@ -1,0 +1,23 @@
+{
+  "id": "vexing-radgull-corpus-m680",
+  "description": "M6 corpus — Vexing Radgull; in-hand parse.",
+  "seed": 64938,
+  "cards": {
+    "Vexing Radgull": "Name:Vexing Radgull\nManaCost:1 U\nTypes:Creature Bird Mutant\nPT:1/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigBranch | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player gets two rad counters if they don't have any rad counters. Otherwise, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nSVar:TrigBranch:DB$ Branch | Defined$ TriggeredTarget | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ0 | TrueSubAbility$ DBRadiation | FalseSubAbility$ DBProliferate\nSVar:DBRadiation:DB$ Radiation | Defined$ TriggeredTarget | Num$ 2\nSVar:DBProliferate:DB$ Proliferate\nSVar:X:TriggeredTarget$Counters.RAD\nOracle:Flying\\nWhenever Vexing Radgull deals combat damage to a player, that player gets two rad counters if they don't have any rad counters. Otherwise, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vexing Radgull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

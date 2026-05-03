@@ -1,0 +1,23 @@
+{
+  "id": "freeze-in-place-corpus-m680",
+  "description": "M6 corpus — Freeze in Place; in-hand parse.",
+  "seed": 62561,
+  "cards": {
+    "Freeze in Place": "Name:Freeze in Place\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Tap | TgtPrompt$ Choose target creature an opponent controls | ValidTgts$ Creature.OppCtrl | SubAbility$ DBCounter | SpellDescription$ Tap target creature an opponent controls and put three stun counters on it. Scry 2. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 3 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nDeckHas:Ability$Counters\nOracle:Tap target creature an opponent controls and put three stun counters on it. Scry 2. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freeze in Place"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

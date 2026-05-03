@@ -1,0 +1,23 @@
+{
+  "id": "okiba-salvage-corpus-m680",
+  "description": "M6 corpus — Okiba Salvage; in-hand parse.",
+  "seed": 63615,
+  "cards": {
+    "Okiba Salvage": "Name:Okiba Salvage\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn,Vehicle.YouOwn | TgtPrompt$ Select target creature or Vehicle card | SubAbility$ DBPutCounter | SpellDescription$ Return target creature or Vehicle card from your graveyard to the battlefield.\nSVar:DBPutCounter:DB$ PutCounter | ConditionPresent$ Artifact.YouCtrl | ConditionPresent2$ Enchantment.YouCtrl | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 2 | ConditionDescription$ Then, if you control an artifact and an enchantment, | SpellDescription$ Then put two +1/+1 counters on that permanent if you control an artifact and an enchantment.\nDeckHints:Type$Creature|Vehicle|Artifact|Enchantment\nDeckHas:Ability$Graveyard|Counters\nOracle:Return target creature or Vehicle card from your graveyard to the battlefield. Then put two +1/+1 counters on that permanent if you control an artifact and an enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Okiba Salvage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

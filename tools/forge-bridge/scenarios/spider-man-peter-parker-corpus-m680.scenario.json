@@ -1,0 +1,23 @@
+{
+  "id": "spider-man-peter-parker-corpus-m680",
+  "description": "M6 corpus — Spider-Man, Peter Parker; in-hand parse.",
+  "seed": 64405,
+  "cards": {
+    "Spider-Man, Peter Parker": "Name:Spider-Man, Peter Parker\nManaCost:3 W W\nTypes:Legendary Creature Spider Human Hero\nPT:4/4\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Indestructible\nDeckHas:Ability$Counters\nDeckHints:Ability$LifeGain\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhenever you gain life, put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Man, Peter Parker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

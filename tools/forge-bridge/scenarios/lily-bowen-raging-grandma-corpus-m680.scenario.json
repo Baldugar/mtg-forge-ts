@@ -1,0 +1,23 @@
+{
+  "id": "lily-bowen-raging-grandma-corpus-m680",
+  "description": "M6 corpus — Lily Bowen, Raging Grandma; in-hand parse.",
+  "seed": 63243,
+  "cards": {
+    "Lily Bowen, Raging Grandma": "Name:Lily Bowen, Raging Grandma\nManaCost:3 G\nTypes:Legendary Creature Mutant Warrior\nPT:0/0\nK:Vigilance\nK:etbCounter:P1P1:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your upkeep, double the number of +1/+1 counters on NICKNAME if its power is 16 or less. Otherwise, remove all but one +1/+1 counter from it, then you gain 1 life for each +1/+1 counter removed this way.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ Power | BranchConditionSVarCompare$ GT16 | TrueSubAbility$ DBRemoveCounters | FalseSubAbility$ DBPump\nSVar:DBPump:DB$ MultiplyCounter | CounterType$ P1P1 | Defined$ Self\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Y | RememberRemoved$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$CardCounters.P1P1/Minus.1\nSVar:X:Count$RememberedSize\nSVar:Power:Count$CardPower\nDeckHas:Ability$Counters|LifeGain\nOracle:Vigilance\\nLily Bowen, Raging Grandma enters with two +1/+1 counters on it.\\nAt the beginning of your upkeep, double the number of +1/+1 counters on Lily Bowen if its power is 16 or less. Otherwise, remove all but one +1/+1 counter from it, then you gain 1 life for each +1/+1 counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lily Bowen, Raging Grandma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

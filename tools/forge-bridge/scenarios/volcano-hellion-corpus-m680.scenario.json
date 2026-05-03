@@ -1,0 +1,23 @@
+{
+  "id": "volcano-hellion-corpus-m680",
+  "description": "M6 corpus — Volcano Hellion; in-hand parse.",
+  "seed": 64975,
+  "cards": {
+    "Volcano Hellion": "Name:Volcano Hellion\nManaCost:2 R R\nTypes:Creature Hellion\nPT:6/5\nText:CARDNAME has echo X, where X is your life total.\nK:Echo:X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ When CARDNAME enters, it deals an amount of damage of your choice to you and target creature. The damage can't be prevented.\nSVar:TrigDmg:DB$ ChooseNumber | ListTitle$ amount of damage to be dealt | ChooseAnyNumber$ True | SubAbility$ DBDmg | AILogic$ Min\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ Y | NoPrevention$ True | DamageMap$ True | SubAbility$ DmgYou\nSVar:DmgYou:DB$ DealDamage | Defined$ You | NumDmg$ Y | NoPrevention$ True | SubAbility$ DmgResolve\nSVar:DmgResolve:DB$ DamageResolve\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$ChosenNumber\nAI:RemoveDeck:All\nOracle:Volcano Hellion has echo {X}, where X is your life total. (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Volcano Hellion enters, it deals an amount of damage of your choice to you and target creature. The damage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volcano Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

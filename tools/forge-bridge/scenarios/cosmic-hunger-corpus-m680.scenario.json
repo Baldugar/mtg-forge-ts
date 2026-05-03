@@ -1,0 +1,23 @@
+{
+  "id": "cosmic-hunger-corpus-m680",
+  "description": "M6 corpus — Cosmic Hunger; in-hand parse.",
+  "seed": 62015,
+  "cards": {
+    "Cosmic Hunger": "Name:Cosmic Hunger\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DealDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to another target creature, planeswalker, or battle.\nSVar:DealDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker,Battle | TgtPrompt$ Select another target creature, planeswalker, or battle | TargetUnique$ True | AILogic$ PowerDmg | NumDmg$ ParentTargeted$CardPower | DamageSource$ ParentTarget\nOracle:Target creature you control deals damage equal to its power to another target creature, planeswalker, or battle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cosmic Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

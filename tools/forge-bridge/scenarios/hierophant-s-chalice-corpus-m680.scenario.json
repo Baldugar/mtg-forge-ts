@@ -1,0 +1,23 @@
+{
+  "id": "hierophant-s-chalice-corpus-m680",
+  "description": "M6 corpus — Hierophant's Chalice; in-hand parse.",
+  "seed": 62832,
+  "cards": {
+    "Hierophant's Chalice": "Name:Hierophant's Chalice\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nOracle:When Hierophant's Chalice enters, target opponent loses 1 life and you gain 1 life.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hierophant's Chalice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

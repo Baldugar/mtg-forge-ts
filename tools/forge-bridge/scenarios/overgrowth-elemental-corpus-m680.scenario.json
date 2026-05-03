@@ -1,0 +1,23 @@
+{
+  "id": "overgrowth-elemental-corpus-m680",
+  "description": "M6 corpus — Overgrowth Elemental; in-hand parse.",
+  "seed": 63672,
+  "cards": {
+    "Overgrowth Elemental": "Name:Overgrowth Elemental\nManaCost:2 G\nTypes:Creature Elemental\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target Elemental you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Elemental.Other+YouCtrl | TgtPrompt$ Select another target Elemental you control | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control dies, you gain 1 life. If that creature was an Elemental, put a +1/+1 counter on CARDNAME.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ TriggeredCardLKICopy | ConditionPresent$ Creature.Elemental\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Type$Elemental\nOracle:When Overgrowth Elemental enters, put a +1/+1 counter on another target Elemental you control.\\nWhenever another creature you control dies, you gain 1 life. If that creature was an Elemental, put a +1/+1 counter on Overgrowth Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overgrowth Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

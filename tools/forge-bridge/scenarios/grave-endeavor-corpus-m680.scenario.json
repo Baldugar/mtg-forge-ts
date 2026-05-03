@@ -1,0 +1,23 @@
+{
+  "id": "grave-endeavor-corpus-m680",
+  "description": "M6 corpus — Grave Endeavor; in-hand parse.",
+  "seed": 62712,
+  "cards": {
+    "Grave Endeavor": "Name:Grave Endeavor\nManaCost:5 B B\nTypes:Instant\nA:SP$ RollDice | Amount$ 2 | Sides$ 10 | ChosenSVar$ X | OtherSVar$ Y | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Roll two d10 and choose one result. Return a creature card from your graveyard to the battlefield with a number of +1/+1 counters on it equal to that result. Then each opponent loses X life and you gain X life, where X is the other result.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | Mandatory$ True | SelectPrompt$ Choose a creature card to return to the battlefield | Hidden$ True | RememberChanged$ True | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ Y | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|LifeGain|Counters\nOracle:Roll two d10 and choose one result. Return a creature card from your graveyard to the battlefield with a number of +1/+1 counters on it equal to that result. Then each opponent loses X life and you gain X life, where X is the other result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Endeavor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

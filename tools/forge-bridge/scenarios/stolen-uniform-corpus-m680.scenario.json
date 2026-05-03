@@ -1,0 +1,23 @@
+{
+  "id": "stolen-uniform-corpus-m680",
+  "description": "M6 corpus — Stolen Uniform; in-hand parse.",
+  "seed": 64468,
+  "cards": {
+    "Stolen Uniform": "Name:Stolen Uniform\nManaCost:U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberObjects$ ThisTargetedCard | SubAbility$ DBGainControl | SpellDescription$ Choose target creature you control and target Equipment. Gain control of that Equipment until end of turn. Attach it to the chosen creature. When you lose control of that Equipment this turn, if it's attached to a creature you control, unattach it.\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Equipment | LoseControl$ EOT | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | Defined$ Remembered | SubAbility$ DBDelayTrig\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ ChangesController | ValidCard$ Card.IsTriggerRemembered | IsPresent$ Card.IsTriggerRemembered+AttachedTo Creature.YouCtrl | ValidOriginalController$ You | RememberObjects$ ParentTarget | ThisTurn$ True | Execute$ TrigUnattach | SubAbility$ DBCleanup | TriggerDescription$ When you lose control of that Equipment this turn, if it's attached to a creature you control, unattach it.\nSVar:TrigUnattach:DB$ Unattach | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose target creature you control and target Equipment. Gain control of that Equipment until end of turn. Attach it to the chosen creature. When you lose control of that Equipment this turn, if it's attached to a creature you control, unattach it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stolen Uniform"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

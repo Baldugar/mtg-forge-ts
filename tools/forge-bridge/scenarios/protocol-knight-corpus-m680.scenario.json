@@ -1,0 +1,23 @@
+{
+  "id": "protocol-knight-corpus-m680",
+  "description": "M6 corpus — Protocol Knight; in-hand parse.",
+  "seed": 63819,
+  "cards": {
+    "Protocol Knight": "Name:Protocol Knight\nManaCost:3 U\nTypes:Creature Human Knight\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. Put a stun counter on that creature if you control another Knight. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBCounter | TgtPrompt$ Select target creature an opponent controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | ConditionPresent$ Knight.YouCtrl+StrictlyOther\nDeckHas:Ability$Counters\nDeckHints:Type$Knight\nOracle:When Protocol Knight enters, tap target creature an opponent controls. Put a stun counter on that creature if you control another Knight. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protocol Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

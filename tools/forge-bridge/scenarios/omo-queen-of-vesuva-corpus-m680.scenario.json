@@ -1,0 +1,23 @@
+{
+  "id": "omo-queen-of-vesuva-corpus-m680",
+  "description": "M6 corpus — Omo, Queen of Vesuva; in-hand parse.",
+  "seed": 63622,
+  "cards": {
+    "Omo, Queen of Vesuva": "Name:Omo, Queen of Vesuva\nManaCost:2 GU\nTypes:Legendary Creature Shapeshifter Noble\nPT:1/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME enters or attacks, put an everything counter on each of up to one target land and up to one target creature.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put an everything counter on each of up to one target land and up to one target creature.\nSVar:TrigPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Land | TgtPrompt$ Select up to one target land | CounterType$ EVERYTHING | CounterNum$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | CounterType$ EVERYTHING | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Land.counters_GE1_EVERYTHING | AddType$ AllBasicLandType & AllNonBasicLandType | Description$ Each land with an everything counter on it is every land type in addition to its other types.\nS:Mode$ Continuous | Affected$ Creature.nonLand+counters_GE1_EVERYTHING | AddAllCreatureTypes$ True | Description$ Each nonland creature with an everything counter on it is every creature type.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever Omo, Queen of Vesuva enters or attacks, put an everything counter on each of up to one target land and up to one target creature.\\nEach land with an everything counter on it is every land type in addition to its other types.\\nEach nonland creature with an everything counter on it is every creature type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omo, Queen of Vesuva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

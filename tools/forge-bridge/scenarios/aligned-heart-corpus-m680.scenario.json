@@ -1,0 +1,23 @@
+{
+  "id": "aligned-heart-corpus-m680",
+  "description": "M6 corpus — Aligned Heart; in-hand parse.",
+  "seed": 61488,
+  "cards": {
+    "Aligned Heart": "Name:Aligned Heart\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Flurry — Whenever you cast your second spell each turn, put a rally counter on this enchantment. Then create a 1/1 white Monk creature token with prowess for each rally counter on it. (Whenever you cast a noncreature spell, the token gets +1/+1 until end of turn.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ RALLY | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_monk_prowess | TokenOwner$ You\nSVar:X:Count$CardCounters.RALLY\nSVar:BuffedBy:Card\nOracle:Flurry — Whenever you cast your second spell each turn, put a rally counter on this enchantment. Then create a 1/1 white Monk creature token with prowess for each rally counter on it. (Whenever you cast a noncreature spell, the token gets +1/+1 until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aligned Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

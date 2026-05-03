@@ -1,0 +1,23 @@
+{
+  "id": "qarsi-sadist-corpus-m680",
+  "description": "M6 corpus — Qarsi Sadist; in-hand parse.",
+  "seed": 63854,
+  "cards": {
+    "Qarsi Sadist": "Name:Qarsi Sadist\nManaCost:1 B\nTypes:Creature Human Cleric\nPT:1/3\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ When CARDNAME exploits a creature, target opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Qarsi Sadist exploits a creature, target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Qarsi Sadist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

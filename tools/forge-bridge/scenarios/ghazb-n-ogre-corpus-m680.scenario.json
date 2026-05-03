@@ -1,0 +1,23 @@
+{
+  "id": "ghazb-n-ogre-corpus-m680",
+  "description": "M6 corpus — Ghazbán Ogre; in-hand parse.",
+  "seed": 62630,
+  "cards": {
+    "Ghazbán Ogre": "Name:Ghazbán Ogre\nManaCost:G\nTypes:Creature Ogre\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | APlayerHasMoreLifeThanEachOther$ True | Execute$ TrigOppControl | TriggerDescription$ At the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of CARDNAME.\nSVar:TrigOppControl:DB$ GainControl | Defined$ Self | NewController$ Player.withMostLife\nAI:RemoveDeck:Random\nDeckNeeds:Ability$LifeGain\nOracle:At the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of Ghazbán Ogre.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghazbán Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sharp-eyed-rookie-corpus-m680",
+  "description": "M6 corpus — Sharp-Eyed Rookie; in-hand parse.",
+  "seed": 64240,
+  "cards": {
+    "Sharp-Eyed Rookie": "Name:Sharp-Eyed Rookie\nManaCost:1 G\nTypes:Creature Human Detective\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Condition$ Evolve | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control enters, if its power is greater than CARDNAME's power or its toughness is greater than CARDNAME's toughness, put a +1/+1 counter on CARDNAME and investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nDeckHas:Ability$Counters|Investigate|Token|Sacrifice & Type$Clue|Artifact\nOracle:Vigilance\\nWhenever a creature you control enters, if its power is greater than Sharp-Eyed Rookie's power or its toughness is greater than Sharp-Eyed Rookie's toughness, put a +1/+1 counter on Sharp-Eyed Rookie and investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sharp-Eyed Rookie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

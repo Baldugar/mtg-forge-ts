@@ -1,0 +1,23 @@
+{
+  "id": "firefist-adept-corpus-m680",
+  "description": "M6 corpus — Firefist Adept; in-hand parse.",
+  "seed": 62496,
+  "cards": {
+    "Firefist Adept": "Name:Firefist Adept\nManaCost:4 R\nTypes:Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals X damage to target creature an opponent controls, where X is the number of Wizards you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X\nSVar:X:Count$Valid Wizard.YouCtrl\nDeckHints:Type$Wizard\nOracle:When Firefist Adept enters, it deals X damage to target creature an opponent controls, where X is the number of Wizards you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firefist Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

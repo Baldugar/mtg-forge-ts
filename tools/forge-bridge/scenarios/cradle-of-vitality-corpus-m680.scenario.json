@@ -1,0 +1,23 @@
+{
+  "id": "cradle-of-vitality-corpus-m680",
+  "description": "M6 corpus — Cradle of Vitality; in-hand parse.",
+  "seed": 62027,
+  "cards": {
+    "Cradle of Vitality": "Name:Cradle of Vitality\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ LifeGained | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you gain life, you may pay {1}{W}. If you do, put a +1/+1 counter on target creature for each 1 life you gained.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ 1 W | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$LifeAmount\nAI:RemoveDeck:Random\nOracle:Whenever you gain life, you may pay {1}{W}. If you do, put a +1/+1 counter on target creature for each 1 life you gained.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cradle of Vitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

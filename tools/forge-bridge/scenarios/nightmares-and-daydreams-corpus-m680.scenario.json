@@ -1,0 +1,23 @@
+{
+  "id": "nightmares-and-daydreams-corpus-m680",
+  "description": "M6 corpus — Nightmares and Daydreams; in-hand parse.",
+  "seed": 63556,
+  "cards": {
+    "Nightmares and Daydreams": "Name:Nightmares and Daydreams\nManaCost:2 U\nTypes:Enchantment Saga\nK:Chapter:4:DBEffect,DBEffect,DBEffect,DBDraw\nSVar:DBEffect:DB$ Effect | Triggers$ CastTrig | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, whenever you cast an instant or sorcery spell, target player mills cards equal to that spell's mana value.\nSVar:CastTrig:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigMill | TriggerDescription$ Whenever you cast an instant or sorcery spell, target player mills cards equal to that spell's mana value.\nSVar:TrigMill:DB$ Mill | NumCards$ X | ValidTgts$ Player\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SpellDescription$ Draw a card. If a graveyard has twenty or more cards in it, draw three cards instead.\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:CheckGrave:PlayerCountPlayers$HighestValidGraveyard Card.YouOwn\nSVar:Y:Count$Compare CheckGrave GE20.3.1\nDeckHints:Type$Instant|Sorcery\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Until your next turn, whenever you cast an instant or sorcery spell, target player mills cards equal to that spell's mana value.\\nIV — Draw a card. If a graveyard has twenty or more cards in it, draw three cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightmares and Daydreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flame-of-anor-corpus-m680",
+  "description": "M6 corpus — Flame of Anor; in-hand parse.",
+  "seed": 62504,
+  "cards": {
+    "Flame of Anor": "Name:Flame of Anor\nManaCost:1 U R\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBDraw,DBDestroy,DBDamage | AdditionalDescription$ . If you control a Wizard as you cast this spell, you may choose two instead.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Player | SpellDescription$ Target player draws two cards.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 5 | SpellDescription$ CARDNAME deals 5 damage to target creature.\nSVar:Y:Count$Valid Card.Wizard+YouCtrl\nDeckHints:Type$Wizard\nOracle:Choose one. If you control a Wizard as you cast this spell, you may choose two instead.\\n• Target player draws two cards.\\n• Destroy target artifact.\\n• Flame of Anor deals 5 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flame of Anor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

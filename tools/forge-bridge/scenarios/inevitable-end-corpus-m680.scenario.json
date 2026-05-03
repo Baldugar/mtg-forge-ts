@@ -1,0 +1,23 @@
+{
+  "id": "inevitable-end-corpus-m680",
+  "description": "M6 corpus — Inevitable End; in-hand parse.",
+  "seed": 62923,
+  "cards": {
+    "Inevitable End": "Name:Inevitable End\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ InevitableTrig | Description$ Enchanted creature has \"At the beginning of your upkeep, sacrifice a creature.\"\nSVar:InevitableTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ InevitableSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:InevitableSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your upkeep, sacrifice a creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inevitable End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

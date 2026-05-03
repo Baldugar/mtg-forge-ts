@@ -1,0 +1,23 @@
+{
+  "id": "kutzil-s-flanker-corpus-m680",
+  "description": "M6 corpus — Kutzil's Flanker; in-hand parse.",
+  "seed": 63166,
+  "cards": {
+    "Kutzil's Flanker": "Name:Kutzil's Flanker\nManaCost:2 W\nTypes:Creature Cat Warrior\nPT:3/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBGainLife,DBExile\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Put a +1/+1 counter on CARDNAME for each creature that left the battlefield under your control this turn.\nSVar:X:Count$LeftBattlefieldThisTurn Creature.YouCtrl\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBScry | SpellDescription$ You gain 2 life and scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nSVar:DBExile:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | IsCurse$ True | SpellDescription$ Exile target player's graveyard.\nOracle:Flash\\nWhen Kutzil's Flanker enters, choose one —\\n• Put a +1/+1 counter on Kutzil's Flanker for each creature that left the battlefield under your control this turn.\\n• You gain 2 life and scry 2.\\n• Exile target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kutzil's Flanker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dutiful-knowledge-seeker-corpus-m680",
+  "description": "M6 corpus — Dutiful Knowledge Seeker; in-hand parse.",
+  "seed": 62265,
+  "cards": {
+    "Dutiful Knowledge Seeker": "Name:Dutiful Knowledge Seeker\nManaCost:2 U\nTypes:Creature Fox Spirit\nPT:2/2\nT:Mode$ ChangesZoneAll | ValidCards$ Card.!token | Origin$ Any | Destination$ Library | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more cards are put into a library from anywhere, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 3 | ValidTgts$ Card | TgtPrompt$ Select target card in a graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target card from a graveyard on the bottom of its owner's library.\nDeckHas:Ability$Counters\nOracle:Whenever one or more cards are put into a library from anywhere, put a +1/+1 counter on this creature.\\n{3}: Put target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dutiful Knowledge Seeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

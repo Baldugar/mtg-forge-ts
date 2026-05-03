@@ -1,0 +1,23 @@
+{
+  "id": "deadshot-minotaur-corpus-m680",
+  "description": "M6 corpus — Deadshot Minotaur; in-hand parse.",
+  "seed": 62108,
+  "cards": {
+    "Deadshot Minotaur": "Name:Deadshot Minotaur\nManaCost:3 R G\nTypes:Creature Minotaur\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to target creature with flying.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 3\nK:Cycling:RG\nOracle:When Deadshot Minotaur enters, it deals 3 damage to target creature with flying.\\nCycling {R/G} ({R/G}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadshot Minotaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

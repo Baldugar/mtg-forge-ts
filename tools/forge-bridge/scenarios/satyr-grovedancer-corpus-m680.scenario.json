@@ -1,0 +1,23 @@
+{
+  "id": "satyr-grovedancer-corpus-m680",
+  "description": "M6 corpus — Satyr Grovedancer; in-hand parse.",
+  "seed": 64129,
+  "cards": {
+    "Satyr Grovedancer": "Name:Satyr Grovedancer\nManaCost:1 G\nTypes:Creature Satyr Shaman\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nOracle:When Satyr Grovedancer enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Satyr Grovedancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

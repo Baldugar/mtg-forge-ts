@@ -1,0 +1,23 @@
+{
+  "id": "deeproot-champion-corpus-m680",
+  "description": "M6 corpus — Deeproot Champion; in-hand parse.",
+  "seed": 62136,
+  "cards": {
+    "Deeproot Champion": "Name:Deeproot Champion\nManaCost:1 G\nTypes:Creature Merfolk Shaman\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:nonCreature\nOracle:Whenever you cast a noncreature spell, put a +1/+1 counter on Deeproot Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deeproot Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

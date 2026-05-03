@@ -1,0 +1,23 @@
+{
+  "id": "agatha-s-soul-cauldron-corpus-m680",
+  "description": "M6 corpus — Agatha's Soul Cauldron; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Agatha's Soul Cauldron": "Name:Agatha's Soul Cauldron\nManaCost:2\nTypes:Legendary Artifact\nS:Mode$ ManaConvert | ValidPlayer$ You | ValidCard$ Creature.YouCtrl+inZoneBattlefield | ValidSA$ Activated | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to activate abilities of creatures you control.\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | EffectZone$ Battlefield | GainsAbilitiesOf$ Creature.ExiledWithSource | GainsAbilitiesOfZones$ Exile | Description$ Creatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with CARDNAME.\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | RememberChanged$ True | ValidTgts$ Card | SubAbility$ TrigImmediateTrig | SpellDescription$ Exile target card from a graveyard. When a creature card is exiled this way, put a +1/+1 counter on target creature you control.\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | Execute$ TrigPutCounter | SubAbility$ DBCleanup | TriggerDescription$ When a creature card is exiled this way, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Counters\nOracle:You may spend mana as though it were mana of any color to activate abilities of creatures you control.\\nCreatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with Agatha's Soul Cauldron.\\n{T}: Exile target card from a graveyard. When a creature card is exiled this way, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agatha's Soul Cauldron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

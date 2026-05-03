@@ -1,0 +1,23 @@
+{
+  "id": "banewasp-affliction-corpus-m680",
+  "description": "M6 corpus — Banewasp Affliction; in-hand parse.",
+  "seed": 61645,
+  "cards": {
+    "Banewasp Affliction": "Name:Banewasp Affliction\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLose | TriggerDescription$ When enchanted creature dies, that creature's controller loses life equal to its toughness.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nOracle:Enchant creature\\nWhen enchanted creature dies, that creature's controller loses life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banewasp Affliction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

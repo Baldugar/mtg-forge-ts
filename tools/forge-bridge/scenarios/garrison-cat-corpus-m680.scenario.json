@@ -1,0 +1,23 @@
+{
+  "id": "garrison-cat-corpus-m680",
+  "description": "M6 corpus — Garrison Cat; in-hand parse.",
+  "seed": 62603,
+  "cards": {
+    "Garrison Cat": "Name:Garrison Cat\nManaCost:W\nTypes:Creature Cat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ TriggeredCardController\nSVar:SacMe:1\nDeckHints:Type$Human\nDeckHas:Ability$Token\nOracle:When Garrison Cat dies, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garrison Cat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sudden-substitution-corpus-m680",
+  "description": "M6 corpus — Sudden Substitution; in-hand parse.",
+  "seed": 64498,
+  "cards": {
+    "Sudden Substitution": "Name:Sudden Substitution\nManaCost:2 U U\nTypes:Instant\nK:Split second\nA:SP$ Pump | TargetType$ Spell | ValidTgts$ Card.nonCreature | TgtZone$ Stack | ImprintCards$ TargetedSource | SubAbility$ DBRemember | StackDescription$ SpellDescription | SpellDescription$ Exchange control of target noncreature spell and target creature. Then the spell's controller may choose new targets for it.\nSVar:DBRemember:DB$ Pump | ValidTgts$ Creature | RememberObjects$ ThisTargetedCard | SubAbility$ DBRememberPlayer\nSVar:DBRememberPlayer:DB$ Pump | RememberObjects$ RememberedController | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ Remembered.Creature | NewController$ ImprintedController | ConditionDefined$ Imprinted | ConditionPresent$ Card | StackDescription$ None | SubAbility$ DBControlSpell\nSVar:DBControlSpell:DB$ ControlSpell | Defined$ Targeted | NewController$ Player.IsRemembered | Mode$ Gain | ConditionDefined$ Remembered | ConditionPresent$ Card | StackDescription$ None | SubAbility$ DBChooseTargets\nSVar:DBChooseTargets:DB$ ChangeTargets | Defined$ Targeted | Chooser$ Player.IsRemembered | Optional$ True | ConditionDefined$ Imprinted | ConditionPresent$ Card | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nAI:RemoveDeck:All\nOracle:Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\\nExchange control of target noncreature spell and target creature. Then the spell's controller may choose new targets for it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sudden Substitution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

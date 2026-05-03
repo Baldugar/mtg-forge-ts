@@ -1,0 +1,23 @@
+{
+  "id": "spawn-of-mayhem-corpus-m680",
+  "description": "M6 corpus — Spawn of Mayhem; in-hand parse.",
+  "seed": 64391,
+  "cards": {
+    "Spawn of Mayhem": "Name:Spawn of Mayhem\nManaCost:2 B B\nTypes:Creature Demon\nPT:4/4\nK:Spectacle:1 B B\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each player. Then if you have 10 or less life, put a +1/+1 counter on CARDNAME.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player | NumDmg$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ LE10\nSVar:X:Count$YourLifeTotal\nDeckHas:Ability$Counters\nOracle:Spectacle {1}{B}{B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\\nFlying, trample\\nAt the beginning of your upkeep, Spawn of Mayhem deals 1 damage to each player. Then if you have 10 or less life, put a +1/+1 counter on Spawn of Mayhem.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawn of Mayhem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

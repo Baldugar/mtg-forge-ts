@@ -1,0 +1,23 @@
+{
+  "id": "fyndhorn-druid-corpus-m680",
+  "description": "M6 corpus — Fyndhorn Druid; in-hand parse.",
+  "seed": 62592,
+  "cards": {
+    "Fyndhorn Druid": "Name:Fyndhorn Druid\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+gotBlockedThisTurn | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, if it was blocked this turn, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 4\nOracle:When Fyndhorn Druid dies, if it was blocked this turn, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fyndhorn Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "punish-the-enemy-corpus-m680",
+  "description": "M6 corpus — Punish the Enemy; in-hand parse.",
+  "seed": 63837,
+  "cards": {
+    "Punish the Enemy": "Name:Punish the Enemy\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3 | DamageMap$ True | SubAbility$ DB1 | SpellDescription$ CARDNAME deals 3 damage to target player or planeswalker and 3 damage to target creature.\nSVar:DB1:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Creature | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Punish the Enemy deals 3 damage to target player or planeswalker and 3 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Punish the Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

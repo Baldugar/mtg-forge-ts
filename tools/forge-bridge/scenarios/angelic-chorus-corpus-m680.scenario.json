@@ -1,0 +1,23 @@
+{
+  "id": "angelic-chorus-corpus-m680",
+  "description": "M6 corpus — Angelic Chorus; in-hand parse.",
+  "seed": 61513,
+  "cards": {
+    "Angelic Chorus": "Name:Angelic Chorus\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature you control enters, you gain life equal to its toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nSVar:PlayMain1:TRUE\nSVar:AIPriorityModifier:9\nOracle:Whenever a creature you control enters, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angelic Chorus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

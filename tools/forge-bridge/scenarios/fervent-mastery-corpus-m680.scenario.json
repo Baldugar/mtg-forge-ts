@@ -1,0 +1,23 @@
+{
+  "id": "fervent-mastery-corpus-m680",
+  "description": "M6 corpus — Fervent Mastery; in-hand parse.",
+  "seed": 62472,
+  "cards": {
+    "Fervent Mastery": "Name:Fervent Mastery\nManaCost:3 R R\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 2 R R | Description$ You may pay {2}{R}{R} rather than pay this spell's mana cost. | StackDescription$ If the {2}{R}{R} cost was paid, an opponent discards any number of cards, then draws that many cards. Search your library for up to three cards, put them into your hand, shuffle, then discard three cards at random.\nA:SP$ Branch | BranchConditionSVar$ AltCostPaid | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ OppDiscard | FalseSubAbility$ DBSearch | StackDescription$ Search your library for up to three cards, put them into your hand, shuffle, then discard three cards at random. | SpellDescription$ If the {2}{R}{R} cost was paid, an opponent discards any number of cards, then draws that many cards. Search your library for up to three cards, put them into your hand, shuffle, then discard three cards at random.\nSVar:OppDiscard:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ ChosenPlayer | AILogic$ DiscardUncastableAndExcess | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ ChosenPlayer | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSearch\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Hidden$ True | ChangeNum$ 3 | ChangeType$ Card | Destination$ Hand | SubAbility$ DBDiscard2\nSVar:DBDiscard2:DB$ Discard | Defined$ You | NumCards$ 3 | Mode$ Random\nSVar:Y:Remembered$Amount\nSVar:AltCostPaid:Count$AltCost.1.0\nDeckHas:Ability$Discard\nOracle:You may pay {2}{R}{R} rather than pay this spell's mana cost.\\nIf the {2}{R}{R} cost was paid, an opponent discards any number of cards, then draws that many cards.\\nSearch your library for up to three cards, put them into your hand, shuffle, then discard three cards at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fervent Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

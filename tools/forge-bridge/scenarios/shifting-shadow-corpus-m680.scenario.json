@@ -1,0 +1,23 @@
+{
+  "id": "shifting-shadow-corpus-m680",
+  "description": "M6 corpus — Shifting Shadow; in-hand parse.",
+  "seed": 64252,
+  "cards": {
+    "Shifting Shadow": "Name:Shifting Shadow\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Haste | AddTrigger$ ShadowUpkeepTrig | Description$ Enchanted creature has haste and \"At the beginning of your upkeep, destroy this creature. Reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and attach CARDNAME to it, then put all other cards revealed this way on the bottom of your library in a random order.\"\nSVar:ShadowUpkeepTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ShadowDestroyEnchanted | TriggerDescription$ At the beginning of your upkeep, destroy this creature. Reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and attach CARDNAME to it, then put all other cards revealed this way on the bottom of your library in a random order.\nSVar:ShadowDestroyEnchanted:DB$ Destroy | Defined$ Self | SubAbility$ ShadowRevealCards\nSVar:ShadowRevealCards:DB$ DigUntil | Valid$ Creature | ValidDescription$ creature | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberFound$ True | SubAbility$ ShadowReattach\nSVar:ShadowReattach:DB$ Attach | Defined$ Remembered | Object$ OriginalHost | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Enchant creature\\nEnchanted creature has haste and \"At the beginning of your upkeep, destroy this creature. Reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and attach Shifting Shadow to it, then put all other cards revealed this way on the bottom of your library in a random order.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shifting Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

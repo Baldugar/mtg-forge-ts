@@ -1,0 +1,23 @@
+{
+  "id": "silumgar-scavenger-corpus-m680",
+  "description": "M6 corpus — Silumgar Scavenger; in-hand parse.",
+  "seed": 64281,
+  "cards": {
+    "Silumgar Scavenger": "Name:Silumgar Scavenger\nManaCost:4 B\nTypes:Creature Zombie Bird\nPT:2/3\nK:Flying\nK:Exploit\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME. It gains haste until end of turn if it exploited that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Haste | ConditionDefined$ TriggeredCard | ConditionPresent$ Card.exploited\nDeckHas:Ability$Counters\nOracle:Flying\\nExploit (When this creature enters, you may sacrifice a creature.)\\nWhenever another creature you control dies, put a +1/+1 counter on Silumgar Scavenger. It gains haste until end of turn if it exploited that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silumgar Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

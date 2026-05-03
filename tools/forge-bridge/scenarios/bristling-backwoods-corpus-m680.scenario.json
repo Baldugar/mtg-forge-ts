@@ -1,0 +1,23 @@
+{
+  "id": "bristling-backwoods-corpus-m680",
+  "description": "M6 corpus — Bristling Backwoods; in-hand parse.",
+  "seed": 61794,
+  "cards": {
+    "Bristling Backwoods": "Name:Bristling Backwoods\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:Bristling Backwoods enters tapped.\\nWhen Bristling Backwoods enters, it deals 1 damage to target opponent.\\n{T}:Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bristling Backwoods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

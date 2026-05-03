@@ -1,0 +1,23 @@
+{
+  "id": "jund-charm-corpus-m680",
+  "description": "M6 corpus — Jund Charm; in-hand parse.",
+  "seed": 63061,
+  "cards": {
+    "Jund Charm": "Name:Jund Charm\nManaCost:B R G\nTypes:Instant\nA:SP$ Charm | Choices$ DBChangeZone,DBDmg,DBPutCounter\nSVar:DBChangeZone:DB$ ChangeZoneAll | ValidTgts$ Player | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile | SpellDescription$ Exile all cards from target player's graveyard.\nSVar:DBDmg:DB$ DamageAll | NumDmg$ 2 | ValidCards$ Creature | SpellDescription$ CARDNAME deals 2 damage to each creature.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on target creature.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Exile all cards from target player's graveyard.\\n• Jund Charm deals 2 damage to each creature.\\n• Put two +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jund Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

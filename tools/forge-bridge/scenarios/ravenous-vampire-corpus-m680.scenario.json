@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-vampire-corpus-m680",
+  "description": "M6 corpus — Ravenous Vampire; in-hand parse.",
+  "seed": 63914,
+  "cards": {
+    "Ravenous Vampire": "Name:Ravenous Vampire\nManaCost:3 B B\nTypes:Creature Vampire\nPT:3/3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice a nonartifact creature. If you do, put a +1/+1 counter on CARDNAME. If you don't, tap CARDNAME.\nSVar:TrigSacrifice:DB$ Sacrifice | Optional$ True | SacValid$ Creature.nonArtifact | Amount$ 1 | RememberSacrificed$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Creature.nonArtifact | ConditionCompare$ GE1 | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Creature.nonArtifact | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Flying\\nAt the beginning of your upkeep, you may sacrifice a nonartifact creature. If you do, put a +1/+1 counter on Ravenous Vampire. If you don't, tap Ravenous Vampire.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

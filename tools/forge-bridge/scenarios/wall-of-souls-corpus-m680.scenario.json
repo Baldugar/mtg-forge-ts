@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-souls-corpus-m680",
+  "description": "M6 corpus — Wall of Souls; in-hand parse.",
+  "seed": 64992,
+  "cards": {
+    "Wall of Souls": "Name:Wall of Souls\nManaCost:1 B\nTypes:Creature Wall\nPT:0/4\nK:Defender\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidTarget$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME is dealt combat damage, it deals that much damage to target opponent or planeswalker.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Defender (This creature can't attack.)\\nWhenever Wall of Souls is dealt combat damage, it deals that much damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

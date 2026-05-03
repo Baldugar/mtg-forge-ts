@@ -1,0 +1,23 @@
+{
+  "id": "unsparing-boltcaster-corpus-m680",
+  "description": "M6 corpus — Unsparing Boltcaster; in-hand parse.",
+  "seed": 64856,
+  "cards": {
+    "Unsparing Boltcaster": "Name:Unsparing Boltcaster\nManaCost:2 R\nTypes:Creature Ogre Wizard\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When this creature enters, it deals 5 damage to target creature an opponent controls that was dealt damage this turn.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl+wasDealtDamageThisTurn | TgtPrompt$ Select target creature an opponent controls that was dealt damage this turn | NumDmg$ 5\nOracle:When this creature enters, it deals 5 damage to target creature an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unsparing Boltcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

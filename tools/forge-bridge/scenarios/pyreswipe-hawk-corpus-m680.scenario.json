@@ -1,0 +1,23 @@
+{
+  "id": "pyreswipe-hawk-corpus-m680",
+  "description": "M6 corpus — Pyreswipe Hawk; in-hand parse.",
+  "seed": 63847,
+  "cards": {
+    "Pyreswipe Hawk": "Name:Pyreswipe Hawk\nManaCost:3 R R\nTypes:Creature Elemental Bird\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the greatest mana value among artifacts you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nT:Mode$ ManaExpend | Amount$ 6 | Player$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever you expend 6, gain control of up to one target artifact for as long as you control CARDNAME. (You expend 6 as you spend your sixth total mana to cast spells during a turn.)\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Artifact | TargetMin$ 0 | TargetMax$ 1 | LoseControl$ LeavesPlay,LoseControl\nSVar:X:Count$Valid Artifact.YouCtrl$GreatestCardManaCost\nOracle:Flying, haste\\nWhenever Pyreswipe Hawk attacks, it gets +X/+0 until end of turn, where X is the greatest mana value among artifacts you control.\\nWhenever you expend 6, gain control of up to one target artifact for as long as you control Pyreswipe Hawk. (You expend 6 as you spend your sixth total mana to cast spells during a turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyreswipe Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

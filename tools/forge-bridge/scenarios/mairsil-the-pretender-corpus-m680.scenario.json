@@ -1,0 +1,23 @@
+{
+  "id": "mairsil-the-pretender-corpus-m680",
+  "description": "M6 corpus — Mairsil, the Pretender; in-hand parse.",
+  "seed": 63315,
+  "cards": {
+    "Mairsil, the Pretender": "Name:Mairsil, the Pretender\nManaCost:1 U B R\nTypes:Legendary Creature Human Wizard\nPT:4/4\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Card.YouOwn+counters_GE1_CAGE | GainsAbilitiesOfZones$ Exile | GainsAbilitiesLimitPerTurn$ 1 | Description$ CARDNAME has all activated abilities of all cards you own in exile with cage counters on them. You may activate each of those abilities only once each turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile an artifact or creature card from your hand or graveyard and put a cage counter on it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Exile | ChangeType$ Artifact.YouCtrl,Creature.YouCtrl | SubAbility$ DBCounter | RememberChanged$ True | ChangeNum$ 1 | AILogic$ Mairsil\nSVar:DBCounter:DB$ PutCounter | CounterType$ CAGE | CounterNum$ 1 | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Mairsil, the Pretender enters, you may exile an artifact or creature card from your hand or graveyard and put a cage counter on it.\\nMairsil, the Pretender has all activated abilities of all cards you own in exile with cage counters on them. You may activate each of those abilities only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mairsil, the Pretender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

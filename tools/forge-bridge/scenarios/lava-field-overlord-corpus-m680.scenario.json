@@ -1,0 +1,23 @@
+{
+  "id": "lava-field-overlord-corpus-m680",
+  "description": "M6 corpus — Lava-Field Overlord; in-hand parse.",
+  "seed": 63194,
+  "cards": {
+    "Lava-Field Overlord": "Name:Lava-Field Overlord\nManaCost:7 R R\nTypes:Creature Dragon\nPT:5/4\nK:Assist\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to target creature an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 4\nOracle:Assist (Another player can pay up to {7} of this spell's cost.)\\nFlying\\nWhen Lava-Field Overlord enters, it deals 4 damage to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava-Field Overlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

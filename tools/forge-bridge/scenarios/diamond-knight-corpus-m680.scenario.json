@@ -1,0 +1,23 @@
+{
+  "id": "diamond-knight-corpus-m680",
+  "description": "M6 corpus — Diamond Knight; in-hand parse.",
+  "seed": 62164,
+  "cards": {
+    "Diamond Knight": "Name:Diamond Knight\nManaCost:3\nTypes:Artifact Creature Knight\nPT:1/1\nK:Vigilance\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInComputerDeck\nT:Mode$ SpellCast | ValidCard$ Card.ChosenColor | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell of the chosen color, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card.ChosenColor\nDeckHas:Ability$Counters\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nAs Diamond Knight enters, choose a color.\\nWhenever you cast a spell of the chosen color, put a +1/+1 counter on Diamond Knight.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diamond Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

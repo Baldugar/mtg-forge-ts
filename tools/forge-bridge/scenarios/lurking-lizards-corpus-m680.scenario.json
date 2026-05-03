@@ -1,0 +1,23 @@
+{
+  "id": "lurking-lizards-corpus-m680",
+  "description": "M6 corpus — Lurking Lizards; in-hand parse.",
+  "seed": 63291,
+  "cards": {
+    "Lurking Lizards": "Name:Lurking Lizards\nManaCost:1 G\nTypes:Creature Lizard Villain\nPT:1/3\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE4 | ValidActivatingPlayer$ You | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on this creature.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Permanent.cmcGE4\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurking Lizards"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

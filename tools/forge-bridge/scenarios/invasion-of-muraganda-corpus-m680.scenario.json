@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-muraganda-corpus-m680",
+  "description": "M6 corpus — Invasion of Muraganda; in-hand parse.",
+  "seed": 62968,
+  "cards": {
+    "Invasion of Muraganda": "Name:Invasion of Muraganda\nManaCost:4 G\nTypes:Battle Siege\nDefense:6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control. Then that creature fights up to one target creature you don't control.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ Fight | SubAbility$ DBFight\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouDontCtrl | AILogic$ Always | TgtPrompt$ Choose up to one target creature you don't control\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Muraganda enters, put a +1/+1 counter on target creature you control. Then that creature fights up to one target creature you don't control.\n\nALTERNATE\n\nName:Primordial Plasm\nManaCost:no cost\nColors:green\nTypes:Creature Ooze\nPT:4/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, another target creature gets +2/+2 and loses all abilities until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | RemoveAllAbilities$ True\nOracle:At the beginning of combat on your turn, another target creature gets +2/+2 and loses all abilities until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Muraganda"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

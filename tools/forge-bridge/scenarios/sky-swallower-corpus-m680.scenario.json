@@ -1,0 +1,23 @@
+{
+  "id": "sky-swallower-corpus-m680",
+  "description": "M6 corpus — Sky Swallower; in-hand parse.",
+  "seed": 64305,
+  "cards": {
+    "Sky Swallower": "Name:Sky Swallower\nManaCost:3 U U\nTypes:Creature Leviathan\nPT:8/8\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, target opponent gains control of all other permanents you control.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Opponent | AllValid$ Permanent.StrictlyOther+YouCtrl | NewController$ TargetedPlayer\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Sky Swallower enters, target opponent gains control of all other permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sky Swallower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

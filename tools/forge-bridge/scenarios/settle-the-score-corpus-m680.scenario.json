@@ -1,0 +1,23 @@
+{
+  "id": "settle-the-score-corpus-m680",
+  "description": "M6 corpus — Settle the Score; in-hand parse.",
+  "seed": 64218,
+  "cards": {
+    "Settle the Score": "Name:Settle the Score\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBPutLoyalty | SpellDescription$ Exile target creature. Put two loyalty counters on a planeswalker you control.\nSVar:DBPutLoyalty:DB$ PutCounter | Choices$ Planeswalker.YouCtrl | CounterType$ LOYALTY | CounterNum$ 2\nOracle:Exile target creature. Put two loyalty counters on a planeswalker you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Settle the Score"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

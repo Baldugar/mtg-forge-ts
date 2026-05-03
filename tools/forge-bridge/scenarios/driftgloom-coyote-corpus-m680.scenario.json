@@ -1,0 +1,23 @@
+{
+  "id": "driftgloom-coyote-corpus-m680",
+  "description": "M6 corpus — Driftgloom Coyote; in-hand parse.",
+  "seed": 62237,
+  "cards": {
+    "Driftgloom Coyote": "Name:Driftgloom Coyote\nManaCost:3 W W\nTypes:Creature Elemental Coyote\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield. If that creature had power 2 or less, put a +1/+1 counter on CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Creature.powerLE2\nSVar:PlayMain1:TRUE\nOracle:When Driftgloom Coyote enters, exile target creature an opponent controls until Driftgloom Coyote leaves the battlefield. If that creature had power 2 or less, put a +1/+1 counter on Driftgloom Coyote.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Driftgloom Coyote"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

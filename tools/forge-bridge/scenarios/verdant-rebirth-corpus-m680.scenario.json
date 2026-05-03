@@ -1,0 +1,23 @@
+{
+  "id": "verdant-rebirth-corpus-m680",
+  "description": "M6 corpus — Verdant Rebirth; in-hand parse.",
+  "seed": 64928,
+  "cards": {
+    "Verdant Rebirth": "Name:Verdant Rebirth\nManaCost:1 G\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature | Triggers$ VerdantRebirthChangeZone | SubAbility$ DBDraw | SpellDescription$ Until end of turn, target creature gains \"When this creature dies, return it to its owner's hand.\" Draw a card.\nSVar:VerdantRebirthChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ VerdantRebirthTrigChangeZone | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to its owner's hand.\nSVar:VerdantRebirthTrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:All\nOracle:Until end of turn, target creature gains \"When this creature dies, return it to its owner's hand.\"\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdant Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

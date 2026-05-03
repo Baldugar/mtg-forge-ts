@@ -1,0 +1,23 @@
+{
+  "id": "hooded-horror-corpus-m680",
+  "description": "M6 corpus — Hooded Horror; in-hand parse.",
+  "seed": 62858,
+  "cards": {
+    "Hooded Horror": "Name:Hooded Horror\nManaCost:4 B\nTypes:Creature Horror\nPT:4/4\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+attacking | CheckSVar$ X | SVarCompare$ EQY | Description$ CARDNAME can't be blocked as long as defending player controls the most creatures or is tied for the most.\nSVar:X:Count$Valid Creature.DefenderCtrl\nSVar:Y:PlayerCountPlayers$HighestValid Creature.YouCtrl\nOracle:Hooded Horror can't be blocked as long as defending player controls the most creatures or is tied for the most.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hooded Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

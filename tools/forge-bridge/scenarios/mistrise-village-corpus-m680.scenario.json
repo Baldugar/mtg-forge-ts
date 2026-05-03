@@ -1,0 +1,23 @@
+{
+  "id": "mistrise-village-corpus-m680",
+  "description": "M6 corpus — Mistrise Village; in-hand parse.",
+  "seed": 63443,
+  "cards": {
+    "Mistrise Village": "Name:Mistrise Village\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a Mountain or a Forest.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Mountain.YouCtrl,Forest.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ DelayedTrigger | Cost$ U T | Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ DBEffect | ThisTurn$ True | Static$ True | SpellDescription$ The next spell you cast this turn can't be countered.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ AntiMagic | RememberObjects$ TriggeredCard | ForgetOnMoved$ Stack\nSVar:AntiMagic:Event$ Counter | ValidCard$ Card.IsRemembered | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nOracle:This land enters tapped unless you control a Mountain or a Forest.\\n{T}: Add {U}.\\n{U}, {T}: The next spell you cast this turn can't be countered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistrise Village"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

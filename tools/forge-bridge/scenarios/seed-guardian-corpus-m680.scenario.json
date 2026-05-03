@@ -1,0 +1,23 @@
+{
+  "id": "seed-guardian-corpus-m680",
+  "description": "M6 corpus — Seed Guardian; in-hand parse.",
+  "seed": 64184,
+  "cards": {
+    "Seed Guardian": "Name:Seed Guardian\nManaCost:2 G G\nTypes:Creature Elemental\nPT:3/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create an X/X green Elemental creature token, where X is the number of creature cards in your graveyard.\nSVar:TrigToken:DB$ Token | TokenScript$ g_x_x_elemental | TokenOwner$ TriggeredCardController | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:SacMe:1\nOracle:Reach\\nWhen Seed Guardian dies, create an X/X green Elemental creature token, where X is the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seed Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

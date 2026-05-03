@@ -1,0 +1,23 @@
+{
+  "id": "assert-perfection-corpus-m680",
+  "description": "M6 corpus — Assert Perfection; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Assert Perfection": "Name:Assert Perfection\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | SubAbility$ DBDealDamage | AILogic$ Fight | SpellDescription$ Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to up to one target creature an opponent controls.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select up to one target creature an opponent controls | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to up to one target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Assert Perfection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

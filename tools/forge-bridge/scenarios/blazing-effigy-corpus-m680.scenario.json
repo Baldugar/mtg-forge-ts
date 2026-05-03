@@ -1,0 +1,23 @@
+{
+  "id": "blazing-effigy-corpus-m680",
+  "description": "M6 corpus — Blazing Effigy; in-hand parse.",
+  "seed": 61701,
+  "cards": {
+    "Blazing Effigy": "Name:Blazing Effigy\nManaCost:1 R\nTypes:Creature Elemental\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ BlazeDmg | TriggerDescription$ When CARDNAME dies, it deals X damage to target creature, where X is 3 plus the amount of damage dealt to CARDNAME this turn by other sources named Blazing Effigy.\nSVar:BlazeDmg:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal damage to | NumDmg$ BlazeSize\nSVar:BlazeSize:Count$TotalDamageThisTurn Card.Other+namedBlazing_Effigy/Plus.3\nSVar:SacMe:2\nDeckHints:Name$Blazing Effigy\nOracle:When Blazing Effigy dies, it deals X damage to target creature, where X is 3 plus the amount of damage dealt to Blazing Effigy this turn by other sources named Blazing Effigy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blazing Effigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

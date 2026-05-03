@@ -1,0 +1,23 @@
+{
+  "id": "the-millennium-calendar-corpus-m680",
+  "description": "M6 corpus — The Millennium Calendar; in-hand parse.",
+  "seed": 64672,
+  "cards": {
+    "The Millennium Calendar": "Name:The Millennium Calendar\nManaCost:1\nTypes:Legendary Artifact\nT:Mode$ UntapAll | TriggerZones$ Battlefield | ValidCards$ Permanent | ValidPlayer$ You | Phase$ Untap | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you untap one or more permanents during your untap step, put that many time counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ TIME | CounterNum$ X\nSVar:X:TriggerCount$Amount\nA:AB$ MultiplyCounter | Cost$ 2 T | CounterType$ TIME | SpellDescription$ Double the number of time counters on CARDNAME.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1000_TIME | Execute$ TrigSac | TriggerDescription$ When there are 1,000 or more time counters on CARDNAME, sacrifice it and each opponent loses 1,000 life.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1000\nDeckHas:Ability$Counters|Sacrifice\nDeckHints:Ability$Counters\nOracle:Whenever you untap one or more permanents during your untap step, put that many time counters on The Millennium Calendar.\\n{2}, {T}: Double the number of time counters on The Millennium Calendar.\\nWhen there are 1,000 or more time counters on The Millennium Calendar, sacrifice it and each opponent loses 1,000 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Millennium Calendar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eternal-thirst-corpus-m680",
+  "description": "M6 corpus — Eternal Thirst; in-hand parse.",
+  "seed": 62376,
+  "cards": {
+    "Eternal Thirst": "Name:Eternal Thirst\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddKeyword$ Lifelink | AddTrigger$ EternalChangeZone | AddSVar$ EternalCounters | Description$ Enchanted creature has lifelink and \"Whenever a creature an opponent controls dies, put a +1/+1 counter on this creature.\" (Damage dealt by a creature with lifelink also causes its controller to gain that much life.)\nSVar:EternalChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ EternalCounters | TriggerDescription$ Whenever a creature an opponent controls dies, put a +1/+1 counter on CARDNAME.\nSVar:EternalCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has lifelink and \"Whenever a creature an opponent controls dies, put a +1/+1 counter on this creature.\" (Damage dealt by a creature with lifelink also causes its controller to gain that much life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

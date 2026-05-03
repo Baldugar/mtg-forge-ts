@@ -1,0 +1,23 @@
+{
+  "id": "journey-to-the-lost-city-corpus-m680",
+  "description": "M6 corpus — Journey to the Lost City; in-hand parse.",
+  "seed": 63052,
+  "cards": {
+    "Journey to the Lost City": "Name:Journey to the Lost City\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top four cards of your library, then ABILITY\nSVar:TrigExile:DB$ Dig | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBRollDice\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBPutLand,10-19:DBToken,20:DBPutAll | SpellDescription$ roll a d20.\nSVar:DBPutLand:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Hidden$ True | ChangeType$ Land.IsRemembered | SubAbility$ DBCleanup | SpellDescription$ 1—9 VERT You may put a land card from among those cards onto the battlefield.\nSVar:DBToken:DB$ Token | TokenScript$ g_2_2_wolf | ImprintTokens$ True | SubAbility$ DBPutCounters | SpellDescription$ 10-19 VERT Create a 2/2 green Wolf creature token, then put a +1/+1 counter on it for each creature card among those cards.\nSVar:DBPutCounters:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:X:Remembered$Valid Creature\nSVar:DBPutAll:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBSacrifice | SpellDescription$ 20 VERT Put all permanent cards exiled with CARDNAME onto the battlefield, then sacrifice it.\nSVar:DBSacrifice:DB$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Wolf\nOracle:At the beginning of your upkeep, exile the top four cards of your library, then roll a d20.\\n1—9 | You may put a land card from among those cards onto the battlefield.\\n10—19 | Create a 2/2 green Wolf creature token, then put a +1/+1 counter on it for each creature card among those cards.\\n20 | Put all permanent cards exiled with Journey to the Lost City onto the battlefield, then sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Journey to the Lost City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

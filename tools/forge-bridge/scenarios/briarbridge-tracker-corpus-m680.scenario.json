@@ -1,0 +1,23 @@
+{
+  "id": "briarbridge-tracker-corpus-m680",
+  "description": "M6 corpus — Briarbridge Tracker; in-hand parse.",
+  "seed": 61783,
+  "cards": {
+    "Briarbridge Tracker": "Name:Briarbridge Tracker\nManaCost:2 G\nTypes:Creature Human Scout\nPT:2/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | IsPresent$ Card.token+YouCtrl | Description$ As long as you control a token, CARDNAME gets +2/+0.\nDeckHas:Ability$Token|Sacrifice\nOracle:Vigilance\\nWhen Briarbridge Tracker enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nAs long as you control a token, Briarbridge Tracker gets +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Briarbridge Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

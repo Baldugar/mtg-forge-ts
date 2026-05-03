@@ -1,0 +1,23 @@
+{
+  "id": "goblin-vandal-corpus-m680",
+  "description": "M6 corpus — Goblin Vandal; in-hand parse.",
+  "seed": 62691,
+  "cards": {
+    "Goblin Vandal": "Name:Goblin Vandal\nManaCost:R\nTypes:Creature Goblin Rogue\nPT:1/1\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may pay {R}. If you do, destroy target artifact defending player controls and CARDNAME assigns no combat damage this turn.\nSVar:TrigDestroy:AB$ Destroy | Cost$ R | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target artifact defending player controls | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nOracle:Whenever Goblin Vandal attacks and isn't blocked, you may pay {R}. If you do, destroy target artifact defending player controls and Goblin Vandal assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Vandal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

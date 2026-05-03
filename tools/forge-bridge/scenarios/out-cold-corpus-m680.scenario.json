@@ -1,0 +1,23 @@
+{
+  "id": "out-cold-corpus-m680",
+  "description": "M6 corpus — Out Cold; in-hand parse.",
+  "seed": 63665,
+  "cards": {
+    "Out Cold": "Name:Out Cold\nManaCost:3 U\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBCounter | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | SpellDescription$ Tap up to two target creatures and put a stun counter on each of them. Investigate. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nDeckHas:Ability$Counters|Token & Type$Clue|Artifact\nOracle:This spell can't be countered. (This includes by the ward ability.)\\nTap up to two target creatures and put a stun counter on each of them. Investigate. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Out Cold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

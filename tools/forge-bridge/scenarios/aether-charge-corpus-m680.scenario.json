@@ -1,0 +1,23 @@
+{
+  "id": "aether-charge-corpus-m680",
+  "description": "M6 corpus — Aether Charge; in-hand parse.",
+  "seed": 61457,
+  "cards": {
+    "Aether Charge": "Name:Aether Charge\nManaCost:4 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Beast.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDealDamage | TriggerDescription$ Whenever a Beast you control enters, you may have it deal 4 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | DamageSource$ TriggeredCardLKICopy | ValidTgts$ Opponent,Planeswalker | NumDmg$ 4\nAI:RemoveDeck:Random\nOracle:Whenever a Beast you control enters, you may have it deal 4 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

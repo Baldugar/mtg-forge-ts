@@ -1,0 +1,23 @@
+{
+  "id": "goblin-bowling-team-corpus-m680",
+  "description": "M6 corpus — Goblin Bowling Team; in-hand parse.",
+  "seed": 62682,
+  "cards": {
+    "Goblin Bowling Team": "Name:Goblin Bowling Team\nManaCost:3 R\nTypes:Creature Goblin\nPT:1/1\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.Self | ReplaceWith$ RollDamage | Description$ If CARDNAME would deal damage to a permanent or player, it deals that much damage plus the result of a six-sided die roll to that permanent or player instead.\nSVar:RollDamage:DB$ RollDice | ResultSVar$ Result | SubAbility$ DmgPlus\nSVar:DmgPlus:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.Result\nOracle:If Goblin Bowling Team would deal damage to a permanent or player, it deals that much damage plus the result of a six-sided die roll to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Bowling Team"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

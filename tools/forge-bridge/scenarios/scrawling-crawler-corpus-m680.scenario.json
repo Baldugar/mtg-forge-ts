@@ -1,0 +1,23 @@
+{
+  "id": "scrawling-crawler-corpus-m680",
+  "description": "M6 corpus — Scrawling Crawler; in-hand parse.",
+  "seed": 64156,
+  "cards": {
+    "Scrawling Crawler": "Name:Scrawling Crawler\nManaCost:3\nTypes:Artifact Creature Phyrexian Construct\nPT:3/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, each player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 1\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an opponent draws a card, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 1\nOracle:At the beginning of your upkeep, each player draws a card.\\nWhenever an opponent draws a card, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrawling Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

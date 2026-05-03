@@ -1,0 +1,23 @@
+{
+  "id": "vampiric-sliver-corpus-m680",
+  "description": "M6 corpus — Vampiric Sliver; in-hand parse.",
+  "seed": 64889,
+  "cards": {
+    "Vampiric Sliver": "Name:Vampiric Sliver\nManaCost:3 B\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Sliver | AddTrigger$ VampiricTrig | Description$ All Sliver creatures have \"Whenever a creature dealt damage by this creature this turn dies, put a +1/+1 counter on this creature.\"\nSVar:VampiricTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ VampiricCounters | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +1/+1 counter on CARDNAME.\nSVar:VampiricCounters:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nSVar:PlayMain1:TRUE\nOracle:All Sliver creatures have \"Whenever a creature dealt damage by this creature this turn dies, put a +1/+1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampiric Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

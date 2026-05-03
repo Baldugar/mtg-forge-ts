@@ -1,0 +1,23 @@
+{
+  "id": "nantuko-shrine-corpus-m680",
+  "description": "M6 corpus — Nantuko Shrine; in-hand parse.",
+  "seed": 63516,
+  "cards": {
+    "Nantuko Shrine": "Name:Nantuko Shrine\nManaCost:1 G G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a player casts a spell, that player creates X 1/1 green Squirrel creature tokens, where X is the number of cards in all graveyards with the same name as that spell.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_squirrel | TokenOwner$ TriggeredActivator\nSVar:X:Count$ValidGraveyard Card.sharesNameWith TriggeredCard\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, that player creates X 1/1 green Squirrel creature tokens, where X is the number of cards in all graveyards with the same name as that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nantuko Shrine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

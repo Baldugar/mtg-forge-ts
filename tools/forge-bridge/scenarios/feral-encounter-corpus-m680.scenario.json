@@ -1,0 +1,23 @@
+{
+  "id": "feral-encounter-corpus-m680",
+  "description": "M6 corpus — Feral Encounter; in-hand parse.",
+  "seed": 62466,
+  "cards": {
+    "Feral Encounter": "Name:Feral Encounter\nManaCost:G G\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 5 | Optional$ True | ChangeValid$ Creature | DestinationZone$ Exile | RememberChanged$ True | ForceRevealToController$ True | RestRandomOrder$ True | SubAbility$ DBMayPlay | SpellDescription$ Look at the top five cards of your library. You may exile a creature card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card this turn. At the beginning of the next combat phase this turn, target creature you control deals damage equal to its power to up to one target creature you don't control.\nSVar:DBMayPlay:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ExileOnMoved$ Exile | SubAbility$ DBDelayTrig\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast the exiled card this turn.\nSVar:DBDelayTrig:DB$ DelayedTrigger | ThisTurn$ True | Mode$ Phase | Phase$ BeginCombat | Execute$ TrigFight | SubAbility$ DBCleanup | TriggerDescription$ At the beginning of the next combat phase this turn, target creature you control deals damage equal to its power to up to one target creature you don't control.\nSVar:TrigFight:DB$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:ParentTargeted$CardPower\nSVar:PlayMain1:ALWAYS\nOracle:Look at the top five cards of your library. You may exile a creature card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card this turn. At the beginning of the next combat phase this turn, target creature you control deals damage equal to its power to up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feral Encounter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

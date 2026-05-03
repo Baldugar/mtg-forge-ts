@@ -1,0 +1,23 @@
+{
+  "id": "retaliation-corpus-m680",
+  "description": "M6 corpus — Retaliation; in-hand parse.",
+  "seed": 63969,
+  "cards": {
+    "Retaliation": "Name:Retaliation\nManaCost:2 G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddTrigger$ TrigBlocked | AddSVar$ RetaliationTrigPump | Description$ Creatures you control have \"Whenever this creature becomes blocked by a creature, this creature gets +1/+1 until end of turn.\"\nSVar:TrigBlocked:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ RetaliationTrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, CARDNAME gets +1/+1 until end of turn.\nSVar:RetaliationTrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1\nOracle:Creatures you control have \"Whenever this creature becomes blocked by a creature, this creature gets +1/+1 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retaliation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

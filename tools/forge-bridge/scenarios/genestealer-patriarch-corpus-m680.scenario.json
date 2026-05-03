@@ -1,0 +1,23 @@
+{
+  "id": "genestealer-patriarch-corpus-m680",
+  "description": "M6 corpus — Genestealer Patriarch; in-hand parse.",
+  "seed": 62623,
+  "cards": {
+    "Genestealer Patriarch": "Name:Genestealer Patriarch\nManaCost:4 U\nTypes:Creature Tyranid\nPT:4/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigInfectionCounter | TriggerDescription$ Genestealer's Kiss — Whenever CARDNAME attacks, put an infection counter on target creature defending player controls.\nSVar:TrigInfectionCounter:DB$ PutCounter | CounterType$ INFECTION | CounterNum$ 1 | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Put an infection counter on target creature defending player controls\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.counters_GE1_INFECTION | Execute$ DBCopy | TriggerDescription$ Children of the Cult — Whenever a creature with an infection counter on it dies, you create a token that's a copy of that creature, except it's a Tyranid in addition to its other types.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | AddTypes$ Tyranid\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters|Token\nDeckHints:Name$Diseased Vermin\nOracle:Genestealer's Kiss — Whenever Genestealer Patriarch attacks, put an infection counter on target creature defending player controls.\\nChildren of the Cult — Whenever a creature with an infection counter on it dies, you create a token that's a copy of that creature, except it's a Tyranid in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genestealer Patriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

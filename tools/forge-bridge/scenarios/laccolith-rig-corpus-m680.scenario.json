@@ -1,0 +1,23 @@
+{
+  "id": "laccolith-rig-corpus-m680",
+  "description": "M6 corpus — Laccolith Rig; in-hand parse.",
+  "seed": 63171,
+  "cards": {
+    "Laccolith Rig": "Name:Laccolith Rig\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Pump\nT:Mode$ AttackerBlocked | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ LaccolithDmg | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature becomes blocked, you may have it deal damage equal to its power to target creature. If you do, the first creature assigns no combat damage this turn.\nSVar:LaccolithDmg:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal damage to | NumDmg$ RigX | SubAbility$ DBNoCombatDamage | DamageSource$ TriggeredAttacker\nSVar:DBNoCombatDamage:DB$ Effect | RememberObjects$ TriggeredAttackerLKICopy | StaticAbilities$ SNoCombatDamage | ForgetOnMoved$ Battlefield\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.IsRemembered | Description$ Remembered creature assigns no combat damage this turn.\nSVar:RigX:TriggeredAttacker$CardPower\nOracle:Enchant creature\\nWhenever enchanted creature becomes blocked, you may have it deal damage equal to its power to target creature. If you do, the first creature assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laccolith Rig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

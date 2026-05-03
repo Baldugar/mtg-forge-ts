@@ -1,0 +1,23 @@
+{
+  "id": "tail-slash-corpus-m680",
+  "description": "M6 corpus — Tail Slash; in-hand parse.",
+  "seed": 64573,
+  "cards": {
+    "Tail Slash": "Name:Tail Slash\nManaCost:2 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ TailDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control.\nSVar:TailDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tail Slash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

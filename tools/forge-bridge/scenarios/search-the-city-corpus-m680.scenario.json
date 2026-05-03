@@ -1,0 +1,23 @@
+{
+  "id": "search-the-city-corpus-m680",
+  "description": "M6 corpus — Search the City; in-hand parse.",
+  "seed": 64174,
+  "cards": {
+    "Search the City": "Name:Search the City\nManaCost:4 U\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ SetupSearch | TriggerDescription$ When CARDNAME enters, exile the top five cards of your library.\nSVar:SetupSearch:DB$ Dig | Defined$ You | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | ForgetOtherRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.sharesNameWith Remembered | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigFind | TriggerDescription$ Whenever you play a card with the same name as one of the exiled cards, you may put one of those cards with that name into its owner's hand. Then if there are no cards exiled with CARDNAME, sacrifice it. If you do, take an extra turn after this one.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl+sharesNameWith Remembered | TriggerZones$ Battlefield | Execute$ TrigFind | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever you play a card with the same name as one of the exiled cards, you may put one of those cards with that name into its owner's hand. Then if there are no cards exiled with CARDNAME, sacrifice it. If you do, take an extra turn after this one.\nSVar:TrigFind:DB$ ChangeZone | ChangeType$ TriggeredCard.sharesNameWith | Hidden$ True | SelectPrompt$ Select a card exiled with CARDNAME that shares a name with the played card | Origin$ Exile | Destination$ Hand | ChangeNum$ 1 | ForgetChanged$ True | SubAbility$ SacSelf\nSVar:SacSelf:DB$ Sacrifice | ConditionCheckSVar$ StillLooking | ConditionSVarCompare$ EQ0 | RememberSacrificed$ True | SubAbility$ AllFoundCelebration\nSVar:AllFoundCelebration:DB$ AddTurn | NumTurns$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:StillLooking:Remembered$Amount\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nOracle:When Search the City enters, exile the top five cards of your library.\\nWhenever you play a card with the same name as one of the exiled cards, you may put one of those cards with that name into its owner's hand. Then if there are no cards exiled with Search the City, sacrifice it. If you do, take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search the City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

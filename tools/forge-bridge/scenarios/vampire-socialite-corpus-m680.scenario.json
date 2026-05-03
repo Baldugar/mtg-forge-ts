@@ -1,0 +1,23 @@
+{
+  "id": "vampire-socialite-corpus-m680",
+  "description": "M6 corpus — Vampire Socialite; in-hand parse.",
+  "seed": 64885,
+  "cards": {
+    "Vampire Socialite": "Name:Vampire Socialite\nManaCost:B R\nTypes:Creature Vampire Noble\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, put a +1/+1 counter on each other Vampire you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Vampire.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Vampire.YouCtrl+Other\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ X | SpellDescription$ As long as an opponent lost life this turn, each other Vampire you control enters with an additional +1/+1 counter on it.\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Counters\nDeckNeeds:Type$Vampire\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Vampire Socialite enters, if an opponent lost life this turn, put a +1/+1 counter on each other Vampire you control.\\nAs long as an opponent lost life this turn, each other Vampire you control enters with an additional +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Socialite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

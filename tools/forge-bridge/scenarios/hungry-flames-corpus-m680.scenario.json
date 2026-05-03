@@ -1,0 +1,23 @@
+{
+  "id": "hungry-flames-corpus-m680",
+  "description": "M6 corpus — Hungry Flames; in-hand parse.",
+  "seed": 62876,
+  "cards": {
+    "Hungry Flames": "Name:Hungry Flames\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 3 damage to target creature and 2 damage to target player or planeswalker.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Hungry Flames deals 3 damage to target creature and 2 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hungry Flames"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

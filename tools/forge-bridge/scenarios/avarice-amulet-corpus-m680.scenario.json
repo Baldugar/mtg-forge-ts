@@ -1,0 +1,23 @@
+{
+  "id": "avarice-amulet-corpus-m680",
+  "description": "M6 corpus — Avarice Amulet; in-hand parse.",
+  "seed": 61607,
+  "cards": {
+    "Avarice Amulet": "Name:Avarice Amulet\nManaCost:4\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Vigilance | AddTrigger$ AvariceUpkeepTrig | AddSVar$ AvariceUpkeepSVar | Description$ Equipped creature gets +2/+0 and has vigilance and \"At the beginning of your upkeep, draw a card.\"\nSVar:AvariceUpkeepTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ AvariceUpkeepSVar | TriggerDescription$ At the beginning of your upkeep, draw a card.\nSVar:AvariceUpkeepSVar:DB$ Draw | Defined$ You\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigGainControl | TriggerDescription$ When equipped creature dies, target opponent gains control of CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Opponent | Defined$ Self\nOracle:Equipped creature gets +2/+0 and has vigilance and \"At the beginning of your upkeep, draw a card.\"\\nWhenever equipped creature dies, target opponent gains control of Avarice Amulet.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avarice Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

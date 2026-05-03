@@ -1,0 +1,23 @@
+{
+  "id": "decree-of-justice-corpus-m680",
+  "description": "M6 corpus — Decree of Justice; in-hand parse.",
+  "seed": 62130,
+  "cards": {
+    "Decree of Justice": "Name:Decree of Justice\nManaCost:X X 2 W W\nTypes:Sorcery\nK:Cycling:2 W\nA:SP$ Token | TokenAmount$ X | TokenScript$ w_4_4_angel_flying | TokenOwner$ You | SpellDescription$ Create X 4/4 white Angel creature tokens with flying.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigToken | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may pay {X}. If you do, create X 1/1 white Soldier creature tokens.\nSVar:TrigToken:AB$ Token | Cost$ X | TokenAmount$ X | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:Count$xPaid\nSVar:PlayMain1:ALWAYS\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Create X 4/4 white Angel creature tokens with flying.\\nCycling {2}{W} ({2}{W}, Discard this card: Draw a card.)\\nWhen you cycle Decree of Justice, you may pay {X}. If you do, create X 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decree of Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

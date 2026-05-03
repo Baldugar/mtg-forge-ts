@@ -1,0 +1,23 @@
+{
+  "id": "excalibur-ii-corpus-m680",
+  "description": "M6 corpus — Excalibur II; in-hand parse.",
+  "seed": 62385,
+  "cards": {
+    "Excalibur II": "Name:Excalibur II\nManaCost:1\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each charge counter on CARDNAME.\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nSVar:X:Count$CardCounters.CHARGE\nDeckHas:Ability$Counters\nDeckHints:Ability$LifeGain\nOracle:Whenever you gain life, put a charge counter on Excalibur II.\\nEquipped creature gets +1/+1 for each charge counter on Excalibur II.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Excalibur II"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

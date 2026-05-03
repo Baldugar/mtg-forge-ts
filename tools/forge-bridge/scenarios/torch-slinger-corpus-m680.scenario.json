@@ -1,0 +1,23 @@
+{
+  "id": "torch-slinger-corpus-m680",
+  "description": "M6 corpus — Torch Slinger; in-hand parse.",
+  "seed": 64772,
+  "cards": {
+    "Torch Slinger": "Name:Torch Slinger\nManaCost:2 R\nTypes:Creature Goblin Shaman\nPT:2/2\nK:Kicker:1 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if it was kicked, it deals 2 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nOracle:Kicker {1}{R} (You may pay an additional {1}{R} as you cast this spell.)\\nWhen Torch Slinger enters, if it was kicked, it deals 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torch Slinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

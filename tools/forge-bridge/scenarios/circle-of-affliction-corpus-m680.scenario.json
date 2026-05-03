@@ -1,0 +1,23 @@
+{
+  "id": "circle-of-affliction-corpus-m680",
+  "description": "M6 corpus — Circle of Affliction; in-hand parse.",
+  "seed": 61922,
+  "cards": {
+    "Circle of Affliction": "Name:Circle of Affliction\nManaCost:1 B\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInHumanDeck | SpellDescription$ As CARDNAME enters, choose a color.\nT:Mode$ DamageDone | ValidSource$ Card.ChosenColor | ValidTarget$ You | Execute$ TrigDrain | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a source of the chosen color deals damage to you, you may pay {1}. If you do, target player loses 1 life and you gain 1 life.\nSVar:TrigDrain:AB$ LoseLife | Cost$ 1 | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ Gain\nSVar:Gain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:As Circle of Affliction enters, choose a color.\\nWhenever a source of the chosen color deals damage to you, you may pay {1}. If you do, target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circle of Affliction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

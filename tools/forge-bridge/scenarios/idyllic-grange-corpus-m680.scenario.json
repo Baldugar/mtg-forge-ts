@@ -1,0 +1,23 @@
+{
+  "id": "idyllic-grange-corpus-m680",
+  "description": "M6 corpus — Idyllic Grange; in-hand parse.",
+  "seed": 62901,
+  "cards": {
+    "Idyllic Grange": "Name:Idyllic Grange\nManaCost:no cost\nTypes:Land Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control three or more other Plains.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Plains.YouCtrl+Other | ConditionCompare$ LT3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+untapped | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters untapped, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckNeeds:Color$White\nOracle:({T}: Add {W}.)\\nIdyllic Grange enters tapped unless you control three or more other Plains.\\nWhen Idyllic Grange enters untapped, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Idyllic Grange"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

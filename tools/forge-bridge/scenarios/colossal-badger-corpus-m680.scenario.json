@@ -1,0 +1,23 @@
+{
+  "id": "colossal-badger-corpus-m680",
+  "description": "M6 corpus — Colossal Badger; in-hand parse.",
+  "seed": 61962,
+  "cards": {
+    "Colossal Badger": "Name:Colossal Badger\nManaCost:5 G\nTypes:Creature Badger\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nAlternateMode:Adventure\nOracle:When Colossal Badger enters, you gain 3 life.\n\nALTERNATE\n\nName:Dig Deep\nManaCost:1 G\nTypes:Sorcery Adventure\nA:SP$ Mill | NumCards$ 4 | RememberMilled$ True | SubAbility$ DBPutCounter | SpellDescription$ Choose target creature. Mill four cards,\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup | SpellDescription$ then put a +1/+1 counter on that creature for each creature card milled this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Choose target creature. Mill four cards, then put a +1/+1 counter on that creature for each creature card milled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colossal Badger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

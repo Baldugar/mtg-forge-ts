@@ -1,0 +1,23 @@
+{
+  "id": "master-thief-corpus-m680",
+  "description": "M6 corpus — Master Thief; in-hand parse.",
+  "seed": 63363,
+  "cards": {
+    "Master Thief": "Name:Master Thief\nManaCost:2 U U\nTypes:Creature Human Rogue\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target artifact for as long as you control CARDNAME.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Artifact | LoseControl$ LeavesPlay,LoseControl | SpellDescription$ Gain control of target artifact for as long as you control CARDNAME.\nSVar:PlayMain1:TRUE\nOracle:When Master Thief enters, gain control of target artifact for as long as you control Master Thief.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

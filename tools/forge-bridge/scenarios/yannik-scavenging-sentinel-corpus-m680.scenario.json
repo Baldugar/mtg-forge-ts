@@ -1,0 +1,23 @@
+{
+  "id": "yannik-scavenging-sentinel-corpus-m680",
+  "description": "M6 corpus — Yannik, Scavenging Sentinel; in-hand parse.",
+  "seed": 65105,
+  "cards": {
+    "Yannik, Scavenging Sentinel": "Name:Yannik, Scavenging Sentinel\nManaCost:2 G W\nTypes:Legendary Creature Hyena Beast\nPT:3/3\nK:Partner with:Nikara, Lair Scavenger:Nikara\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile another creature you control until NICKNAME leaves the battlefield. When you do, distribute +1/+1 counters among any number of target creatures, where X is the exiled creature's power.\nSVar:TrigExile:DB$ ChangeZone | Hidden$ True | ChangeType$ Creature.YouCtrl+Other | Mandatory$ True | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | Duration$ UntilHostLeavesPlay | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigPutCounters | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ When you do, distribute X +1/+1 counters among any number of target creatures, where X is the exiled creature's power.\nSVar:TrigPutCounters:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute counters to | CounterType$ P1P1 | CounterNum$ X | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X | SpellDescription$ Distribute X +1/+1 counters among any number of target creatures.\nSVar:X:TriggerRemembered$CardPower\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Partner with Nikara, Lair Scavenger\\nVigilance\\nWhen Yannik, Scavenging Sentinel enters, exile another creature you control until Yannik leaves the battlefield. When you do, distribute X +1/+1 counters among any number of target creatures, where X is the exiled creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yannik, Scavenging Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

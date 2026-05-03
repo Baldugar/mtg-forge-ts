@@ -1,0 +1,23 @@
+{
+  "id": "ascendant-packleader-corpus-m680",
+  "description": "M6 corpus — Ascendant Packleader; in-hand parse.",
+  "seed": 61581,
+  "cards": {
+    "Ascendant Packleader": "Name:Ascendant Packleader\nManaCost:G\nTypes:Creature Wolf\nPT:2/1\nK:etbCounter:P1P1:1:IsPresent$ Permanent.YouCtrl+cmcGE4:CARDNAME enters with a +1/+1 counter on it if you control a permanent with mana value 4 or greater.\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE4 | ValidActivatingPlayer$ You | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Permanent.cmcGE4\nDeckHas:Ability$Counters\nOracle:Ascendant Packleader enters with a +1/+1 counter on it if you control a permanent with mana value 4 or greater.\\nWhenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on Ascendant Packleader.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ascendant Packleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

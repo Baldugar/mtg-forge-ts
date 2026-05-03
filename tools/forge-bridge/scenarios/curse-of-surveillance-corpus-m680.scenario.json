@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-surveillance-corpus-m680",
+  "description": "M6 corpus — Curse of Surveillance; in-hand parse.",
+  "seed": 62065,
+  "cards": {
+    "Curse of Surveillance": "Name:Curse of Surveillance\nManaCost:4 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of enchanted player's upkeep, any number of target players other than that player each draw cards equal to the number of Curses attached to that player.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Player.!EnchantedBy | TgtPrompt$ Select any number of target players other than the enchanted player | TargetMin$ 0 | TargetMax$ MaxTgts | NumCards$ X\nSVar:MaxTgts:PlayerCountPlayers$Amount/Minus.1\nSVar:X:Count$Valid Curse.AttachedTo Player.EnchantedBy\nDeckHints:Type$Curse\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, any number of target players other than that player each draw cards equal to the number of Curses attached to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Surveillance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

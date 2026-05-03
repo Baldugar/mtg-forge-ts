@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-infuser-corpus-m680",
+  "description": "M6 corpus — Vedalken Infuser; in-hand parse.",
+  "seed": 64899,
+  "cards": {
+    "Vedalken Infuser": "Name:Vedalken Infuser\nManaCost:3 U\nTypes:Creature Vedalken Wizard\nPT:1/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on target artifact.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | ValidTgts$ Artifact | TgtPrompt$ Select target artifact\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, you may put a charge counter on target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Infuser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

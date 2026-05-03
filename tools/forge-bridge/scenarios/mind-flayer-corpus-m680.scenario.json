@@ -1,0 +1,23 @@
+{
+  "id": "mind-flayer-corpus-m680",
+  "description": "M6 corpus — Mind Flayer; in-hand parse.",
+  "seed": 63413,
+  "cards": {
+    "Mind Flayer": "Name:Mind Flayer\nManaCost:3 U U\nTypes:Creature Horror\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Dominate Monster — When CARDNAME enters, gain control of target creature for as long as you control CARDNAME.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Creature | LoseControl$ LeavesPlay,LoseControl\nSVar:PlayMain1:TRUE\nOracle:Dominate Monster — When Mind Flayer enters, gain control of target creature for as long as you control Mind Flayer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Flayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

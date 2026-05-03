@@ -1,0 +1,23 @@
+{
+  "id": "keen-buccaneer-corpus-m680",
+  "description": "M6 corpus — Keen Buccaneer; in-hand parse.",
+  "seed": 63095,
+  "cards": {
+    "Keen Buccaneer": "Name:Keen Buccaneer\nManaCost:2 U\nTypes:Creature Octopus Pirate\nPT:2/3\nK:Vigilance\nA:AB$ Draw | Cost$ 1 U | Exhaust$ True | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Vigilance\\nExhaust — {1}{U}: Draw a card, then discard a card. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keen Buccaneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

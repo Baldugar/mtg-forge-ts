@@ -1,0 +1,23 @@
+{
+  "id": "garnet-princess-of-alexandria-corpus-m680",
+  "description": "M6 corpus — Garnet, Princess of Alexandria; in-hand parse.",
+  "seed": 62602,
+  "cards": {
+    "Garnet, Princess of Alexandria": "Name:Garnet, Princess of Alexandria\nManaCost:G W\nTypes:Legendary Creature Human Noble Cleric\nPT:2/2\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever NICKNAME attacks, you may remove a lore counter from each of any number of Sagas you control. Put a +1/+1 counter on NICKNAME for each lore counter removed this way.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Choices$ Saga.YouCtrl | CounterType$ LORE | CounterNum$ 1 | ChoiceOptional$ True | SubAbility$ DBPutCounter | RememberAmount$ True\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Lifelink\\nWhenever Garnet attacks, you may remove a lore counter from each of any number of Sagas you control. Put a +1/+1 counter on Garnet for each lore counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garnet, Princess of Alexandria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

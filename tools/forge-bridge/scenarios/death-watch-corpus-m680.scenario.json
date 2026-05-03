@@ -1,0 +1,23 @@
+{
+  "id": "death-watch-corpus-m680",
+  "description": "M6 corpus — Death Watch; in-hand parse.",
+  "seed": 62117,
+  "cards": {
+    "Death Watch": "Name:Death Watch\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLose | TriggerDescription$ When enchanted creature dies, its controller loses life equal to its power and you gain life equal to its toughness.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:X:TriggeredCard$CardPower\nSVar:Y:TriggeredCard$CardToughness\nOracle:Enchant creature\\nWhen enchanted creature dies, its controller loses life equal to its power and you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Watch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

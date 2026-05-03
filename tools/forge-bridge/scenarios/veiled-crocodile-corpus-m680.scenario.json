@@ -1,0 +1,23 @@
+{
+  "id": "veiled-crocodile-corpus-m680",
+  "description": "M6 corpus — Veiled Crocodile; in-hand parse.",
+  "seed": 64903,
+  "cards": {
+    "Veiled Crocodile": "Name:Veiled Crocodile\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Always | CheckSVar$ X | SVarCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigVCAnimate | IsPresent$ Card.Self+Enchantment | ResolvingCheck$ IsPresent | TriggerDescription$ When a player has no cards in hand, if CARDNAME is an enchantment, CARDNAME becomes a 4/4 Crocodile creature.\nSVar:TrigVCAnimate:DB$ Animate | Types$ Creature,Crocodile | Power$ 4 | Toughness$ 4 | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nSVar:X:PlayerCountPlayers$LowestValidHand Card.YouOwn\nAI:RemoveDeck:Random\nOracle:When a player has no cards in hand, if Veiled Crocodile is an enchantment, Veiled Crocodile becomes a 4/4 Crocodile creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veiled Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

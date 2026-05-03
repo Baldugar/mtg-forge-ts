@@ -1,0 +1,23 @@
+{
+  "id": "moldgraf-millipede-corpus-m680",
+  "description": "M6 corpus — Moldgraf Millipede; in-hand parse.",
+  "seed": 63457,
+  "cards": {
+    "Moldgraf Millipede": "Name:Moldgraf Millipede\nManaCost:4 G\nTypes:Creature Insect Horror\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards, then put a +1/+1 counter on CARDNAME for each creature card in your graveyard. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 3 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nSVar:NeedsToPlayVar:X GE3\nDeckHas:Ability$Mill|Counters\nOracle:When Moldgraf Millipede enters, mill three cards, then put a +1/+1 counter on Moldgraf Millipede for each creature card in your graveyard. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moldgraf Millipede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

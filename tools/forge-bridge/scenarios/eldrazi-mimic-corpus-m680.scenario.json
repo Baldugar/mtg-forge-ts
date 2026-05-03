@@ -1,0 +1,23 @@
+{
+  "id": "eldrazi-mimic-corpus-m680",
+  "description": "M6 corpus — Eldrazi Mimic; in-hand parse.",
+  "seed": 62292,
+  "cards": {
+    "Eldrazi Mimic": "Name:Eldrazi Mimic\nManaCost:2\nTypes:Creature Eldrazi\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+Colorless+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigAnimate | TriggerDescription$ Whenever another colorless creature you control enters, you may change CARDNAME's base power and toughness to that creature's power and toughness until end of turn.\nSVar:TrigAnimate:DB$ Animate | Power$ X | Toughness$ Y\nSVar:X:TriggeredCard$CardPower\nSVar:Y:TriggeredCard$CardToughness\nSVar:BuffedBy:Creature.Colorless\nDeckHints:Keyword$Devoid & Color$Colorless\nOracle:Whenever another colorless creature you control enters, you may change Eldrazi Mimic's base power and toughness to that creature's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldrazi Mimic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "first-responder-corpus-m680",
+  "description": "M6 corpus — First Responder; in-hand parse.",
+  "seed": 62502,
+  "cards": {
+    "First Responder": "Name:First Responder\nManaCost:3 G\nTypes:Creature Ogre Citizen\nPT:3/3\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, you may return another creature you control to its owner's hand, then put a number of +1/+1 counters equal to that creature's power on CARDNAME.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Creature.StrictlyOther+YouCtrl | RememberLKI$ True | AILogic$ BounceOwnTrigger | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nDeckHas:Ability$Counters\nOracle:Vigilance\\nAt the beginning of your end step, you may return another creature you control to its owner's hand, then put a number of +1/+1 counters equal to that creature's power on First Responder.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First Responder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

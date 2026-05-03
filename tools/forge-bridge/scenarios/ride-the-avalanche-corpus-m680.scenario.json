@@ -1,0 +1,23 @@
+{
+  "id": "ride-the-avalanche-corpus-m680",
+  "description": "M6 corpus — Ride the Avalanche; in-hand parse.",
+  "seed": 63986,
+  "cards": {
+    "Ride the Avalanche": "Name:Ride the Avalanche\nManaCost:G U\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ QuickenStA | Triggers$ TrigCounters | SpellDescription$ The next spell you cast this turn can be cast as though it had flash. When you cast your next spell this turn, put X +1/+1 counters on up to one target creature, where X is the mana value of that spell.\nSVar:QuickenStA:Mode$ CastWithFlash | ValidCard$ Card | ValidSA$ Spell | Caster$ You\nSVar:TrigCounters:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | OneOff$ True | Execute$ PutCounter | TriggerDescription$ When you cast your next spell this turn, put X +1/+1 counters on up to one target creature, where X is the mana value of that spell.\nSVar:PutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:The next spell you cast this turn can be cast as though it had flash. When you cast your next spell this turn, put X +1/+1 counters on up to one target creature, where X is the mana value of that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ride the Avalanche"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

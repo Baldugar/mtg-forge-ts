@@ -1,0 +1,23 @@
+{
+  "id": "in-thrall-to-the-pit-corpus-m680",
+  "description": "M6 corpus — In Thrall to the Pit; in-hand parse.",
+  "seed": 62915,
+  "cards": {
+    "In Thrall to the Pit": "Name:In Thrall to the Pit\nManaCost:3 R\nTypes:Sorcery\nK:Kicker:2 B\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DelTrig | SpellDescription$ Gain control of target creature until end of turn. Untap it. It gains haste until end of turn. If this spell was kicked, sacrifice that creature at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Condition$ Kicked | Execute$ TrigSac | RememberObjects$ Targeted | TriggerDescription$ If this spell was kicked, sacrifice that creature at the beginning of the next end step.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI | Controller$ You\nDeckHas:Ability$Sacrifice\nDeckHints:Color$Black\nOracle:Kicker {2}{B} (You may pay an additional {2}{B} as you cast this spell.)\\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If this spell was kicked, sacrifice that creature at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "In Thrall to the Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

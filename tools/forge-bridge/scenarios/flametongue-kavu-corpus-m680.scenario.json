@@ -1,0 +1,23 @@
+{
+  "id": "flametongue-kavu-corpus-m680",
+  "description": "M6 corpus — Flametongue Kavu; in-hand parse.",
+  "seed": 62507,
+  "cards": {
+    "Flametongue Kavu": "Name:Flametongue Kavu\nManaCost:3 R\nTypes:Creature Kavu\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 4\nSVar:PlayMain1:TRUE\nOracle:When Flametongue Kavu enters, it deals 4 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flametongue Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

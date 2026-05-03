@@ -1,0 +1,23 @@
+{
+  "id": "knight-of-the-ebon-legion-corpus-m680",
+  "description": "M6 corpus — Knight of the Ebon Legion; in-hand parse.",
+  "seed": 63138,
+  "cards": {
+    "Knight of the Ebon Legion": "Name:Knight of the Ebon Legion\nManaCost:B\nTypes:Creature Vampire Knight\nPT:1/2\nA:AB$ Pump | Cost$ 2 B | NumAtt$ +3 | NumDef$ +3 | Defined$ Self | KW$ Deathtouch | SpellDescription$ CARDNAME gets +3/+3 and gains deathtouch until end of turn.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE4 | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if a player lost 4 or more life this turn, put a +1/+1 counter on CARDNAME. (Damage causes loss of life.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:PlayerCountDefinedRegistered$HighestLifeLostThisTurn\nDeckHas:Ability$Counters\nOracle:{2}{B}: Knight of the Ebon Legion gets +3/+3 and gains deathtouch until end of turn.\\nAt the beginning of your end step, if a player lost 4 or more life this turn, put a +1/+1 counter on Knight of the Ebon Legion. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight of the Ebon Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

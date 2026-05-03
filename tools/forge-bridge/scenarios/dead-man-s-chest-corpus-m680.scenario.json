@@ -1,0 +1,23 @@
+{
+  "id": "dead-man-s-chest-corpus-m680",
+  "description": "M6 corpus — Dead Man's Chest; in-hand parse.",
+  "seed": 62100,
+  "cards": {
+    "Dead Man's Chest": "Name:Dead Man's Chest\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature.OppCtrl:creature an opponent controls\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigExile | TriggerDescription$ When enchanted creature dies, exile cards equal to its power from the top of its owner's library. You may cast spells from among those cards for as long as they remain exiled, and you may spend mana as though it were mana of any type to cast those spells.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredCardOwner | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.nonLand+IsRemembered | AffectedZone$ Exile | Description$ You may cast nonland cards from among them as long as they remain exiled, and you may spend mana as though it were mana of any type to cast those spells.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardPower\nOracle:Enchant creature an opponent controls\\nWhen enchanted creature dies, exile cards equal to its power from the top of its owner's library. You may cast spells from among those cards for as long as they remain exiled, and you may spend mana as though it were mana of any type to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dead Man's Chest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

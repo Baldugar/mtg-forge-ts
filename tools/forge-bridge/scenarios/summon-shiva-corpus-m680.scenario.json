@@ -1,0 +1,23 @@
+{
+  "id": "summon-shiva-corpus-m680",
+  "description": "M6 corpus — Summon: Shiva; in-hand parse.",
+  "seed": 64508,
+  "cards": {
+    "Summon: Shiva": "Name:Summon: Shiva\nManaCost:3 U U\nTypes:Enchantment Creature Saga Elemental\nPT:4/5\nK:Chapter:3:DBTap,DBTap,DBDraw\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBPutCounter | SpellDescription$ Heavenly Strike — Tap target creature an opponent controls. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nSVar:DBDraw:DB$ Draw | NumCards$ X | SpellDescription$ Diamond Dust — Draw a card for each tapped creature your opponents control.\nSVar:X:Count$Valid Creature.tapped+OppCtrl\nSVar:PlayMain1:TRUE\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Heavenly Strike — Tap target creature an opponent controls. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nIII — Diamond Dust — Draw a card for each tapped creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Shiva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

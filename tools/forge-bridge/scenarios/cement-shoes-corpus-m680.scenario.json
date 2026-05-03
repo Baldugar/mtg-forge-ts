@@ -1,0 +1,23 @@
+{
+  "id": "cement-shoes-corpus-m680",
+  "description": "M6 corpus — Cement Shoes; in-hand parse.",
+  "seed": 61877,
+  "cards": {
+    "Cement Shoes": "Name:Cement Shoes\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | AddTrigger$ TrigEndStep | Description$ Equipped creature gets +3/+3 and has \"At the beginning of your end step, tap this creature.\"\nSVar:TrigEndStep:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBTap | TriggerDescription$ At the beginning of your end step, tap this creature.\nSVar:DBTap:DB$ Tap | Defined$ Self\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.EquippedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Equipped creature doesn't untap during its controller's untap step.\nK:Equip:2\nOracle:Equipped creature gets +3/+3 and has \"At the beginning of your end step, tap this creature.\"\\nEquipped creature doesn't untap during its controller's untap step.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cement Shoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

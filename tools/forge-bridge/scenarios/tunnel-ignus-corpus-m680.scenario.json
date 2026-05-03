@@ -1,0 +1,23 @@
+{
+  "id": "tunnel-ignus-corpus-m680",
+  "description": "M6 corpus — Tunnel Ignus; in-hand parse.",
+  "seed": 64816,
+  "cards": {
+    "Tunnel Ignus": "Name:Tunnel Ignus\nManaCost:1 R\nTypes:Creature Elemental\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.OppCtrl | CheckOnTriggeredCard$ X GT1 | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a land enters under an opponent's control, if that player had another land enter the battlefield under their control this turn, CARDNAME deals 3 damage to that player.\nSVar:TrigPump:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 3\nSVar:X:Count$ThisTurnEntered_Battlefield_Land.ControlledBy CardController\nOracle:Whenever a land enters under an opponent's control, if that player had another land enter the battlefield under their control this turn, Tunnel Ignus deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tunnel Ignus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

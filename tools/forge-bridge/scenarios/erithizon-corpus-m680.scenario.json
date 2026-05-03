@@ -1,0 +1,23 @@
+{
+  "id": "erithizon-corpus-m680",
+  "description": "M6 corpus — Erithizon; in-hand parse.",
+  "seed": 62357,
+  "cards": {
+    "Erithizon": "Name:Erithizon\nManaCost:2 G G\nTypes:Creature Beast\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on target creature of defending player's choice.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | TargetingPlayer$ TriggeredDefendingPlayer\nAI:RemoveDeck:Random\nOracle:Whenever Erithizon attacks, put a +1/+1 counter on target creature of defending player's choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erithizon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

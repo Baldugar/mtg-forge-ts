@@ -1,0 +1,23 @@
+{
+  "id": "wolverine-riders-corpus-m680",
+  "description": "M6 corpus — Wolverine Riders; in-hand parse.",
+  "seed": 65085,
+  "cards": {
+    "Wolverine Riders": "Name:Wolverine Riders\nManaCost:4 G G\nTypes:Creature Elf Warrior\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each upkeep, create a 1/1 green Elf Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_elf_warrior | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Elf.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another Elf you control enters, you gain life equal to its toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nSVar:PlayMain1:TRUE\nDeckHints:Type$Elf\nDeckHas:Ability$LifeGain|Token\nOracle:At the beginning of each upkeep, create a 1/1 green Elf Warrior creature token.\\nWhenever another Elf you control enters, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolverine Riders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

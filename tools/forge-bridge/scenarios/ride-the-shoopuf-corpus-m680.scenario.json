@@ -1,0 +1,23 @@
+{
+  "id": "ride-the-shoopuf-corpus-m680",
+  "description": "M6 corpus — Ride the Shoopuf; in-hand parse.",
+  "seed": 63987,
+  "cards": {
+    "Ride the Shoopuf": "Name:Ride the Shoopuf\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Animate | Cost$ 5 G G | Defined$ Self | Power$ 7 | Toughness$ 7 | Types$ Creature,Beast | Duration$ Permanent | SpellDescription$ This enchantment becomes a 7/7 Beast creature in addition to its other types.\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.\\n{5}{G}{G}: This enchantment becomes a 7/7 Beast creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ride the Shoopuf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "momo-rambunctious-rascal-corpus-m680",
+  "description": "M6 corpus — Momo, Rambunctious Rascal; in-hand parse.",
+  "seed": 63465,
+  "cards": {
+    "Momo, Rambunctious Rascal": "Name:Momo, Rambunctious Rascal\nManaCost:2 W\nTypes:Legendary Creature Lemur Bat Ally\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When NICKNAME enters, he deals 4 damage to target tapped creature an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.tapped+OppCtrl | TgtPrompt$ Select target tapped creature an opponent controls | NumDmg$ 4\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Momo enters, he deals 4 damage to target tapped creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Momo, Rambunctious Rascal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

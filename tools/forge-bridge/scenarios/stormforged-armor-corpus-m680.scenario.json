@@ -1,0 +1,23 @@
+{
+  "id": "stormforged-armor-corpus-m680",
+  "description": "M6 corpus — Stormforged Armor; in-hand parse.",
+  "seed": 64471,
+  "cards": {
+    "Stormforged Armor": "Name:Stormforged Armor\nManaCost:1 R R\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddTrigger$ ArmorAttack | AddSVar$ ArmorConjure & ArmorSetAtt & ArmorClean | Description$ Equipped creature has \"Whenever this creature attacks, conjure a card named Ball Lightning onto the battlefield tapped and attacking.\"\nSVar:ArmorAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ ArmorConjure | TriggerDescription$ Whenever this creature attacks, conjure a card named Ball Lightning onto the battlefield tapped and attacking.\nSVar:ArmorConjure:DB$ MakeCard | Conjure$ True | Name$ Ball Lightning | Zone$ Battlefield | Tapped$ True | RememberMade$ True | SubAbility$ ArmorSetAtt\nSVar:ArmorSetAtt:DB$ ChangeCombatants | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.YouCtrl | Attacking$ True | SubAbility$ ArmorClean\nSVar:ArmorClean:DB$ Cleanup | ClearRemembered$ True\nK:Equip:PayLife<3>\nOracle:Equipped creature has \"Whenever this creature attacks, conjure a card named Ball Lightning onto the battlefield tapped and attacking.\"\\nEquip—Pay 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormforged Armor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

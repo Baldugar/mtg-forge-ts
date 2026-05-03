@@ -1,0 +1,23 @@
+{
+  "id": "zurgo-stormrender-corpus-m680",
+  "description": "M6 corpus — Zurgo Stormrender; in-hand parse.",
+  "seed": 65135,
+  "cards": {
+    "Zurgo Stormrender": "Name:Zurgo Stormrender\nManaCost:R W B\nTypes:Legendary Creature Orc Warrior\nPT:3/3\nK:Mobilize:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Whenever a creature token you control leaves the battlefield, draw a card if it was attacking. Otherwise, each opponent loses 1 life.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBLoseLife\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nSVar:X:TriggeredCard$Valid Creature.attacking\nSVar:HasAttackEffect:TRUE\nOracle:Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)\\nWhenever a creature token you control leaves the battlefield, draw a card if it was attacking. Otherwise, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zurgo Stormrender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

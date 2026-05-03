@@ -1,0 +1,23 @@
+{
+  "id": "darksteel-reactor-corpus-m680",
+  "description": "M6 corpus — Darksteel Reactor; in-hand parse.",
+  "seed": 62092,
+  "cards": {
+    "Darksteel Reactor": "Name:Darksteel Reactor\nManaCost:4\nTypes:Artifact\nK:Indestructible\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GEX_CHARGE+YouCtrl | Execute$ TrigWinGame | TriggerDescription$ When CARDNAME has twenty or more charge counters on it, you win the game.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self\nSVar:TrigWinGame:DB$ WinsGame | Defined$ You\nSVar:X:Number$20\nOracle:Indestructible (Effects that say \"destroy\" don't destroy this artifact.)\\nAt the beginning of your upkeep, you may put a charge counter on Darksteel Reactor.\\nWhen Darksteel Reactor has twenty or more charge counters on it, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darksteel Reactor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-noble-corpus-m680",
+  "description": "M6 corpus — Falkenrath Noble; in-hand parse.",
+  "seed": 62430,
+  "cards": {
+    "Falkenrath Noble": "Name:Falkenrath Noble\nManaCost:3 B\nTypes:Creature Vampire Noble\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another creature dies, target player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Flying\\nWhenever Falkenrath Noble or another creature dies, target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Noble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

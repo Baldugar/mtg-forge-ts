@@ -1,0 +1,23 @@
+{
+  "id": "drownyard-amalgam-corpus-m680",
+  "description": "M6 corpus — Drownyard Amalgam; in-hand parse.",
+  "seed": 62249,
+  "cards": {
+    "Drownyard Amalgam": "Name:Drownyard Amalgam\nManaCost:4 U\nTypes:Creature Zombie Horror\nPT:3/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills three cards. (They put the top three cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player\nA:AB$ Effect | Cost$ 2 U | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ CARDNAME can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Mill\nOracle:When Drownyard Amalgam enters, target player mills three cards. (They put the top three cards of their library into their graveyard.)\\n{2}{U}: Drownyard Amalgam can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drownyard Amalgam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

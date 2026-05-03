@@ -1,0 +1,23 @@
+{
+  "id": "lammastide-weave-corpus-m680",
+  "description": "M6 corpus — Lammastide Weave; in-hand parse.",
+  "seed": 63183,
+  "cards": {
+    "Lammastide Weave": "Name:Lammastide Weave\nManaCost:1 G\nTypes:Instant\nA:SP$ NameCard | Defined$ You | SubAbility$ DBMill | SpellDescription$ Choose a card name, then target player mills a card. If a card with the chosen name was milled this way, you gain life equal to its mana value. Draw a card.\nSVar:DBMill:DB$ Mill | NumCards$ 1 | ValidTgts$ Player | RememberMilled$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQ1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:Y:Remembered$Valid Card.NamedCard\nAI:RemoveDeck:All\nOracle:Choose a card name, then target player mills a card. If a card with the chosen name was milled this way, you gain life equal to its mana value.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lammastide Weave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

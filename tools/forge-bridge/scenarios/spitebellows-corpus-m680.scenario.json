@@ -1,0 +1,23 @@
+{
+  "id": "spitebellows-corpus-m680",
+  "description": "M6 corpus — Spitebellows; in-hand parse.",
+  "seed": 64417,
+  "cards": {
+    "Spitebellows": "Name:Spitebellows\nManaCost:5 R\nTypes:Creature Elemental\nPT:6/1\nK:Evoke:1 R R\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDamageCreature | TriggerDescription$ When CARDNAME leaves the battlefield, it deals 6 damage to target creature.\nSVar:TrigDamageCreature:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 6\nSVar:NeedsToPlayEvoked:Creature.OppCtrl+toughnessLE6\nOracle:When Spitebellows leaves the battlefield, it deals 6 damage to target creature.\\nEvoke {1}{R}{R} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spitebellows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

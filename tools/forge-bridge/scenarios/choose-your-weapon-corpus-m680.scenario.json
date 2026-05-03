@@ -1,0 +1,23 @@
+{
+  "id": "choose-your-weapon-corpus-m680",
+  "description": "M6 corpus — Choose Your Weapon; in-hand parse.",
+  "seed": 61917,
+  "cards": {
+    "Choose Your Weapon": "Name:Choose Your Weapon\nManaCost:2 G\nTypes:Instant\nA:SP$ Charm | Choices$ DBPump,DBDamage\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ Double | NumDef$ Double | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ Two-Weapon Fighting — Double target creature's power and toughness until end of turn.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 5 | SpellDescription$ Archery — This spell deals 5 damage to target creature with flying.\nOracle:Choose one —\\n• Two-Weapon Fighting — Double target creature's power and toughness until end of turn.\\n• Archery — This spell deals 5 damage to target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Choose Your Weapon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "namor-the-sub-mariner-corpus-m680",
+  "description": "M6 corpus — Namor the Sub-Mariner; in-hand parse.",
+  "seed": 63514,
+  "cards": {
+    "Namor the Sub-Mariner": "Name:Namor the Sub-Mariner\nManaCost:1 U U\nTypes:Legendary Creature Mutant Merfolk Villain\nPT:*/4\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ NICKNAME's power is equal to the number of Merfolk you control.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature+ManaCostPartialBlue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a noncreature spell with one or more blue mana symbols in its mana cost, create that many 1/1 blue Merfolk creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ u_1_1_merfolk\nSVar:X:Count$Valid Merfolk.YouCtrl\nSVar:Y:TriggeredCard$ChromaSource.Blue\nDeckHints:Type$Merfolk\nDeckHas:Ability$Token\nOracle:Flying\\nNamor's power is equal to the number of Merfolk you control.\\nWhenever you cast a noncreature spell with one or more blue mana symbols in its mana cost, create that many 1/1 blue Merfolk creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Namor the Sub-Mariner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

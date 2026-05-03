@@ -1,0 +1,23 @@
+{
+  "id": "next-of-kin-corpus-m680",
+  "description": "M6 corpus — Next of Kin; in-hand parse.",
+  "seed": 63551,
+  "cards": {
+    "Next of Kin": "Name:Next of Kin\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When enchanted creature dies, you may put a creature card you own with lesser mana value from your hand or from the command zone onto the battlefield. If you do, return CARDNAME to the battlefield attached to that creature at the beginning of the next end step.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand,Command | Destination$ Battlefield | ChangeType$ Creature.cmcLTX+YouOwn | RememberChanged$ True | SubAbility$ DBDelayedTrigger\nSVar:X:TriggeredCard$CardManaCost\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigReturn | RememberObjects$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup | TriggerDescription$ If you do, return CARDNAME to the battlefield attached to that creature at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | AttachedTo$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:Enchant creature\\nWhen enchanted creature dies, you may put a creature card you own with lesser mana value from your hand or from the command zone onto the battlefield. If you do, return Next of Kin to the battlefield attached to that creature at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Next of Kin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

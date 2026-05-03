@@ -1,0 +1,23 @@
+{
+  "id": "eden-seat-of-the-sanctum-corpus-m680",
+  "description": "M6 corpus — Eden, Seat of the Sanctum; in-hand parse.",
+  "seed": 62284,
+  "cards": {
+    "Eden, Seat of the Sanctum": "Name:Eden, Seat of the Sanctum\nManaCost:no cost\nTypes:Land Town\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mill | Cost$ 5 T | NumCards$ 2 | Defined$ You | SubAbility$ DBSelfSac | StackDescription$ SpellDescription | SpellDescription$ Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.\nSVar:DBSelfSac:DB$ Sacrifice | SacValid$ Self | SacMessage$ this land | Optional$ True | RememberSacrificed$ True | SubAbility$ TrigImmediateTrig | StackDescription$ None\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | Execute$ TrigReturn | SubAbility$ DBCleanup | StackDescription$ None | TriggerDescription$ When you do, return another target permanent card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select another target permanent card in your graveyard | ValidTgts$ Permanent.Other+YouCtrl\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Add {C}.\\n{5}, {T}: Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eden, Seat of the Sanctum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

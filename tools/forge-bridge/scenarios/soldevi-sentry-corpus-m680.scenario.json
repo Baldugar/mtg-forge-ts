@@ -1,0 +1,23 @@
+{
+  "id": "soldevi-sentry-corpus-m680",
+  "description": "M6 corpus — Soldevi Sentry; in-hand parse.",
+  "seed": 64351,
+  "cards": {
+    "Soldevi Sentry": "Name:Soldevi Sentry\nManaCost:1\nTypes:Artifact Creature Soldier\nPT:1/1\nA:AB$ Regenerate | Cost$ 1 | ValidTgts$ Opponent | Defined$ Self | RegenerationAbility$ DBImmediateTrigger | RememberObjects$ TargetedPlayer | StackDescription$ SpellDescription | SpellDescription$ Choose target opponent. Regenerate CARDNAME. When it regenerates this way, that player may draw a card.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | RememberObjects$ Remembered | Execute$ TrigDraw | TriggerDescription$ When it regenerates this way, that player may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ DelayTriggerRemembered | NumCards$ 1 | OptionalDecider$ True | SpellDescription$ When it regenerates this way, that player may draw a card.\nOracle:{1}: Choose target opponent. Regenerate Soldevi Sentry. When it regenerates this way, that player may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soldevi Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "insist-corpus-m680",
+  "description": "M6 corpus — Insist; in-hand parse.",
+  "seed": 62947,
+  "cards": {
+    "Insist": "Name:Insist\nManaCost:G\nTypes:Sorcery\nA:SP$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ DBEffect | ThisTurn$ True | Static$ True | SubAbility$ DBDraw | SpellDescription$ The next creature spell you cast this turn can't be countered.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ AntiMagic | RememberObjects$ TriggeredCard | ForgetOnMoved$ Stack\nSVar:AntiMagic:Event$ Counter | ValidCard$ Card.IsRemembered | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:The next creature spell you cast this turn can't be countered.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

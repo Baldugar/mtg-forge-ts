@@ -1,0 +1,23 @@
+{
+  "id": "kingfisher-corpus-m680",
+  "description": "M6 corpus — Kingfisher; in-hand parse.",
+  "seed": 63125,
+  "cards": {
+    "Kingfisher": "Name:Kingfisher\nManaCost:3 U\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:SacMe:1\nOracle:Flying\\nWhen Kingfisher dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kingfisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

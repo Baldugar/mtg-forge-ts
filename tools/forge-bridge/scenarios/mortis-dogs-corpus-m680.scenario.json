@@ -1,0 +1,23 @@
+{
+  "id": "mortis-dogs-corpus-m680",
+  "description": "M6 corpus — Mortis Dogs; in-hand parse.",
+  "seed": 63480,
+  "cards": {
+    "Mortis Dogs": "Name:Mortis Dogs\nManaCost:3 B\nTypes:Creature Phyrexian Dog\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, target player loses life equal to its power.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ MortisX\nSVar:MortisX:TriggeredCard$CardPower\nOracle:Whenever Mortis Dogs attacks, it gets +2/+0 until end of turn.\\nWhen Mortis Dogs dies, target player loses life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortis Dogs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

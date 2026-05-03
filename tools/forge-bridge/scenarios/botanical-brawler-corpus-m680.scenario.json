@@ -1,0 +1,23 @@
+{
+  "id": "botanical-brawler-corpus-m680",
+  "description": "M6 corpus — Botanical Brawler; in-hand parse.",
+  "seed": 61758,
+  "cards": {
+    "Botanical Brawler": "Name:Botanical Brawler\nManaCost:G W\nTypes:Creature Elemental Warrior\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:2\nT:Mode$ CounterAddedOnce | ValidCard$ Permanent.Other+YouCtrl+inZoneBattlefield | TriggerZones$ Battlefield | CounterType$ P1P1 | FirstTime$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more +1/+1 counters are put on another permanent you control, if it's the first time +1/+1 counters have been put on that permanent this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Trample\\nBotanical Brawler enters with two +1/+1 counters on it.\\nWhenever one or more +1/+1 counters are put on another permanent you control, if it's the first time +1/+1 counters have been put on that permanent this turn, put a +1/+1 counter on Botanical Brawler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Botanical Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

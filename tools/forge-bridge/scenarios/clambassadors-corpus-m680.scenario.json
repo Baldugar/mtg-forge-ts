@@ -1,0 +1,23 @@
+{
+  "id": "clambassadors-corpus-m680",
+  "description": "M6 corpus — Clambassadors; in-hand parse.",
+  "seed": 61929,
+  "cards": {
+    "Clambassadors": "Name:Clambassadors\nManaCost:3 U\nTypes:Creature Clamfolk\nPT:4/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ DBChoosePermanent | TriggerDescription$ Whenever CARDNAME deals damage to a player, choose an artifact, creature, or land you control. That player gains control of that permanent. | StackDescription$ None\nSVar:DBChoosePermanent:DB$ ChooseCard | Mandatory$ True | AILogic$ WorstCard | Choices$ Artifact.YouCtrl,Creature.YouCtrl,Land.YouCtrl | Amount$ 1 | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ ChosenCard | NewController$ TriggeredTarget\nOracle:Whenever Clambassadors deals damage to a player, choose an artifact, creature, or land you control. That player gains control of that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clambassadors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

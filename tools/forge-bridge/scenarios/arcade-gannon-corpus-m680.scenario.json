@@ -1,0 +1,23 @@
+{
+  "id": "arcade-gannon-corpus-m680",
+  "description": "M6 corpus — Arcade Gannon; in-hand parse.",
+  "seed": 61540,
+  "cards": {
+    "Arcade Gannon": "Name:Arcade Gannon\nManaCost:2 W U\nTypes:Legendary Creature Human Doctor\nPT:2/3\nA:AB$ Draw | Cost$ T | SubAbility$ DBDiscard | SpellDescription$ Draw a card,\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBPutCounter | SpellDescription$ then discard a card.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ QUEST | SpellDescription$ Put a quest counter on CARDNAME.\nS:Mode$ Continuous | Affected$ Artifact.nonLand+YouOwn+cmcLEX,Human.nonLand+YouOwn+cmcLEX | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ For Auld Lang Syne — Once during each of your turns, you may cast an artifact or Human spell from your graveyard with mana value less than or equal to the number of quest counters on CARDNAME.\nSVar:X:Count$CardCounters.QUEST\nDeckHas:Ability$Counters|Discard|Graveyard\nDeckHints:Ability$Graveyard|Mill & Type$Artifact|Human\nOracle:{T}: Draw a card, then discard a card. Put a quest counter on Arcade Gannon.\\nFor Auld Lang Syne — Once during each of your turns, you may cast an artifact or Human spell from your graveyard with mana value less than or equal to the number of quest counters on Arcade Gannon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcade Gannon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

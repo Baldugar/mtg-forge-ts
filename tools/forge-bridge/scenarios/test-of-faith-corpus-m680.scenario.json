@@ -1,0 +1,23 @@
+{
+  "id": "test-of-faith-corpus-m680",
+  "description": "M6 corpus — Test of Faith; in-hand parse.",
+  "seed": 64627,
+  "cards": {
+    "Test of Faith": "Name:Test of Faith\nManaCost:1 W\nTypes:Instant\nA:SP$ PreventDamage | ValidTgts$ Creature | Amount$ 3 | PreventionSubAbility$ FaithsReward | ShieldEffectTarget$ Targeted | SpellDescription$ Prevent the next 3 damage that would be dealt to target creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\nSVar:FaithsReward:DB$ PutCounter | Defined$ ShieldEffectTarget | CounterType$ P1P1 | CounterNum$ PreventedDamage | SpellDescription$ Put a +1/+1 counter on this creature for each 1 damage prevented this way.\nOracle:Prevent the next 3 damage that would be dealt to target creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Test of Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "drana-s-silencer-corpus-m680",
+  "description": "M6 corpus — Drana's Silencer; in-hand parse.",
+  "seed": 62231,
+  "cards": {
+    "Drana's Silencer": "Name:Drana's Silencer\nManaCost:5 B\nTypes:Creature Vampire Rogue\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | IsCurse$ True | NumAtt$ -X | NumDef$ -X\nSVar:X:Count$Party\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Warrior|Wizard\nOracle:When Drana's Silencer enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drana's Silencer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

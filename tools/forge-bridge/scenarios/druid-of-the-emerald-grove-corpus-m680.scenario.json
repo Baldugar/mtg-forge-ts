@@ -1,0 +1,23 @@
+{
+  "id": "druid-of-the-emerald-grove-corpus-m680",
+  "description": "M6 corpus — Druid of the Emerald Grove; in-hand parse.",
+  "seed": 62251,
+  "cards": {
+    "Druid of the Emerald Grove": "Name:Druid of the Emerald Grove\nManaCost:3 G\nTypes:Creature Dwarf Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBChangeZone | TriggerDescription$ When CARDNAME enters, search your library for up to two basic land cards and reveal them, then ABILITY\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Hidden$ True | ChangeNum$ 2 | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Destination$ Library | RememberChanged$ True | Reveal$ True | Shuffle$ False | SubAbility$ DBRollDice\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:TutuDaDome,10-19:WonTwoField,Else:ToFourField | SpellDescription$ then roll a d20.\nSVar:TutuDaDome:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | ChangeNum$ 2 | SubAbility$ DBCleanup | SpellDescription$ 1-9 VERT Put those cards into your hand, then shuffle.\nSVar:WonTwoField:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Card.IsRemembered | ChangeNum$ 1 | ForgetChanged$ True | NoShuffle$ True | SubAbility$ WonTwoDome | SpellDescription$ 10-19 VERT Put one of those cards onto the battlefield tapped and the other into your hand, then shuffle.\nSVar:WonTwoDome:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | ChangeNum$ 1 | SubAbility$ DBCleanup\nSVar:ToFourField:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Card.IsRemembered | ChangeNum$ 2 | SubAbility$ DBCleanup | SpellDescription$ 20 VERT Put those cards onto the battlefield tapped, then shuffle.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Druid of the Emerald Grove enters, search your library for up to two basic land cards and reveal them, then roll a d20.\\n1-9 | Put those cards into your hand, then shuffle.\\n10-19 | Put one of those cards onto the battlefield tapped and the other into your hand, then shuffle.\\n20+ | Put those cards onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Druid of the Emerald Grove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

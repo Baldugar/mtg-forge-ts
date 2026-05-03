@@ -1,0 +1,23 @@
+{
+  "id": "netherese-puzzle-ward-corpus-m680",
+  "description": "M6 corpus — Netherese Puzzle-Ward; in-hand parse.",
+  "seed": 63544,
+  "cards": {
+    "Netherese Puzzle-Ward": "Name:Netherese Puzzle-Ward\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ Focus Beam — At the beginning of your upkeep, roll a d4. Scry X, where X is the result.\nSVar:TrigRollDice:DB$ RollDice | Sides$ 4 | ResultSVar$ X | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ X\nSVar:X:Number$0\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Natural$ True | ValidResult$ Highest | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Perfect Illumination — Whenever you roll a die's highest natural result, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Focus Beam — At the beginning of your upkeep, roll a d4. Scry X, where X is the result.\\nPerfect Illumination — Whenever you roll a die's highest natural result, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Netherese Puzzle-Ward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

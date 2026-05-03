@@ -1,0 +1,23 @@
+{
+  "id": "shard-of-the-nightbringer-corpus-m680",
+  "description": "M6 corpus — Shard of the Nightbringer; in-hand parse.",
+  "seed": 64237,
+  "cards": {
+    "Shard of the Nightbringer": "Name:Shard of the Nightbringer\nManaCost:5 B B B\nTypes:Creature C'tan\nPT:8/8\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Drain Life — When CARDNAME enters, if you cast it, target opponent loses half their life, rounded up. You gain life equal to the life lost this way.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:X:TargetedPlayer$LifeTotal/HalfUp\nSVar:AFLifeLost:Number$0\nDeckHas:Ability$LifeGain\nOracle:Flying\\nDrain Life — When Shard of the Nightbringer enters, if you cast it, target opponent loses half their life, rounded up. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shard of the Nightbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

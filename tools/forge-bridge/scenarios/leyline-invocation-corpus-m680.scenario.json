@@ -1,0 +1,23 @@
+{
+  "id": "leyline-invocation-corpus-m680",
+  "description": "M6 corpus — Leyline Invocation; in-hand parse.",
+  "seed": 63218,
+  "cards": {
+    "Leyline Invocation": "Name:Leyline Invocation\nManaCost:5 G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SpellDescription$ Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of lands you control. | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Land.YouCtrl\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leyline Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

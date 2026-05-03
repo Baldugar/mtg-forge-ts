@@ -1,0 +1,23 @@
+{
+  "id": "force-bubble-corpus-m680",
+  "description": "M6 corpus — Force Bubble; in-hand parse.",
+  "seed": 62532,
+  "cards": {
+    "Force Bubble": "Name:Force Bubble\nManaCost:2 W W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ Counters | Description$ If damage would be dealt to you, put that many depletion counters on CARDNAME instead.\nSVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ X\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE4_DEPLETION | Execute$ TrigSac | TriggerDescription$ When there are four or more depletion counters on CARDNAME, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ At the beginning of each end step, remove all depletion counters from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | CounterType$ DEPLETION | CounterNum$ All\nSVar:X:ReplaceCount$DamageAmount\nSVar:All:Count$CardCounters.DEPLETION\nOracle:If damage would be dealt to you, put that many depletion counters on Force Bubble instead.\\nWhen there are four or more depletion counters on Force Bubble, sacrifice it.\\nAt the beginning of each end step, remove all depletion counters from Force Bubble.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Force Bubble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

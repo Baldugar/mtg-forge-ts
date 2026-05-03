@@ -1,0 +1,23 @@
+{
+  "id": "corpse-augur-corpus-m680",
+  "description": "M6 corpus — Corpse Augur; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "Corpse Augur": "Name:Corpse Augur\nManaCost:3 B\nTypes:Creature Zombie Wizard\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, you draw X cards and you lose X life, where X is the number of creature cards in target player's graveyard.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | ValidTgts$ Player | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ X\nSVar:X:TargetedPlayer$ValidGraveyard Creature.YouOwn\nAI:RemoveDeck:All\nOracle:When Corpse Augur dies, you draw X cards and you lose X life, where X is the number of creature cards in target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpse Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

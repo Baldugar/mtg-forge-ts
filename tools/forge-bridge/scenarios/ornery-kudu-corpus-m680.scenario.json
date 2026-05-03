@@ -1,0 +1,23 @@
+{
+  "id": "ornery-kudu-corpus-m680",
+  "description": "M6 corpus — Ornery Kudu; in-hand parse.",
+  "seed": 63656,
+  "cards": {
+    "Ornery Kudu": "Name:Ornery Kudu\nManaCost:2 G\nTypes:Creature Antelope\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nOracle:When Ornery Kudu enters, put a -1/-1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ornery Kudu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

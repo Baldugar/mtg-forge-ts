@@ -1,0 +1,23 @@
+{
+  "id": "march-toward-perfection-corpus-m680",
+  "description": "M6 corpus — March Toward Perfection; in-hand parse.",
+  "seed": 63336,
+  "cards": {
+    "March Toward Perfection": "Name:March Toward Perfection\nManaCost:B\nTypes:Sorcery\nA:SP$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast | SubAbility$ DBDraft | SpellDescription$ You get a boon with \"When you cast your next Phyrexian creature spell, that creature enters with an additional +1/+1 counter and deathtouch counter on it.\"\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature.Phyrexian | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ReplEffAddCounter | TriggerDescription$ When you cast your next Phyrexian creature spell, that creature enters with an additional +1/+1 counter and deathtouch counter on it.\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterTypes$ P1P1,Deathtouch | CounterNum$ 1\nSVar:DBDraft:DB$ Draft | Spellbook$ Entomber Exarch,Phyrexian Fleshgorger,Phyrexian Gargantua,Phyrexian Obliterator,Phyrexian Rager,Phyrexian Revoker,Toxic Abomination,Vault Skirge,Scrapwork Rager,Bilious Skulldweller,Archfiend of the Dross,Myr Convert,Zenith Chronicler,Soulless Jailer,Diminished Returner | SpellDescription$ Draft a card from CARDNAME's spellbook.\nDeckHas:Ability$Counters|LifeGain|Graveyard & Type$Phyrexian|Horror|Imp|Zombie|Insect|Demon|Insect\nDeckNeeds:Type$Phyrexian\nOracle:You get a boon with \"When you cast your next Phyrexian creature spell, that creature enters with an additional +1/+1 counter and deathtouch counter on it.\"\\nDraft a card from March Toward Perfection's spellbook.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March Toward Perfection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

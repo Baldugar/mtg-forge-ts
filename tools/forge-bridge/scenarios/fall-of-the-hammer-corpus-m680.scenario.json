@@ -1,0 +1,23 @@
+{
+  "id": "fall-of-the-hammer-corpus-m680",
+  "description": "M6 corpus — Fall of the Hammer; in-hand parse.",
+  "seed": 62432,
+  "cards": {
+    "Fall of the Hammer": "Name:Fall of the Hammer\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to another target creature.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature | TargetUnique$ True | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to another target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fall of the Hammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

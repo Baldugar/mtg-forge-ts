@@ -1,0 +1,23 @@
+{
+  "id": "gilded-scuttler-corpus-m680",
+  "description": "M6 corpus — Gilded Scuttler; in-hand parse.",
+  "seed": 62641,
+  "cards": {
+    "Gilded Scuttler": "Name:Gilded Scuttler\nManaCost:2 U\nTypes:Artifact Creature Crab\nPT:1/3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nOracle:Gilded Scuttler can't be blocked.\\nWhen Gilded Scuttler enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilded Scuttler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

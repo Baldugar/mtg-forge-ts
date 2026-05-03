@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-ripper-corpus-m680",
+  "description": "M6 corpus — Ruthless Ripper; in-hand parse.",
+  "seed": 64064,
+  "cards": {
+    "Ruthless Ripper": "Name:Ruthless Ripper\nManaCost:B\nTypes:Creature Human Assassin\nPT:1/1\nK:Deathtouch\nK:Morph:Reveal<1/Card.Black/black>\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, target player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 2\nOracle:Deathtouch\\nMorph—Reveal a black card in your hand. (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Ruthless Ripper is turned face up, target player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Ripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eye-of-vecna-corpus-m680",
+  "description": "M6 corpus — Eye of Vecna; in-hand parse.",
+  "seed": 62413,
+  "cards": {
+    "Eye of Vecna": "Name:Eye of Vecna\nManaCost:2\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 2 life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigDrawUpkeep | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may pay {2}. If you do, you draw a card and you lose 2 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:TrigDrawUpkeep:AB$ Draw | Cost$ 2 | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nDeckHints:Name$Hand of Vecna|The Book of Vile Darkness\nOracle:When Eye of Vecna enters, you draw a card and you lose 2 life.\\nAt the beginning of your upkeep, you may pay {2}. If you do, you draw a card and you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye of Vecna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

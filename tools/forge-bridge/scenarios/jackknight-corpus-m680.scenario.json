@@ -1,0 +1,23 @@
+{
+  "id": "jackknight-corpus-m680",
+  "description": "M6 corpus — Jackknight; in-hand parse.",
+  "seed": 63018,
+  "cards": {
+    "Jackknight": "Name:Jackknight\nManaCost:1 W\nTypes:Artifact Creature Cyborg Knight\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Whenever another artifact you control enters, put a +1/+1 counter on CARDNAME. If that artifact is a Contraption, CARDNAME gains lifelink until end of turn.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ConditionDefined$ TriggeredCard | ConditionPresent$ Contraption | Defined$ Self | KW$ Lifelink\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Type$Contraption\nOracle:Whenever another artifact you control enters, put a +1/+1 counter on Jackknight. If that artifact is a Contraption, Jackknight gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jackknight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "catacomb-dragon-corpus-m680",
+  "description": "M6 corpus — Catacomb Dragon; in-hand parse.",
+  "seed": 61864,
+  "cards": {
+    "Catacomb Dragon": "Name:Catacomb Dragon\nManaCost:4 B B\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.nonArtifact+nonDragon | Execute$ TrigPumpBlocker | TriggerDescription$ Whenever CARDNAME becomes blocked by a nonartifact, non-Dragon creature, that creature gets -X/-0 until end of turn, where X is half the creature's power, rounded down.\nSVar:TrigPumpBlocker:DB$ Pump | Defined$ TriggeredBlockerLKICopy | NumAtt$ -X\nSVar:X:TriggeredBlocker$CardPower/HalfDown\nOracle:Flying\\nWhenever Catacomb Dragon becomes blocked by a nonartifact, non-Dragon creature, that creature gets -X/-0 until end of turn, where X is half the creature's power, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Catacomb Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

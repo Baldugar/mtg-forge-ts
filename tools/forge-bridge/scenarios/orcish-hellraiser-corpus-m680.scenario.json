@@ -1,0 +1,23 @@
+{
+  "id": "orcish-hellraiser-corpus-m680",
+  "description": "M6 corpus — Orcish Hellraiser; in-hand parse.",
+  "seed": 63644,
+  "cards": {
+    "Orcish Hellraiser": "Name:Orcish Hellraiser\nManaCost:1 R\nTypes:Creature Orc Warrior\nPT:3/2\nK:Echo:R\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 2 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 2\nOracle:Echo {R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Orcish Hellraiser dies, it deals 2 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Hellraiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

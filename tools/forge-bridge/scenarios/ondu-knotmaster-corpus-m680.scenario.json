@@ -1,0 +1,23 @@
+{
+  "id": "ondu-knotmaster-corpus-m680",
+  "description": "M6 corpus — Ondu Knotmaster; in-hand parse.",
+  "seed": 63624,
+  "cards": {
+    "Ondu Knotmaster": "Name:Ondu Knotmaster\nManaCost:2 W B\nTypes:Creature Kor Rogue\nPT:2/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+modified+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another modified creature you control dies, put two +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nAlternateMode:Adventure\nOracle:Lifelink\\nWhenever another modified creature you control dies, put two +1/+1 counters on Ondu Knotmaster.\n\nALTERNATE\n\nName:Throw a Line\nManaCost:W B\nTypes:Sorcery Adventure\nA:SP$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select one or two creatures to distribute counters to | CounterType$ P1P1 | CounterNum$ 2 | TargetMin$ 1 | TargetMax$ 2 | DividedAsYouChoose$ 2 | SpellDescription$ Distribute two +1/+1 counters among one or two target creatures.\nOracle:Distribute two +1/+1 counters among one or two target creatures. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ondu Knotmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

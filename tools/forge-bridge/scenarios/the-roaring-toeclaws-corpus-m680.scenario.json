@@ -1,0 +1,23 @@
+{
+  "id": "the-roaring-toeclaws-corpus-m680",
+  "description": "M6 corpus — The Roaring Toeclaws; in-hand parse.",
+  "seed": 64685,
+  "cards": {
+    "The Roaring Toeclaws": "Name:The Roaring Toeclaws\nManaCost:3 G G\nTypes:Legendary Creature Dinosaur\nPT:5/5\nT:Mode$ Untaps | ValidCard$ Card.Self,Creature.Other+YouCtrl+cmcGE5 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another creature you control with mana value five or greater becomes untapped, put +1/+1 counters on it equal to its power.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCard | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Whenever The Roaring Toeclaws or another creature you control with mana value five or greater becomes untapped, put +1/+1 counters on it equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Roaring Toeclaws"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

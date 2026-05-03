@@ -1,0 +1,23 @@
+{
+  "id": "the-lord-of-pain-corpus-m680",
+  "description": "M6 corpus — The Lord of Pain; in-hand parse.",
+  "seed": 64666,
+  "cards": {
+    "The Lord of Pain": "Name:The Lord of Pain\nManaCost:3 B R\nTypes:Legendary Creature Human Assassin\nPT:5/5\nK:Menace\nS:Mode$ CantGainLife | ValidPlayer$ Player.Opponent | Description$ Your opponents can't gain life.\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player | ActivatorThisTurnCast$ EQ1 | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts their first spell each turn, choose another target player. CARDNAME deals damage equal to that spell's mana value to the chosen player.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player.!TriggeredActivator | NumDmg$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Menace\\nYour opponents can't gain life.\\nWhenever a player casts their first spell each turn, choose another target player. The Lord of Pain deals damage equal to that spell's mana value to the chosen player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Lord of Pain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

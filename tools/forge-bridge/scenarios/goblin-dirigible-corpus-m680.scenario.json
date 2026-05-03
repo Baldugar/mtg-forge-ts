@@ -1,0 +1,23 @@
+{
+  "id": "goblin-dirigible-corpus-m680",
+  "description": "M6 corpus — Goblin Dirigible; in-hand parse.",
+  "seed": 62685,
+  "cards": {
+    "Goblin Dirigible": "Name:Goblin Dirigible\nManaCost:6\nTypes:Artifact Creature Construct\nPT:4/4\nK:Flying\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may pay {4}. If you do, untap this creature.\nSVar:TrigUntap:AB$ Untap | Cost$ 4 | Defined$ Self\nOracle:Flying\\nThis creature doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may pay {4}. If you do, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Dirigible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

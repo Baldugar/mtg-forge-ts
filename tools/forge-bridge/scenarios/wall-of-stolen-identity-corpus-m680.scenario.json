@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-stolen-identity-corpus-m680",
+  "description": "M6 corpus — Wall of Stolen Identity; in-hand parse.",
+  "seed": 64993,
+  "cards": {
+    "Wall of Stolen Identity": "Name:Wall of Stolen Identity\nManaCost:3 U\nTypes:Creature Shapeshifter Wall\nPT:0/0\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | AddTypes$ Wall | AddKeywords$ Defender | AiChoiceLogic$ BestOppCtrl | SubAbility$ DBTrigger | RememberCloneOrigin$ True | SpellDescription$ You may have CARDNAME enter as a copy of any creature on the battlefield, except it's a Wall in addition to its other types and has defender. When you do, tap the copied creature and it doesn't untap during its controller's untap step for as long as you control CARDNAME.\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ DBTap | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | TriggerDescription$ When you do, tap the copied creature and it doesn't untap during its controller's untap step for as long as you control CARDNAME.\nSVar:DBTap:DB$ Tap | Defined$ DelayTriggerRemembered | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ DelayTriggerRemembered | ForgetOnMoved$ Battlefield | ReplacementEffects$ DontUntap | Duration$ AsLongAsControl\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ That creature doesn't untap during its controller's untap step for as long as you control EFFECTSOURCE.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:You may have Wall of Stolen Identity enter as a copy of any creature on the battlefield, except it's a Wall in addition to its other types and has defender. When you do, tap the copied creature and it doesn't untap during its controller's untap step for as long as you control Wall of Stolen Identity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Stolen Identity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

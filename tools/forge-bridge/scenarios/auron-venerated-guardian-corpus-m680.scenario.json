@@ -1,0 +1,23 @@
+{
+  "id": "auron-venerated-guardian-corpus-m680",
+  "description": "M6 corpus — Auron, Venerated Guardian; in-hand parse.",
+  "seed": 61603,
+  "cards": {
+    "Auron, Venerated Guardian": "Name:Auron, Venerated Guardian\nManaCost:3 W\nTypes:Legendary Creature Human Spirit Samurai\nPT:2/5\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Shooting Star — Whenever NICKNAME attacks, put a +1/+1 counter on it. When you do, exile target creature defending player controls with power less than NICKNAME's power until NICKNAME leaves the battlefield.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | RememberAmount$ True | SubAbility$ TrigImmediate\nSVar:TrigImmediate:DB$ ImmediateTrigger | Execute$ TrigExile | TriggerAmount$ Count$RememberedNumber | SubAbility$ DBCleanup | TriggerDescription$ When you do, exile target creature defending player controls with power less than NICKNAME's power until NICKNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.ControlledBy Spawner>TriggeredDefendingPlayer+powerLTX | TgtPrompt$ Select target creature defending player controls with power less than NICKNAME's power | Duration$ UntilHostLeavesPlay\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardPower\nOracle:Vigilance\\nShooting Star — Whenever Auron attacks, put a +1/+1 counter on it. When you do, exile target creature defending player controls with power less than Auron's power until Auron leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Auron, Venerated Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

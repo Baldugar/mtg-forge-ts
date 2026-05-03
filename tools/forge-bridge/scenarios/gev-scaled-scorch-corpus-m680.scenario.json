@@ -1,0 +1,23 @@
+{
+  "id": "gev-scaled-scorch-corpus-m680",
+  "description": "M6 corpus — Gev, Scaled Scorch; in-hand parse.",
+  "seed": 62628,
+  "cards": {
+    "Gev, Scaled Scorch": "Name:Gev, Scaled Scorch\nManaCost:B R\nTypes:Legendary Creature Lizard Mercenary\nPT:3/2\nK:Ward:PayLife<2>\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.YouCtrl+Other\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ PlayerCountRegisteredOpponents$HasPropertyLostLifeThisTurn | SpellDescription$ Other creatures you control enter with an additional +1/+1 counter on them for each opponent who lost life this turn.\nT:Mode$ SpellCast | ValidCard$ Lizard | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a Lizard spell, CARDNAME deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nOracle:Ward—Pay 2 life.\\nOther creatures you control enter with an additional +1/+1 counter on them for each opponent who lost life this turn.\\nWhenever you cast a Lizard spell, Gev, Scaled Scorch deals 1 damage to target opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gev, Scaled Scorch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

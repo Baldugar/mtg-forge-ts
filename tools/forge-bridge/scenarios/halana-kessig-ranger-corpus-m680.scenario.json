@@ -1,0 +1,23 @@
+{
+  "id": "halana-kessig-ranger-corpus-m680",
+  "description": "M6 corpus — Halana, Kessig Ranger; in-hand parse.",
+  "seed": 62770,
+  "cards": {
+    "Halana, Kessig Ranger": "Name:Halana, Kessig Ranger\nManaCost:3 G\nTypes:Legendary Creature Human Archer Ranger\nPT:3/4\nK:Reach\nK:Partner\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | Execute$ TrigPayCost | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature you control enters, you may pay {2}. When you do, that creature deals damage equal to its power to target creature.\nSVar:TrigPayCost:AB$ ImmediateTrigger | Cost$ 2 | Execute$ TrigDealDamage | TriggerDescription$ When you pay {2}, that creature deals damage equal to its power to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | DamageSource$ Spawner>TriggeredCardLKICopy | NumDmg$ X | ValidTgts$ Creature\nSVar:X:Spawner>TriggeredCard$CardPower\nDeckNeeds:Type$Creature\nOracle:Reach\\nWhenever another creature you control enters, you may pay {2}. When you do, that creature deals damage equal to its power to target creature.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halana, Kessig Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

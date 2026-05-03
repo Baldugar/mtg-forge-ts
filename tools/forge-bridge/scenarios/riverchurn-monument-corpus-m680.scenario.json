@@ -1,0 +1,23 @@
+{
+  "id": "riverchurn-monument-corpus-m680",
+  "description": "M6 corpus — Riverchurn Monument; in-hand parse.",
+  "seed": 64015,
+  "cards": {
+    "Riverchurn Monument": "Name:Riverchurn Monument\nManaCost:1 U\nTypes:Artifact\nA:AB$ Mill | Cost$ 1 T | ValidTgts$ Player | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt | NumCards$ 2 | SpellDescription$ Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)\nA:AB$ Pump | Cost$ 2 U U T | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxTgt | TgtPrompt$ Select any number of target players | Exhaust$ True | SubAbility$ DBRepeat | SpellDescription$ Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Targeted | RepeatSubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ Remembered | NumCards$ X\nSVar:X:Count$ValidGraveyard Card.RememberedPlayerCtrl\nSVar:MaxTgt:PlayerCountPlayers$Amount\nDeckHas:Ability$Mill\nOracle:{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)\\nExhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riverchurn Monument"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

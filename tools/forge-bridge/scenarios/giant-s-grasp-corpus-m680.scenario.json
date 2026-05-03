@@ -1,0 +1,23 @@
+{
+  "id": "giant-s-grasp-corpus-m680",
+  "description": "M6 corpus — Giant's Grasp; in-hand parse.",
+  "seed": 62637,
+  "cards": {
+    "Giant's Grasp": "Name:Giant's Grasp\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Giant.YouCtrl:Giant you control\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target nonland permanent for as long as CARDNAME remains on the battlefield.\nSVar:TrigChange:DB$ GainControl | TgtPrompt$ Choose target nonland permanent | ValidTgts$ Permanent.nonLand | LoseControl$ LeavesPlay\nDeckNeeds:Type$Giant\nOracle:Enchant Giant you control\\nWhen Giant's Grasp enters, gain control of target nonland permanent for as long as Giant's Grasp remains on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant's Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

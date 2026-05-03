@@ -1,0 +1,23 @@
+{
+  "id": "garna-bloodfist-of-keld-corpus-m680",
+  "description": "M6 corpus — Garna, Bloodfist of Keld; in-hand parse.",
+  "seed": 62601,
+  "cards": {
+    "Garna, Bloodfist of Keld": "Name:Garna, Bloodfist of Keld\nManaCost:1 B R R\nTypes:Legendary Creature Human Berserker\nPT:4/3\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigBranch | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature you control dies, draw a card if it was attacking. Otherwise, CARDNAME deals 1 damage to each opponent.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBDamage\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1\nSVar:X:TriggeredCard$Valid Creature.attacking\nDeckHas:Ability$Sacrifice\nOracle:Whenever another creature you control dies, draw a card if it was attacking. Otherwise, Garna, Bloodfist of Keld deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garna, Bloodfist of Keld"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

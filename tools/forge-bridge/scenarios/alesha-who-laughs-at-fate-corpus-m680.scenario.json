@@ -1,0 +1,23 @@
+{
+  "id": "alesha-who-laughs-at-fate-corpus-m680",
+  "description": "M6 corpus — Alesha, Who Laughs at Fate; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Alesha, Who Laughs at Fate": "Name:Alesha, Who Laughs at Fate\nManaCost:1 B R\nTypes:Legendary Creature Human Warrior\nPT:2/2\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever NICKNAME attacks, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigChangeZone | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, return target creature card with mana value less than or equal to NICKNAME's power from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLEX | TgtPrompt$ Select target creature card with mana value less than or equal to Alesha's power\nSVar:RaidTest:Count$AttackersDeclared\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:First strike\\nWhenever Alesha attacks, put a +1/+1 counter on it.\\nRaid — At the beginning of your end step, if you attacked this turn, return target creature card with mana value less than or equal to Alesha's power from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alesha, Who Laughs at Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

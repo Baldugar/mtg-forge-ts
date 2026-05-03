@@ -1,0 +1,23 @@
+{
+  "id": "ezio-brash-novice-corpus-m680",
+  "description": "M6 corpus — Ezio, Brash Novice; in-hand parse.",
+  "seed": 62416,
+  "cards": {
+    "Ezio, Brash Novice": "Name:Ezio, Brash Novice\nManaCost:1 RW\nTypes:Legendary Creature Human\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ X | SVarCompare$ GT1 | AddKeyword$ First Strike | AddType$ Assassin | Description$ As long as NICKNAME has two or more counters on it, it has first strike and is an Assassin in addition to its other types.\nSVar:X:Count$CardCounters.ALL\nOracle:Whenever Ezio, Brash Novice attacks, put a +1/+1 counter on it.\\nAs long as Ezio has two or more counters on it, it has first strike and is an Assassin in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ezio, Brash Novice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

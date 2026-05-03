@@ -1,0 +1,23 @@
+{
+  "id": "gimbal-gremlin-prodigy-corpus-m680",
+  "description": "M6 corpus — Gimbal, Gremlin Prodigy; in-hand parse.",
+  "seed": 62643,
+  "cards": {
+    "Gimbal, Gremlin Prodigy": "Name:Gimbal, Gremlin Prodigy\nManaCost:2 G U R\nTypes:Legendary Creature Gremlin Artificer\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Artifact+YouCtrl | AddKeyword$ Trample | Description$ Artifact creatures you control have trample.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 0/0 red Gremlin artifact creature token. Put X +1/+1 counters on it, where X is the number of differently named artifact tokens you control.\nSVar:TrigToken:DB$ Token | TokenScript$ r_0_0_a_gremlin | RememberTokens$ True | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Artifact.YouCtrl+token$DifferentCardNames\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Artifact & Ability$Token\nOracle:Artifact creatures you control have trample.\\nAt the beginning of your end step, create a 0/0 red Gremlin artifact creature token. Put X +1/+1 counters on it, where X is the number of differently named artifact tokens you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gimbal, Gremlin Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

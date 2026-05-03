@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-bloodwitch-corpus-m680",
+  "description": "M6 corpus — Vengeful Bloodwitch; in-hand parse.",
+  "seed": 64914,
+  "cards": {
+    "Vengeful Bloodwitch": "Name:Vengeful Bloodwitch\nManaCost:1 B\nTypes:Creature Vampire Warlock\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature or another creature you control dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Whenever this creature or another creature you control dies, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Bloodwitch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

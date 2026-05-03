@@ -1,0 +1,23 @@
+{
+  "id": "consuming-fervor-corpus-m680",
+  "description": "M6 corpus — Consuming Fervor; in-hand parse.",
+  "seed": 61992,
+  "cards": {
+    "Consuming Fervor": "Name:Consuming Fervor\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | AddTrigger$ ConsumingFervorUpkeep | AddSVar$ ConsumingFervorPutCounter | Description$ Enchanted creature gets +3/+3 and has \"At the beginning of your upkeep, put a -1/-1 counter on this creature.\"\nSVar:ConsumingFervorUpkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ConsumingFervorPutCounter | TriggerDescription$ At the beginning of your upkeep, put a -1/-1 counter on this creature.\nSVar:ConsumingFervorPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:Enchant creature\\nEnchanted creature gets +3/+3 and has \"At the beginning of your upkeep, put a -1/-1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consuming Fervor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

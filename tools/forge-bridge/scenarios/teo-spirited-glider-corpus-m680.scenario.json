@@ -1,0 +1,23 @@
+{
+  "id": "teo-spirited-glider-corpus-m680",
+  "description": "M6 corpus — Teo, Spirited Glider; in-hand parse.",
+  "seed": 64621,
+  "cards": {
+    "Teo, Spirited Glider": "Name:Teo, Spirited Glider\nManaCost:3 U\nTypes:Legendary Creature Human Pilot Ally\nPT:1/4\nK:Flying\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | ValidAttackers$ Creature.withFlying | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures you control with flying attack, draw a card, then discard a card. When you discard a nonland card this way, put a +1/+1 counter on target creature you control.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ GE1 | Execute$ TrigPutCounter | SubAbility$ DBCleanup | SpellDescription$ When you discard a nonland card this way, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckHints:Keyword$Flying\nOracle:Flying\\nWhenever one or more creatures you control with flying attack, draw a card, then discard a card. When you discard a nonland card this way, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teo, Spirited Glider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

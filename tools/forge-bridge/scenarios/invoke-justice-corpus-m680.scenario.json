@@ -1,0 +1,23 @@
+{
+  "id": "invoke-justice-corpus-m680",
+  "description": "M6 corpus — Invoke Justice; in-hand parse.",
+  "seed": 62977,
+  "cards": {
+    "Invoke Justice": "Name:Invoke Justice\nManaCost:1 W W W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target permanent card in your graveyard | ValidTgts$ Permanent.YouCtrl | SubAbility$ DBPlayerTarget | SpellDescription$ Return target permanent card from your graveyard to the battlefield, then distribute four +1/+1 counters among any number of creatures and/or Vehicles target player controls. | StackDescription$ Return {c:Targeted} from your graveyard to the battlefield,\nSVar:DBPlayerTarget:DB$ Pump | ValidTgts$ Player | SubAbility$ DBPutCounter | StackDescription$ then distribute four +1/+1 counters among any number of creatures and/or Vehicles {p:Targeted} controls.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.TargetedPlayerCtrl,Vehicle.TargetedPlayerCtrl | ChoiceTitle$ Choose any number of creatures and/or Vehicles target player controls to distribute counters to | ChoiceAmount$ 4 | MinChoiceAmount$ 1 | CounterType$ P1P1 | CounterNum$ 4 | DividedAsYouChoose$ 4 | StackDescription$ None\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Type$Creature|Vehicle\nOracle:Return target permanent card from your graveyard to the battlefield, then distribute four +1/+1 counters among any number of creatures and/or Vehicles target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invoke Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

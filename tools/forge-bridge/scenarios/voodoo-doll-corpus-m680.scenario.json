@@ -1,0 +1,23 @@
+{
+  "id": "voodoo-doll-corpus-m680",
+  "description": "M6 corpus — Voodoo Doll; in-hand parse.",
+  "seed": 64979,
+  "cards": {
+    "Voodoo Doll": "Name:Voodoo Doll\nManaCost:6\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, put a pin counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | PresentDefined$ Self | IsPresent$ Card.untapped | ValidPlayer$ You | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if CARDNAME is untapped, destroy CARDNAME and it deals damage to you equal to the number of pin counters on it.\nA:AB$ DealDamage | Cost$ X X T | ValidTgts$ Any | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of pin counters on it to any target. X is the number of pin counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ PIN | CounterNum$ 1 | Defined$ Self\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self | SubAbility$ DBDealDamageYou\nSVar:DBDealDamageYou:DB$ DealDamage | Defined$ You | NumDmg$ X\nSVar:X:Count$CardCounters.PIN\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, put a pin counter on Voodoo Doll.\\nAt the beginning of your end step, if Voodoo Doll is untapped, destroy Voodoo Doll and it deals damage to you equal to the number of pin counters on it.\\n{X}{X}, {T}: Voodoo Doll deals damage equal to the number of pin counters on it to any target. X is the number of pin counters on Voodoo Doll.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voodoo Doll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

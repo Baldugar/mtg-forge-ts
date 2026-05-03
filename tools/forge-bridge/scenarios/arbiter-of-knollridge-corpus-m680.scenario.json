@@ -1,0 +1,23 @@
+{
+  "id": "arbiter-of-knollridge-corpus-m680",
+  "description": "M6 corpus — Arbiter of Knollridge; in-hand parse.",
+  "seed": 61538,
+  "cards": {
+    "Arbiter of Knollridge": "Name:Arbiter of Knollridge\nManaCost:6 W\nTypes:Creature Giant Wizard\nPT:5/5\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigLife | TriggerDescription$ When CARDNAME enters, each player's life total becomes the highest life total among all players.\nSVar:TrigLife:DB$ SetLife | Defined$ Player | LifeAmount$ X\nSVar:X:PlayerCountPlayers$HighestLifeTotal\nOracle:Vigilance\\nWhen Arbiter of Knollridge enters, each player's life total becomes the highest life total among all players.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arbiter of Knollridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

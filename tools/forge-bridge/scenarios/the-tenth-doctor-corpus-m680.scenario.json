@@ -1,0 +1,23 @@
+{
+  "id": "the-tenth-doctor-corpus-m680",
+  "description": "M6 corpus — The Tenth Doctor; in-hand parse.",
+  "seed": 64692,
+  "cards": {
+    "The Tenth Doctor": "Name:The Tenth Doctor\nManaCost:3 U R\nTypes:Legendary Creature Time Lord Doctor\nPT:3/5\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Allons-y! — Whenever you attack, exile cards from the top of your library until you exile a nonland card. Put three time counters on it. If it doesn't have suspend, it gains suspend.\nSVar:TrigExile:DB$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ TIME | CounterNum$ 3 | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ Pump | Defined$ Remembered.withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nA:AB$ TimeTravel | Cost$ 7 | PrecostDesc$ Timey-Wimey — | SorcerySpeed$ True | Amount$ 3 | SpellDescription$ Timey-Wimey — {7}: Time travel three times. Activate only as a sorcery. (For each suspended card you own and each permanent you control with a time counter on it, you may add or remove a time counter. Then do it two more times.)\nOracle:Allons-y! — Whenever you attack, exile cards from the top of your library until you exile a nonland card. Put three time counters on it. If it doesn't have suspend, it gains suspend.\\nTimey-Wimey — {7}: Time travel three times. Activate only as a sorcery. (For each suspended card you own and each permanent you control with a time counter on it, you may add or remove a time counter. Then do it two more times.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Tenth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

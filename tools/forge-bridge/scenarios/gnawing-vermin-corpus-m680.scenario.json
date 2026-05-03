@@ -1,0 +1,23 @@
+{
+  "id": "gnawing-vermin-corpus-m680",
+  "description": "M6 corpus — Gnawing Vermin; in-hand parse.",
+  "seed": 62667,
+  "cards": {
+    "Gnawing Vermin": "Name:Gnawing Vermin\nManaCost:B\nTypes:Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDebuff | TriggerDescription$ When CARDNAME dies, target creature you don't control gets -1/-1 until end of turn.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nDeckHas:Ability$Mill\nOracle:When Gnawing Vermin enters, target player mills two cards.\\nWhen Gnawing Vermin dies, target creature you don't control gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gnawing Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "adrenaline-jockey-corpus-m680",
+  "description": "M6 corpus — Adrenaline Jockey; in-hand parse.",
+  "seed": 61452,
+  "cards": {
+    "Adrenaline Jockey": "Name:Adrenaline Jockey\nManaCost:2 R\nTypes:Creature Minotaur Pilot\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player.NonActive | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 4\nT:Mode$ AbilityCast | ValidActivatingPlayer$ You | ValidSA$ Activated.Exhaust | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.\\nWhenever you activate an exhaust ability, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adrenaline Jockey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

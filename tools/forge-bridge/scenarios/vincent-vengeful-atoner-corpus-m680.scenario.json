@@ -1,0 +1,23 @@
+{
+  "id": "vincent-vengeful-atoner-corpus-m680",
+  "description": "M6 corpus — Vincent, Vengeful Atoner; in-hand parse.",
+  "seed": 64950,
+  "cards": {
+    "Vincent, Vengeful Atoner": "Name:Vincent, Vengeful Atoner\nManaCost:2 R\nTypes:Legendary Creature Assassin\nPT:3/3\nK:Menace\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ Chaos — Whenever NICKNAME deals combat damage to an opponent, it deals that much damage to each other opponent if NICKNAME's power is 7 or greater.\nSVar:TrigDmg:DB$ DamageAll | ValidPlayers$ OppNonTriggeredTarget | NumDmg$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE7\nSVar:X:TriggerCount$DamageAmount\nSVar:Y:Count$CardPower\nOracle:Menace\\nWhenever one or more creatures you control deal combat damage to a player, put a +1/+1 counter on Vincent.\\nChaos — Whenever Vincent deals combat damage to an opponent, it deals that much damage to each other opponent if Vincent's power is 7 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vincent, Vengeful Atoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

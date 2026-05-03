@@ -1,0 +1,23 @@
+{
+  "id": "kessig-malcontents-corpus-m680",
+  "description": "M6 corpus — Kessig Malcontents; in-hand parse.",
+  "seed": 63113,
+  "cards": {
+    "Kessig Malcontents": "Name:Kessig Malcontents\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TroubleMaking | TriggerDescription$ When CARDNAME enters, it deals damage to target player or planeswalker equal to the number of Humans you control.\nSVar:TroubleMaking:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X\nSVar:X:Count$Valid Human.YouCtrl\nOracle:When Kessig Malcontents enters, it deals damage to target player or planeswalker equal to the number of Humans you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kessig Malcontents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

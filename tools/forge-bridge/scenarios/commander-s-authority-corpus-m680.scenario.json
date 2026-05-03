@@ -1,0 +1,23 @@
+{
+  "id": "commander-s-authority-corpus-m680",
+  "description": "M6 corpus — Commander's Authority; in-hand parse.",
+  "seed": 61966,
+  "cards": {
+    "Commander's Authority": "Name:Commander's Authority\nManaCost:4 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ CommanderTrig | AddSVar$ CommanderToken | Description$ Enchanted creature has \"At the beginning of your upkeep, create a 1/1 white Human creature token.\"\nSVar:CommanderTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ CommanderToken | TriggerDescription$ At the beginning of your upkeep, create a 1/1 white Human creature token.\nSVar:CommanderToken:DB$ Token | TokenScript$ w_1_1_human | TokenOwner$ You\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your upkeep, create a 1/1 white Human creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commander's Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

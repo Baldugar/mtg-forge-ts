@@ -1,0 +1,23 @@
+{
+  "id": "riku-of-many-paths-corpus-m680",
+  "description": "M6 corpus — Riku of Many Paths; in-hand parse.",
+  "seed": 63989,
+  "cards": {
+    "Riku of Many Paths": "Name:Riku of Many Paths\nManaCost:G U R\nTypes:Legendary Creature Human Wizard\nPT:3/3\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ValidSA$ Spell.Modal | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a modal spell, ABILITY\nSVar:TrigCharm:DB$ Charm | AdditionalDescription$ where X is the number of times you chose a mode for that spell | Choices$ DBExile,DBPutCounter,DBToken | CharmNum$ X | MinCharmNum$ 0\nSVar:X:TriggeredSpellAbility$NumTimesChoseMode\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. Until the end of your next turn, you may play it.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on CARDNAME. It gains trample until end of turn.\nSVar:DBPump:DB$ Pump | KW$ Trample | StackDescription$ It gains trample until end of turn.\nSVar:DBToken:DB$ Token | TokenScript$ u_1_1_bird_flying | SpellDescription$ Create a 1/1 blue Bird creature token with flying.\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters|Token & Type$Bird\nOracle:Whenever you cast a modal spell, choose up to X, where X is the number of times you chose a mode for that spell —\\n• Exile the top card of your library. Until the end of your next turn, you may play it.\\n• Put a +1/+1 counter on Riku of Many Paths. It gains trample until end of turn.\\n• Create a 1/1 blue Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riku of Many Paths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

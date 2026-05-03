@@ -1,0 +1,23 @@
+{
+  "id": "repeat-offender-corpus-m680",
+  "description": "M6 corpus — Repeat Offender; in-hand parse.",
+  "seed": 63954,
+  "cards": {
+    "Repeat Offender": "Name:Repeat Offender\nManaCost:1 B\nTypes:Creature Human Assassin\nPT:2/1\nA:AB$ Branch | Cost$ 2 B | BranchConditionSVar$ Count$Valid Card.Self+IsSuspected | TrueSubAbility$ DBPutCounter | FalseSubAbility$ DBSuspect | StackDescription$ SpellDescription | SpellDescription$ If CARDNAME is suspected, put a +1/+1 counter on it. Otherwise, suspect it. (A suspected creature has menace and can't block.)\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1\nSVar:DBSuspect:DB$ AlterAttribute | Attributes$ Suspected\nDeckHas:Ability$Counters\nOracle:{2}{B}: If Repeat Offender is suspected, put a +1/+1 counter on it. Otherwise, suspect it. (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repeat Offender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

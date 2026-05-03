@@ -1,0 +1,23 @@
+{
+  "id": "call-the-spirit-dragons-corpus-m680",
+  "description": "M6 corpus — Call the Spirit Dragons; in-hand parse.",
+  "seed": 61841,
+  "cards": {
+    "Call the Spirit Dragons": "Name:Call the Spirit Dragons\nManaCost:W U B R G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Dragon.YouCtrl | AddKeyword$ Indestructible | Description$ Dragons you control have indestructible.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ PutCounter | TriggerDescription$ At the beginning of your upkeep, for each color, put a +1/+1 counter on a Dragon you control of that color. If you put +1/+1 counters on five Dragons this way, you win the game.\nSVar:PutCounter:DB$ PutCounter | Choices$ Dragon.ChosenColor+YouCtrl | ChoiceTitle$ Choose a Dragon for chosenColor | CounterType$ P1P1 | CounterNum$ 1 | RememberPut$ True | ForColor$ True | SubAbility$ WinGame\nSVar:WinGame:DB$ WinsGame | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ5 | SubAbility$ DBCleanup | SpellDescription$ If you put +1/+1 counters on five Dragons this way, you win the game.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nDeckNeeds:Type$Dragon\nDeckHas:Ability$Counters\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature.Dragon+YouCtrl\nOracle:Dragons you control have indestructible.\\nAt the beginning of your upkeep, for each color, put a +1/+1 counter on a Dragon you control of that color. If you put +1/+1 counters on five Dragons this way, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call the Spirit Dragons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

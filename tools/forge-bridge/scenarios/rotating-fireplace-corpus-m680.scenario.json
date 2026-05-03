@@ -1,0 +1,23 @@
+{
+  "id": "rotating-fireplace-corpus-m680",
+  "description": "M6 corpus — Rotating Fireplace; in-hand parse.",
+  "seed": 64044,
+  "cards": {
+    "Rotating Fireplace": "Name:Rotating Fireplace\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with a time counter on it.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ TIME | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | SpellDescription$ Add an amount of {C} equal to the number of time counters on CARDNAME.\nA:AB$ TimeTravel | Cost$ 4 T | SorcerySpeed$ True | SpellDescription$ Time travel. Activate only as a sorcery. (For each suspended card you own and each permanent you control with a time counter on it, you may add or remove a time counter.)\nSVar:X:Count$CardCounters.Time\nOracle:Rotating Fireplace enters tapped with a time counter on it.\\n{T}: Add an amount of {C} equal to the number of time counters on Rotating Fireplace.\\n{4}, {T}: Time travel. Activate only as a sorcery. (For each suspended card you own and each permanent you control with a time counter on it, you may add or remove a time counter.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotating Fireplace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

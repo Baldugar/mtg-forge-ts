@@ -1,0 +1,23 @@
+{
+  "id": "struggle-for-project-purity-corpus-m680",
+  "description": "M6 corpus — Struggle for Project Purity; in-hand parse.",
+  "seed": 64488,
+  "cards": {
+    "Struggle for Project Purity": "Name:Struggle for Project Purity\nManaCost:3 U\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Brotherhood,Enclave | Defined$ You | SetChosenMode$ True | AILogic$ Brotherhood | ShowChoice$ ExceptSelf | SpellDescription$ As CARDNAME enters, choose Brotherhood or Enclave.\nSVar:Brotherhood:DB$ Pump | SpellDescription$ Brotherhood\nSVar:Enclave:DB$ Pump | SpellDescription$ Enclave\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeBrotherhood | AddTrigger$ BrotherhoodTrig | Description$ • Brotherhood — At the beginning of your upkeep, each opponent draws a card. You draw a card for each card drawn this way.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeEnclave | AddTrigger$ EnclaveTrig | Description$ • Enclave — Whenever a player attacks you with one or more creatures, that player gets twice that many rad counters.\nSVar:BrotherhoodTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Brotherhood — At the beginning of your upkeep, each opponent draws a card. You draw a card for each card drawn this way.\nSVar:TrigDraw:DB$ Draw | Defined$ Opponent | NumCards$ 1 | RememberDrawn$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Remembered$Amount | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:EnclaveTrig:Mode$ AttackersDeclaredOneTarget | AttackedTarget$ You | AttackingPlayer$ Player | Execute$ TrigRadiation | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Enclave — Whenever a player attacks you with one or more creatures, that player gets twice that many rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ TriggeredAttackingPlayer | Num$ X\nSVar:X:TriggerObjectsAttackers$Amount/Times.2\nOracle:As Struggle for Project Purity enters, choose Brotherhood or Enclave.\\n• Brotherhood — At the beginning of your upkeep, each opponent draws a card. You draw a card for each card drawn this way.\\n• Enclave — Whenever a player attacks you with one or more creatures, that player gets twice that many rad counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Struggle for Project Purity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

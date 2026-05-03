@@ -1,0 +1,23 @@
+{
+  "id": "orah-skyclave-hierophant-corpus-m680",
+  "description": "M6 corpus — Orah, Skyclave Hierophant; in-hand parse.",
+  "seed": 63638,
+  "cards": {
+    "Orah, Skyclave Hierophant": "Name:Orah, Skyclave Hierophant\nManaCost:2 W B\nTypes:Legendary Creature Kor Cleric\nPT:3/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Cleric.YouCtrl+Other | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME or another Cleric you control dies, return target Cleric with lesser mana value from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Cleric.cmcLTX+YouOwn | TgtPrompt$ Choose target Cleric card with lesser mana value | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:TriggeredCard$CardManaCost\nDeckHas:Ability$Graveyard\nDeckHints:Type$Cleric\nOracle:Lifelink\\nWhenever Orah, Skyclave Hierophant or another Cleric you control dies, return target Cleric card with lesser mana value from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orah, Skyclave Hierophant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

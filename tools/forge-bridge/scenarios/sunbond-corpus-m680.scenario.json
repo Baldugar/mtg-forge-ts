@@ -1,0 +1,23 @@
+{
+  "id": "sunbond-corpus-m680",
+  "description": "M6 corpus — Sunbond; in-hand parse.",
+  "seed": 64514,
+  "cards": {
+    "Sunbond": "Name:Sunbond\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ SunbondTrig | AddSVar$ SunbondPutCounter & SunbondTriggerAmount | Description$ Enchanted creature has \"Whenever you gain life, put that many +1/+1 counters on this creature.\"\nSVar:SunbondTrig:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ SunbondPutCounter | TriggerDescription$ Whenever you gain life, put that many +1/+1 counters on CARDNAME.\nSVar:SunbondPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ SunbondTriggerAmount\nSVar:SunbondTriggerAmount:TriggerCount$LifeAmount\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature has \"Whenever you gain life, put that many +1/+1 counters on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunbond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

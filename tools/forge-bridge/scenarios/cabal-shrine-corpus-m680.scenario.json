@@ -1,0 +1,23 @@
+{
+  "id": "cabal-shrine-corpus-m680",
+  "description": "M6 corpus — Cabal Shrine; in-hand parse.",
+  "seed": 61826,
+  "cards": {
+    "Cabal Shrine": "Name:Cabal Shrine\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever a player casts a spell, that player discards X cards, where X is the number of cards in all graveyards with the same name as that spell.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredActivator | NumCards$ X | Mode$ TgtChoose\nSVar:X:Count$ValidGraveyard Card.sharesNameWith TriggeredCard\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, that player discards X cards, where X is the number of cards in all graveyards with the same name as that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabal Shrine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

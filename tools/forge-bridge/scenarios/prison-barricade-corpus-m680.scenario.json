@@ -1,0 +1,23 @@
+{
+  "id": "prison-barricade-corpus-m680",
+  "description": "M6 corpus — Prison Barricade; in-hand parse.",
+  "seed": 63808,
+  "cards": {
+    "Prison Barricade": "Name:Prison Barricade\nManaCost:1 W\nTypes:Creature Wall\nPT:1/3\nK:Defender\nK:Kicker:1 W\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ BarricadePumped | Static$ True | TriggerDescription$ If CARDNAME was kicked, it enters with a +1/+1 counter on it and with \"CARDNAME can attack as though it didn't have defender.\"\nSVar:BarricadePumped:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | staticAbilities$ CanAttack | Duration$ Permanent\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.Self | Description$ CARDNAME can attack as though it didn't have defender.\nOracle:Defender (This creature can't attack.)\\nKicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nIf Prison Barricade was kicked, it enters with a +1/+1 counter on it and with \"Prison Barricade can attack as though it didn't have defender.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prison Barricade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

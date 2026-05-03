@@ -1,0 +1,23 @@
+{
+  "id": "hivespine-wolverine-corpus-m680",
+  "description": "M6 corpus — Hivespine Wolverine; in-hand parse.",
+  "seed": 62842,
+  "cards": {
+    "Hivespine Wolverine": "Name:Hivespine Wolverine\nManaCost:3 G G\nTypes:Creature Elemental Wolverine\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters the battlefield, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBFight,DBDestroy\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | TgtPrompt$ Select target creature you control | StackDescription$ Put a +1/+1 counter on {c:ThisTargetedCard}. | SpellDescription$ Put a +1/+1 counter on target creature you control.\nSVar:DBFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.token | TgtPrompt$ Select target creature token | SpellDescription$ CARDNAME fights target creature token.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nDeckHas:Ability$Counters\nOracle:When Hivespine Wolverine enters, choose one —\\n• Put a +1/+1 counter on target creature you control.\\n• Hivespine Wolverine fights target creature token.\\n• Destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hivespine Wolverine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

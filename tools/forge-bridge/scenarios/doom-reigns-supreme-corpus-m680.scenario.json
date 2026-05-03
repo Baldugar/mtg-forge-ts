@@ -1,0 +1,23 @@
+{
+  "id": "doom-reigns-supreme-corpus-m680",
+  "description": "M6 corpus — Doom Reigns Supreme; in-hand parse.",
+  "seed": 62209,
+  "cards": {
+    "Doom Reigns Supreme": "Name:Doom Reigns Supreme\nManaCost:1 B\nTypes:Enchantment Plan\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Villain.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a Villain you control enters, each opponent loses 1 life and you gain 1 life. Put a plan counter on this enchantment.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ PLAN | CounterNum$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ PLAN | CounterAmount$ EQ5 | Execute$ TrigSac | TriggerDescription$ When the fifth plan counter is put on this enchantment, sacrifice it. When you do, target opponent exiles the top five cards of their library. You may cast up to two spells from among the exiled cards without paying their mana costs.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ TrigDig | SubAbility$ DBCleanup | TriggerDescription$ When you do, target opponent exiles the top five cards of their library. You may cast up to two spells from among the exiled cards without paying their mana costs.\nSVar:TrigDig:DB$ Dig | ValidTgts$ Opponent | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | WithoutManaCost$ True | ValidZone$ Exile | Valid$ Card.IsRemembered | ValidSA$ Spell | Amount$ 2 | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever a Villain you control enters, each opponent loses 1 life and you gain 1 life. Put a plan counter on this enchantment.\\nWhen the fifth plan counter is put on this enchantment, sacrifice it. When you do, target opponent exiles the top five cards of their library. You may cast up to two spells from among the exiled cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doom Reigns Supreme"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

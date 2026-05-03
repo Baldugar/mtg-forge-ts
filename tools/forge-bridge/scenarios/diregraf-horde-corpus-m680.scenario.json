@@ -1,0 +1,23 @@
+{
+  "id": "diregraf-horde-corpus-m680",
+  "description": "M6 corpus — Diregraf Horde; in-hand parse.",
+  "seed": 62177,
+  "cards": {
+    "Diregraf Horde": "Name:Diregraf Horde\nManaCost:4 B\nTypes:Creature Zombie\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 black Zombie creature tokens with decayed. When you do, exile up to two target cards from graveyards. (A creature with decayed can't block. When it attacks, sacrifice it at end of combat.)\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_zombie_decayed | RememberOriginalTokens$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | TriggerAmount$ Remembered$Amount/DivideEvenlyDown.2 | Execute$ TrigExile | SubAbility$ DBCleanup | TriggerDescription$ When you do, exile up to two target cards from graveyards.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target cards from graveyards | ValidTgts$ Card\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Graveyard\nOracle:When Diregraf Horde enters, create two 2/2 black Zombie creature tokens with decayed. When you do, exile up to two target cards from graveyards. (A creature with decayed can't block. When it attacks, sacrifice it at end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diregraf Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

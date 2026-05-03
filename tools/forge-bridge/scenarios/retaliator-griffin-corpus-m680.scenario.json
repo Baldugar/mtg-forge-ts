@@ -1,0 +1,23 @@
+{
+  "id": "retaliator-griffin-corpus-m680",
+  "description": "M6 corpus — Retaliator Griffin; in-hand parse.",
+  "seed": 63970,
+  "cards": {
+    "Retaliator Griffin": "Name:Retaliator Griffin\nManaCost:1 R G W\nTypes:Creature Griffin\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever a source an opponent controls deals damage to you, you may put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying\\nWhenever a source an opponent controls deals damage to you, you may put that many +1/+1 counters on Retaliator Griffin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retaliator Griffin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

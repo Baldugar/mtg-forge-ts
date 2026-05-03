@@ -1,0 +1,23 @@
+{
+  "id": "wildcall-corpus-m680",
+  "description": "M6 corpus — Wildcall; in-hand parse.",
+  "seed": 65047,
+  "cards": {
+    "Wildcall": "Name:Wildcall\nManaCost:X G G\nTypes:Sorcery\nA:SP$ Manifest | RememberManifested$ True | SubAbility$ TrigPutCounter | SpellDescription$ Manifest the top card of your library, then put X +1/+1 counters on it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Manifest the top card of your library, then put X +1/+1 counters on it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildcall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

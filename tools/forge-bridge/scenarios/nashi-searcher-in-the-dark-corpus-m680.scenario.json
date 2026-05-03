@@ -1,0 +1,23 @@
+{
+  "id": "nashi-searcher-in-the-dark-corpus-m680",
+  "description": "M6 corpus — Nashi, Searcher in the Dark; in-hand parse.",
+  "seed": 63517,
+  "cards": {
+    "Nashi, Searcher in the Dark": "Name:Nashi, Searcher in the Dark\nManaCost:U B\nTypes:Legendary Creature Rat Ninja Wizard\nPT:2/2\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you mill that many cards. You may put any number of legendary and/or enchantment cards from among them into your hand. If you put no cards into your hand this way, put a +1/+1 counter on NICKNAME.\nSVar:TrigMill:DB$ Mill | NumCards$ X | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.Legendary+IsRemembered,Enchantment.IsRemembered | ChangeNum$ X | RememberChanged$ True | ForgetOtherRemembered$ True | SelectPrompt$ You may select any number of legendary and/or enchantment cards. | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Mill\nDeckHints:Type$Legendary|Enchantment\nOracle:Menace\\nWhenever Nashi, Searcher in the Dark deals combat damage to a player, you mill that many cards. You may put any number of legendary and/or enchantment cards from among them into your hand. If you put no cards into your hand this way, put a +1/+1 counter on Nashi.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nashi, Searcher in the Dark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "avenging-huntbonder-corpus-m680",
+  "description": "M6 corpus — Avenging Huntbonder; in-hand parse.",
+  "seed": 61618,
+  "cards": {
+    "Avenging Huntbonder": "Name:Avenging Huntbonder\nManaCost:3 W W\nTypes:Creature Human Warrior\nPT:3/3\nK:Double Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a double strike counter on another target attacking creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | CounterType$ Double Strike | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Double strike\\nWhenever Avenging Huntbonder attacks, put a double strike counter on another target attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avenging Huntbonder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

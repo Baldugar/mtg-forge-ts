@@ -1,0 +1,23 @@
+{
+  "id": "rootcast-apprenticeship-corpus-m680",
+  "description": "M6 corpus — Rootcast Apprenticeship; in-hand parse.",
+  "seed": 64035,
+  "cards": {
+    "Rootcast Apprenticeship": "Name:Rootcast Apprenticeship\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBPutCounter,DBCopy,DBToken,DBSacrifice | CharmNum$ 3 | CanRepeatModes$ True\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on target creature.\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl | TgtPrompt$ Select target token you control | SpellDescription$ Create a token that's a copy of target token you control.\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenScript$ g_1_1_squirrel | StackDescription$ SpellDescription | SpellDescription$ Target player creates a 1/1 green Squirrel creature token.\nSVar:DBSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Artifact.!token | SpellDescription$ Target opponent sacrifices a nontoken artifact. | SacMessage$ nontoken artifact\nDeckHas:Ability$Counters|Token\nOracle:Choose three. You may choose the same mode more than once.\\n• Put two +1/+1 counters on target creature.\\n• Create a token that's a copy of target token you control.\\n• Target player creates a 1/1 green Squirrel creature token.\\n• Target opponent sacrifices a nontoken artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rootcast Apprenticeship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

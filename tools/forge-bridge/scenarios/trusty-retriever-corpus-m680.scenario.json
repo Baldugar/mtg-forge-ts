@@ -1,0 +1,23 @@
+{
+  "id": "trusty-retriever-corpus-m680",
+  "description": "M6 corpus — Trusty Retriever; in-hand parse.",
+  "seed": 64809,
+  "cards": {
+    "Trusty Retriever": "Name:Trusty Retriever\nManaCost:3 W\nTypes:Creature Dog\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBFetch\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBFetch:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouOwn,Enchantment.YouOwn | TgtPrompt$ Choose target artifact or enchantment card in your graveyard | SpellDescription$ Return target artifact or enchantment card from your graveyard to your hand.\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact|Enchantment\nOracle:When Trusty Retriever enters, choose one —\\n• Put a +1/+1 counter on Trusty Retriever.\\n• Return target artifact or enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trusty Retriever"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "teysa-opulent-oligarch-corpus-m680",
+  "description": "M6 corpus — Teysa, Opulent Oligarch; in-hand parse.",
+  "seed": 64629,
+  "cards": {
+    "Teysa, Opulent Oligarch": "Name:Teysa, Opulent Oligarch\nManaCost:1 W B\nTypes:Legendary Creature Human Advisor\nPT:2/3\nK:Deathtouch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ At the beginning of your end step, investigate for each opponent who lost life this turn.\nSVar:TrigInvestigate:DB$ Investigate | Num$ PlayerCountRegisteredOpponents$HasPropertyLostLifeThisTurn\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Clue.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Whenever a Clue you control is put into a graveyard from the battlefield, create a 1/1 white and black Spirit creature token with flying. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ wb_1_1_spirit_flying\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue|Spirit\nDeckHints:Ability$Investigate & Type$Clue\nOracle:Deathtouch\\nAt the beginning of your end step, investigate for each opponent who lost life this turn.\\nWhenever a Clue you control is put into a graveyard from the battlefield, create a 1/1 white and black Spirit creature token with flying. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teysa, Opulent Oligarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

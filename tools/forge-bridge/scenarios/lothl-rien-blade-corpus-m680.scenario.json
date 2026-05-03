@@ -1,0 +1,23 @@
+{
+  "id": "lothl-rien-blade-corpus-m680",
+  "description": "M6 corpus — Lothlórien Blade; in-hand parse.",
+  "seed": 63271,
+  "cards": {
+    "Lothlórien Blade": "Name:Lothlórien Blade\nManaCost:3\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | TriggerZones$ Battlefield | Execute$ TrigExchangeDamage | TriggerDescription$ Whenever equipped creature attacks, it deals damage equal to its power to target creature defending player controls.\nSVar:TrigExchangeDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | DamageSource$ TriggeredAttackerLKICopy | NumDmg$ TriggeredAttacker$CardPower\nK:Equip:2:Elf.YouCtrl:Elf\nK:Equip:5\nOracle:Whenever equipped creature attacks, it deals damage equal to its power to target creature defending player controls.\\nEquip Elf {2}\\nEquip {5}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lothlórien Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

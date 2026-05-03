@@ -1,0 +1,23 @@
+{
+  "id": "turncoat-kunoichi-corpus-m680",
+  "description": "M6 corpus — Turncoat Kunoichi; in-hand parse.",
+  "seed": 64820,
+  "cards": {
+    "Turncoat Kunoichi": "Name:Turncoat Kunoichi\nManaCost:2 W\nTypes:Creature Mutant Ninja Fox\nPT:3/2\nK:Sneak:2 W B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTrap | TriggerDescription$ When this creature enters, choose target creature an opponent controls. Exile that creature until this creature leaves the battlefield. If this creature's sneak cost was paid, instead exile the chosen creature.\nSVar:TrigTrap:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay | ConditionDefined$ TriggeredCard | ConditionPresent$ Card.sneaked | ConditionCompare$ EQ0 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile | ConditionDefined$ TriggeredCard | ConditionPresent$ Card.sneaked\nOracle:Sneak {2}{W}{B} (You may cast this spell for {2}{W}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. It enters tapped and attacking.)\\nWhen this creature enters, choose target creature an opponent controls. Exile that creature until this creature leaves the battlefield. If this creature's sneak cost was paid, instead exile the chosen creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turncoat Kunoichi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

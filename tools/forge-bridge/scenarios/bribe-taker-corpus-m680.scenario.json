@@ -1,0 +1,23 @@
+{
+  "id": "bribe-taker-corpus-m680",
+  "description": "M6 corpus — Bribe Taker; in-hand parse.",
+  "seed": 61785,
+  "cards": {
+    "Bribe Taker": "Name:Bribe Taker\nManaCost:5 G\nTypes:Creature Rhino Warrior\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, for each kind of counter on permanents you control, you may put your choice of a +1/+1 counter or a counter of that kind on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterTypes$ EachType_Permanent.YouCtrl | AltChoiceForEach$ P1P1\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Trample\\nWhen Bribe Taker enters, for each kind of counter on permanents you control, you may put your choice of a +1/+1 counter or a counter of that kind on Bribe Taker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bribe Taker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

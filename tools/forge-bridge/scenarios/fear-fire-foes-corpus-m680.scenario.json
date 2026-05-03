@@ -1,0 +1,23 @@
+{
+  "id": "fear-fire-foes-corpus-m680",
+  "description": "M6 corpus — Fear, Fire, Foes!; in-hand parse.",
+  "seed": 62449,
+  "cards": {
+    "Fear, Fire, Foes!": "Name:Fear, Fire, Foes!\nManaCost:X R\nTypes:Sorcery\nA:SP$ Effect | StaticAbilities$ STCantPrevent | AILogic$ Burn | SubAbility$ DBDealDamage | SpellDescription$ Damage can't be prevented this turn. CARDNAME deals X damage to target creature and 1 damage to each other creature with the same controller.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | DamageMap$ True | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature.NotDefinedTargeted+ControlledBy TargetedController | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented this turn.\nSVar:X:Count$xPaid\nOracle:Damage can't be prevented this turn. Fear, Fire, Foes! deals X damage to target creature and 1 damage to each other creature with the same controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear, Fire, Foes!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

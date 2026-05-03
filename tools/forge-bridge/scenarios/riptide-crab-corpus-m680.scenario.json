@@ -1,0 +1,23 @@
+{
+  "id": "riptide-crab-corpus-m680",
+  "description": "M6 corpus — Riptide Crab; in-hand parse.",
+  "seed": 64000,
+  "cards": {
+    "Riptide Crab": "Name:Riptide Crab\nManaCost:1 W U\nTypes:Creature Crab\nPT:1/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nOracle:Vigilance\\nWhen Riptide Crab dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Crab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

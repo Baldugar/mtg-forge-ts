@@ -1,0 +1,23 @@
+{
+  "id": "pouncing-wurm-corpus-m680",
+  "description": "M6 corpus — Pouncing Wurm; in-hand parse.",
+  "seed": 63780,
+  "cards": {
+    "Pouncing Wurm": "Name:Pouncing Wurm\nManaCost:3 G\nTypes:Creature Wurm\nPT:3/3\nK:Kicker:2 G\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigPut | Static$ True | TriggerDescription$ If CARDNAME was kicked, it enters with three +1/+1 counters on it and with haste.\nSVar:TrigPut:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Haste | Duration$ Permanent\nOracle:Kicker {2}{G} (You may pay an additional {2}{G} as you cast this spell.)\\nIf Pouncing Wurm was kicked, it enters with three +1/+1 counters on it and with haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pouncing Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

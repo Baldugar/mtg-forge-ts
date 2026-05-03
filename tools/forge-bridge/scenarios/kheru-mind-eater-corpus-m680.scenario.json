@@ -1,0 +1,23 @@
+{
+  "id": "kheru-mind-eater-corpus-m680",
+  "description": "M6 corpus — Kheru Mind-Eater; in-hand parse.",
+  "seed": 63119,
+  "cards": {
+    "Kheru Mind-Eater": "Name:Kheru Mind-Eater\nManaCost:2 B\nTypes:Creature Vampire\nPT:1/3\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles a card from their hand face down.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ TriggeredTarget | Chooser$ TriggeredTarget | ExileFaceDown$ True | Mandatory$ True | ChangeNum$ 1 | RememberChanged$ True\nS:Mode$ Continuous | MayPlay$ True | MayLookAt$ You | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at cards exiled with CARDNAME, and you may play lands and cast spells from among those cards.\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Menace\\nWhenever Kheru Mind-Eater deals combat damage to a player, that player exiles a card from their hand face down.\\nYou may look at cards exiled with Kheru Mind-Eater, and you may play lands and cast spells from among those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kheru Mind-Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

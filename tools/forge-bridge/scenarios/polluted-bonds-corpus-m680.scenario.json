@@ -1,0 +1,23 @@
+{
+  "id": "polluted-bonds-corpus-m680",
+  "description": "M6 corpus — Polluted Bonds; in-hand parse.",
+  "seed": 63772,
+  "cards": {
+    "Polluted Bonds": "Name:Polluted Bonds\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever a land enters under an opponent's control, that player loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Whenever a land enters under an opponent's control, that player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polluted Bonds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

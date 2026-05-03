@@ -1,0 +1,23 @@
+{
+  "id": "returned-centaur-corpus-m680",
+  "description": "M6 corpus — Returned Centaur; in-hand parse.",
+  "seed": 63974,
+  "cards": {
+    "Returned Centaur": "Name:Returned Centaur\nManaCost:3 B\nTypes:Creature Zombie Centaur\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player\nOracle:When Returned Centaur enters, target player mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Returned Centaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

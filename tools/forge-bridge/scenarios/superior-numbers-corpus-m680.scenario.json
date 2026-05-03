@@ -1,0 +1,23 @@
+{
+  "id": "superior-numbers-corpus-m680",
+  "description": "M6 corpus — Superior Numbers; in-hand parse.",
+  "seed": 64524,
+  "cards": {
+    "Superior Numbers": "Name:Superior Numbers\nManaCost:G G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals damage to target creature equal to the number of creatures you control in excess of the number of creatures target opponent controls. | StackDescription$ SpellDescription\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:X:Count$Valid Creature.YouCtrl/Minus.Y\nSVar:Y:Count$Valid Creature.TargetedPlayerCtrl\nOracle:Superior Numbers deals damage to target creature equal to the number of creatures you control in excess of the number of creatures target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Superior Numbers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

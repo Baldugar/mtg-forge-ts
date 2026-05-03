@@ -1,0 +1,23 @@
+{
+  "id": "worldheart-phoenix-corpus-m680",
+  "description": "M6 corpus — Worldheart Phoenix; in-hand parse.",
+  "seed": 65093,
+  "cards": {
+    "Worldheart Phoenix": "Name:Worldheart Phoenix\nManaCost:3 R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ Graveyard | Cost$ W U B R G | Description$ You may cast CARDNAME from your graveyard by paying {W}{U}{B}{R}{G} rather than paying its mana cost. If you do, it enters with two +1/+1 counters on it.\nT:Mode$ SpellCast | ValidCard$ Card.Self | Static$ True | Execute$ DBEffect | CheckSVar$ AltCostPaid\nSVar:DBEffect:DB$ Effect | ExileOnMoved$ Stack | ReplacementEffects$ ETBCreat | ExileOnMoved$ Stack\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.EffectSource | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ That creature enters with two additional +1/+1 counters on it.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ 2 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:AltCostPaid:Count$AltCost.1.0\nOracle:Flying\\nYou may cast Worldheart Phoenix from your graveyard by paying {W}{U}{B}{R}{G} rather than paying its mana cost. If you do, it enters with two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldheart Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

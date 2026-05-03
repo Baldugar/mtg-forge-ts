@@ -1,0 +1,23 @@
+{
+  "id": "undergrowth-champion-corpus-m680",
+  "description": "M6 corpus — Undergrowth Champion; in-hand parse.",
+  "seed": 64846,
+  "cards": {
+    "Undergrowth Champion": "Name:Undergrowth Champion\nManaCost:1 G G\nTypes:Creature Elemental\nPT:2/2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+counters_GE1_P1P1 | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME while it has a +1/+1 counter on it, prevent that damage and remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nOracle:If damage would be dealt to Undergrowth Champion while it has a +1/+1 counter on it, prevent that damage and remove a +1/+1 counter from Undergrowth Champion.\\nLandfall — Whenever a land you control enters, put a +1/+1 counter on Undergrowth Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undergrowth Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

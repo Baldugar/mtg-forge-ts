@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-gondor-corpus-m680",
+  "description": "M6 corpus — Crown of Gondor; in-hand parse.",
+  "seed": 62044,
+  "cards": {
+    "Crown of Gondor": "Name:Crown of Gondor\nManaCost:3\nTypes:Legendary Artifact Equipment\nK:Equip:4:::ReduceCost$ Monarch:This ability costs {3} less to activate if you're the monarch\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each creature you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Legendary+YouCtrl | TriggerZones$ Battlefield | CheckSVar$ NoMonarch | SVarCompare$ EQ0 | Execute$ TrigMonarch | TriggerDescription$ When a legendary creature you control enters, if there is no monarch, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:Monarch:Count$Monarch.3.0\nSVar:NoMonarch:PlayerCountPlayers$HasPropertyisMonarch\nDeckHints:Type$Creature & Type$Legendary\nOracle:Equipped creature gets +1/+1 for each creature you control.\\nWhen a legendary creature you control enters, if there is no monarch, you become the monarch.\\nEquip {4}. This ability costs {3} less to activate if you're the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

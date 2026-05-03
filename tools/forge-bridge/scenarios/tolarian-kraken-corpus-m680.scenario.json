@@ -1,0 +1,23 @@
+{
+  "id": "tolarian-kraken-corpus-m680",
+  "description": "M6 corpus — Tolarian Kraken; in-hand parse.",
+  "seed": 64764,
+  "cards": {
+    "Tolarian Kraken": "Name:Tolarian Kraken\nManaCost:4 U U\nTypes:Creature Kraken\nPT:4/6\nT:Mode$ Drawn | ValidCard$ Card.YouOwn | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever you draw a card, you may pay {1}. When you do, you may tap or untap target creature.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigTapOrUntap | TriggerDescription$ When you do, you may tap or untap target creature.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nOracle:Whenever you draw a card, you may pay {1}. When you do, you may tap or untap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolarian Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

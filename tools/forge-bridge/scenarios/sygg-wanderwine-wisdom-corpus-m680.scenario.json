@@ -1,0 +1,23 @@
+{
+  "id": "sygg-wanderwine-wisdom-corpus-m680",
+  "description": "M6 corpus — Sygg, Wanderwine Wisdom; in-hand parse.",
+  "seed": 64549,
+  "cards": {
+    "Sygg, Wanderwine Wisdom": "Name:Sygg, Wanderwine Wisdom\nManaCost:1 U\nTypes:Legendary Creature Merfolk Wizard\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ NICKNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, target creature gains \"Whenever this creature deals combat damage to a player or planeswalker, draw a card\" until end of turn.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigAnimate | Secondary$ True | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, target creature gains \"Whenever this creature deals combat damage to a player or planeswalker, draw a card\" until end of turn.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player or planeswalker, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {W}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ W | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Sygg can't be blocked.\\nWhenever this creature enters or transforms into Sygg, Wanderwine Wisdom, target creature gains \"Whenever this creature deals combat damage to a player or planeswalker, draw a card\" until end of turn.\\nAt the beginning of your first main phase, you may pay {W}. If you do, transform Sygg.\n\nALTERNATE\n\nName:Sygg, Wanderbrine Shield\nManaCost:no cost\nColors:white\nTypes:Legendary Creature Merfolk Rogue\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ NICKNAME can't be blocked.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigProt | TriggerDescription$ Whenever this creature transforms into CARDNAME, target creature you control gains protection from each color until your next turn.\nSVar:TrigProt:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Protection from each color | Duration$ UntilYourNextTurn\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {U}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ U | Defined$ Self | Mode$ Transform\nOracle:Sygg can't be blocked.\\nWhenever this creature transforms into Sygg, Wanderbrine Shield, target creature you control gains protection from each color until your next turn.\\nAt the beginning of your first main phase, you may pay {U}. If you do, transform Sygg.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sygg, Wanderwine Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

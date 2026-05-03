@@ -1,0 +1,23 @@
+{
+  "id": "whiptail-moloch-corpus-m680",
+  "description": "M6 corpus — Whiptail Moloch; in-hand parse.",
+  "seed": 65029,
+  "cards": {
+    "Whiptail Moloch": "Name:Whiptail Moloch\nManaCost:4 R\nTypes:Creature Lizard\nPT:6/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to target creature you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.YouCtrl | NumDmg$ 3 | TgtPrompt$ Select target creature you control\nSVar:NeedsToPlay:Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:When Whiptail Moloch enters, it deals 3 damage to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whiptail Moloch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

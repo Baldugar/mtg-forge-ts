@@ -1,0 +1,23 @@
+{
+  "id": "consuming-ferocity-corpus-m680",
+  "description": "M6 corpus — Consuming Ferocity; in-hand parse.",
+  "seed": 61991,
+  "cards": {
+    "Consuming Ferocity": "Name:Consuming Ferocity\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature.nonWall:non-Wall creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | Description$ Enchanted creature gets +1/+0.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+0 counter on enchanted creature. If that creature has three or more +1/+0 counters on it, it deals damage equal to its power to its controller, then destroy that creature and it can't be regenerated.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ P1P0 | CounterNum$ 1 | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ EnchantedController | DamageSource$ Enchanted | NumDmg$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3 | SubAbility$ DBDes\nSVar:DBDes:DB$ Destroy | Defined$ Enchanted | NoRegen$ True | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3\nSVar:Y:Count$Valid Creature.EnchantedBy$CardCounters.P1P0\nSVar:X:Enchanted$CardPower\nAI:RemoveDeck:All\nOracle:Enchant non-Wall creature\\nEnchanted creature gets +1/+0.\\nAt the beginning of your upkeep, put a +1/+0 counter on enchanted creature. If that creature has three or more +1/+0 counters on it, it deals damage equal to its power to its controller, then destroy that creature and it can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consuming Ferocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

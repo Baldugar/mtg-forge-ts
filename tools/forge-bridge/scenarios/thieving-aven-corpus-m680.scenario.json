@@ -1,0 +1,23 @@
+{
+  "id": "thieving-aven-corpus-m680",
+  "description": "M6 corpus — Thieving Aven; in-hand parse.",
+  "seed": 64706,
+  "cards": {
+    "Thieving Aven": "Name:Thieving Aven\nManaCost:2 U\nTypes:Creature Bird Rogue\nPT:1/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigHeist | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, heist target opponent's library.\nSVar:TrigHeist:DB$ Heist | ValidTgts$ Opponent\nT:Mode$ SpellCast | ValidCard$ Card.YouDontOwn | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell you don't own, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever Thieving Aven deals combat damage to a player, heist target opponent's library.\\nWhenever you cast a spell you don't own, put a +1/+1 counter on Thieving Aven.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieving Aven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

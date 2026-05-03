@@ -1,0 +1,23 @@
+{
+  "id": "bounty-of-the-deep-corpus-m680",
+  "description": "M6 corpus — Bounty of the Deep; in-hand parse.",
+  "seed": 61760,
+  "cards": {
+    "Bounty of the Deep": "Name:Bounty of the Deep\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ Seek2 | FalseSubAbility$ Seek1 | StackDescription$ SpellDescription | SpellDescription$ If you have no land cards in your hand, seek a land card and a nonland card. Otherwise, seek two nonland cards.\nSVar:Seek1:DB$ Seek | Types$ Card.Land,Card.nonLand\nSVar:Seek2:DB$ Seek | Type$ Card.nonLand | Num$ 2\nSVar:X:Count$ValidHand Land.YouCtrl\nOracle:If you have no land cards in your hand, seek a land card and a nonland card. Otherwise, seek two nonland cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bounty of the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

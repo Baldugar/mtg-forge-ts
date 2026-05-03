@@ -1,0 +1,23 @@
+{
+  "id": "a-kumano-faces-kakkazan-corpus-m680",
+  "description": "M6 corpus — A-Kumano Faces Kakkazan; in-hand parse.",
+  "seed": 64080,
+  "cards": {
+    "A-Kumano Faces Kakkazan": "Name:A-Kumano Faces Kakkazan\nManaCost:R\nTypes:Enchantment Saga\nK:Chapter:3:DBDamage,DBEffectAddCounter,DBTransform\nSVar:DBDamage:DB$ DamageAll | NumDmg$ 1 | ValidPlayers$ Opponent | ValidCards$ Planeswalker.OppCtrl | SpellDescription$ CARDNAME deals 1 damage to each opponent and 1 damage to each planeswalker they control.\nSVar:DBEffectAddCounter:DB$ Effect | Triggers$ TrigSpellCast | SpellDescription$ When you cast your next creature spell this turn, that creature enters with an additional +1/+1 counter on it.\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | OneOff$ True | Static$ True | TriggerZones$ Command | Execute$ ReplEffAddCounter | TriggerDescription$ When you cast your next creature spell this turn, that creature enters with an additional +1/+1 counter on it.\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard | Execute$ TrigRemoveSelf\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ TrigRemoveSelf\nSVar:TrigRemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Kumano Faces Kakkazan deals 1 damage to each opponent and each planeswalker they control.\\nII — When you cast your next creature spell this turn, that creature enters with an additional +1/+1 counter on it.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:A-Etching of Kumano\nManaCost:no cost\nColors:red\nTypes:Enchantment Creature Human Shaman\nPT:2/2\nR:Event$ Moved | ValidLKI$ Creature.DamagedByCard.YouCtrl;Emblem.YouCtrl | Destination$ Graveyard | ReplaceWith$ DBExile | ActiveZones$ Battlefield | Description$ If a creature dealt damage this turn by a source you controlled would die, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:If a creature dealt damage this turn by a source you controlled would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Kumano Faces Kakkazan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

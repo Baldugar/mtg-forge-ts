@@ -1,0 +1,23 @@
+{
+  "id": "neverwinter-hydra-corpus-m680",
+  "description": "M6 corpus — Neverwinter Hydra; in-hand parse.",
+  "seed": 63548,
+  "cards": {
+    "Neverwinter Hydra": "Name:Neverwinter Hydra\nManaCost:X X G G\nTypes:Creature Hydra\nPT:0/0\nK:ETBReplacement:Other:RollCounters\nSVar:RollCounters:DB$ RollDice | Amount$ X | ETB$ True | ResultSVar$ Result | SubAbility$ DBCounters | SpellDescription$ As CARDNAME enters, roll X d6. It enters with a number of +1/+1 counters on it equal to the total of those results.\nSVar:DBCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result | ETB$ True\nK:Trample\nK:Ward:4\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:As Neverwinter Hydra enters, roll X d6. It enters with a number of +1/+1 counters on it equal to the total of those results.\\nTrample\\nWard {4} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {4}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neverwinter Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

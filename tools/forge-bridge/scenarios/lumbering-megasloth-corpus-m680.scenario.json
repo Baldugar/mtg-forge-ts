@@ -1,0 +1,23 @@
+{
+  "id": "lumbering-megasloth-corpus-m680",
+  "description": "M6 corpus — Lumbering Megasloth; in-hand parse.",
+  "seed": 63284,
+  "cards": {
+    "Lumbering Megasloth": "Name:Lumbering Megasloth\nManaCost:10 G G\nTypes:Creature Sloth Mutant\nPT:8/8\nK:Trample\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each counter among players and permanents.\nSVar:X:SVar$Y/Plus.Z\nSVar:Y:Count$Valid Card.Permanent$CardCounters.ALL\nSVar:Z:PlayerCountPlayers$Counters.ALL\nDeckHints:Ability$Counters\nOracle:This spell costs {1} less to cast for each counter among players and permanents.\\nTrample\\nLumbering Megasloth enters tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lumbering Megasloth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

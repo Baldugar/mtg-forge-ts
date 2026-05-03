@@ -1,0 +1,23 @@
+{
+  "id": "hostile-investigator-corpus-m680",
+  "description": "M6 corpus — Hostile Investigator; in-hand parse.",
+  "seed": 62866,
+  "cards": {
+    "Hostile Investigator": "Name:Hostile Investigator\nManaCost:3 B\nTypes:Creature Ogre Rogue Detective\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ DiscardedAll | ValidPlayer$ Player | ActivationLimit$ 1 | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever one or more players discard one or more cards, investigate. This ability triggers only once each turn. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Discard|Token|Sacrifice & Type$Artifact|Clue\nDeckHints:Ability$Discard\nOracle:When Hostile Investigator enters, target opponent discards a card.\\nWhenever one or more players discard one or more cards, investigate. This ability triggers only once each turn. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hostile Investigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

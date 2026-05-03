@@ -1,0 +1,23 @@
+{
+  "id": "anticognition-corpus-m680",
+  "description": "M6 corpus — Anticognition; in-hand parse.",
+  "seed": 61527,
+  "cards": {
+    "Anticognition": "Name:Anticognition\nManaCost:1 U\nTypes:Instant\nA:SP$ Branch | BranchConditionSVar$ X | TargetType$ Spell | TgtZone$ Stack | ValidTgts$ Creature,Planeswalker | BranchConditionSVarCompare$ GE8 | TrueSubAbility$ CounterScry | FalseSubAbility$ CounterUnless | AILogic$ BranchCounter | SpellDescription$ Counter target creature or planeswalker spell unless its controller pays {2}. If an opponent has eight or more cards in their graveyard, instead counter that spell, then scry 2.\nSVar:CounterUnless:DB$ Counter | Defined$ Targeted | UnlessCost$ 2\nSVar:CounterScry:DB$ Counter | Defined$ Targeted | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nDeckHints:Ability$Mill\nOracle:Counter target creature or planeswalker spell unless its controller pays {2}. If an opponent has eight or more cards in their graveyard, instead counter that spell, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anticognition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

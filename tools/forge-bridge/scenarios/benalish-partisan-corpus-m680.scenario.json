@@ -1,0 +1,23 @@
+{
+  "id": "benalish-partisan-corpus-m680",
+  "description": "M6 corpus — Benalish Partisan; in-hand parse.",
+  "seed": 61674,
+  "cards": {
+    "Benalish Partisan": "Name:Benalish Partisan\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/2\nK:Lifelink\nT:Mode$ Cycled | ValidCard$ Card.Other | ValidPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever you cycle another card, you may pay {1}{W}. If you do, return CARDNAME from your graveyard to the battlefield tapped and it perpetually gets +1/+0.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 W | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Cycling:1 W\nSVar:SacMe:2\nDeckHas:Ability$LifeGain|Graveyard\nDeckNeeds:Keyword$Cycling\nOracle:Lifelink\\nWhenever you cycle another card, you may pay {1}{W}. If you do, return Benalish Partisan from your graveyard to the battlefield tapped and it perpetually gets +1/+0.\\nCycling {1}{W}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Benalish Partisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

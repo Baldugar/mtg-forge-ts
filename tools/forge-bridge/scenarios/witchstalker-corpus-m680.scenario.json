@@ -1,0 +1,23 @@
+{
+  "id": "witchstalker-corpus-m680",
+  "description": "M6 corpus — Witchstalker; in-hand parse.",
+  "seed": 65076,
+  "cards": {
+    "Witchstalker": "Name:Witchstalker\nManaCost:1 G G\nTypes:Creature Wolf\nPT:3/3\nK:Hexproof\nT:Mode$ SpellCast | ValidCard$ Card.Blue,Card.Black | ValidActivatingPlayer$ Player.Opponent | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent casts a blue or black spell during your turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Hexproof (This creature can't be the target of spells or abilities your opponents control.)\\nWhenever an opponent casts a blue or black spell during your turn, put a +1/+1 counter on Witchstalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witchstalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

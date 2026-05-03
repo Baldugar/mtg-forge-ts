@@ -1,0 +1,23 @@
+{
+  "id": "sinstriker-s-will-corpus-m680",
+  "description": "M6 corpus — Sinstriker's Will; in-hand parse.",
+  "seed": 64292,
+  "cards": {
+    "Sinstriker's Will": "Name:Sinstriker's Will\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TapDmg | AddSVar$ SinstrikerCount | Description$ Enchanted creature has \"{T}: This creature deals damage equal to its power to target attacking or blocking creature.\"\nSVar:TapDmg:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ SinstrikerCount | SpellDescription$ This creature deals damage equal to its power to target attacking or blocking creature.\nSVar:SinstrikerCount:Count$CardPower\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals damage equal to its power to target attacking or blocking creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinstriker's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

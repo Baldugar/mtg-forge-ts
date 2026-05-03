@@ -1,0 +1,23 @@
+{
+  "id": "price-of-loyalty-corpus-m680",
+  "description": "M6 corpus — Price of Loyalty; in-hand parse.",
+  "seed": 63794,
+  "cards": {
+    "Price of Loyalty": "Name:Price of Loyalty\nManaCost:2 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBPump | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If mana from a Treasure was spent to cast this spell, that creature gets +2/+0 until end of turn.\nSVar:DBPump:DB$ Pump | ConditionCheckSVar$ TreasureCheck | Defined$ Targeted | NumAtt$ +2\nSVar:TreasureCheck:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If mana from a Treasure was spent to cast this spell, that creature gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Price of Loyalty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

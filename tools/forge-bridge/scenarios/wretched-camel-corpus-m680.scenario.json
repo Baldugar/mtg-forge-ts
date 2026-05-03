@@ -1,0 +1,23 @@
+{
+  "id": "wretched-camel-corpus-m680",
+  "description": "M6 corpus — Wretched Camel; in-hand parse.",
+  "seed": 65097,
+  "cards": {
+    "Wretched Camel": "Name:Wretched Camel\nManaCost:1 B\nTypes:Creature Zombie Camel\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | Desert$ True | TriggerDescription$ When CARDNAME dies, if you control a Desert or there is a Desert card in your graveyard, target player discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose\nDeckHints:Type$Desert\nOracle:When Wretched Camel dies, if you control a Desert or there is a Desert card in your graveyard, target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wretched Camel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

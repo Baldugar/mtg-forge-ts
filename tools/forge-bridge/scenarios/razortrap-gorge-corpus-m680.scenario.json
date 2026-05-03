@@ -1,0 +1,23 @@
+{
+  "id": "razortrap-gorge-corpus-m680",
+  "description": "M6 corpus — Razortrap Gorge; in-hand parse.",
+  "seed": 63918,
+  "cards": {
+    "Razortrap Gorge": "Name:Razortrap Gorge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless a player has 13 or less life.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GT13\nSVar:X:PlayerCountPlayers$LowestLifeTotal\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nOracle:Razortrap Gorge enters tapped unless a player has 13 or less life.\\n{T}: Add {B} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razortrap Gorge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

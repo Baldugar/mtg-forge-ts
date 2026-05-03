@@ -1,0 +1,23 @@
+{
+  "id": "matopi-golem-corpus-m680",
+  "description": "M6 corpus — Matopi Golem; in-hand parse.",
+  "seed": 63368,
+  "cards": {
+    "Matopi Golem": "Name:Matopi Golem\nManaCost:5\nTypes:Artifact Creature Golem\nPT:3/3\nA:AB$ Regenerate | Cost$ 1 | RegenerationAbility$ DBImmediateTrigger | StackDescription$ SpellDescription | SpellDescription$ Regenerate CARDNAME. When it regenerates this way, put a -1/-1 counter on it.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigPutCounter | TriggerDescription$ When it regenerates this way, put a -1/-1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ EffectSource | CounterType$ M1M1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:{1}: Regenerate Matopi Golem. When it regenerates this way, put a -1/-1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Matopi Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

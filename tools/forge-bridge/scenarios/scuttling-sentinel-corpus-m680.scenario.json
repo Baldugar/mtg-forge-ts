@@ -1,0 +1,23 @@
+{
+  "id": "scuttling-sentinel-corpus-m680",
+  "description": "M6 corpus — Scuttling Sentinel; in-hand parse.",
+  "seed": 64168,
+  "cards": {
+    "Scuttling Sentinel": "Name:Scuttling Sentinel\nManaCost:1 GU GU\nTypes:Creature Crab Elf\nPT:3/2\nK:Flash\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target creature you control. Until end of turn, that creature becomes a blue Crab in addition to its other types and gains hexproof. (It can't be the target of spells or abilities your opponents control.)\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Crab | Colors$ Blue | OverwriteColors$ True | Keywords$ Hexproof\nDeckHas:Ability$Counters & Type$Crab\nOracle:Flash\\nVigilance\\nWhen Scuttling Sentinel enters, put a +1/+1 counter on another target creature you control. Until end of turn, that creature becomes a blue Crab in addition to its other types and gains hexproof. (It can't be the target of spells or abilities your opponents control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scuttling Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

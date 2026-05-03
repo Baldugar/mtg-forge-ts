@@ -1,0 +1,23 @@
+{
+  "id": "leonardo-sewer-samurai-corpus-m680",
+  "description": "M6 corpus — Leonardo, Sewer Samurai; in-hand parse.",
+  "seed": 63213,
+  "cards": {
+    "Leonardo, Sewer Samurai": "Name:Leonardo, Sewer Samurai\nManaCost:3 W\nTypes:Legendary Creature Mutant Ninja Turtle Samurai\nPT:3/3\nK:Sneak:2 W W\nK:Double Strike\nS:Mode$ Continuous | Affected$ Creature.nonLand+YouOwn+powerLE1,Creature.nonLand+YouOwn+toughnessLE1 | Condition$ PlayerTurn | MayPlay$ True | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ During your turn, you may cast creature spells with power or toughness 1 or less from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\nT:Mode$ SpellCast | ValidCard$ Card.CastSa Spell.MayPlaySource | Execute$ TrigEffect | Static$ True | TriggerZones$ Battlefield\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | Origin$ Stack | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBCounter\nSVar:ETBCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ FINALITY | CounterNum$ 1 | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Sneak {2}{W}{W}\\nDouble strike\\nDuring your turn, you may cast creature spells with power or toughness 1 or less from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonardo, Sewer Samurai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

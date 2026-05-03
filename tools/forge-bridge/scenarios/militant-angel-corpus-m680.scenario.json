@@ -1,0 +1,23 @@
+{
+  "id": "militant-angel-corpus-m680",
+  "description": "M6 corpus — Militant Angel; in-hand parse.",
+  "seed": 63409,
+  "cards": {
+    "Militant Angel": "Name:Militant Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:3/4\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 2/2 white Knight creature tokens with vigilance equal to the number of opponents you attacked this turn.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenAmount$ X | TokenScript$ w_2_2_knight_vigilance\nSVar:X:TriggeredCardController$OpponentsAttackedThisTurn\nOracle:Flying, lifelink\\nWhen Militant Angel enters, create a number of 2/2 white Knight creature tokens with vigilance equal to the number of opponents you attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Militant Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

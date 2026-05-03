@@ -1,0 +1,23 @@
+{
+  "id": "hormagaunt-horde-corpus-m680",
+  "description": "M6 corpus — Hormagaunt Horde; in-hand parse.",
+  "seed": 62861,
+  "cards": {
+    "Hormagaunt Horde": "Name:Hormagaunt Horde\nManaCost:X G\nTypes:Creature Tyranid\nPT:1/1\nK:Ravenous\nT:Mode$ ChangesZone | ValidCard$ Land.YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Endless Swarm — Whenever a land you control enters, you may pay {2}{G}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:AB$ ChangeZone | ValidCard$ Card.Self | Cost$ 2 G | Origin$ Graveyard | Destination$ Hand\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters|Graveyard\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nEndless Swarm — Whenever a land you control enters, you may pay {2}{G}. If you do, return Hormagaunt Horde from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hormagaunt Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

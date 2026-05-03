@@ -1,0 +1,23 @@
+{
+  "id": "a-vampire-scrivener-corpus-m680",
+  "description": "M6 corpus — A-Vampire Scrivener; in-hand parse.",
+  "seed": 64095,
+  "cards": {
+    "A-Vampire Scrivener": "Name:A-Vampire Scrivener\nManaCost:3 B\nTypes:Creature Vampire Warlock\nPT:2/2\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life during your turn, put a +1/+1 counter on CARDNAME.\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you lose life during your turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you gain life during your turn, put a +1/+1 counter on Vampire Scrivener.\\nWhenever you lose life during your turn, put a +1/+1 counter on Vampire Scrivener.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Vampire Scrivener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "aura-thief-corpus-m680",
+  "description": "M6 corpus — Aura Thief; in-hand parse.",
+  "seed": 61601,
+  "cards": {
+    "Aura Thief": "Name:Aura Thief\nManaCost:3 U\nTypes:Creature Illusion\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME dies, you gain control of all enchantments. (You don't get to move Auras.)\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Enchantment | NewController$ You\nOracle:Flying\\nWhen Aura Thief dies, you gain control of all enchantments. (You don't get to move Auras.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aura Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

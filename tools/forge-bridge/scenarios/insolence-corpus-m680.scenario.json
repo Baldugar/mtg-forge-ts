@@ -1,0 +1,23 @@
+{
+  "id": "insolence-corpus-m680",
+  "description": "M6 corpus — Insolence; in-hand parse.",
+  "seed": 62948,
+  "cards": {
+    "Insolence": "Name:Insolence\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted creature becomes tapped, CARDNAME deals 2 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nOracle:Enchant creature\\nWhenever enchanted creature becomes tapped, Insolence deals 2 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insolence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

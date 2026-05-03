@@ -1,0 +1,23 @@
+{
+  "id": "a-fall-of-the-impostor-corpus-m680",
+  "description": "M6 corpus — A-Fall of the Impostor; in-hand parse.",
+  "seed": 64076,
+  "cards": {
+    "A-Fall of the Impostor": "Name:A-Fall of the Impostor\nManaCost:G W\nTypes:Enchantment Saga\nK:Chapter:3:DBPutCounter,DBPutCounter,DBExileGreatest\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Put a +1/+1 counter on up to one target creature.\nSVar:DBExileGreatest:DB$ Pump | ValidTgts$ Player.Opponent | RememberTargets$ True | SubAbility$ DBChooseExiled | IsCurse$ True | SpellDescription$ Exile a creature with the greatest power among creatures target opponent controls.\nSVar:DBChooseExiled:DB$ ChooseCard | Choices$ Creature.greatestPowerControlledByRemembered | Mandatory$ True | ChoiceZone$ Battlefield | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Put a +1/+1 counter on up to one target creature.\\nIII — Exile a creature with the greatest power among creatures target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Fall of the Impostor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

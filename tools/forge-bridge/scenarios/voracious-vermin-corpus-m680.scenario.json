@@ -1,0 +1,23 @@
+{
+  "id": "voracious-vermin-corpus-m680",
+  "description": "M6 corpus — Voracious Vermin; in-hand parse.",
+  "seed": 64981,
+  "cards": {
+    "Voracious Vermin": "Name:Voracious Vermin\nManaCost:2 B\nTypes:Creature Rat\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nDeckHas:Ability$Token|Counters\nOracle:When Voracious Vermin enters, create a 1/1 black Rat creature token with \"This creature can't block.\"\\nWhenever another creature you control dies, put a +1/+1 counter on Voracious Vermin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voracious Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

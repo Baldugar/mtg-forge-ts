@@ -1,0 +1,23 @@
+{
+  "id": "entomber-exarch-corpus-m680",
+  "description": "M6 corpus — Entomber Exarch; in-hand parse.",
+  "seed": 62344,
+  "cards": {
+    "Entomber Exarch": "Name:Entomber Exarch\nManaCost:2 B B\nTypes:Creature Phyrexian Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBSearch,DBRemove\nSVar:DBSearch:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:DBRemove:DB$ Discard | ValidTgts$ Opponent | Mode$ RevealYouChoose | DiscardValid$ Card.nonCreature | DiscardValidDesc$ noncreature | SpellDescription$ Target opponent reveals their hand, you choose a noncreature card from it, then that player discards that card.\nOracle:When Entomber Exarch enters, choose one —\\n• Return target creature card from your graveyard to your hand.\\n• Target opponent reveals their hand. You choose a noncreature card from it. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Entomber Exarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "embereth-skyblazer-corpus-m680",
+  "description": "M6 corpus — Embereth Skyblazer; in-hand parse.",
+  "seed": 62318,
+  "cards": {
+    "Embereth Skyblazer": "Name:Embereth Skyblazer\nManaCost:3 R\nTypes:Creature Human Knight\nPT:4/3\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Flying | Condition$ PlayerTurn | Description$ During your turn, CARDNAME has flying.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, you may pay {2}{R}. If you do, creatures you control get +X/+0 until end of turn, where X is the number of opponents you have.\nSVar:TrigPumpAll:AB$ PumpAll | Cost$ 2 R | ValidCards$ Creature.YouCtrl | NumAtt$ +X\nSVar:X:PlayerCountOpponents$Amount\nOracle:During your turn, Embereth Skyblazer has flying.\\nWhenever Embereth Skyblazer attacks, you may pay {2}{R}. If you do, creatures you control get +X/+0 until end of turn, where X is the number of opponents you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embereth Skyblazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sludge-strider-corpus-m680",
+  "description": "M6 corpus — Sludge Strider; in-hand parse.",
+  "seed": 64333,
+  "cards": {
+    "Sludge Strider": "Name:Sludge Strider\nManaCost:1 W U B\nTypes:Artifact Creature Insect\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigLoseLife | TriggerDescription$ Whenever another artifact you control enters or another artifact you control leaves the battlefield, you may pay {1}. If you do, target player loses 1 life and you gain 1 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever another artifact you control enters or another artifact you control leaves the battlefield, you may pay {1}. If you do, target player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:AB$ LoseLife | Cost$ 1 | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another artifact you control enters or another artifact you control leaves the battlefield, you may pay {1}. If you do, target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sludge Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

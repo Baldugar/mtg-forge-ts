@@ -1,0 +1,23 @@
+{
+  "id": "maestros-theater-corpus-m680",
+  "description": "M6 corpus — Maestros Theater; in-hand parse.",
+  "seed": 63303,
+  "cards": {
+    "Maestros Theater": "Name:Maestros Theater\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerDescription$ When CARDNAME enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBSacrifice:DB$ Sacrifice | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ DBChangeZone | SubAbility$ DBCleanup | TriggerDescription$ Search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Island.Basic,Swamp.Basic,Mountain.Basic | ChangeTypeDesc$ basic Island, Swamp, or Mountain | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:When Maestros Theater enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maestros Theater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

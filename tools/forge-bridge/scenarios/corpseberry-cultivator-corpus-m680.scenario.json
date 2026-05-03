@@ -1,0 +1,23 @@
+{
+  "id": "corpseberry-cultivator-corpus-m680",
+  "description": "M6 corpus — Corpseberry Cultivator; in-hand parse.",
+  "seed": 62009,
+  "cards": {
+    "Corpseberry Cultivator": "Name:Corpseberry Cultivator\nManaCost:1 BG BG\nTypes:Creature Squirrel Warlock\nPT:2/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, you may forage. (Exile three cards from your graveyard or sacrifice a Food.)\nSVar:TrigPump:AB$ Pump | Cost$ Forage\nT:Mode$ Forage | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you forage, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Ability$Graveyard & Type$Food\nOracle:At the beginning of combat on your turn, you may forage. (Exile three cards from your graveyard or sacrifice a Food.)\\nWhenever you forage, put a +1/+1 counter on Corpseberry Cultivator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpseberry Cultivator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

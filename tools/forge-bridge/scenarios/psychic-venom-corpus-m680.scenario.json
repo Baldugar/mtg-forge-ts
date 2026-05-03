@@ -1,0 +1,23 @@
+{
+  "id": "psychic-venom-corpus-m680",
+  "description": "M6 corpus — Psychic Venom; in-hand parse.",
+  "seed": 63830,
+  "cards": {
+    "Psychic Venom": "Name:Psychic Venom\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted land becomes tapped, CARDNAME deals 2 damage to that land's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nOracle:Enchant land\\nWhenever enchanted land becomes tapped, Psychic Venom deals 2 damage to that land's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Venom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hardy-outlander-corpus-m680",
+  "description": "M6 corpus — Hardy Outlander; in-hand parse.",
+  "seed": 62789,
+  "cards": {
+    "Hardy Outlander": "Name:Hardy Outlander\nManaCost:1 G\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ AttacksPlayer | Description$ Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, another target creature you control gets +X/+X until end of turn, where X is this creature's power.\"\nSVar:AttacksPlayer:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player | Condition$ NoOpponentHasMoreLifeThanAttacked | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks a player, if no opponent has more life than that player, another target creature you control gets +X/+X until end of turn, where X is this creature's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nAI:RemoveDeck:NonCommander\nOracle:Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, another target creature you control gets +X/+X until end of turn, where X is this creature's power.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hardy Outlander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

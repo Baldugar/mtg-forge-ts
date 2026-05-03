@@ -1,0 +1,23 @@
+{
+  "id": "wartime-protestors-corpus-m680",
+  "description": "M6 corpus — Wartime Protestors; in-hand parse.",
+  "seed": 65005,
+  "cards": {
+    "Wartime Protestors": "Name:Wartime Protestors\nManaCost:3 R\nTypes:Creature Human Rebel Ally\nPT:4/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Ally.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Ally you control enters, put a +1/+1 counter on that creature and it gains haste until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredCardLKICopy | KW$ Haste\nDeckHas:Ability$Counters\nOracle:Haste\\nWhenever another Ally you control enters, put a +1/+1 counter on that creature and it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wartime Protestors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

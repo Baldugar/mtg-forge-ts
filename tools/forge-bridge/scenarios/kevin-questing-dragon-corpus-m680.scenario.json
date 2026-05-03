@@ -1,0 +1,23 @@
+{
+  "id": "kevin-questing-dragon-corpus-m680",
+  "description": "M6 corpus — Kevin, Questing Dragon; in-hand parse.",
+  "seed": 63114,
+  "cards": {
+    "Kevin, Questing Dragon": "Name:Kevin, Questing Dragon\nManaCost:4 R R R R\nTypes:Legendary Creature Dragon\nPT:8/8\nK:Devour:2\nK:Flying\nK:Landwalk:Mountain\nK:Rampage:2\nK:Bushido:2\nK:Trample:Planeswalker\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nS:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigControl | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, gain control of target land that player controls. Untap it.\nSVar:TrigControl:DB$ GainControl | ValidTgts$ Land.ControlledBy TriggeredTarget | TgtPrompt$ Select target land damaged player controls | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted | SpellDescription$ Untap it.\nOracle:Kevin can't be countered, devour 2\\nFlying, mountainwalk, rampage 2, bushido 2, trample over planeswalkers\\nDamage can't be prevented.\\nPlayers can't gain life.\\nWhenever Kevin deals combat damage to a player, gain control of target land that player controls. Untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kevin, Questing Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-seer-corpus-m680",
+  "description": "M6 corpus — Merfolk Seer; in-hand parse.",
+  "seed": 63388,
+  "cards": {
+    "Merfolk Seer": "Name:Merfolk Seer\nManaCost:2 U\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, you may pay {1}{U}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ 1 U | Defined$ You | NumCards$ 1\nOracle:When Merfolk Seer dies, you may pay {1}{U}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

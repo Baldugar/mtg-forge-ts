@@ -1,0 +1,23 @@
+{
+  "id": "flotsam-corpus-m680",
+  "description": "M6 corpus — Flotsam; in-hand parse.",
+  "seed": 62519,
+  "cards": {
+    "Flotsam": "Name:Flotsam\nManaCost:1 GU\nTypes:Instant\nA:SP$ Mill | NumCards$ 3 | SubAbility$ DBInvestigate | SpellDescription$ Mill three cards. Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:DBInvestigate:DB$ Investigate | SpellDescription$ Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token|Mill & Type$Artifact|Clue\nAlternateMode:Split\nOracle:Mill three cards. Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\n\nALTERNATE\n\nName:Jetsam\nManaCost:4 UB UB\nTypes:Instant\nA:SP$ Mill | Defined$ Opponent | NumCards$ 3 | SubAbility$ DBCast | SpellDescription$ Each opponent mills three cards, then you may cast a spell from each opponent's graveyard without paying its mana cost. If a spell cast this way would be put into a graveyard, exile it instead.\nSVar:DBCast:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBChoose | SubAbility$ DBPlayAll\nSVar:DBChoose:DB$ ChooseCard | Choices$ Card.RememberedPlayerCtrl+nonLand | ChoiceZone$ Graveyard | Defined$ You | Amount$ 1 | RememberChosen$ True\nSVar:DBPlayAll:DB$ Play | Defined$ Remembered | Amount$ All | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each opponent mills three cards, then you may cast a spell from each opponent's graveyard without paying its mana cost. If a spell cast this way would be put into a graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flotsam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

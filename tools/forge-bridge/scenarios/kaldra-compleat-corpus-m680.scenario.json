@@ -1,0 +1,23 @@
+{
+  "id": "kaldra-compleat-corpus-m680",
+  "description": "M6 corpus — Kaldra Compleat; in-hand parse.",
+  "seed": 63071,
+  "cards": {
+    "Kaldra Compleat": "Name:Kaldra Compleat\nManaCost:7\nTypes:Legendary Artifact Equipment\nK:Living Weapon\nK:Indestructible\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 5 | AddToughness$ 5 | AddKeyword$ First Strike & Trample & Indestructible & Haste | AddTrigger$ TrigDamageDone | Description$ Equipped creature gets +5/+5 and has first strike, trample, indestructible, haste, and \"Whenever this creature deals combat damage to a creature, exile that creature.\"\nSVar:TrigDamageDone:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Card.Self | ValidTarget$ Creature | Execute$ TrigChangeZone | TriggerDescription$ Whenever this creature deals combat damage to a creature, exile that creature.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredTarget | Origin$ Battlefield | Destination$ Exile\nK:Equip:7\nOracle:Living weapon\\nIndestructible\\nEquipped creature gets +5/+5 and has first strike, trample, indestructible, haste, and \"Whenever this creature deals combat damage to a creature, exile that creature.\"\\nEquip {7}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaldra Compleat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-morningstar-corpus-m680",
+  "description": "M6 corpus — Goblin Morningstar; in-hand parse.",
+  "seed": 62689,
+  "cards": {
+    "Goblin Morningstar": "Name:Goblin Morningstar\nManaCost:1 R\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ Trample | Description$ Equipped creature gets +1/+0 and has trample.\nK:Equip:1 R\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBToken,10-20:DBTokenAttach | SpellDescription$ roll a d20.\nSVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ 1—9 VERT Create a 1/1 red Goblin creature token.\nSVar:DBTokenAttach:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach | SpellDescription$ 10—20 VERT Create a 1/1 red Goblin creature token, then attach CARDNAME to it.\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:Equipped creature gets +1/+0 and has trample.\\nEquip {1}{R}\\nWhen Goblin Morningstar enters, roll a d20.\\n1—9 | Create a 1/1 red Goblin creature token.\\n10—20 | Create a 1/1 red Goblin creature token, then attach Goblin Morningstar to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Morningstar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

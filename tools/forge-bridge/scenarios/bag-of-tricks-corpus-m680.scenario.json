@@ -1,0 +1,23 @@
+{
+  "id": "bag-of-tricks-corpus-m680",
+  "description": "M6 corpus — Bag of Tricks; in-hand parse.",
+  "seed": 61635,
+  "cards": {
+    "Bag of Tricks": "Name:Bag of Tricks\nManaCost:1 G\nTypes:Artifact\nA:AB$ RollDice | Cost$ 4 G T | Defined$ You | Sides$ 8 | ResultSVar$ X | SubAbility$ DBReveal | StackDescription$ SpellDescription | SpellDescription$ Roll a d8. Reveal cards from the top of your library until you reveal a creature card with mana value equal to the result. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:DBReveal:DB$ DigUntil | Defined$ You | Valid$ Creature.cmcEQX | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | StackDescription$ None\nOracle:{4}{G}, {T}: Roll a d8. Reveal cards from the top of your library until you reveal a creature card with mana value equal to the result. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bag of Tricks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ultros-obnoxious-octopus-corpus-m680",
+  "description": "M6 corpus — Ultros, Obnoxious Octopus; in-hand parse.",
+  "seed": 64835,
+  "cards": {
+    "Ultros, Obnoxious Octopus": "Name:Ultros, Obnoxious Octopus\nManaCost:1 U\nTypes:Legendary Creature Octopus\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | ValidSAonCard$ Spell.ManaSpent GE4 | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever you cast a noncreature spell, if at least four mana was spent to cast it, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | ValidSAonCard$ Spell.ManaSpent GE8 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, if at least eight mana was spent to cast it, put eight +1/+1 counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 8\nOracle:Whenever you cast a noncreature spell, if at least four mana was spent to cast it, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nWhenever you cast a noncreature spell, if at least eight mana was spent to cast it, put eight +1/+1 counters on Ultros.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultros, Obnoxious Octopus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

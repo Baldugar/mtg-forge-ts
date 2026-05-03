@@ -1,0 +1,23 @@
+{
+  "id": "vanille-cheerful-l-cie-corpus-m680",
+  "description": "M6 corpus — Vanille, Cheerful l'Cie; in-hand parse.",
+  "seed": 64890,
+  "cards": {
+    "Vanille, Cheerful l'Cie": "Name:Vanille, Cheerful l'Cie\nManaCost:3 G\nTypes:Legendary Creature Human Cleric\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When NICKNAME enters, mill two cards, then return a permanent card from your graveyard to your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Permanent.YouOwn | Hidden$ True\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ Meld | IsPresent$ Card.Self+YouCtrl+YouOwn | IsPresent2$ Creature.YouCtrl+YouOwn+namedFang; Fearless l'Cie | TriggerDescription$ At the beginning of your first main phase, if you both own and control NICKNAME and a creature named Fang, Fearless l'Cie, you may pay {3}{B}{G}. If you do, exile them, then meld them into Ragnarok, Divine Deliverance.\nSVar:Meld:AB$ Meld | Cost$ 3 B G | Name$ Ragnarok, Divine Deliverance | Primary$ Vanille, Cheerful l'Cie | Secondary$ Fang, Fearless l'Cie\nDeckHas:Ability$Mill|Graveyard\nDeckHints:Ability$Mill|Discard|Sacrifice & Name$Fang, Fearless l'Cie\nMeldPair:Fang, Fearless l'Cie\nAlternateMode:Meld\nOracle:When Vanille enters, mill two cards, then return a permanent card from your graveyard to your hand.\\nAt the beginning of your first main phase, if you both own and control Vanille and a creature named Fang, Fearless l'Cie, you may pay {3}{B}{G}. If you do, exile them, then meld them into Ragnarok, Divine Deliverance.\n\nALTERNATE\n\nName:Ragnarok, Divine Deliverance\nManaCost:no cost\nColors:black,green\nTypes:Legendary Creature Beast Avatar\nPT:7/6\nK:Vigilance\nK:Menace\nK:Trample\nK:Reach\nK:Haste\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When NICKNAME dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | ValidTgts$ Permanent.YouOwn+nonLegendary | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target nonlegendary permanent in your graveyard\nOracle:Vigilance, menace, trample, reach, haste\\nWhen Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vanille, Cheerful l'Cie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

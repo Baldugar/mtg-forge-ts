@@ -1,0 +1,23 @@
+{
+  "id": "ulvenwald-bear-corpus-m680",
+  "description": "M6 corpus — Ulvenwald Bear; in-hand parse.",
+  "seed": 64836,
+  "cards": {
+    "Ulvenwald Bear": "Name:Ulvenwald Bear\nManaCost:2 G\nTypes:Creature Bear\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Morbid | Execute$ TrigPutCounter | TriggerDescription$ Morbid — When CARDNAME enters, if a creature died this turn, put two +1/+1 counters on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — When Ulvenwald Bear enters, if a creature died this turn, put two +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulvenwald Bear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

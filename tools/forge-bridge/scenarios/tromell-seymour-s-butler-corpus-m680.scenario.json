@@ -1,0 +1,23 @@
+{
+  "id": "tromell-seymour-s-butler-corpus-m680",
+  "description": "M6 corpus — Tromell, Seymour's Butler; in-hand parse.",
+  "seed": 64804,
+  "cards": {
+    "Tromell, Seymour's Butler": "Name:Tromell, Seymour's Butler\nManaCost:2 G\nTypes:Legendary Creature Elf Advisor\nPT:2/3\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Other+!token+YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Each other nontoken creature you control enters with an additional +1/+1 counter on it.\nA:AB$ Proliferate | Cost$ 1 T | Amount$ X | SpellDescription$ Proliferate X times, where X is the number of nontoken creatures you control that entered this turn. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)\nSVar:X:Count$Valid Creature.YouCtrl+!token+ThisTurnEntered\nOracle:Each other nontoken creature you control enters with an additional +1/+1 counter on it.\\n{1}, {T}: Proliferate X times, where X is the number of nontoken creatures you control that entered this turn. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tromell, Seymour's Butler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

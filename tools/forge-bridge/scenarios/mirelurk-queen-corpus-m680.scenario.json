@@ -1,0 +1,23 @@
+{
+  "id": "mirelurk-queen-corpus-m680",
+  "description": "M6 corpus — Mirelurk Queen; in-hand parse.",
+  "seed": 63427,
+  "cards": {
+    "Mirelurk Queen": "Name:Mirelurk Queen\nManaCost:4 U\nTypes:Creature Crab Mutant\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerDescription$ When CARDNAME enters, target player gets two rad counters.\nSVar:TrigRadiation:DB$ Radiation | ValidTgts$ Player | Num$ 2\nT:Mode$ MilledAll | ValidPlayer$ Player | ValidCard$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigDraw | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more nonland cards are milled, draw a card, then put a +1/+1 counter on CARDNAME. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Ability$Mill\nOracle:Vigilance\\nWhen Mirelurk Queen enters, target player gets two rad counters.\\nWhenever one or more nonland cards are milled, draw a card, then put a +1/+1 counter on Mirelurk Queen. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirelurk Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

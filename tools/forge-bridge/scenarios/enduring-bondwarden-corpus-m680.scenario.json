@@ -1,0 +1,23 @@
+{
+  "id": "enduring-bondwarden-corpus-m680",
+  "description": "M6 corpus — Enduring Bondwarden; in-hand parse.",
+  "seed": 62334,
+  "cards": {
+    "Enduring Bondwarden": "Name:Enduring Bondwarden\nManaCost:W\nTypes:Creature Human Scout\nPT:0/1\nK:Backup:1:BackupAbility\nSVar:BackupAbility:DB$ Animate | Triggers$ DiesTrig\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature dies, put its counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nDeckHas:Ability$Counters\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature dies, put its counters on target creature you control.\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following ability until end of turn.)\\nWhen this creature dies, put its counters on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Bondwarden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

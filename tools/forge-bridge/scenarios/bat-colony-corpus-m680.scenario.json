@@ -1,0 +1,23 @@
+{
+  "id": "bat-colony-corpus-m680",
+  "description": "M6 corpus — Bat Colony; in-hand parse.",
+  "seed": 61656,
+  "cards": {
+    "Bat Colony": "Name:Bat Colony\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 black Bat creature token with flying for each mana from a Cave spent to cast it.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_bat_flying | TokenOwner$ You\nSVar:X:Count$CastTotalManaSpent Cave\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Cave.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a Cave you control enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Cave\nDeckHas:Ability$Token|Counters & Type$Bat\nDeckHints:Type$Cave\nOracle:When Bat Colony enters, create a 1/1 black Bat creature token with flying for each mana from a Cave spent to cast it.\\nWhenever a Cave you control enters, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bat Colony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

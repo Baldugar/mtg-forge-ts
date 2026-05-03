@@ -1,0 +1,23 @@
+{
+  "id": "atomwheel-acrobats-corpus-m680",
+  "description": "M6 corpus — Atomwheel Acrobats; in-hand parse.",
+  "seed": 61594,
+  "cards": {
+    "Atomwheel Acrobats": "Name:Atomwheel Acrobats\nManaCost:3 G\nTypes:Creature Elf Performer\nPT:3/2\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ValidResult$ 1,2 | ValidPlayer$ You | TriggerDescription$ Whenever you roll a 1 or 2, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$Result\nA:AB$ RollDice | Cost$ 2 G | AILogic$ AtOppEOT | SpellDescription$ Roll a six-sided die.\nDeckHas:Ability$Counters\nOracle:Whenever you roll a 1 or 2, put that many +1/+1 counters on Atomwheel Acrobats.\\n{2}{G}: Roll a six-sided die.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atomwheel Acrobats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

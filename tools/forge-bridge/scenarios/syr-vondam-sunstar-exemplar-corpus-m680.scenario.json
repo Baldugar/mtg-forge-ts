@@ -1,0 +1,23 @@
+{
+  "id": "syr-vondam-sunstar-exemplar-corpus-m680",
+  "description": "M6 corpus — Syr Vondam, Sunstar Exemplar; in-hand parse.",
+  "seed": 64563,
+  "cards": {
+    "Syr Vondam, Sunstar Exemplar": "Name:Syr Vondam, Sunstar Exemplar\nManaCost:W B\nTypes:Legendary Creature Human Knight\nPT:2/2\nK:Vigilance\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies or is put into exile, put a +1/+1 counter on NICKNAME and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self+powerGE4 | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When NICKNAME dies or is put into exile while its power is 4 or greater, destroy up to one target nonland permanent.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select up to one target nonland permanent\nDeckHas:Ability$Counters\nOracle:Vigilance, menace\\nWhenever another creature you control dies or is put into exile, put a +1/+1 counter on Syr Vondam and you gain 1 life.\\nWhen Syr Vondam dies or is put into exile while its power is 4 or greater, destroy up to one target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Vondam, Sunstar Exemplar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

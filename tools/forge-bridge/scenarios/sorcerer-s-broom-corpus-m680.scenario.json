@@ -1,0 +1,23 @@
+{
+  "id": "sorcerer-s-broom-corpus-m680",
+  "description": "M6 corpus — Sorcerer's Broom; in-hand parse.",
+  "seed": 64360,
+  "cards": {
+    "Sorcerer's Broom": "Name:Sorcerer's Broom\nManaCost:2\nTypes:Artifact Creature Spirit\nPT:2/1\nT:Mode$ Sacrificed | ValidCard$ Permanent.Other | Execute$ TrigCopy | TriggerZones$ Battlefield | ValidPlayer$ You | TriggerDescription$ Whenever you sacrifice another permanent, you may pay {3}. If you do, create a token that's a copy of CARDNAME.\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ 3 | Defined$ Self\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:Whenever you sacrifice another permanent, you may pay {3}. If you do, create a token that's a copy of Sorcerer's Broom.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorcerer's Broom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

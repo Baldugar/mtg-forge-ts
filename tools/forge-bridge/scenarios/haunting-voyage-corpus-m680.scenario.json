@@ -1,0 +1,23 @@
+{
+  "id": "haunting-voyage-corpus-m680",
+  "description": "M6 corpus — Haunting Voyage; in-hand parse.",
+  "seed": 62799,
+  "cards": {
+    "Haunting Voyage": "Name:Haunting Voyage\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerGraveyard | SubAbility$ DBBranch | SpellDescription$ Choose a creature type. Return up to two creature cards of that type from your graveyard to the battlefield. If this spell was foretold, return all creature cards of that type from your graveyard to the battlefield instead.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ ReturnAll | FalseSubAbility$ ReturnUpToTwo | StackDescription$ None\nSVar:ReturnUpToTwo:DB$ ChangeZone | ChangeType$ Creature.ChosenType+YouOwn | Origin$ Graveyard | Destination$ Battlefield | ChangeNum$ 2 | Hidden$ True\nSVar:ReturnAll:DB$ ChangeZoneAll | ChangeType$ Creature.ChosenType+YouOwn | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$Foretold.1.0\nK:Foretell:5 B B\nOracle:Choose a creature type. Return up to two creature cards of that type from your graveyard to the battlefield. If this spell was foretold, return all creature cards of that type from your graveyard to the battlefield instead.\\nForetell {5}{B}{B} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haunting Voyage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "runaway-growth-corpus-m680",
+  "description": "M6 corpus — Runaway Growth; in-hand parse.",
+  "seed": 64060,
+  "cards": {
+    "Runaway Growth": "Name:Runaway Growth\nManaCost:3 G\nTypes:Enchantment Aura\nK:Starting intensity:1\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional amount of {G} equal to CARDNAME's intensity, then perpetually increase its intensity by 1.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ X | Defined$ TriggeredCardController | SubAbility$ DBIntensify\nSVar:DBIntensify:DB$ Intensify\nSVar:X:Count$Intensity\nOracle:Starting intensity 1\\nEnchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional amount of {G} equal to Runaway Growth's intensity, then perpetually increase its intensity by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runaway Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

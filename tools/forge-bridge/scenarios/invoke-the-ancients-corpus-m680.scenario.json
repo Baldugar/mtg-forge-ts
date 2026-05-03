@@ -1,0 +1,23 @@
+{
+  "id": "invoke-the-ancients-corpus-m680",
+  "description": "M6 corpus — Invoke the Ancients; in-hand parse.",
+  "seed": 62979,
+  "cards": {
+    "Invoke the Ancients": "Name:Invoke the Ancients\nManaCost:1 G G G G\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ g_4_5_spirit | RememberTokens$ True | SubAbility$ DBCounter | SpellDescription$ Create two 4/5 green Spirit creature tokens.\nSVar:DBCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ Vigilance,Reach,Trample | CounterNum$ 1 | CounterTypePerDefined$ True | SubAbility$ DBCleanup | SpellDescription$ For each of them, put your choice of a vigilance counter, a reach counter, or a trample counter on it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Counters & Type$Spirit & Keyword$Vigilance|Reach|Trample\nOracle:Create two 4/5 green Spirit creature tokens. For each of them, put your choice of a vigilance counter, a reach counter, or a trample counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invoke the Ancients"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

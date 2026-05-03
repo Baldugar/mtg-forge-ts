@@ -1,0 +1,23 @@
+{
+  "id": "daxos-the-returned-corpus-m680",
+  "description": "M6 corpus — Daxos the Returned; in-hand parse.",
+  "seed": 62098,
+  "cards": {
+    "Daxos the Returned": "Name:Daxos the Returned\nManaCost:1 W B\nTypes:Legendary Creature Zombie Soldier\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an enchantment spell, you get an experience counter.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nA:AB$ Token | Cost$ 1 W B | TokenScript$ wb_x_x_e_spirit_experience | TokenOwner$ You | SpellDescription$ Create a white and black Spirit enchantment creature token. It has \"This creature's power and toughness are each equal to the number of experience counters you have.\"\nSVar:BuffedBy:Enchantment\nOracle:Whenever you cast an enchantment spell, you get an experience counter.\\n{1}{W}{B}: Create a white and black Spirit enchantment creature token. It has \"This creature's power and toughness are each equal to the number of experience counters you have.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daxos the Returned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

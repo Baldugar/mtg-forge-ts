@@ -1,0 +1,23 @@
+{
+  "id": "yuna-grand-summoner-corpus-m680",
+  "description": "M6 corpus — Yuna, Grand Summoner; in-hand parse.",
+  "seed": 65117,
+  "cards": {
+    "Yuna, Grand Summoner": "Name:Yuna, Grand Summoner\nManaCost:1 G W U\nTypes:Legendary Creature Human Cleric\nPT:1/5\nA:AB$ Mana | Cost$ T | Produced$ Any | PrecostDesc$ Grand Summon — | SubAbility$ DBEffectAddCounter | SpellDescription$ Add one mana of any color. When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.\nSVar:DBEffectAddCounter:DB$ Effect | Triggers$ SpellCast\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | OneOff$ True | Execute$ ReplEffAddCounter | TriggerDescription$ When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBRemoveSelf\nSVar:DBRemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.YouCtrl+Other+HasCounters | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever another permanent you control is put into a graveyard from the battlefield, if it had one or more counters on it, you may put that number of +1/+1 counters on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardCounters.ALL\nOracle:Grand Summon — {T}: Add one mana of any color. When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.\\nWhenever another permanent you control is put into a graveyard from the battlefield, if it had one or more counters on it, you may put that number of +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuna, Grand Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

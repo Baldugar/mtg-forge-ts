@@ -1,0 +1,23 @@
+{
+  "id": "righteous-valkyrie-corpus-m680",
+  "description": "M6 corpus — Righteous Valkyrie; in-hand parse.",
+  "seed": 63988,
+  "cards": {
+    "Righteous Valkyrie": "Name:Righteous Valkyrie\nManaCost:2 W\nTypes:Creature Angel Cleric\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Cleric.Other+YouCtrl,Angel.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another Angel or Cleric you control enters, you gain life equal to that creature's toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nS:Mode$ Continuous | CheckSVar$ Z | SVarCompare$ GEY | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ As long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.\nSVar:Z:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife/Plus.7\nDeckHas:Ability$LifeGain\nDeckHints:Type$Angel|Cleric\nOracle:Flying\\nWhenever another Angel or Cleric you control enters, you gain life equal to that creature's toughness.\\nAs long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Righteous Valkyrie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

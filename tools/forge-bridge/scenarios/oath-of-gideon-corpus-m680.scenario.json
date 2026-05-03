@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-gideon-corpus-m680",
+  "description": "M6 corpus — Oath of Gideon; in-hand parse.",
+  "seed": 63589,
+  "cards": {
+    "Oath of Gideon": "Name:Oath of Gideon\nManaCost:2 W\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Kor Ally creature tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_kor_ally | TokenOwner$ You | TokenAmount$ 2\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Planeswalker.YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ LOYALTY | CounterNum$ 1 | SpellDescription$ Each planeswalker you control enters with an additional loyalty counter on it.\nDeckHas:Ability$Token\nDeckHints:Type$Ally\nOracle:When Oath of Gideon enters, create two 1/1 white Kor Ally creature tokens.\\nEach planeswalker you control enters with an additional loyalty counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Gideon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pirate-hat-corpus-m680",
+  "description": "M6 corpus — Pirate Hat; in-hand parse.",
+  "seed": 63757,
+  "cards": {
+    "Pirate Hat": "Name:Pirate Hat\nManaCost:1 U\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ TrigAttack | Description$ Equipped creature gets +1/+1 and has \"Whenever this creature attacks, draw a card, then discard a card.\"\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:Equip:1:Creature.Pirate+YouCtrl:Pirate\nK:Equip:2\nDeckHas:Ability$Discard\nDeckHints:Type$Pirate\nOracle:Equipped creature gets +1/+1 and has \"Whenever this creature attacks, draw a card, then discard a card.\"\\nEquip Pirate {1}\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pirate Hat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

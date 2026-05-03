@@ -1,0 +1,23 @@
+{
+  "id": "soulcatchers-aerie-corpus-m680",
+  "description": "M6 corpus — Soulcatchers' Aerie; in-hand parse.",
+  "seed": 64370,
+  "cards": {
+    "Soulcatchers' Aerie": "Name:Soulcatchers' Aerie\nManaCost:1 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.Bird | AddPower$ X | AddToughness$ X | Description$ Bird creatures get +1/+1 for each feather counter on CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Bird.YouOwn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a Bird is put into your graveyard from the battlefield, put a feather counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FEATHER | CounterNum$ 1\nSVar:X:Count$CardCounters.FEATHER\nAI:RemoveDeck:Random\nOracle:Whenever a Bird is put into your graveyard from the battlefield, put a feather counter on Soulcatchers' Aerie.\\nBird creatures get +1/+1 for each feather counter on Soulcatchers' Aerie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulcatchers' Aerie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

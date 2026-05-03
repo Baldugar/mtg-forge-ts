@@ -1,0 +1,23 @@
+{
+  "id": "orim-s-thunder-corpus-m680",
+  "description": "M6 corpus — Orim's Thunder; in-hand parse.",
+  "seed": 63654,
+  "cards": {
+    "Orim's Thunder": "Name:Orim's Thunder\nManaCost:2 W\nTypes:Instant\nK:Kicker:R\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBDamage | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBDamage:DB$ DealDamage | Condition$ Kicked | ValidTgts$ Creature | NumDmg$ X | TargetMin$ Y | TargetMax$ Y | SpellDescription$ If CARDNAME was kicked, it deals damage equal to that permanent's mana value to target creature.\nSVar:X:ParentTargeted$CardManaCost\nSVar:Y:Count$Kicked.1.0\nSVar:NeedsToPlay:Creature.OppCtrl\nDeckHints:Color$Red\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nDestroy target artifact or enchantment. If this spell was kicked, it deals damage equal to that permanent's mana value to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orim's Thunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

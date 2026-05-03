@@ -1,0 +1,23 @@
+{
+  "id": "wick-s-patrol-corpus-m680",
+  "description": "M6 corpus — Wick's Patrol; in-hand parse.",
+  "seed": 65038,
+  "cards": {
+    "Wick's Patrol": "Name:Wick's Patrol\nManaCost:4 B B\nTypes:Creature Rat Warlock\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. When you do, target creature an opponent controls gets -X/-X until end of turn, where X is the greatest mana value among cards in your graveyard.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | RememberMilled$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigDebuff | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ3 | SubAbility$ DBCleanup | TriggerDescription$ When you do, target creature an opponent controls gets -X/-X until end of turn, where X is the greatest mana value among cards in your graveyard.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Card.YouCtrl$GreatestCardManaCost\nDeckHas:Ability$Graveyard\nOracle:When Wick's Patrol enters, mill three cards. When you do, target creature an opponent controls gets -X/-X until end of turn, where X is the greatest mana value among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wick's Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

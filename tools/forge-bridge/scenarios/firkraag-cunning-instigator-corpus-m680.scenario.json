@@ -1,0 +1,23 @@
+{
+  "id": "firkraag-cunning-instigator-corpus-m680",
+  "description": "M6 corpus — Firkraag, Cunning Instigator; in-hand parse.",
+  "seed": 62501,
+  "cards": {
+    "Firkraag, Cunning Instigator": "Name:Firkraag, Cunning Instigator\nManaCost:3 U R\nTypes:Legendary Creature Dragon\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Dragon.YouCtrl | AttackedTarget$ Opponent | Execute$ TrigGoad | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Dragons you control attack an opponent, goad target creature that player controls.\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredAttackedTarget | TgtPrompt$ Select target creature that player controls\nT:Mode$ DamageDone | ValidSource$ Creature.hadToAttackThisCombat | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature deals combat damage to one of your opponents, if that creature had to attack this combat, you put a +1/+1 counter on CARDNAME and you draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHints:Type$Dragon\nDeckHas:Ability$Counters\nOracle:Flying, haste\\nWhenever one or more Dragons you control attack an opponent, goad target creature that player controls.\\nWhenever a creature deals combat damage to one of your opponents, if that creature had to attack this combat, you put a +1/+1 counter on Firkraag, Cunning Instigator and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firkraag, Cunning Instigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

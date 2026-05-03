@@ -1,0 +1,23 @@
+{
+  "id": "seedpod-caretaker-corpus-m680",
+  "description": "M6 corpus — Seedpod Caretaker; in-hand parse.",
+  "seed": 64187,
+  "cards": {
+    "Seedpod Caretaker": "Name:Seedpod Caretaker\nManaCost:2 W\nTypes:Creature Phyrexian Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ P1P1,Transform\nSVar:P1P1:DB$ PutCounter | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Select target artifact or creature you control | CounterType$ P1P1 | SpellDescription$ Put a +1/+1 counter on target artifact or creature you control.\nSVar:Transform:DB$ SetState | ValidTgts$ Incubator.token+YouCtrl | TgtPrompt$ Select target Incubator token you control | Mode$ Transform | SpellDescription$ Transform target Incubator token you control.\nDeckHas:Ability$Counters\nDeckHints:Ability$Token & Type$Artifact\nOracle:When Seedpod Caretaker enters, choose one —\\n• Put a +1/+1 counter on target artifact or creature you control.\\n• Transform target Incubator token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seedpod Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

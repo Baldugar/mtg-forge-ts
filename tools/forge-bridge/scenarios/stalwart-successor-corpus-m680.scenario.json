@@ -1,0 +1,23 @@
+{
+  "id": "stalwart-successor-corpus-m680",
+  "description": "M6 corpus — Stalwart Successor; in-hand parse.",
+  "seed": 64444,
+  "cards": {
+    "Stalwart Successor": "Name:Stalwart Successor\nManaCost:1 B G\nTypes:Creature Human Warrior\nPT:3/2\nK:Menace\nT:Mode$ CounterTypeAddedAll | ValidObject$ Creature.YouCtrl+inZoneBattlefield | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more counters are put on a creature you control, if it's the first time counters have been put on that creature this turn, put a +1/+1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ TriggeredObjectLKICopy\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever one or more counters are put on a creature you control, if it's the first time counters have been put on that creature this turn, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalwart Successor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

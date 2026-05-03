@@ -1,0 +1,23 @@
+{
+  "id": "bleeding-woods-corpus-m680",
+  "description": "M6 corpus — Bleeding Woods; in-hand parse.",
+  "seed": 61703,
+  "cards": {
+    "Bleeding Woods": "Name:Bleeding Woods\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless a player has 13 or less life.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GT13\nSVar:X:PlayerCountPlayers$LowestLifeTotal\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:Bleeding Woods enters tapped unless a player has 13 or less life.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bleeding Woods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

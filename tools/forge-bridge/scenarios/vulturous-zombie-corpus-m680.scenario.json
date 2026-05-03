@@ -1,0 +1,23 @@
+{
+  "id": "vulturous-zombie-corpus-m680",
+  "description": "M6 corpus — Vulturous Zombie; in-hand parse.",
+  "seed": 64987,
+  "cards": {
+    "Vulturous Zombie": "Name:Vulturous Zombie\nManaCost:3 B G\nTypes:Creature Plant Zombie\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.!token+OppOwn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a card is put into an opponent's graveyard from anywhere, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhenever a card is put into an opponent's graveyard from anywhere, put a +1/+1 counter on Vulturous Zombie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vulturous Zombie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

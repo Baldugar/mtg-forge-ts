@@ -1,0 +1,23 @@
+{
+  "id": "freewind-equenaut-corpus-m680",
+  "description": "M6 corpus — Freewind Equenaut; in-hand parse.",
+  "seed": 62560,
+  "cards": {
+    "Freewind Equenaut": "Name:Freewind Equenaut\nManaCost:2 W\nTypes:Creature Human Archer\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self+enchanted | AddAbility$ DealDamage | Description$ As long as CARDNAME is enchanted, it has \"{T}: CARDNAME deals 2 damage to target attacking or blocking creature.\"\nSVar:DealDamage:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target attacking or blocking creature.\nSVar:EnchantMe:Once\nOracle:Flying\\nAs long as Freewind Equenaut is enchanted, it has \"{T}: Freewind Equenaut deals 2 damage to target attacking or blocking creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freewind Equenaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "maga-traitor-to-mortals-corpus-m680",
+  "description": "M6 corpus — Maga, Traitor to Mortals; in-hand parse.",
+  "seed": 63304,
+  "cards": {
+    "Maga, Traitor to Mortals": "Name:Maga, Traitor to Mortals\nManaCost:X B B B\nTypes:Legendary Creature Human Wizard\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDrain | TriggerDescription$ When NICKNAME enters, target player loses life equal to the number of +1/+1 counters on it.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ Y\nSVar:Y:Count$CardCounters.P1P1\nOracle:Maga, Traitor to Mortals enters with X +1/+1 counters on it.\\nWhen Maga enters, target player loses life equal to the number of +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maga, Traitor to Mortals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

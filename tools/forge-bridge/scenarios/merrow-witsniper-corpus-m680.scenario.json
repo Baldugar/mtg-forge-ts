@@ -1,0 +1,23 @@
+{
+  "id": "merrow-witsniper-corpus-m680",
+  "description": "M6 corpus — Merrow Witsniper; in-hand parse.",
+  "seed": 63390,
+  "cards": {
+    "Merrow Witsniper": "Name:Merrow Witsniper\nManaCost:U\nTypes:Creature Merfolk Rogue\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills a card.\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | ValidTgts$ Player | TgtPrompt$ Select target player\nOracle:When Merrow Witsniper enters, target player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merrow Witsniper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

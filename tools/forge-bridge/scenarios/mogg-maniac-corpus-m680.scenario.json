@@ -1,0 +1,23 @@
+{
+  "id": "mogg-maniac-corpus-m680",
+  "description": "M6 corpus — Mogg Maniac; in-hand parse.",
+  "seed": 63452,
+  "cards": {
+    "Mogg Maniac": "Name:Mogg Maniac\nManaCost:1 R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to target opponent or planeswalker.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Mogg Maniac is dealt damage, it deals that much damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogg Maniac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

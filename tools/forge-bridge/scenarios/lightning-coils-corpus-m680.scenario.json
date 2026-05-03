@@ -1,0 +1,23 @@
+{
+  "id": "lightning-coils-corpus-m680",
+  "description": "M6 corpus — Lightning Coils; in-hand parse.",
+  "seed": 63235,
+  "cards": {
+    "Lightning Coils": "Name:Lightning Coils\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature you control dies, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.Self+counters_GE5_CHARGE | Execute$ DBRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if CARDNAME has five or more charge counters on it, remove all of them from it and create that many 3/1 red Elemental creature tokens with haste. Exile them at the beginning of the next end step.\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ All | RememberRemoved$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ r_3_1_elemental_haste | AtEOT$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature you control dies, put a charge counter on Lightning Coils.\\nAt the beginning of your upkeep, if Lightning Coils has five or more charge counters on it, remove all of them from it and create that many 3/1 red Elemental creature tokens with haste. Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Coils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

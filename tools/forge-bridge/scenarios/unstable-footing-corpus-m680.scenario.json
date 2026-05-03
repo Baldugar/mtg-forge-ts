@@ -1,0 +1,23 @@
+{
+  "id": "unstable-footing-corpus-m680",
+  "description": "M6 corpus — Unstable Footing; in-hand parse.",
+  "seed": 64857,
+  "cards": {
+    "Unstable Footing": "Name:Unstable Footing\nManaCost:R\nTypes:Instant\nK:Kicker:3 R\nA:SP$ Effect | StaticAbilities$ STCantPrevent | SubAbility$ DBDamage | SpellDescription$ Damage can't be prevented this turn. If this spell was kicked, it deals 5 damage to target player or planeswalker.\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 5 | NoPrevention$ True | Condition$ Kicked | ConditionDescription$ If it was kicked,\nAI:RemoveDeck:All\nOracle:Kicker {3}{R} (You may pay an additional {3}{R} as you cast this spell.)\\nDamage can't be prevented this turn. If this spell was kicked, it deals 5 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unstable Footing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sanity-gnawers-corpus-m680",
+  "description": "M6 corpus — Sanity Gnawers; in-hand parse.",
+  "seed": 64122,
+  "cards": {
+    "Sanity Gnawers": "Name:Sanity Gnawers\nManaCost:1 B R\nTypes:Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards a card at random.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ Random\nOracle:When Sanity Gnawers enters, target player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanity Gnawers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

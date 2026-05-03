@@ -1,0 +1,23 @@
+{
+  "id": "entrails-feaster-corpus-m680",
+  "description": "M6 corpus — Entrails Feaster; in-hand parse.",
+  "seed": 62345,
+  "cards": {
+    "Entrails Feaster": "Name:Entrails Feaster\nManaCost:B\nTypes:Creature Zombie Cat\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may exile a creature card from a graveyard. If you do, put a +1/+1 counter on CARDNAME. If you don't, tap CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | ChangeType$ Creature | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Exile | Optional$ True | IsCurse$ True | RememberChanged$ True | Hidden$ True | Chooser$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1 | ConditionCheckSVar$ X | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | ConditionCheckSVar$ X | ConditionSVarCompare$ LE0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:At the beginning of your upkeep, you may exile a creature card from a graveyard. If you do, put a +1/+1 counter on Entrails Feaster. If you don't, tap Entrails Feaster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Entrails Feaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

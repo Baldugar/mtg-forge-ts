@@ -1,0 +1,23 @@
+{
+  "id": "keiga-the-tide-star-corpus-m680",
+  "description": "M6 corpus — Keiga, the Tide Star; in-hand parse.",
+  "seed": 63101,
+  "cards": {
+    "Keiga, the Tide Star": "Name:Keiga, the Tide Star\nManaCost:5 U\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME dies, gain control of target creature.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Creature | TgtPrompt$ Select target creature\nOracle:Flying\\nWhen Keiga, the Tide Star dies, gain control of target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keiga, the Tide Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

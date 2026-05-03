@@ -1,0 +1,23 @@
+{
+  "id": "rancid-earth-corpus-m680",
+  "description": "M6 corpus — Rancid Earth; in-hand parse.",
+  "seed": 63895,
+  "cards": {
+    "Rancid Earth": "Name:Rancid Earth\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Branch | ValidTgts$ Land | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE7 | TrueSubAbility$ ThreshDestroy | FalseSubAbility$ Destroy | SpellDescription$ Destroy target land. Threshold — If there are seven or more cards in your graveyard, instead destroy that land and CARDNAME deals 1 damage to each creature and each player.\nSVar:Destroy:DB$ Destroy | Defined$ Targeted\nSVar:ThreshDestroy:DB$ Destroy | Defined$ Targeted | SubAbility$ DBRancidDamage\nSVar:DBRancidDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature | ValidPlayers$ Player\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Destroy target land.\\nThreshold — If there are seven or more cards in your graveyard, instead destroy that land and Rancid Earth deals 1 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rancid Earth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

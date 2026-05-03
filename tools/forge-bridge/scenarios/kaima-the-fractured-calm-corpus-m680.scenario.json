@@ -1,0 +1,23 @@
+{
+  "id": "kaima-the-fractured-calm-corpus-m680",
+  "description": "M6 corpus — Kaima, the Fractured Calm; in-hand parse.",
+  "seed": 63068,
+  "cards": {
+    "Kaima, the Fractured Calm": "Name:Kaima, the Fractured Calm\nManaCost:2 R G\nTypes:Legendary Creature Spirit\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGoad | TriggerDescription$ At the beginning of your end step, goad each creature your opponents control that's enchanted by an Aura you control. Put a +1/+1 counter on CARDNAME for each creature goaded this way. (Until your next turn, the goaded creatures attack each combat if able and attack a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | Defined$ Valid Creature.OppCtrl+EnchantedBy Aura.YouCtrl | RememberGoaded$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Counters\nDeckHints:Type$Enchantment\nOracle:At the beginning of your end step, goad each creature your opponents control that's enchanted by an Aura you control. Put a +1/+1 counter on Kaima, the Fractured Calm for each creature goaded this way. (Until your next turn, the goaded creatures attack each combat if able and attack a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaima, the Fractured Calm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

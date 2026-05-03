@@ -1,0 +1,23 @@
+{
+  "id": "kodama-of-the-east-tree-corpus-m680",
+  "description": "M6 corpus — Kodama of the East Tree; in-hand parse.",
+  "seed": 63143,
+  "cards": {
+    "Kodama of the East Tree": "Name:Kodama of the East Tree\nManaCost:4 G G\nTypes:Legendary Creature Spirit\nPT:6/6\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.YouCtrl+Other | NotThisAbility$ True | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever another permanent you control enters, if it wasn't put onto the battlefield with this ability, you may put a permanent card with equal or lesser mana value from your hand onto the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.YouCtrl+cmcLEX | ChangeNum$ 1\nSVar:X:TriggeredCard$CardManaCost\nK:Partner\nOracle:Reach\\nWhenever another permanent you control enters, if it wasn't put onto the battlefield with this ability, you may put a permanent card with equal or lesser mana value from your hand onto the battlefield.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kodama of the East Tree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

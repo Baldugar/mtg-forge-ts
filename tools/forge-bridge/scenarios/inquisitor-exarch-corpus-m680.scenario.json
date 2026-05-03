@@ -1,0 +1,23 @@
+{
+  "id": "inquisitor-exarch-corpus-m680",
+  "description": "M6 corpus — Inquisitor Exarch; in-hand parse.",
+  "seed": 62941,
+  "cards": {
+    "Inquisitor Exarch": "Name:Inquisitor Exarch\nManaCost:W W\nTypes:Creature Phyrexian Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBGain,DBLose\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nSVar:DBLose:DB$ LoseLife | LifeAmount$ 2 | ValidTgts$ Opponent | SpellDescription$ Target opponent loses 2 life.\nDeckHas:Ability$LifeGain\nOracle:When Inquisitor Exarch enters, choose one —\\n• You gain 2 life.\\n• Target opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inquisitor Exarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

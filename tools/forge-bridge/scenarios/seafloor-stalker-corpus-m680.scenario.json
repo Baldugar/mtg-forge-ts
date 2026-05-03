@@ -1,0 +1,23 @@
+{
+  "id": "seafloor-stalker-corpus-m680",
+  "description": "M6 corpus — Seafloor Stalker; in-hand parse.",
+  "seed": 64172,
+  "cards": {
+    "Seafloor Stalker": "Name:Seafloor Stalker\nManaCost:2 U\nTypes:Creature Merfolk Rogue\nPT:2/3\nA:AB$ Pump | Cost$ 4 U | NumAtt$ +1 | SubAbility$ DBUnblockable | ReduceCost$ X | StackDescription$ CARDNAME gets +1/+0 until end of turn and can't be blocked this turn. | SpellDescription$ CARDNAME gets +1/+0 until end of turn and can't be blocked this turn. This ability costs {1} less to activate for each creature in your party.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Warrior|Wizard\nOracle:{4}{U}: Seafloor Stalker gets +1/+0 until end of turn and can't be blocked this turn. This ability costs {1} less to activate for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seafloor Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

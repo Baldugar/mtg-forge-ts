@@ -1,0 +1,23 @@
+{
+  "id": "deadly-alliance-corpus-m680",
+  "description": "M6 corpus — Deadly Alliance; in-hand parse.",
+  "seed": 62104,
+  "cards": {
+    "Deadly Alliance": "Name:Deadly Alliance\nManaCost:4 B\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature in your party.\nSVar:X:Count$Party\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Destroy target creature or planeswalker.\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:This spell costs {1} less to cast for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\\nDestroy target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadly Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

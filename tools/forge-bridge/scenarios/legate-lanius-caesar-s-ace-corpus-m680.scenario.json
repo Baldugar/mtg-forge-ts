@@ -1,0 +1,23 @@
+{
+  "id": "legate-lanius-caesar-s-ace-corpus-m680",
+  "description": "M6 corpus — Legate Lanius, Caesar's Ace; in-hand parse.",
+  "seed": 63206,
+  "cards": {
+    "Legate Lanius, Caesar's Ace": "Name:Legate Lanius, Caesar's Ace\nManaCost:2 B R\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigRepeatEach | TriggerDescription$ Decimate — When CARDNAME enters, each opponent sacrifices a tenth of the creatures they control, rounded up.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ X | SacValid$ Creature | Defined$ Remembered\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl/DivideEvenlyUp.10\nT:Mode$ Sacrificed | ValidCard$ Creature.OppCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent sacrifices a creature, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Ability$Counters\nDeckHas:Ability$Counters\nOracle:Decimate — When Legate Lanius enters, each opponent sacrifices a tenth of the creatures they control, rounded up.\\nWhenever an opponent sacrifices a creature, put a +1/+1 counter on Legate Lanius.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legate Lanius, Caesar's Ace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

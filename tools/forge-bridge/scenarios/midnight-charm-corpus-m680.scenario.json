@@ -1,0 +1,23 @@
+{
+  "id": "midnight-charm-corpus-m680",
+  "description": "M6 corpus — Midnight Charm; in-hand parse.",
+  "seed": 63398,
+  "cards": {
+    "Midnight Charm": "Name:Midnight Charm\nManaCost:B\nTypes:Instant\nA:SP$ Charm | Choices$ DBDamage,DBPump,DBTap\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal damage | NumDmg$ 1 | SubAbility$ DBGain | SpellDescription$ CARDNAME deals 1 damage to target creature and you gain 1 life.\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature to gain First Strike | KW$ First Strike | SpellDescription$ Target creature gains first strike until end of turn.\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature to tap | SpellDescription$ Tap target creature.\nOracle:Choose one —\\n• Midnight Charm deals 1 damage to target creature and you gain 1 life.\\n• Target creature gains first strike until end of turn.\\n• Tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

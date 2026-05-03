@@ -1,0 +1,23 @@
+{
+  "id": "light-the-way-corpus-m680",
+  "description": "M6 corpus — Light the Way; in-hand parse.",
+  "seed": 63231,
+  "cards": {
+    "Light the Way": "Name:Light the Way\nManaCost:W\nTypes:Instant\nA:SP$ Charm | Choices$ DBPutCounter,DBChangeZone | Defined$ You\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature,Vehicle | TgtPrompt$ Select target creature or Vehicle | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBUntap | SpellDescription$ Put a +1/+1 counter on target creature or Vehicle. Untap it.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target permanent you control to its owner's hand.\nDeckHints:Type$Creature|Vehicle\nDeckHas:Ability$Counters\nOracle:Choose one —\\n• Put a +1/+1 counter on target creature or Vehicle. Untap it.\\n• Return target permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Light the Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

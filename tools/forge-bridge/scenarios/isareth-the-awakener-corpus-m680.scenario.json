@@ -1,0 +1,23 @@
+{
+  "id": "isareth-the-awakener-corpus-m680",
+  "description": "M6 corpus — Isareth the Awakener; in-hand parse.",
+  "seed": 62996,
+  "cards": {
+    "Isareth the Awakener": "Name:Isareth the Awakener\nManaCost:1 B B\nTypes:Legendary Creature Human Wizard\nPT:3/3\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may pay {X}. When you do, return target creature card with mana value X from your graveyard to the battlefield with a corpse counter on it. If that creature would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ X | Execute$ TrigChange | SpellDescription$ When you do, return target creature card with mana value X from your graveyard to the battlefield with a corpse counter on it. If that creature would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:X:Count$xPaid\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcEQX | TgtPrompt$ Choose target creature card with mana value X | WithCountersType$ CORPSE | AILogic$ BeforeCombat | LeaveBattlefield$ Exile | SpellDescription$ Return target creature card with mana value X from your graveyard to the battlefield.\nSVar:HasAttackEffect:TRUE\nOracle:Deathtouch\\nWhenever Isareth the Awakener attacks, you may pay {X}. When you do, return target creature card with mana value X from your graveyard to the battlefield with a corpse counter on it. If that creature would leave the battlefield, exile it instead of putting it anywhere else.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isareth the Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

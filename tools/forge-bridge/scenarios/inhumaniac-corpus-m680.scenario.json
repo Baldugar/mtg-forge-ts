@@ -1,0 +1,23 @@
+{
+  "id": "inhumaniac-corpus-m680",
+  "description": "M6 corpus — Inhumaniac; in-hand parse.",
+  "seed": 62937,
+  "cards": {
+    "Inhumaniac": "Name:Inhumaniac\nManaCost:1 B\nTypes:Creature Brainiac\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ At the beginning of your upkeep, roll a six-sided die. On a 3 or 4, put a +1/+1 counter on CARDNAME. On a 5 or higher, put two +1/+1 counters on it. On a 1, remove all +1/+1 counters from CARDNAME.\nSVar:TrigRoll:DB$ RollDice | ResultSubAbilities$ 3-4:DBOne,5-6:DBTwo,1:DBRemove\nSVar:DBOne:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBTwo:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nSVar:DBRemove:DB$ RemoveCounterAll | ValidCards$ Card.Self | CounterType$ P1P1 | AllCounters$ True\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, roll a six-sided die. On a 3 or 4, put a +1/+1 counter on Inhumaniac. On a 5 or higher, put two +1/+1 counters on it. On a 1, remove all +1/+1 counters from Inhumaniac.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inhumaniac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "origin-of-metalbending-corpus-m680",
+  "description": "M6 corpus — Origin of Metalbending; in-hand parse.",
+  "seed": 63652,
+  "cards": {
+    "Origin of Metalbending": "Name:Origin of Metalbending\nManaCost:1 G\nTypes:Instant Lesson\nA:SP$ Charm | Choices$ DBDestroy,DBPutCounter\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | TgtPrompt$ Select target creature you control | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Indestructible\nDeckHas:Ability$Counters\nOracle:Choose one —\\n• Destroy target artifact or enchantment.\\n• Put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Origin of Metalbending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

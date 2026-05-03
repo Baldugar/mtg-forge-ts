@@ -1,0 +1,23 @@
+{
+  "id": "halimar-excavator-corpus-m680",
+  "description": "M6 corpus — Halimar Excavator; in-hand parse.",
+  "seed": 62771,
+  "cards": {
+    "Halimar Excavator": "Name:Halimar Excavator\nManaCost:1 U\nTypes:Creature Human Wizard Ally\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, target player mills X cards, where X is the number of Allies you control.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | NumCards$ X | TgtPrompt$ Select a target player. | SpellDescription$ Target player mills X cards, where X is the number of Allies you control.\nSVar:X:Count$Valid Ally.YouCtrl\nSVar:BuffedBy:Ally\nOracle:Whenever Halimar Excavator or another Ally you control enters, target player mills X cards, where X is the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halimar Excavator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

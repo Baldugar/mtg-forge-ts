@@ -1,0 +1,23 @@
+{
+  "id": "wilfred-mott-corpus-m680",
+  "description": "M6 corpus — Wilfred Mott; in-hand parse.",
+  "seed": 65051,
+  "cards": {
+    "Wilfred Mott": "Name:Wilfred Mott\nManaCost:3 W\nTypes:Legendary Creature Human Soldier\nPT:2/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Look to the Stars — At the beginning of your upkeep, put a time counter on CARDNAME. Then look at the top X cards of your library, where X is the number of time counters on CARDNAME. You may put a nonland permanent card with mana value 3 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1 | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Permanent.nonLand+cmcLE3 | DestinationZone$ Battlefield | RestRandomOrder$ True\nSVar:X:Count$CardCounters.Time\nDeckHas:Ability$Counters\nOracle:Look to the Stars — At the beginning of your upkeep, put a time counter on Wilfred Mott. Then look at the top X cards of your library, where X is the number of time counters on Wilfred Mott. You may put a nonland permanent card with mana value 3 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wilfred Mott"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

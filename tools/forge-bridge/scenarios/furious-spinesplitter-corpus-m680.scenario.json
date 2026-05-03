@@ -1,0 +1,23 @@
+{
+  "id": "furious-spinesplitter-corpus-m680",
+  "description": "M6 corpus — Furious Spinesplitter; in-hand parse.",
+  "seed": 62590,
+  "cards": {
+    "Furious Spinesplitter": "Name:Furious Spinesplitter\nManaCost:2 RG RG\nTypes:Creature Ogre Warrior\nPT:3/3\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on CARDNAME for each opponent that was dealt damage this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:PlayerCountRegisteredOpponents$HasPropertywasDealtDamageThisTurn\nDeckHas:Ability$Counters\nOracle:Trample\\nAt the beginning of your end step, put a +1/+1 counter on Furious Spinesplitter for each opponent that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furious Spinesplitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

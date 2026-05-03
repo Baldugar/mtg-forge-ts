@@ -1,0 +1,23 @@
+{
+  "id": "gauntlet-of-might-corpus-m680",
+  "description": "M6 corpus — Gauntlet of Might; in-hand parse.",
+  "seed": 62609,
+  "cards": {
+    "Gauntlet of Might": "Name:Gauntlet of Might\nManaCost:4\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Creature.Red | AddPower$ 1 | AddToughness$ 1 | Description$ Red creatures get +1/+1.\nT:Mode$ TapsForMana | ValidCard$ Mountain | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever a Mountain is tapped for mana, its controller adds an additional {R}.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 1 | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red & Type$Mountain\nOracle:Red creatures get +1/+1.\\nWhenever a Mountain is tapped for mana, its controller adds an additional {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gauntlet of Might"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

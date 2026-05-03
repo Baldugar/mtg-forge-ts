@@ -1,0 +1,23 @@
+{
+  "id": "adorable-kitten-corpus-m680",
+  "description": "M6 corpus — Adorable Kitten; in-hand parse.",
+  "seed": 61451,
+  "cards": {
+    "Adorable Kitten": "Name:Adorable Kitten\nManaCost:W\nTypes:Host Creature Cat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | Host$ True | TriggerDescription$ When this creature enters, roll a six-sided die. You gain life equal to the result.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ Result\nDeckHas:Ability$LifeGain\nOracle:When this creature enters, roll a six-sided die. You gain life equal to the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adorable Kitten"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

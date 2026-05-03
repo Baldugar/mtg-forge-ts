@@ -1,0 +1,23 @@
+{
+  "id": "sigil-of-valor-corpus-m680",
+  "description": "M6 corpus — Sigil of Valor; in-hand parse.",
+  "seed": 64277,
+  "cards": {
+    "Sigil of Valor": "Name:Sigil of Valor\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Alone$ True | Execute$ TrigPump | TriggerDescription$ Whenever equipped creature attacks alone, it gets +1/+1 until end of turn for each other creature you control.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl+!TriggeredAttacker\nOracle:Whenever equipped creature attacks alone, it gets +1/+1 until end of turn for each other creature you control.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigil of Valor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

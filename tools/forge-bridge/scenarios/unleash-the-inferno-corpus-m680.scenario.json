@@ -1,0 +1,23 @@
+{
+  "id": "unleash-the-inferno-corpus-m680",
+  "description": "M6 corpus — Unleash the Inferno; in-hand parse.",
+  "seed": 64852,
+  "cards": {
+    "Unleash the Inferno": "Name:Unleash the Inferno\nManaCost:1 B R G\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 7 | ExcessSVar$ Excess | SubAbility$ DBImmediateTrigger | SpellDescription$ CARDNAME deals 7 damage to target creature or planeswalker.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionCheckSVar$ Excess | RememberSVarAmount$ Excess | Execute$ TrigDestroy | SpellDescription$ When it deals excess damage this way, destroy target artifact or enchantment an opponent controls with mana value less than or equal to that amount of excess damage.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl+cmcLEX,Enchantment.OppCtrl+cmcLEX | TgtPrompt$ Select target artifact or enchantment an opponent controls with mana value less than or equal to the amount of excess damage | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$TriggerRememberAmount\nOracle:Unleash the Inferno deals 7 damage to target creature or planeswalker. When it deals excess damage this way, destroy target artifact or enchantment an opponent controls with mana value less than or equal to that amount of excess damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unleash the Inferno"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

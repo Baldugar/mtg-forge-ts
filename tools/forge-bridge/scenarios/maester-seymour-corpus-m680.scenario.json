@@ -1,0 +1,23 @@
+{
+  "id": "maester-seymour-corpus-m680",
+  "description": "M6 corpus — Maester Seymour; in-hand parse.",
+  "seed": 63301,
+  "cards": {
+    "Maester Seymour": "Name:Maester Seymour\nManaCost:2 G\nTypes:Legendary Creature Human Elf Cleric\nPT:1/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a number of +1/+1 counters equal to CARDNAME's power on another target creature you control.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ Count$CardPower\nA:AB$ PutCounter | Cost$ 3 G G | Monstrosity$ X | SpellDescription$ Monstrosity X, where X is the number of counters among creatures you control. (If this creature isn't monstrous, put X +1/+1 counters on it and it becomes monstrous.)\nSVar:X:Count$Valid Creature.YouCtrl$CardCounters.ALL\nDeckHas:Ability$Counters\nOracle:At the beginning of combat on your turn, put a number of +1/+1 counters equal to Maester Seymour's power on another target creature you control.\\n{3}{G}{G}: Monstrosity X, where X is the number of counters among creatures you control. (If this creature isn't monstrous, put X +1/+1 counters on it and it becomes monstrous.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maester Seymour"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

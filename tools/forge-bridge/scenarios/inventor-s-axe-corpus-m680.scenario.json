@@ -1,0 +1,23 @@
+{
+  "id": "inventor-s-axe-corpus-m680",
+  "description": "M6 corpus — Inventor's Axe; in-hand parse.",
+  "seed": 62973,
+  "cards": {
+    "Inventor's Axe": "Name:Inventor's Axe\nManaCost:R\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nK:Equip:PayEnergy<2>\nOracle:Flash\\nWhen Inventor's Axe enters, you get {E}{E} (two energy counters).\\nWhen Inventor's Axe enters, attach it to target creature you control.\\nEquipped creature gets +2/+0.\\nEquip—Pay {E}{E}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inventor's Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

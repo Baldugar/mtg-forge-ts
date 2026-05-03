@@ -1,0 +1,23 @@
+{
+  "id": "fungusaur-corpus-m680",
+  "description": "M6 corpus — Fungusaur; in-hand parse.",
+  "seed": 62586,
+  "cards": {
+    "Fungusaur": "Name:Fungusaur\nManaCost:3 G\nTypes:Creature Fungus Dinosaur\nPT:2/2\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME is dealt damage, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever Fungusaur is dealt damage, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fungusaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

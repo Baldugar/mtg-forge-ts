@@ -1,0 +1,23 @@
+{
+  "id": "ogre-geargrabber-corpus-m680",
+  "description": "M6 corpus — Ogre Geargrabber; in-hand parse.",
+  "seed": 63609,
+  "cards": {
+    "Ogre Geargrabber": "Name:Ogre Geargrabber\nManaCost:4 R R\nTypes:Creature Ogre Warrior\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ Whenever CARDNAME attacks, gain control of target Equipment an opponent controls until end of turn. Attach it to CARDNAME. When you lose control of that Equipment, unattach it.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Equipment.OppCtrl | LoseControl$ EOT | TgtPrompt$ Select target Equipment an opponent controls | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | Defined$ Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ ParentTarget | Triggers$ TrigChangeController | Duration$ Permanent\nSVar:TrigChangeController:Mode$ ChangesController | ValidCard$ Card.IsRemembered | ValidOriginalController$ You | TriggerZones$ Command | Execute$ TrigUnattach | TriggerDescription$ When you lose control of that Equipment, unattach it.\nSVar:TrigUnattach:DB$ Unattach | Defined$ Remembered | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nOracle:Whenever Ogre Geargrabber attacks, gain control of target Equipment an opponent controls until end of turn. Attach it to Ogre Geargrabber. When you lose control of that Equipment, unattach it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Geargrabber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

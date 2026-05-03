@@ -1,0 +1,23 @@
+{
+  "id": "nadir-kraken-corpus-m680",
+  "description": "M6 corpus — Nadir Kraken; in-hand parse.",
+  "seed": 63510,
+  "cards": {
+    "Nadir Kraken": "Name:Nadir Kraken\nManaCost:1 U U\nTypes:Creature Kraken\nPT:2/3\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, you may pay {1}. If you do, put a +1/+1 counter on CARDNAME and create a 1/1 blue Tentacle creature token.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ 1 | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenScript$ u_1_1_tentacle\nDeckHas:Ability$Token|Counters\nOracle:Whenever you draw a card, you may pay {1}. If you do, put a +1/+1 counter on Nadir Kraken and create a 1/1 blue Tentacle creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nadir Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

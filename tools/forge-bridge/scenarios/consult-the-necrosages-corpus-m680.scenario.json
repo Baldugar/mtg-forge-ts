@@ -1,0 +1,23 @@
+{
+  "id": "consult-the-necrosages-corpus-m680",
+  "description": "M6 corpus — Consult the Necrosages; in-hand parse.",
+  "seed": 61989,
+  "cards": {
+    "Consult the Necrosages": "Name:Consult the Necrosages\nManaCost:1 U B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDraw,DBDiscard\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | NumCards$ 2 | SpellDescription$ Target player draws two cards.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose | SpellDescription$ Target player discards two cards.\n# TODO: The AI will pretty much always use this to draw cards or to deck the opponent, but not to force the opponent to discard cards. Might need some improvement.\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Target player draws two cards.\\n• Target player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consult the Necrosages"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

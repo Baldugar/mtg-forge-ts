@@ -1,0 +1,23 @@
+{
+  "id": "baleful-ammit-corpus-m680",
+  "description": "M6 corpus — Baleful Ammit; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "Baleful Ammit": "Name:Baleful Ammit\nManaCost:2 B\nTypes:Creature Crocodile Demon\nPT:4/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Lifelink\\nWhen Baleful Ammit enters, put a -1/-1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baleful Ammit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

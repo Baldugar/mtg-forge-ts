@@ -1,0 +1,23 @@
+{
+  "id": "szarel-genesis-shepherd-corpus-m680",
+  "description": "M6 corpus — Szarel, Genesis Shepherd; in-hand parse.",
+  "seed": 64566,
+  "cards": {
+    "Szarel, Genesis Shepherd": "Name:Szarel, Genesis Shepherd\nManaCost:2 B R G\nTypes:Legendary Creature Insect Druid\nPT:2/5\nK:Flying\nS:Mode$ Continuous | Affected$ Land.YouOwn | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may play lands from your graveyard.\nT:Mode$ Sacrificed | ValidCard$ Permanent.Other+!token | ValidPlayer$ You | PlayerTurn$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice another nontoken permanent during your turn, put a number of +1/+1 counters equal to NICKNAME's power on up to one other target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$CardPower\nOracle:Flying\\nYou may play lands from your graveyard.\\nWhenever you sacrifice another nontoken permanent during your turn, put a number of +1/+1 counters equal to Szarel's power on up to one other target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Szarel, Genesis Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

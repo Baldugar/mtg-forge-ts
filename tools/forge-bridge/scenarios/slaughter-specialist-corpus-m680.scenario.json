@@ -1,0 +1,23 @@
+{
+  "id": "slaughter-specialist-corpus-m680",
+  "description": "M6 corpus — Slaughter Specialist; in-hand parse.",
+  "seed": 64317,
+  "cards": {
+    "Slaughter Specialist": "Name:Slaughter Specialist\nManaCost:1 B\nTypes:Creature Vampire Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, each opponent creates a 1/1 white Human creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human | TokenOwner$ Opponent\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Slaughter Specialist enters, each opponent creates a 1/1 white Human creature token.\\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Slaughter Specialist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slaughter Specialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "specimen-freighter-corpus-m680",
+  "description": "M6 corpus — Specimen Freighter; in-hand parse.",
+  "seed": 64392,
+  "cards": {
+    "Specimen Freighter": "Name:Specimen Freighter\nManaCost:5 U\nTypes:Artifact Spacecraft\nPT:4/7\nK:Station:9\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this Spacecraft enters, return up to two target non-Spacecraft creatures to their owners' hands.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.nonSpacecraft | TgtPrompt$ Select up to two target non-Spacecraft creatures | TargetMin$ 0 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Hand\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE9_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddTrigger$ AttackTrig | Description$ STATION 9+ Flying,,,Whenever this Spacecraft attacks, defending player mills four cards.\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever this Spacecraft attacks, defending player mills four cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredDefendingPlayer | NumCards$ 4\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nOracle:When this Spacecraft enters, return up to two target non-Spacecraft creatures to their owners' hands.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 9+.)\\nSTATION 9+\\nFlying\\nWhenever this Spacecraft attacks, defending player mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Specimen Freighter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

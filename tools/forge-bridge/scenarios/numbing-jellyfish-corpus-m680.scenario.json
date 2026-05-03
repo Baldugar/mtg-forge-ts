@@ -1,0 +1,23 @@
+{
+  "id": "numbing-jellyfish-corpus-m680",
+  "description": "M6 corpus — Numbing Jellyfish; in-hand parse.",
+  "seed": 63583,
+  "cards": {
+    "Numbing Jellyfish": "Name:Numbing Jellyfish\nManaCost:3 U\nTypes:Host Creature Jellyfish\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | Host$ True | TriggerDescription$ When this creature enters, roll a six-sided die. Target player mills X cards, where X is the result.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | NumCards$ Result\nOracle:When this creature enters, roll a six-sided die. Target player mills X cards, where X is the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Numbing Jellyfish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

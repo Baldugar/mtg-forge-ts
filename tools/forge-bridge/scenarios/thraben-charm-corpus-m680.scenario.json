@@ -1,0 +1,23 @@
+{
+  "id": "thraben-charm-corpus-m680",
+  "description": "M6 corpus — Thraben Charm; in-hand parse.",
+  "seed": 64719,
+  "cards": {
+    "Thraben Charm": "Name:Thraben Charm\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBDealDamage,DBDestroy,DBExileYards\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to twice the number of creatures you control to target creature.\nSVar:X:Count$Valid Creature.YouCtrl/Times.2\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBExileYards:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | TgtPrompt$ Select any number of target players to exile their graveyards | TargetMin$ 0 | TargetMax$ MaxTgt | ChangeType$ Card | SpellDescription$ Exile any number of target players' graveyards.\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:Choose one —\\n• Thraben Charm deals damage equal to twice the number of creatures you control to target creature.\\n• Destroy target enchantment.\\n• Exile any number of target players' graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thraben Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

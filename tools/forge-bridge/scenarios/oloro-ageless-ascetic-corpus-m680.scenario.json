@@ -1,0 +1,23 @@
+{
+  "id": "oloro-ageless-ascetic-corpus-m680",
+  "description": "M6 corpus — Oloro, Ageless Ascetic; in-hand parse.",
+  "seed": 63618,
+  "cards": {
+    "Oloro, Ageless Ascetic": "Name:Oloro, Ageless Ascetic\nManaCost:3 W U B\nTypes:Legendary Creature Giant Soldier\nPT:4/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you gain life, you may pay {1}. If you do, draw a card and each opponent loses 1 life.\nSVar:TrigDraw:AB$ Draw | Cost$ 1 | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | IsPresent$ Card.Self | PresentZone$ Command | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in the command zone, you gain 2 life.\nOracle:At the beginning of your upkeep, you gain 2 life.\\nWhenever you gain life, you may pay {1}. If you do, draw a card and each opponent loses 1 life.\\nAt the beginning of your upkeep, if Oloro, Ageless Ascetic is in the command zone, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oloro, Ageless Ascetic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

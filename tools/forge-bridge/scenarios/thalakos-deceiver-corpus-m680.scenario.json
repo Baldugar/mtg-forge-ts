@@ -1,0 +1,23 @@
+{
+  "id": "thalakos-deceiver-corpus-m680",
+  "description": "M6 corpus — Thalakos Deceiver; in-hand parse.",
+  "seed": 64630,
+  "cards": {
+    "Thalakos Deceiver": "Name:Thalakos Deceiver\nManaCost:3 U\nTypes:Creature Thalakos Wizard\nPT:1/1\nK:Shadow\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigSacrifice | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may sacrifice it. If you do, gain control of target creature. (This effect lasts indefinitely.)\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ Self | RememberSacrificed$ True | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Creature | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Thalakos Deceiver attacks and isn't blocked, you may sacrifice it. If you do, gain control of target creature. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalakos Deceiver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

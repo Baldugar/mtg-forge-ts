@@ -1,0 +1,23 @@
+{
+  "id": "murder-investigation-corpus-m680",
+  "description": "M6 corpus — Murder Investigation; in-hand parse.",
+  "seed": 63492,
+  "cards": {
+    "Murder Investigation": "Name:Murder Investigation\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerDescription$ When enchanted creature dies, create X 1/1 white Soldier creature tokens, where X is its power.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Token\nOracle:Enchant creature you control\\nWhen enchanted creature dies, create X 1/1 white Soldier creature tokens, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murder Investigation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

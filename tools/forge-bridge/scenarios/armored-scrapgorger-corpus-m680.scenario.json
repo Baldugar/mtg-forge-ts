@@ -1,0 +1,23 @@
+{
+  "id": "armored-scrapgorger-corpus-m680",
+  "description": "M6 corpus — Armored Scrapgorger; in-hand parse.",
+  "seed": 61570,
+  "cards": {
+    "Armored Scrapgorger": "Name:Armored Scrapgorger\nManaCost:1 G\nTypes:Creature Phyrexian Beast\nPT:0/3\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE3_OIL | AddPower$ 3 | Description$ CARDNAME gets +3/+0 as long as it has three or more oil counters on it.\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME becomes tapped, exile target card from a graveyard and put an oil counter on CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nDeckHas:Ability$Counters|Graveyard\nOracle:Armored Scrapgorger gets +3/+0 as long as it has three or more oil counters on it.\\n{T}: Add one mana of any color.\\nWhen Armored Scrapgorger becomes tapped, exile target card from a graveyard and put an oil counter on Armored Scrapgorger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armored Scrapgorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

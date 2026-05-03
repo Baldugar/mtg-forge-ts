@@ -1,0 +1,23 @@
+{
+  "id": "beastmaster-ascension-corpus-m680",
+  "description": "M6 corpus — Beastmaster Ascension; in-hand parse.",
+  "seed": 61665,
+  "cards": {
+    "Beastmaster Ascension": "Name:Beastmaster Ascension\nManaCost:2 G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 5 | AddToughness$ 5 | IsPresent$ Card.Self+counters_GE7_QUEST | Description$ As long as CARDNAME has seven or more quest counters on it, creatures you control get +5/+5.\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPut | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control attacks, you may put a quest counter on CARDNAME.\nSVar:TrigPut:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:PlayMain1:TRUE\nSVar:MaxQuestEffect:7\nDeckHints:Ability$Token\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control attacks, you may put a quest counter on Beastmaster Ascension.\\nAs long as Beastmaster Ascension has seven or more quest counters on it, creatures you control get +5/+5.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beastmaster Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elemental-my-dear-corpus-m680",
+  "description": "M6 corpus — Elemental, My Dear; in-hand parse.",
+  "seed": 62297,
+  "cards": {
+    "Elemental, My Dear": "Name:Elemental, My Dear\nManaCost:X U U\nTypes:Sorcery\nA:SP$ Investigate | Num$ X | SubAbility$ DBToken | SpellDescription$ Investigate X times, then create an 0/0 Blue Elemental creature token.\nSVar:DBToken:DB$ Token | TokenScript$ u_0_0_elemental | RememberTokens$ True | SubAbility$ DBPutCounters\nSVar:DBPutCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ Y | StackDescription$ SpellDescription | SubAbility$ DBCleanup | SpellDescription$ Put +1/+1 counters on that token equal to the number of Clues you control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Clue.YouCtrl\nDeckHas:Ability$Token|Counters & Type$Elemental|Clue\nDeckHints:Type$Clue\nOracle:Investigate X times, then create an 0/0 Blue Elemental creature token. Put +1/+1 counters on that token equal to the number of Clues you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elemental, My Dear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

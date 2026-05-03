@@ -1,0 +1,23 @@
+{
+  "id": "retribution-corpus-m680",
+  "description": "M6 corpus — Retribution; in-hand parse.",
+  "seed": 63972,
+  "cards": {
+    "Retribution": "Name:Retribution\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select two target creatures an opponent controls | TargetMin$ 2 | TargetMax$ 2 | TargetsWithSameController$ True | IsCurse$ True | RememberTargets$ True | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Choose two target creatures an opponent controls. That player chooses and sacrifices one of those creatures. Put a -1/-1 counter on the other.\nSVar:DBChoose:DB$ ChooseCard | Defined$ TargetedController | Mandatory$ True | Choices$ Creature.IsRemembered | ChoiceTitle$ Choose one to sacrifice | ForgetChosen$ True | AILogic$ WorstCard | SubAbility$ DBSac | StackDescription$ None\nSVar:DBSac:DB$ SacrificeAll | Defined$ ChosenCard | SubAbility$ DBPutCounter | StackDescription$ None\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ M1M1 | CounterNum$ 1 | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose two target creatures an opponent controls. That player chooses and sacrifices one of those creatures. Put a -1/-1 counter on the other.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retribution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

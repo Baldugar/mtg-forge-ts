@@ -1,0 +1,23 @@
+{
+  "id": "formless-nurturing-corpus-m680",
+  "description": "M6 corpus — Formless Nurturing; in-hand parse.",
+  "seed": 62546,
+  "cards": {
+    "Formless Nurturing": "Name:Formless Nurturing\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Manifest | RememberManifested$ True | SubAbility$ TrigPutCounter | SpellDescription$ Manifest the top card of your library, then put a +1/+1 counter on it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Manifest the top card of your library, then put a +1/+1 counter on it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Formless Nurturing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

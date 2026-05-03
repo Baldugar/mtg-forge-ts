@@ -1,0 +1,23 @@
+{
+  "id": "diviner-s-portent-corpus-m680",
+  "description": "M6 corpus — Diviner's Portent; in-hand parse.",
+  "seed": 62192,
+  "cards": {
+    "Diviner's Portent": "Name:Diviner's Portent\nManaCost:X U U U\nTypes:Instant\nA:SP$ RollDice | Sides$ 20 | Modifier$ Y | ResultSubAbilities$ 1-14:DBDraw,Else:DBScry | SpellDescription$ Roll a d20 and add the number of cards in your hand.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SpellDescription$ 1—14 VERT Draw X cards.\nSVar:DBScry:DB$ Scry | ScryNum$ X | SubAbility$ DBDraw2 | SpellDescription$ 15+ VERT Scry X, then draw X cards.\nSVar:DBDraw2:DB$ Draw | NumCards$ X\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:Roll a d20 and add the number of cards in your hand.\\n1—14 | Draw X cards.\\n15+ | Scry X, then draw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diviner's Portent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "octopus-umbra-corpus-m680",
+  "description": "M6 corpus — Octopus Umbra; in-hand parse.",
+  "seed": 63602,
+  "cards": {
+    "Octopus Umbra": "Name:Octopus Umbra\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Umbra armor\nK:Enchant:Creature\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | SetPower$ 8 | SetToughness$ 8 | AddTrigger$ AttackTrigger | AddSVar$ TrigTap | Description$ Enchanted creature has base power and toughness 8/8 and has \"Whenever this creature attacks, you may tap target creature with power 8 or less.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may tap target creature with power 8 or less.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.powerLE8 | TgtPrompt$ Select target creature\nOracle:Enchant creature\\nEnchanted creature has base power and toughness 8/8 and has \"Whenever this creature attacks, you may tap target creature with power 8 or less.\"\\nUmbra armor (If enchanted creature would be destroyed, instead remove all damage from it and destroy this Aura.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Octopus Umbra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

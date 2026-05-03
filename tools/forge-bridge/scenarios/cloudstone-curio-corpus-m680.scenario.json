@@ -1,0 +1,23 @@
+{
+  "id": "cloudstone-curio-corpus-m680",
+  "description": "M6 corpus — Cloudstone Curio; in-hand parse.",
+  "seed": 61947,
+  "cards": {
+    "Cloudstone Curio": "Name:Cloudstone Curio\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Permanent.YouCtrl+nonArtifact | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever a nonartifact permanent you control enters, you may return another permanent you control that shares a permanent type with it to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | DefinedPlayer$ TriggeredCardController | ChangeType$ Triggered.Other+sharesPermanentTypeWith | ChangeNum$ 1 | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Optional$ You\nAI:RemoveDeck:Random\nOracle:Whenever a nonartifact permanent you control enters, you may return another permanent you control that shares a permanent type with it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudstone Curio"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "keen-eyed-raven-corpus-m680",
+  "description": "M6 corpus — Keen-Eyed Raven; in-hand parse.",
+  "seed": 63096,
+  "cards": {
+    "Keen-Eyed Raven": "Name:Keen-Eyed Raven\nManaCost:2 W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target creature you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Keen-Eyed Raven enters, put a +1/+1 counter on another target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keen-Eyed Raven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

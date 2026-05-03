@@ -1,0 +1,23 @@
+{
+  "id": "the-night-of-the-doctor-corpus-m680",
+  "description": "M6 corpus — The Night of the Doctor; in-hand parse.",
+  "seed": 64677,
+  "cards": {
+    "The Night of the Doctor": "Name:The Night of the Doctor\nManaCost:4 W W\nTypes:Enchantment Saga\nK:Chapter:2:DBDestroyAll,DBChangeZone\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | SpellDescription$ Destroy all creatures.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Legendary+YouCtrl | TgtPrompt$ Choose target legendary creature card in your graveyard | SubAbility$ DBPutCounter | RememberChanged$ True | SpellDescription$ Return target legendary creature card from your graveyard to the battlefield. Put your choice of a first strike, vigilance, or lifelink counter on it.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.IsRemembered | CounterType$ First Strike,Vigilance,Lifelink | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after II.)\\nI — Destroy all creatures.\\nII — Return target legendary creature card from your graveyard to the battlefield. Put your choice of a first strike, vigilance, or lifelink counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Night of the Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

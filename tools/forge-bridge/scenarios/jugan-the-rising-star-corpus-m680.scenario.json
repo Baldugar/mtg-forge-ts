@@ -1,0 +1,23 @@
+{
+  "id": "jugan-the-rising-star-corpus-m680",
+  "description": "M6 corpus — Jugan, the Rising Star; in-hand parse.",
+  "seed": 63059,
+  "cards": {
+    "Jugan, the Rising Star": "Name:Jugan, the Rising Star\nManaCost:3 G G G\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may distribute five +1/+1 counters among any number of target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute counters to | CounterType$ P1P1 | CounterNum$ 5 | TargetMin$ 0 | TargetMax$ 5 | DividedAsYouChoose$ 5\nOracle:Flying\\nWhen Jugan, the Rising Star dies, you may distribute five +1/+1 counters among any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jugan, the Rising Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

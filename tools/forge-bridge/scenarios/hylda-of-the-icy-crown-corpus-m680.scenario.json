@@ -1,0 +1,23 @@
+{
+  "id": "hylda-of-the-icy-crown-corpus-m680",
+  "description": "M6 corpus — Hylda of the Icy Crown; in-hand parse.",
+  "seed": 62889,
+  "cards": {
+    "Hylda of the Icy Crown": "Name:Hylda of the Icy Crown\nManaCost:2 W U\nTypes:Legendary Creature Human Warlock\nPT:3/4\nT:Mode$ Taps | ValidCard$ Creature.OppCtrl | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever you tap an untapped creature an opponent controls, you may pay {1}. When you do, ABILITY\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigCharm\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBPutCounterAll,DBScry\nSVar:DBToken:DB$ Token | TokenScript$ wu_4_4_elemental | SpellDescription$ Create a 4/4 white and blue Elemental creature token.\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each creature you control.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBDraw | SpellDescription$ Scry 2, then draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Token|Counters & Type$Elemental\nOracle:Whenever you tap an untapped creature an opponent controls, you may pay {1}. When you do, choose one —\\n• Create a 4/4 white and blue Elemental creature token.\\n• Put a +1/+1 counter on each creature you control.\\n• Scry 2, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hylda of the Icy Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

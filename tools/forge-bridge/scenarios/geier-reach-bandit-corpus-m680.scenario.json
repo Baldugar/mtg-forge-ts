@@ -1,0 +1,23 @@
+{
+  "id": "geier-reach-bandit-corpus-m680",
+  "description": "M6 corpus — Geier Reach Bandit; in-hand parse.",
+  "seed": 62615,
+  "cards": {
+    "Geier Reach Bandit": "Name:Geier Reach Bandit\nManaCost:2 R\nTypes:Creature Human Rogue Werewolf\nPT:3/2\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Haste\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Geier Reach Bandit.\n\nALTERNATE\n\nName:Vildin-Pack Alpha\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Werewolf.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigTransform1 | TriggerDescription$ Whenever a Werewolf you control enters, you may transform it.\nSVar:TrigTransform1:DB$ SetState | Defined$ TriggeredCard | Mode$ Transform\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform2 | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform2:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Whenever a Werewolf you control enters, you may transform it.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Vildin-Pack Alpha.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geier Reach Bandit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

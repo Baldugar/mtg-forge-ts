@@ -1,0 +1,23 @@
+{
+  "id": "pillory-of-the-sleepless-corpus-m680",
+  "description": "M6 corpus — Pillory of the Sleepless; in-hand parse.",
+  "seed": 63750,
+  "cards": {
+    "Pillory of the Sleepless": "Name:Pillory of the Sleepless\nManaCost:1 W B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ TriggerTheSleepless | AddSVar$ PilloryLoseLife | Description$ Enchanted creature can't attack or block. Enchanted creature has \"At the beginning of your upkeep, you lose 1 life.\"\nSVar:TriggerTheSleepless:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ PilloryLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 1 life.\nSVar:PilloryLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\nEnchanted creature has \"At the beginning of your upkeep, you lose 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pillory of the Sleepless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

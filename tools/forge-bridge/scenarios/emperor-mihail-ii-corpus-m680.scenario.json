@@ -1,0 +1,23 @@
+{
+  "id": "emperor-mihail-ii-corpus-m680",
+  "description": "M6 corpus — Emperor Mihail II; in-hand parse.",
+  "seed": 62326,
+  "cards": {
+    "Emperor Mihail II": "Name:Emperor Mihail II\nManaCost:1 U U\nTypes:Legendary Creature Merfolk Noble\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Merfolk.TopLibrary+YouCtrl | AffectedZone$ Library | MayPlay$ True | Description$ You may play Merfolk spells from the top of your library.\nT:Mode$ SpellCast | ValidCard$ Merfolk | ValidActivatingPlayer$ You | Execute$ TrigToken | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Merfolk spell, you may pay {1}. If you do, create a 1/1 blue Merfolk creature token.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenScript$ u_1_1_merfolk | TokenOwner$ You | SpellDescription$ Create a 1/1 blue Merfolk creature token.\nDeckHas:Ability$Token\nDeckHints:Type$Merfolk\nOracle:You may look at the top card of your library any time.\\nYou may cast Merfolk spells from the top of your library.\\nWhenever you cast a Merfolk spell, you may pay {1}. If you do, create a 1/1 blue Merfolk creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emperor Mihail II"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

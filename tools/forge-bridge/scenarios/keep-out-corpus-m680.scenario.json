@@ -1,0 +1,23 @@
+{
+  "id": "keep-out-corpus-m680",
+  "description": "M6 corpus — Keep Out; in-hand parse.",
+  "seed": 63098,
+  "cards": {
+    "Keep Out": "Name:Keep Out\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBDamage,DBDestroy | Defined$ You\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.tapped | NumDmg$ 4 | TgtPrompt$ Select target tapped creature | SpellDescription$ CARDNAME deals 4 damage to target tapped creature.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nOracle:Choose one —\\n• Keep Out deals 4 damage to target tapped creature.\\n• Destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keep Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

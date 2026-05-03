@@ -1,0 +1,23 @@
+{
+  "id": "in-the-eye-of-chaos-corpus-m680",
+  "description": "M6 corpus — In the Eye of Chaos; in-hand parse.",
+  "seed": 62914,
+  "cards": {
+    "In the Eye of Chaos": "Name:In the Eye of Chaos\nManaCost:2 U\nTypes:World Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an instant spell, counter it unless that player pays {X}, where X is its mana value.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ X | UnlessPayer$ TriggeredActivator\nSVar:X:TriggeredCard$CardManaCost\nAI:RemoveDeck:Random\nDeckHints:Type$Artifact|Enchantment|Creature|Planeswalker|Sorcery\nOracle:Whenever a player casts an instant spell, counter it unless that player pays {X}, where X is its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "In the Eye of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

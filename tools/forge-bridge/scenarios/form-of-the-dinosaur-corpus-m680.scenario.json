@@ -1,0 +1,23 @@
+{
+  "id": "form-of-the-dinosaur-corpus-m680",
+  "description": "M6 corpus — Form of the Dinosaur; in-hand parse.",
+  "seed": 62545,
+  "cards": {
+    "Form of the Dinosaur": "Name:Form of the Dinosaur\nManaCost:4 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLife | TriggerDescription$ When CARDNAME enters, your life total becomes 15.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ 15\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 15 damage to target creature an opponent controls and that creature deals damage equal to its power to you.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 15 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | DamageSource$ Targeted | NumDmg$ X\nSVar:X:Targeted$CardPower\nOracle:When Form of the Dinosaur enters, your life total becomes 15.\\nAt the beginning of your upkeep, Form of the Dinosaur deals 15 damage to target creature an opponent controls and that creature deals damage equal to its power to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Form of the Dinosaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

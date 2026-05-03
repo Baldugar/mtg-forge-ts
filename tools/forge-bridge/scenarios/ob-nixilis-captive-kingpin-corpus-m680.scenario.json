@@ -1,0 +1,23 @@
+{
+  "id": "ob-nixilis-captive-kingpin-corpus-m680",
+  "description": "M6 corpus — Ob Nixilis, Captive Kingpin; in-hand parse.",
+  "seed": 63592,
+  "cards": {
+    "Ob Nixilis, Captive Kingpin": "Name:Ob Nixilis, Captive Kingpin\nManaCost:2 B R\nTypes:Legendary Creature Demon\nPT:4/3\nK:Flying\nK:Trample\nT:Mode$ LifeLostAll | ValidPlayer$ Opponent | ValidAmountEach$ EQ1 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more opponents each lose exactly 1 life, put a +1/+1 counter on CARDNAME. Exile the top card of your library. Until your next end step, you may play that card.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBExileTop\nSVar:DBExileTop:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ UntilYourNextEndStep | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until your next end step, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Flying, trample\\nWhenever one or more opponents each lose exactly 1 life, put a +1/+1 counter on Ob Nixilis, Captive Kingpin. Exile the top card of your library. Until your next end step, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis, Captive Kingpin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mindeye-drake-corpus-m680",
+  "description": "M6 corpus — Mindeye Drake; in-hand parse.",
+  "seed": 63417,
+  "cards": {
+    "Mindeye Drake": "Name:Mindeye Drake\nManaCost:4 U\nTypes:Creature Drake\nPT:2/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME dies, target player mills five cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 5 | ValidTgts$ Player | TgtPrompt$ Select target player\nOracle:Flying\\nWhen Mindeye Drake dies, target player mills five cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindeye Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

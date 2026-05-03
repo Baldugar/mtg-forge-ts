@@ -1,0 +1,23 @@
+{
+  "id": "drainpipe-vermin-corpus-m680",
+  "description": "M6 corpus — Drainpipe Vermin; in-hand parse.",
+  "seed": 62228,
+  "cards": {
+    "Drainpipe Vermin": "Name:Drainpipe Vermin\nManaCost:B\nTypes:Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, you may pay {B}. If you do, target player discards a card.\nSVar:TrigDiscard:AB$ Discard | Cost$ B | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Target player discards a card.\nOracle:When Drainpipe Vermin dies, you may pay {B}. If you do, target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drainpipe Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

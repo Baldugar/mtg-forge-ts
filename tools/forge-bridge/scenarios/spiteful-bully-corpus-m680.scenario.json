@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-bully-corpus-m680",
+  "description": "M6 corpus — Spiteful Bully; in-hand parse.",
+  "seed": 64418,
+  "cards": {
+    "Spiteful Bully": "Name:Spiteful Bully\nManaCost:1 B\nTypes:Creature Phyrexian Zombie Mercenary\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 3 damage to target creature you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.YouCtrl | NumDmg$ 3\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, Spiteful Bully deals 3 damage to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Bully"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

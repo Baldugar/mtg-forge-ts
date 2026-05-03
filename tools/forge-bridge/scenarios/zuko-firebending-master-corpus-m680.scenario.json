@@ -1,0 +1,23 @@
+{
+  "id": "zuko-firebending-master-corpus-m680",
+  "description": "M6 corpus — Zuko, Firebending Master; in-hand parse.",
+  "seed": 65132,
+  "cards": {
+    "Zuko, Firebending Master": "Name:Zuko, Firebending Master\nManaCost:1 R\nTypes:Legendary Creature Human Noble Ally\nPT:2/2\nK:First Strike\nK:Firebending:X:, where X is the number of experience counters you have.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Phase$ BeginCombat->EndCombat | Execute$ TrigExperience | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell during combat, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nSVar:X:Count$YourCountersExperience\nOracle:First strike\\nFirebending X, where X is the number of experience counters you have. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)\\nWhenever you cast a spell during combat, you get an experience counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zuko, Firebending Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dreamdew-entrancer-corpus-m680",
+  "description": "M6 corpus — Dreamdew Entrancer; in-hand parse.",
+  "seed": 62236,
+  "cards": {
+    "Dreamdew Entrancer": "Name:Dreamdew Entrancer\nManaCost:2 G U\nTypes:Creature Frog Wizard\nPT:3/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap up to one creature and put three stun counters on it. If you control that creature, draw two cards.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionDefined$ Targeted | ConditionPresent$ Creature.YouCtrl\nOracle:Reach\\nWhen Dreamdew Entrancer enters, tap up to one creature and put three stun counters on it. If you control that creature, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreamdew Entrancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mossdog-corpus-m680",
+  "description": "M6 corpus — Mossdog; in-hand parse.",
+  "seed": 63482,
+  "cards": {
+    "Mossdog": "Name:Mossdog\nManaCost:G\nTypes:Creature Plant Dog\nPT:1/1\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nOracle:Whenever Mossdog becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on Mossdog.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mossdog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

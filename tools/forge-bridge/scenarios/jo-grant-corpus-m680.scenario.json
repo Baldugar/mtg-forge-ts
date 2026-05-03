@@ -1,0 +1,23 @@
+{
+  "id": "jo-grant-corpus-m680",
+  "description": "M6 corpus — Jo Grant; in-hand parse.",
+  "seed": 63044,
+  "cards": {
+    "Jo Grant": "Name:Jo Grant\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:3/2\nS:Mode$ Continuous | Affected$ Card.Historic+YouOwn | EffectZone$ Battlefield | AffectedZone$ Hand | AddKeyword$ Cycling:2 W | Description$ Each historic card in your hand has cycling {2}{W}. ({2}{W}, Discard that card: Draw a card.)\nT:Mode$ Cycled | ValidCard$ Card.YouOwn | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cycle a card, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nK:Doctor's companion\nDeckHas:Ability$Discard|Counters\nDeckHints:Type$Legendary|Saga|Artifact\nDeckNeeds:Keyword$Cycling\nOracle:Each historic card in your hand has cycling {2}{W}. ({2}{W}, Discard that card: Draw a card.)\\nWhenever you cycle a card, put a +1/+1 counter on Jo Grant.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jo Grant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

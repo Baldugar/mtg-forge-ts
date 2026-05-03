@@ -1,0 +1,23 @@
+{
+  "id": "slight-malfunction-corpus-m680",
+  "description": "M6 corpus — Slight Malfunction; in-hand parse.",
+  "seed": 64323,
+  "cards": {
+    "Slight Malfunction": "Name:Slight Malfunction\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDestroyArtifact,DBRoll\nSVar:DBDestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBRoll:DB$ RollDice | ResultSVar$ X | SubAbility$ DBImmediateTrig | SpellDescription$ Roll a six-sided die. When you do, CARDNAME deals 1 damage to each of up to X target creatures, where X is the result.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionCheckSVar$ X | Execute$ TrigDamage\nSVar:TrigDamage:DB$ DealDamage | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Creature | TgtPrompt$ Select up to X target creatures | NumDmg$ 1\nOracle:Choose one —\\n• Destroy target artifact.\\n• Roll a six-sided die. When you do, Slight Malfunction deals 1 damage to each of up to X target creatures, where X is the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slight Malfunction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hero-of-leina-tower-corpus-m680",
+  "description": "M6 corpus — Hero of Leina Tower; in-hand parse.",
+  "seed": 62826,
+  "cards": {
+    "Hero of Leina Tower": "Name:Hero of Leina Tower\nManaCost:G\nTypes:Creature Human Warrior\nPT:1/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, you may pay {X}. If you do, put X +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ X | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$xPaid\nOracle:Heroic — Whenever you cast a spell that targets Hero of Leina Tower, you may pay {X}. If you do, put X +1/+1 counters on Hero of Leina Tower.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hero of Leina Tower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

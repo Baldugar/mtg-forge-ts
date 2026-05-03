@@ -1,0 +1,23 @@
+{
+  "id": "spit-flame-corpus-m680",
+  "description": "M6 corpus — Spit Flame; in-hand parse.",
+  "seed": 64416,
+  "cards": {
+    "Spit Flame": "Name:Spit Flame\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ 4 | ValidTgts$ Creature | SpellDescription$ CARDNAME deals 4 damage to target creature.\nT:Mode$ ChangesZone | ValidCard$ Dragon.YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Graveyard | Execute$ TrigABChangeZone | TriggerDescription$ Whenever a Dragon you control enters, you may pay {R}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigABChangeZone:AB$ ChangeZone | ValidCard$ Card.Self | Cost$ R | Origin$ Graveyard | Destination$ Hand\nDeckHints:Type$Dragon\nDeckHas:Ability$Graveyard\nOracle:Spit Flame deals 4 damage to target creature.\\nWhenever a Dragon you control enters, you may pay {R}. If you do, return Spit Flame from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spit Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

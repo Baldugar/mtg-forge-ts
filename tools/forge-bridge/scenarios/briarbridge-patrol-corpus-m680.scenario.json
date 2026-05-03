@@ -1,0 +1,23 @@
+{
+  "id": "briarbridge-patrol-corpus-m680",
+  "description": "M6 corpus — Briarbridge Patrol; in-hand parse.",
+  "seed": 61782,
+  "cards": {
+    "Briarbridge Patrol": "Name:Briarbridge Patrol\nManaCost:3 G\nTypes:Creature Human Warrior\nPT:3/3\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever CARDNAME deals damage to one or more creatures, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ ClueResearch | SVarCompare$ GE3 | Execute$ TrigCheatCreature | TriggerDescription$ At the beginning of each end step, if you sacrificed three or more Clues this turn, you may put a creature card from your hand onto the battlefield.\nSVar:TrigCheatCreature:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | SpellDescription$ You may put a creature card from your hand onto the battlefield.\nSVar:ClueResearch:PlayerCountPropertyYou$SacrificedThisTurn Clue\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token\nOracle:Whenever Briarbridge Patrol deals damage to one or more creatures, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nAt the beginning of each end step, if you sacrificed three or more Clues this turn, you may put a creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Briarbridge Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

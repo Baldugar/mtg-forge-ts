@@ -1,0 +1,23 @@
+{
+  "id": "daily-bugle-reporters-corpus-m680",
+  "description": "M6 corpus — Daily Bugle Reporters; in-hand parse.",
+  "seed": 62078,
+  "cards": {
+    "Daily Bugle Reporters": "Name:Daily Bugle Reporters\nVariant:UniversesWithin:FlavorName:Principled Referee\nManaCost:3 W\nTypes:Creature Human Citizen\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBReturn\nSVar:DBPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Puff Piece — Put a +1/+1 counter on each of up to two target creatures.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn+cmcLE2 | SpellDescription$ Investigative Journalism — Return target creature card with mana value 2 or less from your graveyard to your hand.\nDeckHas:Ability$Counters\nOracle:When this creature enters, choose one —\\n• Puff Piece — Put a +1/+1 counter on each of up to two target creatures.\\n• Investigative Journalism — Return target creature card with mana value 2 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daily Bugle Reporters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

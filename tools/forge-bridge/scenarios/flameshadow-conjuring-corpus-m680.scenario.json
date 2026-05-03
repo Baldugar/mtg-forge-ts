@@ -1,0 +1,23 @@
+{
+  "id": "flameshadow-conjuring-corpus-m680",
+  "description": "M6 corpus — Flameshadow Conjuring; in-hand parse.",
+  "seed": 62506,
+  "cards": {
+    "Flameshadow Conjuring": "Name:Flameshadow Conjuring\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever a nontoken creature you control enters, you may pay {R}. If you do, create a token that's a copy of that creature.That token gains haste. Exile it at the beginning of the next end step.\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ R | Defined$ TriggeredCardLKICopy | PumpKeywords$ Haste | AtEOT$ Exile | RememberTokens$ True\nSVar:BuffedBy:Creature\nOracle:Whenever a nontoken creature you control enters, you may pay {R}. If you do, create a token that's a copy of that creature. That token gains haste. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flameshadow Conjuring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

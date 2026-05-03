@@ -1,0 +1,23 @@
+{
+  "id": "reverent-hunter-corpus-m680",
+  "description": "M6 corpus — Reverent Hunter; in-hand parse.",
+  "seed": 63976,
+  "cards": {
+    "Reverent Hunter": "Name:Reverent Hunter\nManaCost:2 G\nTypes:Creature Human Archer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a number of +1/+1 counters on it equal to your devotion to green.\nSVar:TrigPut:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Devotion.Green\nOracle:When Reverent Hunter enters, put a number of +1/+1 counters on it equal to your devotion to green. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reverent Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

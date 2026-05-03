@@ -1,0 +1,23 @@
+{
+  "id": "shape-stealer-corpus-m680",
+  "description": "M6 corpus — Shape Stealer; in-hand parse.",
+  "seed": 64235,
+  "cards": {
+    "Shape Stealer": "Name:Shape Stealer\nManaCost:U U\nTypes:Creature Shapeshifter Spirit\nPT:1/1\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigAnimateBlocker | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, change CARDNAME's base power and toughness to that creature's power and toughness until end of turn.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigAnimateAttacker | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, change CARDNAME's base power and toughness to that creature's power and toughness until end of turn.\nSVar:TrigAnimateBlocker:DB$ Animate | Power$ W | Toughness$ X\nSVar:TrigAnimateAttacker:DB$ Animate | Power$ Y | Toughness$ Z\nSVar:W:TriggeredAttacker$CardPower\nSVar:X:TriggeredAttacker$CardToughness\nSVar:Y:TriggeredBlocker$CardPower\nSVar:Z:TriggeredBlocker$CardToughness\nOracle:Whenever Shape Stealer blocks or becomes blocked by a creature, change Shape Stealer's base power and toughness to that creature's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shape Stealer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ichor-shade-corpus-m680",
+  "description": "M6 corpus — Ichor Shade; in-hand parse.",
+  "seed": 62895,
+  "cards": {
+    "Ichor Shade": "Name:Ichor Shade\nManaCost:2 B\nTypes:Creature Phyrexian Shade\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Morbid | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if an artifact or creature was put into a graveyard from the battlefield this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:Morbid:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature,Artifact\nDeckHints:Type$Artifact & Ability$Sacrifice\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, if an artifact or creature was put into a graveyard from the battlefield this turn, put a +1/+1 counter on Ichor Shade.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichor Shade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seasinger-corpus-m680",
+  "description": "M6 corpus — Seasinger; in-hand parse.",
+  "seed": 64177,
+  "cards": {
+    "Seasinger": "Name:Seasinger\nManaCost:1 U U\nTypes:Creature Merfolk\nPT:0/1\nK:You may choose not to untap CARDNAME during your untap step.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ GainControl | Cost$ T | ValidTgts$ Creature.ControllerControlsIsland | TgtPrompt$ Select target creature whose controller controls an Island | LoseControl$ Untap,LeavesPlay,LoseControl | SpellDescription$ Gain control of target creature whose controller controls an Island for as long as you control CARDNAME and CARDNAME remains tapped.\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:When you control no Islands, sacrifice Seasinger.\\nYou may choose not to untap Seasinger during your untap step.\\n{T}: Gain control of target creature whose controller controls an Island for as long as you control Seasinger and Seasinger remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seasinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

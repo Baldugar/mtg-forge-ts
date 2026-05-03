@@ -1,0 +1,23 @@
+{
+  "id": "varchild-s-war-riders-corpus-m680",
+  "description": "M6 corpus — Varchild's War-Riders; in-hand parse.",
+  "seed": 64892,
+  "cards": {
+    "Varchild's War-Riders": "Name:Varchild's War-Riders\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:3/4\nK:Trample\nK:Rampage:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCumUpkeep | TriggerDescription$ Cumulative upkeep—Have an opponent create a 1/1 red Survivor creature token.\nSVar:TrigCumUpkeep:DB$ Charm | Choices$ TrigAgeSurvivor,TrigAgeSacrifice\nSVar:TrigAgeSurvivor:DB$ PutCounter | Defined$ Self | CounterType$ AGE | CounterNum$ 1 | SubAbility$ Survivor\nSVar:Survivor:DB$ Token | TokenAmount$ X | TokenScript$ r_1_1_survivor | TokenOwner$ Opponent | SpellDescription$ Have an opponent create a 1/1 red Survivor creature token.\nSVar:X:Count$CardCounters.AGE\nSVar:TrigAgeSacrifice:DB$ PutCounter | Defined$ Self | CounterType$ AGE | CounterNum$ 1 | SubAbility$ Sacrifice\nSVar:Sacrifice:DB$ Sacrifice | Defined$ Self | SpellDescription$ Sacrifice CARDNAME.\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep—Have an opponent create a 1/1 red Survivor creature token. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nTrample; rampage 1 (Whenever this creature becomes blocked, it gets +1/+1 until end of turn for each creature blocking it beyond the first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Varchild's War-Riders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

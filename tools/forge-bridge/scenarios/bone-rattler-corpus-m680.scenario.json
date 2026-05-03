@@ -1,0 +1,23 @@
+{
+  "id": "bone-rattler-corpus-m680",
+  "description": "M6 corpus — Bone Rattler; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "Bone Rattler": "Name:Bone Rattler\nManaCost:3 B B\nTypes:Creature Skeleton\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Graveyard | Execute$ TrigExile | TriggerDescription$ When CARDNAME is put into your graveyard from anywhere, exile it. When you do, create four Reassembling Skeleton token cards and put them into your graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | Execute$ TrigMakeCard | SubAbility$ DBCleanup | TriggerDescription$ When you do, create four Reassembling Skeleton token cards and put them into your graveyard.\nSVar:TrigMakeCard:DB$ MakeCard | TokenCard$ True | Name$ Reassembling Skeleton | Zone$ Graveyard | Amount$ 4\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:When Bone Rattler is put into your graveyard from anywhere, exile it. When you do, create four Reassembling Skeleton token cards and put them into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bone Rattler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

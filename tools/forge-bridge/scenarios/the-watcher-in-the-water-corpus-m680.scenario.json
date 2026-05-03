@@ -1,0 +1,23 @@
+{
+  "id": "the-watcher-in-the-water-corpus-m680",
+  "description": "M6 corpus — The Watcher in the Water; in-hand parse.",
+  "seed": 64697,
+  "cards": {
+    "The Watcher in the Water": "Name:The Watcher in the Water\nManaCost:3 U U\nTypes:Legendary Creature Kraken\nPT:9/9\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ STUN | CounterNum$ 9\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigToken | TriggerDescription$ Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ u_1_1_tentacle\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Tentacle.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Kraken | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one target Kraken | SubAbility$ DBStunCounter\nSVar:DBStunCounter:DB$ PutCounter | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one target nonland permanent | CounterType$ Stun | CounterNum$ 1\nDeckHints:Type$Kraken\nDeckHas:Type$Tentacle & Ability$Counters\nOracle:The Watcher in the Water enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nWhenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.\\nWhenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Watcher in the Water"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "terra-herald-of-hope-corpus-m680",
+  "description": "M6 corpus — Terra, Herald of Hope; in-hand parse.",
+  "seed": 64623,
+  "cards": {
+    "Terra, Herald of Hope": "Name:Terra, Herald of Hope\nManaCost:R W B\nTypes:Legendary Creature Human Wizard Warrior\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Trance — At the beginning of combat on your turn, mill two cards. NICKNAME gains flying until end of turn.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigPayCost | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may pay {2}. When you do, return target creature card with power 3 or less from your graveyard to the battlefield tapped.\nSVar:TrigPayCost:AB$ ImmediateTrigger | Cost$ 2 | Execute$ TrigChange | TriggerDescription$ When you do, return target creature card with power 3 or less from your graveyard to the battlefield tapped.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+powerLE3 | Tapped$ True | TgtPrompt$ Select target creature card with power 3 or less in your graveyard\nDeckHas:Ability$Mill|Graveyard\nDeckHints:Ability$Mill|Discard|Sacrifice\nOracle:Trance — At the beginning of combat on your turn, mill two cards. Terra gains flying until end of turn.\\nWhenever Terra deals combat damage to a player, you may pay {2}. When you do, return target creature card with power 3 or less from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terra, Herald of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

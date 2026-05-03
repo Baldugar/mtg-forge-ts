@@ -1,0 +1,23 @@
+{
+  "id": "captured-by-the-consulate-corpus-m680",
+  "description": "M6 corpus — Captured by the Consulate; in-hand parse.",
+  "seed": 61853,
+  "cards": {
+    "Captured by the Consulate": "Name:Captured by the Consulate\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouDontCtrl:creature you don't control\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack.\nT:Mode$ SpellCast | ValidSA$ Spell.singleTarget | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | OrderDuplicates$ True | Execute$ TrigChangeTarget | TriggerDescription$ Whenever an opponent casts a spell, if it has a single target, change the target to enchanted creature if able.\nSVar:TrigChangeTarget:DB$ ChangeTargets | TargetType$ Spell | Defined$ TriggeredSourceSA | DefinedMagnet$ Enchanted\nOracle:Enchant creature you don't control\\nEnchanted creature can't attack.\\nWhenever an opponent casts a spell, if it has a single target, change the target to enchanted creature if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captured by the Consulate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

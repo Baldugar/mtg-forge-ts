@@ -1,0 +1,23 @@
+{
+  "id": "winter-s-night-corpus-m680",
+  "description": "M6 corpus — Winter's Night; in-hand parse.",
+  "seed": 65071,
+  "cards": {
+    "Winter's Night": "Name:Winter's Night\nManaCost:R G W\nTypes:World Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land.Snow | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever a player taps a snow land for mana, that player adds one mana of any type that land produced. That land doesn't untap during its controller's next untap step.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredCard | Duration$ Permanent | KW$ HIDDEN This card doesn't untap during your next untap step.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Whenever a player taps a snow land for mana, that player adds one mana of any type that land produced. That land doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winter's Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

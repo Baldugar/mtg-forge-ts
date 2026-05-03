@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-rats-corpus-m680",
+  "description": "M6 corpus — Ravenous Rats; in-hand parse.",
+  "seed": 63910,
+  "cards": {
+    "Ravenous Rats": "Name:Ravenous Rats\nManaCost:1 B\nTypes:Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Ravenous Rats enters, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

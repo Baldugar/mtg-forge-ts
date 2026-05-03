@@ -1,0 +1,23 @@
+{
+  "id": "clowning-around-corpus-m680",
+  "description": "M6 corpus — Clowning Around; in-hand parse.",
+  "seed": 61950,
+  "cards": {
+    "Clowning Around": "Name:Clowning Around\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_a_clown_robot | SubAbility$ DBRoll | SpellDescription$ Create two 1/1 white Clown Robot artifact creature tokens, then roll a six-sided die. If the result is equal to or less than the number of Robots you control, create a 1/1 white Clown Robot artifact creature token.\nSVar:DBRoll:DB$ RollDice | ResultSVar$ Result | ResultSubAbilities$ 1-6:DBToken\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_a_clown_robot | ConditionCheckSVar$ Result | ConditionSVarCompare$ LEX\nSVar:X:Count$Valid Robot.YouCtrl\nOracle:Create two 1/1 white Clown Robot artifact creature tokens, then roll a six-sided die. If the result is equal to or less than the number of Robots you control, create a 1/1 white Clown Robot artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clowning Around"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-aesir-escape-valhalla-corpus-m680",
+  "description": "M6 corpus — The Aesir Escape Valhalla; in-hand parse.",
+  "seed": 64637,
+  "cards": {
+    "The Aesir Escape Valhalla": "Name:The Aesir Escape Valhalla\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBPutCounter,DBReturn\nSVar:DBExile:DB$ ChangeZone | ChangeNum$ 1 | ChangeType$ Permanent.YouOwn | Mandatory$ True | Origin$ Graveyard | Destination$ Exile | Hidden$ True | RememberChanged$ True | SubAbility$ DBGainLife | SpellDescription$ Exile a permanent card from your graveyard. You gain life equal to its mana value.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Remembered$CardManaCost | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ ExiledWith$CardManaCost | SpellDescription$ Put a number of +1/+1 counters on target creature you control equal to the mana value of the exiled card.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Self & ExiledWith | Origin$ Battlefield,Exile | Destination$ Hand | SpellDescription$ Return CARDNAME and the exiled card to their owner's hand.\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Exile a permanent card from your graveyard. You gain life equal to its mana value.\\nII — Put a number of +1/+1 counters on target creature you control equal to the mana value of the exiled card.\\nIII — Return The Aesir Escape Valhalla and the exiled card to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Aesir Escape Valhalla"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

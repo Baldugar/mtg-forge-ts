@@ -1,0 +1,23 @@
+{
+  "id": "slinza-the-spiked-stampede-corpus-m680",
+  "description": "M6 corpus — Slinza, the Spiked Stampede; in-hand parse.",
+  "seed": 64326,
+  "cards": {
+    "Slinza, the Spiked Stampede": "Name:Slinza, the Spiked Stampede\nManaCost:4 G\nTypes:Legendary Creature Beast\nPT:5/5\nS:Mode$ ReduceCost | ValidCard$ Beast | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Beast spells you cast cost {2} less to cast.\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Beast+YouCtrl+Other\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Each other Beast creature you control enters with an additional +1/+1 counter on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.powerGE4+Other | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever NICKNAME or another creature with power 4 or greater enters, you may pay {1}{R/G}. When you do, NICKNAME fights target creature you don't control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 RG | Execute$ TrigFight | TriggerDescription$ When you do, NICKNAME fights target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nOracle:Beast spells you cast cost {2} less to cast.\\nEach other Beast creature you control enters with an additional +1/+1 counter on it.\\nWhenever Slinza or another creature with power 4 or greater enters, you may pay {1}{R/G}. When you do, Slinza fights target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slinza, the Spiked Stampede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

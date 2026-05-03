@@ -1,0 +1,23 @@
+{
+  "id": "timecrafting-corpus-m680",
+  "description": "M6 corpus — Timecrafting; in-hand parse.",
+  "seed": 64753,
+  "cards": {
+    "Timecrafting": "Name:Timecrafting\nManaCost:X R\nTypes:Instant\nA:SP$ Charm | Choices$ LoseTime,GainTime\nSVar:LoseTime:DB$ RemoveCounter | ValidTgts$ Permanent.inZoneBattlefield,Card.suspended | AITgts$ Permanent.counters_GE1_TIME+inZoneBattlefield+YouDontCtrl,Card.suspended+YouCtrl | TgtPrompt$ Select target permanent or suspended card. | CounterType$ TIME | CounterNum$ X | TgtZone$ Battlefield,Exile | SpellDescription$ Remove X time counters from target permanent or suspended card.\nSVar:GainTime:DB$ PutCounter | ValidTgts$ Permanent.counters_GE1_TIME+inZoneBattlefield,Card.suspended | AITgts$ Permanent.counters_GE1_TIME+inZoneBattlefield+YouCtrl,Card.suspended+YouDontCtrl | TgtPrompt$ Select target permanent with a time counter on it or suspended card. | CounterType$ TIME | CounterNum$ X | TgtZone$ Battlefield,Exile | SpellDescription$ Put X time counters target permanent with a time counter on it or suspended card.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Remove X time counters from target permanent or suspended card.\\n• Put X time counters on target permanent with a time counter on it or suspended card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timecrafting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lost-in-memories-corpus-m680",
+  "description": "M6 corpus — Lost in Memories; in-hand parse.",
+  "seed": 63269,
+  "cards": {
+    "Lost in Memories": "Name:Lost in Memories\nManaCost:1 R\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ DamageTrig | Description$ Enchanted creature gets +1/+1 and has \"Whenever this creature deals combat damage to a player, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.\" (You may cast that card from your graveyard for its flashback cost. Then exile it.)\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | KW$ Flashback | TgtZone$ Graveyard | PumpZone$ Graveyard\nOracle:Flash\\nEnchant creature you control\\nEnchanted creature gets +1/+1 and has \"Whenever this creature deals combat damage to a player, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.\" (You may cast that card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost in Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

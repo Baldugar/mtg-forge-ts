@@ -1,0 +1,23 @@
+{
+  "id": "twist-allegiance-corpus-m680",
+  "description": "M6 corpus — Twist Allegiance; in-hand parse.",
+  "seed": 64826,
+  "cards": {
+    "Twist Allegiance": "Name:Twist Allegiance\nManaCost:6 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Opponent | AllValid$ Creature.TargetedPlayerCtrl | NewController$ You | LoseControl$ EOT | RememberControlled$ True | StackDescription$ REP You_{p:You} & target opponent_{p:Targeted} | SubAbility$ DBGainCtrlOpp | SpellDescription$ You and target opponent each gain control of all creatures the other controls until end of turn. Untap those creatures. Those creatures gain haste until end of turn.\nSVar:DBGainCtrlOpp:DB$ GainControl | AllValid$ Creature.!IsRemembered+YouCtrl | NewController$ Targeted | LoseControl$ EOT | RememberControlled$ True | StackDescription$ None | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.IsRemembered | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.IsRemembered | KW$ Haste | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:You and target opponent each gain control of all creatures the other controls until end of turn. Untap those creatures. Those creatures gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twist Allegiance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

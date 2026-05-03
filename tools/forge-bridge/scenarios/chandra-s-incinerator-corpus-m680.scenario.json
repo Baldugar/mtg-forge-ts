@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-incinerator-corpus-m680",
+  "description": "M6 corpus — Chandra's Incinerator; in-hand parse.",
+  "seed": 61896,
+  "cards": {
+    "Chandra's Incinerator": "Name:Chandra's Incinerator\nManaCost:5 R\nTypes:Creature Elemental\nPT:6/6\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the total amount of noncombat damage dealt to your opponents this turn.\nSVar:X:PlayerCountRegisteredOpponents$NonCombatDamageDealtThisTurn\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever a source you control deals noncombat damage to an opponent, CARDNAME deals that much damage to target creature or planeswalker that player controls.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker that player controls | TargetsWithDefinedController$ TriggeredTarget | NumDmg$ Y\nSVar:Y:TriggerCount$DamageAmount\nSVar:PlayMain1:TRUE\nOracle:This spell costs {X} less to cast, where X is the total amount of noncombat damage dealt to your opponents this turn.\\nTrample\\nWhenever a source you control deals noncombat damage to an opponent, Chandra's Incinerator deals that much damage to target creature or planeswalker that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Incinerator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

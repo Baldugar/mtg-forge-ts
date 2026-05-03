@@ -1,0 +1,23 @@
+{
+  "id": "myr-welder-corpus-m680",
+  "description": "M6 corpus — Myr Welder; in-hand parse.",
+  "seed": 63500,
+  "cards": {
+    "Myr Welder": "Name:Myr Welder\nManaCost:3\nTypes:Artifact Creature Myr\nPT:1/4\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Card.IsImprinted+ExiledWithSource | GainsAbilitiesOfZones$ Exile | Description$ CARDNAME has all activated abilities of all cards exiled with it.\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Artifact | Origin$ Graveyard | Destination$ Exile | Imprint$ True | PrecostDesc$ Imprint — | SpellDescription$ Exile target artifact card from a graveyard.\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsImprinted+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Card.Self | Destination$ Any | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nOracle:Imprint — {T}: Exile target artifact card from a graveyard.\\nMyr Welder has all activated abilities of all cards exiled with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Welder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

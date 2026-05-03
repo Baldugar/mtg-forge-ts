@@ -1,0 +1,23 @@
+{
+  "id": "relic-bane-corpus-m680",
+  "description": "M6 corpus — Relic Bane; in-hand parse.",
+  "seed": 63946,
+  "cards": {
+    "Relic Bane": "Name:Relic Bane\nManaCost:1 B B\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddTrigger$ TrigLoseLife | AddSVar$ RelicBaneLoseLife | Description$ Enchanted artifact has \"At the beginning of your upkeep, you lose 2 life.\"\nSVar:TrigLoseLife:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ RelicBaneLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 2 life.\nSVar:RelicBaneLoseLife:DB$ LoseLife | LifeAmount$ 2\nOracle:Enchant artifact\\nEnchanted artifact has \"At the beginning of your upkeep, you lose 2 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic Bane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

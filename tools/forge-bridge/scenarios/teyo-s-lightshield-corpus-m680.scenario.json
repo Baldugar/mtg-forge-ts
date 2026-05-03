@@ -1,0 +1,23 @@
+{
+  "id": "teyo-s-lightshield-corpus-m680",
+  "description": "M6 corpus — Teyo's Lightshield; in-hand parse.",
+  "seed": 64628,
+  "cards": {
+    "Teyo's Lightshield": "Name:Teyo's Lightshield\nManaCost:2 W\nTypes:Creature Illusion\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Teyo's Lightshield enters, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teyo's Lightshield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

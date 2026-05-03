@@ -1,0 +1,23 @@
+{
+  "id": "darkblade-agent-corpus-m680",
+  "description": "M6 corpus — Darkblade Agent; in-hand parse.",
+  "seed": 62090,
+  "cards": {
+    "Darkblade Agent": "Name:Darkblade Agent\nManaCost:1 U B\nTypes:Creature Human Assassin\nPT:2/3\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Deathtouch | AddTrigger$ Trig1 | AddSVar$ TrigDraw | CheckSVar$ X | Description$ As long as you've surveilled this turn, CARDNAME has deathtouch and \"Whenever this creature deals combat damage to a player, you draw a card.\"\nSVar:Trig1:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:Count$YouSurveilThisTurn\nDeckHints:Ability$Surveil\nOracle:As long as you've surveilled this turn, Darkblade Agent has deathtouch and \"Whenever this creature deals combat damage to a player, you draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darkblade Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

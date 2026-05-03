@@ -1,0 +1,23 @@
+{
+  "id": "bold-plagiarist-corpus-m680",
+  "description": "M6 corpus — Bold Plagiarist; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Bold Plagiarist": "Name:Bold Plagiarist\nManaCost:3 B\nTypes:Creature Vampire Rogue\nPT:2/2\nK:Flash\nT:Mode$ CounterPlayerAddedAll | ValidSource$ Opponent | ValidObjectToSource$ Creature.YouCtrl+inRealZoneBattlefield | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent puts one or more counters on a creature they control, they put the same number and kind of counters on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | Placer$ TriggeredSource | TriggeredCounterMap$ True\nDeckHas:Ability$Counters\nOracle:Flash\\nWhenever an opponent puts one or more counters on a creature they control, they put the same number and kind of counters on Bold Plagiarist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bold Plagiarist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

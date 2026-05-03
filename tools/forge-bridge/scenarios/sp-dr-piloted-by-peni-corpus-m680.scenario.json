@@ -1,0 +1,23 @@
+{
+  "id": "sp-dr-piloted-by-peni-corpus-m680",
+  "description": "M6 corpus — SP//dr, Piloted by Peni; in-hand parse.",
+  "seed": 64383,
+  "cards": {
+    "SP//dr, Piloted by Peni": "Name:SP//dr, Piloted by Peni\nVariant:UniversesWithin:FlavorName:Kumonosu, the Watchful\nManaCost:3 W U\nTypes:Legendary Artifact Creature Spider Hero\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When NICKNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+modified | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a modified creature you control deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Vigilance\\nWhen SP//dr enters, put a +1/+1 counter on target creature.\\nWhenever a modified creature you control deals combat damage to a player, draw a card. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "SP//dr, Piloted by Peni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

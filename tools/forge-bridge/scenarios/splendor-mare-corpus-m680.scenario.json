@@ -1,0 +1,23 @@
+{
+  "id": "splendor-mare-corpus-m680",
+  "description": "M6 corpus — Splendor Mare; in-hand parse.",
+  "seed": 64424,
+  "cards": {
+    "Splendor Mare": "Name:Splendor Mare\nManaCost:2 W\nTypes:Creature Elk Unicorn\nPT:3/3\nK:Lifelink\nK:Cycling:1 W\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle CARDNAME, put a lifelink counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Lifelink | CounterNum$ 1\nOracle:Lifelink\\nCycling {1}{W} ({1}{W}, Discard this card: Draw a card.)\\nWhen you cycle Splendor Mare, put a lifelink counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splendor Mare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

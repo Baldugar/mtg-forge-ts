@@ -1,0 +1,23 @@
+{
+  "id": "insufferable-syphon-corpus-m680",
+  "description": "M6 corpus — Insufferable Syphon; in-hand parse.",
+  "seed": 62952,
+  "cards": {
+    "Insufferable Syphon": "Name:Insufferable Syphon\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, target player discards a card.\nSVar:TrigCrank:DB$ Discard | ValidTgts$ Player | TgtPrompt$ Select a player | Mode$ TgtChoose\nOracle:Whenever you crank Insufferable Syphon, target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insufferable Syphon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

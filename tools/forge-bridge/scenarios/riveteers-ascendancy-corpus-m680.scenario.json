@@ -1,0 +1,23 @@
+{
+  "id": "riveteers-ascendancy-corpus-m680",
+  "description": "M6 corpus — Riveteers Ascendancy; in-hand parse.",
+  "seed": 64018,
+  "cards": {
+    "Riveteers Ascendancy": "Name:Riveteers Ascendancy\nManaCost:B R G\nTypes:Enchantment\nT:Mode$ Sacrificed | ValidCard$ Creature.YouCtrl | Execute$ TrigReturn | OptionalDecider$ You | ResolvedLimit$ 1 | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a creature, you may return target creature card with lesser mana value from your graveyard to the battlefield tapped. Do this only once each turn.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.cmcLTX+YouOwn | TgtPrompt$ Select target creature card with lesser mana value | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nSVar:X:TriggeredCard$CardManaCost\nDeckNeeds:Ability$Sacrifice\nDeckHints:Ability$Discard|Graveyard\nOracle:Whenever you sacrifice a creature, you may return target creature card with lesser mana value from your graveyard to the battlefield tapped. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riveteers Ascendancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

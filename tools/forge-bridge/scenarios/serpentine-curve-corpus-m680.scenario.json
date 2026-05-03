@@ -1,0 +1,23 @@
+{
+  "id": "serpentine-curve-corpus-m680",
+  "description": "M6 corpus — Serpentine Curve; in-hand parse.",
+  "seed": 64213,
+  "cards": {
+    "Serpentine Curve": "Name:Serpentine Curve\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SpellDescription$ Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is one plus the total number of instant and sorcery cards you own in exile and in your graveyard. | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard,Exile Instant.YouOwn,Sorcery.YouOwn/Plus.1\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is one plus the total number of instant and sorcery cards you own in exile and in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serpentine Curve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

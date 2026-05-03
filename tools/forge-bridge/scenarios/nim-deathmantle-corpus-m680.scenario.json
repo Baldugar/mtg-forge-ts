@@ -1,0 +1,23 @@
+{
+  "id": "nim-deathmantle-corpus-m680",
+  "description": "M6 corpus — Nim Deathmantle; in-hand parse.",
+  "seed": 63562,
+  "cards": {
+    "Nim Deathmantle": "Name:Nim Deathmantle\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Intimidate | AddType$ Zombie | RemoveCreatureTypes$ True | SetColor$ Black | Description$ Equipped creature gets +2/+2, has intimidate, and is a black Zombie.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouOwn | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature is put into your graveyard from the battlefield, you may pay {4}. If you do, return that card to the battlefield and attach CARDNAME to it.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 4 | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | RememberChanged$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Equipped creature gets +2/+2, has intimidate, and is a black Zombie. (A creature with intimidate can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhenever a nontoken creature is put into your graveyard from the battlefield, you may pay {4}. If you do, return that card to the battlefield and attach Nim Deathmantle to it.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nim Deathmantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

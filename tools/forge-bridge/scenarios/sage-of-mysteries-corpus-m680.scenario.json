@@ -1,0 +1,23 @@
+{
+  "id": "sage-of-mysteries-corpus-m680",
+  "description": "M6 corpus — Sage of Mysteries; in-hand parse.",
+  "seed": 64104,
+  "cards": {
+    "Sage of Mysteries": "Name:Sage of Mysteries\nManaCost:U\nTypes:Creature Human Wizard\nPT:0/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Constellation — Whenever an enchantment you control enters, target player mills two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player | TgtPrompt$ Select target player\nDeckNeeds:Type$Enchantment\nOracle:Constellation — Whenever an enchantment you control enters, target player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage of Mysteries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

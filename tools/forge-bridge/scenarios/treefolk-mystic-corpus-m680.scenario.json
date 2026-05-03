@@ -1,0 +1,23 @@
+{
+  "id": "treefolk-mystic-corpus-m680",
+  "description": "M6 corpus — Treefolk Mystic; in-hand parse.",
+  "seed": 64796,
+  "cards": {
+    "Treefolk Mystic": "Name:Treefolk Mystic\nManaCost:3 G\nTypes:Creature Treefolk\nPT:2/4\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDestroyBlocked | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, destroy all Auras attached to that creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDestroyBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, destroy all Auras attached to that creature.\nSVar:TrigDestroyBlocked:DB$ Pump | Defined$ TriggeredAttacker | RememberObjects$ TriggeredAttacker | SubAbility$ DBDestroy\nSVar:TrigDestroyBlocker:DB$ Pump | Defined$ TriggeredBlocker | RememberObjects$ TriggeredBlocker | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Aura.AttachedTo Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Treefolk Mystic blocks or becomes blocked by a creature, destroy all Auras attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treefolk Mystic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

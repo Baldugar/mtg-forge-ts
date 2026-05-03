@@ -1,0 +1,23 @@
+{
+  "id": "rage-thrower-corpus-m680",
+  "description": "M6 corpus — Rage Thrower; in-hand parse.",
+  "seed": 63879,
+  "cards": {
+    "Rage Thrower": "Name:Rage Thrower\nManaCost:5 R\nTypes:Creature Human Shaman\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever another creature dies, CARDNAME deals 2 damage to target player or planeswalker.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 2\nOracle:Whenever another creature dies, Rage Thrower deals 2 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rage Thrower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

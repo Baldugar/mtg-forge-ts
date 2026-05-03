@@ -1,0 +1,23 @@
+{
+  "id": "towering-wave-mystic-corpus-m680",
+  "description": "M6 corpus — Towering-Wave Mystic; in-hand parse.",
+  "seed": 64779,
+  "cards": {
+    "Towering-Wave Mystic": "Name:Towering-Wave Mystic\nManaCost:1 U\nTypes:Creature Merfolk Wizard\nPT:2/1\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME deals damage, target player mills that many cards.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Graveyard\nOracle:Whenever Towering-Wave Mystic deals damage, target player mills that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Towering-Wave Mystic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

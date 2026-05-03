@@ -1,0 +1,23 @@
+{
+  "id": "animar-soul-of-elements-corpus-m680",
+  "description": "M6 corpus — Animar, Soul of Elements; in-hand parse.",
+  "seed": 61520,
+  "cards": {
+    "Animar, Soul of Elements": "Name:Animar, Soul of Elements\nManaCost:G U R\nTypes:Legendary Creature Elemental\nPT:1/1\nK:Protection from white\nK:Protection from black\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ X | Description$ Creature spells you cast cost {1} less to cast for each +1/+1 counter on NICKNAME.\nSVar:X:Count$CardCounters.P1P1\nSVar:BuffedBy:Creature\nOracle:Protection from white and from black\\nWhenever you cast a creature spell, put a +1/+1 counter on Animar, Soul of Elements.\\nCreature spells you cast cost {1} less to cast for each +1/+1 counter on Animar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animar, Soul of Elements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

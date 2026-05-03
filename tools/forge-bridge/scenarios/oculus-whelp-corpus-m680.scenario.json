@@ -1,0 +1,23 @@
+{
+  "id": "oculus-whelp-corpus-m680",
+  "description": "M6 corpus — Oculus Whelp; in-hand parse.",
+  "seed": 63604,
+  "cards": {
+    "Oculus Whelp": "Name:Oculus Whelp\nManaCost:3 U\nTypes:Creature Phyrexian Dragon\nPT:3/2\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | IsPresent$ Permanent.Transformed+YouCtrl | AddTrigger$ DiesTrig | Description$ As long as you control a transformed permanent, CARDNAME has \"When CARDNAME dies, draw a card.\"\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nAI:RemoveDeck:Random\nOracle:Flying\\nAs long as you control a transformed permanent, Oculus Whelp has \"When Oculus Whelp dies, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oculus Whelp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

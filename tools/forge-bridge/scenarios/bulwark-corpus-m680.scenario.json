@@ -1,0 +1,23 @@
+{
+  "id": "bulwark-corpus-m680",
+  "description": "M6 corpus — Bulwark; in-hand parse.",
+  "seed": 61813,
+  "cards": {
+    "Bulwark": "Name:Bulwark\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ PsychicSlap | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals X damage to target opponent, where X is the number of cards in your hand minus the number of cards in that player's hand.\nSVar:PsychicSlap:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X\nSVar:A:Count$ValidHand Card.YouOwn\nSVar:B:Count$ValidHand Card.TargetedPlayerOwn\nSVar:X:SVar$A/Minus.B\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, Bulwark deals X damage to target opponent, where X is the number of cards in your hand minus the number of cards in that player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bulwark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

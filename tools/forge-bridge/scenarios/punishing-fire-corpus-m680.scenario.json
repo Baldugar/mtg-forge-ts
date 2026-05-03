@@ -1,0 +1,23 @@
+{
+  "id": "punishing-fire-corpus-m680",
+  "description": "M6 corpus — Punishing Fire; in-hand parse.",
+  "seed": 63838,
+  "cards": {
+    "Punishing Fire": "Name:Punishing Fire\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nT:Mode$ LifeGained | ValidPlayer$ Opponent | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ Whenever an opponent gains life, you may pay {R}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigChange:AB$ ChangeZone | Cost$ R | Origin$ Graveyard | Destination$ Hand\nOracle:Punishing Fire deals 2 damage to any target.\\nWhenever an opponent gains life, you may pay {R}. If you do, return Punishing Fire from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Punishing Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

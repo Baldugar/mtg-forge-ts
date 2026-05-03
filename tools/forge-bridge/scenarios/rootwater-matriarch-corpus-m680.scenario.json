@@ -1,0 +1,23 @@
+{
+  "id": "rootwater-matriarch-corpus-m680",
+  "description": "M6 corpus — Rootwater Matriarch; in-hand parse.",
+  "seed": 64036,
+  "cards": {
+    "Rootwater Matriarch": "Name:Rootwater Matriarch\nManaCost:2 U U\nTypes:Creature Merfolk\nPT:2/3\nA:AB$ GainControl | Cost$ T | ValidTgts$ Creature | AITgts$ Creature.enchanted | AITgtsStrict$ True | LoseControl$ StaticCommandCheck | StaticCommandCheckSVar$ X | StaticCommandSVarCompare$ EQ0 | ConditionCheckSVar$ Y | SpellDescription$ Gain control of target creature for as long as that creature is enchanted.\n# The hostcard of SVar X is the controlled card\nSVar:X:Count$Valid Card.Self+enchanted\nSVar:Y:Targeted$Valid Card.enchanted\nOracle:{T}: Gain control of target creature for as long as that creature is enchanted.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rootwater Matriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

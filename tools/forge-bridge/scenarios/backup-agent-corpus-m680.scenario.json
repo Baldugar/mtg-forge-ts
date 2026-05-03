@@ -1,0 +1,23 @@
+{
+  "id": "backup-agent-corpus-m680",
+  "description": "M6 corpus — Backup Agent; in-hand parse.",
+  "seed": 61634,
+  "cards": {
+    "Backup Agent": "Name:Backup Agent\nManaCost:1 W\nTypes:Creature Human Citizen\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Backup Agent enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Backup Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

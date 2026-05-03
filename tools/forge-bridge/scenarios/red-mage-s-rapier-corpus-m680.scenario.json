@@ -1,0 +1,23 @@
+{
+  "id": "red-mage-s-rapier-corpus-m680",
+  "description": "M6 corpus — Red Mage's Rapier; in-hand parse.",
+  "seed": 63933,
+  "cards": {
+    "Red Mage's Rapier": "Name:Red Mage's Rapier\nManaCost:1 R\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddTrigger$ TrigSpellCast | AddType$ Wizard | Description$ Equipped creature has \"Whenever you cast a noncreature spell, this creature gets +2/+0 until end of turn.\" and is a Wizard in addition to its other types.\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, this creature gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nK:Equip:3\nDeckHas:Ability$Token & Type$Wizard\nOracle:Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)\\nEquipped creature has \"Whenever you cast a noncreature spell, this creature gets +2/+0 until end of turn.\" and is a Wizard in addition to its other types.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Mage's Rapier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

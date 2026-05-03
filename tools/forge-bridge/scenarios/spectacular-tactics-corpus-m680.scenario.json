@@ -1,0 +1,23 @@
+{
+  "id": "spectacular-tactics-corpus-m680",
+  "description": "M6 corpus — Spectacular Tactics; in-hand parse.",
+  "seed": 64394,
+  "cards": {
+    "Spectacular Tactics": "Name:Spectacular Tactics\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBPutCounter,DBDestroy\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | TgtPrompt$ Select target creature you control | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature you control. It gains hexproof until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ ParentTarget | KW$ Hexproof\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.powerGE4 | TgtPrompt$ Select target creature with power 4 or greater | SpellDescription$ Destroy target creature with power 4 or greater.\nOracle:Choose one —\\n• Put a +1/+1 counter on target creature you control. It gains hexproof until end of turn.\\n• Destroy target creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spectacular Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

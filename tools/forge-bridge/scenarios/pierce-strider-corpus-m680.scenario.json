@@ -1,0 +1,23 @@
+{
+  "id": "pierce-strider-corpus-m680",
+  "description": "M6 corpus — Pierce Strider; in-hand parse.",
+  "seed": 63748,
+  "cards": {
+    "Pierce Strider": "Name:Pierce Strider\nManaCost:4\nTypes:Artifact Creature Phyrexian Construct\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target opponent loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 3\nOracle:When Pierce Strider enters, target opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pierce Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

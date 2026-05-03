@@ -1,0 +1,23 @@
+{
+  "id": "bearer-of-silence-corpus-m680",
+  "description": "M6 corpus — Bearer of Silence; in-hand parse.",
+  "seed": 61663,
+  "cards": {
+    "Bearer of Silence": "Name:Bearer of Silence\nManaCost:1 B\nTypes:Creature Eldrazi\nPT:2/1\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When you cast CARDNAME, you may pay {1}{C}. If you do, target opponent sacrifices a creature. ({C} represents colorless mana.)\nSVar:TrigSacrifice:AB$ Sacrifice | Cost$ 1 C | ValidTgts$ Opponent | SacValid$ Creature\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell, you may pay {1}{C}. If you do, target opponent sacrifices a creature. ({C} represents colorless mana.)\\nFlying\\nBearer of Silence can't block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bearer of Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

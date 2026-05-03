@@ -1,0 +1,23 @@
+{
+  "id": "scholarship-sponsor-corpus-m680",
+  "description": "M6 corpus — Scholarship Sponsor; in-hand parse.",
+  "seed": 64149,
+  "cards": {
+    "Scholarship Sponsor": "Name:Scholarship Sponsor\nManaCost:3 W\nTypes:Creature Human Advisor\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerDescription$ When CARDNAME enters, each player who controls fewer lands than the player who controls the most lands searches their library for a number of basic land cards less than or equal to the difference, puts those cards onto the battlefield tapped, then shuffles.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ConditionCheckSVar$ X | ConditionSVarCompare$ LTY | DefinedPlayer$ Remembered | Chooser$ Remembered | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ Z | Origin$ Library | Destination$ Battlefield | Tapped$ True\nSVar:X:Count$Valid Land.RememberedPlayerCtrl\nSVar:Y:PlayerCountPlayers$HighestValid Land.YouCtrl\nSVar:Z:SVar$Y/Minus.X\nSVar:Check1:Count$Valid Land.YouCtrl\nSVar:Check2:SVar$Y/Minus.Check1\nSVar:NeedsToPlayVar:Check2 GE2\nOracle:When Scholarship Sponsor enters, each player who controls fewer lands than the player who controls the most lands searches their library for a number of basic land cards less than or equal to the difference, puts those cards onto the battlefield tapped, then shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scholarship Sponsor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

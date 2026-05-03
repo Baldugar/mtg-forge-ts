@@ -1,0 +1,23 @@
+{
+  "id": "messenger-jays-corpus-m680",
+  "description": "M6 corpus — Messenger Jays; in-hand parse.",
+  "seed": 63393,
+  "cards": {
+    "Messenger Jays": "Name:Messenger Jays\nManaCost:4 U\nTypes:Creature Bird\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Council's dilemma — When CARDNAME enters, starting with you, each player votes for feather or quill. Put a +1/+1 counter on CARDNAME for each feather vote and draw a card for each quill vote. For each card drawn this way, discard a card.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Choices$ DBVoteFeather,DBVoteQuill | StoreVoteNum$ True | AILogic$ FeatherOrQuill\nSVar:DBVoteFeather:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ VoteNum | SpellDescription$ Feather\nSVar:DBVoteQuill:DB$ Draw | NumCards$ VoteNum | SubAbility$ DBDiscard | RememberDrawn$ AllReplaced | SpellDescription$ Quill\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ X | Mode$ TgtChoose | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Counters|Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Flying\\nCouncil's dilemma — When Messenger Jays enters, starting with you, each player votes for feather or quill. Put a +1/+1 counter on Messenger Jays for each feather vote and draw a card for each quill vote. For each card drawn this way, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Messenger Jays"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

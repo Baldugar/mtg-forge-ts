@@ -1,0 +1,23 @@
+{
+  "id": "lys-alana-bowmaster-corpus-m680",
+  "description": "M6 corpus — Lys Alana Bowmaster; in-hand parse.",
+  "seed": 63297,
+  "cards": {
+    "Lys Alana Bowmaster": "Name:Lys Alana Bowmaster\nManaCost:2 G\nTypes:Creature Elf Archer\nPT:2/2\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Elf | ValidActivatingPlayer$ You | Execute$ TrigDamage | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Elf spell, you may have CARDNAME deal 2 damage to target creature with flying.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 2\nSVar:BuffedBy:Elf\nOracle:Reach\\nWhenever you cast an Elf spell, you may have Lys Alana Bowmaster deal 2 damage to target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lys Alana Bowmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

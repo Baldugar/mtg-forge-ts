@@ -1,0 +1,23 @@
+{
+  "id": "chicken-egg-corpus-m680",
+  "description": "M6 corpus — Chicken Egg; in-hand parse.",
+  "seed": 61910,
+  "cards": {
+    "Chicken Egg": "Name:Chicken Egg\nManaCost:1 R\nTypes:Creature Egg\nPT:0/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ At the beginning of your upkeep, roll a six-sided die. If you roll a 6, sacrifice CARDNAME and create a 4/4 red Giant Bird creature token.\nSVar:TrigRoll:DB$ RollDice | ResultSubAbilities$ 6:DBSac\nSVar:DBSac:DB$ Sacrifice | Defined$ Self | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ r_4_4_giant_bird\nDeckHas:Ability$Token|Sacrifice & Type$Bird|Giant\nOracle:At the beginning of your upkeep, roll a six-sided die. If you roll a 6, sacrifice Chicken Egg and create a 4/4 red Giant Bird creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chicken Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dakmor-ghoul-corpus-m680",
+  "description": "M6 corpus — Dakmor Ghoul; in-hand parse.",
+  "seed": 62079,
+  "cards": {
+    "Dakmor Ghoul": "Name:Dakmor Ghoul\nManaCost:2 B B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, target opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:When Dakmor Ghoul enters, target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dakmor Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "loxodon-eavesdropper-corpus-m680",
+  "description": "M6 corpus — Loxodon Eavesdropper; in-hand parse.",
+  "seed": 63276,
+  "cards": {
+    "Loxodon Eavesdropper": "Name:Loxodon Eavesdropper\nManaCost:3 G\nTypes:Creature Elephant Detective\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Num$ 1\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you draw your second card each turn, CARDNAME gets +1/+1 and gains vigilance until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Vigilance | NumAtt$ +1 | NumDef$ +1\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue\nOracle:When Loxodon Eavesdropper enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you draw your second card each turn, Loxodon Eavesdropper gets +1/+1 and gains vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loxodon Eavesdropper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

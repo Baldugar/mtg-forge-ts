@@ -1,0 +1,23 @@
+{
+  "id": "boing-corpus-m680",
+  "description": "M6 corpus — Boing!; in-hand parse.",
+  "seed": 61743,
+  "cards": {
+    "Boing!": "Name:Boing!\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBRoll | SpellDescription$ Return target creature to its owner's hand, then roll a six-sided die. If the result is 3 or less, scry a number of cards equal to the result.\nSVar:DBRoll:DB$ RollDice | ResultSVar$ Result | ResultSubAbilities$ 1-3:DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ Result\nOracle:Return target creature to its owner's hand, then roll a six-sided die. If the result is 3 or less, scry a number of cards equal to the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boing!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

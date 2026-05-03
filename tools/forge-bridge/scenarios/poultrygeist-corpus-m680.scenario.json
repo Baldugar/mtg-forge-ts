@@ -1,0 +1,23 @@
+{
+  "id": "poultrygeist-corpus-m680",
+  "description": "M6 corpus — Poultrygeist; in-hand parse.",
+  "seed": 63778,
+  "cards": {
+    "Poultrygeist": "Name:Poultrygeist\nManaCost:2 B\nTypes:Creature Bird Spirit\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ Whenever a creature dies, you may roll a six-sided die. If you roll a 1, sacrifice CARDNAME. Otherwise, put a +1/+1 counter on CARDNAME.\nSVar:TrigRoll:DB$ RollDice | ResultSubAbilities$ 1:DBSac,Else:DBCounter\nSVar:DBSac:DB$ Sacrifice\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever a creature dies, you may roll a six-sided die. If you roll a 1, sacrifice Poultrygeist. Otherwise, put a +1/+1 counter on Poultrygeist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poultrygeist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

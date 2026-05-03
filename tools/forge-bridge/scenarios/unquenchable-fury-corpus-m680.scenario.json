@@ -1,0 +1,23 @@
+{
+  "id": "unquenchable-fury-corpus-m680",
+  "description": "M6 corpus — Unquenchable Fury; in-hand parse.",
+  "seed": 64853,
+  "cards": {
+    "Unquenchable Fury": "Name:Unquenchable Fury\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ AttackTrigger | AddSVar$ AE | Description$ Enchanted creature has \"Whenever this creature attacks, it deals X damage to defending player, where X is the number of cards in their hand.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever this creature attacks, it deals X damage to defending player, where X is the number of cards in their hand.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefender | NumDmg$ X\nSVar:X:TriggeredDefendingPlayer$CardsInHand\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+YouOwn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When CARDNAME is put into your graveyard from the battlefield, return it to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, it deals X damage to defending player, where X is the number of cards in their hand.\"\\nWhen Unquenchable Fury is put into your graveyard from the battlefield, return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unquenchable Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ichor-synthesizer-corpus-m680",
+  "description": "M6 corpus — Ichor Synthesizer; in-hand parse.",
+  "seed": 62896,
+  "cards": {
+    "Ichor Synthesizer": "Name:Ichor Synthesizer\nManaCost:1 U\nTypes:Creature Phyrexian Wizard\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ OIL\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE4_OIL | AddPower$ 2 | Description$ As long as CARDNAME has four or more oil counters on it, it gets +2/+0 and can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+counters_GE4_OIL | Secondary$ True | Description$ As long as CARDNAME has four or more oil counters on it, it gets +2/+0 and can't be blocked.\nSVar:BuffedBy:Card.nonCreature\nDeckHas:Ability$Counters\nOracle:Whenever you cast a noncreature spell, put an oil counter on Ichor Synthesizer.\\nAs long as Ichor Synthesizer has four or more oil counters on it, it gets +2/+0 and can't be blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichor Synthesizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

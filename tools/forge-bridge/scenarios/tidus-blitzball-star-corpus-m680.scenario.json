@@ -1,0 +1,23 @@
+{
+  "id": "tidus-blitzball-star-corpus-m680",
+  "description": "M6 corpus — Tidus, Blitzball Star; in-hand parse.",
+  "seed": 64746,
+  "cards": {
+    "Tidus, Blitzball Star": "Name:Tidus, Blitzball Star\nManaCost:1 W U\nTypes:Legendary Creature Human Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | IsPresent$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an artifact you control enters, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever NICKNAME attacks, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nOracle:Whenever an artifact you control enters, put a +1/+1 counter on Tidus.\\nWhenever Tidus attacks, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tidus, Blitzball Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mirri-the-cursed-corpus-m680",
+  "description": "M6 corpus — Mirri the Cursed; in-hand parse.",
+  "seed": 63430,
+  "cards": {
+    "Mirri the Cursed": "Name:Mirri the Cursed\nManaCost:2 B B\nTypes:Legendary Creature Vampire Cat\nPT:3/2\nK:First Strike\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasCombatEffect:TRUE\nOracle:Flying, first strike, haste\\nWhenever Mirri the Cursed deals combat damage to a creature, put a +1/+1 counter on Mirri the Cursed.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirri the Cursed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

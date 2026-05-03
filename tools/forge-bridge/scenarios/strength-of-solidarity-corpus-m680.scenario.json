@@ -1,0 +1,23 @@
+{
+  "id": "strength-of-solidarity-corpus-m680",
+  "description": "M6 corpus — Strength of Solidarity; in-hand parse.",
+  "seed": 64480,
+  "cards": {
+    "Strength of Solidarity": "Name:Strength of Solidarity\nManaCost:G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Choose target creature you control. Put a +1/+1 counter on it for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:X:Count$Party\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Party|Counters\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Choose target creature you control. Put a +1/+1 counter on it for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strength of Solidarity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

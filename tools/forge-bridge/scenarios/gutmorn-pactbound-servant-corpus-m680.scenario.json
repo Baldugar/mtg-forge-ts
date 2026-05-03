@@ -1,0 +1,23 @@
+{
+  "id": "gutmorn-pactbound-servant-corpus-m680",
+  "description": "M6 corpus — Gutmorn, Pactbound Servant; in-hand parse.",
+  "seed": 62756,
+  "cards": {
+    "Gutmorn, Pactbound Servant": "Name:Gutmorn, Pactbound Servant\nManaCost:2 B\nTypes:Legendary Creature Demon\nPT:1/3\nK:Flying\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDiscard | TriggerDescription$ When CARDNAME enters, each player discards a nonland card.\nSVar:DBDiscard:DB$ Discard | Defined$ Player | DiscardValid$ Card.nonLand | Mode$ TgtChoose | AILogic$ DiscardUncastableAndExcess\nT:Mode$ Discarded | TriggerZones$ Battlefield | Execute$ TrigChoosePlayer | PlayerTurn$ True | TriggerController$ TriggeredCardController | TriggerDescription$ Whenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:TrigChoosePlayer:DB$ ChoosePlayer | Defined$ TriggeredCardOwner | Choices$ Player.Other | ChoiceTitle$ Choose another player | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Defined$ ChosenPlayer | DefinedName$ TriggeredCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenPlayer$ True\nDeckHas:Ability$Discard\nDeckHints:Ability$Discard\nOracle:Flying, deathtouch\\nWhenever Gutmorn, Pactbound Servant enters, each player discards a nonland card.\\nWhenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gutmorn, Pactbound Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

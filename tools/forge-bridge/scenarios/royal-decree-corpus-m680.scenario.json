@@ -1,0 +1,23 @@
+{
+  "id": "royal-decree-corpus-m680",
+  "description": "M6 corpus — Royal Decree; in-hand parse.",
+  "seed": 64053,
+  "cards": {
+    "Royal Decree": "Name:Royal Decree\nManaCost:2 W W\nTypes:Enchantment\nK:Cumulative upkeep:W\nT:Mode$ Taps | ValidCard$ Swamp,Mountain,Permanent.Black,Permanent.Red | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a Swamp, Mountain, black permanent, or red permanent becomes tapped, CARDNAME deals 1 damage to that permanent's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep {W} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhenever a Swamp, Mountain, black permanent, or red permanent becomes tapped, Royal Decree deals 1 damage to that permanent's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Royal Decree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

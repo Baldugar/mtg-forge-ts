@@ -1,0 +1,23 @@
+{
+  "id": "banner-of-kinship-corpus-m680",
+  "description": "M6 corpus — Banner of Kinship; in-hand parse.",
+  "seed": 61646,
+  "cards": {
+    "Banner of Kinship": "Name:Banner of Kinship\nManaCost:5\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ChooseCT | ReplacementResult$ Updated | Description$ As this artifact enters, choose a creature type. This artifact enters with a fellowship counter on it for each creature you control of the chosen type.\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeck | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ FELLOWSHIP | CounterNum$ X\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ Y | AddToughness$ Y | Description$ Creatures you control of the chosen type get +1/+1 for each fellowship counter on this artifact.\nSVar:X:Count$Valid Creature.ChosenType+YouCtrl\nSVar:Y:Count$CardCounters.FELLOWSHIP\nSVar:BuffedBy:Creature\nAI:RemoveDeck:Random\nOracle:As this artifact enters, choose a creature type. This artifact enters with a fellowship counter on it for each creature you control of the chosen type.\\nCreatures you control of the chosen type get +1/+1 for each fellowship counter on this artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banner of Kinship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

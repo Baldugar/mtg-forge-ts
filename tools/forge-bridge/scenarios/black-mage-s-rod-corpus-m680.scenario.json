@@ -1,0 +1,23 @@
+{
+  "id": "black-mage-s-rod-corpus-m680",
+  "description": "M6 corpus — Black Mage's Rod; in-hand parse.",
+  "seed": 61693,
+  "cards": {
+    "Black Mage's Rod": "Name:Black Mage's Rod\nManaCost:1 B\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddType$ Wizard | AddTrigger$ TrigSpellCast | Description$ Equipped creature gets +1/+0, has \"Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent,\" and is a Wizard in addition to its other types.\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nK:Equip:3\nDeckHas:Ability$Token & Type$Wizard\nOracle:Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)\\nEquipped creature gets +1/+0, has \"Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent,\" and is a Wizard in addition to its other types.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Mage's Rod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

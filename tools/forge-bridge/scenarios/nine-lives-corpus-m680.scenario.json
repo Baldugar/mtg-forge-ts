@@ -1,0 +1,23 @@
+{
+  "id": "nine-lives-corpus-m680",
+  "description": "M6 corpus — Nine Lives; in-hand parse.",
+  "seed": 63567,
+  "cards": {
+    "Nine Lives": "Name:Nine Lives\nManaCost:1 W W\nTypes:Enchantment\nK:Hexproof\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card,Emblem | ValidTarget$ You | PreventionEffect$ True | ReplaceWith$ AddCounters | AlwaysReplace$ True | ExecuteMode$ PerSource | Description$ If a source would deal damage to you, prevent that damage and put an incarnation counter on CARDNAME.\nSVar:AddCounters:DB$ PutCounter | Defined$ Self | CounterType$ INCARNATION | CounterNum$ 1\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE9_INCARNATION | Execute$ TrigExile | TriggerDescription$ When there are nine or more incarnation counters on CARDNAME, exile it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLose | TriggerDescription$ When CARDNAME leaves the battlefield, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nSVar:DonateMe:3\nOracle:Hexproof\\nIf a source would deal damage to you, prevent that damage and put an incarnation counter on Nine Lives.\\nWhen there are nine or more incarnation counters on Nine Lives, exile it.\\nWhen Nine Lives leaves the battlefield, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nine Lives"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

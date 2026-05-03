@@ -1,0 +1,23 @@
+{
+  "id": "buzzing-whack-a-doodle-corpus-m680",
+  "description": "M6 corpus — Buzzing Whack-a-Doodle; in-hand parse.",
+  "seed": 61821,
+  "cards": {
+    "Buzzing Whack-a-Doodle": "Name:Buzzing Whack-a-Doodle\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ ChooseOpp | Static$ True | TriggerDescription$ As CARDNAME enters, you and an opponent each secretly choose Whack or Doodle. Then those choices are revealed. If the choices match, CARDNAME has that ability. Otherwise, it has Buzz. • Whack — {T}: Target player loses 2 life. • Doodle — {T}: You gain 3 life. • Buzz — {2}, {T}: Draw a card.\nSVar:ChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ YouChoice\nSVar:YouChoice:DB$ GenericChoice | Choices$ YouWhack,YouDoodle | Defined$ You | AILogic$ Random | SubAbility$ StoreYou\nSVar:YouWhack:DB$ StoreSVar | SVar$ Doodles | Type$ Number | Expression$ 0 | SpellDescription$ Whack\nSVar:YouDoodle:DB$ StoreSVar | SVar$ Doodles | Type$ Number | Expression$ 1 | SpellDescription$ Doodle\nSVar:StoreYou:DB$ StoreSVar | SVar$ YouChose | Type$ CountSVar | Expression$ Doodles | SubAbility$ OppChoice\nSVar:OppChoice:DB$ GenericChoice | Choices$ AniWhack,OppDoodle | Defined$ Player.Chosen | AILogic$ Random | ShowChoice$ ExceptSelf\nSVar:OppDoodle:DB$ StoreSVar | SVar$ Doodles | Type$ CountSVar | Expression$ Doodles/Plus.1 | SubAbility$ AniBuzz | SpellDescription$ Doodle\nSVar:AniWhack:DB$ Animate | Defined$ Self | Abilities$ ABWhack | Duration$ Permanent | SpellDescription$ Whack | ConditionCheckSVar$ Doodles | ConditionSVarCompare$ EQ0 | SubAbility$ AniBuzz\nSVar:AniBuzz:DB$ Animate | Defined$ Self | Abilities$ ABBuzz | Duration$ Permanent | ConditionCheckSVar$ Doodles | ConditionSVarCompare$ EQ1 | SubAbility$ AniDoodle\nSVar:AniDoodle:DB$ Animate | Defined$ Self | Abilities$ ABDoodle | Duration$ Permanent | ConditionCheckSVar$ Doodles | ConditionSVarCompare$ EQ2 | SubAbility$ NotifyWhack\nSVar:NotifyWhack:DB$ GenericChoice | Choices$ YouWhack | AtRandom$ True | Defined$ You | ShowChoice$ ExceptSelf | ConditionCheckSVar$ YouChose | ConditionSVarCompare$ EQ0 | SubAbility$ NotifyDoodle\nSVar:NotifyDoodle:DB$ GenericChoice | Choices$ YouDoodle | AtRandom$ True | Defined$ You | ShowChoice$ ExceptSelf | ConditionCheckSVar$ YouChose | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nSVar:ABWhack:AB$ LoseLife | Cost$ T | ValidTgts$ Player | LifeAmount$ 2 | SpellDescription$ Target player loses 2 life.\nSVar:ABBuzz:AB$ Draw | Cost$ 2 T | SpellDescription$ Draw a card.\nSVar:ABDoodle:AB$ GainLife | Cost$ T | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:As Buzzing Whack-a-Doodle enters, you and an opponent each secretly choose Whack or Doodle. Then those choices are revealed. If the choices match, Buzzing Whack-a-Doodle has that ability. Otherwise, it has Buzz.\\n• Whack — {T}: Target player loses 2 life.\\n• Doodle — {T}: You gain 3 life.\\n• Buzz — {2}, {T}: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Buzzing Whack-a-Doodle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

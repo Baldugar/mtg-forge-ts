@@ -1,0 +1,23 @@
+{
+  "id": "prowling-geistcatcher-corpus-m680",
+  "description": "M6 corpus — Prowling Geistcatcher; in-hand parse.",
+  "seed": 63825,
+  "cards": {
+    "Prowling Geistcatcher": "Name:Prowling Geistcatcher\nManaCost:3 B\nTypes:Creature Human Rogue\nPT:2/4\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you sacrifice another creature, exile it. If that creature was a token, put a +1/+1 counter on CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile | SubAbility$ TokenPlus\nSVar:TokenPlus:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ TriggeredCardLKICopy | ConditionPresent$ Creature.token\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return each card exiled with it to the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | GainControl$ True\nDeckHas:Ability$Counters\nDeckHints:Ability$Token\nDeckNeeds:Ability$Sacrifice\nOracle:Whenever you sacrifice another creature, exile it. If that creature was a token, put a +1/+1 counter on Prowling Geistcatcher.\\nWhen Prowling Geistcatcher leaves the battlefield, return each card exiled with it to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prowling Geistcatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

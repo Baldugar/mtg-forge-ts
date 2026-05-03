@@ -1,0 +1,23 @@
+{
+  "id": "hydradoodle-corpus-m680",
+  "description": "M6 corpus — Hydradoodle; in-hand parse.",
+  "seed": 62887,
+  "cards": {
+    "Hydradoodle": "Name:Hydradoodle\nManaCost:X X G G\nTypes:Creature Hydra Dog\nPT:0/0\nK:ETBReplacement:Other:RollCounters\nSVar:X:Count$xPaid\nSVar:RollCounters:DB$ RollDice | Amount$ X | ETB$ True | ResultSVar$ Result | SubAbility$ DBCounters | SpellDescription$ As CARDNAME enters, roll X six-sided dice. CARDNAME enters with a number of +1/+1 counters on it equal to the total of those results.\nSVar:DBCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result | ETB$ True\nK:Reach\nK:Trample\nDeckHas:Ability$Counters\nOracle:As Hydradoodle enters, roll X six-sided dice. Hydradoodle enters with a number of +1/+1 counters on it equal to the total of those results.\\nReach, trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydradoodle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

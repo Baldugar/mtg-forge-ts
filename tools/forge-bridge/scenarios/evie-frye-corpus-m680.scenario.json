@@ -1,0 +1,23 @@
+{
+  "id": "evie-frye-corpus-m680",
+  "description": "M6 corpus — Evie Frye; in-hand parse.",
+  "seed": 62381,
+  "cards": {
+    "Evie Frye": "Name:Evie Frye\nManaCost:1 U\nTypes:Legendary Creature Human Assassin\nPT:2/1\nK:Partner with:Jacob Frye\nA:AB$ Draw | Cost$ 1 T | NumCards$ 1 | SubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | Optional$ True | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBImmediateTrig | StackDescription$ None\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | Execute$ TrigUnblockable | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ When you discard a creature card this way, target creature you control can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Name$Jacob Frye\nOracle:Partner with Jacob Frye (When this creature enters, target player may put Jacob into their hand from their library, then shuffle.)\\n{1}, {T}: Draw a card, then discard a card. When you discard a creature card this way, target creature you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evie Frye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

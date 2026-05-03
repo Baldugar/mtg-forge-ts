@@ -1,0 +1,23 @@
+{
+  "id": "brink-of-madness-corpus-m680",
+  "description": "M6 corpus — Brink of Madness; in-hand parse.",
+  "seed": 61793,
+  "cards": {
+    "Brink of Madness": "Name:Brink of Madness\nManaCost:2 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.YouCtrl | PresentZone$ Hand | PresentCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigSacDiscard | TriggerDescription$ At the beginning of your upkeep, if you have no cards in hand, sacrifice CARDNAME and target opponent discards their hand.\nSVar:TrigSacDiscard:DB$ Sacrifice | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to discard their hand | Mode$ Hand\nSVar:NonStackingEffect:True\nOracle:At the beginning of your upkeep, if you have no cards in hand, sacrifice Brink of Madness and target opponent discards their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brink of Madness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

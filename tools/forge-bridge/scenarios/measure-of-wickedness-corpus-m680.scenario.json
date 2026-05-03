@@ -1,0 +1,23 @@
+{
+  "id": "measure-of-wickedness-corpus-m680",
+  "description": "M6 corpus — Measure of Wickedness; in-hand parse.",
+  "seed": 63372,
+  "cards": {
+    "Measure of Wickedness": "Name:Measure of Wickedness\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, sacrifice CARDNAME and you lose 8 life.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.!token+YouOwn+Other | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever another card is put into your graveyard from anywhere, target opponent gains control of CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nS:Mode$ Continuous | Affected$ Permanent.YouCtrl | AddSVar$ Sac\nAI:RemoveDeck:All\nSVar:Sac:SVar:SacMe:3\nOracle:At the beginning of your end step, sacrifice Measure of Wickedness and you lose 8 life.\\nWhenever another card is put into your graveyard from anywhere, target opponent gains control of Measure of Wickedness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Measure of Wickedness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

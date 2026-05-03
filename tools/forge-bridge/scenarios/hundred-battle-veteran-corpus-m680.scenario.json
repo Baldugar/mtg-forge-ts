@@ -1,0 +1,23 @@
+{
+  "id": "hundred-battle-veteran-corpus-m680",
+  "description": "M6 corpus — Hundred-Battle Veteran; in-hand parse.",
+  "seed": 62874,
+  "cards": {
+    "Hundred-Battle Veteran": "Name:Hundred-Battle Veteran\nManaCost:3 B\nTypes:Creature Zombie Warrior\nPT:4/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 4 | CheckSVar$ X | SVarCompare$ GE3 | Description$ As long as there are three or more different kinds of counters among creatures you control, this creature gets +2/+4.\nS:Mode$ Continuous | Affected$ Card.Self | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlay$ True | Description$ You may cast this card from your graveyard. If you do, it enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.MayPlaySource | Static$ True | Execute$ ReplEffAddCounter | TriggerZones$ Stack | Secondary$ True | TriggerDescription$ You may cast this card from your graveyard. If you do, it enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ FINALITY | CounterNum$ 1\nSVar:X:Count$DifferentCounterKinds_Creature.YouCtrl\nDeckHas:Ability$Graveyard|Counters\nDeckNeeds:Ability$Counters\nOracle:As long as there are three or more different kinds of counters among creatures you control, this creature gets +2/+4.\\nYou may cast this card from your graveyard. If you do, it enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hundred-Battle Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

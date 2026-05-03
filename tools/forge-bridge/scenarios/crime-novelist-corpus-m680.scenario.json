@@ -1,0 +1,23 @@
+{
+  "id": "crime-novelist-corpus-m680",
+  "description": "M6 corpus — Crime Novelist; in-hand parse.",
+  "seed": 62037,
+  "cards": {
+    "Crime Novelist": "Name:Crime Novelist\nManaCost:2 R\nTypes:Creature Goblin Bard\nPT:1/3\nT:Mode$ Sacrificed | ValidCard$ Artifact | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an artifact, put a +1/+1 counter on CARDNAME and add {R}.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBAddMana\nSVar:DBAddMana:DB$ Mana | Produced$ R\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact & Ability$Sacrifice\nOracle:Whenever you sacrifice an artifact, put a +1/+1 counter on Crime Novelist and add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crime Novelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

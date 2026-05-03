@@ -1,0 +1,23 @@
+{
+  "id": "hornbash-mentor-corpus-m680",
+  "description": "M6 corpus — Hornbash Mentor; in-hand parse.",
+  "seed": 62863,
+  "cards": {
+    "Hornbash Mentor": "Name:Hornbash Mentor\nManaCost:2 G\nTypes:Creature Human Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a trample counter on target non-Human creature you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.nonHuman+YouCtrl | TgtPrompt$ Select target non-Human creature you control | CounterType$ Trample | CounterNum$ 1\nA:AB$ PutCounterAll | Cost$ 2 G T | ValidCards$ Creature.YouCtrl+withTrample | CounterType$ P1P1 | CounterNum$ 1 | StackDescription$ SpellDescription | SpellDescription$ Put a +1/+1 counter on each creature you control with trample.\nDeckHas:Ability$Counters\nOracle:When Hornbash Mentor enters, put a trample counter on target non-Human creature you control.\\n{2}{G}, {T}: Put a +1/+1 counter on each creature you control with trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hornbash Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

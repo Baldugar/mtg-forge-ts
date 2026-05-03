@@ -1,0 +1,23 @@
+{
+  "id": "aven-surveyor-corpus-m680",
+  "description": "M6 corpus — Aven Surveyor; in-hand parse.",
+  "seed": 61616,
+  "cards": {
+    "Aven Surveyor": "Name:Aven Surveyor\nManaCost:3 U U\nTypes:Creature Bird Scout\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBChangeZone\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Aven Surveyor enters, choose one —\\n• Put a +1/+1 counter on Aven Surveyor.\\n• Return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Surveyor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

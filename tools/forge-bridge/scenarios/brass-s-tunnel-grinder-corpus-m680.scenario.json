@@ -1,0 +1,23 @@
+{
+  "id": "brass-s-tunnel-grinder-corpus-m680",
+  "description": "M6 corpus — Brass's Tunnel-Grinder; in-hand parse.",
+  "seed": 61774,
+  "cards": {
+    "Brass's Tunnel-Grinder": "Name:Brass's Tunnel-Grinder\nManaCost:2 R\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard any number of cards, then draw that many cards plus one.\nSVar:TrigDiscard:DB$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Remembered$Amount/Plus.1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You.descended | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you descended this turn, put a bore counter on CARDNAME. Then if there are three or more bore counters on it, remove those counters and transform it. (You descended if a permanent card was put into your graveyard from anywhere.)\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ BORE | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Count$CardCounters.BORE | BranchConditionSVarCompare$ GE3 | TrueSubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | CounterType$ BORE | CounterNum$ All | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When Brass's Tunnel-Grinder enters, discard any number of cards, then draw that many cards plus one.\\nAt the beginning of your end step, if you descended this turn, put a bore counter on Brass's Tunnel-Grinder. Then if there are three or more bore counters on it, remove those counters and transform it. (You descended if a permanent card was put into your graveyard from anywhere.)\n\nALTERNATE\n\nName:Tecutlan, the Searing Rift\nManaCost:no cost\nTypes:Legendary Land Cave\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nT:Mode$ SpellCast | ValidCard$ Permanent | ValidSA$ Spell.ManaFromCard.StrictlySelf | ValidActivatingPlayer$ You | Execute$ TrigDiscover | TriggerDescription$ Whenever you cast a permanent spell using mana produced by CARDNAME, discover X, where X is that spell's mana value.\nSVar:TrigDiscover:DB$ Discover | Num$ TriggeredSpellAbility$CardManaCostLKI\nOracle:(Transforms from Brass's Tunnel-Grinder.)\\n{T}: Add {R}.\\nWhenever you cast a permanent spell using mana produced by Tecutlan, the Searing Rift, discover X, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brass's Tunnel-Grinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

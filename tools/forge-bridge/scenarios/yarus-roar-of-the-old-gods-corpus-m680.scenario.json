@@ -1,0 +1,23 @@
+{
+  "id": "yarus-roar-of-the-old-gods-corpus-m680",
+  "description": "M6 corpus — Yarus, Roar of the Old Gods; in-hand parse.",
+  "seed": 65106,
+  "cards": {
+    "Yarus, Roar of the Old Gods": "Name:Yarus, Roar of the Old Gods\nManaCost:2 R G\nTypes:Legendary Creature Centaur Druid\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+Other | AddKeyword$ Haste | Description$ Other creatures you control have haste.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.faceDown+YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever one or more face-down creatures you control deal combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.faceDown+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a face-down creature you control dies, return it to the battlefield face down under its owner's control if it's a permanent card, then turn it face up.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | FaceDown$ True | RememberChanged$ True | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBTurnFaceUp | ConditionDefined$ TriggeredCard | ConditionPresent$ Card.Permanent\nSVar:DBTurnFaceUp:DB$ SetState | Defined$ Remembered | Mode$ TurnFaceUp | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Keyword$Morph|Disguise\nOracle:Other creatures you control have haste.\\nWhenever one or more face-down creatures you control deal combat damage to a player, draw a card.\\nWhenever a face-down creature you control dies, return it to the battlefield face down under its owner's control if it's a permanent card, then turn it face up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yarus, Roar of the Old Gods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

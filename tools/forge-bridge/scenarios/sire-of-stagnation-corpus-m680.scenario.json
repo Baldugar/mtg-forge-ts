@@ -1,0 +1,23 @@
+{
+  "id": "sire-of-stagnation-corpus-m680",
+  "description": "M6 corpus — Sire of Stagnation; in-hand parse.",
+  "seed": 64293,
+  "cards": {
+    "Sire of Stagnation": "Name:Sire of Stagnation\nManaCost:4 U B\nTypes:Creature Eldrazi\nPT:5/7\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a land enters under an opponent's control, that player exiles the top two cards of their library and you draw two cards.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredCardController | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nOracle:Devoid (This card has no color.)\\nWhenever a land enters under an opponent's control, that player exiles the top two cards of their library and you draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sire of Stagnation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

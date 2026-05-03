@@ -283,19 +283,13 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // in-hand instead). The hasComplexMechanic / hasOffspring / hasFlash+
     // SetState families are soft-skip: the parser handles them, only the
     // ETB resolution diverges.
+    // Hard-skip = parser/loader cannot handle the card script at all.
+    // Soft-skip (in-hand-only) = parser handles it but ETB/cast diverges.
     const skip =
       hasAltCostInManaCost ||
-      usesUnsupportedCount ||
-      hasPutCounterInTrigger ||
-      usesUnsubscribedEvent ||
-      hasEtbTriggerWithTargetedPlayer ||
-      hasImmediateTrigger ||
-      triggerExecutesActivated ||
       usesAvatarMechanics ||
       hasAnyAsNumber ||
-      hasExoticToken ||
-      usesUnsupportedSVar ||
-      addsConditionalTrigger;
+      hasExoticToken;
     if (skip) continue;
     const inHandOnly =
       isAura ||
@@ -309,7 +303,15 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       usesNicheEffect ||
       usesChoosePlayer ||
       hasComplexMechanic ||
-      hasOffspring;
+      hasOffspring ||
+      usesUnsupportedCount ||
+      hasPutCounterInTrigger ||
+      usesUnsubscribedEvent ||
+      hasEtbTriggerWithTargetedPlayer ||
+      hasImmediateTrigger ||
+      triggerExecutesActivated ||
+      usesUnsupportedSVar ||
+      addsConditionalTrigger;
     uncovered.push({ name: nm, script: txt, types: typesLine, inHandOnly });
     if (uncovered.length >= count) break outer;
   }

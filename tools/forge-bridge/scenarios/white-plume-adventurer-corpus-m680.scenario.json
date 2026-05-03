@@ -1,0 +1,23 @@
+{
+  "id": "white-plume-adventurer-corpus-m680",
+  "description": "M6 corpus — White Plume Adventurer; in-hand parse.",
+  "seed": 65035,
+  "cards": {
+    "White Plume Adventurer": "Name:White Plume Adventurer\nManaCost:2 W\nTypes:Creature Orc Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of each opponent's upkeep, untap a creature you control. If you've completed a dungeon, untap all creatures you control instead.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBUntapAll | FalseSubAbility$ DBUntap\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nSVar:DBUntap:DB$ Untap | UntapExactly$ True | UntapType$ Creature.YouCtrl | Amount$ 1\nSVar:X:DungeonsCompleted$Amount\nOracle:When White Plume Adventurer enters battlefield, you take the initiative.\\nAt the beginning of each opponent's upkeep, untap a creature you control. If you've completed a dungeon, untap all creatures you control instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Plume Adventurer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

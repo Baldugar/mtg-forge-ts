@@ -1,0 +1,23 @@
+{
+  "id": "a-queza-augur-of-agonies-corpus-m680",
+  "description": "M6 corpus — A-Queza, Augur of Agonies; in-hand parse.",
+  "seed": 64089,
+  "cards": {
+    "A-Queza, Augur of Agonies": "Name:A-Queza, Augur of Agonies\nManaCost:1 W U B\nTypes:Legendary Creature Octopus Advisor\nPT:3/4\nK:Vigilance\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you draw a card, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Vigilance\\nWhenever you draw a card, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Queza, Augur of Agonies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

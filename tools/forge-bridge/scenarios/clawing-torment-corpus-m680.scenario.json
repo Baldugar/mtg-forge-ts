@@ -1,0 +1,23 @@
+{
+  "id": "clawing-torment-corpus-m680",
+  "description": "M6 corpus — Clawing Torment; in-hand parse.",
+  "seed": 61932,
+  "cards": {
+    "Clawing Torment": "Name:Clawing Torment\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature,Artifact:artifact or creature\nSVar:AttachAITgts:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -1 | AddToughness$ -1 | Description$ As long as enchanted permanent is a creature, it gets -1/-1 and can't block.\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ As long as enchanted permanent is a creature, it gets -1/-1 and can't block.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddTrigger$ TriggerTorment | AddSVar$ TrigLoseLife | Description$ Enchanted permanent has \"At the beginning of your upkeep, you lose 1 life.\"\nSVar:TriggerTorment:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:Enchant artifact or creature\\nAs long as enchanted permanent is a creature, it gets -1/-1 and can't block.\\nEnchanted permanent has \"At the beginning of your upkeep, you lose 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clawing Torment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

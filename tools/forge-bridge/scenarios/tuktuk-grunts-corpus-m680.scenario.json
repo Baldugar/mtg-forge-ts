@@ -1,0 +1,23 @@
+{
+  "id": "tuktuk-grunts-corpus-m680",
+  "description": "M6 corpus — Tuktuk Grunts; in-hand parse.",
+  "seed": 64814,
+  "cards": {
+    "Tuktuk Grunts": "Name:Tuktuk Grunts\nManaCost:4 R\nTypes:Creature Goblin Warrior Ally\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Haste\\nWhenever Tuktuk Grunts or another Ally you control enters, you may put a +1/+1 counter on Tuktuk Grunts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tuktuk Grunts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ashad-the-lone-cyberman-corpus-m680",
+  "description": "M6 corpus — Ashad, the Lone Cyberman; in-hand parse.",
+  "seed": 61583,
+  "cards": {
+    "Ashad, the Lone Cyberman": "Name:Ashad, the Lone Cyberman\nManaCost:1 U B R\nTypes:Legendary Artifact Creature Cyberman\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Artifact+nonLegendary+YouCtrl | AffectedZone$ Stack | CheckSVar$ X | SVarCompare$ EQ0 | AddKeyword$ Casualty:2 | Description$ The first nonlegendary artifact spell you cast each turn has casualty 2. (As you cast it, you may sacrifice a creature with power 2 or greater. When you do, copy it. A copy of an artifact spell becomes a token.)\nSVar:X:Count$ThisTurnCast_Artifact.nonLegendary+YouCtrl\nT:Mode$ Sacrificed | ValidCard$ Creature.Other | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice another creature, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:AIDontSacToCasualty:TRUE\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact\nOracle:The first nonlegendary artifact spell you cast each turn has casualty 2. (As you cast it, you may sacrifice a creature with power 2 or greater. When you do, copy it. A copy of an artifact spell becomes a token.)\\nWhenever you sacrifice another creature, put a +1/+1 counter on Ashad, the Lone Cyberman.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashad, the Lone Cyberman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

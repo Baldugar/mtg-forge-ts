@@ -1,0 +1,23 @@
+{
+  "id": "battlemage-s-bracers-corpus-m680",
+  "description": "M6 corpus — Battlemage's Bracers; in-hand parse.",
+  "seed": 61658,
+  "cards": {
+    "Battlemage's Bracers": "Name:Battlemage's Bracers\nManaCost:2 R\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste | Description$ Equipped creature has haste.\nT:Mode$ AbilityCast | ValidCard$ Creature.EquippedBy+inRealZoneBattlefield | ValidSA$ SpellAbility.!ManaAbility | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigCopyAbility | TriggerDescription$ Whenever an ability of equipped creature is activated, if it isn't a mana ability, you may pay {1}. If you do, copy that ability. You may choose new targets for the copy.\nSVar:TrigCopyAbility:AB$ CopySpellAbility | Cost$ 1 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Equipped creature has haste.\\nWhenever an ability of equipped creature is activated, if it isn't a mana ability, you may pay {1}. If you do, copy that ability. You may choose new targets for the copy.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battlemage's Bracers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nils-discipline-enforcer-corpus-m680",
+  "description": "M6 corpus — Nils, Discipline Enforcer; in-hand parse.",
+  "seed": 63561,
+  "cards": {
+    "Nils, Discipline Enforcer": "Name:Nils, Discipline Enforcer\nManaCost:2 W\nTypes:Legendary Creature Human Cleric\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ PutCounterOneEach | TriggerDescription$ At the beginning of your end step, for each player, put a +1/+1 counter on up to one target creature that player controls.\nSVar:PutCounterOneEach:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature each player controls. | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True\nS:Mode$ CantAttackUnless | ValidCard$ Creature.HasCounters | Target$ You,Planeswalker.YouCtrl | Cost$ X | RememberingAttacker$ True | Description$ Each creature with one or more counters on it can't attack you or planeswalkers you control unless its controller pays {X}, where X is the number of counters on that creature.\nSVar:OneEach:PlayerCountPlayers$Amount\nSVar:X:Remembered$CardCounters.ALL\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, for each player, put a +1/+1 counter on up to one target creature that player controls.\\nEach creature with one or more counters on it can't attack you or planeswalkers you control unless its controller pays {X}, where X is the number of counters on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nils, Discipline Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

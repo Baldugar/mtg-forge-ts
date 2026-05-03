@@ -1,0 +1,23 @@
+{
+  "id": "overmaster-corpus-m680",
+  "description": "M6 corpus — Overmaster; in-hand parse.",
+  "seed": 63673,
+  "cards": {
+    "Overmaster": "Name:Overmaster\nManaCost:R\nTypes:Sorcery\nA:SP$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ DBEffect | ThisTurn$ True | Static$ True | SubAbility$ DBDraw | SpellDescription$ The next instant or sorcery spell you cast this turn can't be countered.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ AntiMagic | RememberObjects$ TriggeredCard | ForgetOnMoved$ Stack\nSVar:AntiMagic:Event$ Counter | ValidCard$ Card.IsRemembered | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:The next instant or sorcery spell you cast this turn can't be countered.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

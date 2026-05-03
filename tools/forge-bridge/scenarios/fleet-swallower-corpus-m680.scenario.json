@@ -1,0 +1,23 @@
+{
+  "id": "fleet-swallower-corpus-m680",
+  "description": "M6 corpus — Fleet Swallower; in-hand parse.",
+  "seed": 62516,
+  "cards": {
+    "Fleet Swallower": "Name:Fleet Swallower\nManaCost:5 U U\nTypes:Creature Fish\nPT:6/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, target player mills half their library, rounded up.\nSVar:TrigMill:DB$ Mill | NumCards$ X | ValidTgts$ Player | TgtPrompt$ Select target player\nSVar:X:TargetedPlayer$CardsInLibrary/HalfUp\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Fleet Swallower attacks, target player mills half their library, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleet Swallower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "canopy-gargantuan-corpus-m680",
+  "description": "M6 corpus — Canopy Gargantuan; in-hand parse.",
+  "seed": 61846,
+  "cards": {
+    "Canopy Gargantuan": "Name:Canopy Gargantuan\nManaCost:5 G G\nTypes:Creature Dragon\nPT:7/7\nK:Flying\nK:Ward:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a number of +1/+1 counters on each other creature you control equal to that creature's toughness.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Valid Creature.YouCtrl+Other | CounterType$ P1P1 | CounterNumPerDefined$ X\nSVar:X:Count$CardToughness\nDeckHas:Ability$Counters\nOracle:Flying, ward {2}\\nAt the beginning of your upkeep, put a number of +1/+1 counters on each other creature you control equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canopy Gargantuan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

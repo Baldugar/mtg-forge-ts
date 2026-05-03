@@ -1,0 +1,23 @@
+{
+  "id": "primal-amulet-corpus-m680",
+  "description": "M6 corpus — Primal Amulet; in-hand parse.",
+  "seed": 63798,
+  "cards": {
+    "Primal Amulet": "Name:Primal Amulet\nManaCost:4\nTypes:Artifact\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Instant and sorcery spells you cast cost {1} less to cast.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharge | TriggerDescription$ Whenever you cast an instant or sorcery spell, put a charge counter on CARDNAME. Then if there are four or more charge counters on it, you may remove those counters and transform it.\nSVar:TrigCharge:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ FullyCharged | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ All | Optional$ True | RememberAmount$ True | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionCheckSVar$ Discharged | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:FullyCharged:Count$Valid Card.Self+counters_GE4_CHARGE\nSVar:Discharged:Count$RememberedSize\nAlternateMode:DoubleFaced\nOracle:Instant and sorcery spells you cast cost {1} less to cast.\\nWhenever you cast an instant or sorcery spell, put a charge counter on Primal Amulet. Then if there are four or more charge counters on it, you may remove those counters and transform it.\n\nALTERNATE\n\nName:Primal Wellspring\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | TriggersWhenSpent$ TrigCopy | SpellDescription$ Add one mana of any color. When that mana is spent to cast an instant or sorcery spell, copy that spell and you may choose new targets for the copy.\nSVar:TrigCopy:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigCopyMain | TriggerDescription$ When that mana is spent to cast an instant or sorcery spell, copy that spell and you may choose new targets for the copy.\nSVar:TrigCopyMain:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:(Transforms from Primal Amulet.)\\n{T}: Add one mana of any color. When that mana is spent to cast an instant or sorcery spell, copy that spell and you may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "snowfall-corpus-m680",
+  "description": "M6 corpus — Snowfall; in-hand parse.",
+  "seed": 64348,
+  "cards": {
+    "Snowfall": "Name:Snowfall\nManaCost:2 U\nTypes:Enchantment\nK:Cumulative upkeep:U\nT:Mode$ TapsForMana | ValidCard$ Island | Execute$ TrigMana | Static$ True | TriggerZones$ Battlefield | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever an Island is tapped for mana, its controller may add an additional {U}. If that Island is snow, its controller may add an additional {U}{U} instead. Spend this mana only to pay cumulative upkeep costs.\nSVar:TrigMana:DB$ Mana | Produced$ U | Amount$ 1 | Defined$ TriggeredCardController | RestrictValid$ CumulativeUpkeep | ConditionDefined$ TriggeredCard | ConditionPresent$ Land.Snow | ConditionCompare$ EQ0 | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ U | Amount$ 2 | Defined$ TriggeredCardController | RestrictValid$ CumulativeUpkeep | ConditionDefined$ TriggeredCard | ConditionPresent$ Land.Snow | ConditionCompare$ GE1\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {U} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhenever an Island is tapped for mana, its controller may add an additional {U}. If that Island is snow, its controller may add an additional {U}{U} instead. Spend this mana only to pay cumulative upkeep costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snowfall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "defiant-bloodlord-corpus-m680",
+  "description": "M6 corpus — Defiant Bloodlord; in-hand parse.",
+  "seed": 62138,
+  "cards": {
+    "Defiant Bloodlord": "Name:Defiant Bloodlord\nManaCost:5 B B\nTypes:Creature Vampire\nPT:4/5\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you gain life, target opponent loses that much life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount\nDeckHints:Ability$LifeGain\nOracle:Flying\\nWhenever you gain life, target opponent loses that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiant Bloodlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

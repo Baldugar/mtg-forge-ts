@@ -1,0 +1,23 @@
+{
+  "id": "flourishing-strike-corpus-m680",
+  "description": "M6 corpus — Flourishing Strike; in-hand parse.",
+  "seed": 62521,
+  "cards": {
+    "Flourishing Strike": "Name:Flourishing Strike\nManaCost:1 G\nTypes:Instant\nK:Entwine:2 G\nA:SP$ Charm | Choices$ DBDealDamage,DBPump\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 5 | SpellDescription$ CARDNAME deals 5 damage to target creature with flying.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | AILogic$ Pump | SpellDescription$ Target creature gets +3/+3 until end of turn.\nOracle:Choose one —\\n• Flourishing Strike deals 5 damage to target creature with flying.\\n• Target creature gets +3/+3 until end of turn.\\nEntwine {2}{G} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flourishing Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

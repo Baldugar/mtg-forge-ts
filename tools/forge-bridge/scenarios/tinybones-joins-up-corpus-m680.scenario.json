@@ -1,0 +1,23 @@
+{
+  "id": "tinybones-joins-up-corpus-m680",
+  "description": "M6 corpus — Tinybones Joins Up; in-hand parse.",
+  "seed": 64755,
+  "cards": {
+    "Tinybones Joins Up": "Name:Tinybones Joins Up\nManaCost:B\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, any number of target players each discard a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Legendary | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever a legendary creature you control enters, any number of target players each mill a card and lose 1 life.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ Targeted\nSVar:MaxTgt:PlayerCountPlayers$Amount\nDeckHas:Ability$Discard|Mill\nOracle:When Tinybones Joins Up enters, any number of target players each discard a card.\\nWhenever a legendary creature you control enters, any number of target players each mill a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinybones Joins Up"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

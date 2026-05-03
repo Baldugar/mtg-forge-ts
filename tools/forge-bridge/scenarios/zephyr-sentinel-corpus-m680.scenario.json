@@ -1,0 +1,23 @@
+{
+  "id": "zephyr-sentinel-corpus-m680",
+  "description": "M6 corpus — Zephyr Sentinel; in-hand parse.",
+  "seed": 65125,
+  "cards": {
+    "Zephyr Sentinel": "Name:Zephyr Sentinel\nManaCost:1 U\nTypes:Creature Human Soldier\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one other target creature you control to its owner's hand. If it was a Soldier, put a +1/+1 counter on CARDNAME.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Choose up to one other target creature you control to return to your hand | ValidTgts$ Creature.YouCtrl+Other | TargetMin$ 0 | TargetMax$ 1 | RememberLKI$ True | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | ConditionDefined$ RememberedLKI | ConditionPresent$ Soldier | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nDeckHints:Type$Soldier\nOracle:Flash\\nFlying\\nWhen Zephyr Sentinel enters, return up to one other target creature you control to its owner's hand. If it was a Soldier, put a +1/+1 counter on Zephyr Sentinel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zephyr Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

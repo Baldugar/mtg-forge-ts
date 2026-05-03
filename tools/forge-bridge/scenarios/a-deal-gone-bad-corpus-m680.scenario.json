@@ -1,0 +1,23 @@
+{
+  "id": "a-deal-gone-bad-corpus-m680",
+  "description": "M6 corpus — A-Deal Gone Bad; in-hand parse.",
+  "seed": 64072,
+  "cards": {
+    "A-Deal Gone Bad": "Name:A-Deal Gone Bad\nManaCost:3 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | SubAbility$ DBMill | IsCurse$ True | SpellDescription$ Target creature gets -3/-3 until end of turn.\nSVar:DBMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player | SubAbility$ DBGainLife | SpellDescription$ Target player mills three cards.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$Mill|LifeGain\nOracle:Target creature gets -3/-3 until end of turn. Target player mills three cards. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Deal Gone Bad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

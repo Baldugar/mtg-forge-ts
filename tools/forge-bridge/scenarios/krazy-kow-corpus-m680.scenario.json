@@ -1,0 +1,23 @@
+{
+  "id": "krazy-kow-corpus-m680",
+  "description": "M6 corpus — Krazy Kow; in-hand parse.",
+  "seed": 63153,
+  "cards": {
+    "Krazy Kow": "Name:Krazy Kow\nManaCost:3 R\nTypes:Creature Cow\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ At the beginning of your upkeep, roll a six-sided die. If you a roll a 1, sacrifice CARDNAME and it deals 3 damage to each creature and each player.\nSVar:TrigRoll:DB$ RollDice | ResultSubAbilities$ 1:DBSac\nSVar:DBSac:DB$ Sacrifice | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 3\nOracle:At the beginning of your upkeep, roll a six-sided die. If you a roll a 1, sacrifice Krazy Kow and it deals 3 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krazy Kow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

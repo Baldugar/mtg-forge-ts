@@ -1,0 +1,23 @@
+{
+  "id": "beifong-s-bounty-hunters-corpus-m680",
+  "description": "M6 corpus — Beifong's Bounty Hunters; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Beifong's Bounty Hunters": "Name:Beifong's Bounty Hunters\nManaCost:2 B G\nTypes:Creature Human Mercenary\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.nonLand+YouCtrl | Execute$ TrigEarthbend | TriggerDescription$ Whenever a nonland creature you control dies, earthbend X, where X is that creature's power. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ X\nSVar:X:TriggeredCard$CardPower\nOracle:Whenever a nonland creature you control dies, earthbend X, where X is that creature's power. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beifong's Bounty Hunters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

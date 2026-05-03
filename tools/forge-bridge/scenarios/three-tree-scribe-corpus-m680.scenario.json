@@ -1,0 +1,23 @@
+{
+  "id": "three-tree-scribe-corpus-m680",
+  "description": "M6 corpus — Three Tree Scribe; in-hand parse.",
+  "seed": 64727,
+  "cards": {
+    "Three Tree Scribe": "Name:Three Tree Scribe\nManaCost:1 G\nTypes:Creature Frog Druid\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Ante,Command,Exile,Hand,Library | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another creature you control leaves the battlefield without dying, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever Three Tree Scribe or another creature you control leaves the battlefield without dying, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Three Tree Scribe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

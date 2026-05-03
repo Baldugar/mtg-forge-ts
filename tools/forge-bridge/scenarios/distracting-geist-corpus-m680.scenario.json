@@ -1,0 +1,23 @@
+{
+  "id": "distracting-geist-corpus-m680",
+  "description": "M6 corpus — Distracting Geist; in-hand parse.",
+  "seed": 62191,
+  "cards": {
+    "Distracting Geist": "Name:Distracting Geist\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nSVar:HasAttackEffect:TRUE\nK:Disturb:4 W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Whenever Distracting Geist attacks, tap target creature defending player controls.\\nDisturb {4}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Clever Distraction\nManaCost:no cost\nColors:white\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ AttackTrigger | AddSVar$ AE | Description$ Enchanted creature has \"Whenever this creature attacks, tap target creature defending player controls.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nSVar:AE:SVar:HasAttackEffect:TRUE\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, tap target creature defending player controls.\" If Clever Distraction would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Distracting Geist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "throw-from-the-saddle-corpus-m680",
+  "description": "M6 corpus — Throw from the Saddle; in-hand parse.",
+  "seed": 64730,
+  "cards": {
+    "Throw from the Saddle": "Name:Throw from the Saddle\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | ConditionDefined$ ThisTargetedCard | ConditionPresent$ Card.!Mount | NumAtt$ +1 | NumDef$ +1 | AILogic$ PowerDmg | SubAbility$ DBPutCounter | StackDescription$ SpellDescription | SpellDescription$ Target creature you control gets +1/+1 until end of turn. Put a +1/+1 counter on it instead if it's a Mount. Then it deals damage equal to its power to target creature you don't control.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ ParentTarget | ConditionDefined$ ParentTarget | ConditionPresent$ Card.Mount | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDealDamage | StackDescription$ None\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumDmg$ ParentTargeted$CardPower | DamageSource$ ParentTarget | StackDescription$ None\nDeckHas:Ability$Counters\nDeckHints:Type$Mount\nOracle:Target creature you control gets +1/+1 until end of turn. Put a +1/+1 counter on it instead if it's a Mount. Then it deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throw from the Saddle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

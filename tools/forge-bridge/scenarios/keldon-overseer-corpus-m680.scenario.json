@@ -1,0 +1,23 @@
+{
+  "id": "keldon-overseer-corpus-m680",
+  "description": "M6 corpus — Keldon Overseer; in-hand parse.",
+  "seed": 63104,
+  "cards": {
+    "Keldon Overseer": "Name:Keldon Overseer\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:3/1\nK:Kicker:3 R\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:TrigKicker:DB$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Gain control of target creature until end of turn, untap that creature, and it gains haste until end of turn.\nSVar:NeedsToPlayKicked:Creature.OppCtrl\nOracle:Kicker {3}{R} (You may pay an additional {3}{R} as you cast this spell.)\\nHaste\\nWhen Keldon Overseer enters, if it was kicked, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Overseer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

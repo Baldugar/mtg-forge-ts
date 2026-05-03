@@ -1,0 +1,23 @@
+{
+  "id": "thassa-s-devourer-corpus-m680",
+  "description": "M6 corpus — Thassa's Devourer; in-hand parse.",
+  "seed": 64635,
+  "cards": {
+    "Thassa's Devourer": "Name:Thassa's Devourer\nManaCost:4 U\nTypes:Enchantment Creature Elemental\nPT:2/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigMill | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, target player mills two cards.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | NumCards$ 2\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Thassa's Devourer or another enchantment you control enters, target player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thassa's Devourer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

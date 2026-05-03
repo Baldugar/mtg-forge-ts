@@ -1,0 +1,23 @@
+{
+  "id": "scythe-of-the-wretched-corpus-m680",
+  "description": "M6 corpus — Scythe of the Wretched; in-hand parse.",
+  "seed": 64169,
+  "cards": {
+    "Scythe of the Wretched": "Name:Scythe of the Wretched\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy Equipped | TriggerZones$ Battlefield | Execute$ ScytheReturn | TriggerDescription$ Whenever a creature dealt damage by equipped creature this turn dies, return that card to the battlefield under your control. Attach CARDNAME to that creature.\nSVar:ScytheReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredCard | RememberChanged$ True | SubAbility$ ScytheAttach\nSVar:ScytheAttach:DB$ Attach | Defined$ Remembered | SubAbility$ WretchedCleanup\nSVar:WretchedCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Equipped creature gets +2/+2.\\nWhenever a creature dealt damage by equipped creature this turn dies, return that card to the battlefield under your control. Attach Scythe of the Wretched to that creature.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scythe of the Wretched"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "decomposition-corpus-m680",
+  "description": "M6 corpus — Decomposition; in-hand parse.",
+  "seed": 62128,
+  "cards": {
+    "Decomposition": "Name:Decomposition\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature.Black:black creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Cumulative upkeep:PayLife<1>:Pay 1 life. | Description$ Enchanted creature has \"Cumulative upkeep—Pay 1 life.\" (At the beginning of its controller's upkeep, that player puts an age counter on it, then sacrifices it unless they pay its upkeep cost for each age counter on it.)\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLose | TriggerDescription$ When enchanted creature dies, its controller loses 2 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2\nAI:RemoveDeck:Random\nOracle:Enchant black creature\\nEnchanted creature has \"Cumulative upkeep—Pay 1 life.\" (At the beginning of its controller's upkeep, that player puts an age counter on it, then sacrifices it unless they pay its upkeep cost for each age counter on it.)\\nWhen enchanted creature dies, its controller loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decomposition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

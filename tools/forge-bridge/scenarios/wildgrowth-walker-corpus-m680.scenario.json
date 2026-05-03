@@ -1,0 +1,23 @@
+{
+  "id": "wildgrowth-walker-corpus-m680",
+  "description": "M6 corpus — Wildgrowth Walker; in-hand parse.",
+  "seed": 65048,
+  "cards": {
+    "Wildgrowth Walker": "Name:Wildgrowth Walker\nManaCost:1 G\nTypes:Creature Elemental\nPT:1/3\nT:Mode$ Explores | Execute$ DBPutCounter | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control explores, put a +1/+1 counter on CARDNAME and you gain 3 life.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nSVar:AIPriorityModifier:1\nOracle:Whenever a creature you control explores, put a +1/+1 counter on Wildgrowth Walker and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildgrowth Walker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bloodcrazed-neonate-corpus-m680",
+  "description": "M6 corpus — Bloodcrazed Neonate; in-hand parse.",
+  "seed": 61724,
+  "cards": {
+    "Bloodcrazed Neonate": "Name:Bloodcrazed Neonate\nManaCost:1 R\nTypes:Creature Vampire\nPT:2/1\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Bloodcrazed Neonate attacks each combat if able.\\nWhenever Bloodcrazed Neonate deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodcrazed Neonate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

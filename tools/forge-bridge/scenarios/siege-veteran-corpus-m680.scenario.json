@@ -1,0 +1,23 @@
+{
+  "id": "siege-veteran-corpus-m680",
+  "description": "M6 corpus — Siege Veteran; in-hand parse.",
+  "seed": 64271,
+  "cards": {
+    "Siege Veteran": "Name:Siege Veteran\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Soldier.Other+!token+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever another nontoken Soldier you control dies, create a 1/1 colorless Soldier artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_soldier\nDeckHints:Type$Soldier\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.\\nWhenever another nontoken Soldier you control dies, create a 1/1 colorless Soldier artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siege Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

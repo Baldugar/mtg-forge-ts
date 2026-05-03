@@ -1,0 +1,23 @@
+{
+  "id": "sephiroth-planet-s-heir-corpus-m680",
+  "description": "M6 corpus — Sephiroth, Planet's Heir; in-hand parse.",
+  "seed": 64209,
+  "cards": {
+    "Sephiroth, Planet's Heir": "Name:Sephiroth, Planet's Heir\nManaCost:4 U B\nTypes:Legendary Creature Human Avatar Soldier\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When NICKNAME enters, creatures your opponents control get -2/-2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.OppCtrl | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls dies, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhen Sephiroth enters, creatures your opponents control get -2/-2 until end of turn.\\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Sephiroth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sephiroth, Planet's Heir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

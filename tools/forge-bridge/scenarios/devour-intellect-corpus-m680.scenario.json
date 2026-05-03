@@ -1,0 +1,23 @@
+{
+  "id": "devour-intellect-corpus-m680",
+  "description": "M6 corpus — Devour Intellect; in-hand parse.",
+  "seed": 62160,
+  "cards": {
+    "Devour Intellect": "Name:Devour Intellect\nManaCost:B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ DBBranch | SpellDescription$ Target opponent discards a card. If mana from a Treasure was spent to cast this spell, instead that player reveals their hand, you choose a nonland card from it, then that player discards that card.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ TreasureCheck | BranchConditionSVarCompare$ GE1 | FalseSubAbility$ DBDiscard | TrueSubAbility$ DBTreasureDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ TgtChoose\nSVar:DBTreasureDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ RevealYouChoose | DiscardValid$ Card.nonLand\nSVar:TreasureCheck:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nOracle:Target opponent discards a card. If mana from a Treasure was spent to cast this spell, instead that player reveals their hand, you choose a nonland card from it, then that player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devour Intellect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

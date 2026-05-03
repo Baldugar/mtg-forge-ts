@@ -1,0 +1,23 @@
+{
+  "id": "vivien-s-invocation-corpus-m680",
+  "description": "M6 corpus — Vivien's Invocation; in-hand parse.",
+  "seed": 64964,
+  "cards": {
+    "Vivien's Invocation": "Name:Vivien's Invocation\nManaCost:5 G G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 7 | ChangeNum$ 1 | ChangeValid$ Creature | Optional$ True | RestRandomOrder$ True | DestinationZone$ Battlefield | ForceRevealToController$ True | RememberChanged$ True | SubAbility$ DBTrig | SpellDescription$ Look at the top seven cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When a creature is put onto the battlefield this way, it deals damage equal to its power to target creature an opponent controls.\nSVar:DBTrig:DB$ ImmediateTrigger | RememberObjects$ Remembered | Execute$ DBDealDamage | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup | TriggerDescription$ When a creature is put onto the battlefield this way, it deals damage equals to its power to target creature an opponent controls.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardPower\nOracle:Look at the top seven cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When a creature is put onto the battlefield this way, it deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivien's Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

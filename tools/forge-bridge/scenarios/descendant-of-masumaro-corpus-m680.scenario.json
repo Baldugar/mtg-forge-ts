@@ -1,0 +1,23 @@
+{
+  "id": "descendant-of-masumaro-corpus-m680",
+  "description": "M6 corpus — Descendant of Masumaro; in-hand parse.",
+  "seed": 62152,
+  "cards": {
+    "Descendant of Masumaro": "Name:Descendant of Masumaro\nManaCost:2 G\nTypes:Creature Human Monk\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on CARDNAME for each card in your hand, then remove a +1/+1 counter from CARDNAME for each card in target opponent's hand.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ SelectOpponent\nSVar:SelectOpponent:DB$ Pump | ValidTgts$ Opponent | SubAbility$ TrigRemoveCounter\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Y\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:TargetedPlayer$CardsInHand\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, put a +1/+1 counter on Descendant of Masumaro for each card in your hand, then remove a +1/+1 counter from Descendant of Masumaro for each card in target opponent's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Descendant of Masumaro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

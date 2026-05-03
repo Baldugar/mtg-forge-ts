@@ -1,0 +1,23 @@
+{
+  "id": "dennick-pious-apprentice-corpus-m680",
+  "description": "M6 corpus — Dennick, Pious Apprentice; in-hand parse.",
+  "seed": 62148,
+  "cards": {
+    "Dennick, Pious Apprentice": "Name:Dennick, Pious Apprentice\nManaCost:W U\nTypes:Legendary Creature Human Soldier\nPT:2/3\nK:Lifelink\nS:Mode$ CantTarget | AffectedZone$ Graveyard | Description$ Cards in graveyards can't be the targets of spells or abilities.\nK:Disturb:2 W U\nDeckHas:Ability$LifeGain|Graveyard|Token|Sacrifice\nAlternateMode:DoubleFaced\nOracle:Lifelink\\nCards in graveyards can't be the targets of spells or abilities.\\nDisturb {2}{W}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Dennick, Pious Apparition\nManaCost:no cost\nColors:white,blue\nTypes:Legendary Creature Spirit Soldier\nPT:3/2\nK:Flying\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigInvestigate | TriggerDescription$ Whenever one or more creature cards are put into graveyards from anywhere, investigate. This ability triggers only once each turn. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nWhenever one or more creature cards are put into graveyards from anywhere, investigate. This ability triggers only once each turn. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nIf Dennick, Pious Apparition would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dennick, Pious Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "acquisitions-expert-corpus-m680",
+  "description": "M6 corpus — Acquisitions Expert; in-hand parse.",
+  "seed": 61440,
+  "cards": {
+    "Acquisitions Expert": "Name:Acquisitions Expert\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDiscard | TriggerDescription$ When CARDNAME enters, target opponent reveals a number of cards from their hand equal to the number of creatures in your party. You choose one of those cards. That player discards that card.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | RevealNumber$ X | Mode$ RevealYouChoose\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:When Acquisitions Expert enters, target opponent reveals a number of cards from their hand equal to the number of creatures in your party. You choose one of those cards. That player discards that card. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acquisitions Expert"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

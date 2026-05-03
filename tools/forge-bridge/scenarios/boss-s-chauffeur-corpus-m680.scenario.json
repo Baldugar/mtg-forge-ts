@@ -1,0 +1,23 @@
+{
+  "id": "boss-s-chauffeur-corpus-m680",
+  "description": "M6 corpus — Boss's Chauffeur; in-hand parse.",
+  "seed": 61757,
+  "cards": {
+    "Boss's Chauffeur": "Name:Boss's Chauffeur\nManaCost:4 W\nTypes:Creature Elf Citizen\nPT:0/0\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a number of +1/+1 counters on it equal to one plus the number of other creatures you control.\nSVar:X:Count$LastStateBattlefield Creature.YouCtrl+Other/Plus.1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Alliance — Whenever another creature you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 green and white Citizen creature token for each +1/+1 counter on it.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ gw_1_1_citizen\nSVar:Y:TriggeredCard$CardCounters.P1P1\nSVar:BuffedBy:Creature\nDeckHas:Ability$Counters|Token\nOracle:Boss's Chauffeur enters with a number of +1/+1 counters on it equal to one plus the number of other creatures you control.\\nAlliance — Whenever another creature you control enters, put a +1/+1 counter on Boss's Chauffeur.\\nWhen Boss's Chauffeur dies, create a 1/1 green and white Citizen creature token for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boss's Chauffeur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

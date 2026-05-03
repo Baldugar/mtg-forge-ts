@@ -1,0 +1,23 @@
+{
+  "id": "j-tun-owl-keeper-corpus-m680",
+  "description": "M6 corpus — Jötun Owl Keeper; in-hand parse.",
+  "seed": 63050,
+  "cards": {
+    "Jötun Owl Keeper": "Name:Jötun Owl Keeper\nManaCost:2 W\nTypes:Creature Giant\nPT:3/3\nK:Cumulative upkeep:WU\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Bird creature token with flying for each age counter on it.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_bird_flying | TokenOwner$ You\nSVar:X:TriggeredCard$CardCounters.AGE\nOracle:Cumulative upkeep {W} or {U} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen Jötun Owl Keeper dies, create a 1/1 white Bird creature token with flying for each age counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jötun Owl Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

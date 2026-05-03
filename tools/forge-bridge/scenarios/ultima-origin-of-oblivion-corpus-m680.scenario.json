@@ -1,0 +1,23 @@
+{
+  "id": "ultima-origin-of-oblivion-corpus-m680",
+  "description": "M6 corpus — Ultima, Origin of Oblivion; in-hand parse.",
+  "seed": 64834,
+  "cards": {
+    "Ultima, Origin of Oblivion": "Name:Ultima, Origin of Oblivion\nManaCost:5\nTypes:Legendary Creature God\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever NICKNAME attacks, put a blight counter on target land. For as long as that land has a blight counter on it, it loses all land types and abilities and has \"{T}: Add {C}.\"\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Land | CounterType$ BLIGHT | CounterNum$ 1 | AITgts$ Land.Basic+YouCtrl+!canProduceManaColor Colorless | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ BlightStatic | ForgetOnMoved$ Battlefield | ForgetCounter$ BLIGHT | Duration$ Permanent\nSVar:BlightStatic:Mode$ Continuous | Affected$ Card.IsRemembered | RemoveLandTypes$ True | RemoveAllAbilities$ True | AddAbility$ ColorlessMana | Description$ For as long as that land has a blight counter on it, it loses all land types and abilities and has \"{T}: Add {C}.\"\nSVar:ColorlessMana:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ TapsForMana | ValidCard$ Land | Activator$ You | Produced$ C | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap a land for {C}, add an additional {C}.\nSVar:TrigMana:DB$ Mana | Produced$ C\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Ultima attacks, put a blight counter on target land. For as long as that land has a blight counter on it, it loses all land types and abilities and has \"{T}: Add {C}.\"\\nWhenever you tap a land for {C}, add an additional {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultima, Origin of Oblivion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reflective-golem-corpus-m680",
+  "description": "M6 corpus — Reflective Golem; in-hand parse.",
+  "seed": 63937,
+  "cards": {
+    "Reflective Golem": "Name:Reflective Golem\nManaCost:3\nTypes:Artifact Creature Golem\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Card.Self | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell that targets only CARDNAME, you may pay {2}. If you do, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:AB$ CopySpellAbility | Cost$ 2 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Whenever you cast an instant or sorcery spell that targets only Reflective Golem, you may pay {2}. If you do, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reflective Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

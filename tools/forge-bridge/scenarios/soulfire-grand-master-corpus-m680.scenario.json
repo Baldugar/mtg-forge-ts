@@ -1,0 +1,23 @@
+{
+  "id": "soulfire-grand-master-corpus-m680",
+  "description": "M6 corpus — Soulfire Grand Master; in-hand parse.",
+  "seed": 64372,
+  "cards": {
+    "Soulfire Grand Master": "Name:Soulfire Grand Master\nManaCost:1 W\nTypes:Creature Human Monk\nPT:2/2\nK:Lifelink\nS:Mode$ Continuous | AddKeyword$ Lifelink | Affected$ Instant.YouCtrl,Sorcery.YouCtrl | AffectedZone$ Stack | Description$ Instant and sorcery spells you control have lifelink.\nA:AB$ Effect | Cost$ 2 UR UR | Triggers$ SpellCastTrig | SpellDescription$ The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of into your graveyard as it resolves.\nSVar:SpellCastTrig:Mode$ SpellCast | ValidCard$ Sorcery.YouOwn+wasCastFromYourHand,Instant.YouOwn+wasCastFromYourHand | ValidActivatingPlayer$ You | Execute$ Buybacked | Static$ True | TriggerDescription$ The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of into your graveyard as it resolves.\nSVar:Buybacked:DB$ Effect | ReplacementEffects$ MoveToHandReplace | RememberObjects$ TriggeredCard | SubAbility$ ExileSelf\nSVar:MoveToHandReplace:Event$ Moved | ValidCard$ Card.IsRemembered | Origin$ Stack | Destination$ Graveyard | Fizzle$ False | ReplaceWith$ ReplaceHand | Description$ Put that card into your hand instead of into your graveyard as it resolves.\nSVar:ReplaceHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Stack | Destination$ Hand | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Lifelink\\nInstant and sorcery spells you control have lifelink.\\n{2}{U/R}{U/R}: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of into your graveyard as it resolves.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulfire Grand Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

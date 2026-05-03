@@ -1,0 +1,23 @@
+{
+  "id": "three-bowls-of-porridge-corpus-m680",
+  "description": "M6 corpus — Three Bowls of Porridge; in-hand parse.",
+  "seed": 64726,
+  "cards": {
+    "Three Bowls of Porridge": "Name:Three Bowls of Porridge\nManaCost:2\nTypes:Artifact Food\nA:AB$ Charm | Cost$ 2 T | Choices$ DBDamage,DBTap,DBSac | ChoiceRestriction$ ThisGame\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target creature.\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | SubAbility$ DBGainLife | SpellDescription$ Sacrifice CARDNAME. You gain 3 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:{2}, {T}: Choose one that hasn't been chosen —\\n• Three Bowls of Porridge deals 2 damage to target creature.\\n• Tap target creature.\\n• Sacrifice Three Bowls of Porridge. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Three Bowls of Porridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

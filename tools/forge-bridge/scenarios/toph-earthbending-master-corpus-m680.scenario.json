@@ -1,0 +1,23 @@
+{
+  "id": "toph-earthbending-master-corpus-m680",
+  "description": "M6 corpus — Toph, Earthbending Master; in-hand parse.",
+  "seed": 64770,
+  "cards": {
+    "Toph, Earthbending Master": "Name:Toph, Earthbending Master\nManaCost:3 G\nTypes:Legendary Creature Human Warrior Ally\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExperience | TriggerDescription$ Landfall — Whenever a land you control enters, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigEarthbend | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, earthbend X, where X is the number of experience counters you have. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ X\nSVar:X:Count$YourCountersExperience\nOracle:Landfall — Whenever a land you control enters, you get an experience counter.\\nWhenever you attack, earthbend X, where X is the number of experience counters you have. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toph, Earthbending Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

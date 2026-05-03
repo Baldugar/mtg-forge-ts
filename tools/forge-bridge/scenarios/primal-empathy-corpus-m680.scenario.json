@@ -1,0 +1,23 @@
+{
+  "id": "primal-empathy-corpus-m680",
+  "description": "M6 corpus — Primal Empathy; in-hand parse.",
+  "seed": 63801,
+  "cards": {
+    "Primal Empathy": "Name:Primal Empathy\nManaCost:1 G U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your upkeep, draw a card if you control a creature with the greatest power among creatures on the battlefield. Otherwise, put a +1/+1 counter on a creature you control.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ Draw | FalseSubAbility$ PutCounter\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Valid Creature.greatestPower+YouCtrl\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, draw a card if you control a creature with the greatest power among creatures on the battlefield. Otherwise, put a +1/+1 counter on a creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Empathy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

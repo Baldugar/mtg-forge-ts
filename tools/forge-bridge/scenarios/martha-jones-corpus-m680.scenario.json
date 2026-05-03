@@ -1,0 +1,23 @@
+{
+  "id": "martha-jones-corpus-m680",
+  "description": "M6 corpus — Martha Jones; in-hand parse.",
+  "seed": 63350,
+  "cards": {
+    "Martha Jones": "Name:Martha Jones\nManaCost:2 U\nTypes:Legendary Creature Human Cleric\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ Woman Who Walked the Earth — When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you sacrifice a Clue, CARDNAME and up to one other target creature can't be blocked this turn.\nSVar:TrigPump:DB$ Effect | RememberObjects$ Self & Targeted | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Doctor's companion\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue\nOracle:Woman Who Walked the Earth — When Martha Jones enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, Martha Jones and up to one other target creature can't be blocked this turn.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martha Jones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "junkyard-scrapper-corpus-m680",
+  "description": "M6 corpus — Junkyard Scrapper; in-hand parse.",
+  "seed": 63065,
+  "cards": {
+    "Junkyard Scrapper": "Name:Junkyard Scrapper\nManaCost:2 R\nTypes:Creature Goblin Artificer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a nontoken artifact you control enters, exile a random nonland artifact card with lesser mana value from your library. You may cast that card until the end of your next turn.\nSVar:TrigExile:DB$ ChangeZone | ChangeType$ Artifact.nonLand+cmcLTX | Origin$ Library | Destination$ Exile | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nDeckNeeds:Type$Artifact\nOracle:Whenever a nontoken artifact you control enters, exile a random nonland artifact card with lesser mana value from your library. You may cast that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junkyard Scrapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

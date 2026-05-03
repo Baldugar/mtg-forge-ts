@@ -1,0 +1,23 @@
+{
+  "id": "peer-pressure-corpus-m680",
+  "description": "M6 corpus — Peer Pressure; in-hand parse.",
+  "seed": 63711,
+  "cards": {
+    "Peer Pressure": "Name:Peer Pressure\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ ApplyPressure | SpellDescription$ Choose a creature type. If you control more creatures of that type than each other player, you gain control of all creatures of that type. (This effect lasts indefinitely.)\nSVar:ApplyPressure:DB$ GainControl | AllValid$ Creature.ChosenType | NewController$ You | ConditionCheckSVar$ YourPeerGroup | ConditionSVarCompare$ GTY\nSVar:YourPeerGroup:Count$Valid Creature.ChosenType+YouCtrl\nSVar:Y:PlayerCountOther$HighestValid Creature.ChosenType+YouCtrl\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose a creature type. If you control more creatures of that type than each other player, you gain control of all creatures of that type. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peer Pressure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

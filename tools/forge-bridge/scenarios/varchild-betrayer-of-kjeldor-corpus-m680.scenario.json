@@ -1,0 +1,23 @@
+{
+  "id": "varchild-betrayer-of-kjeldor-corpus-m680",
+  "description": "M6 corpus — Varchild, Betrayer of Kjeldor; in-hand parse.",
+  "seed": 64891,
+  "cards": {
+    "Varchild, Betrayer of Kjeldor": "Name:Varchild, Betrayer of Kjeldor\nManaCost:2 R\nTypes:Legendary Creature Human Knight\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player creates that many 1/1 red Survivor creature tokens.\nSVar:TrigToken:DB$ Token | TokenOwner$ TriggeredTarget | TokenAmount$ X | TokenScript$ r_1_1_survivor\nSVar:X:TriggerCount$DamageAmount\nS:Mode$ CantBlock | ValidCard$ Survivor.OppCtrl | Description$ Survivors your opponents control can't block.\nS:Mode$ CantAttack | ValidCard$ Creature.Survivor+OppCtrl | Target$ You,Planeswalker.YouCtrl | Description$ Survivors your opponents control can't attack you or planeswalkers you control.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When NICKNAME leaves the battlefield, gain control of all Survivors.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Survivor | NewController$ You\nOracle:Whenever Varchild, Betrayer of Kjeldor deals combat damage to a player, that player creates that many 1/1 red Survivor creature tokens.\\nSurvivors your opponents control can't block, and they can't attack you or planeswalkers you control.\\nWhen Varchild leaves the battlefield, gain control of all Survivors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Varchild, Betrayer of Kjeldor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

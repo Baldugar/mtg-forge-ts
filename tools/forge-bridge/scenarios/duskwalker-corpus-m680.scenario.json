@@ -1,0 +1,23 @@
+{
+  "id": "duskwalker-corpus-m680",
+  "description": "M6 corpus — Duskwalker; in-hand parse.",
+  "seed": 62262,
+  "cards": {
+    "Duskwalker": "Name:Duskwalker\nManaCost:B\nTypes:Creature Human Minion\nPT:1/1\nK:Kicker:3 B\nR:Event$ Moved | ValidCard$ Card.Self+kicked | Destination$ Battlefield | ReplaceWith$ GatherDust | ReplacementResult$ Updated | Description$ If CARDNAME was kicked, it enters with two +1/+1 counters on it and with fear. (It can't be blocked except by artifact creatures and/or black creatures.)\nSVar:GatherDust:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ Dustwalk\nSVar:Dustwalk:DB$ Animate | Defined$ Self | Keywords$ Fear | Duration$ Permanent\nOracle:Kicker {3}{B} (You may pay an additional {3}{B} as you cast this spell.)\\nIf Duskwalker was kicked, it enters with two +1/+1 counters on it and with fear. (It can't be blocked except by artifact creatures and/or black creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskwalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

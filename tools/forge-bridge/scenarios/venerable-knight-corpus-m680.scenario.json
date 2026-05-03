@@ -1,0 +1,23 @@
+{
+  "id": "venerable-knight-corpus-m680",
+  "description": "M6 corpus — Venerable Knight; in-hand parse.",
+  "seed": 64911,
+  "cards": {
+    "Venerable Knight": "Name:Venerable Knight\nManaCost:W\nTypes:Creature Human Knight\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target Knight you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Knight.YouCtrl | TgtPrompt$ Select target Knight you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Knight\nOracle:When Venerable Knight dies, put a +1/+1 counter on target Knight you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venerable Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

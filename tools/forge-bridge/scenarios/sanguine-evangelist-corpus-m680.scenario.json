@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-evangelist-corpus-m680",
+  "description": "M6 corpus — Sanguine Evangelist; in-hand parse.",
+  "seed": 64120,
+  "cards": {
+    "Sanguine Evangelist": "Name:Sanguine Evangelist\nManaCost:2 W\nTypes:Creature Vampire Cleric\nPT:2/1\nK:Battle cry\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 black Bat creature token with flying.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 black Bat creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_bat_flying | TokenOwner$ TriggeredCardController\nDeckHas:Ability$Token & Type$Bat\nOracle:Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\\nWhen Sanguine Evangelist enters or dies, create a 1/1 black Bat creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Evangelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

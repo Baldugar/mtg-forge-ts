@@ -1,0 +1,23 @@
+{
+  "id": "a-briar-hydra-corpus-m680",
+  "description": "M6 corpus — A-Briar Hydra; in-hand parse.",
+  "seed": 64068,
+  "cards": {
+    "A-Briar Hydra": "Name:A-Briar Hydra\nManaCost:3 G\nTypes:Creature Plant Hydra\nPT:5/5\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ DBCounter | TriggerZones$ Battlefield | TriggerDescription$ Domain — Whenever CARDNAME deals combat damage to a player, put X +1/+1 counters on target creature you control, where X is the number of basic land types among lands you control.\nSVar:DBCounter:DB$ PutCounter | CounterNum$ X | CounterType$ P1P1 | ValidTgts$ Creature.YouCtrl\nSVar:X:Count$Domain\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Trample\\nDomain — Whenever Briar Hydra deals combat damage to a player, put X +1/+1 counters on target creature you control, where X is the number of basic land types among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Briar Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

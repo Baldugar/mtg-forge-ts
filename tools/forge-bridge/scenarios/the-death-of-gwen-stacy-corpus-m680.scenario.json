@@ -1,0 +1,23 @@
+{
+  "id": "the-death-of-gwen-stacy-corpus-m680",
+  "description": "M6 corpus — The Death of Gwen Stacy; in-hand parse.",
+  "seed": 64647,
+  "cards": {
+    "The Death of Gwen Stacy": "Name:The Death of Gwen Stacy\nVariant:UniversesWithin:FlavorName:The House Grows Hungry\nManaCost:2 B\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBChoose,DBExile\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature | SpellDescription$ Destroy target creature.\nSVar:DBChoose:DB$ GenericChoice | TempRemember$ Chooser | ShowChoice$ ExceptSelf | Defined$ Player | Choices$ Discard,No | SubAbility$ DBDiscard | SpellDescription$ Each player may discard a card. Each player who doesn't loses 3 life.\nSVar:Discard:DB$ Pump | Defined$ Remembered | NoteCards$ Self | NoteCardsFor$ Discard | SpellDescription$ Discard a card.\nSVar:No:DB$ Pump | SpellDescription$ Do not discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.NotedForDiscard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ NonRememberedOwner | LifeAmount$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBClearNotes\nSVar:DBClearNotes:DB$ Pump | Defined$ Player | ClearNotedCardsFor$ Discard\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt | ChangeType$ Card | StackDescription$ Exile graveyards ({p:Targeted}). | SpellDescription$ Exile any number of target players' graveyards.\nDeckHas:Ability$Discard\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Destroy target creature.\\nII — Each player may discard a card. Each player who doesn't loses 3 life.\\nIII — Exile any number of target players' graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Death of Gwen Stacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

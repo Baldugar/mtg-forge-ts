@@ -1,0 +1,23 @@
+{
+  "id": "mirko-obsessive-theorist-corpus-m680",
+  "description": "M6 corpus — Mirko, Obsessive Theorist; in-hand parse.",
+  "seed": 63429,
+  "cards": {
+    "Mirko, Obsessive Theorist": "Name:Mirko, Obsessive Theorist\nManaCost:1 U B\nTypes:Legendary Creature Vampire Detective\nPT:1/3\nK:Flying\nK:Vigilance\nT:Mode$ Surveil | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you surveil, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, you may return target creature card with power less than NICKNAME's from your graveyard to the battlefield with a finality counter on it. (If it would die, exile it instead.)\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+powerLTCount$CardPower | WithCountersType$ FINALITY | TgtPrompt$ Select target creature card with power less than NICKNAME's\nDeckHints:Ability$Surveil\nDeckHas:Ability$Counters|Graveyard\nOracle:Flying, vigilance\\nWhenever you surveil, put a +1/+1 counter on Mirko, Obsessive Theorist.\\nAt the beginning of your end step, you may return target creature card with power less than Mirko's from your graveyard to the battlefield with a finality counter on it. (If it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirko, Obsessive Theorist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

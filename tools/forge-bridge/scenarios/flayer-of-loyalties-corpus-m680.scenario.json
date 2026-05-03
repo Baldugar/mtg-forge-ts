@@ -1,0 +1,23 @@
+{
+  "id": "flayer-of-loyalties-corpus-m680",
+  "description": "M6 corpus — Flayer of Loyalties; in-hand parse.",
+  "seed": 62515,
+  "cards": {
+    "Flayer of Loyalties": "Name:Flayer of Loyalties\nManaCost:8 C C\nTypes:Creature Eldrazi\nPT:10/10\nK:Annihilator:2\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When you cast this spell, gain control of target creature until end of turn. Untap that creature. Until end of turn, it has base power and toughness 10/10, and gains trample, annihilator 2, and haste.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste & Trample & Annihilator:2 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Power$ 10 | Toughness$ 10\nOracle:When you cast this spell, gain control of target creature until end of turn. Untap that creature. Until end of turn, it has base power and toughness 10/10, and gains trample, annihilator 2, and haste.\\nAnnihilator 2 (Whenever this creature attacks, defending player sacrifices two permanents.)\\nTrample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flayer of Loyalties"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

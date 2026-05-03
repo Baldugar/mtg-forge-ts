@@ -1,0 +1,23 @@
+{
+  "id": "pinnacle-kill-ship-corpus-m680",
+  "description": "M6 corpus — Pinnacle Kill-Ship; in-hand parse.",
+  "seed": 63752,
+  "cards": {
+    "Pinnacle Kill-Ship": "Name:Pinnacle Kill-Ship\nManaCost:7\nTypes:Artifact Spacecraft\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this Spacecraft enters, it deals 10 damage to up to one target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 10\nK:Station:7\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE7_CHARGE | AddType$ Creature | AddKeyword$ Flying | Description$ STATION 7+ Flying\nOracle:When this Spacecraft enters, it deals 10 damage to up to one target creature.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)\\nSTATION 7+\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pinnacle Kill-Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

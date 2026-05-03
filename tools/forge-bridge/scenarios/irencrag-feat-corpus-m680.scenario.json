@@ -1,0 +1,23 @@
+{
+  "id": "irencrag-feat-corpus-m680",
+  "description": "M6 corpus — Irencrag Feat; in-hand parse.",
+  "seed": 62982,
+  "cards": {
+    "Irencrag Feat": "Name:Irencrag Feat\nManaCost:1 R R R\nTypes:Sorcery\nA:SP$ Mana | Produced$ R | Amount$ 7 | SubAbility$ DBEffect | SpellDescription$ Add seven {R}. You can cast only one more spell this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantBeCast | Triggers$ StaticRem\nSVar:STCantBeCast:Mode$ CantBeCast | Caster$ You | CheckSVar$ NumCount | Description$ You can cast only one more spell this turn.\nSVar:NumCount:Remembered$Amount\nSVar:StaticRem:Mode$ SpellCast | ValidActivatingPlayer$ You | Static$ True | Secondary$ True | Execute$ TrigRem\nSVar:TrigRem:DB$ Pump | RememberObjects$ TriggeredCard\nAI:RemoveDeck:All\nOracle:Add seven {R}. You can cast only one more spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Irencrag Feat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

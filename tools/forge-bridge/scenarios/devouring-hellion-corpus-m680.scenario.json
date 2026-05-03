@@ -1,0 +1,23 @@
+{
+  "id": "devouring-hellion-corpus-m680",
+  "description": "M6 corpus — Devouring Hellion; in-hand parse.",
+  "seed": 62161,
+  "cards": {
+    "Devouring Hellion": "Name:Devouring Hellion\nManaCost:2 R\nTypes:Creature Hellion\nPT:2/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DevourCreatsAndWalkers | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may sacrifice any number of creatures and/or planeswalkers. If you do, it enters with twice that many +1/+1 counters on it.\nSVar:DevourCreatsAndWalkers:DB$ Sacrifice | Defined$ You | Amount$ DevourSacX | SacValid$ Creature.Other,Planeswalker | SacMessage$ any number of creatures and/or planeswalkers | RememberSacrificed$ True | Optional$ True | SubAbility$ DevourCounters\nSVar:DevourCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Devour2X | ETB$ True | SubAbility$ DevourCleanup\nSVar:DevourCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DevourSacX:Count$Valid Creature.YouCtrl+Other,Planeswalker.YouCtrl\nSVar:Devour2X:Count$RememberedSize/Times.2\nAI:RemoveDeck:All\n# TODO: Figure out a way to make an AIPreference that would work for this kind of ability, e.g.: SVar:AIPreference:Sacrifice$Creature.cmcLE3,Planeswalker.counters_LE2_LOYALTY\nDeckHas:Ability$Counters\nOracle:As Devouring Hellion enters, you may sacrifice any number of creatures and/or planeswalkers. If you do, it enters with twice that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devouring Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

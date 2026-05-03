@@ -1,0 +1,23 @@
+{
+  "id": "resounding-scream-corpus-m680",
+  "description": "M6 corpus — Resounding Scream; in-hand parse.",
+  "seed": 63963,
+  "cards": {
+    "Resounding Scream": "Name:Resounding Scream\nManaCost:2 B\nTypes:Sorcery\nK:Cycling:5 U B R\nA:SP$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ Random | SpellDescription$ Target player discards a card at random.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When you cycle CARDNAME, target player discards two cards at random.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ Random\nAI:RemoveDeck:All\nOracle:Target player discards a card at random.\\nCycling {5}{U}{B}{R} ({5}{U}{B}{R}, Discard this card: Draw a card.)\\nWhen you cycle Resounding Scream, target player discards two cards at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resounding Scream"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

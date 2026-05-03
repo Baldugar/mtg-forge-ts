@@ -1,0 +1,23 @@
+{
+  "id": "pelakka-wurm-corpus-m680",
+  "description": "M6 corpus — Pelakka Wurm; in-hand parse.",
+  "seed": 63712,
+  "cards": {
+    "Pelakka Wurm": "Name:Pelakka Wurm\nManaCost:4 G G G\nTypes:Creature Wurm\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 7 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 7\nOracle:Trample\\nWhen Pelakka Wurm enters, you gain 7 life.\\nWhen Pelakka Wurm dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pelakka Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

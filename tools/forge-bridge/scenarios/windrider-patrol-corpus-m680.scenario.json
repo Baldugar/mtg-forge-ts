@@ -1,0 +1,23 @@
+{
+  "id": "windrider-patrol-corpus-m680",
+  "description": "M6 corpus — Windrider Patrol; in-hand parse.",
+  "seed": 65062,
+  "cards": {
+    "Windrider Patrol": "Name:Windrider Patrol\nManaCost:3 U U\nTypes:Creature Merfolk Wizard\nPT:4/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhenever Windrider Patrol deals combat damage to a player, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windrider Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

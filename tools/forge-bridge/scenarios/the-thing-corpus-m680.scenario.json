@@ -1,0 +1,23 @@
+{
+  "id": "the-thing-corpus-m680",
+  "description": "M6 corpus — The Thing; in-hand parse.",
+  "seed": 64693,
+  "cards": {
+    "The Thing": "Name:The Thing\nManaCost:5 G\nTypes:Legendary Creature Human Hero\nPT:5/5\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, if you've cast a noncreature spell this turn, put four +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME attacks, you may pay {R}{G}{W}{U}. When you do, double the number of each kind of counter on any number of target permanents you control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ R G W U | Execute$ TrigMultiplyCounter | TriggerDescription$ When you do, double the number of each kind of counter on any number of target permanents you control.\nSVar:TrigMultiplyCounter:DB$ MultiplyCounter | ValidTgts$ Permanent.YouCtrl | TargetMin$ 0 | TargetMax$ MaxTargets | TgtPrompt$ Select any number of target permanents you control\nSVar:X:Count$ThisTurnCast_Card.nonCreature+YouCtrl\nSVar:MaxTargets:Count$Valid Permanent.YouCtrl\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Counters\nOracle:Trample\\nAt the beginning of combat on your turn, if you've cast a noncreature spell this turn, put four +1/+1 counters on The Thing.\\nWhenever The Thing attacks, you may pay {R}{G}{W}{U}. When you do, double the number of each kind of counter on any number of target permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Thing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

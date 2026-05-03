@@ -1,0 +1,23 @@
+{
+  "id": "delina-wild-mage-corpus-m680",
+  "description": "M6 corpus — Delina, Wild Mage; in-hand parse.",
+  "seed": 62144,
+  "cards": {
+    "Delina, Wild Mage": "Name:Delina, Wild Mage\nManaCost:3 R\nTypes:Legendary Creature Elf Shaman\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBLoop | TriggerDescription$ Whenever NICKNAME attacks, choose target creature you control, then ABILITY\nSVar:DBLoop:DB$ Repeat | ValidTgts$ Creature.YouCtrl | RepeatCheckSVar$ RepeatCheck | RepeatSVarCompare$ GT0 | RepeatSubAbility$ DBRollDice | RepeatOptional$ True | AILogic$ CopyBestCreature.IgnoreLegendary\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-14:DBCopy,15-20:DBCopyRepeat | SpellDescription$ roll a d20.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Targeted | TokenTapped$ True | TokenAttacking$ True | NonLegendary$ True | AddSVars$ DelinaTrigExile | AddTriggers$ TrigPhase | SubAbility$ DBNotRepeat | SpellDescription$ 1—14 VERT Create a tapped and attacking token that's a copy of that creature, except it's not legendary and it has \"At end of combat, exile this token.\"\nSVar:DBNotRepeat:DB$ StoreSVar | SVar$ RepeatCheck | Type$ Number | Expression$ 0\nSVar:DBCopyRepeat:DB$ CopyPermanent | Defined$ Targeted | TokenTapped$ True | TokenAttacking$ True | NonLegendary$ True | AddSVars$ DelinaTrigExile | AddTriggers$ TrigPhase | SubAbility$ DBRepeat | SpellDescription$ 15—20 VERT Create one of those tokens. You may roll again.\nSVar:TrigPhase:Mode$ Phase | Phase$ EndCombat | TriggerZones$ Battlefield | Execute$ DelinaTrigExile | TriggerDescription$ At end of combat, exile this token.\nSVar:DelinaTrigExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile\nSVar:DBRepeat:DB$ StoreSVar | SVar$ RepeatCheck | Type$ Number | Expression$ 1\nSVar:RepeatCheck:Number$1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Whenever Delina attacks, choose target creature you control, then roll a d20.\\n1—14 | Create a tapped and attacking token that's a copy of that creature, except it's not legendary and it has \"At end of combat, exile this token.\"\\n15—20 | Create one of those tokens. You may roll again.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delina, Wild Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

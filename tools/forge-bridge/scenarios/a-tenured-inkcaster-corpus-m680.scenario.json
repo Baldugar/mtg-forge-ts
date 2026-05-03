@@ -1,0 +1,23 @@
+{
+  "id": "a-tenured-inkcaster-corpus-m680",
+  "description": "M6 corpus — A-Tenured Inkcaster; in-hand parse.",
+  "seed": 64094,
+  "cards": {
+    "A-Tenured Inkcaster": "Name:A-Tenured Inkcaster\nManaCost:3 B\nTypes:Creature Vampire Warlock\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+counters_GE1_P1P1 | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it attacks, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Counters|LifeGain\nOracle:When Tenured Inkcaster enters, put a +1/+1 counter on target creature.\\nWhenever a creature you control with a +1/+1 counter on it attacks, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Tenured Inkcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

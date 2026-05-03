@@ -1,0 +1,23 @@
+{
+  "id": "overgrowth-corpus-m680",
+  "description": "M6 corpus — Overgrowth; in-hand parse.",
+  "seed": 63671,
+  "cards": {
+    "Overgrowth": "Name:Overgrowth\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional {G}{G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 2 | Defined$ TriggeredCardController\n# TODO: Mana prediction for lands that produce additional mana (Overgrowth, Mana Flare, etc.)\nAI:RemoveDeck:Random\nOracle:Enchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional {G}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overgrowth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

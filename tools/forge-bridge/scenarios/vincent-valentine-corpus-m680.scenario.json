@@ -1,0 +1,23 @@
+{
+  "id": "vincent-valentine-corpus-m680",
+  "description": "M6 corpus — Vincent Valentine; in-hand parse.",
+  "seed": 64949,
+  "cards": {
+    "Vincent Valentine": "Name:Vincent Valentine\nManaCost:2 B B\nTypes:Legendary Creature Assassin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls dies, put a number of +1/+1 counters on CARDNAME equal to that creature's power.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may transform it.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:X:TriggeredCard$CardPower\nAlternateMode:DoubleFaced\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever a creature an opponent controls dies, put a number of +1/+1 counters on Vincent Valentine equal to that creature's power.\\nWhenever Vincent Valentine attacks, you may transform it.\n\nALTERNATE\n\nName:Galian Beast\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Werewolf Beast\nPT:3/2\nK:Trample\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return it to the battlefield tapped (front face up).\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nOracle:Trample, lifelink\\nWhen Galian Beast dies, return it to the battlefield tapped (front face up).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vincent Valentine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

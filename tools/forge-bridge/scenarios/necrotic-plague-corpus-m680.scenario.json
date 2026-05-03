@@ -1,0 +1,23 @@
+{
+  "id": "necrotic-plague-corpus-m680",
+  "description": "M6 corpus — Necrotic Plague; in-hand parse.",
+  "seed": 63534,
+  "cards": {
+    "Necrotic Plague": "Name:Necrotic Plague\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ NecroticPlagueTrig | AddSVar$ NecroticPlagueSac | Description$ Enchanted creature has \"At the beginning of your upkeep, sacrifice this creature.\"\nSVar:NecroticPlagueTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ NecroticPlagueSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME.\nSVar:NecroticPlagueSac:DB$ Sacrifice | SacValid$ Self\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigChoose | TriggerDescription$ When enchanted creature dies, its controller chooses target creature one of their opponents controls. Return CARDNAME from its owner's graveyard to the battlefield attached to that creature.\nSVar:TrigChoose:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Choose a creature your opponents control | TargetsWithDefinedController$ TriggeredCardOpponent | IsCurse$ True | TargetingPlayer$ TriggeredCardController | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | AttachedTo$ ParentTarget\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$Valid Creature.OppCtrl\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your upkeep, sacrifice this creature.\"\\nWhen enchanted creature dies, its controller chooses target creature one of their opponents controls. Return Necrotic Plague from its owner's graveyard to the battlefield attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrotic Plague"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

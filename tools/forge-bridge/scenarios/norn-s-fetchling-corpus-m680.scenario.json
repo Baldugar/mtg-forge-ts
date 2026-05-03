@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-fetchling-corpus-m680",
+  "description": "M6 corpus — Norn's Fetchling; in-hand parse.",
+  "seed": 63575,
+  "cards": {
+    "Norn's Fetchling": "Name:Norn's Fetchling\nManaCost:1 W\nTypes:Creature Phyrexian Insect\nPT:1/1\nK:Toxic:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerDescription$ When CARDNAME enters, conjure a card named Plains into your hand. If an opponent has three or more poison counters, you may seek a nonland card instead.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE3 | TrueSubAbility$ DBGenericChoice | FalseSubAbility$ ConjurePlains\nSVar:DBGenericChoice:DB$ GenericChoice | Choices$ SeekNonLand,ConjurePlains\nSVar:SeekNonLand:DB$ Seek | Type$ Card.nonLand | SpellDescription$ Seek a nonland card.\nSVar:ConjurePlains:DB$ MakeCard | Conjure$ True | Name$ Plains | Zone$ Hand | SpellDescription$ Conjure a card named Plains into your hand.\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHints:Keyword$Toxic|Infect\nOracle:Toxic 1\\nCorrupted — When Norn's Fetchling enters, conjure a card named Plains into your hand. If an opponent has three or more poison counters, you may seek a nonland card instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Fetchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mage-slayer-corpus-m680",
+  "description": "M6 corpus — Mage Slayer; in-hand parse.",
+  "seed": 63306,
+  "cards": {
+    "Mage Slayer": "Name:Mage Slayer\nManaCost:1 R G\nTypes:Artifact Equipment\nK:Equip:3\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDamage | TriggerDescription$ Whenever equipped creature attacks, it deals damage equal to its power to the player or planeswalker it's attacking.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | DamageSource$ TriggeredAttackerLKICopy | NumDmg$ X\nSVar:X:TriggeredAttacker$CardPower\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Whenever equipped creature attacks, it deals damage equal to its power to the player or planeswalker it's attacking.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage Slayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

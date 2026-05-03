@@ -1,0 +1,23 @@
+{
+  "id": "elite-javelineer-corpus-m680",
+  "description": "M6 corpus — Elite Javelineer; in-hand parse.",
+  "seed": 62304,
+  "cards": {
+    "Elite Javelineer": "Name:Elite Javelineer\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME blocks, it deals 1 damage to target attacking creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.attacking | TgtPrompt$ Choose target attacking creature. | NumDmg$ 1\nOracle:Whenever Elite Javelineer blocks, it deals 1 damage to target attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elite Javelineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

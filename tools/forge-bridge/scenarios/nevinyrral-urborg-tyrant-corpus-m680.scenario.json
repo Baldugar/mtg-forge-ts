@@ -1,0 +1,23 @@
+{
+  "id": "nevinyrral-urborg-tyrant-corpus-m680",
+  "description": "M6 corpus — Nevinyrral, Urborg Tyrant; in-hand parse.",
+  "seed": 63549,
+  "cards": {
+    "Nevinyrral, Urborg Tyrant": "Name:Nevinyrral, Urborg Tyrant\nManaCost:3 W U B\nTypes:Legendary Creature Zombie Wizard\nPT:3/6\nK:Hexproof:Card.Artifact:artifacts\nK:Hexproof:Card.Creature:creatures\nK:Hexproof:Card.Enchantment:enchantments\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped 2/2 black Zombie creature token for each creature that died this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenTapped$ True | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPayCost | TriggerDescription$ When NICKNAME dies, you may pay {1}. When you do, destroy all artifacts, creatures, and enchantments.\nSVar:TrigPayCost:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy all artifacts, creatures, and enchantments.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Artifact,Creature,Enchantment\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Token\nOracle:Hexproof from artifacts, creatures, and enchantments\\nWhen Nevinyrral, Urborg Tyrant enters, create a tapped 2/2 black Zombie creature token for each creature that died this turn.\\nWhen Nevinyrral dies, you may pay {1}. When you do, destroy all artifacts, creatures, and enchantments.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nevinyrral, Urborg Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "diffusion-sliver-corpus-m680",
+  "description": "M6 corpus — Diffusion Sliver; in-hand parse.",
+  "seed": 62165,
+  "cards": {
+    "Diffusion Sliver": "Name:Diffusion Sliver\nManaCost:1 U\nTypes:Creature Sliver\nPT:1/1\nT:Mode$ BecomesTarget | ValidSource$ SpellAbility.OppCtrl | ValidTarget$ Creature.Sliver+YouCtrl+inZoneBattlefield | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a Sliver creature you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless its controller pays {2}.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSourceSA | UnlessCost$ 2 | UnlessPayer$ TriggeredSourceSAController\nSVar:PlayMain1:TRUE\nOracle:Whenever a Sliver creature you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless its controller pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diffusion Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

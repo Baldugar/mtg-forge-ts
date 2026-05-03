@@ -1,0 +1,23 @@
+{
+  "id": "giant-s-amulet-corpus-m680",
+  "description": "M6 corpus — Giant's Amulet; in-hand parse.",
+  "seed": 62636,
+  "cards": {
+    "Giant's Amulet": "Name:Giant's Amulet\nManaCost:U\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddToughness$ 1 | AddStaticAbility$ Hexproof | Description$ Equipped creature gets +0/+1 has \"This creature has hexproof as long as it's untapped.\" (It can't be the target of spells or abilities your opponents control.)\nSVar:Hexproof:Mode$ Continuous | Affected$ Card.Self+untapped | AddKeyword$ Hexproof | Description$ This creature has hexproof as long as it's untapped.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters, you may pay {3}{U}. If you do, create a 4/4 blue Giant Wizard creature token, then attach CARDNAME to it.\nSVar:TrigToken:AB$ Token | Cost$ 3 U | TokenScript$ u_4_4_giant_wizard | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ TriggeredCardLKICopy | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:When Giant's Amulet enters, you may pay {3}{U}. If you do, create a 4/4 blue Giant Wizard creature token, then attach Giant's Amulet to it.\\nEquipped creature gets +0/+1 and has \"This creature has hexproof as long as it's untapped.\" (It can't be the target of spells or abilities your opponents control.)\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant's Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

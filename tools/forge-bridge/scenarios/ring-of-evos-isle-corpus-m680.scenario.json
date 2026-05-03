@@ -1,0 +1,23 @@
+{
+  "id": "ring-of-evos-isle-corpus-m680",
+  "description": "M6 corpus — Ring of Evos Isle; in-hand parse.",
+  "seed": 63992,
+  "cards": {
+    "Ring of Evos Isle": "Name:Ring of Evos Isle\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nA:AB$ Pump | Cost$ 2 | Defined$ Equipped | KW$ Hexproof | SpellDescription$ Equipped creature gains hexproof until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ EvosCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's blue.\nSVar:EvosCounter:DB$ PutCounter | Defined$ Equipped | ConditionDefined$ Equipped | ConditionPresent$ Creature.Blue | ConditionCompare$ EQ1 | CounterType$ P1P1 | CounterNum$ 1\nSVar:AttachAi:AITgts$ Creature.Blue\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:{2}: Equipped creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\\nAt the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's blue.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ring of Evos Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

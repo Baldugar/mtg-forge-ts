@@ -1,0 +1,23 @@
+{
+  "id": "will-of-the-mardu-corpus-m680",
+  "description": "M6 corpus — Will of the Mardu; in-hand parse.",
+  "seed": 65053,
+  "cards": {
+    "Will of the Mardu": "Name:Will of the Mardu\nManaCost:2 W\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare X GE1.2.1 | Choices$ DBPump,DBDamage | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both.\nSVar:DBPump:DB$ Pump | ValidTgts$ Player | SubAbility$ DBToken | SpellDescription$ Create a number of 1/1 red Warrior creature tokens equal to the number of creatures target player controls.\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ r_1_1_warrior | TokenOwner$ You\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ Z | SpellDescription$ CARDNAME deals damage to target creature equal to the number of creatures you control.\nSVar:X:Count$Valid Card.IsCommander+YouCtrl\nSVar:Y:Count$Valid Creature.TargetedPlayerCtrl\nSVar:Z:Count$Valid Creature.YouCtrl\nDeckHas:Ability$Token\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Create a number of 1/1 red Warrior creature tokens equal to the number of creatures target player controls.\\n• Will of the Mardu deals damage to target creature equal to the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Will of the Mardu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

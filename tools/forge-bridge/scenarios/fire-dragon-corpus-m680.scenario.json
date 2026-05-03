@@ -1,0 +1,23 @@
+{
+  "id": "fire-dragon-corpus-m680",
+  "description": "M6 corpus — Fire Dragon; in-hand parse.",
+  "seed": 62488,
+  "cards": {
+    "Fire Dragon": "Name:Fire Dragon\nManaCost:6 R R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage to target creature equal to the number of Mountains you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X\nSVar:X:Count$Valid Mountain.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Fire Dragon enters, it deals damage to target creature equal to the number of Mountains you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

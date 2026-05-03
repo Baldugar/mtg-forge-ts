@@ -1,0 +1,23 @@
+{
+  "id": "valley-mightcaller-corpus-m680",
+  "description": "M6 corpus — Valley Mightcaller; in-hand parse.",
+  "seed": 64883,
+  "cards": {
+    "Valley Mightcaller": "Name:Valley Mightcaller\nManaCost:G\nTypes:Creature Frog Warrior\nPT:1/1\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Frog.Other+YouCtrl,Rabbit.Other+YouCtrl,Raccoon.Other+YouCtrl,Squirrel.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Frog, Rabbit, Raccoon, or Squirrel you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Frog|Rabbit|Raccoon|Squirrel\nOracle:Trample\\nWhenever another Frog, Rabbit, Raccoon, or Squirrel you control enters, put a +1/+1 counter on Valley Mightcaller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valley Mightcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

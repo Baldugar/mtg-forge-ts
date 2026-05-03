@@ -1,0 +1,23 @@
+{
+  "id": "funeral-march-corpus-m680",
+  "description": "M6 corpus — Funeral March; in-hand parse.",
+  "seed": 62583,
+  "cards": {
+    "Funeral March": "Name:Funeral March\nManaCost:1 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.AttachedBy | Execute$ TrigSac | TriggerDescription$ When enchanted creature leaves the battlefield, its controller sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature | Defined$ TriggeredCardController\nOracle:Enchant creature\\nWhen enchanted creature leaves the battlefield, its controller sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Funeral March"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

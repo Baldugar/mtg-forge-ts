@@ -1,0 +1,23 @@
+{
+  "id": "earth-king-s-lieutenant-corpus-m680",
+  "description": "M6 corpus — Earth King's Lieutenant; in-hand parse.",
+  "seed": 62275,
+  "cards": {
+    "Earth King's Lieutenant": "Name:Earth King's Lieutenant\nManaCost:G W\nTypes:Creature Human Soldier Ally\nPT:1/1\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When this creature enters, put a +1/+1 counter on each other Ally creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Ally+Other+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Ally.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Ally you control enters, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Trample\\nWhen this creature enters, put a +1/+1 counter on each other Ally creature you control.\\nWhenever another Ally you control enters, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earth King's Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

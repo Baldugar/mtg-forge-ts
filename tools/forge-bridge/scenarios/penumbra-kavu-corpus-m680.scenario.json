@@ -1,0 +1,23 @@
+{
+  "id": "penumbra-kavu-corpus-m680",
+  "description": "M6 corpus — Penumbra Kavu; in-hand parse.",
+  "seed": 63717,
+  "cards": {
+    "Penumbra Kavu": "Name:Penumbra Kavu\nManaCost:4 G\nTypes:Creature Kavu\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 3/3 black Kavu creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_3_3_kavu | TokenOwner$ TriggeredCardController\nOracle:When Penumbra Kavu dies, create a 3/3 black Kavu creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Penumbra Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

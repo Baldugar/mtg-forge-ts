@@ -1,0 +1,23 @@
+{
+  "id": "reaper-s-scythe-corpus-m680",
+  "description": "M6 corpus — Reaper's Scythe; in-hand parse.",
+  "seed": 63921,
+  "cards": {
+    "Reaper's Scythe": "Name:Reaper's Scythe\nManaCost:2 B\nTypes:Artifact Equipment\nK:Job select\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a soul counter on this Equipment for each player who lost life this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SOUL | CounterNum$ X\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ Y | AddToughness$ Y | AddType$ Assassin | Description$ Equipped creature gets +1/+1 for each soul counter on this Equipment and is an Assassin in addition to its other types.\nK:Equip:2:Flavor Death Sickle\nSVar:X:PlayerCountPlayers$HasPropertyLostLifeThisTurn\nSVar:Y:Count$CardCounters.SOUL\nDeckHas:Ability$Token & Type$Assassin\nOracle:Job select\\nAt the beginning of your end step, put a soul counter on this Equipment for each player who lost life this turn.\\nEquipped creature gets +1/+1 for each soul counter on this Equipment and is an Assassin in addition to its other types.\\nDeath Sickle — Equip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper's Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

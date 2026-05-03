@@ -1,0 +1,23 @@
+{
+  "id": "death-match-corpus-m680",
+  "description": "M6 corpus — Death Match; in-hand parse.",
+  "seed": 62114,
+  "cards": {
+    "Death Match": "Name:Death Match\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigPump | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever a creature enters, that creature's controller may have target creature of their choice get -3/-3 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True | TargetingPlayer$ TriggeredCardController\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, that creature's controller may have target creature of their choice get -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Match"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

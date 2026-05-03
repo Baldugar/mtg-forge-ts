@@ -1,0 +1,23 @@
+{
+  "id": "torgal-a-fine-hound-corpus-m680",
+  "description": "M6 corpus — Torgal, A Fine Hound; in-hand parse.",
+  "seed": 64774,
+  "cards": {
+    "Torgal, A Fine Hound": "Name:Torgal, A Fine Hound\nManaCost:1 G\nTypes:Legendary Creature Wolf\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Creature.Human | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first Human creature spell each turn, that creature enters with an additional +1/+1 counter on it for each Dog and/or Wolf you control.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ TriggeredCard | SetChosenNumber$ X | ReplacementEffects$ ETBCreat | ExileOnMoved$ Stack\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ Count$ChosenNumber\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:X:Count$Valid Dog.YouCtrl,Wolf.YouCtrl\nDeckHints:Type$Human|Dog|Wolf\nOracle:Whenever you cast your first Human creature spell each turn, that creature enters with an additional +1/+1 counter on it for each Dog and/or Wolf you control.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torgal, A Fine Hound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

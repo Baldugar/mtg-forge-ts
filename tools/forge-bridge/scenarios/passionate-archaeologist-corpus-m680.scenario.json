@@ -1,0 +1,23 @@
+{
+  "id": "passionate-archaeologist-corpus-m680",
+  "description": "M6 corpus — Passionate Archaeologist; in-hand parse.",
+  "seed": 63702,
+  "cards": {
+    "Passionate Archaeologist": "Name:Passionate Archaeologist\nManaCost:1 R\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ CastFromExile | Description$ Commander creatures you own have \"Whenever you cast a spell from exile, this creature deals damage equal to that spell's mana value to target opponent.\"\nSVar:CastFromExile:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile, CARDNAME deals damage equal to that spell's mana value to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nAI:RemoveDeck:NonCommander\nDeckHints:Type$Adventure & Keyword$Foretell\nOracle:Commander creatures you own have \"Whenever you cast a spell from exile, this creature deals damage equal to that spell's mana value to target opponent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Passionate Archaeologist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

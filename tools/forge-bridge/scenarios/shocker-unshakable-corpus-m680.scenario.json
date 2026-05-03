@@ -1,0 +1,23 @@
+{
+  "id": "shocker-unshakable-corpus-m680",
+  "description": "M6 corpus — Shocker, Unshakable; in-hand parse.",
+  "seed": 64258,
+  "cards": {
+    "Shocker, Unshakable": "Name:Shocker, Unshakable\nVariant:UniversesWithin:FlavorName:Kazuo, Ruthless Rival\nManaCost:4 R R\nTypes:Legendary Creature Human Rogue Villain\nPT:5/5\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, NICKNAME has first strike.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Vibro-Shock Gauntlets — When NICKNAME enters, he deals 2 damage to target creature and 2 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | DamageMap$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:During your turn, Shocker has first strike.\\nVibro-Shock Gauntlets — When Shocker enters, he deals 2 damage to target creature and 2 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shocker, Unshakable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "servant-of-the-scale-corpus-m680",
+  "description": "M6 corpus — Servant of the Scale; in-hand parse.",
+  "seed": 64216,
+  "cards": {
+    "Servant of the Scale": "Name:Servant of the Scale\nManaCost:G\nTypes:Creature Human Soldier\nPT:0/0\nK:etbCounter:P1P1:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put X +1/+1 counters on target creature you control, where X is the number of +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:Servant of the Scale enters with a +1/+1 counter on it.\\nWhen Servant of the Scale dies, put X +1/+1 counters on target creature you control, where X is the number of +1/+1 counters on Servant of the Scale.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Servant of the Scale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

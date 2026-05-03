@@ -1,0 +1,23 @@
+{
+  "id": "springjack-knight-corpus-m680",
+  "description": "M6 corpus — Springjack Knight; in-hand parse.",
+  "seed": 64433,
+  "cards": {
+    "Springjack Knight": "Name:Springjack Knight\nManaCost:2 W\nTypes:Creature Kithkin Knight\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigClash | TriggerDescription$ Whenever CARDNAME attacks, clash with an opponent. If you win, target creature gains double strike until end of turn.\nSVar:TrigClash:DB$ Clash | ValidTgts$ Creature | WinSubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Double Strike\nOracle:Whenever Springjack Knight attacks, clash with an opponent. If you win, target creature gains double strike until end of turn. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springjack Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

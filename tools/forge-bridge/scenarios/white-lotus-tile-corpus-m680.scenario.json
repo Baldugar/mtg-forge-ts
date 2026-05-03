@@ -1,0 +1,23 @@
+{
+  "id": "white-lotus-tile-corpus-m680",
+  "description": "M6 corpus — White Lotus Tile; in-hand parse.",
+  "seed": 65033,
+  "cards": {
+    "White Lotus Tile": "Name:White Lotus Tile\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This artifact enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.\nSVar:X:Count$MostProminentCreatureType Creature.YouCtrl\nOracle:This artifact enters tapped.\\n{T}: Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Lotus Tile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "warfire-javelineer-corpus-m680",
+  "description": "M6 corpus — Warfire Javelineer; in-hand parse.",
+  "seed": 65002,
+  "cards": {
+    "Warfire Javelineer": "Name:Warfire Javelineer\nManaCost:3 R\nTypes:Creature Minotaur Warrior\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals X damage to target creature an opponent controls, where X is the number of instant and sorcery cards in your graveyard.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nOracle:When Warfire Javelineer enters, it deals X damage to target creature an opponent controls, where X is the number of instant and sorcery cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warfire Javelineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

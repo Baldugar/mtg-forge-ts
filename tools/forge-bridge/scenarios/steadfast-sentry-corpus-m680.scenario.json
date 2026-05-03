@@ -1,0 +1,23 @@
+{
+  "id": "steadfast-sentry-corpus-m680",
+  "description": "M6 corpus — Steadfast Sentry; in-hand parse.",
+  "seed": 64453,
+  "cards": {
+    "Steadfast Sentry": "Name:Steadfast Sentry\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhen Steadfast Sentry dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steadfast Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

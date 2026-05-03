@@ -1,0 +1,23 @@
+{
+  "id": "frontline-war-rager-corpus-m680",
+  "description": "M6 corpus — Frontline War-Rager; in-hand parse.",
+  "seed": 62573,
+  "cards": {
+    "Frontline War-Rager": "Name:Frontline War-Rager\nManaCost:2 R\nTypes:Creature Kavu Soldier\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frontline War-Rager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

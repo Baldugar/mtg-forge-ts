@@ -1,0 +1,23 @@
+{
+  "id": "spinal-embrace-corpus-m680",
+  "description": "M6 corpus — Spinal Embrace; in-hand parse.",
+  "seed": 64407,
+  "cards": {
+    "Spinal Embrace": "Name:Spinal Embrace\nManaCost:3 U U B\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | ActivationPhases$ BeginCombat->EndCombat | SubAbility$ DBChange | SpellDescription$ Cast this spell only during combat. Untap target creature you don't control and gain control of it. It gains haste until end of turn. At the beginning of the next end step, sacrifice it. If you do, you gain life equal to its toughness.\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | sVars$ SneakAttackEOT | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigSac | RememberObjects$ Targeted | TriggerDescription$ At the beginning of the next end step, sacrifice it. If you do, you gain life equal to its toughness. | AILogic$ Always | ConditionDefined$ Targeted | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:TrigSac:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI | Controller$ You | RememberSacrificed$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ Card\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nSVar:SneakAttackEOT:SVar:EndOfTurnLeavePlay:AtEOT\nOracle:Cast this spell only during combat.\\nUntap target creature you don't control and gain control of it. It gains haste until end of turn. At the beginning of the next end step, sacrifice it. If you do, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinal Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

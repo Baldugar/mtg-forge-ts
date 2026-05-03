@@ -1,0 +1,23 @@
+{
+  "id": "corrupt-eunuchs-corpus-m680",
+  "description": "M6 corpus — Corrupt Eunuchs; in-hand parse.",
+  "seed": 62011,
+  "cards": {
+    "Corrupt Eunuchs": "Name:Corrupt Eunuchs\nManaCost:3 R\nTypes:Creature Human Advisor\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nSVar:PlayMain1:TRUE\nOracle:When Corrupt Eunuchs enters, it deals 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corrupt Eunuchs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

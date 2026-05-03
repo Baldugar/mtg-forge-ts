@@ -1,0 +1,23 @@
+{
+  "id": "blood-hound-corpus-m680",
+  "description": "M6 corpus — Blood Hound; in-hand parse.",
+  "seed": 61714,
+  "cards": {
+    "Blood Hound": "Name:Blood Hound\nManaCost:2 R\nTypes:Creature Dog\nPT:1/1\nT:Mode$ DamageDoneOnce | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever you're dealt damage, you may put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemove | TriggerDescription$ At the beginning of your end step, remove all +1/+1 counters from CARDNAME.\nSVar:TrigRemove:DB$ RemoveCounterAll | ValidCards$ Card.Self | CounterType$ P1P1 | AllCounters$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever you're dealt damage, you may put that many +1/+1 counters on Blood Hound.\\nAt the beginning of your end step, remove all +1/+1 counters from Blood Hound.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Hound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

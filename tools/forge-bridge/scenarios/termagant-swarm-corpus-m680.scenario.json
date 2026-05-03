@@ -1,0 +1,23 @@
+{
+  "id": "termagant-swarm-corpus-m680",
+  "description": "M6 corpus — Termagant Swarm; in-hand parse.",
+  "seed": 64622,
+  "cards": {
+    "Termagant Swarm": "Name:Termagant Swarm\nManaCost:X G\nTypes:Creature Tyranid\nPT:0/0\nK:Ravenous\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Death Frenzy — When CARDNAME dies, create a number of 1/1 green Tyranid creature tokens equal to CARDNAME's power.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_tyranid | TokenAmount$ Y\nSVar:X:Count$xPaid\nSVar:Y:TriggeredCard$CardPower\nDeckHas:Ability$Counters|Token\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nDeath Frenzy — When Termagant Swarm dies, create a number of 1/1 green Tyranid creature tokens equal to Termagant Swarm's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Termagant Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

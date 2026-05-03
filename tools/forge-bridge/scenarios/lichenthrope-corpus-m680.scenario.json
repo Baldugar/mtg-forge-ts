@@ -1,0 +1,23 @@
+{
+  "id": "lichenthrope-corpus-m680",
+  "description": "M6 corpus — Lichenthrope; in-hand parse.",
+  "seed": 63222,
+  "cards": {
+    "Lichenthrope": "Name:Lichenthrope\nManaCost:3 G G\nTypes:Creature Plant Fungus\nPT:5/5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | Description$ If damage would be dealt to CARDNAME, put that many -1/-1 counters on it instead.\nSVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRem | TriggerDescription$ At the beginning of your upkeep, remove a -1/-1 counter from CARDNAME.\nSVar:TrigRem:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:If damage would be dealt to Lichenthrope, put that many -1/-1 counters on it instead.\\nAt the beginning of your upkeep, remove a -1/-1 counter from Lichenthrope.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lichenthrope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

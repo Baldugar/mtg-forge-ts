@@ -1,0 +1,23 @@
+{
+  "id": "kavu-monarch-corpus-m680",
+  "description": "M6 corpus — Kavu Monarch; in-hand parse.",
+  "seed": 63089,
+  "cards": {
+    "Kavu Monarch": "Name:Kavu Monarch\nManaCost:2 R R\nTypes:Creature Kavu\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Kavu | AddKeyword$ Trample | Description$ Kavu creatures have trample.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Kavu.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Kavu enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Kavu\nOracle:Kavu creatures have trample.\\nWhenever another Kavu enters, put a +1/+1 counter on Kavu Monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kavu Monarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

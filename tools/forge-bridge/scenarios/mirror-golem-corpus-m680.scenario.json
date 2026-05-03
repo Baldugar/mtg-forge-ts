@@ -1,0 +1,23 @@
+{
+  "id": "mirror-golem-corpus-m680",
+  "description": "M6 corpus — Mirror Golem; in-hand parse.",
+  "seed": 63432,
+  "cards": {
+    "Mirror Golem": "Name:Mirror Golem\nManaCost:6\nTypes:Artifact Creature Golem\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Imprint — When CARDNAME enters, you may exile target card from a graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | Imprint$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsImprinted+ExiledWithSourceLKI | Origin$ Exile | Execute$ DBForget | Static$ True\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Creature | CheckSVar$ CheckCreature | Description$ CARDNAME has protection from each of the exiled card's card types. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Land | CheckSVar$ CheckLand | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Enchantment | CheckSVar$ CheckEnchantment | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Artifact | CheckSVar$ CheckArtifact | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Instant | CheckSVar$ CheckInstant | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Sorcery | CheckSVar$ CheckSorcery | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Planeswalker | CheckSVar$ CheckPlaneswalker | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Kindred | CheckSVar$ CheckKindred | SVarCompare$ GE1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Battle | CheckSVar$ CheckBattle | SVarCompare$ GE1\nSVar:CheckCreature:Imprinted$Valid Creature\nSVar:CheckArtifact:Imprinted$Valid Artifact\nSVar:CheckEnchantment:Imprinted$Valid Enchantment\nSVar:CheckInstant:Imprinted$Valid Instant\nSVar:CheckSorcery:Imprinted$Valid Sorcery\nSVar:CheckPlaneswalker:Imprinted$Valid Planeswalker\nSVar:CheckKindred:Imprinted$Valid Kindred\nSVar:CheckBattle:Imprinted$Valid Battle\nSVar:CheckLand:Imprinted$Valid Land\nOracle:Imprint — When Mirror Golem enters, you may exile target card from a graveyard.\\nMirror Golem has protection from each of the exiled card's card types. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

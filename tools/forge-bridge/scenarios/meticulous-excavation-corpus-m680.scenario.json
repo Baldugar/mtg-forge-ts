@@ -1,0 +1,23 @@
+{
+  "id": "meticulous-excavation-corpus-m680",
+  "description": "M6 corpus — Meticulous Excavation; in-hand parse.",
+  "seed": 63395,
+  "cards": {
+    "Meticulous Excavation": "Name:Meticulous Excavation\nManaCost:W\nTypes:Enchantment\nA:AB$ Branch | Cost$ 2 W | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | BranchConditionSVar$ HasUnearth | TrueSubAbility$ Blink | FalseSubAbility$ Return | PlayerTurn$ True | SpellDescription$ Return target permanent you control to its owner's hand. If it has unearth, instead exile it, then return that card to its owner's hand. Activate only during your turn.\nSVar:Blink:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ ReturnToHand\nSVar:ReturnToHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Return:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand\nSVar:HasUnearth:Targeted$Valid Permanent.withUnearth\nDeckHints:Keyword$Unearth\nOracle:{2}{W}: Return target permanent you control to its owner's hand. If it has unearth, instead exile it, then return that card to its owner's hand. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meticulous Excavation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

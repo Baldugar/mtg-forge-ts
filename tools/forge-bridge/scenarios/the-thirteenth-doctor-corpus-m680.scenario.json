@@ -1,0 +1,23 @@
+{
+  "id": "the-thirteenth-doctor-corpus-m680",
+  "description": "M6 corpus — The Thirteenth Doctor; in-hand parse.",
+  "seed": 64694,
+  "cards": {
+    "The Thirteenth Doctor": "Name:The Thirteenth Doctor\nManaCost:1 G U\nTypes:Legendary Creature Time Lord Doctor\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Paradox — Whenever you cast a spell from anywhere other than your hand, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Team TARDIS — At the beginning of your end step, untap each creature you control with a counter on it.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl+HasCounters\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Paradox — Whenever you cast a spell from anywhere other than your hand, put a +1/+1 counter on target creature.\\nTeam TARDIS — At the beginning of your end step, untap each creature you control with a counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Thirteenth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

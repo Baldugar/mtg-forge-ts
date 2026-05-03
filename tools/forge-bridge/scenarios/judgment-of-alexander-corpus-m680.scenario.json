@@ -1,0 +1,23 @@
+{
+  "id": "judgment-of-alexander-corpus-m680",
+  "description": "M6 corpus — Judgment of Alexander; in-hand parse.",
+  "seed": 63056,
+  "cards": {
+    "Judgment of Alexander": "Name:Judgment of Alexander\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ PreventDamage | AILogic$ Fog | SpellDescription$ Prevent all damage that would be dealt to you this turn by sources your opponents control. Whenever damage from a creature is prevented this way, each commander creature you control deals damage equal to its power to that creature.\nSVar:PreventDamage:Event$ DamageDone | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ReplaceWith$ DBTrigger | PreventionEffect$ True | ExecuteMode$ PerSource | Description$ Prevent all damage that would be dealt to you this turn by sources your opponents control. Whenever damage from a creature is prevented this way, each commander creature you control deals damage equal to its power to that creature.\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ TrigDamageCreature | RememberObjects$ ReplacedSource | ConditionCheckSVar$ Y | TriggerDescription$ Whenever damage from a creature is prevented this way, each commander creature you control deals damage equal to its power to that creature.\nSVar:TrigDamageCreature:DB$ DealDamage | Defined$ DelayTriggerRemembered | DamageSource$ Valid Card.IsCommander+YouCtrl | NumDmg$ X\nSVar:X:Count$Valid Card.IsCommander+YouCtrl$CardPower\nSVar:Y:ReplacedSource$Valid Card.Creature\nAI:RemoveDeck:NonCommander\nOracle:Prevent all damage that would be dealt to you this turn by sources your opponents control.\\nWhenever damage from a creature is prevented this way, each commander creature you control deals damage equal to its power to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Judgment of Alexander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

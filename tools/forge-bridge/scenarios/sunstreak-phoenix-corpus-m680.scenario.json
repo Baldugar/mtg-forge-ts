@@ -1,0 +1,23 @@
+{
+  "id": "sunstreak-phoenix-corpus-m680",
+  "description": "M6 corpus — Sunstreak Phoenix; in-hand parse.",
+  "seed": 64521,
+  "cards": {
+    "Sunstreak Phoenix": "Name:Sunstreak Phoenix\nManaCost:2 R R\nTypes:Creature Phoenix\nPT:4/2\nK:Flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigReturn | TriggerZones$ Graveyard | TriggerDescription$ Whenever day becomes night or night becomes day, you may pay {1}{R}. If you do, return CARDNAME from your graveyard to the battlefield tapped.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 R | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nDeckHas:Ability$Graveyard\nOracle:Flying\\nIf it's neither day nor night, it becomes day as Sunstreak Phoenix enters.\\nWhenever day becomes night or night becomes day, you may pay {1}{R}. If you do, return Sunstreak Phoenix from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunstreak Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

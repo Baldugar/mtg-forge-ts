@@ -1,0 +1,23 @@
+{
+  "id": "tales-of-the-ancestors-corpus-m680",
+  "description": "M6 corpus — Tales of the Ancestors; in-hand parse.",
+  "seed": 64585,
+  "cards": {
+    "Tales of the Ancestors": "Name:Tales of the Ancestors\nManaCost:3 U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player.HasCardsInHand_Card_LTX | RepeatSubAbility$ DBDraw | SpellDescription$ Each player with fewer cards in hand than the player with the most cards in hand draws cards equal to the difference.\nSVar:DBDraw:DB$ Draw | Defined$ Player.IsRemembered | NumCards$ Z\nSVar:X:PlayerCountPlayers$HighestCardsInHand\nSVar:Y:Count$ValidHand Card.RememberedPlayerCtrl\nSVar:Z:SVar$X/Minus.Y\nK:Foretell:1 U\nOracle:Each player with fewer cards in hand than the player with the most cards in hand draws cards equal to the difference.\\nForetell {1}{U} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tales of the Ancestors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

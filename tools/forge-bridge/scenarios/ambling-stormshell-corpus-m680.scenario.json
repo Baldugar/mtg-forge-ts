@@ -1,0 +1,23 @@
+{
+  "id": "ambling-stormshell-corpus-m680",
+  "description": "M6 corpus — Ambling Stormshell; in-hand parse.",
+  "seed": 61494,
+  "cards": {
+    "Ambling Stormshell": "Name:Ambling Stormshell\nManaCost:3 U U\nTypes:Creature Turtle\nPT:5/9\nK:Ward:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature attacks, put three stun counters on it and draw three cards. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ STUN | CounterNum$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 3\nT:Mode$ SpellCast | ValidCard$ Turtle | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a Turtle spell, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:Ward {2}\\nWhenever this creature attacks, put three stun counters on it and draw three cards. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nWhenever you cast a Turtle spell, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ambling Stormshell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mistway-spy-corpus-m680",
+  "description": "M6 corpus — Mistway Spy; in-hand parse.",
+  "seed": 63444,
+  "cards": {
+    "Mistway Spy": "Name:Mistway Spy\nManaCost:U\nTypes:Creature Merfolk Detective\nPT:1/1\nK:Flying\nK:Disguise:1 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, until end of turn, whenever a creature you control deals combat damage to a player, investigate.\nSVar:TrigEffect:DB$ Effect | Triggers$ AttackTrig\nSVar:AttackTrig:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigInvestigate | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, investigate.\nSVar:TrigInvestigate:DB$ Investigate | Defined$ You\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue|Treasure\nOracle:Flying\\nDisguise {1}{U} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Mistway Spy is turned face up, until end of turn, whenever a creature you control deals combat damage to a player, investigate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistway Spy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

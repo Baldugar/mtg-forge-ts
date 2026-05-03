@@ -1,0 +1,23 @@
+{
+  "id": "jedit-ojanen-mercenary-corpus-m680",
+  "description": "M6 corpus — Jedit Ojanen, Mercenary; in-hand parse.",
+  "seed": 63030,
+  "cards": {
+    "Jedit Ojanen, Mercenary": "Name:Jedit Ojanen, Mercenary\nManaCost:1 W U\nTypes:Legendary Creature Cat Mercenary\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+Legendary+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another legendary creature enters, you may pay {G}. If you do, create a 2/2 green Cat Warrior creature token with forestwalk.\nSVar:TrigToken:AB$ Token | Cost$ G | TokenOwner$ You | TokenScript$ g_2_2_cat_warrior_forestwalk\nDeckHas:Ability$Token & Type$Warrior\nDeckHints:Type$Legendary\nOracle:Whenever Jedit Ojanen, Mercenary or another legendary creature enters, you may pay {G}. If you do, create a 2/2 green Cat Warrior creature token with forestwalk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jedit Ojanen, Mercenary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "interceptor-mechan-corpus-m680",
+  "description": "M6 corpus — Interceptor Mechan; in-hand parse.",
+  "seed": 62955,
+  "cards": {
+    "Interceptor Mechan": "Name:Interceptor Mechan\nManaCost:2 B R\nTypes:Artifact Creature Robot\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, return target artifact or creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouOwn,Creature.YouOwn | TgtPrompt$ Select target artifact or creature card in your graveyard\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigPutCounter | TriggerDescription$ Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Void.1.0\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen this creature enters, return target artifact or creature card from your graveyard to your hand.\\nVoid — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Interceptor Mechan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

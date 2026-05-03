@@ -1,0 +1,23 @@
+{
+  "id": "thunderblade-charge-corpus-m680",
+  "description": "M6 corpus — Thunderblade Charge; in-hand parse.",
+  "seed": 64736,
+  "cards": {
+    "Thunderblade Charge": "Name:Thunderblade Charge\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | TriggerZones$ Graveyard | PresentZone$ Graveyard | IsPresent$ Card.StrictlySelf | Execute$ TrigPlay | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, if CARDNAME is in your graveyard, you may pay {2}{R}{R}{R}. If you do, you may cast it without paying its mana cost.\nSVar:TrigPlay:AB$ Play | Cost$ 2 R R R | WithoutManaCost$ True | Optional$ True\nOracle:Thunderblade Charge deals 3 damage to any target.\\nWhenever one or more creatures you control deal combat damage to a player, if Thunderblade Charge is in your graveyard, you may pay {2}{R}{R}{R}. If you do, you may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderblade Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

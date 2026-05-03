@@ -1,0 +1,23 @@
+{
+  "id": "skullbriar-the-walking-grave-corpus-m680",
+  "description": "M6 corpus — Skullbriar, the Walking Grave; in-hand parse.",
+  "seed": 64302,
+  "cards": {
+    "Skullbriar, the Walking Grave": "Name:Skullbriar, the Walking Grave\nManaCost:B G\nTypes:Legendary Creature Zombie Elemental\nPT:1/1\nK:Haste\nS:Mode$ CountersRemain | ValidCard$ Card.Self | EffectZone$ All | Description$ Counters remain on NICKNAME as it moves to any zone other than a player's hand or library.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Haste\\nWhenever Skullbriar, the Walking Grave deals combat damage to a player, put a +1/+1 counter on it.\\nCounters remain on Skullbriar as it moves to any zone other than a player's hand or library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullbriar, the Walking Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

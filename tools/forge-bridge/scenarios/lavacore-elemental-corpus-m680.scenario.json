@@ -1,0 +1,23 @@
+{
+  "id": "lavacore-elemental-corpus-m680",
+  "description": "M6 corpus — Lavacore Elemental; in-hand parse.",
+  "seed": 63197,
+  "cards": {
+    "Lavacore Elemental": "Name:Lavacore Elemental\nManaCost:2 R\nTypes:Creature Elemental\nPT:5/3\nK:Vanishing:1\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control deals combat damage to a player, put a time counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1\nSVar:PlayMain1:ALWAYS\nSVar:NeedsToPlay:Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:Vanishing 1 (This creature enters with a time counter on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhenever a creature you control deals combat damage to a player, put a time counter on Lavacore Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lavacore Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

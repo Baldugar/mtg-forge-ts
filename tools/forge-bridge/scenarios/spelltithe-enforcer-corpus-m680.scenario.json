@@ -1,0 +1,23 @@
+{
+  "id": "spelltithe-enforcer-corpus-m680",
+  "description": "M6 corpus — Spelltithe Enforcer; in-hand parse.",
+  "seed": 64399,
+  "cards": {
+    "Spelltithe Enforcer": "Name:Spelltithe Enforcer\nManaCost:3 W W\nTypes:Creature Elephant Wizard\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever an opponent casts a spell, that player sacrifices a permanent unless they pay {1}.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredCardController | SacValid$ Permanent | UnlessCost$ 1 | UnlessPayer$ TriggeredCardController\nSVar:AI_SpellsNeedExtraMana:1 Opponent\nOracle:Whenever an opponent casts a spell, that player sacrifices a permanent unless they pay {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spelltithe Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

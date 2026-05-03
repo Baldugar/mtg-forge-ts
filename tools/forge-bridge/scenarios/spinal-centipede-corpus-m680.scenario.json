@@ -1,0 +1,23 @@
+{
+  "id": "spinal-centipede-corpus-m680",
+  "description": "M6 corpus — Spinal Centipede; in-hand parse.",
+  "seed": 64406,
+  "cards": {
+    "Spinal Centipede": "Name:Spinal Centipede\nManaCost:2 B\nTypes:Creature Insect\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Spinal Centipede dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinal Centipede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

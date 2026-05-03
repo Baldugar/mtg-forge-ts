@@ -1,0 +1,23 @@
+{
+  "id": "master-s-guidance-corpus-m680",
+  "description": "M6 corpus — Master's Guidance; in-hand parse.",
+  "seed": 63365,
+  "cards": {
+    "Master's Guidance": "Name:Master's Guidance\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Legendary | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you attack with two or more legendary creatures, put a +1/+1 counter on each of up to two target attacking creatures.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.attacking | TgtPrompt$ Select up to two target attacking creatures\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+powerGE4 | TriggerDescription$ At the beginning of your end step, if you control a creature with power 4 or greater, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Whenever you attack with two or more legendary creatures, put a +1/+1 counter on each of up to two target attacking creatures.\\nAt the beginning of your end step, if you control a creature with power 4 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master's Guidance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-commando-corpus-m680",
+  "description": "M6 corpus — Goblin Commando; in-hand parse.",
+  "seed": 62684,
+  "cards": {
+    "Goblin Commando": "Name:Goblin Commando\nManaCost:4 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nSVar:PlayMain1:TRUE\nOracle:When Goblin Commando enters, it deals 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Commando"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

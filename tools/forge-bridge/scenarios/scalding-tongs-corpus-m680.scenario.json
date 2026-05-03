@@ -1,0 +1,23 @@
+{
+  "id": "scalding-tongs-corpus-m680",
+  "description": "M6 corpus — Scalding Tongs; in-hand parse.",
+  "seed": 64142,
+  "cards": {
+    "Scalding Tongs": "Name:Scalding Tongs\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.YouCtrl | PresentZone$ Hand | PresentCompare$ LE3 | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your upkeep, if you have three or fewer cards in hand, CARDNAME deals 1 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | NumDmg$ 1\nOracle:At the beginning of your upkeep, if you have three or fewer cards in hand, Scalding Tongs deals 1 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scalding Tongs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

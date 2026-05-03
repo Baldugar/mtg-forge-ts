@@ -1,0 +1,23 @@
+{
+  "id": "orchard-warden-corpus-m680",
+  "description": "M6 corpus — Orchard Warden; in-hand parse.",
+  "seed": 63643,
+  "cards": {
+    "Orchard Warden": "Name:Orchard Warden\nManaCost:4 G G\nTypes:Creature Treefolk Shaman\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Treefolk.YouCtrl+Other | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever another Treefolk creature you control enters, you may gain life equal to that creature's toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Life\nSVar:Life:TriggeredCard$CardToughness\nOracle:Whenever another Treefolk creature you control enters, you may gain life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orchard Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

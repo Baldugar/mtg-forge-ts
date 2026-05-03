@@ -1,0 +1,23 @@
+{
+  "id": "gerrard-capashen-corpus-m680",
+  "description": "M6 corpus — Gerrard Capashen; in-hand parse.",
+  "seed": 62627,
+  "cards": {
+    "Gerrard Capashen": "Name:Gerrard Capashen\nManaCost:3 W W\nTypes:Legendary Creature Human Soldier\nPT:3/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you gain 1 life for each card in target opponent's hand.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X | ValidTgts$ Opponent | Defined$ You\nA:AB$ Tap | Cost$ 3 W | ValidTgts$ Creature | IsPresent$ Card.Self+attacking | SpellDescription$ Tap target creature. Activate only if CARDNAME is attacking.\nSVar:X:TargetedPlayer$CardsInHand\nOracle:At the beginning of your upkeep, you gain 1 life for each card in target opponent's hand.\\n{3}{W}: Tap target creature. Activate only if Gerrard Capashen is attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gerrard Capashen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

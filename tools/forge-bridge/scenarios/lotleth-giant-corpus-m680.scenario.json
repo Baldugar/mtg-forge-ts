@@ -1,0 +1,23 @@
+{
+  "id": "lotleth-giant-corpus-m680",
+  "description": "M6 corpus — Lotleth Giant; in-hand parse.",
+  "seed": 63272,
+  "cards": {
+    "Lotleth Giant": "Name:Lotleth Giant\nManaCost:6 B\nTypes:Creature Zombie Giant\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Undergrowth — When CARDNAME enters, it deals 1 damage to target opponent for each creature card in your graveyard.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Undergrowth — When Lotleth Giant enters, it deals 1 damage to target opponent for each creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotleth Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

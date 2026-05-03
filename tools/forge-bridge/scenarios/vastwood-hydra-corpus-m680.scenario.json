@@ -1,0 +1,23 @@
+{
+  "id": "vastwood-hydra-corpus-m680",
+  "description": "M6 corpus — Vastwood Hydra; in-hand parse.",
+  "seed": 64894,
+  "cards": {
+    "Vastwood Hydra": "Name:Vastwood Hydra\nManaCost:X G G\nTypes:Creature Hydra\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigCounterDist | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may distribute a number of +1/+1 counters equal to the number of +1/+1 counters on CARDNAME among any number of creatures you control.\nSVar:TrigCounterDist:DB$ PutCounter | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose any number of creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ Y | ChoiceAmount$ Y | MinChoiceAmount$ 1 | DividedAsYouChoose$ Y\nSVar:Y:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:Vastwood Hydra enters with X +1/+1 counters on it.\\nWhen Vastwood Hydra dies, you may distribute a number of +1/+1 counters equal to the number of +1/+1 counters on Vastwood Hydra among any number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vastwood Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lavinia-foil-to-conspiracy-corpus-m680",
+  "description": "M6 corpus — Lavinia, Foil to Conspiracy; in-hand parse.",
+  "seed": 63199,
+  "cards": {
+    "Lavinia, Foil to Conspiracy": "Name:Lavinia, Foil to Conspiracy\nManaCost:1 WU WU\nTypes:Legendary Creature Human Detective\nPT:2/3\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigInvestigate | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | OpponentTurn$ True | SpellDescription$ Add {C}{C}. Activate only during an opponent's turn.\nOracle:Vigilance\\nWhenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\n{T}: Add {C}{C}. Activate only during an opponent's turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lavinia, Foil to Conspiracy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

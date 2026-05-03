@@ -1,0 +1,23 @@
+{
+  "id": "sadistic-glee-corpus-m680",
+  "description": "M6 corpus — Sadistic Glee; in-hand parse.",
+  "seed": 64102,
+  "cards": {
+    "Sadistic Glee": "Name:Sadistic Glee\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dies, put a +1/+1 counter on enchanted creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ P1P1 | CounterNum$ 1\nOracle:Enchant creature\\nWhenever a creature dies, put a +1/+1 counter on enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sadistic Glee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "contest-of-claws-corpus-m680",
+  "description": "M6 corpus — Contest of Claws; in-hand parse.",
+  "seed": 61999,
+  "cards": {
+    "Contest of Claws": "Name:Contest of Claws\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | AILogic$ PowerDmg | StackDescription$ {c:ThisTargetedCard} | SpellDescription$ Target creature you control\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select another target creature | TargetUnique$ True | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget | ExcessSVar$ Excess | SubAbility$ DBDiscover | StackDescription$ REP another target creature_{c:ThisTargetedCard} | SpellDescription$ deals damage equal to its power to another target creature.\nSVar:DBDiscover:DB$ Discover | Num$ Excess | ConditionCheckSVar$ Excess | StackDescription$ REP discover_{p:You} discovers | SpellDescription$ If excess damage was dealt this way, discover X, where X is that excess damage. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to another target creature. If excess damage was dealt this way, discover X, where X is that excess damage. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contest of Claws"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "iron-apprentice-corpus-m680",
+  "description": "M6 corpus — Iron Apprentice; in-hand parse.",
+  "seed": 62987,
+  "cards": {
+    "Iron Apprentice": "Name:Iron Apprentice\nManaCost:1\nTypes:Artifact Creature Construct\nPT:0/0\nK:etbCounter:P1P1:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+HasCounters | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, if it had counters on it, put those counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nDeckHas:Ability$Counters\nOracle:Iron Apprentice enters with a +1/+1 counter on it.\\nWhen Iron Apprentice dies, if it had counters on it, put those counters on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

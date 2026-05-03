@@ -1,0 +1,23 @@
+{
+  "id": "rotcrown-ghoul-corpus-m680",
+  "description": "M6 corpus — Rotcrown Ghoul; in-hand parse.",
+  "seed": 64045,
+  "cards": {
+    "Rotcrown Ghoul": "Name:Rotcrown Ghoul\nManaCost:4 U\nTypes:Creature Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME dies, target player mills five cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 5 | ValidTgts$ Player | TgtPrompt$ Select target player\nOracle:When Rotcrown Ghoul dies, target player mills five cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotcrown Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cyclone-corpus-m680",
+  "description": "M6 corpus — Cyclone; in-hand parse.",
+  "seed": 62072,
+  "cards": {
+    "Cyclone": "Name:Cyclone\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a wind counter on CARDNAME, then sacrifice CARDNAME unless you pay {G} for each wind counter on it. If you pay, CARDNAME deals damage equal to the number of wind counters on it to each creature and each player.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ WIND | CounterNum$ 1 | SubAbility$ SacSelf\nSVar:SacSelf:DB$ Sacrifice | UnlessCost$ Y | UnlessColor$ G | UnlessPayer$ You | UnlessResolveSubs$ WhenPaid | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ Y | ValidCards$ Creature | ValidPlayers$ Player\nSVar:Y:Count$CardCounters.WIND\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, put a wind counter on Cyclone, then sacrifice Cyclone unless you pay {G} for each wind counter on it. If you pay, Cyclone deals damage equal to the number of wind counters on it to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

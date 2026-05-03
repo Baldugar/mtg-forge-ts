@@ -1,0 +1,23 @@
+{
+  "id": "slith-firewalker-corpus-m680",
+  "description": "M6 corpus — Slith Firewalker; in-hand parse.",
+  "seed": 64329,
+  "cards": {
+    "Slith Firewalker": "Name:Slith Firewalker\nManaCost:R R\nTypes:Creature Slith\nPT:1/1\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Haste\\nWhenever Slith Firewalker deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slith Firewalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

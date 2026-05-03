@@ -1,0 +1,23 @@
+{
+  "id": "aerith-rescue-mission-corpus-m680",
+  "description": "M6 corpus — Aerith Rescue Mission; in-hand parse.",
+  "seed": 61455,
+  "cards": {
+    "Aerith Rescue Mission": "Name:Aerith Rescue Mission\nManaCost:3 W\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBTokens,DBTap\nSVar:DBTokens:DB$ Token | TokenScript$ c_1_1_hero | TokenOwner$ You | TokenAmount$ 3 | SpellDescription$ Take the Elevator — Create three 1/1 colorless Hero creature tokens.\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 3 | TgtPrompt$ Select up to three target creatures | SubAbility$ DBPutCounter | SpellDescription$ Take 59 Flights of Stairs — Tap up to three target creatures. Put a stun counter on one of them.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.targetedBy | CounterType$ Stun | CounterNum$ 1\nOracle:Choose one —\\n• Take the Elevator — Create three 1/1 colorless Hero creature tokens.\\n• Take 59 Flights of Stairs — Tap up to three target creatures. Put a stun counter on one of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aerith Rescue Mission"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

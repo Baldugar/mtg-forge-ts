@@ -1,0 +1,23 @@
+{
+  "id": "gryffwing-cavalry-corpus-m680",
+  "description": "M6 corpus — Gryffwing Cavalry; in-hand parse.",
+  "seed": 62743,
+  "cards": {
+    "Gryffwing Cavalry": "Name:Gryffwing Cavalry\nManaCost:3 W\nTypes:Creature Human Knight\nPT:2/2\nK:Flying\nK:Training\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {1}{W}. If you do, another target attacking creature without flying gains flying until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ 1 W | ValidTgts$ Creature.Other+attacking+withoutFlying | TgtPrompt$ Select another target attacking creature without flying | KW$ Flying\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nTraining (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\\nWhenever Gryffwing Cavalry attacks, you may pay {1}{W}. If you do, another target attacking creature without flying gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gryffwing Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

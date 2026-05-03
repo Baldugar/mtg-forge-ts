@@ -1,0 +1,23 @@
+{
+  "id": "undead-sprinter-corpus-m680",
+  "description": "M6 corpus — Undead Sprinter; in-hand parse.",
+  "seed": 64842,
+  "cards": {
+    "Undead Sprinter": "Name:Undead Sprinter\nManaCost:B R\nTypes:Creature Zombie\nPT:2/2\nK:Trample\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | AffectedZone$ Graveyard | MayPlay$ True | CheckSVar$ X | Description$ You may cast CARDNAME from your graveyard if a non-Zombie creature died this turn. If you do, CARDNAME enters with a +1/+1 counter on it.\nT:Mode$ SpellCast | ValidCard$ Card.Self | ValidSA$ Spell.MayPlaySource | Static$ True | Execute$ DBEffect\nSVar:DBEffect:DB$ Effect | ExileOnMoved$ Stack | ReplacementEffects$ ETBCreat | ExileOnMoved$ Stack\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.EffectSource | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ That creature enters with an additional +1/+1 counter on it.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.nonZombie\nSVar:SacMe:3\nSVar:DiscardMe:3\nOracle:Trample, haste\\nYou may cast Undead Sprinter from your graveyard if a non-Zombie creature died this turn. If you do, Undead Sprinter enters with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undead Sprinter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

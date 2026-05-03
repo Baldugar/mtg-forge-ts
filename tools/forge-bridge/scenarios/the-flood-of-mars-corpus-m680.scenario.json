@@ -1,0 +1,23 @@
+{
+  "id": "the-flood-of-mars-corpus-m680",
+  "description": "M6 corpus — The Flood of Mars; in-hand parse.",
+  "seed": 64656,
+  "cards": {
+    "The Flood of Mars": "Name:The Flood of Mars\nManaCost:2 U U\nTypes:Creature Alien Zombie Horror\nPT:3/3\nK:Landwalk:Island\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBCounter | TriggerDescription$ Water Always Wins — Whenever CARDNAME attacks, put a flood counter on another target creature or land. If it's a creature, it becomes a copy of CARDNAME. If it's a land, it becomes an Island in addition to its other types.\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Creature.Other,Land.Other | AITgts$ Creature.OppCtrl+!namedThe Flood of Mars,Land.OppCtrl+nonIsland | TgtPrompt$ Select target creature or land | CounterType$ FLOOD | SubAbility$ DBCopy\nSVar:DBCopy:DB$ Clone | ConditionDefined$ ParentTarget | ConditionPresent$ Creature | Defined$ Self | CloneZone$ Battlefield | CloneTarget$ ParentTarget | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | ConditionDefined$ ParentTarget | ConditionPresent$ Land | Defined$ ParentTarget | Types$ Island | Duration$ Permanent | IsCurse$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWater Always Wins — Whenever The Flood of Mars attacks, put a flood counter on another target creature or land. If it's a creature, it becomes a copy of The Flood of Mars. If it's a land, it becomes an Island in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Flood of Mars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grey-host-reinforcements-corpus-m680",
+  "description": "M6 corpus — Grey Host Reinforcements; in-hand parse.",
+  "seed": 62721,
+  "cards": {
+    "Grey Host Reinforcements": "Name:Grey Host Reinforcements\nManaCost:3 W\nTypes:Creature Spirit Soldier\nPT:1/1\nK:Flying\nK:Ward:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target player's graveyard. Put a number of +1/+1 counters on CARDNAME equal to the number of creature cards exiled this way.\nSVar:TrigExile:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SubAbility$ DBCounter | RememberChanged$ True\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature\nDeckHas:Ability$Counters\nOracle:Flying, ward {3}\\nWhen Grey Host Reinforcements enters, exile target player's graveyard. Put a number of +1/+1 counters on Grey Host Reinforcements equal to the number of creature cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grey Host Reinforcements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

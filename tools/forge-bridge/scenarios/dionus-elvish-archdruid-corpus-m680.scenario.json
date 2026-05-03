@@ -1,0 +1,23 @@
+{
+  "id": "dionus-elvish-archdruid-corpus-m680",
+  "description": "M6 corpus — Dionus, Elvish Archdruid; in-hand parse.",
+  "seed": 62173,
+  "cards": {
+    "Dionus, Elvish Archdruid": "Name:Dionus, Elvish Archdruid\nManaCost:3 G\nTypes:Legendary Creature Elf Druid\nPT:3/3\nS:Mode$ Continuous | Affected$ Elf.YouCtrl | AddTrigger$ TrigTapped | Description$ Elves you control have \"Whenever this creature becomes tapped during your turn, untap it and put a +1/+1 counter on it. This ability triggers only once each turn.\"\nSVar:TrigTapped:Mode$ Taps | ValidCard$ Card.Self | TriggerZones$ Battlefield | ActivationLimit$ 1 | PlayerTurn$ True | Execute$ TrigUntap | TriggerDescription$ Whenever this creature becomes tapped during your turn, untap it and put a +1/+1 counter on it. This ability triggers only once each turn.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Elf\nOracle:Elves you control have \"Whenever this creature becomes tapped during your turn, untap it and put a +1/+1 counter on it. This ability triggers only once each turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dionus, Elvish Archdruid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

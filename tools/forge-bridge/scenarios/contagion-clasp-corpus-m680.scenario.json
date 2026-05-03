@@ -1,0 +1,23 @@
+{
+  "id": "contagion-clasp-corpus-m680",
+  "description": "M6 corpus — Contagion Clasp; in-hand parse.",
+  "seed": 61996,
+  "cards": {
+    "Contagion Clasp": "Name:Contagion Clasp\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature.\nA:AB$ Proliferate | Cost$ 4 T | SpellDescription$ Proliferate.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nDeckHas:Ability$Proliferate\nDeckNeeds:Ability$Counters\nOracle:When Contagion Clasp enters, put a -1/-1 counter on target creature.\\n{4}, {T}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contagion Clasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

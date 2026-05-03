@@ -1,0 +1,23 @@
+{
+  "id": "baxter-fly-in-the-ointment-corpus-m680",
+  "description": "M6 corpus — Baxter, Fly in the Ointment; in-hand parse.",
+  "seed": 61660,
+  "cards": {
+    "Baxter, Fly in the Ointment": "Name:Baxter, Fly in the Ointment\nManaCost:3 U\nTypes:Legendary Creature Insect Mutant Scientist\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever NICKNAME enters or attacks, each creature you control with a counter on it gains flying until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME enters or attacks, each creature you control with a counter on it gains flying until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+HasCounters | KW$ Flying\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Counters\nOracle:Whenever Baxter enters or attacks, each creature you control with a counter on it gains flying until end of turn.\\nWhenever you draw a card, put a +1/+1 counter on Baxter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baxter, Fly in the Ointment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

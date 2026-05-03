@@ -1,0 +1,23 @@
+{
+  "id": "caught-red-handed-corpus-m680",
+  "description": "M6 corpus — Caught Red-Handed; in-hand parse.",
+  "seed": 61868,
+  "cards": {
+    "Caught Red-Handed": "Name:Caught Red-Handed\nManaCost:4 R\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered. (This includes by the ward ability.)\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBSuspect | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:DBSuspect:DB$ AlterAttribute | StackDescription$ SpellDescription | Attributes$ Suspected | Defined$ Targeted | SpellDescription$ Suspect it. (It has menace and can't block.)\nOracle:This spell can't be countered. (This includes by the ward ability.)\\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. Suspect it. (It has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caught Red-Handed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

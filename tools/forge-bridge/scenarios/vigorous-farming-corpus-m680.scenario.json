@@ -1,0 +1,23 @@
+{
+  "id": "vigorous-farming-corpus-m680",
+  "description": "M6 corpus — Vigorous Farming; in-hand parse.",
+  "seed": 64946,
+  "cards": {
+    "Vigorous Farming": "Name:Vigorous Farming\nManaCost:2 G\nTypes:Enchantment\nR:Event$ Moved | ValidCard$ Land.YouCtrl | Destination$ Battlefield | ReplaceWith$ ETBUntapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Lands you control enter the battlefield untapped.\nSVar:ETBUntapped:DB$ Untap | ETB$ True | Defined$ ReplacedCard\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ At the beginning of your end step, the topmost land card in your library perpetually gains \"Whenever this land is tapped for mana, add an additional {G}.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ ValidLibrary Land.TopLibrary_Land+YouCtrl | Triggers$ ManaTap | Duration$ Perpetual\nSVar:ManaTap:Mode$ TapsForMana | ValidCard$ Card.Self | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever this land is tapped for mana, add an additional {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 1 | Defined$ TriggeredCardController\nOracle:Lands you control enter the battlefield untapped.\\nAt the beginning of your end step, the topmost land card in your library perpetually gains \"Whenever this land is tapped for mana, add an additional {G}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vigorous Farming"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

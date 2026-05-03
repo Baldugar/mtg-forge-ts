@@ -1,0 +1,23 @@
+{
+  "id": "haazda-vigilante-corpus-m680",
+  "description": "M6 corpus — Haazda Vigilante; in-hand parse.",
+  "seed": 62764,
+  "cards": {
+    "Haazda Vigilante": "Name:Haazda Vigilante\nManaCost:4 W\nTypes:Creature Giant Soldier\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME enters or attacks, put a +1/+1 counter on target creature you control with power 2 or less.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put a +1/+1 counter on target creature you control with power 2 or less.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.powerLE2+YouCtrl | TgtPrompt$ Select target creature you control with power 2 or less | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever Haazda Vigilante enters or attacks, put a +1/+1 counter on target creature you control with power 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haazda Vigilante"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

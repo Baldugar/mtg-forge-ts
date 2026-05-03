@@ -1,0 +1,23 @@
+{
+  "id": "martyr-s-soul-corpus-m680",
+  "description": "M6 corpus — Martyr's Soul; in-hand parse.",
+  "seed": 63353,
+  "cards": {
+    "Martyr's Soul": "Name:Martyr's Soul\nManaCost:2 W\nTypes:Creature Spirit Soldier\nPT:3/2\nK:Convoke\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | IsPresent$ Land.tapped+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, if you control no tapped lands, put two +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 2\nSVar:PlayMain1:TRUE\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nWhen Martyr's Soul enters, if you control no tapped lands, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr's Soul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

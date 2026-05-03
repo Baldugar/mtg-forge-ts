@@ -1,0 +1,23 @@
+{
+  "id": "last-stand-corpus-m680",
+  "description": "M6 corpus — Last Stand; in-hand parse.",
+  "seed": 63191,
+  "cards": {
+    "Last Stand": "Name:Last Stand\nManaCost:W U B R G\nTypes:Sorcery\nA:SP$ LoseLife | ValidTgts$ Opponent | LifeAmount$ SwampsYouControl | SubAbility$ DBDamageMountain | SpellDescription$ Target opponent loses 2 life for each Swamp you control. CARDNAME deals damage to target creature equal to the number of Mountains you control. Create a 1/1 green Saproling creature token for each Forest you control. You gain 2 life for each Plains you control. Draw a card for each Island you control, then discard that many cards.\nSVar:DBDamageMountain:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ MountainsYouControl | SubAbility$ DBTokenForest\nSVar:DBTokenForest:DB$ Token | TokenAmount$ ForestsYouControl | TokenScript$ g_1_1_saproling | TokenOwner$ You | SubAbility$ DBGainLifePlains\nSVar:DBGainLifePlains:DB$ GainLife | Defined$ You | LifeAmount$ PlainsYouControl | SubAbility$ DBDrawCardIsland\nSVar:DBDrawCardIsland:DB$ Draw | Defined$ You | NumCards$ IslandsYouControl | SubAbility$ DBDiscardJustAsMany\nSVar:DBDiscardJustAsMany:DB$ Discard | Defined$ You | NumCards$ IslandsYouControl | Mode$ TgtChoose\nSVar:SwampsYouControl:Count$Valid Swamp.YouCtrl/Times.2\nSVar:MountainsYouControl:Count$Valid Mountain.YouCtrl\nSVar:ForestsYouControl:Count$Valid Forest.YouCtrl\nSVar:PlainsYouControl:Count$Valid Plains.YouCtrl/Times.2\nSVar:IslandsYouControl:Count$Valid Island.YouCtrl\nAI:RemoveDeck:Random\nOracle:Target opponent loses 2 life for each Swamp you control. Last Stand deals damage to target creature equal to the number of Mountains you control. Create a 1/1 green Saproling creature token for each Forest you control. You gain 2 life for each Plains you control. Draw a card for each Island you control, then discard that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last Stand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

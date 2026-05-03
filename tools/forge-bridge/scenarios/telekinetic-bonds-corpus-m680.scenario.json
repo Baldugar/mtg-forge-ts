@@ -1,0 +1,23 @@
+{
+  "id": "telekinetic-bonds-corpus-m680",
+  "description": "M6 corpus — Telekinetic Bonds; in-hand parse.",
+  "seed": 64604,
+  "cards": {
+    "Telekinetic Bonds": "Name:Telekinetic Bonds\nManaCost:2 U U U\nTypes:Enchantment\nT:Mode$ Discarded | ValidPlayer$ Player | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigTapOrUntap | TriggerDescription$ Whenever a player discards a card, you may pay {1}{U}. If you do, you may tap or untap target permanent.\nSVar:TrigTapOrUntap:AB$ TapOrUntap | Cost$ 1 U | ValidTgts$ Permanent\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Whenever a player discards a card, you may pay {1}{U}. If you do, you may tap or untap target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Telekinetic Bonds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

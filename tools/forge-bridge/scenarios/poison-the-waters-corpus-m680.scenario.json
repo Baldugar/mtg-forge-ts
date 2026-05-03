@@ -1,0 +1,23 @@
+{
+  "id": "poison-the-waters-corpus-m680",
+  "description": "M6 corpus — Poison the Waters; in-hand parse.",
+  "seed": 63767,
+  "cards": {
+    "Poison the Waters": "Name:Poison the Waters\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBPumpAll,DBDiscard\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ All creatures get -1/-1 until end of turn.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | Mode$ RevealYouChoose | DiscardValid$ Artifact,Creature | SpellDescription$ Target player reveals their hand. You choose an artifact or creature card from it. That player discards that card.\nOracle:Choose one —\\n• All creatures get -1/-1 until end of turn.\\n• Target player reveals their hand. You choose an artifact or creature card from it. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poison the Waters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

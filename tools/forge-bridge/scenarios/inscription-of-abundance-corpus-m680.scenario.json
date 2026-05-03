@@ -1,0 +1,23 @@
+{
+  "id": "inscription-of-abundance-corpus-m680",
+  "description": "M6 corpus — Inscription of Abundance; in-hand parse.",
+  "seed": 62944,
+  "cards": {
+    "Inscription of Abundance": "Name:Inscription of Abundance\nManaCost:1 G\nTypes:Instant\nK:Kicker:2 G\nA:SP$ Charm | MinCharmNum$ X | CharmNum$ Y | Choices$ DBPutCounter,DBGainLife,DBPump | AdditionalDescription$ . If this spell was kicked, choose any number instead.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on target creature.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | LifeAmount$ Z | SpellDescription$ Target player gains X life, where X is the greatest power among creatures they control.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | AILogic$ Fight | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nSVar:X:Count$Kicked.0.1\nSVar:Y:Count$Kicked.3.1\nSVar:Z:Count$Valid Creature.TargetedPlayerCtrl$GreatestCardPower\nOracle:Kicker {2}{G}\\nChoose one. If this spell was kicked, choose any number instead.\\n• Put two +1/+1 counters on target creature.\\n• Target player gains X life, where X is the greatest power among creatures they control.\\n• Target creature you control fights target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inscription of Abundance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

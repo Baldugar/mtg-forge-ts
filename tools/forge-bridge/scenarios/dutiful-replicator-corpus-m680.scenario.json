@@ -1,0 +1,23 @@
+{
+  "id": "dutiful-replicator-corpus-m680",
+  "description": "M6 corpus — Dutiful Replicator; in-hand parse.",
+  "seed": 62266,
+  "cards": {
+    "Dutiful Replicator": "Name:Dutiful Replicator\nManaCost:3\nTypes:Artifact Creature Assembly-Worker\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigImmediate | TriggerDescription$ When CARDNAME enters, you may pay {1}. When you do, create a token that's a copy of target token you control not named Dutiful Replicator.\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigClone | TriggerDescription$ When you do, create a token that's a copy of target token you control not named Dutiful Replicator.\nSVar:TrigClone:DB$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl+!namedDutiful Replicator | TgtPrompt$ Select target token you control not named Dutiful Replicator\nDeckHas:Ability$Token\nDeckNeeds:Ability$Token\nOracle:When Dutiful Replicator enters, you may pay {1}. When you do, create a token that's a copy of target token you control not named Dutiful Replicator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dutiful Replicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

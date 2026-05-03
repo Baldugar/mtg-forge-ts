@@ -1,0 +1,23 @@
+{
+  "id": "hypnotic-swirly-disc-corpus-m680",
+  "description": "M6 corpus — Hypnotic Swirly Disc; in-hand parse.",
+  "seed": 62891,
+  "cards": {
+    "Hypnotic Swirly Disc": "Name:Hypnotic Swirly Disc\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, target player mills X cards, where X is the number of creatures you control.\nSVar:TrigCrank:DB$ Mill | NumCards$ X | ValidTgts$ Player\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:Whenever you crank Hypnotic Swirly Disc, target player mills X cards, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypnotic Swirly Disc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

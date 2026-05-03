@@ -1,0 +1,23 @@
+{
+  "id": "kokusho-the-evening-star-corpus-m680",
+  "description": "M6 corpus — Kokusho, the Evening Star; in-hand parse.",
+  "seed": 63144,
+  "cards": {
+    "Kokusho, the Evening Star": "Name:Kokusho, the Evening Star\nManaCost:4 B B\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 5 life. You gain life equal to the life lost this way.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 5 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:Flying\\nWhen Kokusho, the Evening Star dies, each opponent loses 5 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kokusho, the Evening Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

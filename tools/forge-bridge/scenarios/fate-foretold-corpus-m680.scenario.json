@@ -1,0 +1,23 @@
+{
+  "id": "fate-foretold-corpus-m680",
+  "description": "M6 corpus — Fate Foretold; in-hand parse.",
+  "seed": 62443,
+  "cards": {
+    "Fate Foretold": "Name:Fate Foretold\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigDraw | TriggerDescription$ When enchanted creature dies, its controller draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nOracle:Enchant creature\\nWhen Fate Foretold enters, draw a card.\\nWhen enchanted creature dies, its controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fate Foretold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "najal-the-storm-runner-corpus-m680",
+  "description": "M6 corpus — Najal, the Storm Runner; in-hand parse.",
+  "seed": 63511,
+  "cards": {
+    "Najal, the Storm Runner": "Name:Najal, the Storm Runner\nManaCost:2 U U R\nTypes:Legendary Creature Efreet Wizard\nPT:5/4\nS:Mode$ CastWithFlash | ValidCard$ Sorcery | ValidSA$ Spell | Caster$ You | Description$ You may cast sorcery spells as though they had flash.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDelayedTrigger | TriggerDescription$ Whenever CARDNAME attacks, you may pay {2}. If you do, when you cast your next instant or sorcery spell this turn, copy it. You may choose new targets for the copy.\nSVar:TrigDelayedTrigger:AB$ DelayedTrigger | Cost$ 2 | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Instant|Sorcery\nOracle:You may cast sorcery spells as though they had flash.\\nWhenever Najal, the Storm Runner attacks, you may pay {2}. If you do, when you cast your next instant or sorcery spell this turn, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Najal, the Storm Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

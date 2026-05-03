@@ -1,0 +1,23 @@
+{
+  "id": "drown-in-dreams-corpus-m680",
+  "description": "M6 corpus — Drown in Dreams; in-hand parse.",
+  "seed": 62246,
+  "cards": {
+    "Drown in Dreams": "Name:Drown in Dreams\nManaCost:X 2 U\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ W | Choices$ DBDraw,DBMill | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | TgtPrompt$ Select target player to draw cards | NumCards$ X | StackDescription$ {p:ThisTargetedPlayer} draws X cards. | SpellDescription$ Target player draws X cards.\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | TgtPrompt$ Select target player to mill cards | NumCards$ Z | StackDescription$ {p:ThisTargetedPlayer} mills twice X cards. | SpellDescription$ Target player mills twice X cards.\nSVar:W:Count$Compare Y GE1.2.1\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nSVar:Z:Count$xPaid/Twice\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Target player draws X cards.\\n• Target player mills twice X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drown in Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

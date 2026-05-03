@@ -1,0 +1,23 @@
+{
+  "id": "nicanzil-current-conductor-corpus-m680",
+  "description": "M6 corpus — Nicanzil, Current Conductor; in-hand parse.",
+  "seed": 63553,
+  "cards": {
+    "Nicanzil, Current Conductor": "Name:Nicanzil, Current Conductor\nManaCost:G U\nTypes:Legendary Creature Merfolk Scout\nPT:2/3\nT:Mode$ Explores | ValidCard$ Creature.YouCtrl | ValidExplored$ Land | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever a creature you control explores a land card, you may put a land card from your hand onto the battlefield tapped.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Tapped$ True\nT:Mode$ Explores | ValidCard$ Creature.YouCtrl | ValidExplored$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control explores a nonland card, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control explores a land card, you may put a land card from your hand onto the battlefield tapped.\\nWhenever a creature you control explores a nonland card, put a +1/+1 counter on Nicanzil, Current Conductor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nicanzil, Current Conductor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

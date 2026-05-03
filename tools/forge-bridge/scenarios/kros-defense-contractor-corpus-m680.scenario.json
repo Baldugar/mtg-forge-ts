@@ -1,0 +1,23 @@
+{
+  "id": "kros-defense-contractor-corpus-m680",
+  "description": "M6 corpus — Kros, Defense Contractor; in-hand parse.",
+  "seed": 63156,
+  "cards": {
+    "Kros, Defense Contractor": "Name:Kros, Defense Contractor\nManaCost:1 G W U\nTypes:Legendary Creature Cat Advisor\nPT:2/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a shield counter on target creature an opponent controls.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | CounterType$ SHIELD | AILogic$ Curse\nT:Mode$ CounterPlayerAddedAll | ValidObject$ Creature.YouDontCtrl+inRealZoneBattlefield | ValidSource$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever you put one or more counters on a creature you don't control, tap that creature and goad it. It gains trample until your next turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredObjectLKICopy | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ TriggeredObjectLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredObjectLKICopy | KW$ Trample | Duration$ UntilYourNextTurn\n# Card doesn't make sense to run unless you have 2 or more opponents\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, put a shield counter on target creature an opponent controls.\\nWhenever you put one or more counters on a creature you don't control, tap that creature and goad it. It gains trample until your next turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kros, Defense Contractor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

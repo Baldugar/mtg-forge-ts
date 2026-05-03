@@ -1,0 +1,23 @@
+{
+  "id": "dockworker-drone-corpus-m680",
+  "description": "M6 corpus — Dockworker Drone; in-hand parse.",
+  "seed": 62196,
+  "cards": {
+    "Dockworker Drone": "Name:Dockworker Drone\nManaCost:1 W\nTypes:Artifact Creature Robot\nPT:1/1\nK:etbCounter:P1P1:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature dies, put its counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nSVar:SacMe:2\nDeckHas:Ability$Counters\nOracle:This creature enters with a +1/+1 counter on it.\\nWhen this creature dies, put its counters on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dockworker Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

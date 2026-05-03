@@ -1,0 +1,23 @@
+{
+  "id": "bloodborn-scoundrels-corpus-m680",
+  "description": "M6 corpus — Bloodborn Scoundrels; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Bloodborn Scoundrels": "Name:Bloodborn Scoundrels\nManaCost:5 B\nTypes:Creature Vampire Rogue\nPT:4/4\nK:Assist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, target opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Assist (Another player can pay up to {5} of this spell's cost.)\\nWhen Bloodborn Scoundrels enters, target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodborn Scoundrels"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "loamcrafter-faun-corpus-m680",
+  "description": "M6 corpus — Loamcrafter Faun; in-hand parse.",
+  "seed": 63254,
+  "cards": {
+    "Loamcrafter Faun": "Name:Loamcrafter Faun\nManaCost:2 G\nTypes:Creature Satyr Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard one or more land cards. When you do, return up to that many target nonland permanent cards from your graveyard to your hand.\nSVar:TrigDiscard:DB$ Discard | DiscardValid$ Land | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | RememberObjects$ Remembered | Execute$ TrigReturn | SubAbility$ DBCleanup | TriggerDescription$ When you do, return up to that many target nonland permanent cards from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | TgtPrompt$ Select up to that many target nonland permanents from your graveyard | TargetMin$ 0 | TargetMax$ X | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.nonLand+YouCtrl\nSVar:X:TriggerRemembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Ability$Mill\nOracle:When Loamcrafter Faun enters, you may discard one or more land cards. When you do, return up to that many target nonland permanent cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loamcrafter Faun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

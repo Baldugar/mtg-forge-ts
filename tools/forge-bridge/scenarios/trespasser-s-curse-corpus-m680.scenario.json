@@ -1,0 +1,23 @@
+{
+  "id": "trespasser-s-curse-corpus-m680",
+  "description": "M6 corpus — Trespasser's Curse; in-hand parse.",
+  "seed": 64798,
+  "cards": {
+    "Trespasser's Curse": "Name:Trespasser's Curse\nManaCost:1 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.EnchantedPlayerCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever a creature enters under enchanted player's control, that player loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Enchant player\\nWhenever a creature enters under enchanted player's control, that player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trespasser's Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

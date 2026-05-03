@@ -1,0 +1,23 @@
+{
+  "id": "airlift-chaplain-corpus-m680",
+  "description": "M6 corpus — Airlift Chaplain; in-hand parse.",
+  "seed": 61474,
+  "cards": {
+    "Airlift Chaplain": "Name:Airlift Chaplain\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. You may put a Plains card or a creature card with mana value 3 or less from among the cards milled this way into your hand. If you don't, put a +1/+1 counter on CARDNAME. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Plains.IsRemembered,Creature.cmcLE3+IsRemembered | SelectPrompt$ You may select a Plains card or a creature card with mana value 3 or less | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | CounterType$ P1P1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|Counters\nOracle:Flying\\nWhen Airlift Chaplain enters, mill three cards. You may put a Plains card or a creature card with mana value 3 or less from among the cards milled this way into your hand. If you don't, put a +1/+1 counter on Airlift Chaplain. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Airlift Chaplain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

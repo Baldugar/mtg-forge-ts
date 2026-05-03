@@ -1,0 +1,23 @@
+{
+  "id": "haunting-wind-corpus-m680",
+  "description": "M6 corpus — Haunting Wind; in-hand parse.",
+  "seed": 62800,
+  "cards": {
+    "Haunting Wind": "Name:Haunting Wind\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ AbilityCast | ValidCard$ Artifact | ValidSA$ Activated.!hasTapCost | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an artifact becomes tapped or a player activates an artifact's ability without {T} in its activation cost, CARDNAME deals 1 damage to that artifact's controller.\nT:Mode$ Taps | ValidCard$ Artifact | TriggerZones$ Battlefield | Execute$ TrigDamage | Secondary$ True | TriggerDescription$ Whenever an artifact becomes tapped or a player activates an artifact's ability without {T} in its activation cost, CARDNAME deals 1 damage to that artifact's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nOracle:Whenever an artifact becomes tapped or a player activates an artifact's ability without {T} in its activation cost, Haunting Wind deals 1 damage to that artifact's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haunting Wind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

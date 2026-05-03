@@ -1,0 +1,23 @@
+{
+  "id": "celebr-8000-corpus-m680",
+  "description": "M6 corpus — Celebr-8000; in-hand parse.",
+  "seed": 61872,
+  "cards": {
+    "Celebr-8000": "Name:Celebr-8000\nManaCost:5\nTypes:Artifact Creature Clown Robot\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ At the beginning of combat on your turn, roll two six-sided dice. For each result of 1, CARDNAME gets +1/+1 until end of turn. For each other result, it gains the indicated ability until end of turn. If you rolled doubles, it also gains double strike until end of turn. ABILITY\nSVar:TrigRoll:DB$ RollDice | Amount$ 2 | SubsForEach$ True | ResultSubAbilities$ 1:PumpPT,2:PumpMe,3:PumpVi,4:PumpLi,5:PumpFl,6:PumpIn | NoteDoubles$ True | SubAbility$ PumpDS\nSVar:PumpPT:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ ,,,\nSVar:PumpMe:DB$ Pump | KW$ Menace | SpellDescription$ • 2 — menace\nSVar:PumpVi:DB$ Pump | KW$ Vigilance | SpellDescription$ • 3 — vigilance\nSVar:PumpLi:DB$ Pump | KW$ Lifelink | SpellDescription$ • 4 — lifelink\nSVar:PumpFl:DB$ Pump | KW$ Flying | SpellDescription$ • 5 — flying\nSVar:PumpIn:DB$ Pump | KW$ Indestructible | SpellDescription$ • 6 — indestructible\nSVar:PumpDS:DB$ Pump | KW$ Double Strike | ConditionCheckSVar$ Doubles\nDeckHas:Ability$LifeGain\nOracle:At the beginning of combat on your turn, roll two six-sided dice. For each result of 1, Celebr-8000 gets +1/+1 until end of turn. For each other result, it gains the indicated ability until end of turn. If you rolled doubles, it also gains double strike until end of turn.\\n• 2 — menace\\n• 3 — vigilance\\n• 4 — lifelink\\n• 5 — flying\\n• 6 — indestructible\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celebr-8000"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

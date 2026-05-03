@@ -1,0 +1,23 @@
+{
+  "id": "bane-lord-of-darkness-corpus-m680",
+  "description": "M6 corpus — Bane, Lord of Darkness; in-hand parse.",
+  "seed": 61643,
+  "cards": {
+    "Bane, Lord of Darkness": "Name:Bane, Lord of Darkness\nManaCost:1 W U B\nTypes:Legendary Creature God\nPT:5/2\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | CheckSVar$ CurrentLife | SVarCompare$ LEX | Description$ As long as your life total is less than or equal to half your starting life total, CARDNAME has indestructible.\nSVar:CurrentLife:Count$YourLifeTotal\nSVar:X:Count$YourStartingLife/HalfDown\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ DBAskOpponentDrawOrPlay | TriggerZones$ Battlefield | TriggerDescription$ Whenever another nontoken creature you control dies, target opponent may have you draw a card. If they don't, you may put a creature card with equal or lesser toughness from your hand onto the battlefield.\nSVar:DBAskOpponentDrawOrPlay:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ DBDrawCard,DBCheatCreature\nSVar:DBDrawCard:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ CARDNAME's controller draws a card.\nSVar:DBCheatCreature:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.toughnessLEY | ChangeNum$ 1 | SpellDescription$ CARDNAME's controller may put a creature card with equal or lesser toughness from their hand onto the battlefield.\nSVar:Y:TriggeredCard$CardToughness\nOracle:As long as your life total is less than or equal to half your starting life total, Bane, Lord of Darkness has indestructible.\\nWhenever another nontoken creature you control dies, target opponent may have you draw a card. If they don't, you may put a creature card with equal or lesser toughness from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bane, Lord of Darkness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

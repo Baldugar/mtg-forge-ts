@@ -1,0 +1,23 @@
+{
+  "id": "sensational-spider-man-corpus-m680",
+  "description": "M6 corpus — Sensational Spider-Man; in-hand parse.",
+  "seed": 64206,
+  "cards": {
+    "Sensational Spider-Man": "Name:Sensational Spider-Man\nManaCost:1 W U\nTypes:Legendary Creature Spider Human Hero\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, tap target creature defending player controls and put a stun counter on it. Then you may remove up to three stun counters from among all permanents. Draw cards equal to the number of stun counters removed this way.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | SubAbility$ DBCounter | TgtPrompt$ Select target creature defending player controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ STUN | CounterNum$ 1 | SubAbility$ DBRemoveCounters\nSVar:DBRemoveCounters:DB$ RemoveCounter | Choices$ Permanent.counters_GE1_STUN | ChoiceOptional$ True | CounterType$ STUN | CounterNum$ 3 | CounterNumShared$ True | UpTo$ True | RememberAmount$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Whenever Sensational Spider-Man attacks, tap target creature defending player controls and put a stun counter on it. Then you may remove up to three stun counters from among all permanents. Draw cards equal to the number of stun counters removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sensational Spider-Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

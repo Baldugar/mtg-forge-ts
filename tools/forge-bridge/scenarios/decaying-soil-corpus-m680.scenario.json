@@ -1,0 +1,23 @@
+{
+  "id": "decaying-soil-corpus-m680",
+  "description": "M6 corpus — Decaying Soil; in-hand parse.",
+  "seed": 62123,
+  "cards": {
+    "Decaying Soil": "Name:Decaying Soil\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile a card from your graveyard.\nSVar:TrigExile:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Exile\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigDies | AddAbility$ TrigReturn | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"Whenever a nontoken creature is put into your graveyard from the battlefield, you may pay {1}. If you do, return that card to your hand.\"\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouOwn | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature is put into your graveyard from the battlefield, you may pay {1}. If you do, return that card to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, exile a card from your graveyard.\\nThreshold — As long as there are seven or more cards in your graveyard, Decaying Soil has \"Whenever a nontoken creature is put into your graveyard from the battlefield, you may pay {1}. If you do, return that card to your hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decaying Soil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

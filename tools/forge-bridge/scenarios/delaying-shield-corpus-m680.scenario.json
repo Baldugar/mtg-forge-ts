@@ -1,0 +1,23 @@
+{
+  "id": "delaying-shield-corpus-m680",
+  "description": "M6 corpus — Delaying Shield; in-hand parse.",
+  "seed": 62143,
+  "cards": {
+    "Delaying Shield": "Name:Delaying Shield\nManaCost:3 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ Counters | Description$ If damage would be dealt to you, put that many delay counters on CARDNAME instead.\nSVar:Counters:DB$ PutCounter | CounterType$ DELAY | CounterNum$ NumDamage | Defined$ Self\nSVar:NumDamage:ReplaceCount$DamageAmount\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.Self+counters_GE1_DELAY | Execute$ RemoveCounters | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, remove all delay counters from CARDNAME. For each delay counter removed this way, you lose 1 life unless you pay {1}{W}.\nSVar:RemoveCounters:DB$ RemoveCounter | CounterType$ DELAY | CounterNum$ All | RememberRemoved$ True | SubAbility$ RepeatOnUpkeep\nSVar:RepeatOnUpkeep:DB$ Repeat | MaxRepeat$ NumRemoved | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ You | UnlessCost$ 1 W | UnlessPayer$ You\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumRemoved:Count$RememberedSize\nAI:RemoveDeck:Random\nOracle:If damage would be dealt to you, put that many delay counters on Delaying Shield instead.\\nAt the beginning of your upkeep, remove all delay counters from Delaying Shield. For each delay counter removed this way, you lose 1 life unless you pay {1}{W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delaying Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

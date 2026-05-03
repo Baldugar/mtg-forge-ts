@@ -1,0 +1,23 @@
+{
+  "id": "putrid-hexhag-corpus-m680",
+  "description": "M6 corpus — Putrid Hexhag; in-hand parse.",
+  "seed": 63844,
+  "cards": {
+    "Putrid Hexhag": "Name:Putrid Hexhag\nManaCost:1 B\nTypes:Creature Goblin Warlock\nPT:0/5\nT:Mode$ CounterTypeAddedAll | ValidObject$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever one or more counters are put on this creature, target creature an opponent controls perpetually gains \"When this creature dies, you lose 1 life.\"\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Triggers$ DieTrig | Duration$ Perpetual\nSVar:DieTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Whenever one or more counters are put on this creature, target creature an opponent controls perpetually gains \"When this creature dies, you lose 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Putrid Hexhag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

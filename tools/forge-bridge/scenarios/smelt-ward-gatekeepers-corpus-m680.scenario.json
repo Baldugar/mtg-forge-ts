@@ -1,0 +1,23 @@
+{
+  "id": "smelt-ward-gatekeepers-corpus-m680",
+  "description": "M6 corpus — Smelt-Ward Gatekeepers; in-hand parse.",
+  "seed": 64336,
+  "cards": {
+    "Smelt-Ward Gatekeepers": "Name:Smelt-Ward Gatekeepers\nManaCost:3 R\nTypes:Creature Human Warrior\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Gate.YouCtrl | PresentCompare$ GE2 | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, if you control two or more Gates, gain control of target creature an opponent controls until end of turn. Untap that creature. That creature gains haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Untap$ True | LoseControl$ EOT | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste\nSVar:PlayMain1:OPPONENTCREATURES\nDeckHints:Type$Gate\nOracle:When Smelt-Ward Gatekeepers enters, if you control two or more Gates, gain control of target creature an opponent controls until end of turn. Untap that creature. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smelt-Ward Gatekeepers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "keldon-warcaller-corpus-m680",
+  "description": "M6 corpus — Keldon Warcaller; in-hand parse.",
+  "seed": 63106,
+  "cards": {
+    "Keldon Warcaller": "Name:Keldon Warcaller\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a lore counter on target Saga you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Saga.YouCtrl | TgtPrompt$ Select target Saga you control | CounterType$ LORE | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Keldon Warcaller attacks, put a lore counter on target Saga you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Warcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

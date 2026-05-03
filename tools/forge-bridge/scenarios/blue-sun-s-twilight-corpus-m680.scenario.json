@@ -1,0 +1,23 @@
+{
+  "id": "blue-sun-s-twilight-corpus-m680",
+  "description": "M6 corpus — Blue Sun's Twilight; in-hand parse.",
+  "seed": 61735,
+  "cards": {
+    "Blue Sun's Twilight": "Name:Blue Sun's Twilight\nManaCost:X U U\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature.cmcLEX | TgtPrompt$ Select target creature with mana value X or less | SubAbility$ DBCopy | SpellDescription$ Gain control of target creature with mana value X or less. If X is 5 or more, create a token that's a copy of that creature.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Targeted | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Gain control of target creature with mana value X or less. If X is 5 or more, create a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blue Sun's Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

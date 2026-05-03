@@ -1,0 +1,23 @@
+{
+  "id": "paladin-of-atonement-corpus-m680",
+  "description": "M6 corpus — Paladin of Atonement; in-hand parse.",
+  "seed": 63688,
+  "cards": {
+    "Paladin of Atonement": "Name:Paladin of Atonement\nManaCost:1 W\nTypes:Creature Vampire Knight\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each upkeep, if you lost life last turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain life equal to its toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ Y\nSVar:X:PlayerCountPropertyYou$LifeLostLastTurn\nSVar:Y:TriggeredCard$CardToughness\nOracle:At the beginning of each upkeep, if you lost life last turn, put a +1/+1 counter on Paladin of Atonement.\\nWhen Paladin of Atonement dies, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paladin of Atonement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

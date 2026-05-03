@@ -1,0 +1,23 @@
+{
+  "id": "cryptic-pursuit-corpus-m680",
+  "description": "M6 corpus — Cryptic Pursuit; in-hand parse.",
+  "seed": 62049,
+  "cards": {
+    "Cryptic Pursuit": "Name:Cryptic Pursuit\nManaCost:2 U R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourHandByYou,Sorcery.wasCastFromYourHandByYou | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigManifest | TriggerDescription$ Whenever you cast an instant or sorcery spell from your hand, manifest the top card of your library. (Put that card onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.faceDown+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a face-down creature you control dies, exile it if it's an instant or sorcery card. You may cast that card until the end of your next turn.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredCard | ConditionDefined$ TriggeredCard | ConditionPresent$ Instant,Sorcery | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell from your hand, manifest the top card of your library. (Put that card onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nWhenever a face-down creature you control dies, exile it if it's an instant or sorcery card. You may cast that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptic Pursuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

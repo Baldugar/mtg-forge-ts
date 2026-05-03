@@ -1,0 +1,23 @@
+{
+  "id": "the-wretched-corpus-m680",
+  "description": "M6 corpus — The Wretched; in-hand parse.",
+  "seed": 64699,
+  "cards": {
+    "The Wretched": "Name:The Wretched\nManaCost:3 B B\nTypes:Creature Demon\nPT:2/5\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ You | Execute$ TrigGainControl | TriggerZones$ Battlefield | TriggerDescription$ At end of combat, gain control of all creatures blocking CARDNAME for as long as you control CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Card.blockingSource | LoseControl$ LoseControl,LeavesPlay\nSVar:HasAttackEffect:Blocked\nOracle:At end of combat, gain control of all creatures blocking The Wretched for as long as you control The Wretched.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wretched"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

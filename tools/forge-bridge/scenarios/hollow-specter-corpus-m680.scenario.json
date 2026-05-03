@@ -1,0 +1,23 @@
+{
+  "id": "hollow-specter-corpus-m680",
+  "description": "M6 corpus — Hollow Specter; in-hand parse.",
+  "seed": 62847,
+  "cards": {
+    "Hollow Specter": "Name:Hollow Specter\nManaCost:1 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {X}. If you do, that player reveals X cards from their hand and you choose one of them. That player discards that card.\nSVar:TrigDiscard:AB$ Discard | Cost$ X | Defined$ TriggeredTarget | NumCards$ 1 | RevealNumber$ X | Mode$ RevealYouChoose | DiscardValid$ Card\nSVar:X:Count$xPaid\nOracle:Flying\\nWhenever Hollow Specter deals combat damage to a player, you may pay {X}. If you do, that player reveals X cards from their hand and you choose one of them. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollow Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

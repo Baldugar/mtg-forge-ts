@@ -1,0 +1,23 @@
+{
+  "id": "barrel-down-sokenzan-corpus-m680",
+  "description": "M6 corpus — Barrel Down Sokenzan; in-hand parse.",
+  "seed": 61652,
+  "cards": {
+    "Barrel Down Sokenzan": "Name:Barrel Down Sokenzan\nManaCost:2 R\nTypes:Instant Arcane\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Mountain.YouCtrl | ChangeNum$ X | Hidden$ True | RememberChanged$ True | SubAbility$ DBDamage | SpellDescription$ Sweep — Return any number of Mountains you control to their owner's hand. CARDNAME deals damage to target creature equal to twice the number of Mountains returned this way.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Mountain.YouCtrl\nSVar:Y:Remembered$Amount/Twice\nAI:RemoveDeck:All\nOracle:Sweep — Return any number of Mountains you control to their owner's hand. Barrel Down Sokenzan deals damage to target creature equal to twice the number of Mountains returned this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrel Down Sokenzan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hunted-nightmare-corpus-m680",
+  "description": "M6 corpus — Hunted Nightmare; in-hand parse.",
+  "seed": 62877,
+  "cards": {
+    "Hunted Nightmare": "Name:Hunted Nightmare\nManaCost:1 B B\nTypes:Creature Nightmare\nPT:4/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, target opponent puts a deathtouch counter on a creature they control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Opponent | Choices$ Creature.ControlledBy TargetedPlayer | ChoiceTitle$ Choose a creature you control | Chooser$ TargetedPlayer | Placer$ TargetedPlayer | CounterType$ Deathtouch | CounterNum$ 1\nOracle:Menace\\nWhen Hunted Nightmare enters, target opponent puts a deathtouch counter on a creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Nightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

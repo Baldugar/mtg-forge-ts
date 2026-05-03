@@ -1,0 +1,23 @@
+{
+  "id": "umara-raptor-corpus-m680",
+  "description": "M6 corpus — Umara Raptor; in-hand parse.",
+  "seed": 64838,
+  "cards": {
+    "Umara Raptor": "Name:Umara Raptor\nManaCost:2 U\nTypes:Creature Bird Ally\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Flying\\nWhenever Umara Raptor or another Ally you control enters, you may put a +1/+1 counter on Umara Raptor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umara Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

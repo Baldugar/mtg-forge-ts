@@ -1,0 +1,23 @@
+{
+  "id": "pouncing-kavu-corpus-m680",
+  "description": "M6 corpus — Pouncing Kavu; in-hand parse.",
+  "seed": 63779,
+  "cards": {
+    "Pouncing Kavu": "Name:Pouncing Kavu\nManaCost:1 R\nTypes:Creature Kavu\nPT:1/1\nK:Kicker:2 R\nK:First Strike\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ PounceAdvantage | Static$ True | TriggerDescription$ If CARDNAME was kicked, it enters with two +1/+1 counters on it and with haste.\nSVar:PounceAdvantage:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ PounceAmbush\nSVar:PounceAmbush:DB$ Pump | Defined$ Self | KW$ Haste | Duration$ Permanent\nOracle:Kicker {2}{R} (You may pay an additional {2}{R} as you cast this spell.)\\nFirst strike\\nIf Pouncing Kavu was kicked, it enters with two +1/+1 counters on it and with haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pouncing Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

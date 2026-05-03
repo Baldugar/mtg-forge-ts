@@ -1,0 +1,23 @@
+{
+  "id": "decoction-module-corpus-m680",
+  "description": "M6 corpus — Decoction Module; in-hand parse.",
+  "seed": 62127,
+  "cards": {
+    "Decoction Module": "Name:Decoction Module\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigEnergy | TriggerDescription$ Whenever a creature you control enters, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 4 T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature you control to its owner's hand.\nOracle:Whenever a creature you control enters, you get {E} (an energy counter).\\n{4}, {T}: Return target creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decoction Module"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

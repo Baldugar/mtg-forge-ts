@@ -1,0 +1,23 @@
+{
+  "id": "wail-of-the-forgotten-corpus-m680",
+  "description": "M6 corpus — Wail of the Forgotten; in-hand parse.",
+  "seed": 64988,
+  "cards": {
+    "Wail of the Forgotten": "Name:Wail of the Forgotten\nManaCost:U B\nTypes:Sorcery\nA:SP$ Charm | PrecostDesc$ Descend 8 — | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE8.3.1 | Choices$ DBReturn,DBDiscard,DBLook | AdditionalDescription$ . If there are eight or more permanent cards in your graveyard as you cast this spell, choose one or more instead.\nSVar:DBReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | Mode$ TgtChoose | SpellDescription$ Target opponent discards a card.\nSVar:DBLook:DB$ Dig | DigNum$ 3 | ChangeValid$ Card | DestinationZone$ Hand | DestinationZone2$ Graveyard | SpellDescription$ Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.\nSVar:Y:Count$ValidGraveyard Permanent.YouOwn\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Ability$Mill|Discard|Sacrifice\nOracle:Descend 8 — Choose one. If there are eight or more permanent cards in your graveyard as you cast this spell, choose one or more instead.\\n• Return target nonland permanent to its owner's hand.\\n• Target opponent discards a card.\\n• Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wail of the Forgotten"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

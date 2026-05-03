@@ -1,0 +1,23 @@
+{
+  "id": "k-rrik-son-of-yawgmoth-corpus-m680",
+  "description": "M6 corpus — K'rrik, Son of Yawgmoth; in-hand parse.",
+  "seed": 63158,
+  "cards": {
+    "K'rrik, Son of Yawgmoth": "Name:K'rrik, Son of Yawgmoth\nManaCost:4 BP BP BP\nTypes:Legendary Creature Phyrexian Horror Minion\nPT:2/2\nK:Lifelink\nS:Mode$ Continuous | Affected$ You | AddKeyword$ PayLifeInsteadOf:B | Description$ For each {B} in a cost, you may pay 2 life rather than pay that mana.\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a black spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card.Black\nOracle:({B/P} can be paid with either {B} or 2 life.)\\nLifelink\\nFor each {B} in a cost, you may pay 2 life rather than pay that mana.\\nWhenever you cast a black spell, put a +1/+1 counter on K'rrik, Son of Yawgmoth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "K'rrik, Son of Yawgmoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

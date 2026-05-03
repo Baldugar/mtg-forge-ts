@@ -1,0 +1,23 @@
+{
+  "id": "sandsteppe-outcast-corpus-m680",
+  "description": "M6 corpus — Sandsteppe Outcast; in-hand parse.",
+  "seed": 64117,
+  "cards": {
+    "Sandsteppe Outcast": "Name:Sandsteppe Outcast\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBToken\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenScript$ w_1_1_spirit_flying | SpellDescription$ Create a 1/1 white Spirit creature token with flying.\nDeckHas:Ability$Counters|Token\nOracle:When Sandsteppe Outcast enters, choose one —\\n• Put a +1/+1 counter on Sandsteppe Outcast.\\n• Create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandsteppe Outcast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

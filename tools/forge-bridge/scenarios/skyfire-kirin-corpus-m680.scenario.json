@@ -1,0 +1,23 @@
+{
+  "id": "skyfire-kirin-corpus-m680",
+  "description": "M6 corpus — Skyfire Kirin; in-hand parse.",
+  "seed": 64308,
+  "cards": {
+    "Skyfire Kirin": "Name:Skyfire Kirin\nManaCost:2 R R\nTypes:Legendary Creature Kirin Spirit\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may gain control of target creature with that spell's mana value until end of turn.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Creature.cmcEQX | LoseControl$ EOT | NewController$ You\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nDeckHints:Type$Spirit|Arcane\nOracle:Flying\\nWhenever you cast a Spirit or Arcane spell, you may gain control of target creature with that spell's mana value until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyfire Kirin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

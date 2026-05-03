@@ -1,0 +1,23 @@
+{
+  "id": "foster-corpus-m680",
+  "description": "M6 corpus — Foster; in-hand parse.",
+  "seed": 62550,
+  "cards": {
+    "Foster": "Name:Foster\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever a creature you control dies, you may pay {1}. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest into your graveyard.\nSVar:TrigDig:AB$ DigUntil | Cost$ 1 | Valid$ Creature | ValidDescription$ creature | FoundDestination$ Hand | RevealedDestination$ Graveyard\nOracle:Whenever a creature you control dies, you may pay {1}. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

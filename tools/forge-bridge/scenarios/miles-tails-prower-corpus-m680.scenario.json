@@ -1,0 +1,23 @@
+{
+  "id": "miles-tails-prower-corpus-m680",
+  "description": "M6 corpus — Miles \"Tails\" Prower; in-hand parse.",
+  "seed": 63408,
+  "cards": {
+    "Miles \"Tails\" Prower": "Name:Miles \"Tails\" Prower\nManaCost:1 W U\nTypes:Legendary Creature Fox Artificer\nPT:3/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Vehicle.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Whenever a Vehicle you control enters, draw a card if it has flying. Otherwise, put a flying counter on it.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBPutCounter\nSVar:DBDraw:DB$ Draw\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ Flying | CounterNum$ 1\nSVar:X:TriggeredCard$Valid Card.withFlying\nDeckHas:Ability$Counters\nDeckHints:Type$Vehicle\nOracle:Flash\\nFlying\\nWhenever a Vehicle you control enters, draw a card if it has flying. Otherwise, put a flying counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miles \"Tails\" Prower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

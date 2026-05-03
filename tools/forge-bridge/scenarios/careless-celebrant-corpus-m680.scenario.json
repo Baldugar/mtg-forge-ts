@@ -1,0 +1,23 @@
+{
+  "id": "careless-celebrant-corpus-m680",
+  "description": "M6 corpus — Careless Celebrant; in-hand parse.",
+  "seed": 61855,
+  "cards": {
+    "Careless Celebrant": "Name:Careless Celebrant\nManaCost:1 R\nTypes:Creature Satyr Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 2 damage to target creature or planeswalker an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ 2\nOracle:When Careless Celebrant dies, it deals 2 damage to target creature or planeswalker an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Careless Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

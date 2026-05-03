@@ -1,0 +1,23 @@
+{
+  "id": "scout-for-survivors-corpus-m680",
+  "description": "M6 corpus — Scout for Survivors; in-hand parse.",
+  "seed": 64154,
+  "cards": {
+    "Scout for Survivors": "Name:Scout for Survivors\nManaCost:2 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 3 | MaxTotalTargetCMC$ 3 | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select up to three target creature cards with total mana value 3 or less in your graveyard | SubAbility$ DBPutCounter | StackDescription$ SpellDescription | SpellDescription$ Return up to three target creature cards with total mana value 3 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of them.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Targeted\nDeckHas:Ability$Counters|Graveyard\nOracle:Return up to three target creature cards with total mana value 3 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scout for Survivors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

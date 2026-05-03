@@ -1,0 +1,23 @@
+{
+  "id": "knight-of-autumn-corpus-m680",
+  "description": "M6 corpus — Knight of Autumn; in-hand parse.",
+  "seed": 63137,
+  "cards": {
+    "Knight of Autumn": "Name:Knight of Autumn\nManaCost:1 G W\nTypes:Creature Dryad Knight\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPump,DBDestroy,DBGainLife\nSVar:DBPump:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on CARDNAME.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nDeckHas:Ability$Counters\nOracle:When Knight of Autumn enters, choose one —\\n• Put two +1/+1 counters on Knight of Autumn.\\n• Destroy target artifact or enchantment.\\n• You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight of Autumn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

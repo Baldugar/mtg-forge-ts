@@ -1,0 +1,23 @@
+{
+  "id": "basim-ibn-ishaq-corpus-m680",
+  "description": "M6 corpus — Basim Ibn Ishaq; in-hand parse.",
+  "seed": 61653,
+  "cards": {
+    "Basim Ibn Ishaq": "Name:Basim Ibn Ishaq\nManaCost:U B\nTypes:Legendary Creature Human Assassin\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | ActivationLimit$ 1 | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a historic spell, draw a card. CARDNAME can't be blocked this turn. This ability triggers only once each turn. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever you cast a historic spell, draw a card. Basim Ibn Ishaq can't be blocked this turn. This ability triggers only once each turn. (Artifacts, legendaries, and Sagas are historic.)\\nWhenever Basim Ibn Ishaq deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Basim Ibn Ishaq"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "serpentine-spike-corpus-m680",
+  "description": "M6 corpus — Serpentine Spike; in-hand parse.",
+  "seed": 64214,
+  "cards": {
+    "Serpentine Spike": "Name:Serpentine Spike\nManaCost:5 R R\nTypes:Sorcery\nK:Devoid\nA:SP$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal 2 damage to | NumDmg$ 2 | DamageMap$ True | SubAbility$ DBDamageTwo | StackDescription$ CARDNAME deals 2 damage to {c:ThisTargetedCard}, | SpellDescription$ CARDNAME deals 2 damage to target creature, 3 damage to another target creature, and 4 damage to a third target creature. If a creature dealt damage this way would die this turn, exile it instead.\nSVar:DBDamageTwo:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select another target creature to deal 3 damage to | NumDmg$ 3 | TargetUnique$ True | SubAbility$ DBDamageThree | StackDescription$ 3 damage to {c:ThisTargetedCard},\nSVar:DBDamageThree:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select another target creature to deal 4 damage to | NumDmg$ 4 | TargetUnique$ True | SubAbility$ DBDamageResolve | StackDescription$ and 4 damage to {c:ThisTargetedCard}. If a creature dealt damage this way would die this turn, exile it instead.\nSVar:DBDamageResolve:DB$ DamageResolve | RememberDamaged$ True | ReplaceDyingDefined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Devoid (This card has no color.)\\nSerpentine Spike deals 2 damage to target creature, 3 damage to another target creature, and 4 damage to a third target creature. If a creature dealt damage this way would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serpentine Spike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "emptiness-corpus-m680",
+  "description": "M6 corpus — Emptiness; in-hand parse.",
+  "seed": 62328,
+  "cards": {
+    "Emptiness": "Name:Emptiness\nManaCost:4 WB WB\nTypes:Creature Elemental Incarnation\nPT:3/5\nK:Evoke:WB WB\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ CastSA>Count$Adamant_2.White.2.0 | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this creature enters, if {W}{W} was spent to cast it, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ CastSA>Count$Adamant_2.Black.2.0 | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When this creature enters, if {B}{B} was spent to cast it, put three -1/-1 counters on up to one target creature.\nSVar:TrigPutCounters:DB$ PutCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | CounterNum$ 3 | TgtPrompt$ Select up to one target creature | CounterType$ M1M1\nDeckHas:Ability$Graveyard|Counters\nOracle:When this creature enters, if {W}{W} was spent to cast it, return target creature card with mana value 3 or less from your graveyard to the battlefield.\\nWhen this creature enters, if {B}{B} was spent to cast it, put three -1/-1 counters on up to one target creature.\\nEvoke {W/B}{W/B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emptiness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

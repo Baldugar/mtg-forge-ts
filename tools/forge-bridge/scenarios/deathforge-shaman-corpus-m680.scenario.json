@@ -1,0 +1,23 @@
+{
+  "id": "deathforge-shaman-corpus-m680",
+  "description": "M6 corpus — Deathforge Shaman; in-hand parse.",
+  "seed": 62120,
+  "cards": {
+    "Deathforge Shaman": "Name:Deathforge Shaman\nManaCost:4 R\nTypes:Creature Ogre Shaman\nPT:4/3\nK:Multikicker:R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals damage to target player or planeswalker equal to twice the number of times it was kicked.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X\nSVar:X:Count$TimesKicked/Times.2\nOracle:Multikicker {R} (You may pay an additional {R} any number of times as you cast this spell.)\\nWhen Deathforge Shaman enters, it deals damage to target player or planeswalker equal to twice the number of times it was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathforge Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

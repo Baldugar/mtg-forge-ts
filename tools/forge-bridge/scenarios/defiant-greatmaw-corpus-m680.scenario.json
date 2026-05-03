@@ -1,0 +1,23 @@
+{
+  "id": "defiant-greatmaw-corpus-m680",
+  "description": "M6 corpus — Defiant Greatmaw; in-hand parse.",
+  "seed": 62139,
+  "cards": {
+    "Defiant Greatmaw": "Name:Defiant Greatmaw\nManaCost:2 G\nTypes:Creature Hippo\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two -1/-1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ M1M1 | CounterNum$ 2\nT:Mode$ CounterAddedOnce | ValidCard$ Creature.Self | ValidSource$ You | CounterType$ M1M1 | TriggerZones$ Battlefield | Execute$ RemoveCounter | TriggerDescription$ Whenever you put one or more -1/-1 counters on CARDNAME, remove a -1/-1 counter from another target creature you control.\nSVar:RemoveCounter:DB$ RemoveCounter | ValidTgts$ Creature.YouCtrl+Other | AITgts$ Creature.counters_GE1_M1M1 | TgtPrompt$ Select another target creature you control | CounterType$ M1M1 | CounterNum$ 1\nOracle:When Defiant Greatmaw enters, put two -1/-1 counters on target creature you control.\\nWhenever you put one or more -1/-1 counters on Defiant Greatmaw, remove a -1/-1 counter from another target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiant Greatmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

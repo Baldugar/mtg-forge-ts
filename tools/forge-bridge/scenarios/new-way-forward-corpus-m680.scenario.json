@@ -1,0 +1,23 @@
+{
+  "id": "new-way-forward-corpus-m680",
+  "description": "M6 corpus — New Way Forward; in-hand parse.",
+  "seed": 63550,
+  "cards": {
+    "New Way Forward": "Name:New Way Forward\nManaCost:2 U R W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage. When damage is prevented this way, CARDNAME deals that much damage to that source's controller and you draw that many cards.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ DBImmediateTrigger | PreventionEffect$ True | Description$ The next time a source of your choice would deal damage to you this turn, prevent that damage. When damage is prevented this way, CARDNAME deals that much damage to that source's controller and you draw that many cards.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigDamage | RememberSVarAmount$ X | SubAbility$ ExileEffect | TriggerDescription$ When damage is prevented this way, CARDNAME deals that much damage to that source's controller and you draw that many cards.\nSVar:TrigDamage:DB$ DealDamage | Defined$ ChosenCardController | NumDmg$ Y | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nSVar:Y:Count$TriggerRememberAmount\nOracle:The next time a source of your choice would deal damage to you this turn, prevent that damage. When damage is prevented this way, New Way Forward deals that much damage to that source's controller and you draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "New Way Forward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

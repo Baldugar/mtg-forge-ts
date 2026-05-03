@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-moag-corpus-m680",
+  "description": "M6 corpus — Invasion of Moag; in-hand parse.",
+  "seed": 62967,
+  "cards": {
+    "Invasion of Moag": "Name:Invasion of Moag\nManaCost:2 G W\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Moag enters, put a +1/+1 counter on each creature you control.\n\nALTERNATE\n\nName:Bloomwielder Dryads\nManaCost:no cost\nColors:white,green\nTypes:Creature Dryad\nPT:3/3\nK:Ward:2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nOracle:Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\\nAt the beginning of your end step, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Moag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

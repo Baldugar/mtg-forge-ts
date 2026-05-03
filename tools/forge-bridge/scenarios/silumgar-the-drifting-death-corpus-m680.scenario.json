@@ -1,0 +1,23 @@
+{
+  "id": "silumgar-the-drifting-death-corpus-m680",
+  "description": "M6 corpus — Silumgar, the Drifting Death; in-hand parse.",
+  "seed": 64282,
+  "cards": {
+    "Silumgar, the Drifting Death": "Name:Silumgar, the Drifting Death\nManaCost:4 U B\nTypes:Legendary Creature Dragon\nPT:3/7\nK:Flying\nK:Hexproof\nT:Mode$ Attacks | ValidCard$ Dragon.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMassacre | TriggerDescription$ Whenever a Dragon you control attacks, creatures defending player control each get -1/-1 until end of turn.\nSVar:TrigMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ TriggeredAttacker.Creature+ControlledBy TriggeredDefendingPlayer | IsCurse$ True\nSVar:BuffedBy:Dragon\nDeckHints:Type$Dragon\nOracle:Flying, hexproof\\nWhenever a Dragon you control attacks, creatures defending player controls get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silumgar, the Drifting Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

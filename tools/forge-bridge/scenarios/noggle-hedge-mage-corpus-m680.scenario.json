@@ -1,0 +1,23 @@
+{
+  "id": "noggle-hedge-mage-corpus-m680",
+  "description": "M6 corpus — Noggle Hedge-Mage; in-hand parse.",
+  "seed": 63573,
+  "cards": {
+    "Noggle Hedge-Mage": "Name:Noggle Hedge-Mage\nManaCost:2 UR\nTypes:Creature Noggle Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Island.YouCtrl | PresentCompare$ GE2 | Execute$ TrigTap | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if you control two or more Islands, you may tap two target permanents.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Mountain.YouCtrl | PresentCompare$ GE2 | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if you control two or more Mountains, you may have CARDNAME deal 2 damage to target player or planeswalker.\nSVar:TrigTap:DB$ Tap | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Permanent\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 2\nOracle:When Noggle Hedge-Mage enters, if you control two or more Islands, you may tap two target permanents.\\nWhen Noggle Hedge-Mage enters, if you control two or more Mountains, you may have Noggle Hedge-Mage deal 2 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noggle Hedge-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "megrim-corpus-m680",
+  "description": "M6 corpus — Megrim; in-hand parse.",
+  "seed": 63377,
+  "cards": {
+    "Megrim": "Name:Megrim\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever an opponent discards a card, CARDNAME deals 2 damage to that player.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nOracle:Whenever an opponent discards a card, Megrim deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Megrim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

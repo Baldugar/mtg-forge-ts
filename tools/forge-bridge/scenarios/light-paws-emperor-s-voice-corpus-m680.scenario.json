@@ -1,0 +1,23 @@
+{
+  "id": "light-paws-emperor-s-voice-corpus-m680",
+  "description": "M6 corpus — Light-Paws, Emperor's Voice; in-hand parse.",
+  "seed": 63230,
+  "cards": {
+    "Light-Paws, Emperor's Voice": "Name:Light-Paws, Emperor's Voice\nManaCost:1 W\nTypes:Legendary Creature Fox Advisor\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Aura.YouCtrl+wasCastByYou | TriggerZones$ Battlefield | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ Whenever an Aura you control enters, if you cast it, you may search your library for an Aura card with mana value less than or equal to that Aura and with a different name than each Aura you control, put that card on the battlefield attached to CARDNAME, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Aura.CanEnchantSource+cmcLEX+doesNotShareNameWith Aura.YouCtrl | ChangeNum$ 1 | ShuffleNonMandatory$ True | AttachedTo$ Self\nSVar:X:TriggeredCard$CardManaCost\nDeckHints:Type$Aura\nOracle:Whenever an Aura you control enters, if you cast it, you may search your library for an Aura card with mana value less than or equal to that Aura and with a different name than each Aura you control, put that card on the battlefield attached to Light-Paws, Emperor's Voice, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Light-Paws, Emperor's Voice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

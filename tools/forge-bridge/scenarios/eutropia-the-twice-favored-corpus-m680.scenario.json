@@ -1,0 +1,23 @@
+{
+  "id": "eutropia-the-twice-favored-corpus-m680",
+  "description": "M6 corpus — Eutropia the Twice-Favored; in-hand parse.",
+  "seed": 62378,
+  "cards": {
+    "Eutropia the Twice-Favored": "Name:Eutropia the Twice-Favored\nManaCost:1 G U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Constellation — Whenever an enchantment you control enters, put a +1/+1 counter on target creature. That creature gains flying until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Flying\nDeckHas:Ability$Counters\nDeckNeeds:Type$Enchantment\nOracle:Constellation — Whenever an enchantment you control enters, put a +1/+1 counter on target creature. That creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eutropia the Twice-Favored"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "volley-veteran-corpus-m680",
+  "description": "M6 corpus — Volley Veteran; in-hand parse.",
+  "seed": 64977,
+  "cards": {
+    "Volley Veteran": "Name:Volley Veteran\nManaCost:3 R\nTypes:Creature Goblin Warrior\nPT:4/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage to target creature an opponent controls equal to the number of Goblins you control.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nSVar:X:Count$Valid Goblin.YouCtrl\nDeckHints:Type$Goblin\nOracle:When Volley Veteran enters, it deals damage to target creature an opponent controls equal to the number of Goblins you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volley Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

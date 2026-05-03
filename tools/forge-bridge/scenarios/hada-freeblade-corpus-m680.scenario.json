@@ -1,0 +1,23 @@
+{
+  "id": "hada-freeblade-corpus-m680",
+  "description": "M6 corpus — Hada Freeblade; in-hand parse.",
+  "seed": 62765,
+  "cards": {
+    "Hada Freeblade": "Name:Hada Freeblade\nManaCost:W\nTypes:Creature Human Soldier Ally\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Whenever Hada Freeblade or another Ally you control enters, you may put a +1/+1 counter on Hada Freeblade.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hada Freeblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "venom-deadly-devourer-corpus-m680",
+  "description": "M6 corpus — Venom, Deadly Devourer; in-hand parse.",
+  "seed": 64919,
+  "cards": {
+    "Venom, Deadly Devourer": "Name:Venom, Deadly Devourer\nManaCost:2 G B\nTypes:Legendary Creature Symbiote Villain\nPT:4/4\nK:Vigilance\nK:Menace\nA:AB$ ChangeZone | Cost$ 3 | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | RememberChanged$ True | TgtPrompt$ Select target creature card in a graveyard | SubAbility$ DBImmediateTrigger | SpellDescription$ Exile target creature card from a graveyard. When you do, put X +1/+1 counters on target Symbiote, where X is the exiled card's toughness.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ RememberedLKI | ConditionPresent$ Card | RememberObjects$ RememberedLKI | Execute$ TrigPutCounter | SubAbility$ DBCleanup | TriggerDescription$ When you do, put X +1/+1 counters on target Symbiote, where X is the exiled card's toughness.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Symbiote | CounterType$ P1P1 | CounterNum$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardToughness\nOracle:Vigilance, menace\\n{3}: Exile target creature card from a graveyard. When you do, put X +1/+1 counters on target Symbiote, where X is the exiled card's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venom, Deadly Devourer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

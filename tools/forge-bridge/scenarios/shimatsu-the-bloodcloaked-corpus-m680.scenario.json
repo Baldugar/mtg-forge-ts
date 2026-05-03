@@ -1,0 +1,23 @@
+{
+  "id": "shimatsu-the-bloodcloaked-corpus-m680",
+  "description": "M6 corpus — Shimatsu the Bloodcloaked; in-hand parse.",
+  "seed": 64253,
+  "cards": {
+    "Shimatsu the Bloodcloaked": "Name:Shimatsu the Bloodcloaked\nManaCost:3 R\nTypes:Legendary Creature Demon Spirit\nPT:0/0\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ TrigSac | ReplacementResult$ Updated | Description$ As CARDNAME enters, sacrifice any number of permanents. NICKNAME enters with that many +1/+1 counters on it.\nSVar:TrigSac:DB$ Sacrifice | Amount$ SacX | SacValid$ Permanent | Defined$ You | RememberSacrificed$ True | Optional$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ETB$ True | CounterType$ P1P1 | Defined$ Self | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Permanent.YouCtrl\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:As Shimatsu the Bloodcloaked enters, sacrifice any number of permanents. Shimatsu enters with that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shimatsu the Bloodcloaked"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

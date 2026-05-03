@@ -1,0 +1,23 @@
+{
+  "id": "ironscale-hydra-corpus-m680",
+  "description": "M6 corpus — Ironscale Hydra; in-hand parse.",
+  "seed": 62993,
+  "cards": {
+    "Ironscale Hydra": "Name:Ironscale Hydra\nManaCost:3 G G\nTypes:Creature Hydra\nPT:5/5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ValidSource$ Creature | IsCombat$ True | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | ExecuteMode$ PerSource | Description$ If a creature would deal combat damage to CARDNAME, prevent that damage and put a +1/+1 counter on CARDNAME.\nSVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:If a creature would deal combat damage to Ironscale Hydra, prevent that damage and put a +1/+1 counter on Ironscale Hydra.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ironscale Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

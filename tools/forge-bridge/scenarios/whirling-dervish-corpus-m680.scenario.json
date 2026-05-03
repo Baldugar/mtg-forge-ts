@@ -1,0 +1,23 @@
+{
+  "id": "whirling-dervish-corpus-m680",
+  "description": "M6 corpus — Whirling Dervish; in-hand parse.",
+  "seed": 65031,
+  "cards": {
+    "Whirling Dervish": "Name:Whirling Dervish\nManaCost:G G\nTypes:Creature Human Monk\nPT:1/1\nK:Protection from black\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | IsPresent$ Card.Self+dealtDamageToOppThisTurn | TriggerDescription$ At the beginning of each end step, if CARDNAME dealt damage to an opponent this turn, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Protection from black\\nAt the beginning of each end step, if Whirling Dervish dealt damage to an opponent this turn, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirling Dervish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

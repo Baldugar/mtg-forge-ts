@@ -1,0 +1,23 @@
+{
+  "id": "big-boa-constrictor-corpus-m680",
+  "description": "M6 corpus — Big Boa Constrictor; in-hand parse.",
+  "seed": 61682,
+  "cards": {
+    "Big Boa Constrictor": "Name:Big Boa Constrictor\nManaCost:3 B\nTypes:Host Creature Snake\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | Host$ True | TriggerDescription$ When this creature enters, roll a six-sided die. Target opponent loses life equal to the result.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBLife\nSVar:DBLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ Result\nOracle:When this creature enters, roll a six-sided die. Target opponent loses life equal to the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Big Boa Constrictor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

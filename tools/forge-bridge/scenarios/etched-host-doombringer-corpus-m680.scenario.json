@@ -1,0 +1,23 @@
+{
+  "id": "etched-host-doombringer-corpus-m680",
+  "description": "M6 corpus — Etched Host Doombringer; in-hand parse.",
+  "seed": 62374,
+  "cards": {
+    "Etched Host Doombringer": "Name:Etched Host Doombringer\nManaCost:4 B\nTypes:Creature Phyrexian Demon\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Drain,Battle\nSVar:Drain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | StackDescription$ None\nSVar:Battle:DB$ AddOrRemoveCounter | ValidTgts$ Battle | RemoveConditionSVar$ Targeted$Valid Battle.OppProtect | CounterType$ DEFENSE | CounterNum$ 3 | StackDescription$ REP Choose target battle_{p:You} chooses {c:Targeted} & remove_{p:You} removes & put_{p:You} puts | SpellDescription$ Choose target battle. If an opponent protects it, remove three defense counters from it. Otherwise, put three defense counters on it.\nDeckHas:Ability$LifeGain\nDeckHints:Type$Battle\nOracle:When Etched Host Doombringer enters, choose one —\\n• Target opponent loses 2 life and you gain 2 life.\\n• Choose target battle. If an opponent protects it, remove three defense counters from it. Otherwise, put three defense counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Etched Host Doombringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

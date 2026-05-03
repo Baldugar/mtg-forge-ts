@@ -1,0 +1,23 @@
+{
+  "id": "stoic-farmer-corpus-m680",
+  "description": "M6 corpus — Stoic Farmer; in-hand parse.",
+  "seed": 64467,
+  "cards": {
+    "Stoic Farmer": "Name:Stoic Farmer\nManaCost:3 W\nTypes:Creature Dwarf Peasant\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for a basic Plains card and reveal it. If an opponent controls more lands than you, put it onto the battlefield tapped. Otherwise put it into your hand. Then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Land.Plains+Basic | ChangeNum$ 1 | RememberChanged$ True | Reveal$ True | Shuffle$ False | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ ToBattlefieldTapped | FalseSubAbility$ ToHand | SubAbility$ DBCleanup\nSVar:X:PlayerCountOpponents$HasPropertywithMoreLandsThanYou\nSVar:ToBattlefieldTapped:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | Tapped$ True | Shuffle$ True\nSVar:ToHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | Shuffle$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Foretell:1 W\nOracle:When Stoic Farmer enters, search your library for a basic Plains card and reveal it. If an opponent controls more lands than you, put it onto the battlefield tapped. Otherwise put it into your hand. Then shuffle.\\nForetell {1}{W} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoic Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

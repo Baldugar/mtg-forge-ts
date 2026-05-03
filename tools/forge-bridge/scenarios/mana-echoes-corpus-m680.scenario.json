@@ -1,0 +1,23 @@
+{
+  "id": "mana-echoes-corpus-m680",
+  "description": "M6 corpus — Mana Echoes; in-hand parse.",
+  "seed": 63328,
+  "cards": {
+    "Mana Echoes": "Name:Mana Echoes\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ DBMana | TriggerDescription$ Whenever a creature enters, you may add an amount of {C} equal to the number of creatures you control that share a creature type with it.\nSVar:DBMana:DB$ Mana | Produced$ C | Defined$ You | Amount$ X\nSVar:X:Count$Valid Creature.YouCtrl+sharesCreatureTypeWith TriggeredCard\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, you may add an amount of {C} equal to the number of creatures you control that share a creature type with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Echoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

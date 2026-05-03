@@ -1,0 +1,23 @@
+{
+  "id": "shield-broker-corpus-m680",
+  "description": "M6 corpus — Shield Broker; in-hand parse.",
+  "seed": 64250,
+  "cards": {
+    "Shield Broker": "Name:Shield Broker\nManaCost:3 U U\nTypes:Creature Octopus Advisor\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.!IsCommander+YouDontCtrl | TgtPrompt$ Select target noncommander creature you don't control | CounterType$ SHIELD | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ GainControl | ForgetOnMoved$ Battlefield | ForgetCounter$ SHIELD | Duration$ Permanent\nSVar:GainControl:Mode$ Continuous | Affected$ Card.IsRemembered | GainControl$ You | Description$ You gain control of that creature for as long as it has a shield counter on it.\nOracle:When Shield Broker enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shield Broker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

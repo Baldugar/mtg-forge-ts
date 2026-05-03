@@ -1,0 +1,23 @@
+{
+  "id": "guardian-project-corpus-m680",
+  "description": "M6 corpus — Guardian Project; in-hand parse.",
+  "seed": 62748,
+  "cards": {
+    "Guardian Project": "Name:Guardian Project\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+YouCtrl+doesNotShareNameWith YourGraveyard+doesNotShareNameWith OtherYourBattlefield | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature you control enters, if it doesn't have the same name as another creature you control or a creature card in your graveyard, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionCheckSVar$ X\nSVar:X:TriggeredCard$Valid Card.doesNotShareNameWith YourGraveyard+doesNotShareNameWith OtherYourBattlefield\nOracle:Whenever a nontoken creature you control enters, if it doesn't have the same name as another creature you control or a creature card in your graveyard, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Project"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

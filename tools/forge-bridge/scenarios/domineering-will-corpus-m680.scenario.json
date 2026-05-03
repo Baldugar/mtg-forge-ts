@@ -1,0 +1,23 @@
+{
+  "id": "domineering-will-corpus-m680",
+  "description": "M6 corpus — Domineering Will; in-hand parse.",
+  "seed": 62201,
+  "cards": {
+    "Domineering Will": "Name:Domineering Will\nManaCost:3 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Player | StackDescription$ None | SubAbility$ DBGainControl | SpellDescription$ Target player gains control of up to three target nonattacking creatures until end of turn. Untap those creatures. They block this turn if able.\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Creature.!attacking | TgtPrompt$ Select up to three target nonattacking creatures | LoseControl$ EOT | TargetMin$ 0 | TargetMax$ 3 | NewController$ ParentTarget | Untap$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ MustBlock | SpellDescription$ They block this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ Those creatures block this turn if able.\nAI:RemoveDeck:All\nOracle:Target player gains control of up to three target nonattacking creatures until end of turn. Untap those creatures. They block this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Domineering Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "monastery-siege-corpus-m680",
+  "description": "M6 corpus — Monastery Siege; in-hand parse.",
+  "seed": 63467,
+  "cards": {
+    "Monastery Siege": "Name:Monastery Siege\nManaCost:2 U\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Khans,Dragons | Defined$ You | SetChosenMode$ True | AILogic$ Khans | ShowChoice$ ExceptSelf | SpellDescription$ As CARDNAME enters, choose Khans or Dragons.\nSVar:Khans:DB$ Pump | SpellDescription$ Khans\nSVar:Dragons:DB$ Pump | SpellDescription$ Dragons\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeKhans | AddTrigger$ KhansTrigger | Description$ • Khans — At the beginning of your draw step, draw an additional card, then discard a card.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeDragons | AddStaticAbility$ DragonsST | Description$ • Dragons — Spells your opponents cast that target you or a permanent you control cost {2} more to cast.\nSVar:KhansTrigger:Mode$ Phase | Phase$ Draw | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ Filter | Secondary$ True | TriggerDescription$ At the beginning of your draw step, draw an additional card, then discard a card.\nSVar:Filter:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:DragonsST:Mode$ RaiseCost | ValidTarget$ You,Card.YouCtrl+inZoneBattlefield | Activator$ Opponent | Type$ Spell | Amount$ 2 | Secondary$ True | Description$ Spells your opponents cast that target you or a permanent you control cost {2} more to cast.\nOracle:As Monastery Siege enters, choose Khans or Dragons.\\n• Khans — At the beginning of your draw step, draw an additional card, then discard a card.\\n• Dragons — Spells your opponents cast that target you or a permanent you control cost {2} more to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monastery Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cunning-strike-corpus-m680",
+  "description": "M6 corpus — Cunning Strike; in-hand parse.",
+  "seed": 62057,
+  "cards": {
+    "Cunning Strike": "Name:Cunning Strike\nManaCost:3 U R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | DamageMap$ True | SubAbility$ DB1 | SpellDescription$ CARDNAME deals 2 damage to target creature and 2 damage to target player or planeswalker. Draw a card.\nSVar:DB1:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:Cunning Strike deals 2 damage to target creature and 2 damage to target player or planeswalker.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cunning Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

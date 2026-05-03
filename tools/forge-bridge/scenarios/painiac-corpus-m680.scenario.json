@@ -1,0 +1,23 @@
+{
+  "id": "painiac-corpus-m680",
+  "description": "M6 corpus — Painiac; in-hand parse.",
+  "seed": 63682,
+  "cards": {
+    "Painiac": "Name:Painiac\nManaCost:2 R\nTypes:Creature Brainiac\nPT:0/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRoll | TriggerDescription$ At the beginning of your upkeep, roll a six-sided die. CARDNAME gets +X/+0 until end of turn, where X is the result.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nOracle:At the beginning of your upkeep, roll a six-sided die. Painiac gets +X/+0 until end of turn, where X is the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painiac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "terra-magical-adept-corpus-m680",
+  "description": "M6 corpus — Terra, Magical Adept; in-hand parse.",
+  "seed": 64624,
+  "cards": {
+    "Terra, Magical Adept": "Name:Terra, Magical Adept\nManaCost:1 R G\nTypes:Legendary Creature Human Wizard Warrior\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When NICKNAME enters, mill five cards. Put up to one enchantment milled this way into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 5 | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Enchantment.YouOwn+IsRemembered | Hidden$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ChangeZone | PrecostDesc$ Trance | Cost$ 4 R G T | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup\nAlternateMode:DoubleFaced\nDeckHas:Ability$Mill\nDeckHints:Ability$Graveyard|Token|Counters & Type$Enchantment\nOracle:When Terra enters, mill five cards. Put up to one enchantment milled this way into your hand.\\nTrance — {4}{R}{G}, {T}: Exile Terra, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Esper Terra\nManaCost:no cost\nColors:red,green\nTypes:Legendary Enchantment Creature Saga Wizard\nPT:6/6\nK:Chapter:4:DBCopy,DBCopy,DBCopy,DBMana\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Enchantment.nonLegendary+YouCtrl | TgtPrompt$ Select target nonlegendary enchantment you control | PumpKeywords$ Haste | AtEOT$ YourSacrifice | RememberTokens$ True | SubAbility$ DBPutCounter | SpellDescription$ Create a token that's a copy of target nonlegendary enchantment you control. It gains haste. If it's a Saga, put up to three lore counters on it. Sacrifice it at the beginning of your next end step.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered.Saga | CounterType$ LORE | CounterNum$ 3 | UpTo$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBMana:DB$ Mana | Produced$ W W U U B B R R G G | SubAbility$ DBExile | SpellDescription$ Add {W}{W}, {U}{U}, {B}{B}, {R}{R}, and {G}{G}. Exile CARDNAME, then return it to the battlefield (front face up).\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nK:Flying\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II, III — Create a token that's a copy of target nonlegendary enchantment you control. It gains haste. If it's a Saga, put up to three lore counters on it. Sacrifice it at the beginning of your next end step.\\nIV — Add {W}{W}, {U}{U}, {B}{B}, {R}{R}, and {G}{G}. Exile Esper Terra, then return it to the battlefield (front face up).\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terra, Magical Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

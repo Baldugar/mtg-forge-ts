@@ -1,0 +1,23 @@
+{
+  "id": "seifer-balamb-rival-corpus-m680",
+  "description": "M6 corpus — Seifer, Balamb Rival; in-hand parse.",
+  "seed": 64191,
+  "cards": {
+    "Seifer, Balamb Rival": "Name:Seifer, Balamb Rival\nManaCost:2 B R\nTypes:Legendary Creature Human Mercenary\nPT:4/3\nK:First Strike\nT:Mode$ AttackersDeclaredOneTarget | AttackedTarget$ Player | ValidAttackers$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGoad | TriggerDescription$ Whenever you attack a player, goad target creature that player controls.\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredAttackedTarget | TgtPrompt$ Select target creature that player controls\nT:Mode$ AttackerBlocked | ValidCard$ Creature.attacking Opponent | ValidBlocker$ Creature | Execute$ TrigPump | ValidBlockerAmount$ GE2 | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature attacking one of your opponents becomes blocked by two or more creatures, that attacking creature gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttacker | KW$ Deathtouch\nSVar:PlayMain1:TRUE\nOracle:First strike\\nWhenever you attack a player, goad target creature that player controls.\\nWhenever a creature attacking one of your opponents becomes blocked by two or more creatures, that attacking creature gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seifer, Balamb Rival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

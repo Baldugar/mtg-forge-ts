@@ -1,0 +1,23 @@
+{
+  "id": "thief-of-blood-corpus-m680",
+  "description": "M6 corpus — Thief of Blood; in-hand parse.",
+  "seed": 64703,
+  "cards": {
+    "Thief of Blood": "Name:Thief of Blood\nManaCost:4 B B\nTypes:Creature Vampire\nPT:1/1\nK:Flying\nK:ETBReplacement:Other:DBRemoveCounterAll\nSVar:DBRemoveCounterAll:DB$ RemoveCounter | Defined$ Valid Permanent | CounterType$ All | SubAbility$ DBPutCounters | RememberAmount$ True | SpellDescription$ As CARDNAME enters, remove all counters from all permanents. CARDNAME enters with a +1/+1 counter on it for each counter removed this way.\nSVar:DBPutCounters:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Flying\\nAs Thief of Blood enters, remove all counters from all permanents. Thief of Blood enters with a +1/+1 counter on it for each counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thief of Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

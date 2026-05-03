@@ -1,0 +1,23 @@
+{
+  "id": "slime-against-humanity-corpus-m680",
+  "description": "M6 corpus — Slime Against Humanity; in-hand parse.",
+  "seed": 64324,
+  "cards": {
+    "Slime Against Humanity": "Name:Slime Against Humanity\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_0_0_ooze_trample | RememberTokens$ True | SubAbility$ DBPutCounters | SpellDescription$ Create a 0/0 green Ooze creature token with trample.\nSVar:DBPutCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ Count$ValidGraveyard,Exile Ooze.YouOwn,Card.YouOwn+namedSlime Against Humanity/Plus.2 | StackDescription$ SpellDescription | SubAbility$ DBCleanup | SpellDescription$ Put X +1/+1 counters on it, where X is two plus the total number of cards you own in exile and in your graveyard that are Oozes or are named Slime Against Humanity.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:A deck can have any number of cards named CARDNAME.\nDeckHas:Ability$Token & Type$Ooze\nDeckHints:Type$Ooze\nOracle:Create a 0/0 green Ooze creature token with trample. Put X +1/+1 counters on it, where X is two plus the total number of cards you own in exile and in your graveyard that are Oozes or are named Slime Against Humanity.\\nA deck can have any number of cards named Slime Against Humanity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slime Against Humanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

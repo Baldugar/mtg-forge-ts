@@ -1,0 +1,23 @@
+{
+  "id": "hoarder-s-greed-corpus-m680",
+  "description": "M6 corpus — Hoarder's Greed; in-hand parse.",
+  "seed": 62844,
+  "cards": {
+    "Hoarder's Greed": "Name:Hoarder's Greed\nManaCost:3 B\nTypes:Sorcery\nA:SP$ Repeat | RepeatCheckSVar$ CheckRepeat | RepeatSVarCompare$ GT0 | RepeatSubAbility$ DBLoseLife | StackDescription$ SpellDescription | SpellDescription$ You lose 2 life and draw two cards, then clash with an opponent. If you win, repeat this process.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw | SpellDescription$ You lose 2 life and draw two cards, then clash with an opponent. If you win, repeat this process.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ DBClash\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBStoreSVar | OtherwiseSubAbility$ DBReset\nSVar:DBStoreSVar:DB$ StoreSVar | SVar$ CheckRepeat | Type$ Number | Expression$ 1\nSVar:DBReset:DB$ StoreSVar | SVar$ CheckRepeat | Type$ Number | Expression$ 0\nSVar:CheckRepeat:Number$0\nOracle:You lose 2 life and draw two cards, then clash with an opponent. If you win, repeat this process. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarder's Greed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

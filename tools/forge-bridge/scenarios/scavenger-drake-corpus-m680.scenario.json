@@ -1,0 +1,23 @@
+{
+  "id": "scavenger-drake-corpus-m680",
+  "description": "M6 corpus — Scavenger Drake; in-hand parse.",
+  "seed": 64147,
+  "cards": {
+    "Scavenger Drake": "Name:Scavenger Drake\nManaCost:3 B\nTypes:Creature Drake\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.Other | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever another creature dies, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhenever another creature dies, you may put a +1/+1 counter on Scavenger Drake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scavenger Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

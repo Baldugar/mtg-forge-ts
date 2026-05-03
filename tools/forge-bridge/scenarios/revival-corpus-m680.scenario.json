@@ -1,0 +1,23 @@
+{
+  "id": "revival-corpus-m680",
+  "description": "M6 corpus — Revival; in-hand parse.",
+  "seed": 63978,
+  "cards": {
+    "Revival": "Name:Revival\nManaCost:WB WB\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target creature card in your graveyard with mana value 3 or less | ValidTgts$ Creature.YouOwn+cmcLE3 | SpellDescription$ Return target creature card with mana value 3 or less from your graveyard to the battlefield.\nDeckHas:Ability$Graveyard\nAlternateMode:Split\nOracle:Return target creature card with mana value 3 or less from your graveyard to the battlefield.\n\nALTERNATE\n\nName:Revenge\nManaCost:4 W B\nTypes:Sorcery\nA:SP$ SetLife | LifeAmount$ X | Defined$ You | SubAbility$ DBLoseHalf | SpellDescription$ Double your life total. Target opponent loses half their life, rounded up.\nSVar:DBLoseHalf:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ Y\nSVar:X:Count$YourLifeTotal/Twice\nSVar:Y:TargetedPlayer$LifeTotal/HalfUp\nOracle:Double your life total. Target opponent loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

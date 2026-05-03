@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-rotbelly-corpus-m680",
+  "description": "M6 corpus — Ravenous Rotbelly; in-hand parse.",
+  "seed": 63911,
+  "cards": {
+    "Ravenous Rotbelly": "Name:Ravenous Rotbelly\nManaCost:4 B\nTypes:Creature Zombie Horror\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacZom | TriggerDescription$ When CARDNAME enters, you may sacrifice up to three Zombies. When you sacrifice one or more Zombies this way, each opponent sacrifices that many creatures.\nSVar:TrigSacZom:DB$ Sacrifice | Defined$ You | Optional$ True | Amount$ 3 | SacValid$ Zombie | SacMessage$ Zombies | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigSac | ConditionDefined$ RememberedLKI | ConditionPresent$ Zombie | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ When you sacrifice one or more Zombies this way, each opponent sacrifices that many creatures.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature | Amount$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$Amount\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Zombie\nOracle:When Ravenous Rotbelly enters, you may sacrifice up to three Zombies. When you sacrifice one or more Zombies this way, each opponent sacrifices that many creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Rotbelly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "plague-sliver-corpus-m680",
+  "description": "M6 corpus — Plague Sliver; in-hand parse.",
+  "seed": 63762,
+  "cards": {
+    "Plague Sliver": "Name:Plague Sliver\nManaCost:2 B B\nTypes:Creature Sliver\nPT:5/5\nS:Mode$ Continuous | Affected$ Sliver | AddTrigger$ PlaguePhaseTrig | Description$ All Slivers have \"At the beginning of your upkeep, this permanent deals 1 damage to you.\"\nSVar:PlaguePhaseTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ PlagueTrigDmg | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to you.\nSVar:PlagueTrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:All Slivers have \"At the beginning of your upkeep, this permanent deals 1 damage to you.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

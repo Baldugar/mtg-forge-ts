@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-ingester-corpus-m680",
+  "description": "M6 corpus — Phyrexian Ingester; in-hand parse.",
+  "seed": 63744,
+  "cards": {
+    "Phyrexian Ingester": "Name:Phyrexian Ingester\nManaCost:6 U\nTypes:Creature Phyrexian Beast\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Imprint — When CARDNAME enters, you may exile target nontoken creature.\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | ValidTgts$ Creature.!token | TgtPrompt$ Select target nontoken creature | Origin$ Battlefield | Destination$ Exile\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearImprinted$ True\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ Y | Description$ CARDNAME gets +X/+Y, where X is the exiled creature card's power and Y is its toughness.\nT:Mode$ ChangesZone | ValidCard$ Card.IsImprinted+ExiledWithSourceLKI | Origin$ Exile | Execute$ DBForget | Static$ True\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\nSVar:X:Imprinted$CardPower\nSVar:Y:Imprinted$CardToughness\nOracle:Imprint — When Phyrexian Ingester enters, you may exile target nontoken creature.\\nPhyrexian Ingester gets +X/+Y, where X is the exiled creature card's power and Y is its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Ingester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

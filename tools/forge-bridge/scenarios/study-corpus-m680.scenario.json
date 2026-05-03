@@ -1,0 +1,23 @@
+{
+  "id": "study-corpus-m680",
+  "description": "M6 corpus — Study; in-hand parse.",
+  "seed": 64489,
+  "cards": {
+    "Study": "Name:Study\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nA:AB$ Investigate | Cost$ 4 T | SpellDescription$ Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nDeckHints:Ability$Investigate|Token\nOracle:Study enters tapped.\\n{T}: Add {W} or {U}.\\n{4}, {T}: Investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Study"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "timberland-guide-corpus-m680",
+  "description": "M6 corpus — Timberland Guide; in-hand parse.",
+  "seed": 64749,
+  "cards": {
+    "Timberland Guide": "Name:Timberland Guide\nManaCost:1 G\nTypes:Creature Human Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ GoodWood | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:GoodWood:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Timberland Guide enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timberland Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nether-void-corpus-m680",
+  "description": "M6 corpus — Nether Void; in-hand parse.",
+  "seed": 63543,
+  "cards": {
+    "Nether Void": "Name:Nether Void\nManaCost:3 B\nTypes:World Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player casts a spell, counter it unless that player pays {3}.\nSVar:TrigCounter:DB$ Counter | UnlessCost$ 3 | Defined$ TriggeredSpellAbility | UnlessPayer$ TriggeredCardController\nAI:RemoveDeck:Random\nSVar:AI_SpellsNeedExtraMana:3\nOracle:Whenever a player casts a spell, counter it unless that player pays {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nether Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

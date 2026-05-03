@@ -1,0 +1,23 @@
+{
+  "id": "arena-trickster-corpus-m680",
+  "description": "M6 corpus — Arena Trickster; in-hand parse.",
+  "seed": 61559,
+  "cards": {
+    "Arena Trickster": "Name:Arena Trickster\nManaCost:3 R\nTypes:Creature Human Shaman\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast your first spell during each opponent's turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever you cast your first spell during each opponent's turn, put a +1/+1 counter on Arena Trickster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arena Trickster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

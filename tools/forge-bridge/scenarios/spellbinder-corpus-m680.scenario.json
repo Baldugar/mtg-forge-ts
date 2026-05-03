@@ -1,0 +1,23 @@
+{
+  "id": "spellbinder-corpus-m680",
+  "description": "M6 corpus — Spellbinder; in-hand parse.",
+  "seed": 64396,
+  "cards": {
+    "Spellbinder": "Name:Spellbinder\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Imprint — When CARDNAME enters, you may exile an instant card from your hand.\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant | ChangeNum$ 1\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSpell | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may copy the exiled card. If you do, you may cast the copy without paying its mana cost.\nSVar:TrigSpell:DB$ Play | Defined$ Imprinted | Amount$ All | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | CopyCard$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Card.Self | Destination$ Any | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsImprinted+ExiledWithSourceLKI | Origin$ Exile | Execute$ DBForget | Static$ True\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\n# Amount$ All | CopyOnce$ True for Strionic Resonator\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:Count$ValidHand Card.Instant+YouOwn\nAI:RemoveDeck:All\nOracle:Imprint — When Spellbinder enters, you may exile an instant card from your hand.\\nWhenever equipped creature deals combat damage to a player, you may copy the exiled card. If you do, you may cast the copy without paying its mana cost.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellbinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

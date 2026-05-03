@@ -1,0 +1,23 @@
+{
+  "id": "honorable-scout-corpus-m680",
+  "description": "M6 corpus — Honorable Scout; in-hand parse.",
+  "seed": 62854,
+  "cards": {
+    "Honorable Scout": "Name:Honorable Scout\nManaCost:W\nTypes:Creature Human Soldier Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ HonorGained | TriggerDescription$ When CARDNAME enters, you gain 2 life for each black and/or red creature target opponent controls.\nSVar:HonorGained:DB$ GainLife | LifeAmount$ ScoutsHonor | Defined$ You | ValidTgts$ Opponent\nSVar:ScoutsHonor:Count$Valid Creature.Black+TargetedPlayerCtrl,Creature.Red+TargetedPlayerCtrl/Times.2\nOracle:When Honorable Scout enters, you gain 2 life for each black and/or red creature target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honorable Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

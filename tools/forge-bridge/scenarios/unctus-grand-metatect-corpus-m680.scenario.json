@@ -1,0 +1,23 @@
+{
+  "id": "unctus-grand-metatect-corpus-m680",
+  "description": "M6 corpus — Unctus, Grand Metatect; in-hand parse.",
+  "seed": 64841,
+  "cards": {
+    "Unctus, Grand Metatect": "Name:Unctus, Grand Metatect\nManaCost:1 U U\nTypes:Legendary Artifact Creature Phyrexian Vedalken\nPT:2/4\nS:Mode$ Continuous | Affected$ Creature.Other+Blue+YouCtrl | AddTrigger$ LootTrig | Description$ Other blue creatures you control have \"Whenever this creature becomes tapped, draw a card, then discard a card.\"\nSVar:LootTrig:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature becomes tapped, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nS:Mode$ Continuous | Affected$ Creature.Artifact+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other artifact creatures you control get +1/+1.\nA:AB$ Animate | Cost$ UP | ValidTgts$ Creature.YouCtrl | Colors$ Blue | Types$ Artifact | SorcerySpeed$ True | SpellDescription$ Until end of turn, target creature you control becomes a blue artifact in addition to its other colors and types. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.)\nDeckHints:Type$Artifact\nDeckHas:Ability$Discard\nOracle:Other blue creatures you control have \"Whenever this creature becomes tapped, draw a card, then discard a card.\"\\nOther artifact creatures you control get +1/+1.\\n{U/P}: Until end of turn, target creature you control becomes a blue artifact in addition to its other colors and types. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unctus, Grand Metatect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "athreos-shroud-veiled-corpus-m680",
+  "description": "M6 corpus — Athreos, Shroud-Veiled; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Athreos, Shroud-Veiled": "Name:Athreos, Shroud-Veiled\nManaCost:4 W B\nTypes:Legendary Enchantment Creature God\nPT:4/7\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to white and black is less than seven, NICKNAME isn't a creature.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, put a coin counter on another target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other | CounterType$ COIN | CounterNum$ 1 | AITgts$ Creature.!token\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | TriggerZones$ Battlefield | ValidCard$ Creature.counters_GE1_COIN | Execute$ TrigReturn | TriggerDescription$ Whenever a creature with a coin counter on it dies or is put into exile, return that card to the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | GainControl$ True\nSVar:X:Count$DevotionDual.White.Black\nSVar:BuffedBy:Permanent.Black,Permanent.White\nDeckHas:Ability$Counters\nOracle:Indestructible\\nAs long as your devotion to white and black is less than seven, Athreos isn't a creature.\\nAt the beginning of your end step, put a coin counter on another target creature.\\nWhenever a creature with a coin counter on it dies or is put into exile, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Athreos, Shroud-Veiled"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

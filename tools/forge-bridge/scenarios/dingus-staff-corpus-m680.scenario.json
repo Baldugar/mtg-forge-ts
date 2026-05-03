@@ -1,0 +1,23 @@
+{
+  "id": "dingus-staff-corpus-m680",
+  "description": "M6 corpus — Dingus Staff; in-hand parse.",
+  "seed": 62170,
+  "cards": {
+    "Dingus Staff": "Name:Dingus Staff\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature dies, CARDNAME deals 2 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a creature dies, Dingus Staff deals 2 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dingus Staff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

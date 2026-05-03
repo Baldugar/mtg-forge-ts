@@ -1,0 +1,23 @@
+{
+  "id": "crovax-the-cursed-corpus-m680",
+  "description": "M6 corpus — Crovax the Cursed; in-hand parse.",
+  "seed": 62040,
+  "cards": {
+    "Crovax the Cursed": "Name:Crovax the Cursed\nManaCost:2 B B\nTypes:Legendary Creature Vampire Noble\nPT:0/0\nK:etbCounter:P1P1:4\nA:AB$ Pump | Cost$ B | Defined$ Self | KW$ Flying | StackDescription$ SpellDescription | SpellDescription$ NICKNAME gains flying until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice a creature. If you do, put a +1/+1 counter on NICKNAME. If you don't, remove a +1/+1 counter from NICKNAME.\nSVar:TrigSacrifice:DB$ Sacrifice | Optional$ True | SacValid$ Creature | Amount$ 1 | RememberSacrificed$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBSubCounter\nSVar:DBSubCounter:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice|Counters\nOracle:Crovax the Cursed enters with four +1/+1 counters on it.\\nAt the beginning of your upkeep, you may sacrifice a creature. If you do, put a +1/+1 counter on Crovax. If you don't, remove a +1/+1 counter from Crovax.\\n{B}: Crovax gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crovax the Cursed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

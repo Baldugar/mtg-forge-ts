@@ -1,0 +1,23 @@
+{
+  "id": "worldspine-wurm-corpus-m680",
+  "description": "M6 corpus — Worldspine Wurm; in-hand parse.",
+  "seed": 65094,
+  "cards": {
+    "Worldspine Wurm": "Name:Worldspine Wurm\nManaCost:8 G G G\nTypes:Creature Wurm\nPT:15/15\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create three 5/5 green Wurm creature tokens with trample.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ g_5_5_wurm_trample | TokenOwner$ TriggeredCardController\nDeckHas:Ability$Token\nOracle:Trample\\nWhen Worldspine Wurm dies, create three 5/5 green Wurm creature tokens with trample.\\nWhen Worldspine Wurm is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldspine Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

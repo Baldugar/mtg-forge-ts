@@ -1,0 +1,23 @@
+{
+  "id": "tajic-legion-s-valor-corpus-m680",
+  "description": "M6 corpus — Tajic, Legion's Valor; in-hand parse.",
+  "seed": 64577,
+  "cards": {
+    "Tajic, Legion's Valor": "Name:Tajic, Legion's Valor\nManaCost:2 R W\nTypes:Legendary Creature Human Soldier\nPT:1/1\nK:Indestructible\nK:Haste\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on CARDNAME. Then conjure a card with mana value equal to the number of +1/+1 counters on it from CARDNAME's spellbook onto the battlefield. It gains haste until end of turn and attacks this combat if able.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Filter$ Card.cmcEQCount$CardCounters.P1P1 | Spellbook$ Aurelia; the Law Above,Boros Recruit,Skyknight Legionnaire,Spark Trooper,Swiftblade Vindicator | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBPumpTurn\nSVar:DBPumpTurn:DB$ Pump | Defined$ Remembered | KW$ Haste | SubAbility$ DBPumpCombat\nSVar:DBPumpCombat:DB$ Animate | Defined$ Remembered | staticAbilities$ MustAttack | Duration$ UntilEndOfCombat | SubAbility$ DBCleanup\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks this combat if able.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Indestructible, haste\\nAt the beginning of combat on your turn, put a +1/+1 counter on Tajic, Legion's Valor. Then conjure a card with mana value equal to the number of +1/+1 counters on it from Tajic, Legion's Valor's spellbook onto the battlefield. It gains haste until end of turn and attacks this combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tajic, Legion's Valor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

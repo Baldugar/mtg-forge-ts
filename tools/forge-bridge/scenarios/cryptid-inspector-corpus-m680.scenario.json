@@ -1,0 +1,23 @@
+{
+  "id": "cryptid-inspector-corpus-m680",
+  "description": "M6 corpus — Cryptid Inspector; in-hand parse.",
+  "seed": 62050,
+  "cards": {
+    "Cryptid Inspector": "Name:Cryptid Inspector\nManaCost:2 G\nTypes:Creature Elf Warrior\nPT:2/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.faceDown+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a face-down permanent you control enters and whenever CARDNAME or another permanent you control is turned face up, put a +1/+1 counter on CARDNAME.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self,Permanent.Other+YouCtrl | Secondary$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a face-down permanent you control enters and whenever CARDNAME or another permanent you control is turned face up, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1\nOracle:Vigilance\\nWhenever a face-down permanent you control enters and whenever Cryptid Inspector or another permanent you control is turned face up, put a +1/+1 counter on Cryptid Inspector.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptid Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lae-zel-s-acrobatics-corpus-m680",
+  "description": "M6 corpus — Lae'zel's Acrobatics; in-hand parse.",
+  "seed": 63178,
+  "cards": {
+    "Lae'zel's Acrobatics": "Name:Lae'zel's Acrobatics\nManaCost:3 W\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Creature.!token+YouCtrl | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBRollDice | SpellDescription$ Exile all nontoken creatures you control, then roll a d20.\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBDesc,10-20:DBReturn | StackDescription$ None\nSVar:DBDesc:DB$ Pump | SubAbility$ DBDelayTrig | SpellDescription$ 1—9 VERT Return those cards to the battlefield under their owner's control at the beginning of the next end step.\nSVar:DBDelayTrig:DB$ DelayedTrigger | RememberObjects$ Remembered | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | SubAbility$ DBCleanup | TriggerDescription$ Return those cards to the battlefield under their owner's control at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBExile | SpellDescription$ 10—20 VERT Return those cards to the battlefield under their owner's control, then exile them again. Return those cards to the battlefield under their owner's control at the beginning of the next end step.\nSVar:DBExile:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBDelayTrig\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile all nontoken creatures you control, then roll a d20.\\n1—9 | Return those cards to the battlefield under their owner's control at the beginning of the next end step.\\n10—20 | Return those cards to the battlefield under their owner's control, then exile them again. Return those cards to the battlefield under their owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lae'zel's Acrobatics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

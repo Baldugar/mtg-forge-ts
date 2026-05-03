@@ -1,0 +1,23 @@
+{
+  "id": "silent-hallcreeper-corpus-m680",
+  "description": "M6 corpus — Silent Hallcreeper; in-hand parse.",
+  "seed": 64280,
+  "cards": {
+    "Silent Hallcreeper": "Name:Silent Hallcreeper\nManaCost:1 U\nTypes:Enchantment Creature Horror\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigCharm | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBDraw,DBClone | ChoiceRestriction$ ThisGame\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on CARDNAME.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:DBClone:DB$ Clone | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control to copy | SpellDescription$ CARDNAME becomes a copy of another target creature you control.\nOracle:Silent Hallcreeper can't be blocked.\\nWhenever Silent Hallcreeper deals combat damage to a player, choose one that hasn't been chosen -\\n• Put two +1/+1 counters on Silent Hallcreeper.\\n• Draw a card.\\n• Silent Hallcreeper becomes a copy of another target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silent Hallcreeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

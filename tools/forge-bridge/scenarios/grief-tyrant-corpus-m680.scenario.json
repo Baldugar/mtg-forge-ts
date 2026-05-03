@@ -1,0 +1,23 @@
+{
+  "id": "grief-tyrant-corpus-m680",
+  "description": "M6 corpus — Grief Tyrant; in-hand parse.",
+  "seed": 62723,
+  "cards": {
+    "Grief Tyrant": "Name:Grief Tyrant\nManaCost:5 BR\nTypes:Creature Horror\nPT:8/8\nK:etbCounter:M1M1:4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCurse | TriggerDescription$ When CARDNAME dies, put a -1/-1 counter on target creature for each -1/-1 counter on CARDNAME.\nSVar:TrigCurse:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ X\nSVar:X:TriggeredCard$CardCounters.M1M1\nOracle:Grief Tyrant enters with four -1/-1 counters on it.\\nWhen Grief Tyrant dies, put a -1/-1 counter on target creature for each -1/-1 counter on Grief Tyrant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grief Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

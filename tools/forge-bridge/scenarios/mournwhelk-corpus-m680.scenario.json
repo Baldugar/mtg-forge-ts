@@ -1,0 +1,23 @@
+{
+  "id": "mournwhelk-corpus-m680",
+  "description": "M6 corpus — Mournwhelk; in-hand parse.",
+  "seed": 63485,
+  "cards": {
+    "Mournwhelk": "Name:Mournwhelk\nManaCost:6 B\nTypes:Creature Elemental\nPT:3/3\nK:Evoke:3 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards two cards.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose\nOracle:When Mournwhelk enters, target player discards two cards.\\nEvoke {3}{B} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mournwhelk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

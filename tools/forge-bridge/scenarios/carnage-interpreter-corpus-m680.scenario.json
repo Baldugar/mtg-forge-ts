@@ -1,0 +1,23 @@
+{
+  "id": "carnage-interpreter-corpus-m680",
+  "description": "M6 corpus — Carnage Interpreter; in-hand parse.",
+  "seed": 61857,
+  "cards": {
+    "Carnage Interpreter": "Name:Carnage Interpreter\nManaCost:1 BR BR\nTypes:Creature Devil Detective\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard your hand, then investigate four times. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | Num$ 4\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Menace | CheckSVar$ X | SVarCompare$ LE1 | Description$ As long as you have one or fewer cards in hand, CARDNAME gets +2/+2 and has menace.\nSVar:X:Count$ValidHand Card.YouOwn\nDeckHas:Ability$Discard|Token & Type$Clue|Artifact\nDeckHints:Ability$Discard\nOracle:When Carnage Interpreter enters, discard your hand, then investigate four times. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nAs long as you have one or fewer cards in hand, Carnage Interpreter gets +2/+2 and has menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carnage Interpreter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

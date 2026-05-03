@@ -1,0 +1,23 @@
+{
+  "id": "windfall-corpus-m680",
+  "description": "M6 corpus — Windfall; in-hand parse.",
+  "seed": 65061,
+  "cards": {
+    "Windfall": "Name:Windfall\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Discard | Defined$ Player | Mode$ Hand | RememberDiscarded$ True | SubAbility$ WindfallDraw | SpellDescription$ Each player discards their hand, then draws cards equal to the greatest number of cards a player discarded this way.\nSVar:WindfallDraw:DB$ Draw | Defined$ Player | NumCards$ X | SubAbility$ WindfallCleanup\nSVar:WindfallCleanup:DB$ Cleanup | ClearRemembered$ True\n# Some cards may allow you to discard to other zones\nSVar:X:PlayerCountPlayers$HighestValidGraveyard,Library,Exile Card.IsRemembered+YouOwn\nAI:RemoveDeck:All\nDeckHas:Ability$Discard\nOracle:Each player discards their hand, then draws cards equal to the greatest number of cards a player discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windfall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

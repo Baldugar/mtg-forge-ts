@@ -1,0 +1,23 @@
+{
+  "id": "kalemne-disciple-of-iroas-corpus-m680",
+  "description": "M6 corpus — Kalemne, Disciple of Iroas; in-hand parse.",
+  "seed": 63072,
+  "cards": {
+    "Kalemne, Disciple of Iroas": "Name:Kalemne, Disciple of Iroas\nManaCost:2 R W\nTypes:Legendary Creature Giant Soldier\nPT:3/3\nK:Double Strike\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Creature.cmcGE5 | ValidActivatingPlayer$ You | Execute$ TrigExperience | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with mana value 5 or greater, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each experience counter you have.\nSVar:X:Count$YourCountersExperience\nSVar:BuffedBy:Creature.cmcGE5\nOracle:Double strike, vigilance\\nWhenever you cast a creature spell with mana value 5 or greater, you get an experience counter.\\nKalemne, Disciple of Iroas gets +1/+1 for each experience counter you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kalemne, Disciple of Iroas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

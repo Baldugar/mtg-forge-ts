@@ -1,0 +1,23 @@
+{
+  "id": "jaws-of-defeat-corpus-m680",
+  "description": "M6 corpus — Jaws of Defeat; in-hand parse.",
+  "seed": 63029,
+  "cards": {
+    "Jaws of Defeat": "Name:Jaws of Defeat\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control enters, target opponent loses life equal to the difference between that creature's power and its toughness.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nSVar:X:SVar$Y/Abs\nSVar:Y:TriggeredCard$CardPower/Minus.Z\nSVar:Z:TriggeredCard$CardToughness\nOracle:Whenever a creature you control enters, target opponent loses life equal to the difference between that creature's power and its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaws of Defeat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

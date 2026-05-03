@@ -1,0 +1,23 @@
+{
+  "id": "the-haunt-of-hightower-corpus-m680",
+  "description": "M6 corpus — The Haunt of Hightower; in-hand parse.",
+  "seed": 64659,
+  "cards": {
+    "The Haunt of Hightower": "Name:The Haunt of Hightower\nManaCost:4 B B\nTypes:Legendary Creature Vampire\nPT:3/3\nK:Flying\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME attacks, defending player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | NumCards$ 1 | Mode$ TgtChoose\nSVar:HasAttackEffect:TRUE\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.!token+OppOwn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a card is put into an opponent's graveyard from anywhere, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying, lifelink\\nWhenever The Haunt of Hightower attacks, defending player discards a card.\\nWhenever a card is put into an opponent's graveyard from anywhere, put a +1/+1 counter on The Haunt of Hightower.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Haunt of Hightower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "igneous-elemental-corpus-m680",
+  "description": "M6 corpus — Igneous Elemental; in-hand parse.",
+  "seed": 62902,
+  "cards": {
+    "Igneous Elemental": "Name:Igneous Elemental\nManaCost:4 R R\nTypes:Creature Elemental\nPT:4/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Land.YouOwn | PresentZone$ Graveyard | Description$ CARDNAME costs {2} less to cast if there is a land card in your graveyard.\nAI:RemoveDeck:Random\nSVar:SacMe:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have it deal 2 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nOracle:This spell costs {2} less to cast if there is a land card in your graveyard.\\nWhen Igneous Elemental enters, you may have it deal 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Igneous Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

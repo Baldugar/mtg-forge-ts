@@ -1,0 +1,23 @@
+{
+  "id": "oculus-corpus-m680",
+  "description": "M6 corpus — Oculus; in-hand parse.",
+  "seed": 63603,
+  "cards": {
+    "Oculus": "Name:Oculus\nManaCost:1 U\nTypes:Creature Phyrexian Homunculus\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:SacMe:1\nOracle:When Oculus dies, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oculus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

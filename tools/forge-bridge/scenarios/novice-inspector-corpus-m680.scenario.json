@@ -1,0 +1,23 @@
+{
+  "id": "novice-inspector-corpus-m680",
+  "description": "M6 corpus — Novice Inspector; in-hand parse.",
+  "seed": 63580,
+  "cards": {
+    "Novice Inspector": "Name:Novice Inspector\nManaCost:W\nTypes:Creature Human Detective\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Investigate|Token & Type$Clue|Artifact\nOracle:When Novice Inspector enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Novice Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

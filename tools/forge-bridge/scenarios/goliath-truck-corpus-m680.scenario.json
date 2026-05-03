@@ -1,0 +1,23 @@
+{
+  "id": "goliath-truck-corpus-m680",
+  "description": "M6 corpus — Goliath Truck; in-hand parse.",
+  "seed": 62701,
+  "cards": {
+    "Goliath Truck": "Name:Goliath Truck\nManaCost:4\nTypes:Artifact Vehicle\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Stowage — Whenever CARDNAME attacks, put two +1/+1 counters on another target attacking creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | CounterType$ P1P1 | CounterNum$ 2\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nDeckHas:Type$Counters\nOracle:Stowage — Whenever Goliath Truck attacks, put two +1/+1 counters on another target attacking creature.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goliath Truck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

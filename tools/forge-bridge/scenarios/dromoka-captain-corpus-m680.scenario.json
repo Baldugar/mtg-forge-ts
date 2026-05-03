@@ -1,0 +1,23 @@
+{
+  "id": "dromoka-captain-corpus-m680",
+  "description": "M6 corpus — Dromoka Captain; in-hand parse.",
+  "seed": 62242,
+  "cards": {
+    "Dromoka Captain": "Name:Dromoka Captain\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:1/1\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigBolster | TriggerDescription$ Whenever CARDNAME attacks, bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)\nSVar:TrigBolster:DB$ PutCounter | Bolster$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:First strike\\nWhenever Dromoka Captain attacks, bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dromoka Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

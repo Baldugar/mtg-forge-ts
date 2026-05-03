@@ -1,0 +1,23 @@
+{
+  "id": "haunted-one-corpus-m680",
+  "description": "M6 corpus — Haunted One; in-hand parse.",
+  "seed": 62798,
+  "cards": {
+    "Haunted One": "Name:Haunted One\nManaCost:2 B\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ BecomesTapped | Description$ Commander creatures you own have \"Whenever this creature becomes tapped, it and other creatures you control that share a creature type with it each get +2/+0 and gain undying until end of turn.\"\nSVar:BecomesTapped:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature becomes tapped, it and other creatures you control that share a creature type with it each get +2/+0 and gain undying until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Card.sharesCreatureTypeWith+YouCtrl | KW$ Undying | NumAtt$ +2\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Counters & Keyword$Undying\nOracle:Commander creatures you own have \"Whenever this creature becomes tapped, it and other creatures you control that share a creature type with it each get +2/+0 and gain undying until end of turn.\" (When a creature with undying dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haunted One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

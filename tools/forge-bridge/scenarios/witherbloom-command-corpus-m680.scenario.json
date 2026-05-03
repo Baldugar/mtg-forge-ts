@@ -1,0 +1,23 @@
+{
+  "id": "witherbloom-command-corpus-m680",
+  "description": "M6 corpus — Witherbloom Command; in-hand parse.",
+  "seed": 65078,
+  "cards": {
+    "Witherbloom Command": "Name:Witherbloom Command\nManaCost:B G\nTypes:Sorcery\nA:SP$ Charm | CharmNum$ 2 | Choices$ DBMill,DBDestroy,DBPump,DBLoseLife\nSVar:DBMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player | SubAbility$ DBReturn | SpellDescription$ Target player mills three cards, then you return a land card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouOwn\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.nonCreature+nonLand+cmcLE2 | TgtPrompt$ Select target noncreature, nonland permanent with mana value 2 or less | SpellDescription$ Destroy target noncreature, nonland permanent with mana value 2 or less.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -1 | SpellDescription$ Target creature gets -3/-1 until end of turn.\nSVar:DBLoseLife:DB$ LoseLife | ValidTgts$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain|Mill\nOracle:Choose two —\\n• Target player mills three cards, then you return a land card from your graveyard to your hand.\\n• Destroy target noncreature, nonland permanent with mana value 2 or less.\\n• Target creature gets -3/-1 until end of turn.\\n• Target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witherbloom Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

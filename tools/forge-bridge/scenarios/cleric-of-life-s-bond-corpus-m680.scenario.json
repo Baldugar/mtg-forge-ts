@@ -1,0 +1,23 @@
+{
+  "id": "cleric-of-life-s-bond-corpus-m680",
+  "description": "M6 corpus — Cleric of Life's Bond; in-hand parse.",
+  "seed": 61938,
+  "cards": {
+    "Cleric of Life's Bond": "Name:Cleric of Life's Bond\nManaCost:W B\nTypes:Creature Vampire Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Cleric.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another Cleric you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ LifeGained | TriggerZones$ Battlefield | ValidPlayer$ You | FirstTime$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life for the first time each turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$LifeGain|Counters\nDeckHints:Type$Cleric\nOracle:Whenever another Cleric you control enters, you gain 1 life.\\nWhenever you gain life for the first time each turn, put a +1/+1 counter on Cleric of Life's Bond.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cleric of Life's Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

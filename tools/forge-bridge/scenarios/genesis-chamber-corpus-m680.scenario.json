@@ -1,0 +1,23 @@
+{
+  "id": "genesis-chamber-corpus-m680",
+  "description": "M6 corpus — Genesis Chamber; in-hand parse.",
+  "seed": 62622,
+  "cards": {
+    "Genesis Chamber": "Name:Genesis Chamber\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token | TriggerZones$ Battlefield | Execute$ TrigToken | PresentDefined$ Self | IsPresent$ Card.untapped | TriggerDescription$ Whenever a nontoken creature enters, if CARDNAME is untapped, that creature's controller creates a 1/1 colorless Myr artifact creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ TriggeredCardController | TokenScript$ c_1_1_a_myr\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature enters, if Genesis Chamber is untapped, that creature's controller creates a 1/1 colorless Myr artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genesis Chamber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

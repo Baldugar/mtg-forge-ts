@@ -1,0 +1,23 @@
+{
+  "id": "manaform-hellkite-corpus-m680",
+  "description": "M6 corpus — Manaform Hellkite; in-hand parse.",
+  "seed": 63330,
+  "cards": {
+    "Manaform Hellkite": "Name:Manaform Hellkite\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a noncreature spell, create an X/X red Dragon Illusion creature token with flying and haste, where X is the amount of mana spent to cast that spell. Exile that token at the beginning of the next end step.\nSVar:TrigToken:DB$ Token | TokenScript$ r_x_x_dragon_illusion_flying_haste | TokenPower$ X | TokenToughness$ X | AtEOT$ Exile\nSVar:X:TriggeredCard$CastTotalManaSpent\nSVar:BuffedBy:Card.nonLand+nonCreature\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever you cast a noncreature spell, create an X/X red Dragon Illusion creature token with flying and haste, where X is the amount of mana spent to cast that spell. Exile that token at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manaform Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

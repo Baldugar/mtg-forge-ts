@@ -1,0 +1,23 @@
+{
+  "id": "dissatisfied-customer-corpus-m680",
+  "description": "M6 corpus — Dissatisfied Customer; in-hand parse.",
+  "seed": 62190,
+  "cards": {
+    "Dissatisfied Customer": "Name:Dissatisfied Customer\nManaCost:2 B\nTypes:Creature Vampire Guest\nPT:2/1\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiceRoll | TriggerDescription$ When CARDNAME enters, roll a six-sided die. If the result is 3 or less, you lose that much life.\nSVar:TrigDiceRoll:DB$ RollDice | ResultSVar$ Result | ResultSubAbilities$ 1-3:DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ Result\nOracle:Flying, haste\\nWhen Dissatisfied Customer enters, roll a six-sided die. If the result is 3 or less, you lose that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dissatisfied Customer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

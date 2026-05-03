@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-kamigawa-corpus-m680",
+  "description": "M6 corpus — Invasion of Kamigawa; in-hand parse.",
+  "seed": 62966,
+  "cards": {
+    "Invasion of Kamigawa": "Name:Invasion of Kamigawa\nManaCost:3 U\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | SubAbility$ DBCounter | TgtPrompt$ Select target artifact or creature an opponent controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Kamigawa enters, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n\nALTERNATE\n\nName:Rooftop Saboteurs\nManaCost:no cost\nColors:blue\nTypes:Creature Moonfolk Ninja\nPT:2/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or battle, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Flying\\nWhenever Rooftop Saboteurs deals combat damage to a player or battle, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Kamigawa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "centaur-of-attention-corpus-m680",
+  "description": "M6 corpus — Centaur of Attention; in-hand parse.",
+  "seed": 61881,
+  "cards": {
+    "Centaur of Attention": "Name:Centaur of Attention\nManaCost:3 G G\nTypes:Creature Centaur Performer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRollDice | TriggerDescription$ When CARDNAME enters, roll five six-sided dice and store those results on it.\nSVar:TrigRollDice:DB$ RollDice | Amount$ 5 | StoreResults$ True\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigReroll | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, you may reroll any number of CARDNAME's stored results.\nSVar:TrigReroll:DB$ RollDice | RerollResults$ True\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +X/+X, where X is the greatest number of stored results on it of the same value.\nSVar:X:Count$MaxSameStoredRolls\nOracle:When Centaur of Attention enters, roll five six-sided dice and store those results on it.\\nAt the beginning of combat on your turn, you may reroll any number of Centaur of Attention's stored results.\\nCentaur of Attention gets +X/+X, where X is the greatest number of stored results on it of the same value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Centaur of Attention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

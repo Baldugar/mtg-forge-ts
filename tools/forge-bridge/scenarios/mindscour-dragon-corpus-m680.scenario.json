@@ -1,0 +1,23 @@
+{
+  "id": "mindscour-dragon-corpus-m680",
+  "description": "M6 corpus — Mindscour Dragon; in-hand parse.",
+  "seed": 63419,
+  "cards": {
+    "Mindscour Dragon": "Name:Mindscour Dragon\nManaCost:4 U U\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to an opponent, target player mills four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player\nOracle:Flying\\nWhenever Mindscour Dragon deals combat damage to an opponent, target player mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindscour Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

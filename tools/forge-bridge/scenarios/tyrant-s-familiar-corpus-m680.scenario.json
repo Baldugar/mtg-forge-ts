@@ -1,0 +1,23 @@
+{
+  "id": "tyrant-s-familiar-corpus-m680",
+  "description": "M6 corpus — Tyrant's Familiar; in-hand parse.",
+  "seed": 64829,
+  "cards": {
+    "Tyrant's Familiar": "Name:Tyrant's Familiar\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ TrigAttacks | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Description$ Lieutenant — As long as you control your commander, CARDNAME gets +2/+2 and has \"Whenever CARDNAME attacks, it deals 7 damage to target creature defending player controls.\"\nSVar:TrigAttacks:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 7 damage to target creature defending player controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | NumDmg$ 7\nSVar:BuffedBy:Card.IsCommander\nAI:RemoveDeck:Random\nOracle:Flying, haste\\nLieutenant — As long as you control your commander, Tyrant's Familiar gets +2/+2 and has \"Whenever Tyrant's Familiar attacks, it deals 7 damage to target creature defending player controls.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyrant's Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

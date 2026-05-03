@@ -1,0 +1,23 @@
+{
+  "id": "avatar-destiny-corpus-m680",
+  "description": "M6 corpus — Avatar Destiny; in-hand parse.",
+  "seed": 61609,
+  "cards": {
+    "Avatar Destiny": "Name:Avatar Destiny\nManaCost:2 G G\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | AddType$ Avatar | Description$ Enchanted creature gets +1/+1 for each creature card in your graveyard and is an Avatar in addition to its other types.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigMill | TriggerDescription$ When enchanted creature dies, mill cards equal to its power. Return this card to its owner's hand and up to one creature card milled this way to the battlefield under your control.\nSVar:TrigMill:DB$ Mill | NumCards$ Y | RememberMilled$ True | SubAbility$ DBReturnAura\nSVar:DBReturnAura:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self | SubAbility$ DBReturnCreature\nSVar:DBReturnCreature:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Battlefield | ChangeType$ Creature.IsRemembered | ChangeNum$ 1 | Optional$ True | SelectPrompt$ Select up to one creature card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:Y:TriggeredCard$CardPower\nDeckHints:Ability$Graveyard\nOracle:Enchant creature you control\\nEnchanted creature gets +1/+1 for each creature card in your graveyard and is an Avatar in addition to its other types.\\nWhen enchanted creature dies, mill cards equal to its power. Return this card to its owner's hand and up to one creature card milled this way to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avatar Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

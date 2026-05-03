@@ -1,0 +1,23 @@
+{
+  "id": "kratos-stoic-father-corpus-m680",
+  "description": "M6 corpus — Kratos, Stoic Father; in-hand parse.",
+  "seed": 63149,
+  "cards": {
+    "Kratos, Stoic Father": "Name:Kratos, Stoic Father\nManaCost:2 R W\nTypes:Legendary Creature God Warrior\nPT:4/4\nK:Partner:Father & Son\nT:Mode$ AttackersDeclared | ValidAttackers$ God.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExperience | TriggerDescription$ Whenever you attack with one or more Gods and whenever a God dies, you get an experience counter.\nT:Mode$ ChangesZone | ValidCard$ God | TriggerZones$ Battlefield | Secondary$ True | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExperience | TriggerDescription$ Whenever you attack with one or more Gods and whenever a God dies, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a number of +1/+1 counters on target creature equal to the number of experience counters you have.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$YourCountersExperience\nDeckHas:Ability$Counters\nDeckHints:Type$God\nOracle:Whenever you attack with one or more Gods and whenever a God dies, you get an experience counter.\\nAt the beginning of your end step, put a number of +1/+1 counters on target creature equal to the number of experience counters you have.\\nPartner—Father & son (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kratos, Stoic Father"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

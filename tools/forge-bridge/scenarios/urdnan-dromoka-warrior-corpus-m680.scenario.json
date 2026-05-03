@@ -1,0 +1,23 @@
+{
+  "id": "urdnan-dromoka-warrior-corpus-m680",
+  "description": "M6 corpus — Urdnan, Dromoka Warrior; in-hand parse.",
+  "seed": 64865,
+  "cards": {
+    "Urdnan, Dromoka Warrior": "Name:Urdnan, Dromoka Warrior\nManaCost:1 W\nTypes:Legendary Creature Human Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking creature with a +1/+1 counter on it gains first strike until end of turn. If that creature has two or more +1/+1 counters on it, it gains double strike until end of turn instead.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+counters_GE1_P1P1 | TgtPrompt$ Select target attacking creature with a +1/+1 counter on it | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE2 | TrueSubAbility$ DBPump1 | FalseSubAbility$ DBPump2\nSVar:DBPump1:DB$ Pump | Defined$ Targeted | KW$ Double Strike\nSVar:DBPump2:DB$ Pump | Defined$ Targeted | KW$ First Strike\nSVar:X:Targeted$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:When Urdnan, Dromoka Warrior enters, put a +1/+1 counter on target creature.\\nWhenever you attack, target attacking creature with a +1/+1 counter on it gains first strike until end of turn. If that creature has two or more +1/+1 counters on it, it gains double strike until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urdnan, Dromoka Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

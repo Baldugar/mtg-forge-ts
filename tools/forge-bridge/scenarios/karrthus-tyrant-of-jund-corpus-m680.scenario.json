@@ -1,0 +1,23 @@
+{
+  "id": "karrthus-tyrant-of-jund-corpus-m680",
+  "description": "M6 corpus — Karrthus, Tyrant of Jund; in-hand parse.",
+  "seed": 63081,
+  "cards": {
+    "Karrthus, Tyrant of Jund": "Name:Karrthus, Tyrant of Jund\nManaCost:4 B R G\nTypes:Legendary Creature Dragon\nPT:7/7\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, gain control of all Dragons, then untap all Dragons.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Dragon | Untap$ True | NewController$ You\nS:Mode$ Continuous | Affected$ Creature.Dragon+Other+YouCtrl | AddKeyword$ Haste | Description$ Other Dragon creatures you control have haste.\nOracle:Flying, haste\\nWhen Karrthus, Tyrant of Jund enters, gain control of all Dragons, then untap all Dragons.\\nOther Dragon creatures you control have haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karrthus, Tyrant of Jund"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

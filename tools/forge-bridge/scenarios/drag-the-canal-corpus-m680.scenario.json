@@ -1,0 +1,23 @@
+{
+  "id": "drag-the-canal-corpus-m680",
+  "description": "M6 corpus — Drag the Canal; in-hand parse.",
+  "seed": 62219,
+  "cards": {
+    "Drag the Canal": "Name:Drag the Canal\nManaCost:U B\nTypes:Instant\nA:SP$ Token | TokenScript$ wu_2_2_detective | TokenOwner$ You | SubAbility$ DBGainLife | SpellDescription$ Create a 2/2 white and blue Detective creature token.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionCheckSVar$ X | SubAbility$ DBSurveil | SpellDescription$ If a creature died this turn, you gain 2 life, surveil 2, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:DBSurveil:DB$ Surveil | Amount$ 2 | ConditionCheckSVar$ X | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | ConditionCheckSVar$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$Investigate|Token & Type$Artifact|Clue|Detective\nOracle:Create a 2/2 white and blue Detective creature token. If a creature died this turn, you gain 2 life, surveil 2, then investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drag the Canal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

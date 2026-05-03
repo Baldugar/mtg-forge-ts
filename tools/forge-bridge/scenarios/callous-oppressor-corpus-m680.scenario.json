@@ -1,0 +1,23 @@
+{
+  "id": "callous-oppressor-corpus-m680",
+  "description": "M6 corpus — Callous Oppressor; in-hand parse.",
+  "seed": 61842,
+  "cards": {
+    "Callous Oppressor": "Name:Callous Oppressor\nManaCost:1 U U\nTypes:Creature Octopus\nPT:1/2\nK:You may choose not to untap CARDNAME during your untap step.\nK:ETBReplacement:Other:DBChooseOpp\nSVar:DBChooseOpp:DB$ ChoosePlayer | ChoiceTitle$ Choose an opponent | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, an opponent chooses a creature type. | SubAbility$ DBChooseType\nSVar:DBChooseType:DB$ ChooseType | Defined$ Player.Chosen | Type$ Creature | AILogic$ MostProminentComputerControls\nA:AB$ GainControl | Cost$ T | ValidTgts$ Creature.IsNotChosenType | TgtPrompt$ Select target creature that isn't of the chosen type | LoseControl$ Untap,LeavesPlay | SpellDescription$ Gain control of target creature that isn't of the chosen type for as long as CARDNAME remains tapped.\nAI:RemoveDeck:All\nOracle:You may choose not to untap Callous Oppressor during your untap step.\\nAs Callous Oppressor enters, an opponent chooses a creature type.\\n{T}: Gain control of target creature that isn't of the chosen type for as long as Callous Oppressor remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Callous Oppressor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

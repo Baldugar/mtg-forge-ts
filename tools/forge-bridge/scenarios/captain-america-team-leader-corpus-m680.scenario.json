@@ -1,0 +1,23 @@
+{
+  "id": "captain-america-team-leader-corpus-m680",
+  "description": "M6 corpus — Captain America, Team Leader; in-hand parse.",
+  "seed": 61848,
+  "cards": {
+    "Captain America, Team Leader": "Name:Captain America, Team Leader\nManaCost:R W U\nTypes:Legendary Creature Human Soldier Hero\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Hero.Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever another Hero you control enters, it gains vigilance and haste until end of turn. Put a +1/+1 counter on that Hero and a +1/+1 counter on NICKNAME.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCardLKICopy | KW$ Vigilance & Haste | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy & Self | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:Whenever another Hero you control enters, it gains vigilance and haste until end of turn. Put a +1/+1 counter on that Hero and a +1/+1 counter on Captain America.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain America, Team Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

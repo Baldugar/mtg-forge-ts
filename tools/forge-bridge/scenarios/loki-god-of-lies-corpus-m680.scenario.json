@@ -1,0 +1,23 @@
+{
+  "id": "loki-god-of-lies-corpus-m680",
+  "description": "M6 corpus — Loki, God of Lies; in-hand parse.",
+  "seed": 63259,
+  "cards": {
+    "Loki, God of Lies": "Name:Loki, God of Lies\nManaCost:1 R R\nTypes:Legendary Creature God Sorcerer Villain\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | Execute$ TrigGainControl | ValidActivatingPlayer$ You | IsSingleTarget$ True | TriggerZones$ Battlefield | TargetsValid$ Creature.inZoneBattlefield | TriggerDescription$ Whenever you cast a spell that targets only a single creature, gain control of that creature until end of turn. If it's your turn, untap that creature and it gains haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | Defined$ TriggeredSpellAbilityTargets | LoseControl$ EOT | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ TriggeredSpellAbilityTargets | ConditionPlayerTurn$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredSpellAbilityTargets | ConditionPlayerTurn$ True | KW$ Haste\nOracle:Whenever you cast a spell that targets only a single creature, gain control of that creature until end of turn. If it's your turn, untap that creature and it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loki, God of Lies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

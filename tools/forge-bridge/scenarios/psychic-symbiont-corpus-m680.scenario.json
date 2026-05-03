@@ -1,0 +1,23 @@
+{
+  "id": "psychic-symbiont-corpus-m680",
+  "description": "M6 corpus — Psychic Symbiont; in-hand parse.",
+  "seed": 63829,
+  "cards": {
+    "Psychic Symbiont": "Name:Psychic Symbiont\nManaCost:4 U B\nTypes:Creature Nightmare Horror\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrawDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a card and you draw a card.\nSVar:TrigDrawDiscard:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen Psychic Symbiont enters, target opponent discards a card and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Symbiont"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

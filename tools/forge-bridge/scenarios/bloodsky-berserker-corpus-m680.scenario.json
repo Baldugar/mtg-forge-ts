@@ -1,0 +1,23 @@
+{
+  "id": "bloodsky-berserker-corpus-m680",
+  "description": "M6 corpus — Bloodsky Berserker; in-hand parse.",
+  "seed": 61730,
+  "cards": {
+    "Bloodsky Berserker": "Name:Bloodsky Berserker\nManaCost:1 B\nTypes:Creature Human Berserker\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put two +1/+1 counters on CARDNAME. It gains menace until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Menace\nSVar:BuffedBy:Card\nDeckHas:Ability$Counters\nOracle:Whenever you cast your second spell each turn, put two +1/+1 counters on Bloodsky Berserker. It gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodsky Berserker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

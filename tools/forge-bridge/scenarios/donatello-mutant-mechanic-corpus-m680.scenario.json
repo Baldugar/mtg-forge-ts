@@ -1,0 +1,23 @@
+{
+  "id": "donatello-mutant-mechanic-corpus-m680",
+  "description": "M6 corpus — Donatello, Mutant Mechanic; in-hand parse.",
+  "seed": 62205,
+  "cards": {
+    "Donatello, Mutant Mechanic": "Name:Donatello, Mutant Mechanic\nManaCost:3 U\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:3/5\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control | CounterType$ P1P1 | CounterNum$ 3 | SorcerySpeed$ True | SubAbility$ DBAnimate | SpellDescription$ Put three +1/+1 counters on target artifact you control. If it isn't a creature, it becomes a 0/0 Robot creature in addition to its other types. Activate only as a sorcery.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Card.nonCreature | Power$ 0 | Toughness$ 0 | Types$ Creature,Robot | Duration$ Permanent\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.YouCtrl+HasCounters | Execute$ TrigPutCounter | TriggerDescription$ Whenever an artifact you control is put into a graveyard from the battlefield, if it had counters on it, put those counters on up to one target artifact or creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Select up to one target artifact or creature you control | TargetMin$ 0 | TargetMax$ 1 | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nOracle:{T}: Put three +1/+1 counters on target artifact you control. If it isn't a creature, it becomes a 0/0 Robot creature in addition to its other types. Activate only as a sorcery.\\nWhenever an artifact you control is put into a graveyard from the battlefield, if it had counters on it, put those counters on up to one target artifact or creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Donatello, Mutant Mechanic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

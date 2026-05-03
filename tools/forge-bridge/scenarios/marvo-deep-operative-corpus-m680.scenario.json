@@ -1,0 +1,23 @@
+{
+  "id": "marvo-deep-operative-corpus-m680",
+  "description": "M6 corpus — Marvo, Deep Operative; in-hand parse.",
+  "seed": 63354,
+  "cards": {
+    "Marvo, Deep Operative": "Name:Marvo, Deep Operative\nManaCost:3 U B\nTypes:Legendary Creature Octopus Rogue\nPT:1/8\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigClash | TriggerDescription$ Whenever CARDNAME attacks, clash with defending player. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\nSVar:TrigClash:DB$ Clash | Defined$ TriggeredDefendingPlayer\nT:Mode$ Clashed | ValidPlayer$ You | Won$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you win a clash, draw a card. Then you may cast a spell from your hand with mana value 8 or less without paying its mana cost.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLE8 | ValidZone$ Hand | WithoutManaCost$ True | Optional$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Marvo, Deep Operative attacks, clash with defending player. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\\nWhenever you win a clash, draw a card. Then you may cast a spell from your hand with mana value 8 or less without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marvo, Deep Operative"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

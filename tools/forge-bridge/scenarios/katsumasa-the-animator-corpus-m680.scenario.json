@@ -1,0 +1,23 @@
+{
+  "id": "katsumasa-the-animator-corpus-m680",
+  "description": "M6 corpus — Katsumasa, the Animator; in-hand parse.",
+  "seed": 63085,
+  "cards": {
+    "Katsumasa, the Animator": "Name:Katsumasa, the Animator\nManaCost:2 U U\nTypes:Legendary Creature Moonfolk Artificer\nPT:3/3\nK:Flying\nA:AB$ Animate | Cost$ 2 U | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select target noncreature artifact you control | Types$ Artifact,Creature | Keywords$ Flying | SubAbility$ NonVehicle | SpellDescription$ Until end of turn, target noncreature artifact you control becomes an artifact creature and gains flying.\nSVar:NonVehicle:DB$ Animate | Defined$ Targeted.nonVehicle | Power$ 1 | Toughness$ 1 | IfDesc$ True | SpellDescription$ If it's not a Vehicle, it has base power and toughness 1/1 until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounters | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on each of up to three target noncreature artifacts.\nSVar:TrigPutCounters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Artifact.nonCreature | TgtPrompt$ Select up to three target noncreature artifacts\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact|Vehicle\nOracle:Flying\\n{2}{U}: Until end of turn, target noncreature artifact you control becomes an artifact creature and gains flying. If it's not a Vehicle, it has base power and toughness 1/1 until end of turn.\\nAt the beginning of your upkeep, put a +1/+1 counter on each of up to three target noncreature artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katsumasa, the Animator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

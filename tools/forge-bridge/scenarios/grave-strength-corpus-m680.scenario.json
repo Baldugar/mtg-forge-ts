@@ -1,0 +1,23 @@
+{
+  "id": "grave-strength-corpus-m680",
+  "description": "M6 corpus — Grave Strength; in-hand parse.",
+  "seed": 62713,
+  "cards": {
+    "Grave Strength": "Name:Grave Strength\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBPutCounter | SpellDescription$ Choose target creature. Mill three cards, then put a +1/+1 counter on that creature for each creature card in your graveyard.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Graveyard\nSVar:PlayMain1:TRUE\nOracle:Choose target creature. Mill three cards, then put a +1/+1 counter on that creature for each creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Strength"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

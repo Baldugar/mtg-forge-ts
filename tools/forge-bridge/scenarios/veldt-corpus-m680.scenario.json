@@ -1,0 +1,23 @@
+{
+  "id": "veldt-corpus-m680",
+  "description": "M6 corpus — Veldt; in-hand parse.",
+  "seed": 64907,
+  "cards": {
+    "Veldt": "Name:Veldt\nManaCost:no cost\nTypes:Land\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self+counters_GE1_DEPLETION | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step if it has a depletion counter on it.\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | Amount$ 1 | SubAbility$ AddCounter | SpellDescription$ Add {G} or {W}. Put a depletion counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSubCounter | TriggerDescription$ At the beginning of your upkeep, remove a depletion counter from CARDNAME.\nSVar:TrigSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nSVar:AddCounter:DB$ PutCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nOracle:Veldt doesn't untap during your untap step if it has a depletion counter on it.\\nAt the beginning of your upkeep, remove a depletion counter from Veldt.\\n{T}: Add {G} or {W}. Put a depletion counter on Veldt.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veldt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

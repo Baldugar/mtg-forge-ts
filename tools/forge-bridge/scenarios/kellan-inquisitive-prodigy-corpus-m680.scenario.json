@@ -1,0 +1,23 @@
+{
+  "id": "kellan-inquisitive-prodigy-corpus-m680",
+  "description": "M6 corpus — Kellan, Inquisitive Prodigy; in-hand parse.",
+  "seed": 63108,
+  "cards": {
+    "Kellan, Inquisitive Prodigy": "Name:Kellan, Inquisitive Prodigy\nManaCost:2 G U\nTypes:Legendary Creature Human Faerie Detective\nPT:3/4\nK:Flying\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME attacks, destroy up to one target artifact. If you controlled that permanent, draw a card.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact | RememberLKI$ True | AlwaysRemember$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.YouCtrl | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Investigate|Token & Type$Artifact\nAlternateMode:Adventure\nOracle:Flying, vigilance\\nWhenever Kellan, Inquisitive Prodigy attacks, destroy up to one target artifact. If you controlled that permanent, draw a card.\n\nALTERNATE\n\nName:Tail the Suspect\nManaCost:G U\nTypes:Sorcery Adventure\nA:SP$ Investigate | SubAbility$ DBEffect | SpellDescription$ Investigate. You may play an additional land this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ Exploration\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nOracle:Investigate. You may play an additional land this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kellan, Inquisitive Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

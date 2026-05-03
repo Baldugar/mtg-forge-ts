@@ -1,0 +1,23 @@
+{
+  "id": "nimana-skydancer-corpus-m680",
+  "description": "M6 corpus — Nimana Skydancer; in-hand parse.",
+  "seed": 63564,
+  "cards": {
+    "Nimana Skydancer": "Name:Nimana Skydancer\nManaCost:2 B\nTypes:Creature Human Rogue\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target opponent mills two cards. (They put the top two cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nDeckHas:Ability$Mill\nOracle:Flash\\nFlying\\nWhen Nimana Skydancer enters, target opponent mills two cards. (They put the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimana Skydancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

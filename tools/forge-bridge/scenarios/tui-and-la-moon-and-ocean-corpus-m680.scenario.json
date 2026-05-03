@@ -1,0 +1,23 @@
+{
+  "id": "tui-and-la-moon-and-ocean-corpus-m680",
+  "description": "M6 corpus — Tui and La, Moon and Ocean; in-hand parse.",
+  "seed": 64812,
+  "cards": {
+    "Tui and La, Moon and Ocean": "Name:Tui and La, Moon and Ocean\nManaCost:3 U\nTypes:Legendary Creature Fish Spirit\nPT:3/3\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME becomes tapped, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Whenever NICKNAME become untapped, put a +1/+1 counter on them.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever Tui and La become tapped, draw a card.\\nWhenever Tui and La become untapped, put a +1/+1 counter on them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tui and La, Moon and Ocean"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

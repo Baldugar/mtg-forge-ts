@@ -1,0 +1,23 @@
+{
+  "id": "mephidross-vampire-corpus-m680",
+  "description": "M6 corpus — Mephidross Vampire; in-hand parse.",
+  "seed": 63383,
+  "cards": {
+    "Mephidross Vampire": "Name:Mephidross Vampire\nManaCost:4 B B\nTypes:Creature Vampire\nPT:3/4\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddType$ Vampire | AddTrigger$ MephidrossPutCounter | AddSVar$ MephidrossCounters | Description$ Each creature you control is a Vampire in addition to its other types and has \"Whenever this creature deals damage to a creature, put a +1/+1 counter on this creature.\"\nSVar:MephidrossPutCounter:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | Execute$ MephidrossCounters | TriggerDescription$ Whenever CARDNAME deals damage to a creature, put a +1/+1 counter on this creature.\nSVar:MephidrossCounters:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nOracle:Flying\\nEach creature you control is a Vampire in addition to its other creature types and has \"Whenever this creature deals damage to a creature, put a +1/+1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mephidross Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

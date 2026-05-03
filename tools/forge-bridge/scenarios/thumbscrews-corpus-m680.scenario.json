@@ -1,0 +1,23 @@
+{
+  "id": "thumbscrews-corpus-m680",
+  "description": "M6 corpus — Thumbscrews; in-hand parse.",
+  "seed": 64733,
+  "cards": {
+    "Thumbscrews": "Name:Thumbscrews\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.YouCtrl | PresentZone$ Hand | PresentCompare$ GE5 | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your upkeep, if you have five or more cards in hand, CARDNAME deals 1 damage to target opponent or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | NumDmg$ 1\nOracle:At the beginning of your upkeep, if you have five or more cards in hand, Thumbscrews deals 1 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thumbscrews"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

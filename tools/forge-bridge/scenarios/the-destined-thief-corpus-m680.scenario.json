@@ -1,0 +1,23 @@
+{
+  "id": "the-destined-thief-corpus-m680",
+  "description": "M6 corpus — The Destined Thief; in-hand parse.",
+  "seed": 64649,
+  "cards": {
+    "The Destined Thief": "Name:The Destined Thief\nManaCost:2 U\nTypes:Legendary Creature Human Rogue\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nA:AB$ Effect | Cost$ U T | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Another target creature you control can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nT:Mode$ DamageAll | CombatDamage$ True | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Whenever one or more creatures you control deal combat damage to one or more players, draw a card, then discard a card. If you have a full party, instead draw three cards.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$EQ4 | TrueSubAbility$ DBDraw1 | FalseSubAbility$ DBDraw2\nSVar:DBDraw1:DB$ Draw | NumCards$ 3\nSVar:DBDraw2:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:X:Count$Party\nSVar:BuffedBy:Cleric,Warrior,Wizard\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Warrior|Wizard\nOracle:The Destined Thief can't be blocked.\\n{U}, {T}: Another target creature you control can't be blocked this turn.\\nWhenever one or more creatures you control deal combat damage to one or more players, draw a card, then discard a card. If you have a full party, instead draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Destined Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

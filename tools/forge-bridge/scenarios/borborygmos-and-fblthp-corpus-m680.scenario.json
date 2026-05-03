@@ -1,0 +1,23 @@
+{
+  "id": "borborygmos-and-fblthp-corpus-m680",
+  "description": "M6 corpus — Borborygmos and Fblthp; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "Borborygmos and Fblthp": "Name:Borborygmos and Fblthp\nManaCost:2 G U R\nTypes:Legendary Creature Cyclops Homunculus\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDraw | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or attacks, draw a card, then you may discard any number of land cards. When you discard one or more cards this way, CARDNAME deals twice that much damage to target creature.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, draw a card, then you may discard any number of land cards. When you discard one or more cards this way, CARDNAME deals twice that much damage to target creature.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | DiscardValid$ Land | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | RememberSVarAmount$ X | Execute$ TrigDoubleDamage | SubAbility$ DBCleanup\nSVar:TrigDoubleDamage:DB$ DealDamage | NumDmg$ Count$TriggerRememberAmount | ValidTgts$ Creature\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize/Twice\nA:AB$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 2 | SpellDescription$ Put CARDNAME into its owner's library third from the top.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Whenever Borborygmos and Fblthp enters or attacks, draw a card, then you may discard any number of land cards. When you discard one or more cards this way, Borborygmos and Fblthp deals twice that much damage to target creature.\\n{1}{U}: Put Borborygmos and Fblthp into its owner's library third from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Borborygmos and Fblthp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "farideh-s-fireball-corpus-m680",
+  "description": "M6 corpus — Farideh's Fireball; in-hand parse.",
+  "seed": 62438,
+  "cards": {
+    "Farideh's Fireball": "Name:Farideh's Fireball\nManaCost:3 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | NumDmg$ 5 | SubAbility$ DBRollDice | SpellDescription$ CARDNAME deals 5 damage to target creature or planeswalker. Roll a d20.\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DamageAll,10-20:DamageOpp\nSVar:DamageAll:DB$ DealDamage | Defined$ Player | NumDmg$ 2 | SpellDescription$ 1—9 VERT CARDNAME deals 2 damage to each player.\nSVar:DamageOpp:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2 | SpellDescription$ 10—20 VERT CARDNAME deals 2 damage to each opponent.\nOracle:Farideh's Fireball deals 5 damage to target creature or planeswalker. Roll a d20.\\n1—9 | Farideh's Fireball deals 2 damage to each player.\\n10—20 | Farideh's Fireball deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farideh's Fireball"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

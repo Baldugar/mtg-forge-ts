@@ -1,0 +1,23 @@
+{
+  "id": "opportunistic-dragon-corpus-m680",
+  "description": "M6 corpus — Opportunistic Dragon; in-hand parse.",
+  "seed": 63634,
+  "cards": {
+    "Opportunistic Dragon": "Name:Opportunistic Dragon\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, choose target Human or artifact an opponent controls. For as long as CARDNAME remains on the battlefield, gain control of that permanent, it loses all abilities, and it can't attack or block.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Human.OppCtrl,Artifact.OppCtrl | TgtPrompt$ Select target Human or artifact an opponent controls | LoseControl$ LeavesPlay | SubAbility$ DBPump\nSVar:DBPump:DB$ Animate | Defined$ Targeted | HiddenKeywords$ CARDNAME can't attack or block. | RemoveAllAbilities$ True | Duration$ UntilHostLeavesPlay\nOracle:Flying\\nWhen Opportunistic Dragon enters, choose target Human or artifact an opponent controls. For as long as Opportunistic Dragon remains on the battlefield, gain control of that permanent, it loses all abilities, and it can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Opportunistic Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

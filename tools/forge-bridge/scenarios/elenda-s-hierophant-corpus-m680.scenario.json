@@ -1,0 +1,23 @@
+{
+  "id": "elenda-s-hierophant-corpus-m680",
+  "description": "M6 corpus — Elenda's Hierophant; in-hand parse.",
+  "seed": 62301,
+  "cards": {
+    "Elenda's Hierophant": "Name:Elenda's Hierophant\nManaCost:2 W\nTypes:Creature Vampire Cleric\nPT:1/1\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create X 1/1 white Vampire creature tokens with lifelink, where X is its power.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_vampire_lifelink | TokenOwner$ You\nSVar:X:TriggeredCard$CardPower\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Token|LifeGain|Counters\nOracle:Flying\\nWhenever you gain life, put a +1/+1 counter on Elenda's Hierophant.\\nWhen Elenda's Hierophant dies, create X 1/1 white Vampire creature tokens with lifelink, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elenda's Hierophant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

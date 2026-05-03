@@ -1,0 +1,23 @@
+{
+  "id": "silver-sable-mercenary-leader-corpus-m680",
+  "description": "M6 corpus — Silver Sable, Mercenary Leader; in-hand parse.",
+  "seed": 64283,
+  "cards": {
+    "Silver Sable, Mercenary Leader": "Name:Silver Sable, Mercenary Leader\nVariant:UniversesWithin:FlavorName:Generous Betty Wray\nManaCost:2 W\nTypes:Legendary Creature Human Mercenary Hero\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When NICKNAME enters, put a +1/+1 counter on another target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | CounterType$ P1P1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME attacks, target modified creature you control gains lifelink until end of turn. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.modified+YouCtrl | TgtPrompt$ Select target modified creature you control | KW$ Lifelink\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Aura|Equipment\nOracle:When Silver Sable enters, put a +1/+1 counter on another target creature.\\nWhenever Silver Sable attacks, target modified creature you control gains lifelink until end of turn. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silver Sable, Mercenary Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

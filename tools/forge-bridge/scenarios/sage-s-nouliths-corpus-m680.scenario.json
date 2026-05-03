@@ -1,0 +1,23 @@
+{
+  "id": "sage-s-nouliths-corpus-m680",
+  "description": "M6 corpus — Sage's Nouliths; in-hand parse.",
+  "seed": 64106,
+  "cards": {
+    "Sage's Nouliths": "Name:Sage's Nouliths\nManaCost:1 U\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddType$ Cleric | AddTrigger$ TrigAttack | AddSVar$ AE | Description$ Equipped creature gets +1/+0, has \"Whenever this creature attacks, untap target attacking creature,\" and is a Cleric in addition to its other types.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever this creature attacks, untap target attacking creature.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature\nK:Equip:3:Flavor Hagneia\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Type$Cleric\nOracle:Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)\\nEquipped creature gets +1/+0, has \"Whenever this creature attacks, untap target attacking creature,\" and is a Cleric in addition to its other types.\\nHagneia — Equip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage's Nouliths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

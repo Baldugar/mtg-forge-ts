@@ -1,0 +1,23 @@
+{
+  "id": "adder-staff-boggart-corpus-m680",
+  "description": "M6 corpus — Adder-Staff Boggart; in-hand parse.",
+  "seed": 61446,
+  "cards": {
+    "Adder-Staff Boggart": "Name:Adder-Staff Boggart\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigClash | TriggerDescription$ When CARDNAME enters, clash with an opponent. If you win, put a +1/+1 counter on CARDNAME.\nSVar:TrigClash:DB$ Clash | WinSubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Adder-Staff Boggart enters, clash with an opponent. If you win, put a +1/+1 counter on Adder-Staff Boggart. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adder-Staff Boggart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

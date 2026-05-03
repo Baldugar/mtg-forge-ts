@@ -1,0 +1,23 @@
+{
+  "id": "sunscorch-regent-corpus-m680",
+  "description": "M6 corpus — Sunscorch Regent; in-hand parse.",
+  "seed": 64517,
+  "cards": {
+    "Sunscorch Regent": "Name:Sunscorch Regent\nManaCost:3 W W\nTypes:Creature Dragon\nPT:4/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent casts a spell, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Flying\\nWhenever an opponent casts a spell, put a +1/+1 counter on Sunscorch Regent and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunscorch Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

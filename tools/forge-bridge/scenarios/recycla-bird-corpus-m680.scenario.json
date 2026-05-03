@@ -1,0 +1,23 @@
+{
+  "id": "recycla-bird-corpus-m680",
+  "description": "M6 corpus — Recycla-bird; in-hand parse.",
+  "seed": 63932,
+  "cards": {
+    "Recycla-bird": "Name:Recycla-bird\nManaCost:U\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a flying counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Flying | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Recycla-bird dies, put a flying counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recycla-bird"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

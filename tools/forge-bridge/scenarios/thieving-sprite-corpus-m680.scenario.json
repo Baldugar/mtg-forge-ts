@@ -1,0 +1,23 @@
+{
+  "id": "thieving-sprite-corpus-m680",
+  "description": "M6 corpus — Thieving Sprite; in-hand parse.",
+  "seed": 64708,
+  "cards": {
+    "Thieving Sprite": "Name:Thieving Sprite\nManaCost:2 B\nTypes:Creature Faerie Rogue\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDiscard | TriggerDescription$ When CARDNAME enters, target player reveals X cards from their hand, where X is the number of Faeries you control. You choose one of those cards. That player discards that card.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | RevealNumber$ X | Mode$ RevealYouChoose | DiscardValid$ Card\nSVar:X:Count$Valid Faerie.YouCtrl\nOracle:Flying\\nWhen Thieving Sprite enters, target player reveals X cards from their hand, where X is the number of Faeries you control. You choose one of those cards. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieving Sprite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

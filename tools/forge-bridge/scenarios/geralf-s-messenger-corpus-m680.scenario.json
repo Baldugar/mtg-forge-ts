@@ -1,0 +1,23 @@
+{
+  "id": "geralf-s-messenger-corpus-m680",
+  "description": "M6 corpus — Geralf's Messenger; in-hand parse.",
+  "seed": 62625,
+  "cards": {
+    "Geralf's Messenger": "Name:Geralf's Messenger\nManaCost:B B B\nTypes:Creature Zombie\nPT:3/2\nK:Undying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target opponent loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2\nOracle:Geralf's Messenger enters tapped.\\nWhen Geralf's Messenger enters, target opponent loses 2 life.\\nUndying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geralf's Messenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

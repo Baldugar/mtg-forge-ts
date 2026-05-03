@@ -1,0 +1,23 @@
+{
+  "id": "armageddon-clock-corpus-m680",
+  "description": "M6 corpus — Armageddon Clock; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "Armageddon Clock": "Name:Armageddon Clock\nManaCost:6\nTypes:Artifact\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your draw step, CARDNAME deals damage equal to the number of doom counters on it to each player.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a doom counter on CARDNAME.\nA:AB$ RemoveCounter | Cost$ 4 | CounterType$ DOOM | CounterNum$ 1 | ActivationPhases$ Upkeep | Activator$ Player | SpellDescription$ Remove a doom counter from CARDNAME. Any player may activate this ability but only during any upkeep step.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Player | NumDmg$ X\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DOOM | CounterNum$ 1\nSVar:X:Count$CardCounters.DOOM\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, put a doom counter on Armageddon Clock.\\nAt the beginning of your draw step, Armageddon Clock deals damage equal to the number of doom counters on it to each player.\\n{4}: Remove a doom counter from Armageddon Clock. Any player may activate this ability but only during any upkeep step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armageddon Clock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conjurer-s-mantle-corpus-m680",
+  "description": "M6 corpus — Conjurer's Mantle; in-hand parse.",
+  "seed": 61983,
+  "cards": {
+    "Conjurer's Mantle": "Name:Conjurer's Mantle\nManaCost:1 W\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Description$ Equipped creature gets +1/+1 and has vigilance.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigDig | TriggerDescription$ Whenever equipped creature attacks, look at the top six cards of your library. You may reveal a card that shares a creature type with that creature from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | ChangeValid$ Creature.sharesCreatureTypeWith TriggeredAttacker\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Equipped creature gets +1/+1 and has vigilance.\\nWhenever equipped creature attacks, look at the top six cards of your library. You may reveal a card that shares a creature type with that creature from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conjurer's Mantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

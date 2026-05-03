@@ -1,0 +1,23 @@
+{
+  "id": "ojer-pakpatiq-deepest-epoch-corpus-m680",
+  "description": "M6 corpus — Ojer Pakpatiq, Deepest Epoch; in-hand parse.",
+  "seed": 63613,
+  "cards": {
+    "Ojer Pakpatiq, Deepest Epoch": "Name:Ojer Pakpatiq, Deepest Epoch\nManaCost:2 U U\nTypes:Legendary Creature God\nPT:4/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourHand | TriggerZones$ Battlefield | ValidActivatingPlayer$ You | Execute$ AddRebound | TriggerDescription$ Whenever you cast an instant spell from your hand, it gains rebound. (Exile it as it resolves. At the beginning of your next upkeep, you may cast it from exile without paying its mana cost.)\nSVar:AddRebound:DB$ Pump | Defined$ TriggeredCard | KW$ Rebound | PumpZone$ Stack\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigTransform | TriggerDescription$ When NICKNAME dies, return it to the battlefield tapped and transformed under its owner's control with three time counters on it.\nSVar:TrigTransform:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Tapped$ True | Destination$ Battlefield | Transformed$ True | WithCountersType$ TIME | WithCountersAmount$ 3\nDeckHints:Type$Instant\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhenever you cast an instant spell from your hand, it gains rebound. (Exile it as it resolves. At the beginning of your next upkeep, you may cast it from exile without paying its mana cost.)\\nWhen Ojer Pakpatiq dies, return it to the battlefield tapped and transformed under its owner's control with three time counters on it.\n\nALTERNATE\n\nName:Temple of Cyclical Time\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ U | SubAbility$ DBSubCounter | SpellDescription$ Add {U}. Remove a time counter from CARDNAME.\nSVar:DBSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1 | SpellDescription$ Remove a time counter from CARDNAME.\nA:AB$ SetState | Cost$ 2 U T | IsPresent$ Card.Self+counters_EQ0_TIME | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only if it has no time counters on it and only as a sorcery.\nOracle:(Transforms from Ojer Pakpatiq, Deepest Epoch.)\\n{T}: Add {U}. Remove a time counter from Temple of Cyclical Time.\\n{2}{U}, {T}: Transform Temple of Cyclical Time. Activate only if it has no time counters on it and only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ojer Pakpatiq, Deepest Epoch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

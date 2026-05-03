@@ -1,0 +1,23 @@
+{
+  "id": "assault-suit-corpus-m680",
+  "description": "M6 corpus — Assault Suit; in-hand parse.",
+  "seed": 61587,
+  "cards": {
+    "Assault Suit": "Name:Assault Suit\nManaCost:4\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2, has haste, can't attack you or planeswalkers you control, and can't be sacrificed.\nS:Mode$ CantSacrifice | ValidCard$ Creature.EquippedBy\nS:Mode$ CantAttack | ValidCard$ Creature.EquippedBy | Target$ You,Planeswalker.YouCtrl\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainControl | TriggerDescription$ At the beginning of each opponent's upkeep, you may have that player gain control of equipped creature until end of turn. If you do, untap it.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Equipped | NewController$ TriggeredPlayer | LoseControl$ EOT | RememberControlled$ True | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Equipped | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Equipped creature gets +2/+2, has haste, can't attack you or planeswalkers you control, and can't be sacrificed.\\nAt the beginning of each opponent's upkeep, you may have that player gain control of equipped creature until end of turn. If you do, untap it.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Assault Suit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

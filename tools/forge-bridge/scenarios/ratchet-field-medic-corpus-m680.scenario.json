@@ -1,0 +1,23 @@
+{
+  "id": "ratchet-field-medic-corpus-m680",
+  "description": "M6 corpus — Ratchet, Field Medic; in-hand parse.",
+  "seed": 63902,
+  "cards": {
+    "Ratchet, Field Medic": "Name:Ratchet, Field Medic\nManaCost:2 W\nTypes:Legendary Artifact Creature Robot\nPT:2/4\nK:More Than Meets the Eye:1 W\nK:Lifelink\nT:Mode$ LifeGained | TriggerZones$ Battlefield | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigConvert | TriggerDescription$ Whenever you gain life, you may convert NICKNAME. When you do, return target artifact card with mana value less than or equal to the amount of life you gained this turn from your graveyard to the battlefield tapped.\nSVar:TrigConvert:DB$ SetState | Mode$ Transform | SubAbility$ DBImmediateTrig | RememberChanged$ True\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | ConditionCompare$ GE1 | Execute$ DBReturn | TriggerDescription$ When you do, return target artifact card with mana value less than or equal to the amount of life you gained this turn from your graveyard to the battlefield tapped.\nSVar:DBReturn:DB$ ChangeZone | ValidTgts$ Artifact.cmcLEX+YouOwn | TgtPrompt$ Select target artifact card with mana value equal or less than the amount of life you gained this turn from your graveyard | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain|Graveyard\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {1}{W} (You may cast this card converted for {1}{W}.)\\nLifelink\\nWhenever you gain life, you may convert Ratchet. When you do, return target artifact card with mana value less than or equal to the amount of life you gained this turn from your graveyard to the battlefield tapped.\n\nALTERNATE\n\nName:Ratchet, Rescue Racer\nManaCost:no cost\nColors:white\nTypes:Legendary Artifact Vehicle\nPT:1/4\nK:Living metal\nK:Lifelink\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouCtrl+!token | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigConvert | TriggerDescription$ Whenever one or more nontoken artifacts you control are put into a graveyard from the battlefield, convert NICKNAME. This ability triggers only once each turn.\nSVar:TrigConvert:DB$ SetState | Mode$ Transform\nDeckHas:Ability$LifeGain\nDeckHints:Type$Artifact\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nLifelink\\nWhenever one or more nontoken artifacts you control are put into a graveyard from the battlefield, convert Ratchet. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ratchet, Field Medic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

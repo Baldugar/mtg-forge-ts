@@ -1,0 +1,23 @@
+{
+  "id": "lord-xander-the-collector-corpus-m680",
+  "description": "M6 corpus — Lord Xander, the Collector; in-hand parse.",
+  "seed": 63265,
+  "cards": {
+    "Lord Xander, the Collector": "Name:Lord Xander, the Collector\nManaCost:4 U B R\nTypes:Legendary Creature Vampire Demon Noble\nPT:6/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards half the cards in their hand, rounded down.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ X | Mode$ TgtChoose\nSVar:X:TargetedPlayer$CardsInHand/HalfDown\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, defending player mills half their library, rounded down.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredDefendingPlayer | NumCards$ Y\nSVar:Y:TriggeredDefendingPlayer$CardsInLibrary/HalfDown\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigSacrifice | TriggerDescription$ When CARDNAME dies, target opponent sacrifices half the nonland permanents they control, rounded down.\nSVar:TrigSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | Amount$ Z | SacValid$ Permanent.nonLand | Mode$ TgtChoose\nSVar:Z:Count$Valid Permanent.nonLand+TargetedPlayerCtrl/HalfDown\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard|Mill|Sacrifice\nOracle:When Lord Xander, the Collector enters, target opponent discards half the cards in their hand, rounded down.\\nWhenever Lord Xander, the Collector attacks, defending player mills half their library, rounded down.\\nWhen Lord Xander, the Collector dies, target opponent sacrifices half the nonland permanents they control, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord Xander, the Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

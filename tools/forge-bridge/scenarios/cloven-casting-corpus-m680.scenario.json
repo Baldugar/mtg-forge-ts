@@ -1,0 +1,23 @@
+{
+  "id": "cloven-casting-corpus-m680",
+  "description": "M6 corpus — Cloven Casting; in-hand parse.",
+  "seed": 61948,
+  "cards": {
+    "Cloven Casting": "Name:Cloven Casting\nManaCost:5 U R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant.MultiColor,Sorcery.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored instant or sorcery spell, you may pay {1}. If you do, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:AB$ CopySpellAbility | Cost$ 1 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Whenever you cast a multicolored instant or sorcery spell, you may pay {1}. If you do, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloven Casting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

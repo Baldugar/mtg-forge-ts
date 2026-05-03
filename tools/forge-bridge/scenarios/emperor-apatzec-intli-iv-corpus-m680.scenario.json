@@ -1,0 +1,23 @@
+{
+  "id": "emperor-apatzec-intli-iv-corpus-m680",
+  "description": "M6 corpus — Emperor Apatzec Intli IV; in-hand parse.",
+  "seed": 62325,
+  "cards": {
+    "Emperor Apatzec Intli IV": "Name:Emperor Apatzec Intli IV\nManaCost:R G W\nTypes:Legendary Creature Human Noble\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control enters, that creature perpetually gains haste if its power is 4 or greater. If its toughness is 4 or greater, you gain 4 life. If its mana value is 4 or greater, seek a creature card.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCard | KW$ Haste | Duration$ Perpetual | ConditionDefined$ TriggeredCard | ConditionPresent$ Creature.powerGE4 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4 | ConditionDefined$ TriggeredCard | SubAbility$ DBSeek | ConditionPresent$ Creature.toughnessGE4\nSVar:DBSeek:DB$ Seek | Defined$ Player | Type$ Creature | ConditionDefined$ TriggeredCard | ConditionPresent$ Creature.cmcGE4\nDeckHas:Ability$LifeGain\nOracle:Whenever another creature you control enters, that creature perpetually gains haste if its power is 4 or greater. If its toughness is 4 or greater, you gain 4 life. If its mana value is 4 or greater, seek a creature card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emperor Apatzec Intli IV"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

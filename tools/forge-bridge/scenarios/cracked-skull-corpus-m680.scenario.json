@@ -1,0 +1,23 @@
+{
+  "id": "cracked-skull-corpus-m680",
+  "description": "M6 corpus — Cracked Skull; in-hand parse.",
+  "seed": 62026,
+  "cards": {
+    "Cracked Skull": "Name:Cracked Skull\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, look at target player's hand. You may choose a nonland card from it. That player discards that card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | Mode$ RevealYouChoose | Optional$ True | DiscardValid$ Card.nonLand | DiscardValidDesc$ nonland card\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ MortalDestroy\nSVar:MortalDestroy:SVar:DestroyWhenDamaged:True\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.EnchantedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When enchanted creature is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen Cracked Skull enters, look at target player's hand. You may choose a nonland card from it. That player discards that card.\\nWhen enchanted creature is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cracked Skull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pendrell-mists-corpus-m680",
+  "description": "M6 corpus — Pendrell Mists; in-hand parse.",
+  "seed": 63715,
+  "cards": {
+    "Pendrell Mists": "Name:Pendrell Mists\nManaCost:3 U\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | AddTrigger$ UpkeepCostTrigger | Description$ All creatures have \"At the beginning of your upkeep, sacrifice this creature unless you pay {1}.\"\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1\nAI:RemoveDeck:Random\nOracle:All creatures have \"At the beginning of your upkeep, sacrifice this creature unless you pay {1}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pendrell Mists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "last-rites-corpus-m680",
+  "description": "M6 corpus — Last Rites; in-hand parse.",
+  "seed": 63190,
+  "cards": {
+    "Last Rites": "Name:Last Rites\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBLastRitesDiscard | AILogic$ DiscardUncastableAndExcess | SpellDescription$ Discard any number of cards. Target player reveals their hand, then you choose a nonland card from it for each card discarded this way. That player discards those cards.\nSVar:DBLastRitesDiscard:DB$ Discard | Mode$ RevealYouChoose | NumCards$ X | DiscardValid$ Card.nonLand | ValidTgts$ Opponent\nSVar:DBLastRitesCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nOracle:Discard any number of cards. Target player reveals their hand, then you choose a nonland card from it for each card discarded this way. That player discards those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last Rites"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

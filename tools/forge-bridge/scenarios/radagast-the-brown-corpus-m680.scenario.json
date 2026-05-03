@@ -1,0 +1,23 @@
+{
+  "id": "radagast-the-brown-corpus-m680",
+  "description": "M6 corpus — Radagast the Brown; in-hand parse.",
+  "seed": 63876,
+  "cards": {
+    "Radagast the Brown": "Name:Radagast the Brown\nManaCost:2 G G\nTypes:Legendary Creature Avatar Wizard\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+!token,Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control enters, look at the top X cards of your library, where X is that creature's mana value. You may reveal a creature card from among them that doesn't share a creature type with a creature you control and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Creature+!sharesCreatureTypeWith Valid Creature.YouCtrl | DestinationZone$ Hand | DestinationZone2$ Library | RestRandomOrder$ True\nSVar:X:TriggeredCard$CardManaCost\nOracle:Whenever Radagast the Brown or another nontoken creature you control enters, look at the top X cards of your library, where X is that creature's mana value. You may reveal a creature card from among them that doesn't share a creature type with a creature you control and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radagast the Brown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

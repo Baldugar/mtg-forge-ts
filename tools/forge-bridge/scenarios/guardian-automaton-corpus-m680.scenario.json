@@ -1,0 +1,23 @@
+{
+  "id": "guardian-automaton-corpus-m680",
+  "description": "M6 corpus — Guardian Automaton; in-hand parse.",
+  "seed": 62744,
+  "cards": {
+    "Guardian Automaton": "Name:Guardian Automaton\nManaCost:4\nTypes:Artifact Creature Construct\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, you gain 3 life.\nSVar:TrigSac:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 3\nOracle:When Guardian Automaton dies, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

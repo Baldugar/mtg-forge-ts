@@ -1,0 +1,23 @@
+{
+  "id": "gnostro-voice-of-the-crags-corpus-m680",
+  "description": "M6 corpus — Gnostro, Voice of the Crags; in-hand parse.",
+  "seed": 62670,
+  "cards": {
+    "Gnostro, Voice of the Crags": "Name:Gnostro, Voice of the Crags\nManaCost:1 U R W\nTypes:Legendary Creature Chimera\nPT:3/3\nA:AB$ Charm | Cost$ T | Choices$ DBScry,DBDamage,DBGainLife\nSVar:DBScry:DB$ Scry | ScryNum$ X | SpellDescription$ Scry X.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SpellDescription$ You gain X life.\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:{T}: Choose one. X is the number of spells you've cast this turn.\\n• Scry X.\\n• Gnostro, Voice of the Crags deals X damage to target creature.\\n• You gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gnostro, Voice of the Crags"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "predict-corpus-m680",
+  "description": "M6 corpus — Predict; in-hand parse.",
+  "seed": 63790,
+  "cards": {
+    "Predict": "Name:Predict\nManaCost:1 U\nTypes:Instant\nA:SP$ NameCard | Defined$ You | SubAbility$ DBMill | SpellDescription$ Choose a card name, then target player mills a card. If a card with the chosen name was milled this way, you draw two cards. Otherwise, you draw a card.\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | NumCards$ 1 | RememberMilled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Compare Y GE1.2.1\nSVar:Y:Remembered$Valid Card.NamedCard\nAI:RemoveDeck:All\nOracle:Choose a card name, then target player mills a card. If a card with the chosen name was milled this way, you draw two cards. Otherwise, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predict"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

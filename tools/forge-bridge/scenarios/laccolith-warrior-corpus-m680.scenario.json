@@ -1,0 +1,23 @@
+{
+  "id": "laccolith-warrior-corpus-m680",
+  "description": "M6 corpus — Laccolith Warrior; in-hand parse.",
+  "seed": 63173,
+  "cards": {
+    "Laccolith Warrior": "Name:Laccolith Warrior\nManaCost:2 R R\nTypes:Creature Beast Warrior\nPT:3/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME becomes blocked, you may have it deal damage equal to its power to target creature. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:X:Count$CardPower\nOracle:Whenever Laccolith Warrior becomes blocked, you may have it deal damage equal to its power to target creature. If you do, Laccolith Warrior assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laccolith Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

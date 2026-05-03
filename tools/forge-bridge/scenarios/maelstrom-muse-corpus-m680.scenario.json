@@ -1,0 +1,23 @@
+{
+  "id": "maelstrom-muse-corpus-m680",
+  "description": "M6 corpus — Maelstrom Muse; in-hand parse.",
+  "seed": 63300,
+  "cards": {
+    "Maelstrom Muse": "Name:Maelstrom Muse\nManaCost:1 U UR R\nTypes:Creature Djinn Wizard\nPT:2/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEff | TriggerDescription$ Whenever CARDNAME attacks, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is CARDNAME's power as this ability resolves.\nSVar:TrigEff:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Instant.YouCtrl,Sorcery.YouCtrl | SetChosenNumber$ X\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | ValidCard$ Instant,Sorcery | Activator$ You | Amount$ Count$ChosenNumber | Description$ The next instant or sorcery spell you cast this turn costs {X} less to cast, where X is CARDNAME's power at the time EFFECTSOURCE's ability resolved.\nSVar:X:TriggeredAttacker$CardPower\nOracle:Flying\\nWhenever Maelstrom Muse attacks, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is Maelstrom Muse's power as this ability resolves.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maelstrom Muse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "laquatus-s-champion-corpus-m680",
+  "description": "M6 corpus — Laquatus's Champion; in-hand parse.",
+  "seed": 63187,
+  "cards": {
+    "Laquatus's Champion": "Name:Laquatus's Champion\nManaCost:4 B B\nTypes:Creature Nightmare Horror\nPT:6/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target player loses 6 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 6 | RememberTargets$ True | ForgetOtherTargets$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME leaves the battlefield, that player gains 6 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ Remembered | LifeAmount$ 6\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nOracle:When Laquatus's Champion enters, target player loses 6 life.\\nWhen Laquatus's Champion leaves the battlefield, that player gains 6 life.\\n{B}: Regenerate Laquatus's Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laquatus's Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

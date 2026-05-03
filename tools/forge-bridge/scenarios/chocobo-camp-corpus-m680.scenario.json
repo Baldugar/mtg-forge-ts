@@ -1,0 +1,23 @@
+{
+  "id": "chocobo-camp-corpus-m680",
+  "description": "M6 corpus — Chocobo Camp; in-hand parse.",
+  "seed": 61914,
+  "cards": {
+    "Chocobo Camp": "Name:Chocobo Camp\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ G | SubAbility$ DBEffect | SpellDescription$ Add {G}.\nSVar:DBEffect:DB$ Effect | Triggers$ SpellCastTrig | SpellDescription$ When you next cast a Bird creature spell this turn, it enters with an additional +1/+1 counter on it.\nSVar:SpellCastTrig:Mode$ SpellCast | ValidCard$ Bird | ValidActivatingPlayer$ You | Execute$ TrigCounter | OneOff$ True | TriggerDescription$ When you next cast a Bird creature spell this turn, it enters with an additional +1/+1 counter on it.\nSVar:TrigCounter:DB$ Effect | ReplacementEffects$ ETBCounters | RememberObjects$ TriggeredCard | ForgetOnMoved$ Stack\nSVar:ETBCounters:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated | Description$ That creature enters with an additional +1/+1 counters on it.\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Token | Cost$ 2 G G T | TokenScript$ g_2_2_bird_landfall | SpellDescription$ Create a 2/2 green Bird creature token with \"Whenever a land you control enters, this token gets +1/+0 until end of turn\".\nDeckHas:Ability$Token & Type$Artifact|Bird\nDeckHints:Type$Legendary\nOracle:This land enters tapped unless you control a legendary creature.\\n{T}: Add {G}. When you next cast a Bird creature spell this turn, it enters with an additional +1/+1 counter on it.\\n{2}{G}{G}, {T}: Create a 2/2 green Bird creature token with \"Whenever a land you control enters, this token gets +1/+0 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chocobo Camp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

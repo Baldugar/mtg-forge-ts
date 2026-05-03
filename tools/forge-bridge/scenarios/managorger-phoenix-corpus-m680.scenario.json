@@ -1,0 +1,23 @@
+{
+  "id": "managorger-phoenix-corpus-m680",
+  "description": "M6 corpus — Managorger Phoenix; in-hand parse.",
+  "seed": 63331,
+  "cards": {
+    "Managorger Phoenix": "Name:Managorger Phoenix\nManaCost:R R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | NoResolvingCheck$ True | TriggerZones$ Graveyard | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell, if CARDNAME is in your graveyard, put a flame counter on CARDNAME for each {R} in that spell's mana cost. If CARDNAME has five or more flame counters on it, return it to the battlefield and it perpetually gets +1/+1.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FLAME | CounterNum$ X | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | ConditionDefined$ Self | ConditionPresent$ Card.counters_GE5_FLAME | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Pump | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$TriggeredManaCostDevotion.Red\nSVar:SacMe:3\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Ability$Discard\nOracle:Flying\\nManagorger Phoenix can't block.\\nWhenever you cast a spell, if Managorger Phoenix is in your graveyard, put a flame counter on Managorger Phoenix for each {R} in that spell's mana cost. If Managorger Phoenix has five or more flame counters on it, return it to the battlefield and it perpetually gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Managorger Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

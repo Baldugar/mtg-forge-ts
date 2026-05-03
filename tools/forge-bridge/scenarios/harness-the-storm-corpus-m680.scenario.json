@@ -1,0 +1,23 @@
+{
+  "id": "harness-the-storm-corpus-m680",
+  "description": "M6 corpus — Harness the Storm; in-hand parse.",
+  "seed": 62792,
+  "cards": {
+    "Harness the Storm": "Name:Harness the Storm\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourHandByYou,Sorcery.wasCastFromYourHandByYou | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell from your hand, you may cast target card with the same name as that spell from your graveyard. (You still pay its costs.)\nSVar:TrigPump:DB$ Pump | TgtZone$ Graveyard | ValidTgts$ Instant.YouCtrl+sharesNameWith TriggeredCard,Sorcery.YouCtrl+sharesNameWith TriggeredCard | TgtPrompt$ Choose target instant or sorcery from your graveyard | PumpZone$ Graveyard | SubAbility$ TrigPlay\nSVar:TrigPlay:DB$ Play | Defined$ Targeted | ValidSA$ Spell | Optional$ True\nSVar:NonStackingEffect:True\nOracle:Whenever you cast an instant or sorcery spell from your hand, you may cast target card with the same name as that spell from your graveyard. (You still pay its costs.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harness the Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quirion-beastcaller-corpus-m680",
+  "description": "M6 corpus — Quirion Beastcaller; in-hand parse.",
+  "seed": 63872,
+  "cards": {
+    "Quirion Beastcaller": "Name:Quirion Beastcaller\nManaCost:1 G\nTypes:Creature Dryad Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Creature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigCounterDist | TriggerDescription$ When CARDNAME dies, distribute X +1/+1 counters among any number of target creatures you control, where X is the number of +1/+1 counters on CARDNAME.\nSVar:TrigCounterDist:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose any number of creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ X | DividedAsYouChoose$ X | TargetMin$ 0 | TargetMax$ X\nSVar:X:TriggeredCard$CardCounters.P1P1\nSVar:BuffedBy:Creature\nDeckHas:Ability$Counters\nOracle:Whenever you cast a creature spell, put a +1/+1 counter on Quirion Beastcaller.\\nWhen Quirion Beastcaller dies, distribute X +1/+1 counters among any number of target creatures you control, where X is the number of +1/+1 counters on Quirion Beastcaller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quirion Beastcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

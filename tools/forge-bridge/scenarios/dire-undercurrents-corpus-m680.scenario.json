@@ -1,0 +1,23 @@
+{
+  "id": "dire-undercurrents-corpus-m680",
+  "description": "M6 corpus — Dire Undercurrents; in-hand parse.",
+  "seed": 62175,
+  "cards": {
+    "Dire Undercurrents": "Name:Dire Undercurrents\nManaCost:3 UB UB\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Blue+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Whenever a blue creature you control enters, you may have target player draw a card.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Black+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ Whenever a black creature you control enters, you may have target player discard a card.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Player | TgtPrompt$ select target player to draw a card | NumCards$ 1\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | TgtPrompt$ select target player to discard a card | Mode$ TgtChoose\nSVar:BuffedBy:Creature.Blue,Creature.Black\nOracle:Whenever a blue creature you control enters, you may have target player draw a card.\\nWhenever a black creature you control enters, you may have target player discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dire Undercurrents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

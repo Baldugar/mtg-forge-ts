@@ -1,0 +1,23 @@
+{
+  "id": "candela-aegis-of-adagia-corpus-m680",
+  "description": "M6 corpus — Candela, Aegis of Adagia; in-hand parse.",
+  "seed": 61843,
+  "cards": {
+    "Candela, Aegis of Adagia": "Name:Candela, Aegis of Adagia\nManaCost:W\nTypes:Legendary Artifact Spacecraft\nPT:3/3\nK:Flash\nK:Station:8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When NICKNAME enters, return up to one target creature you control to its owner's hand. It perpetually gets +1/+1.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature.YouCtrl | RememberChanged$ True | TgtPrompt$ Select up to one target creature you control. | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ Remembered | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddTrigger$ DamageTrig | Description$ STATION 8+ Flying,,,,,,Whenever NICKNAME deals combat damage to a player, you may put a creature card with mana value 3 or less from your hand onto the battlefield.\nSVar:DamageTrig:Mode$ DamageDoneOnce | CombatDamage$ True | OptionalDecider$ You | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may put a creature card with mana value 3 or less from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChoiceZone$ Hand | Amount$ 1 | ChangeType$ Creature.cmcLE3+YouCtrl | ChangeNum$ 1 | AILogic$ BestCard\nOracle:Flash\\nWhen Candela enters, return up to one target creature you control to its owner's hand. It perpetually gets +1/+1.\\nSTATION 8+\\nFlying\\nWhenever Candela deals combat damage to a player, you may put a creature card with mana value 3 or less from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Candela, Aegis of Adagia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

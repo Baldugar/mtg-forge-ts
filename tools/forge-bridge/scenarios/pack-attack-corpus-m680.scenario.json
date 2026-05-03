@@ -1,0 +1,23 @@
+{
+  "id": "pack-attack-corpus-m680",
+  "description": "M6 corpus — Pack Attack; in-hand parse.",
+  "seed": 63678,
+  "cards": {
+    "Pack Attack": "Name:Pack Attack\nManaCost:2 R\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +X | SubAbility$ DBDraw | SpellDescription$ Attacking creatures get +X/+0 until end of turn, where X the number of players being attacked.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:X:PlayerCountPlayers$HasPropertyDefending\nOracle:Attacking creatures get +X/+0 until end of turn, where X is the number of players being attacked.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pack Attack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

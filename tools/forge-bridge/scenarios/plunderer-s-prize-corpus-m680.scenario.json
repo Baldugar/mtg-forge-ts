@@ -1,0 +1,23 @@
+{
+  "id": "plunderer-s-prize-corpus-m680",
+  "description": "M6 corpus — Plunderer's Prize; in-hand parse.",
+  "seed": 63765,
+  "cards": {
+    "Plunderer's Prize": "Name:Plunderer's Prize\nManaCost:X U\nTypes:Sorcery\nA:SP$ Seek | Type$ Artifact.nonLand+cmcLEX | RememberFound$ True | SubAbility$ DBPut | SpellDescription$ Seek a nonland artifact card with mana value X or less and put it onto the battlefield.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | StackDescription$ None | SubAbility$ DBBranch | StackDescription$ None\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Remembered$CardManaCost | BranchConditionSVarCompare$ LTX | TrueSubAbility$ DBAnimate | FalseSubAbility$ DBCleanup | SpellDescription$ If a card with mana value less than X is put onto the battlefield this way, this spell perpetually gains \"This spell costs {1} more to cast,\" then return this spell to its owner's hand.\nSVar:DBAnimate:DB$ Animate | staticAbilities$ RaiseCost | Duration$ Perpetual | SubAbility$ DBReturn\nSVar:RaiseCost:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} more to cast.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Stack | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:Seek a nonland artifact card with mana value X or less and put it onto the battlefield. If a card with mana value less than X is put onto the battlefield this way, this spell perpetually gains \"This spell costs {1} more to cast,\" then return this spell to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plunderer's Prize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

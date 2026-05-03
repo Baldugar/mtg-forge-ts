@@ -1,0 +1,23 @@
+{
+  "id": "akroan-horse-corpus-m680",
+  "description": "M6 corpus — Akroan Horse; in-hand parse.",
+  "seed": 61479,
+  "cards": {
+    "Akroan Horse": "Name:Akroan Horse\nManaCost:4\nTypes:Artifact Creature Horse\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, an opponent gains control of it.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ DBDonate\nSVar:DBDonate:DB$ GainControl | Defined$ Self | NewController$ Player.Chosen\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, each opponent creates a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ Player.Opponent\nOracle:Defender\\nWhen Akroan Horse enters, an opponent gains control of it.\\nAt the beginning of your upkeep, each opponent creates a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akroan Horse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

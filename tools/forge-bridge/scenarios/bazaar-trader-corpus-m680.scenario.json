@@ -1,0 +1,23 @@
+{
+  "id": "bazaar-trader-corpus-m680",
+  "description": "M6 corpus — Bazaar Trader; in-hand parse.",
+  "seed": 61662,
+  "cards": {
+    "Bazaar Trader": "Name:Bazaar Trader\nManaCost:1 R\nTypes:Creature Goblin\nPT:1/1\nA:AB$ Pump | Cost$ T | ValidTgts$ Player | SubAbility$ DBGainControl | SpellDescription$ Target player gains control of target artifact, creature, or land you control. | StackDescription$ None\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl,Land.YouCtrl | TgtPrompt$ Select target artifact, creature, or land you control | NewController$ ParentTarget\nAI:RemoveDeck:All\nOracle:{T}: Target player gains control of target artifact, creature, or land you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bazaar Trader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

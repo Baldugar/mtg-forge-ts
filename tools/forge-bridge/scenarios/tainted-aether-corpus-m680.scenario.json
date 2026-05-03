@@ -1,0 +1,23 @@
+{
+  "id": "tainted-aether-corpus-m680",
+  "description": "M6 corpus — Tainted Aether; in-hand parse.",
+  "seed": 64574,
+  "cards": {
+    "Tainted Aether": "Name:Tainted Aether\nManaCost:2 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature enters, its controller sacrifices a creature or land.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Creature,Land | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, its controller sacrifices a creature or land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tainted Aether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

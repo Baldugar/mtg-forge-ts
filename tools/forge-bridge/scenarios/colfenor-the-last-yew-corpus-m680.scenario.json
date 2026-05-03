@@ -1,0 +1,23 @@
+{
+  "id": "colfenor-the-last-yew-corpus-m680",
+  "description": "M6 corpus — Colfenor, the Last Yew; in-hand parse.",
+  "seed": 61958,
+  "cards": {
+    "Colfenor, the Last Yew": "Name:Colfenor, the Last Yew\nManaCost:3 W B G\nTypes:Legendary Creature Treefolk Shaman\nPT:3/7\nK:Vigilance\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME or another creature you control dies, return up to one other target creature card with lesser toughness from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.Other+!TriggeredNewCard+toughnessLTX+YouOwn | TgtPrompt$ Select up to one other target creature card with lesser toughness from your graveyard to return to your hand\nSVar:X:TriggeredCard$CardToughness\nDeckHas:Ability$Graveyard\nOracle:Vigilance, reach\\nWhenever Colfenor, the Last Yew or another creature you control dies, return up to one other target creature card with lesser toughness from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colfenor, the Last Yew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

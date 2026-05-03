@@ -1,0 +1,23 @@
+{
+  "id": "taigam-master-opportunist-corpus-m680",
+  "description": "M6 corpus — Taigam, Master Opportunist; in-hand parse.",
+  "seed": 64571,
+  "cards": {
+    "Taigam, Master Opportunist": "Name:Taigam, Master Opportunist\nManaCost:1 U\nTypes:Legendary Creature Human Monk\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Flurry — Whenever you cast your second spell each turn, copy it, then exile the spell you cast with four time counters on it. If it doesn't have suspend, it gains suspend. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, they may play it without paying its mana cost. If it's a creature, it has haste.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ TriggeredCardLKICopy | Origin$ Stack | Destination$ Exile | RememberChanged$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ TIME | CounterNum$ 4 | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ Pump | Defined$ Remembered.withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Card\nDeckHas:Ability$Counters\nOracle:Flurry — Whenever you cast your second spell each turn, copy it, then exile the spell you cast with four time counters on it. If it doesn't have suspend, it gains suspend. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, they may play it without paying its mana cost. If it's a creature, it has haste.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taigam, Master Opportunist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

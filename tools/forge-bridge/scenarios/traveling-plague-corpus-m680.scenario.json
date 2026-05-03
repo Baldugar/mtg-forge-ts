@@ -1,0 +1,23 @@
+{
+  "id": "traveling-plague-corpus-m680",
+  "description": "M6 corpus — Traveling Plague; in-hand parse.",
+  "seed": 64791,
+  "cards": {
+    "Traveling Plague": "Name:Traveling Plague\nManaCost:3 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each upkeep, put a plague counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PLAGUE | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | AddToughness$ -X | Description$ Enchanted creature gets -1/-1 for each plague counter on CARDNAME.\nSVar:X:Count$CardCounters.PLAGUE\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.EnchantedBy | Execute$ DBChangeZone | TriggerDescription$ When enchanted creature leaves the battlefield, that creature's controller returns CARDNAME from its owner's graveyard to the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | GainControl$ TriggeredCardController\nOracle:Enchant creature\\nAt the beginning of each upkeep, put a plague counter on Traveling Plague.\\nEnchanted creature gets -1/-1 for each plague counter on Traveling Plague.\\nWhen enchanted creature leaves the battlefield, that creature's controller returns Traveling Plague from its owner's graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Traveling Plague"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ageless-entity-corpus-m680",
+  "description": "M6 corpus — Ageless Entity; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Ageless Entity": "Name:Ageless Entity\nManaCost:3 G G\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$LifeAmount\nOracle:Whenever you gain life, put that many +1/+1 counters on Ageless Entity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ageless Entity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-raven-man-corpus-m680",
+  "description": "M6 corpus — The Raven Man; in-hand parse.",
+  "seed": 64680,
+  "cards": {
+    "The Raven Man": "Name:The Raven Man\nManaCost:1 B\nTypes:Legendary Creature Human Wizard\nPT:2/1\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if a player discarded a card this turn, create a 1/1 black Bird creature token with flying and \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_bird_flying_noblock\nA:AB$ Discard | Cost$ 3 B T | Defined$ Opponent | Mode$ TgtChoose | SorcerySpeed$ True | SpellDescription$ Each opponent discards a card.\nSVar:X:PlayerCountPlayers$CardsDiscardedThisTurn\nDeckHints:Ability$Discard\nDeckHas:Ability$Token & Type$Bird\nOracle:At the beginning of each end step, if a player discarded a card this turn, create a 1/1 black Bird creature token with flying and \"This creature can't block.\"\\n{3}{B}, {T}: Each opponent discards a card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Raven Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

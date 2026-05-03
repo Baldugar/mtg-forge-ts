@@ -1,0 +1,23 @@
+{
+  "id": "arms-depot-corpus-m680",
+  "description": "M6 corpus — Arms Depot; in-hand parse.",
+  "seed": 61572,
+  "cards": {
+    "Arms Depot": "Name:Arms Depot\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, put two +1/+1 counters on target creature.\nSVar:TrigCrank:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2\nOracle:Whenever you crank Arms Depot, put two +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arms Depot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

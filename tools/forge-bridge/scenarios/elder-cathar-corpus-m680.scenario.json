@@ -1,0 +1,23 @@
+{
+  "id": "elder-cathar-corpus-m680",
+  "description": "M6 corpus — Elder Cathar; in-hand parse.",
+  "seed": 62291,
+  "cards": {
+    "Elder Cathar": "Name:Elder Cathar\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target creature you control. If that creature is a Human, put two +1/+1 counters on it instead.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Targeted$Valid Creature.Human/Plus.1\nOracle:When Elder Cathar dies, put a +1/+1 counter on target creature you control. If that creature is a Human, put two +1/+1 counters on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Cathar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

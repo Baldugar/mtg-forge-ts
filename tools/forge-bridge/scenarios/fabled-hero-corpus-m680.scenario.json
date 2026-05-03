@@ -1,0 +1,23 @@
+{
+  "id": "fabled-hero-corpus-m680",
+  "description": "M6 corpus — Fabled Hero; in-hand parse.",
+  "seed": 62419,
+  "cards": {
+    "Fabled Hero": "Name:Fabled Hero\nManaCost:1 W W\nTypes:Creature Human Soldier\nPT:2/2\nK:Double Strike\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, put a +1/+1 counter on CARDNAME.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Double strike\\nHeroic — Whenever you cast a spell that targets Fabled Hero, put a +1/+1 counter on Fabled Hero.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fabled Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "outfitted-jouster-corpus-m680",
+  "description": "M6 corpus — Outfitted Jouster; in-hand parse.",
+  "seed": 63667,
+  "cards": {
+    "Outfitted Jouster": "Name:Outfitted Jouster\nManaCost:2 B R\nTypes:Creature Knight\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Steelclaw Lance and a card named Brawler's Plate onto the battlefield and attach them to CARDNAME.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Names$ Steelclaw Lance,Brawler's Plate | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+equipped | ReplaceWith$ DBImmediateTrigger | PreventionEffect$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. When damage is prevented this way, sacrifice an Equipment attached to CARDNAME.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigSacrifice | TriggerDescription$ When damage is prevented this way, sacrifice an Equipment attached to CARDNAME.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Equipment.AttachedTo Card.Self | SacMessage$ attached Equipment\nSVar:EquipMe:Once\nDeckHas:Type$Equipment & Ability$Sacrifice\nDeckHints:Type$Equipment\nOracle:When Outfitted Jouster enters, conjure a card named Steelclaw Lance and a card named Brawler's Plate onto the battlefield and attach them to Outfitted Jouster.\\nIf damage would be dealt to Outfitted Jouster while it's equipped, prevent that damage. When damage is prevented this way, sacrifice an Equipment attached to Outfitted Jouster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outfitted Jouster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

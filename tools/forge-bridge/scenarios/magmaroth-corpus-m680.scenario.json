@@ -1,0 +1,23 @@
+{
+  "id": "magmaroth-corpus-m680",
+  "description": "M6 corpus — Magmaroth; in-hand parse.",
+  "seed": 63307,
+  "cards": {
+    "Magmaroth": "Name:Magmaroth\nManaCost:3 R\nTypes:Creature Elemental\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a -1/-1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a noncreature spell, remove a -1/-1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:At the beginning of your upkeep, put a -1/-1 counter on Magmaroth.\\nWhenever you cast a noncreature spell, remove a -1/-1 counter from Magmaroth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magmaroth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

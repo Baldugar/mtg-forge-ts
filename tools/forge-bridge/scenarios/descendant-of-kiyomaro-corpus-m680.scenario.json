@@ -1,0 +1,23 @@
+{
+  "id": "descendant-of-kiyomaro-corpus-m680",
+  "description": "M6 corpus — Descendant of Kiyomaro; in-hand parse.",
+  "seed": 62151,
+  "cards": {
+    "Descendant of Kiyomaro": "Name:Descendant of Kiyomaro\nManaCost:1 W W\nTypes:Creature Human Soldier\nPT:2/3\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 2 | AddTrigger$ TriggerGainLife | AddSVar$ KiyomaroGainLife | CheckSVar$ X | SVarCompare$ GTY | Description$ As long as you have more cards in hand than each opponent, CARDNAME gets +1/+2 and has \"Whenever this creature deals combat damage, you gain 3 life.\"\nSVar:TriggerGainLife:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ KiyomaroGainLife | TriggerDescription$ Whenever this creature deals combat damage, you gain 3 life.\nSVar:KiyomaroGainLife:DB$ GainLife | LifeAmount$ 3\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:PlayerCountOpponents$HighestCardsInHand\nOracle:As long as you have more cards in hand than each opponent, Descendant of Kiyomaro gets +1/+2 and has \"Whenever this creature deals combat damage, you gain 3 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Descendant of Kiyomaro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

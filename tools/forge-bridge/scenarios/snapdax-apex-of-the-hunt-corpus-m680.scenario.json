@@ -1,0 +1,23 @@
+{
+  "id": "snapdax-apex-of-the-hunt-corpus-m680",
+  "description": "M6 corpus — Snapdax, Apex of the Hunt; in-hand parse.",
+  "seed": 64343,
+  "cards": {
+    "Snapdax, Apex of the Hunt": "Name:Snapdax, Apex of the Hunt\nManaCost:1 R W B\nTypes:Legendary Creature Dinosaur Cat Nightmare\nPT:3/5\nK:Mutate:2 BR W W\nK:Double Strike\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever this creature mutates, it deals 4 damage to target creature or planeswalker an opponent controls and you gain 4 life.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ 4 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nDeckHas:Ability$LifeGain\nOracle:Mutate {2}{B/R}{W}{W} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nDouble strike\\nWhenever this creature mutates, it deals 4 damage to target creature or planeswalker an opponent controls and you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snapdax, Apex of the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

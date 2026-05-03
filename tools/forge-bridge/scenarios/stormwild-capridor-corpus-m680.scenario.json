@@ -1,0 +1,23 @@
+{
+  "id": "stormwild-capridor-corpus-m680",
+  "description": "M6 corpus — Stormwild Capridor; in-hand parse.",
+  "seed": 64474,
+  "cards": {
+    "Stormwild Capridor": "Name:Stormwild Capridor\nManaCost:2 W\nTypes:Creature Bird Goat\nPT:1/3\nK:Flying\nR:Event$ DamageDone | IsCombat$ False | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | PreventionEffect$ True | Description$ If noncombat damage would be dealt to CARDNAME, prevent that damage. Put a +1/+1 counter on CARDNAME for each 1 damage prevented this way.\nSVar:Counters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self\nSVar:X:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Flying\\nIf noncombat damage would be dealt to Stormwild Capridor, prevent that damage. Put a +1/+1 counter on Stormwild Capridor for each 1 damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormwild Capridor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

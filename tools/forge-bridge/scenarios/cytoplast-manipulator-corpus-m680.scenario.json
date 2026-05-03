@@ -1,0 +1,23 @@
+{
+  "id": "cytoplast-manipulator-corpus-m680",
+  "description": "M6 corpus — Cytoplast Manipulator; in-hand parse.",
+  "seed": 62076,
+  "cards": {
+    "Cytoplast Manipulator": "Name:Cytoplast Manipulator\nManaCost:2 U U\nTypes:Creature Human Wizard Mutant\nPT:0/0\nK:Graft:2\nA:AB$ GainControl | Cost$ U T | ValidTgts$ Creature.counters_GE1_P1P1 | TgtPrompt$ Select target creature with a +1/+1 counter | LoseControl$ LeavesPlay | SpellDescription$ Gain control of target creature with a +1/+1 counter on it for as long as CARDNAME remains on the battlefield.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Graft 2 (This creature enters with two +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\\n{U}, {T}: Gain control of target creature with a +1/+1 counter on it for as long as Cytoplast Manipulator remains on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cytoplast Manipulator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

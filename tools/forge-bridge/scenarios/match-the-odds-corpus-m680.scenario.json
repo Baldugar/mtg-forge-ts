@@ -1,0 +1,23 @@
+{
+  "id": "match-the-odds-corpus-m680",
+  "description": "M6 corpus — Match the Odds; in-hand parse.",
+  "seed": 63367,
+  "cards": {
+    "Match the Odds": "Name:Match the Odds\nManaCost:2 G\nTypes:Sorcery Lesson\nA:SP$ Token | TokenScript$ w_1_1_ally | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBPutCounter | SpellDescription$ Create a 1/1 white Ally creature token. Put a +1/+1 counter on it for each creature your opponents control.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.OppCtrl\nDeckHas:Ability$Token\nOracle:Create a 1/1 white Ally creature token. Put a +1/+1 counter on it for each creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Match the Odds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

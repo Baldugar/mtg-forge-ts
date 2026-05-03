@@ -1,0 +1,23 @@
+{
+  "id": "yuffie-materia-hunter-corpus-m680",
+  "description": "M6 corpus — Yuffie, Materia Hunter; in-hand parse.",
+  "seed": 65116,
+  "cards": {
+    "Yuffie, Materia Hunter": "Name:Yuffie, Materia Hunter\nManaCost:2 R\nTypes:Legendary Creature Human Ninja\nPT:3/3\nK:Ninjutsu:1 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When NICKNAME enters, gain control of target noncreature artifact for as long as you control NICKNAME. Then you may attach an Equipment you control to NICKNAME.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Artifact.nonCreature | TgtPrompt$ Select target noncreature artifact | LoseControl$ LeavesPlay,LoseControl | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Optional$ True | Choices$ Equipment.YouCtrl | ChoiceTitle$ Choose an Equipment you control | Defined$ Self\nOracle:Ninjutsu {1}{R} ({1}{R}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhen Yuffie enters, gain control of target noncreature artifact for as long as you control Yuffie. Then you may attach an Equipment you control to Yuffie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuffie, Materia Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

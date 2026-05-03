@@ -1,0 +1,23 @@
+{
+  "id": "mark-of-sakiko-corpus-m680",
+  "description": "M6 corpus — Mark of Sakiko; in-hand parse.",
+  "seed": 63343,
+  "cards": {
+    "Mark of Sakiko": "Name:Mark of Sakiko\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ SakikoTrig | AddSVar$ SakuraManaSingle & SakuraX | Description$ Enchanted creature has \"Whenever this creature deals combat damage to a player, add that much {G}. Until end of turn, you don't lose this mana as phases and steps end.\"\nSVar:SakikoTrig:Mode$ DamageDone | ValidSource$ Creature.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ SakuraManaSingle | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player, add that much {G}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:SakuraManaSingle:DB$ Mana | Produced$ G | Amount$ SakuraX | PersistentMana$ True\nSVar:SakuraX:TriggerCount$DamageAmount\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature deals combat damage to a player, add that much {G}. Until end of turn, you don't lose this mana as steps and phases end.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mark of Sakiko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

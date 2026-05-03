@@ -1,0 +1,23 @@
+{
+  "id": "endless-whispers-corpus-m680",
+  "description": "M6 corpus — Endless Whispers; in-hand parse.",
+  "seed": 62332,
+  "cards": {
+    "Endless Whispers": "Name:Endless Whispers\nManaCost:2 B B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | AddTrigger$ TrigEndlessDies | AddSVar$ EndlessReturn | Description$ Each creature has \"When this creature dies, choose target opponent. That player puts this card from its owner's graveyard onto the battlefield under their control at the beginning of the next end step.\"\nSVar:TrigEndlessDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | TriggerController$ TriggeredCardController | Execute$ TrigTgtOpp | TriggerDescription$ When this creature dies, choose target opponent. That player puts this card from its owner's graveyard onto the battlefield under their control at the beginning of the next end step.\nSVar:TrigTgtOpp:DB$ Pump | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBDelayTrig\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ EndlessReturn | RememberObjects$ TargetedPlayer & Self | TriggerDescription$ That player puts this card from its owner's graveyard onto the battlefield under their control at the beginning of the next end step.\nSVar:EndlessReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ DelayTriggerRemembered | GainControl$ DelayTriggerRemembered\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each creature has \"When this creature dies, choose target opponent. That player puts this card from its owner's graveyard onto the battlefield under their control at the beginning of the next end step.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Whispers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

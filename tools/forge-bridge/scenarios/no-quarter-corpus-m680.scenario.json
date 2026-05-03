@@ -1,0 +1,23 @@
+{
+  "id": "no-quarter-corpus-m680",
+  "description": "M6 corpus — No Quarter; in-hand parse.",
+  "seed": 63571,
+  "cards": {
+    "No Quarter": "Name:No Quarter\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ LessPowerThanAttacker | TriggerZones$ Battlefield | Execute$ DestroyBlocker | TriggerDescription$ Whenever a creature becomes blocked by a creature with lesser power, destroy the blocking creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ LessPowerThanBlocker | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ DestroyAttacker | TriggerDescription$ Whenever a creature blocks a creature with lesser power, destroy the attacking creature.\nSVar:DestroyBlocker:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nSVar:DestroyAttacker:DB$ Destroy | Defined$ TriggeredAttackerLKICopy\nSVar:AttackerPower:Count$ TriggeredAttacker.Power\nSVar:BlockerPower:Count$ TriggeredBlocker.Power\nAI:RemoveDeck:Random\nOracle:Whenever a creature becomes blocked by a creature with lesser power, destroy the blocking creature.\\nWhenever a creature blocks a creature with lesser power, destroy the attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "No Quarter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

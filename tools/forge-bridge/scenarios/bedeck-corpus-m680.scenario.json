@@ -1,0 +1,23 @@
+{
+  "id": "bedeck-corpus-m680",
+  "description": "M6 corpus — Bedeck; in-hand parse.",
+  "seed": 61666,
+  "cards": {
+    "Bedeck": "Name:Bedeck\nManaCost:BR BR\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ -3 | IsCurse$ True | SpellDescription$ Target creature gets +3/-3 until end of turn.\nAlternateMode:Split\nOracle:Target creature gets +3/-3 until end of turn.\n\nALTERNATE\n\nName:Bedazzle\nManaCost:4 B R\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land. | SubAbility$ DBDamage | SpellDescription$ Destroy target nonbasic land. CARDNAME deals 2 damage to target opponent or planeswalker.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player.Opponent,Card.Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ 2\nOracle:Destroy target nonbasic land. Bedazzle deals 2 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bedeck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

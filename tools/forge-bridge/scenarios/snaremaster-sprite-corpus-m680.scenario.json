@@ -1,0 +1,23 @@
+{
+  "id": "snaremaster-sprite-corpus-m680",
+  "description": "M6 corpus — Snaremaster Sprite; in-hand parse.",
+  "seed": 64346,
+  "cards": {
+    "Snaremaster Sprite": "Name:Snaremaster Sprite\nManaCost:U\nTypes:Creature Faerie Wizard\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may pay {2}. When you do, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 2 | Execute$ TrigTap | TriggerDescription$ When you do, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBCounter | TgtPrompt$ Select target creature an opponent controls\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Snaremaster Sprite enters, you may pay {2}. When you do, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snaremaster Sprite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

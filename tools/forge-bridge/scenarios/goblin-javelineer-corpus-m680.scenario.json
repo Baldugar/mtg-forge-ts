@@ -1,0 +1,23 @@
+{
+  "id": "goblin-javelineer-corpus-m680",
+  "description": "M6 corpus — Goblin Javelineer; in-hand parse.",
+  "seed": 62688,
+  "cards": {
+    "Goblin Javelineer": "Name:Goblin Javelineer\nManaCost:R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:Haste\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME becomes blocked, it deals 1 damage to target creature blocking it.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Creature.blockingSelf\nOracle:Haste\\nWhenever Goblin Javelineer becomes blocked, it deals 1 damage to target creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Javelineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

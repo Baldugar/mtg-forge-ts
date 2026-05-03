@@ -1,0 +1,23 @@
+{
+  "id": "kardum-patron-of-flames-corpus-m680",
+  "description": "M6 corpus — Kardum, Patron of Flames; in-hand parse.",
+  "seed": 63077,
+  "cards": {
+    "Kardum, Patron of Flames": "Name:Kardum, Patron of Flames\nManaCost:2 R R\nTypes:Legendary Creature Demon\nPT:4/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, put a flame counter on it, then seek a card with mana value equal to the number of flame counters on it and exile that card face down.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ FLAME | CounterNum$ 1 | ValidCards$ Self | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Type$ Card.cmcEQX+YouOwn | ImprintFound$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Defined$ Imprinted | ExileFaceDown$ True | Mandatory$ True | SubAbility$ DBClearImprinted\nSVar:DBClearImprinted:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigReturn | TriggerDescription$ When NICKNAME dies, put the cards exiled with it into their owner's hand. At the beginning of the end step of your next turn, discard those cards.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered+ExiledWithSource | Origin$ Exile | Destination$ Hand | SubAbility$ DBDelay\nSVar:DBDelay:DB$ DelayedTrigger | DelayedTriggerDefinedPlayer$ You | Mode$ Phase | Phase$ End of Turn | Execute$ TrigDiscardExiled | RememberObjects$ Remembered | TriggerDescription$ At the beginning of the end step of your next turn, discard those cards.\nSVar:TrigDiscardExiled:DB$ Discard | Mode$ Defined | DefinedCards$ DelayTriggerRemembered\nT:Mode$ ChangesZone | Origin$ Battlefield | ExcludedDestinations$ Graveyard | Static$ True | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nSVar:X:Count$CardCounters.FLAME\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Haste\\nWhenever Kardum, Patron of Flames attacks, put a flame counter on it, then seek a card with mana value equal to the number of flame counters on it and exile that card face down.\\nWhen Kardum dies, put all cards you own exiled with it into your hand. At the beginning of the end step of your next turn, discard those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kardum, Patron of Flames"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

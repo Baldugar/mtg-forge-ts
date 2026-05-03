@@ -1,0 +1,23 @@
+{
+  "id": "bumi-bash-corpus-m680",
+  "description": "M6 corpus — Bumi Bash; in-hand parse.",
+  "seed": 61814,
+  "cards": {
+    "Bumi Bash": "Name:Bumi Bash\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDamage,DBDestroy\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of lands you control to target creature.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.Land,Land.nonBasic | TgtPrompt$ Select target land creature or nonbasic land. | SpellDescription$ Destroy target land creature or nonbasic land.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:Choose one —\\n• Bumi Bash deals damage equal to the number of lands you control to target creature.\\n• Destroy target land creature or nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bumi Bash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "torch-the-witness-corpus-m680",
+  "description": "M6 corpus — Torch the Witness; in-hand parse.",
+  "seed": 64773,
+  "cards": {
+    "Torch the Witness": "Name:Torch the Witness\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ Y | ExcessSVar$ Excess | ExcessSVarCondition$ Card.targetedBy | SubAbility$ DBInvestigate | SpellDescription$ CARDNAME deals twice X damage to target creature.\nSVar:DBInvestigate:DB$ Investigate | Num$ 1 | ConditionCheckSVar$ Excess | SpellDescription$ If excess damage was dealt to that creature this way, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Twice\nDeckHas:Type$Clue|Artifact & Ability$Token\nOracle:Torch the Witness deals twice X damage to target creature. If excess damage was dealt to that creature this way, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torch the Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

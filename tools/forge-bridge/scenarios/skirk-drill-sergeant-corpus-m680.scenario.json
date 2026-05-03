@@ -1,0 +1,23 @@
+{
+  "id": "skirk-drill-sergeant-corpus-m680",
+  "description": "M6 corpus — Skirk Drill Sergeant; in-hand parse.",
+  "seed": 64300,
+  "cards": {
+    "Skirk Drill Sergeant": "Name:Skirk Drill Sergeant\nManaCost:1 R\nTypes:Creature Goblin\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Goblin.Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME or another Goblin dies, you may pay {2}{R}. If you do, reveal the top card of your library. If it's a Goblin permanent card, put it onto the battlefield. Otherwise, put it into your graveyard.\nSVar:TrigDig:AB$ Dig | Cost$ 2 R | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Permanent.Goblin | DestinationZone$ Battlefield | DestinationZone2$ Graveyard\nOracle:Whenever Skirk Drill Sergeant or another Goblin dies, you may pay {2}{R}. If you do, reveal the top card of your library. If it's a Goblin permanent card, put it onto the battlefield. Otherwise, put it into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skirk Drill Sergeant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "favored-hoplite-corpus-m680",
+  "description": "M6 corpus — Favored Hoplite; in-hand parse.",
+  "seed": 62448,
+  "cards": {
+    "Favored Hoplite": "Name:Favored Hoplite\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/2\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, put a +1/+1 counter on CARDNAME and prevent all damage that would be dealt to it this turn.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Prevent all damage that would be dealt to CARDNAME.\nOracle:Heroic — Whenever you cast a spell that targets Favored Hoplite, put a +1/+1 counter on Favored Hoplite and prevent all damage that would be dealt to it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Favored Hoplite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

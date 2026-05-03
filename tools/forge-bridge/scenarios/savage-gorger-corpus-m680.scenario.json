@@ -1,0 +1,23 @@
+{
+  "id": "savage-gorger-corpus-m680",
+  "description": "M6 corpus — Savage Gorger; in-hand parse.",
+  "seed": 64135,
+  "cards": {
+    "Savage Gorger": "Name:Savage Gorger\nManaCost:1 B B\nTypes:Creature Vampire\nPT:1/1\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on CARDNAME. (Damage causes loss of life.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Counters\nOracle:Flying\\nAt the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on Savage Gorger. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Gorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

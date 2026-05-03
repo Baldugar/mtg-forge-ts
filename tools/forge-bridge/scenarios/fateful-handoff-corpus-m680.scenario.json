@@ -1,0 +1,23 @@
+{
+  "id": "fateful-handoff-corpus-m680",
+  "description": "M6 corpus — Fateful Handoff; in-hand parse.",
+  "seed": 62445,
+  "cards": {
+    "Fateful Handoff": "Name:Fateful Handoff\nManaCost:3 B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Select target artifact or creature you control | SubAbility$ DBDraw | AILogic$ DonateTargetPlayer | SpellDescription$ Draw cards equal to the mana value of target artifact or creature you control. An opponent gains control of that permanent.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ DBGiveControl\nSVar:DBGiveControl:DB$ GainControl | Defined$ Targeted | NewController$ Player.Chosen | AILogic$ DonateTargetPerm\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:Random\nOracle:Draw cards equal to the mana value of target artifact or creature you control. An opponent gains control of that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fateful Handoff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ground-pounder-corpus-m680",
+  "description": "M6 corpus — Ground Pounder; in-hand parse.",
+  "seed": 62734,
+  "cards": {
+    "Ground Pounder": "Name:Ground Pounder\nManaCost:1 G\nTypes:Creature Goblin Warrior\nPT:2/2\nA:AB$ RollDice | Cost$ 3 G | ResultSVar$ X | SubAbility$ DBPump | AILogic$ Combat | SpellDescription$ Roll a six-sided die.\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X | SpellDescription$ CARDNAME gets +X/+X until end of turn, where X is the result.\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ TrigTrample | ValidPlayer$ You | ValidResult$ GE5 | TriggerDescription$ Whenever you roll a 5 or higher on a die, CARDNAME gains trample until end of turn.\nSVar:TrigTrample:DB$ Pump | Defined$ Self | KW$ Trample\nOracle:{3}{G}: Roll a six-sided die. Ground Pounder gets +X/+X until end of turn, where X is the result.\\nWhenever you roll a 5 or higher on a die, Ground Pounder gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ground Pounder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

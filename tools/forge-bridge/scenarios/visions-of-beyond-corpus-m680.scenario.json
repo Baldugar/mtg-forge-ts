@@ -1,0 +1,23 @@
+{
+  "id": "visions-of-beyond-corpus-m680",
+  "description": "M6 corpus — Visions of Beyond; in-hand parse.",
+  "seed": 64959,
+  "cards": {
+    "Visions of Beyond": "Name:Visions of Beyond\nManaCost:U\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SpellDescription$ Draw a card. If a graveyard has twenty or more cards in it, draw three cards instead.\nSVar:X:Count$Compare CheckGrave GE20.3.1\nSVar:CheckGrave:PlayerCountPlayers$HighestValidGraveyard Card.YouOwn\nOracle:Draw a card. If a graveyard has twenty or more cards in it, draw three cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visions of Beyond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

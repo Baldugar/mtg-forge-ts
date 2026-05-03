@@ -1,0 +1,23 @@
+{
+  "id": "neglected-manor-corpus-m680",
+  "description": "M6 corpus — Neglected Manor; in-hand parse.",
+  "seed": 63538,
+  "cards": {
+    "Neglected Manor": "Name:Neglected Manor\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless a player has 13 or less life.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GT13\nSVar:X:PlayerCountPlayers$LowestLifeTotal\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nOracle:Neglected Manor enters tapped unless a player has 13 or less life.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neglected Manor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

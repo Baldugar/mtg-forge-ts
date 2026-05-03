@@ -1,0 +1,23 @@
+{
+  "id": "bring-the-ending-corpus-m680",
+  "description": "M6 corpus — Bring the Ending; in-hand parse.",
+  "seed": 61791,
+  "cards": {
+    "Bring the Ending": "Name:Bring the Ending\nManaCost:1 U\nTypes:Instant\nA:SP$ Branch | BranchConditionSVar$ X | TargetType$ Spell | TgtZone$ Stack | ValidTgts$ Card | BranchConditionSVarCompare$ GE3 | TrueSubAbility$ Counter | FalseSubAbility$ CounterUnless | AILogic$ BranchCounter | SpellDescription$ Counter target spell unless its controller pays {2}. Corrupted — Counter that spell instead if its controller has three or more poison counters.\nSVar:CounterUnless:DB$ Counter | Defined$ Targeted | UnlessCost$ 2\nSVar:Counter:DB$ Counter | Defined$ Targeted\nSVar:X:TargetedController$Counters.Poison\nDeckHints:Keyword$Infect|Toxic\nOracle:Counter target spell unless its controller pays {2}.\\nCorrupted — Counter that spell instead if its controller has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bring the Ending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

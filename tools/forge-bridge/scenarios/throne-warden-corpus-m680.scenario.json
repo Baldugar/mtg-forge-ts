@@ -1,0 +1,23 @@
+{
+  "id": "throne-warden-corpus-m680",
+  "description": "M6 corpus — Throne Warden; in-hand parse.",
+  "seed": 64729,
+  "cards": {
+    "Throne Warden": "Name:Throne Warden\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.isMonarch | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you're the monarch, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:At the beginning of your end step, if you're the monarch, put a +1/+1 counter on Throne Warden.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throne Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

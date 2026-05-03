@@ -1,0 +1,23 @@
+{
+  "id": "perigee-beckoner-corpus-m680",
+  "description": "M6 corpus — Perigee Beckoner; in-hand parse.",
+  "seed": 63720,
+  "cards": {
+    "Perigee Beckoner": "Name:Perigee Beckoner\nManaCost:4 B\nTypes:Creature Horror\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, until end of turn, another target creature you control gets +2/+0 and gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +2 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Triggers$ PerigeeBeckonerChangeZone | Defined$ ParentTarget\nSVar:PerigeeBeckonerChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ PerigeeBeckonerTrigChangeZone | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control.\nSVar:PerigeeBeckonerTrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nK:Warp:1 B\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When this creature enters, until end of turn, another target creature you control gets +2/+0 and gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\\nWarp {1}{B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perigee Beckoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

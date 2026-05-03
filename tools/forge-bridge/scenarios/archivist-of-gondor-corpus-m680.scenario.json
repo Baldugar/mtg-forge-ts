@@ -1,0 +1,23 @@
+{
+  "id": "archivist-of-gondor-corpus-m680",
+  "description": "M6 corpus — Archivist of Gondor; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Archivist of Gondor": "Name:Archivist of Gondor\nManaCost:2 U\nTypes:Creature Human Advisor\nPT:2/3\nT:Mode$ DamageDone | ValidSource$ Card.IsCommander+YouOwn | ValidTarget$ Player | CheckSVar$ Monarch | SVarCompare$ EQ0 | CombatDamage$ True | Execute$ TrigMonarch | TriggerZones$ Battlefield | TriggerDescription$ When your commander deals combat damage to a player, if there is no monarch, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nSVar:Monarch:PlayerCountPlayers$HasPropertyisMonarch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.isMonarch | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of the monarch's end step, that player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer\nOracle:When your commander deals combat damage to a player, if there is no monarch, you become the monarch.\\nAt the beginning of the monarch's end step, that player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archivist of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

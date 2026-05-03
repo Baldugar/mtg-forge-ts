@@ -1,0 +1,23 @@
+{
+  "id": "composer-of-spring-corpus-m680",
+  "description": "M6 corpus — Composer of Spring; in-hand parse.",
+  "seed": 61971,
+  "cards": {
+    "Composer of Spring": "Name:Composer of Spring\nManaCost:1 G\nTypes:Creature Satyr Bard\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigBranch | TriggerDescription$ Constellation — Whenever an enchantment you control enters, you may put a land card from your hand onto the battlefield tapped. If you control six or more enchantments, instead you may put a creature or land card from your hand onto the battlefield tapped.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE6 | TrueSubAbility$ PutLandCreature | FalseSubAbility$ PutLand\nSVar:PutLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.YouOwn\nSVar:PutLandCreature:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Creature.YouOwn,Land.YouOwn\nSVar:X:Count$Valid Enchantment.YouCtrl\nOracle:Constellation — Whenever an enchantment you control enters, you may put a land card from your hand onto the battlefield tapped. If you control six or more enchantments, instead you may put a creature or land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Composer of Spring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

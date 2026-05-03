@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-ulgrotha-corpus-m680",
+  "description": "M6 corpus — Invasion of Ulgrotha; in-hand parse.",
+  "seed": 62970,
+  "cards": {
+    "Invasion of Ulgrotha": "Name:Invasion of Ulgrotha\nManaCost:4 B\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, it deals 3 damage to any other target and you gain 3 life.\nSVar:TrigDrain:DB$ DealDamage | ValidTgts$ Creature.Other,Player,Planeswalker.Other,Battle.Other | TgtPrompt$ Select any other target | NumDmg$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nDeckHas:Ability$Counters|LifeGain\nAlternateMode:DoubleFaced\nOracle:When Invasion of Ulgrotha enters, it deals 3 damage to any other target and you gain 3 life.\n\nALTERNATE\n\nName:Grandmother Ravi Sengir\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Human Wizard\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.OppCtrl | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ DeathGift | TriggerDescription$ Whenever a creature an opponent controls dies, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:DeathGift:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLifeBis\nSVar:DBGainLifeBis:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Flying\\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Grandmother Ravi Sengir and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Ulgrotha"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

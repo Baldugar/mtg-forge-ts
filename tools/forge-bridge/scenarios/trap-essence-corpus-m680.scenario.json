@@ -1,0 +1,23 @@
+{
+  "id": "trap-essence-corpus-m680",
+  "description": "M6 corpus — Trap Essence; in-hand parse.",
+  "seed": 64787,
+  "cards": {
+    "Trap Essence": "Name:Trap Essence\nManaCost:G U R\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card.Creature | TgtPrompt$ Select target creature spell | SpellDescription$ Counter target creature spell. Put two +1/+1 counters on up to one target creature. | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | ValidTgts$ Creature\nDeckHas:Ability$Counters\nOracle:Counter target creature spell. Put two +1/+1 counters on up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trap Essence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

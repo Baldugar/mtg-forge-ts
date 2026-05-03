@@ -1,0 +1,23 @@
+{
+  "id": "thrull-champion-corpus-m680",
+  "description": "M6 corpus — Thrull Champion; in-hand parse.",
+  "seed": 64731,
+  "cards": {
+    "Thrull Champion": "Name:Thrull Champion\nManaCost:4 B\nTypes:Creature Thrull\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Thrull | AddPower$ 1 | AddToughness$ 1 | Description$ Thrull creatures get +1/+1.\nA:AB$ GainControl | Cost$ T | ValidTgts$ Thrull | TgtPrompt$ Select target Thrull | LoseControl$ LoseControl,LeavesPlay | SpellDescription$ Gain control of target Thrull for as long as you control CARDNAME.\nAI:RemoveDeck:Random\nOracle:Thrull creatures get +1/+1.\\n{T}: Gain control of target Thrull for as long as you control Thrull Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thrull Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

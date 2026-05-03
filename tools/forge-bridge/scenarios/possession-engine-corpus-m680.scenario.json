@@ -1,0 +1,23 @@
+{
+  "id": "possession-engine-corpus-m680",
+  "description": "M6 corpus — Possession Engine; in-hand parse.",
+  "seed": 63776,
+  "cards": {
+    "Possession Engine": "Name:Possession Engine\nManaCost:3 U U\nTypes:Artifact Vehicle\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this Vehicle enters, gain control of target creature an opponent controls for as long as you control this Vehicle. That creature can't attack or block for as long as you control this Vehicle.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | LoseControl$ LeavesPlay,LoseControl | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | KW$ HIDDEN CARDNAME can't attack or block. | Duration$ AsLongAsControl | Defined$ Targeted\nK:Crew:3\nOracle:When this Vehicle enters, gain control of target creature an opponent controls for as long as you control this Vehicle. That creature can't attack or block for as long as you control this Vehicle.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Possession Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

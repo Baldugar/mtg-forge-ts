@@ -1,0 +1,23 @@
+{
+  "id": "malcolm-alluring-scoundrel-corpus-m680",
+  "description": "M6 corpus — Malcolm, Alluring Scoundrel; in-hand parse.",
+  "seed": 63323,
+  "cards": {
+    "Malcolm, Alluring Scoundrel": "Name:Malcolm, Alluring Scoundrel\nManaCost:1 U\nTypes:Legendary Creature Siren Pirate\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a chorus counter on it. Draw a card, then discard a card. If there are four or more chorus counters on NICKNAME, you may cast the discarded card without paying its mana cost.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHORUS | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Optional$ True | Defined$ Remembered | ConditionPresent$ Card.Self+counters_GE4_CHORUS | DefinedDesc$ the exiled card | ValidZone$ Graveyard | Valid$ Card.IsRemembered | ValidSA$ Spell | WithoutManaCost$ True | IfDesc$ if there are four or more chorus counters on NICKNAME | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard\nOracle:Flash\\nFlying\\nWhenever Malcolm, Alluring Scoundrel deals combat damage to a player, put a chorus counter on it. Draw a card, then discard a card. If there are four or more chorus counters on Malcolm, you may cast the discarded card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malcolm, Alluring Scoundrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gruesome-slaughter-corpus-m680",
+  "description": "M6 corpus — Gruesome Slaughter; in-hand parse.",
+  "seed": 62740,
+  "cards": {
+    "Gruesome Slaughter": "Name:Gruesome Slaughter\nManaCost:6\nTypes:Sorcery\nA:SP$ AnimateAll | ValidCards$ Creature.Colorless+YouCtrl | Abilities$ ThrowPunch | SpellDescription$ Until end of turn, colorless creatures you control gain \"{T}: This creature deals damage equal to its power to target creature.\"\nSVar:ThrowPunch:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ GruesomeX | SpellDescription$ This creature deals damage equal to its power to target creature.\nSVar:GruesomeX:Count$CardPower\nAI:RemoveDeck:Random\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:Until end of turn, colorless creatures you control gain \"{T}: This creature deals damage equal to its power to target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruesome Slaughter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "anthroplasm-corpus-m680",
+  "description": "M6 corpus — Anthroplasm; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Anthroplasm": "Name:Anthroplasm\nManaCost:2 U U\nTypes:Creature Shapeshifter\nPT:0/0\nK:etbCounter:P1P1:2\nA:AB$ RemoveCounter | Cost$ X T | CounterType$ P1P1 | CounterNum$ All | SpellDescription$ Remove all +1/+1 counters from CARDNAME and put X +1/+1 counters on it. | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$xPaid\nSVar:All:Count$CardCounters.P1P1\nAI:RemoveDeck:All\nOracle:Anthroplasm enters with two +1/+1 counters on it.\\n{X}, {T}: Remove all +1/+1 counters from Anthroplasm and put X +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anthroplasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

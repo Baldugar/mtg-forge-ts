@@ -1,0 +1,23 @@
+{
+  "id": "shrieking-grotesque-corpus-m680",
+  "description": "M6 corpus — Shrieking Grotesque; in-hand parse.",
+  "seed": 64267,
+  "cards": {
+    "Shrieking Grotesque": "Name:Shrieking Grotesque\nManaCost:2 W\nTypes:Creature Gargoyle\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | ManaSpent$ B | TriggerDescription$ When CARDNAME enters, if {B} was spent to cast it, target player discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | Mode$ TgtChoose\nSVar:ManaNeededToAvoidNegativeEffect:black\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:Flying\\nWhen Shrieking Grotesque enters, if {B} was spent to cast it, target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrieking Grotesque"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

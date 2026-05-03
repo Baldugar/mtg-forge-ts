@@ -1,0 +1,23 @@
+{
+  "id": "coral-net-corpus-m680",
+  "description": "M6 corpus — Coral Net; in-hand parse.",
+  "seed": 62007,
+  "cards": {
+    "Coral Net": "Name:Coral Net\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature.Green,Creature.White:green or white creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddTrigger$ TrigCoralPhase | AddSVar$ TrigCoralDiscard & DBCoralSacrifice & DBCoralCleanup | Description$ Enchanted creature has \"At the beginning of your upkeep, sacrifice this creature unless you discard a card.\"\nSVar:TrigCoralPhase:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCoralDiscard | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice this creature unless you discard a card.\nSVar:TrigCoralDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Optional$ True | RememberDiscarded$ True | SubAbility$ DBCoralSacrifice\nSVar:DBCoralSacrifice:DB$ Sacrifice | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCoralCleanup\nSVar:DBCoralCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Enchant green or white creature\\nEnchanted creature has \"At the beginning of your upkeep, sacrifice this creature unless you discard a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coral Net"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

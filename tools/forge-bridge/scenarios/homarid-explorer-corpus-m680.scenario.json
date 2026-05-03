@@ -1,0 +1,23 @@
+{
+  "id": "homarid-explorer-corpus-m680",
+  "description": "M6 corpus — Homarid Explorer; in-hand parse.",
+  "seed": 62851,
+  "cards": {
+    "Homarid Explorer": "Name:Homarid Explorer\nManaCost:3 U\nTypes:Creature Homarid Scout\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player\nDeckHas:Ability$Graveyard\nOracle:When Homarid Explorer enters, target player mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Homarid Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

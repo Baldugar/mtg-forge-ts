@@ -1,0 +1,23 @@
+{
+  "id": "zealous-conscripts-corpus-m680",
+  "description": "M6 corpus — Zealous Conscripts; in-hand parse.",
+  "seed": 65123,
+  "cards": {
+    "Zealous Conscripts": "Name:Zealous Conscripts\nManaCost:4 R\nTypes:Creature Human Warrior\nPT:3/3\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, untap target permanent and gain control of it until end of turn. It gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Permanent | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Untap target permanent gain control of it until end of turn. It gains haste until end of turn.\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:Haste\\nWhen Zealous Conscripts enters, gain control of target permanent until end of turn. Untap that permanent. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zealous Conscripts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mirror-shield-corpus-m680",
+  "description": "M6 corpus — Mirror Shield; in-hand parse.",
+  "seed": 63433,
+  "cards": {
+    "Mirror Shield": "Name:Mirror Shield\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddToughness$ 2 | AddKeyword$ Hexproof | AddTrigger$ TrigBlocks & TrigBecomeBlocked | Description$ Equipped creature gets +0/+2 and has hexproof and \"Whenever a creature with deathtouch blocks or becomes blocked by this creature, destroy that creature.\"\nSVar:TrigBlocks:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.withDeathtouch | Execute$ TrigDestroyBlocker | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature with deathtouch blocks or becomes blocked by this creature, destroy that creature.\nSVar:TrigBecomeBlocked:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.withDeathtouch | ValidBlocker$ Card.Self | Execute$ TrigDestroyAttacker | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever a creature with deathtouch blocks or becomes blocked by this creature, destroy that creature.\nSVar:TrigDestroyBlocker:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nSVar:TrigDestroyAttacker:DB$ Destroy | Defined$ TriggeredAttackerLKICopy\nK:Equip:2\nOracle:Equipped creature gets +0/+2 and has hexproof and \"Whenever a creature with deathtouch blocks or becomes blocked by this creature, destroy that creature.\"\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

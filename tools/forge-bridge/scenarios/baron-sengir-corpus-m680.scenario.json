@@ -1,0 +1,23 @@
+{
+  "id": "baron-sengir-corpus-m680",
+  "description": "M6 corpus — Baron Sengir; in-hand parse.",
+  "seed": 61651,
+  "cards": {
+    "Baron Sengir": "Name:Baron Sengir\nManaCost:5 B B B\nTypes:Legendary Creature Vampire Noble\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +2/+2 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P2P2\nA:AB$ Regenerate | ValidTgts$ Creature.Vampire+Other | TgtPrompt$ Select another target Vampire | Cost$ T | SpellDescription$ Regenerate another target Vampire.\nOracle:Flying\\nWhenever a creature dealt damage by Baron Sengir this turn dies, put a +2/+2 counter on Baron Sengir.\\n{T}: Regenerate another target Vampire.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baron Sengir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

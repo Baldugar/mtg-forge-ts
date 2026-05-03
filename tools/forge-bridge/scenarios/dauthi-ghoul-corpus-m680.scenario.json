@@ -1,0 +1,23 @@
+{
+  "id": "dauthi-ghoul-corpus-m680",
+  "description": "M6 corpus — Dauthi Ghoul; in-hand parse.",
+  "seed": 62094,
+  "cards": {
+    "Dauthi Ghoul": "Name:Dauthi Ghoul\nManaCost:1 B\nTypes:Creature Dauthi Zombie\nPT:1/1\nK:Shadow\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.withShadow | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature with shadow dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever a creature with shadow dies, put a +1/+1 counter on Dauthi Ghoul.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dauthi Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

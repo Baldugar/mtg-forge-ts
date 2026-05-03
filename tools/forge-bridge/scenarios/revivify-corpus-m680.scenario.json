@@ -1,0 +1,23 @@
+{
+  "id": "revivify-corpus-m680",
+  "description": "M6 corpus — Revivify; in-hand parse.",
+  "seed": 63980,
+  "cards": {
+    "Revivify": "Name:Revivify\nManaCost:2 W\nTypes:Instant\nA:SP$ RollDice | Sides$ 20 | Modifier$ X | ResultSubAbilities$ 1-14:DBToHand,Else:DBToField | SpellDescription$ Roll a d20 and add the number of creature cards in your graveyard that were put there from the battlefield this turn.\nSVar:DBToHand:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ValidGraveyard Creature.YouOwn+ThisTurnEnteredFrom_Battlefield | SpellDescription$ 1—14 VERT Return all creature cards in your graveyard that were put there from the battlefield this turn to your hand.\nSVar:DBToField:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ ValidGraveyard Creature.YouOwn+ThisTurnEnteredFrom_Battlefield | SpellDescription$ 15+ VERT Return those cards from your graveyard to the battlefield.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouOwn\nOracle:Roll a d20 and add the number of creature cards in your graveyard that were put there from the battlefield this turn.\\n1—14 | Return all creature cards in your graveyard that were put there from the battlefield this turn to your hand.\\n15+ | Return those cards from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revivify"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

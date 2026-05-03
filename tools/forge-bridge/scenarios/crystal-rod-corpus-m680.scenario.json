@@ -1,0 +1,23 @@
+{
+  "id": "crystal-rod-corpus-m680",
+  "description": "M6 corpus — Crystal Rod; in-hand parse.",
+  "seed": 62052,
+  "cards": {
+    "Crystal Rod": "Name:Crystal Rod\nManaCost:1\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Blue | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a blue spell, you may pay {1}. If you do, you gain 1 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ 1 | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Whenever a player casts a blue spell, you may pay {1}. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crystal Rod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

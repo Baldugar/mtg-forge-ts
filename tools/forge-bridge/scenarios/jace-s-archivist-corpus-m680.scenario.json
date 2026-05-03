@@ -1,0 +1,23 @@
+{
+  "id": "jace-s-archivist-corpus-m680",
+  "description": "M6 corpus — Jace's Archivist; in-hand parse.",
+  "seed": 63010,
+  "cards": {
+    "Jace's Archivist": "Name:Jace's Archivist\nManaCost:1 U U\nTypes:Creature Vedalken Wizard\nPT:2/2\nA:AB$ Discard | Cost$ U T | Defined$ Player | RememberDiscarded$ True | Mode$ Hand | SubAbility$ WindfallDraw | SpellDescription$ Each player discards their hand, then draws cards equal to the greatest number of cards a player discarded this way.\nSVar:WindfallDraw:DB$ Draw | Defined$ Player | NumCards$ X | SubAbility$ WindfallCleanup\nSVar:WindfallCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountPlayers$HighestValidGraveyard,Library,Exile Card.IsRemembered+YouOwn\nAI:RemoveDeck:All\nOracle:{U}, {T}: Each player discards their hand, then draws cards equal to the greatest number of cards a player discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace's Archivist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

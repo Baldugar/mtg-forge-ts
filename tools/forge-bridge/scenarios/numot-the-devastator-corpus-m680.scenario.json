@@ -1,0 +1,23 @@
+{
+  "id": "numot-the-devastator-corpus-m680",
+  "description": "M6 corpus — Numot, the Devastator; in-hand parse.",
+  "seed": 63584,
+  "cards": {
+    "Numot, the Devastator": "Name:Numot, the Devastator\nManaCost:3 U R W\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}{R}. If you do, destroy up to two target lands.\nSVar:TrigDestroy:AB$ Destroy | Cost$ 2 R | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Land | TgtPrompt$ Select target land\nOracle:Flying\\nWhenever Numot, the Devastator deals combat damage to a player, you may pay {2}{R}. If you do, destroy up to two target lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Numot, the Devastator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

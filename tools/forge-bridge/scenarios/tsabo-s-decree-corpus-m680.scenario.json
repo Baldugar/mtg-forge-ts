@@ -1,0 +1,23 @@
+{
+  "id": "tsabo-s-decree-corpus-m680",
+  "description": "M6 corpus — Tsabo's Decree; in-hand parse.",
+  "seed": 64811,
+  "cards": {
+    "Tsabo's Decree": "Name:Tsabo's Decree\nManaCost:5 B\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ TsabosDiscard | StackDescription$ None | SpellDescription$ Choose a creature type. Target player reveals their hand and discards all creature cards of that type. Then destroy all creatures of that type that player controls. They can't be regenerated.\nSVar:TsabosDiscard:DB$ Discard | ValidTgts$ Player | Mode$ RevealDiscardAll | DiscardValid$ Creature.ChosenType | SubAbility$ TsabosDestroy\nSVar:TsabosDestroy:DB$ DestroyAll | ValidCards$ Creature.ChosenType+TargetedPlayerCtrl | NoRegen$ True\nAI:RemoveDeck:All\nOracle:Choose a creature type. Target player reveals their hand and discards all creature cards of that type. Then destroy all creatures of that type that player controls. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tsabo's Decree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

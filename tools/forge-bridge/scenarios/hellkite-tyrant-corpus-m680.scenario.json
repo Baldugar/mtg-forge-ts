@@ -1,0 +1,23 @@
+{
+  "id": "hellkite-tyrant-corpus-m680",
+  "description": "M6 corpus — Hellkite Tyrant; in-hand parse.",
+  "seed": 62816,
+  "cards": {
+    "Hellkite Tyrant": "Name:Hellkite Tyrant\nManaCost:4 R R\nTypes:Creature Dragon\nPT:6/5\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGainControl | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, gain control of all artifacts that player controls.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Artifact.ControlledBy TriggeredTarget | NewController$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | PresentCompare$ GE20 | IsPresent$ Artifact.YouCtrl | Execute$ WinGame | TriggerDescription$ At the beginning of your upkeep, if you control twenty or more artifacts, you win the game.\nSVar:WinGame:DB$ WinsGame | Defined$ You\nOracle:Flying, trample\\nWhenever Hellkite Tyrant deals combat damage to a player, gain control of all artifacts that player controls.\\nAt the beginning of your upkeep, if you control twenty or more artifacts, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellkite Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

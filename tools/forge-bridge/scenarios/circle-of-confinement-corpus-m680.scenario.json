@@ -1,0 +1,23 @@
+{
+  "id": "circle-of-confinement-corpus-m680",
+  "description": "M6 corpus — Circle of Confinement; in-hand parse.",
+  "seed": 61923,
+  "cards": {
+    "Circle of Confinement": "Name:Circle of Confinement\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature with mana value 3 or less an opponent controls until CARDNAME leaves the battlefield. (That creature returns under its owner's control.)\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ValidTgts$ Creature.cmcLE3+OppCtrl | TgtPrompt$ Select target creature with mana value 3 or less an opponent controls | AITgts$ Vampire.cmcLE3+OppCtrl | Duration$ UntilHostLeavesPlay\nT:Mode$ SpellCast | ValidCard$ Card.Vampire+sharesNameWith Remembered.ExiledWithSource | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever an opponent casts a Vampire spell with the same name as a card exiled with CARDNAME, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.cmcLE3+OppCtrl\nDeckHas:Ability$LifeGain\nOracle:When Circle of Confinement enters, exile target creature with mana value 3 or less an opponent controls until Circle of Confinement leaves the battlefield.\\nWhenever an opponent casts a Vampire spell with the same name as a card exiled with Circle of Confinement, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circle of Confinement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

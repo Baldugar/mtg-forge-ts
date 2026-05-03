@@ -1,0 +1,23 @@
+{
+  "id": "chief-jim-hopper-corpus-m680",
+  "description": "M6 corpus — Chief Jim Hopper; in-hand parse.",
+  "seed": 61911,
+  "cards": {
+    "Chief Jim Hopper": "Name:Chief Jim Hopper\nVariant:UniversesWithin:FlavorName:Sophina, Spearsage Deserter\nManaCost:2 R W\nTypes:Legendary Creature Human Soldier\nPT:4/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, investigate once for each nontoken attacking creature.\nSVar:TrigInvestigate:DB$ Investigate | Num$ X\nSVar:X:Count$Valid Creature.attacking+!token\nK:Partner:Friends forever\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Investigate|Token|Sacrifice\nOracle:Menace\\nWhenever Chief Jim Hopper attacks, investigate once for each nontoken attacking creature.\\nPartner—Friends forever (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chief Jim Hopper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

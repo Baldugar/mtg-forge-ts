@@ -1,0 +1,23 @@
+{
+  "id": "huntmaster-of-the-fells-corpus-m680",
+  "description": "M6 corpus — Huntmaster of the Fells; in-hand parse.",
+  "seed": 62886,
+  "cards": {
+    "Huntmaster of the Fells": "Name:Huntmaster of the Fells\nManaCost:2 R G\nTypes:Creature Human Werewolf\nPT:2/2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TokenAndLife | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, create a 2/2 green Wolf creature token and you gain 2 life.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TokenAndLife | Secondary$ True | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, create a 2/2 green Wolf creature token and you gain 2 life.\nSVar:TokenAndLife:DB$ Token | TokenOwner$ You | TokenScript$ g_2_2_wolf | SubAbility$ Life\nSVar:Life:DB$ GainLife | Defined$ You | LifeAmount$ 2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Whenever this creature enters or transforms into Huntmaster of the Fells, create a 2/2 green Wolf creature token and you gain 2 life.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Huntmaster of the Fells.\n\nALTERNATE\n\nName:Ravager of the Fells\nManaCost:no cost\nColors:green,red\nTypes:Creature Werewolf\nPT:4/4\nK:Trample\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ DamageAndMoreDamage | TriggerDescription$ Whenever this creature transforms into CARDNAME, it deals 2 damage to target opponent or planeswalker and 2 damage to up to one target creature that player or that planeswalker's controller controls.\nSVar:DamageAndMoreDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 2 | DamageMap$ True | SubAbility$ MoreDamage\nSVar:MoreDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TargetedOrController | TgtPrompt$ Select up to one target creature that player or that planeswalker's controller controls | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 2 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Trample\\nWhenever this creature transforms into Ravager of the Fells, it deals 2 damage to target opponent or planeswalker and 2 damage to up to one target creature that player or that planeswalker's controller controls.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Ravager of the Fells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Huntmaster of the Fells"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

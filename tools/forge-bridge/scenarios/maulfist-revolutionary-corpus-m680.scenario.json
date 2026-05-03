@@ -1,0 +1,23 @@
+{
+  "id": "maulfist-revolutionary-corpus-m680",
+  "description": "M6 corpus — Maulfist Revolutionary; in-hand parse.",
+  "seed": 63369,
+  "cards": {
+    "Maulfist Revolutionary": "Name:Maulfist Revolutionary\nManaCost:1 G G\nTypes:Creature Human Warrior\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncrementCounters | TriggerDescription$ When CARDNAME enters or dies, for each kind of counter on target permanent or player, give that permanent or player another counter of that kind.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigIncrementCounters | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, for each kind of counter on target permanent or player, give that permanent or player another counter of that kind.\nSVar:TrigIncrementCounters:DB$ PutCounter | ValidTgts$ Permanent,Player | CounterType$ ExistingCounter | EachExistingCounter$ True | CounterNum$ 1\nDeckHints:Ability$Counters\nOracle:Trample\\nWhen Maulfist Revolutionary enters or dies, for each kind of counter on target permanent or player, give that permanent or player another counter of that kind.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maulfist Revolutionary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

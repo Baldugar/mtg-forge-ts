@@ -1,0 +1,23 @@
+{
+  "id": "elite-scaleguard-corpus-m680",
+  "description": "M6 corpus — Elite Scaleguard; in-hand parse.",
+  "seed": 62305,
+  "cards": {
+    "Elite Scaleguard": "Name:Elite Scaleguard\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBolster | TriggerDescription$ When CARDNAME enters, bolster 2. (Choose a creature with the least toughness or tied with the least toughness among creatures you control. Put two +1/+1 counters on it.)\nSVar:TrigBolster:DB$ PutCounter | Bolster$ 2\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+counters_GE1_P1P1 | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:When Elite Scaleguard enters, bolster 2. (Choose a creature with the least toughness among creatures you control and put two +1/+1 counters on it.)\\nWhenever a creature you control with a +1/+1 counter on it attacks, tap target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elite Scaleguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

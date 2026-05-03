@@ -1,0 +1,23 @@
+{
+  "id": "feisty-stegosaurus-corpus-m680",
+  "description": "M6 corpus — Feisty Stegosaurus; in-hand parse.",
+  "seed": 62459,
+  "cards": {
+    "Feisty Stegosaurus": "Name:Feisty Stegosaurus\nManaCost:4 R\nTypes:Host Creature Dinosaur\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRoll | Host$ True | TriggerDescription$ When this creature enters, roll a six-sided die. This creature deals damage equal to the result to target creature an opponent controls.\nSVar:TrigRoll:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ Result | AIExpectAmount$ 3\nOracle:When this creature enters, roll a six-sided die. This creature deals damage equal to the result to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feisty Stegosaurus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

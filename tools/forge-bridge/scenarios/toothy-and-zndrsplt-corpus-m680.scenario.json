@@ -1,0 +1,23 @@
+{
+  "id": "toothy-and-zndrsplt-corpus-m680",
+  "description": "M6 corpus — Toothy and Zndrsplt; in-hand parse.",
+  "seed": 64768,
+  "cards": {
+    "Toothy and Zndrsplt": "Name:Toothy and Zndrsplt\nManaCost:3 U\nTypes:Legendary Creature Homunculus Illusion\nPT:2/2\nT:Mode$ FlippedCoin | ValidPlayer$ You | ValidResult$ Win | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you win a coin flip, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ At the beginning of combat on your turn, flip a coin until you lose a flip.\nSVar:TrigFlip:DB$ FlipACoin | FlipUntilYouLose$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME leaves the battlefield, draw a card for each +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggeredCard$CardCounters.P1P1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever you win a coin flip, put a +1/+1 counter on Toothy and Zndrsplt.\\nAt the beginning of combat on your turn, flip a coin until you lose a flip.\\nWhen Toothy and Zndrsplt leaves the battlefield, draw a card for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toothy and Zndrsplt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

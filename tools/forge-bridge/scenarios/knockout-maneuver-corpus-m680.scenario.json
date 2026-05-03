@@ -1,0 +1,23 @@
+{
+  "id": "knockout-maneuver-corpus-m680",
+  "description": "M6 corpus — Knockout Maneuver; in-hand parse.",
+  "seed": 63140,
+  "cards": {
+    "Knockout Maneuver": "Name:Knockout Maneuver\nManaCost:2 G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | AILogic$ PowerDmg | StackDescription$ Put a +1/+1 counter on {c:ThisTargetedCard}. | SpellDescription$ Put a +1/+1 counter on target creature you control, then it deals damage equal to its power to target creature an opponent controls.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget | AILogic$ PowerDmg | StackDescription$ Then {c:ParentTarget} deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:ParentTargeted$CardPower\nOracle:Put a +1/+1 counter on target creature you control, then it deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knockout Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ivory-cup-corpus-m680",
+  "description": "M6 corpus — Ivory Cup; in-hand parse.",
+  "seed": 63006,
+  "cards": {
+    "Ivory Cup": "Name:Ivory Cup\nManaCost:1\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.White | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a white spell, you may pay {1}. If you do, you gain 1 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ 1 | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckHas:Keyword$LifeGain\nOracle:Whenever a player casts a white spell, you may pay {1}. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ivory Cup"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

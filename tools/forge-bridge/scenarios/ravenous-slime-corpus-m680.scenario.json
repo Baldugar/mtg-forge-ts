@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-slime-corpus-m680",
+  "description": "M6 corpus — Ravenous Slime; in-hand parse.",
+  "seed": 63912,
+  "cards": {
+    "Ravenous Slime": "Name:Ravenous Slime\nManaCost:2 G\nTypes:Creature Ooze\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.OppCtrl | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die, instead exile it and put a number of +1/+1 counters equal to that creature's power on CARDNAME.\nSVar:Exile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self\nSVar:X:ReplacedCardLKI$CardPower\nOracle:Ravenous Slime can't be blocked by creatures with power 2 or less.\\nIf a creature an opponent controls would die, instead exile it and put a number of +1/+1 counters equal to that creature's power on Ravenous Slime.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Slime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

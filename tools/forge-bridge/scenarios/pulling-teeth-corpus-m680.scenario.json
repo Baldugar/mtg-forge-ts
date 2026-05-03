@@ -1,0 +1,23 @@
+{
+  "id": "pulling-teeth-corpus-m680",
+  "description": "M6 corpus — Pulling Teeth; in-hand parse.",
+  "seed": 63834,
+  "cards": {
+    "Pulling Teeth": "Name:Pulling Teeth\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Clash | ValidTgts$ Player | WinSubAbility$ DBDiscardTwo | OtherwiseSubAbility$ DBDiscardOne | SpellDescription$ Clash with an opponent. If you win, target player discards two cards. Otherwise, that player discards a card.\nSVar:DBDiscardOne:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ TgtChoose\nSVar:DBDiscardTwo:DB$ Discard | Defined$ Targeted | NumCards$ 2 | Mode$ TgtChoose\nOracle:Clash with an opponent. If you win, target player discards two cards. Otherwise, that player discards a card. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pulling Teeth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

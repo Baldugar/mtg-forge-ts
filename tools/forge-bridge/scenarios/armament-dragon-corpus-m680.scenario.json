@@ -1,0 +1,23 @@
+{
+  "id": "armament-dragon-corpus-m680",
+  "description": "M6 corpus — Armament Dragon; in-hand parse.",
+  "seed": 61565,
+  "cards": {
+    "Armament Dragon": "Name:Armament Dragon\nManaCost:3 W B G\nTypes:Creature Dragon\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature enters, distribute three +1/+1 counters among one, two, or three target creatures you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select one, two, or three target creatures you control | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen this creature enters, distribute three +1/+1 counters among one, two, or three target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armament Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

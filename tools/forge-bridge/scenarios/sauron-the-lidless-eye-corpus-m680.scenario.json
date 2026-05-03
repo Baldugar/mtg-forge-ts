@@ -1,0 +1,23 @@
+{
+  "id": "sauron-the-lidless-eye-corpus-m680",
+  "description": "M6 corpus — Sauron, the Lidless Eye; in-hand parse.",
+  "seed": 64133,
+  "cards": {
+    "Sauron, the Lidless Eye": "Name:Sauron, the Lidless Eye\nManaCost:3 B R\nTypes:Legendary Creature Avatar Horror\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target creature an opponent controls until end of turn. Untap it. It gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | TgtPrompt$ Choose target creature an opponent controls | ValidTgts$ Creature.OppCtrl | LoseControl$ EOT | Untap$ True | AddKWs$ Haste\nA:AB$ PumpAll | Cost$ 1 B R | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | SubAbility$ LoseTwo | SpellDescription$ Creatures you control get +2/+0 until end of turn. Each opponent loses 2 life.\nSVar:LoseTwo:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:When Sauron, the Lidless Eye enters, gain control of target creature an opponent controls until end of turn. Untap it. It gains haste until end of turn.\\n{1}{B}{R}: Creatures you control get +2/+0 until end of turn. Each opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sauron, the Lidless Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

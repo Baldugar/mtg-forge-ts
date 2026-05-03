@@ -1,0 +1,23 @@
+{
+  "id": "protean-hydra-corpus-m680",
+  "description": "M6 corpus — Protean Hydra; in-hand parse.",
+  "seed": 63818,
+  "cards": {
+    "Protean Hydra": "Name:Protean Hydra\nManaCost:X G\nTypes:Creature Hydra\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage and remove that many +1/+1 counters from it.\nSVar:Counters:DB$ RemoveCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:ReplaceCount$DamageAmount\nT:Mode$ CounterRemoved | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ ProteanPutCounter | TriggerDescription$ Whenever a +1/+1 counter is removed from CARDNAME, put two +1/+1 counters on it at the beginning of the next end step.\nSVar:ProteanPutCounter:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DBPutCounters | RememberObjects$ TriggeredCardLKICopy | TriggerDescription$ Put two +1/+1 counters on it at the beginning of the next end step.\nSVar:DBPutCounters:DB$ PutCounter | Defined$ DelayTriggerRememberedLKI | CounterType$ P1P1 | CounterNum$ 2\nOracle:Protean Hydra enters with X +1/+1 counters on it.\\nIf damage would be dealt to Protean Hydra, prevent that damage and remove that many +1/+1 counters from it.\\nWhenever a +1/+1 counter is removed from Protean Hydra, put two +1/+1 counters on it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protean Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

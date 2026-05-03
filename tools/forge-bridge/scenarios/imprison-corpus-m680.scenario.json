@@ -1,0 +1,23 @@
+{
+  "id": "imprison-corpus-m680",
+  "description": "M6 corpus — Imprison; in-hand parse.",
+  "seed": 62911,
+  "cards": {
+    "Imprison": "Name:Imprison\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ AbilityCast | ValidCard$ Creature.EnchantedBy | ValidSA$ SpellAbility.!ManaAbility+hasTapCost | TriggerZones$ Battlefield | Execute$ TrigDestroy1 | TriggerDescription$ Whenever a player activates an ability of enchanted creature with {T} in its activation cost that isn't a mana ability, you may pay {1}. If you do, counter that ability. If you don't, destroy CARDNAME.\nSVar:TrigDestroy1:DB$ Destroy | Defined$ Self | UnlessCost$ 1 | UnlessPayer$ You | UnlessResolveSubs$ WhenPaid | SubAbility$ DBCounter\nSVar:DBCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nT:Mode$ Attacks | ValidCard$ Card.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy2 | TriggerDescription$ Whenever enchanted creature attacks or blocks, you may pay {1}. If you do, tap the creature, remove it from combat, and creatures it was blocking that had become blocked by only that creature this combat become unblocked. If you don't, destroy CARDNAME.\nT:Mode$ Blocks | ValidCard$ Card.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy3 | Secondary$ True | TriggerDescription$ Whenever enchanted creature attacks or blocks, you may pay {1}. If you do, tap the creature, remove it from combat, and creatures it was blocking that had become blocked by only that creature this combat become unblocked. If you don't, destroy CARDNAME.\nSVar:TrigDestroy2:DB$ Destroy | Defined$ Self | UnlessCost$ 1 | UnlessPayer$ You | UnlessResolveSubs$ WhenPaid | SubAbility$ DBTapAttacker\nSVar:TrigDestroy3:DB$ Destroy | Defined$ Self | UnlessCost$ 1 | UnlessPayer$ You | UnlessResolveSubs$ WhenPaid | SubAbility$ DBTapBlocker\nSVar:DBTapAttacker:DB$ Tap | Defined$ TriggeredAttackerLKICopy | SubAbility$ DBRemoveAttacker\nSVar:DBTapBlocker:DB$ Tap | Defined$ TriggeredBlockerLKICopy | SubAbility$ DBRemoveBlocker\nSVar:DBRemoveAttacker:DB$ RemoveFromCombat | Defined$ TriggeredAttackerLKICopy\nSVar:DBRemoveBlocker:DB$ RemoveFromCombat | Defined$ TriggeredBlockerLKICopy | UnblockCreaturesBlockedOnlyBy$ TriggeredBlocker\nAI:RemoveDeck:All\nOracle:Enchant creature\\nWhenever a player activates an ability of enchanted creature with {T} in its activation cost that isn't a mana ability, you may pay {1}. If you do, counter that ability. If you don't, destroy Imprison.\\nWhenever enchanted creature attacks or blocks, you may pay {1}. If you do, tap the creature, remove it from combat, and creatures it was blocking that had become blocked by only that creature this combat become unblocked. If you don't, destroy Imprison.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imprison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

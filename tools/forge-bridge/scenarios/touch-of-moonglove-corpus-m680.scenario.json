@@ -1,0 +1,23 @@
+{
+  "id": "touch-of-moonglove-corpus-m680",
+  "description": "M6 corpus — Touch of Moonglove; in-hand parse.",
+  "seed": 64776,
+  "cards": {
+    "Touch of Moonglove": "Name:Touch of Moonglove\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | KW$ Deathtouch | SubAbility$ DBMoonglove | SpellDescription$ Target creature you control gets +1/+0 and gains deathtouch until end of turn. Whenever a creature dealt damage by that creature dies this turn, its controller loses 2 life. (Any amount of damage a creature with deathtouch deals to a creature is enough to destroy it.)\nSVar:DBMoonglove:DB$ Effect | Triggers$ MoongloveTrigger | RememberObjects$ Targeted | StackDescription$ Whenever a creature dealt damage by that creature dies this turn, its controller loses 2 life.\nSVar:MoongloveTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy RememberedLKI | TriggerZones$ Command | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature dealt damage by that creature dies this turn, its controller loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ TriggeredCardController\nOracle:Target creature you control gets +1/+0 and gains deathtouch until end of turn. Whenever a creature dealt damage by that creature dies this turn, its controller loses 2 life. (Any amount of damage a creature with deathtouch deals to a creature is enough to destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Touch of Moonglove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

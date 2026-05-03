@@ -1,0 +1,23 @@
+{
+  "id": "soulcatcher-corpus-m680",
+  "description": "M6 corpus — Soulcatcher; in-hand parse.",
+  "seed": 64369,
+  "cards": {
+    "Soulcatcher": "Name:Soulcatcher\nManaCost:1 W\nTypes:Creature Bird Soldier\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Creature.withFlying | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature with flying dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhenever a creature with flying dies, put a +1/+1 counter on Soulcatcher.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulcatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

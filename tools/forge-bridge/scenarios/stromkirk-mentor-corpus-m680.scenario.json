@@ -1,0 +1,23 @@
+{
+  "id": "stromkirk-mentor-corpus-m680",
+  "description": "M6 corpus — Stromkirk Mentor; in-hand parse.",
+  "seed": 64485,
+  "cards": {
+    "Stromkirk Mentor": "Name:Stromkirk Mentor\nManaCost:3 B\nTypes:Creature Vampire Soldier\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target Vampire you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Vampire.Other+YouCtrl | TgtPrompt$ Select another target Vampire you control | CounterType$ P1P1\nDeckHints:Type$Vampire\nDeckHas:Ability$Counters\nOracle:When Stromkirk Mentor enters, put a +1/+1 counter on another target Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stromkirk Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

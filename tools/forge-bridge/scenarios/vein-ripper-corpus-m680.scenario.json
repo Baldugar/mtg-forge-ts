@@ -1,0 +1,23 @@
+{
+  "id": "vein-ripper-corpus-m680",
+  "description": "M6 corpus — Vein Ripper; in-hand parse.",
+  "seed": 64905,
+  "cards": {
+    "Vein Ripper": "Name:Vein Ripper\nManaCost:3 B B B\nTypes:Creature Vampire Assassin\nPT:6/5\nK:Flying\nK:Ward:Sac<1/Creature/creature>\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature dies, target opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:Flying\\nWard—Sacrifice a creature.\\nWhenever a creature dies, target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vein Ripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

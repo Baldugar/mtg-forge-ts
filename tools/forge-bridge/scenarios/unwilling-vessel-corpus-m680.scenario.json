@@ -1,0 +1,23 @@
+{
+  "id": "unwilling-vessel-corpus-m680",
+  "description": "M6 corpus — Unwilling Vessel; in-hand parse.",
+  "seed": 64862,
+  "cards": {
+    "Unwilling Vessel": "Name:Unwilling Vessel\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:3/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a possession counter on CARDNAME.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a possession counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ POSSESSION | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create an X/X blue Spirit creature token with flying, where X is the number of counters on CARDNAME.\nSVar:TrigToken:DB$ Token | TokenScript$ u_x_x_spirit_flying | TokenPower$ X | TokenToughness$ X | TokenOwner$ You\nSVar:X:TriggeredCard$CardCounters.ALL\nDeckHas:Ability$Token & Type$Spirit\nDeckNeeds:Type$Enchantment\nOracle:Vigilance\\nEerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a possession counter on Unwilling Vessel.\\nWhen Unwilling Vessel dies, create an X/X blue Spirit creature token with flying, where X is the number of counters on Unwilling Vessel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unwilling Vessel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

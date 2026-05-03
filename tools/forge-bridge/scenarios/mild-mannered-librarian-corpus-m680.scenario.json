@@ -1,0 +1,23 @@
+{
+  "id": "mild-mannered-librarian-corpus-m680",
+  "description": "M6 corpus — Mild-Mannered Librarian; in-hand parse.",
+  "seed": 63406,
+  "cards": {
+    "Mild-Mannered Librarian": "Name:Mild-Mannered Librarian\nManaCost:G\nTypes:Creature Human\nPT:1/1\nA:AB$ Animate | Cost$ 3 G | GameActivationLimit$ 1 | Types$ Werewolf | RemoveCreatureTypes$ True | Duration$ Permanent | SubAbility$ DBCounter | SpellDescription$ CARDNAME becomes a Werewolf. Put two +1/+1 counters on it and you draw a card. Activate only once.\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Counters & Type$Werewolf\nOracle:{3}{G}: Mild-Mannered Librarian becomes a Werewolf. Put two +1/+1 counters on it and you draw a card. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mild-Mannered Librarian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

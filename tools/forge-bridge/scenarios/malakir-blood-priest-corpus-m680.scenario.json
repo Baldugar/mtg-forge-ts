@@ -1,0 +1,23 @@
+{
+  "id": "malakir-blood-priest-corpus-m680",
+  "description": "M6 corpus — Malakir Blood-Priest; in-hand parse.",
+  "seed": 63319,
+  "cards": {
+    "Malakir Blood-Priest": "Name:Malakir Blood-Priest\nManaCost:1 B\nTypes:Creature Vampire Cleric\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses X life and you gain X life, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Party\nDeckHas:Ability$Party|LifeGain\nDeckHints:Type$Rogue|Warrior|Wizard\nOracle:When Malakir Blood-Priest enters, each opponent loses X life and you gain X life, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malakir Blood-Priest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

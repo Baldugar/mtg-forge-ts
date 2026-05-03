@@ -1,0 +1,23 @@
+{
+  "id": "skinrender-corpus-m680",
+  "description": "M6 corpus — Skinrender; in-hand parse.",
+  "seed": 64298,
+  "cards": {
+    "Skinrender": "Name:Skinrender\nManaCost:2 B B\nTypes:Creature Phyrexian Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put three -1/-1 counters on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 3\nOracle:When Skinrender enters, put three -1/-1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skinrender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

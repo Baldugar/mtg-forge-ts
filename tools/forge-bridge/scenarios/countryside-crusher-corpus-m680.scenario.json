@@ -1,0 +1,23 @@
+{
+  "id": "countryside-crusher-corpus-m680",
+  "description": "M6 corpus — Countryside Crusher; in-hand parse.",
+  "seed": 62020,
+  "cards": {
+    "Countryside Crusher": "Name:Countryside Crusher\nManaCost:1 R R\nTypes:Creature Giant Warrior\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRepeat | TriggerDescription$ At the beginning of your upkeep, reveal the top card of your library. If it's a land card, put it into your graveyard and repeat this process.\nSVar:TrigRepeat:DB$ Repeat | RepeatSubAbility$ DBReset | RepeatDefined$ Remembered | RepeatPresent$ Card | RepeatSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBReset:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBReveal\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | ChangeValid$ Land | ChangeNum$ All | Reveal$ True | DestinationZone$ Graveyard | LibraryPosition2$ 0 | RememberChanged$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Land.!token+YouOwn | TriggerZones$ Battlefield | Execute$ TrigAddCounter | TriggerDescription$ Whenever a land card is put into your graveyard from anywhere, put a +1/+1 counter on CARDNAME.\nSVar:TrigAddCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nOracle:At the beginning of your upkeep, reveal the top card of your library. If it's a land card, put it into your graveyard and repeat this process.\\nWhenever a land card is put into your graveyard from anywhere, put a +1/+1 counter on Countryside Crusher.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Countryside Crusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

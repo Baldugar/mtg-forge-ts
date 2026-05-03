@@ -1,0 +1,23 @@
+{
+  "id": "brace-for-impact-corpus-m680",
+  "description": "M6 corpus — Brace for Impact; in-hand parse.",
+  "seed": 61764,
+  "cards": {
+    "Brace for Impact": "Name:Brace for Impact\nManaCost:4 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature.MultiColor | TgtPrompt$ Select target multicolored creature | ExileOnMoved$ Battlefield | ReplacementEffects$ BraceReplace | RememberObjects$ Targeted | SpellDescription$ Prevent all damage that would be dealt to target multicolored creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\nSVar:BraceReplace:Event$ DamageDone | ValidTarget$ Card.IsRemembered | ReplaceWith$ ImpactCounters | PreventionEffect$ True | Description$ Prevent all damage that would be dealt to targeted multicolored creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\nSVar:ImpactCounters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Prevent all damage that would be dealt to target multicolored creature this turn. For each 1 damage prevented this way, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brace for Impact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

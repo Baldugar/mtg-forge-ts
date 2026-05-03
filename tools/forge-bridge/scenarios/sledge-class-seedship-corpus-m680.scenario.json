@@ -1,0 +1,23 @@
+{
+  "id": "sledge-class-seedship-corpus-m680",
+  "description": "M6 corpus — Sledge-Class Seedship; in-hand parse.",
+  "seed": 64319,
+  "cards": {
+    "Sledge-Class Seedship": "Name:Sledge-Class Seedship\nManaCost:2 G\nTypes:Artifact Spacecraft\nPT:4/5\nK:Station:7\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE7_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddTrigger$ AttackTrig | Description$ STATION 7+ Flying,,,Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)\\nSTATION 7+\\nFlying\\nWhenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sledge-Class Seedship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hollowsage-corpus-m680",
+  "description": "M6 corpus — Hollowsage; in-hand parse.",
+  "seed": 62849,
+  "cards": {
+    "Hollowsage": "Name:Hollowsage\nManaCost:3 B\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME becomes untapped, you may have target player discard a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose\nOracle:Whenever Hollowsage becomes untapped, you may have target player discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowsage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

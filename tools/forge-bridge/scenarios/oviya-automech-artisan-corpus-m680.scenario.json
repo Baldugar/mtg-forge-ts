@@ -1,0 +1,23 @@
+{
+  "id": "oviya-automech-artisan-corpus-m680",
+  "description": "M6 corpus — Oviya, Automech Artisan; in-hand parse.",
+  "seed": 63677,
+  "cards": {
+    "Oviya, Automech Artisan": "Name:Oviya, Automech Artisan\nManaCost:3 G\nTypes:Legendary Creature Human Artificer\nPT:1/2\nS:Mode$ Continuous | Affected$ Creature.attacking Opponent | AddKeyword$ Trample | Description$ Each creature that's attacking one of your opponents has trample.\nA:AB$ ChangeZone | Cost$ G T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature,Vehicle | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBPutCounter | SpellDescription$ You may put a creature or Vehicle card from your hand onto the battlefield. If you put an artifact onto the battlefield this way, put two +1/+1 counters on it.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Artifact | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Artifact|Vehicle\nDeckHas:Ability$Counters\nOracle:Each creature that's attacking one of your opponents has trample.\\n{G}, {T}: You may put a creature or Vehicle card from your hand onto the battlefield. If you put an artifact onto the battlefield this way, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oviya, Automech Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

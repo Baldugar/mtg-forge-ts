@@ -1,0 +1,23 @@
+{
+  "id": "coveted-jewel-corpus-m680",
+  "description": "M6 corpus — Coveted Jewel; in-hand parse.",
+  "seed": 62024,
+  "cards": {
+    "Coveted Jewel": "Name:Coveted Jewel\nManaCost:6\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | SpellDescription$ Add three mana of any one color.\nT:Mode$ AttackerUnblockedOnce | ValidAttackingPlayer$ Player.Opponent | ValidDefenders$ You | TriggerZones$ Battlefield | Execute$ TrigDraw2 | TriggerDescription$ Whenever one or more creatures an opponent controls attack you and aren't blocked, that player draws three cards and gains control of CARDNAME. Untap it.\nSVar:TrigDraw2:DB$ Draw | Defined$ TriggeredAttackingPlayer | NumCards$ 3 | SubAbility$ DBGainGontrol\nSVar:DBGainGontrol:DB$ GainControl | NewController$ TriggeredAttackingPlayer | Untap$ True\nOracle:When Coveted Jewel enters, draw three cards.\\n{T}: Add three mana of any one color.\\nWhenever one or more creatures an opponent controls attack you and aren't blocked, that player draws three cards and gains control of Coveted Jewel. Untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coveted Jewel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

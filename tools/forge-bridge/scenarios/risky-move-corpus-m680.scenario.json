@@ -1,0 +1,23 @@
+{
+  "id": "risky-move-corpus-m680",
+  "description": "M6 corpus — Risky Move; in-hand parse.",
+  "seed": 64007,
+  "cards": {
+    "Risky Move": "Name:Risky Move\nManaCost:3 R R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigGainControl | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player gains control of CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | NewController$ TriggeredPlayer | Defined$ Self\nT:Mode$ ChangesController | ValidCard$ Card.Self | ValidOriginalController$ Player.Other | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ When you gain control of CARDNAME from another player, choose a creature you control and an opponent. Flip a coin. If you lose the flip, that opponent gains control of that creature.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ You | Choices$ Creature.YouCtrl | Mandatory$ True | AILogic$ WorstCard | SubAbility$ DBChoosePlayer\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBFlip\nSVar:DBFlip:DB$ FlipACoin | LoseSubAbility$ DBControl\nSVar:DBControl:DB$ GainControl | NewController$ Player.Chosen | Defined$ ChosenCard\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player gains control of Risky Move.\\nWhen you gain control of Risky Move from another player, choose a creature you control and an opponent. Flip a coin. If you lose the flip, that opponent gains control of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Risky Move"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

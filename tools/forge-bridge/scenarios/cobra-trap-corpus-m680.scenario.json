@@ -1,0 +1,23 @@
+{
+  "id": "cobra-trap-corpus-m680",
+  "description": "M6 corpus — Cobra Trap; in-hand parse.",
+  "seed": 61951,
+  "cards": {
+    "Cobra Trap": "Name:Cobra Trap\nManaCost:4 G G\nTypes:Instant Trap\nT:Mode$ Destroyed | ValidCauser$ Player.Opponent | ValidCard$ Permanent.nonCreature+YouCtrl | Execute$ TrackValidDestroy | Static$ True\nSVar:TrackValidDestroy:DB$ Pump | RememberObjects$ TriggeredCard\nT:Mode$ TurnBegin | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearRemembered$ True\nSVar:SetTrap:Remembered$Amount\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ G | CheckSVar$ SetTrap | Description$ If a noncreature permanent under your control was destroyed this turn by a spell or ability an opponent controlled, you may pay {G} rather than pay this spell's mana cost.\nA:SP$ Token | TokenAmount$ 4 | TokenScript$ g_1_1_snake | TokenOwner$ You | StackDescription$ {p:You} creates four 1/1 green Snake creature tokens. | SpellDescription$ Create four 1/1 green Snake creature tokens.\nOracle:If a noncreature permanent under your control was destroyed this turn by a spell or ability an opponent controlled, you may pay {G} rather than pay this spell's mana cost.\\nCreate four 1/1 green Snake creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cobra Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

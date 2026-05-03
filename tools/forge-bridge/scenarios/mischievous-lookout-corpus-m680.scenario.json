@@ -1,0 +1,23 @@
+{
+  "id": "mischievous-lookout-corpus-m680",
+  "description": "M6 corpus — Mischievous Lookout; in-hand parse.",
+  "seed": 63437,
+  "cards": {
+    "Mischievous Lookout": "Name:Mischievous Lookout\nManaCost:W B\nTypes:Enchantment Creature Rat Glimmer\nPT:2/1\nS:Mode$ Continuous | Affected$ Permanent.nonCreature+nonAura+nonLand | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ Once during each of your turns, you may cast a noncreature, non-Aura permanent spell from your graveyard.\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.MayPlaySource | TriggerZones$ Battlefield | Static$ True | Execute$ DBAnimate | TriggerDescription$ If you do, it perpetually becomes a 2/1 Rat creature in addition to its other types.\nSVar:DBAnimate:DB$ Animate | Defined$ TriggeredCard | Power$ 2 | Toughness$ 1 | Duration$ Perpetual | Types$ Rat,Creature\nOracle:Once during each of your turns, you may cast a noncreature, non-Aura permanent spell from your graveyard. If you do, it perpetually becomes a 2/1 Rat creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mischievous Lookout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

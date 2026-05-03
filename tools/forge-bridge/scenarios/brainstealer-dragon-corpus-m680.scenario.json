@@ -1,0 +1,23 @@
+{
+  "id": "brainstealer-dragon-corpus-m680",
+  "description": "M6 corpus — Brainstealer Dragon; in-hand parse.",
+  "seed": 61765,
+  "cards": {
+    "Brainstealer Dragon": "Name:Brainstealer Dragon\nManaCost:5 B B\nTypes:Creature Dragon Horror\nPT:6/6\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your end step, exile the top card of each opponent's library. You may play those cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\nSVar:TrigExile:DB$ Dig | Defined$ Player.Opponent | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlayIgnoreColor$ True | Description$ You may play those cards for as long as they remain exiled, and you may spend mana as though it were mana of any color to cast them.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.OppOwn+YouCtrl+nonLand | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a nonland permanent an opponent owns enters the battlefield under your control, they lose life equal to its mana value.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardOwner | LifeAmount$ X\nSVar:X:TriggeredCard$CardManaCost\nOracle:Flying\\nAt the beginning of your end step, exile the top card of each opponent's library. You may play those cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\\nWhenever a nonland permanent an opponent owns enters the battlefield under your control, they lose life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brainstealer Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "roalesk-apex-hybrid-corpus-m680",
+  "description": "M6 corpus — Roalesk, Apex Hybrid; in-hand parse.",
+  "seed": 64021,
+  "cards": {
+    "Roalesk, Apex Hybrid": "Name:Roalesk, Apex Hybrid\nManaCost:2 G G U\nTypes:Legendary Creature Human Mutant\nPT:4/5\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two +1/+1 counters on another target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigProliferate | TriggerDescription$ When NICKNAME dies, proliferate, then proliferate again.\nSVar:TrigProliferate:DB$ Proliferate | SubAbility$ TrigProliferate2\nSVar:TrigProliferate2:DB$ Proliferate\nDeckHas:Ability$Proliferate|Counters\nDeckNeeds:Ability$Counters\nOracle:Flying, trample\\nWhen Roalesk, Apex Hybrid enters, put two +1/+1 counters on another target creature you control.\\nWhen Roalesk dies, proliferate, then proliferate again. (Choose any number of permanents and/or players, then give each another counter of each kind already there. Then do it again.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roalesk, Apex Hybrid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

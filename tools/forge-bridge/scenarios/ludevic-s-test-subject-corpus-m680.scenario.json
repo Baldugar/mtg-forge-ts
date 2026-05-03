@@ -1,0 +1,23 @@
+{
+  "id": "ludevic-s-test-subject-corpus-m680",
+  "description": "M6 corpus — Ludevic's Test Subject; in-hand parse.",
+  "seed": 63279,
+  "cards": {
+    "Ludevic's Test Subject": "Name:Ludevic's Test Subject\nManaCost:1 U\nTypes:Creature Lizard Egg\nPT:0/3\nK:Defender\nA:AB$ PutCounter | Cost$ 1 U | Defined$ Self | CounterType$ HATCHLING | CounterNum$ 1 | AILogic$ CheckDFC | SubAbility$ DBBranch | SpellDescription$ Put a hatchling counter on CARDNAME. Then if there are five or more hatchling counters on it, remove all of them and transform it.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ HatchTimer | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ HATCHLING | CounterNum$ All | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:HatchTimer:Count$Valid Card.Self+counters_GE5_HATCHLING\nAlternateMode:DoubleFaced\nOracle:Defender\\n{1}{U}: Put a hatchling counter on Ludevic's Test Subject. Then if there are five or more hatchling counters on it, remove all of them and transform it.\n\nALTERNATE\n\nName:Ludevic's Abomination\nManaCost:no cost\nColors:blue\nTypes:Creature Lizard Horror\nPT:13/13\nK:Trample\nOracle:Trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ludevic's Test Subject"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

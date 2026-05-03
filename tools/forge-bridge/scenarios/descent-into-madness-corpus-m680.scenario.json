@@ -1,0 +1,23 @@
+{
+  "id": "descent-into-madness-corpus-m680",
+  "description": "M6 corpus — Descent into Madness; in-hand parse.",
+  "seed": 62154,
+  "cards": {
+    "Descent into Madness": "Name:Descent into Madness\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a despair counter on CARDNAME, then each player exiles X permanents they control and/or cards from their hand, where X is the number of despair counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DESPAIR | CounterNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | DefinedPlayer$ Player | ChangeNum$ X | Hidden$ True | Origin$ Battlefield,Hand | Destination$ Exile | Mandatory$ True\nSVar:X:Count$CardCounters.DESPAIR\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, put a despair counter on Descent into Madness, then each player exiles X permanents they control and/or cards from their hand, where X is the number of despair counters on Descent into Madness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Descent into Madness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

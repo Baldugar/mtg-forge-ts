@@ -1,0 +1,23 @@
+{
+  "id": "ghostly-touch-corpus-m680",
+  "description": "M6 corpus — Ghostly Touch; in-hand parse.",
+  "seed": 62632,
+  "cards": {
+    "Ghostly Touch": "Name:Ghostly Touch\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ AttackTrigger | AddSVar$ TrigTapUnTap | Description$ Enchanted creature has \"Whenever this creature attacks, you may tap or untap target permanent.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTapUnTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, you may tap or untap target permanent.\nSVar:TrigTapUnTap:DB$ TapOrUntap | ValidTgts$ Permanent\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, you may tap or untap target permanent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghostly Touch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

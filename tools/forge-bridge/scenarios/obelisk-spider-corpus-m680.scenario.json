@@ -1,0 +1,23 @@
+{
+  "id": "obelisk-spider-corpus-m680",
+  "description": "M6 corpus — Obelisk Spider; in-hand parse.",
+  "seed": 63594,
+  "cards": {
+    "Obelisk Spider": "Name:Obelisk Spider\nManaCost:1 B G\nTypes:Creature Spider\nPT:1/4\nK:Reach\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, put a -1/-1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredTargetLKICopy | CounterType$ M1M1 | CounterNum$ 1\nT:Mode$ CounterAddedOnce | ValidCard$ Creature | ValidSource$ You | CounterType$ M1M1 | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you put one or more -1/-1 counters on a creature, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Counters\nOracle:Reach\\nWhenever Obelisk Spider deals combat damage to a creature, put a -1/-1 counter on that creature.\\nWhenever you put one or more -1/-1 counters on a creature, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obelisk Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "salt-road-ambushers-corpus-m680",
+  "description": "M6 corpus — Salt Road Ambushers; in-hand parse.",
+  "seed": 64111,
+  "cards": {
+    "Salt Road Ambushers": "Name:Salt Road Ambushers\nManaCost:3 G\nTypes:Creature Dog Warrior\nPT:3/3\nK:Megamorph:3 G G\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.Creature+YouCtrl+Other | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever another permanent you control is turned face up, if it's a creature, put two +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 2 | ConditionDefined$ TriggeredCard | ConditionPresent$ Creature\nDeckHas:Ability$Counters\nOracle:Whenever another permanent you control is turned face up, if it's a creature, put two +1/+1 counters on it.\\nMegamorph {3}{G}{G} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salt Road Ambushers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

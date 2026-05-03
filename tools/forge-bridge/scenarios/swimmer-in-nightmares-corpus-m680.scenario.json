@@ -1,0 +1,23 @@
+{
+  "id": "swimmer-in-nightmares-corpus-m680",
+  "description": "M6 corpus — Swimmer in Nightmares; in-hand parse.",
+  "seed": 64540,
+  "cards": {
+    "Swimmer in Nightmares": "Name:Swimmer in Nightmares\nManaCost:2 U\nTypes:Creature Nightmare Merfolk\nPT:1/4\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | CheckSVar$ X | SVarCompare$ GE10 | Description$ CARDNAME gets +3/+0 as long as there are ten or more cards in a single graveyard.\nSVar:X:PlayerCountPlayers$HighestCardsInGraveyard\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | IsPresent$ Planeswalker.Ashiok+YouCtrl | Description$ CARDNAME can't be blocked as long as you control an Ashiok planeswalker.\nSVar:BuffedBy:Ashiok\nDeckHints:Type$Ashiok\nOracle:Swimmer in Nightmares gets +3/+0 as long as there are ten or more cards in a single graveyard.\\nSwimmer in Nightmares can't be blocked as long as you control an Ashiok planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swimmer in Nightmares"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

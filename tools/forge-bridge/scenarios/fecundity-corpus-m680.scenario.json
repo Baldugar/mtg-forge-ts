@@ -1,0 +1,23 @@
+{
+  "id": "fecundity-corpus-m680",
+  "description": "M6 corpus — Fecundity; in-hand parse.",
+  "seed": 62458,
+  "cards": {
+    "Fecundity": "Name:Fecundity\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever a creature dies, that creature's controller may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a creature dies, that creature's controller may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fecundity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

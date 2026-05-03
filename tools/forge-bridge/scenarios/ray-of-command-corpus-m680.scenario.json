@@ -1,0 +1,23 @@
+{
+  "id": "ray-of-command-corpus-m680",
+  "description": "M6 corpus — Ray of Command; in-hand parse.",
+  "seed": 63915,
+  "cards": {
+    "Ray of Command": "Name:Ray of Command\nManaCost:3 U\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature opponent controls | SubAbility$ DBChange | SpellDescription$ Untap target creature an opponent controls and gain control of it until end of turn. That creature gains haste until end of turn.\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT | SubAbility$ DBDelay\nSVar:DBDelay:DB$ DelayedTrigger | Mode$ ChangesController | ValidCard$ Card.IsTriggerRemembered | ValidOriginalController$ You | RememberObjects$ Targeted | Execute$ TrigTap | SpellDescription$ When you lose control of the creature, tap it.\nSVar:TrigTap:DB$ Tap | Defined$ DelayTriggerRememberedLKI\nOracle:Untap target creature an opponent controls and gain control of it until end of turn. That creature gains haste until end of turn. When you lose control of the creature, tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ray of Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

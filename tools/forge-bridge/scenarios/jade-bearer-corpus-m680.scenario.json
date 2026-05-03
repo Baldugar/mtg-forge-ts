@@ -1,0 +1,23 @@
+{
+  "id": "jade-bearer-corpus-m680",
+  "description": "M6 corpus — Jade Bearer; in-hand parse.",
+  "seed": 63019,
+  "cards": {
+    "Jade Bearer": "Name:Jade Bearer\nManaCost:G\nTypes:Creature Merfolk Shaman\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on another target Merfolk you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Merfolk.Other+YouCtrl | TgtPrompt$ Select another target Merfolk you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Type$Merfolk\nOracle:When Jade Bearer enters, put a +1/+1 counter on another target Merfolk you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jade Bearer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glint-weaver-corpus-m680",
+  "description": "M6 corpus — Glint Weaver; in-hand parse.",
+  "seed": 62658,
+  "cards": {
+    "Glint Weaver": "Name:Glint Weaver\nManaCost:5 G G\nTypes:Creature Spider\nPT:3/3\nK:Reach\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, distribute three +1/+1 counters among one, two, or three target creatures, then you gain life equal to the greatest toughness among creatures you control.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select one, two or three target creatures | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBGainLife | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardToughness\nDeckHas:Ability$LifeGain|Counters\nOracle:Reach\\nWhen Glint Weaver enters, distribute three +1/+1 counters among one, two, or three target creatures, then you gain life equal to the greatest toughness among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

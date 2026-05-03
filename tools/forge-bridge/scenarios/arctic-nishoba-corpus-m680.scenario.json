@@ -1,0 +1,23 @@
+{
+  "id": "arctic-nishoba-corpus-m680",
+  "description": "M6 corpus — Arctic Nishoba; in-hand parse.",
+  "seed": 61556,
+  "cards": {
+    "Arctic Nishoba": "Name:Arctic Nishoba\nManaCost:5 G\nTypes:Creature Cat Warrior\nPT:6/6\nK:Trample\nK:Cumulative upkeep:GW\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGain | TriggerDescription$ When CARDNAME dies, you gain 2 life for each age counter on it.\nSVar:TrigGain:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ X\nSVar:X:TriggeredCard$CardCounters.AGE/Times.2\nOracle:Trample\\nCumulative upkeep {G} or {W} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen Arctic Nishoba dies, you gain 2 life for each age counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arctic Nishoba"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

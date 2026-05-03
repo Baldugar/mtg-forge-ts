@@ -1,0 +1,23 @@
+{
+  "id": "branching-bolt-corpus-m680",
+  "description": "M6 corpus — Branching Bolt; in-hand parse.",
+  "seed": 61769,
+  "cards": {
+    "Branching Bolt": "Name:Branching Bolt\nManaCost:1 R G\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBDmg1,DBDmg2\nSVar:DBDmg1:DB$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature with flying.\nSVar:DBDmg2:DB$ DealDamage | ValidTgts$ Creature.withoutFlying | TgtPrompt$ Select target creature without flying | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature without flying.\nOracle:Choose one or both —\\n• Branching Bolt deals 3 damage to target creature with flying.\\n• Branching Bolt deals 3 damage to target creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Branching Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

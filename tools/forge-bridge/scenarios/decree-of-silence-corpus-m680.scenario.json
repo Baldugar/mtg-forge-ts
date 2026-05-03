@@ -1,0 +1,23 @@
+{
+  "id": "decree-of-silence-corpus-m680",
+  "description": "M6 corpus — Decree of Silence; in-hand parse.",
+  "seed": 62132,
+  "cards": {
+    "Decree of Silence": "Name:Decree of Silence\nManaCost:6 U U\nTypes:Enchantment\nK:Cycling:4 U U\nT:Mode$ SpellCast | ValidCard$ Card.OppCtrl | Execute$ TrigCounterSpell | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a spell, counter that spell and put a depletion counter on CARDNAME. If there are three or more depletion counters on CARDNAME, sacrifice it.\nSVar:TrigCounterSpell:DB$ Counter | Defined$ TriggeredSpellAbility | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ DEPLETION | CounterNum$ 1 | Defined$ Self | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | ConditionCheckSVar$ DecreeX | ConditionSVarCompare$ GE1\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigCounter | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may counter target spell.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card\nSVar:DecreeX:Count$Valid Card.Self+counters_GE3_DEPLETION\n# TODO: The AI currently won't use cycling to counter the spell. That could be improved.\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a spell, counter that spell and put a depletion counter on Decree of Silence. If there are three or more depletion counters on Decree of Silence, sacrifice it.\\nCycling {4}{U}{U} ({4}{U}{U}, Discard this card: Draw a card.)\\nWhen you cycle Decree of Silence, you may counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decree of Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

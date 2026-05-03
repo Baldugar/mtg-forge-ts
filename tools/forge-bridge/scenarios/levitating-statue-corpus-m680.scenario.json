@@ -1,0 +1,23 @@
+{
+  "id": "levitating-statue-corpus-m680",
+  "description": "M6 corpus — Levitating Statue; in-hand parse.",
+  "seed": 63216,
+  "cards": {
+    "Levitating Statue": "Name:Levitating Statue\nManaCost:2\nTypes:Artifact\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Animate | Cost$ 2 | Defined$ Self | Power$ 1 | Toughness$ 1 | Types$ Creature,Artifact,Construct | RemoveCreatureTypes$ True | SpellDescription$ CARDNAME becomes a 1/1 Construct artifact creature until end of turn.\nDeckHas:Ability$Counters & Type$Construct\nDeckHints:Type$Artifact|Instant|Sorcery|Enchantment\nOracle:Flying\\nWhenever you cast a noncreature spell, put a +1/+1 counter on Levitating Statue.\\n{2}: Levitating Statue becomes a 1/1 Construct artifact creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Levitating Statue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

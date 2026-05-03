@@ -1,0 +1,23 @@
+{
+  "id": "mogg-war-marshal-corpus-m680",
+  "description": "M6 corpus — Mogg War Marshal; in-hand parse.",
+  "seed": 63453,
+  "cards": {
+    "Mogg War Marshal": "Name:Mogg War Marshal\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:Echo:1 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 red Goblin creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 red Goblin creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ TriggeredCardController\nOracle:Echo {1}{R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Mogg War Marshal enters or dies, create a 1/1 red Goblin creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogg War Marshal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

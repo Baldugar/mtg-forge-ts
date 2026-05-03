@@ -1,0 +1,23 @@
+{
+  "id": "timberline-ridge-corpus-m680",
+  "description": "M6 corpus — Timberline Ridge; in-hand parse.",
+  "seed": 64750,
+  "cards": {
+    "Timberline Ridge": "Name:Timberline Ridge\nManaCost:no cost\nTypes:Land\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self+counters_GE1_DEPLETION | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step if it has a depletion counter on it.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSubCounter | TriggerDescription$ At the beginning of your upkeep, remove a depletion counter from CARDNAME.\nSVar:TrigSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | Amount$ 1 | SubAbility$ AddCounter | SpellDescription$ Add {R} or {G}. Put a depletion counter on CARDNAME.\nSVar:AddCounter:DB$ PutCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nOracle:Timberline Ridge doesn't untap during your untap step if it has a depletion counter on it.\\nAt the beginning of your upkeep, remove a depletion counter from Timberline Ridge.\\n{T}: Add {R} or {G}. Put a depletion counter on Timberline Ridge.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timberline Ridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

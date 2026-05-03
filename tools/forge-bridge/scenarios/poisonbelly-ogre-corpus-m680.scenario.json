@@ -1,0 +1,23 @@
+{
+  "id": "poisonbelly-ogre-corpus-m680",
+  "description": "M6 corpus — Poisonbelly Ogre; in-hand parse.",
+  "seed": 63768,
+  "cards": {
+    "Poisonbelly Ogre": "Name:Poisonbelly Ogre\nManaCost:4 B\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another creature enters, its controller loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 1\nOracle:Whenever another creature enters, its controller loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poisonbelly Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

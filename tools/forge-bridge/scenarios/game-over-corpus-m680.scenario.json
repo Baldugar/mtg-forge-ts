@@ -1,0 +1,23 @@
+{
+  "id": "game-over-corpus-m680",
+  "description": "M6 corpus — Game Over; in-hand parse.",
+  "seed": 62598,
+  "cards": {
+    "Game Over": "Name:Game Over\nManaCost:3 B B\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | CheckSVar$ X | Description$ This spell costs {2} less to cast if a player's life total is less than or equal to half their starting life total.\nA:SP$ DestroyAll | ValidCards$ Creature | SpellDescription$ Destroy all creatures.\nSVar:X:PlayerCountPlayers$ConditionLEY LifeTotal\nSVar:Y:PlayerCountDefinedPlayer.PlayerUID_RelativePlayerUID$StartingLife/HalfDown\nOracle:This spell costs {2} less to cast if a player's life total is less than or equal to half their starting life total.\\nDestroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Game Over"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tectonic-instability-corpus-m680",
+  "description": "M6 corpus — Tectonic Instability; in-hand parse.",
+  "seed": 64600,
+  "cards": {
+    "Tectonic Instability": "Name:Tectonic Instability\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever a land enters, tap all lands its controller controls.\nSVar:TrigTap:DB$ TapAll | ValidCards$ TriggeredCard.sharesControllerWith+Land\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever a land enters, tap all lands its controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tectonic Instability"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stalwarts-of-osgiliath-corpus-m680",
+  "description": "M6 corpus — Stalwarts of Osgiliath; in-hand parse.",
+  "seed": 64445,
+  "cards": {
+    "Stalwarts of Osgiliath": "Name:Stalwarts of Osgiliath\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTempt | TriggerDescription$ When CARDNAME enters, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw your second card each turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Stalwarts of Osgiliath enters, the Ring tempts you.\\nWhenever you draw your second card each turn, put a +1/+1 counter on Stalwarts of Osgiliath.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalwarts of Osgiliath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

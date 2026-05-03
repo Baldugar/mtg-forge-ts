@@ -1,0 +1,23 @@
+{
+  "id": "aveline-de-grandpr-corpus-m680",
+  "description": "M6 corpus — Aveline de Grandpré; in-hand parse.",
+  "seed": 61611,
+  "cards": {
+    "Aveline de Grandpré": "Name:Aveline de Grandpré\nManaCost:2 G G\nTypes:Legendary Creature Human Assassin\nPT:3/3\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+withDeathtouch | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control with deathtouch deals combat damage to a player, put that many +1/+1 counters on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nK:Disguise:B G\nOracle:Deathtouch\\nWhenever a creature you control with deathtouch deals combat damage to a player, put that many +1/+1 counters on that creature.\\nDisguise {B}{G} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aveline de Grandpré"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

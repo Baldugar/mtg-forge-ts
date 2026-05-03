@@ -1,0 +1,23 @@
+{
+  "id": "kolodin-triumph-caster-corpus-m680",
+  "description": "M6 corpus — Kolodin, Triumph Caster; in-hand parse.",
+  "seed": 63145,
+  "cards": {
+    "Kolodin, Triumph Caster": "Name:Kolodin, Triumph Caster\nManaCost:R W\nTypes:Legendary Creature Human Pilot\nPT:2/3\nS:Mode$ Continuous | Affected$ Mount.YouCtrl,Vehicle.YouCtrl | AddKeyword$ Haste | Description$ Mounts and Vehicles you control have haste.\nT:Mode$ ChangesZone | ValidCard$ Mount.YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigSaddle | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Mount you control enters, it becomes saddled until end of turn.\nSVar:TrigSaddle:DB$ AlterAttribute | Defined$ TriggeredCard | Attributes$ Saddled\nT:Mode$ ChangesZone | ValidCard$ Vehicle.YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Vehicle you control enters, it becomes an artifact creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCard | Types$ Artifact,Creature\nSVar:PlayMain1:TRUE\nDeckHints:Type$Mount|Vehicle\nOracle:Mounts and Vehicles you control have haste.\\nWhenever a Mount you control enters, it becomes saddled until end of turn.\\nWhenever a Vehicle you control enters, it becomes an artifact creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kolodin, Triumph Caster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

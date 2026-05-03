@@ -1,0 +1,23 @@
+{
+  "id": "glistening-oil-corpus-m680",
+  "description": "M6 corpus — Glistening Oil; in-hand parse.",
+  "seed": 62660,
+  "cards": {
+    "Glistening Oil": "Name:Glistening Oil\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Infect | Description$ Enchanted creature has infect.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a -1/-1 counter on enchanted creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ M1M1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nOracle:Enchant creature\\nEnchanted creature has infect.\\nAt the beginning of your upkeep, put a -1/-1 counter on enchanted creature.\\nWhen Glistening Oil is put into a graveyard from the battlefield, return Glistening Oil to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glistening Oil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

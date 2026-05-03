@@ -1,0 +1,23 @@
+{
+  "id": "guul-draz-overseer-corpus-m680",
+  "description": "M6 corpus — Guul Draz Overseer; in-hand parse.",
+  "seed": 62759,
+  "cards": {
+    "Guul Draz Overseer": "Name:Guul Draz Overseer\nManaCost:4 B B\nTypes:Creature Vampire\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Landfall — Whenever a land you control enters, other creatures you control get +1/+0 until end of turn. If that land is a Swamp, those creatures get +2/+0 until end of turn instead.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +X\nSVar:X:TriggeredCard$Valid Swamp/Plus.1\nOracle:Flying\\nLandfall — Whenever a land you control enters, other creatures you control get +1/+0 until end of turn. If that land is a Swamp, those creatures get +2/+0 until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guul Draz Overseer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

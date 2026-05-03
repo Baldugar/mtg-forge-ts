@@ -1,0 +1,23 @@
+{
+  "id": "boreal-outrider-corpus-m680",
+  "description": "M6 corpus — Boreal Outrider; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Boreal Outrider": "Name:Boreal Outrider\nManaCost:2 G\nTypes:Snow Creature Elf Warrior\nPT:3/2\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigEffect | TriggerZones$ Battlefield | SnowSpentForCardsColor$ True | TriggerDescription$ Whenever you cast a creature spell, if {S} of any of that spell's colors was spent to cast it, that creature enters with an additional +1/+1 counter on it. ({S} is mana from a snow source.)\nSVar:TrigEffect:DB$ Effect | RememberObjects$ TriggeredCard | ReplacementEffects$ ETBCreat | ExileOnMoved$ Stack\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ That creature enters with an additional +1/+1 counter on it.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | ETB$ True | CounterNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHints:Type$Snow\nDeckHas:Ability$Counters\nOracle:Whenever you cast a creature spell, if {S} of any of that spell's colors was spent to cast it, that creature enters with an additional +1/+1 counter on it. ({S} is mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boreal Outrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

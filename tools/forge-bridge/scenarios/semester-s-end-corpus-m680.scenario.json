@@ -1,0 +1,23 @@
+{
+  "id": "semester-s-end-corpus-m680",
+  "description": "M6 corpus — Semester's End; in-hand parse.",
+  "seed": 64201,
+  "cards": {
+    "Semester's End": "Name:Semester's End\nManaCost:3 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.YouCtrl,Planeswalker.YouCtrl | TargetMin$ 0 | TargetMax$ X | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature you control | SubAbility$ DelTrig | RememberChanged$ True | SpellDescription$ Exile any number of target creatures and/or planeswalkers you control. At the beginning of the next end step, return each of them to the battlefield under its owner's control. Each of them enters with an additional +1/+1 counter on it if it's a creature and an additional loyalty counter on it if it's a planeswalker.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigConditionEffect | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup1 | TriggerDescription$ Return each of them to the battlefield under its owner's control. Each of them enters with an additional +1/+1 counter on it if it's a creature and an additional loyalty counter on it if it's a planeswalker.\nSVar:DBCleanup1:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigConditionEffect:DB$ Effect | RememberObjects$ DelayTriggerRememberedLKI | ReplacementEffects$ ETBCreatPlans | ImprintOnHost$ True | ForgetOnMoved$ Exile | SubAbility$ DBReturn\nSVar:ETBCreatPlans:Event$ Moved | ValidCard$ Creature.IsRemembered,Planeswalker.IsRemembered | Destination$ Battlefield | ReplaceWith$ DBPutP1P1 | ReplacementResult$ Updated | Description$ It enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker.\nSVar:DBPutP1P1:DB$ PutCounter | Defined$ ReplacedNewCard.Creature | CounterType$ P1P1 | ETB$ True | CounterNum$ 1 | SubAbility$ DBPutLOYALTY\nSVar:DBPutLOYALTY:DB$ PutCounter | Defined$ ReplacedNewCard.Planeswalker | CounterType$ LOYALTY | ETB$ True | CounterNum$ 1\nSVar:X:Count$Valid Permanent.YouCtrl\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI | SubAbility$ DBCleanEff\nSVar:DBCleanEff:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Imprinted | SubAbility$ DBCleanup2\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True\nDeckHas:Ability$Counters\nOracle:Exile any number of target creatures and/or planeswalkers you control. At the beginning of the next end step, return each of them to the battlefield under its owner's control. Each of them enters with an additional +1/+1 counter on it if it's a creature and an additional loyalty counter on it if it's a planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Semester's End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

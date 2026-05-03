@@ -1,0 +1,23 @@
+{
+  "id": "azor-s-elocutors-corpus-m680",
+  "description": "M6 corpus — Azor's Elocutors; in-hand parse.",
+  "seed": 61629,
+  "cards": {
+    "Azor's Elocutors": "Name:Azor's Elocutors\nManaCost:3 WU WU\nTypes:Creature Human Advisor\nPT:3/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ PutCounter | TriggerDescription$ At the beginning of your upkeep, put a filibuster counter on CARDNAME. Then if CARDNAME has five or more filibuster counters on it, you win the game.\nSVar:PutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FILIBUSTER | CounterNum$ 1 | SubAbility$ WinGame\nSVar:WinGame:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ TalkedEnough | ConditionSVarCompare$ GE5\nSVar:TalkedEnough:Count$CardCounters.FILIBUSTER\nT:Mode$ DamageDone | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ RemoveCounter | TriggerDescription$ Whenever a source deals damage to you, remove a filibuster counter from CARDNAME.\nSVar:RemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ FILIBUSTER | CounterNum$ 1\nSVar:AIEvaluationModifier:30\nOracle:At the beginning of your upkeep, put a filibuster counter on Azor's Elocutors. Then if Azor's Elocutors has five or more filibuster counters on it, you win the game.\\nWhenever a source deals damage to you, remove a filibuster counter from Azor's Elocutors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azor's Elocutors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

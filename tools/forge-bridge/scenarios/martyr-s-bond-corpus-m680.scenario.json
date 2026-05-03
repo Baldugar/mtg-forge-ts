@@ -1,0 +1,23 @@
+{
+  "id": "martyr-s-bond-corpus-m680",
+  "description": "M6 corpus — Martyr's Bond; in-hand parse.",
+  "seed": 63352,
+  "cards": {
+    "Martyr's Bond": "Name:Martyr's Bond\nManaCost:4 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Permanent.nonLand+YouCtrl+Other | Execute$ TrigMartyrsSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another nonland permanent you control is put into a graveyard from the battlefield, each opponent sacrifices a permanent that shares a card type with it.\nSVar:TrigMartyrsSacrifice:DB$ Sacrifice | Amount$ 1 | SacValid$ TriggeredCard.sharesCardTypeWith | Defined$ TriggeredCardOpponent | SacMessage$ permanent that shares type with it\nOracle:Whenever Martyr's Bond or another nonland permanent you control is put into a graveyard from the battlefield, each opponent sacrifices a permanent that shares a card type with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr's Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

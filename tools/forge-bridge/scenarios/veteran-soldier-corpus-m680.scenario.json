@@ -1,0 +1,23 @@
+{
+  "id": "veteran-soldier-corpus-m680",
+  "description": "M6 corpus — Veteran Soldier; in-hand parse.",
+  "seed": 64936,
+  "cards": {
+    "Veteran Soldier": "Name:Veteran Soldier\nManaCost:1 W\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ AttacksPlayer | Description$ Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, for each opponent, create a 1/1 white Soldier creature token that's tapped and attacking that player.\"\nSVar:AttacksPlayer:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player | Condition$ NoOpponentHasMoreLifeThanAttacked | Execute$ TrigRepeat | TriggerDescription$ Whenever this creature attacks a player, if no opponent has more life than that player, for each opponent, create a 1/1 white Soldier creature token that's tapped and attacking that player.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | ChangeZoneTable$ True | RepeatSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenTapped$ True | TokenAttacking$ Remembered\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Soldier\nOracle:Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, for each opponent, create a 1/1 white Soldier creature token that's tapped and attacking that player.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Soldier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

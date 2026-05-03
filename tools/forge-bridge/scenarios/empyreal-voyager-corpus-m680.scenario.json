@@ -1,0 +1,23 @@
+{
+  "id": "empyreal-voyager-corpus-m680",
+  "description": "M6 corpus — Empyreal Voyager; in-hand parse.",
+  "seed": 62329,
+  "cards": {
+    "Empyreal Voyager": "Name:Empyreal Voyager\nManaCost:1 G U\nTypes:Creature Vedalken Scout\nPT:2/3\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you get that many {E} (energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying, trample\\nWhenever Empyreal Voyager deals combat damage to a player, you get that many {E} (energy counters).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Empyreal Voyager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

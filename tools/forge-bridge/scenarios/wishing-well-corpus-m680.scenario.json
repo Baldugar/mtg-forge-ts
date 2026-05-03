@@ -1,0 +1,23 @@
+{
+  "id": "wishing-well-corpus-m680",
+  "description": "M6 corpus — Wishing Well; in-hand parse.",
+  "seed": 65072,
+  "cards": {
+    "Wishing Well": "Name:Wishing Well\nManaCost:3 U\nTypes:Artifact\nA:AB$ PutCounter | Cost$ T | Defined$ Self | SorcerySpeed$ True | CounterType$ COIN | CounterNum$ 1 | RememberAmount$ True | SubAbility$ DBImmediateTrig | SpellDescription$ Put a coin counter on CARDNAME. When you do, you may cast target instant or sorcery card with mana value equal to the number of coin counters on CARDNAME from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead. Activate only as a sorcery.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | Execute$ TrigPlay | TriggerAmount$ Count$RememberedNumber | SubAbility$ DBCleanup | TriggerDescription$ When you do, you may cast target instant or sorcery card with mana value equal to the number of coin counters on CARDNAME from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead. Activate only as a sorcery.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant.YouCtrl+cmcEQX,Sorcery.YouCtrl+cmcEQX | ValidSA$ Spell | TgtPrompt$ Choose target instant or sorcery card with mana value equal to the number of coin counters on CARDNAME from your graveyard | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardCounters.COIN\nDeckHints:Ability$Counters\nOracle:{T}: Put a coin counter on Wishing Well. When you do, you may cast target instant or sorcery card with mana value equal to the number of coin counters on Wishing Well from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wishing Well"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

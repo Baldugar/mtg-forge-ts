@@ -1,0 +1,23 @@
+{
+  "id": "take-flight-corpus-m680",
+  "description": "M6 corpus — Take Flight; in-hand parse.",
+  "seed": 64580,
+  "cards": {
+    "Take Flight": "Name:Take Flight\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ Flying | AddTrigger$ AttackTrig | AddSVar$ AE | Description$ Enchanted creature gets +1/+0 and has flying and \"Whenever this creature attacks, draw a card.\"\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature attacks, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nEnchanted creature gets +1/+0 and has flying and \"Whenever this creature attacks, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take Flight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

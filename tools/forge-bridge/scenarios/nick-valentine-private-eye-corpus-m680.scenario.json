@@ -1,0 +1,23 @@
+{
+  "id": "nick-valentine-private-eye-corpus-m680",
+  "description": "M6 corpus — Nick Valentine, Private Eye; in-hand parse.",
+  "seed": 63554,
+  "cards": {
+    "Nick Valentine, Private Eye": "Name:Nick Valentine, Private Eye\nManaCost:2 U\nTypes:Legendary Artifact Creature Synth Detective\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.nonArtifact | Description$ CARDNAME can't be blocked except by artifact creatures.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Artifact+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever CARDNAME or another artifact creature you control dies, you may investigate. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Optional$ True\nDeckHints:Type$Artifact\nDeckHas:Ability$Investigate|Token & Type$Artifact|Clue\nOracle:Nick Valentine, Private Eye can't be blocked except by artifact creatures.\\nWhenever Nick Valentine or another artifact creature you control dies, you may investigate. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nick Valentine, Private Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

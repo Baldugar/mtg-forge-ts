@@ -1,0 +1,23 @@
+{
+  "id": "puca-s-covenant-corpus-m680",
+  "description": "M6 corpus — Puca's Covenant; in-hand parse.",
+  "seed": 63832,
+  "cards": {
+    "Puca's Covenant": "Name:Puca's Covenant\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+HasCounters | TriggerZones$ Battlefield | Execute$ TrigChangeZone | OptionalDecider$ You | ResolvedLimit$ 1 | TriggerDescription$ Whenever a creature you control with a counter on it dies, you may return another target permanent card with mana value less than or equal to the number of counters on that creature from your graveyard to your hand. Do this only once each turn.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn+cmcLEX+NotDefinedTriggeredCard | TgtPrompt$ Choose another target permanent card with mana value less than or equal to the number of counters\nSVar:X:TriggeredCard$CardCounters.ALL\nOracle:Whenever a creature you control with a counter on it dies, you may return another target permanent card with mana value less than or equal to the number of counters on that creature from your graveyard to your hand. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Puca's Covenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

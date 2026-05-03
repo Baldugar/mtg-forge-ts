@@ -1,0 +1,23 @@
+{
+  "id": "omega-heartless-evolution-corpus-m680",
+  "description": "M6 corpus — Omega, Heartless Evolution; in-hand parse.",
+  "seed": 63620,
+  "cards": {
+    "Omega, Heartless Evolution": "Name:Omega, Heartless Evolution\nManaCost:5 G U\nTypes:Legendary Artifact Creature Robot\nPT:8/8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Wave Cannon — When NICKNAME enters, for each opponent, tap up to one target nonland permanent that opponent controls. Put X stun counters on each of those permanents and you gain X life, where X is the number of nonbasic lands you control. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Card.nonLand+OppCtrl | TgtPrompt$ Choose one target nonland permanent that each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:X:Count$Valid Land.nonBasic+YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Wave Cannon — When Omega enters, for each opponent, tap up to one target nonland permanent that opponent controls. Put X stun counters on each of those permanents and you gain X life, where X is the number of nonbasic lands you control. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omega, Heartless Evolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

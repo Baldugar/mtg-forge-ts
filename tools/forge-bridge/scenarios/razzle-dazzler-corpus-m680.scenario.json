@@ -1,0 +1,23 @@
+{
+  "id": "razzle-dazzler-corpus-m680",
+  "description": "M6 corpus — Razzle-Dazzler; in-hand parse.",
+  "seed": 63919,
+  "cards": {
+    "Razzle-Dazzler": "Name:Razzle-Dazzler\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, put a +1/+1 counter on CARDNAME. It can't be blocked this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Counters\nOracle:Whenever you cast your second spell each turn, put a +1/+1 counter on Razzle-Dazzler. It can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razzle-Dazzler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

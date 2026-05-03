@@ -1,0 +1,23 @@
+{
+  "id": "as-luck-would-have-it-corpus-m680",
+  "description": "M6 corpus — As Luck Would Have It; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "As Luck Would Have It": "Name:As Luck Would Have It\nManaCost:G\nTypes:Enchantment\nK:Hexproof\nT:Mode$ RolledDie | Execute$ TrigCounters | ValidPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you roll a die, put a number of luck counters on CARDNAME equal to the result. Then if there are 100 or more luck counters on CARDNAME, you win the game.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ LUCK | CounterNum$ X | SubAbility$ DBWin\nSVar:DBWin:DB$ WinsGame | Defined$ You | ConditionPresent$ Card.Self+counters_GE100_LUCK\nSVar:X:TriggerCount$Result\nOracle:Hexproof\\nWhenever you roll a die, put a number of luck counters on As Luck Would Have It equal to the result. Then if there are 100 or more luck counters on As Luck Would Have It, you win the game. (Count both rolls if you reroll a die.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "As Luck Would Have It"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "private-research-corpus-m680",
+  "description": "M6 corpus — Private Research; in-hand parse.",
+  "seed": 63810,
+  "cards": {
+    "Private Research": "Name:Private Research\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPrivateResearchPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a page counter on CARDNAME.\nSVar:TrigPrivateResearchPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PAGE | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigPrivateResearchDraw | TriggerDescription$ When enchanted creature dies, draw a card for each page counter on CARDNAME.\nSVar:TrigPrivateResearchDraw:DB$ Draw | NumCards$ PrivateResearchX\nSVar:PrivateResearchX:Count$CardCounters.PAGE\nOracle:Enchant creature\\nAt the beginning of your upkeep, you may put a page counter on Private Research.\\nWhen enchanted creature dies, draw a card for each page counter on Private Research.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Private Research"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "turntimber-ranger-corpus-m680",
+  "description": "M6 corpus — Turntimber Ranger; in-hand parse.",
+  "seed": 64821,
+  "cards": {
+    "Turntimber Ranger": "Name:Turntimber Ranger\nManaCost:3 G G\nTypes:Creature Elf Scout Ranger Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may create a 2/2 green Wolf creature token. If you do, put a +1/+1 counter on CARDNAME.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Whenever Turntimber Ranger or another Ally you control enters, you may create a 2/2 green Wolf creature token. If you do, put a +1/+1 counter on Turntimber Ranger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turntimber Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

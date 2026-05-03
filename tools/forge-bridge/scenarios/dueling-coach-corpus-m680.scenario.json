@@ -1,0 +1,23 @@
+{
+  "id": "dueling-coach-corpus-m680",
+  "description": "M6 corpus — Dueling Coach; in-hand parse.",
+  "seed": 62253,
+  "cards": {
+    "Dueling Coach": "Name:Dueling Coach\nManaCost:3 W\nTypes:Creature Human Monk\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ PutCounterAll | Cost$ 4 W T | ValidCards$ Creature.YouCtrl+counters_GE1_P1P1 | CounterType$ P1P1 | CounterNum$ 1 | ValidCardsDesc$ creature you control with a +1/+1 counter on it. | SpellDescription$ Put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\nDeckHas:Ability$Counters\nOracle:When Dueling Coach enters, put a +1/+1 counter on target creature.\\n{4}{W}, {T}: Put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dueling Coach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

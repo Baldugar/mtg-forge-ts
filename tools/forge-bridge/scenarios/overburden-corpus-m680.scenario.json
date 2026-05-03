@@ -1,0 +1,23 @@
+{
+  "id": "overburden-corpus-m680",
+  "description": "M6 corpus — Overburden; in-hand parse.",
+  "seed": 63670,
+  "cards": {
+    "Overburden": "Name:Overburden\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever a player puts a nontoken creature onto the battlefield, that player returns a land they control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1 | Mandatory$ True | DefinedPlayer$ TriggeredCardController | Chooser$ TriggeredCardController | Hidden$ True\nAI:RemoveDeck:Random\nOracle:Whenever a player puts a nontoken creature onto the battlefield, that player returns a land they control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overburden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "electro-assaulting-battery-corpus-m680",
+  "description": "M6 corpus — Electro, Assaulting Battery; in-hand parse.",
+  "seed": 62294,
+  "cards": {
+    "Electro, Assaulting Battery": "Name:Electro, Assaulting Battery\nVariant:UniversesWithin:FlavorName:Bayo, Irritable Instructor\nManaCost:1 R R\nTypes:Legendary Creature Human Villain\nPT:2/3\nK:Flying\nS:Mode$ UnspentMana | ValidPlayer$ You | ManaType$ Red | Description$ You don't lose unspent red mana as steps and phases end.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Whenever you cast an instant or sorcery spell, add {R}.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When NICKNAME leaves the battlefield, you may pay {X}. When you do, he deals X damage to target player.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ X | Execute$ TrigDamage | TriggerDescription$ When you do, he deals X damage to target player.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player | NumDmg$ X\nSVar:X:Count$xPaid\nOracle:Flying\\nYou don't lose unspent red mana as steps and phases end.\\nWhenever you cast an instant or sorcery spell, add {R}.\\nWhen Electro leaves the battlefield, you may pay {X}. When you do, he deals X damage to target player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electro, Assaulting Battery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

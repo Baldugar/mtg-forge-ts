@@ -1,0 +1,23 @@
+{
+  "id": "cultist-of-the-absolute-corpus-m680",
+  "description": "M6 corpus — Cultist of the Absolute; in-hand parse.",
+  "seed": 62056,
+  "cards": {
+    "Cultist of the Absolute": "Name:Cultist of the Absolute\nManaCost:B\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddPower$ 3 | AddToughness$ 3 | AddKeyword$ Flying & Deathtouch & Ward:PayLife<3> | AddTrigger$ UpkeepSac | Description$ Commander creatures you own get +3/+3 and have flying, deathtouch, \"Ward—Pay 3 life,\" and \"At the beginning of your upkeep, sacrifice a creature.\"\nSVar:UpkeepSac:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Sacrifice\nOracle:Commander creatures you own get +3/+3 and have flying, deathtouch, \"Ward—Pay 3 life,\" and \"At the beginning of your upkeep, sacrifice a creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cultist of the Absolute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eagle-of-deliverance-corpus-m680",
+  "description": "M6 corpus — Eagle of Deliverance; in-hand parse.",
+  "seed": 62272,
+  "cards": {
+    "Eagle of Deliverance": "Name:Eagle of Deliverance\nManaCost:4 W W\nTypes:Creature Bird Soldier\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put an indestructible counter on another target creature you control. Draw a card if that creature's power is 2 or less.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ Indestructible | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Targeted | ConditionPresent$ Creature.powerLE2\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Eagle of Deliverance enters, put an indestructible counter on another target creature you control. Draw a card if that creature's power is 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eagle of Deliverance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

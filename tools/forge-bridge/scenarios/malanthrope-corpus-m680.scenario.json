@@ -1,0 +1,23 @@
+{
+  "id": "malanthrope-corpus-m680",
+  "description": "M6 corpus — Malanthrope; in-hand parse.",
+  "seed": 63322,
+  "cards": {
+    "Malanthrope": "Name:Malanthrope\nManaCost:1 G U\nTypes:Creature Tyranid\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Scavenge the Dead — When CARDNAME enters, exile target player's graveyard. Put a +1/+1 counter on CARDNAME for each creature card exiled this way.\nSVar:TrigExile:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SubAbility$ DBCounter | RememberChanged$ True\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature\nDeckHas:Ability$Counters\nOracle:Flying\\nScavenge the Dead — When Malanthrope enters, exile target player's graveyard. Put a +1/+1 counter on Malanthrope for each creature card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malanthrope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

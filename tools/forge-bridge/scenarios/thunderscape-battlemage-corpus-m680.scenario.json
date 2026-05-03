@@ -1,0 +1,23 @@
+{
+  "id": "thunderscape-battlemage-corpus-m680",
+  "description": "M6 corpus — Thunderscape Battlemage; in-hand parse.",
+  "seed": 64742,
+  "cards": {
+    "Thunderscape Battlemage": "Name:Thunderscape Battlemage\nManaCost:2 R\nTypes:Creature Human Wizard\nPT:2/2\nK:Kicker:1 B:G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 1 | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked with its {1}{B} kicker, target player discards two cards.\nSVar:TrigKicker:DB$ Discard | ValidTgts$ Player | TgtPrompt$ Select a player | NumCards$ 2 | Mode$ TgtChoose\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 2 | Execute$ TrigKicker2 | TriggerDescription$ When CARDNAME enters, if it was kicked with its {G} kicker, destroy target enchantment.\nSVar:TrigKicker2:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment\nSVar:PlayMain1:TRUE\nDeckHints:Color$Black|Green\nOracle:Kicker {1}{B} and/or {G} (You may pay an additional {1}{B} and/or {G} as you cast this spell.)\\nWhen Thunderscape Battlemage enters, if it was kicked with its {1}{B} kicker, target player discards two cards.\\nWhen Thunderscape Battlemage enters, if it was kicked with its {G} kicker, destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderscape Battlemage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

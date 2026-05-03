@@ -1,0 +1,23 @@
+{
+  "id": "mage-ring-responder-corpus-m680",
+  "description": "M6 corpus — Mage-Ring Responder; in-hand parse.",
+  "seed": 63305,
+  "cards": {
+    "Mage-Ring Responder": "Name:Mage-Ring Responder\nManaCost:7\nTypes:Artifact Creature Golem\nPT:7/7\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nA:AB$ Untap | Cost$ 7 | SpellDescription$ Untap this creature.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever this creature attacks, it deals 7 damage to target creature defending player controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.DefenderCtrl | TgtPrompt$ Select target creature defending player controls | NumDmg$ 7\nOracle:This creature doesn't untap during your untap step.\\n{7}: Untap this creature.\\nWhenever this creature attacks, it deals 7 damage to target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage-Ring Responder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

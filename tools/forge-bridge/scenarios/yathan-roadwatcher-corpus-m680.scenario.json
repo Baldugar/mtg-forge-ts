@@ -1,0 +1,23 @@
+{
+  "id": "yathan-roadwatcher-corpus-m680",
+  "description": "M6 corpus — Yathan Roadwatcher; in-hand parse.",
+  "seed": 65108,
+  "cards": {
+    "Yathan Roadwatcher": "Name:Yathan Roadwatcher\nManaCost:1 W B G\nTypes:Creature Human Scout\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastByYou+Self | Destination$ Battlefield | Execute$ TrigMill | TriggerDescription$ When this creature enters, if you cast it, mill four cards. When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | RememberMilled$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigChange | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ4 | SubAbility$ DBCleanup | TriggerDescription$ When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature card with mana value 3 or less in your graveyard\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When this creature enters, if you cast it, mill four cards. When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yathan Roadwatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

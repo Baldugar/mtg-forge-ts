@@ -1,0 +1,23 @@
+{
+  "id": "a-blood-artist-corpus-m680",
+  "description": "M6 corpus — A-Blood Artist; in-hand parse.",
+  "seed": 64067,
+  "cards": {
+    "A-Blood Artist": "Name:A-Blood Artist\nManaCost:1 B\nTypes:Creature Vampire\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another creature dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | TgtPrompt$ Choose an opponent to lose life | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever Blood Artist or another creature dies, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Blood Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

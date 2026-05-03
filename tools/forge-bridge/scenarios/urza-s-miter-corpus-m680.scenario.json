@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-miter-corpus-m680",
+  "description": "M6 corpus — Urza's Miter; in-hand parse.",
+  "seed": 64869,
+  "cards": {
+    "Urza's Miter": "Name:Urza's Miter\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Artifact.YouCtrl | CheckOnTriggeredCard$ X EQ0 | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Whenever an artifact you control is put into a graveyard from the battlefield, if it wasn't sacrificed, you may pay {3}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ 3 | NumCards$ 1 | Defined$ You\nSVar:X:PlayerCountPlayers$SacrificedThisTurn Card.StrictlySelf\nDeckHints:Type$Artifact\nOracle:Whenever an artifact you control is put into a graveyard from the battlefield, if it wasn't sacrificed, you may pay {3}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Miter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

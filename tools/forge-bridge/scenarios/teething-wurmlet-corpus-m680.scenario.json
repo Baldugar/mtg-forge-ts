@@ -1,0 +1,23 @@
+{
+  "id": "teething-wurmlet-corpus-m680",
+  "description": "M6 corpus — Teething Wurmlet; in-hand parse.",
+  "seed": 64601,
+  "cards": {
+    "Teething Wurmlet": "Name:Teething Wurmlet\nManaCost:G\nTypes:Creature Wurm\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | IsPresent$ Artifact.YouCtrl | PresentCompare$ GE3 | AddKeyword$ Deathtouch | Description$ CARDNAME has deathtouch as long as you control three or more artifacts.\nT:Mode$ ChangesZone | ValidCard$ Artifact.YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever an artifact you control enters, you gain 1 life. If this is the first time this ability has resolved this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ1\nSVar:Resolved:Count$ResolvedThisTurn\nDeckHints:Type$Artifact\nDeckHas:Ability$LifeGain|Counters & Keyword$Deathtouch\nOracle:Teething Wurmlet has deathtouch as long as you control three or more artifacts.\\nWhenever an artifact you control enters, you gain 1 life. If this is the first time this ability has resolved this turn, put a +1/+1 counter on Teething Wurmlet.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teething Wurmlet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

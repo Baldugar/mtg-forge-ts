@@ -1,0 +1,23 @@
+{
+  "id": "scrounging-skyray-corpus-m680",
+  "description": "M6 corpus — Scrounging Skyray; in-hand parse.",
+  "seed": 64164,
+  "cards": {
+    "Scrounging Skyray": "Name:Scrounging Skyray\nManaCost:1 U\nTypes:Creature Fish Pirate\nPT:1/2\nK:Flying\nT:Mode$ DiscardedAll | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you discard one or more cards, put that many +1/+1 counters on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$Amount\nK:Cycling:2\nOracle:Flying\\nWhenever you discard one or more cards, put that many +1/+1 counters on this creature.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrounging Skyray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

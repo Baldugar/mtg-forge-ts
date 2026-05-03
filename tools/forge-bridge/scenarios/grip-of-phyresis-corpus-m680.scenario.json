@@ -1,0 +1,23 @@
+{
+  "id": "grip-of-phyresis-corpus-m680",
+  "description": "M6 corpus — Grip of Phyresis; in-hand parse.",
+  "seed": 62727,
+  "cards": {
+    "Grip of Phyresis": "Name:Grip of Phyresis\nManaCost:2 U\nTypes:Instant\nA:SP$ GainControl | ValidTgts$ Equipment | TgtPrompt$ Select target equipment | SubAbility$ DBToken | SpellDescription$ Gain control of target Equipment, then create a 0/0 black Phyrexian Germ creature token and attach that Equipment to it.\nSVar:DBToken:DB$ Token | TokenScript$ b_0_0_phyrexian_germ | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ Targeted | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:Gain control of target Equipment, then create a 0/0 black Phyrexian Germ creature token and attach that Equipment to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grip of Phyresis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

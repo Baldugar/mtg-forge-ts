@@ -1,0 +1,23 @@
+{
+  "id": "burn-away-corpus-m680",
+  "description": "M6 corpus — Burn Away; in-hand parse.",
+  "seed": 61816,
+  "cards": {
+    "Burn Away": "Name:Burn Away\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 6 | SubAbility$ DBDelayedTrigger | SpellDescription$ CARDNAME deals 6 damage to target creature.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigExile | SpellDescription$ When that creature dies this turn, exile all cards from its controller's graveyard.\nSVar:TrigExile:DB$ ChangeZoneAll | Defined$ TriggeredCardController | Origin$ Graveyard | Destination$ Exile\nOracle:Burn Away deals 6 damage to target creature. When that creature dies this turn, exile all cards from its controller's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burn Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

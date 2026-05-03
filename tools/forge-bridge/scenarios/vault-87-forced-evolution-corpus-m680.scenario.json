@@ -1,0 +1,23 @@
+{
+  "id": "vault-87-forced-evolution-corpus-m680",
+  "description": "M6 corpus — Vault 87: Forced Evolution; in-hand parse.",
+  "seed": 64897,
+  "cards": {
+    "Vault 87: Forced Evolution": "Name:Vault 87: Forced Evolution\nManaCost:3 G U\nTypes:Enchantment Saga\nK:Chapter:3:DBSteal,DBPutCounter,DBDraw\nSVar:DBSteal:DB$ GainControl | ValidTgts$ Creature.nonMutant | TgtPrompt$ Select target non-Mutant creature | LoseControl$ LeavesPlay,LoseControl | SpellDescription$ Gain control of target non-Mutant creature for as long as you control NICKNAME.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBAnimate | SpellDescription$ Put a +1/+1 counter on target creature you control. It becomes a Mutant in addition to its other types.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Mutant | Duration$ Permanent\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SpellDescription$ Draw cards equal to the greatest power among Mutants you control.\nSVar:X:Count$Valid Creature.YouCtrl+Mutant$GreatestCardPower\nDeckHas:Ability$Counters\nDeckHints:Type$Mutant\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Gain control of target non-Mutant creature for as long as you control Vault 87.\\nII — Put a +1/+1 counter on target creature you control. It becomes a Mutant in addition to its other types.\\nIII — Draw cards equal to the greatest power among Mutants you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vault 87: Forced Evolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

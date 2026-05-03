@@ -1,0 +1,23 @@
+{
+  "id": "vogar-necropolis-tyrant-corpus-m680",
+  "description": "M6 corpus — Vogar, Necropolis Tyrant; in-hand parse.",
+  "seed": 64968,
+  "cards": {
+    "Vogar, Necropolis Tyrant": "Name:Vogar, Necropolis Tyrant\nManaCost:3 B B\nTypes:Legendary Creature Zombie Giant\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Creature.Other | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | PlayerTurn$ True | TriggerDescription$ Whenever another creature dies during your turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When NICKNAME dies, draw a card for each +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | NumCards$ XLKI\nSVar:XLKI:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:Menace\\nWhenever another creature dies during your turn, put a +1/+1 counter on Vogar Necropolis Tyrant.\\nWhen Vogar dies, draw a card for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vogar, Necropolis Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

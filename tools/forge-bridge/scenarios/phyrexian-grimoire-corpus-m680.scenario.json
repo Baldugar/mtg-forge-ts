@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-grimoire-corpus-m680",
+  "description": "M6 corpus — Phyrexian Grimoire; in-hand parse.",
+  "seed": 63743,
+  "cards": {
+    "Phyrexian Grimoire": "Name:Phyrexian Grimoire\nManaCost:3\nTypes:Artifact\nA:AB$ PumpAll | Cost$ 4 T | ValidCards$ Card.TopGraveyard2+YouCtrl | PumpZone$ Graveyard | RememberPumped$ True | SubAbility$ DBChoose | StackDescription$ None | SpellDescription$ Target opponent chooses one of the top two cards of your graveyard. Exile that card and put the other one into your hand.\nSVar:DBChoose:DB$ ChooseCard | ValidTgts$ Opponent | Choices$ Card.IsRemembered | ChoiceZone$ Graveyard | Mandatory$ True | ForgetChosen$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:{4}, {T}: Target opponent chooses one of the top two cards of your graveyard. Exile that card and put the other one into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Grimoire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

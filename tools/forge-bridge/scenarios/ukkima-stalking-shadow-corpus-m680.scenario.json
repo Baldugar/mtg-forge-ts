@@ -1,0 +1,23 @@
+{
+  "id": "ukkima-stalking-shadow-corpus-m680",
+  "description": "M6 corpus — Ukkima, Stalking Shadow; in-hand parse.",
+  "seed": 64832,
+  "cards": {
+    "Ukkima, Stalking Shadow": "Name:Ukkima, Stalking Shadow\nManaCost:1 U B\nTypes:Legendary Creature Whale Wolf\nPT:2/2\nK:Partner with:Cazur, Ruthless Stalker:Cazur\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When NICKNAME leaves the battlefield, it deals X damage to target player and you gain X life, where X is its power.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player | NumDmg$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$LifeGain\nOracle:Partner with Cazur, Ruthless Stalker (When this creature enters, target player may put Cazur into their hand from their library, then shuffle.)\\nUkkima, Stalking Shadow can't be blocked.\\nWhen Ukkima leaves the battlefield, it deals X damage to target player and you gain X life, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ukkima, Stalking Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

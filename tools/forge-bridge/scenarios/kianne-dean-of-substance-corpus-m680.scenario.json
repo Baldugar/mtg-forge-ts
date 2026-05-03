@@ -1,0 +1,23 @@
+{
+  "id": "kianne-dean-of-substance-corpus-m680",
+  "description": "M6 corpus — Kianne, Dean of Substance; in-hand parse.",
+  "seed": 63121,
+  "cards": {
+    "Kianne, Dean of Substance": "Name:Kianne, Dean of Substance\nManaCost:2 G\nTypes:Legendary Creature Elf Druid\nPT:2/2\nA:AB$ Dig | Cost$ T | DigNum$ 1 | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library. If it's a land card, put it into your hand. Otherwise, put a study counter on it.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ GE1 | StackDescription$ None | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ STUDY | TgtZone$ Exile | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ LT1 | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nA:AB$ Token | Cost$ 4 G | TokenScript$ gu_0_0_fractal | ImprintTokens$ True | SubAbility$ DBCounters | SpellDescription$ Create a 0/0 green and blue Fractal creature token. Put a +1/+1 counter on it for each different mana value among nonland cards you own in exile with study counters on them.\nSVar:DBCounters:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ X | StackDescription$ None | SubAbility$ DBCleanup\nSVar:X:Count$ValidExile Card.YouOwn+nonLand+counters_GE1_STUDY$DifferentCardManaCost\nDeckHas:Ability$Counters|Token\nAlternateMode:Modal\nOracle:{T}: Exile the top card of your library. If it's a land card, put it into your hand. Otherwise, put a study counter on it.\\n{4}{G}: Create a 0/0 green and blue Fractal creature token. Put a +1/+1 counter on it for each different mana value among nonland cards you own in exile with study counters on them.\n\nALTERNATE\n\nName:Imbraham, Dean of Theory\nManaCost:2 U U\nTypes:Legendary Creature Bird Wizard\nPT:3/3\nK:Flying\nA:AB$ Dig | Cost$ X U U T | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBCounter | StackDescription$ SpellDescription | SpellDescription$ Exile the top X cards of your library and put a study counter on each of them. Then you may put a card you own in exile with a study counter on it into your hand.\nSVar:DBCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ STUDY | TgtZone$ Exile | StackDescription$ None | SubAbility$ DBHand\nSVar:DBHand:DB$ ChangeZone | Hidden$ True | Origin$ Exile | Destination$ Hand | ChangeType$ Card.YouOwn+counters_GE1_STUDY | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Flying\\n{X}{U}{U}, {T}: Exile the top X cards of your library and put a study counter on each of them. Then you may put a card you own in exile with a study counter on it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kianne, Dean of Substance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

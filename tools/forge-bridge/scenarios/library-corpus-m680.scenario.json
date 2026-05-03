@@ -1,0 +1,23 @@
+{
+  "id": "library-corpus-m680",
+  "description": "M6 corpus — Library; in-hand parse.",
+  "seed": 63221,
+  "cards": {
+    "Library": "Name:Library\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nA:AB$ Investigate | Cost$ 4 T | SpellDescription$ Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nDeckHints:Ability$Investigate|Token\nOracle:Library enters tapped.\\n{T}: Add {U} or {R}.\\n{4}, {T}: Investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Library"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

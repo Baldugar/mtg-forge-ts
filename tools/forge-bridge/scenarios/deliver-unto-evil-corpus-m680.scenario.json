@@ -1,0 +1,23 @@
+{
+  "id": "deliver-unto-evil-corpus-m680",
+  "description": "M6 corpus — Deliver Unto Evil; in-hand parse.",
+  "seed": 62145,
+  "cards": {
+    "Deliver Unto Evil": "Name:Deliver Unto Evil\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Card.YouCtrl | TargetMin$ 0 | TargetMax$ 4 | TgtZone$ Graveyard | SubAbility$ DBBranch | StackDescription$ SpellDescription | SpellDescription$ Choose up to four target cards in your graveyard. If you control a Bolas planeswalker, return those cards to your hand. Otherwise, an opponent chooses two of them. Leave the chosen cards in your graveyard and put the rest into your hand. Exile CARDNAME.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBChangeZone | FalseSubAbility$ DBChooseOpp | SubAbility$ DBExile\nSVar:X:Count$Valid Planeswalker.Bolas+YouCtrl\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Targeted | Origin$ Graveyard | Destination$ Hand\nSVar:DBChooseOpp:DB$ ChoosePlayer | Choices$ Player.Opponent | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | DefinedCards$ Targeted | ChoiceZone$ Graveyard | Amount$ 2 | Mandatory$ True | Defined$ ChosenPlayer | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Targeted.!ChosenCard | Origin$ Graveyard | Destination$ Hand\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$ValidGraveyard Card.YouOwn\nOracle:Choose up to four target cards in your graveyard. If you control a Bolas planeswalker, return those cards to your hand. Otherwise, an opponent chooses two of them. Leave the chosen cards in your graveyard and put the rest into your hand.\\nExile Deliver Unto Evil.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deliver Unto Evil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

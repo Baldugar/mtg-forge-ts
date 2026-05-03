@@ -1,0 +1,23 @@
+{
+  "id": "tolarian-entrancer-corpus-m680",
+  "description": "M6 corpus — Tolarian Entrancer; in-hand parse.",
+  "seed": 64763,
+  "cards": {
+    "Tolarian Entrancer": "Name:Tolarian Entrancer\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, gain control of that creature at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigGainControl | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Gain control of blocking creature.\nSVar:TrigGainControl:DB$ GainControl | Defined$ DelayTriggerRememberedLKI | NewController$ You\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Tolarian Entrancer becomes blocked by a creature, gain control of that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolarian Entrancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

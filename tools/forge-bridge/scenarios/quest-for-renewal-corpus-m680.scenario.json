@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-renewal-corpus-m680",
+  "description": "M6 corpus — Quest for Renewal; in-hand parse.",
+  "seed": 63858,
+  "cards": {
+    "Quest for Renewal": "Name:Quest for Renewal\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Taps | ValidCard$ Creature.YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control becomes tapped, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nS:Mode$ UntapOtherPlayer | ValidCard$ Creature.YouCtrl | IsPresent$ Card.Self+counters_GE4_QUEST | Description$ As long as there are four or more quest counters on CARDNAME, untap all creatures you control during each other player's untap step.\nSVar:PlayMain1:TRUE\nSVar:MaxQuestEffect:4\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control becomes tapped, you may put a quest counter on Quest for Renewal.\\nAs long as there are four or more quest counters on Quest for Renewal, untap all creatures you control during each other player's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "magus-lucea-kane-corpus-m680",
+  "description": "M6 corpus — Magus Lucea Kane; in-hand parse.",
+  "seed": 63312,
+  "cards": {
+    "Magus Lucea Kane": "Name:Magus Lucea Kane\nManaCost:1 G U R\nTypes:Legendary Creature Human Tyranid Wizard\nPT:1/1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Mana | PrecostDesc$ Psychic Stimulus — | SubAbility$ DBEffect | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}. When you next cast a spell with {X} in its mana cost or activate an ability with {X} in its activation cost this turn, copy that spell or ability. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:DBEffect:DB$ Effect | Triggers$ CopySpellCast\nSVar:CopySpellCast:Mode$ SpellAbilityCast | ValidActivatingPlayer$ You | ValidSA$ Activated,Spell | OneOff$ True | Execute$ TrigCopySpell | HasXManaCost$ True | TriggerDescription$ When you next cast a spell with {X} in its mana cost or activate an ability with {X} in its activation cost this turn, copy that spell or ability. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | AILogic$ Always\nDeckHas:Ability$Counters|Token\nOracle:Spiritual Leader — At the beginning of combat on your turn, put a +1/+1 counter on target creature.\\nPsychic Stimulus — {T}: Add {C}{C}. When you next cast a spell with {X} in its mana cost or activate an ability with {X} in its activation cost this turn, copy that spell or ability. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magus Lucea Kane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

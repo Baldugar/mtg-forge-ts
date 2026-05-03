@@ -1,0 +1,23 @@
+{
+  "id": "predator-ooze-corpus-m680",
+  "description": "M6 corpus — Predator Ooze; in-hand parse.",
+  "seed": 63787,
+  "cards": {
+    "Predator Ooze": "Name:Predator Ooze\nManaCost:G G G\nTypes:Creature Ooze\nPT:1/1\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +1/+1 counter on CARDNAME.\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Indestructible\\nWhenever Predator Ooze attacks, put a +1/+1 counter on it.\\nWhenever a creature dealt damage by Predator Ooze this turn dies, put a +1/+1 counter on Predator Ooze.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predator Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

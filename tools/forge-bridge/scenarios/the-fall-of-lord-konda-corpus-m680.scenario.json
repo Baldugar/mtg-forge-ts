@@ -1,0 +1,23 @@
+{
+  "id": "the-fall-of-lord-konda-corpus-m680",
+  "description": "M6 corpus — The Fall of Lord Konda; in-hand parse.",
+  "seed": 64654,
+  "cards": {
+    "The Fall of Lord Konda": "Name:The Fall of Lord Konda\nManaCost:2 W\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBRetake,DBTransform\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl+cmcGE4 | TgtPrompt$ Choose target creature an opponent controls with mana value 4 or greater | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature an opponent controls with mana value 4 or greater.\nSVar:DBRetake:DB$ GainControlVariant | AllValid$ Permanent | ChangeController$ CardOwner | SpellDescription$ Each player gains control of all permanents they own.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Exile target creature an opponent controls with mana value 4 or greater.\\nII — Each player gains control of all permanents they own.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Fragment of Konda\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Human Noble\nPT:1/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nSVar:SacMe:1\nOracle:Defender\\nWhen Fragment of Konda dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fall of Lord Konda"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

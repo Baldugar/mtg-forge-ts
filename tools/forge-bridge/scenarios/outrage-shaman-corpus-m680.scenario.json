@@ -1,0 +1,23 @@
+{
+  "id": "outrage-shaman-corpus-m680",
+  "description": "M6 corpus — Outrage Shaman; in-hand parse.",
+  "seed": 63669,
+  "cards": {
+    "Outrage Shaman": "Name:Outrage Shaman\nManaCost:3 R R\nTypes:Creature Goblin Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Chroma — When CARDNAME enters, it deals damage to target creature equal to the number of red mana symbols in the mana costs of permanents you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X\nSVar:X:Count$Chroma.Red\nSVar:PlayMain1:TRUE\nOracle:Chroma — When Outrage Shaman enters, it deals damage to target creature equal to the number of red mana symbols in the mana costs of permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outrage Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "plumecreed-mentor-corpus-m680",
+  "description": "M6 corpus — Plumecreed Mentor; in-hand parse.",
+  "seed": 63764,
+  "cards": {
+    "Plumecreed Mentor": "Name:Plumecreed Mentor\nManaCost:1 W U\nTypes:Creature Bird Scout\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+YouCtrl+withFlying | Origin$ Any | Destination$ Battlefield | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control with flying enters, put a +1/+1 counter on target creature you control without flying.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.withoutFlying+YouCtrl | TgtPrompt$ Select target creature you control without flying. | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever Plumecreed Mentor or another creature you control with flying enters, put a +1/+1 counter on target creature you control without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plumecreed Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

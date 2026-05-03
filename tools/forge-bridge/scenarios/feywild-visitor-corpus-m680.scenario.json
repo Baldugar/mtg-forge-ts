@@ -1,0 +1,23 @@
+{
+  "id": "feywild-visitor-corpus-m680",
+  "description": "M6 corpus — Feywild Visitor; in-hand parse.",
+  "seed": 62477,
+  "cards": {
+    "Feywild Visitor": "Name:Feywild Visitor\nManaCost:2 U\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ Damage | Description$ Commander creatures you own have \"Whenever one or more nontoken creatures you control deal combat damage to a player, you create a 1/1 blue Faerie Dragon creature token with flying.\"\nSVar:Damage:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigToken | TriggerDescription$ Whenever one or more nontoken creatures you control deal combat damage to a player, you create a 1/1 blue Faerie Dragon creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_faerie_dragon_flying\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Faerie|Dragon\nOracle:Commander creatures you own have \"Whenever one or more nontoken creatures you control deal combat damage to a player, you create a 1/1 blue Faerie Dragon creature token with flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feywild Visitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

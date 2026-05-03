@@ -1,0 +1,23 @@
+{
+  "id": "skirk-commando-corpus-m680",
+  "description": "M6 corpus — Skirk Commando; in-hand parse.",
+  "seed": 64299,
+  "cards": {
+    "Skirk Commando": "Name:Skirk Commando\nManaCost:1 R R\nTypes:Creature Goblin\nPT:2/1\nK:Morph:2 R\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may have it deal 2 damage to target creature that player controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature controlled by that player | NumDmg$ 2\nOracle:Whenever Skirk Commando deals combat damage to a player, you may have it deal 2 damage to target creature that player controls.\\nMorph {2}{R} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skirk Commando"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

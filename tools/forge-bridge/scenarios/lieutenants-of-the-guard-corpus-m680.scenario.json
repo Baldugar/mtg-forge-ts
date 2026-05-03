@@ -1,0 +1,23 @@
+{
+  "id": "lieutenants-of-the-guard-corpus-m680",
+  "description": "M6 corpus — Lieutenants of the Guard; in-hand parse.",
+  "seed": 63225,
+  "cards": {
+    "Lieutenants of the Guard": "Name:Lieutenants of the Guard\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Council's dilemma — When CARDNAME enters, starting with you, each player votes for strength or numbers. Put a +1/+1 counter on CARDNAME for each strength vote and create a 1/1 white Soldier creature token for each numbers vote.\nSVar:TrigChangeZone:DB$ Vote | Defined$ Player | Choices$ DBVoteStrength,DBVoteNumbers | StoreVoteNum$ True | AILogic$ StrengthOrNumbers\nSVar:DBVoteStrength:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ VoteNum | SpellDescription$ Strength\nSVar:DBVoteNumbers:DB$ Token | TokenAmount$ VoteNum | TokenScript$ w_1_1_soldier | TokenOwner$ You | SpellDescription$ Numbers\nDeckHas:Ability$Counters|Token\nOracle:Council's dilemma — When Lieutenants of the Guard enters, starting with you, each player votes for strength or numbers. Put a +1/+1 counter on Lieutenants of the Guard for each strength vote and create a 1/1 white Soldier creature token for each numbers vote.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lieutenants of the Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "power-fist-corpus-m680",
+  "description": "M6 corpus — Power Fist; in-hand parse.",
+  "seed": 63781,
+  "cards": {
+    "Power Fist": "Name:Power Fist\nManaCost:1 G\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Trample | AddTrigger$ DamageTrigger | Description$ Equipped creature has trample and \"Whenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\"\nSVar:DamageTrigger:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nK:Equip:2\nOracle:Equipped creature has trample and \"Whenever this creature deals combat damage to a player, put that many +1/+1 counters on it.\"\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Fist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

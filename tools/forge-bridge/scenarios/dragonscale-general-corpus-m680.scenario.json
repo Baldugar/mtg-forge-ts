@@ -1,0 +1,23 @@
+{
+  "id": "dragonscale-general-corpus-m680",
+  "description": "M6 corpus — Dragonscale General; in-hand parse.",
+  "seed": 62223,
+  "cards": {
+    "Dragonscale General": "Name:Dragonscale General\nManaCost:3 W\nTypes:Creature Human Warrior\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, bolster X, where X is the number of tapped creatures you control. (Choose a creature with the least toughness among creatures you control and put X +1/+1 counters on it.)\nSVar:TrigPutCounter:DB$ PutCounter | Bolster$ X\nSVar:X:Count$Valid Creature.YouCtrl+tapped\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, bolster X, where X is the number of tapped creatures you control. (Choose a creature with the least toughness among creatures you control and put X +1/+1 counters on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonscale General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quickbeast-amulet-corpus-m680",
+  "description": "M6 corpus — Quickbeast Amulet; in-hand parse.",
+  "seed": 63865,
+  "cards": {
+    "Quickbeast Amulet": "Name:Quickbeast Amulet\nManaCost:G W\nTypes:Artifact Equipment\nK:Starting intensity:0\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +X/+X, where X is this Equipment's intensity.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigIntensify | TriggerDescription$ Whenever a creature you control enters, this Equipment intensifies by X, where X is that creature's power.\nSVar:TrigIntensify:DB$ Intensify | Amount$ Y\nSVar:Y:TriggeredCard$CardPower\nSVar:X:Count$Intensity\nK:Equip:2\nOracle:Starting intensity 0\\nEquipped creature gets +X/+X, where X is this Equipment's intensity.\\nWhenever a creature you control enters, this Equipment intensifies by X, where X is that creature's power.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quickbeast Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

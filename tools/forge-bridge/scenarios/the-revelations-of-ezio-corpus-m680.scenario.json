@@ -1,0 +1,23 @@
+{
+  "id": "the-revelations-of-ezio-corpus-m680",
+  "description": "M6 corpus — The Revelations of Ezio; in-hand parse.",
+  "seed": 64683,
+  "cards": {
+    "The Revelations of Ezio": "Name:The Revelations of Ezio\nManaCost:2 B\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBEffect,DBChangeZone\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+tapped | TgtPrompt$ Select target tapped creature an opponent controls | SpellDescription$ Destroy target tapped creature an opponent controls.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigAttack | SpellDescription$ Whenever an Assassin you control attacks this turn, put a +1/+1 counter on it.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Assassin.YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ Whenever an Assassin you control attacks this turn, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target Assassin creature card in your graveyard | ValidTgts$ Creature.Assassin+YouOwn | WithCountersType$ P1P1 | SpellDescription$ Return target Assassin creature card from your graveyard to the battlefield with an additional +1/+1 counter on it.\nDeckHas:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Destroy target tapped creature an opponent controls.\\nII — Whenever an Assassin you control attacks this turn, put a +1/+1 counter on it.\\nIII — Return target Assassin creature card from your graveyard to the battlefield with an additional +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Revelations of Ezio"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

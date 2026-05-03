@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-mages-corpus-m680",
+  "description": "M6 corpus — Oath of Mages; in-hand parse.",
+  "seed": 63590,
+  "cards": {
+    "Oath of Mages": "Name:Oath of Mages\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | Execute$ TrigOathofMages | TriggerZones$ Battlefield | OptionalDecider$ TriggeredPlayer | TriggerDescription$ At the beginning of each player's upkeep, that player chooses target player who has more life than they do and is their opponent. The first player may have CARDNAME deal 1 damage to the second player.\nSVar:TrigOathofMages:DB$ DealDamage | TargetingPlayer$ TriggeredPlayer | ValidTgts$ Player.OpponentToActive+hasMoreLifeThanActive | TgtPrompt$ Choose target player who has more life than you and is your opponent | NumDmg$ 1\nOracle:At the beginning of each player's upkeep, that player chooses target player who has more life than they do and is their opponent. The first player may have Oath of Mages deal 1 damage to the second player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Mages"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

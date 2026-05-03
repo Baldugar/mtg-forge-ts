@@ -1,0 +1,23 @@
+{
+  "id": "starfield-mystic-corpus-m680",
+  "description": "M6 corpus — Starfield Mystic; in-hand parse.",
+  "seed": 64448,
+  "cards": {
+    "Starfield Mystic": "Name:Starfield Mystic\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:2/2\nS:Mode$ ReduceCost | ValidCard$ Enchantment | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Enchantment spells you cast cost {1} less to cast.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckNeeds:Type$Enchantment\nOracle:Enchantment spells you cast cost {1} less to cast.\\nWhenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on Starfield Mystic.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starfield Mystic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

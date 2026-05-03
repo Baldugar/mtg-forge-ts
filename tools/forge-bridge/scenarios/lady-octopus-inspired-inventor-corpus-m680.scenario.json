@@ -1,0 +1,23 @@
+{
+  "id": "lady-octopus-inspired-inventor-corpus-m680",
+  "description": "M6 corpus — Lady Octopus, Inspired Inventor; in-hand parse.",
+  "seed": 63176,
+  "cards": {
+    "Lady Octopus, Inspired Inventor": "Name:Lady Octopus, Inspired Inventor\nVariant:UniversesWithin:FlavorName:Merata, Neuron Hacker\nManaCost:U\nTypes:Legendary Creature Human Scientist Villain\nPT:0/2\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 1 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw your first or second card each turn, put an ingenuity counter on NICKNAME.\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever you draw your first or second card each turn, put an ingenuity counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ INGENUITY | CounterNum$ 1\nA:AB$ Play | Cost$ T | Valid$ Artifact.YouOwn | ValidSA$ Spell.cmcLEX | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True | SpellDescription$ You may cast an artifact spell from your hand with mana value less than or equal to the number of ingenuity counters on NICKNAME without paying its mana cost.\nSVar:X:Count$CardCounters.INGENUITY\nOracle:Whenever you draw your first or second card each turn, put an ingenuity counter on Lady Octopus.\\n{T}: You may cast an artifact spell from your hand with mana value less than or equal to the number of ingenuity counters on Lady Octopus without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lady Octopus, Inspired Inventor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

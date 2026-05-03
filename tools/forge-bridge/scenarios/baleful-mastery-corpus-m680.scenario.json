@@ -1,0 +1,23 @@
+{
+  "id": "baleful-mastery-corpus-m680",
+  "description": "M6 corpus — Baleful Mastery; in-hand parse.",
+  "seed": 61639,
+  "cards": {
+    "Baleful Mastery": "Name:Baleful Mastery\nManaCost:3 B\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 1 B | Description$ You may pay {1}{B} rather than pay this spell's mana cost. | StackDescription$ If the {1}{B} cost was paid, an opponent draws a card. Exile target creature or planeswalker.\nA:SP$ Pump | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBBranch | StackDescription$ Exile {c:Targeted}. | SpellDescription$ If the {1}{B} cost was paid, an opponent draws a card. Exile target creature or planeswalker.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ AltCostPaid | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ OppDraw | FalseSubAbility$ DBExile\nSVar:OppDraw:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to draw a card | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ ChosenPlayer | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile\nSVar:AltCostPaid:Count$AltCost.1.0\nOracle:You may pay {1}{B} rather than pay this spell's mana cost.\\nIf the {1}{B} cost was paid, an opponent draws a card.\\nExile target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baleful Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

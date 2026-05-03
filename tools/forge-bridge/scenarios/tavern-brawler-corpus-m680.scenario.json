@@ -1,0 +1,23 @@
+{
+  "id": "tavern-brawler-corpus-m680",
+  "description": "M6 corpus — Tavern Brawler; in-hand parse.",
+  "seed": 64597,
+  "cards": {
+    "Tavern Brawler": "Name:Tavern Brawler\nManaCost:2 R\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ Upkeep | Description$ Commander creatures you own have \"At the beginning of your upkeep, exile the top card of your library. This creature gets +X/+0 until end of turn, where X is that card's mana value. You may play that card this turn.\"\nSVar:Upkeep:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ PseudoDraw | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library. This creature gets +X/+0 until end of turn, where X is that card's mana value. You may play that card this turn.\nSVar:PseudoDraw:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +X | SubAbility$ DBEffect\nSVar:X:Remembered$CardManaCost\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:NonCommander\nOracle:Commander creatures you own have \"At the beginning of your upkeep, exile the top card of your library. This creature gets +X/+0 until end of turn, where X is that card's mana value. You may play that card this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tavern Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

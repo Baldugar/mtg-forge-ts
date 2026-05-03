@@ -1,0 +1,23 @@
+{
+  "id": "carmen-cruel-skymarcher-corpus-m680",
+  "description": "M6 corpus — Carmen, Cruel Skymarcher; in-hand parse.",
+  "seed": 61856,
+  "cards": {
+    "Carmen, Cruel Skymarcher": "Name:Carmen, Cruel Skymarcher\nManaCost:3 W B\nTypes:Legendary Creature Vampire Soldier\nPT:2/2\nK:Flying\nT:Mode$ Sacrificed | ValidCard$ Permanent | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player sacrifices a permanent, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ TrigLife\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReanimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, return up to one target permanent card with mana value less than or equal to NICKNAME's power from your graveyard to the battlefield.\nSVar:X:Count$CardPower\nSVar:TrigReanimate:DB$ ChangeZone | ValidTgts$ Permanent.YouOwn+cmcLEX | TgtPrompt$ Choose up to one target permanent card with mana value less than or equal to NICKNAME's power | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 1\nOracle:Flying\\nWhenever a player sacrifices a permanent, put a +1/+1 counter on Carmen, Cruel Skymarcher and you gain 1 life.\\nWhenever Carmen attacks, return up to one target permanent card with mana value less than or equal to Carmen's power from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carmen, Cruel Skymarcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

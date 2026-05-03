@@ -1,0 +1,23 @@
+{
+  "id": "sparring-regimen-corpus-m680",
+  "description": "M6 corpus — Sparring Regimen; in-hand parse.",
+  "seed": 64390,
+  "cards": {
+    "Sparring Regimen": "Name:Sparring Regimen\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLearn | TriggerDescription$ When CARDNAME enters, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\nSVar:TrigLearn:DB$ Learn\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, put a +1/+1 counter on target attacking creature and untap it.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Sparring Regimen enters, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\\nWhenever you attack, put a +1/+1 counter on target attacking creature and untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sparring Regimen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

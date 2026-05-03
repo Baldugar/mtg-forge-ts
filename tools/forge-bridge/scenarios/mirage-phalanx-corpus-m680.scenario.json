@@ -1,0 +1,23 @@
+{
+  "id": "mirage-phalanx-corpus-m680",
+  "description": "M6 corpus — Mirage Phalanx; in-hand parse.",
+  "seed": 63425,
+  "cards": {
+    "Mirage Phalanx": "Name:Mirage Phalanx\nManaCost:4 R R\nTypes:Creature Human Soldier\nPT:4/4\nK:Soulbond\nS:Mode$ Continuous | Affected$ Creature.PairedWith,Creature.Self+Paired | AddTrigger$ PhaseTrigger | Description$ As long as CARDNAME is paired with another creature, each of those creatures has \"At the beginning of combat on your turn, create a token that's a copy of this creature, except it has haste and loses soulbond. Exile it at end of combat.\"\nSVar:PhaseTrigger:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ At the beginning of combat on your turn, create a token that's a copy of this creature, except it has haste and loses soulbond. Exile it at end of combat.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self | RemoveKeywords$ Soulbond | AddKeywords$ Haste | AtEOT$ ExileCombat\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nOracle:Soulbond (You may pair this creature with another unpaired creature when either enters. They remain paired for as long as you control both of them.)\\nAs long as Mirage Phalanx is paired with another creature, each of those creatures has \"At the beginning of combat on your turn, create a token that's a copy of this creature, except it has haste and loses soulbond. Exile it at end of combat.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirage Phalanx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

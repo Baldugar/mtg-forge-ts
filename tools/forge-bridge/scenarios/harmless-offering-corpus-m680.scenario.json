@@ -1,0 +1,23 @@
+{
+  "id": "harmless-offering-corpus-m680",
+  "description": "M6 corpus — Harmless Offering; in-hand parse.",
+  "seed": 62790,
+  "cards": {
+    "Harmless Offering": "Name:Harmless Offering\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ DBGainControl | SpellDescription$ Target opponent gains control of target permanent you control. | StackDescription$ None\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | NewController$ ParentTarget\nAI:RemoveDeck:Random\nOracle:Target opponent gains control of target permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harmless Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

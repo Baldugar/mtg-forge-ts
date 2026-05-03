@@ -1,0 +1,23 @@
+{
+  "id": "flayer-drone-corpus-m680",
+  "description": "M6 corpus — Flayer Drone; in-hand parse.",
+  "seed": 62514,
+  "cards": {
+    "Flayer Drone": "Name:Flayer Drone\nManaCost:1 B R\nTypes:Creature Eldrazi Drone\nPT:3/1\nK:Devoid\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+Colorless+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another colorless creature you control enters, target opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:Devoid (This card has no color.)\\nFirst strike\\nWhenever another colorless creature you control enters, target opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flayer Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

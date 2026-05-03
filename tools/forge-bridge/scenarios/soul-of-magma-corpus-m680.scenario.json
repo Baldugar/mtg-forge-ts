@@ -1,0 +1,23 @@
+{
+  "id": "soul-of-magma-corpus-m680",
+  "description": "M6 corpus — Soul of Magma; in-hand parse.",
+  "seed": 64364,
+  "cards": {
+    "Soul of Magma": "Name:Soul of Magma\nManaCost:3 R R\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, CARDNAME deals 1 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 1\nSVar:BuffedBy:Arcane,Spirit\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, Soul of Magma deals 1 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul of Magma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

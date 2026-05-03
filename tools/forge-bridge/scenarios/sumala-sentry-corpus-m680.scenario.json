@@ -1,0 +1,23 @@
+{
+  "id": "sumala-sentry-corpus-m680",
+  "description": "M6 corpus — Sumala Sentry; in-hand parse.",
+  "seed": 64500,
+  "cards": {
+    "Sumala Sentry": "Name:Sumala Sentry\nManaCost:G W\nTypes:Creature Elf Archer\nPT:1/3\nK:Reach\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a face-down permanent you control is turned face up, put a +1/+1 counter on it and a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy & Self | CounterType$ P1P1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Keyword$Morph|Megamorph|Disguise\nOracle:Reach\\nWhenever a face-down permanent you control is turned face up, put a +1/+1 counter on it and a +1/+1 counter on Sumala Sentry.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sumala Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

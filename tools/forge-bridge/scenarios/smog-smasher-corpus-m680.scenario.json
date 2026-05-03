@@ -1,0 +1,23 @@
+{
+  "id": "smog-smasher-corpus-m680",
+  "description": "M6 corpus — Smog Smasher; in-hand parse.",
+  "seed": 64338,
+  "cards": {
+    "Smog Smasher": "Name:Smog Smasher\nManaCost:4 R\nTypes:Creature Mutant Berserker\nPT:4/4\nK:Menace\nK:Start your engines\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigConjure | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, conjure a duplicate of target nontoken creature into exile.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | TgtPrompt$ Select another target nontoken creature | DefinedName$ Targeted | ValidTgts$ Creature.!token | Zone$ Exile | ImprintMade$ True\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddTrigger$ PhaseTrig | Description$ Max speed — At the beginning of combat on your turn, put all cards exiled with this creature onto the battlefield. They gain haste. Sacrifice them at the beginning of the next end step.\nSVar:PhaseTrig:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | Secondary$ True | TriggerDescription$ Max speed — At the beginning of combat on your turn, put all cards exiled with this creature onto the battlefield. They gain haste. Sacrifice them at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsImprinted | Origin$ Exile | Destination$ Battlefield | GainControl$ True | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | AtEOT$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearRemembered$ True\nOracle:Menace\\nStart your engines!\\nWhenever one or more creatures you control deal combat damage to a player, conjure a duplicate of target nontoken creature into exile.\\nMax speed — At the beginning of combat on your turn, put all cards exiled with this creature onto the battlefield. They gain haste. Sacrifice them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smog Smasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

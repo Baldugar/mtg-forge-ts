@@ -1,0 +1,23 @@
+{
+  "id": "hired-claw-corpus-m680",
+  "description": "M6 corpus — Hired Claw; in-hand parse.",
+  "seed": 62838,
+  "cards": {
+    "Hired Claw": "Name:Hired Claw\nManaCost:R\nTypes:Creature Lizard Mercenary\nPT:1/2\nT:Mode$ AttackersDeclared | ValidAttackers$ Lizard.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you attack with one or more Lizards, CARDNAME deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ PutCounter | Cost$ 1 R | CounterType$ P1P1 | CounterNum$ 1 | CheckSVar$ X | ActivationLimit$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME. Activate only if an opponent lost life this turn and only once each turn.\nSVar:X:Count$LifeOppsLostThisTurn\nOracle:Whenever you attack with one or more Lizards, Hired Claw deals 1 damage to target opponent.\\n{1}{R}: Put a +1/+1 counter on Hired Claw. Activate only if an opponent lost life this turn and only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hired Claw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

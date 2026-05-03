@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-phenax-corpus-m680",
+  "description": "M6 corpus — Disciple of Phenax; in-hand parse.",
+  "seed": 62181,
+  "cards": {
+    "Disciple of Phenax": "Name:Disciple of Phenax\nManaCost:2 B B\nTypes:Creature Human Cleric\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDiscard | TriggerDescription$ When CARDNAME enters, target player reveals a number of cards from their hand equal to your devotion to black. You choose one of them. That player discards that card.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | RevealNumber$ X | Mode$ RevealYouChoose | DiscardValid$ Card\nSVar:X:Count$Devotion.Black\nOracle:When Disciple of Phenax enters, target player reveals a number of cards from their hand equal to your devotion to black. You choose one of them. That player discards that card. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of Phenax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

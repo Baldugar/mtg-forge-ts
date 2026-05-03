@@ -1,0 +1,23 @@
+{
+  "id": "panoptic-mirror-corpus-m680",
+  "description": "M6 corpus — Panoptic Mirror; in-hand parse.",
+  "seed": 63690,
+  "cards": {
+    "Panoptic Mirror": "Name:Panoptic Mirror\nManaCost:5\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ X T | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant.cmcEQX,Sorcery.cmcEQX | ChangeNum$ 1 | PrecostDesc$ Imprint — | SpellDescription$ You may exile an instant or sorcery card with mana value X from your hand.\nSVar:X:Count$xPaid\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ At the beginning of your upkeep, you may copy a card exiled with CARDNAME. If you do, you may cast the copy without paying its mana cost.\nSVar:TrigCopy:DB$ Play | Valid$ Card.IsImprinted+ExiledWithSource | ValidZone$ Exile | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | CopyCard$ True\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsImprinted+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetImprinted$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Card.Self | Destination$ Any | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nAI:RemoveDeck:All\nOracle:Imprint — {X}, {T}: You may exile an instant or sorcery card with mana value X from your hand.\\nAt the beginning of your upkeep, you may copy a card exiled with Panoptic Mirror. If you do, you may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Panoptic Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

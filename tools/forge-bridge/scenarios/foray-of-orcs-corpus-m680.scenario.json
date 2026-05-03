@@ -1,0 +1,23 @@
+{
+  "id": "foray-of-orcs-corpus-m680",
+  "description": "M6 corpus — Foray of Orcs; in-hand parse.",
+  "seed": 62531,
+  "cards": {
+    "Foray of Orcs": "Name:Foray of Orcs\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Amass | Type$ Orc | Num$ 2 | RememberAmass$ True | SubAbility$ DBImmediateTrig | SpellDescription$ Amass Orcs 2. When you do, CARDNAME deals X damage to target creature an opponent controls, where X is the amassed Army's power. (To amass Orcs 2, put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | Execute$ TrigDealDamage | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ When you do, CARDNAME deals X damage to target creature an opponent controls, where X is the amassed Army's power. (To amass Orcs 2, put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardPower\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:Amass Orcs 2. When you do, Foray of Orcs deals X damage to target creature an opponent controls, where X is the amassed Army's power. (To amass Orcs 2, put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foray of Orcs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

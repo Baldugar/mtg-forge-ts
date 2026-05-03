@@ -1,0 +1,23 @@
+{
+  "id": "ichor-wellspring-corpus-m680",
+  "description": "M6 corpus — Ichor Wellspring; in-hand parse.",
+  "seed": 62897,
+  "cards": {
+    "Ichor Wellspring": "Name:Ichor Wellspring\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, draw a card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nSVar:SacMe:5\nOracle:When Ichor Wellspring enters or is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichor Wellspring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

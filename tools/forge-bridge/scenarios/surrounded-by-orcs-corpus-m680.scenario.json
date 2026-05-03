@@ -1,0 +1,23 @@
+{
+  "id": "surrounded-by-orcs-corpus-m680",
+  "description": "M6 corpus — Surrounded by Orcs; in-hand parse.",
+  "seed": 64533,
+  "cards": {
+    "Surrounded by Orcs": "Name:Surrounded by Orcs\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Amass | Type$ Orc | Num$ 3 | RememberAmass$ True | SubAbility$ DBMill | SpellDescription$ Amass Orcs 3, then target player mills X cards, where X is the amassed Army's power. (To amass Orcs 3, put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:DBMill:DB$ Mill | NumCards$ X | ValidTgts$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nDeckHas:Ability$Token|Counters|Mill & Type$Orc|Army\nOracle:Amass Orcs 3, then target player mills X cards, where X is the amassed Army's power. (To amass Orcs 3, put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surrounded by Orcs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

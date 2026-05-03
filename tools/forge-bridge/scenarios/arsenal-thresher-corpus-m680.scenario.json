@@ -1,0 +1,23 @@
+{
+  "id": "arsenal-thresher-corpus-m680",
+  "description": "M6 corpus — Arsenal Thresher; in-hand parse.",
+  "seed": 61575,
+  "cards": {
+    "Arsenal Thresher": "Name:Arsenal Thresher\nManaCost:2 WB U\nTypes:Artifact Creature Construct\nPT:2/2\nK:ETBReplacement:Other:DBReveal\nSVar:DBReveal:DB$ Reveal | RevealValid$ Card.Artifact+YouCtrl | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBPutCounters | SpellDescription$ As CARDNAME enters, you may reveal any number of other artifact cards from your hand. CARDNAME enters with a +1/+1 counter on it for each card revealed this way.\nSVar:DBPutCounters:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:As Arsenal Thresher enters, you may reveal any number of other artifact cards from your hand. Arsenal Thresher enters with a +1/+1 counter on it for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arsenal Thresher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

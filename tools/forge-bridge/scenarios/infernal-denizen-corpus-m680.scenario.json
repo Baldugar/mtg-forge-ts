@@ -1,0 +1,23 @@
+{
+  "id": "infernal-denizen-corpus-m680",
+  "description": "M6 corpus — Infernal Denizen; in-hand parse.",
+  "seed": 62927,
+  "cards": {
+    "Infernal Denizen": "Name:Infernal Denizen\nManaCost:7 B\nTypes:Creature Demon\nPT:5/7\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacrificeSwamp | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice two Swamps. If you can't, tap CARDNAME, and an opponent may gain control of a creature you control of their choice for as long as CARDNAME remains on the battlefield.\nSVar:TrigSacrificeSwamp:DB$ Sacrifice | Defined$ You | Amount$ 2 | SacValid$ Swamp | RememberSacrificed$ True | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Swamp | ConditionCompare$ LE1 | SubAbility$ DBChooseOpponent\nSVar:DBChooseOpponent:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | AILogic$ Random | ConditionDefined$ Remembered | ConditionPresent$ Swamp | ConditionCompare$ LE1 | SubAbility$ DBChooseCreature\nSVar:DBChooseCreature:DB$ ChooseCard | Defined$ Player.Chosen | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature you want to control | ConditionDefined$ Remembered | ConditionPresent$ Swamp | ConditionCompare$ LE1 | SubAbility$ DBOpponentGainControl\nSVar:DBOpponentGainControl:DB$ GainControl | Defined$ ChosenCard | NewController$ Player.Chosen | LoseControl$ LeavesPlay | ConditionDefined$ Remembered | ConditionPresent$ Swamp | ConditionCompare$ LE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenPlayer$ True | ClearChosenCard$ True\nA:AB$ GainControl | Cost$ T | ValidTgts$ Creature | LoseControl$ LeavesPlay | SpellDescription$ Gain control of target creature for as long as CARDNAME remains on the battlefield.\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, sacrifice two Swamps. If you can't, tap Infernal Denizen, and an opponent may gain control of a creature you control of their choice for as long as Infernal Denizen remains on the battlefield.\\n{T}: Gain control of target creature for as long as Infernal Denizen remains on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Denizen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

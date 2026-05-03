@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-skydiver-corpus-m680",
+  "description": "M6 corpus — Merfolk Skydiver; in-hand parse.",
+  "seed": 63389,
+  "cards": {
+    "Merfolk Skydiver": "Name:Merfolk Skydiver\nManaCost:G U\nTypes:Creature Merfolk Mutant\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Proliferate | Cost$ 3 G U | SpellDescription$ Proliferate.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Proliferate|Counters\nDeckNeeds:Ability$Counters\nOracle:Flying\\nWhen Merfolk Skydiver enters, put a +1/+1 counter on target creature you control.\\n{3}{G}{U}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Skydiver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

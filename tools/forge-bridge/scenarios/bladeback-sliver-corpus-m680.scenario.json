@@ -1,0 +1,23 @@
+{
+  "id": "bladeback-sliver-corpus-m680",
+  "description": "M6 corpus — Bladeback Sliver; in-hand parse.",
+  "seed": 61698,
+  "cards": {
+    "Bladeback Sliver": "Name:Bladeback Sliver\nManaCost:1 R\nTypes:Creature Sliver\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Sliver+YouCtrl | AddAbility$ DBDamage | Condition$ Hellbent | Description$ Hellbent — As long as you have no cards in hand, Sliver creatures you control have \"{T}: This creature deals 1 damage to target player or planeswalker.\"\nSVar:DBDamage:AB$ DealDamage | Cost$ T | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | SpellDescription$ This creature deals 1 damage to target player or planeswalker.\nSVar:PlayMain1:TRUE\nOracle:Hellbent — As long as you have no cards in hand, Sliver creatures you control have \"{T}: This creature deals 1 damage to target player or planeswalker.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bladeback Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

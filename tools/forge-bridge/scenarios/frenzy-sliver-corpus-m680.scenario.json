@@ -1,0 +1,23 @@
+{
+  "id": "frenzy-sliver-corpus-m680",
+  "description": "M6 corpus — Frenzy Sliver; in-hand parse.",
+  "seed": 62565,
+  "cards": {
+    "Frenzy Sliver": "Name:Frenzy Sliver\nManaCost:1 B\nTypes:Creature Sliver\nPT:1/1\nS:Mode$ Continuous | Affected$ Creature.Sliver | AddTrigger$ FrenzyTrig | Description$ All Sliver creatures have frenzy 1. (Whenever a Sliver attacks and isn't blocked, it gets +1/+0 until end of turn.)\nSVar:FrenzyTrig:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ FrenzyPump | TriggerZones$ Battlefield | TriggerDescription$ Frenzy 1 (Whenever CARDNAME attacks and isn't blocked, it gets +1/+0 until end of turn.)\nSVar:FrenzyPump:DB$ Pump | NumAtt$ +1 | Defined$ TriggeredAttacker\nSVar:PlayMain1:TRUE\nOracle:All Sliver creatures have frenzy 1. (Whenever a Sliver attacks and isn't blocked, it gets +1/+0 until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frenzy Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

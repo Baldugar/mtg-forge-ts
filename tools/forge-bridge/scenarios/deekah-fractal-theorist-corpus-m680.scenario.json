@@ -1,0 +1,23 @@
+{
+  "id": "deekah-fractal-theorist-corpus-m680",
+  "description": "M6 corpus — Deekah, Fractal Theorist; in-hand parse.",
+  "seed": 62133,
+  "cards": {
+    "Deekah, Fractal Theorist": "Name:Deekah, Fractal Theorist\nManaCost:4 U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is that spell's mana value.\nSVar:TrigToken:DB$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ TriggeredSpellAbility$CardManaCostLKI | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Effect | Cost$ 3 U | ValidTgts$ Creature.token | TgtPrompt$ Select target creature token | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature token can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Token|Counters\nDeckHints:Ability$Token\nDeckNeeds:Type$Instant|Sorcery\nOracle:Magecraft — Whenever you cast or copy an instant or sorcery spell, create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is that spell's mana value.\\n{3}{U}: Target creature token can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deekah, Fractal Theorist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

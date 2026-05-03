@@ -1,0 +1,23 @@
+{
+  "id": "sigil-captain-corpus-m680",
+  "description": "M6 corpus — Sigil Captain; in-hand parse.",
+  "seed": 64274,
+  "cards": {
+    "Sigil Captain": "Name:Sigil Captain\nManaCost:1 G W W\nTypes:Creature Rhino Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerEQ1+toughnessEQ1+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control enters, if that creature is 1/1, put two +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 2 | ConditionDefined$ TriggeredCard | ConditionPresent$ Card.powerEQ1+toughnessEQ1\nOracle:Whenever a creature you control enters, if that creature is 1/1, put two +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigil Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

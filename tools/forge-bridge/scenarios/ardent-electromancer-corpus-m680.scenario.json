@@ -1,0 +1,23 @@
+{
+  "id": "ardent-electromancer-corpus-m680",
+  "description": "M6 corpus — Ardent Electromancer; in-hand parse.",
+  "seed": 61558,
+  "cards": {
+    "Ardent Electromancer": "Name:Ardent Electromancer\nManaCost:2 R\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ When CARDNAME enters, add {R} for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ X\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior\nOracle:When Ardent Electromancer enters, add {R} for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ardent Electromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

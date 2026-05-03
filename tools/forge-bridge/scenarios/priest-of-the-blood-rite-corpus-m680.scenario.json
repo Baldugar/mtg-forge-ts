@@ -1,0 +1,23 @@
+{
+  "id": "priest-of-the-blood-rite-corpus-m680",
+  "description": "M6 corpus — Priest of the Blood Rite; in-hand parse.",
+  "seed": 63797,
+  "cards": {
+    "Priest of the Blood Rite": "Name:Priest of the Blood Rite\nManaCost:3 B B\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 5/5 black Demon creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_5_5_demon_flying | TokenOwner$ TriggeredCardController\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nSVar:SacMe:4\nSVar:DonateMe:4\nOracle:When Priest of the Blood Rite enters, create a 5/5 black Demon creature token with flying.\\nAt the beginning of your upkeep, you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Priest of the Blood Rite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

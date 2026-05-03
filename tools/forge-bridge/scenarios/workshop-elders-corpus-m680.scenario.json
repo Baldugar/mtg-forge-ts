@@ -1,0 +1,23 @@
+{
+  "id": "workshop-elders-corpus-m680",
+  "description": "M6 corpus — Workshop Elders; in-hand parse.",
+  "seed": 65091,
+  "cards": {
+    "Workshop Elders": "Name:Workshop Elders\nManaCost:6 U\nTypes:Creature Human Artificer\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Artifact+YouCtrl | AddKeyword$ Flying | Description$ Artifact creatures you control have flying.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigAnimate | TriggerDescription$ At the beginning of combat on your turn, you may have target noncreature artifact you control becomes a 0/0 artifact creature. If you do, put four +1/+1 counters on it.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select target noncreature artifact | Power$ 0 | Toughness$ 0 | Types$ Artifact,Creature | Duration$ Permanent | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 4\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Artifact creatures you control have flying.\\nAt the beginning of combat on your turn, you may have target noncreature artifact you control become a 0/0 artifact creature. If you do, put four +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Workshop Elders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

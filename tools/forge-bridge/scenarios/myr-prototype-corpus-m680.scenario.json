@@ -1,0 +1,23 @@
+{
+  "id": "myr-prototype-corpus-m680",
+  "description": "M6 corpus — Myr Prototype; in-hand parse.",
+  "seed": 63498,
+  "cards": {
+    "Myr Prototype": "Name:Myr Prototype\nManaCost:5\nTypes:Artifact Creature Myr\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ CantAttackUnless | ValidCard$ Card.Self | Cost$ Y | Description$ CARDNAME can't attack or block unless you pay {1} for each +1/+1 counter on it.\nS:Mode$ CantBlockUnless | ValidCard$ Card.Self | Cost$ Y\nSVar:Y:Count$CardCounters.P1P1\nOracle:At the beginning of your upkeep, put a +1/+1 counter on Myr Prototype.\\nMyr Prototype can't attack or block unless you pay {1} for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Prototype"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

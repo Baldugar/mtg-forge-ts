@@ -1,0 +1,23 @@
+{
+  "id": "sardian-avenger-corpus-m680",
+  "description": "M6 corpus — Sardian Avenger; in-hand parse.",
+  "seed": 64125,
+  "cards": {
+    "Sardian Avenger": "Name:Sardian Avenger\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:First Strike\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of artifacts your opponents control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an artifact an opponent controls is put into a graveyard from the battlefield, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nSVar:X:Count$Valid Artifact.OppCtrl\nSVar:HasAttackEffect:TRUE\nOracle:First strike, trample\\nWhenever Sardian Avenger attacks, it gets +X/+0 until end of turn, where X is the number of artifacts your opponents control.\\nWhenever an artifact an opponent controls is put into a graveyard from the battlefield, Sardian Avenger deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sardian Avenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

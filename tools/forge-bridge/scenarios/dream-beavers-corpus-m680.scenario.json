@@ -1,0 +1,23 @@
+{
+  "id": "dream-beavers-corpus-m680",
+  "description": "M6 corpus — Dream Beavers; in-hand parse.",
+  "seed": 62234,
+  "cards": {
+    "Dream Beavers": "Name:Dream Beavers\nManaCost:B\nTypes:Creature Beaver Nightmare\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When this creature enters, each opponent loses 1 life and you gain 1 life. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:Flying\\nWhen this creature enters, each opponent loses 1 life and you gain 1 life. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Beavers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

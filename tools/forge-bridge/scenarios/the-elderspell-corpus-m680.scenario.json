@@ -1,0 +1,23 @@
+{
+  "id": "the-elderspell-corpus-m680",
+  "description": "M6 corpus — The Elderspell; in-hand parse.",
+  "seed": 64652,
+  "cards": {
+    "The Elderspell": "Name:The Elderspell\nManaCost:B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Planeswalker | TgtPrompt$ Select target planeswalker | TargetMin$ 0 | TargetMax$ MaxTargets | SubAbility$ DBPutLoyalty | RememberDestroyed$ True | SpellDescription$ Destroy any number of target planeswalkers. Choose a planeswalker you control. Put two loyalty counters on it for each planeswalker destroyed this way.\nSVar:DBPutLoyalty:DB$ PutCounter | Choices$ Planeswalker.YouCtrl | CounterType$ LOYALTY | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MaxTargets:Count$Valid Planeswalker\nSVar:X:Count$RememberedSize/Twice\nDeckHas:Ability$Counters\nOracle:Destroy any number of target planeswalkers. Choose a planeswalker you control. Put two loyalty counters on it for each planeswalker destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Elderspell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

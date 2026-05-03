@@ -1,0 +1,23 @@
+{
+  "id": "shivan-sand-mage-corpus-m680",
+  "description": "M6 corpus — Shivan Sand-Mage; in-hand parse.",
+  "seed": 64257,
+  "cards": {
+    "Shivan Sand-Mage": "Name:Shivan Sand-Mage\nManaCost:2 R R\nTypes:Creature Lizard Shaman\nPT:3/2\nK:Suspend:4:R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ LoseTime,GainTime\nSVar:LoseTime:DB$ RemoveCounter | ValidTgts$ Permanent.inZoneBattlefield,Card.suspended | AITgts$ Card.counters_GE1_TIME+inZoneBattlefield+YouDontCtrl,Card.suspended+YouCtrl | TgtPrompt$ Select target permanent or suspended card. | CounterType$ TIME | CounterNum$ 2 | TgtZone$ Battlefield,Exile | SpellDescription$ Remove two time counters from target permanent or suspended card.\nSVar:GainTime:DB$ PutCounter | ValidTgts$ Permanent.counters_GE1_TIME+inZoneBattlefield,Card.suspended | AITgts$ Card.inZoneBattlefield+YouCtrl,Card.suspended+YouDontCtrl | TgtPrompt$ Select target permanent with a time counter on it or suspended card. | CounterType$ TIME | CounterNum$ 2 | TgtZone$ Battlefield,Exile | SpellDescription$ Put two time counters on target permanent with a time counter on it or suspended card.\nOracle:When Shivan Sand-Mage enters, choose one —\\n• Remove two time counters from target permanent or suspended card.\\n• Put two time counters on target permanent with a time counter on it or suspended card.\\nSuspend 4—{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shivan Sand-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

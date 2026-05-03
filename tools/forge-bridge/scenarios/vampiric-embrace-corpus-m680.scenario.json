@@ -1,0 +1,23 @@
+{
+  "id": "vampiric-embrace-corpus-m680",
+  "description": "M6 corpus — Vampiric Embrace; in-hand parse.",
+  "seed": 64888,
+  "cards": {
+    "Vampiric Embrace": "Name:Vampiric Embrace\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying | AddTrigger$ VampiricEmbraceTrig | AddSVar$ VampiricEmbraceCounters | Description$ Enchanted creature gets +2/+2 and has flying. Whenever a creature dealt damage by enchanted creature this turn is put into a graveyard, put a +1/+1 counter on that creature.\nSVar:VampiricEmbraceTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ VampiricEmbraceCounters | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +1/+1 counter on CARDNAME.\nSVar:VampiricEmbraceCounters:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and has flying.\\nWhenever a creature dealt damage by enchanted creature this turn dies, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampiric Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

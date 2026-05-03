@@ -1,0 +1,23 @@
+{
+  "id": "lost-in-the-maze-corpus-m680",
+  "description": "M6 corpus — Lost in the Maze; in-hand parse.",
+  "seed": 63270,
+  "cards": {
+    "Lost in the Maze": "Name:Lost in the Maze\nManaCost:X U U\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap X target creatures. Put a stun counter on each of those creatures you don't control. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature | SubAbility$ DBCounter | TgtPrompt$ Select target creatures\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted.YouDontCtrl | CounterType$ Stun | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+tapped | AddKeyword$ Hexproof | Description$ Tapped creatures you control have hexproof.\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Flash\\nWhen Lost in the Maze enters, tap X target creatures. Put a stun counter on each of those creatures you don't control. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nTapped creatures you control have hexproof.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost in the Maze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

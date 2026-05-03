@@ -1,0 +1,23 @@
+{
+  "id": "elvish-archivist-corpus-m680",
+  "description": "M6 corpus — Elvish Archivist; in-hand parse.",
+  "seed": 62312,
+  "cards": {
+    "Elvish Archivist": "Name:Elvish Archivist\nManaCost:1 G\nTypes:Creature Elf Artificer\nPT:0/1\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more artifacts you control enter, put two +1/+1 counters on CARDNAME. This ability triggers only once each turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nT:Mode$ ChangesZoneAll | ValidCards$ Enchantment.YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigDraw | TriggerDescription$ Whenever one or more enchantments you control enter, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Counters\nDeckHints:Type$Enchantment|Artifact\nOracle:Whenever one or more artifacts you control enter, put two +1/+1 counters on Elvish Archivist. This ability triggers only once each turn.\\nWhenever one or more enchantments you control enter, draw a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Archivist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

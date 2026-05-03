@@ -1,0 +1,23 @@
+{
+  "id": "screeching-bat-corpus-m680",
+  "description": "M6 corpus — Screeching Bat; in-hand parse.",
+  "seed": 64160,
+  "cards": {
+    "Screeching Bat": "Name:Screeching Bat\nManaCost:2 B\nTypes:Creature Bat\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform CARDNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ 2 B B | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Flying\\nAt the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform Screeching Bat.\n\nALTERNATE\n\nName:Stalking Vampire\nManaCost:no cost\nColors:black\nTypes:Creature Vampire\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform CARDNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ 2 B B | Defined$ Self | Mode$ Transform\nOracle:At the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform Stalking Vampire.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Screeching Bat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

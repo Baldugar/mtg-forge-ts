@@ -1,0 +1,23 @@
+{
+  "id": "call-a-surprise-witness-corpus-m680",
+  "description": "M6 corpus — Call a Surprise Witness; in-hand parse.",
+  "seed": 61837,
+  "cards": {
+    "Call a Surprise Witness": "Name:Call a Surprise Witness\nManaCost:1 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE3 | StaticEffect$ Animate | RememberChanged$ True | SubAbility$ DBPutCounter | TgtPrompt$ Select target creature card with mana value 3 or less | StackDescription$ REP Return_{p:You} returns & target creature card with mana value 3 or less_{c:Targeted} & your_their & Put_{p:You} puts & on it_on {c:Targeted} | SpellDescription$ Return target creature card with mana value 3 or less from your graveyard to the battlefield. Put a flying counter on it. It's a Spirit in addition to its other types.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ Flying | CounterNum$ 1 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Spirit\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard & Type$Spirit\nOracle:Return target creature card with mana value 3 or less from your graveyard to the battlefield. Put a flying counter on it. It's a Spirit in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call a Surprise Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

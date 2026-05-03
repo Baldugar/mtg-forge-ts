@@ -1,0 +1,23 @@
+{
+  "id": "lion-vulture-corpus-m680",
+  "description": "M6 corpus — Lion Vulture; in-hand parse.",
+  "seed": 63249,
+  "cards": {
+    "Lion Vulture": "Name:Lion Vulture\nManaCost:3 B\nTypes:Creature Cat Bird\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on this creature and draw a card. (Damage causes loss of life.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Counters\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nAt the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on this creature and draw a card. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lion Vulture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

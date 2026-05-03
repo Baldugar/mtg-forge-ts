@@ -1,0 +1,23 @@
+{
+  "id": "double-jump-corpus-m680",
+  "description": "M6 corpus — Double Jump; in-hand parse.",
+  "seed": 62216,
+  "cards": {
+    "Double Jump": "Name:Double Jump\nManaCost:1 U\nTypes:Instant\nK:Fuse\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Flying | CounterNum$ 1 | SubAbility$ DBAnimate | StackDescription$ SpellDescription | SpellDescription$ Put a flying counter on target creature you control. Until end of turn, it has base power and toughness 5/5.\nSVar:DBAnimate:DB$ Animate | Defined$ ParentTarget | Power$ 5 | Toughness$ 5 | StackDescription$ None\nAlternateMode:Split\nOracle:Put a flying counter on target creature you control. Until end of turn, it has base power and toughness 5/5.\\nFuse (You may cast one or both halves of this card from your hand.)\n\nALTERNATE\n\nName:Flying Kick\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | StackDescription$ SpellDescription | SpellDescription$ Target creature you control deals damage equal to its power to target creature an opponent controls.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | AILogic$ PowerDmg | NumDmg$ ParentTargeted$CardPower | DamageSource$ ParentTarget | StackDescription$ None\nOracle:Target creature you control deals damage equal to its power to target creature an opponent controls.\\nFuse (You may cast one or both halves of this card from your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Double Jump"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

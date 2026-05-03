@@ -1,0 +1,23 @@
+{
+  "id": "siegfried-famed-swordsman-corpus-m680",
+  "description": "M6 corpus — Siegfried, Famed Swordsman; in-hand parse.",
+  "seed": 64273,
+  "cards": {
+    "Siegfried, Famed Swordsman": "Name:Siegfried, Famed Swordsman\nManaCost:3 B\nTypes:Legendary Creature Human Warrior Rogue\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When NICKNAME enters, mill three cards. Then put X +1/+1 counters on NICKNAME, where X is twice the number of creature cards in your graveyard.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn/Times.2\nDeckHas:Ability$Mill|Graveyard\nOracle:When Siegfried enters, mill three cards. Then put X +1/+1 counters on Siegfried, where X is twice the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siegfried, Famed Swordsman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "strong-the-brutish-thespian-corpus-m680",
+  "description": "M6 corpus — Strong, the Brutish Thespian; in-hand parse.",
+  "seed": 64487,
+  "cards": {
+    "Strong, the Brutish Thespian": "Name:Strong, the Brutish Thespian\nManaCost:4 G G\nTypes:Legendary Creature Mutant Berserker\nPT:7/7\nK:Ward:2\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever NICKNAME is dealt damage, you get three rad counters and put three +1/+1 counters on NICKNAME.\nSVar:TrigDamage:DB$ Radiation | Defined$ You | Num$ 3 | SubAbility$ DBP1P1\nSVar:DBP1P1:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 3\nS:Mode$ GainLifeRadiation | ValidPlayer$ You | Description$ You gain life rather than lose life from radiation.\nOracle:Ward {2}\\nEnrage — Whenever Strong is dealt damage, you get three rad counters and put three +1/+1 counters on Strong.\\nYou gain life rather than lose life from radiation.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strong, the Brutish Thespian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

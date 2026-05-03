@@ -1,0 +1,23 @@
+{
+  "id": "tyvar-the-bellicose-corpus-m680",
+  "description": "M6 corpus — Tyvar the Bellicose; in-hand parse.",
+  "seed": 64830,
+  "cards": {
+    "Tyvar the Bellicose": "Name:Tyvar the Bellicose\nManaCost:2 B G\nTypes:Legendary Creature Elf Warrior\nPT:5/4\nT:Mode$ AttackersDeclared | ValidAttackers$ Elf.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Elves you control attack, they gain deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackers | KW$ Deathtouch\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddTrigger$ ManaTrig | Description$ Each creature you control has \"Whenever a mana ability of this creature resolves, put a number of +1/+1 counters on it equal to the amount of mana this creature produced. This ability triggers only once each turn.\"\nSVar:ManaTrig:Mode$ AbilityResolves | ValidSource$ Card.Self | ValidSpellAbility$ SpellAbility.ManaAbility | ActivationLimit$ 1 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | AILogic$ ActivateOnce | TriggerDescription$ Whenever a mana ability of this creature resolves, put a number of +1/+1 counters on it equal to the amount of mana this creature produced. This ability triggers only once each turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredSpellAbility$AmountManaProduced\nSVar:BuffedBy:Creature.hasManaAbility\nDeckHas:Ability$Counters\nDeckHints:Type$Elf\nOracle:Whenever one or more Elves you control attack, they gain deathtouch until end of turn.\\nEach creature you control has \"Whenever a mana ability of this creature resolves, put a number of +1/+1 counters on it equal to the amount of mana this creature produced. This ability triggers only once each turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyvar the Bellicose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

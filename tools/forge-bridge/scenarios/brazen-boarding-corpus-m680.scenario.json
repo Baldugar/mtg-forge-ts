@@ -1,0 +1,23 @@
+{
+  "id": "brazen-boarding-corpus-m680",
+  "description": "M6 corpus — Brazen Boarding; in-hand parse.",
+  "seed": 61777,
+  "cards": {
+    "Brazen Boarding": "Name:Brazen Boarding\nManaCost:2 U R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 4 | ExcessSVar$ X | SubAbility$ DBBranch | SpellDescription$ CARDNAME deals 4 damage to target creature or planeswalker.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ Captain | FalseSubAbility$ Crew | BranchConditionSVarCompare$ GE4 | StackDescription$ SpellDescription | SpellDescription$ If excess damage is dealt this way, conjure a card with mana value equal to that excess damage from CARDNAME's spellbook onto the battlefield. If that excess damage is 4 or greater, instead conjure a card named Admiral Beckett Brass onto the battlefield.\nSVar:Crew:DB$ MakeCard | Filter$ Card.cmcEQX | Spellbook$ Spyglass Siren,Staunch Crewmate,Corsair Captain | Zone$ Battlefield | Conjure$ True\nSVar:Captain:DB$ MakeCard | Name$ Admiral Beckett Brass | Zone$ Battlefield | Conjure$ True\nDeckHints:Type$Pirate\nDeckHas:Type$Pirate|Siren|Human & Ability$Token\nOracle:Brazen Boarding deals 4 damage to target creature or planeswalker. If excess damage is dealt this way, conjure a card with mana value equal to that excess damage from Brazen Boarding's spellbook onto the battlefield. If that excess damage is 4 or greater, instead conjure a card named Admiral Beckett Brass onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brazen Boarding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

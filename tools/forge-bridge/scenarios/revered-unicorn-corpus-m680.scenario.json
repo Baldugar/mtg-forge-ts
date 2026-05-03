@@ -1,0 +1,23 @@
+{
+  "id": "revered-unicorn-corpus-m680",
+  "description": "M6 corpus — Revered Unicorn; in-hand parse.",
+  "seed": 63975,
+  "cards": {
+    "Revered Unicorn": "Name:Revered Unicorn\nManaCost:1 W\nTypes:Creature Unicorn\nPT:2/3\nK:Cumulative upkeep:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME leaves the battlefield, you gain life equal to the number of age counters on it.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardCounters.AGE\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen Revered Unicorn leaves the battlefield, you gain life equal to the number of age counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revered Unicorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

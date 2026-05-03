@@ -1,0 +1,23 @@
+{
+  "id": "practiced-tactics-corpus-m680",
+  "description": "M6 corpus — Practiced Tactics; in-hand parse.",
+  "seed": 63784,
+  "cards": {
+    "Practiced Tactics": "Name:Practiced Tactics\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Choose target attacking or blocking creature | SubAbility$ DBDamage | StackDescription$ SpellDescription | SpellDescription$ Choose target attacking or blocking creature. CARDNAME deals damage to that creature equal to twice the number of creatures in your party.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X\nSVar:X:Count$Party/Twice\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Choose target attacking or blocking creature. Practiced Tactics deals damage to that creature equal to twice the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Practiced Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

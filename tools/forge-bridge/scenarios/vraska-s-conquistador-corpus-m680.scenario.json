@@ -1,0 +1,23 @@
+{
+  "id": "vraska-s-conquistador-corpus-m680",
+  "description": "M6 corpus — Vraska's Conquistador; in-hand parse.",
+  "seed": 64984,
+  "cards": {
+    "Vraska's Conquistador": "Name:Vraska's Conquistador\nManaCost:1 B\nTypes:Creature Vampire Soldier\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerZones$ Battlefield | IsPresent$ Planeswalker.Vraska+YouCtrl | TriggerDescription$ Whenever CARDNAME attacks or blocks, if you control a Vraska planeswalker, target opponent loses 2 life and you gain 2 life.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigDrain | Secondary$ True | TriggerZones$ Battlefield | IsPresent$ Planeswalker.Vraska+YouCtrl | TriggerDescription$ Whenever CARDNAME attacks or blocks, if you control a Vraska planeswalker, target opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Whenever Vraska's Conquistador attacks or blocks, if you control a Vraska planeswalker, target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska's Conquistador"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

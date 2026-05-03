@@ -1,0 +1,23 @@
+{
+  "id": "aradesh-the-founder-corpus-m680",
+  "description": "M6 corpus — Aradesh, the Founder; in-hand parse.",
+  "seed": 61533,
+  "cards": {
+    "Aradesh, the Founder": "Name:Aradesh, the Founder\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:1/4\nK:Enlist\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+enlistedThisCombat | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control attacks, if it enlisted a creature this combat, the creature that attacked gains double strike until end of turn. If that creature's power is 4 or greater, draw a card.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Double Strike | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ TriggeredAttacker$CardPower | ConditionSVarCompare$ GE4\nDeckHints:Keyword$Enlist\nOracle:Enlist (As this creature attacks, you may tap a nonattacking creature you control without summoning sickness. When you do, add its power to this creature's until end of turn.)\\nWhenever a creature you control attacks, if it enlisted a creature this combat, the creature that attacked gains double strike until end of turn. If that creature's power is 4 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aradesh, the Founder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

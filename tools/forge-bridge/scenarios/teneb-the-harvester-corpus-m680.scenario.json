@@ -1,0 +1,23 @@
+{
+  "id": "teneb-the-harvester-corpus-m680",
+  "description": "M6 corpus — Teneb, the Harvester; in-hand parse.",
+  "seed": 64618,
+  "cards": {
+    "Teneb, the Harvester": "Name:Teneb, the Harvester\nManaCost:3 W B G\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}{B}. If you do, put target creature card from a graveyard onto the battlefield under your control.\nSVar:TrigChange:AB$ ChangeZone | Cost$ 2 B | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ChangeNum$ 1 | TgtPrompt$ Select target creature card in a graveyard | ValidTgts$ Creature\nOracle:Flying\\nWhenever Teneb, the Harvester deals combat damage to a player, you may pay {2}{B}. If you do, put target creature card from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teneb, the Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

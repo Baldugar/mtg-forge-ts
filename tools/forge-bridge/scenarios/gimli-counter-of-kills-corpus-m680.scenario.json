@@ -1,0 +1,23 @@
+{
+  "id": "gimli-counter-of-kills-corpus-m680",
+  "description": "M6 corpus — Gimli, Counter of Kills; in-hand parse.",
+  "seed": 62644,
+  "cards": {
+    "Gimli, Counter of Kills": "Name:Gimli, Counter of Kills\nManaCost:3 R\nTypes:Legendary Creature Dwarf Warrior\nPT:4/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature an opponent controls dies, CARDNAME deals 1 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nOracle:Trample\\nWhenever a creature an opponent controls dies, Gimli, Counter of Kills deals 1 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gimli, Counter of Kills"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

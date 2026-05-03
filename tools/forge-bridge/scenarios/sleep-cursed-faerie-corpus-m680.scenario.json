@@ -1,0 +1,23 @@
+{
+  "id": "sleep-cursed-faerie-corpus-m680",
+  "description": "M6 corpus — Sleep-Cursed Faerie; in-hand parse.",
+  "seed": 64320,
+  "cards": {
+    "Sleep-Cursed Faerie": "Name:Sleep-Cursed Faerie\nManaCost:U\nTypes:Creature Faerie Wizard\nPT:3/3\nK:Flying\nK:Ward:2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with three stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ STUN | CounterNum$ 3\nA:AB$ Untap | Cost$ 1 U | SpellDescription$ Untap CARDNAME.\nDeckHas:Ability$Counters\nOracle:Flying, ward {2}\\nSleep-Cursed Faerie enters tapped with three stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\n{1}{U}: Untap Sleep-Cursed Faerie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleep-Cursed Faerie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

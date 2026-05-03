@@ -1,0 +1,23 @@
+{
+  "id": "gluttonous-hellkite-corpus-m680",
+  "description": "M6 corpus — Gluttonous Hellkite; in-hand parse.",
+  "seed": 62663,
+  "cards": {
+    "Gluttonous Hellkite": "Name:Gluttonous Hellkite\nManaCost:X X B R G\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When you cast this spell, each player sacrifices X creatures. CARDNAME enters with two +1/+1 counters on it for each creature sacrificed this way.\nSVar:TrigSacrifice:DB$ Sacrifice | Defined$ Player | Amount$ X | SacValid$ Creature | Mode$ TgtChoose | RememberSacrificed$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ Static | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Static:Event$ Moved | Origin$ Stack | ValidCard$ Card.EffectSource | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBCounter\nSVar:ETBCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ Y | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:Y:Remembered$Amount/Twice\nSVar:X:Count$xPaid\nDeckHas:Ability$Sacrifice|Counters\nOracle:When you cast this spell, each player sacrifices X creatures. Gluttonous Hellkite enters with two +1/+1 counters on it for each creature sacrificed this way.\\nFlying, trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gluttonous Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

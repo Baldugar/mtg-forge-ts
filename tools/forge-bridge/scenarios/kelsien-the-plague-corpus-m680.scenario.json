@@ -1,0 +1,23 @@
+{
+  "id": "kelsien-the-plague-corpus-m680",
+  "description": "M6 corpus — Kelsien, the Plague; in-hand parse.",
+  "seed": 63110,
+  "cards": {
+    "Kelsien, the Plague": "Name:Kelsien, the Plague\nManaCost:R W B\nTypes:Legendary Creature Human Assassin\nPT:2/2\nK:Vigilance\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each experience counter you have.\nSVar:X:Count$YourCountersExperience\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumDmg$ 1 | SubAbility$ DBDelayedTrigger | StackDescription$ NICKNAME deals 1 damage to {c:Targeted}. | SpellDescription$ NICKNAME deals 1 damage to target creature you don't control.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigPutCounter | SpellDescription$ When that creature dies this turn, you get an experience counter.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Vigilance, haste\\nKelsien, the Plague gets +1/+1 for each experience counter you have.\\n{T}: Kelsien deals 1 damage to target creature you don't control. When that creature dies this turn, you get an experience counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kelsien, the Plague"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

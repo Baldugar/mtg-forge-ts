@@ -1,0 +1,23 @@
+{
+  "id": "brokers-safeguard-corpus-m680",
+  "description": "M6 corpus — Brokers' Safeguard; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Brokers' Safeguard": "Name:Brokers' Safeguard\nManaCost:W U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.nonArtifact+YouCtrl | TgtPrompt$ Select target nonartifact creature you control | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | SubAbility$ DBAnimate | SpellDescription$ Exile target nonartifact creature you control.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Replacements$ ETBAddCounter | Duration$ Perpetual | SubAbility$ DBReturn | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"This creature enters with an additional shield counter on it.\"\nSVar:ETBAddCounter:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated | Description$ This creature enters with an additional shield counter on it.\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ SHIELD\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ Then return that card to the battlefield under its owner's control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Exile target nonartifact creature you control. It perpetually gains \"This creature enters with an additional shield counter on it.\" Then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brokers' Safeguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jade-guardian-corpus-m680",
+  "description": "M6 corpus — Jade Guardian; in-hand parse.",
+  "seed": 63020,
+  "cards": {
+    "Jade Guardian": "Name:Jade Guardian\nManaCost:3 G\nTypes:Creature Merfolk Shaman\nPT:2/2\nK:Hexproof\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target Merfolk you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Merfolk.YouCtrl | TgtPrompt$ Select target Merfolk you control | CounterType$ P1P1 | CounterNum$ 1\nOracle:Hexproof (This creature can't be the target of spells or abilities your opponents control.)\\nWhen Jade Guardian enters, put a +1/+1 counter on target Merfolk you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jade Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

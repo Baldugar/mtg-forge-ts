@@ -1,0 +1,23 @@
+{
+  "id": "pack-s-betrayal-corpus-m680",
+  "description": "M6 corpus — Pack's Betrayal; in-hand parse.",
+  "seed": 63679,
+  "cards": {
+    "Pack's Betrayal": "Name:Pack's Betrayal\nManaCost:2 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBScry | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If you control a Wolf or Werewolf, scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionPresent$ Wolf.YouCtrl,Werewolf.YouCtrl | StackDescription$ If you control a Wolf or Werewolf, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:PlayMain1:ALWAYS\nDeckHints:Type$Wolf|Werewolf\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. If you control a Wolf or Werewolf, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pack's Betrayal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

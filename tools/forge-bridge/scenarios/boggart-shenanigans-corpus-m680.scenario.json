@@ -1,0 +1,23 @@
+{
+  "id": "boggart-shenanigans-corpus-m680",
+  "description": "M6 corpus — Boggart Shenanigans; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Boggart Shenanigans": "Name:Boggart Shenanigans\nManaCost:2 R\nTypes:Kindred Enchantment Goblin\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Goblin.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever another Goblin you control is put into a graveyard from the battlefield, you may have CARDNAME deal 1 damage to target player or planeswalker.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever another Goblin you control is put into a graveyard from the battlefield, you may have Boggart Shenanigans deal 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boggart Shenanigans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

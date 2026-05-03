@@ -1,0 +1,23 @@
+{
+  "id": "urabrask-s-forge-corpus-m680",
+  "description": "M6 corpus — Urabrask's Forge; in-hand parse.",
+  "seed": 64863,
+  "cards": {
+    "Urabrask's Forge": "Name:Urabrask's Forge\nManaCost:2 R\nTypes:Artifact\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put an oil counter on CARDNAME, then create an X/1 red Phyrexian Horror creature token with trample and haste, where X is the number of oil counters on CARDNAME. Sacrifice that token at the beginning of the next end step.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ r_x_1_phyrexian_horror_trample_haste | TokenOwner$ You | AtEOT$ Sacrifice | TokenPower$ X\nSVar:X:Count$CardCounters.OIL\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Phyrexian|Horror\nOracle:At the beginning of combat on your turn, put an oil counter on Urabrask's Forge, then create an X/1 red Phyrexian Horror creature token with trample and haste, where X is the number of oil counters on Urabrask's Forge. Sacrifice that token at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urabrask's Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

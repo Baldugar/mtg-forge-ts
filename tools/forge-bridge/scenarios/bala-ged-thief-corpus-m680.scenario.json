@@ -1,0 +1,23 @@
+{
+  "id": "bala-ged-thief-corpus-m680",
+  "description": "M6 corpus — Bala Ged Thief; in-hand parse.",
+  "seed": 61636,
+  "cards": {
+    "Bala Ged Thief": "Name:Bala Ged Thief\nManaCost:3 B\nTypes:Creature Human Rogue Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ DBDiscard | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, target player reveals a number of cards from their hand equal to the number of Allies you control. You choose one of them. That player discards that card.\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | RevealNumber$ X | Mode$ RevealYouChoose | DiscardValid$ Card\nSVar:X:Count$Valid Ally.YouCtrl\nSVar:BuffedBy:Ally\nOracle:Whenever Bala Ged Thief or another Ally you control enters, target player reveals a number of cards from their hand equal to the number of Allies you control. You choose one of them. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bala Ged Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cascade-seer-corpus-m680",
+  "description": "M6 corpus — Cascade Seer; in-hand parse.",
+  "seed": 61860,
+  "cards": {
+    "Cascade Seer": "Name:Cascade Seer\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry X, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigScry:DB$ Scry | ScryNum$ X\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior\nOracle:When Cascade Seer enters, scry X, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cascade Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

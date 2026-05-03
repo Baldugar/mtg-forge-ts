@@ -1,0 +1,23 @@
+{
+  "id": "crystalline-giant-corpus-m680",
+  "description": "M6 corpus — Crystalline Giant; in-hand parse.",
+  "seed": 62053,
+  "cards": {
+    "Crystalline Giant": "Name:Crystalline Giant\nManaCost:3\nTypes:Artifact Creature Giant\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose a kind of counter at random that CARDNAME doesn't have on it from among flying, first strike, deathtouch, hexproof, lifelink, menace, reach, trample, vigilance, and +1/+1. Put a counter of that kind on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | UniqueType$ True | RandomType$ True | CounterType$ Flying,First Strike,Deathtouch,Hexproof,Lifelink,Menace,Reach,Trample,Vigilance,P1P1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters|LifeGain\nOracle:At the beginning of combat on your turn, choose a kind of counter at random that Crystalline Giant doesn't have on it from among flying, first strike, deathtouch, hexproof, lifelink, menace, reach, trample, vigilance, and +1/+1. Put a counter of that kind on Crystalline Giant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crystalline Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

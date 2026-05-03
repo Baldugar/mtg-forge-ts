@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-the-goblin-lord-corpus-m680",
+  "description": "M6 corpus — Quest for the Goblin Lord; in-hand parse.",
+  "seed": 63859,
+  "cards": {
+    "Quest for the Goblin Lord": "Name:Quest for the Goblin Lord\nManaCost:R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | IsPresent$ Card.Self+counters_GE5_QUEST | Description$ As long as CARDNAME has five or more quest counters on it, creatures you control get +2/+0.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Goblin.YouCtrl | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Goblin you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:5\nDeckHas:Ability$Counters\nDeckNeeds:Type$Goblin\nOracle:Whenever a Goblin you control enters, you may put a quest counter on Quest for the Goblin Lord.\\nAs long as Quest for the Goblin Lord has five or more quest counters on it, creatures you control get +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for the Goblin Lord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

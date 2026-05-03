@@ -1,0 +1,23 @@
+{
+  "id": "azor-s-gateway-corpus-m680",
+  "description": "M6 corpus — Azor's Gateway; in-hand parse.",
+  "seed": 61630,
+  "cards": {
+    "Azor's Gateway": "Name:Azor's Gateway\nManaCost:2\nTypes:Legendary Artifact\nA:AB$ Draw | Cost$ 1 T | SubAbility$ DBExile | SpellDescription$ Draw a card, then exile a card from your hand. If cards with five or more different mana values are exiled with CARDNAME, you gain 5 life, untap CARDNAME, and transform it.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | Mandatory$ True | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 5 | SubAbility$ DBUntap | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE5\nSVar:DBUntap:DB$ Untap | Defined$ Self | SubAbility$ DBTransform | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE5\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE5\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$DifferentCardManaCost\nAlternateMode:DoubleFaced\nOracle:{1}, {T}: Draw a card, then exile a card from your hand. If cards with five or more different mana values are exiled with Azor's Gateway, you gain 5 life, untap Azor's Gateway, and transform it.\n\nALTERNATE\n\nName:Sanctum of the Sun\nManaCost:no cost\nColors:colorless\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is your life total.\nSVar:X:Count$YourLifeTotal\nOracle:(Transforms from Azor's Gateway.)\\n{T}: Add X mana of any one color, where X is your life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azor's Gateway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

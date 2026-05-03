@@ -1,0 +1,23 @@
+{
+  "id": "glimmer-of-genius-corpus-m680",
+  "description": "M6 corpus — Glimmer of Genius; in-hand parse.",
+  "seed": 62656,
+  "cards": {
+    "Glimmer of Genius": "Name:Glimmer of Genius\nManaCost:3 U\nTypes:Instant\nA:SP$ Scry | ScryNum$ 2 | SubAbility$ DBDraw | AILogic$ BestOpportunity | SpellDescription$ Scry 2, then draw two cards. You get {E}{E} (two energy counters).\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nOracle:Scry 2, then draw two cards. You get {E}{E} (two energy counters).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimmer of Genius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

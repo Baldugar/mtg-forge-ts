@@ -1,0 +1,23 @@
+{
+  "id": "all-hallow-s-eve-corpus-m680",
+  "description": "M6 corpus — All Hallow's Eve; in-hand parse.",
+  "seed": 61489,
+  "cards": {
+    "All Hallow's Eve": "Name:All Hallow's Eve\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Stack | Destination$ Exile | RememberChanged$ True | SubAbility$ DBPutCounter | SpellDescription$ Exile CARDNAME with two scream counters on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ SCREAM | CounterNum$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.Self+counters_GE1_SCREAM | PresentZone$ Exile | Execute$ TrigRemoveCounter | TriggerZones$ Exile | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is exiled with a scream counter on it, remove a scream counter from it. If there are no more scream counters on it, put it into your graveyard and each player returns all creature cards from their graveyard to the battlefield.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ SCREAM | CounterNum$ 1 | SubAbility$ DBMoveToGraveyard\nSVar:DBMoveToGraveyard:DB$ ChangeZone | Origin$ Exile | Destination$ Graveyard | Defined$ Self | SubAbility$ DBResurrection | ConditionDefined$ Self | ConditionPresent$ Card.counters_EQ0_SCREAM\nSVar:DBResurrection:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | ConditionDefined$ Self | ConditionPresent$ Card.counters_EQ0_SCREAM\nSVar:IsReanimatorCard:TRUE\nSVar:NeedsToPlayVar:CountOpps LECountMe\nSVar:CountMe:Count$ValidGraveyard Creature.YouOwn/Minus.NumOpps\nSVar:CountOpps:Count$ValidGraveyard Creature.OppOwn/DivideEvenlyDown.NumOpps\nSVar:NumOpps:PlayerCountOpponents$Amount\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Graveyard|Sacrifice\nOracle:Exile All Hallow's Eve with two scream counters on it.\\nAt the beginning of your upkeep, if All Hallow's Eve is exiled with a scream counter on it, remove a scream counter from it. If there are no more scream counters on it, put it into your graveyard and each player returns all creature cards from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "All Hallow's Eve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

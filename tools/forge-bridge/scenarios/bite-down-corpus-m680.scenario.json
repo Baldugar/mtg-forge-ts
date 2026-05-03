@@ -1,0 +1,23 @@
+{
+  "id": "bite-down-corpus-m680",
+  "description": "M6 corpus — Bite Down; in-hand parse.",
+  "seed": 61689,
+  "cards": {
+    "Bite Down": "Name:Bite Down\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.\nSVar:SoulsDamage:DB$ DealDamage | AILogic$ PowerDmg | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | TgtPrompt$ Select target creature or planeswalker you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bite Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

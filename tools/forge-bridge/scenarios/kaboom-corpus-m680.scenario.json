@@ -1,0 +1,23 @@
+{
+  "id": "kaboom-corpus-m680",
+  "description": "M6 corpus — Kaboom!; in-hand parse.",
+  "seed": 63067,
+  "cards": {
+    "Kaboom!": "Name:Kaboom!\nManaCost:4 R\nTypes:Sorcery\nA:SP$ RepeatEach | ValidTgts$ Player,Planeswalker | TargetMin$ 0 | TargetMax$ MaxTgt | RepeatTargeted$ Targeted | RepeatSubAbility$ DBDigUntil | StackDescription$ SpellDescription | SpellDescription$ Choose any number of target players or planeswalkers. For each of them, reveal cards from the top of your library until you reveal a nonland card, CARDNAME deals damage equal to that card's mana value to that player or planeswalker, then you put the revealed cards on the bottom of your library in any order.\nSVar:DBDigUntil:DB$ DigUntil | Defined$ You | Valid$ Card.nonLand | ValidDescription$ nonland card | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | ImprintFound$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ Remembered | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Imprinted$CardManaCost\nSVar:MaxTgt:SVar$MaxPlayers/Plus.MaxPW\nSVar:MaxPlayers:PlayerCountPlayers$Amount\nSVar:MaxPW:Count$Valid Planeswalker\nAI:RemoveDeck:All\nOracle:Choose any number of target players or planeswalkers. For each of them, reveal cards from the top of your library until you reveal a nonland card, Kaboom! deals damage equal to that card's mana value to that player or planeswalker, then you put the revealed cards on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaboom!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

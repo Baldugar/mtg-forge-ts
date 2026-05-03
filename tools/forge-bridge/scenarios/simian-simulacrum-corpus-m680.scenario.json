@@ -1,0 +1,23 @@
+{
+  "id": "simian-simulacrum-corpus-m680",
+  "description": "M6 corpus — Simian Simulacrum; in-hand parse.",
+  "seed": 64284,
+  "cards": {
+    "Simian Simulacrum": "Name:Simian Simulacrum\nManaCost:3\nTypes:Artifact Creature Ape\nPT:2/1\nK:Unearth:2 G G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two +1/+1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 2\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Color$Green\nOracle:When Simian Simulacrum enters, put two +1/+1 counters on target creature you control.\\nUnearth {2}{G}{G} ({2}{G}{G}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Simian Simulacrum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

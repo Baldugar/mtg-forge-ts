@@ -1,0 +1,23 @@
+{
+  "id": "treva-the-renewer-corpus-m680",
+  "description": "M6 corpus — Treva, the Renewer; in-hand parse.",
+  "seed": 64799,
+  "cards": {
+    "Treva, the Renewer": "Name:Treva, the Renewer\nManaCost:3 G W U\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}{W}. If you do, choose a color, then you gain 1 life for each permanent of that color.\nSVar:TrigChoose:AB$ ChooseColor | Cost$ 2 W | Defined$ You | AILogic$ MostProminentPermanent | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Card.ChosenColor\nOracle:Flying\\nWhenever Treva, the Renewer deals combat damage to a player, you may pay {2}{W}. If you do, choose a color, then you gain 1 life for each permanent of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treva, the Renewer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

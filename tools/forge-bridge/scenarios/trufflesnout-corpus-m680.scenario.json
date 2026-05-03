@@ -1,0 +1,23 @@
+{
+  "id": "trufflesnout-corpus-m680",
+  "description": "M6 corpus — Trufflesnout; in-hand parse.",
+  "seed": 64808,
+  "cards": {
+    "Trufflesnout": "Name:Trufflesnout\nManaCost:2 G\nTypes:Creature Boar\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBGainLife\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nDeckHas:Ability$Counters|LifeGain\nOracle:When Trufflesnout enters, choose one —\\n• Put a +1/+1 counter on Trufflesnout.\\n• You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trufflesnout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

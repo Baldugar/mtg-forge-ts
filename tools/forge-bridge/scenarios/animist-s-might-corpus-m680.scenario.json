@@ -1,0 +1,23 @@
+{
+  "id": "animist-s-might-corpus-m680",
+  "description": "M6 corpus — Animist's Might; in-hand parse.",
+  "seed": 61523,
+  "cards": {
+    "Animist's Might": "Name:Animist's Might\nManaCost:2 G\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | ValidTarget$ Creature.Legendary+YouCtrl | EffectZone$ All | Description$ This spell costs {2} less to cast if it targets a legendary creature you control.\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ BloodDamage | SpellDescription$ Target creature you control deals damage equal to twice its power to target creature or planeswalker you don't control.\nSVar:BloodDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower/Times.2\nDeckHints:Type$Legendary\nOracle:This spell costs {2} less to cast if it targets a legendary creature you control.\\nTarget creature you control deals damage equal to twice its power to target creature or planeswalker you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animist's Might"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

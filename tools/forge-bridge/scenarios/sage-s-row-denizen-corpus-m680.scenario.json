@@ -1,0 +1,23 @@
+{
+  "id": "sage-s-row-denizen-corpus-m680",
+  "description": "M6 corpus — Sage's Row Denizen; in-hand parse.",
+  "seed": 64107,
+  "cards": {
+    "Sage's Row Denizen": "Name:Sage's Row Denizen\nManaCost:2 U\nTypes:Creature Vedalken Wizard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Blue+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever another blue creature you control enters, target player mills two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player | TgtPrompt$ Select target player\nOracle:Whenever another blue creature you control enters, target player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage's Row Denizen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hungering-hydra-corpus-m680",
+  "description": "M6 corpus — Hungering Hydra; in-hand parse.",
+  "seed": 62875,
+  "cards": {
+    "Hungering Hydra": "Name:Hungering Hydra\nManaCost:X G\nTypes:Creature Hydra\nPT:0/0\nS:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ CARDNAME can't be blocked by more than one creature.\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME is dealt damage, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:TriggerCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Hungering Hydra enters with X +1/+1 counters on it.\\nHungering Hydra can't be blocked by more than one creature.\\nWhenever Hungering Hydra is dealt damage, put that many +1/+1 counters on it. (It must survive the damage to get the counters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hungering Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

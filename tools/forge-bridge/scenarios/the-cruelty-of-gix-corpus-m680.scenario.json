@@ -1,0 +1,23 @@
+{
+  "id": "the-cruelty-of-gix-corpus-m680",
+  "description": "M6 corpus — The Cruelty of Gix; in-hand parse.",
+  "seed": 64645,
+  "cards": {
+    "The Cruelty of Gix": "Name:The Cruelty of Gix\nManaCost:3 B B\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:DBDiscard,DBTutor,DBReanimate\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | Mode$ RevealYouChoose | DiscardValid$ Card.Creature,Card.Planeswalker | NumCards$ 1 | SpellDescription$ Target opponent reveals their hand. You choose a creature or planeswalker card from it. That player discards that card.\nSVar:DBTutor:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | SubAbility$ DBLoseLife | SpellDescription$ Search your library for a card, put that card into your hand, then shuffle. You lose 3 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 3\nSVar:DBReanimate:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Creature | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control.\nDeckHas:Ability$Discard\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI — Target opponent reveals their hand. You choose a creature or planeswalker card from it. That player discards that card.\\nII — Search your library for a card, put that card into your hand, then shuffle. You lose 3 life.\\nIII — Put target creature card from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Cruelty of Gix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

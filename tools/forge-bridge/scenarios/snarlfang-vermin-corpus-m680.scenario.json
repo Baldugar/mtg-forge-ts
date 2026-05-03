@@ -1,0 +1,23 @@
+{
+  "id": "snarlfang-vermin-corpus-m680",
+  "description": "M6 corpus — Snarlfang Vermin; in-hand parse.",
+  "seed": 64347,
+  "cards": {
+    "Snarlfang Vermin": "Name:Snarlfang Vermin\nManaCost:B\nTypes:Creature Rat\nPT:2/1\nT:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigSuspect | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, if that creature is still on the battlefield, suspect that creature. It perpetually gains this ability.\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ TriggeredTargetLKICopy | ConditionDefined$ TriggeredTargetLKICopy | ConditionPresent$ Card.inZoneBattlefield | Attributes$ Suspected | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ TriggeredTargetLKICopy | ConditionDefined$ TriggeredTargetLKICopy | ConditionPresent$ Card.inZoneBattlefield | Triggers$ CombatTrig | Duration$ Perpetual\nSVar:CombatTrig:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigSuspect | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, if that creature is still on the battlefield, suspect that creature. It perpetually gains this ability.\nT:Mode$ ChangesZone | Origin$ Battlefield | TriggerZones$ Graveyard | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+IsSuspected | Execute$ TrigLoseLife | TriggerDescription$ Whenever a suspected creature an opponent controls dies while CARDNAME is in your graveyard, that opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ TriggeredCardController\nOracle:Whenever Snarlfang Vermin deals combat damage to a creature, if that creature is still on the battlefield, suspect that creature. It perpetually gains this ability.\\nWhenever a suspected creature an opponent controls dies while Snarlfang Vermin is in your graveyard, that opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snarlfang Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

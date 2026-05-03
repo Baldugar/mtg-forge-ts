@@ -1,0 +1,23 @@
+{
+  "id": "molten-primordial-corpus-m680",
+  "description": "M6 corpus — Molten Primordial; in-hand parse.",
+  "seed": 63461,
+  "cards": {
+    "Molten Primordial": "Name:Molten Primordial\nManaCost:5 R R\nTypes:Creature Avatar\nPT:6/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TakeOneEach | TriggerDescription$ When CARDNAME enters, for each opponent, take control of up to one target creature that player controls until end of turn. Untap those creatures. They have haste until end of turn.\nSVar:TakeOneEach:DB$ GainControl | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | LoseControl$ EOT | Untap$ True | AddKWs$ Haste\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:Haste\\nWhen Molten Primordial enters, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Primordial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

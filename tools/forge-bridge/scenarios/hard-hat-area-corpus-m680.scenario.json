@@ -1,0 +1,23 @@
+{
+  "id": "hard-hat-area-corpus-m680",
+  "description": "M6 corpus — Hard Hat Area; in-hand parse.",
+  "seed": 62787,
+  "cards": {
+    "Hard Hat Area": "Name:Hard Hat Area\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, roll two six-sided dice. CARDNAME assembles a number of Contraptions equal to the difference between those results.\nSVar:TrigCrank:DB$ RollDice | ResultSVar$ Result | Sides$ 6 | Amount$ 2 | UseDifferenceBetweenRolls$ True | SubAbility$ DBAssemble\nSVar:DBAssemble:DB$ AssembleContraption | DefinedAssembler$ Self | Amount$ Result\nOracle:Whenever you crank Hard Hat Area, roll two six-sided dice. Hard Hat Area assembles a number of Contraptions equal to the difference between those results. (To assemble a Contraption, put the top card of your Contraption deck face up onto one of your sprockets.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hard Hat Area"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

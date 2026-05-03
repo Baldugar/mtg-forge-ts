@@ -1,0 +1,23 @@
+{
+  "id": "sokenzan-renegade-corpus-m680",
+  "description": "M6 corpus — Sokenzan Renegade; in-hand parse.",
+  "seed": 64349,
+  "cards": {
+    "Sokenzan Renegade": "Name:Sokenzan Renegade\nManaCost:2 R\nTypes:Creature Ogre Samurai Mercenary\nPT:3/3\nK:Bushido:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigGainControl | APlayerHasMostCardsInHand$ True | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if a player has more cards in hand than each other player, the player who has the most cards in hand gains control of CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | NewController$ Player.withMostCardsInHand\nAI:RemoveDeck:All\nOracle:Bushido 1 (Whenever this creature blocks or becomes blocked, it gets +1/+1 until end of turn.)\\nAt the beginning of your upkeep, if a player has more cards in hand than each other player, the player who has the most cards in hand gains control of Sokenzan Renegade.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sokenzan Renegade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jared-carthalion-true-heir-corpus-m680",
+  "description": "M6 corpus — Jared Carthalion, True Heir; in-hand parse.",
+  "seed": 63027,
+  "cards": {
+    "Jared Carthalion, True Heir": "Name:Jared Carthalion, True Heir\nManaCost:R G W\nTypes:Legendary Creature Human Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, target opponent becomes the monarch. You can't become the monarch this turn.\nSVar:TrigMonarch:DB$ BecomeMonarch | ValidTgts$ Opponent | SubAbility$ DBNoMonarch\nSVar:DBNoMonarch:DB$ Effect | StaticAbilities$ STCantMonarch | SpellDescription$ You can't become the monarch this turn.\nSVar:STCantMonarch:Mode$ CantBecomeMonarch | ValidPlayer$ You | Description$ You can't become the monarch this turn.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | CheckDefinedPlayer$ You.isMonarch | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to NICKNAME while you're the monarch, prevent that damage and put that many +1/+1 counters on it.\nSVar:Counters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:When Jared Carthalion, True Heir enters, target opponent becomes the monarch. You can't become the monarch this turn.\\nIf damage would be dealt to Jared Carthalion while you're the monarch, prevent that damage and put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jared Carthalion, True Heir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

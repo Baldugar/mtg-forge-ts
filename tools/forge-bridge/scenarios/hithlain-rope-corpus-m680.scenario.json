@@ -1,0 +1,23 @@
+{
+  "id": "hithlain-rope-corpus-m680",
+  "description": "M6 corpus — Hithlain Rope; in-hand parse.",
+  "seed": 62840,
+  "cards": {
+    "Hithlain Rope": "Name:Hithlain Rope\nManaCost:2\nTypes:Artifact\nS:Mode$ CantSacrifice | ValidCard$ Card.Self | Description$ CARDNAME can't be sacrificed.\nA:AB$ ChangeZone | Cost$ 1 T | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBPass | SpellDescription$ Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. The player to your right gains control of CARDNAME.\nA:AB$ Draw | Cost$ 2 T | SubAbility$ DBPass | SpellDescription$ Draw a card. The player to your right gains control of CARDNAME.\nSVar:DBPass:DB$ GainControl | Defined$ Self | NewController$ NextPlayerToYourRight\nOracle:Hithlain Rope can't be sacrificed.\\n{1}, {T}: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. The player to your right gains control of Hithlain Rope.\\n{2}, {T}: Draw a card. The player to your right gains control of Hithlain Rope.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hithlain Rope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

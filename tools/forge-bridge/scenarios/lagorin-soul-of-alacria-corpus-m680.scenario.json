@@ -1,0 +1,23 @@
+{
+  "id": "lagorin-soul-of-alacria-corpus-m680",
+  "description": "M6 corpus — Lagorin, Soul of Alacria; in-hand parse.",
+  "seed": 63180,
+  "cards": {
+    "Lagorin, Soul of Alacria": "Name:Lagorin, Soul of Alacria\nManaCost:G W\nTypes:Legendary Creature Beast Mount\nPT:1/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever NICKNAME attacks while saddled, put a +1/+1 counter on each of up to two target Mounts and/or Vehicles.\nSVar:TrigPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Mount,Vehicle | TgtPrompt$ Select up to two other target Mounts and/or Vehicles | CounterType$ P1P1 | CounterNum$ 1\nK:Saddle:1\nOracle:Flying\\nWhenever Lagorin attacks while saddled, put a +1/+1 counter on each of up to two target Mounts and/or Vehicles.\\nSaddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lagorin, Soul of Alacria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

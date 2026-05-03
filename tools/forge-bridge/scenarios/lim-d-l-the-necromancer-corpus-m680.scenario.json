@@ -1,0 +1,23 @@
+{
+  "id": "lim-d-l-the-necromancer-corpus-m680",
+  "description": "M6 corpus — Lim-Dûl the Necromancer; in-hand parse.",
+  "seed": 63244,
+  "cards": {
+    "Lim-Dûl the Necromancer": "Name:Lim-Dûl the Necromancer\nManaCost:5 B B\nTypes:Legendary Creature Human Wizard\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Whenever a creature an opponent controls dies, you may pay {1}{B}. If you do, return that card to the battlefield under your control. If it's a creature, it's a Zombie in addition to its other creature types.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Creature.IsRemembered | AddType$ Zombie\nA:AB$ Regenerate | ValidTgts$ Zombie | TgtPrompt$ Select target Zombie | Cost$ 1 B | SpellDescription$ Regenerate target Zombie.\nOracle:Whenever a creature an opponent controls dies, you may pay {1}{B}. If you do, return that card to the battlefield under your control. If it's a creature, it's a Zombie in addition to its other creature types.\\n{1}{B}: Regenerate target Zombie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lim-Dûl the Necromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spellchain-scatter-corpus-m680",
+  "description": "M6 corpus — Spellchain Scatter; in-hand parse.",
+  "seed": 64397,
+  "cards": {
+    "Spellchain Scatter": "Name:Spellchain Scatter\nManaCost:R\nTypes:Instant\nK:Kicker:U\nA:SP$ DelayedTrigger | Execute$ TrigConjure | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, conjure a duplicate of that spell into your hand. If this spell wasn't kicked, discard the duplicate at the beginning of your next end step.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredCard | Zone$ Hand | SubAbility$ DBDelayTrig | RememberMade$ True\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | Phase$ End of Turn | Execute$ TrigDiscard | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ If this spell wasn't kicked, discard the duplicate at the beginning of your next end step.\nSVar:TrigDiscard:DB$ Discard | Mode$ Defined | DefinedCards$ DelayTriggerRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$TimesKicked\nDeckNeeds:Type$Instant|Sorcery\nDeckHints:Color$Blue\nOracle:Kicker {U}\\nWhen you cast your next instant or sorcery spell this turn, conjure a duplicate of that spell into your hand. If this spell wasn't kicked, discard the duplicate at the beginning of your next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellchain Scatter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

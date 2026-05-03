@@ -1,0 +1,23 @@
+{
+  "id": "banshee-s-blade-corpus-m680",
+  "description": "M6 corpus — Banshee's Blade; in-hand parse.",
+  "seed": 61647,
+  "cards": {
+    "Banshee's Blade": "Name:Banshee's Blade\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each charge counter on CARDNAME.\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Creature.EquippedBy | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nSVar:X:Count$CardCounters.CHARGE\nOracle:Equipped creature gets +1/+1 for each charge counter on Banshee's Blade.\\nWhenever equipped creature deals combat damage, put a charge counter on Banshee's Blade.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery. This card enters unattached and stays on the battlefield if the creature leaves.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banshee's Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blessed-spirits-corpus-m680",
+  "description": "M6 corpus — Blessed Spirits; in-hand parse.",
+  "seed": 61705,
+  "cards": {
+    "Blessed Spirits": "Name:Blessed Spirits\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/2\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an enchantment spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Enchantment\nOracle:Flying\\nWhenever you cast an enchantment spell, put a +1/+1 counter on Blessed Spirits.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessed Spirits"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

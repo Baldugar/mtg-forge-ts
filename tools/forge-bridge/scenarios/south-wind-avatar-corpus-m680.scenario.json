@@ -1,0 +1,23 @@
+{
+  "id": "south-wind-avatar-corpus-m680",
+  "description": "M6 corpus — South Wind Avatar; in-hand parse.",
+  "seed": 64378,
+  "cards": {
+    "South Wind Avatar": "Name:South Wind Avatar\nManaCost:3 B\nTypes:Creature Snake Spirit Avatar\nPT:3/4\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control dies, you gain life equal to its toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you gain life, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nSVar:X:TriggeredCard$CardToughness\nDeckHints:Ability$LifeGain\nOracle:Deathtouch\\nWhenever another creature you control dies, you gain life equal to its toughness.\\nWhenever you gain life, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "South Wind Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

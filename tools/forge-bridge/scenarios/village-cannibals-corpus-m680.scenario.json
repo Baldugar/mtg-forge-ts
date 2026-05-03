@@ -1,0 +1,23 @@
+{
+  "id": "village-cannibals-corpus-m680",
+  "description": "M6 corpus — Village Cannibals; in-hand parse.",
+  "seed": 64948,
+  "cards": {
+    "Village Cannibals": "Name:Village Cannibals\nManaCost:2 B\nTypes:Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Card.Other+Human | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Human creature dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever another Human creature dies, put a +1/+1 counter on Village Cannibals.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Cannibals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

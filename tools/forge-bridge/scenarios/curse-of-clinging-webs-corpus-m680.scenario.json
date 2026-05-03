@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-clinging-webs-corpus-m680",
+  "description": "M6 corpus — Curse of Clinging Webs; in-hand parse.",
+  "seed": 62062,
+  "cards": {
+    "Curse of Clinging Webs": "Name:Curse of Clinging Webs\nManaCost:2 G\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EnchantedPlayerCtr+!token | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a nontoken creature enchanted player controls dies, exile it and you create a 1/2 green Spider creature token with reach.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ g_1_2_spider_reach\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:Enchant player\\nWhenever a nontoken creature enchanted player controls dies, exile it and you create a 1/2 green Spider creature token with reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Clinging Webs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

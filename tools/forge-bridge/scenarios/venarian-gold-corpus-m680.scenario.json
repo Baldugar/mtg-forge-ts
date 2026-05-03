@@ -1,0 +1,23 @@
+{
+  "id": "venarian-gold-corpus-m680",
+  "description": "M6 corpus — Venarian Gold; in-hand parse.",
+  "seed": 64909,
+  "cards": {
+    "Venarian Gold": "Name:Venarian Gold\nManaCost:X U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature and put X sleep counters on it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ SLEEP | CounterNum$ X\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy+counters_GE1_SLEEP | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step if it has a sleep counter on it.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, remove a sleep counter from that creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Enchanted | CounterType$ SLEEP | CounterNum$ 1\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nWhen Venarian Gold enters, tap enchanted creature and put X sleep counters on it.\\nEnchanted creature doesn't untap during its controller's untap step if it has a sleep counter on it.\\nAt the beginning of the upkeep of enchanted creature's controller, remove a sleep counter from that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venarian Gold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

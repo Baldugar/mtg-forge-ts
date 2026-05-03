@@ -1,0 +1,23 @@
+{
+  "id": "dismantle-corpus-m680",
+  "description": "M6 corpus — Dismantle; in-hand parse.",
+  "seed": 62186,
+  "cards": {
+    "Dismantle": "Name:Dismantle\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact | SubAbility$ DBPutCounter | SpellDescription$ Destroy target artifact.\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Artifact.YouCtrl | CounterType$ P1P1,CHARGE | CounterNum$ X | ConditionDefined$ Targeted | ConditionPresent$ Card.HasCounters | SpellDescription$ If that artifact had counters on it, put that many +1/+1 counters or charge counters on an artifact you control.\nSVar:X:Targeted$CardCounters.ALL\nOracle:Destroy target artifact. If that artifact had counters on it, put that many +1/+1 counters or charge counters on an artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dismantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

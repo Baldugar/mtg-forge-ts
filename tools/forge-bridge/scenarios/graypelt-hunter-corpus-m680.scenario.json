@@ -1,0 +1,23 @@
+{
+  "id": "graypelt-hunter-corpus-m680",
+  "description": "M6 corpus — Graypelt Hunter; in-hand parse.",
+  "seed": 62718,
+  "cards": {
+    "Graypelt Hunter": "Name:Graypelt Hunter\nManaCost:3 G\nTypes:Creature Human Warrior Ally\nPT:2/2\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Ally\nOracle:Trample\\nWhenever Graypelt Hunter or another Ally you control enters, you may put a +1/+1 counter on Graypelt Hunter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graypelt Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

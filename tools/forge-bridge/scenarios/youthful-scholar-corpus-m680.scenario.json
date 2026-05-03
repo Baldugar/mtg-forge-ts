@@ -1,0 +1,23 @@
+{
+  "id": "youthful-scholar-corpus-m680",
+  "description": "M6 corpus — Youthful Scholar; in-hand parse.",
+  "seed": 65114,
+  "cards": {
+    "Youthful Scholar": "Name:Youthful Scholar\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | Defined$ TriggeredCardController\nSVar:SacMe:1\nOracle:When Youthful Scholar dies, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Youthful Scholar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

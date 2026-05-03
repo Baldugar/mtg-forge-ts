@@ -1,0 +1,23 @@
+{
+  "id": "furious-assault-corpus-m680",
+  "description": "M6 corpus — Furious Assault; in-hand parse.",
+  "seed": 62588,
+  "cards": {
+    "Furious Assault": "Name:Furious Assault\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a creature spell, CARDNAME deals 1 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nSVar:BuffedBy:Creature\nOracle:Whenever you cast a creature spell, Furious Assault deals 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furious Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

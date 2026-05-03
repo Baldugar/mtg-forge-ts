@@ -1,0 +1,23 @@
+{
+  "id": "hooded-hydra-corpus-m680",
+  "description": "M6 corpus — Hooded Hydra; in-hand parse.",
+  "seed": 62859,
+  "cards": {
+    "Hooded Hydra": "Name:Hooded Hydra\nManaCost:X G G\nTypes:Creature Snake Hydra\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 green Snake creature token for each +1/+1 counter on it.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ g_1_1_snake | TokenOwner$ TriggeredCardController\nSVar:Y:TriggeredCard$CardCounters.P1P1\nK:Morph:3 G G\nR:Event$ TurnFaceUp | ValidCard$ Card.Self | ReplaceWith$ AddCounters | ActiveZones$ Battlefield | Description$ As CARDNAME is turned face up, put five +1/+1 counters on it.\nSVar:AddCounters:DB$ PutCounter | Defined$ Self | CounterNum$ 5 | CounterType$ P1P1\nOracle:Hooded Hydra enters with X +1/+1 counters on it.\\nWhen Hooded Hydra dies, create a 1/1 green Snake creature token for each +1/+1 counter on it.\\nMorph {3}{G}{G}\\nAs Hooded Hydra is turned face up, put five +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hooded Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

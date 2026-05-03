@@ -1,0 +1,23 @@
+{
+  "id": "greatsword-of-tyr-corpus-m680",
+  "description": "M6 corpus — Greatsword of Tyr; in-hand parse.",
+  "seed": 62720,
+  "cards": {
+    "Greatsword of Tyr": "Name:Greatsword of Tyr\nManaCost:1 W\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigPut | TriggerDescription$ Whenever equipped creature attacks, put a +1/+1 counter on it and tap up to one target creature defending player controls.\nSVar:TrigPut:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredDefendingPlayer | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature defending player controls\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Counters\nK:Equip:W\nOracle:Whenever equipped creature attacks, put a +1/+1 counter on it and tap up to one target creature defending player controls.\\nEquip {W} ({W}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greatsword of Tyr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

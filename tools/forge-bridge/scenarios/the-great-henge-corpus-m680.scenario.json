@@ -1,0 +1,23 @@
+{
+  "id": "the-great-henge-corpus-m680",
+  "description": "M6 corpus — The Great Henge; in-hand parse.",
+  "seed": 64658,
+  "cards": {
+    "The Great Henge": "Name:The Great Henge\nManaCost:7 G G\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {X} less to cast, where X is the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ 2 | SubAbility$ DBGainLife | AILogic$ AtOppEOT | SpellDescription$ Add {G}{G}. You gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a nontoken creature you control enters, put a +1/+1 counter on it and draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$LifeGain|Counters\nOracle:This spell costs {X} less to cast, where X is the greatest power among creatures you control.\\n{T}: Add {G}{G}. You gain 2 life.\\nWhenever a nontoken creature you control enters, put a +1/+1 counter on it and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Great Henge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

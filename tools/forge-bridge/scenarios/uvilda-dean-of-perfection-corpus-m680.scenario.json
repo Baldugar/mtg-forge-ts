@@ -1,0 +1,23 @@
+{
+  "id": "uvilda-dean-of-perfection-corpus-m680",
+  "description": "M6 corpus — Uvilda, Dean of Perfection; in-hand parse.",
+  "seed": 64873,
+  "cards": {
+    "Uvilda, Dean of Perfection": "Name:Uvilda, Dean of Perfection\nManaCost:2 U\nTypes:Legendary Creature Djinn Wizard\nPT:2/2\nA:AB$ ChangeZone | Cost$ T | RememberChanged$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant,Sorcery | ChangeNum$ 1 | SubAbility$ DBPutCounter | StackDescription$ SpellDescription | SpellDescription$ You may exile an instant or sorcery card from your hand and put three hone counters on it. It gains \"At the beginning of your upkeep, if this card is exiled, remove a hone counter from it\" and \"When the last hone counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\"\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ HONE | CounterNum$ 3 | SubAbility$ DBAddTriggers | TgtZone$ Exile\nSVar:DBAddTriggers:DB$ Animate | Defined$ Remembered | Triggers$ TrigRemoveCounter,TrigCast | SubAbility$ DBCleanup | Duration$ Permanent\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigRemoveCounter:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Exile | Execute$ DBRemoveCounter | TriggerDescription$ At the beginning of your upkeep, if this card is exiled, remove a hone counter from it.\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ HONE | CounterNum$ 1\nSVar:TrigCast:Mode$ CounterRemoved | TriggerZones$ Exile | ValidCard$ Card.Self | CounterType$ HONE | NewCounterAmount$ 0 | Execute$ DBCast | TriggerDescription$ When the last hone counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\nSVar:DBCast:DB$ Play | Defined$ Self | PlayReduceCost$ 4 | ValidSA$ Spell | Optional$ True\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Instant|Sorcery\nAlternateMode:Modal\nOracle:{T}: You may exile an instant or sorcery card from your hand and put three hone counters on it. It gains \"At the beginning of your upkeep, if this card is exiled, remove a hone counter from it\" and \"When the last hone counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\"\n\nALTERNATE\n\nName:Nassari, Dean of Expression\nManaCost:3 R R\nTypes:Legendary Creature Efreet Shaman\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of each opponent's library. Until end of turn, you may cast spells from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:TrigExile:DB$ Dig | Defined$ Player.Opponent | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of each opponent's library. Until end of turn, you may cast nonland cards from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, exile the top card of each opponent's library. Until end of turn, you may cast spells from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\\nWhenever you cast a spell from exile, put a +1/+1 counter on Nassari, Dean of Expression.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uvilda, Dean of Perfection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

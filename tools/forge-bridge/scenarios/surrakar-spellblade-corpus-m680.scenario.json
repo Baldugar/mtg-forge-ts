@@ -1,0 +1,23 @@
+{
+  "id": "surrakar-spellblade-corpus-m680",
+  "description": "M6 corpus — Surrakar Spellblade; in-hand parse.",
+  "seed": 64532,
+  "cards": {
+    "Surrakar Spellblade": "Name:Surrakar Spellblade\nManaCost:1 U U\nTypes:Creature Surrakar\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a instant or sorcery spell, you may put a charge counter on CARDNAME.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may draw X cards, where X is the number of charge counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | OptionalDecider$ You\nSVar:X:Count$CardCounters.CHARGE\nSVar:BuffedBy:Instant,Sorcery\nOracle:Whenever you cast an instant or sorcery spell, you may put a charge counter on Surrakar Spellblade.\\nWhenever Surrakar Spellblade deals combat damage to a player, you may draw X cards, where X is the number of charge counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surrakar Spellblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

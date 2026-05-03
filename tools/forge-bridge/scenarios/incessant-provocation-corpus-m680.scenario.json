@@ -1,0 +1,23 @@
+{
+  "id": "incessant-provocation-corpus-m680",
+  "description": "M6 corpus — Incessant Provocation; in-hand parse.",
+  "seed": 62918,
+  "cards": {
+    "Incessant Provocation": "Name:Incessant Provocation\nManaCost:3 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBAnimate | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | staticAbilities$ PerpetualMustAttack | Duration$ Perpetual | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"This creature attacks each combat if able.\"\nSVar:PerpetualMustAttack:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks each combat if able.\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. It perpetually gains \"This creature attacks each combat if able.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incessant Provocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

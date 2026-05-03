@@ -1,0 +1,23 @@
+{
+  "id": "darigaaz-s-whelp-corpus-m680",
+  "description": "M6 corpus — Darigaaz's Whelp; in-hand parse.",
+  "seed": 62085,
+  "cards": {
+    "Darigaaz's Whelp": "Name:Darigaaz's Whelp\nManaCost:1 B\nTypes:Creature Dragon\nPT:2/1\nK:Kicker:1 R\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card.YouOwn+Dragon | TriggerZones$ Battlefield | Execute$ DBPump | TriggerDescription$ Whenever you draw a Dragon card, it perpetually gets +1/+1.\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ TriggeredCard | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigSeek | TriggerDescription$ When this creature enters, if it was kicked, seek a Dragon card. CARDNAME and that Dragon card each perpetually get +1/+1.\nSVar:TrigSeek:DB$ Seek | RememberFound$ True | Type$ Card.Dragon | SubAbility$ DBPump2\nSVar:DBPump2:DB$ Pump | PumpZone$ Hand,Battlefield | Defined$ Remembered & Self | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Dragon\nDeckHints:Color$Red\nOracle:Kicker {1}{R}\\nFlying\\nWhenever you draw a Dragon card, it perpetually gets +1/+1.\\nWhen Darigaaz's Whelp enters, if it was kicked, seek a Dragon card. Darigaaz's Whelp and that Dragon card each perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darigaaz's Whelp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

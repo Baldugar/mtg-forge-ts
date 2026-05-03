@@ -1,0 +1,23 @@
+{
+  "id": "eriette-the-beguiler-corpus-m680",
+  "description": "M6 corpus — Eriette, the Beguiler; in-hand parse.",
+  "seed": 62356,
+  "cards": {
+    "Eriette, the Beguiler": "Name:Eriette, the Beguiler\nManaCost:1 W U B\nTypes:Legendary Creature Human Warlock\nPT:4/4\nK:Lifelink\nT:Mode$ Attached | ValidSource$ Aura.YouCtrl | TargetRelativeToSource$ Permanent.nonLand+OppCtrl+cmcLEX | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever an Aura you control becomes attached to a nonland permanent an opponent controls with mana value less than or equal to that Aura's mana value, gain control of that permanent for as long as that Aura is attached to it.\nSVar:TrigGainControl:DB$ GainControl | NewController$ You | Defined$ TriggeredTarget | LoseControl$ UntilSourceUnattached\nSVar:X:Count$CardManaCost\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Aura\nOracle:Lifelink\\nWhenever an Aura you control becomes attached to a nonland permanent an opponent controls with mana value less than or equal to that Aura's mana value, gain control of that permanent for as long as that Aura is attached to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eriette, the Beguiler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

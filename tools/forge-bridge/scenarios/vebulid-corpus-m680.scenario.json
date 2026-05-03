@@ -1,0 +1,23 @@
+{
+  "id": "vebulid-corpus-m680",
+  "description": "M6 corpus — Vebulid; in-hand parse.",
+  "seed": 64898,
+  "cards": {
+    "Vebulid": "Name:Vebulid\nManaCost:B\nTypes:Creature Phyrexian Horror\nPT:0/0\nK:etbCounter:P1P1:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may put a +1/+1 counter on CARDNAME.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrigDestroy | TriggerDescription$ When CARDNAME attacks or blocks, destroy it at end of combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrigDestroy | Secondary$ True | TriggerDescription$ When CARDNAME attacks or blocks, destroy it at end of combat.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nSVar:DelTrigDestroy:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigDestroy | TriggerDescription$ Destroy CARDNAME at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self\nDeckHas:Ability$Counters\nOracle:Vebulid enters with a +1/+1 counter on it.\\nAt the beginning of your upkeep, you may put a +1/+1 counter on Vebulid.\\nWhen Vebulid attacks or blocks, destroy it at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vebulid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

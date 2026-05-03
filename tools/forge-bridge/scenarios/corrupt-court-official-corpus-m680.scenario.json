@@ -1,0 +1,23 @@
+{
+  "id": "corrupt-court-official-corpus-m680",
+  "description": "M6 corpus — Corrupt Court Official; in-hand parse.",
+  "seed": 62010,
+  "cards": {
+    "Corrupt Court Official": "Name:Corrupt Court Official\nManaCost:1 B\nTypes:Creature Human Advisor\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Corrupt Court Official enters, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corrupt Court Official"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

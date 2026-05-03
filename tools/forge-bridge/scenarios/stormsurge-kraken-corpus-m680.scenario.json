@@ -1,0 +1,23 @@
+{
+  "id": "stormsurge-kraken-corpus-m680",
+  "description": "M6 corpus — Stormsurge Kraken; in-hand parse.",
+  "seed": 64473,
+  "cards": {
+    "Stormsurge Kraken": "Name:Stormsurge Kraken\nManaCost:3 U U\nTypes:Creature Kraken\nPT:5/5\nK:Hexproof\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ TrigBlocked | AddSVar$ StormsurgeKrakenDraw | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Description$ Lieutenant — As long as you control your commander, CARDNAME gets +2/+2 and has \"Whenever CARDNAME becomes blocked, you may draw two cards.\"\nSVar:TrigBlocked:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ StormsurgeKrakenDraw | TriggerDescription$ Whenever CARDNAME becomes blocked, you may draw two cards.\nSVar:StormsurgeKrakenDraw:DB$ Draw | NumCards$ 2 | OptionalDecider$ You\nSVar:BuffedBy:Card.IsCommander\nAI:RemoveDeck:Random\nOracle:Hexproof\\nLieutenant — As long as you control your commander, Stormsurge Kraken gets +2/+2 and has \"Whenever Stormsurge Kraken becomes blocked, you may draw two cards.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormsurge Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

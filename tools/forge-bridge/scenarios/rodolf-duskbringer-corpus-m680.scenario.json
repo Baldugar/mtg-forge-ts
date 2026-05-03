@@ -1,0 +1,23 @@
+{
+  "id": "rodolf-duskbringer-corpus-m680",
+  "description": "M6 corpus — Rodolf Duskbringer; in-hand parse.",
+  "seed": 64029,
+  "cards": {
+    "Rodolf Duskbringer": "Name:Rodolf Duskbringer\nManaCost:5 B\nTypes:Legendary Creature Vampire Angel\nPT:4/4\nK:Flying\nK:Deathtouch\nK:Lifelink\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you gain life, CARDNAME gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Indestructible\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of your end step, you may pay {1}{W/B}. When you do, return target creature with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 WB | Execute$ TrigChangeZone | TriggerDescription$ When you do, return target creature with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.cmcLEX+YouOwn | TgtPrompt$ Select target creature card with mana value X or less | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$Graveyard|LifeGain & Keyword$Indestructible\nDeckHints:Ability$Graveyard|LifeGain|Mill\nOracle:Flying, deathtouch, lifelink\\nWhenever you gain life, Rodolf Duskbringer gains indestructible until end of turn.\\nAt the beginning of your end step, you may pay {1}{W/B}. When you do, return target creature with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rodolf Duskbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

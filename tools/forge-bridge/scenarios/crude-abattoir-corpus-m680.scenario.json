@@ -1,0 +1,23 @@
+{
+  "id": "crude-abattoir-corpus-m680",
+  "description": "M6 corpus — Crude Abattoir; in-hand parse.",
+  "seed": 62045,
+  "cards": {
+    "Crude Abattoir": "Name:Crude Abattoir\nManaCost:R\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ DBDealDamage | TriggerDescription$ When you unlock this door, this Room deals 2 damage to target creature.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nAlternateMode:Split\nOracle:When you unlock this door, this Room deals 2 damage to target creature.\n\nALTERNATE\n\nName:Unsavory Kitchen\nManaCost:2 R\nTypes:Enchantment Room\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Creature | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigChooseCard | TriggerDescription$ Whenever a source you control deals noncombat damage to a creature, choose a creature card in your hand. It perpetually gets +2/+0 and gains haste.\nSVar:TrigChooseCard:DB$ ChooseCard | Choices$ Creature.YouOwn | ChoiceZone$ Hand | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | NumAtt$ +2 | KW$ Haste | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Whenever a source you control deals noncombat damage to a creature, choose a creature card in your hand. It perpetually gets +2/+0 and gains haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crude Abattoir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

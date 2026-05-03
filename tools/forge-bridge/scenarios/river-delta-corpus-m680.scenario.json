@@ -1,0 +1,23 @@
+{
+  "id": "river-delta-corpus-m680",
+  "description": "M6 corpus — River Delta; in-hand parse.",
+  "seed": 64011,
+  "cards": {
+    "River Delta": "Name:River Delta\nManaCost:no cost\nTypes:Land\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self+counters_GE1_DEPLETION | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step if it has a depletion counter on it.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSubCounter | TriggerDescription$ At the beginning of your upkeep, remove a depletion counter from CARDNAME.\nSVar:TrigSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | Amount$ 1 | SubAbility$ AddCounter | SpellDescription$ Add {U} or {B}. Put a depletion counter on CARDNAME.\nSVar:AddCounter:DB$ PutCounter | Defined$ Self | CounterType$ DEPLETION | CounterNum$ 1\nOracle:River Delta doesn't untap during your untap step if it has a depletion counter on it.\\nAt the beginning of your upkeep, remove a depletion counter from River Delta.\\n{T}: Add {U} or {B}. Put a depletion counter on River Delta.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "River Delta"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

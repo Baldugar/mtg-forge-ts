@@ -1,0 +1,23 @@
+{
+  "id": "soldevi-steam-beast-corpus-m680",
+  "description": "M6 corpus — Soldevi Steam Beast; in-hand parse.",
+  "seed": 64352,
+  "cards": {
+    "Soldevi Steam Beast": "Name:Soldevi Steam Beast\nManaCost:5\nTypes:Artifact Creature Beast\nPT:4/2\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME becomes tapped, target opponent gains 2 life.\nA:AB$ Regenerate | Cost$ 2 | SpellDescription$ Regenerate CARDNAME.\nSVar:TrigGainLife:DB$ GainLife | ValidTgts$ Opponent | LifeAmount$ 2\nOracle:Whenever Soldevi Steam Beast becomes tapped, target opponent gains 2 life.\\n{2}: Regenerate Soldevi Steam Beast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soldevi Steam Beast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

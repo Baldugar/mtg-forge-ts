@@ -1,0 +1,23 @@
+{
+  "id": "cleansing-meditation-corpus-m680",
+  "description": "M6 corpus — Cleansing Meditation; in-hand parse.",
+  "seed": 61934,
+  "cards": {
+    "Cleansing Meditation": "Name:Cleansing Meditation\nManaCost:1 W W\nTypes:Sorcery\nA:SP$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE7 | TrueSubAbility$ ThreshDestruction | FalseSubAbility$ Destruction | SpellDescription$ Destroy all enchantments. Threshold — If seven or more cards are in your graveyard, instead destroy all enchantments, then return all cards in your graveyard destroyed this way to the battlefield.\nSVar:Destruction:DB$ DestroyAll | ValidCards$ Enchantment\nSVar:ThreshDestruction:DB$ DestroyAll | ValidCards$ Enchantment | SubAbility$ ThreshReturn | RememberDestroyed$ True | StackDescription$ Threshold — If seven or more cards are in your graveyard, instead destroy all enchantments,\nSVar:ThreshReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered+YouCtrl | Origin$ Graveyard | Destination$ Battlefield | StackDescription$ then return all cards in your graveyard destroyed this way to the battlefield. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Card.YouCtrl\nOracle:Destroy all enchantments.\\nThreshold — If there are seven or more cards in your graveyard, instead destroy all enchantments, then return all cards in your graveyard destroyed this way to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cleansing Meditation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-immobility-corpus-m680",
+  "description": "M6 corpus — Fear of Immobility; in-hand parse.",
+  "seed": 62451,
+  "cards": {
+    "Fear of Immobility": "Name:Fear of Immobility\nManaCost:4 W\nTypes:Enchantment Creature Nightmare\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap up to one target creature. If an opponent controls that creature, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Creature.OppCtrl\nSVar:PlayMain1:TRUE\nOracle:When Fear of Immobility enters, tap up to one target creature. If an opponent controls that creature, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Immobility"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

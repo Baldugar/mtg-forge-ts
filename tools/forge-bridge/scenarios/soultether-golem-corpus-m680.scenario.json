@@ -1,0 +1,23 @@
+{
+  "id": "soultether-golem-corpus-m680",
+  "description": "M6 corpus — Soultether Golem; in-hand parse.",
+  "seed": 64376,
+  "cards": {
+    "Soultether Golem": "Name:Soultether Golem\nManaCost:2\nTypes:Artifact Creature Golem\nPT:3/3\nK:Vanishing:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control enters, put a time counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1\nAI:RemoveDeck:Random\nOracle:Vanishing 1 (This creature enters with a time counter on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhenever another creature you control enters, put a time counter on Soultether Golem.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soultether Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

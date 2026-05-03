@@ -1,0 +1,23 @@
+{
+  "id": "collective-brutality-corpus-m680",
+  "description": "M6 corpus — Collective Brutality; in-hand parse.",
+  "seed": 61959,
+  "cards": {
+    "Collective Brutality": "Name:Collective Brutality\nManaCost:1 B\nTypes:Sorcery\nK:Escalate:Discard<1/Card>\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 3 | Choices$ DBDiscard,DBPump,DBDrain\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | DiscardValid$ Instant,Sorcery | DiscardValidDesc$ instant or sorcery | Mode$ RevealYouChoose | SpellDescription$ Target opponent reveals their hand. You choose a instant or sorcery card from it. That player discards that card.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn.\nSVar:DBDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Escalate—Discard a card. (Pay this cost for each mode chosen beyond the first.)\\nChoose one or more —\\n• Target opponent reveals their hand. You choose an instant or sorcery card from it. That player discards that card.\\n• Target creature gets -2/-2 until end of turn.\\n• Target opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collective Brutality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

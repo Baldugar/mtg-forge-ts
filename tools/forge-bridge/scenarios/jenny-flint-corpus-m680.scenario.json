@@ -1,0 +1,23 @@
+{
+  "id": "jenny-flint-corpus-m680",
+  "description": "M6 corpus — Jenny Flint; in-hand parse.",
+  "seed": 63032,
+  "cards": {
+    "Jenny Flint": "Name:Jenny Flint\nManaCost:1 U R\nTypes:Legendary Creature Human Detective\nPT:2/2\nK:Partner with:Madame Vastra\nK:First Strike\nK:Training\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue,Food | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you sacrifice a Clue or Food, put a +1/+1 counter on another target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Ability$Sacrifice & Name$Madame Vastra & Type$Clue|Food\nOracle:Partner with Madame Vastra\\nFirst strike\\nTraining (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\\nWhenever you sacrifice a Clue or Food, put a +1/+1 counter on another target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jenny Flint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

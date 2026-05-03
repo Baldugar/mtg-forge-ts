@@ -1,0 +1,23 @@
+{
+  "id": "twenty-toed-toad-corpus-m680",
+  "description": "M6 corpus — Twenty-Toed Toad; in-hand parse.",
+  "seed": 64824,
+  "cards": {
+    "Twenty-Toed Toad": "Name:Twenty-Toed Toad\nManaCost:3 U\nTypes:Creature Frog Wizard\nPT:3/3\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ 20 | Description$ Your maximum hand size is twenty.\nT:Mode$ AttackersDeclared | Execute$ TrigPutCounter | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with two or more creatures, put a +1/+1 counter on CARDNAME and draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigWinGame | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you win the game if there are twenty or more counters on it or you have twenty or more cards in hand.\nSVar:TrigWinGame:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ Win | ConditionSVarCompare$ GE20\nSVar:Win:Count$Compare Y GE20.20.Z\nSVar:Y:Count$CardCounters.ALL\nSVar:Z:Count$ValidHand Card.YouOwn\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nOracle:Your maximum hand size is twenty.\\nWhenever you attack with two or more creatures, put a +1/+1 counter on Twenty-Toed Toad and draw a card.\\nWhenever Twenty-Toed Toad attacks, you win the game if there are twenty or more counters on it or you have twenty or more cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twenty-Toed Toad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

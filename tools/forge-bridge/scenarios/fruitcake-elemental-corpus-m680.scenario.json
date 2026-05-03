@@ -1,0 +1,23 @@
+{
+  "id": "fruitcake-elemental-corpus-m680",
+  "description": "M6 corpus — Fruitcake Elemental; in-hand parse.",
+  "seed": 62578,
+  "cards": {
+    "Fruitcake Elemental": "Name:Fruitcake Elemental\nManaCost:1 G G\nTypes:Creature Elemental\nPT:7/7\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | Description$ CARDNAME is indestructible.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the end of your turn, CARDNAME deals 7 damage to you.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 7\nA:AB$ Pump | Cost$ 3 | ValidTgts$ Player | AILogic$ Curse | SubAbility$ DBGainControl | StackDescription$ {p:Targeted} gains control of CARDNAME. | SpellDescription$ Target player gains control of CARDNAME.\nSVar:DBGainControl:DB$ GainControl | Defined$ Self | NewController$ TargetedPlayer | StackDescription$ None\nOracle:Fruitcake Elemental is indestructible.\\nAt the end of your turn, Fruitcake Elemental deals 7 damage to you.\\n{3}: Target player gains control of Fruitcake Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fruitcake Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

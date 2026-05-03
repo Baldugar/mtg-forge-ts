@@ -1,0 +1,23 @@
+{
+  "id": "roiling-horror-corpus-m680",
+  "description": "M6 corpus — Roiling Horror; in-hand parse.",
+  "seed": 64033,
+  "cards": {
+    "Roiling Horror": "Name:Roiling Horror\nManaCost:3 B B\nTypes:Creature Horror\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to your life total minus the life total of an opponent with the most life.\nK:Suspend:X:XMin1 X B B B\nT:Mode$ CounterRemoved | ValidCard$ Card.Self | TriggerZones$ Exile | CounterType$ TIME | Execute$ TrigLoseLife | TriggerDescription$ Whenever a time counter is removed from CARDNAME while it's exiled, target player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$xPaid\nSVar:Y:Count$YourLifeTotal/Minus.Z\nSVar:Z:Count$OppGreatestLifeTotal\nAI:RemoveDeck:All\nOracle:Roiling Horror's power and toughness are each equal to your life total minus the life total of an opponent with the most life.\\nSuspend X—{X}{B}{B}{B}. X can't be 0. (Rather than cast this card from your hand, you may pay {X}{B}{B}{B} and exile it with X time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)\\nWhenever a time counter is removed from Roiling Horror while it's exiled, target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roiling Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "etched-familiar-corpus-m680",
+  "description": "M6 corpus — Etched Familiar; in-hand parse.",
+  "seed": 62373,
+  "cards": {
+    "Etched Familiar": "Name:Etched Familiar\nManaCost:2 B\nTypes:Artifact Creature Phyrexian Fox\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:When Etched Familiar dies, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Etched Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

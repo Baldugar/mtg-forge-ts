@@ -1,0 +1,23 @@
+{
+  "id": "judge-unworthy-corpus-m680",
+  "description": "M6 corpus — Judge Unworthy; in-hand parse.",
+  "seed": 63055,
+  "cards": {
+    "Judge Unworthy": "Name:Judge Unworthy\nManaCost:1 W\nTypes:Instant\nA:SP$ Scry | ScryNum$ 3 | SubAbility$ DBReveal | SpellDescription$ Choose target attacking or blocking creature. Scry 3, then reveal the top card of your library. CARDNAME deals damage equal to that card's mana value to that creature.\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | DestinationZone$ Library | LibraryPosition$ 0 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature\nSVar:X:Count$TopOfLibraryCMC\nAI:RemoveDeck:All\nOracle:Choose target attacking or blocking creature. Scry 3, then reveal the top card of your library. Judge Unworthy deals damage equal to that card's mana value to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Judge Unworthy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

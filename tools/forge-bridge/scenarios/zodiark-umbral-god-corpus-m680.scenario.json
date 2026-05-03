@@ -1,0 +1,23 @@
+{
+  "id": "zodiark-umbral-god-corpus-m680",
+  "description": "M6 corpus — Zodiark, Umbral God; in-hand parse.",
+  "seed": 65130,
+  "cards": {
+    "Zodiark, Umbral God": "Name:Zodiark, Umbral God\nManaCost:B B B B B\nTypes:Legendary Creature God\nPT:5/5\nK:Indestructible\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigRepeatEach | TriggerDescription$ When NICKNAME enters, each player sacrifices half the non-God creatures they control of their choice, rounded down.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ Y | SacValid$ Creature.nonGod | Defined$ Remembered\nSVar:Y:Count$Valid Creature.nonGod+RememberedPlayerCtrl/HalfDown\nT:Mode$ Sacrificed | ValidCard$ Creature.Other | ValidPlayer$ Player | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player sacrifices another creature, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Ability$Sacrifice\nOracle:Indestructible\\nWhen Zodiark enters, each player sacrifices half the non-God creatures they control of their choice, rounded down.\\nWhenever a player sacrifices another creature, put a +1/+1 counter on Zodiark.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zodiark, Umbral God"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "agrus-kos-spirit-of-justice-corpus-m680",
+  "description": "M6 corpus — Agrus Kos, Spirit of Justice; in-hand parse.",
+  "seed": 61469,
+  "cards": {
+    "Agrus Kos, Spirit of Justice": "Name:Agrus Kos, Spirit of Justice\nManaCost:2 R W\nTypes:Legendary Creature Spirit Detective\nPT:2/4\nK:Double Strike\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerDescription$ Whenever CARDNAME enters or attacks, choose up to one target creature. If it's suspected, exile it. Otherwise, suspect it. (A suspected creature has menace and can't block.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, choose up to one target creature. If it's suspected, exile it. Otherwise, suspect it. (A suspected creature has menace and can't block.)\nSVar:TrigBranch:DB$ Branch | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ ExileIt | FalseSubAbility$ SuspectIt\nSVar:ExileIt:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile\nSVar:SuspectIt:DB$ AlterAttribute | Defined$ Targeted | Attributes$ Suspected\nSVar:X:Targeted$Valid Card.IsSuspected\nSVar:HasAttackEffect:TRUE\nOracle:Double strike, vigilance\\nWhenever Agrus Kos, Spirit of Justice enters or attacks, choose up to one target creature. If it's suspected, exile it. Otherwise, suspect it. (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agrus Kos, Spirit of Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

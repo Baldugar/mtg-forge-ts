@@ -1,0 +1,23 @@
+{
+  "id": "forge-of-heroes-corpus-m680",
+  "description": "M6 corpus — Forge of Heroes; in-hand parse.",
+  "seed": 62540,
+  "cards": {
+    "Forge of Heroes": "Name:Forge of Heroes\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Pump | Cost$ T | ValidTgts$ Card.IsCommander+ThisTurnEntered | TgtPrompt$ Select target commander that entered this turn | SubAbility$ DBPutCounter | StackDescription$ SpellDescription | SpellDescription$ Choose target commander that entered this turn. Put a +1/+1 counter on it if it's a creature and a loyalty counter on it if it's a planeswalker.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ ParentTarget | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ ParentTarget | ConditionPresent$ Creature | ConditionCompare$ GE1 | SubAbility$ DBPutCounterCommander\nSVar:DBPutCounterCommander:DB$ PutCounter | Defined$ ParentTarget | CounterType$ LOYALTY | CounterNum$ 1 | ConditionDefined$ ParentTarget | ConditionPresent$ Planeswalker | ConditionCompare$ GE1\nOracle:{T}: Add {C}.\\n{T}: Choose target commander that entered this turn. Put a +1/+1 counter on it if it's a creature and a loyalty counter on it if it's a planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forge of Heroes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

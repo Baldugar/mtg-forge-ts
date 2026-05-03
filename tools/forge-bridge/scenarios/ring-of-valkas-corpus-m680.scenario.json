@@ -1,0 +1,23 @@
+{
+  "id": "ring-of-valkas-corpus-m680",
+  "description": "M6 corpus — Ring of Valkas; in-hand parse.",
+  "seed": 63995,
+  "cards": {
+    "Ring of Valkas": "Name:Ring of Valkas\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste | Description$ Equipped creature has haste.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ValkasCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's red.\nSVar:ValkasCounter:DB$ PutCounter | Defined$ Equipped | ConditionDefined$ Equipped | ConditionPresent$ Creature.Red | ConditionCompare$ EQ1 | CounterType$ P1P1 | CounterNum$ 1\nSVar:AttachAi:AITgts$ Creature.Red\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red\nOracle:Equipped creature has haste. (It can attack and {T} no matter when it came under your control.)\\nAt the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's red.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ring of Valkas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

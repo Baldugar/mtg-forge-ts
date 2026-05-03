@@ -1,0 +1,23 @@
+{
+  "id": "specter-of-mortality-corpus-m680",
+  "description": "M6 corpus — Specter of Mortality; in-hand parse.",
+  "seed": 64395,
+  "cards": {
+    "Specter of Mortality": "Name:Specter of Mortality\nManaCost:3 B B\nTypes:Creature Specter\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, you may exile one or more creature cards from your graveyard. When you do, each other creature gets -X/-X until end of turn, where X is the number of cards exiled this way.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | ChangeType$ Creature.YouOwn | Hidden$ True | Destination$ Exile | Optional$ You | ChangeNum$ X | SelectPrompt$ Select one or more creature cards from your graveyard | SubAbility$ DBImmediateTrig | RememberChanged$ True | AITgtOwnCards$ True | AIMinTgts$ 3\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ Remembered | ConditionCompare$ GE1 | SubAbility$ DBCleanup | Execute$ TrigPumpAll | TriggerDescription$ When you do, each other creature gets -X/-X until end of turn, where X is the number of cards exiled this way.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Other | NumAtt$ -Y | NumDef$ -Y\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:TriggerRemembered$Amount\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:Flying\\nWhen Specter of Mortality enters, you may exile one or more creature cards from your graveyard. When you do, each other creature gets -X/-X until end of turn, where X is the number of cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Specter of Mortality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

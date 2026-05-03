@@ -1,0 +1,23 @@
+{
+  "id": "caldaia-strongarm-corpus-m680",
+  "description": "M6 corpus — Caldaia Strongarm; in-hand parse.",
+  "seed": 61833,
+  "cards": {
+    "Caldaia Strongarm": "Name:Caldaia Strongarm\nManaCost:4 G\nTypes:Creature Human Warrior\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two +1/+1 counters on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2\nK:Blitz:3 G\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters|Sacrifice\nOracle:When Caldaia Strongarm enters, put two +1/+1 counters on target creature.\\nBlitz {3}{G} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caldaia Strongarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

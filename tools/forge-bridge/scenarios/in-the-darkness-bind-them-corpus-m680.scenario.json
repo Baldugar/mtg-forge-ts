@@ -1,0 +1,23 @@
+{
+  "id": "in-the-darkness-bind-them-corpus-m680",
+  "description": "M6 corpus — In the Darkness Bind Them; in-hand parse.",
+  "seed": 62913,
+  "cards": {
+    "In the Darkness Bind Them": "Name:In the Darkness Bind Them\nManaCost:2 U B R\nTypes:Enchantment Saga\nK:Chapter:4:DBToken,DBToken,DBToken,DBGainControl\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_wraith_menace | TokenOwner$ You | SubAbility$ TrigTempt | SpellDescription$ Create a 3/3 black Wraith creature token with menace. The Ring tempts you.\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Creature.OppCtrl | SubAbility$ TrigTempt | TgtPrompt$ Select target creature an opponent controls to gain control of. | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ For each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn. The Ring tempts you.\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:TrigTempt:DB$ RingTemptsYou\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Create a 3/3 black Wraith creature token with menace. The Ring tempts you.\\nIV — For each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "In the Darkness Bind Them"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

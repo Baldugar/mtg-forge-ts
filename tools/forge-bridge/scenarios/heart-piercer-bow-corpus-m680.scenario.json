@@ -1,0 +1,23 @@
+{
+  "id": "heart-piercer-bow-corpus-m680",
+  "description": "M6 corpus — Heart-Piercer Bow; in-hand parse.",
+  "seed": 62806,
+  "cards": {
+    "Heart-Piercer Bow": "Name:Heart-Piercer Bow\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDamage | TriggerDescription$ Whenever equipped creature attacks, CARDNAME deals 1 damage to target creature defending player controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | NumDmg$ 1\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHints:Name$Renowned Weaponsmith\nOracle:Whenever equipped creature attacks, Heart-Piercer Bow deals 1 damage to target creature defending player controls.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heart-Piercer Bow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

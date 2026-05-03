@@ -1,0 +1,23 @@
+{
+  "id": "electrosiphon-corpus-m680",
+  "description": "M6 corpus — Electrosiphon; in-hand parse.",
+  "seed": 62295,
+  "cards": {
+    "Electrosiphon": "Name:Electrosiphon\nManaCost:U U R\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBEnergy | RememberCounteredCMC$ True | SpellDescription$ Counter target spell. You get an amount of {E} (energy counters) equal to its mana value.\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nSVar:X:Count$RememberedNumber\nOracle:Counter target spell. You get an amount of {E} (energy counters) equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrosiphon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

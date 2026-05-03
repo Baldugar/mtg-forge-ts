@@ -1,0 +1,23 @@
+{
+  "id": "containment-construct-corpus-m680",
+  "description": "M6 corpus — Containment Construct; in-hand parse.",
+  "seed": 61997,
+  "cards": {
+    "Containment Construct": "Name:Containment Construct\nManaCost:2\nTypes:Artifact Creature Construct\nPT:2/1\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever you discard a card, you may exile that card from your graveyard. If you do, you may play that card this turn.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Ability$Discard\nOracle:Whenever you discard a card, you may exile that card from your graveyard. If you do, you may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Containment Construct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

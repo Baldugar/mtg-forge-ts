@@ -1,0 +1,23 @@
+{
+  "id": "mardu-skullhunter-corpus-m680",
+  "description": "M6 corpus — Mardu Skullhunter; in-hand parse.",
+  "seed": 63340,
+  "cards": {
+    "Mardu Skullhunter": "Name:Mardu Skullhunter\nManaCost:1 B\nTypes:Creature Human Warrior\nPT:2/1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDiscard | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Mardu Skullhunter enters tapped.\\nRaid — When Mardu Skullhunter enters, if you attacked this turn, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Skullhunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

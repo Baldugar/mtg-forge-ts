@@ -1,0 +1,23 @@
+{
+  "id": "glowcap-lantern-corpus-m680",
+  "description": "M6 corpus — Glowcap Lantern; in-hand parse.",
+  "seed": 62661,
+  "cards": {
+    "Glowcap Lantern": "Name:Glowcap Lantern\nManaCost:G\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddStaticAbility$ StaticLook | AddTrigger$ TrigAttack | Description$ Equipped creature has \"You may look at the top card of your library any time\" and \"Whenever this creature attacks, it explores.\" (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\nSVar:StaticLook:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExplore | TriggerDescription$ Whenever this creature attacks, it explores.\nSVar:TrigExplore:DB$ Explore\nDeckHas:Ability$Counters|Graveyard\nK:Equip:2\nOracle:Equipped creature has \"You may look at the top card of your library any time\" and \"Whenever this creature attacks, it explores.\" (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glowcap Lantern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

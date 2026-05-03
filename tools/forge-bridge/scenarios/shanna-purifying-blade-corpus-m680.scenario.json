@@ -1,0 +1,23 @@
+{
+  "id": "shanna-purifying-blade-corpus-m680",
+  "description": "M6 corpus — Shanna, Purifying Blade; in-hand parse.",
+  "seed": 64232,
+  "cards": {
+    "Shanna, Purifying Blade": "Name:Shanna, Purifying Blade\nManaCost:G W U\nTypes:Legendary Creature Human Warrior\nPT:3/3\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, you may pay {X}. If you do, draw X cards. X can't be greater than the amount of life you gained this turn.\nSVar:TrigDraw:AB$ Draw | Cost$ X | XMaxLimit$ LifeGained | NumCards$ X\nSVar:X:Count$xPaid\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain\nOracle:Lifelink\\nAt the beginning of your end step, you may pay {X}. If you do, draw X cards. X can't be greater than the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shanna, Purifying Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

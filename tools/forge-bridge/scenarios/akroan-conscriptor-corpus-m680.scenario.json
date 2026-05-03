@@ -1,0 +1,23 @@
+{
+  "id": "akroan-conscriptor-corpus-m680",
+  "description": "M6 corpus — Akroan Conscriptor; in-hand parse.",
+  "seed": 61478,
+  "cards": {
+    "Akroan Conscriptor": "Name:Akroan Conscriptor\nManaCost:4 R\nTypes:Creature Human Shaman\nPT:3/2\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, gain control of another target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | TgtPrompt$ Choose another target creature | ValidTgts$ Creature.Other | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Gain control of another target creature until end of turn. Untap that creature. It gains haste until end of turn.\nOracle:Heroic — Whenever you cast a spell that targets Akroan Conscriptor, gain control of another target creature until end of turn. Untap that creature. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akroan Conscriptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

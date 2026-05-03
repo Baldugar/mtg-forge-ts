@@ -1,0 +1,23 @@
+{
+  "id": "monoxa-midway-manager-corpus-m680",
+  "description": "M6 corpus — Monoxa, Midway Manager; in-hand parse.",
+  "seed": 63470,
+  "cards": {
+    "Monoxa, Midway Manager": "Name:Monoxa, Midway Manager\nManaCost:2 B R\nTypes:Legendary Creature Vampire Employee\nPT:3/3\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ Pump1 | ValidResult$ GE3 | ValidPlayer$ You | TriggerDescription$ Whenever you roll a 3 or higher, CARDNAME gains first strike until end of turn. If the roll was 4 or higher, it gains menace until end of turn. If the roll was 5 or higher, it gains lifelink until end of turn.\nSVar:Pump1:DB$ Pump | KW$ First Strike | SubAbility$ Pump2\nSVar:Pump2:DB$ Pump | KW$ Menace | ConditionCheckSVar$ X | ConditionSVarCompare$ GE4 | SubAbility$ Pump3\nSVar:Pump3:DB$ Pump | KW$ Lifelink | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5\nSVar:X:TriggerCount$Result\nA:AB$ RollDice | Cost$ 6 | SpellDescription$ Roll a six-sided die.\nDeckHas:Ability$LifeGain\nOracle:Whenever you roll a 3 or higher, Monoxa, Midway Manager gains first strike until end of turn. If the roll was 4 or higher, it gains menace until end of turn. If the roll was 5 or higher, it gains lifelink until end of turn.\\n{6}: Roll a six-sided die.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monoxa, Midway Manager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

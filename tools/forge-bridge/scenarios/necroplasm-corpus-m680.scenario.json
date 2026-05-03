@@ -1,0 +1,23 @@
+{
+  "id": "necroplasm-corpus-m680",
+  "description": "M6 corpus — Necroplasm; in-hand parse.",
+  "seed": 63530,
+  "cards": {
+    "Necroplasm": "Name:Necroplasm\nManaCost:1 B B\nTypes:Creature Ooze\nPT:1/1\nK:Dredge:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ At the beginning of your end step, destroy each creature with mana value equal to the number of +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.cmcEQX\nSVar:X:Count$CardCounters.P1P1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, put a +1/+1 counter on Necroplasm.\\nAt the beginning of your end step, destroy each creature with mana value equal to the number of +1/+1 counters on Necroplasm.\\nDredge 2 (If you would draw a card, you may mill two cards instead. If you do, return this card from your graveyard to your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necroplasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

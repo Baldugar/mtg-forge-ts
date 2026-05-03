@@ -1,0 +1,23 @@
+{
+  "id": "tarpan-corpus-m680",
+  "description": "M6 corpus — Tarpan; in-hand parse.",
+  "seed": 64593,
+  "cards": {
+    "Tarpan": "Name:Tarpan\nManaCost:G\nTypes:Creature Horse\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, you gain 1 life.\nSVar:TrigSac:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 1\nOracle:When Tarpan dies, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tarpan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

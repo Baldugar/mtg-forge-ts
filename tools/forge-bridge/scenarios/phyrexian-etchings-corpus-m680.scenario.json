@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-etchings-corpus-m680",
+  "description": "M6 corpus — Phyrexian Etchings; in-hand parse.",
+  "seed": 63742,
+  "cards": {
+    "Phyrexian Etchings": "Name:Phyrexian Etchings\nManaCost:B B B\nTypes:Enchantment\nK:Cumulative upkeep:B\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, draw a card for each age counter on CARDNAME.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLoseLife | ValidCard$ Card.Self | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you lose 2 life for each age counter on it.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ Y\nSVar:X:Count$CardCounters.AGE\nSVar:Y:TriggeredCard$CardCounters.AGE/Times.2\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {B} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of your end step, draw a card for each age counter on Phyrexian Etchings.\\nWhen Phyrexian Etchings is put into a graveyard from the battlefield, you lose 2 life for each age counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Etchings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

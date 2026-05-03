@@ -1,0 +1,23 @@
+{
+  "id": "forerunner-of-the-heralds-corpus-m680",
+  "description": "M6 corpus — Forerunner of the Heralds; in-hand parse.",
+  "seed": 62536,
+  "cards": {
+    "Forerunner of the Heralds": "Name:Forerunner of the Heralds\nManaCost:3 G\nTypes:Creature Merfolk Scout\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Merfolk card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Merfolk | ChangeNum$ 1 | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.Merfolk+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Whenever another Merfolk you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Type$Merfolk\nOracle:When Forerunner of the Heralds enters, you may search your library for a Merfolk card, reveal it, then shuffle and put that card on top.\\nWhenever another Merfolk you control enters, put a +1/+1 counter on Forerunner of the Heralds.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forerunner of the Heralds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

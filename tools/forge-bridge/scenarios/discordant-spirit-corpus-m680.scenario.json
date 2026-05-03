@@ -1,0 +1,23 @@
+{
+  "id": "discordant-spirit-corpus-m680",
+  "description": "M6 corpus — Discordant Spirit; in-hand parse.",
+  "seed": 62183,
+  "cards": {
+    "Discordant Spirit": "Name:Discordant Spirit\nManaCost:2 B R\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.Opponent | TriggerZones$ Battlefield | Execute$ GhostCounter | TriggerDescription$ At the beginning of each end step, if it's an opponent's turn, put a +1/+1 counter on CARDNAME for each 1 damage dealt to you this turn.\nSVar:GhostCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ GhostClear | TriggerDescription$ At the beginning of your end step, remove all +1/+1 counters from CARDNAME.\nSVar:GhostClear:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ All\nSVar:X:PlayerCountPropertyYou$DamageThisTurn\nOracle:At the beginning of each end step, if it's an opponent's turn, put a +1/+1 counter on Discordant Spirit for each 1 damage dealt to you this turn.\\nAt the beginning of your end step, remove all +1/+1 counters from Discordant Spirit.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discordant Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

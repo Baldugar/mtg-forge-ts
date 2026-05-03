@@ -1,0 +1,23 @@
+{
+  "id": "hellhole-rats-corpus-m680",
+  "description": "M6 corpus — Hellhole Rats; in-hand parse.",
+  "seed": 62814,
+  "cards": {
+    "Hellhole Rats": "Name:Hellhole Rats\nManaCost:2 B R\nTypes:Creature Rat\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards a card. CARDNAME deals damage to that player equal to that card's mana value.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | Mode$ TgtChoose | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Haste\\nWhen Hellhole Rats enters, target player discards a card. Hellhole Rats deals damage to that player equal to that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellhole Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

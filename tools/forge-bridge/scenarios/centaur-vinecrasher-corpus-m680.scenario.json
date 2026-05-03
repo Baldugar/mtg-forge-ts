@@ -1,0 +1,23 @@
+{
+  "id": "centaur-vinecrasher-corpus-m680",
+  "description": "M6 corpus — Centaur Vinecrasher; in-hand parse.",
+  "seed": 61883,
+  "cards": {
+    "Centaur Vinecrasher": "Name:Centaur Vinecrasher\nManaCost:3 G\nTypes:Creature Plant Centaur\nPT:1/1\nK:Trample\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each land card in all graveyards.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | TriggerZones$ Graveyard | ValidCard$ Card.!token+Land | Execute$ TrigReturn | TriggerDescription$ Whenever a land card is put into a graveyard from anywhere, you may pay {G}{G}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ G G | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:X:Count$ValidGraveyard Land\nAI:RemoveDeck:Random\nOracle:Trample\\nCentaur Vinecrasher enters with a number of +1/+1 counters on it equal to the number of land cards in all graveyards.\\nWhenever a land card is put into a graveyard from anywhere, you may pay {G}{G}. If you do, return Centaur Vinecrasher from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Centaur Vinecrasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

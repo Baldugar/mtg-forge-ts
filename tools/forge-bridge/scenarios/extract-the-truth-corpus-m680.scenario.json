@@ -1,0 +1,23 @@
+{
+  "id": "extract-the-truth-corpus-m680",
+  "description": "M6 corpus — Extract the Truth; in-hand parse.",
+  "seed": 62406,
+  "cards": {
+    "Extract the Truth": "Name:Extract the Truth\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDiscard,DBSacrifice\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | Mode$ RevealYouChoose | Optional$ True | DiscardValid$ Creature,Enchantment,Planeswalker | DiscardValidDesc$ creature, enchantment, or planeswalker | SpellDescription$ Target opponent reveals their hand. You may choose a creature, enchantment, or planeswalker card from it. That player discards that card.\nSVar:DBSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Enchantment | SpellDescription$ Target opponent sacrifices an enchantment.\nOracle:Choose one —\\n• Target opponent reveals their hand. You may choose a creature, enchantment, or planeswalker card from it. That player discards that card.\\n• Target opponent sacrifices an enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extract the Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

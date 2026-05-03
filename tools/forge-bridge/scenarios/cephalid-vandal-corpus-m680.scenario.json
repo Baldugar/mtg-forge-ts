@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-vandal-corpus-m680",
+  "description": "M6 corpus — Cephalid Vandal; in-hand parse.",
+  "seed": 61885,
+  "cards": {
+    "Cephalid Vandal": "Name:Cephalid Vandal\nManaCost:1 U\nTypes:Creature Octopus Rogue\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a shred counter on CARDNAME. Then mill a card for each shred counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SHRED | CounterNum$ 1 | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ You | NumCards$ X\nSVar:X:Count$CardCounters.SHRED\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, put a shred counter on Cephalid Vandal. Then mill a card for each shred counter on Cephalid Vandal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Vandal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

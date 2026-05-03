@@ -1,0 +1,23 @@
+{
+  "id": "huatli-s-final-strike-corpus-m680",
+  "description": "M6 corpus — Huatli's Final Strike; in-hand parse.",
+  "seed": 62869,
+  "cards": {
+    "Huatli's Final Strike": "Name:Huatli's Final Strike\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +1 | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | AILogic$ PowerDmg | SpellDescription$ Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to target creature an opponent controls.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget | AILogic$ PowerDmg | StackDescription$ Then {c:ParentTarget} deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Huatli's Final Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

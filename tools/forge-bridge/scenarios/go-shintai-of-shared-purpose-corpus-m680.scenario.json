@@ -1,0 +1,23 @@
+{
+  "id": "go-shintai-of-shared-purpose-corpus-m680",
+  "description": "M6 corpus — Go-Shintai of Shared Purpose; in-hand parse.",
+  "seed": 62676,
+  "cards": {
+    "Go-Shintai of Shared Purpose": "Name:Go-Shintai of Shared Purpose\nManaCost:3 W\nTypes:Legendary Enchantment Creature Shrine\nPT:1/3\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, you may pay {1}. If you do, create a 1/1 colorless Spirit creature token for each Shrine you control.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenAmount$ X | TokenScript$ c_1_1_spirit\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHas:Ability$Token & Type$Spirit\nDeckHints:Type$Shrine\nOracle:Vigilance\\nAt the beginning of your end step, you may pay {1}. If you do, create a 1/1 colorless Spirit creature token for each Shrine you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Go-Shintai of Shared Purpose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "arcane-archery-corpus-m680",
+  "description": "M6 corpus — Arcane Archery; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Arcane Archery": "Name:Arcane Archery\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | KW$ Reach & Trample | SubAbility$ DBBoon | SpellDescription$ Target creature gets +3/+3 and gains reach and trample until end of turn.\nSVar:DBBoon:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast | StackDescription$ SpellDescription | SpellDescription$ ,,,,,,You get a boon with \"When you cast your next creature spell, that creature enters with an additional +1/+1 counter, reach counter, and trample counter on it.\"\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ReplEffAddCounter | TriggerDescription$ When you cast your next creature spell, that creature enters with an additional +1/+1 counter, reach counter, and trample counter on it.\nSVar:ReplEffAddCounter:DB$ Effect | ReplacementEffects$ ETBAddCounter | RememberObjects$ TriggeredCard\nSVar:ETBAddCounter:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterTypes$ P1P1,Reach,Trample | CounterNum$ 1 | SubAbility$ DBRemoveSelf\nSVar:DBRemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHas:Ability$Counters\nOracle:Target creature gets +3/+3 and gains reach and trample until end of turn.\\nYou get a boon with \"When you cast your next creature spell, that creature enters with an additional +1/+1 counter, reach counter, and trample counter on it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcane Archery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

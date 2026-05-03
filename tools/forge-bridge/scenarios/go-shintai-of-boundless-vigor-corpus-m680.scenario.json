@@ -1,0 +1,23 @@
+{
+  "id": "go-shintai-of-boundless-vigor-corpus-m680",
+  "description": "M6 corpus — Go-Shintai of Boundless Vigor; in-hand parse.",
+  "seed": 62673,
+  "cards": {
+    "Go-Shintai of Boundless Vigor": "Name:Go-Shintai of Boundless Vigor\nManaCost:1 G\nTypes:Legendary Enchantment Creature Shrine\nPT:1/1\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of your end step, you may pay {1}. When you do, put a +1/+1 counter on target Shrine for each Shrine you control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigPutCounter | SpellDescription$ Put a +1/+1 counter on target Shrine for each Shrine you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Shrine | TgtPrompt$ Select target Shrine | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHas:Ability$Counters\nDeckNeeds:Type$Shrine\nOracle:Trample\\nAt the beginning of your end step, you may pay {1}. When you do, put a +1/+1 counter on target Shrine for each Shrine you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Go-Shintai of Boundless Vigor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phenomenon-investigators-corpus-m680",
+  "description": "M6 corpus — Phenomenon Investigators; in-hand parse.",
+  "seed": 63735,
+  "cards": {
+    "Phenomenon Investigators": "Name:Phenomenon Investigators\nManaCost:2 U B\nTypes:Creature Human Detective\nPT:3/4\nK:ETBReplacement:Other:BelieveOrDoubt\nSVar:BelieveOrDoubt:DB$ GenericChoice | Choices$ Believe,Doubt | Defined$ You | SetChosenMode$ True | ShowChoice$ ExceptSelf | SpellDescription$ As CARDNAME enters, choose Believe or Doubt.\nSVar:Believe:DB$ Pump | SpellDescription$ Believe\nSVar:Doubt:DB$ Pump | SpellDescription$ Doubt\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeBelieve | AddTrigger$ BelieveTrigger | Description$ • Believe — Whenever a nontoken creature you control dies, create a 2/2 black Horror enchantment creature token.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeDoubt | AddTrigger$ DoubtTrigger | Description$ • Doubt — At the beginning of your end step, you may return a nonland permanent you own to your hand. If you do, draw a card.\nSVar:BelieveTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, create a 2/2 black Horror enchantment creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_e_horror | TokenOwner$ You\nSVar:DoubtTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, you may return a nonland permanent you own to your hand. If you do, draw a card.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Permanent.nonLand+YouOwn | ChoiceOptional$ True | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:As Phenomenon Investigators enters, choose Believe or Doubt.\\n• Believe — Whenever a nontoken creature you control dies, create a 2/2 black Horror enchantment creature token.\\n• Doubt — At the beginning of your end step, you may return a nonland permanent you own to your hand. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phenomenon Investigators"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kazarov-sengir-pureblood-corpus-m680",
+  "description": "M6 corpus — Kazarov, Sengir Pureblood; in-hand parse.",
+  "seed": 63094,
+  "cards": {
+    "Kazarov, Sengir Pureblood": "Name:Kazarov, Sengir Pureblood\nManaCost:5 B B\nTypes:Legendary Creature Vampire\nPT:4/4\nK:Flying\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls is dealt damage, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ DealDamage | Cost$ 3 R | ValidTgts$ Creature | NumDmg$ 2 | SpellDescription$ NICKNAME deals 2 damage to target creature.\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever a creature an opponent controls is dealt damage, put a +1/+1 counter on Kazarov, Sengir Pureblood.\\n{3}{R}: Kazarov deals 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kazarov, Sengir Pureblood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

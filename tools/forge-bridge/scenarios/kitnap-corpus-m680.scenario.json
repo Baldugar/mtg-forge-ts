@@ -1,0 +1,23 @@
+{
+  "id": "kitnap-corpus-m680",
+  "description": "M6 corpus — Kitnap; in-hand parse.",
+  "seed": 63135,
+  "cards": {
+    "Kitnap": "Name:Kitnap\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Gift\nK:Enchant:Creature\nSVar:GiftAbility:DB$ Draw | Defined$ Promised | GiftDescription$ a card\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature. If the gift wasn't promised, put three stun counters on it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBStun\nSVar:DBStun:DB$ PutCounter | Defined$ Enchanted | CounterType$ Stun | CounterNum$ 3 | ConditionDefined$ Self | ConditionPresent$ Card.PromisedGift | ConditionCompare$ EQ0\nOracle:Gift a card (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they draw a card.)\\nEnchant creature\\nWhen Kitnap enters, tap enchanted creature. If the gift wasn't promised, put three stun counters on it.\\nYou control enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitnap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

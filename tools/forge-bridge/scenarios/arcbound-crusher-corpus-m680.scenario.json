@@ -1,0 +1,23 @@
+{
+  "id": "arcbound-crusher-corpus-m680",
+  "description": "M6 corpus — Arcbound Crusher; in-hand parse.",
+  "seed": 61544,
+  "cards": {
+    "Arcbound Crusher": "Name:Arcbound Crusher\nManaCost:4\nTypes:Artifact Creature Juggernaut\nPT:0/0\nK:Trample\nK:Modular:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another artifact enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Counters\nDeckNeeds:Type$Artifact\nOracle:Trample\\nWhenever another artifact enters, put a +1/+1 counter on Arcbound Crusher.\\nModular 1 (This creature enters with a +1/+1 counter on it. When it dies, you may put its +1/+1 counters on target artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcbound Crusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

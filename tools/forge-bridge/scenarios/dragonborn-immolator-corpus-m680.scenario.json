@@ -1,0 +1,23 @@
+{
+  "id": "dragonborn-immolator-corpus-m680",
+  "description": "M6 corpus — Dragonborn Immolator; in-hand parse.",
+  "seed": 62221,
+  "cards": {
+    "Dragonborn Immolator": "Name:Dragonborn Immolator\nManaCost:3 R\nTypes:Creature Dragon Shaman\nPT:2/4\nA:AB$ Pump | Cost$ 2 R | NumAtt$ +2 | SpellDescription$ CARDNAME gets +2/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigNote | TriggerDescription$ Gift of Tiamat — When CARDNAME dies, if its power is greater than 0, note its power. You get a boon with \"When you cast your next creature spell, it perpetually gets +X/+0, where X is the noted number.\"\nSVar:TrigNote:DB$ StoreSVar | ConditionCheckSVar$ X | SVar$ NotedPower | Type$ CountSVar | Expression$ X | SubAbility$ DBEffect\nSVar:NotedPower:Number$0\nSVar:X:Count$CardPower\nSVar:DBEffect:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast | SetChosenNumber$ NotedPower\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigEffect | TriggerDescription$ When you cast your next creature spell, it perpetually gets +X/+0, where X is the noted number.\nSVar:TrigEffect:DB$ Pump | PumpZone$ Stack | Defined$ TriggeredCard | NumAtt$ +Count$ChosenNumber | Duration$ Perpetual\nOracle:{2}{R}: Dragonborn Immolator gets +2/+0 until end of turn.\\nGift of Tiamat — When Dragonborn Immolator dies, if its power is greater than 0, note its power. You get a boon with \"When you cast your next creature spell, it perpetually gets +X/+0, where X is the noted number.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonborn Immolator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

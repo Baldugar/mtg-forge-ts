@@ -1,0 +1,23 @@
+{
+  "id": "cemetery-puca-corpus-m680",
+  "description": "M6 corpus — Cemetery Puca; in-hand parse.",
+  "seed": 61879,
+  "cards": {
+    "Cemetery Puca": "Name:Cemetery Puca\nManaCost:1 UB UB\nTypes:Creature Shapeshifter\nPT:1/2\n# Make Svars for granting abilities and triggers on clones distinct to avoid SVars getting overwritten when cloning a clone\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ CemeteryPucaCopy | TriggerDescription$ Whenever a creature dies, you may pay {1}. If you do, CARDNAME becomes a copy of that creature, except it has this ability.\nSVar:CemeteryPucaCopy:AB$ Clone | Cost$ 1 | Defined$ TriggeredCardLKICopy | GainThisAbility$ True\nAI:RemoveDeck:All\nOracle:Whenever a creature dies, you may pay {1}. If you do, Cemetery Puca becomes a copy of that creature, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cemetery Puca"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

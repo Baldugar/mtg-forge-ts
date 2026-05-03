@@ -1,0 +1,23 @@
+{
+  "id": "guul-draz-mucklord-corpus-m680",
+  "description": "M6 corpus — Guul Draz Mucklord; in-hand parse.",
+  "seed": 62758,
+  "cards": {
+    "Guul Draz Mucklord": "Name:Guul Draz Mucklord\nManaCost:2 B\nTypes:Creature Crocodile\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Guul Draz Mucklord dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guul Draz Mucklord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

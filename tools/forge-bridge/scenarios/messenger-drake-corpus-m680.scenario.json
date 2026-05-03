@@ -1,0 +1,23 @@
+{
+  "id": "messenger-drake-corpus-m680",
+  "description": "M6 corpus — Messenger Drake; in-hand parse.",
+  "seed": 63392,
+  "cards": {
+    "Messenger Drake": "Name:Messenger Drake\nManaCost:3 U U\nTypes:Creature Drake\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nSVar:SacMe:1\nOracle:Flying\\nWhen Messenger Drake dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Messenger Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

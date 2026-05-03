@@ -1,0 +1,23 @@
+{
+  "id": "vivi-s-persistence-corpus-m680",
+  "description": "M6 corpus — Vivi's Persistence; in-hand parse.",
+  "seed": 64966,
+  "cards": {
+    "Vivi's Persistence": "Name:Vivi's Persistence\nManaCost:1 R\nTypes:Instant\nA:SP$ Token | TokenScript$ b_0_1_wizard_snipe | TokenOwner$ You | SpellDescription$ Create a 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\"\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigChangeZone | TriggerZones$ Graveyard | TriggerDescription$ Whenever your commander enters or attacks, you may pay {2}. If you do, return this card from your graveyard to your hand.\nT:Mode$ Attacks | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigChangeZone | TriggerZones$ Graveyard | Secondary$ True | TriggerDescription$ Whenever your commander enters or attacks, you may pay {2}. If you do, return this card from your graveyard to your hand.\nSVar:TrigChangeZone:AB$ ChangeZone | Cost$ 2 | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nDeckHas:Ability$Token\nOracle:Create a 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\"\\nWhenever your commander enters or attacks, you may pay {2}. If you do, return this card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivi's Persistence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

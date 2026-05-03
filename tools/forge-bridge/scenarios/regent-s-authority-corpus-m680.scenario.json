@@ -1,0 +1,23 @@
+{
+  "id": "regent-s-authority-corpus-m680",
+  "description": "M6 corpus — Regent's Authority; in-hand parse.",
+  "seed": 63939,
+  "cards": {
+    "Regent's Authority": "Name:Regent's Authority\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | SubAbility$ DBBranch | StackDescription$ SpellDescription | SpellDescription$ Target creature gets +2/+2 until end of turn. If it's an enchantment creature or legendary creature, instead put a +1/+1 counter on it and it gets +1/+1 until end of turn.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ DBPutCounter | FalseSubAbility$ DBPumpTwo\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpOne\nSVar:DBPumpOne:DB$ Pump | Defined$ Targeted | NumAtt$ +1 | NumDef$ +1\nSVar:DBPumpTwo:DB$ Pump | Defined$ Targeted | NumAtt$ +2 | NumDef$ +2\nSVar:X:Targeted$Valid Creature.Enchantment,Creature.Legendary\nDeckHas:Ability$Counters\nDeckHints:Type$Enchantment|Legendary\nOracle:Target creature gets +2/+2 until end of turn. If it's an enchantment creature or legendary creature, instead put a +1/+1 counter on it and it gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regent's Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

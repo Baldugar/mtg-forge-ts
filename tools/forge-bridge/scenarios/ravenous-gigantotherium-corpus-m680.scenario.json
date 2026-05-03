@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-gigantotherium-corpus-m680",
+  "description": "M6 corpus — Ravenous Gigantotherium; in-hand parse.",
+  "seed": 63908,
+  "cards": {
+    "Ravenous Gigantotherium": "Name:Ravenous Gigantotherium\nManaCost:5 G G\nTypes:Creature Beast\nPT:3/3\nK:Devour:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ When CARDNAME enters, it deals X damage divided as you choose among up to X target creatures, where X is its power. Each of those creatures deals damage equal to its power to CARDNAME.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute damage to | NumDmg$ FirePower | TargetMin$ 0 | TargetMax$ FirePower | DividedAsYouChoose$ FirePower | SubAbility$ GigantotheriumFight\nSVar:GigantotheriumFight:DB$ EachDamage | DefinedDamagers$ Targeted | NumDmg$ Count$CardPower | Defined$ Self\nSVar:FirePower:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Devour 3 (As this enters, you may sacrifice any number of creatures. This creature enters with three times that many +1/+1 counters on it.)\\nWhen Ravenous Gigantotherium enters, it deals X damage divided as you choose among up to X target creatures, where X is its power. Each of those creatures deals damage equal to its power to Ravenous Gigantotherium.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Gigantotherium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

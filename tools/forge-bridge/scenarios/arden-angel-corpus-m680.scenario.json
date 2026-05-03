@@ -1,0 +1,23 @@
+{
+  "id": "arden-angel-corpus-m680",
+  "description": "M6 corpus — Arden Angel; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Arden Angel": "Name:Arden Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | Execute$ TrigRoll | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard, roll a four-sided die. If the result is 1, return CARDNAME from your graveyard to the battlefield.\nSVar:TrigRoll:DB$ RollDice | Sides$ 4 | ResultSubAbilities$ 1:DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nOracle:Flying\\nAt the beginning of your upkeep, if Arden Angel is in your graveyard, roll a four-sided die. If the result is 1, return Arden Angel from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arden Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "keldon-champion-corpus-m680",
+  "description": "M6 corpus — Keldon Champion; in-hand parse.",
+  "seed": 63102,
+  "cards": {
+    "Keldon Champion": "Name:Keldon Champion\nManaCost:2 R R\nTypes:Creature Human Barbarian\nPT:3/2\nK:Haste\nK:Echo:2 R R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3\nOracle:Haste\\nEcho {2}{R}{R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Keldon Champion enters, it deals 3 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

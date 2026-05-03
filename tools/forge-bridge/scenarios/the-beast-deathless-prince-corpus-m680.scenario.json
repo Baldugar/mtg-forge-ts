@@ -1,0 +1,23 @@
+{
+  "id": "the-beast-deathless-prince-corpus-m680",
+  "description": "M6 corpus — The Beast, Deathless Prince; in-hand parse.",
+  "seed": 64642,
+  "cards": {
+    "The Beast, Deathless Prince": "Name:The Beast, Deathless Prince\nManaCost:2 B R\nTypes:Legendary Creature Demon\nPT:6/6\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ NICKNAME enters tapped with six stun counters on it. (If it would become untapped, remove a stun counter from it instead.)\nSVar:ETBTapped:DB$ Tap | Defined$ Self | SubAbility$ DBAddCounter | ETB$ True\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ STUN | CounterNum$ 6\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When you cast this spell, gain control of target creature until end of turn. Untap it. It gains menace and haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste & Menace\nT:Mode$ DamageDone | ValidSource$ Creature | TargetRelativeToSource$ Player.CardOwner | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever a creature deals combat damage to its owner, untap NICKNAME and draw a card.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw\nAI:RemoveDeck:Random\nOracle:When you cast this spell, gain control of target creature until end of turn. Untap it. It gains menace and haste until end of turn.\\nThe Beast enters tapped with six stun counters on it. (If it would become untapped, remove a stun counter from it instead.)\\nWhenever a creature deals combat damage to its owner, untap The Beast and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Beast, Deathless Prince"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

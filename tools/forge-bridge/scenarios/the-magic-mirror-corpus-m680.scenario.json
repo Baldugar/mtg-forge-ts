@@ -1,0 +1,23 @@
+{
+  "id": "the-magic-mirror-corpus-m680",
+  "description": "M6 corpus — The Magic Mirror; in-hand parse.",
+  "seed": 64667,
+  "cards": {
+    "The Magic Mirror": "Name:The Magic Mirror\nManaCost:6 U U U\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {1} less to cast for each instant and sorcery card in your graveyard.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nDeckHints:Ability$Graveyard\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a knowledge counter on CARDNAME, then draw a card for each knowledge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KNOWLEDGE | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y\nSVar:Y:Count$CardCounters.KNOWLEDGE\nDeckHas:Ability$Counters\nOracle:This spell costs {1} less to cast for each instant and sorcery card in your graveyard.\\nYou have no maximum hand size.\\nAt the beginning of your upkeep, put a knowledge counter on The Magic Mirror, then draw a card for each knowledge counter on The Magic Mirror.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Magic Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

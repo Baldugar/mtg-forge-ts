@@ -1,0 +1,23 @@
+{
+  "id": "mega-flare-corpus-m680",
+  "description": "M6 corpus — Mega Flare; in-hand parse.",
+  "seed": 63376,
+  "cards": {
+    "Mega Flare": "Name:Mega Flare\nManaCost:2 R\nTypes:Sorcery\nK:Kicker:3 R R\nA:SP$ Token | Condition$ Kicked | TokenScript$ r_6_6_dragon_flying | SubAbility$ DBDamage | SpellDescription$ If this spell was kicked, create a 6/6 red Dragon creature token with flying. For each opponent, choose up to one target creature that player controls. CARDNAME deals damage equal to the greatest power among creatures you control to each of the chosen creatures.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ For each opponent, choose up to one target creature that player controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | NumDmg$ X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:OneEach:PlayerCountOpponents$Amount\nDeckHas:Ability$Token\nOracle:Kicker {3}{R}{R}\\nIf this spell was kicked, create a 6/6 red Dragon creature token with flying.\\nFor each opponent, choose up to one target creature that player controls. Mega Flare deals damage equal to the greatest power among creatures you control to each of the chosen creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mega Flare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

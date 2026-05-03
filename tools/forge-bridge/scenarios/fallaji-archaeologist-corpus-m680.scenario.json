@@ -1,0 +1,23 @@
+{
+  "id": "fallaji-archaeologist-corpus-m680",
+  "description": "M6 corpus — Fallaji Archaeologist; in-hand parse.",
+  "seed": 62434,
+  "cards": {
+    "Fallaji Archaeologist": "Name:Fallaji Archaeologist\nManaCost:1 U\nTypes:Creature Human Scout\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. You may put a noncreature, nonland card from among the cards milled this way into your hand. If you don't, put a +1/+1 counter on CARDNAME. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | Imprint$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.nonCreature+nonLand+YouOwn+IsImprinted | RememberChanged$ True | Hidden$ True | Optional$ True | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | ConditionDefined$ Remembered | ConditionNotPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nDeckHas:Ability$Mill|Counters\nDeckHints:Ability$Graveyard\nOracle:When Fallaji Archaeologist enters, mill three cards. You may put a noncreature, nonland card from among the cards milled this way into your hand. If you don't, put a +1/+1 counter on Fallaji Archaeologist. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fallaji Archaeologist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

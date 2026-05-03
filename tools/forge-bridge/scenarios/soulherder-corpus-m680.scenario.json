@@ -1,0 +1,23 @@
+{
+  "id": "soulherder-corpus-m680",
+  "description": "M6 corpus — Soulherder; in-hand parse.",
+  "seed": 64373,
+  "cards": {
+    "Soulherder": "Name:Soulherder\nManaCost:1 W U\nTypes:Creature Spirit\nPT:1/1\nT:Mode$ Exiled | Origin$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature is exiled from the battlefield, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ConjurerExile | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may exile another target creature you control, then return it to the battlefield under its owner's control.\nSVar:ConjurerExile:DB$ ChangeZone | ValidTgts$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ ConjurerReturn\nSVar:ConjurerReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Whenever a creature is exiled from the battlefield, put a +1/+1 counter on Soulherder.\\nAt the beginning of your end step, you may exile another target creature you control, then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulherder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

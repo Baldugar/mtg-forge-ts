@@ -1,0 +1,23 @@
+{
+  "id": "glacierwood-siege-corpus-m680",
+  "description": "M6 corpus — Glacierwood Siege; in-hand parse.",
+  "seed": 62650,
+  "cards": {
+    "Glacierwood Siege": "Name:Glacierwood Siege\nManaCost:1 G U\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Temur,Sultai | Defined$ You | SetChosenMode$ True | ShowChoice$ ExceptSelf | SpellDescription$ As this enchantment enters, choose Temur or Sultai.\nSVar:Temur:DB$ Pump | SpellDescription$ Temur\nSVar:Sultai:DB$ Pump | SpellDescription$ Sultai\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeTemur | AddTrigger$ TemurTrigger | Description$ • Temur — Whenever you cast an instant or sorcery spell, target player mills four cards.\nSVar:TemurTrigger:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever you cast an instant or sorcery spell, target player mills four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeSultai | AddStaticAbility$ SultaiStatic | Description$ • Sultai — You may play lands from your graveyard.\nSVar:SultaiStatic:Mode$ Continuous | Affected$ Land.YouOwn | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may play lands from your graveyard.\nDeckHas:Ability$Graveyard\nDeckHints:Type$Instant|Sorcery\nOracle:As this enchantment enters, choose Temur or Sultai.\\n• Temur — Whenever you cast an instant or sorcery spell, target player mills four cards.\\n• Sultai — You may play lands from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glacierwood Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

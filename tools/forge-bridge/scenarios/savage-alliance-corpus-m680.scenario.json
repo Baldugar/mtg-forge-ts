@@ -1,0 +1,23 @@
+{
+  "id": "savage-alliance-corpus-m680",
+  "description": "M6 corpus — Savage Alliance; in-hand parse.",
+  "seed": 64134,
+  "cards": {
+    "Savage Alliance": "Name:Savage Alliance\nManaCost:2 R\nTypes:Instant\nK:Escalate:1\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 3 | Choices$ DBPumpAll,DBDamage1,DBDamage2\nSVar:DBPumpAll:DB$ PumpAll | ValidTgts$ Player | TgtPrompt$ Select target player to have each creature they control gain trample | ValidCards$ Creature | KW$ Trample | SpellDescription$ Creatures target player controls gain trample until end of turn.\nSVar:DBDamage1:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal 2 damage to | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target creature.\nSVar:DBDamage2:DB$ DamageAll | NumDmg$ 1 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to have each creature they control dealt 1 damage | ValidCards$ Creature | ValidDescription$ each creature the opponent controls. | SpellDescription$ CARDNAME deals 1 damage to each creature target opponent controls.\nOracle:Escalate {1} (Pay this cost for each mode chosen beyond the first.)\\nChoose one or more —\\n• Creatures target player controls gain trample until end of turn.\\n• Savage Alliance deals 2 damage to target creature.\\n• Savage Alliance deals 1 damage to each creature target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

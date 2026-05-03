@@ -1,0 +1,23 @@
+{
+  "id": "iron-mastiff-corpus-m680",
+  "description": "M6 corpus — Iron Mastiff; in-hand parse.",
+  "seed": 62990,
+  "cards": {
+    "Iron Mastiff": "Name:Iron Mastiff\nManaCost:4\nTypes:Artifact Creature Dog\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBTrigRollDice | TriggerDescription$ Whenever CARDNAME attacks, roll a d20 for each player being attacked and ignore all but the highest roll. ABILITY\nSVar:DBTrigRollDice:DB$ RollDice | Sides$ 20 | Amount$ NbAttackedPlayers | UseHighestRoll$ True | ResultSubAbilities$ 1-9:DBDamageToController,10-19:DBDamageToDefending,20:DBDamageToOpponents\nSVar:NbAttackedPlayers:PlayerCountOpponents$HasPropertyDefending\nSVar:DBDamageToController:DB$ DealDamage | Defined$ You | NumDmg$ X | SpellDescription$ 1—9 VERT CARDNAME deals damage equal to its power to you.\nSVar:DBDamageToDefending:DB$ DealDamage | Defined$ Player.attackedBySourceThisCombat | NumDmg$ X | SpellDescription$ 10—19 VERT CARDNAME deals damage equal to its power to defending player.\nSVar:DBDamageToOpponents:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ X | SpellDescription$ 20 VERT CARDNAME deals damage equal to its power to each opponent.\nSVar:X:Count$CardPower\nOracle:Whenever Iron Mastiff attacks, roll a d20 for each player being attacked and ignore all but the highest roll.\\n1—9 VERT Iron Mastiff deals damage equal to its power to you.\\n10—19 VERT Iron Mastiff deals damage equal to its power to defending player.\\n20 VERT Iron Mastiff deals damage equal to its power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron Mastiff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

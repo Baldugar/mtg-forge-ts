@@ -1,0 +1,23 @@
+{
+  "id": "goblin-artisans-corpus-m680",
+  "description": "M6 corpus — Goblin Artisans; in-hand parse.",
+  "seed": 62679,
+  "cards": {
+    "Goblin Artisans": "Name:Goblin Artisans\nManaCost:R\nTypes:Creature Goblin Artificer\nPT:1/1\nT:Mode$ ChangesZone | Static$ True | ValidCard$ Artifact.YouCtrl | Origin$ Any | Destination$ Stack | Execute$ DBRemember\nSVar:DBRemember:DB$ Pump | RememberObjects$ TriggeredCard\nT:Mode$ BecomesTarget | Static$ True | ValidSource$ Activated.Creature+Other+namedGoblin Artisans | ValidTarget$ Spell | Execute$ DBForget\nSVar:DBForget:DB$ Cleanup | ForgetDefined$ TriggeredTargetHostCard\nT:Mode$ ChangesZone | Static$ True | ValidCard$ Artifact.YouCtrl+IsRemembered | Origin$ Stack | Destination$ Any | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ForgetDefined$ TriggeredCard\nA:AB$ FlipACoin | Cost$ T | TgtZone$ Stack | TargetType$ Spell | ValidTgts$ Artifact.YouCtrl+IsRemembered | WinSubAbility$ DBDraw | LoseSubAbility$ DBCounter | TgtPrompt$ Select target artifact spell you control | SpellDescription$ Flip a coin. If you win the flip, draw a card. If you lose the flip, counter target artifact spell you control that isn't the target of an ability from another creature named Goblin Artisans.\nSVar:DBDraw:DB$ Draw | Defined$ You\nSVar:DBCounter:DB$ Counter | Defined$ Targeted\nAI:RemoveDeck:All\nOracle:{T}: Flip a coin. If you win the flip, draw a card. If you lose the flip, counter target artifact spell you control that isn't the target of an ability from another creature named Goblin Artisans.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Artisans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "demonic-junker-corpus-m680",
+  "description": "M6 corpus — Demonic Junker; in-hand parse.",
+  "seed": 62147,
+  "cards": {
+    "Demonic Junker": "Name:Demonic Junker\nManaCost:6 B\nTypes:Artifact Vehicle\nPT:4/3\nK:Affinity:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this Vehicle enters, for each player, destroy up to one target creature that player controls. If a creature you controlled was destroyed this way, put two +1/+1 counters on this Vehicle.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | RememberLKI$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | ConditionDefined$ RememberedLKI | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | CounterNum$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nSVar:OneEach:PlayerCountPlayers$Amount\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nWhen this Vehicle enters, for each player, destroy up to one target creature that player controls. If a creature you controlled was destroyed this way, put two +1/+1 counters on this Vehicle.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Junker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

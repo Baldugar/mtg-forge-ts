@@ -1,0 +1,23 @@
+{
+  "id": "patient-rebuilding-corpus-m680",
+  "description": "M6 corpus — Patient Rebuilding; in-hand parse.",
+  "seed": 63707,
+  "cards": {
+    "Patient Rebuilding": "Name:Patient Rebuilding\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, target opponent mills three cards, then you draw a card for each land card put into their graveyard this way.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Opponent | RememberMilled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Land.IsRemembered\nOracle:At the beginning of your upkeep, target opponent mills three cards, then you draw a card for each land card put into their graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patient Rebuilding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "runewing-corpus-m680",
+  "description": "M6 corpus — Runewing; in-hand parse.",
+  "seed": 64061,
+  "cards": {
+    "Runewing": "Name:Runewing\nManaCost:3 U\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:SacMe:1\nOracle:Flying\\nWhen Runewing dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runewing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

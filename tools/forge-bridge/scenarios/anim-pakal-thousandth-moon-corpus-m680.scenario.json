@@ -1,0 +1,23 @@
+{
+  "id": "anim-pakal-thousandth-moon-corpus-m680",
+  "description": "M6 corpus — Anim Pakal, Thousandth Moon; in-hand parse.",
+  "seed": 61518,
+  "cards": {
+    "Anim Pakal, Thousandth Moon": "Name:Anim Pakal, Thousandth Moon\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:1/2\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl+nonGnome | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you attack with one or more non-Gnome creatures, put a +1/+1 counter on NICKNAME, then create X 1/1 colorless Gnome artifact creature tokens that are tapped and attacking, where X is the number of +1/+1 counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_a_gnome | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:X:Count$CardCounters.P1P1\nDeckHas:Ability$Token|Counters & Type$Gnome\nDeckHints:Ability$Counters\nOracle:Whenever you attack with one or more non-Gnome creatures, put a +1/+1 counter on Anim Pakal, then create X 1/1 colorless Gnome artifact creature tokens that are tapped and attacking, where X is the number of +1/+1 counters on Anim Pakal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anim Pakal, Thousandth Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

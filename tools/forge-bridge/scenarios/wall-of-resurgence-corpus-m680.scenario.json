@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-resurgence-corpus-m680",
+  "description": "M6 corpus — Wall of Resurgence; in-hand parse.",
+  "seed": 64991,
+  "cards": {
+    "Wall of Resurgence": "Name:Wall of Resurgence\nManaCost:2 W\nTypes:Creature Wall\nPT:0/6\nK:Defender\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put three +1/+1 counters on target land you control. If you do, that land becomes a 0/0 Elemental creature with haste that's still a land.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | CounterType$ P1P1 | CounterNum$ 3 | RememberCards$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Haste | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Defender\\nWhen Wall of Resurgence enters, you may put three +1/+1 counters on target land you control. If you do, that land becomes a 0/0 Elemental creature with haste that's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Resurgence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

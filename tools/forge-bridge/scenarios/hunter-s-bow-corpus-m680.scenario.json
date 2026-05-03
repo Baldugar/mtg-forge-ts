@@ -1,0 +1,23 @@
+{
+  "id": "hunter-s-bow-corpus-m680",
+  "description": "M6 corpus — Hunter's Bow; in-hand parse.",
+  "seed": 62879,
+  "cards": {
+    "Hunter's Bow": "Name:Hunter's Bow\nManaCost:1 G\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control. That creature deals damage equal to its power to up to one target creature you don't control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | AILogic$ PowerDmg | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Reach & Ward:2 | Description$ Equipped creature has reach and ward {2}.\nK:Equip:1\nSVar:X:ParentTargeted$CardPower\nOracle:When Hunter's Bow enters, attach it to target creature you control. That creature deals damage equal to its power to up to one target creature you don't control.\\nEquipped creature has reach and ward {2}.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunter's Bow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "makeshift-battalion-corpus-m680",
+  "description": "M6 corpus — Makeshift Battalion; in-hand parse.",
+  "seed": 63316,
+  "cards": {
+    "Makeshift Battalion": "Name:Makeshift Battalion\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | PresentCompare$ GE2 | Execute$ TrigPutCounter | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Battalion — Whenever Makeshift Battalion and at least two other creatures attack, put a +1/+1 counter on Makeshift Battalion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Makeshift Battalion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

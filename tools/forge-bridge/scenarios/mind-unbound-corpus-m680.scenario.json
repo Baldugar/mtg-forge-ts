@@ -1,0 +1,23 @@
+{
+  "id": "mind-unbound-corpus-m680",
+  "description": "M6 corpus — Mind Unbound; in-hand parse.",
+  "seed": 63415,
+  "cards": {
+    "Mind Unbound": "Name:Mind Unbound\nManaCost:4 U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a lore counter on CARDNAME, then draw a card for each lore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ LORE | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$CardCounters.LORE\nOracle:At the beginning of your upkeep, put a lore counter on Mind Unbound, then draw a card for each lore counter on Mind Unbound.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Unbound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

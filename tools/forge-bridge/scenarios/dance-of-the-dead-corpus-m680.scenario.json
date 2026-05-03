@@ -1,0 +1,23 @@
+{
+  "id": "dance-of-the-dead-corpus-m680",
+  "description": "M6 corpus — Dance of the Dead; in-hand parse.",
+  "seed": 62080,
+  "cards": {
+    "Dance of the Dead": "Name:Dance of the Dead\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature.inZoneGraveyard:creature card in a graveyard\nSVar:AttachAILogic:Reanimate\nSVar:AttachAITgts:Creature.!namedWorldgorger Dragon\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Card.StrictlySelf | Execute$ TrigReanimate | TriggerDescription$ When CARDNAME enters, if it's on the battlefield, it loses \"enchant creature card in a graveyard\" and gains \"enchant creature put onto the battlefield with CARDNAME.\" Put enchanted creature card onto the battlefield tapped under your control and attach CARDNAME to it. When CARDNAME leaves the battlefield, that creature's controller sacrifices it.\nSVar:TrigReanimate:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Enchanted | RememberChanged$ True | GainControl$ True | Tapped$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | OverwriteSpells$ True | Keywords$ Enchant:Creature.IsRemembered:creature put onto the battlefield with CARDNAME | RemoveKeywords$ Enchant:Creature.inZoneGraveyard:creature card in a graveyard | Duration$ Permanent | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBDelay\nSVar:DBDelay:DB$ DelayedTrigger | Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigSacrifice | RememberObjects$ RememberedLKI | TriggerDescription$ When CARDNAME leaves the battlefield, that creature's controller sacrifices it.\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ DirectRemembered\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1 and doesn't untap during its controller's untap step.\nR:Event$ Untap | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Secondary$ True | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | OptionalDecider$ EnchantedController | Execute$ TrigUntap | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player may pay {1}{B}. If the player does, untap that creature.\nSVar:TrigUntap:AB$ Untap | Cost$ 1 B | Defined$ Enchanted\nOracle:Enchant creature card in a graveyard\\nWhen Dance of the Dead enters, if it's on the battlefield, it loses \"enchant creature card in a graveyard\" and gains \"enchant creature put onto the battlefield with Dance of the Dead.\" Put enchanted creature card onto the battlefield tapped under your control and attach Dance of the Dead to it. When Dance of the Dead leaves the battlefield, that creature's controller sacrifices it.\\nEnchanted creature gets +1/+1 and doesn't untap during its controller's untap step.\\nAt the beginning of the upkeep of enchanted creature's controller, that player may pay {1}{B}. If the player does, untap that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dance of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

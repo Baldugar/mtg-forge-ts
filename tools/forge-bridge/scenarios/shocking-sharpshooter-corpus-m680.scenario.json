@@ -1,0 +1,23 @@
+{
+  "id": "shocking-sharpshooter-corpus-m680",
+  "description": "M6 corpus — Shocking Sharpshooter; in-hand parse.",
+  "seed": 64259,
+  "cards": {
+    "Shocking Sharpshooter": "Name:Shocking Sharpshooter\nManaCost:1 R\nTypes:Creature Human Archer\nPT:1/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever another creature you control enters, this creature deals 1 damage to target opponent.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nOracle:Reach\\nWhenever another creature you control enters, this creature deals 1 damage to target opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shocking Sharpshooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

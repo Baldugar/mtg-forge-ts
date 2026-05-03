@@ -1,0 +1,23 @@
+{
+  "id": "forgeborn-phoenix-corpus-m680",
+  "description": "M6 corpus — Forgeborn Phoenix; in-hand parse.",
+  "seed": 62541,
+  "cards": {
+    "Forgeborn Phoenix": "Name:Forgeborn Phoenix\nManaCost:1 R R\nTypes:Artifact Creature Equipment Phoenix\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy,Creature.Self | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever CARDNAME or equipped creature dies, it perpetually gains \"Whenever an equipped creature you control deals combat damage to a player or planeswalker, return this card from your graveyard to the battlefield tapped.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCard | Triggers$ EquippedCombatDamage | Duration$ Perpetual\nSVar:EquippedCombatDamage:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+equipped | ValidTarget$ Player,Planeswalker | CombatDamage$ True | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever an equipped creature you control deals combat damage to a player or planeswalker, return this card from your graveyard to the battlefield tapped.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nK:Reconfigure:R\nDeckHints:Type$Equipment\nOracle:Flying\\nEquipped creature has flying.\\nWhenever Forgeborn Phoenix or equipped creature dies, it perpetually gains \"Whenever an equipped creature you control deals combat damage to a player or planeswalker, return this card from your graveyard to the battlefield tapped.\"\\nReconfigure {R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgeborn Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

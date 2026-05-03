@@ -1,0 +1,23 @@
+{
+  "id": "the-destined-black-mage-corpus-m680",
+  "description": "M6 corpus — The Destined Black Mage; in-hand parse.",
+  "seed": 64648,
+  "cards": {
+    "The Destined Black Mage": "Name:The Destined Black Mage\nManaCost:2 B\nTypes:Legendary Creature Human Wizard\nPT:3/2\nK:Deathtouch\nA:AB$ Pump | Cost$ B T | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Deathtouch | SpellDescription$ Another target creature you control gains deathtouch until end of turn.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a noncreature spell, CARDNAME deals 1 damage to each opponent. If you have a full party, it deals 3 damage to each opponent instead.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ X\nSVar:X:Count$Compare Y EQ4.3.1\nSVar:Y:Count$Party\nSVar:BuffedBy:Cleric,Rogue,Warrior\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior\nOracle:Deathtouch\\n{B}, {T}: Another target creature you control gains deathtouch until end of turn.\\nWhenever you cast a noncreature spell, The Destined Black Mage deals 1 damage to each opponent. If you have a full party, it deals 3 damage to each opponent instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Destined Black Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

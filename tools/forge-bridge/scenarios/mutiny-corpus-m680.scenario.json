@@ -1,0 +1,23 @@
+{
+  "id": "mutiny-corpus-m680",
+  "description": "M6 corpus — Mutiny; in-hand parse.",
+  "seed": 63497,
+  "cards": {
+    "Mutiny": "Name:Mutiny\nManaCost:R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature an opponent controls | SubAbility$ MutinyDamage | StackDescription$ None | SpellDescription$ Target creature an opponent controls deals damage equal to its power to another target creature that player controls.\nSVar:MutinyDamage:DB$ DealDamage | ValidTgts$ Creature | TargetUnique$ True | TargetsWithDefinedController$ ParentTargetedController | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature an opponent controls deals damage equal to its power to another target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

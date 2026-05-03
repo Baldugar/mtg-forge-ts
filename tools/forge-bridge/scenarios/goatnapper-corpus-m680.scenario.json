@@ -1,0 +1,23 @@
+{
+  "id": "goatnapper-corpus-m680",
+  "description": "M6 corpus — Goatnapper; in-hand parse.",
+  "seed": 62678,
+  "cards": {
+    "Goatnapper": "Name:Goatnapper\nManaCost:2 R\nTypes:Creature Goblin Rogue\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap target Goat and gain control of it until end of turn. It gains haste until end of turn.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Goat | SubAbility$ DBChange\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT\nOracle:When Goatnapper enters, untap target Goat and gain control of it until end of turn. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goatnapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

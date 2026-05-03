@@ -1,0 +1,23 @@
+{
+  "id": "crag-saurian-corpus-m680",
+  "description": "M6 corpus — Crag Saurian; in-hand parse.",
+  "seed": 62028,
+  "cards": {
+    "Crag Saurian": "Name:Crag Saurian\nManaCost:R R R\nTypes:Creature Lizard\nPT:4/4\nT:Mode$ DamageDone | ValidTarget$ Card.Self | Execute$ Traitor | TriggerZones$ Battlefield | TriggerDescription$ Whenever a source deals damage to CARDNAME, that source's controller gains control of CARDNAME.\nSVar:Traitor:DB$ GainControl | Defined$ Self | NewController$ TriggeredSourceController\nAI:RemoveDeck:Random\nOracle:Whenever a source deals damage to Crag Saurian, that source's controller gains control of Crag Saurian.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crag Saurian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

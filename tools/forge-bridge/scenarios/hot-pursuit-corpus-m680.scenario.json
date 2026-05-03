@@ -1,0 +1,23 @@
+{
+  "id": "hot-pursuit-corpus-m680",
+  "description": "M6 corpus — Hot Pursuit; in-hand parse.",
+  "seed": 62867,
+  "cards": {
+    "Hot Pursuit": "Name:Hot Pursuit\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect target creature an opponent controls. As long as CARDNAME remains on the battlefield, that creature is also goaded.\nSVar:TrigSuspect:DB$ AlterAttribute | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Attributes$ Suspected | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ IsGoaded | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | Duration$ UntilHostLeavesPlay\nSVar:IsGoaded:Mode$ Continuous | Affected$ Creature.IsRemembered | Goad$ True | Description$ As long as EFFECTSOURCE remains on the battlefield, that creature is also goaded.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | CheckSVar$ PlayerCountHasLost$Amount | SVarCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ At the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Creature.IsGoaded,Creature.IsSuspected | LoseControl$ EOT | Untap$ True | AddKWs$ Haste\nAI:RemoveDeck:Random\nOracle:When Hot Pursuit enters, suspect target creature an opponent controls. As long as Hot Pursuit remains on the battlefield, that creature is also goaded.\\nAt the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hot Pursuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spiritmonger-corpus-m680",
+  "description": "M6 corpus — Spiritmonger; in-hand parse.",
+  "seed": 64415,
+  "cards": {
+    "Spiritmonger": "Name:Spiritmonger\nManaCost:3 B G\nTypes:Creature Beast\nPT:6/6\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME deals damage to a creature, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nA:AB$ ChooseColor | Cost$ G | Defined$ You | SubAbility$ Animate | SpellDescription$ CARDNAME becomes the color of your choice until end of turn.\nSVar:Animate:DB$ Animate | Defined$ Self | Colors$ ChosenColor | OverwriteColors$ True\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Spiritmonger deals damage to a creature, put a +1/+1 counter on Spiritmonger.\\n{B}: Regenerate Spiritmonger.\\n{G}: Spiritmonger becomes the color of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiritmonger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

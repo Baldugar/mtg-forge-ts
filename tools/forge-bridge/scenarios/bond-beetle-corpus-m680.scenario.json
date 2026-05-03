@@ -1,0 +1,23 @@
+{
+  "id": "bond-beetle-corpus-m680",
+  "description": "M6 corpus — Bond Beetle; in-hand parse.",
+  "seed": 61746,
+  "cards": {
+    "Bond Beetle": "Name:Bond Beetle\nManaCost:G\nTypes:Creature Insect\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Bond Beetle enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bond Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pawpatch-recruit-corpus-m680",
+  "description": "M6 corpus — Pawpatch Recruit; in-hand parse.",
+  "seed": 63708,
+  "cards": {
+    "Pawpatch Recruit": "Name:Pawpatch Recruit\nManaCost:G\nTypes:Creature Rabbit Warrior\nPT:2/1\nK:Offspring:2\nK:Trample\nT:Mode$ BecomesTarget | ValidSource$ SpellAbility.OppCtrl | ValidTarget$ Creature.YouCtrl+inZoneBattlefield | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on target creature you control other than that creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl+NotDefinedTriggeredTarget | TgtPrompt$ Select target creature you control other than that creature | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nOracle:Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nTrample\\nWhenever a creature you control becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on target creature you control other than that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pawpatch Recruit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

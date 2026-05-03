@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-smite-corpus-m680",
+  "description": "M6 corpus — Sylvan Smite; in-hand parse.",
+  "seed": 64553,
+  "cards": {
+    "Sylvan Smite": "Name:Sylvan Smite\nManaCost:1 G\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ X | RememberTargets$ True | ConditionSVarCompare$ EQ0 | SubAbility$ DBDealDamage | SpellDescription$ Put a +1/+1 counter on target creature you control if you weren't the starting player. Then that creature deals damage equal to its power to target creature you don't control.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ Y | ValidTgts$ Creature.OppCtrl | DamageSource$ Remembered | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$StartingPlayer.1.0\nSVar:Y:Remembered$CardPower\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature you control if you weren't the starting player. Then that creature deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Smite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

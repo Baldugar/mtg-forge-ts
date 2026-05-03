@@ -1,0 +1,23 @@
+{
+  "id": "gau-feral-youth-corpus-m680",
+  "description": "M6 corpus — Gau, Feral Youth; in-hand parse.",
+  "seed": 62608,
+  "cards": {
+    "Gau, Feral Youth": "Name:Gau, Feral Youth\nManaCost:1 R\nTypes:Legendary Creature Human Berserker\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Rage — Whenever NICKNAME attacks, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDealDamage | CheckSVar$ X | TriggerDescription$ At the beginning of each end step, if a card left your graveyard this turn, NICKNAME deals damage equal to its power to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ Y\nSVar:X:Count$LeftGraveyardThisTurn Card.YouOwn\nSVar:Y:Count$CardPower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Rage — Whenever Gau attacks, put a +1/+1 counter on it.\\nAt the beginning of each end step, if a card left your graveyard this turn, Gau deals damage equal to its power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gau, Feral Youth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

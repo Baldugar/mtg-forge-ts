@@ -1,0 +1,23 @@
+{
+  "id": "meren-of-clan-nel-toth-corpus-m680",
+  "description": "M6 corpus — Meren of Clan Nel Toth; in-hand parse.",
+  "seed": 63387,
+  "cards": {
+    "Meren of Clan Nel Toth": "Name:Meren of Clan Nel Toth\nManaCost:2 B G\nTypes:Legendary Creature Human Shaman\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExperience | TriggerDescription$ Whenever another creature you control dies, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your end step, choose target creature card in your graveyard. If that card's mana value is less than or equal to the number of experience counters you have, return it to the battlefield. Otherwise, put it into your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLEX | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Targeted | Origin$ Graveyard | Destination$ Hand | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcGTX\nSVar:X:Count$YourCountersExperience\nOracle:Whenever another creature you control dies, you get an experience counter.\\nAt the beginning of your end step, choose target creature card in your graveyard. If that card's mana value is less than or equal to the number of experience counters you have, return it to the battlefield. Otherwise, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meren of Clan Nel Toth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

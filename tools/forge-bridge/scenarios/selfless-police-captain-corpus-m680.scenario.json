@@ -1,0 +1,23 @@
+{
+  "id": "selfless-police-captain-corpus-m680",
+  "description": "M6 corpus — Selfless Police Captain; in-hand parse.",
+  "seed": 64194,
+  "cards": {
+    "Selfless Police Captain": "Name:Selfless Police Captain\nVariant:UniversesWithin:FlavorName:Crime-Scene Instructor\nManaCost:1 W\nTypes:Creature Human Detective\nPT:1/1\nK:etbCounter:P1P1:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature leaves the battlefield, put its +1/+1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:This creature enters with a +1/+1 counter on it.\\nWhen this creature leaves the battlefield, put its +1/+1 counters on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selfless Police Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

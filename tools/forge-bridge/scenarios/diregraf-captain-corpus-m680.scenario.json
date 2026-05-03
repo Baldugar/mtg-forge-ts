@@ -1,0 +1,23 @@
+{
+  "id": "diregraf-captain-corpus-m680",
+  "description": "M6 corpus — Diregraf Captain; in-hand parse.",
+  "seed": 62176,
+  "cards": {
+    "Diregraf Captain": "Name:Diregraf Captain\nManaCost:1 U B\nTypes:Creature Zombie Soldier\nPT:2/2\nK:Deathtouch\nS:Mode$ Continuous | Affected$ Creature.Zombie+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Zombie creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Zombie.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another Zombie you control dies, target opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nSVar:PlayMain1:TRUE\nOracle:Deathtouch\\nOther Zombie creatures you control get +1/+1.\\nWhenever another Zombie you control dies, target opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diregraf Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

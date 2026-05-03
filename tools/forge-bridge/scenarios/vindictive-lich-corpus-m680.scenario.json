@@ -1,0 +1,23 @@
+{
+  "id": "vindictive-lich-corpus-m680",
+  "description": "M6 corpus — Vindictive Lich; in-hand parse.",
+  "seed": 64952,
+  "cards": {
+    "Vindictive Lich": "Name:Vindictive Lich\nManaCost:3 B\nTypes:Creature Zombie Wizard\nPT:4/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ MaxUniqueOpponents | Choices$ SacCreature,DiscardCards,LoseLife | AdditionalDescription$ or more. Each mode must target a different player.\nSVar:SacCreature:DB$ Sacrifice | ValidTgts$ Opponent | TargetUnique$ True | SacValid$ Creature | SpellDescription$ Target opponent sacrifices a creature.\nSVar:DiscardCards:DB$ Discard | ValidTgts$ Opponent | TargetUnique$ True | NumCards$ 2 | Mode$ TgtChoose | SpellDescription$ Target opponent discards two cards.\nSVar:LoseLife:DB$ LoseLife | ValidTgts$ Opponent | TargetUnique$ True | LifeAmount$ 5 | SpellDescription$ Target opponent loses 5 life.\nSVar:MaxUniqueOpponents:PlayerCountOpponents$Amount\nOracle:When Vindictive Lich dies, choose one or more. Each mode must target a different player.\\n• Target opponent sacrifices a creature.\\n• Target opponent discards two cards.\\n• Target opponent loses 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vindictive Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

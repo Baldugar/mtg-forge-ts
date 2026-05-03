@@ -1,0 +1,23 @@
+{
+  "id": "carefree-swinemaster-corpus-m680",
+  "description": "M6 corpus — Carefree Swinemaster; in-hand parse.",
+  "seed": 61854,
+  "cards": {
+    "Carefree Swinemaster": "Name:Carefree Swinemaster\nManaCost:2 G\nTypes:Creature Gnome Ranger\nPT:1/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, you may pay {1}{G}. If you do, create a 2/2 green Boar creature token that's tapped and attacking.\nSVar:TrigToken:AB$ Token | Cost$ 1 G | TokenScript$ g_2_2_boar | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nDeckHas:Ability$Token & Type$Boar\nOracle:Whenever Carefree Swinemaster attacks, you may pay {1}{G}. If you do, create a 2/2 green Boar creature token that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carefree Swinemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

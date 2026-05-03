@@ -1,0 +1,23 @@
+{
+  "id": "reputable-merchant-corpus-m680",
+  "description": "M6 corpus — Reputable Merchant; in-hand parse.",
+  "seed": 63958,
+  "cards": {
+    "Reputable Merchant": "Name:Reputable Merchant\nManaCost:2W 2B 2G\nTypes:Creature Human Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this creature enters or dies, put a +1/+1 counter on target creature you control.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ When this creature enters or dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nOracle:When this creature enters or dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reputable Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

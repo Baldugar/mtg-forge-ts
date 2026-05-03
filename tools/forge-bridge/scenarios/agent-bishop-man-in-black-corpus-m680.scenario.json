@@ -1,0 +1,23 @@
+{
+  "id": "agent-bishop-man-in-black-corpus-m680",
+  "description": "M6 corpus — Agent Bishop, Man in Black; in-hand parse.",
+  "seed": 61463,
+  "cards": {
+    "Agent Bishop, Man in Black": "Name:Agent Bishop, Man in Black\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:1/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on each of up to two target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on each of up to two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agent Bishop, Man in Black"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

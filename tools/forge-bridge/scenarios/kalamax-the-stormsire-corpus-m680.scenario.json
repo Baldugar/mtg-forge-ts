@@ -1,0 +1,23 @@
+{
+  "id": "kalamax-the-stormsire-corpus-m680",
+  "description": "M6 corpus — Kalamax, the Stormsire; in-hand parse.",
+  "seed": 63069,
+  "cards": {
+    "Kalamax, the Stormsire": "Name:Kalamax, the Stormsire\nManaCost:1 G U R\nTypes:Legendary Creature Elemental Dinosaur\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Instant | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | PresentDefined$ Self | IsPresent$ Card.tapped | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first instant spell each turn, if CARDNAME is tapped, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nSVar:BuffedBy:Instant\nT:Mode$ SpellCopy | ValidCard$ Instant | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you copy an instant spell, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Instant\nOracle:Whenever you cast your first instant spell each turn, if Kalamax, the Stormsire is tapped, copy that spell. You may choose new targets for the copy.\\nWhenever you copy an instant spell, put a +1/+1 counter on Kalamax.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kalamax, the Stormsire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

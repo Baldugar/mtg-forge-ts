@@ -1,0 +1,23 @@
+{
+  "id": "run-over-corpus-m680",
+  "description": "M6 corpus — Run Over; in-hand parse.",
+  "seed": 64057,
+  "cards": {
+    "Run Over": "Name:Run Over\nManaCost:1 G\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | ValidTarget$ Mount.YouCtrl,Vehicle.YouCtrl | EffectZone$ All | Description$ This spell costs {1} less to cast if it targets a Mount or Vehicle you control.\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DBDealDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature an opponent controls.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:This spell costs {1} less to cast if it targets a Mount or Vehicle you control.\\nTarget creature you control deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Run Over"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

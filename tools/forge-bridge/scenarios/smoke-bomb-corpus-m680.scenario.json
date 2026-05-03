@@ -1,0 +1,23 @@
+{
+  "id": "smoke-bomb-corpus-m680",
+  "description": "M6 corpus — Smoke Bomb; in-hand parse.",
+  "seed": 64339,
+  "cards": {
+    "Smoke Bomb": "Name:Smoke Bomb\nManaCost:3\nTypes:Artifact\nK:Flash\nS:Mode$ Continuous | Affected$ Creature | AddKeyword$ Shroud | Description$ All creatures have shroud. (They can't be the targets of spells or abilities.)\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME. When you do, target creature you control can't be blocked this turn.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self | RememberSacrificed$ True | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | Execute$ TrigUnblockable | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup | TriggerDescription$ When you do, target creature you control can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nAll creatures have shroud. (They can't be the targets of spells or abilities.)\\nAt the beginning of your upkeep, sacrifice Smoke Bomb. When you do, target creature you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoke Bomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

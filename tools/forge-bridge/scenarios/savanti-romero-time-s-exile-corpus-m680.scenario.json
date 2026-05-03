@@ -1,0 +1,23 @@
+{
+  "id": "savanti-romero-time-s-exile-corpus-m680",
+  "description": "M6 corpus — Savanti Romero, Time's Exile; in-hand parse.",
+  "seed": 64138,
+  "cards": {
+    "Savanti Romero, Time's Exile": "Name:Savanti Romero, Time's Exile\nManaCost:3 B B\nTypes:Legendary Creature Demon Wizard\nPT:4/4\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on NICKNAME. Then you draw X cards and lose X life, where X is the number of counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CardCounters.ALL\nOracle:Trample\\nAt the beginning of combat on your turn, put a +1/+1 counter on Savanti Romero. Then you draw X cards and lose X life, where X is the number of counters on Savanti Romero.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savanti Romero, Time's Exile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

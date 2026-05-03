@@ -1,0 +1,23 @@
+{
+  "id": "zurgo-helmsmasher-corpus-m680",
+  "description": "M6 corpus — Zurgo Helmsmasher; in-hand parse.",
+  "seed": 65134,
+  "cards": {
+    "Zurgo Helmsmasher": "Name:Zurgo Helmsmasher\nManaCost:2 R W B\nTypes:Legendary Creature Orc Warrior\nPT:7/2\nK:Haste\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | Condition$ PlayerTurn | Description$ During your turn, CARDNAME has indestructible.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Haste\\nZurgo Helmsmasher attacks each combat if able.\\nDuring your turn, Zurgo Helmsmasher has indestructible.\\nWhenever a creature dealt damage by Zurgo Helmsmasher this turn dies, put a +1/+1 counter on Zurgo Helmsmasher.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zurgo Helmsmasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

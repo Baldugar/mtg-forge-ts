@@ -1,0 +1,23 @@
+{
+  "id": "cursed-wombat-corpus-m680",
+  "description": "M6 corpus — Cursed Wombat; in-hand parse.",
+  "seed": 62069,
+  "cards": {
+    "Cursed Wombat": "Name:Cursed Wombat\nManaCost:B G\nTypes:Creature Nightmare Wombat\nPT:2/3\nA:AB$ PutCounter | Cost$ 2 B G | Adapt$ 2\nS:Mode$ Continuous | Affected$ Permanent.YouCtrl | AddTrigger$ CountersAdded | Description$ Permanents you control have \"Whenever one or more +1/+1 counters are put on this permanent, put an additional +1/+1 counter on it. This ability triggers only once each turn.\"\nSVar:CountersAdded:Mode$ CounterAddedOnce | CounterType$ P1P1 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more +1/+1 counters are put on this permanent, put an additional +1/+1 counter on it. This ability triggers only once each turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:{2}{B}{G}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\\nPermanents you control have \"Whenever one or more +1/+1 counters are put on this permanent, put an additional +1/+1 counter on it. This ability triggers only once each turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cursed Wombat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

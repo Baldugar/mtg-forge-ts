@@ -1,0 +1,23 @@
+{
+  "id": "dunerider-outlaw-corpus-m680",
+  "description": "M6 corpus — Dunerider Outlaw; in-hand parse.",
+  "seed": 62256,
+  "cards": {
+    "Dunerider Outlaw": "Name:Dunerider Outlaw\nManaCost:B B\nTypes:Creature Human Rebel Rogue\nPT:1/1\nK:Protection from green\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | IsPresent$ Card.Self+dealtDamageToOppThisTurn | TriggerDescription$ At the beginning of each end step, if CARDNAME dealt damage to an opponent this turn, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Protection from green\\nAt the beginning of each end step, if Dunerider Outlaw dealt damage to an opponent this turn, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dunerider Outlaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

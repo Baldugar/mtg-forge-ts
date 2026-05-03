@@ -1,0 +1,23 @@
+{
+  "id": "electrostatic-infantry-corpus-m680",
+  "description": "M6 corpus — Electrostatic Infantry; in-hand parse.",
+  "seed": 62296,
+  "cards": {
+    "Electrostatic Infantry": "Name:Electrostatic Infantry\nManaCost:1 R\nTypes:Creature Dwarf Wizard\nPT:1/2\nK:Trample\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast an instant or sorcery spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Spell.Instant,Spell.Sorcery\nDeckHas:Ability$Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Trample\\nWhenever you cast an instant or sorcery spell, put a +1/+1 counter on Electrostatic Infantry.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrostatic Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necropolis-regent-corpus-m680",
+  "description": "M6 corpus — Necropolis Regent; in-hand parse.",
+  "seed": 63531,
+  "cards": {
+    "Necropolis Regent": "Name:Necropolis Regent\nManaCost:3 B B B\nTypes:Creature Vampire\nPT:6/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying\\nWhenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necropolis Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thraximundar-corpus-m680",
+  "description": "M6 corpus — Thraximundar; in-hand parse.",
+  "seed": 64724,
+  "cards": {
+    "Thraximundar": "Name:Thraximundar\nManaCost:4 U B R\nTypes:Legendary Creature Zombie Assassin\nPT:6/6\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks, defending player sacrifices a creature.\nT:Mode$ Sacrificed | ValidCard$ Creature | Execute$ TrigPutCounter | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a player sacrifices a creature, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredDefendingPlayer | SacValid$ Creature\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Haste\\nWhenever Thraximundar attacks, defending player sacrifices a creature.\\nWhenever a player sacrifices a creature, you may put a +1/+1 counter on Thraximundar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thraximundar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

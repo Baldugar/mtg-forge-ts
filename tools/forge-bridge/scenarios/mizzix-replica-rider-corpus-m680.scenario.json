@@ -1,0 +1,23 @@
+{
+  "id": "mizzix-replica-rider-corpus-m680",
+  "description": "M6 corpus — Mizzix, Replica Rider; in-hand parse.",
+  "seed": 63446,
+  "cards": {
+    "Mizzix, Replica Rider": "Name:Mizzix, Replica Rider\nManaCost:4 R\nTypes:Legendary Creature Goblin Wizard\nPT:4/5\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever you cast a spell from anywhere other than your hand, you may pay {1}{U/R}. If you do, copy that spell and you may choose new targets for the copy. If the copy is a permanent spell, it gains haste and \"At the beginning of the end step, sacrifice this permanent.\" (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:AB$ CopySpellAbility | Cost$ 1 UR | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | RememberNewCard$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Permanent | Keywords$ Haste | Duration$ Permanent | Triggers$ EOTSac | SubAbility$ DBCleanup\nSVar:EOTSac:Mode$ Phase | Phase$ End of Turn | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice this permanent.\nSVar:TrigSac:DB$ Sacrifice\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Type$Instant|Sorcery & Keyword$Foretell|Flashback\nOracle:Flying\\nWhenever you cast a spell from anywhere other than your hand, you may pay {1}{U/R}. If you do, copy that spell and you may choose new targets for the copy. If the copy is a permanent spell, it gains haste and \"At the beginning of the end step, sacrifice this permanent.\" (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mizzix, Replica Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brutal-nightstalker-corpus-m680",
+  "description": "M6 corpus — Brutal Nightstalker; in-hand parse.",
+  "seed": 61809,
+  "cards": {
+    "Brutal Nightstalker": "Name:Brutal Nightstalker\nManaCost:3 B B\nTypes:Creature Nightstalker\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may have target opponent discard a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Brutal Nightstalker enters, you may have target opponent discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brutal Nightstalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bone-sabres-corpus-m680",
+  "description": "M6 corpus — Bone Sabres; in-hand parse.",
+  "seed": 61748,
+  "cards": {
+    "Bone Sabres": "Name:Bone Sabres\nManaCost:2 G\nTypes:Artifact Equipment\nK:Equip:3\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigCounter | TriggerDescription$ Whenever equipped creature attacks, put four +1/+1 counters on it.\nSVar:TrigCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 4\nDeckHas:Ability$Counters\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Whenever equipped creature attacks, put four +1/+1 counters on it.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bone Sabres"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

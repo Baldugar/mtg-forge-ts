@@ -1,0 +1,23 @@
+{
+  "id": "clement-the-worrywort-corpus-m680",
+  "description": "M6 corpus — Clement, the Worrywort; in-hand parse.",
+  "seed": 61936,
+  "cards": {
+    "Clement, the Worrywort": "Name:Clement, the Worrywort\nManaCost:1 G U\nTypes:Legendary Creature Frog Druid\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME or another creature you control enters, return up to one target creature you control with lesser mana value to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl+cmcLTX | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you control with lesser mana value | Origin$ Battlefield | Destination$ Hand\nS:Mode$ Continuous | Affected$ Frog.YouCtrl | AddAbility$ AnyMana | Description$ Frogs you control have \"{T}: Add {G} or {U}. Spend this mana only to cast a creature spell.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Combo G U | RestrictValid$ Spell.Creature | SpellDescription$ Add {G} or {U}. Spend this mana only to cast a creature spell.\nSVar:X:TriggeredCard$CardManaCost\nOracle:Vigilance\\nWhenever Clement, the Worrywort or another creature you control enters, return up to one target creature you control with lesser mana value to its owner's hand.\\nFrogs you control have \"{T}: Add {G} or {U}. Spend this mana only to cast a creature spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clement, the Worrywort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

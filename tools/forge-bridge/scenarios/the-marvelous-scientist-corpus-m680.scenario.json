@@ -1,0 +1,23 @@
+{
+  "id": "the-marvelous-scientist-corpus-m680",
+  "description": "M6 corpus — The Marvelous Scientist; in-hand parse.",
+  "seed": 64668,
+  "cards": {
+    "The Marvelous Scientist": "Name:The Marvelous Scientist\nManaCost:1 U R\nTypes:Legendary Creature Human Wizard\nPT:2/2\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Cosplay,Science | Defined$ You | SetChosenMode$ True | ShowChoice$ ExceptSelf | SpellDescription$ As CARDNAME enters the battlefield, choose cosplay or science.\nSVar:Cosplay:DB$ Pump | SpellDescription$ Cosplay\nSVar:Science:DB$ Pump | SpellDescription$ Science\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeCosplay | AddTrigger$ CosplayTrigger | Description$ • Cosplay — Whenever you cast a creature or planeswalker spell, CARDNAME's base power and toughness each become equal to that spell's mana value until end of turn.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeScience | AddTrigger$ ScienceTrigger | Description$ • Science — Whenever you cast an instant or sorcery spell, CARDNAME deals 2 damage to each opponent.\nSVar:CosplayTrigger:Mode$ SpellCast | ValidCard$ Creature,Planeswalker | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a creature or planeswalker spell, CARDNAME's base power and toughness each become equal to that spell's mana value until end of turn.\nSVar:TrigAnimate:DB$ Animate | Power$ X | Toughness$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:ScienceTrigger:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nDeckHints:Type$Instant|Sorcery\nOracle:As this creature enters the battlefield, choose cosplay or science.\\n• Cosplay — Whenever you cast a creature or planeswalker spell, this creature's base power and toughness each become equal to that spell's mana value until end of turn.\\n• Science — Whenever you cast an instant or sorcery spell, this creature deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Marvelous Scientist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

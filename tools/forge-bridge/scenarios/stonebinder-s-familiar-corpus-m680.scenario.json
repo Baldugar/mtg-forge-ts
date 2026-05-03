@@ -1,0 +1,23 @@
+{
+  "id": "stonebinder-s-familiar-corpus-m680",
+  "description": "M6 corpus — Stonebinder's Familiar; in-hand parse.",
+  "seed": 64470,
+  "cards": {
+    "Stonebinder's Familiar": "Name:Stonebinder's Familiar\nManaCost:W\nTypes:Creature Spirit Dog\nPT:1/1\nT:Mode$ ChangesZoneAll | ValidCards$ Card.!token+!copiedSpell | Destination$ Exile | TriggerZones$ Battlefield | Execute$ TrigPutCounter | PlayerTurn$ True | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more cards are put into exile during your turn, put a +1/+1 counter on CARDNAME. This ability triggers only once each turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | Defined$ Self | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Whenever one or more cards are put into exile during your turn, put a +1/+1 counter on Stonebinder's Familiar. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonebinder's Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

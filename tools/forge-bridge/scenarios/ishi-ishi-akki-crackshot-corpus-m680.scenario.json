@@ -1,0 +1,23 @@
+{
+  "id": "ishi-ishi-akki-crackshot-corpus-m680",
+  "description": "M6 corpus — Ishi-Ishi, Akki Crackshot; in-hand parse.",
+  "seed": 62998,
+  "cards": {
+    "Ishi-Ishi, Akki Crackshot": "Name:Ishi-Ishi, Akki Crackshot\nManaCost:1 R\nTypes:Legendary Creature Goblin Warrior\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an opponent casts a Spirit or Arcane spell, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a Spirit or Arcane spell, Ishi-Ishi, Akki Crackshot deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ishi-Ishi, Akki Crackshot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-pursuit-corpus-m680",
+  "description": "M6 corpus — Ravenous Pursuit; in-hand parse.",
+  "seed": 63909,
+  "cards": {
+    "Ravenous Pursuit": "Name:Ravenous Pursuit\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | AILogic$ PowerDmg | NumDmg$ ParentTargeted$CardPower | ExcessSVar$ Excess | DamageSource$ ParentTarget | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBEffect | SpellDescription$ Choose a creature card in your hand. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Pump | Defined$ ChosenCard | PumpZone$ Hand | NumAtt$ +Excess | NumDef$ +Excess | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gets +X/+X, where X is the amount of excess damage dealt this way.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Target creature you control deals damage equal to its power to target creature you don't control. Choose a creature card in your hand. It perpetually gets +X/+X, where X is the amount of excess damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Pursuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

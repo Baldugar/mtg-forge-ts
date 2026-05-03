@@ -1,0 +1,23 @@
+{
+  "id": "grime-gorger-corpus-m680",
+  "description": "M6 corpus — Grime Gorger; in-hand parse.",
+  "seed": 62726,
+  "cards": {
+    "Grime Gorger": "Name:Grime Gorger\nManaCost:2 B G\nTypes:Creature Horror\nPT:3/3\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRepeatTypes | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile up to one card of each card type from defending player's graveyard. Put a +1/+1 counter on CARDNAME for each card exiled this way.\nSVar:TrigRepeatTypes:DB$ RepeatEach | RepeatTypesFrom$ ValidGraveyard Card.OwnedBy TriggeredDefendingPlayer | RepeatSubAbility$ ChooseCard | SubAbility$ DBExile\nSVar:ChooseCard:DB$ ChooseCard | ChoiceZone$ Graveyard | Choices$ Card.ChosenType+OwnedBy TriggeredDefendingPlayer | ChoiceTitle$ You may choose a card of this type from defending player's graveyard to exile | ChoiceTitleAppend$ ChosenType | RememberChosen$ True\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ Remembered | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:X:Remembered$Amount\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Menace\\nWhenever Grime Gorger attacks, exile up to one card of each card type from defending player's graveyard. Put a +1/+1 counter on Grime Gorger for each card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grime Gorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

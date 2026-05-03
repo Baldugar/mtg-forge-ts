@@ -1,0 +1,23 @@
+{
+  "id": "ty-lee-artful-acrobat-corpus-m680",
+  "description": "M6 corpus — Ty Lee, Artful Acrobat; in-hand parse.",
+  "seed": 64828,
+  "cards": {
+    "Ty Lee, Artful Acrobat": "Name:Ty Lee, Artful Acrobat\nManaCost:2 R\nTypes:Legendary Creature Human Performer\nPT:3/2\nK:Prowess\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever NICKNAME attacks, you may pay {1}. When you do, target creature can't block this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigPump | TriggerDescription$ When you do, target creature can't block this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Ty Lee attacks, you may pay {1}. When you do, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ty Lee, Artful Acrobat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

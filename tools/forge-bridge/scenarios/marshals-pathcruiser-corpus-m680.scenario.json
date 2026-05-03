@@ -1,0 +1,23 @@
+{
+  "id": "marshals-pathcruiser-corpus-m680",
+  "description": "M6 corpus — Marshals' Pathcruiser; in-hand parse.",
+  "seed": 63348,
+  "cards": {
+    "Marshals' Pathcruiser": "Name:Marshals' Pathcruiser\nManaCost:3\nTypes:Artifact Vehicle\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this Vehicle enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic\nA:AB$ Animate | Cost$ W U B R G | Defined$ Self | Types$ Artifact,Creature | Exhaust$ True | Duration$ Permanent | SubAbility$ DBPutCounter | SpellDescription$ This Vehicle becomes an artifact creature. Put two +1/+1 counters on it. (Activate each exhaust ability only once.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nK:Crew:5\nOracle:When this Vehicle enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\nExhaust — {W}{U}{B}{R}{G}: This Vehicle becomes an artifact creature. Put two +1/+1 counters on it. (Activate each exhaust ability only once.)\\nCrew 5\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marshals' Pathcruiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

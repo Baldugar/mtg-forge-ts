@@ -1,0 +1,23 @@
+{
+  "id": "tomakul-phoenix-corpus-m680",
+  "description": "M6 corpus — Tomakul Phoenix; in-hand parse.",
+  "seed": 64765,
+  "cards": {
+    "Tomakul Phoenix": "Name:Tomakul Phoenix\nManaCost:1 R R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME dies, it perpetually gets +2/+2.\nSVar:TrigEffect:DB$ Pump | Defined$ TriggeredNewCardLKICopy | PumpZone$ Graveyard | NumAtt$ +2 | NumDef$ +2 | Duration$ Perpetual\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ At the beginning of combat on your turn, you may pay {X}{R}, where X is CARDNAME's power. If you do, return it from your graveyard to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ X R | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$CardPower\nSVar:SacMe:1\nSVar:DiscardMe:1\nDeckHas:Ability$Graveyard\nOracle:Flying, haste\\nWhen Tomakul Phoenix dies, it perpetually gets +2/+2.\\nAt the beginning of combat on your turn, you may pay {X}{R}, where X is Tomakul Phoenix's power. If you do, return it from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tomakul Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

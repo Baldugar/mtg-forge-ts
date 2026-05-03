@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-the-nihil-stone-corpus-m680",
+  "description": "M6 corpus — Quest for the Nihil Stone; in-hand parse.",
+  "seed": 63860,
+  "cards": {
+    "Quest for the Nihil Stone": "Name:Quest for the Nihil Stone\nManaCost:B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent discards a card, you may put a quest counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | CheckSVar$ CardsInHand | SVarCompare$ EQ0 | IsPresent$ Card.Self+counters_GE2_QUEST | Execute$ TrigLoseLife | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has no cards in hand and CARDNAME has two or more quest counters on it, you may have that player lose 5 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 5\nSVar:CardsInHand:Count$ValidHand Card.ActivePlayerCtrl\nSVar:PlayMain1:TRUE\nSVar:MaxQuestEffect:2\nAI:RemoveDeck:Random\nDeckHints:Ability$Discard\nOracle:Whenever an opponent discards a card, you may put a quest counter on Quest for the Nihil Stone.\\nAt the beginning of each opponent's upkeep, if that player has no cards in hand and Quest for the Nihil Stone has two or more quest counters on it, you may have that player lose 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for the Nihil Stone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

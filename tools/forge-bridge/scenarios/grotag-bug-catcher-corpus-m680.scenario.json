@@ -1,0 +1,23 @@
+{
+  "id": "grotag-bug-catcher-corpus-m680",
+  "description": "M6 corpus — Grotag Bug-Catcher; in-hand parse.",
+  "seed": 62732,
+  "cards": {
+    "Grotag Bug-Catcher": "Name:Grotag Bug-Catcher\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/2\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Party\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Wizard\nOracle:Trample\\nWhenever Grotag Bug-Catcher attacks, it gets +1/+0 until end of turn for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grotag Bug-Catcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

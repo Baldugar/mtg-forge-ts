@@ -1,0 +1,23 @@
+{
+  "id": "witch-hunt-corpus-m680",
+  "description": "M6 corpus — Witch Hunt; in-hand parse.",
+  "seed": 65074,
+  "cards": {
+    "Witch Hunt": "Name:Witch Hunt\nManaCost:4 R\nTypes:Enchantment\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 4 damage to you.\nSVar:TrigDmg:DB$ DealDamage | Defined$ You | NumDmg$ 4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ At the beginning of your end step, target opponent chosen at random gains control of CARDNAME.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Opponent | TargetsAtRandom$ True | Defined$ Self\nOracle:Players can't gain life.\\nAt the beginning of your upkeep, Witch Hunt deals 4 damage to you.\\nAt the beginning of your end step, target opponent chosen at random gains control of Witch Hunt.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witch Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

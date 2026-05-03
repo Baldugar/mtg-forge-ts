@@ -1,0 +1,23 @@
+{
+  "id": "barbed-servitor-corpus-m680",
+  "description": "M6 corpus — Barbed Servitor; in-hand parse.",
+  "seed": 61649,
+  "cards": {
+    "Barbed Servitor": "Name:Barbed Servitor\nManaCost:3 B\nTypes:Artifact Creature Construct\nPT:1/1\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect it. (It has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ Self | Attributes$ Suspected\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME is dealt damage, target opponent loses that much life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Indestructible\\nWhen Barbed Servitor enters, suspect it. (It has menace and can't block.)\\nWhenever Barbed Servitor deals combat damage to a player, you draw a card and you lose 1 life.\\nWhenever Barbed Servitor is dealt damage, target opponent loses that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barbed Servitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

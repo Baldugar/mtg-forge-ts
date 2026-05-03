@@ -1,0 +1,23 @@
+{
+  "id": "palant-r-of-orthanc-corpus-m680",
+  "description": "M6 corpus — Palantír of Orthanc; in-hand parse.",
+  "seed": 63689,
+  "cards": {
+    "Palantír of Orthanc": "Name:Palantír of Orthanc\nManaCost:3\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put an influence counter on CARDNAME and scry 2. Then target opponent may have you draw a card. If that player doesn't, you mill X cards, where X is the number of influence counters on CARDNAME, and that player loses life equal to the total mana value of those cards.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ INFLUENCE | CounterNum$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBChoice\nSVar:DBChoice:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ CombustDraw,CombustDamage | AILogic$ CombustibleGearhulk\nSVar:CombustDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ CARDNAME's controller draws a card.\nSVar:CombustDamage:DB$ Mill | Defined$ You | NumCards$ X | RememberMilled$ True | SubAbility$ DamageOpponent | SpellDescription$ CARDNAME's controller mills X cards, where X is the number of influence counters on it, and you lose life equal to the total mana value of those cards.\nSVar:DamageOpponent:DB$ LoseLife | Defined$ ParentTarget | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardCounters.INFLUENCE\nSVar:Y:Remembered$CardManaCost\nDeckHas:Ability$Counters|Mill\nOracle:At the beginning of your end step, put an influence counter on Palantír of Orthanc and scry 2. Then target opponent may have you draw a card. If that player doesn't, you mill X cards, where X is the number of influence counters on Palantír of Orthanc, and that player loses life equal to the total mana value of those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Palantír of Orthanc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

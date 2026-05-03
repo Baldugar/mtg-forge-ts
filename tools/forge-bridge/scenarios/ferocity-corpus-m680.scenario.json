@@ -1,0 +1,23 @@
+{
+  "id": "ferocity-corpus-m680",
+  "description": "M6 corpus — Ferocity; in-hand parse.",
+  "seed": 62470,
+  "cards": {
+    "Ferocity": "Name:Ferocity\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ AttackerBlocked | ValidCard$ Card.AttachedBy | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked, you may put a +1/+1 counter on it.\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | Execute$ TrigPutCounter2 | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked, you may put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 1\nSVar:TrigPutCounter2:DB$ PutCounter | Defined$ TriggeredBlockerLKICopy | CounterType$ P1P1 | CounterNum$ 1\nOracle:Enchant creature\\nWhenever enchanted creature blocks or becomes blocked, you may put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ferocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

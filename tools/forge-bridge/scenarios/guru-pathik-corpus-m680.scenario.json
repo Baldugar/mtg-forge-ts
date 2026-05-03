@@ -1,0 +1,23 @@
+{
+  "id": "guru-pathik-corpus-m680",
+  "description": "M6 corpus — Guru Pathik; in-hand parse.",
+  "seed": 62754,
+  "cards": {
+    "Guru Pathik": "Name:Guru Pathik\nManaCost:2 GU GU\nTypes:Legendary Creature Human Monk Ally\nPT:2/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top five cards of your library. You may reveal a Lesson, Saga, or Shrine card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Lesson,Saga,Shrine | RestRandomOrder$ True\nT:Mode$ SpellCast | ValidCard$ Lesson,Saga,Shrine | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a Lesson, Saga, or Shrine spell, put a +1/+1 counter on another target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Lesson,Saga,Shrine\nDeckHints:Type$Lesson|Saga|Shrine\nOracle:When Guru Pathik enters, look at the top five cards of your library. You may reveal a Lesson, Saga, or Shrine card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\\nWhenever you cast a Lesson, Saga, or Shrine spell, put a +1/+1 counter on another target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guru Pathik"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

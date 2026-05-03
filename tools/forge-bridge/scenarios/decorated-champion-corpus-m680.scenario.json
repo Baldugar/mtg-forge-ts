@@ -1,0 +1,23 @@
+{
+  "id": "decorated-champion-corpus-m680",
+  "description": "M6 corpus — Decorated Champion; in-hand parse.",
+  "seed": 62129,
+  "cards": {
+    "Decorated Champion": "Name:Decorated Champion\nManaCost:1 G\nTypes:Creature Elf Warrior\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Warrior.Other+YourTeamCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigPutCounter | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever another Warrior enters under your team's control, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Warrior\nOracle:Whenever another Warrior enters under your team's control, put a +1/+1 counter on Decorated Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decorated Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

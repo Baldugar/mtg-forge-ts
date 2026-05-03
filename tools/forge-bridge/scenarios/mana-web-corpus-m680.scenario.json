@@ -1,0 +1,23 @@
+{
+  "id": "mana-web-corpus-m680",
+  "description": "M6 corpus — Mana Web; in-hand parse.",
+  "seed": 63329,
+  "cards": {
+    "Mana Web": "Name:Mana Web\nManaCost:3\nTypes:Artifact\nT:Mode$ TapsForMana | ValidCard$ Land.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ Whenever a land an opponent controls is tapped for mana, tap all lands that player controls that could produce any type of mana that land could produce.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ TriggeredCard.canProduceSameManaTypeWith+Land | Defined$ TriggeredCardController\nOracle:Whenever a land an opponent controls is tapped for mana, tap all lands that player controls that could produce any type of mana that land could produce.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Web"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

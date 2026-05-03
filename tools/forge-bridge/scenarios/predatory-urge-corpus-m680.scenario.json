@@ -1,0 +1,23 @@
+{
+  "id": "predatory-urge-corpus-m680",
+  "description": "M6 corpus — Predatory Urge; in-hand parse.",
+  "seed": 63789,
+  "cards": {
+    "Predatory Urge": "Name:Predatory Urge\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ DamageTgt | AddSVar$ DamageThis & PredatoryX & PredatoryY | Description$ Enchanted creature has \"{T}: This creature deals damage equal to its power to target creature. That creature deals damage equal to its power to this creature.\"\nSVar:DamageTgt:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ PredatoryX | SubAbility$ DamageThis | SpellDescription$ CARDNAME deals damage equal to its power to target creature. That creature deals damage equal to its power to CARDNAME.\nSVar:DamageThis:DB$ DealDamage | Defined$ Self | DamageSource$ Targeted | NumDmg$ PredatoryY\nSVar:PredatoryX:Count$CardPower\nSVar:PredatoryY:Targeted$CardPower\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals damage equal to its power to target creature. That creature deals damage equal to its power to this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Urge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

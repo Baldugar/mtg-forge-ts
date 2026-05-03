@@ -1,0 +1,23 @@
+{
+  "id": "incremental-growth-corpus-m680",
+  "description": "M6 corpus — Incremental Growth; in-hand parse.",
+  "seed": 62920,
+  "cards": {
+    "Incremental Growth": "Name:Incremental Growth\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature | TargetUnique$ True | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPutTwo | SpellDescription$ Put a +1/+1 counter on target creature, two +1/+1 counters on another target creature, and three +1/+1 counters on a third target creature.\nSVar:DBPutTwo:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select another target creature | TargetUnique$ True | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPutThree\nSVar:DBPutThree:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select a third target creature | TargetUnique$ True | CounterType$ P1P1 | CounterNum$ 3\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature, two +1/+1 counters on another target creature, and three +1/+1 counters on a third target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incremental Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

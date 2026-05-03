@@ -1,0 +1,23 @@
+{
+  "id": "summoner-s-grimoire-corpus-m680",
+  "description": "M6 corpus — Summoner's Grimoire; in-hand parse.",
+  "seed": 64510,
+  "cards": {
+    "Summoner's Grimoire": "Name:Summoner's Grimoire\nManaCost:3 G\nTypes:Artifact Equipment\nK:Job select\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddType$ Shaman | AddTrigger$ TrigAttack | AddSVar$ AE | Description$ Equipped creature is a Shaman in addition to its other types and has \"Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.\"\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.\nSVar:TrigChoose:DB$ ChooseCard | Mandatory$ True | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ Choose a creature card in your hand | SubAbility$ DBChangeOne\nSVar:DBChangeOne:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Card.Enchantment | Tapped$ True | Attacking$ True | SubAbility$ DBChangeTwo\nSVar:DBChangeTwo:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Card.nonEnchantment | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nK:Equip:3:Flavor Abraxas\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Shaman\nOracle:Job select\\nEquipped creature is a Shaman in addition to its other types and has \"Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.\"\\nAbraxas — Equip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summoner's Grimoire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

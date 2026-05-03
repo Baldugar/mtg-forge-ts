@@ -1,0 +1,23 @@
+{
+  "id": "bazaar-of-wonders-corpus-m680",
+  "description": "M6 corpus — Bazaar of Wonders; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Bazaar of Wonders": "Name:Bazaar of Wonders\nManaCost:3 U U\nTypes:World Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ExileAll | TriggerDescription$ When CARDNAME enters, exile all graveyards.\nSVar:ExileAll:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card\nT:Mode$ SpellCast | ValidCard$ Card | Execute$ TrigCounterSameGrave | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell, counter it if a card with the same name is in a graveyard or a nontoken permanent with the same name is on the battlefield.\nSVar:TrigCounterSameGrave:DB$ Counter | Defined$ TriggeredSpellAbility | SubAbility$ DBCounterSamePermanent | ConditionCheckSVar$ SharesNameGrave | ConditionSVarCompare$ GE1\nSVar:DBCounterSamePermanent:DB$ Counter | Defined$ TriggeredSpellAbility | ConditionCheckSVar$ SharesNameBattlefield | ConditionSVarCompare$ GE1\nSVar:SharesNameGrave:TriggeredCard$Valid Card.sharesNameWith Graveyard\nSVar:SharesNameBattlefield:TriggeredCard$Valid Card.sharesNameWith NonToken\nSVar:AICurseEffect:BazaarOfWonders\nAI:RemoveDeck:Random\nOracle:When Bazaar of Wonders enters, exile all graveyards.\\nWhenever a player casts a spell, counter it if a card with the same name is in a graveyard or a nontoken permanent with the same name is on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bazaar of Wonders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

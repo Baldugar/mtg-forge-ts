@@ -1,0 +1,23 @@
+{
+  "id": "rangers-of-ithilien-corpus-m680",
+  "description": "M6 corpus — Rangers of Ithilien; in-hand parse.",
+  "seed": 63896,
+  "cards": {
+    "Rangers of Ithilien": "Name:Rangers of Ithilien\nManaCost:2 U U\nTypes:Creature Human Ranger\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of up to one target creature with lesser power for as long as you control CARDNAME. Then the Ring tempts you.\nSVar:TrigChange:DB$ GainControl | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.powerLTZ | SubAbility$ TrigTempt | LoseControl$ LeavesPlay,LoseControl | SpellDescription$ Gain control of up to one target creature with lesser power for as long as you control CARDNAME. Then the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nSVar:Z:Count$CardPower\nOracle:Vigilance\\nWhen Rangers of Ithilien enters, gain control of up to one target creature with lesser power for as long as you control Rangers of Ithilien. Then the Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rangers of Ithilien"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

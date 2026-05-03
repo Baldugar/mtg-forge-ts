@@ -1,0 +1,23 @@
+{
+  "id": "verdant-command-corpus-m680",
+  "description": "M6 corpus — Verdant Command; in-hand parse.",
+  "seed": 64924,
+  "cards": {
+    "Verdant Command": "Name:Verdant Command\nManaCost:1 G\nTypes:Instant\nA:SP$ Charm | Choices$ DBToken,DBCounter,DBExile,DBGainLife | CharmNum$ 2\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenAmount$ 2 | TokenScript$ g_1_1_squirrel | TokenTapped$ True | TokenOwner$ ThisTargetedPlayer | SpellDescription$ Target player creates two tapped 1/1 green Squirrel creature tokens.\nSVar:DBCounter:DB$ Counter | TargetType$ Activated | TgtPrompt$ Select target loyalty ability of a planeswalker | ValidTgts$ Planeswalker | SpellDescription$ Counter target loyalty ability of a planeswalker.\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TgtPrompt$ Select target card from a graveyard | SpellDescription$ Exile target card from a graveyard.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | TgtPrompt$ Select target player to gain life | LifeAmount$ 3 | SpellDescription$ Target player gains 3 life.\nDeckHas:Ability$Token|LifeGain\nOracle:Choose two —\\n• Target player creates two tapped 1/1 green Squirrel creature tokens.\\n• Counter target loyalty ability of a planeswalker.\\n• Exile target card from a graveyard.\\n• Target player gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdant Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

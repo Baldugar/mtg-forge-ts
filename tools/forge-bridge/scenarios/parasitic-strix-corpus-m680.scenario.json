@@ -1,0 +1,23 @@
+{
+  "id": "parasitic-strix-corpus-m680",
+  "description": "M6 corpus — Parasitic Strix; in-hand parse.",
+  "seed": 63697,
+  "cards": {
+    "Parasitic Strix": "Name:Parasitic Strix\nManaCost:2 U\nTypes:Artifact Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.Black+YouCtrl | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, if you control a black permanent, target player loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHints:Color$Black\nOracle:Flying\\nWhen Parasitic Strix enters, if you control a black permanent, target player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parasitic Strix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

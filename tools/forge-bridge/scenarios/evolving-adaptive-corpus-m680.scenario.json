@@ -1,0 +1,23 @@
+{
+  "id": "evolving-adaptive-corpus-m680",
+  "description": "M6 corpus — Evolving Adaptive; in-hand parse.",
+  "seed": 62384,
+  "cards": {
+    "Evolving Adaptive": "Name:Evolving Adaptive\nManaCost:G\nTypes:Creature Phyrexian Warrior\nPT:0/0\nK:etbCounter:OIL:1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each oil counter on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Condition$ Evolve | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control enters, if that creature has greater power or toughness than CARDNAME, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ OIL\nSVar:X:Count$CardCounters.OIL\nDeckHas:Ability$Counters\nOracle:Evolving Adaptive enters with an oil counter on it.\\nEvolving Adaptive gets +1/+1 for each oil counter on it.\\nWhenever another creature you control enters, if that creature has greater power or toughness than Evolving Adaptive, put an oil counter on Evolving Adaptive.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evolving Adaptive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

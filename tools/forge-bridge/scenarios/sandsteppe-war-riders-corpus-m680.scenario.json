@@ -1,0 +1,23 @@
+{
+  "id": "sandsteppe-war-riders-corpus-m680",
+  "description": "M6 corpus — Sandsteppe War Riders; in-hand parse.",
+  "seed": 64119,
+  "cards": {
+    "Sandsteppe War Riders": "Name:Sandsteppe War Riders\nManaCost:3 G\nTypes:Creature Human Warrior\nPT:4/4\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, bolster X, where X is the number of differently named artifact tokens you control. (Choose a creature with the least toughness among creatures you control and put X +1/+1 counters on it.)\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ Bolster$ X\nSVar:X:Count$Valid Artifact.YouCtrl+token$DifferentCardNames\nDeckHas:Ability$Counters\nOracle:Trample\\nAt the beginning of combat on your turn, bolster X, where X is the number of differently named artifact tokens you control. (Choose a creature with the least toughness among creatures you control and put X +1/+1 counters on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandsteppe War Riders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

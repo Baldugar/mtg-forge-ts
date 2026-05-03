@@ -1,0 +1,23 @@
+{
+  "id": "ara-a-heart-of-the-spider-corpus-m680",
+  "description": "M6 corpus — Araña, Heart of the Spider; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "Araña, Heart of the Spider": "Name:Araña, Heart of the Spider\nVariant:UniversesWithin:FlavorName:Gloria, the Great Armorer\nManaCost:1 R W\nTypes:Legendary Creature Spider Human Hero\nPT:3/3\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, put a +1/+1 counter on target attacking creature.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature\nT:Mode$ DamageDone | ValidSource$ Creature.modified+YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a modified creature you control deals combat damage to a player, exile the top card of your library. You may play that card this turn. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Exile the top card of your library. You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Aura|Equipment\nOracle:Whenever you attack, put a +1/+1 counter on target attacking creature.\\nWhenever a modified creature you control deals combat damage to a player, exile the top card of your library. You may play that card this turn. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Araña, Heart of the Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

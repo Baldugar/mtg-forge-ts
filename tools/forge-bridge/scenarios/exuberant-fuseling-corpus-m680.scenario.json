@@ -1,0 +1,23 @@
+{
+  "id": "exuberant-fuseling-corpus-m680",
+  "description": "M6 corpus — Exuberant Fuseling; in-hand parse.",
+  "seed": 62409,
+  "cards": {
+    "Exuberant Fuseling": "Name:Exuberant Fuseling\nManaCost:R\nTypes:Creature Phyrexian Goblin Warrior\nPT:0/1\nK:Trample\nS:Mode$ Continuous | Affected$ Card.Self | AffectedZone$ Battlefield | AddPower$ X | Description$ CARDNAME gets +1/+0 for each oil counter on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters and whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl,Artifact.Other+YouCtrl | Execute$ TrigCounter | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nSVar:X:Count$CardCounters.OIL\nDeckHas:Ability$Counters\nOracle:Trample\\nExuberant Fuseling gets +1/+0 for each oil counter on it.\\nWhen Exuberant Fuseling enters and whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on Exuberant Fuseling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exuberant Fuseling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

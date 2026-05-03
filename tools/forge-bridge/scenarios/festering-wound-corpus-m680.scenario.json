@@ -1,0 +1,23 @@
+{
+  "id": "festering-wound-corpus-m680",
+  "description": "M6 corpus — Festering Wound; in-hand parse.",
+  "seed": 62475,
+  "cards": {
+    "Festering Wound": "Name:Festering Wound\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may put an infection counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, CARDNAME deals X damage to that player, where X is the number of infection counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ INFECTION | CounterNum$ 1\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$CardCounters.INFECTION\nOracle:Enchant creature\\nAt the beginning of your upkeep, you may put an infection counter on Festering Wound.\\nAt the beginning of the upkeep of enchanted creature's controller, Festering Wound deals X damage to that player, where X is the number of infection counters on Festering Wound.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festering Wound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

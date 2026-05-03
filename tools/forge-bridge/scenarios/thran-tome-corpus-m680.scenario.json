@@ -1,0 +1,23 @@
+{
+  "id": "thran-tome-corpus-m680",
+  "description": "M6 corpus — Thran Tome; in-hand parse.",
+  "seed": 64720,
+  "cards": {
+    "Thran Tome": "Name:Thran Tome\nManaCost:4\nTypes:Artifact\nA:AB$ PeekAndReveal | Cost$ 5 T | PeekAmount$ 3 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Reveal the top three cards of your library. Target opponent chooses one of those cards. Put that card into your graveyard, then draw two cards.\nSVar:DBChoose:DB$ ChooseCard | ValidTgts$ Opponent | Choices$ Card.IsRemembered | ChoiceZone$ Library | Amount$ 1 | SubAbility$ DBDig | Mandatory$ True | StackDescription$ None\nSVar:DBDig:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | Defined$ ChosenCard | Shuffle$ False | StackDescription$ None | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{5}, {T}: Reveal the top three cards of your library. Target opponent chooses one of those cards. Put that card into your graveyard, then draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thran Tome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

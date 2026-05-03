@@ -1,0 +1,23 @@
+{
+  "id": "infinite-guideline-station-corpus-m680",
+  "description": "M6 corpus — Infinite Guideline Station; in-hand parse.",
+  "seed": 62933,
+  "cards": {
+    "Infinite Guideline Station": "Name:Infinite Guideline Station\nManaCost:W U B R G\nTypes:Legendary Artifact Spacecraft\nPT:7/15\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped 2/2 colorless Robot artifact creature token for each multicolored permanent you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_2_2_a_robot | TokenTapped$ True | TokenOwner$ You\nK:Station:12\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE12_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddTrigger$ AttackTrig | Description$ STATION 12+ Flying Whenever CARDNAME attacks, draw a card for each multicolored permanent you control.\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw a card for each multicolored permanent you control.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Permanent.YouCtrl+MultiColor\nOracle:When Infinite Guideline Station enters, create a tapped 2/2 colorless Robot artifact creature token for each multicolored permanent you control.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 12+.)\\nSTATION 12+\\nFlying\\nWhenever Infinite Guideline Station attacks, draw a card for each multicolored permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infinite Guideline Station"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "contested-war-zone-corpus-m680",
+  "description": "M6 corpus — Contested War Zone; in-hand parse.",
+  "seed": 62000,
+  "cards": {
+    "Contested War Zone": "Name:Contested War Zone\nManaCost:no cost\nTypes:Land\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ You | CombatDamage$ True | Execute$ TrigControl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature deals combat damage to you, that creature's controller gains control of CARDNAME.\nSVar:TrigControl:DB$ GainControl | Defined$ Self | NewController$ TriggeredSourceController\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PumpAll | Cost$ 1 T | ValidCards$ Creature.attacking | NumAtt$ +1 | SpellDescription$ Attacking creatures get +1/+0 until end of turn.\nOracle:Whenever a creature deals combat damage to you, that creature's controller gains control of Contested War Zone.\\n{T}: Add {C}.\\n{1}, {T}: Attacking creatures get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contested War Zone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

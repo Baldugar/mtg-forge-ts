@@ -1,0 +1,23 @@
+{
+  "id": "fearless-fledgling-corpus-m680",
+  "description": "M6 corpus — Fearless Fledgling; in-hand parse.",
+  "seed": 62453,
+  "cards": {
+    "Fearless Fledgling": "Name:Fearless Fledgling\nManaCost:1 W\nTypes:Creature Griffin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on CARDNAME. It gains flying until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Flying\nSVar:BuffedBy:Land\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, put a +1/+1 counter on Fearless Fledgling. It gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fearless Fledgling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

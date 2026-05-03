@@ -1,0 +1,23 @@
+{
+  "id": "impulsive-maneuvers-corpus-m680",
+  "description": "M6 corpus — Impulsive Maneuvers; in-hand parse.",
+  "seed": 62912,
+  "cards": {
+    "Impulsive Maneuvers": "Name:Impulsive Maneuvers\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature | Execute$ CoinFlip | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature attacks, flip a coin. If you win the flip, the next time that creature would deal combat damage this turn, it deals double that damage instead. If you lose the flip, the next time that creature would deal combat damage this turn, prevent that damage.\nSVar:CoinFlip:DB$ FlipACoin | WinSubAbility$ CreateWinEffect | LoseSubAbility$ CreateLossEffect\n# Winning Effect\nSVar:CreateWinEffect:DB$ Effect | Name$ Impulsive Maneuvers's Effect — Won The Flip | ReplacementEffects$ EventWinDamageDone | ImprintCards$ TriggeredAttacker\nSVar:EventWinDamageDone:Event$ DamageDone | ValidSource$ Card.IsImprinted | IsCombat$ True | ReplaceWith$ DmgTwice | Description$ The next time creature would deal combat damage this turn, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ WinX | SubAbility$ ExileEffect\nSVar:WinX:ReplaceCount$DamageAmount/Twice\n# Losing Effect\nSVar:CreateLossEffect:DB$ Effect | Name$ Impulsive Maneuvers's Effect — Lost The Flip | ReplacementEffects$ EventLossDamageDone | ImprintCards$ TriggeredAttacker\nSVar:EventLossDamageDone:Event$ DamageDone | ValidSource$ Card.IsImprinted | ReplaceWith$ ExileEffect | PreventionEffect$ True | IsCombat$ True | Description$ The next time creature would deal combat damage this turn, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:Whenever a creature attacks, flip a coin. If you win the flip, the next time that creature would deal combat damage this turn, it deals double that damage instead. If you lose the flip, the next time that creature would deal combat damage this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impulsive Maneuvers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

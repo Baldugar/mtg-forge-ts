@@ -1,0 +1,23 @@
+{
+  "id": "ooze-patrol-corpus-m680",
+  "description": "M6 corpus — Ooze Patrol; in-hand parse.",
+  "seed": 63630,
+  "cards": {
+    "Ooze Patrol": "Name:Ooze Patrol\nManaCost:3 G\nTypes:Creature Ooze\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters the battlefield, mill two cards, then put a +1/+1 counter on this creature for each card in your graveyard that is an artifact or creature.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ValidGraveyard Artifact.YouOwn,Creature.YouOwn\nDeckHas:Ability$Graveyard|Mill|Counters\nDeckHints:Type$Artifact & Ability$Discard|Sacrifice\nOracle:When this creature enters the battlefield, mill two cards, then put a +1/+1 counter on this creature for each card in your graveyard that is an artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ooze Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

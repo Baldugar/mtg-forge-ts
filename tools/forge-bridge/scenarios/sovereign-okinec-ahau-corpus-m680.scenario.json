@@ -1,0 +1,23 @@
+{
+  "id": "sovereign-okinec-ahau-corpus-m680",
+  "description": "M6 corpus — Sovereign Okinec Ahau; in-hand parse.",
+  "seed": 64380,
+  "cards": {
+    "Sovereign Okinec Ahau": "Name:Sovereign Okinec Ahau\nManaCost:2 G W\nTypes:Legendary Creature Cat Noble\nPT:3/4\nK:Ward:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, for each creature you control with power greater than that creature's base power, put a number of +1/+1 counters on that creature equal to the difference.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Valid Creature.YouCtrl+powerGTbasePower | CounterType$ P1P1 | CounterNumPerDefined$ X\nSVar:X:Count$CardPower/Minus.Count$CardBasePower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Ward {2}\\nWhenever Sovereign Okinec Ahau attacks, for each creature you control with power greater than that creature's base power, put a number of +1/+1 counters on that creature equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sovereign Okinec Ahau"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

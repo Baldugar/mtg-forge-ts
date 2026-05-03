@@ -1,0 +1,23 @@
+{
+  "id": "mogg-bombers-corpus-m680",
+  "description": "M6 corpus — Mogg Bombers; in-hand parse.",
+  "seed": 63451,
+  "cards": {
+    "Mogg Bombers": "Name:Mogg Bombers\nManaCost:3 R\nTypes:Creature Goblin\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When another creature enters, sacrifice CARDNAME and it deals 3 damage to target player or planeswalker.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker to deal 3 damage to | NumDmg$ 3\nOracle:When another creature enters, sacrifice Mogg Bombers and it deals 3 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogg Bombers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

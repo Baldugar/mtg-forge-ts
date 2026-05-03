@@ -1,0 +1,23 @@
+{
+  "id": "call-for-unity-corpus-m680",
+  "description": "M6 corpus — Call for Unity; in-hand parse.",
+  "seed": 61839,
+  "cards": {
+    "Call for Unity": "Name:Call for Unity\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Revolt$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Revolt — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a unity counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ UNITY | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ X | AddToughness$ X | Description$ Creatures you control get +1/+1 for each unity counter on CARDNAME.\nSVar:X:Count$CardCounters.UNITY\nOracle:Revolt — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a unity counter on Call for Unity.\\nCreatures you control get +1/+1 for each unity counter on Call for Unity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call for Unity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

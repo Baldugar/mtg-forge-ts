@@ -1,0 +1,23 @@
+{
+  "id": "mimeoplasm-revered-one-corpus-m680",
+  "description": "M6 corpus — Mimeoplasm, Revered One; in-hand parse.",
+  "seed": 63411,
+  "cards": {
+    "Mimeoplasm, Revered One": "Name:Mimeoplasm, Revered One\nManaCost:X B G U\nTypes:Legendary Creature Ooze\nPT:0/0\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBChangeZone | ReplacementResult$ Updated | Description$ As NICKNAME enters, exile up to X creature cards from your graveyard. It enters with three +1/+1 counters on it for each creature card exiled this way.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Creature.YouOwn | SelectPrompt$ Select up to X creature cards from your graveyard to exile | ChangeNum$ X | Hidden$ True | RememberChanged$ True | ETB$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ Y | ETB$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Clone | Cost$ 2 | ValidTgts$ Creature.ExiledWithSource | TgtZone$ Exile | TgtPrompt$ Select target creature card exiled with CARDNAME | GainThisAbility$ True | SetPower$ 0 | SetToughness$ 0 | SpellDescription$ NICKNAME becomes a copy of target creature card exiled with it, except it's 0/0 and has this ability.\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Amount/Times.3\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Mill|Graveyard\nOracle:As Mimeoplasm enters, exile up to X creature cards from your graveyard. It enters with three +1/+1 counters on it for each creature card exiled this way.\\n{2}: Mimeoplasm becomes a copy of target creature card exiled with it, except it's 0/0 and has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mimeoplasm, Revered One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

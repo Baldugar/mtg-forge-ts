@@ -1,0 +1,23 @@
+{
+  "id": "azlask-the-swelling-scourge-corpus-m680",
+  "description": "M6 corpus — Azlask, the Swelling Scourge; in-hand parse.",
+  "seed": 61626,
+  "cards": {
+    "Azlask, the Swelling Scourge": "Name:Azlask, the Swelling Scourge\nManaCost:3\nTypes:Legendary Creature Eldrazi\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Colorless+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExperience | TriggerDescription$ Whenever CARDNAME or another colorless creature you control dies, you get an experience counter.\nSVar:TrigExperience:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nA:AB$ PumpAll | Cost$ W U B R G | ValidCards$ Creature.YouCtrl | NumAtt$ +X | NumDef$ +X | SubAbility$ DBPumpAll | SpellDescription$ Creatures you control get +X/+X until end of turn, where X is the number of experience counters you have.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Scion.YouCtrl,Spawn.YouCtrl | KW$ Annihilator:1 & Indestructible | SpellDescription$ Scions and Spawns you control gain indestructible and annihilator 1 until end of turn.\nSVar:X:Count$YourCountersExperience\nDeckNeeds:Type$Scion|Spawn\nDeckHints:Type$Eldrazi\nOracle:Whenever Azlask, the Swelling Scourge or another colorless creature you control dies, you get an experience counter.\\n{W}{U}{B}{R}{G}: Creatures you control get +X/+X until end of turn, where X is the number of experience counters you have. Scions and Spawns you control gain indestructible and annihilator 1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azlask, the Swelling Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

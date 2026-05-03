@@ -1,0 +1,23 @@
+{
+  "id": "fell-specter-corpus-m680",
+  "description": "M6 corpus — Fell Specter; in-hand parse.",
+  "seed": 62464,
+  "cards": {
+    "Fell Specter": "Name:Fell Specter\nManaCost:3 B\nTypes:Creature Specter\nPT:1/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ Discarded | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an opponent discards a card, that player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2\nOracle:Flying\\nWhen Fell Specter enters, target opponent discards a card.\\nWhenever an opponent discards a card, that player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

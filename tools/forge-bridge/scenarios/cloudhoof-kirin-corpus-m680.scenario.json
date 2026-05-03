@@ -1,0 +1,23 @@
+{
+  "id": "cloudhoof-kirin-corpus-m680",
+  "description": "M6 corpus — Cloudhoof Kirin; in-hand parse.",
+  "seed": 61944,
+  "cards": {
+    "Cloudhoof Kirin": "Name:Cloudhoof Kirin\nManaCost:3 U U\nTypes:Legendary Creature Kirin Spirit\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMill | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may have target player mill X cards, where X is that spell's mana value.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | NumCards$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Flying\\nWhenever you cast a Spirit or Arcane spell, you may have target player mill X cards, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudhoof Kirin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

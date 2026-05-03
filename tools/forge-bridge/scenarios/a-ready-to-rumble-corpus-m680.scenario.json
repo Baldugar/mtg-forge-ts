@@ -1,0 +1,23 @@
+{
+  "id": "a-ready-to-rumble-corpus-m680",
+  "description": "M6 corpus — A-Ready to Rumble; in-hand parse.",
+  "seed": 64090,
+  "cards": {
+    "A-Ready to Rumble": "Name:A-Ready to Rumble\nManaCost:4 R\nTypes:Instant\nA:SP$ Charm | Choices$ DBDmg,DBDestroy\nSVar:DBDmg:DB$ Effect | StaticAbilities$ STCantPrevent | AILogic$ Burn | SubAbility$ DBDealDamage | SpellDescription$ Damage can't be prevented this turn.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 5 | SpellDescription$ CARDNAME deals 5 damage to target creature or planeswalker.\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented this turn.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nOracle:Choose one —\\n• Damage can't be prevented this turn. Ready to Rumble deals 5 damage to target creature or planeswalker.\\n• Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Ready to Rumble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

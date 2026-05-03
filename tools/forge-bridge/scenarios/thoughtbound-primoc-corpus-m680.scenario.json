@@ -1,0 +1,23 @@
+{
+  "id": "thoughtbound-primoc-corpus-m680",
+  "description": "M6 corpus — Thoughtbound Primoc; in-hand parse.",
+  "seed": 64717,
+  "cards": {
+    "Thoughtbound Primoc": "Name:Thoughtbound Primoc\nManaCost:2 R\nTypes:Creature Bird Beast\nPT:2/3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ Player.withMostTypeWizardOnly | Execute$ TrigGain | TriggerDescription$ At the beginning of your upkeep, if a player controls more Wizards than each other player, the player who controls the most Wizards gains control of CARDNAME.\nSVar:TrigGain:DB$ GainControl | Defined$ Self | NewController$ Player.withMostTypeWizardOnly\nAI:RemoveDeck:Random\nDeckHints:Type$Wizard\nOracle:Flying\\nAt the beginning of your upkeep, if a player controls more Wizards than each other player, the player who controls the most Wizards gains control of Thoughtbound Primoc.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thoughtbound Primoc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

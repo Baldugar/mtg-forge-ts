@@ -1,0 +1,23 @@
+{
+  "id": "kabira-outrider-corpus-m680",
+  "description": "M6 corpus — Kabira Outrider; in-hand parse.",
+  "seed": 63066,
+  "cards": {
+    "Kabira Outrider": "Name:Kabira Outrider\nManaCost:3 W\nTypes:Creature Human Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +1/+1 until end of turn for each creature in your party.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Wizard\nOracle:When Kabira Outrider enters, target creature gets +1/+1 until end of turn for each creature in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kabira Outrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

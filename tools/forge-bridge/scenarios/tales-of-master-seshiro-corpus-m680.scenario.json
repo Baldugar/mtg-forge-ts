@@ -1,0 +1,23 @@
+{
+  "id": "tales-of-master-seshiro-corpus-m680",
+  "description": "M6 corpus — Tales of Master Seshiro; in-hand parse.",
+  "seed": 64584,
+  "cards": {
+    "Tales of Master Seshiro": "Name:Tales of Master Seshiro\nManaCost:4 G\nTypes:Enchantment Saga\nK:Chapter:3:DBPutCounter,DBPutCounter,DBTransform\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl,Vehicle.YouCtrl | TgtPrompt$ Select target creature or Vehicle you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature or Vehicle you control. It gains vigilance until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Vigilance\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nDeckHints:Type$Creature|Vehicle\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Put a +1/+1 counter on target creature or Vehicle you control. It gains vigilance until end of turn.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Seshiro's Living Legacy\nManaCost:no cost\nColors:green\nTypes:Enchantment Creature Snake Warrior\nPT:5/5\nK:Vigilance\nK:Haste\nOracle:Vigilance, haste\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tales of Master Seshiro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

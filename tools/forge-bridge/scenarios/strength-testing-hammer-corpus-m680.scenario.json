@@ -1,0 +1,23 @@
+{
+  "id": "strength-testing-hammer-corpus-m680",
+  "description": "M6 corpus — Strength-Testing Hammer; in-hand parse.",
+  "seed": 64482,
+  "cards": {
+    "Strength-Testing Hammer": "Name:Strength-Testing Hammer\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:3\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigRollDice | TriggerDescription$ Whenever equipped creature attacks, roll a six-sided die. That creature gets +X/+0 until end of turn, where X is the result. Then if it has the greatest power or is tied for greatest power among creatures on the battlefield, draw a card.\nSVar:TrigRollDice:DB$ RollDice | ResultSVar$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ TriggeredAttackerLKICopy | ConditionPresent$ Creature.greatestPower\nOracle:Whenever equipped creature attacks, roll a six-sided die. That creature gets +X/+0 until end of turn, where X is the result. Then if it has the greatest power or is tied for greatest power among creatures on the battlefield, draw a card.\\nEquip {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strength-Testing Hammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

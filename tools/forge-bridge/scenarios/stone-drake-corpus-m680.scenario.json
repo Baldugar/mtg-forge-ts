@@ -1,0 +1,23 @@
+{
+  "id": "stone-drake-corpus-m680",
+  "description": "M6 corpus — Stone Drake; in-hand parse.",
+  "seed": 64469,
+  "cards": {
+    "Stone Drake": "Name:Stone Drake\nManaCost:3 U B\nTypes:Creature Drake\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDistract,DBEnthrall\nSVar:DBDistract:DB$ Tap | ValidTgts$ Land | SubAbility$ DBDraw | SpellDescription$ Distract — Tap target land. Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBEnthrall:DB$ Discard | ValidTgts$ Player | NumCards$ X | Mode$ TgtChoose | SpellDescription$ Enthrall — Target player discards a card for each spell you've cast this turn.\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nOracle:Flying\\nWhen Stone Drake enters the battlefield, choose one —\\n• Distract — Tap target land. Draw a card.\\n• Enthrall — Target player discards a card for each spell you've cast this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

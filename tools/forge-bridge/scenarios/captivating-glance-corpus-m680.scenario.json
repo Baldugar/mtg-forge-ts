@@ -1,0 +1,23 @@
+{
+  "id": "captivating-glance-corpus-m680",
+  "description": "M6 corpus — Captivating Glance; in-hand parse.",
+  "seed": 61851,
+  "cards": {
+    "Captivating Glance": "Name:Captivating Glance\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ CaptiveClash | TriggerDescription$ At the beginning of your end step, clash with an opponent. If you win, gain control of enchanted creature. Otherwise, that player gains control of enchanted creature.\nSVar:CaptiveClash:DB$ Clash | WinSubAbility$ YouControl | OtherwiseSubAbility$ OppControl | RememberClasher$ True | SubAbility$ DBCleanup\nSVar:YouControl:DB$ GainControl | Defined$ Enchanted | NewController$ You\nSVar:OppControl:DB$ GainControl | Defined$ Enchanted | NewController$ Remembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Enchant creature\\nAt the beginning of your end step, clash with an opponent. If you win, gain control of enchanted creature. Otherwise, that player gains control of enchanted creature. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captivating Glance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

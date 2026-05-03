@@ -1,0 +1,23 @@
+{
+  "id": "gaze-of-pain-corpus-m680",
+  "description": "M6 corpus — Gaze of Pain; in-hand parse.",
+  "seed": 62613,
+  "cards": {
+    "Gaze of Pain": "Name:Gaze of Pain\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Effect | Triggers$ TrigAttackerUnblocked | SpellDescription$ Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.\nSVar:TrigAttackerUnblocked:Mode$ AttackerUnblocked | ValidCard$ Creature.YouCtrl | Execute$ Damage | OptionalDecider$ You | TriggerDescription$ Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.\nSVar:Damage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | RememberObjects$ TriggeredAttackerLKICopy | StaticAbilities$ SNoCombatDamage | ForgetOnMoved$ Battlefield\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.IsRemembered | Description$ Remembered creature assigns no combat damage this turn.\nSVar:X:TriggeredAttacker$CardPower\nAI:RemoveDeck:All\nOracle:Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaze of Pain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

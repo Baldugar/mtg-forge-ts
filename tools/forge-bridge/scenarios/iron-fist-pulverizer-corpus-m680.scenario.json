@@ -1,0 +1,23 @@
+{
+  "id": "iron-fist-pulverizer-corpus-m680",
+  "description": "M6 corpus — Iron-Fist Pulverizer; in-hand parse.",
+  "seed": 62989,
+  "cards": {
+    "Iron-Fist Pulverizer": "Name:Iron-Fist Pulverizer\nManaCost:4 R\nTypes:Creature Giant Warrior\nPT:4/5\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, CARDNAME deals 2 damage to target opponent. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:Reach\\nWhenever you cast your second spell each turn, Iron-Fist Pulverizer deals 2 damage to target opponent. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron-Fist Pulverizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

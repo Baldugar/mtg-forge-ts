@@ -1,0 +1,23 @@
+{
+  "id": "perrie-the-pulverizer-corpus-m680",
+  "description": "M6 corpus — Perrie, the Pulverizer; in-hand parse.",
+  "seed": 63722,
+  "cards": {
+    "Perrie, the Pulverizer": "Name:Perrie, the Pulverizer\nManaCost:1 G W U\nTypes:Legendary Creature Rhino Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When NICKNAME enters, put a shield counter on target creature. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ SHIELD\nSVar:PlayMain1:TRUE\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME attacks, target creature you control gains trample and gets +X/+X, where X is the number of different kinds of counters among permanents you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Trample | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$DifferentCounterKinds_Permanent.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Planeswalker & Keyword$Devour|Modular|Fading\nOracle:When Perrie enters, put a shield counter on target creature. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\nWhenever Perrie attacks, target creature you control gains trample and gets +X/+X, where X is the number of different kinds of counters among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perrie, the Pulverizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

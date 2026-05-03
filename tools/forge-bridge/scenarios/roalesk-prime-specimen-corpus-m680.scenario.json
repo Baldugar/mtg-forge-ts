@@ -1,0 +1,23 @@
+{
+  "id": "roalesk-prime-specimen-corpus-m680",
+  "description": "M6 corpus — Roalesk, Prime Specimen; in-hand parse.",
+  "seed": 64022,
+  "cards": {
+    "Roalesk, Prime Specimen": "Name:Roalesk, Prime Specimen\nManaCost:2 G U\nTypes:Legendary Creature Human Mutant\nPT:4/5\nK:Flying\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self,Permanent.Other+YouCtrl | Execute$ TrigRandom | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another permanent you control is turned face up, you may pay {X}. If you do, if X is 1 or more, conjure a duplicate of a random creature card with mana value X into your hand. Cloak it. It gains \"{G/U}: Turn this creature face up\" for as long as it remains face down.\nSVar:TrigRandom:AB$ NameCard | Cost$ X | ConditionCheckSVar$ X | ValidCards$ Creature.cmcEQX | AtRandom$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Name$ ChosenName | Conjure$ True | ConditionCheckSVar$ X | Zone$ Hand | RememberMade$ True | SubAbility$ DBCloak\nSVar:DBCloak:DB$ Cloak | Defined$ Remembered | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ UntilAnimatedFaceup | Abilities$ ABTurn | SubAbility$ DBCleanup\nSVar:ABTurn:AB$ SetState | Cost$ GU | Defined$ Self | Mode$ TurnFaceUp | SpellDescription$ Turn this creature face up.\nSVar:DBCleanup:DB$ Cleanup | ClearNamedCard$ True | ClearRemembered$ True\nSVar:X:Count$xPaid\nK:Disguise:G U\nDeckHints:Keyword$Morph|Megamorph|Disguise\nOracle:Flying\\nWhenever Roalesk, Prime Specimen or another permanent you control is turned face up, you may pay {X}. If you do, if X is 1 or more, conjure a duplicate of a random creature card with mana value X into your hand. Cloak it. It gains \"{G/U}: Turn this creature face up\" for as long as it remains face down.\\nDisguise {G}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roalesk, Prime Specimen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

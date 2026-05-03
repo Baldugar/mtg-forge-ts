@@ -1,0 +1,23 @@
+{
+  "id": "energy-flux-corpus-m680",
+  "description": "M6 corpus — Energy Flux; in-hand parse.",
+  "seed": 62340,
+  "cards": {
+    "Energy Flux": "Name:Energy Flux\nManaCost:2 U\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Artifact | AddTrigger$ UpkeepCostTrigger | Description$ All artifacts have \"At the beginning of your upkeep, sacrifice this artifact unless you pay {2}.\"\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {2}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 2\nSVar:NeedsToPlayVar:CountOpps GTCountMe\nSVar:CountOpps:Count$Valid Artifact.OppCtrl/LimitMax.5\nSVar:CountMe:Count$Valid Artifact.YouCtrl\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:All artifacts have \"At the beginning of your upkeep, sacrifice this artifact unless you pay {2}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

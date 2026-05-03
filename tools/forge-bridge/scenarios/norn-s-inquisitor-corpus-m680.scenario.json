@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-inquisitor-corpus-m680",
+  "description": "M6 corpus — Norn's Inquisitor; in-hand parse.",
+  "seed": 63576,
+  "cards": {
+    "Norn's Inquisitor": "Name:Norn's Inquisitor\nManaCost:1 W\nTypes:Creature Phyrexian Knight\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME enters, incubate 2.\nSVar:TrigIncubate:DB$ Incubate | Amount$ 2\nT:Mode$ Transformed | ValidCard$ Phyrexian.YouCtrl+inZoneBattlefield | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a permanent you control transforms into a Phyrexian, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCard | CounterType$ P1P1\nDeckHas:Ability$Token|Counters & Type$Artifact\nOracle:When Norn's Inquisitor enters, incubate 2.\\nWhenever a permanent you control transforms into a Phyrexian, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Inquisitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-most-dangerous-gamer-corpus-m680",
+  "description": "M6 corpus — The Most Dangerous Gamer; in-hand parse.",
+  "seed": 64674,
+  "cards": {
+    "The Most Dangerous Gamer": "Name:The Most Dangerous Gamer\nManaCost:2 B G\nTypes:Legendary Creature Human Gamer Guest\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBOpen | TriggerDescription$ Whenever CARDNAME enters or attacks, open an Attraction.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ DBOpen | TriggerDescription$ Whenever CARDNAME enters or attacks, open an Attraction.\nSVar:DBOpen:DB$ OpenAttraction\nT:Mode$ ChangesZone | Origin$ AttractionDeck | Destination$ Battlefield | ValidCard$ Attraction.YouCtrl | TriggerZones$ Battlefield | Execute$ DBCounter | TriggerDescription$ Whenever you open an Attraction, put a +1/+1 counter on CARDNAME.\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ClaimPrize | ValidCard$ Attraction.YouCtrl | TriggerZones$ Battlefield | Execute$ DBDestroy | TriggerDescription$ Whenever you claim the prize of an Attraction, destroy target permanent.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent\nOracle:Deathtouch\\nWhenever The Most Dangerous Gamer enters or attacks, open an Attraction.\\nWhenever you open an Attraction, put a +1/+1 counter on The Most Dangerous Gamer.\\nWhenever you claim the prize of an Attraction, destroy target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Most Dangerous Gamer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

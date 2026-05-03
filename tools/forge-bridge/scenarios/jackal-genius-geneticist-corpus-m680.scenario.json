@@ -1,0 +1,23 @@
+{
+  "id": "jackal-genius-geneticist-corpus-m680",
+  "description": "M6 corpus — Jackal, Genius Geneticist; in-hand parse.",
+  "seed": 63016,
+  "cards": {
+    "Jackal, Genius Geneticist": "Name:Jackal, Genius Geneticist\nVariant:UniversesWithin:FlavorName:Druneth, Reviver of the Hive\nManaCost:G U\nTypes:Legendary Creature Human Scientist Villain\nPT:1/1\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Creature.cmcEQX | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with mana value equal to NICKNAME's power, copy that spell, except the copy isn't legendary. Then put a +1/+1 counter on NICKNAME. (The copy becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | NonLegendary$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$CardPower\nOracle:Trample\\nWhenever you cast a creature spell with mana value equal to Jackal's power, copy that spell, except the copy isn't legendary. Then put a +1/+1 counter on Jackal. (The copy becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jackal, Genius Geneticist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

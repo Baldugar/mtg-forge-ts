@@ -1,0 +1,23 @@
+{
+  "id": "reito-sentinel-corpus-m680",
+  "description": "M6 corpus — Reito Sentinel; in-hand parse.",
+  "seed": 63943,
+  "cards": {
+    "Reito Sentinel": "Name:Reito Sentinel\nManaCost:3\nTypes:Artifact Creature Construct\nPT:3/3\nK:Defender\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Player | TgtPrompt$ Select target player\nA:AB$ ChangeZone | Cost$ 3 | ValidTgts$ Card | TgtPrompt$ Select target card in a graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target card from a graveyard on the bottom of its owner's library.\nDeckHas:Ability$Mill|Graveyard\nOracle:Defender\\nWhen Reito Sentinel enters, target player mills three cards. (They put the top three cards of their library into their graveyard.)\\n{3}: Put target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reito Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

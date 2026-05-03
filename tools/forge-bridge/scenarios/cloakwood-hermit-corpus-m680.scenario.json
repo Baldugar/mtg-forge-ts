@@ -1,0 +1,23 @@
+{
+  "id": "cloakwood-hermit-corpus-m680",
+  "description": "M6 corpus — Cloakwood Hermit; in-hand parse.",
+  "seed": 61940,
+  "cards": {
+    "Cloakwood Hermit": "Name:Cloakwood Hermit\nManaCost:2 G\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ EndStep | Description$ Commander creatures you own have \"At the beginning of your end step, if a creature card was put into your graveyard from anywhere this turn, create two tapped 1/1 green Squirrel creature tokens.\"\nSVar:EndStep:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if a creature card was put into your graveyard from anywhere this turn, create two tapped 1/1 green Squirrel creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_1_1_squirrel | TokenTapped$ True\nSVar:X:Count$ThisTurnEntered_Graveyard_Creature.YouOwn+!token\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Squirrel\nDeckHints:Ability$Discard|Sacrifice\nOracle:Commander creatures you own have \"At the beginning of your end step, if a creature card was put into your graveyard from anywhere this turn, create two tapped 1/1 green Squirrel creature tokens.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloakwood Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

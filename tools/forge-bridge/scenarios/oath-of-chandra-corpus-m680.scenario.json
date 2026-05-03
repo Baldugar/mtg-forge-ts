@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-chandra-corpus-m680",
+  "description": "M6 corpus — Oath of Chandra; in-hand parse.",
+  "seed": 63587,
+  "cards": {
+    "Oath of Chandra": "Name:Oath of Chandra\nManaCost:1 R\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage1 | TriggerDescription$ When CARDNAME enters, it deals 3 damage to target creature an opponent controls.\nSVar:TrigDealDamage1:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 3\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDealDamage2 | TriggerDescription$ At the beginning of each end step, if a planeswalker entered the battlefield under your control this turn, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDealDamage2:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nSVar:X:Count$ThisTurnEntered_Battlefield_Planeswalker.YouCtrl\nOracle:When Oath of Chandra enters, it deals 3 damage to target creature an opponent controls.\\nAt the beginning of each end step, if a planeswalker entered the battlefield under your control this turn, Oath of Chandra deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Chandra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

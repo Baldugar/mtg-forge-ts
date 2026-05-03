@@ -1,0 +1,23 @@
+{
+  "id": "ghost-lantern-corpus-m680",
+  "description": "M6 corpus — Ghost Lantern; in-hand parse.",
+  "seed": 62631,
+  "cards": {
+    "Ghost Lantern": "Name:Ghost Lantern\nManaCost:B\nTypes:Artifact Equipment\nK:Equip:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainCounter | TriggerDescription$ Whenever a creature you control dies, put a +1/+1 counter on equipped creature.\nSVar:TrigGainCounter:DB$ PutCounter | Defined$ Equipped | CounterType$ P1P1\nDeckHas:Ability$Counters\nAlternateMode:Adventure\nOracle:Whenever a creature you control dies, put a +1/+1 counter on equipped creature.\\nEquip {1}\n\nALTERNATE\n\nName:Bind Spirit\nManaCost:1 B\nTypes:Instant Adventure\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature in your graveyard | SpellDescription$ Return target creature card from your graveyard to your hand.\nDeckHas:Ability$Graveyard\nOracle:Return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost Lantern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

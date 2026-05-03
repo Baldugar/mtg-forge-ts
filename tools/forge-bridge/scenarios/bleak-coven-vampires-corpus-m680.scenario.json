@@ -1,0 +1,23 @@
+{
+  "id": "bleak-coven-vampires-corpus-m680",
+  "description": "M6 corpus — Bleak Coven Vampires; in-hand parse.",
+  "seed": 61702,
+  "cards": {
+    "Bleak Coven Vampires": "Name:Bleak Coven Vampires\nManaCost:3 B B\nTypes:Creature Vampire Warrior\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Metalcraft$ True | Execute$ TrigDrain | TriggerDescription$ Metalcraft — When CARDNAME enters, if you control three or more artifacts, target player loses 4 life and you gain 4 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 4 | SubAbility$ DBGainLife | IsCurse$ True | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ GE3\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nOracle:Metalcraft — When Bleak Coven Vampires enters, if you control three or more artifacts, target player loses 4 life and you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bleak Coven Vampires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

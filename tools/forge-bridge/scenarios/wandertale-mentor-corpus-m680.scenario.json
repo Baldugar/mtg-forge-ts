@@ -1,0 +1,23 @@
+{
+  "id": "wandertale-mentor-corpus-m680",
+  "description": "M6 corpus — Wandertale Mentor; in-hand parse.",
+  "seed": 64997,
+  "cards": {
+    "Wandertale Mentor": "Name:Wandertale Mentor\nManaCost:R G\nTypes:Creature Raccoon Bard\nPT:2/2\nT:Mode$ ManaExpend | Amount$ 4 | Player$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you expend 4, put a +1/+1 counter on CARDNAME. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:Whenever you expend 4, put a +1/+1 counter on Wandertale Mentor. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wandertale Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

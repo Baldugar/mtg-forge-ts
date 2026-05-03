@@ -1,0 +1,23 @@
+{
+  "id": "goblin-assault-team-corpus-m680",
+  "description": "M6 corpus — Goblin Assault Team; in-hand parse.",
+  "seed": 62680,
+  "cards": {
+    "Goblin Assault Team": "Name:Goblin Assault Team\nManaCost:3 R\nTypes:Creature Goblin Warrior\nPT:4/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Haste\\nWhen Goblin Assault Team dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Assault Team"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sanctuary-smasher-corpus-m680",
+  "description": "M6 corpus — Sanctuary Smasher; in-hand parse.",
+  "seed": 64113,
+  "cards": {
+    "Sanctuary Smasher": "Name:Sanctuary Smasher\nManaCost:4 R R\nTypes:Creature Rhino Beast\nPT:6/4\nK:First Strike\nK:Cycling:2 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle CARDNAME, put a first strike counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ First Strike | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:First strike\\nCycling {2}{R} ({2}{R}, Discard this card: Draw a card.)\\nWhen you cycle Sanctuary Smasher, put a first strike counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctuary Smasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "daring-sleuth-corpus-m680",
+  "description": "M6 corpus — Daring Sleuth; in-hand parse.",
+  "seed": 62087,
+  "cards": {
+    "Daring Sleuth": "Name:Daring Sleuth\nManaCost:1 U\nTypes:Creature Human Rogue\nPT:2/1\nT:Mode$ Sacrificed | ValidCard$ Clue.YouCtrl | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ When you sacrifice a Clue, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Investigate|Token\nDeckNeeds:Ability$Investigate\nAlternateMode:DoubleFaced\nOracle:When you sacrifice a Clue, transform Daring Sleuth.\n\nALTERNATE\n\nName:Bearer of Overwhelming Truths\nManaCost:no cost\nColors:blue\nTypes:Creature Human Wizard\nPT:3/2\nK:Prowess\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigInvestigate | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Bearer of Overwhelming Truths deals combat damage to a player, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daring Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

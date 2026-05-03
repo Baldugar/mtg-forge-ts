@@ -1,0 +1,23 @@
+{
+  "id": "unexpected-conversion-corpus-m680",
+  "description": "M6 corpus — Unexpected Conversion; in-hand parse.",
+  "seed": 64848,
+  "cards": {
+    "Unexpected Conversion": "Name:Unexpected Conversion\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBExile | SpellDescription$ Draw two cards.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Hidden$ True | ChangeType$ Instant,Sorcery | SelectPrompt$ Select an instant or sorcery card from your hand | RememberChanged$ True | SubAbility$ DBBranch | StackDescription$ REP you_{p:You} & your_their | SpellDescription$ Then you may exile an instant or sorcery card from your hand.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ ExileHand | StackDescription$ REP you do_they do & search your_{p:You} searches their & , exile_, exiles & shuffle_shuffles & Seek_{p:You} seeks & your hand_their hand | SpellDescription$ If you do, search your hand and library for any number of cards with the same name, exile them, then shuffle. Seek an instant or sorcery card for each card exiled from your hand this way.\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ You | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | Imprint$ True | SubAbility$ ExileLib\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ You | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Num$ X | Type$ Card.Instant,Card.Sorcery | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:NumInLib:Count$ValidLibrary Card.YouOwn+sharesNameWith Remembered\nSVar:NumInHand:Count$ValidHand Card.YouOwn+sharesNameWith Remembered\nSVar:X:Count$RememberedSize/Plus.Y\nSVar:Y:Count$ImprintedSize\nDeckHints:Type$Instant|Sorcery\nOracle:Draw two cards. Then you may exile an instant or sorcery card from your hand. If you do, search your hand and library for any number of cards with the same name, exile them, then shuffle. Seek an instant or sorcery card for each card exiled from your hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unexpected Conversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

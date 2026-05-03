@@ -1,0 +1,23 @@
+{
+  "id": "unstoppable-slasher-corpus-m680",
+  "description": "M6 corpus — Unstoppable Slasher; in-hand parse.",
+  "seed": 64859,
+  "cards": {
+    "Unstoppable Slasher": "Name:Unstoppable Slasher\nManaCost:2 B\nTypes:Creature Zombie Assassin\nPT:2/3\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLifeOpp | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses half their life, rounded up.\nSVar:TrigLoseLifeOpp:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ X\nT:Mode$ ChangesZone | ValidCard$ Card.Self+!HasCounters | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, if it had no counters on it, return it to the battlefield tapped under its owner's control with two stun counters on it.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredCard | WithCountersType$ STUN | WithCountersAmount$ 2\nSVar:X:TriggeredTarget$LifeTotal/HalfUp\nOracle:Deathtouch\\nWhenever Unstoppable Slasher deals combat damage to a player, they lose half their life, rounded up.\\nWhen Unstoppable Slasher dies, if it had no counters on it, return it to the battlefield tapped under its owner's control with two stun counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unstoppable Slasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

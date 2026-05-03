@@ -1,0 +1,23 @@
+{
+  "id": "gearbane-orangutan-corpus-m680",
+  "description": "M6 corpus — Gearbane Orangutan; in-hand parse.",
+  "seed": 62614,
+  "cards": {
+    "Gearbane Orangutan": "Name:Gearbane Orangutan\nManaCost:2 R\nTypes:Creature Ape\nPT:2/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBSacrifice\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select up to one target artifact | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Destroy up to one target artifact.\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Artifact | RememberSacrificed$ True | SubAbility$ DBPutCounter | SpellDescription$ Sacrifice an artifact. If you do, put two +1/+1 counters on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | ConditionDefined$ Remembered | ConditionPresent$ Card | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact\nOracle:Reach\\nWhen Gearbane Orangutan enters, choose one —\\n• Destroy up to one target artifact.\\n• Sacrifice an artifact. If you do, put two +1/+1 counters on Gearbane Orangutan.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gearbane Orangutan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

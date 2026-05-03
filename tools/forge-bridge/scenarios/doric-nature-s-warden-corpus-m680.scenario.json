@@ -1,0 +1,23 @@
+{
+  "id": "doric-nature-s-warden-corpus-m680",
+  "description": "M6 corpus — Doric, Nature's Warden; in-hand parse.",
+  "seed": 62213,
+  "cards": {
+    "Doric, Nature's Warden": "Name:Doric, Nature's Warden\nVariant:UniversesWithin:FlavorName:Casal, Lurkwood Pathfinder\nManaCost:3 G\nTypes:Legendary Creature Tiefling Druid\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a Forest card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Forest | ChangeNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ Whenever NICKNAME attacks, you may pay {1}{G}. If you do, transform her.\nSVar:TrigTransform:AB$ SetState | Cost$ 1 G | Defined$ Self | Mode$ Transform\nSVar:HasAttackEffect:TRUE\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nWhen Doric, Nature's Warden enters, search your library for a Forest card, put it onto the battlefield tapped, then shuffle.\\nWhenever Doric attacks, you may pay {1}{G}. If you do, transform her.\n\nALTERNATE\n\nName:Doric, Owlbear Avenger\nVariant:UniversesWithin:FlavorName:Casal, Pathbreaker Owlbear\nManaCost:no cost\nColors:green\nTypes:Legendary Creature Bird Bear\nPT:6/6\nK:Vigilance\nK:Trample\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When this creature transforms into CARDNAME, other legendary creatures you control get +2/+2 and gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+Legendary+YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Trample\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigTransformBis | TriggerDescription$ At the beginning of your upkeep, transform NICKNAME.\nSVar:TrigTransformBis:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckNeeds:Type$Legendary\nOracle:Vigilance, trample\\nWhen this creature transforms into Doric, Owlbear Avenger, other legendary creatures you control get +2/+2 and gain trample until end of turn.\\nAt the beginning of your upkeep, transform Doric.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doric, Nature's Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

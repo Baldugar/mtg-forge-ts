@@ -1,0 +1,23 @@
+{
+  "id": "pollenbright-druid-corpus-m680",
+  "description": "M6 corpus — Pollenbright Druid; in-hand parse.",
+  "seed": 63770,
+  "cards": {
+    "Pollenbright Druid": "Name:Pollenbright Druid\nManaCost:1 G\nTypes:Creature Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBProliferate\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on target creature.\nSVar:DBProliferate:DB$ Proliferate | SpellDescription$ Proliferate (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters & Ability$Proliferate\nOracle:When Pollenbright Druid enters, choose one —\\n• Put a +1/+1 counter on target creature.\\n• Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pollenbright Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

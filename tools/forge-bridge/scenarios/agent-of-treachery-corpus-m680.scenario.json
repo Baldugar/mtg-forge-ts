@@ -1,0 +1,23 @@
+{
+  "id": "agent-of-treachery-corpus-m680",
+  "description": "M6 corpus — Agent of Treachery; in-hand parse.",
+  "seed": 61465,
+  "cards": {
+    "Agent of Treachery": "Name:Agent of Treachery\nManaCost:5 U U\nTypes:Creature Human Rogue\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target permanent.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Permanent\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | IsPresent$ Permanent.YouDontOwn+YouCtrl | PresentCompare$ GE3 | TriggerDescription$ At the beginning of your end step, if you control three or more permanents you don't own, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nSVar:PlayMain1:TRUE\nOracle:When Agent of Treachery enters, gain control of target permanent.\\nAt the beginning of your end step, if you control three or more permanents you don't own, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agent of Treachery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

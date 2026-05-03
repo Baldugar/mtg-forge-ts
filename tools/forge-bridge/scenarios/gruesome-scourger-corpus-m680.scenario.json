@@ -1,0 +1,23 @@
+{
+  "id": "gruesome-scourger-corpus-m680",
+  "description": "M6 corpus — Gruesome Scourger; in-hand parse.",
+  "seed": 62739,
+  "cards": {
+    "Gruesome Scourger": "Name:Gruesome Scourger\nManaCost:3 B B\nTypes:Creature Orc Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage to target opponent or planeswalker equal to the number of creatures you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When Gruesome Scourger enters, it deals damage to target opponent or planeswalker equal to the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruesome Scourger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

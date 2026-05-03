@@ -1,0 +1,23 @@
+{
+  "id": "ring-of-xathrid-corpus-m680",
+  "description": "M6 corpus — Ring of Xathrid; in-hand parse.",
+  "seed": 63996,
+  "cards": {
+    "Ring of Xathrid": "Name:Ring of Xathrid\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nA:AB$ Regenerate | Cost$ 2 | Defined$ Equipped | SpellDescription$ Regenerate equipped creature.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ XathridCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's black.\nSVar:XathridCounter:DB$ PutCounter | Defined$ Equipped | ConditionDefined$ Equipped | ConditionPresent$ Creature.Black | ConditionCompare$ EQ1 | CounterType$ P1P1 | CounterNum$ 1\nSVar:AttachAi:AITgts$ Creature.Black\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:{2}: Regenerate equipped creature. (The next time that creature would be destroyed this turn, it isn't. Instead tap it, remove all damage from it, and remove it from combat.)\\nAt the beginning of your upkeep, put a +1/+1 counter on equipped creature if it's black.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ring of Xathrid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "void-beckoner-corpus-m680",
+  "description": "M6 corpus — Void Beckoner; in-hand parse.",
+  "seed": 64971,
+  "cards": {
+    "Void Beckoner": "Name:Void Beckoner\nManaCost:6 B B\nTypes:Creature Nightmare Horror\nPT:8/8\nK:Deathtouch\nK:Cycling:2 B\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle CARDNAME, put a deathtouch counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Deathtouch | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Deathtouch\\nCycling {2}{B} ({2}{B}, Discard this card: Draw a card.)\\nWhen you cycle Void Beckoner, put a deathtouch counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Void Beckoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

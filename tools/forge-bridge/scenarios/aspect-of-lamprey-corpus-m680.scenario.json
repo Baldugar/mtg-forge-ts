@@ -1,0 +1,23 @@
+{
+  "id": "aspect-of-lamprey-corpus-m680",
+  "description": "M6 corpus — Aspect of Lamprey; in-hand parse.",
+  "seed": 61586,
+  "cards": {
+    "Aspect of Lamprey": "Name:Aspect of Lamprey\nManaCost:3 B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards two cards.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ TgtChoose\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Lifelink | Description$ Enchanted creature has lifelink.\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$Graveyard\nOracle:Enchant creature you control\\nWhen Aspect of Lamprey enters, target opponent discards two cards.\\nEnchanted creature has lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aspect of Lamprey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

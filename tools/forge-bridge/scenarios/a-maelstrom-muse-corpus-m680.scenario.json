@@ -1,0 +1,23 @@
+{
+  "id": "a-maelstrom-muse-corpus-m680",
+  "description": "M6 corpus — A-Maelstrom Muse; in-hand parse.",
+  "seed": 64083,
+  "cards": {
+    "A-Maelstrom Muse": "Name:A-Maelstrom Muse\nManaCost:U UR R\nTypes:Creature Djinn Wizard\nPT:2/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ CheckPower | TriggerDescription$ Whenever CARDNAME attacks, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is CARDNAME's power as this ability resolves.\nSVar:CheckPower:DB$ StoreSVar | SVar$ CurrPower | Type$ CountSVar | Expression$ X | SubAbility$ DBEffect | SpellDescription$ The next instant or sorcery spell you cast this turn costs {X} less to cast, where X is CARDNAME's power as this ability resolves.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ReduceCost | Triggers$ TrigCastSpell\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | ValidCard$ Instant,Sorcery | Activator$ You | Amount$ CurrPower | Description$ The next instant or sorcery spell you cast this turn costs {X} less to cast, where X is CARDNAME's power at the time EFFECTSOURCE's ability resolved.\nSVar:TrigCastSpell:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ RemoveEffect | Static$ True\nSVar:RemoveEffect:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:CurrPower:Number$0\nSVar:X:TriggeredCard$CardPower\nOracle:Flying\\nWhenever Maelstrom Muse attacks, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is Maelstrom Muse's power as this ability resolves.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Maelstrom Muse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

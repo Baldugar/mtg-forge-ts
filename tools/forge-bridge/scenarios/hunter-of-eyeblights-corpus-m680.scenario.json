@@ -1,0 +1,23 @@
+{
+  "id": "hunter-of-eyeblights-corpus-m680",
+  "description": "M6 corpus — Hunter of Eyeblights; in-hand parse.",
+  "seed": 62878,
+  "cards": {
+    "Hunter of Eyeblights": "Name:Hunter of Eyeblights\nManaCost:3 B B\nTypes:Creature Elf Assassin\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterOpp | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you don't control.\nSVar:TrigPutCounterOpp:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nA:AB$ Destroy | Cost$ 2 B T | ValidTgts$ Creature.HasCounters | TgtPrompt$ Select target creature with a counter on it | SpellDescription$ Destroy target creature with a counter on it.\nOracle:When Hunter of Eyeblights enters, put a +1/+1 counter on target creature you don't control.\\n{2}{B}, {T}: Destroy target creature with a counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunter of Eyeblights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

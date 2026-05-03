@@ -1,0 +1,23 @@
+{
+  "id": "legolas-greenleaf-corpus-m680",
+  "description": "M6 corpus — Legolas Greenleaf; in-hand parse.",
+  "seed": 63208,
+  "cards": {
+    "Legolas Greenleaf": "Name:Legolas Greenleaf\nManaCost:2 G\nTypes:Legendary Creature Elf Archer\nPT:2/2\nK:Reach\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Legendary+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another legendary creature you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:BuffedBy:Creature.Legendary\nDeckHas:Ability$Counters\nOracle:Reach\\nLegolas Greenleaf can't be blocked by creatures with power 2 or less.\\nWhenever another legendary creature you control enters, put a +1/+1 counter on Legolas Greenleaf.\\nWhenever Legolas Greenleaf deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legolas Greenleaf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ayula-queen-among-bears-corpus-m680",
+  "description": "M6 corpus — Ayula, Queen Among Bears; in-hand parse.",
+  "seed": 61625,
+  "cards": {
+    "Ayula, Queen Among Bears": "Name:Ayula, Queen Among Bears\nManaCost:1 G\nTypes:Legendary Creature Bear\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Bear.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ Whenever another Bear you control enters, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBCounter,DBPump\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Bear | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on target Bear.\nSVar:DBPump:DB$ Pump | ValidTgts$ Bear.YouCtrl | TgtPrompt$ Select target Bear you control | SubAbility$ DBFight | SpellDescription$ Target Bear you control fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nDeckHas:Ability$Counters\nDeckHints:Type$Bear\nOracle:Whenever another Bear you control enters, choose one —\\n• Put two +1/+1 counters on target Bear.\\n• Target Bear you control fights target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ayula, Queen Among Bears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

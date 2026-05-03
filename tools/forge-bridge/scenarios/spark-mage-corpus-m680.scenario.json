@@ -1,0 +1,23 @@
+{
+  "id": "spark-mage-corpus-m680",
+  "description": "M6 corpus — Spark Mage; in-hand parse.",
+  "seed": 64387,
+  "cards": {
+    "Spark Mage": "Name:Spark Mage\nManaCost:R\nTypes:Creature Dwarf Wizard\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDamage | CombatDamage$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may have CARDNAME deal 1 damage to target creature that player controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredTarget | NumDmg$ 1 | OptionalDecider$ You\nOracle:Whenever Spark Mage deals combat damage to a player, you may have Spark Mage deal 1 damage to target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spark Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

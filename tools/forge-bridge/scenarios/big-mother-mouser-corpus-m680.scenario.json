@@ -1,0 +1,23 @@
+{
+  "id": "big-mother-mouser-corpus-m680",
+  "description": "M6 corpus — Big Mother Mouser; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Big Mother Mouser": "Name:Big Mother Mouser\nManaCost:4\nTypes:Artifact Creature Robot\nPT:0/0\nK:etbCounter:P1P1:2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDoubleCounters | TriggerDescription$ Whenever this creature attacks, double the number of +1/+1 counters on it.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature dies, create a number of 1/1 colorless Robot artifact creature tokens equal to the number of +1/+1 counters on this creature.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_a_robot | TokenOwner$ You\nSVar:X:TriggeredCard$CardCounters.P1P1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Ability$Counters\nOracle:This creature enters with two +1/+1 counters on it.\\nWhenever this creature attacks, double the number of +1/+1 counters on it.\\nWhen this creature dies, create a number of 1/1 colorless Robot artifact creature tokens equal to the number of +1/+1 counters on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Big Mother Mouser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

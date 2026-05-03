@@ -1,0 +1,23 @@
+{
+  "id": "alley-assailant-corpus-m680",
+  "description": "M6 corpus — Alley Assailant; in-hand parse.",
+  "seed": 61491,
+  "cards": {
+    "Alley Assailant": "Name:Alley Assailant\nManaCost:2 B\nTypes:Creature Vampire Rogue\nPT:3/3\nK:Disguise:4 B B\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, target opponent loses 3 life and you gain 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 3 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nOracle:Alley Assailant enters tapped.\\nDisguise {4}{B}{B} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Alley Assailant is turned face up, target opponent loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alley Assailant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

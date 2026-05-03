@@ -1,0 +1,23 @@
+{
+  "id": "strategy-schmategy-corpus-m680",
+  "description": "M6 corpus — Strategy, Schmategy; in-hand parse.",
+  "seed": 64479,
+  "cards": {
+    "Strategy, Schmategy": "Name:Strategy, Schmategy\nManaCost:1 R\nTypes:Sorcery\nA:SP$ StoreSVar | SVar$ Left | Type$ Number | Expression$ 1 | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ Repeat | RepeatCheckSVar$ Left | RepeatSVarCompare$ GT0 | RepeatSubAbility$ Roll | StackDescription$ Roll a six-sided die. CARDNAME has the indicated effect.\nSVar:Roll:DB$ RollDice | ResultSubAbilities$ 1:DBNothing,2:DBArtif,3:DBLand,4:DBDamage,5:DBWheel,6:DBTwoMore | SubAbility$ DBDecr\nSVar:DBNothing:DB$ Pump | SpellDescription$ 1 — Do nothing.\nSVar:DBArtif:DB$ DestroyAll | ValidCards$ Artifact | SpellDescription$ 2 — Destroy all artifacts.\nSVar:DBLand:DB$ DestroyAll | ValidCards$ Land | SpellDescription$ 3 — Destroy all lands.\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 3 | SpellDescription$ 4 — CARDNAME deals 3 damage to each creature and each player.\nSVar:DBWheel:DB$ Discard | Mode$ Hand | Defined$ Player | SubAbility$ DBEachDraw | SpellDescription$ 5 — Each player discards their hand and draws seven cards.\nSVar:DBEachDraw:DB$ Draw | Defined$ Player | NumCards$ 7\nSVar:DBTwoMore:DB$ StoreSVar | SVar$ Left | Type$ CountSVar | Expression$ Left/Plus.2 | SpellDescription$ 6 — Repeat this process two more times.\nSVar:DBDecr:DB$ StoreSVar | SVar$ Left | Type$ CountSVar | Expression$ Left/Minus.1\nOracle:Roll a six-sided die. Strategy, Schmategy has the indicated effect.\\n1 — Do nothing.\\n2 — Destroy all artifacts.\\n3 — Destroy all lands.\\n4 — Strategy, Schmategy deals 3 damage to each creature and each player.\\n5 — Each player discards their hand and draws seven cards.\\n6 — Repeat this process two more times.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strategy, Schmategy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

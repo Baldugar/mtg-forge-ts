@@ -1,0 +1,23 @@
+{
+  "id": "tajuru-archer-corpus-m680",
+  "description": "M6 corpus — Tajuru Archer; in-hand parse.",
+  "seed": 64578,
+  "cards": {
+    "Tajuru Archer": "Name:Tajuru Archer\nManaCost:2 G\nTypes:Creature Elf Archer Ally\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have CARDNAME deal damage to target creature with flying equal to the number of Allies you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | NumDmg$ NumAllies | TgtPrompt$ Select a target creature with flying.\nSVar:NumAllies:Count$Valid Ally.YouCtrl\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Tajuru Archer or another Ally you control enters, you may have Tajuru Archer deal damage to target creature with flying equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tajuru Archer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

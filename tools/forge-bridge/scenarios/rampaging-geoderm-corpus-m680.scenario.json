@@ -1,0 +1,23 @@
+{
+  "id": "rampaging-geoderm-corpus-m680",
+  "description": "M6 corpus — Rampaging Geoderm; in-hand parse.",
+  "seed": 63892,
+  "cards": {
+    "Rampaging Geoderm": "Name:Rampaging Geoderm\nManaCost:2 R G\nTypes:Creature Dinosaur Beast\nPT:3/3\nK:Trample\nK:Haste\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking creature gets +1/+1 until end of turn. If it's attacking a battle, put a +1/+1 counter on it instead.\nSVar:TrigPump:DB$ Branch | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | BranchConditionSVar$ X | TrueSubAbility$ PutCounter | FalseSubAbility$ Pump | AILogic$ TgtAttacker\nSVar:PutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1\nSVar:Pump:DB$ Pump | Defined$ Targeted | NumAtt$ +1 | NumDef$ +1\nSVar:X:Targeted$Valid Card.attackingBattle\nDeckHas:Ability$Counters\nOracle:Trample, haste\\nWhenever you attack, target attacking creature gets +1/+1 until end of turn. If it's attacking a battle, put a +1/+1 counter on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Geoderm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

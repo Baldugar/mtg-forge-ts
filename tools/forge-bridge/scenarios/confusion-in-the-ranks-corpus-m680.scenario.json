@@ -1,0 +1,23 @@
+{
+  "id": "confusion-in-the-ranks-corpus-m680",
+  "description": "M6 corpus — Confusion in the Ranks; in-hand parse.",
+  "seed": 61982,
+  "cards": {
+    "Confusion in the Ranks": "Name:Confusion in the Ranks\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact,Creature,Enchantment | TriggerZones$ Battlefield | Execute$ TrigExchangeControl | TriggerDescription$ Whenever an artifact, creature, or enchantment enters, its controller chooses target permanent another player controls that shares a card type with it. Exchange control of those permanents.\nSVar:TrigExchangeControl:DB$ ExchangeControl | Defined$ TriggeredCard | TargetingPlayer$ TriggeredCardController | TargetsWithDefinedController$ NonTriggeredCardController | ValidTgts$ Permanent | TargetsWithSharedCardType$ TriggeredCard\nAI:RemoveDeck:Random\nOracle:Whenever an artifact, creature, or enchantment enters, its controller chooses target permanent another player controls that shares a card type with it. Exchange control of those permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Confusion in the Ranks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

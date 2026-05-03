@@ -1,0 +1,23 @@
+{
+  "id": "fire-juggler-corpus-m680",
+  "description": "M6 corpus — Fire Juggler; in-hand parse.",
+  "seed": 62490,
+  "cards": {
+    "Fire Juggler": "Name:Fire Juggler\nManaCost:2 R\nTypes:Creature Goblin Shaman\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigClash | TriggerDescription$ Whenever CARDNAME becomes blocked, clash with an opponent. If you win, CARDNAME deals 4 damage to each creature blocking it.\nSVar:TrigClash:DB$ Clash | WinSubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | NumDmg$ 4 | ValidCards$ Creature.blockingSource\nOracle:Whenever Fire Juggler becomes blocked, clash with an opponent. If you win, Fire Juggler deals 4 damage to each creature blocking it. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Juggler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

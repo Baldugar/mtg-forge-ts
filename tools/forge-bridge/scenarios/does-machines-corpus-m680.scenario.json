@@ -1,0 +1,23 @@
+{
+  "id": "does-machines-corpus-m680",
+  "description": "M6 corpus — Does Machines; in-hand parse.",
+  "seed": 62197,
+  "cards": {
+    "Does Machines": "Name:Does Machines\nManaCost:1 U\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this Class enters, mill two cards, draw two cards, then discard two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose\nK:Class:2:1 U:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 2 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChangeZone | Secondary$ True | TriggerDescription$ When this Class becomes level 2, return up to two target artifact cards from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouOwn | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target artifact cards in your graveyard | Origin$ Graveyard | Destination$ Hand\nK:Class:3:4 U:AddTrigger$ TriggerCombat\nSVar:TriggerCombat:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ At the beginning of combat on your turn, put three +1/+1 counters on target artifact you control. If it isn't a creature, it becomes a 0/0 Robot creature in addition to its other types.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Card.nonCreature | Power$ 0 | Toughness$ 0 | Types$ Creature,Robot | Duration$ Permanent\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen this Class enters, mill two cards, draw two cards, then discard two cards.\\n{1}{U}: Level 2\\nWhen this Class becomes level 2, return up to two target artifact cards from your graveyard to your hand.\\n{4}{U}: Level 3\\nAt the beginning of combat on your turn, put three +1/+1 counters on target artifact you control. If it isn't a creature, it becomes a 0/0 Robot creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Does Machines"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

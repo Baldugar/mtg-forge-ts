@@ -1,0 +1,23 @@
+{
+  "id": "flaming-fist-corpus-m680",
+  "description": "M6 corpus — Flaming Fist; in-hand parse.",
+  "seed": 62510,
+  "cards": {
+    "Flaming Fist": "Name:Flaming Fist\nManaCost:2 W\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ Attacks | AddSVar$ AE | Description$ Commander creatures you own have \"Whenever this creature attacks, it gains double strike until end of turn.\"\nSVar:Attacks:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, it gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | KW$ Double Strike\nSVar:AE:SVar:HasAttackEffect:TRUE\nAI:RemoveDeck:NonCommander\nOracle:Commander creatures you own have \"Whenever this creature attacks, it gains double strike until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaming Fist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

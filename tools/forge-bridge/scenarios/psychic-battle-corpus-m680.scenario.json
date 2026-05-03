@@ -1,0 +1,23 @@
+{
+  "id": "psychic-battle-corpus-m680",
+  "description": "M6 corpus — Psychic Battle; in-hand parse.",
+  "seed": 63826,
+  "cards": {
+    "Psychic Battle": "Name:Psychic Battle\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ BecomesTargetOnce | ValidCause$ Card.!namedPsychic Battle | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Whenever a player chooses one or more targets, each player reveals the top card of their library. The player who reveals the card with the highest mana value may change the target or targets. If two or more cards are tied for highest cost, the target or targets remain unchanged. Changing targets this way doesn't trigger abilities of permanents named Psychic Battle.\nSVar:TrigReveal:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBReveal | SubAbility$ DBChangeTargets\nSVar:DBReveal:DB$ PeekAndReveal | Defined$ Remembered | RememberRevealed$ True | SubAbility$ DBCheckLibrary\nSVar:DBCheckLibrary:DB$ Branch | BranchConditionSVar$ NumRememberedCard | TrueSubAbility$ DBCheckImprinted\nSVar:DBCheckImprinted:DB$ Branch | BranchConditionSVar$ NumImprintedCard | TrueSubAbility$ DBCompareCMC | FalseSubAbility$ DBImprint | SubAbility$ DBCleanupRemembered\nSVar:DBCompareCMC:DB$ Branch | BranchConditionSVar$ CMCRememberedCard | BranchConditionSVarCompare$ GTCMCImprintedCard | TrueSubAbility$ DBImprintForget | FalseSubAbility$ DBCompareCMC2\nSVar:DBCompareCMC2:DB$ Branch | BranchConditionSVar$ CMCRememberedCard | BranchConditionSVarCompare$ EQCMCImprintedCard | TrueSubAbility$ DBImprint\nSVar:DBImprintForget:DB$ Cleanup | ClearImprinted$ True | SubAbility$ DBImprint\nSVar:DBImprint:DB$ Pump | ImprintCards$ Remembered\nSVar:DBChangeTargets:DB$ ChangeTargets | Defined$ TriggeredSourceSA | Chooser$ ImprintedOwner | Optional$ True | ConditionDefined$ Imprinted | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanupImprinted\nSVar:DBCleanupRemembered:DB$ Cleanup | ClearRemembered$ True\nSVar:DBCleanupImprinted:DB$ Cleanup | ClearImprinted$ True\nSVar:NumRememberedCard:Remembered$Valid Card\nSVar:NumImprintedCard:Imprinted$Valid Card\nSVar:CMCRememberedCard:Remembered$CardManaCost\nSVar:CMCImprintedCard:Count$ImprintedCardManaCost\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Whenever a player chooses one or more targets, each player reveals the top card of their library. The player who reveals the card with the highest mana value may change the target or targets. If two or more cards are tied for highest, the target or targets remain unchanged. Changing targets this way doesn't trigger abilities of permanents named Psychic Battle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Battle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

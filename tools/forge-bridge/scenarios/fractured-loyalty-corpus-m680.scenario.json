@@ -1,0 +1,23 @@
+{
+  "id": "fractured-loyalty-corpus-m680",
+  "description": "M6 corpus — Fractured Loyalty; in-hand parse.",
+  "seed": 62555,
+  "cards": {
+    "Fractured Loyalty": "Name:Fractured Loyalty\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ BecomesTarget | ValidTarget$ Card.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ Whenever enchanted creature becomes the target of a spell or ability, that spell or ability's controller gains control of that creature. (This effect lasts indefinitely.)\nSVar:TrigGainControl:DB$ GainControl | Defined$ TriggeredTargetLKICopy | NewController$ TriggeredSourceController\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nWhenever enchanted creature becomes the target of a spell or ability, that spell or ability's controller gains control of that creature. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fractured Loyalty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

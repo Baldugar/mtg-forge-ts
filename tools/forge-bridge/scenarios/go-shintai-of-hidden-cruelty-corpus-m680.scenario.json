@@ -1,0 +1,23 @@
+{
+  "id": "go-shintai-of-hidden-cruelty-corpus-m680",
+  "description": "M6 corpus — Go-Shintai of Hidden Cruelty; in-hand parse.",
+  "seed": 62674,
+  "cards": {
+    "Go-Shintai of Hidden Cruelty": "Name:Go-Shintai of Hidden Cruelty\nManaCost:3 B\nTypes:Legendary Enchantment Creature Shrine\nPT:2/2\nK:Deathtouch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of your end step, you may pay {1}. When you do, destroy target creature with toughness X or less, where X is the number of Shrines you control.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigDestroy | SpellDescription$ Destroy target creature with toughness X or less, where X is the number of Shrines you control.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.toughnessLEX | TgtPrompt$ Select target creature with toughness X or less\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHas:Ability$Mill\nDeckHints:Type$Shrine\nOracle:Deathtouch\\nAt the beginning of your end step, you may pay {1}. When you do, destroy target creature with toughness X or less, where X is the number of Shrines you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Go-Shintai of Hidden Cruelty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

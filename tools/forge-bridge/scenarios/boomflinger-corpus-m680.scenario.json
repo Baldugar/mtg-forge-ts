@@ -1,0 +1,23 @@
+{
+  "id": "boomflinger-corpus-m680",
+  "description": "M6 corpus — Boomflinger; in-hand parse.",
+  "seed": 61751,
+  "cards": {
+    "Boomflinger": "Name:Boomflinger\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, roll two six-sided dice. CARDNAME deals damage to target player or planeswalker equal to the difference between those results.\nSVar:TrigCrank:DB$ RollDice | ResultSVar$ Result | Sides$ 6 | Amount$ 2 | UseDifferenceBetweenRolls$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ Result | AIExpectAmount$ 3\nOracle:Whenever you crank Boomflinger, roll two six-sided dice. Boomflinger deals damage to target player or planeswalker equal to the difference between those results.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boomflinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

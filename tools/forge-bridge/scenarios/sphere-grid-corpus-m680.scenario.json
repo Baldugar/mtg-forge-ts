@@ -1,0 +1,23 @@
+{
+  "id": "sphere-grid-corpus-m680",
+  "description": "M6 corpus — Sphere Grid; in-hand parse.",
+  "seed": 64401,
+  "cards": {
+    "Sphere Grid": "Name:Sphere Grid\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, put a +1/+1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Reach & Trample | Description$ Unlock Ability — Creatures you control with +1/+1 counters on them have reach and trample.\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control deals combat damage to a player, put a +1/+1 counter on that creature.\\nUnlock Ability — Creatures you control with +1/+1 counters on them have reach and trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphere Grid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

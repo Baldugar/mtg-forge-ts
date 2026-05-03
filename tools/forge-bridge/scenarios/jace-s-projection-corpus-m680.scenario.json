@@ -1,0 +1,23 @@
+{
+  "id": "jace-s-projection-corpus-m680",
+  "description": "M6 corpus — Jace's Projection; in-hand parse.",
+  "seed": 63013,
+  "cards": {
+    "Jace's Projection": "Name:Jace's Projection\nManaCost:2 U U\nTypes:Creature Wizard Illusion\nPT:2/2\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ PutCounter | Cost$ 3 U | ValidTgts$ Planeswalker.Jace | TgtPrompt$ Select target Jace | CounterType$ LOYALTY | CounterNum$ 1 | SpellDescription$ Put a loyalty counter on target Jace planeswalker.\nDeckHas:Ability$Counters\nOracle:Whenever you draw a card, put a +1/+1 counter on Jace's Projection.\\n{3}{U}: Put a loyalty counter on target Jace planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace's Projection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

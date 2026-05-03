@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-tyranny-corpus-m680",
+  "description": "M6 corpus — Phyrexian Tyranny; in-hand parse.",
+  "seed": 63745,
+  "cards": {
+    "Phyrexian Tyranny": "Name:Phyrexian Tyranny\nManaCost:U B R\nTypes:Enchantment\nT:Mode$ Drawn | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigLose | TriggerDescription$ Whenever a player draws a card, that player loses 2 life unless they pay {2}.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 2 | UnlessCost$ 2 | UnlessPayer$ TriggeredCardController\nAI:RemoveDeck:Random\nOracle:Whenever a player draws a card, that player loses 2 life unless they pay {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Tyranny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

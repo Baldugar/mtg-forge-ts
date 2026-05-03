@@ -1,0 +1,23 @@
+{
+  "id": "vigil-for-the-lost-corpus-m680",
+  "description": "M6 corpus — Vigil for the Lost; in-hand parse.",
+  "seed": 64944,
+  "cards": {
+    "Vigil for the Lost": "Name:Vigil for the Lost\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigGainLife | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control dies, you may pay {X}. If you do, you gain X life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ X | LifeAmount$ X\nSVar:X:Count$xPaid\nOracle:Whenever a creature you control dies, you may pay {X}. If you do, you gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vigil for the Lost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

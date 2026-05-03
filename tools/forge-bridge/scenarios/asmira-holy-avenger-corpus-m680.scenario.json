@@ -1,0 +1,23 @@
+{
+  "id": "asmira-holy-avenger-corpus-m680",
+  "description": "M6 corpus — Asmira, Holy Avenger; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Asmira, Holy Avenger": "Name:Asmira, Holy Avenger\nManaCost:2 G W\nTypes:Legendary Creature Human Cleric\nPT:2/3\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each end step, put a +1/+1 counter on CARDNAME for each creature put into your graveyard from the battlefield this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouOwn\nOracle:Flying\\nAt the beginning of each end step, put a +1/+1 counter on Asmira, Holy Avenger for each creature put into your graveyard from the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Asmira, Holy Avenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

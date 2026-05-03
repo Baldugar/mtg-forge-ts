@@ -1,0 +1,23 @@
+{
+  "id": "and-ril-flame-of-the-west-corpus-m680",
+  "description": "M6 corpus — Andúril, Flame of the West; in-hand parse.",
+  "seed": 61512,
+  "cards": {
+    "Andúril, Flame of the West": "Name:Andúril, Flame of the West\nManaCost:3\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 1 | AddSVar$ AE | Description$ Equipped creature gets +3/+1.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigBranch | TriggerDescription$ Whenever equipped creature attacks, create two tapped 1/1 white Spirit creature tokens with flying. If that creature is legendary, instead create two of those tokens that are tapped and attacking.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ Legendary | FalseSubAbility$ NonLegendary\nSVar:Legendary:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:NonLegendary:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You | TokenTapped$ True\nSVar:X:TriggeredAttacker$Valid Card.Legendary\nSVar:AE:SVar:HasAttackEffect:TRUE\nK:Equip:2\nDeckHas:Ability$Token\nDeckHints:Type$Legendary & Type$Creature\nOracle:Equipped creature gets +3/+1.\\nWhenever equipped creature attacks, create two tapped 1/1 white Spirit creature tokens with flying. If that creature is legendary, instead create two of those tokens that are tapped and attacking.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Andúril, Flame of the West"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

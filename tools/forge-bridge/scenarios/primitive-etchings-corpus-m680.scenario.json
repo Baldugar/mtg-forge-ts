@@ -1,0 +1,23 @@
+{
+  "id": "primitive-etchings-corpus-m680",
+  "description": "M6 corpus — Primitive Etchings; in-hand parse.",
+  "seed": 63804,
+  "cards": {
+    "Primitive Etchings": "Name:Primitive Etchings\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Drawn | ValidCard$ Card.YouOwn | Number$ 1 | Static$ True | ForReveal$ True | Execute$ DBReveal | TriggerZones$ Battlefield | TriggerDescription$ Reveal the first card you draw each turn. Whenever you reveal a creature card this way, draw a card.\nSVar:DBReveal:DB$ Reveal | Defined$ You | RevealDefined$ TriggeredCard | RememberRevealed$ True | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature+YouCtrl | SubAbility$ DBCleanup | Execute$ TrigDraw | TriggerDescription$ Whenever you reveal a creature card this way, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Reveal the first card you draw each turn. Whenever you reveal a creature card this way, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primitive Etchings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

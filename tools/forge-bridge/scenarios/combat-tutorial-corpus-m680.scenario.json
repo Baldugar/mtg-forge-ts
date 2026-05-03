@@ -1,0 +1,23 @@
+{
+  "id": "combat-tutorial-corpus-m680",
+  "description": "M6 corpus — Combat Tutorial; in-hand parse.",
+  "seed": 61964,
+  "cards": {
+    "Combat Tutorial": "Name:Combat Tutorial\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBPutCounter | SpellDescription$ Target player draws two cards. Put a +1/+1 counter on up to one target creature you control.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Target player draws two cards. Put a +1/+1 counter on up to one target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combat Tutorial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

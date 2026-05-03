@@ -1,0 +1,23 @@
+{
+  "id": "smolder-initiate-corpus-m680",
+  "description": "M6 corpus — Smolder Initiate; in-hand parse.",
+  "seed": 64340,
+  "cards": {
+    "Smolder Initiate": "Name:Smolder Initiate\nManaCost:B\nTypes:Creature Elemental Shaman\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.Black | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player casts a black spell, you may pay {1}. If you do, target player loses 1 life.\nSVar:TrigLoseLife:AB$ LoseLife | Cost$ 1 | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 1\nOracle:Whenever a player casts a black spell, you may pay {1}. If you do, target player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smolder Initiate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

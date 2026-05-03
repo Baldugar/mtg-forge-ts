@@ -1,0 +1,23 @@
+{
+  "id": "breathless-knight-corpus-m680",
+  "description": "M6 corpus — Breathless Knight; in-hand parse.",
+  "seed": 61779,
+  "cards": {
+    "Breathless Knight": "Name:Breathless Knight\nManaCost:1 W B\nTypes:Creature Spirit Knight\nPT:2/2\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other,Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another creature you control enters, if that creature entered from a graveyard or you cast it from a graveyard, put a +1/+1 counter on CARDNAME.\nT:Mode$ ChangesZone | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other+wasCastFromGraveyardByYou,Card.Self+wasCastFromGraveyardByYou | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever CARDNAME or another creature you control enters, if that creature entered from a graveyard or you cast it from a graveyard, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:Flying, lifelink\\nWhenever Breathless Knight or another creature you control enters, if that creature entered from a graveyard or you cast it from a graveyard, put a +1/+1 counter on Breathless Knight.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breathless Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

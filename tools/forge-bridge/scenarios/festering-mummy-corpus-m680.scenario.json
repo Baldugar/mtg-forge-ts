@@ -1,0 +1,23 @@
+{
+  "id": "festering-mummy-corpus-m680",
+  "description": "M6 corpus — Festering Mummy; in-hand parse.",
+  "seed": 62474,
+  "cards": {
+    "Festering Mummy": "Name:Festering Mummy\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, you may put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Festering Mummy dies, you may put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festering Mummy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

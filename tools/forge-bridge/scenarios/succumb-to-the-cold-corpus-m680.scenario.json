@@ -1,0 +1,23 @@
+{
+  "id": "succumb-to-the-cold-corpus-m680",
+  "description": "M6 corpus — Succumb to the Cold; in-hand parse.",
+  "seed": 64496,
+  "cards": {
+    "Succumb to the Cold": "Name:Succumb to the Cold\nManaCost:2 U\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBCounter | TargetMin$ 1 | TargetMax$ 2 | TgtPrompt$ Select one or two target creatures an opponent controls | SpellDescription$ Tap one or two target creatures an opponent controls.\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | StackDescription$ REP Put_{p:You} puts | SpellDescription$ Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nDeckHas:Ability$Counters\nOracle:Tap one or two target creatures an opponent controls. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Succumb to the Cold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

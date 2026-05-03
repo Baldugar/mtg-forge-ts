@@ -1,0 +1,23 @@
+{
+  "id": "court-of-cunning-corpus-m680",
+  "description": "M6 corpus — Court of Cunning; in-hand parse.",
+  "seed": 62021,
+  "cards": {
+    "Court of Cunning": "Name:Court of Cunning\nManaCost:1 U U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, any number of target players each mill two cards. If you're the monarch, each of those players mills ten cards instead. (To mill a card, a player puts the top card of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxTgt | NumCards$ X\nSVar:X:Count$Monarch.10.2\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:When Court of Cunning enters, you become the monarch.\\nAt the beginning of your upkeep, any number of target players each mill two cards. If you're the monarch, each of those players mills ten cards instead. (To mill a card, a player puts the top card of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Court of Cunning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

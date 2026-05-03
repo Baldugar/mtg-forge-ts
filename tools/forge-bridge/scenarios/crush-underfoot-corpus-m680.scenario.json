@@ -1,0 +1,23 @@
+{
+  "id": "crush-underfoot-corpus-m680",
+  "description": "M6 corpus — Crush Underfoot; in-hand parse.",
+  "seed": 62046,
+  "cards": {
+    "Crush Underfoot": "Name:Crush Underfoot\nManaCost:1 R\nTypes:Kindred Instant Giant\nA:SP$ ChooseCard | Defined$ You | Mandatory$ True | Choices$ Creature.Giant+YouCtrl | ChoiceTitle$ Choose a Giant creature you control | SubAbility$ DBDmg | SpellDescription$ Choose a Giant creature you control. It deals damage equal to its power to target creature.\nSVar:DBDmg:DB$ DealDamage | NumDmg$ X | DamageSource$ ChosenCard | ValidTgts$ Creature\nSVar:X:ChosenCard$CardPower\nAI:RemoveDeck:Random\nOracle:Choose a Giant creature you control. It deals damage equal to its power to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crush Underfoot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

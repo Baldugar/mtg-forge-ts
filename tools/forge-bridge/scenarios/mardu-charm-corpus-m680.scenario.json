@@ -1,0 +1,23 @@
+{
+  "id": "mardu-charm-corpus-m680",
+  "description": "M6 corpus — Mardu Charm; in-hand parse.",
+  "seed": 63339,
+  "cards": {
+    "Mardu Charm": "Name:Mardu Charm\nManaCost:R W B\nTypes:Instant\nA:SP$ Charm | Choices$ DBDealDmg,DBWarrior,DBDiscard\nSVar:DBDealDmg:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature.\nSVar:DBWarrior:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_warrior | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBFirstStrike | SpellDescription$ Create two 1/1 white Warrior creature tokens. They gain first strike until end of turn.\nSVar:DBFirstStrike:DB$ PumpAll | ValidCards$ Creature.IsRemembered | KW$ First Strike | SubAbility$ DBCleanUp\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | Mode$ RevealYouChoose | DiscardValid$ Card.nonCreature+nonLand | DiscardValidDesc$ noncreature, nonland | SpellDescription$ Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.\nOracle:Choose one —\\n• Mardu Charm deals 4 damage to target creature.\\n• Create two 1/1 white Warrior creature tokens. They gain first strike until end of turn.\\n• Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

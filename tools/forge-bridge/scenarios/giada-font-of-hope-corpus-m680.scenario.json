@@ -1,0 +1,23 @@
+{
+  "id": "giada-font-of-hope-corpus-m680",
+  "description": "M6 corpus — Giada, Font of Hope; in-hand parse.",
+  "seed": 62633,
+  "cards": {
+    "Giada, Font of Hope": "Name:Giada, Font of Hope\nManaCost:1 W\nTypes:Legendary Creature Angel\nPT:2/2\nK:Flying\nK:Vigilance\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Angel+YouCtrl+Other\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Each other Angel you control enters with an additional +1/+1 counter on it for each Angel you already control.\nSVar:X:Count$Valid Angel.YouCtrl\nA:AB$ Mana | Cost$ T | Produced$ W | RestrictValid$ Spell.Angel | SpellDescription$ Add {W}. Spend this mana only to cast an Angel spell.\nDeckHas:Ability$Counters\nDeckNeeds:Type$Angel\nOracle:Flying, vigilance\\nEach other Angel you control enters with an additional +1/+1 counter on it for each Angel you already control.\\n{T}: Add {W}. Spend this mana only to cast an Angel spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giada, Font of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

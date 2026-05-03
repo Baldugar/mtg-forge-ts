@@ -1,0 +1,23 @@
+{
+  "id": "simulacrum-corpus-m680",
+  "description": "M6 corpus — Simulacrum; in-hand parse.",
+  "seed": 64287,
+  "cards": {
+    "Simulacrum": "Name:Simulacrum\nManaCost:1 B\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ Dmg | SpellDescription$ You gain life equal to the damage dealt to you this turn. CARDNAME deals damage to target creature you control equal to the damage dealt to you this turn.\nSVar:Dmg:DB$ DealDamage | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumDmg$ X\nSVar:X:PlayerCountPropertyYou$DamageThisTurn\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:You gain life equal to the damage dealt to you this turn. Simulacrum deals damage to target creature you control equal to the damage dealt to you this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Simulacrum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

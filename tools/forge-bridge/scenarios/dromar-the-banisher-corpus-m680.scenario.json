@@ -1,0 +1,23 @@
+{
+  "id": "dromar-the-banisher-corpus-m680",
+  "description": "M6 corpus — Dromar, the Banisher; in-hand parse.",
+  "seed": 62241,
+  "cards": {
+    "Dromar, the Banisher": "Name:Dromar, the Banisher\nManaCost:3 W U B\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may pay {2}{U}. If you do, choose a color, then return all creatures of that color to their owners' hands.\nSVar:TrigChoose:AB$ ChooseColor | Cost$ 2 U | Defined$ You | AILogic$ MostProminentHumanCreatures | SubAbility$ DBRevealDiscard\nSVar:DBRevealDiscard:DB$ ChangeZoneAll | ChangeType$ Creature.ChosenColor | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nOracle:Flying\\nWhenever Dromar, the Banisher deals combat damage to a player, you may pay {2}{U}. If you do, choose a color, then return all creatures of that color to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dromar, the Banisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

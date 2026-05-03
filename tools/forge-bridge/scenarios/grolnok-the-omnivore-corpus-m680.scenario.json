@@ -1,0 +1,23 @@
+{
+  "id": "grolnok-the-omnivore-corpus-m680",
+  "description": "M6 corpus — Grolnok, the Omnivore; in-hand parse.",
+  "seed": 62731,
+  "cards": {
+    "Grolnok, the Omnivore": "Name:Grolnok, the Omnivore\nManaCost:2 G U\nTypes:Legendary Creature Frog\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Frog.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever a Frog you control attacks, mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nT:Mode$ ChangesZone | ValidCard$ Permanent.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a permanent card is put into your graveyard from your library, exile it with a croak counter on it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredCard | WithCountersType$ CROAK | WithCountersAmount$ 1\nS:Mode$ Continuous | Affected$ Card.YouOwn+counters_GE1_CROAK | AffectedZone$ Exile | MayPlay$ True | Description$ You may play lands and cast spells from among cards you own in exile with croak counters on them.\nDeckHas:Ability$Mill\nOracle:Whenever a Frog you control attacks, mill three cards.\\nWhenever a permanent card is put into your graveyard from your library, exile it with a croak counter on it.\\nYou may play lands and cast spells from among cards you own in exile with croak counters on them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grolnok, the Omnivore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

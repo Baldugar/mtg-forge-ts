@@ -1,0 +1,23 @@
+{
+  "id": "conduct-electricity-corpus-m680",
+  "description": "M6 corpus — Conduct Electricity; in-hand parse.",
+  "seed": 61976,
+  "cards": {
+    "Conduct Electricity": "Name:Conduct Electricity\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 6 | DamageMap$ True | SubAbility$ DB1 | SpellDescription$ CARDNAME deals 6 damage to target creature and 2 damage to up to one target creature token.\nSVar:DB1:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Creature.token | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature token | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Conduct Electricity deals 6 damage to target creature and 2 damage to up to one target creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conduct Electricity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

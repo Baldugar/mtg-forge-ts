@@ -1,0 +1,23 @@
+{
+  "id": "flametongue-yearling-corpus-m680",
+  "description": "M6 corpus — Flametongue Yearling; in-hand parse.",
+  "seed": 62508,
+  "cards": {
+    "Flametongue Yearling": "Name:Flametongue Yearling\nManaCost:R R\nTypes:Creature Kavu\nPT:2/1\nK:Multikicker:2\nK:etbCounter:P1P1:XKicked:no Condition:CARDNAME enters with a +1/+1 counter on it for each time it was kicked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage equal to its power to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ Y\nSVar:X:Count$CardCounters.P1P1\nSVar:XKicked:Count$TimesKicked\nSVar:Y:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Multikicker {2} (You may pay an additional {2} any number of times as you cast this spell.)\\nFlametongue Yearling enters with a +1/+1 counter on it for each time it was kicked.\\nWhen Flametongue Yearling enters, it deals damage equal to its power to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flametongue Yearling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

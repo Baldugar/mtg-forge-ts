@@ -1,0 +1,23 @@
+{
+  "id": "crystalline-nautilus-corpus-m680",
+  "description": "M6 corpus — Crystalline Nautilus; in-hand parse.",
+  "seed": 62054,
+  "cards": {
+    "Crystalline Nautilus": "Name:Crystalline Nautilus\nManaCost:2 U\nTypes:Enchantment Creature Nautilus\nPT:4/4\nK:Bestow:3 U U\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ CrystallineNautilusSac | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, sacrifice it.\nSVar:CrystallineNautilusSac:DB$ Sacrifice | SacValid$ Self\nSVar:Targeting:Dies\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 4 | AddToughness$ 4 | AddTrigger$ SpellTarget | AddSVar$ CrystallineNautilusSac & CrystallineNautilusTarget | Description$ Enchanted creature gets +4/+4 and has \"When this creature becomes the target of a spell or ability, sacrifice it.\"\nSVar:SpellTarget:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ CrystallineNautilusSac | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, sacrifice it.\nSVar:CrystallineNautilusTarget:Targeting:Dies\nOracle:Bestow {3}{U}{U} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached to a creature.)\\nWhen Crystalline Nautilus becomes the target of a spell or ability, sacrifice it.\\nEnchanted creature gets +4/+4 and has \"When this creature becomes the target of a spell or ability, sacrifice it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crystalline Nautilus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

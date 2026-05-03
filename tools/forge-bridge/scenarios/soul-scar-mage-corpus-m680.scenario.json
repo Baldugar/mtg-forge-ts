@@ -1,0 +1,23 @@
+{
+  "id": "soul-scar-mage-corpus-m680",
+  "description": "M6 corpus — Soul-Scar Mage; in-hand parse.",
+  "seed": 64365,
+  "cards": {
+    "Soul-Scar Mage": "Name:Soul-Scar Mage\nManaCost:R\nTypes:Creature Human Wizard\nPT:1/2\nK:Prowess\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Creature.OppCtrl | ReplaceWith$ Counters | IsCombat$ False | ExecuteMode$ PerTarget | Description$ If a source you control would deal noncombat damage to a creature an opponent controls, put that many -1/-1 counters on that creature instead.\nSVar:Counters:DB$ PutCounter | Defined$ ReplacedTarget | CounterType$ M1M1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Prowess\\nIf a source you control would deal noncombat damage to a creature an opponent controls, put that many -1/-1 counters on that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul-Scar Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

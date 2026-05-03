@@ -1,0 +1,23 @@
+{
+  "id": "liberator-urza-s-battlethopter-corpus-m680",
+  "description": "M6 corpus — Liberator, Urza's Battlethopter; in-hand parse.",
+  "seed": 63220,
+  "cards": {
+    "Liberator, Urza's Battlethopter": "Name:Liberator, Urza's Battlethopter\nManaCost:3\nTypes:Legendary Artifact Creature Thopter\nPT:1/2\nK:Flash\nK:Flying\nS:Mode$ CastWithFlash | ValidCard$ Artifact,Card.Colorless | ValidSA$ Spell | Caster$ You | Description$ You may cast colorless spells and artifact spells as though they had flash.\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.ManaSpent GTX | Execute$ TrigCounter | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, if the amount of mana spent to cast that spell is greater than CARDNAME's power, put a +1/+1 counter on NICKNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$CardPower\nDeckHints:Type$Urza|Eldrazi|Ugin|Artificer|Artifact & Color$Colorless\nDeckHas:Ability$Counters\nOracle:Flash\\nFlying\\nYou may cast colorless spells and artifact spells as though they had flash.\\nWhenever you cast a spell, if the amount of mana spent to cast that spell is greater than Liberator, Urza's Battlethopter's power, put a +1/+1 counter on Liberator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liberator, Urza's Battlethopter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

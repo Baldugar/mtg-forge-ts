@@ -1,0 +1,23 @@
+{
+  "id": "animation-module-corpus-m680",
+  "description": "M6 corpus — Animation Module; in-hand parse.",
+  "seed": 61522,
+  "cards": {
+    "Animation Module": "Name:Animation Module\nManaCost:1\nTypes:Artifact\nT:Mode$ CounterAddedOnce | ValidCard$ Permanent.YouCtrl | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigToken | TriggerDescription$ Whenever one or more +1/+1 counters are put on a permanent you control, you may pay {1}. If you do, create a 1/1 colorless Servo artifact creature token.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenScript$ c_1_1_a_servo | TokenOwner$ You\nA:AB$ PutCounter | Cost$ 3 T | ValidTgts$ Permanent,Player | TgtPrompt$ Select target player or permanent | CounterType$ ExistingCounter | CounterNum$ 1 | AILogic$ AtOppEOT | SpellDescription$ Choose a counter on target permanent or player. Give that permanent or player another counter of that kind.\nAI:RemoveDeck:All\nDeckHints:Ability$Counters\nOracle:Whenever one or more +1/+1 counters are put on a permanent you control, you may pay {1}. If you do, create a 1/1 colorless Servo artifact creature token.\\n{3}, {T}: Choose a counter on target permanent or player. Give that permanent or player another counter of that kind.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animation Module"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

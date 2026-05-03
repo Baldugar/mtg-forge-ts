@@ -1,0 +1,23 @@
+{
+  "id": "oversimplify-corpus-m680",
+  "description": "M6 corpus — Oversimplify; in-hand parse.",
+  "seed": 63674,
+  "cards": {
+    "Oversimplify": "Name:Oversimplify\nManaCost:3 G U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DBRepeatEach | SpellDescription$ Exile all creatures.\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBToken | SubAbility$ DBCleanup | SpellDescription$ Each player creates a 0/0 green and blue Fractal creature token and puts a number of +1/+1 counters on it equal to the total power of creatures they controlled that were exiled this way.\nSVar:DBToken:DB$ Token | TokenScript$ gu_0_0_fractal | TokenOwner$ Player.IsRemembered | ImprintTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ X | Placer$ Player.IsRemembered | SubAbility$ DBCleanImprinted\nSVar:DBCleanImprinted:DB$ Cleanup | ClearImprinted$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.RememberedPlayerCtrl$CardPower\nDeckHas:Ability$Token|Counters\nOracle:Exile all creatures. Each player creates a 0/0 green and blue Fractal creature token and puts a number of +1/+1 counters on it equal to the total power of creatures they controlled that were exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oversimplify"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

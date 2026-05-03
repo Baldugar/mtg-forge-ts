@@ -1,0 +1,23 @@
+{
+  "id": "ash-party-crasher-corpus-m680",
+  "description": "M6 corpus — Ash, Party Crasher; in-hand parse.",
+  "seed": 61582,
+  "cards": {
+    "Ash, Party Crasher": "Name:Ash, Party Crasher\nManaCost:R W\nTypes:Legendary Creature Human Peasant\nPT:2/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.Self | CheckSVar$ Celebration | SVarCompare$ GE2 | Execute$ TrigPutCounter | TriggerDescription$ Celebration — Whenever CARDNAME attacks, if two or more nonland permanents entered the battlefield under your control this turn, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:Celebration:Count$ThisTurnEntered_Battlefield_Permanent.nonLand+YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Haste\\nCelebration — Whenever Ash, Party Crasher attacks, if two or more nonland permanents entered the battlefield under your control this turn, put a +1/+1 counter on Ash.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ash, Party Crasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

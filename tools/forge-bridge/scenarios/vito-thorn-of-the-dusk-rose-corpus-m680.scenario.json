@@ -1,0 +1,23 @@
+{
+  "id": "vito-thorn-of-the-dusk-rose-corpus-m680",
+  "description": "M6 corpus — Vito, Thorn of the Dusk Rose; in-hand parse.",
+  "seed": 64962,
+  "cards": {
+    "Vito, Thorn of the Dusk Rose": "Name:Vito, Thorn of the Dusk Rose\nManaCost:2 B\nTypes:Legendary Creature Vampire Cleric\nPT:1/3\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you gain life, target opponent loses that much life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount\nA:AB$ PumpAll | Cost$ 3 B B | ValidCards$ Creature.YouCtrl | KW$ Lifelink | SpellDescription$ Creatures you control gain lifelink until end of turn.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever you gain life, target opponent loses that much life.\\n{3}{B}{B}: Creatures you control gain lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vito, Thorn of the Dusk Rose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

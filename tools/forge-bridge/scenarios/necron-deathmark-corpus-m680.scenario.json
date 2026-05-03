@@ -1,0 +1,23 @@
+{
+  "id": "necron-deathmark-corpus-m680",
+  "description": "M6 corpus — Necron Deathmark; in-hand parse.",
+  "seed": 63528,
+  "cards": {
+    "Necron Deathmark": "Name:Necron Deathmark\nManaCost:3 B B\nTypes:Artifact Creature Necron\nPT:5/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Synaptic Disintegrator — When CARDNAME enters, destroy up to one target creature and target player mills three cards.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | NumCards$ 3\nDeckHas:Ability$Mill\nOracle:Flash\\nSynaptic Disintegrator — When Necron Deathmark enters, destroy up to one target creature and target player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necron Deathmark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

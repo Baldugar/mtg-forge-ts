@@ -1,0 +1,23 @@
+{
+  "id": "dogsnail-engine-corpus-m680",
+  "description": "M6 corpus — Dogsnail Engine; in-hand parse.",
+  "seed": 62198,
+  "cards": {
+    "Dogsnail Engine": "Name:Dogsnail Engine\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, target player gains life equal to the greatest power among creatures you control.\nSVar:TrigCrank:DB$ GainLife | ValidTgts$ Player | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Whenever you crank Dogsnail Engine, target player gains life equal to the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dogsnail Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

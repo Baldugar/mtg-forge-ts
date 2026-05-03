@@ -1,0 +1,23 @@
+{
+  "id": "snake-umbra-corpus-m680",
+  "description": "M6 corpus — Snake Umbra; in-hand parse.",
+  "seed": 64342,
+  "cards": {
+    "Snake Umbra": "Name:Snake Umbra\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:Umbra armor\nSVar:AttachAILogic:Curiosity\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ TriggerDamageDone | AddSVar$ SnakeUmbraDraw | Description$ Enchanted creature gets +1/+1 and has \"Whenever this creature deals damage to an opponent, you may draw a card.\"\nSVar:TriggerDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ SnakeUmbraDraw | TriggerDescription$ Whenever this creature deals damage to an opponent, you may draw a card.\nSVar:SnakeUmbraDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has \"Whenever this creature deals damage to an opponent, you may draw a card.\"\\nUmbra armor (If enchanted creature would be destroyed, instead remove all damage from it and destroy this Aura.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snake Umbra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

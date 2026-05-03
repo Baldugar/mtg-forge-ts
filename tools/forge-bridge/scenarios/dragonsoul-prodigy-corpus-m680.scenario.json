@@ -1,0 +1,23 @@
+{
+  "id": "dragonsoul-prodigy-corpus-m680",
+  "description": "M6 corpus — Dragonsoul Prodigy; in-hand parse.",
+  "seed": 62225,
+  "cards": {
+    "Dragonsoul Prodigy": "Name:Dragonsoul Prodigy\nManaCost:2 R\nTypes:Creature Human Monk\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Omen | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | Execute$ TrigConjure | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first Omen spell each turn, conjure a duplicate of that card onto the battlefield. It gains haste. At the beginning of the next end step, shuffle it into its owner's library.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredCard | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | AtEOT$ Library | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever you cast your first Omen spell each turn, conjure a duplicate of that card onto the battlefield. It gains haste. At the beginning of the next end step, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonsoul Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

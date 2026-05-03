@@ -1,0 +1,23 @@
+{
+  "id": "gleaming-geardrake-corpus-m680",
+  "description": "M6 corpus — Gleaming Geardrake; in-hand parse.",
+  "seed": 62655,
+  "cards": {
+    "Gleaming Geardrake": "Name:Gleaming Geardrake\nManaCost:U R\nTypes:Artifact Creature Drake\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidCard$ Artifact | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an artifact, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Clue\nDeckHints:Ability$Sacrifice & Type$Artifact|Clue|Food|Treasure|Map\nOracle:Flying\\nWhen Gleaming Geardrake enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice an artifact, put a +1/+1 counter on Gleaming Geardrake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gleaming Geardrake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

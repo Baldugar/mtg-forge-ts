@@ -1,0 +1,23 @@
+{
+  "id": "ojer-kaslem-deepest-growth-corpus-m680",
+  "description": "M6 corpus — Ojer Kaslem, Deepest Growth; in-hand parse.",
+  "seed": 63612,
+  "cards": {
+    "Ojer Kaslem, Deepest Growth": "Name:Ojer Kaslem, Deepest Growth\nManaCost:3 G G\nTypes:Legendary Creature God\nPT:6/5\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.\nSVar:TrigDig:DB$ DigMultiple | SourceZone$ Library | DigNum$ X | Reveal$ True | ChangeValid$ Creature,Land | Optional$ True | DestinationZone$ Battlefield | RestRandomOrder$ True\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigTransform | TriggerDescription$ When NICKNAME dies, return it to the battlefield tapped and transformed under its owner's control.\nSVar:TrigTransform:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True | Tapped$ True\nAlternateMode:DoubleFaced\nOracle:Trample\\nWhenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.\\nWhen Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner's control.\n\nALTERNATE\n\nName:Temple of Cultivation\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ SetState | Cost$ 2 G T | IsPresent$ Permanent.YouCtrl | PresentCompare$ GE10 | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only if you control ten or more permanents and only as a sorcery.\nOracle:(Transforms from Ojer Kaslem, Deepest Growth.)\\n{T}: Add {G}.\\n{2}{G}, {T}: Transform Temple of Cultivation. Activate only if you control ten or more permanents and only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ojer Kaslem, Deepest Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

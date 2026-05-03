@@ -1,0 +1,23 @@
+{
+  "id": "ulvenwald-mysteries-corpus-m680",
+  "description": "M6 corpus — Ulvenwald Mysteries; in-hand parse.",
+  "seed": 64837,
+  "cards": {
+    "Ulvenwald Mysteries": "Name:Ulvenwald Mysteries\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever a nontoken creature you control dies, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Sacrificed | ValidCard$ Clue.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token\nOracle:Whenever a nontoken creature you control dies, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulvenwald Mysteries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "archmage-s-charm-corpus-m680",
+  "description": "M6 corpus — Archmage's Charm; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Archmage's Charm": "Name:Archmage's Charm\nManaCost:U U U\nTypes:Instant\nA:SP$ Charm | Choices$ DBCounter,DBDraw,DBControl\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell | SpellDescription$ Counter target spell.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Player | SpellDescription$ Target player draws two cards.\nSVar:DBControl:DB$ GainControl | ValidTgts$ Permanent.nonLand+cmcLE1 | TgtPrompt$ Select target nonland permanent with mana value 1 or less. | SpellDescription$ Gain control of target nonland permanent with mana value 1 or less.\nOracle:Choose one —\\n• Counter target spell.\\n• Target player draws two cards.\\n• Gain control of target nonland permanent with mana value 1 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archmage's Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

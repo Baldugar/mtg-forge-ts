@@ -1,0 +1,23 @@
+{
+  "id": "avabruck-caretaker-corpus-m680",
+  "description": "M6 corpus — Avabruck Caretaker; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Avabruck Caretaker": "Name:Avabruck Caretaker\nManaCost:4 G G\nTypes:Creature Human Werewolf\nPT:4/4\nK:Hexproof\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put two +1/+1 counters on another target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | CounterType$ P1P1 | CounterNum$ 2\nK:Daybound\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:Hexproof\\nAt the beginning of combat on your turn, put two +1/+1 counters on another target creature you control.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Hollowhenge Huntmaster\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:6/6\nK:Hexproof\nS:Mode$ Continuous | Affected$ Permanent.Other+YouCtrl | AddKeyword$ Hexproof | Description$ Other permanents you control have hexproof.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of combat on your turn, put two +1/+1 counters on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 2\nK:Nightbound\nDeckHas:Ability$Counters\nOracle:Hexproof\\nOther permanents you control have hexproof.\\nAt the beginning of combat on your turn, put two +1/+1 counters on each creature you control.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avabruck Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

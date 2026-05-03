@@ -1,0 +1,23 @@
+{
+  "id": "weaver-of-lightning-corpus-m680",
+  "description": "M6 corpus — Weaver of Lightning; in-hand parse.",
+  "seed": 65016,
+  "cards": {
+    "Weaver of Lightning": "Name:Weaver of Lightning\nManaCost:2 R\nTypes:Creature Human Shaman\nPT:1/4\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME deals 1 damage to target creature an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 1\nOracle:Reach\\nWhenever you cast an instant or sorcery spell, Weaver of Lightning deals 1 damage to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weaver of Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

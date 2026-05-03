@@ -1,0 +1,23 @@
+{
+  "id": "awakened-awareness-corpus-m680",
+  "description": "M6 corpus — Awakened Awareness; in-hand parse.",
+  "seed": 61621,
+  "cards": {
+    "Awakened Awareness": "Name:Awakened Awareness\nManaCost:X U U\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put X +1/+1 counters on enchanted permanent.\nSVar:TrigPutCounters:DB$ PutCounter | Defined$ Enchanted | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$xPaid\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 1 | SetToughness$ 1 | Description$ As long as enchanted permanent is a creature, it has base power and toughness 1/1.\nDeckHints:Type$Artifact|Vehicle\nDeckHas:Ability$Counters\nOracle:Enchant artifact or creature\\nWhen Awakened Awareness enters, put X +1/+1 counters on enchanted permanent.\\nAs long as enchanted permanent is a creature, it has base power and toughness 1/1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awakened Awareness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "whirlpool-whelm-corpus-m680",
+  "description": "M6 corpus — Whirlpool Whelm; in-hand parse.",
+  "seed": 65032,
+  "cards": {
+    "Whirlpool Whelm": "Name:Whirlpool Whelm\nManaCost:1 U\nTypes:Instant\nA:SP$ Clash | ValidTgts$ Creature | WinSubAbility$ DBLibrary | SubAbility$ DBDeclined | SpellDescription$ Clash with an opponent, then return target creature to its owner's hand. If you win, you may put that creature on top of its owner's library instead.\nSVar:DBLibrary:DB$ ChangeZone | DefinedPlayer$ TargetedController | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | RememberChanged$ True | ChangeType$ Card.targetedBy | Hidden$ True | Chooser$ You\nSVar:DBDeclined:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Clash with an opponent, then return target creature to its owner's hand. If you win, you may put that creature on top of its owner's library instead. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirlpool Whelm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

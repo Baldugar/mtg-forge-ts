@@ -1,0 +1,23 @@
+{
+  "id": "skullslither-worm-corpus-m680",
+  "description": "M6 corpus — Skullslither Worm; in-hand parse.",
+  "seed": 64304,
+  "cards": {
+    "Skullslither Worm": "Name:Skullslither Worm\nManaCost:3 B\nTypes:Creature Worm\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card. For each opponent who can't, put two +1/+1 counters on CARDNAME.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | RememberDiscarded$ True | Mode$ TgtChoose | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X\nSVar:X:SVar$Y/Times.2\nSVar:Y:PlayerCountOpponents$Amount/Minus.Remembered$Amount\nDeckHas:Ability$Counters\nOracle:When Skullslither Worm enters, each opponent discards a card. For each opponent who can't, put two +1/+1 counters on Skullslither Worm.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullslither Worm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hypergenesis-corpus-m680",
+  "description": "M6 corpus — Hypergenesis; in-hand parse.",
+  "seed": 62890,
+  "cards": {
+    "Hypergenesis": "Name:Hypergenesis\nManaCost:no cost\nColors:green\nTypes:Sorcery\nK:Suspend:3:1 G G\nA:SP$ Repeat | RepeatSubAbility$ ResetCheck | RepeatCheckSVar$ NumPlayerGiveup | RepeatSVarCompare$ LTTotalPlayer | SubAbility$ FinalReset | StackDescription$ SpellDescription | SpellDescription$ Starting with you, each player may put an artifact, creature, enchantment, or land card from their hand onto the battlefield. Repeat this process until no one puts a card onto the battlefield.\nSVar:ResetCheck:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ Number | Expression$ 0 | SubAbility$ DBRepeatChoice\nSVar:DBRepeatChoice:DB$ RepeatEach | StartingWith$ You | RepeatSubAbility$ DBChoice | RepeatPlayers$ Player\nSVar:DBChoice:DB$ GenericChoice | Choices$ DBCheckHand,DBNoChange | Defined$ Player.IsRemembered\nSVar:DBCheckHand:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ CountSVar | Expression$ NumPlayerGiveup/Plus.1 | ConditionCheckSVar$ CheckHand | ConditionSVarCompare$ EQ0 | SubAbility$ DBChoose | SpellDescription$ Choose an artifact, creature, enchantment, or land card from your hand onto the battlefield.\nSVar:DBChoose:DB$ ChangeZone | DefinedPlayer$ Player.IsRemembered | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact,Creature,Enchantment,Land | ChangeNum$ 1 | ConditionCheckSVar$ CheckHand | ConditionSVarCompare$ GE1\nSVar:DBNoChange:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ CountSVar | Expression$ NumPlayerGiveup/Plus.1 | SpellDescription$ Do not put an artifact, creature, enchantment, or land card from your hand onto the battlefield.\nSVar:FinalReset:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ Number | Expression$ 0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumPlayerGiveup:Number$0\nSVar:TotalPlayer:PlayerCountPlayers$Amount\nSVar:CheckHand:Count$ValidHand Artifact.RememberedPlayerCtrl,Creature.RememberedPlayerCtrl,Enchantment.RememberedPlayerCtrl,Land.RememberedPlayerCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$ValidHand Permanent.YouCtrl+cmcGE5\nOracle:Suspend 3—{1}{G}{G}\\nStarting with you, each player may put an artifact, creature, enchantment, or land card from their hand onto the battlefield. Repeat this process until no one puts a card onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypergenesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

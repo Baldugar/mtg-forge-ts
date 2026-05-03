@@ -1,0 +1,23 @@
+{
+  "id": "fly-corpus-m680",
+  "description": "M6 corpus — Fly; in-hand parse.",
+  "seed": 62523,
+  "cards": {
+    "Fly": "Name:Fly\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | AddTrigger$ TrigDamageDone | Description$ Enchanted creature has flying and \"Whenever this creature deals combat damage to a player, venture into the dungeon.\" (Enter the first room or advance to the next room.)\nSVar:TrigDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigVenture | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, venture into the dungeon.\nSVar:TrigVenture:DB$ Venture\nOracle:Enchant creature\\nEnchanted creature has flying and \"Whenever this creature deals combat damage to a player, venture into the dungeon.\" (Enter the first room or advance to the next room.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

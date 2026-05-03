@@ -1,0 +1,23 @@
+{
+  "id": "vexing-sphinx-corpus-m680",
+  "description": "M6 corpus — Vexing Sphinx; in-hand parse.",
+  "seed": 64939,
+  "cards": {
+    "Vexing Sphinx": "Name:Vexing Sphinx\nManaCost:1 U U\nTypes:Creature Sphinx\nPT:4/4\nK:Flying\nK:Cumulative upkeep:Discard<1/Card>:Discard a card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card for each age counter on it.\nSVar:TrigDraw:DB$ Draw | NumCards$ XLKI\nSVar:XLKI:TriggeredCard$CardCounters.AGE\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:Random\nOracle:Flying\\nCumulative upkeep—Discard a card. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen Vexing Sphinx dies, draw a card for each age counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vexing Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

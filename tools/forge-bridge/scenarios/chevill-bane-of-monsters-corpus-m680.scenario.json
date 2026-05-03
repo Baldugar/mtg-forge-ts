@@ -1,0 +1,23 @@
+{
+  "id": "chevill-bane-of-monsters-corpus-m680",
+  "description": "M6 corpus — Chevill, Bane of Monsters; in-hand parse.",
+  "seed": 61909,
+  "cards": {
+    "Chevill, Bane of Monsters": "Name:Chevill, Bane of Monsters\nManaCost:B G\nTypes:Legendary Creature Human Rogue\nPT:1/3\nK:Deathtouch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Permanent.OppCtrl+counters_GE1_BOUNTY | PresentCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, if your opponents control no permanents with bounty counters on them, put a bounty counter on target creature or planeswalker an opponent controls.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | CounterType$ BOUNTY | CounterNum$ 1 | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.OppCtrl+counters_GE1_BOUNTY | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a permanent an opponent controls with a bounty counter on it dies, you gain 3 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PlayMain1:TRUE\nDeckHints:Ability$LifeGain\nDeckHints:Name$Bounty Hunter|Mathas, Fiend Seeker|Termination Facilitator\nOracle:Deathtouch\\nAt the beginning of your upkeep, if your opponents control no permanents with bounty counters on them, put a bounty counter on target creature or planeswalker an opponent controls.\\nWhenever a permanent an opponent controls with a bounty counter on it dies, you gain 3 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chevill, Bane of Monsters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

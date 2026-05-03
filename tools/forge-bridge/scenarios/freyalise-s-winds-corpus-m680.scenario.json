@@ -1,0 +1,23 @@
+{
+  "id": "freyalise-s-winds-corpus-m680",
+  "description": "M6 corpus — Freyalise's Winds; in-hand parse.",
+  "seed": 62568,
+  "cards": {
+    "Freyalise's Winds": "Name:Freyalise's Winds\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Taps | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a permanent becomes tapped, put a wind counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ WIND | CounterNum$ 1\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent.counters_GE1_WIND | ValidStepTurnToController$ You | ReplaceWith$ RepRemoveCounter | Description$ If a permanent with a wind counter on it would untap during its controller's untap step, remove all wind counters from it instead.\nSVar:RepRemoveCounter:DB$ RemoveCounter | Defined$ ReplacedCard | CounterType$ WIND | CounterNum$ All\nAI:RemoveDeck:Random\nOracle:Whenever a permanent becomes tapped, put a wind counter on it.\\nIf a permanent with a wind counter on it would untap during its controller's untap step, remove all wind counters from it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freyalise's Winds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

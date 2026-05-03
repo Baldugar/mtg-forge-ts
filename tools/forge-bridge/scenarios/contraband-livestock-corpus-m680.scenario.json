@@ -1,0 +1,23 @@
+{
+  "id": "contraband-livestock-corpus-m680",
+  "description": "M6 corpus — Contraband Livestock; in-hand parse.",
+  "seed": 62002,
+  "cards": {
+    "Contraband Livestock": "Name:Contraband Livestock\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select a target creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBRollDice | AILogic$ Pongify | StackDescription$ SpellDescription | SpellDescription$ Exile target creature,\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:GreenOx,10-19:GreenBoar,20:WhiteGoat | SpellDescription$ then roll a d20.\nSVar:GreenOx:DB$ Token | TokenScript$ g_4_4_ox | TokenOwner$ TargetedController | SpellDescription$ 1-9 VERT Its controller creates a 4/4 green Ox creature token.\nSVar:GreenBoar:DB$ Token | TokenScript$ g_2_2_boar | TokenOwner$ TargetedController | SpellDescription$ 10-19 VERT Its controller creates a 2/2 green Boar creature token.\nSVar:WhiteGoat:DB$ Token | TokenScript$ w_0_1_goat | TokenOwner$ TargetedController | SpellDescription$ 20 VERT Its controller creates a 0/1 white Goat creature token.\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:Exile target creature, then roll a d20.\\n1-9 | Its controller creates a 4/4 green Ox creature token.\\n10-19 | Its controller creates a 2/2 green Boar creature token.\\n20 | Its controller creates a 0/1 white Goat creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contraband Livestock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

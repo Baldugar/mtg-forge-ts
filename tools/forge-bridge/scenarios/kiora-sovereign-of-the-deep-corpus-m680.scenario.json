@@ -1,0 +1,23 @@
+{
+  "id": "kiora-sovereign-of-the-deep-corpus-m680",
+  "description": "M6 corpus — Kiora, Sovereign of the Deep; in-hand parse.",
+  "seed": 63129,
+  "cards": {
+    "Kiora, Sovereign of the Deep": "Name:Kiora, Sovereign of the Deep\nManaCost:3 G U\nTypes:Legendary Creature Merfolk Noble\nPT:4/5\nK:Vigilance\nK:Ward:3\nT:Mode$ SpellCast | ValidCard$ Card.Kraken+wasCastFromYourHandByYou,Card.Leviathan+wasCastFromYourHandByYou,Card.Octopus+wasCastFromYourHandByYou,Card.Serpent+wasCastFromYourHandByYou | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever you cast a Kraken, Leviathan, Octopus, or Serpent spell from your hand, look at the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value less than X from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ PeekAndReveal | Defined$ You | PeekAmount$ X | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | ValidZone$ Library | Valid$ Card.IsRemembered | ValidSA$ Spell.cmcLTX | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ 1 | ForgetPlayed$ True | SubAbility$ DBRestRandomOrder\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nDeckNeeds:Type$Kraken|Leviathan|Octopus|Serpent\nOracle:Vigilance, ward {3}\\nWhenever you cast a Kraken, Leviathan, Octopus, or Serpent spell from your hand, look at the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value less than X from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kiora, Sovereign of the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

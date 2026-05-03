@@ -1,0 +1,23 @@
+{
+  "id": "share-the-spoils-corpus-m680",
+  "description": "M6 corpus — Share the Spoils; in-hand parse.",
+  "seed": 64239,
+  "cards": {
+    "Share the Spoils": "Name:Share the Spoils\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters or an opponent loses the game, exile the top card of each player's library.\nT:Mode$ LosesGame | ValidPlayer$ Player.Opponent | TriggerZones$ Battlefield | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When CARDNAME enters or an opponent loses the game, exile the top card of each player's library.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ Player | DestinationZone$ Exile\nS:Mode$ Continuous | Affected$ Card.ExiledWithSource | MayPlay$ True | MayPlayLimit$ 1 | MayPlayIgnoreColor$ True | MayPlayPlayer$ ActivePlayer | EffectZone$ Battlefield | AffectedZone$ Exile | Description$ During each player's turn, that player may play a land or cast a spell from among cards exiled with CARDNAME, and they may spend mana as though it were mana of any color to cast that spell. When they do, exile the top card of their library.\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.MayPlaySource | TriggerZones$ Battlefield | Execute$ TrigExileTop | Secondary$ True | TriggerDescription$ When they do, exile the top card of their library.\nT:Mode$ LandPlayed | ValidCard$ Land | ValidSA$ SpellAbility.MayPlaySource | TriggerZones$ Battlefield | Execute$ TrigExileTop | Secondary$ True | TriggerDescription$ When they do, exile the top card of their library.\nSVar:TrigExileTop:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ TriggeredCardController | DestinationZone$ Exile\nOracle:When Share the Spoils enters or an opponent loses the game, exile the top card of each player's library.\\nDuring each player's turn, that player may play a land or cast a spell from among cards exiled with Share the Spoils, and they may spend mana as though it were mana of any color to cast that spell. When they do, exile the top card of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Share the Spoils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

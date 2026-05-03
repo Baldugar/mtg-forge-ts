@@ -1,0 +1,23 @@
+{
+  "id": "satyr-firedancer-corpus-m680",
+  "description": "M6 corpus — Satyr Firedancer; in-hand parse.",
+  "seed": 64128,
+  "cards": {
+    "Satyr Firedancer": "Name:Satyr Firedancer\nManaCost:1 R\nTypes:Enchantment Creature Satyr\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Instant.YouCtrl,Sorcery.YouCtrl | ValidTarget$ Player.Opponent | Execute$ TrigDmg | TriggerZones$ Battlefield | TriggerDescription$ Whenever an instant or sorcery spell you control deals damage to an opponent, CARDNAME deals that much damage to target creature that player controls.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredTarget | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever an instant or sorcery spell you control deals damage to an opponent, Satyr Firedancer deals that much damage to target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Satyr Firedancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

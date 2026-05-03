@@ -1,0 +1,23 @@
+{
+  "id": "whippoorwill-corpus-m680",
+  "description": "M6 corpus — Whippoorwill; in-hand parse.",
+  "seed": 65028,
+  "cards": {
+    "Whippoorwill": "Name:Whippoorwill\nManaCost:G\nTypes:Creature Bird\nPT:1/1\nA:AB$ Pump | Cost$ G G T | ValidTgts$ Creature | AILogic$ Curse | KW$ HIDDEN Damage that would be dealt to CARDNAME can't be redirected. | SubAbility$ DBEffect | StackDescription$ {c:Targeted} can't be regenerated this turn. Damage that would be dealt to that card this turn can't be prevented or dealt instead to another permanent or player. | SpellDescription$ Target creature can't be regenerated this turn. Damage that would be dealt to that creature this turn can't be prevented or dealt instead to another permanent or player. When the creature dies this turn, exile the creature.\nSVar:DBEffect:DB$ Effect | EffectOwner$ TargetedOwner | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen,NoPrevent | SubAbility$ DBDelayedTrigger | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:NoPrevent:Mode$ CantPreventDamage | Affected$ Creature.IsRemembered | Description$ Damage that would be dealt to that creature this turn can't be prevented.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigExile | TriggerDescription$ When the creature dies this turn, exile the creature.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile\nOracle:{G}{G}, {T}: Target creature can't be regenerated this turn. Damage that would be dealt to that creature this turn can't be prevented or dealt instead to another permanent or player. When the creature dies this turn, exile the creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whippoorwill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

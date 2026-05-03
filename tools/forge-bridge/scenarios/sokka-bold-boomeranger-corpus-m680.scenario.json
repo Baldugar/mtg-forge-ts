@@ -1,0 +1,23 @@
+{
+  "id": "sokka-bold-boomeranger-corpus-m680",
+  "description": "M6 corpus — Sokka, Bold Boomeranger; in-hand parse.",
+  "seed": 64350,
+  "cards": {
+    "Sokka, Bold Boomeranger": "Name:Sokka, Bold Boomeranger\nManaCost:U R\nTypes:Legendary Creature Human Warrior Ally\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When NICKNAME enters, discard up to two cards, then draw that many cards.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 2 | Optional$ True | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Artifact,Lesson | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Remembered$Amount\nOracle:When Sokka enters, discard up to two cards, then draw that many cards.\\nWhenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sokka, Bold Boomeranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

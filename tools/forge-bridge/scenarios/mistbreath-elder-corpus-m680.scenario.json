@@ -1,0 +1,23 @@
+{
+  "id": "mistbreath-elder-corpus-m680",
+  "description": "M6 corpus — Mistbreath Elder; in-hand parse.",
+  "seed": 63442,
+  "cards": {
+    "Mistbreath Elder": "Name:Mistbreath Elder\nManaCost:G\nTypes:Creature Frog Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, return another creature you control to its owner's hand. If you do, put a +1/+1 counter on CARDNAME. Otherwise, you may return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.StrictlyOther+YouCtrl | ChangeNum$ 1 | Mandatory$ True | Hidden$ True | RememberChanged$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionCheckSVar$ X | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Optional$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ LE0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, return another creature you control to its owner's hand. If you do, put a +1/+1 counter on Mistbreath Elder. Otherwise, you may return Mistbreath Elder to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistbreath Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

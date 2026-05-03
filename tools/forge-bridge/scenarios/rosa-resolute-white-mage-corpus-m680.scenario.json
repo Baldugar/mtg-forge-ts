@@ -1,0 +1,23 @@
+{
+  "id": "rosa-resolute-white-mage-corpus-m680",
+  "description": "M6 corpus — Rosa, Resolute White Mage; in-hand parse.",
+  "seed": 64040,
+  "cards": {
+    "Rosa, Resolute White Mage": "Name:Rosa, Resolute White Mage\nManaCost:3 W\nTypes:Legendary Creature Human Noble Cleric\nPT:2/3\nK:Reach\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains lifelink until end of turn. (Damage dealt by the creature also causes you to gain that much life.)\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Lifelink\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Reach (This creature can block creatures with flying.)\\nAt the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains lifelink until end of turn. (Damage dealt by the creature also causes you to gain that much life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rosa, Resolute White Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

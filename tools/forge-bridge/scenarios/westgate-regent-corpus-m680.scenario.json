@@ -1,0 +1,23 @@
+{
+  "id": "westgate-regent-corpus-m680",
+  "description": "M6 corpus — Westgate Regent; in-hand parse.",
+  "seed": 65025,
+  "cards": {
+    "Westgate Regent": "Name:Westgate Regent\nManaCost:3 B B\nTypes:Creature Vampire\nPT:4/4\nK:Flying\nK:Ward:Discard<1/Card>\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigPutCounter | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put that many +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Flying\\nWard—Discard a card. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card.)\\nWhenever Westgate Regent deals combat damage to a player, put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Westgate Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "farrel-s-zealot-corpus-m680",
+  "description": "M6 corpus — Farrel's Zealot; in-hand parse.",
+  "seed": 62441,
+  "cards": {
+    "Farrel's Zealot": "Name:Farrel's Zealot\nManaCost:1 W W\nTypes:Creature Human\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may have it deal 3 damage to target creature. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nOracle:Whenever Farrel's Zealot attacks and isn't blocked, you may have it deal 3 damage to target creature. If you do, Farrel's Zealot assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farrel's Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

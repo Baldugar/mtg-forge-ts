@@ -1,0 +1,23 @@
+{
+  "id": "one-with-the-kami-corpus-m680",
+  "description": "M6 corpus — One with the Kami; in-hand parse.",
+  "seed": 63625,
+  "cards": {
+    "One with the Kami": "Name:One with the Kami\nManaCost:3 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Creature.EnchantedBy,Creature.YouCtrl+modified+!EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerDescription$ Whenever enchanted creature or another modified creature you control dies, create X 1/1 colorless Spirit creature tokens, where X is that creature's power. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit | TokenAmount$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Token & Type$Spirit\nDeckHints:Type$Aura|Equipment & Ability$Counters\nOracle:Flash\\nEnchant creature you control\\nWhenever enchanted creature or another modified creature you control dies, create X 1/1 colorless Spirit creature tokens, where X is that creature's power. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "One with the Kami"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

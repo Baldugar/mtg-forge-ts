@@ -1,0 +1,23 @@
+{
+  "id": "volrath-the-shapestealer-corpus-m680",
+  "description": "M6 corpus — Volrath, the Shapestealer; in-hand parse.",
+  "seed": 64978,
+  "cards": {
+    "Volrath, the Shapestealer": "Name:Volrath, the Shapestealer\nManaCost:2 B G U\nTypes:Legendary Creature Phyrexian Shapeshifter\nPT:7/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a -1/-1 counter on up to one target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | TargetMin$ 0 | TargetMax$ 1 | CounterNum$ 1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nA:AB$ Clone | Cost$ 1 | ValidTgts$ Creature.HasCounters | TgtPrompt$ Select target creature with a counter on it | Duration$ UntilYourNextTurn | SetPower$ 7 | SetToughness$ 5 | GainThisAbility$ True | SpellDescription$ Until your next turn, CARDNAME becomes a copy of target creature with a counter on it, except it's 7/5 and it has this ability.\nOracle:At the beginning of combat on your turn, put a -1/-1 counter on up to one target creature.\\n{1}: Until your next turn, Volrath, the Shapestealer becomes a copy of target creature with a counter on it, except it's 7/5 and it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volrath, the Shapestealer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

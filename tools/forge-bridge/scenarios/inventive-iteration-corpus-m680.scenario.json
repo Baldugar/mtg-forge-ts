@@ -1,0 +1,23 @@
+{
+  "id": "inventive-iteration-corpus-m680",
+  "description": "M6 corpus — Inventive Iteration; in-hand parse.",
+  "seed": 62971,
+  "cards": {
+    "Inventive Iteration": "Name:Inventive Iteration\nManaCost:3 U\nTypes:Enchantment Saga\nK:Chapter:3:DBReturn1,DBReturn2,DBTransform\nSVar:DBReturn1:DB$ ChangeZone | ValidTgts$ Creature,Planeswalker | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Return up to one target creature or planeswalker to its owner's hand.\nSVar:DBReturn2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Artifact.YouOwn | Hidden$ True | ChangeNum$ 1 | Mandatory$ True | RememberChanged$ True | SubAbility$ DBDraw | SpellDescription$ Return an artifact card from your graveyard to your hand. If you can't, draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nDeckHints:Type$Creature|Planeswalker|Artifact\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Return up to one target creature or planeswalker to its owner's hand.\\nII — Return an artifact card from your graveyard to your hand. If you can't, draw a card.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Living Breakthrough\nManaCost:no cost\nColors:blue\nTypes:Enchantment Creature Moonfolk\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever you cast a spell, your opponents can't cast spells with the same mana value as that spell until your next turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ OppCantCast | RememberObjects$ TriggeredCard | Duration$ UntilYourNextTurn\nSVar:OppCantCast:Mode$ CantBeCast | ValidCard$ Card.cmcEQX | Caster$ Opponent | Description$ Your opponents can't cast spells with the same mana value as that spell until your next turn.\nSVar:X:Remembered$CardManaCostLKI\nOracle:Flying\\nWhenever you cast a spell, your opponents can't cast spells with the same mana value as that spell until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inventive Iteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

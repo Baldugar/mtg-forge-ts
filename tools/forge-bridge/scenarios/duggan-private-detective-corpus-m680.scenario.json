@@ -1,0 +1,23 @@
+{
+  "id": "duggan-private-detective-corpus-m680",
+  "description": "M6 corpus — Duggan, Private Detective; in-hand parse.",
+  "seed": 62254,
+  "cards": {
+    "Duggan, Private Detective": "Name:Duggan, Private Detective\nManaCost:2 G U\nTypes:Legendary Creature Human Detective\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ NICKNAME's power and toughness are each equal to the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ Whenever NICKNAME enters or attacks, investigate.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigInvestigate | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ DealDamage | Cost$ 1 G T | ValidTgts$ Creature.Other | PrecostDesc$ The Most Important Punch in History — | TgtPrompt$ Select another target creature | GameActivationLimit$ 1 | NumDmg$ Y | SpellDescription$ NICKNAME deals damage equal to twice its power to another target creature. Activate only once.\nSVar:Y:Count$CardPower/Twice\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Clue|Artifact\nOracle:Duggan's power and toughness are each equal to the number of cards in your hand.\\nWhenever Duggan enters or attacks, investigate.\\nThe Most Important Punch in History — {1}{G}, {T}: Duggan deals damage equal to twice its power to another target creature. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duggan, Private Detective"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-lost-thoughts-corpus-m680",
+  "description": "M6 corpus — Wall of Lost Thoughts; in-hand parse.",
+  "seed": 64989,
+  "cards": {
+    "Wall of Lost Thoughts": "Name:Wall of Lost Thoughts\nManaCost:1 U\nTypes:Creature Wall\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, target player mills four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | ValidTgts$ Player\nOracle:Defender\\nWhen Wall of Lost Thoughts enters, target player mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Lost Thoughts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

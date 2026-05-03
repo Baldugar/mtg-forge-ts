@@ -1,0 +1,23 @@
+{
+  "id": "trygon-prime-corpus-m680",
+  "description": "M6 corpus — Trygon Prime; in-hand parse.",
+  "seed": 64810,
+  "cards": {
+    "Trygon Prime": "Name:Trygon Prime\nManaCost:2 G U\nTypes:Creature Tyranid\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigCounters | TriggerDescription$ Subterranean Assault — Whenever CARDNAME attacks, put a +1/+1 counter on it and a +1/+1 counter on up to one other target attacking creature. That creature can't be blocked this turn.\nSVar:TrigCounters:DB$ PutCounter | CounterType$ P1P1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select up to one other target attacking creature | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ ParentTarget | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Subterranean Assault — Whenever Trygon Prime attacks, put a +1/+1 counter on it and a +1/+1 counter on up to one other target attacking creature. That creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trygon Prime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

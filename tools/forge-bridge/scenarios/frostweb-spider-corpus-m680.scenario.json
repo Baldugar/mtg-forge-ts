@@ -1,0 +1,23 @@
+{
+  "id": "frostweb-spider-corpus-m680",
+  "description": "M6 corpus — Frostweb Spider; in-hand parse.",
+  "seed": 62576,
+  "cards": {
+    "Frostweb Spider": "Name:Frostweb Spider\nManaCost:2 G\nTypes:Snow Creature Spider\nPT:1/3\nK:Reach\nT:Mode$ AttackerBlocked | ValidCard$ Creature.withFlying | ValidBlocker$ Card.Self | Execute$ DelayedTrig | TriggerDescription$ Whenever CARDNAME blocks a creature with flying, put a +1/+1 counter on CARDNAME at end of combat.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigPutCounter | TriggerDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Reach (This creature can block creatures with flying.)\\nWhenever Frostweb Spider blocks a creature with flying, put a +1/+1 counter on Frostweb Spider at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frostweb Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "surgespanner-corpus-m680",
+  "description": "M6 corpus — Surgespanner; in-hand parse.",
+  "seed": 64529,
+  "cards": {
+    "Surgespanner": "Name:Surgespanner\nManaCost:2 U U\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ Taps | ValidCard$ Card.Self | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME becomes tapped, you may pay {1}{U}. If you do, return target permanent to its owner's hand.\nSVar:TrigBounce:AB$ ChangeZone | Cost$ 1 U | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand\nOracle:Whenever Surgespanner becomes tapped, you may pay {1}{U}. If you do, return target permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surgespanner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

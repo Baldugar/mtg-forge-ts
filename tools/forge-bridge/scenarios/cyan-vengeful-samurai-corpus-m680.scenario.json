@@ -1,0 +1,23 @@
+{
+  "id": "cyan-vengeful-samurai-corpus-m680",
+  "description": "M6 corpus — Cyan, Vengeful Samurai; in-hand parse.",
+  "seed": 62071,
+  "cards": {
+    "Cyan, Vengeful Samurai": "Name:Cyan, Vengeful Samurai\nManaCost:6 W\nTypes:Legendary Creature Human Samurai\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature card in your graveyard.\nK:Double Strike\nT:Mode$ ChangesZoneAll | Origin$ Graveyard | Destination$ Any | ValidCards$ Creature.YouOwn | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creature cards leave your graveyard, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:This spell costs {1} less to cast for each creature card in your graveyard.\\nDouble strike\\nWhenever one or more creature cards leave your graveyard, put a +1/+1 counter on Cyan.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyan, Vengeful Samurai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "agonasaur-rex-corpus-m680",
+  "description": "M6 corpus — Agonasaur Rex; in-hand parse.",
+  "seed": 61468,
+  "cards": {
+    "Agonasaur Rex": "Name:Agonasaur Rex\nManaCost:3 G G\nTypes:Creature Dinosaur\nPT:8/8\nK:Trample\nK:Cycling:2 G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle this card, put two +1/+1 counters on up to one target creature or Vehicle. It gains trample and indestructible until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature,Vehicle | TgtPrompt$ Select target creature or Vehicle | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Trample & Indestructible\nDeckHas:Ability$Counters\nOracle:Trample\\nCycling {2}{G} ({2}{G}, Discard this card: Draw a card.)\\nWhen you cycle this card, put two +1/+1 counters on up to one target creature or Vehicle. It gains trample and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agonasaur Rex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

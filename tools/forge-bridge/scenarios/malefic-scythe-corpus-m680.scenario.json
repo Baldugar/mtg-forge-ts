@@ -1,0 +1,23 @@
+{
+  "id": "malefic-scythe-corpus-m680",
+  "description": "M6 corpus — Malefic Scythe; in-hand parse.",
+  "seed": 63325,
+  "cards": {
+    "Malefic Scythe": "Name:Malefic Scythe\nManaCost:1 B\nTypes:Artifact Equipment\nK:etbCounter:SOUL:1\nDeckHas:Ability$Counters\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each soul counter on CARDNAME.\nSVar:X:Count$CardCounters.SOUL\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EquippedBy | Execute$ TrigPutCounter | TriggerDescription$ Whenever equipped creature dies, put a soul counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SOUL | CounterNum$ 1\nK:Equip:1\nOracle:Malefic Scythe enters with a soul counter on it.\\nEquipped creature gets +1/+1 for each soul counter on Malefic Scythe.\\nWhenever equipped creature dies, put a soul counter on Malefic Scythe.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malefic Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

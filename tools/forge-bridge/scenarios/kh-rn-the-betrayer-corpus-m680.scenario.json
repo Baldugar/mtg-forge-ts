@@ -1,0 +1,23 @@
+{
+  "id": "kh-rn-the-betrayer-corpus-m680",
+  "description": "M6 corpus — Khârn the Betrayer; in-hand parse.",
+  "seed": 63117,
+  "cards": {
+    "Khârn the Betrayer": "Name:Khârn the Betrayer\nManaCost:3 R\nTypes:Legendary Creature Astartes Berserker\nPT:5/1\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ Berzerker — CARDNAME attacks or blocks each combat if able.\nS:Mode$ MustBlock | ValidCreature$ Card.Self\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Sigil of Corruption — When you lose control of CARDNAME, draw two cards.\nT:Mode$ ChangesController | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerController$ TriggeredOriginalController | TriggerDescription$ Sigil of Corruption — When you lose control of CARDNAME, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ ChoosePlayer | PreventionEffect$ True | AlwaysReplace$ True | Description$ The Betrayer — If damage would be dealt to CARDNAME, prevent that damage and an opponent of your choice gains control of it.\nSVar:ChoosePlayer:DB$ ChoosePlayer | Choices$ Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | NewController$ ChosenPlayer | SubAbility$ DBClearChosen\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenPlayer$ True\nOracle:Berzerker — Khârn the Betrayer attacks or blocks each combat if able.\\nSigil of Corruption — When you lose control of Khârn the Betrayer, draw two cards.\\nThe Betrayer — If damage would be dealt to Khârn the Betrayer, prevent that damage and an opponent of your choice gains control of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Khârn the Betrayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

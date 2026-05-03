@@ -1,0 +1,23 @@
+{
+  "id": "selvala-heart-of-the-wilds-corpus-m680",
+  "description": "M6 corpus — Selvala, Heart of the Wilds; in-hand parse.",
+  "seed": 64198,
+  "cards": {
+    "Selvala, Heart of the Wilds": "Name:Selvala, Heart of the Wilds\nManaCost:1 G G\nTypes:Legendary Creature Elf Scout\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power.\nSVar:TrigDraw:DB$ Draw | OptionalDecider$ TriggeredCardController | Defined$ TriggeredCardController | NumCards$ 1 | ConditionCheckSVar$ Z | ConditionSVarCompare$ EQY\nSVar:Z:TriggeredCard$Valid Card.greatestPower\nSVar:Y:Count$Valid Card.greatestPower\nA:AB$ Mana | Cost$ G T | Produced$ Combo Any | Amount$ X | SpellDescription$ Add X mana in any combination of colors, where X is the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power.\\n{G}, {T}: Add X mana in any combination of colors, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selvala, Heart of the Wilds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

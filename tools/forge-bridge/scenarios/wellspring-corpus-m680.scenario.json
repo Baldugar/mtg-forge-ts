@@ -1,0 +1,23 @@
+{
+  "id": "wellspring-corpus-m680",
+  "description": "M6 corpus — Wellspring; in-hand parse.",
+  "seed": 65024,
+  "cards": {
+    "Wellspring": "Name:Wellspring\nManaCost:1 G W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Execute$ TrigGainControl | Origin$ Any | Destination$ Battlefield | TriggerDescription$ When CARDNAME enters, gain control of enchanted land until end of turn. At the beginning of your upkeep, untap enchanted land. You gain control of that land until end of turn.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Enchanted | LoseControl$ EOT\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl2 | Secondary$ True | TriggerDescription$ At the beginning of your upkeep, untap enchanted land. You gain control of that land until end of turn.\nSVar:TrigGainControl2:DB$ GainControl | Defined$ Enchanted | LoseControl$ EOT | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Enchanted\nOracle:Enchant land\\nWhen Wellspring enters, gain control of enchanted land until end of turn.\\nAt the beginning of your upkeep, untap enchanted land. You gain control of that land until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wellspring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

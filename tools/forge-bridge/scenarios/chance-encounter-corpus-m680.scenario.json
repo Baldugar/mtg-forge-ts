@@ -1,0 +1,23 @@
+{
+  "id": "chance-encounter-corpus-m680",
+  "description": "M6 corpus — Chance Encounter; in-hand parse.",
+  "seed": 61894,
+  "cards": {
+    "Chance Encounter": "Name:Chance Encounter\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ FlippedCoin | ValidPlayer$ You | ValidResult$ Win | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you win a coin flip, put a luck counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ LUCK | CounterNum$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE10_LUCK | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if CARDNAME has ten or more luck counters on it, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nSVar:PlayMain1:ALWAYS\nAI:RemoveDeck:Random\nOracle:Whenever you win a coin flip, put a luck counter on Chance Encounter.\\nAt the beginning of your upkeep, if Chance Encounter has ten or more luck counters on it, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chance Encounter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

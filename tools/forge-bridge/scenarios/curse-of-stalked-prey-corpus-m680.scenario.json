@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-stalked-prey-corpus-m680",
+  "description": "M6 corpus — Curse of Stalked Prey; in-hand parse.",
+  "seed": 62064,
+  "cards": {
+    "Curse of Stalked Prey": "Name:Curse of Stalked Prey\nManaCost:1 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Player.EnchantedBy | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature deals combat damage to enchanted player, put a +1/+1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1\nOracle:Enchant player\\nWhenever a creature deals combat damage to enchanted player, put a +1/+1 counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Stalked Prey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "burning-sands-corpus-m680",
+  "description": "M6 corpus — Burning Sands; in-hand parse.",
+  "seed": 61817,
+  "cards": {
+    "Burning Sands": "Name:Burning Sands\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever a creature dies, that creature's controller sacrifices a land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nOracle:Whenever a creature dies, that creature's controller sacrifices a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning Sands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

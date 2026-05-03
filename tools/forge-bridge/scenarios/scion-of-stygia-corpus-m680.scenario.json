@@ -1,0 +1,23 @@
+{
+  "id": "scion-of-stygia-corpus-m680",
+  "description": "M6 corpus — Scion of Stygia; in-hand parse.",
+  "seed": 64150,
+  "cards": {
+    "Scion of Stygia": "Name:Scion of Stygia\nManaCost:2 U\nTypes:Creature Tiefling Shaman\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Cone of Cold — When CARDNAME enters, ABILITY\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBRollDice | SpellDescription$ choose target creature an opponent controls,\nSVar:DBRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBTap,10-20:DBReallyTap | SpellDescription$ then roll a d20.\nSVar:DBTap:DB$ Tap | Defined$ Targeted | SpellDescription$ 1—9 VERT Tap that creature.\nSVar:DBReallyTap:DB$ Tap | Defined$ Targeted | SubAbility$ DBNoUntap | SpellDescription$ 10—20 VERT Tap that creature. It doesn't untap during its controller's next untap step.\nSVar:DBNoUntap:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nOracle:Flash\\nCone of Cold — When Scion of Stygia enters, choose target creature an opponent controls, then roll a d20.\\n1—9 | Tap that creature.\\n10—20 | Tap that creature. It doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scion of Stygia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

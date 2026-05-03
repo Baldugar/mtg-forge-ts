@@ -1,0 +1,23 @@
+{
+  "id": "a-sorcerer-class-corpus-m680",
+  "description": "M6 corpus — A-Sorcerer Class; in-hand parse.",
+  "seed": 64093,
+  "cards": {
+    "A-Sorcerer Class": "Name:A-Sorcerer Class\nManaCost:U R\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards, then discard two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose\nK:Class:2:U R:AddStaticAbility$ STapMana\nSVar:STapMana:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Creature.YouCtrl | AddAbility$ AddMana | Secondary$ True | Description$ Creatures you control have \"{T}: Add {U} or {R}. Spend this mana only to cast an instant or sorcery spell or to gain a Class level.\"\nSVar:AddMana:AB$ Mana | Cost$ T | Produced$ Combo U R | Amount$ 1 | RestrictValid$ Spell.Instant,Spell.Sorcery,Activated.ClassLevelUp | SpellDescription$ Add {U} or {R}. Spend this mana only to cast an instant or sorcery spell or to gain a Class level.\nK:Class:3:1 U R:AddTrigger$ TriggerSpellCast\nSVar:TriggerSpellCast:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | Secondary$ True | TriggerDescription$ Whenever you cast an instant or sorcery spell, that spell deals damage to each opponent equal to the number of instant and sorcery spells you've cast this turn.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ X | DamageSource$ TriggeredCard\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen Sorcerer Class enters, draw two cards, then discard two cards.\\n{U}{R}: Level 2\\nCreatures you control have \"{T}: Add {U} or {R}. Spend this mana only to cast an instant or sorcery spell or to gain a Class level.\"\\n{1}{U}{R}: Level 3\\nWhenever you cast an instant or sorcery spell, that spell deals damage to each opponent equal to the number of instant and sorcery spells you've cast this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Sorcerer Class"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

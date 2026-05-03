@@ -1,0 +1,23 @@
+{
+  "id": "faith-of-the-devoted-corpus-m680",
+  "description": "M6 corpus — Faith of the Devoted; in-hand parse.",
+  "seed": 62426,
+  "cards": {
+    "Faith of the Devoted": "Name:Faith of the Devoted\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you cycle or discard a card, you may pay {1}. If you do, each opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:AB$ LoseLife | Cost$ 1 | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Whenever you cycle or discard a card, you may pay {1}. If you do, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faith of the Devoted"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

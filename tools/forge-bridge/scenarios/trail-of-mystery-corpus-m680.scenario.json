@@ -1,0 +1,23 @@
+{
+  "id": "trail-of-mystery-corpus-m680",
+  "description": "M6 corpus — Trail of Mystery; in-hand parse.",
+  "seed": 64783,
+  "cards": {
+    "Trail of Mystery": "Name:Trail of Mystery\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.faceDown+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Whenever a face-down creature you control enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.Creature+YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever a permanent you control is turned face up, if it's a creature, it gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCard | NumAtt$ +2 | NumDef$ +2 | ConditionDefined$ TriggeredCard | ConditionPresent$ Creature | ConditionCompare$ GE1\nAI:RemoveDeck:Random\nDeckNeeds:Keyword$Morph\nOracle:Whenever a face-down creature you control enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\nWhenever a permanent you control is turned face up, if it's a creature, it gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trail of Mystery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

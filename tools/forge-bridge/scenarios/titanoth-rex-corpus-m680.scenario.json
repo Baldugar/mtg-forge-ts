@@ -1,0 +1,23 @@
+{
+  "id": "titanoth-rex-corpus-m680",
+  "description": "M6 corpus — Titanoth Rex; in-hand parse.",
+  "seed": 64759,
+  "cards": {
+    "Titanoth Rex": "Name:Titanoth Rex\nManaCost:7 G G\nTypes:Creature Dinosaur Beast\nPT:11/11\nK:Trample\nK:Cycling:1 G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle CARDNAME, put a trample counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Trample | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Trample\\nCycling {1}{G} ({1}{G}, Discard this card: Draw a card.)\\nWhen you cycle Titanoth Rex, put a trample counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titanoth Rex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

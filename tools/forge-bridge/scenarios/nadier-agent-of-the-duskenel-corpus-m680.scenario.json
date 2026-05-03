@@ -1,0 +1,23 @@
+{
+  "id": "nadier-agent-of-the-duskenel-corpus-m680",
+  "description": "M6 corpus — Nadier, Agent of the Duskenel; in-hand parse.",
+  "seed": 63509,
+  "cards": {
+    "Nadier, Agent of the Duskenel": "Name:Nadier, Agent of the Duskenel\nManaCost:5 B\nTypes:Legendary Creature Elf Warrior\nPT:3/3\nK:Partner\nT:Mode$ ChangesZone | ValidCard$ Card.token+YouCtrl | Origin$ Battlefield | Destination$ Any | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a token you control leaves the battlefield, put a +1/+1 counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigToken | TriggerDescription$ When NICKNAME leaves the battlefield, create a number of 1/1 green Elf Warrior creature tokens equal to its power.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_elf_warrior | TokenAmount$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Token|Counters\nDeckHints:Ability$Token & Type$Elf\nOracle:Whenever a token you control leaves the battlefield, put a +1/+1 counter on Nadier, Agent of the Duskenel.\\nWhen Nadier leaves the battlefield, create a number of 1/1 green Elf Warrior creature tokens equal to its power.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nadier, Agent of the Duskenel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

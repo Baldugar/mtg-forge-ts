@@ -1,0 +1,23 @@
+{
+  "id": "zagras-thief-of-heartbeats-corpus-m680",
+  "description": "M6 corpus — Zagras, Thief of Heartbeats; in-hand parse.",
+  "seed": 65119,
+  "cards": {
+    "Zagras, Thief of Heartbeats": "Name:Zagras, Thief of Heartbeats\nManaCost:4 B R\nTypes:Legendary Creature Vampire Rogue\nPT:4/4\nK:Flying\nK:Deathtouch\nK:Haste\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature in your party.\nSVar:X:Count$Party\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Deathtouch | Description$ Other creatures you control have deathtouch.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Planeswalker | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever a creature you control deals combat damage to a planeswalker, destroy that planeswalker.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Warrior|Wizard\nOracle:This spell costs {1} less to cast for each creature in your party.\\nFlying, deathtouch, haste\\nOther creatures you control have deathtouch.\\nWhenever a creature you control deals combat damage to a planeswalker, destroy that planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zagras, Thief of Heartbeats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

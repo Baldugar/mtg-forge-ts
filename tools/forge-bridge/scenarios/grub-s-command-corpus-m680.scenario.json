@@ -1,0 +1,23 @@
+{
+  "id": "grub-s-command-corpus-m680",
+  "description": "M6 corpus — Grub's Command; in-hand parse.",
+  "seed": 62738,
+  "cards": {
+    "Grub's Command": "Name:Grub's Command\nManaCost:3 B R\nTypes:Kindred Sorcery Goblin\nA:SP$ Charm | Choices$ DBCopy,DBPumpAll,DBDestroy,DBMill | CharmNum$ 2\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Goblin.YouCtrl | TgtPrompt$ Select target Goblin you control | SpellDescription$ Create a token that's a copy of target Goblin you control.\nSVar:DBPumpAll:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Haste | SpellDescription$ Creatures target player controls get +1/+1 and gain haste until end of turn.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature | SpellDescription$ Destroy target artifact or creature.\nSVar:DBMill:DB$ Mill | NumCards$ 5 | ValidTgts$ Player | RememberMilled$ True | SubAbility$ DBChangeZoneAll | SpellDescription$ Target player mills five cards, then puts each Goblin card milled this way into their hand.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Goblin.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:Choose two —\\n• Create a token that's a copy of target Goblin you control.\\n• Creatures target player controls get +1/+1 and gain haste until end of turn.\\n• Destroy target artifact or creature.\\n• Target player mills five cards, then puts each Goblin card milled this way into their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grub's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

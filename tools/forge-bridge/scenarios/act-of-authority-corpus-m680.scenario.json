@@ -1,0 +1,23 @@
+{
+  "id": "act-of-authority-corpus-m680",
+  "description": "M6 corpus — Act of Authority; in-hand parse.",
+  "seed": 61443,
+  "cards": {
+    "Act of Authority": "Name:Act of Authority\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ AuthorityExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile target artifact or enchantment.\nSVar:AuthorityExile:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Exile\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may exile target artifact or enchantment. If you do, its controller gains control of CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ Self | NewController$ RememberedController | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:When Act of Authority enters, you may exile target artifact or enchantment.\\nAt the beginning of your upkeep, you may exile target artifact or enchantment. If you do, its controller gains control of Act of Authority.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Act of Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

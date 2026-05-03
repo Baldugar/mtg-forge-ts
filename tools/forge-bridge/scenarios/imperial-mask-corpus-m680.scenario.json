@@ -1,0 +1,23 @@
+{
+  "id": "imperial-mask-corpus-m680",
+  "description": "M6 corpus — Imperial Mask; in-hand parse.",
+  "seed": 62909,
+  "cards": {
+    "Imperial Mask": "Name:Imperial Mask\nManaCost:4 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+!token | Execute$ TrigCopyPermanent | TriggerDescription$ When CARDNAME enters, if it's not a token, each of your teammates creates a token that's a copy of CARDNAME.\nSVar:TrigCopyPermanent:DB$ RepeatEach | RepeatSubAbility$ DBClone | RepeatPlayers$ Player.Allies | ChangeZoneTable$ True\nSVar:DBClone:DB$ CopyPermanent | Defined$ TriggeredCard | Controller$ Remembered\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Hexproof | Description$ You have hexproof. (You can't be the target of spells or abilities your opponents control.)\nSVar:NonStackingEffect:True\nOracle:When Imperial Mask enters, if it's not a token, each of your teammates creates a token that's a copy of Imperial Mask.\\nYou have hexproof. (You can't be the target of spells or abilities your opponents control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imperial Mask"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

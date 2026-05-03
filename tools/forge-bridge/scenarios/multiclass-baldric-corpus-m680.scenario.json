@@ -1,0 +1,23 @@
+{
+  "id": "multiclass-baldric-corpus-m680",
+  "description": "M6 corpus — Multiclass Baldric; in-hand parse.",
+  "seed": 63488,
+  "cards": {
+    "Multiclass Baldric": "Name:Multiclass Baldric\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Lifelink | IsPresent$ Cleric.YouCtrl | Description$ Equipped creature has lifelink if you control a Cleric, deathtouch if you control a Rogue, haste if you control a Warrior, and flying if you control a Wizard.\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Deathtouch | IsPresent$ Rogue.YouCtrl | PresentCompare$ GE1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste | IsPresent$ Warrior.YouCtrl | PresentCompare$ GE1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | IsPresent$ Wizard.YouCtrl | PresentCompare$ GE1\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ Creature.EquippedBy | CheckSVar$ X | SVarCompare$ EQ4 | Description$ As long as you have a full party, prevent all damage that would be dealt to equipped creature.\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Equipped creature has lifelink if you control a Cleric, deathtouch if you control a Rogue, haste if you control a Warrior, and flying if you control a Wizard.\\nAs long as you have a full party, prevent all damage that would be dealt to equipped creature.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Multiclass Baldric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

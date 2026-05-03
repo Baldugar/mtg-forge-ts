@@ -1,0 +1,23 @@
+{
+  "id": "azorius-aethermage-corpus-m680",
+  "description": "M6 corpus — Azorius Aethermage; in-hand parse.",
+  "seed": 61628,
+  "cards": {
+    "Azorius Aethermage": "Name:Azorius Aethermage\nManaCost:1 W U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Hand | ValidCard$ Card.YouOwn | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever a permanent is returned to your hand, you may pay {1}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ 1 | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a permanent is returned to your hand, you may pay {1}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azorius Aethermage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

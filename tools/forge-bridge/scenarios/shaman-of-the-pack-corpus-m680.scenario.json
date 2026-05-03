@@ -1,0 +1,23 @@
+{
+  "id": "shaman-of-the-pack-corpus-m680",
+  "description": "M6 corpus — Shaman of the Pack; in-hand parse.",
+  "seed": 64229,
+  "cards": {
+    "Shaman of the Pack": "Name:Shaman of the Pack\nManaCost:1 B G\nTypes:Creature Elf Shaman\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, target opponent loses life equal to the number of Elves you control.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:Count$Valid Elf.YouCtrl\nOracle:When Shaman of the Pack enters, target opponent loses life equal to the number of Elves you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaman of the Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

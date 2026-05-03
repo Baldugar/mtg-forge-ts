@@ -1,0 +1,23 @@
+{
+  "id": "hadana-s-climb-corpus-m680",
+  "description": "M6 corpus — Hadana's Climb; in-hand parse.",
+  "seed": 62766,
+  "cards": {
+    "Hadana's Climb": "Name:Hadana's Climb\nManaCost:1 G U\nTypes:Legendary Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if that creature has three or more +1/+1 counters on it, transform CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionDefined$ Targeted | ConditionPresent$ Creature.counters_GE3_P1P1 | ConditionCompare$ EQ1 | AILogic$ Always\nAlternateMode:DoubleFaced\nOracle:At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if that creature has three or more +1/+1 counters on it, transform Hadana's Climb.\n\nALTERNATE\n\nName:Winged Temple of Orazca\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nA:AB$ Pump | Cost$ 1 G U T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X | KW$ Flying | SpellDescription$ Target creature you control gains flying and gets +X/+X until end of turn, where X is its power.\nSVar:X:Targeted$CardPower\nOracle:(Transforms from Hadana's Climb.)\\n{T}: Add one mana of any color.\\n{1}{G}{U}, {T}: Target creature you control gains flying and gets +X/+X until end of turn, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hadana's Climb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

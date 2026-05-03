@@ -1,0 +1,23 @@
+{
+  "id": "scroll-of-isildur-corpus-m680",
+  "description": "M6 corpus — Scroll of Isildur; in-hand parse.",
+  "seed": 64162,
+  "cards": {
+    "Scroll of Isildur": "Name:Scroll of Isildur\nManaCost:2 U\nTypes:Enchantment Saga\nK:Chapter:3:DBGainControl,DBTap,DBDraw\nSVar:DBGainControl:DB$ GainControl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target artifact | ValidTgts$ Artifact | SubAbility$ TrigTempt | LoseControl$ LeavesPlay,LoseControl | SpellDescription$ Gain control of up to one target artifact for as long as you control CARDNAME. The Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | SubAbility$ DBCounter | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | SpellDescription$ Tap up to two target creatures. Put a stun counter on each of them.\nSVar:DBCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nSVar:DBDraw:DB$ Draw | ValidTgts$ Opponent | Defined$ You | NumCards$ X | SpellDescription$ Draw a card for each tapped creature target opponent controls.\nSVar:X:Count$Valid Creature.tapped+TargetedPlayerCtrl\nDeckHas:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Gain control of up to one target artifact for as long as you control Scroll of Isildur. The Ring tempts you.\\nII — Tap up to two target creatures. Put a stun counter on each of them.\\nIII — Draw a card for each tapped creature target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scroll of Isildur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

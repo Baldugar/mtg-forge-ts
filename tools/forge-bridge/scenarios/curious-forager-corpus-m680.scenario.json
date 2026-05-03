@@ -1,0 +1,23 @@
+{
+  "id": "curious-forager-corpus-m680",
+  "description": "M6 corpus — Curious Forager; in-hand parse.",
+  "seed": 62059,
+  "cards": {
+    "Curious Forager": "Name:Curious Forager\nManaCost:2 G\nTypes:Creature Squirrel Druid\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME enters, you may forage. When you do, return target permanent card from your graveyard to your hand. (To forage, exile three cards from your graveyard or sacrifice a Food.)\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Forage | Execute$ TrigReturn | SpellDescription$ When you do, return target permanent card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select target permanent to return from your graveyard\nDeckHas:Ability$Graveyard\nDeckHints:Type$Food\nOracle:When Curious Forager enters, you may forage. When you do, return target permanent card from your graveyard to your hand. (To forage, exile three cards from your graveyard or sacrifice a Food.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curious Forager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

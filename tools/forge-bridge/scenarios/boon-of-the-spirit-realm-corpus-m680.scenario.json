@@ -1,0 +1,23 @@
+{
+  "id": "boon-of-the-spirit-realm-corpus-m680",
+  "description": "M6 corpus — Boon of the Spirit Realm; in-hand parse.",
+  "seed": 61752,
+  "cards": {
+    "Boon of the Spirit Realm": "Name:Boon of the Spirit Realm\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigCounter | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, put a blessing counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ BLESSING | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ X | AddToughness$ X | Description$ Creatures you control get +1/+1 for each blessing counter on CARDNAME.\nSVar:X:Count$CardCounters.BLESSING\nDeckHints:Type$Enchantment\nDeckHas:Ability$Counters\nOracle:Constellation — Whenever Boon of the Spirit Realm or another enchantment you control enters, put a blessing counter on Boon of the Spirit Realm.\\nCreatures you control get +1/+1 for each blessing counter on Boon of the Spirit Realm.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boon of the Spirit Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

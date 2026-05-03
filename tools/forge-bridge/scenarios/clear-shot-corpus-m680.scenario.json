@@ -1,0 +1,23 @@
+{
+  "id": "clear-shot-corpus-m680",
+  "description": "M6 corpus — Clear Shot; in-hand parse.",
+  "seed": 61935,
+  "cards": {
+    "Clear Shot": "Name:Clear Shot\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | NumAtt$ +1 | NumDef$ +1 | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control gets +1/+1 until end of turn. It deals damage equal to its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gets +1/+1 until end of turn. It deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clear Shot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

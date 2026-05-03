@@ -1,0 +1,23 @@
+{
+  "id": "psychic-spiral-corpus-m680",
+  "description": "M6 corpus — Psychic Spiral; in-hand parse.",
+  "seed": 63828,
+  "cards": {
+    "Psychic Spiral": "Name:Psychic Spiral\nManaCost:4 U\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True | RememberChanged$ True | SubAbility$ DBMill | SpellDescription$ Shuffle all cards from your graveyard into your library. Target player mills that many cards.\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | TgtPrompt$ Select target player to mill | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlayVar:SpiralYet GE6\nSVar:SpiralYet:Count$ValidGraveyard Card.YouOwn\nOracle:Shuffle all cards from your graveyard into your library. Target player mills that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Spiral"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

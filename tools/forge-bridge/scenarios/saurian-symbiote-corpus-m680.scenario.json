@@ -1,0 +1,23 @@
+{
+  "id": "saurian-symbiote-corpus-m680",
+  "description": "M6 corpus — Saurian Symbiote; in-hand parse.",
+  "seed": 64132,
+  "cards": {
+    "Saurian Symbiote": "Name:Saurian Symbiote\nManaCost:3 G\nTypes:Creature Fungus Dinosaur\nPT:2/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCounter,DBToken\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nDeckHas:Ability$Counters|Token\nOracle:Reach (This creature can block creatures with flying.)\\nWhen Saurian Symbiote enters, choose one —\\n• Put a +1/+1 counter on Saurian Symbiote.\\n• Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saurian Symbiote"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

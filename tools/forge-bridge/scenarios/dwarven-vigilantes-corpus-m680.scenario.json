@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-vigilantes-corpus-m680",
+  "description": "M6 corpus — Dwarven Vigilantes; in-hand parse.",
+  "seed": 62269,
+  "cards": {
+    "Dwarven Vigilantes": "Name:Dwarven Vigilantes\nManaCost:2 R\nTypes:Creature Dwarf\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may have it deal damage equal to its power to target creature. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:X:Count$CardPower\nOracle:Whenever Dwarven Vigilantes attacks and isn't blocked, you may have it deal damage equal to its power to target creature. If you do, Dwarven Vigilantes assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Vigilantes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

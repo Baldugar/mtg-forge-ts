@@ -1,0 +1,23 @@
+{
+  "id": "hunting-grounds-corpus-m680",
+  "description": "M6 corpus — Hunting Grounds; in-hand parse.",
+  "seed": 62884,
+  "cards": {
+    "Hunting Grounds": "Name:Hunting Grounds\nManaCost:G W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigCast | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"Whenever an opponent casts a spell, you may put a creature card from your hand onto the battlefield.\"\nSVar:TrigCast:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever an opponent casts a spell, you may put a creature card from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Creature | ChangeNum$ 1 | Origin$ Hand | Destination$ Battlefield\nOracle:Threshold — As long as there are seven or more cards in your graveyard, Hunting Grounds has \"Whenever an opponent casts a spell, you may put a creature card from your hand onto the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunting Grounds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lackey-recycler-corpus-m680",
+  "description": "M6 corpus — Lackey Recycler; in-hand parse.",
+  "seed": 63175,
+  "cards": {
+    "Lackey Recycler": "Name:Lackey Recycler\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, put target creature card from your graveyard on top of your library.\nSVar:TrigCrank:DB$ ChangeZone | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredCardController | Origin$ Graveyard | Destination$ Library\nOracle:Whenever you crank Lackey Recycler, put target creature card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lackey Recycler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

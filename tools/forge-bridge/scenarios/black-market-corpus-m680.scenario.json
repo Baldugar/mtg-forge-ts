@@ -1,0 +1,23 @@
+{
+  "id": "black-market-corpus-m680",
+  "description": "M6 corpus — Black Market; in-hand parse.",
+  "seed": 61694,
+  "cards": {
+    "Black Market": "Name:Black Market\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dies, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGetMana | TriggerDescription$ At the beginning of your first main phase, add {B} for each charge counter on CARDNAME.\nSVar:TrigGetMana:DB$ Mana | Produced$ B | Amount$ X\nSVar:X:Count$CardCounters.CHARGE\nOracle:Whenever a creature dies, put a charge counter on Black Market.\\nAt the beginning of your first main phase, add {B} for each charge counter on Black Market.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Market"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

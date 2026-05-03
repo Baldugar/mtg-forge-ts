@@ -1,0 +1,23 @@
+{
+  "id": "relentless-dead-corpus-m680",
+  "description": "M6 corpus — Relentless Dead; in-hand parse.",
+  "seed": 63945,
+  "cards": {
+    "Relentless Dead": "Name:Relentless Dead\nManaCost:B B\nTypes:Creature Zombie\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, you may pay {B}. If you do, return it to its owner's hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ B | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, you may pay {X}. If you do, return another target Zombie creature card with mana value X from your graveyard to the battlefield.\nSVar:TrigChange:AB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Zombie+Other | TargetsWithDefinedController$ TriggeredCardController | Cost$ X\nSVar:X:Targeted$CardManaCost\nDeckHints:Type$Zombie\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Relentless Dead dies, you may pay {B}. If you do, return it to its owner's hand.\\nWhen Relentless Dead dies, you may pay {X}. If you do, return another target Zombie creature card with mana value X from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relentless Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

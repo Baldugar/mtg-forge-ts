@@ -1,0 +1,23 @@
+{
+  "id": "diplomatic-relations-corpus-m680",
+  "description": "M6 corpus — Diplomatic Relations; in-hand parse.",
+  "seed": 62174,
+  "cards": {
+    "Diplomatic Relations": "Name:Diplomatic Relations\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | KW$ Vigilance | SubAbility$ DBDealDamage | AILogic$ Fight | SpellDescription$ Target creature you control gets +1/+0 and gains vigilance until end of turn. It deals damage equal to its power to target creature an opponent controls.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gets +1/+0 and gains vigilance until end of turn. It deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diplomatic Relations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

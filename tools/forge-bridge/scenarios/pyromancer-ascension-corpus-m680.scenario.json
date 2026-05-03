@@ -1,0 +1,23 @@
+{
+  "id": "pyromancer-ascension-corpus-m680",
+  "description": "M6 corpus — Pyromancer Ascension; in-hand parse.",
+  "seed": 63851,
+  "cards": {
+    "Pyromancer Ascension": "Name:Pyromancer Ascension\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant.sharesNameWith YourGraveyard,Sorcery.sharesNameWith YourGraveyard | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever you cast an instant or sorcery spell that has the same name as a card in your graveyard, you may put a quest counter on CARDNAME.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE2_QUEST | NoResolvingCheck$ True | Execute$ TrigCopySpell | OptionalDecider$ You | TriggerDescription$ Whenever you cast an instant or sorcery spell while CARDNAME has two or more quest counters on it, you may copy that spell. You may choose new targets for the copy.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1 | ConditionDefined$ TriggeredCard\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nSVar:MaxQuestEffect:2\nDeckHas:Ability$Counters\nDeckHints:Keyword$Retrace|Flashback\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell that has the same name as a card in your graveyard, you may put a quest counter on Pyromancer Ascension.\\nWhenever you cast an instant or sorcery spell while Pyromancer Ascension has two or more quest counters on it, you may copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyromancer Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

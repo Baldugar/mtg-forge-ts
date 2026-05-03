@@ -1,0 +1,23 @@
+{
+  "id": "stromkirk-bloodthief-corpus-m680",
+  "description": "M6 corpus — Stromkirk Bloodthief; in-hand parse.",
+  "seed": 64484,
+  "cards": {
+    "Stromkirk Bloodthief": "Name:Stromkirk Bloodthief\nManaCost:2 B\nTypes:Creature Vampire Rogue\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on target Vampire you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Vampire.YouCtrl | TgtPrompt$ Select target Vampire you control | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Counters & Type$Vampire\nOracle:At the beginning of your end step, if an opponent lost life this turn, put a +1/+1 counter on target Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stromkirk Bloodthief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

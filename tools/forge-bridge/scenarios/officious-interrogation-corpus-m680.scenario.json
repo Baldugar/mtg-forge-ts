@@ -1,0 +1,23 @@
+{
+  "id": "officious-interrogation-corpus-m680",
+  "description": "M6 corpus — Officious Interrogation; in-hand parse.",
+  "seed": 63606,
+  "cards": {
+    "Officious Interrogation": "Name:Officious Interrogation\nManaCost:W U\nTypes:Instant\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Amount$ IncreaseCost | Relative$ True | Cost$ W U | EffectZone$ All | Description$ This spell costs {W}{U} more to cast for each target beyond the first.\nSVar:IncreaseCost:TargetedObjects$Amount/Minus.1\nA:SP$ Pump | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxPlayers | SubAbility$ DBInvestigate | SpellDescription$ Choose any number of target players.\nSVar:DBInvestigate:DB$ Investigate | Num$ X | SpellDescription$ Investigate X times, where X is the total number of creatures those players control.\nSVar:MaxPlayers:PlayerCountPlayers$Amount\nSVar:X:Count$Valid Creature.TargetedPlayerCtrl\nDeckHas:Ability$Token & Type$Artifact|Clue\nOracle:This spell costs {W}{U} more to cast for each target beyond the first.\\nChoose any number of target players. Investigate X times, where X is the total number of creatures those players control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Officious Interrogation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "faithbound-judge-corpus-m680",
+  "description": "M6 corpus — Faithbound Judge; in-hand parse.",
+  "seed": 62427,
+  "cards": {
+    "Faithbound Judge": "Name:Faithbound Judge\nManaCost:1 W W\nTypes:Creature Spirit Soldier\nPT:4/4\nK:Defender\nK:Flying\nK:Vigilance\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_LE2_JUDGMENT | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, if CARDNAME has two or fewer judgment counters on it, put a judgment counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ JUDGMENT\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self+counters_GE3_JUDGMENT | Description$ As long as CARDNAME has three or more judgment counters on it, it can attack as though it didn't have defender.\nK:Disturb:5 W W\nDeckHas:Ability$Graveyard|Counters\nAlternateMode:DoubleFaced\nOracle:Defender, flying, vigilance\\nAt the beginning of your upkeep, if Faithbound Judge has two or fewer judgment counters on it, put a judgment counter on it.\\nAs long as Faithbound Judge has three or more judgment counters on it, it can attack as though it didn't have defender.\\nDisturb {5}{W}{W}\n\nALTERNATE\n\nName:Sinner's Judgment\nManaCost:no cost\nColors:white\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a judgment counter on CARDNAME. Then if there are three or more judgment counters on it, enchanted player loses the game.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ JUDGMENT | CounterNum$ 1 | SubAbility$ DBLose\nSVar:DBLose:DB$ LosesGame | Defined$ EnchantedPlayer | ConditionPresent$ Card.Self+counters_GE3_JUDGMENT\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant player\\nAt the beginning of your upkeep, put a judgment counter on Sinner's Judgment. Then if there are three or more judgment counters on it, enchanted player loses the game.\\nIf Sinner's Judgment would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faithbound Judge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

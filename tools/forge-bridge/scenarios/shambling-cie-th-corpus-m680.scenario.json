@@ -1,0 +1,23 @@
+{
+  "id": "shambling-cie-th-corpus-m680",
+  "description": "M6 corpus — Shambling Cie'th; in-hand parse.",
+  "seed": 64230,
+  "cards": {
+    "Shambling Cie'th": "Name:Shambling Cie'th\nManaCost:2 B\nTypes:Creature Mutant Horror\nPT:3/3\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This creature enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a noncreature spell, you may pay {B}. If you do, return this card from your graveyard to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ B | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:This creature enters tapped.\\nWhenever you cast a noncreature spell, you may pay {B}. If you do, return this card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shambling Cie'th"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

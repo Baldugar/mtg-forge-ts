@@ -1,0 +1,23 @@
+{
+  "id": "bhaal-lord-of-murder-corpus-m680",
+  "description": "M6 corpus — Bhaal, Lord of Murder; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Bhaal, Lord of Murder": "Name:Bhaal, Lord of Murder\nManaCost:2 B R G\nTypes:Legendary Creature God\nPT:4/4\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | CheckSVar$ X | SVarCompare$ LEY | Description$ As long as your life total is less than or equal to half your starting life total, CARDNAME has indestructible.\nSVar:X:Count$YourLifeTotal/Times.2\nSVar:Y:Count$YourStartingLife\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ DBPutCounter | TriggerDescription$ Whenever another nontoken creature you control dies, put a +1/+1 counter on target creature and goad it.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Targeted\nDeckHas:Ability$Counters\nOracle:As long as your life total is less than or equal to half your starting life total, Bhaal, Lord of Murder has indestructible.\\nWhenever another nontoken creature you control dies, put a +1/+1 counter on target creature and goad it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bhaal, Lord of Murder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

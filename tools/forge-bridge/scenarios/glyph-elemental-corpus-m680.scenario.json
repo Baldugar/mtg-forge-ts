@@ -1,0 +1,23 @@
+{
+  "id": "glyph-elemental-corpus-m680",
+  "description": "M6 corpus — Glyph Elemental; in-hand parse.",
+  "seed": 62664,
+  "cards": {
+    "Glyph Elemental": "Name:Glyph Elemental\nManaCost:1 W\nTypes:Enchantment Creature Elemental\nPT:2/2\nK:Bestow:1 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each +1/+1 counter on CARDNAME.\nSVar:X:Count$CardCounters.P1P1\nSVar:BuffedBy:Land\nDeckHas:Ability$Counters\nOracle:Bestow {1}{W} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached.)\\nLandfall — Whenever a land you control enters, put a +1/+1 counter on Glyph Elemental.\\nEnchanted creature gets +1/+1 for each +1/+1 counter on Glyph Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glyph Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

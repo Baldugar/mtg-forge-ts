@@ -1,0 +1,23 @@
+{
+  "id": "gravitic-punch-corpus-m680",
+  "description": "M6 corpus — Gravitic Punch; in-hand parse.",
+  "seed": 62715,
+  "cards": {
+    "Gravitic Punch": "Name:Gravitic Punch\nManaCost:3 R\nTypes:Sorcery\nK:Jump-start\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target player.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Player | TargetUnique$ True | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target player.\\nJump-start (You may cast this card from your graveyard by discarding a card in addition to paying its other costs. Then exile this card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravitic Punch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

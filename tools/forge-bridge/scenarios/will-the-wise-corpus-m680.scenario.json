@@ -1,0 +1,23 @@
+{
+  "id": "will-the-wise-corpus-m680",
+  "description": "M6 corpus — Will the Wise; in-hand parse.",
+  "seed": 65055,
+  "cards": {
+    "Will the Wise": "Name:Will the Wise\nVariant:UniversesWithin:FlavorName:Wernog, Rider's Chaplain\nManaCost:W B\nTypes:Legendary Creature Human\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters or leaves the battlefield, each opponent may investigate. Each opponent who doesn't loses 1 life. You investigate X times, where X is one plus the number of opponents who investigated this way.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigInvestigate | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, each opponent may investigate. Each opponent who doesn't loses 1 life. You investigate X times, where X is one plus the number of opponents who investigated this way.\nSVar:TrigInvestigate:DB$ Investigate | Defined$ Opponent | Optional$ True | RememberInvestigatingPlayers$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Opponent.!IsRemembered | LifeAmount$ 1 | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate | Num$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountRemembered$Amount\nSVar:Y:SVar$X/Plus.1\nK:Partner:Friends forever\nDeckHas:Ability$Investigate|Token|Sacrifice\nOracle:When Will the Wise enters or leaves the battlefield, each opponent may investigate. Each opponent who doesn't loses 1 life. You investigate X times, where X is one plus the number of opponents who investigated this way.\\nPartner—Friends forever (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Will the Wise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jumbo-imp-corpus-m680",
+  "description": "M6 corpus — Jumbo Imp; in-hand parse.",
+  "seed": 63060,
+  "cards": {
+    "Jumbo Imp": "Name:Jumbo Imp\nManaCost:2 B\nTypes:Creature Imp\nPT:0/0\nK:ETBReplacement:Other:RollCounters\nSVar:X:Count$xPaid\nSVar:RollCounters:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBCountersETB | SpellDescription$ As CARDNAME enters, roll a six-sided die. CARDNAME enters with a number of +1/+1 counters on it equal to the result.\nSVar:DBCountersETB:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result | ETB$ True\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRollUpkeep | TriggerDescription$ At the beginning of your upkeep, roll a six-sided die and put a number of +1/+1 counters on CARDNAME equal to the result.\nSVar:TrigRollUpkeep:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBCountersUpkeep\nSVar:DBCountersUpkeep:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRollEnd | TriggerDescription$ At the beginning of your end step, roll a six-sided die and remove a number of +1/+1 counters from CARDNAME equal to the result.\nSVar:TrigRollEnd:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBCountersEnd\nSVar:DBCountersEnd:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result\nDeckHas:Ability$Counters\nOracle:Flying\\nAs Jumbo Imp enters, roll a six-sided die. Jumbo Imp enters with a number of +1/+1 counters on it equal to the result.\\nAt the beginning of your upkeep, roll a six-sided die and put a number of +1/+1 counters on Jumbo Imp equal to the result.\\nAt the beginning of your end step, roll a six-sided die and remove a number of +1/+1 counters from Jumbo Imp equal to the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jumbo Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

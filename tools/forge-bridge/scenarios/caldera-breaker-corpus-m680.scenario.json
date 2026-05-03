@@ -1,0 +1,23 @@
+{
+  "id": "caldera-breaker-corpus-m680",
+  "description": "M6 corpus — Caldera Breaker; in-hand parse.",
+  "seed": 61834,
+  "cards": {
+    "Caldera Breaker": "Name:Caldera Breaker\nManaCost:3 R R R\nTypes:Artifact Creature Golem\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile all Mountain cards from your library. When you do, CARDNAME deals that much damage to target creature or planeswalker an opponent controls.\nSVar:TrigChangeZone:DB$ ChangeZoneAll | Origin$ Library | Destination$ Exile | ChangeType$ Mountain.YouOwn | RememberChanged$ True | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ TrigDamage | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ When you do, CARDNAME deals that much damage to target creature or planeswalker an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME dies, put all cards exiled with it onto the battlefield under their owner's control. Conjure four cards named Volcanic Geyser into your library, then shuffle.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Volcanic Geyser | Zone$ Library | Amount$ 4\nSVar:X:TriggerRemembered$Amount\nOracle:Trample\\nWhen Caldera Breaker enters, exile all Mountain cards from your library. When you do, Caldera Breaker deals that much damage to target creature or planeswalker an opponent controls.\\nWhen Caldera Breaker dies, put all cards exiled with it onto the battlefield under their owner's control. Conjure four cards named Volcanic Geyser into your library, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caldera Breaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unruly-mob-corpus-m680",
+  "description": "M6 corpus — Unruly Mob; in-hand parse.",
+  "seed": 64854,
+  "cards": {
+    "Unruly Mob": "Name:Unruly Mob\nManaCost:1 W\nTypes:Creature Human\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever another creature you control dies, put a +1/+1 counter on Unruly Mob.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unruly Mob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

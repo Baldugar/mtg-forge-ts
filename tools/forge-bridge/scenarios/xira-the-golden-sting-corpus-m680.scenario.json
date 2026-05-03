@@ -1,0 +1,23 @@
+{
+  "id": "xira-the-golden-sting-corpus-m680",
+  "description": "M6 corpus — Xira, the Golden Sting; in-hand parse.",
+  "seed": 65103,
+  "cards": {
+    "Xira, the Golden Sting": "Name:Xira, the Golden Sting\nManaCost:1 B R G\nTypes:Legendary Creature Insect Assassin\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEggCounter | TriggerDescription$ Whenever CARDNAME attacks, put an egg counter on another target creature without an egg counter on it. When that creature dies, if it has an egg counter on it, draw a card and create a 1/1 black Insect creature token with flying.\nSVar:TrigEggCounter:DB$ PutCounter | CounterType$ EGG | CounterNum$ 1 | ValidTgts$ Creature.Other+counters_EQ0_EGG | TgtPrompt$ Put an egg counter on another target creature without an egg counter on it. | SubAbility$ DelayedTrigger\nSVar:DelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.IsTriggerRemembered+counters_GE1_EGG | Execute$ TrigDraw | TriggerDescription$ When this creature dies, if it has an egg counter on it, draw a card and create a 1/1 black Insect creature token with flying.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_insect_flying\nOracle:Flying, haste\\nWhenever Xira, the Golden Sting attacks, put an egg counter on another target creature without an egg counter on it. When that creature dies, if it has an egg counter on it, draw a card and create a 1/1 black Insect creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xira, the Golden Sting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

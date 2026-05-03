@@ -1,0 +1,23 @@
+{
+  "id": "grisly-sigil-corpus-m680",
+  "description": "M6 corpus — Grisly Sigil; in-hand parse.",
+  "seed": 62729,
+  "cards": {
+    "Grisly Sigil": "Name:Grisly Sigil\nManaCost:B\nTypes:Sorcery\nK:Casualty:1\nA:SP$ Branch | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Choose target creature or planeswalker | BranchConditionSVar$ X | TrueSubAbility$ Damage3 | FalseSubAbility$ Damage1 | AILogic$ GrislySigil | SpellDescription$ Choose target creature or planeswalker. If it was dealt noncombat damage this turn, CARDNAME deals 3 damage to it and you gain 3 life. Otherwise, CARDNAME deals 1 damage to it and you gain 1 life.\nSVar:Damage3:DB$ DealDamage | Defined$ Targeted | NumDmg$ 3 | SubAbility$ DBGain3Life\nSVar:Damage1:DB$ DealDamage | Defined$ Targeted | NumDmg$ 1 | SubAbility$ DBGain1Life\nSVar:DBGain3Life:DB$ GainLife | LifeAmount$ 3\nSVar:DBGain1Life:DB$ GainLife | LifeAmount$ 1\nSVar:X:Targeted$Valid Card.wasDealtNonCombatDamageThisTurn\nSVar:AINoCasualtyPayment:TRUE\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:Casualty 1 (As you cast this spell, you may sacrifice a creature with power 1 or greater. When you do, copy this spell and you may choose new targets for the copy.)\\nChoose target creature or planeswalker. If it was dealt noncombat damage this turn, Grisly Sigil deals 3 damage to it and you gain 3 life. Otherwise, Grisly Sigil deals 1 damage to it and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grisly Sigil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grey-knight-paragon-corpus-m680",
+  "description": "M6 corpus — Grey Knight Paragon; in-hand parse.",
+  "seed": 62722,
+  "cards": {
+    "Grey Knight Paragon": "Name:Grey Knight Paragon\nManaCost:4 W\nTypes:Creature Astartes Knight\nPT:4/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerDescription$ Rites of Banishment — When CARDNAME enters, destroy target attacking creature. If that creature is a Demon, exile it instead.\nSVar:TrigBranch:DB$ Branch | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ1 | TrueSubAbility$ ExileDemon | FalseSubAbility$ DestroyAttacker\nSVar:DestroyAttacker:DB$ Destroy | Defined$ Targeted\nSVar:ExileDemon:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile\nSVar:X:Targeted$Valid Creature.Demon\nOracle:Flash\\nRites of Banishment — When Grey Knight Paragon enters, destroy target attacking creature. If that creature is a Demon, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grey Knight Paragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "presumed-dead-corpus-m680",
+  "description": "M6 corpus — Presumed Dead; in-hand parse.",
+  "seed": 63793,
+  "cards": {
+    "Presumed Dead": "Name:Presumed Dead\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield under its owner's control and suspect it.\" (A suspected creature has menace and can't block.)\nSVar:DBAnimate:DB$ Animate | Triggers$ AbnormalEnduranceChangeZone | Defined$ ParentTarget\nSVar:AbnormalEnduranceChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ AbnormalEnduranceTrigChangeZone | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to the battlefield under its owner's control and suspect it.\nSVar:AbnormalEnduranceTrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBSuspect\nSVar:DBSuspect:DB$ AlterAttribute | Attributes$ Suspected | Defined$ TriggeredNewCardLKICopy\nOracle:Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield under its owner's control and suspect it.\" (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Presumed Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conquering-manticore-corpus-m680",
+  "description": "M6 corpus — Conquering Manticore; in-hand parse.",
+  "seed": 61985,
+  "cards": {
+    "Conquering Manticore": "Name:Conquering Manticore\nManaCost:4 R R\nTypes:Creature Manticore\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target creature an opponent controls until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | TgtPrompt$ Choose target creature an opponent controls | ValidTgts$ Creature.OppCtrl | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SpellDescription$ Gain control of target creature an opponent controls until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:PlayMain1:OPPONENTCREATURES\nOracle:Flying\\nWhen Conquering Manticore enters, gain control of target creature an opponent controls until end of turn. Untap that creature. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conquering Manticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

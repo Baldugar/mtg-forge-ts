@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-pit-dweller-corpus-m680",
+  "description": "M6 corpus — Treacherous Pit-Dweller; in-hand parse.",
+  "seed": 64793,
+  "cards": {
+    "Treacherous Pit-Dweller": "Name:Treacherous Pit-Dweller\nManaCost:B B\nTypes:Creature Demon\nPT:4/3\nK:Undying\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters from a graveyard, target opponent gains control of it.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nAI:RemoveDeck:Random\nOracle:When Treacherous Pit-Dweller enters from a graveyard, target opponent gains control of it.\\nUndying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Pit-Dweller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

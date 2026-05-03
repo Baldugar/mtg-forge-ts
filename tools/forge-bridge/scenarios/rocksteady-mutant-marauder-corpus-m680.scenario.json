@@ -1,0 +1,23 @@
+{
+  "id": "rocksteady-mutant-marauder-corpus-m680",
+  "description": "M6 corpus — Rocksteady, Mutant Marauder; in-hand parse.",
+  "seed": 64027,
+  "cards": {
+    "Rocksteady, Mutant Marauder": "Name:Rocksteady, Mutant Marauder\nManaCost:2 G\nTypes:Legendary Creature Rhino Mutant\nPT:3/3\nK:Partner with:Bebop, Skull & Crossbones:Bebop\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+!token+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another nontoken creature you control enters, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1\nOracle:Partner with Bebop, Skull & Crossbones (When this creature enters, target player may put Bebop into their hand from their library, then shuffle.)\\nTrample\\nWhenever another nontoken creature you control enters, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rocksteady, Mutant Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

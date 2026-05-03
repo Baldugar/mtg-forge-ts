@@ -1,0 +1,23 @@
+{
+  "id": "brotherhood-patriarch-corpus-m680",
+  "description": "M6 corpus — Brotherhood Patriarch; in-hand parse.",
+  "seed": 61806,
+  "cards": {
+    "Brotherhood Patriarch": "Name:Brotherhood Patriarch\nManaCost:3 B\nTypes:Creature Human Assassin\nPT:4/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:When Brotherhood Patriarch dies, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brotherhood Patriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

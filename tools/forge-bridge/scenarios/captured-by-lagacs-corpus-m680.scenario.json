@@ -1,0 +1,23 @@
+{
+  "id": "captured-by-lagacs-corpus-m680",
+  "description": "M6 corpus — Captured by Lagacs; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Captured by Lagacs": "Name:Captured by Lagacs\nManaCost:1 G W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, support 2. (Put a +1/+1 counter on each of up to two target creatures.)\nSVar:TrigPut:DB$ PutCounter | Support$ 2\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\nWhen Captured by Lagacs enters, support 2. (Put a +1/+1 counter on each of up to two target creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captured by Lagacs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

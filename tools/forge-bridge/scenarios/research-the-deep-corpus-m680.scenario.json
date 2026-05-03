@@ -1,0 +1,23 @@
+{
+  "id": "research-the-deep-corpus-m680",
+  "description": "M6 corpus — Research the Deep; in-hand parse.",
+  "seed": 63960,
+  "cards": {
+    "Research the Deep": "Name:Research the Deep\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBClash | SpellDescription$ Draw a card. Clash with an opponent. If you win, return CARDNAME to its owner's hand.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand\nOracle:Draw a card. Clash with an opponent. If you win, return Research the Deep to its owner's hand. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Research the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

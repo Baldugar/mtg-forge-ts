@@ -1,0 +1,23 @@
+{
+  "id": "gempalm-incinerator-corpus-m680",
+  "description": "M6 corpus — Gempalm Incinerator; in-hand parse.",
+  "seed": 62617,
+  "cards": {
+    "Gempalm Incinerator": "Name:Gempalm Incinerator\nManaCost:2 R\nTypes:Creature Goblin\nPT:2/1\nK:Cycling:1 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may have it deal X damage to target creature, where X is the number of Goblins on the battlefield.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X\nSVar:X:Count$Valid Goblin\nOracle:Cycling {1}{R} ({1}{R}, Discard this card: Draw a card.)\\nWhen you cycle Gempalm Incinerator, you may have it deal X damage to target creature, where X is the number of Goblins on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gempalm Incinerator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "leshrac-s-sigil-corpus-m680",
+  "description": "M6 corpus — Leshrac's Sigil; in-hand parse.",
+  "seed": 63214,
+  "cards": {
+    "Leshrac's Sigil": "Name:Leshrac's Sigil\nManaCost:B B\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ B B | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ Whenever an opponent casts a green spell, you may pay {B}{B}. If you do, look at that player's hand and choose a card from it. The player discards that card.\nSVar:TrigDiscard:AB$ Discard | Cost$ B B | Defined$ TriggeredActivator | NumCards$ 1 | Mode$ LookYouChoose\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a green spell, you may pay {B}{B}. If you do, look at that player's hand and choose a card from it. The player discards that card.\\n{B}{B}: Return Leshrac's Sigil to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leshrac's Sigil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

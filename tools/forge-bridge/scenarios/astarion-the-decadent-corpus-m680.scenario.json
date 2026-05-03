@@ -1,0 +1,23 @@
+{
+  "id": "astarion-the-decadent-corpus-m680",
+  "description": "M6 corpus — Astarion, the Decadent; in-hand parse.",
+  "seed": 61589,
+  "cards": {
+    "Astarion, the Decadent": "Name:Astarion, the Decadent\nManaCost:4 W B\nTypes:Legendary Creature Vampire Elf Rogue\nPT:4/4\nK:Deathtouch\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ At the beginning of your end step, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBOppLoseLife,DBGainLife\nSVar:DBOppLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | TgtPrompt$ Choose target opponent to lose life equal to the amount of life they lost this turn | SpellDescription$ Feed — Target opponent loses life equal to the amount of life they lost this turn.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SpellDescription$ Friends — You gain life equal to the amount of life you gained this turn.\nSVar:X:TargetedPlayer$LifeLostThisTurn\nSVar:Y:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain\nOracle:Deathtouch, Lifelink\\nAt the beginning of your end step, choose one —\\n• Feed — Target opponent loses life equal to the amount of life they lost this turn.\\n• Friends — You gain life equal to the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astarion, the Decadent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

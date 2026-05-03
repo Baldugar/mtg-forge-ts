@@ -1,0 +1,23 @@
+{
+  "id": "workshop-assistant-corpus-m680",
+  "description": "M6 corpus — Workshop Assistant; in-hand parse.",
+  "seed": 65090,
+  "cards": {
+    "Workshop Assistant": "Name:Workshop Assistant\nManaCost:3\nTypes:Artifact Creature Construct\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, return another target artifact card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.Other | TargetsWithDefinedController$ TriggeredCardController\nSVar:SacMe:1\nOracle:When Workshop Assistant dies, return another target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Workshop Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

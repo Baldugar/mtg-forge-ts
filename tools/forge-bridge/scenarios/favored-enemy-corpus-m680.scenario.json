@@ -1,0 +1,23 @@
+{
+  "id": "favored-enemy-corpus-m680",
+  "description": "M6 corpus — Favored Enemy; in-hand parse.",
+  "seed": 62447,
+  "cards": {
+    "Favored Enemy": "Name:Favored Enemy\nManaCost:G\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseOpp\nSVar:ChooseOpp:DB$ ChoosePlayer | Choices$ Opponent | ChoiceTitle$ Choose an opponent | AILogic$ Curse | SubAbility$ DBChooseType | SpellDescription$ As CARDNAME enters, note the most prevalent creature type in an opponent's library.\nSVar:DBChooseType:DB$ ChooseType | Type$ Creature | MostPrevalentInDefinedZone$ ChosenPlayer_Library | Note$ True | SubAbility$ DBCleanupChosen\nSVar:DBCleanupChosen:DB$ Cleanup | ClearChosenPlayer$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, target creature you control fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBFight\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you don't control\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+NotedType | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls of the noted type dies, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:As Favored Enemy enters, note the most prevalent creature type in an opponent's library.\\nWhen Favored Enemy enters, target creature you control fights up to one target creature you don't control.\\nWhenever a creature an opponent controls of the noted type dies, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Favored Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

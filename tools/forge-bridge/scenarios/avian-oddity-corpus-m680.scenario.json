@@ -1,0 +1,23 @@
+{
+  "id": "avian-oddity-corpus-m680",
+  "description": "M6 corpus — Avian Oddity; in-hand parse.",
+  "seed": 61619,
+  "cards": {
+    "Avian Oddity": "Name:Avian Oddity\nManaCost:3 U\nTypes:Creature Bird\nPT:2/4\nK:Flying\nK:Cycling:2 U\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you cycle CARDNAME, put a flying counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Flying | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nCycling {2}{U} ({2}{U}, Discard this card: Draw a card.)\\nWhen you cycle Avian Oddity, put a flying counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avian Oddity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

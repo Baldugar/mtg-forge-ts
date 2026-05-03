@@ -1,0 +1,23 @@
+{
+  "id": "thundering-sparkmage-corpus-m680",
+  "description": "M6 corpus — Thundering Sparkmage; in-hand parse.",
+  "seed": 64740,
+  "cards": {
+    "Thundering Sparkmage": "Name:Thundering Sparkmage\nManaCost:3 R\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals X damage to target creature or planeswalker, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X\nSVar:X:Count$Party\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior\nOracle:When Thundering Sparkmage enters, it deals X damage to target creature or planeswalker, where X is the number of creatures in your party. (Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Sparkmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

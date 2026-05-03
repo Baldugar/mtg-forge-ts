@@ -1,0 +1,23 @@
+{
+  "id": "fabrication-module-corpus-m680",
+  "description": "M6 corpus — Fabrication Module; in-hand parse.",
+  "seed": 62420,
+  "cards": {
+    "Fabrication Module": "Name:Fabrication Module\nManaCost:3\nTypes:Artifact\nT:Mode$ CounterAddedOnce | ValidPlayer$ You | TriggerZones$ Battlefield | CounterType$ ENERGY | Execute$ TrigPutCounter | TriggerDescription$ Whenever you get one or more {E} (energy counters), put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ PutCounter | Cost$ 4 T | Defined$ You | CounterType$ ENERGY | CounterNum$ 1 | AILogic$ AtOppEOT | SpellDescription$ You get {E}.\nDeckHas:Ability$Counters\nOracle:Whenever you get one or more {E} (energy counters), put a +1/+1 counter on target creature you control.\\n{4}, {T}: You get {E}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fabrication Module"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

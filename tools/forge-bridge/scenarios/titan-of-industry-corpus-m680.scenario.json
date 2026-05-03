@@ -1,0 +1,23 @@
+{
+  "id": "titan-of-industry-corpus-m680",
+  "description": "M6 corpus — Titan of Industry; in-hand parse.",
+  "seed": 64757,
+  "cards": {
+    "Titan of Industry": "Name:Titan of Industry\nManaCost:4 G G G\nTypes:Creature Elemental\nPT:7/7\nK:Reach\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Destroy,GainLife,Token,PutCounter | CharmNum$ 2\nSVar:Destroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:GainLife:DB$ GainLife | LifeAmount$ 5 | ValidTgts$ Player | SpellDescription$ Target player gains 5 life.\nSVar:Token:DB$ Token | TokenScript$ g_4_4_rhino_warrior | SpellDescription$ Create a 4/4 green Rhino Warrior creature token.\nSVar:PutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature you control | CounterType$ SHIELD | SpellDescription$ Put a shield counter on a creature you control.\nDeckHas:Ability$LifeGain|Token|Counters & Type$Rhino|Warrior\nOracle:Reach, trample\\nWhen Titan of Industry enters, choose two —\\n• Destroy target artifact or enchantment.\\n• Target player gains 5 life.\\n• Create a 4/4 green Rhino Warrior creature token.\\n• Put a shield counter on a creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titan of Industry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

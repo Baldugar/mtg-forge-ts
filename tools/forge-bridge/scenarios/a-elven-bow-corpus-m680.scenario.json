@@ -1,0 +1,23 @@
+{
+  "id": "a-elven-bow-corpus-m680",
+  "description": "M6 corpus — A-Elven Bow; in-hand parse.",
+  "seed": 64075,
+  "cards": {
+    "A-Elven Bow": "Name:A-Elven Bow\nManaCost:G\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 2 | AddKeyword$ Reach | Description$ Equipped creature gets +1/+2 and has reach.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters, you may pay {1}. If you do, create a 1/1 green Elf Warrior creature token, then attach CARDNAME to it.\nSVar:TrigToken:AB$ Token | Cost$ 1 | TokenScript$ g_1_1_elf_warrior | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ TriggeredCard | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:When Elven Bow enters, you may pay {1}. If you do, create a 1/1 green Elf Warrior creature token, then attach Elven Bow to it.\\nEquipped creature gets +1/+2 and has reach.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Elven Bow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

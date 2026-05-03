@@ -1,0 +1,23 @@
+{
+  "id": "pair-o-dice-lost-corpus-m680",
+  "description": "M6 corpus — Pair o' Dice Lost; in-hand parse.",
+  "seed": 63683,
+  "cards": {
+    "Pair o' Dice Lost": "Name:Pair o' Dice Lost\nManaCost:3 G G\nTypes:Instant\nA:SP$ RollDice | Amount$ 2 | ResultSVar$ Y | SubAbility$ DBChange | SpellDescription$ Roll two six-sided dice. Return any number of cards with total mana value X or less from your graveyard to your hand, where X is the total of those results. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ X | WithTotalCMC$ Y | SelectPrompt$ Choose any number of cards with total mana value X or less from your graveyard to your hand, where X is the total of those results | Hidden$ True | AnyNumber$ True | ChangeType$ Card.YouOwn | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ Exile CARDNAME.\nSVar:X:Count$ValidGraveyard Card.YouOwn\nDeckHints:Ability$Graveyard|Mill\nDeckHas:Ability$Graveyard\nOracle:Roll two six-sided dice. Return any number of cards with total mana value X or less from your graveyard to your hand, where X is the total of those results. Exile Pair o' Dice Lost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pair o' Dice Lost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

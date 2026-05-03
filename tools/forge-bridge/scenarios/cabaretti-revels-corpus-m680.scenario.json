@@ -1,0 +1,23 @@
+{
+  "id": "cabaretti-revels-corpus-m680",
+  "description": "M6 corpus — Cabaretti Revels; in-hand parse.",
+  "seed": 61828,
+  "cards": {
+    "Cabaretti Revels": "Name:Cabaretti Revels\nManaCost:1 R G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSeek | TriggerDescription$ Whenever you cast a creature spell, seek a creature card with lesser mana value, then put it onto the battlefield.\nSVar:TrigSeek:DB$ Seek | Type$ Creature.cmcLTX | RememberFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nSVar:BuffedBy:Creature\nOracle:Whenever you cast a creature spell, seek a creature card with lesser mana value, then put it onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabaretti Revels"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

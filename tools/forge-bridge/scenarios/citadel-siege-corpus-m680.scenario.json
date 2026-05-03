@@ -1,0 +1,23 @@
+{
+  "id": "citadel-siege-corpus-m680",
+  "description": "M6 corpus — Citadel Siege; in-hand parse.",
+  "seed": 61925,
+  "cards": {
+    "Citadel Siege": "Name:Citadel Siege\nManaCost:2 W W\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Khans,Dragons | Defined$ You | SetChosenMode$ True | AILogic$ Dragons | ShowChoice$ ExceptSelf | SpellDescription$ As CARDNAME enters, choose Khans or Dragons.\nSVar:Khans:DB$ Pump | SpellDescription$ Khans\nSVar:Dragons:DB$ Pump | SpellDescription$ Dragons\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeKhans | AddTrigger$ KhansTrigger | Description$ • Khans — At the beginning of combat on your turn, put two +1/+1 counters on target creature you control.\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeDragons | AddTrigger$ DragonsTrigger | Description$ • Dragons — At the beginning of combat on each opponent's turn, tap target creature that player controls.\nSVar:KhansTrigger:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ Boost | Secondary$ True | TriggerDescription$ At the beginning of combat on your turn, put two +1/+1 counters on target creature you control.\nSVar:Boost:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 2\nSVar:DragonsTrigger:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | ValidPlayer$ Opponent | Execute$ TapCreature | Secondary$ True | TriggerDescription$ At the beginning of combat on each opponent's turn, tap target creature that player controls.\nSVar:TapCreature:DB$ Tap | ValidTgts$ Creature.ActivePlayerCtrl | TgtPrompt$ Choose target creature the active player controls.\nDeckHas:Ability$Counters\nOracle:As Citadel Siege enters, choose Khans or Dragons.\\n• Khans — At the beginning of combat on your turn, put two +1/+1 counters on target creature you control.\\n• Dragons — At the beginning of combat on each opponent's turn, tap target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Citadel Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jon-irenicus-the-exile-corpus-m680",
+  "description": "M6 corpus — Jon Irenicus, the Exile; in-hand parse.",
+  "seed": 63048,
+  "cards": {
+    "Jon Irenicus, the Exile": "Name:Jon Irenicus, the Exile\nManaCost:2 U B\nTypes:Legendary Creature Elf Wizard\nPT:3/5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your end step, draw a card if your library has more cards in it than target opponent's library. Otherwise, each opponent mills five cards.\nSVar:TrigBranch:DB$ Branch | ValidTgts$ Opponent | BranchConditionSVar$ X | BranchConditionSVarCompare$ GEY | TrueSubAbility$ Draw | FalseSubAbility$ Mill\nSVar:Draw:DB$ Draw\nSVar:Mill:DB$ Mill | Defined$ Opponent | NumCards$ 5\nSVar:X:Count$ValidLibrary Card.YouOwn\nSVar:Y:Count$ValidLibrary Card.TargetedPlayerOwn\nDeckHas:Ability$Mill\nOracle:At the beginning of your end step, draw a card if your library has more cards in it than target opponent's library. Otherwise, each opponent mills five cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jon Irenicus, the Exile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

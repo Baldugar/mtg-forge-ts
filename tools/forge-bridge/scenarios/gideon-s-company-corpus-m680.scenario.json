@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-company-corpus-m680",
+  "description": "M6 corpus — Gideon's Company; in-hand parse.",
+  "seed": 62639,
+  "cards": {
+    "Gideon's Company": "Name:Gideon's Company\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/3\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, you put two +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nA:AB$ PutCounter | Cost$ 3 W | ValidTgts$ Planeswalker.Gideon | TgtPrompt$ Select target Gideon planeswalker. | CounterType$ LOYALTY | CounterNum$ 1 | SpellDescription$ Put a loyalty counter on target Gideon planeswalker.\nDeckHints:Ability$LifeGain & Type$Gideon\nDeckHas:Ability$Counters\nOracle:Whenever you gain life, put two +1/+1 counters on Gideon's Company.\\n{3}{W}: Put a loyalty counter on target Gideon planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Company"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

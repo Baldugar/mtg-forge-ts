@@ -1,0 +1,23 @@
+{
+  "id": "cait-sith-fortune-teller-corpus-m680",
+  "description": "M6 corpus — Cait Sith, Fortune Teller; in-hand parse.",
+  "seed": 61832,
+  "cards": {
+    "Cait Sith, Fortune Teller": "Name:Cait Sith, Fortune Teller\nManaCost:3 R\nTypes:Legendary Artifact Creature Cat Moogle\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Lucky Slots — At the beginning of combat on your turn, scry 1, then exile the top card of your library. You may play that card this turn. When you exile a card this way, target creature you control gets +X/+0 until end of turn, where X is that card's mana value.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffectYou\nSVar:DBEffectYou:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBImmediateTrigger | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | EffectZone$ Command | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ TrigPump | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | SpellDescription$ When you exile a card this way, target creature you control gets +X/+0 until end of turn, where X is that card's mana value.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardManaCost\nOracle:Lucky Slots — At the beginning of combat on your turn, scry 1, then exile the top card of your library. You may play that card this turn. When you exile a card this way, target creature you control gets +X/+0 until end of turn, where X is that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cait Sith, Fortune Teller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

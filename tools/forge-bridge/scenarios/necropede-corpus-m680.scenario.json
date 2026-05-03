@@ -1,0 +1,23 @@
+{
+  "id": "necropede-corpus-m680",
+  "description": "M6 corpus — Necropede; in-hand parse.",
+  "seed": 63529,
+  "cards": {
+    "Necropede": "Name:Necropede\nManaCost:2\nTypes:Artifact Creature Phyrexian Insect\nPT:1/1\nK:Infect\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME dies, you may put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nOracle:Infect (This creature deals damage to creatures in the form of -1/-1 counters and to players in the form of poison counters.)\\nWhen Necropede dies, you may put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necropede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

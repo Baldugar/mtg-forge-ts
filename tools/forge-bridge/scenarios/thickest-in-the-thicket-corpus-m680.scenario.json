@@ -1,0 +1,23 @@
+{
+  "id": "thickest-in-the-thicket-corpus-m680",
+  "description": "M6 corpus — Thickest in the Thicket; in-hand parse.",
+  "seed": 64702,
+  "cards": {
+    "Thickest in the Thicket": "Name:Thickest in the Thicket\nManaCost:3 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put X +1/+1 counters on target creature, where X is that creature's power.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, draw two cards if you control the creature with the greatest power or tied for the greatest power.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | ConditionCheckSVar$ Y | ConditionSVarCompare$ GEZ\nSVar:X:Targeted$CardPower\nSVar:Y:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:Z:Count$Valid Creature.YouDontCtrl$GreatestCardPower\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Thickest in the Thicket enters, put X +1/+1 counters on target creature, where X is that creature's power.\\nAt the beginning of your end step, draw two cards if you control the creature with the greatest power or tied for the greatest power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thickest in the Thicket"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

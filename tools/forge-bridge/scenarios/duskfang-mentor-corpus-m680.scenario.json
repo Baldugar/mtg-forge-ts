@@ -1,0 +1,23 @@
+{
+  "id": "duskfang-mentor-corpus-m680",
+  "description": "M6 corpus — Duskfang Mentor; in-hand parse.",
+  "seed": 62259,
+  "cards": {
+    "Duskfang Mentor": "Name:Duskfang Mentor\nManaCost:2 B\nTypes:Creature Human Cleric\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a lifelink counter on target non-Human creature you control.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature.nonHuman+YouCtrl | TgtPrompt$ Select target non-Human creature | CounterType$ Lifelink | CounterNum$ 1\nA:AB$ PutCounterAll | Cost$ 1 B T | ValidCards$ Creature.YouCtrl+withLifelink | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each creature you control with lifelink.\nDeckHas:Ability$Counters|LifeGain\nOracle:When Duskfang Mentor enters, put a lifelink counter on target non-Human creature you control.\\n{1}{B}, {T}: Put a +1/+1 counter on each creature you control with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskfang Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

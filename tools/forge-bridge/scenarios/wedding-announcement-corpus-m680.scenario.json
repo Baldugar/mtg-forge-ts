@@ -1,0 +1,23 @@
+{
+  "id": "wedding-announcement-corpus-m680",
+  "description": "M6 corpus — Wedding Announcement; in-hand parse.",
+  "seed": 65018,
+  "cards": {
+    "Wedding Announcement": "Name:Wedding Announcement\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put an invitation counter on CARDNAME. If you attacked with two or more creatures this turn, draw a card. Otherwise, create a 1/1 white Human creature token. Then if CARDNAME has three or more invitation counters on it, transform it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ INVITATION | CounterNum$ 1 | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE2 | TrueSubAbility$ DBDraw | FalseSubAbility$ DBToken\nSVar:X:Count$AttackersDeclared\nSVar:DBDraw:DB$ Draw | SubAbility$ DBTransform\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionDefined$ Self | ConditionPresent$ Card.counters_GE3_INVITATION | Mode$ Transform\nDeckHas:Ability$Counters|Token\nAlternateMode:DoubleFaced\nOracle:At the beginning of your end step, put an invitation counter on Wedding Announcement. If you attacked with two or more creatures this turn, draw a card. Otherwise, create a 1/1 white Human creature token. Then if Wedding Announcement has three or more invitation counters on it, transform it.\n\nALTERNATE\n\nName:Wedding Festivity\nManaCost:no cost\nColors:white\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wedding Announcement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phylactery-lich-corpus-m680",
+  "description": "M6 corpus — Phylactery Lich; in-hand parse.",
+  "seed": 63740,
+  "cards": {
+    "Phylactery Lich": "Name:Phylactery Lich\nManaCost:B B B\nTypes:Creature Zombie\nPT:5/5\nK:Indestructible\nK:ETBReplacement:Other:TrigChooseArtifact\nSVar:TrigChooseArtifact:DB$ ChooseCard | Choices$ Artifact.YouCtrl | Mandatory$ True | SubAbility$ DBPutCounter | AILogic$ Phylactery | SpellDescription$ As CARDNAME enters, put a phylactery counter on an artifact you control.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ PHYLACTERY | CounterNum$ 1 | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Permanent.counters_GE1_PHYLACTERY+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no permanents with phylactery counters on them, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Artifact.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Artifact\nOracle:Indestructible\\nAs Phylactery Lich enters, put a phylactery counter on an artifact you control.\\nWhen you control no permanents with phylactery counters on them, sacrifice Phylactery Lich.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phylactery Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

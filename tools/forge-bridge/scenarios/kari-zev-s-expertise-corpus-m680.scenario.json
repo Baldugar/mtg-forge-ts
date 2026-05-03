@@ -1,0 +1,23 @@
+{
+  "id": "kari-zev-s-expertise-corpus-m680",
+  "description": "M6 corpus — Kari Zev's Expertise; in-hand parse.",
+  "seed": 63078,
+  "cards": {
+    "Kari Zev's Expertise": "Name:Kari Zev's Expertise\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature,Vehicle | TgtPrompt$ Select target creature or Vehicle | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBCast | SpellDescription$ Gain control of target creature or Vehicle until end of turn. Untap it. It gains haste until end of turn. You may cast a spell with mana value 2 or less from your hand without paying its mana cost.\nSVar:DBCast:DB$ Play | ValidZone$ Hand | Valid$ Card.YouOwn+nonLand | ValidSA$ Spell.cmcLE2 | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ 1\nOracle:Gain control of target creature or Vehicle until end of turn. Untap it. It gains haste until end of turn.\\nYou may cast a spell with mana value 2 or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kari Zev's Expertise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

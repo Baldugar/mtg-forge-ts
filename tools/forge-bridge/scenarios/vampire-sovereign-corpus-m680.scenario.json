@@ -1,0 +1,23 @@
+{
+  "id": "vampire-sovereign-corpus-m680",
+  "description": "M6 corpus — Vampire Sovereign; in-hand parse.",
+  "seed": 64886,
+  "cards": {
+    "Vampire Sovereign": "Name:Vampire Sovereign\nManaCost:3 B B\nTypes:Creature Vampire Noble\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBite | TriggerDescription$ When CARDNAME enters, target opponent loses 3 life and you gain 3 life.\nSVar:TrigBite:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses 3 life and you gain 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nOracle:Flying\\nWhen Vampire Sovereign enters, target opponent loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

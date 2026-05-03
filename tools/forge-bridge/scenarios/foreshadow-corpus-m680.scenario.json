@@ -1,0 +1,23 @@
+{
+  "id": "foreshadow-corpus-m680",
+  "description": "M6 corpus — Foreshadow; in-hand parse.",
+  "seed": 62537,
+  "cards": {
+    "Foreshadow": "Name:Foreshadow\nManaCost:1 U\nTypes:Instant\nA:SP$ NameCard | SubAbility$ DBMill | SpellDescription$ Choose a card name, then target opponent mills a card. If a card with the chosen name was milled this way, you draw a card. Draw a card at the beginning of the next turn's upkeep.\nSVar:DBMill:DB$ Mill | ValidTgts$ Opponent | NumCards$ 1 | RememberMilled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | SubAbility$ DBCleanup | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Mill\nOracle:Choose a card name, then target opponent mills a card. If a card with the chosen name was milled this way, you draw a card.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foreshadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

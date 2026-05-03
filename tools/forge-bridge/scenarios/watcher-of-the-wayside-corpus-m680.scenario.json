@@ -1,0 +1,23 @@
+{
+  "id": "watcher-of-the-wayside-corpus-m680",
+  "description": "M6 corpus — Watcher of the Wayside; in-hand parse.",
+  "seed": 65006,
+  "cards": {
+    "Watcher of the Wayside": "Name:Watcher of the Wayside\nManaCost:3\nTypes:Artifact Creature Golem\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters, target player mills two cards. You gain 2 life. (To mill two cards, a player puts the top two cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nOracle:When this creature enters, target player mills two cards. You gain 2 life. (To mill two cards, a player puts the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Watcher of the Wayside"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scrabbling-skullcrab-corpus-m680",
+  "description": "M6 corpus — Scrabbling Skullcrab; in-hand parse.",
+  "seed": 64155,
+  "cards": {
+    "Scrabbling Skullcrab": "Name:Scrabbling Skullcrab\nManaCost:U\nTypes:Creature Crab Skeleton\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | ValidTgts$ Player | TgtPrompt$ Select target player\nDeckNeeds:Type$Enchantment\nOracle:Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrabbling Skullcrab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

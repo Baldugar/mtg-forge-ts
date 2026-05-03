@@ -1,0 +1,23 @@
+{
+  "id": "thunderwave-corpus-m680",
+  "description": "M6 corpus — Thunderwave; in-hand parse.",
+  "seed": 64743,
+  "cards": {
+    "Thunderwave": "Name:Thunderwave\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBSDamage,10-19:DBChooseCard,20:DBLDamage | SpellDescription$ Roll a d20.\nSVar:DBSDamage:DB$ DamageAll | ValidCards$ Creature | NumDmg$ 3 | SpellDescription$ 1—9 VERT CARDNAME deals 3 damage to each creature.\nSVar:DBChooseCard:DB$ ChooseCard | Choices$ Creature | ChoiceTitle$ You may choose a creature | ChoiceOptional$ True | SubAbility$ DBMDamage\nSVar:DBMDamage:DB$ DamageAll | NumDmg$ 3 | ValidCards$ Creature.nonChosenCard | SpellDescription$ 10—19 VERT You may choose a creature. CARDNAME deals 3 damage to each creature not chosen this way.\nSVar:DBLDamage:DB$ DamageAll | ValidCards$ Creature.OppCtrl | NumDmg$ 6 | SpellDescription$ 20 VERT CARDNAME deals 6 damage to each creature your opponents control.\nOracle:Roll a d20.\\n1—9 | Thunderwave deals 3 damage to each creature.\\n10—19 | You may choose a creature. Thunderwave deals 3 damage to each creature not chosen this way.\\n20 | Thunderwave deals 6 damage to each creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderwave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

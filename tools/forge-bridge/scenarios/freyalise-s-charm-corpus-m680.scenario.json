@@ -1,0 +1,23 @@
+{
+  "id": "freyalise-s-charm-corpus-m680",
+  "description": "M6 corpus — Freyalise's Charm; in-hand parse.",
+  "seed": 62567,
+  "cards": {
+    "Freyalise's Charm": "Name:Freyalise's Charm\nManaCost:G G\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ G G | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever an opponent casts a black spell, you may pay {G}{G}. If you do, you draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ G G | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a black spell, you may pay {G}{G}. If you do, you draw a card.\\n{G}{G}: Return Freyalise's Charm to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freyalise's Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

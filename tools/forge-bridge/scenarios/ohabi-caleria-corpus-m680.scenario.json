@@ -1,0 +1,23 @@
+{
+  "id": "ohabi-caleria-corpus-m680",
+  "description": "M6 corpus — Ohabi Caleria; in-hand parse.",
+  "seed": 63610,
+  "cards": {
+    "Ohabi Caleria": "Name:Ohabi Caleria\nManaCost:1 G W\nTypes:Legendary Creature Elf Archer\nPT:1/3\nK:Reach\nS:Mode$ UntapOtherPlayer | ValidCard$ Archer.YouCtrl | Description$ Untap all Archers you control during each other player's untap step.\nT:Mode$ DamageDone | ValidSource$ Archer.YouCtrl+inZoneBattlefield | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ DBDraw | TriggerDescription$ Whenever an Archer you control deals damage to a creature, you may pay {2}. If you do, draw a card.\nSVar:DBDraw:AB$ Draw | Cost$ 2\nOracle:Reach\\nUntap all Archers you control during each other player's untap step.\\nWhenever an Archer you control deals damage to a creature, you may pay {2}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ohabi Caleria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

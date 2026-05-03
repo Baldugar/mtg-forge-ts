@@ -1,0 +1,23 @@
+{
+  "id": "scattering-stroke-corpus-m680",
+  "description": "M6 corpus — Scattering Stroke; in-hand parse.",
+  "seed": 64146,
+  "cards": {
+    "Scattering Stroke": "Name:Scattering Stroke\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | RememberCounteredCMC$ True | SubAbility$ DBClash | SpellDescription$ Counter target spell. Clash with an opponent. If you win, at the beginning of your next main phase, you may add an amount of {C} equal to that spell's mana value. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Main1,Main2 | ValidPlayer$ You | Execute$ AddMana | OptionalDecider$ You | TriggerDescription$ At the beginning of your next main phase, you may add an amount of {C} equal to that spell's mana value. | RememberNumber$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AddMana:DB$ Mana | Produced$ C | Amount$ X\nSVar:X:Count$TriggerRememberAmount\nOracle:Counter target spell. Clash with an opponent. If you win, at the beginning of your next main phase, you may add an amount of {C} equal to that spell's mana value. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scattering Stroke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

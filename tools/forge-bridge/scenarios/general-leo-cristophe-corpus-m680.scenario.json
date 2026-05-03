@@ -1,0 +1,23 @@
+{
+  "id": "general-leo-cristophe-corpus-m680",
+  "description": "M6 corpus — General Leo Cristophe; in-hand parse.",
+  "seed": 62619,
+  "cards": {
+    "General Leo Cristophe": "Name:General Leo Cristophe\nManaCost:4 W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to one target creature card with mana value 3 or less from your graveyard to the battlefield. Then put a +1/+1 counter on CARDNAME for each creature you control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.cmcLE3+YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one target creature card with mana value 3 or less in your graveyard | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When General Leo Cristophe enters, return up to one target creature card with mana value 3 or less from your graveyard to the battlefield. Then put a +1/+1 counter on General Leo Cristophe for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "General Leo Cristophe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

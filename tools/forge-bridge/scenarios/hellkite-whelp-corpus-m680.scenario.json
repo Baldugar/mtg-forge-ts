@@ -1,0 +1,23 @@
+{
+  "id": "hellkite-whelp-corpus-m680",
+  "description": "M6 corpus — Hellkite Whelp; in-hand parse.",
+  "seed": 62817,
+  "cards": {
+    "Hellkite Whelp": "Name:Hellkite Whelp\nManaCost:4 R\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to target creature defending player controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | NumDmg$ 1\nOracle:Flying\\nWhenever Hellkite Whelp attacks, it deals 1 damage to target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellkite Whelp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

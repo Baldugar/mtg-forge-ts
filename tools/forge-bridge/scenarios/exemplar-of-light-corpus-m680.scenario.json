@@ -1,0 +1,23 @@
+{
+  "id": "exemplar-of-light-corpus-m680",
+  "description": "M6 corpus — Exemplar of Light; in-hand parse.",
+  "seed": 62387,
+  "cards": {
+    "Exemplar of Light": "Name:Exemplar of Light\nManaCost:2 W W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ CounterAddedOnce | CounterType$ P1P1 | ValidSource$ You | ValidCard$ Card.Self | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigDraw | TriggerDescription$ Whenever you put one or more +1/+1 counters on this creature, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Counters\nDeckHints:Ability$LifeGain\nOracle:Flying\\nWhenever you gain life, put a +1/+1 counter on this creature.\\nWhenever you put one or more +1/+1 counters on this creature, draw a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exemplar of Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

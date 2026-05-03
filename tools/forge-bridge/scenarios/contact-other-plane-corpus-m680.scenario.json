@@ -1,0 +1,23 @@
+{
+  "id": "contact-other-plane-corpus-m680",
+  "description": "M6 corpus — Contact Other Plane; in-hand parse.",
+  "seed": 61995,
+  "cards": {
+    "Contact Other Plane": "Name:Contact Other Plane\nManaCost:3 U\nTypes:Instant\nA:SP$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:DBDraw2,10-19:DBScry2,20:DBScry3 | SpellDescription$ Roll a d20.\nSVar:DBDraw2:DB$ Draw | NumCards$ 2 | SpellDescription$ 1—9 VERT Draw two cards.\nSVar:DBScry2:DB$ Scry | ScryNum$ 2 | SubAbility$ DBDraw2 | SpellDescription$ 10—19 VERT Scry 2, then draw two cards.\nSVar:DBScry3:DB$ Scry | ScryNum$ 3 | SubAbility$ DBDraw3 | SpellDescription$ 20 VERT Scry 3, then draw three cards.\nSVar:DBDraw3:DB$ Draw | NumCards$ 3\nOracle:Roll a d20.\\n1—9 | Draw two cards.\\n10—19 | Scry 2, then draw two cards.\\n20 | Scry 3, then draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contact Other Plane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "psychomancer-corpus-m680",
+  "description": "M6 corpus — Psychomancer; in-hand parse.",
+  "seed": 63831,
+  "cards": {
+    "Psychomancer": "Name:Psychomancer\nManaCost:1 B\nTypes:Artifact Creature Necron Wizard\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self,Artifact.YouCtrl+Other+!token | Execute$ TrigLoseLife | TriggerDescription$ Harbinger of Despair — Whenever CARDNAME or another nontoken artifact you control is put into a graveyard from the battlefield or is put into exile from the battlefield, target opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nDeckHints:Ability$Sacrifice & Type$Artifact\nOracle:Flying\\nHarbinger of Despair — Whenever Psychomancer or another nontoken artifact you control is put into a graveyard from the battlefield or is put into exile from the battlefield, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

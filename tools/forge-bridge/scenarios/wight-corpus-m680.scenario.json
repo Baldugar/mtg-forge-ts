@@ -1,0 +1,23 @@
+{
+  "id": "wight-corpus-m680",
+  "description": "M6 corpus — Wight; in-hand parse.",
+  "seed": 65039,
+  "cards": {
+    "Wight": "Name:Wight\nManaCost:1 B\nTypes:Creature Zombie Soldier\nPT:3/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Life Drain — Whenever a creature dealt damage by CARDNAME this turn dies, create a tapped 2/2 black Zombie creature token and exile that card.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenTapped$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredCard\nDeckHas:Ability$Token\nOracle:Wight enters tapped.\\nLife Drain — Whenever a creature dealt damage by Wight this turn dies, create a tapped 2/2 black Zombie creature token and exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

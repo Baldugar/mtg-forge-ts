@@ -1,0 +1,23 @@
+{
+  "id": "dorothea-vengeful-victim-corpus-m680",
+  "description": "M6 corpus — Dorothea, Vengeful Victim; in-hand parse.",
+  "seed": 62215,
+  "cards": {
+    "Dorothea, Vengeful Victim": "Name:Dorothea, Vengeful Victim\nManaCost:W U\nTypes:Legendary Creature Spirit\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ When CARDNAME attacks or blocks, sacrifice it at end of combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrig | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigSacrifice | TriggerDescription$ Sacrifice CARDNAME at end of combat.\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ Self | Controller$ You\nSVar:SacrificeEndCombat:True\nK:Disturb:1 W U\nDeckHas:Ability$Sacrifice|Graveyard|Token\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhen Dorothea, Vengeful Victim attacks or blocks, sacrifice it at end of combat.\\nDisturb {1}{W}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Dorothea's Retribution\nManaCost:no cost\nColors:white,blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ AttackTrigger | AddSVar$ AE | Description$ Enchanted creature has \"Whenever this creature attacks, create a 4/4 white Spirit creature token with flying that's tapped and attacking. Sacrifice that token at end of combat.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, create a 4/4 white Spirit creature token with flying that's tapped and attacking. Sacrifice that token at end of combat.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_spirit_flying | TokenTapped$ True | TokenAttacking$ True | AtEOT$ SacrificeCombat\nSVar:AE:SVar:HasAttackEffect:TRUE\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature has \"Whenever this creature attacks, create a 4/4 white Spirit creature token with flying that's tapped and attacking. Sacrifice that token at end of combat.\"\\nIf Dorothea's Retribution would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dorothea, Vengeful Victim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "railway-brawler-corpus-m680",
+  "description": "M6 corpus — Railway Brawler; in-hand parse.",
+  "seed": 63883,
+  "cards": {
+    "Railway Brawler": "Name:Railway Brawler\nManaCost:3 G G\nTypes:Creature Rhino Warrior\nPT:5/5\nK:Reach\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCard | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardPower\nK:Plot:3 G\nDeckHas:Ability$Counters\nOracle:Reach, trample\\nWhenever another creature you control enters, put X +1/+1 counters on it, where X is its power.\\nPlot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Railway Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

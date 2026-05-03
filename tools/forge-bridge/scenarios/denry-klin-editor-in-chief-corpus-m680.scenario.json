@@ -1,0 +1,23 @@
+{
+  "id": "denry-klin-editor-in-chief-corpus-m680",
+  "description": "M6 corpus — Denry Klin, Editor in Chief; in-hand parse.",
+  "seed": 62149,
+  "cards": {
+    "Denry Klin, Editor in Chief": "Name:Denry Klin, Editor in Chief\nManaCost:2 W U\nTypes:Legendary Creature Cat Advisor\nPT:2/2\nK:ETBReplacement:Other:CounterChoice\nSVar:CounterChoice:DB$ PutCounter | ETB$ True | CounterType$ P1P1,First Strike,Vigilance | SpellDescription$ CARDNAME enters with your choice of a +1/+1, first strike, or vigilance counter on it.\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | CheckSVar$ Count$CardCounters.ALL | Execute$ TrigPutCounters | TriggerDescription$ Whenever a nontoken creature you control enters, if NICKNAME has counters on it, put the same number of each kind of counter on that creature.\nSVar:TrigPutCounters:DB$ PutCounter | CounterType$ EachFromSource | EachFromSource$ Self | Defined$ TriggeredCardLKICopy\nDeckHas:Ability$Counters\nOracle:Denry Klin, Editor in Chief enters with your choice of a +1/+1, first strike, or vigilance counter on it.\\nWhenever a nontoken creature you control enters, if Denry has counters on it, put the same number of each kind of counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Denry Klin, Editor in Chief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

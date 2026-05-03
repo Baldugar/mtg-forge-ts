@@ -1,0 +1,23 @@
+{
+  "id": "cabaretti-courtyard-corpus-m680",
+  "description": "M6 corpus — Cabaretti Courtyard; in-hand parse.",
+  "seed": 61827,
+  "cards": {
+    "Cabaretti Courtyard": "Name:Cabaretti Courtyard\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerDescription$ When CARDNAME enters, sacrifice it. When you do, search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBSacrifice:DB$ Sacrifice | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ DBChangeZone | SubAbility$ DBCleanup | TriggerDescription$ Search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Mountain.Basic,Forest.Basic,Plains.Basic | ChangeTypeDesc$ basic Mountain, Forest, or Plains | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:When Cabaretti Courtyard enters, sacrifice it. When you do, search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabaretti Courtyard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

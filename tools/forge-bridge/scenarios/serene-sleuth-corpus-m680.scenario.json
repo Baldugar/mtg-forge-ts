@@ -1,0 +1,23 @@
+{
+  "id": "serene-sleuth-corpus-m680",
+  "description": "M6 corpus — Serene Sleuth; in-hand parse.",
+  "seed": 64211,
+  "cards": {
+    "Serene Sleuth": "Name:Serene Sleuth\nManaCost:1 W\nTypes:Creature Human Detective\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigInvestigateEach | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, investigate for each goaded creature you control. Then each creature you control is no longer goaded.\nSVar:TrigInvestigateEach:DB$ Investigate | Num$ Count$Valid Creature.IsGoaded+YouCtrl | SubAbility$ DBNoGoad\nSVar:DBNoGoad:DB$ Goad | NoLonger$ True | Defined$ Valid Creature.YouCtrl\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue\nOracle:When Serene Sleuth enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nAt the beginning of combat on your turn, investigate for each goaded creature you control. Then each creature you control is no longer goaded.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serene Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

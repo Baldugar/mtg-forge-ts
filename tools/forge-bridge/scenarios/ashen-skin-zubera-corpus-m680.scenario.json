@@ -1,0 +1,23 @@
+{
+  "id": "ashen-skin-zubera-corpus-m680",
+  "description": "M6 corpus — Ashen-Skin Zubera; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Ashen-Skin Zubera": "Name:Ashen-Skin Zubera\nManaCost:1 B\nTypes:Creature Zubera Spirit\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, target opponent discards a card for each Zubera that died this turn.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ X | Mode$ TgtChoose\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Zubera\nDeckHints:Type$Zubera\nOracle:When Ashen-Skin Zubera dies, target opponent discards a card for each Zubera that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashen-Skin Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

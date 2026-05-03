@@ -1,0 +1,23 @@
+{
+  "id": "bringer-of-the-red-dawn-corpus-m680",
+  "description": "M6 corpus — Bringer of the Red Dawn; in-hand parse.",
+  "seed": 61792,
+  "cards": {
+    "Bringer of the Red Dawn": "Name:Bringer of the Red Dawn\nManaCost:7 R R\nTypes:Creature Bringer\nPT:5/5\nK:Trample\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ W U B R G | Description$ You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may untap target creature and gain control of it until end of turn. That creature gains haste until end of turn.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature | SubAbility$ DBChange\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT\nOracle:You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost.\\nTrample\\nAt the beginning of your upkeep, you may untap target creature and gain control of it until end of turn. That creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bringer of the Red Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

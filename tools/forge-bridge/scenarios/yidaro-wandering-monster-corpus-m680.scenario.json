@@ -1,0 +1,23 @@
+{
+  "id": "yidaro-wandering-monster-corpus-m680",
+  "description": "M6 corpus — Yidaro, Wandering Monster; in-hand parse.",
+  "seed": 65110,
+  "cards": {
+    "Yidaro, Wandering Monster": "Name:Yidaro, Wandering Monster\nManaCost:5 R R\nTypes:Legendary Creature Dinosaur Turtle\nPT:8/8\nK:Haste\nK:Trample\nK:Cycling:1 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ DBEffect | TriggerDescription$ When you cycle CARDNAME, shuffle it into your library from your graveyard. If you've cycled a card named Yidaro, Wandering Monster four or more times this game, put it onto the battlefield from your graveyard instead. (Do this before you draw.)\nSVar:DBEffect:DB$ Effect | Duration$ Permanent | Name$ Wandering Effect | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE4 | TrueSubAbility$ DBChangeZone1 | FalseSubAbility$ DBChangeZone2\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCardLKICopy\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nSVar:X:Count$ValidCommand Effect.YouCtrl+namedWandering Effect\nOracle:Trample, haste\\nCycling {1}{R}\\nWhen you cycle Yidaro, Wandering Monster, shuffle it into your library from your graveyard. If you've cycled a card named Yidaro, Wandering Monster four or more times this game, put it onto the battlefield from your graveyard instead. (Do this before you draw.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yidaro, Wandering Monster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

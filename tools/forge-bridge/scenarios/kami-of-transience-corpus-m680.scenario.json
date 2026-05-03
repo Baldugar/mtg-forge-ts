@@ -1,0 +1,23 @@
+{
+  "id": "kami-of-transience-corpus-m680",
+  "description": "M6 corpus — Kami of Transience; in-hand parse.",
+  "seed": 63074,
+  "cards": {
+    "Kami of Transience": "Name:Kami of Transience\nManaCost:1 G\nTypes:Creature Spirit\nPT:2/2\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an enchantment spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of each end step, if an enchantment was put into your graveyard from the battlefield this turn, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Enchantment.YouOwn\nSVar:BuffedBy:Enchantment\nDeckHas:Ability$Counters\nDeckNeeds:Type$Enchantment\nOracle:Trample\\nWhenever you cast an enchantment spell, put a +1/+1 counter on Kami of Transience.\\nAt the beginning of each end step, if an enchantment was put into your graveyard from the battlefield this turn, you may return Kami of Transience from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kami of Transience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jabari-s-influence-corpus-m680",
+  "description": "M6 corpus — Jabari's Influence; in-hand parse.",
+  "seed": 63009,
+  "cards": {
+    "Jabari's Influence": "Name:Jabari's Influence\nManaCost:3 W W\nTypes:Instant\nA:SP$ GainControl | ValidTgts$ Creature.nonBlack+nonArtifact+attackedYouThisTurn | TgtPrompt$ Select target nonartifact, nonblack creature that attacked you this turn | ActivationPhases$ Main2->Cleanup | SubAbility$ DBPutCounter | SpellDescription$ Cast this spell only after combat. Gain control of target nonartifact, nonblack creature that attacked you this turn and put a -1/-0 counter on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ M1M0 | CounterNum$ 1\nOracle:Cast this spell only after combat.\\nGain control of target nonartifact, nonblack creature that attacked you this turn and put a -1/-0 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jabari's Influence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

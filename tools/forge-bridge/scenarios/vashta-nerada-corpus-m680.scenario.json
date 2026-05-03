@@ -1,0 +1,23 @@
+{
+  "id": "vashta-nerada-corpus-m680",
+  "description": "M6 corpus — Vashta Nerada; in-hand parse.",
+  "seed": 64893,
+  "cards": {
+    "Vashta Nerada": "Name:Vashta Nerada\nManaCost:2 B\nTypes:Creature Alien Horror\nPT:1/1\nK:Indestructible\nK:Shadow\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Morbid — At the beginning of each end step, if a creature died this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$Counters\nOracle:Indestructible\\nShadow (This creature can block or be blocked by only creatures with shadow.)\\nMorbid — At the beginning of each end step, if a creature died this turn, put a +1/+1 counter on Vashta Nerada.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vashta Nerada"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

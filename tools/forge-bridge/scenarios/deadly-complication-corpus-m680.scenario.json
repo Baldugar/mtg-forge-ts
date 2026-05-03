@@ -1,0 +1,23 @@
+{
+  "id": "deadly-complication-corpus-m680",
+  "description": "M6 corpus — Deadly Complication; in-hand parse.",
+  "seed": 62105,
+  "cards": {
+    "Deadly Complication": "Name:Deadly Complication\nManaCost:1 B R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDestroy,DBPutCounter | MinCharmNum$ 1 | CharmNum$ 2\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature | SpellDescription$ Destroy target creature.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.IsSuspected+YouCtrl | TgtPrompt$ Select target suspected creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBAlter | SpellDescription$ Put a +1/+1 counter on target suspected creature you control. You may have it become no longer suspected.\nSVar:DBAlter:DB$ AlterAttribute | Defined$ Targeted | Attributes$ Suspected | Activate$ False | Optional$ True\nDeckHas:Ability$Counters\nOracle:Choose one or both —\\n• Destroy target creature.\\n• Put a +1/+1 counter on target suspected creature you control. You may have it become no longer suspected.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadly Complication"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

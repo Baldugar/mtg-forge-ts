@@ -1,0 +1,23 @@
+{
+  "id": "chaos-mutation-corpus-m680",
+  "description": "M6 corpus — Chaos Mutation; in-hand parse.",
+  "seed": 61901,
+  "cards": {
+    "Chaos Mutation": "Name:Chaos Mutation\nManaCost:3 U R\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature | TgtPrompt$ Select any number of target creatures controlled by different players | TargetMin$ 0 | TargetMax$ MaxTgt | TargetsWithDifferentControllers$ True | SubAbility$ DBRepeatEach | RememberLKI$ True | SpellDescription$ Exile any number of target creatures controlled by different players.\nSVar:DBRepeatEach:DB$ RepeatEach | DefinedCards$ DirectRemembered | Zone$ Exile | UseImprinted$ True | RepeatSubAbility$ DBDig | SubAbility$ DBCleanup | SpellDescription$ For each creature exiled this way, its controller reveals cards from the top of their library until they reveal a creature card, puts that card onto the battlefield, then puts the rest on the bottom of their library in a random order.\nSVar:DBDig:DB$ DigUntil | Defined$ ImprintedController | Amount$ 1 | Valid$ Creature | ValidDescription$ creature | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:Exile any number of target creatures controlled by different players. For each creature exiled this way, its controller reveals cards from the top of their library until they reveal a creature card, puts that card onto the battlefield, then puts the rest on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaos Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

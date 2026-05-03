@@ -1,0 +1,23 @@
+{
+  "id": "a-vivi-ornitier-corpus-m680",
+  "description": "M6 corpus — A-Vivi Ornitier; in-hand parse.",
+  "seed": 64096,
+  "cards": {
+    "A-Vivi Ornitier": "Name:A-Vivi Ornitier\nManaCost:1 U R\nTypes:Legendary Creature Wizard\nPT:0/3\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | Amount$ X | SpellDescription$ Add X mana in any combination of {U} and/or {R}, where X is CARDNAME's power.\nSVar:X:Count$CardPower\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, put a +1/+1 counter on CARDNAME and it deals 1 damage to each opponent.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact|Instant|Sorcery|Enchantment\nOracle:{T}: Add X mana in any combination of {U} and/or {R}, where X is Vivi Ornitier's power.\\nWhenever you cast a noncreature spell, put a +1/+1 counter on Vivi Ornitier and it deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Vivi Ornitier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

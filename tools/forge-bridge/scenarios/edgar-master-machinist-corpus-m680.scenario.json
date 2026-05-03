@@ -1,0 +1,23 @@
+{
+  "id": "edgar-master-machinist-corpus-m680",
+  "description": "M6 corpus — Edgar, Master Machinist; in-hand parse.",
+  "seed": 62286,
+  "cards": {
+    "Edgar, Master Machinist": "Name:Edgar, Master Machinist\nManaCost:2 R W\nTypes:Legendary Creature Human Artificer Noble\nPT:2/4\nS:Mode$ Continuous | Affected$ Artifact.nonLand+YouOwn | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ Once during each of your turns, you may cast an artifact spell from your graveyard. If you cast a spell this way, that artifact enters tapped.\nT:Mode$ SpellCast | ValidCard$ Card.CastSa Spell.MayPlaySource | Execute$ TrigEffect | Static$ True | TriggerZones$ Battlefield\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | Origin$ Stack | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tools — Whenever NICKNAME attacks, it gets +X/+0 until end of turn, where X is the greatest mana value among artifacts you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Artifact.YouCtrl$GreatestCardManaCost\nDeckHints:Type$Artifact\nOracle:Once during each of your turns, you may cast an artifact spell from your graveyard. If you cast a spell this way, that artifact enters tapped.\\nTools — Whenever Edgar attacks, it gets +X/+0 until end of turn, where X is the greatest mana value among artifacts you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edgar, Master Machinist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

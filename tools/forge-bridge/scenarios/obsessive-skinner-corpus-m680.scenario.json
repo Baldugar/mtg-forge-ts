@@ -1,0 +1,23 @@
+{
+  "id": "obsessive-skinner-corpus-m680",
+  "description": "M6 corpus — Obsessive Skinner; in-hand parse.",
+  "seed": 63599,
+  "cards": {
+    "Obsessive Skinner": "Name:Obsessive Skinner\nManaCost:1 G\nTypes:Creature Human Rogue\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Delirium$ True | Execute$ TrigPut | TriggerZones$ Battlefield | TriggerDescription$ Delirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, put a +1/+1 counter on target creature.\nSVar:TrigPut:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:When Obsessive Skinner enters, put a +1/+1 counter on target creature.\\nDelirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obsessive Skinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

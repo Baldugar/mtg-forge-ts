@@ -1,0 +1,23 @@
+{
+  "id": "summoner-s-sending-corpus-m680",
+  "description": "M6 corpus — Summoner's Sending; in-hand parse.",
+  "seed": 64511,
+  "cards": {
+    "Summoner's Sending": "Name:Summoner's Sending\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may exile target creature card from a graveyard. If you do, create a 1/1 white Spirit creature token with flying. Put a +1/+1 counter on it if the exiled card's mana value is 4 or greater.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | SubAbility$ DBToken | RememberChanged$ True\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | ImprintTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card.cmcGE4 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:At the beginning of your end step, you may exile target creature card from a graveyard. If you do, create a 1/1 white Spirit creature token with flying. Put a +1/+1 counter on it if the exiled card's mana value is 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summoner's Sending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hammer-jammer-corpus-m680",
+  "description": "M6 corpus — Hammer Jammer; in-hand parse.",
+  "seed": 62780,
+  "cards": {
+    "Hammer Jammer": "Name:Hammer Jammer\nManaCost:3 R\nTypes:Creature Goblin Warrior\nPT:0/0\nK:ETBReplacement:Other:RollCounters\nSVar:RollCounters:DB$ RollDice | ResultSVar$ Result | SubAbility$ DBCounters | SpellDescription$ As CARDNAME enters, roll a six-sided die. CARDNAME enters with a number of +1/+1 counters on it equal to the total of those results.\nSVar:DBCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Result | ETB$ True\nT:Mode$ RolledDie | Execute$ TrigRemove | ValidPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you roll a die, remove all +1/+1 counters from CARDNAME, then put a number of +1/+1 counters on it equal to the result.\nSVar:TrigRemove:DB$ RemoveCounterAll | ValidCards$ Card.Self | CounterType$ P1P1 | AllCounters$ True | SubAbility$ TrigCounters\nSVar:X:TriggerCount$Result\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nDeckHas:Ability$Counters\nOracle:As Hammer Jammer enters, roll a six-sided die. Hammer Jammer enters with a number of +1/+1 counters on it equal to the result.\\nWhenever you roll a die, remove all +1/+1 counters from Hammer Jammer, then put a number of +1/+1 counters on it equal to the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hammer Jammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

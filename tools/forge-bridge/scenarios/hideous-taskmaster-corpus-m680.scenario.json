@@ -1,0 +1,23 @@
+{
+  "id": "hideous-taskmaster-corpus-m680",
+  "description": "M6 corpus — Hideous Taskmaster; in-hand parse.",
+  "seed": 62829,
+  "cards": {
+    "Hideous Taskmaster": "Name:Hideous Taskmaster\nManaCost:6 R\nTypes:Creature Eldrazi\nPT:7/2\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TakeOneEach | TriggerDescription$ When you cast this spell, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain trample, haste, and annihilator 1 until end of turn.\nSVar:TakeOneEach:DB$ GainControl | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | LoseControl$ EOT | Untap$ True | AddKWs$ Trample & Haste & Annihilator:1\nSVar:OneEach:PlayerCountOpponents$Amount\nK:Trample\nK:Haste\nK:Annihilator:1\nSVar:PlayMain1:TRUE\nOracle:Devoid\\nWhen you cast this spell, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain trample, haste, and annihilator 1 until end of turn.\\nTrample, haste, annihilator 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hideous Taskmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

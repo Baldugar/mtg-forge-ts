@@ -1,0 +1,23 @@
+{
+  "id": "creosote-heath-corpus-m680",
+  "description": "M6 corpus — Creosote Heath; in-hand parse.",
+  "seed": 62035,
+  "cards": {
+    "Creosote Heath": "Name:Creosote Heath\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo W G | SpellDescription$ Add {W} or {G}.\nOracle:Creosote Heath enters tapped.\\nWhen Creosote Heath enters, it deals 1 damage to target opponent.\\n{T}:Add {W} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creosote Heath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

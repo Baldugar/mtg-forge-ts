@@ -1,0 +1,23 @@
+{
+  "id": "verdant-sun-s-avatar-corpus-m680",
+  "description": "M6 corpus — Verdant Sun's Avatar; in-hand parse.",
+  "seed": 64930,
+  "cards": {
+    "Verdant Sun's Avatar": "Name:Verdant Sun's Avatar\nManaCost:5 G G\nTypes:Creature Dinosaur Avatar\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.YouCtrl+Other | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME or another creature you control enters, you gain life equal to that creature's toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Life\nSVar:Life:TriggeredCard$CardToughness\nOracle:Whenever Verdant Sun's Avatar or another creature you control enters, you gain life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdant Sun's Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

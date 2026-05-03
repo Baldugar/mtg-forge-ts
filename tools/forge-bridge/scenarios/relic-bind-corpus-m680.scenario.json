@@ -1,0 +1,23 @@
+{
+  "id": "relic-bind-corpus-m680",
+  "description": "M6 corpus — Relic Bind; in-hand parse.",
+  "seed": 63947,
+  "cards": {
+    "Relic Bind": "Name:Relic Bind\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Artifact.OppCtrl:artifact an opponent controls\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever enchanted artifact becomes tapped, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDamage,DBGain\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target player or planeswalker.\nSVar:DBGain:DB$ GainLife | ValidTgts$ Player | LifeAmount$ 1 | SpellDescription$ Target player gains 1 life.\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:Enchant artifact an opponent controls\\nWhenever enchanted artifact becomes tapped, choose one —\\n• Relic Bind deals 1 damage to target player or planeswalker.\\n• Target player gains 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic Bind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oran-rief-hydra-corpus-m680",
+  "description": "M6 corpus — Oran-Rief Hydra; in-hand parse.",
+  "seed": 63639,
+  "cards": {
+    "Oran-Rief Hydra": "Name:Oran-Rief Hydra\nManaCost:4 G G\nTypes:Creature Hydra\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on CARDNAME. If that land is a Forest, put two +1/+1 counters on CARDNAME instead.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$Valid Forest/Plus.1\nSVar:BuffedBy:Land\nOracle:Trample\\nLandfall — Whenever a land you control enters, put a +1/+1 counter on Oran-Rief Hydra. If that land is a Forest, put two +1/+1 counters on Oran-Rief Hydra instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oran-Rief Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

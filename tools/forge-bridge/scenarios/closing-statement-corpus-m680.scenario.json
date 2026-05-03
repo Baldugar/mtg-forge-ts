@@ -1,0 +1,23 @@
+{
+  "id": "closing-statement-corpus-m680",
+  "description": "M6 corpus — Closing Statement; in-hand parse.",
+  "seed": 61942,
+  "cards": {
+    "Closing Statement": "Name:Closing Statement\nManaCost:3 W B\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | Phases$ End of Turn | PlayerTurn$ You | EffectZone$ All | Description$ This spell costs {2} less to cast during your end step.\nA:SP$ Destroy | ValidTgts$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | TgtPrompt$ Select target creature or planeswalker you don't control | SubAbility$ DBPutCounter | SpellDescription$ Destroy target creature or planeswalker you don't control. Put a +1/+1 counter on up to one target creature you control.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:This spell costs {2} less to cast during your end step.\\nDestroy target creature or planeswalker you don't control. Put a +1/+1 counter on up to one target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Closing Statement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

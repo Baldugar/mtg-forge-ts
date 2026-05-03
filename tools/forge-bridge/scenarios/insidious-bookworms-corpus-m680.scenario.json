@@ -1,0 +1,23 @@
+{
+  "id": "insidious-bookworms-corpus-m680",
+  "description": "M6 corpus — Insidious Bookworms; in-hand parse.",
+  "seed": 62946,
+  "cards": {
+    "Insidious Bookworms": "Name:Insidious Bookworms\nManaCost:B\nTypes:Creature Worm\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, you may pay {1}{B}. If you do, target player discards a card at random.\nSVar:TrigDiscard:AB$ Discard | Cost$ 1 B | NumCards$ 1 | ValidTgts$ Player | NumCards$ 1 | Mode$ Random\nOracle:When Insidious Bookworms dies, you may pay {1}{B}. If you do, target player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insidious Bookworms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brawl-corpus-m680",
+  "description": "M6 corpus — Brawl; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "Brawl": "Name:Brawl\nManaCost:3 R R\nTypes:Instant\nA:SP$ AnimateAll | ValidCards$ Creature | Abilities$ ThrowPunch | SpellDescription$ Until end of turn, all creatures gain \"{T}: This creature deals damage equal to its power to target creature.\"\nSVar:ThrowPunch:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ BrawlX | SpellDescription$ CARDNAME deals damage equal to its power to target creature.\nSVar:BrawlX:Count$CardPower\nAI:RemoveDeck:All\nOracle:Until end of turn, all creatures gain \"{T}: This creature deals damage equal to its power to target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

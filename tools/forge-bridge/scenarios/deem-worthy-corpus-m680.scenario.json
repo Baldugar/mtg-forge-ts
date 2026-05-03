@@ -1,0 +1,23 @@
+{
+  "id": "deem-worthy-corpus-m680",
+  "description": "M6 corpus — Deem Worthy; in-hand parse.",
+  "seed": 62134,
+  "cards": {
+    "Deem Worthy": "Name:Deem Worthy\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 7 | SpellDescription$ CARDNAME deals 7 damage to target creature.\nK:Cycling:3 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may have it deal 2 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 2\nOracle:Deem Worthy deals 7 damage to target creature.\\nCycling {3}{R} ({3}{R}, Discard this card: Draw a card.)\\nWhen you cycle Deem Worthy, you may have it deal 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deem Worthy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

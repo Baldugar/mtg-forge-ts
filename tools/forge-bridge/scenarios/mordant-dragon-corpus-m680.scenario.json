@@ -1,0 +1,23 @@
+{
+  "id": "mordant-dragon-corpus-m680",
+  "description": "M6 corpus — Mordant Dragon; in-hand parse.",
+  "seed": 63473,
+  "cards": {
+    "Mordant Dragon": "Name:Mordant Dragon\nManaCost:3 R R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nA:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may have it deal that much damage to target creature that player controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredTarget | NumDmg$ X\nSVar:X:Count$CardPower\nSVar:MustBeBlocked:True\nOracle:Flying\\n{1}{R}: Mordant Dragon gets +1/+0 until end of turn.\\nWhenever Mordant Dragon deals combat damage to a player, you may have it deal that much damage to target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mordant Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

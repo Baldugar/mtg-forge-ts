@@ -1,0 +1,23 @@
+{
+  "id": "dunes-of-the-dead-corpus-m680",
+  "description": "M6 corpus — Dunes of the Dead; in-hand parse.",
+  "seed": 62257,
+  "cards": {
+    "Dunes of the Dead": "Name:Dunes of the Dead\nManaCost:no cost\nTypes:Land Desert\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ TriggeredCardController\nSVar:SacMe:1\nDeckHas:Ability$Token\nOracle:{T}: Add {C}.\\nWhen Dunes of the Dead is put into a graveyard from the battlefield, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dunes of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

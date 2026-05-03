@@ -1,0 +1,23 @@
+{
+  "id": "mirror-shield-hoplite-corpus-m680",
+  "description": "M6 corpus — Mirror-Shield Hoplite; in-hand parse.",
+  "seed": 63434,
+  "cards": {
+    "Mirror-Shield Hoplite": "Name:Mirror-Shield Hoplite\nManaCost:R W\nTypes:Creature Human Soldier\nPT:2/2\nK:Vigilance\nT:Mode$ BecomesTarget | ValidTarget$ Creature.inZoneBattlefield+YouCtrl | ValidSource$ Ability.Backup | TriggerZones$ Battlefield | Execute$ TrigCopy | ActivationLimit$ 1 | TriggerDescription$ Whenever a creature you control becomes the target of a backup ability, copy that ability. You may choose new targets for the copy. This ability triggers only once each turn.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSourceSA | MayChooseTarget$ True\nDeckNeeds:Keyword$Backup\nOracle:Vigilance\\nWhenever a creature you control becomes the target of a backup ability, copy that ability. You may choose new targets for the copy. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror-Shield Hoplite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

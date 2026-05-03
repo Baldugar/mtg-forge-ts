@@ -1,0 +1,23 @@
+{
+  "id": "venus-torn-between-worlds-corpus-m680",
+  "description": "M6 corpus — Venus, Torn Between Worlds; in-hand parse.",
+  "seed": 64923,
+  "cards": {
+    "Venus, Torn Between Worlds": "Name:Venus, Torn Between Worlds\nManaCost:4 G\nTypes:Legendary Creature Mutant Frog Turtle\nPT:5/5\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever NICKNAME is dealt damage, put that many +1/+1 counters on her. (She must survive the damage to get the counters.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+HasCounters | Execute$ TrigDraw | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with a counter on it deals combat damage to a player, you may pay {U}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ U\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Whenever Venus is dealt damage, put that many +1/+1 counters on her. (She must survive the damage to get the counters.)\\nWhenever a creature you control with a counter on it deals combat damage to a player, you may pay {U}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venus, Torn Between Worlds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "manticore-of-the-gauntlet-corpus-m680",
+  "description": "M6 corpus — Manticore of the Gauntlet; in-hand parse.",
+  "seed": 63333,
+  "cards": {
+    "Manticore of the Gauntlet": "Name:Manticore of the Gauntlet\nManaCost:4 R\nTypes:Creature Manticore\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on target creature you control. CARDNAME deals 3 damage to target opponent or planeswalker.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | SubAbility$ DBDealDamage | CounterNum$ 1\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ 3\nOracle:When Manticore of the Gauntlet enters, put a -1/-1 counter on target creature you control. Manticore of the Gauntlet deals 3 damage to target opponent or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manticore of the Gauntlet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

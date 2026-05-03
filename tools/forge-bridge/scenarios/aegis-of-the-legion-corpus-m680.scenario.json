@@ -1,0 +1,23 @@
+{
+  "id": "aegis-of-the-legion-corpus-m680",
+  "description": "M6 corpus — Aegis of the Legion; in-hand parse.",
+  "seed": 61454,
+  "cards": {
+    "Aegis of the Legion": "Name:Aegis of the Legion\nManaCost:R W\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Mentor | Description$ Equipped creature gets +1/+1 and has mentor. (Whenever it attacks, put a +1/+1 counter on target attacking creature with lesser power.)\nT:Mode$ Mentored | ValidSource$ Creature.EquippedBy | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature mentors a creature, put a shield counter on that creature. (If that creature would be dealt damage or destroyed, remove a shield counter from it instead.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ SHIELD\nOracle:Equipped creature gets +1/+1 and has mentor. (Whenever it attacks, put a +1/+1 counter on target attacking creature with lesser power.)\\nWhenever equipped creature mentors a creature, put a shield counter on that creature. (If that creature would be dealt damage or destroyed, remove a shield counter from it instead.)\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aegis of the Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

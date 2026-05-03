@@ -1,0 +1,23 @@
+{
+  "id": "eliminate-the-impossible-corpus-m680",
+  "description": "M6 corpus — Eliminate the Impossible; in-hand parse.",
+  "seed": 62302,
+  "cards": {
+    "Eliminate the Impossible": "Name:Eliminate the Impossible\nManaCost:1 U\nTypes:Instant\nA:SP$ Investigate | SubAbility$ DBDebuff | SpellDescription$ Investigate. Creatures your opponents control get -2/-0 until end of turn. If any of them are suspected, they're no longer suspected. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:DBDebuff:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -2 | SubAbility$ DBAlterAttribute\nSVar:DBAlterAttribute:DB$ AlterAttribute | Defined$ Valid Creature.OppCtrl+IsSuspected | Attributes$ Suspected | Activate$ False\nDeckHas:Ability$Token & Type$Artifact|Clue\nOracle:Investigate. Creatures your opponents control get -2/-0 until end of turn. If any of them are suspected, they're no longer suspected. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eliminate the Impossible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

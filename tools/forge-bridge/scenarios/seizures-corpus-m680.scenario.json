@@ -1,0 +1,23 @@
+{
+  "id": "seizures-corpus-m680",
+  "description": "M6 corpus — Seizures; in-hand parse.",
+  "seed": 64193,
+  "cards": {
+    "Seizures": "Name:Seizures\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted creature becomes tapped, CARDNAME deals 3 damage to that creature's controller unless that player pays {3}.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 3 | UnlessCost$ 3 | UnlessPayer$ TriggeredCardController\nOracle:Enchant creature\\nWhenever enchanted creature becomes tapped, Seizures deals 3 damage to that creature's controller unless that player pays {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seizures"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

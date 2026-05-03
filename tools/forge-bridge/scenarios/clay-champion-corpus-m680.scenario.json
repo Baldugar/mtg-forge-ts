@@ -1,0 +1,23 @@
+{
+  "id": "clay-champion-corpus-m680",
+  "description": "M6 corpus — Clay Champion; in-hand parse.",
+  "seed": 61933,
+  "cards": {
+    "Clay Champion": "Name:Clay Champion\nManaCost:X 4\nTypes:Artifact Creature Construct\nPT:2/2\nK:etbCounter:P1P1:GGx3:no Condition:CARDNAME enters with three +1/+1 counters on it for each {G}{G} spent to cast it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, choose up to two other target creatures you control. For each {W}{W} spent to cast CARDNAME, put a +1/+1 counter on each of them.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Choose up to two other target creatures you control | TargetMin$ 0 | TargetMax$ 2 | CounterType$ P1P1 | CounterNum$ WW\nSVar:GG:Count$EachSpentToCast.G/HalfDown\nSVar:GGx3:SVar$GG/Times.3\nSVar:WW:Count$EachSpentToCast.W/HalfDown\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nDeckHints:Color$Green|White\nOracle:Clay Champion enters with three +1/+1 counters on it for each {G}{G} spent to cast it.\\nWhen Clay Champion enters, choose up to two other target creatures you control. For each {W}{W} spent to cast Clay Champion, put a +1/+1 counter on each of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clay Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

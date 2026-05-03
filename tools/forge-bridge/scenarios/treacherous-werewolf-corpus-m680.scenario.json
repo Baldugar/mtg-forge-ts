@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-werewolf-corpus-m680",
+  "description": "M6 corpus — Treacherous Werewolf; in-hand parse.",
+  "seed": 64794,
+  "cards": {
+    "Treacherous Werewolf": "Name:Treacherous Werewolf\nManaCost:2 B\nTypes:Creature Werewolf Minion\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ Dies | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +2/+2 and has \"When CARDNAME dies, you lose 4 life.\"\nSVar:Dies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLose | Secondary$ True | TriggerController$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you lose 4 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ You | LifeAmount$ 4\nOracle:Threshold — As long as there are seven or more cards in your graveyard, Treacherous Werewolf gets +2/+2 and has \"When Treacherous Werewolf dies, you lose 4 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Werewolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

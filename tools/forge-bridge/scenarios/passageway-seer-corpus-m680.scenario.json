@@ -1,0 +1,23 @@
+{
+  "id": "passageway-seer-corpus-m680",
+  "description": "M6 corpus — Passageway Seer; in-hand parse.",
+  "seed": 63700,
+  "cards": {
+    "Passageway Seer": "Name:Passageway Seer\nManaCost:3 B\nTypes:Creature Tiefling Warlock\nPT:2/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.hasInitiative | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you have the initiative, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nDeckHas:Ability$LifeGain|Counters\nOracle:Lifelink\\nWhen Passageway Seer enters, you take the initiative.\\nAt the beginning of your end step, if you have the initiative, put a +1/+1 counter on Passageway Seer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Passageway Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

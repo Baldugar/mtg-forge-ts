@@ -1,0 +1,23 @@
+{
+  "id": "arteeoh-dread-scavenger-corpus-m680",
+  "description": "M6 corpus — Arteeoh, Dread Scavenger; in-hand parse.",
+  "seed": 61576,
+  "cards": {
+    "Arteeoh, Dread Scavenger": "Name:Arteeoh, Dread Scavenger\nManaCost:1 B G U\nTypes:Legendary Artifact Creature Robot\nPT:3/3\nK:Flying\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigExchange | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may exchange control of two other target artifacts. When you do, create a token that's a copy of target artifact you don't control, except it's a 1/1 green Squirrel creature token in addition to its other colors and types.\nSVar:TrigExchange:DB$ ExchangeControl | RememberExchanged$ True | ValidTgts$ Artifact.Other | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Choose two other target artifacts | Optional$ True | AILogic$ TrigTwoTargets | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE2 | SubAbility$ DBCleanup | Execute$ TrigToken | TriggerDescription$ When you do, create a token that's a copy of target artifact you don't control, except it's a 1/1 green Squirrel creature token in addition to its other colors and types.\nSVar:TrigToken:DB$ CopyPermanent | ValidTgts$ Artifact.YouDontCtrl | TgtPrompt$ Select target artifact you don't control | SetPower$ 1 | SetToughness$ 1 | AddColors$ Green | AddTypes$ Creature & Squirrel\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Squirrel\nOracle:Flying, deathtouch\\nWhenever Arteeoh deals combat damage to a player, you may exchange control of two other target artifacts. When you do, create a token that's a copy of target artifact you don't control, except it's a 1/1 green Squirrel creature token in addition to its other colors and types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arteeoh, Dread Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

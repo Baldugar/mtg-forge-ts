@@ -1,0 +1,23 @@
+{
+  "id": "rottenheart-ghoul-corpus-m680",
+  "description": "M6 corpus — Rottenheart Ghoul; in-hand parse.",
+  "seed": 64048,
+  "cards": {
+    "Rottenheart Ghoul": "Name:Rottenheart Ghoul\nManaCost:3 B\nTypes:Creature Zombie\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, target player discards a card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Rottenheart Ghoul dies, target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rottenheart Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

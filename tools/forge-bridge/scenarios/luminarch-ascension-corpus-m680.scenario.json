@@ -1,0 +1,23 @@
+{
+  "id": "luminarch-ascension-corpus-m680",
+  "description": "M6 corpus — Luminarch Ascension; in-hand parse.",
+  "seed": 63286,
+  "cards": {
+    "Luminarch Ascension": "Name:Luminarch Ascension\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPut | OptionalDecider$ You | CheckSVar$ X | SVarCompare$ EQ0 | TriggerDescription$ At the beginning of each opponent's end step, if you didn't lose life this turn, you may put a quest counter on CARDNAME. (Damage causes loss of life.)\nA:AB$ Token | Cost$ 1 W | TokenScript$ w_4_4_angel_flying | TokenOwner$ You | IsPresent$ Card.Self+counters_GE4_QUEST | SpellDescription$ Create a 4/4 white Angel creature token with flying. Activate only if CARDNAME has four or more quest counters on it.\nSVar:TrigPut:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:X:Count$LifeYouLostThisTurn\nSVar:MaxQuestEffect:4\nDeckHas:Ability$Counters\nOracle:At the beginning of each opponent's end step, if you didn't lose life this turn, you may put a quest counter on Luminarch Ascension. (Damage causes loss of life.)\\n{1}{W}: Create a 4/4 white Angel creature token with flying. Activate only if Luminarch Ascension has four or more quest counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luminarch Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

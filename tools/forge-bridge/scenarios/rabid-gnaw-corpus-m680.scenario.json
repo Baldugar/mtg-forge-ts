@@ -1,0 +1,23 @@
+{
+  "id": "rabid-gnaw-corpus-m680",
+  "description": "M6 corpus — Rabid Gnaw; in-hand parse.",
+  "seed": 63875,
+  "cards": {
+    "Rabid Gnaw": "Name:Rabid Gnaw\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | NumAtt$ +1 | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ {c:ThisTargetedCard} gets +1/+1 until end of turn. | SpellDescription$ Target creature you control gets +1/+0 until end of turn. Then it deals damage equal to its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget | StackDescription$ Then {c:ParentTarget} deals damage equal to its power to {c:ThisTargetedCard}.\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control gets +1/+0 until end of turn. Then it deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rabid Gnaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

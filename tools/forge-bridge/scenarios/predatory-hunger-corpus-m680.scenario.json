@@ -1,0 +1,23 @@
+{
+  "id": "predatory-hunger-corpus-m680",
+  "description": "M6 corpus — Predatory Hunger; in-hand parse.",
+  "seed": 63788,
+  "cards": {
+    "Predatory Hunger": "Name:Predatory Hunger\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ Opponent | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a creature spell, put a +1/+1 counter on enchanted creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ P1P1 | CounterNum$ 1\nOracle:Enchant creature\\nWhenever an opponent casts a creature spell, put a +1/+1 counter on enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

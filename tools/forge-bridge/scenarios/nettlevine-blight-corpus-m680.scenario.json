@@ -1,0 +1,23 @@
+{
+  "id": "nettlevine-blight-corpus-m680",
+  "description": "M6 corpus — Nettlevine Blight; in-hand parse.",
+  "seed": 63545,
+  "cards": {
+    "Nettlevine Blight": "Name:Nettlevine Blight\nManaCost:4 B B\nTypes:Enchantment Aura\nK:Enchant:Creature,Land:creature or land\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Card.AttachedBy | AddTrigger$ NettlevineTrig | Description$ Enchanted permanent has \"At the beginning of your end step, sacrifice this permanent and attach CARDNAME to a creature or land you control.\"\nSVar:NettlevineTrig:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ NettlevineSac | TriggerDescription$ At the beginning of your end step, sacrifice this permanent and attach ORIGINALHOST to a creature or land you control.\nSVar:NettlevineSac:DB$ Sacrifice | SubAbility$ NettlevineAttach\nSVar:NettlevineAttach:DB$ Attach | Object$ OriginalHost | Choices$ Creature.YouCtrl,Land.YouCtrl\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature or land\\nEnchanted permanent has \"At the beginning of your end step, sacrifice this permanent and attach Nettlevine Blight to a creature or land you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nettlevine Blight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sunrise-cavalier-corpus-m680",
+  "description": "M6 corpus — Sunrise Cavalier; in-hand parse.",
+  "seed": 64516,
+  "cards": {
+    "Sunrise Cavalier": "Name:Sunrise Cavalier\nManaCost:1 R W\nTypes:Creature Human Knight\nPT:3/3\nK:Trample\nK:Haste\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Trample, haste\\nIf it's neither day nor night, it becomes day as Sunrise Cavalier enters.\\nWhenever day becomes night or night becomes day, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunrise Cavalier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

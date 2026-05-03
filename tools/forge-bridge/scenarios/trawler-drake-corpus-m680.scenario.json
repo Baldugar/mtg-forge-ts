@@ -1,0 +1,23 @@
+{
+  "id": "trawler-drake-corpus-m680",
+  "description": "M6 corpus — Trawler Drake; in-hand parse.",
+  "seed": 64792,
+  "cards": {
+    "Trawler Drake": "Name:Trawler Drake\nManaCost:2 U\nTypes:Creature Phyrexian Drake\nPT:0/0\nK:Flying\nK:etbCounter:OIL:1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each oil counter on it.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ OIL\nSVar:X:Count$CardCounters.OIL\nSVar:BuffedBy:Card.nonCreature\nDeckHints:Ability$Counters\nOracle:Flying\\nTrawler Drake enters with an oil counter on it.\\nTrawler Drake gets +1/+1 for each oil counter on it.\\nWhenever you cast a noncreature spell, put an oil counter on Trawler Drake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trawler Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

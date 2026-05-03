@@ -1,0 +1,23 @@
+{
+  "id": "slith-strider-corpus-m680",
+  "description": "M6 corpus — Slith Strider; in-hand parse.",
+  "seed": 64331,
+  "cards": {
+    "Slith Strider": "Name:Slith Strider\nManaCost:1 U U\nTypes:Creature Slith\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes blocked, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Slith Strider becomes blocked, draw a card.\\nWhenever Slith Strider deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slith Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pollen-lullaby-corpus-m680",
+  "description": "M6 corpus — Pollen Lullaby; in-hand parse.",
+  "seed": 63769,
+  "cards": {
+    "Pollen Lullaby": "Name:Pollen Lullaby\nManaCost:1 W\nTypes:Instant\nA:SP$ Fog | SubAbility$ DBClash | SpellDescription$ Prevent all combat damage that would be dealt this turn. Clash with an opponent. If you win, creatures that player controls don't untap during the player's next untap step.\nSVar:DBClash:DB$ Clash | WinSubAbility$ DBEffect | RememberClasher$ True | SubAbility$ DBCleanup\nSVar:DBEffect:DB$ Effect | StaticAbilities$ DontUntap | Triggers$ RemoveEffect | Duration$ Permanent | RememberObjects$ Remembered | SpellDescription$ Creatures that player controls don't untap during the player's next untap step.\nSVar:DontUntap:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.RememberedPlayerCtrl | AddHiddenKeyword$ This card doesn't untap during your next untap step. | Description$ Creatures that player controls don't untap during the player's next untap step.\nSVar:RemoveEffect:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.IsRemembered | TriggerZones$ Command | Static$ True | Execute$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Prevent all combat damage that would be dealt this turn. Clash with an opponent. If you win, creatures that player controls don't untap during the player's next untap step. (Each clashing player reveals the top card of their library, then puts that card on the top or bottom. A player wins if their card had a higher mana value.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pollen Lullaby"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

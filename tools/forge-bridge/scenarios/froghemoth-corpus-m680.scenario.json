@@ -1,0 +1,23 @@
+{
+  "id": "froghemoth-corpus-m680",
+  "description": "M6 corpus — Froghemoth; in-hand parse.",
+  "seed": 62572,
+  "cards": {
+    "Froghemoth": "Name:Froghemoth\nManaCost:3 G G\nTypes:Creature Frog Horror\nPT:4/4\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile up to that many target cards from their graveyard. Put a +1/+1 counter on CARDNAME for each creature card exiled this way. You gain 1 life for each noncreature card exiled this way.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.OwnedBy TriggeredTarget | ChangeNum$ X | Hidden$ True | RememberChanged$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ Y | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nSVar:Y:Remembered$Valid Creature\nSVar:Z:Remembered$Valid Card.nonCreature\nDeckHas:Ability$LifeGain|Counters\nOracle:Trample, haste\\nWhenever Froghemoth deals combat damage to a player, exile up to that many target cards from their graveyard. Put a +1/+1 counter on Froghemoth for each creature card exiled this way. You gain 1 life for each noncreature card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Froghemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

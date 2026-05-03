@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-vindicator-corpus-m680",
+  "description": "M6 corpus — Phyrexian Vindicator; in-hand parse.",
+  "seed": 63746,
+  "cards": {
+    "Phyrexian Vindicator": "Name:Phyrexian Vindicator\nManaCost:W W W W\nTypes:Creature Phyrexian Horror\nPT:5/5\nK:Flying\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBImmediateTrigger | PreventionEffect$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. When damage is prevented this way, CARDNAME deals that much damage to any other target.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigDamage | RememberSVarAmount$ X | TriggerDescription$ When damage is prevented this way, CARDNAME deals that much damage to any other target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.Other,Player,Planeswalker.Other,Battle.Other | TgtPrompt$ Select any other target | NumDmg$ Y\nSVar:X:ReplaceCount$DamageAmount\nSVar:Y:Count$TriggerRememberAmount\nOracle:Flying\\nIf damage would be dealt to Phyrexian Vindicator, prevent that damage. When damage is prevented this way, Phyrexian Vindicator deals that much damage to any other target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Vindicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oracle-s-vault-corpus-m680",
+  "description": "M6 corpus — Oracle's Vault; in-hand parse.",
+  "seed": 63637,
+  "cards": {
+    "Oracle's Vault": "Name:Oracle's Vault\nManaCost:4\nTypes:Artifact\nA:AB$ Dig | Cost$ 2 T | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect1 | AILogic$ ExileAndPlayUntilEOT | SpellDescription$ Exile the top card of your library. Until end of turn, you may play that card. Put a brick counter on CARDNAME.\nSVar:DBEffect1:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play1 | SubAbility$ DBPutCounter | ExileOnMoved$ Exile\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ BRICK | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:Play1:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nA:AB$ Dig | Cost$ T | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect2 | CheckSVar$ X | SVarCompare$ GE3 | AILogic$ ExileAndPlayUntilEOT | SpellDescription$ Exile the top card of your library. Until end of turn, you may play that card without paying its mana cost. Activate only if there are three or more brick counters on CARDNAME.\nSVar:DBEffect2:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play2 | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play2:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | MayPlayWithoutManaCost$ True | AffectedZone$ Exile | Description$ You may play remembered card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardCounters.BRICK\nOracle:{2}, {T}: Exile the top card of your library. Until end of turn, you may play that card. Put a brick counter on Oracle's Vault.\\n{T}: Exile the top card of your library. Until end of turn, you may play that card without paying its mana cost. Activate only if there are three or more brick counters on Oracle's Vault.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oracle's Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

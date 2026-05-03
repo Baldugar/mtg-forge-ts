@@ -1,0 +1,23 @@
+{
+  "id": "leyline-of-lightning-corpus-m680",
+  "description": "M6 corpus — Leyline of Lightning; in-hand parse.",
+  "seed": 63219,
+  "cards": {
+    "Leyline of Lightning": "Name:Leyline of Lightning\nManaCost:2 R R\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a spell, you may pay {1}. If you do, CARDNAME deals 1 damage to target player or planeswalker.\nSVar:TrigDealDamage:AB$ DealDamage | Cost$ 1 | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:If Leyline of Lightning is in your opening hand, you may begin the game with it on the battlefield.\\nWhenever you cast a spell, you may pay {1}. If you do, Leyline of Lightning deals 1 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leyline of Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

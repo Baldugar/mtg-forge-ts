@@ -1,0 +1,23 @@
+{
+  "id": "armasaur-guide-corpus-m680",
+  "description": "M6 corpus — Armasaur Guide; in-hand parse.",
+  "seed": 61566,
+  "cards": {
+    "Armasaur Guide": "Name:Armasaur Guide\nManaCost:4 W\nTypes:Creature Dinosaur\nPT:4/4\nK:Vigilance\nT:Mode$ AttackersDeclared | Execute$ TrigPutCounter | ValidAttackers$ Creature | ValidAttackersAmount$ GE3 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with three or more creatures, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhenever you attack with three or more creatures, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armasaur Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

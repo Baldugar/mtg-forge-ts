@@ -1,0 +1,23 @@
+{
+  "id": "sprite-dragon-corpus-m680",
+  "description": "M6 corpus — Sprite Dragon; in-hand parse.",
+  "seed": 64434,
+  "cards": {
+    "Sprite Dragon": "Name:Sprite Dragon\nManaCost:U R\nTypes:Creature Faerie Dragon\nPT:1/1\nK:Flying\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:nonCreature\nDeckHas:Ability$Counters\nOracle:Flying, haste\\nWhenever you cast a noncreature spell, put a +1/+1 counter on Sprite Dragon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sprite Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

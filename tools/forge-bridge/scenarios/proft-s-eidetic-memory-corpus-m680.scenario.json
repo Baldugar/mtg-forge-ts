@@ -1,0 +1,23 @@
+{
+  "id": "proft-s-eidetic-memory-corpus-m680",
+  "description": "M6 corpus — Proft's Eidetic Memory; in-hand parse.",
+  "seed": 63815,
+  "cards": {
+    "Proft's Eidetic Memory": "Name:Proft's Eidetic Memory\nManaCost:1 U\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GT1 | Execute$ TrigPutCounters | TriggerDescription$ At the beginning of combat on your turn, if you've drawn more than one card this turn, put X +1/+1 counters on target creature you control, where X is the number of cards you've drawn this turn minus one.\nSVar:TrigPutCounters:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ Y\nSVar:X:Count$YouDrewThisTurn\nSVar:Y:SVar$X/Minus.1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Proft's Eidetic Memory enters, draw a card.\\nYou have no maximum hand size.\\nAt the beginning of combat on your turn, if you've drawn more than one card this turn, put X +1/+1 counters on target creature you control, where X is the number of cards you've drawn this turn minus one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Proft's Eidetic Memory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

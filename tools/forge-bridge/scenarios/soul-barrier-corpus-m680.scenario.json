@@ -1,0 +1,23 @@
+{
+  "id": "soul-barrier-corpus-m680",
+  "description": "M6 corpus — Soul Barrier; in-hand parse.",
+  "seed": 64362,
+  "cards": {
+    "Soul Barrier": "Name:Soul Barrier\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an opponent casts a creature spell, CARDNAME deals 2 damage to that player unless they pay {2}.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | UnlessCost$ 2 | UnlessPayer$ TriggeredActivator | NumDmg$ 2\nOracle:Whenever an opponent casts a creature spell, Soul Barrier deals 2 damage to that player unless they pay {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Barrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

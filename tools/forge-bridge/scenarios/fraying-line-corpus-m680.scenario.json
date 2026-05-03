@@ -1,0 +1,23 @@
+{
+  "id": "fraying-line-corpus-m680",
+  "description": "M6 corpus — Fraying Line; in-hand parse.",
+  "seed": 62558,
+  "cards": {
+    "Fraying Line": "Name:Fraying Line\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a rope counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ ROPE\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigRope | TriggerDescription$ At the beginning of each player's upkeep, that player may pay {2}. If they do, they put a rope counter on a creature they control. Otherwise, exile CARDNAME and each creature without a rope counter on it, then remove all rope counters from all creatures.\nSVar:TrigRope:DB$ PutCounter | UnlessCost$ 2 | UnlessPayer$ TriggeredPlayer | UnlessSwitched$ True | Chooser$ TriggeredPlayer | Choices$ Creature.ControlledBy TriggeredPlayer | CounterType$ ROPE | UnlessResolveSubs$ WhenNotPaid | SubAbility$ CostNotPaid\nSVar:CostNotPaid:DB$ ChangeZoneAll | ChangeType$ Card.Self,Creature.counters_EQ0_ROPE | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBRemoveRope\nSVar:DBRemoveRope:DB$ RemoveCounterAll | ValidCards$ Creature | CounterType$ ROPE | AllCounters$ True\nOracle:When Fraying Line enters, put a rope counter on target creature you control.\\nAt the beginning of each player's upkeep, that player may pay {2}. If they do, they put a rope counter on a creature they control. Otherwise, exile Fraying Line and each creature without a rope counter on it, then remove all rope counters from all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fraying Line"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

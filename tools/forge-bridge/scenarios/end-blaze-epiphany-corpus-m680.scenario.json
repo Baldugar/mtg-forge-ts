@@ -1,0 +1,23 @@
+{
+  "id": "end-blaze-epiphany-corpus-m680",
+  "description": "M6 corpus — End-Blaze Epiphany; in-hand parse.",
+  "seed": 62331,
+  "cards": {
+    "End-Blaze Epiphany": "Name:End-Blaze Epiphany\nManaCost:X R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBDelayedTrigger | SpellDescription$ CARDNAME deals X damage to target creature.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigExile | SpellDescription$ When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.\nSVar:TrigExile:DB$ Dig | DigNum$ Y | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Amount$ 1 | Mandatory$ True | Choices$ Card.IsRemembered | ChoiceZone$ Exile | ChoiceTitle$ Choose one of the exiled cards | SubAbility$ DBPlayEffect\nSVar:DBPlayEffect:DB$ Effect | StaticAbilities$ STPlay | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.ChosenCard | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play the chosen card.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:TriggeredCard$CardPower\nOracle:End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "End-Blaze Epiphany"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

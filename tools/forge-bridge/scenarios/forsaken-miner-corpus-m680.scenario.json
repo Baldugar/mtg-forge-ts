@@ -1,0 +1,23 @@
+{
+  "id": "forsaken-miner-corpus-m680",
+  "description": "M6 corpus — Forsaken Miner; in-hand parse.",
+  "seed": 62548,
+  "cards": {
+    "Forsaken Miner": "Name:Forsaken Miner\nManaCost:B\nTypes:Creature Skeleton Rogue\nPT:2/2\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Whenever you commit a crime, you may pay {B}. If you do, return CARDNAME from your graveyard to the battlefield. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\nSVar:TrigChange:AB$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield\nSVar:DiscardMe:2\nSVar:SacMe:2\nDeckHas:Ability$Graveyard\nOracle:Forsaken Miner can't block.\\nWhenever you commit a crime, you may pay {B}. If you do, return Forsaken Miner from your graveyard to the battlefield. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forsaken Miner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

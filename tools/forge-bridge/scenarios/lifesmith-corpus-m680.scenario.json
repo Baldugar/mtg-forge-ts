@@ -1,0 +1,23 @@
+{
+  "id": "lifesmith-corpus-m680",
+  "description": "M6 corpus — Lifesmith; in-hand parse.",
+  "seed": 63228,
+  "cards": {
+    "Lifesmith": "Name:Lifesmith\nManaCost:1 G\nTypes:Creature Human Artificer\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | Execute$ TrigGainLife | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell, you may pay {1}. If you do, you gain 3 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ 1 | Defined$ You | LifeAmount$ 3\nOracle:Whenever you cast an artifact spell, you may pay {1}. If you do, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifesmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

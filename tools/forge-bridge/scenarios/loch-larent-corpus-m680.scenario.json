@@ -1,0 +1,23 @@
+{
+  "id": "loch-larent-corpus-m680",
+  "description": "M6 corpus — Loch Larent; in-hand parse.",
+  "seed": 63257,
+  "cards": {
+    "Loch Larent": "Name:Loch Larent\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Scry | Cost$ 1 U T | ScryNum$ 3 | GameActivationLimit$ 1 | PlayerTurn$ True | SubAbility$ DBEffect | SpellDescription$ Scry 3. Target opponent gets a one-time boon with \"When you cast a creature spell, that creature enters tapped and with a stun counter on it.\" Activate only during your turn and only once.\nSVar:DBEffect:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SpellCast | ValidTgts$ Opponent | EffectOwner$ Targeted\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigEffect | TriggerDescription$ When you cast a creature spell, that creature enters tapped and with a stun counter on it.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ETBAddCounterTapped | RememberObjects$ TriggeredCard\nSVar:ETBAddCounterTapped:Event$ Moved | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.IsRemembered | ReplaceWith$ ETBAddExtraCounter | ReplacementResult$ Updated\nSVar:ETBAddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ STUN | CounterNum$ 1 | SubAbility$ ETBTapped\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard | SubAbility$ DBExileSelf\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nDeckHas:Ability$Counters\nOracle:Loch Larent enters tapped.\\n{T}: Add {U}.{1}{U}, {T}: Scry 3. Target opponent gets a one-time boon with \"When you cast a creature spell, that creature enters tapped and with a stun counter on it.\" Activate only during your turn and only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loch Larent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

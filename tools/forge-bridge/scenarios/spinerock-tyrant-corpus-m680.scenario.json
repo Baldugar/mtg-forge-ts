@@ -1,0 +1,23 @@
+{
+  "id": "spinerock-tyrant-corpus-m680",
+  "description": "M6 corpus — Spinerock Tyrant; in-hand parse.",
+  "seed": 64409,
+  "cards": {
+    "Spinerock Tyrant": "Name:Spinerock Tyrant\nManaCost:3 R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nK:Wither\nT:Mode$ SpellCast | ValidSA$ Instant.singleTarget,Sorcery.singleTarget | ValidActivatingPlayer$ You | OptionalDecider$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell with a single target, you may copy it. If you do, those spells gain wither. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | RememberNewCard$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredCard & Remembered | KW$ Wither | PumpZone$ Stack | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWither (This deals damage to creatures in the form of -1/-1 counters.)\\nWhenever you cast an instant or sorcery spell with a single target, you may copy it. If you do, those spells gain wither. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinerock Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

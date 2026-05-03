@@ -1,0 +1,23 @@
+{
+  "id": "agent-of-the-shadow-thieves-corpus-m680",
+  "description": "M6 corpus — Agent of the Shadow Thieves; in-hand parse.",
+  "seed": 61464,
+  "cards": {
+    "Agent of the Shadow Thieves": "Name:Agent of the Shadow Thieves\nManaCost:1 B\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ AttacksPlayer | Description$ Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, put a +1/+1 counter on this creature. It gains deathtouch and indestructible until end of turn.\"\nSVar:AttacksPlayer:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player | Condition$ NoOpponentHasMoreLifeThanAttacked | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature attacks a player, if no opponent has more life than that player, put a +1/+1 counter on this creature. It gains deathtouch and indestructible until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Deathtouch & Indestructible\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Counters\nOracle:Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, put a +1/+1 counter on this creature. It gains deathtouch and indestructible until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agent of the Shadow Thieves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

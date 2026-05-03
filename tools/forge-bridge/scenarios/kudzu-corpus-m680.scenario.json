@@ -1,0 +1,23 @@
+{
+  "id": "kudzu-corpus-m680",
+  "description": "M6 corpus — Kudzu; in-hand parse.",
+  "seed": 63160,
+  "cards": {
+    "Kudzu": "Name:Kudzu\nManaCost:1 G G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerDescription$ When enchanted land becomes tapped, destroy it. That land's controller may attach CARDNAME to a land of their choice.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ Self | Chooser$ TriggeredCardController | Choices$ Land | AILogic$ Curse\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\nWhen enchanted land becomes tapped, destroy it. That land's controller may attach Kudzu to a land of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kudzu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

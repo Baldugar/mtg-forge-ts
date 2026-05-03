@@ -1,0 +1,23 @@
+{
+  "id": "slith-bloodletter-corpus-m680",
+  "description": "M6 corpus — Slith Bloodletter; in-hand parse.",
+  "seed": 64328,
+  "cards": {
+    "Slith Bloodletter": "Name:Slith Bloodletter\nManaCost:B B\nTypes:Creature Slith\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Regenerate | Cost$ 1 B | SpellDescription$ Regenerate CARDNAME.\nOracle:Whenever Slith Bloodletter deals combat damage to a player, put a +1/+1 counter on it.\\n{1}{B}: Regenerate Slith Bloodletter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slith Bloodletter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

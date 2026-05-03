@@ -1,0 +1,23 @@
+{
+  "id": "void-corpus-m680",
+  "description": "M6 corpus — Void; in-hand parse.",
+  "seed": 64970,
+  "cards": {
+    "Void": "Name:Void\nManaCost:3 B R\nTypes:Sorcery\nA:SP$ ChooseNumber | SubAbility$ DBVoidDestroyAll | SpellDescription$ Choose a number. Destroy all artifacts and creatures with mana value equal to that number. Then target player reveals their hand and discards all nonland cards with mana value equal to the number.\nSVar:DBVoidDestroyAll:DB$ DestroyAll | ValidCards$ Artifact.cmcEQX,Creature.cmcEQX | SubAbility$ DBVoidRevealDiscard\nSVar:DBVoidRevealDiscard:DB$ Discard | ValidTgts$ Player | Mode$ RevealDiscardAll | DiscardValid$ Card.nonLand+cmcEQX\nSVar:X:Count$ChosenNumber\nAI:RemoveDeck:All\nOracle:Choose a number. Destroy all artifacts and creatures with mana value equal to that number. Then target player reveals their hand and discards all nonland cards with mana value equal to the number.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

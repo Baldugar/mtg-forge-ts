@@ -1,0 +1,23 @@
+{
+  "id": "mishra-s-command-corpus-m680",
+  "description": "M6 corpus — Mishra's Command; in-hand parse.",
+  "seed": 63439,
+  "cards": {
+    "Mishra's Command": "Name:Mishra's Command\nManaCost:X R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDiscard,DBDamageCreature,DBDamagePW,DBPump | CharmNum$ 2\nSVar:DBDiscard:DB$ Discard | Optional$ True | ValidTgts$ Player | NumCards$ X | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Choose target player. They may discard up to X cards. Then they draw a card for each card discarded this way.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | Defined$ Targeted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBDamageCreature:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ This spell deals X damage to target creature.\nSVar:DBDamagePW:DB$ DealDamage | ValidTgts$ Planeswalker | NumDmg$ X | SpellDescription$ This spell deals X damage to target planeswalker.\nSVar:DBPump:DB$ Pump | KW$ Haste | ValidTgts$ Creature | NumAtt$ +X | SpellDescription$ Target creature gets +X/+0 and gains haste until end of turn.\nSVar:X:Count$xPaid\nSVar:Y:Count$RememberedSize\nDeckHas:Ability$Discard & Keyword$Haste\nOracle:Choose two —\\n• Choose target player. They may discard up to X cards. Then they draw a card for each card discarded this way.\\n• This spell deals X damage to target creature.\\n• This spell deals X damage to target planeswalker.\\n• Target creature gets +X/+0 and gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "piper-wright-publick-reporter-corpus-m680",
+  "description": "M6 corpus — Piper Wright, Publick Reporter; in-hand parse.",
+  "seed": 63754,
+  "cards": {
+    "Piper Wright, Publick Reporter": "Name:Piper Wright, Publick Reporter\nManaCost:1 U\nTypes:Legendary Creature Human Detective\nPT:1/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigInvestigate | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, investigate that many times. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Num$ X | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue.YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nDeckHas:Type$Clue|Artifact & Ability$Token|Sacrifice|Counters\nDeckHints:Type$Clue\nOracle:Whenever Piper Wright deals combat damage to a player, investigate that many times. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Clue, put a +1/+1 counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Piper Wright, Publick Reporter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

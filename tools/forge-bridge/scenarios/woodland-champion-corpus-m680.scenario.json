@@ -1,0 +1,23 @@
+{
+  "id": "woodland-champion-corpus-m680",
+  "description": "M6 corpus — Woodland Champion; in-hand parse.",
+  "seed": 65087,
+  "cards": {
+    "Woodland Champion": "Name:Woodland Champion\nManaCost:1 G\nTypes:Creature Elf Scout\nPT:2/2\nT:Mode$ ChangesZoneAll | ValidCards$ Card.token+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more tokens you control enter, put that many +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | Defined$ Self | CounterNum$ X\nSVar:X:TriggerCount$Amount\nDeckHints:Ability$Token\nDeckHas:Ability$Counters\nOracle:Whenever one or more tokens you control enter, put that many +1/+1 counters on Woodland Champion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodland Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wheel-and-deal-corpus-m680",
+  "description": "M6 corpus — Wheel and Deal; in-hand parse.",
+  "seed": 65027,
+  "cards": {
+    "Wheel and Deal": "Name:Wheel and Deal\nManaCost:3 U\nTypes:Instant\nA:SP$ Discard | ValidTgts$ Opponent | TargetMin$ 0 | TargetMax$ MaxTgt | Mode$ Hand | SpellDescription$ Any number of target opponents each discard their hands, then draw seven cards. | SubAbility$ DBDrawOpp\nSVar:DBDrawOpp:DB$ Draw | Defined$ Targeted | NumCards$ 7 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:Any number of target opponents each discard their hands, then draw seven cards.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wheel and Deal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

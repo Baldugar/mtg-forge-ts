@@ -1,0 +1,23 @@
+{
+  "id": "explosive-prodigy-corpus-m680",
+  "description": "M6 corpus — Explosive Prodigy; in-hand parse.",
+  "seed": 62403,
+  "cards": {
+    "Explosive Prodigy": "Name:Explosive Prodigy\nManaCost:1 R\nTypes:Creature Elemental Sorcerer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Vivid — When this creature enters, it deals X damage to target creature an opponent controls, where X is the number of colors among permanents you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ X\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — When this creature enters, it deals X damage to target creature an opponent controls, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Explosive Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

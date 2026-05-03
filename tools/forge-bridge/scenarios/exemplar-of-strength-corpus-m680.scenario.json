@@ -1,0 +1,23 @@
+{
+  "id": "exemplar-of-strength-corpus-m680",
+  "description": "M6 corpus — Exemplar of Strength; in-hand parse.",
+  "seed": 62388,
+  "cards": {
+    "Exemplar of Strength": "Name:Exemplar of Strength\nManaCost:1 G\nTypes:Creature Human Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put three -1/-1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, remove a -1/-1 counter from it. If you do, you gain 1 life.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | CounterType$ M1M1 | CounterNum$ 1 | RememberRemoved$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | ConditionCheckSVar$ X | LifeAmount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nOracle:When Exemplar of Strength enters, put three -1/-1 counters on target creature you control.\\nWhenever Exemplar of Strength attacks, remove a -1/-1 counter from it. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exemplar of Strength"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

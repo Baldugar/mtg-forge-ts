@@ -1,0 +1,23 @@
+{
+  "id": "pip-boy-3000-corpus-m680",
+  "description": "M6 corpus — Pip-Boy 3000; in-hand parse.",
+  "seed": 63753,
+  "cards": {
+    "Pip-Boy 3000": "Name:Pip-Boy 3000\nManaCost:1\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigChoose | TriggerDescription$ Whenever equipped creature attacks, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBDraw,DBPutCounter,DBUntap\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard | SpellDescription$ Sort Inventory — Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | Defined$ TriggeredAttackerLKICopy | CounterNum$ 1 | SpellDescription$ Pick a Perk — Put a +1/+1 counter on that creature.\nSVar:DBUntap:DB$ Untap | ValidTgts$ Land | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target lands | SpellDescription$ Check Map — Untap up to two target lands.\nK:Equip:2\nDeckHas:Ability$Counters|Discard\nOracle:Whenever equipped creature attacks, choose one —\\n• Sort Inventory — Draw a card, then discard a card.\\n• Pick a Perk — Put a +1/+1 counter on that creature.\\n• Check Map — Untap up to two target lands.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pip-Boy 3000"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rampaging-monument-corpus-m680",
+  "description": "M6 corpus — Rampaging Monument; in-hand parse.",
+  "seed": 63893,
+  "cards": {
+    "Rampaging Monument": "Name:Rampaging Monument\nManaCost:4\nTypes:Artifact Creature Cleric\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:3\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Card.MultiColor\nDeckHas:Ability$Counters\nOracle:Trample\\nRampaging Monument enters with three +1/+1 counters on it.\\nWhenever you cast a multicolored spell, put a +1/+1 counter on Rampaging Monument.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Monument"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

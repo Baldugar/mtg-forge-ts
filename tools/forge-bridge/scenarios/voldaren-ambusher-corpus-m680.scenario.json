@@ -1,0 +1,23 @@
+{
+  "id": "voldaren-ambusher-corpus-m680",
+  "description": "M6 corpus — Voldaren Ambusher; in-hand parse.",
+  "seed": 64976,
+  "cards": {
+    "Voldaren Ambusher": "Name:Voldaren Ambusher\nManaCost:2 R\nTypes:Creature Vampire Archer\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | CheckSVar$ Y | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, it deals X damage to up to one target creature or planeswalker, where X is the number of Vampires you control.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ X | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker\nSVar:X:Count$Valid Vampire.YouCtrl\nSVar:Y:Count$LifeOppsLostThisTurn\nDeckNeeds:Type$Vampire\nOracle:When Voldaren Ambusher enters, if an opponent lost life this turn, it deals X damage to up to one target creature or planeswalker, where X is the number of Vampires you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voldaren Ambusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

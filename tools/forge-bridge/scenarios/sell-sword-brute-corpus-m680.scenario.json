@@ -1,0 +1,23 @@
+{
+  "id": "sell-sword-brute-corpus-m680",
+  "description": "M6 corpus — Sell-Sword Brute; in-hand parse.",
+  "seed": 64197,
+  "cards": {
+    "Sell-Sword Brute": "Name:Sell-Sword Brute\nManaCost:1 R\nTypes:Creature Human Mercenary\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 2 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nOracle:When Sell-Sword Brute dies, it deals 2 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sell-Sword Brute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

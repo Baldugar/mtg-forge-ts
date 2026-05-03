@@ -1,0 +1,23 @@
+{
+  "id": "the-sea-devils-corpus-m680",
+  "description": "M6 corpus — The Sea Devils; in-hand parse.",
+  "seed": 64687,
+  "cards": {
+    "The Sea Devils": "Name:The Sea Devils\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBToken,DBEffect\nSVar:DBToken:DB$ Token | TokenScript$ g_2_2_alien_salamander_islandwalk | SpellDescription$ Create a 2/2 green Alien Salamander creature token with islandwalk. (It can't be blocked as long as defending player controls an Island.)\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDamage | SpellDescription$ Until end of turn, whenever a Salamander deals combat damage to a player, it deals that much damage to target creature that player controls.\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Salamander | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDealDamage | TriggerDescription$ Whenever a Salamander deals combat damage to a player, it deals that much damage to target creature that player controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredTarget | DamageSource$ TriggeredSource | NumDmg$ X | TgtPrompt$ Select target creature that player controls\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token & Type$Salamander|Alien\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Create a 2/2 green Alien Salamander creature token with islandwalk. (It can't be blocked as long as defending player controls an Island.)\\nIII — Until end of turn, whenever a Salamander deals combat damage to a player, it deals that much damage to target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Sea Devils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

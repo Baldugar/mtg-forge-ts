@@ -1,0 +1,23 @@
+{
+  "id": "codie-vociferous-codex-corpus-m680",
+  "description": "M6 corpus — Codie, Vociferous Codex; in-hand parse.",
+  "seed": 61954,
+  "cards": {
+    "Codie, Vociferous Codex": "Name:Codie, Vociferous Codex\nManaCost:3\nTypes:Legendary Artifact Creature Construct\nPT:1/4\nS:Mode$ CantBeCast | ValidCard$ Permanent | Caster$ You | Description$ You can't cast permanent spells.\nA:AB$ Mana | Cost$ 4 T | Produced$ W U B R G | SubAbility$ DBTrigger | SpellDescription$ Add {W}{U}{B}{R}{G}. When you cast your next spell this turn, exile cards from the top of your library until you exile an instant or sorcery card with lesser mana value. Until end of turn, you may cast that card without paying its mana cost. Put each other card exiled this way on the bottom of your library in a random order.\nSVar:DBTrigger:DB$ DelayedTrigger | Mode$ SpellCast | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ DBDig | TriggerDescription$ When you cast your next spell this turn, exile cards from the top of your library until you exile an instant or sorcery card with lesser mana value. Until end of turn, you may cast that card without paying its mana cost. Put each other card exiled this way on the bottom of your library in a random order.\nSVar:DBDig:DB$ DigUntil | Defined$ You | Valid$ Instant.cmcLTX,Sorcery.cmcLTX | FoundDestination$ Exile | RevealedDestination$ Exile | RememberRevealed$ True | ImprintFound$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Imprinted | ForgetOnMoved$ Exile | SubAbility$ DBRestRandomOrder\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered+nonLand | MayPlay$ True | MayPlayWithoutManaCost$ True | AffectedZone$ Exile | Description$ Until end of turn, you may cast that card without paying its mana cost.\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:TriggeredCard$CardManaCost\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:You can't cast permanent spells.\\n{4}, {T}: Add {W}{U}{B}{R}{G}. When you cast your next spell this turn, exile cards from the top of your library until you exile an instant or sorcery card with lesser mana value. Until end of turn, you may cast that card without paying its mana cost. Put each other card exiled this way on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Codie, Vociferous Codex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

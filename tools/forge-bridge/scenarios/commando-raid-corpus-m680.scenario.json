@@ -1,0 +1,23 @@
+{
+  "id": "commando-raid-corpus-m680",
+  "description": "M6 corpus — Commando Raid; in-hand parse.",
+  "seed": 61968,
+  "cards": {
+    "Commando Raid": "Name:Commando Raid\nManaCost:2 R\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Triggers$ TrigDamage | SpellDescription$ Until end of turn, target creature you control gains \"When this creature deals combat damage to a player, you may have it deal damage equal to its power to target creature that player controls.\"\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ Damage | OptionalDecider$ You | TriggerDescription$ When this creature deals combat damage to a player, you may have it deal damage equal to its power to target creature that player controls.\nSVar:Damage:DB$ DealDamage | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature that player controls | NumDmg$ CommandoRaidX\nSVar:CommandoRaidX:Count$CardPower\nOracle:Until end of turn, target creature you control gains \"When this creature deals combat damage to a player, you may have it deal damage equal to its power to target creature that player controls.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commando Raid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wing-puncture-corpus-m680",
+  "description": "M6 corpus — Wing Puncture; in-hand parse.",
+  "seed": 65065,
+  "cards": {
+    "Wing Puncture": "Name:Wing Puncture\nManaCost:G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | SpellDescription$ Target creature you control deals damage equal to its power to target creature with flying.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.withFlying | AILogic$ PowerDmg | TgtPrompt$ Select target creature with flying | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wing Puncture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

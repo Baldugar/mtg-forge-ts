@@ -1,0 +1,23 @@
+{
+  "id": "chaotic-goo-corpus-m680",
+  "description": "M6 corpus — Chaotic Goo; in-hand parse.",
+  "seed": 61903,
+  "cards": {
+    "Chaotic Goo": "Name:Chaotic Goo\nManaCost:2 R R\nTypes:Creature Ooze\nPT:0/0\nK:etbCounter:P1P1:3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlipACoin | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may flip a coin. If you win the flip, put a +1/+1 counter on CARDNAME. If you lose the flip, remove a +1/+1 counter from CARDNAME.\nSVar:TrigFlipACoin:DB$ FlipACoin | WinSubAbility$ DBAddCounter | LoseSubAbility$ DBRemoveCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Chaotic Goo enters with three +1/+1 counters on it.\\nAt the beginning of your upkeep, you may flip a coin. If you win the flip, put a +1/+1 counter on Chaotic Goo. If you lose the flip, remove a +1/+1 counter from Chaotic Goo.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaotic Goo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

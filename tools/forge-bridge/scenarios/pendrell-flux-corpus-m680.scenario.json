@@ -1,0 +1,23 @@
+{
+  "id": "pendrell-flux-corpus-m680",
+  "description": "M6 corpus — Pendrell Flux; in-hand parse.",
+  "seed": 63714,
+  "cards": {
+    "Pendrell Flux": "Name:Pendrell Flux\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.cmcGE1\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddTrigger$ TrigPhase | AddSVar$ TrigPendrellFlux | Description$ Enchanted creature has \"At the beginning of your upkeep, sacrifice this creature unless you pay its mana cost.\"\nSVar:TrigPhase:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPendrellFlux | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice this creature unless you pay its mana cost.\nSVar:TrigPendrellFlux:DB$ Sacrifice | UnlessCost$ DefinedCost_Self | UnlessPayer$ You\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your upkeep, sacrifice this creature unless you pay its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pendrell Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

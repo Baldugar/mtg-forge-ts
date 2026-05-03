@@ -1,0 +1,23 @@
+{
+  "id": "explosion-of-riches-corpus-m680",
+  "description": "M6 corpus — Explosion of Riches; in-hand parse.",
+  "seed": 62400,
+  "cards": {
+    "Explosion of Riches": "Name:Explosion of Riches\nManaCost:5 R\nTypes:Sorcery\nA:SP$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDraw | StackDescription$ SpellDescription | RememberDrawn$ AllReplaced | SpellDescription$ Draw a card, then each other player may draw a card. Whenever a card is drawn this way, CARDNAME deals 5 damage to target opponent chosen at random from among your opponents.\nSVar:DBDraw:DB$ Draw | Defined$ Player.Other | OptionalDecider$ True | NumCards$ 1 | RememberDrawn$ AllReplaced | SubAbility$ DBImmediateTrigger | StackDescription$ None\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigDamage | TriggerAmount$ Remembered$Amount | SubAbility$ DBCleanup | TriggerDescription$ Whenever a card is drawn this way, CARDNAME deals 5 damage to target opponent chosen at random from among your opponents.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Player.Opponent | NumDmg$ 5 | TargetsAtRandom$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Draw a card, then each other player may draw a card. Whenever a card is drawn this way, Explosion of Riches deals 5 damage to target opponent chosen at random from among your opponents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Explosion of Riches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

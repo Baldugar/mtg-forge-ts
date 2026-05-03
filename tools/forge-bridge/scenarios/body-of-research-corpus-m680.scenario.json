@@ -1,0 +1,23 @@
+{
+  "id": "body-of-research-corpus-m680",
+  "description": "M6 corpus — Body of Research; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Body of Research": "Name:Body of Research\nManaCost:G G G U U U\nTypes:Sorcery\nA:SP$ Token | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SpellDescription$ Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of cards in your library. | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Card.YouOwn\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of cards in your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Body of Research"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

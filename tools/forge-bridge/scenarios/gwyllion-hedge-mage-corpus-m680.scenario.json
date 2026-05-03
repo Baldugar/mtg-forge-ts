@@ -1,0 +1,23 @@
+{
+  "id": "gwyllion-hedge-mage-corpus-m680",
+  "description": "M6 corpus — Gwyllion Hedge-Mage; in-hand parse.",
+  "seed": 62761,
+  "cards": {
+    "Gwyllion Hedge-Mage": "Name:Gwyllion Hedge-Mage\nManaCost:2 WB\nTypes:Creature Hag Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Plains.YouCtrl | PresentCompare$ GE2 | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if you control two or more Plains, you may create a 1/1 white Kithkin Soldier creature token.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Swamp.YouCtrl | PresentCompare$ GE2 | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, if you control two or more Swamps, you may put a -1/-1 counter on target creature.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_kithkin_soldier | TokenOwner$ You\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nOracle:When Gwyllion Hedge-Mage enters, if you control two or more Plains, you may create a 1/1 white Kithkin Soldier creature token.\\nWhen Gwyllion Hedge-Mage enters, if you control two or more Swamps, you may put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gwyllion Hedge-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

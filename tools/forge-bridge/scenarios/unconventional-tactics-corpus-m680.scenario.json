@@ -1,0 +1,23 @@
+{
+  "id": "unconventional-tactics-corpus-m680",
+  "description": "M6 corpus — Unconventional Tactics; in-hand parse.",
+  "seed": 64840,
+  "cards": {
+    "Unconventional Tactics": "Name:Unconventional Tactics\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | KW$ Flying | SpellDescription$ Target creature gets +3/+3 and gains flying until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Zombie+YouCtrl | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Whenever a Zombie you control enters, you may pay {W}. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigChange:AB$ ChangeZone | Cost$ W | Origin$ Graveyard | Destination$ Hand\nDeckHints:Type$Zombie\nOracle:Target creature gets +3/+3 and gains flying until end of turn.\\nWhenever a Zombie you control enters, you may pay {W}. If you do, return Unconventional Tactics from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unconventional Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

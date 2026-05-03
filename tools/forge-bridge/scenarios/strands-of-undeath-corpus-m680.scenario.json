@@ -1,0 +1,23 @@
+{
+  "id": "strands-of-undeath-corpus-m680",
+  "description": "M6 corpus — Strands of Undeath; in-hand parse.",
+  "seed": 64476,
+  "cards": {
+    "Strands of Undeath": "Name:Strands of Undeath\nManaCost:3 B\nTypes:Enchantment Aura\nPT:2/2\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards two cards.\nA:AB$ Regenerate | Cost$ B | Defined$ Enchanted | SpellDescription$ Regenerate enchanted creature.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | TgtPrompt$ Select a player | NumCards$ 2 | Mode$ TgtChoose\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen Strands of Undeath enters, target player discards two cards.\\n{B}: Regenerate enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strands of Undeath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

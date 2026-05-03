@@ -1,0 +1,23 @@
+{
+  "id": "kukemssa-pirates-corpus-m680",
+  "description": "M6 corpus — Kukemssa Pirates; in-hand parse.",
+  "seed": 63162,
+  "cards": {
+    "Kukemssa Pirates": "Name:Kukemssa Pirates\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may gain control of target artifact defending player controls. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigGainControl:DB$ GainControl | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target artifact defending player controls | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nOracle:Whenever Kukemssa Pirates attacks and isn't blocked, you may gain control of target artifact defending player controls. If you do, Kukemssa Pirates assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kukemssa Pirates"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

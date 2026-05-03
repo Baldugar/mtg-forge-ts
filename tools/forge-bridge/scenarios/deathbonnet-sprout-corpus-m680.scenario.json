@@ -1,0 +1,23 @@
+{
+  "id": "deathbonnet-sprout-corpus-m680",
+  "description": "M6 corpus — Deathbonnet Sprout; in-hand parse.",
+  "seed": 62119,
+  "cards": {
+    "Deathbonnet Sprout": "Name:Deathbonnet Sprout\nManaCost:G\nTypes:Creature Fungus\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill a card. Then if there are three or more creature cards in your graveyard, transform CARDNAME. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionPresent$ Creature.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE3 | Mode$ Transform\nDeckHas:Ability$Mill|Counters\nDeckHints:Ability$Discard|Sacrifice\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, mill a card. Then if there are three or more creature cards in your graveyard, transform Deathbonnet Sprout. (To mill a card, put the top card of your library into your graveyard.)\n\nALTERNATE\n\nName:Deathbonnet Hulk\nManaCost:no cost\nColors:green\nTypes:Creature Fungus Horror\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may exile a card from a graveyard. If a creature card was exiled this way, put a +1/+1 counter on CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | RememberChanged$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:At the beginning of your upkeep, you may exile a card from a graveyard. If a creature card was exiled this way, put a +1/+1 counter on Deathbonnet Hulk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathbonnet Sprout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "faerie-bladecrafter-corpus-m680",
+  "description": "M6 corpus — Faerie Bladecrafter; in-hand parse.",
+  "seed": 62423,
+  "cards": {
+    "Faerie Bladecrafter": "Name:Faerie Bladecrafter\nManaCost:2 B\nTypes:Creature Faerie Rogue\nPT:2/2\nK:Flying\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Faerie.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more Faeries you control deal combat damage to a player, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigLose | TriggerDescription$ When CARDNAME dies, each opponent loses X life and you gain X life, where X is its power.\nSVar:TrigLose:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardPower\nOracle:Flying\\nWhenever one or more Faeries you control deal combat damage to a player, put a +1/+1 counter on Faerie Bladecrafter.\\nWhen Faerie Bladecrafter dies, each opponent loses X life and you gain X life, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Bladecrafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

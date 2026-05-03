@@ -1,0 +1,23 @@
+{
+  "id": "air-nomad-student-corpus-m680",
+  "description": "M6 corpus — Air Nomad Student; in-hand parse.",
+  "seed": 61472,
+  "cards": {
+    "Air Nomad Student": "Name:Air Nomad Student\nManaCost:3 W\nTypes:Creature Human Monk\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | IsPresent$ Card.Self+!attackedThisTurn | TriggerDescription$ At the beginning of your end step, if this creature didn't attack this turn, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nAt the beginning of your end step, if this creature didn't attack this turn, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Air Nomad Student"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

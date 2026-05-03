@@ -1,0 +1,23 @@
+{
+  "id": "devastating-mastery-corpus-m680",
+  "description": "M6 corpus — Devastating Mastery; in-hand parse.",
+  "seed": 62159,
+  "cards": {
+    "Devastating Mastery": "Name:Devastating Mastery\nManaCost:2 W W W W\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 2 W W | Description$ You may pay {2}{W}{W} rather than pay this spell's mana cost.\nA:SP$ Branch | BranchConditionSVar$ AltCostPaid | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ OppChooses | FalseSubAbility$ DBDestroyAll | SpellDescription$ If the {2}{W}{W} cost was paid, an opponent chooses up to two nonland permanents they control and returns them to their owner's hand. Destroy all nonland permanents.\nSVar:OppChooses:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Permanent.nonLand+ChosenCtrl | SelectPrompt$ Choose up to two nonland permanents you control to return to their owner's hand | Chooser$ ChosenPlayer | DefinedPlayer$ ChosenPlayer | AILogic$ Always | ChangeNum$ 2 | Hidden$ True | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.nonLand\nSVar:AltCostPaid:Count$AltCost.1.0\nOracle:You may pay {2}{W}{W} rather than pay this spell's mana cost.\\nIf the {2}{W}{W} cost was paid, an opponent chooses up to two nonland permanents they control and returns them to their owner's hand.\\nDestroy all nonland permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devastating Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

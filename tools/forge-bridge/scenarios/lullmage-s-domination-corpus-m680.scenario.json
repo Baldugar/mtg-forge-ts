@@ -1,0 +1,23 @@
+{
+  "id": "lullmage-s-domination-corpus-m680",
+  "description": "M6 corpus — Lullmage's Domination; in-hand parse.",
+  "seed": 63281,
+  "cards": {
+    "Lullmage's Domination": "Name:Lullmage's Domination\nManaCost:X U U U\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ XGrave | Relative$ True | EffectZone$ All | Description$ This spell costs {3} less to cast if it targets a creature whose controller has eight or more cards in their graveyard.\nSVar:XGrave:Count$Compare CheckTgt GE8.3.0\nSVar:CheckTgt:TargetedController$CardsInGraveyard\nA:SP$ GainControl | ValidTgts$ Creature.cmcEQX | SpellDescription$ Gain control of target creature with mana value X.\nSVar:X:Count$xPaid\nOracle:This spell costs {3} less to cast if it targets a creature whose controller has eight or more cards in their graveyard.\\nGain control of target creature with mana value X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lullmage's Domination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

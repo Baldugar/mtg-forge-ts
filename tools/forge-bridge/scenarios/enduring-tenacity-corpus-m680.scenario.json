@@ -1,0 +1,23 @@
+{
+  "id": "enduring-tenacity-corpus-m680",
+  "description": "M6 corpus — Enduring Tenacity; in-hand parse.",
+  "seed": 62336,
+  "cards": {
+    "Enduring Tenacity": "Name:Enduring Tenacity\nManaCost:2 B B\nTypes:Enchantment Creature Snake Glimmer\nPT:4/3\nT:Mode$ LifeGained | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you gain life, target opponent loses that much life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment | RemoveCardTypes$ True\nDeckHints:Ability$LifeGain\nOracle:Whenever you gain life, target opponent loses that much life.\\nWhen Enduring Tenacity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Tenacity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

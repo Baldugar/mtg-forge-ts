@@ -1,0 +1,23 @@
+{
+  "id": "rowdy-crew-corpus-m680",
+  "description": "M6 corpus — Rowdy Crew; in-hand parse.",
+  "seed": 64049,
+  "cards": {
+    "Rowdy Crew": "Name:Rowdy Crew\nManaCost:2 R R\nTypes:Creature Human Pirate\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then discard two cards at random. If two cards that share a card type are discarded this way, put two +1/+1 counters on CARDNAME.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ Random | Defined$ You | RememberDiscarded$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | ConditionCheckSVar$ SameType | ConditionSVarCompare$ EQ2 | SubAbility$ DBCleanup\nSVar:SameType:Count$RememberedWithSharedCardType\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Trample\\nWhen Rowdy Crew enters, draw three cards, then discard two cards at random. If two cards that share a card type are discarded this way, put two +1/+1 counters on Rowdy Crew.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rowdy Crew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

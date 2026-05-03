@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-eldraine-corpus-m680",
+  "description": "M6 corpus — Invasion of Eldraine; in-hand parse.",
+  "seed": 62965,
+  "cards": {
+    "Invasion of Eldraine": "Name:Invasion of Eldraine\nManaCost:3 B\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards two cards.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nDeckHints:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Eldraine enters, target opponent discards two cards.\n\nALTERNATE\n\nName:Prickle Faeries\nManaCost:no cost\nColors:black\nTypes:Creature Faerie\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | CheckSVar$ TrigCount | SVarCompare$ LE2 | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, CARDNAME deals 2 damage to them.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nSVar:TrigCount:Count$ValidHand Card.ActivePlayerCtrl\nOracle:Flying\\nAt the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, Prickle Faeries deals 2 damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Eldraine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

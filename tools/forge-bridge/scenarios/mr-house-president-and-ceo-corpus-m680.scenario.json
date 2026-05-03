@@ -1,0 +1,23 @@
+{
+  "id": "mr-house-president-and-ceo-corpus-m680",
+  "description": "M6 corpus — Mr. House, President and CEO; in-hand parse.",
+  "seed": 63486,
+  "cards": {
+    "Mr. House, President and CEO": "Name:Mr. House, President and CEO\nManaCost:R W B\nTypes:Legendary Artifact Creature Human\nPT:0/4\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ TrigBranch | ValidPlayer$ You | ValidResult$ GE4 | TriggerDescription$ Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ TriggerCount$Result | BranchConditionSVarCompare$ GE6 | TrueSubAbility$ Tokens | FalseSubAbility$ Token\nSVar:Token:DB$ Token | TokenScript$ c_3_3_a_robot\nSVar:Tokens:DB$ Token | TokenScript$ c_3_3_a_robot,c_a_treasure_sac\nA:AB$ RollDice | Cost$ 4 T | Amount$ Count$TotalManaSpent Treasure/Plus.1 | StackDescription$ SpellDescription | SpellDescription$ Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Robot|Treasure\nOracle:Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.\\n{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mr. House, President and CEO"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necra-sanctuary-corpus-m680",
+  "description": "M6 corpus — Necra Sanctuary; in-hand parse.",
+  "seed": 63525,
+  "cards": {
+    "Necra Sanctuary": "Name:Necra Sanctuary\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouCtrl+Green,Permanent.YouCtrl+White | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, if you control a green or white permanent, target player loses 1 life. If you control a green permanent and a white permanent, that player loses 3 life instead.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ L\nSVar:Y:Count$Valid Permanent.Green+YouCtrl/LimitMax.1\nSVar:Z:Count$Valid Permanent.White+YouCtrl/LimitMax.1\nSVar:X:SVar$Y/Plus.Z\nSVar:L:Count$Compare X EQ2.3.1\nDeckNeeds:Color$White|Green\nOracle:At the beginning of your upkeep, if you control a green or white permanent, target player loses 1 life. If you control a green permanent and a white permanent, that player loses 3 life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necra Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

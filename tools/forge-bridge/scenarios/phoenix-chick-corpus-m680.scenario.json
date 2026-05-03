@@ -1,0 +1,23 @@
+{
+  "id": "phoenix-chick-corpus-m680",
+  "description": "M6 corpus — Phoenix Chick; in-hand parse.",
+  "seed": 63739,
+  "cards": {
+    "Phoenix Chick": "Name:Phoenix Chick\nManaCost:R\nTypes:Creature Phoenix\nPT:1/1\nK:Flying\nK:Haste\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature | ValidAttackersAmount$ GE3 | Execute$ TrigReturn | TriggerZones$ Graveyard | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with three or more creatures, you may pay {R}{R}. If you do, return CARDNAME from your graveyard to the battlefield tapped and attacking with a +1/+1 counter on it.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ R R | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Attacking$ True | WithCountersType$ P1P1 | WithCountersAmount$ 1\nSVar:DiscardMe:1\nSVar:SacMe:1\nDeckHas:Ability$Counters|Graveyard\nOracle:Flying, haste\\nPhoenix Chick can't block.\\nWhenever you attack with three or more creatures, you may pay {R}{R}. If you do, return Phoenix Chick from your graveyard to the battlefield tapped and attacking with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phoenix Chick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

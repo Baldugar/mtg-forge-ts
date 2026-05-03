@@ -1,0 +1,23 @@
+{
+  "id": "nantuko-cultivator-corpus-m680",
+  "description": "M6 corpus — Nantuko Cultivator; in-hand parse.",
+  "seed": 63515,
+  "cards": {
+    "Nantuko Cultivator": "Name:Nantuko Cultivator\nManaCost:3 G\nTypes:Creature Insect Druid\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigNantukoDiscardLand | TriggerDescription$ When CARDNAME enters, you may discard any number of land cards. Put that many +1/+1 counters on CARDNAME and draw that many cards.\nSVar:TrigNantukoDiscardLand:DB$ Discard | DiscardValid$ Land | NumCards$ NantukoX | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBNantukoPutCounter\nSVar:DBNantukoPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ NantukoY | SubAbility$ DBNantukoDraw\nSVar:DBNantukoDraw:DB$ Draw | NumCards$ NantukoY | SubAbility$ DBNantukoCleanup\nSVar:DBNantukoCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NantukoX:Count$ValidHand Land.YouOwn\nSVar:NantukoY:Remembered$Amount\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:When Nantuko Cultivator enters, you may discard any number of land cards. Put that many +1/+1 counters on Nantuko Cultivator and draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nantuko Cultivator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

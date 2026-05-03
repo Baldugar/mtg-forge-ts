@@ -1,0 +1,23 @@
+{
+  "id": "korvold-gleeful-glutton-corpus-m680",
+  "description": "M6 corpus — Korvold, Gleeful Glutton; in-hand parse.",
+  "seed": 63146,
+  "cards": {
+    "Korvold, Gleeful Glutton": "Name:Korvold, Gleeful Glutton\nManaCost:5 B R G\nTypes:Legendary Creature Dragon Noble\nPT:4/4\nK:Flying\nK:Trample\nK:Haste\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ SacrificedPermanentsTypes | EffectZone$ All | Description$ This spell costs {1} less to cast for each card type among permanents you've sacrificed this turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ DBCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, put X +1/+1 counters on NICKNAME and draw X cards, where X is the number of permanent types among cards in your graveyard.\nSVar:DBCounter:DB$ PutCounter | CounterNum$ X | CounterType$ P1P1 | Defined$ Self | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:SacrificedPermanentsTypes:PlayerCountPropertyYou$SacrificedPermanentTypesThisTurn\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypesPermanent\nOracle:This spell costs {1} less to cast for each card type among permanents you've sacrificed this turn.\\nFlying, trample, haste\\nWhenever Korvold deals combat damage to a player, put X +1/+1 counters on Korvold and draw X cards, where X is the number of permanent types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Korvold, Gleeful Glutton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

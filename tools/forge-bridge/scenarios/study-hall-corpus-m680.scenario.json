@@ -1,0 +1,23 @@
+{
+  "id": "study-hall-corpus-m680",
+  "description": "M6 corpus — Study Hall; in-hand parse.",
+  "seed": 64490,
+  "cards": {
+    "Study Hall": "Name:Study Hall\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | Amount$ 1 | TriggersWhenSpent$ TrigSpent | SpellDescription$ Add one mana of any color. When you spend this mana to cast your commander, scry X, where X is the number of times it's been cast from the command zone this game.\nSVar:TrigSpent:Mode$ SpellCast | ValidCard$ Card.IsCommander+YouOwn | ValidActivatingPlayer$ You | Execute$ TrigScry | TriggerDescription$ When you spend this mana to cast your commander, scry X, where X is the number of times it's been cast from the command zone this game.\nSVar:TrigScry:DB$ Scry | ScryNum$ X\nSVar:X:TriggeredCard$CommanderCastFromCommandZone\nAI:RemoveDeck:NonCommander\nOracle:{T}: Add {C}.\\n{1}, {T}: Add one mana of any color. When you spend this mana to cast your commander, scry X, where X is the number of times it's been cast from the command zone this game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Study Hall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

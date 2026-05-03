@@ -1,0 +1,23 @@
+{
+  "id": "wiitigo-corpus-m680",
+  "description": "M6 corpus — Wiitigo; in-hand parse.",
+  "seed": 65040,
+  "cards": {
+    "Wiitigo": "Name:Wiitigo\nManaCost:3 G G G\nTypes:Creature Yeti\nPT:0/0\nK:etbCounter:P1P1:6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter2 | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on CARDNAME if it has blocked or been blocked since your last upkeep. Otherwise, remove a +1/+1 counter from it.\nSVar:TrigPutCounter2:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionPresent$ Card.Self+blockedOrBeenBlockedSinceYourLastUpkeep | SubAbility$ RemCounter\nSVar:RemCounter:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 1 | ConditionPresent$ Card.Self+blockedOrBeenBlockedSinceYourLastUpkeep | ConditionCompare$ EQ0\nOracle:Wiitigo enters with six +1/+1 counters on it.\\nAt the beginning of your upkeep, put a +1/+1 counter on Wiitigo if it has blocked or been blocked since your last upkeep. Otherwise, remove a +1/+1 counter from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wiitigo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "probe-corpus-m680",
+  "description": "M6 corpus — Probe; in-hand parse.",
+  "seed": 63812,
+  "cards": {
+    "Probe": "Name:Probe\nManaCost:2 U\nTypes:Sorcery\nK:Kicker:1 B\nA:SP$ Draw | NumCards$ 3 | SubAbility$ DBDiscardYou | SpellDescription$ Draw three cards,\nSVar:DBDiscardYou:DB$ Discard | Defined$ You | NumCards$ 2 | SubAbility$ DBDiscardTarget | Mode$ TgtChoose | SpellDescription$ then discard two cards.\nSVar:DBDiscardTarget:DB$ Discard | Condition$ Kicked | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose | SpellDescription$ If CARDNAME was kicked, target player discards two cards.\nSVar:NeedsToPlayKickedVar:Z GE1\nSVar:Z:Count$ValidHand Card.OppOwn\nDeckHints:Color$Black\nOracle:Kicker {1}{B} (You may pay an additional {1}{B} as you cast this spell.)\\nDraw three cards, then discard two cards. If this spell was kicked, target player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Probe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

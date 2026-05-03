@@ -1,0 +1,23 @@
+{
+  "id": "humble-defector-corpus-m680",
+  "description": "M6 corpus — Humble Defector; in-hand parse.",
+  "seed": 62871,
+  "cards": {
+    "Humble Defector": "Name:Humble Defector\nManaCost:1 R\nTypes:Creature Human Rogue\nPT:2/1\nA:AB$ Draw | Cost$ T | NumCards$ 2 | SubAbility$ DBGainControl | PlayerTurn$ True | SpellDescription$ Draw two cards. Target opponent gains control of CARDNAME. Activate only during your turn.\nSVar:DBGainControl:DB$ GainControl | Defined$ Self | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nOracle:{T}: Draw two cards. Target opponent gains control of Humble Defector. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Humble Defector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

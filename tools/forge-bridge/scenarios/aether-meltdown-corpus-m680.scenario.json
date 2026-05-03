@@ -1,0 +1,23 @@
+{
+  "id": "aether-meltdown-corpus-m680",
+  "description": "M6 corpus — Aether Meltdown; in-hand parse.",
+  "seed": 61458,
+  "cards": {
+    "Aether Meltdown": "Name:Aether Meltdown\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature,Vehicle:creature or Vehicle\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | AddPower$ -4 | Description$ Enchanted creature gets -4/-0.\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nEnchant creature or Vehicle\\nWhen Aether Meltdown enters, you get {E}{E} (two energy counters).\\nEnchanted creature gets -4/-0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Meltdown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

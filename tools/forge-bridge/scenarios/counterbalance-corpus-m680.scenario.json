@@ -1,0 +1,23 @@
+{
+  "id": "counterbalance-corpus-m680",
+  "description": "M6 corpus — Counterbalance; in-hand parse.",
+  "seed": 62019,
+  "cards": {
+    "Counterbalance": "Name:Counterbalance\nManaCost:U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Whenever an opponent casts a spell, you may reveal the top card of your library. If you do, counter that spell if it has the same mana value as the revealed card.\nSVar:TrigReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | DestinationZone$ Library | LibraryPosition$ 0 | LibraryPosition2$ 0 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ Counter | Defined$ TriggeredSpellAbility | ConditionPresent$ Card.cmcEQX | ConditionDefined$ TriggeredCard | ConditionCompare$ GE1\nSVar:X:Count$TopOfLibraryCMC\nOracle:Whenever an opponent casts a spell, you may reveal the top card of your library. If you do, counter that spell if it has the same mana value as the revealed card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Counterbalance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

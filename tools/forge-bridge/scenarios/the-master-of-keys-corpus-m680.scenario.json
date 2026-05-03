@@ -1,0 +1,23 @@
+{
+  "id": "the-master-of-keys-corpus-m680",
+  "description": "M6 corpus — The Master of Keys; in-hand parse.",
+  "seed": 64671,
+  "cards": {
+    "The Master of Keys": "Name:The Master of Keys\nManaCost:X W U B\nTypes:Legendary Enchantment Creature Horror\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put X +1/+1 counters on it and mill twice X cards.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ Y\nS:Mode$ Continuous | Affected$ Enchantment.YouOwn | AffectedZone$ Graveyard | AddKeyword$ Escape:CardManaCost ExileFromGrave<3/Card.Other/other> | Description$ Each enchantment card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Twice\nOracle:Flying\\nWhen The Master of Keys enters, put X +1/+1 counters on it and mill twice X cards.\\nEach enchantment card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Master of Keys"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

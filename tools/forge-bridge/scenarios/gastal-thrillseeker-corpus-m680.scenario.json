@@ -1,0 +1,23 @@
+{
+  "id": "gastal-thrillseeker-corpus-m680",
+  "description": "M6 corpus — Gastal Thrillseeker; in-hand parse.",
+  "seed": 62606,
+  "cards": {
+    "Gastal Thrillseeker": "Name:Gastal Thrillseeker\nManaCost:B R\nTypes:Creature Lizard Berserker\nPT:2/3\nK:Start your engines\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When this creature enters, it deals 1 damage to target opponent and you gain 1 life.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddStaticAbility$ MaxSpeedStatic | Description$ Max speed — This creature has deathtouch and haste.\nSVar:MaxSpeedStatic:Mode$ Continuous | Secondary$ True | Affected$ Card.Self | AddKeyword$ Deathtouch & Haste | Description$ Max speed — This creature has deathtouch and haste.\nDeckHas:Ability$LifeGain\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nWhen this creature enters, it deals 1 damage to target opponent and you gain 1 life.\\nMax speed — This creature has deathtouch and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gastal Thrillseeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

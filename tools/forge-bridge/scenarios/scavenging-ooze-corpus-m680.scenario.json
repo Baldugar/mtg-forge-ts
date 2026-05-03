@@ -1,0 +1,23 @@
+{
+  "id": "scavenging-ooze-corpus-m680",
+  "description": "M6 corpus — Scavenging Ooze; in-hand parse.",
+  "seed": 64148,
+  "cards": {
+    "Scavenging Ooze": "Name:Scavenging Ooze\nManaCost:1 G\nTypes:Creature Ooze\nPT:2/2\nA:AB$ ChangeZone | Cost$ G | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBPutCounter | SpellDescription$ Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1\nOracle:{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on Scavenging Ooze and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scavenging Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

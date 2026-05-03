@@ -1,0 +1,23 @@
+{
+  "id": "caldera-pyremaw-corpus-m680",
+  "description": "M6 corpus — Caldera Pyremaw; in-hand parse.",
+  "seed": 61835,
+  "cards": {
+    "Caldera Pyremaw": "Name:Caldera Pyremaw\nManaCost:3 R R\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast an instant or sorcery spell, put a +1/+1 counter on this creature. Then this creature deals damage equal to its power to target opponent.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X\nSVar:X:Count$CardPower\nSVar:BuffedBy:Spell.Instant,Spell.Sorcery\nDeckHas:Ability$Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nWhenever you cast an instant or sorcery spell, put a +1/+1 counter on this creature. Then this creature deals damage equal to its power to target opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caldera Pyremaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "espers-to-magicite-corpus-m680",
+  "description": "M6 corpus — Espers to Magicite; in-hand parse.",
+  "seed": 62363,
+  "cards": {
+    "Espers to Magicite": "Name:Espers to Magicite\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card.OppOwn | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBImmediateTrigger | SpellDescription$ Exile each opponent's graveyard. When you do, choose up to one target creature card exiled this way. Create a token that's a copy of that card, except it's an artifact and it loses all other card types.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | RememberObjects$ Remembered | Execute$ TrigCopy | SubAbility$ DBCleanup | TriggerDescription$ When you do, choose up to one target creature card exiled this way. Create a token that's a copy of that card, except it's an artifact and it loses all other card types.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Creature.IsTriggerRemembered | TgtZone$ Exile | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature card exiled with CARDNAME | AddTypes$ Artifact | RemoveCardTypes$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile each opponent's graveyard. When you do, choose up to one target creature card exiled this way. Create a token that's a copy of that card, except it's an artifact and it loses all other card types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Espers to Magicite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

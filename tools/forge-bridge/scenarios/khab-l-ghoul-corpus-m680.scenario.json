@@ -1,0 +1,23 @@
+{
+  "id": "khab-l-ghoul-corpus-m680",
+  "description": "M6 corpus — Khabál Ghoul; in-hand parse.",
+  "seed": 63115,
+  "cards": {
+    "Khabál Ghoul": "Name:Khabál Ghoul\nManaCost:2 B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each end step, put a +1/+1 counter on CARDNAME for each creature that died this turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:At the beginning of each end step, put a +1/+1 counter on Khabál Ghoul for each creature that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Khabál Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

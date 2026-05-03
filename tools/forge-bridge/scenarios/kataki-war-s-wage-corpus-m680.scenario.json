@@ -1,0 +1,23 @@
+{
+  "id": "kataki-war-s-wage-corpus-m680",
+  "description": "M6 corpus — Kataki, War's Wage; in-hand parse.",
+  "seed": 63082,
+  "cards": {
+    "Kataki, War's Wage": "Name:Kataki, War's Wage\nManaCost:1 W\nTypes:Legendary Creature Spirit\nPT:2/1\nS:Mode$ Continuous | Affected$ Artifact | AddTrigger$ UpkeepCostTrigger | Description$ All artifacts have \"At the beginning of your upkeep, sacrifice this artifact unless you pay {1}.\"\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1\nAI:RemoveDeck:Random\nOracle:All artifacts have \"At the beginning of your upkeep, sacrifice this artifact unless you pay {1}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kataki, War's Wage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
