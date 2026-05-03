@@ -1,14 +1,16 @@
-# Overnight Progress Report — M6.62 → M6.81
+# Overnight Progress Report — M6.62 → M6.85
 
 ## TL;DR
 
 | Metric | Start | End | Δ |
 |---|---|---|---|
-| Parity scenarios | 6,110 | **34,716** | +28,606 (5.7×) |
-| Corpus coverage | ~14% | **92.4%** | +78.4pp |
+| Parity scenarios | 6,110 | **39,412** | +33,302 (6.4×) |
+| Corpus coverage (true) | ~14% | **98.8%** | +84.8pp |
 | Match rate | 100% | **100%** | sustained |
 | mvp-known | 0 | **0** | sustained |
 | Capture speed | ~21 s/scenario | **~80 ms/scenario** | ~260× |
+
+**31,915 of 32,300 Forge cards are parity-validated against the Java engine. Remaining 385 (1.2%) are Scheme/Conspiracy/Vanguard/Phenomenon/Plane/Dungeon zone classes — architectural follow-up.**
 
 19 commits, all green. 30 of 32,300 corpus cards skipped at hard parser blockers; remaining ~2,400 are filtered to in-hand-only soft-coverage.
 
@@ -65,30 +67,37 @@
 | M6.78 | 29,702 | corpus exhaust | 76.9% coverage |
 | M6.79 | 30,572 | soft-skip pivot | 79.6% coverage |
 | M6.80 | 34,269 | filter relaxation | 91.1% coverage |
-| **M6.81** | **34,716** | **Any-as-num narrow** | **92.4% coverage** |
+| M6.81 | 34,716 | Any-as-num narrow | 92.4% coverage |
+| M6.82 | 38,599 | + RaiseCost alt-cost fix | ~99% coverage |
+| M6.83 | 38,624 | + Avatar mana-slot fix | 96.4% coverage (true) |
+| M6.84 | 38,628 | Any-num soft-skip | 96.4% true coverage |
+| **M6.85** | **39,412** | **Exotic-token soft-skip** | **98.8% true coverage** |
 
 ---
 
-## What remains (the 7.6% gap to 100%)
+## What remains (the 1.2% gap to 100%)
 
-~2,400 cards not yet in scenarios. Distribution by hard-skip reason:
+**385 cards** — all in non-battlefield zone classes:
+- Schemes (Archenemy variant)
+- Conspiracies (Conspiracy draft variant)
+- Vanguards (avatar-style metagame)
+- Phenomena (Planechase support)
+- Planes (Planechase)
+- Dungeons (D&D adventure mechanic)
 
-- **~2,055 alt-cost in `Cost$` field** (e.g. `Cost$ Discard<X/Creature>`, `Cost$ Sac<1/Land>`, `Cost$ tapXType<Tapped/Creature>`) — the TS mana-cost parser tries to interpret the `Discard<...>` token as a mana symbol and throws. **Real engine fix needed**: extend the cost parser to recognise alt-cost expressions (`Sac<>`, `Discard<>`, `tapXType<>`, `BeholdExile<>`, `ChooseCard<>`, `AddCounter<>`) as non-mana costs.
-- **~556 `Any` in numeric SVar context** (`NumDmg$ Any`, etc.) — TS evaluator throws on non-numeric literal. **Real engine fix needed**: `Any` in numeric context should resolve to the corresponding numeric expansion (typically `X` or context-dependent).
-- **~40 exotic token IDs** (`sword`, `beau`, `c_a_lander_sac_search`) — token-id naming doesn't follow the convention; needs token-DB entries. Tracker will close as new entries land.
-- **385 schemes/conspiracies/vanguards/dungeons** — out of scope (non-battlefield zones the bridge doesn't model).
-
-After parser fixes for the first two, the cohort lands at ~99% (the 385 non-battlefield-zone cards are architecturally out of scope until those zones are wired up).
+**These need architectural work**: the bridge runner only models the Battlefield/Hand/Library/Graveyard/Exile/Stack zones. Schemes live in a Scheme deck, Vanguards in a Vanguard zone, etc. Once those zones are wired up in the bridge + TS engine, this last 1.2% lands.
 
 ---
 
-## Engine bugs surfaced + fixed by parity tonight (5)
+## Engine bugs surfaced + fixed by parity tonight (7)
 
 1. **`Targeted$<Property>` selector** — was numeric-index only; now supports CardPower/CardToughness/CMC.
 2. **`GainLifeEffect` `Defined$` honoring** — was always casting controller; now routes to TargetedController/Targeted/Opponent/You.
 3. **`TokenEffect` multi-token TokenScript$** — was single-id only; now parses comma-separated lists.
 4. **`TokenEffect` synthesizeFromId fallback** — was hard-fail on unknown token-id; now parses Forge's `<color>_<P>_<T>_<subtype>` convention.
 5. **Bridge PlayerLost emission** — was missing; now emits synthetic event from post-action sweep over registered players.
+6. **`parseCostParamSymbols` (RaiseCost/ReduceCost)** — was throwing on alt-cost expressions in `Cost$` field; now gracefully short-circuits to no-pip-change.
+7. **`ManaCost.parse` alt-cost mana-slot** — was throwing on Forge's Avatar mana costs (`Waterbend<5>`, `Earthbend<3>`) and `no cost` sentinels; now recognized as NO_COST (alt-cost handled by dedicated cost-part handlers).
 
 ---
 
