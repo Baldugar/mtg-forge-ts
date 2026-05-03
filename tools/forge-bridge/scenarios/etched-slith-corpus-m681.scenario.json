@@ -1,0 +1,23 @@
+{
+  "id": "etched-slith-corpus-m681",
+  "description": "M6 corpus — Etched Slith; in-hand parse.",
+  "seed": 61543,
+  "cards": {
+    "Etched Slith": "Name:Etched Slith\nManaCost:1 B\nTypes:Artifact Creature Phyrexian Slith\nPT:1/1\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it. When you do, you may remove a counter from another target permanent or opponent.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | RememberAmount$ True | SubAbility$ TrigImmediate\nSVar:TrigImmediate:DB$ ImmediateTrigger | Execute$ TrigRemoveCounter | OptionalDecider$ You | TriggerAmount$ Count$RememberedNumber | SubAbility$ DBCleanup | TriggerDescription$ When you do, you may remove a counter from another target permanent or opponent.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Permanent.Other,Opponent | TgtPrompt$ Select target permanent or opponent | CounterType$ Any | CounterNum$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Menace\\nWhenever Etched Slith deals combat damage to a player, put a +1/+1 counter on it. When you do, you may remove a counter from another target permanent or opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Etched Slith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

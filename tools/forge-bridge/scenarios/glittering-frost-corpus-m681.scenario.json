@@ -1,0 +1,23 @@
+{
+  "id": "glittering-frost-corpus-m681",
+  "description": "M6 corpus — Glittering Frost; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Glittering Frost": "Name:Glittering Frost\nManaCost:2 G\nTypes:Snow Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddType$ Snow | Description$ Enchanted land is snow.\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Defined$ TriggeredCardController\nOracle:Enchant land\\nEnchanted land is snow.\\nWhenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glittering Frost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

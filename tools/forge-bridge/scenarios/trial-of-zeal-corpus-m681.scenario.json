@@ -1,0 +1,23 @@
+{
+  "id": "trial-of-zeal-corpus-m681",
+  "description": "M6 corpus — Trial of Zeal; in-hand parse.",
+  "seed": 61857,
+  "cards": {
+    "Trial of Zeal": "Name:Trial of Zeal\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Cartouche.YouCtrl | Execute$ TrigReturn | TriggerDescription$ When a Cartouche you control enters, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nSVar:PlayMain1:TRUE\nDeckHints:Type$Cartouche\nOracle:When Trial of Zeal enters, it deals 3 damage to any target.\\nWhen a Cartouche you control enters, return Trial of Zeal to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trial of Zeal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

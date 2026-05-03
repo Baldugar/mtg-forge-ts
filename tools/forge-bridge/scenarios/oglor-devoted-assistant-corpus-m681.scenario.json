@@ -1,0 +1,23 @@
+{
+  "id": "oglor-devoted-assistant-corpus-m681",
+  "description": "M6 corpus — Oglor, Devoted Assistant; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Oglor, Devoted Assistant": "Name:Oglor, Devoted Assistant\nManaCost:1 U\nTypes:Legendary Creature Homunculus\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ DBDig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, look at the top two cards of your library, then put one of them into your graveyard.\nSVar:DBDig:DB$ Dig | ValidTgts$ You | DigNum$ 2 | ChangeNum$ 1 | DestinationZone$ Graveyard | LibraryPosition2$ 0\nT:Mode$ ChangesZone | ValidCard$ Creature.YouOwn | Origin$ Library,Hand | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever a creature card is put into your graveyard from your library or hand, it perpetually gains \"When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCard | Triggers$ LeavesGrave | Duration$ Perpetual\nSVar:LeavesGrave:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenTapped$ True\nDeckHas:Ability$Graveyard|Token & Type$Zombie & Color$Black\nDeckHints:Ability$Graveyard|Mill & Keyword$Disturb|Escape|Unearth\nOracle:At the beginning of your upkeep, look at the top two cards of your library, then put one of them into your graveyard.\\nWhenever a creature card is put into your graveyard from your library or hand, it perpetually gains \"When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oglor, Devoted Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

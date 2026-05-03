@@ -1,0 +1,23 @@
+{
+  "id": "firemane-avenger-corpus-m681",
+  "description": "M6 corpus — Firemane Avenger; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Firemane Avenger": "Name:Firemane Avenger\nManaCost:2 R W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionDmg | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME deals 3 damage to any target and you gain 3 life.\nSVar:TrigBattalionDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:Flying\\nBattalion — Whenever Firemane Avenger and at least two other creatures attack, Firemane Avenger deals 3 damage to any target and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firemane Avenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

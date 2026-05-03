@@ -1,0 +1,23 @@
+{
+  "id": "dormant-sliver-corpus-m681",
+  "description": "M6 corpus — Dormant Sliver; in-hand parse.",
+  "seed": 61523,
+  "cards": {
+    "Dormant Sliver": "Name:Dormant Sliver\nManaCost:2 G U\nTypes:Creature Sliver\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Sliver | AddKeyword$ Defender | Description$ All Sliver creatures have defender.\nS:Mode$ Continuous | Affected$ Permanent.Sliver | AddTrigger$ TrigEnter | Description$ All Slivers have \"When this permanent enters, draw a card.\"\nSVar:TrigEnter:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this permanent enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:BuffedBy:Sliver\nOracle:All Sliver creatures have defender.\\nAll Slivers have \"When this permanent enters, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dormant Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

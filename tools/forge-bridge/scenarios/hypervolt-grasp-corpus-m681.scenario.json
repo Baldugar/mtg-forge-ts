@@ -1,0 +1,23 @@
+{
+  "id": "hypervolt-grasp-corpus-m681",
+  "description": "M6 corpus — Hypervolt Grasp; in-hand parse.",
+  "seed": 61619,
+  "cards": {
+    "Hypervolt Grasp": "Name:Hypervolt Grasp\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Damage | Description$ Enchanted creature has \"{T}: This creature deals 1 damage to any target.\"\nA:AB$ ChangeZone | Cost$ 1 U | Defined$ Self | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nSVar:Damage:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals 1 damage to any target.\"\\n{1}{U}: Return Hypervolt Grasp to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypervolt Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

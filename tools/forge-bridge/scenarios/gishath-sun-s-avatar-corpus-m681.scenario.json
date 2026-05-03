@@ -1,0 +1,23 @@
+{
+  "id": "gishath-sun-s-avatar-corpus-m681",
+  "description": "M6 corpus — Gishath, Sun's Avatar; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Gishath, Sun's Avatar": "Name:Gishath, Sun's Avatar\nManaCost:5 R G W\nTypes:Legendary Creature Dinosaur Avatar\nPT:7/6\nK:Trample\nK:Vigilance\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ DBDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | Defined$ You | DigNum$ X | Reveal$ True | ChangeValid$ Creature.Dinosaur | ChangeNum$ Any | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition2$ -1 | RestRandomOrder$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Dinosaur\nOracle:Vigilance, trample, haste\\nWhenever Gishath, Sun's Avatar deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gishath, Sun's Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "judith-the-scourge-diva-corpus-m681",
+  "description": "M6 corpus — Judith, the Scourge Diva; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "Judith, the Scourge Diva": "Name:Judith, the Scourge Diva\nManaCost:1 B R\nTypes:Legendary Creature Human Shaman\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ 1 | Description$ Other creatures you control get +1/+0.\nSVar:PlayMain1:TRUE\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a nontoken creature you control dies, CARDNAME deals 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:Other creatures you control get +1/+0.\\nWhenever a nontoken creature you control dies, Judith, the Scourge Diva deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Judith, the Scourge Diva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gorehorn-raider-corpus-m681",
+  "description": "M6 corpus — Gorehorn Raider; in-hand parse.",
+  "seed": 61592,
+  "cards": {
+    "Gorehorn Raider": "Name:Gorehorn Raider\nManaCost:4 R\nTypes:Creature Minotaur Pirate\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDealDamage | TriggerDescription$ Raid — When this creature enters, if you attacked this turn, this creature deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When this creature enters, if you attacked this turn, this creature deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gorehorn Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

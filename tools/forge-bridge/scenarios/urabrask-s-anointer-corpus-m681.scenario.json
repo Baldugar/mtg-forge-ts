@@ -1,0 +1,23 @@
+{
+  "id": "urabrask-s-anointer-corpus-m681",
+  "description": "M6 corpus — Urabrask's Anointer; in-hand parse.",
+  "seed": 61863,
+  "cards": {
+    "Urabrask's Anointer": "Name:Urabrask's Anointer\nManaCost:3 R\nTypes:Artifact Creature Phyrexian Wizard\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals X damage to any target, where X is the number of permanents you control with oil counters on them.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Permanent.YouCtrl+counters_GE1_OIL\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Counters\nOracle:When Urabrask's Anointer enters, it deals X damage to any target, where X is the number of permanents you control with oil counters on them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urabrask's Anointer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "foreboding-statue-corpus-m681",
+  "description": "M6 corpus — Foreboding Statue; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Foreboding Statue": "Name:Foreboding Statue\nManaCost:3\nTypes:Artifact Creature Construct\nPT:1/2\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SubAbility$ DBPutCounter | SpellDescription$ Add one mana of any color.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OMEN | CounterNum$ 1 | SpellDescription$ Put an omen counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Card.Self+counters_GE3_OMEN | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your end step, if there are three or more omen counters on CARDNAME, untap it, then transform it.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:{T}: Add one mana of any color. Put an omen counter on Foreboding Statue.\\nAt the beginning of your end step, if there are three or more omen counters on Foreboding Statue, untap it, then transform it.\n\nALTERNATE\n\nName:Forsaken Thresher\nManaCost:no cost\nTypes:Artifact Creature Construct\nPT:5/5\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ At the beginning of your first main phase, add one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any\nOracle:At the beginning of your first main phase, add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foreboding Statue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

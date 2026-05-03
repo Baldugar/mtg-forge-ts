@@ -1,0 +1,23 @@
+{
+  "id": "realm-scorcher-hellkite-corpus-m681",
+  "description": "M6 corpus — Realm-Scorcher Hellkite; in-hand parse.",
+  "seed": 61760,
+  "cards": {
+    "Realm-Scorcher Hellkite": "Name:Realm-Scorcher Hellkite\nManaCost:4 R R\nTypes:Creature Dragon\nPT:4/6\nK:Bargain\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+bargained | Execute$ TrigMana | TriggerDescription$ When CARDNAME enters, if it was bargained, add four mana in any combination of colors.\nSVar:TrigMana:DB$ Mana | Produced$ Combo Any | Amount$ 4\nA:AB$ DealDamage | Cost$ 1 R | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nFlying, haste\\nWhen Realm-Scorcher Hellkite enters, if it was bargained, add four mana in any combination of colors.\\n{1}{R}: Realm-Scorcher Hellkite deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Realm-Scorcher Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

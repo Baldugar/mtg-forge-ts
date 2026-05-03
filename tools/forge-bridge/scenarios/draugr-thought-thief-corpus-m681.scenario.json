@@ -1,0 +1,23 @@
+{
+  "id": "draugr-thought-thief-corpus-m681",
+  "description": "M6 corpus — Draugr Thought-Thief; in-hand parse.",
+  "seed": 61527,
+  "cards": {
+    "Draugr Thought-Thief": "Name:Draugr Thought-Thief\nManaCost:2 U\nTypes:Creature Zombie Rogue\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDig | TriggerDescription$ When CARDNAME enters, look at the top card of target player's library. You may put that card into their graveyard.\nSVar:DBDig:DB$ Dig | ValidTgts$ Player | DigNum$ 1 | ChangeNum$ Any | DestinationZone$ Graveyard | LibraryPosition2$ 0 | TgtPrompt$ Choose target player\nOracle:When Draugr Thought-Thief enters, look at the top card of target player's library. You may put that card into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draugr Thought-Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

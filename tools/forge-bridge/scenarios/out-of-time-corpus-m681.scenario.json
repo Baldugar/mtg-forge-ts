@@ -1,0 +1,23 @@
+{
+  "id": "out-of-time-corpus-m681",
+  "description": "M6 corpus — Out of Time; in-hand parse.",
+  "seed": 61729,
+  "cards": {
+    "Out of Time": "Name:Out of Time\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap all creatures, then phase them out until CARDNAME leaves the battlefield. Put a time counter on CARDNAME for each creature phased out this way.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature | SubAbility$ DBPhase\nSVar:DBPhase:DB$ Phases | AllValid$ Creature | RememberAffected$ True | WontPhaseInNormal$ True | ConditionPresent$ Card.Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigComeBack | RememberObjects$ Remembered | ImprintCards$ Self | ConditionPresent$ Card.Self | Duration$ Permanent | ForgetOnPhasedIn$ True | SubAbility$ DBPutCounter\nSVar:TrigComeBack:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted | Execute$ DBPhaseIn | TriggerZones$ Command | TriggerController$ TriggeredCardController | Static$ True | TriggerDescription$ These creatures phase out until CARDNAME leaves the battlefield.\nSVar:DBPhaseIn:DB$ Phases | Defined$ Remembered | PhaseInOrOut$ True | SubAbility$ DBExileSelf\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ TIME | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nK:Vanishing\nOracle:When Out of Time enters, untap all creatures, then phase them out until Out of Time leaves the battlefield. Put a time counter on Out of Time for each creature phased out this way.\\nVanishing (At the beginning of your upkeep, remove a time counter from this enchantment. When the last is removed, sacrifice it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Out of Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

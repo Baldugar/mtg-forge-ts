@@ -1,0 +1,23 @@
+{
+  "id": "divine-deflection-corpus-m681",
+  "description": "M6 corpus — Divine Deflection; in-hand parse.",
+  "seed": 61522,
+  "cards": {
+    "Divine Deflection": "Name:Divine Deflection\nManaCost:X W\nTypes:Instant\nA:SP$ StoreSVar | SVar$ ShieldAmount | Type$ Calculate | Expression$ X | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Prevent the next X damage that would be dealt to you and/or permanents you control this turn. If damage is prevented this way, CARDNAME deals that much damage to any target.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to deal prevented damage to | ReplacementEffects$ ReDamage | RememberObjects$ Targeted\nSVar:ReDamage:Event$ DamageDone | ActiveZones$ Command | ValidTarget$ You,Permanent.YouCtrl | ReplaceWith$ PreventDamage | PreventionEffect$ NextN | Description$ Prevent the next X damage that would be dealt to you and/or permanents you control this turn. If damage is prevented this way, EFFECTSOURCE deals that much damage to any target.\nSVar:PreventDamage:DB$ ReplaceDamage | Amount$ ShieldAmount | DivideShield$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ Y | Defined$ Remembered | DamageSource$ EffectSource\nSVar:X:Count$xPaid\nSVar:ShieldAmount:Number$0\nSVar:Y:ReplaceCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Prevent the next X damage that would be dealt to you and/or permanents you control this turn. If damage is prevented this way, Divine Deflection deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divine Deflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

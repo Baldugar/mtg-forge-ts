@@ -1,0 +1,25 @@
+{
+  "id": "cinder-seer-corpus-m681",
+  "description": "M6 corpus — Cinder Seer; ETB-on-bf.",
+  "seed": 61496,
+  "cards": {
+    "Cinder Seer": "Name:Cinder Seer\nManaCost:3 R\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Reveal | Cost$ 2 R T | Defined$ You | RevealValid$ Card.Red | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBCinderDamage | SpellDescription$ Reveal any number of red cards in your hand. CARDNAME deals X damage to any target, where X is the number of cards revealed this way.\nSVar:DBCinderDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBCinderCleanup\nSVar:X:Remembered$Amount\nSVar:DBCinderCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{2}{R}, {T}: Reveal any number of red cards in your hand. Cinder Seer deals X damage to any target, where X is the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cinder Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

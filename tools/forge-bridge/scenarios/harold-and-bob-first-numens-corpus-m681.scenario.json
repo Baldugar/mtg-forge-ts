@@ -1,0 +1,23 @@
+{
+  "id": "harold-and-bob-first-numens-corpus-m681",
+  "description": "M6 corpus — Harold and Bob, First Numens; in-hand parse.",
+  "seed": 61601,
+  "cards": {
+    "Harold and Bob, First Numens": "Name:Harold and Bob, First Numens\nManaCost:2 G\nTypes:Legendary Creature Treefolk Mutant\nPT:3/3\nK:Vigilance\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if it was a creature, return it to the battlefield. It's an Aura enchantment with enchant Forest you control and \"Enchanted Forest has '{T}: Add three mana of any one color. You get two rad counters.'\" NICKNAME loses all other abilities.\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment & Aura | RemoveCardTypes$ True | RemoveAllAbilities$ True | AddKeyword$ Enchant:Forest.YouCtrl:Forest you control | AddStaticAbility$ STAura\nSVar:STAura:Mode$ Continuous | Affected$ Land.EnchantedBy | AddAbility$ ABMana | Description$ Enchanted Forest has \"{T}: Add three mana of any one color. You get two rad counters.\"\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | SubAbility$ DBRadiation | SpellDescription$ Add three mana of any one color. You get two rad counters.\nSVar:DBRadiation:DB$ Radiation | Defined$ You | Num$ 2\nOracle:Vigilance, reach\\nWhen Harold and Bob, First Numens dies, if it was a creature, return it to the battlefield. It's an Aura enchantment with enchant Forest you control and \"Enchanted Forest has '{T}: Add three mana of any one color. You get two rad counters.'\" Harold and Bob loses all other abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harold and Bob, First Numens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

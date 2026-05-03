@@ -1,0 +1,23 @@
+{
+  "id": "cat-gator-corpus-m681",
+  "description": "M6 corpus — Cat-Gator; in-hand parse.",
+  "seed": 61488,
+  "cards": {
+    "Cat-Gator": "Name:Cat-Gator\nManaCost:6 B\nTypes:Creature Fish Crocodile\nPT:3/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When this creature enters, it deals damage equal to the number of Swamps you control to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Swamp.YouCtrl\nOracle:Lifelink\\nWhen this creature enters, it deals damage equal to the number of Swamps you control to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cat-Gator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

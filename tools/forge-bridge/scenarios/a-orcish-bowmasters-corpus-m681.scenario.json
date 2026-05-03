@@ -1,0 +1,25 @@
+{
+  "id": "a-orcish-bowmasters-corpus-m681",
+  "description": "M6 corpus — A-Orcish Bowmasters; ETB-on-bf.",
+  "seed": 61778,
+  "cards": {
+    "A-Orcish Bowmasters": "Name:A-Orcish Bowmasters\nManaCost:1 B\nTypes:Creature Orc Archer\nPT:1/1\nK:Flash\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | FirstCardInDrawStep$ False | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an opponent draws a card except the first one they draw in each of their draw steps, CARDNAME deals 1 damage to any target. Then amass Orcs 1.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Any | SubAbility$ DBAmass\nSVar:DBAmass:DB$ Amass | Type$ Orc | Num$ 1\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:Flash\\nWhenever an opponent draws a card except the first one they draw in each of their draw steps, Orcish Bowmasters deals 1 damage to any target. Then amass Orcs 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "A-Orcish Bowmasters"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

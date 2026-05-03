@@ -1,0 +1,23 @@
+{
+  "id": "form-of-the-dragon-corpus-m681",
+  "description": "M6 corpus — Form of the Dragon; in-hand parse.",
+  "seed": 61570,
+  "cards": {
+    "Form of the Dragon": "Name:Form of the Dragon\nManaCost:4 R R R\nTypes:Enchantment\nS:Mode$ CantAttack | ValidCard$ Creature.withoutFlying | Target$ You | Description$ Creatures without flying can't attack you.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 5 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ At the beginning of each end step, your life total becomes 5.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ 5\nOracle:At the beginning of your upkeep, Form of the Dragon deals 5 damage to any target.\\nAt the beginning of each end step, your life total becomes 5.\\nCreatures without flying can't attack you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Form of the Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

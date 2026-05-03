@@ -1,0 +1,23 @@
+{
+  "id": "enduring-vitality-corpus-m681",
+  "description": "M6 corpus — Enduring Vitality; in-hand parse.",
+  "seed": 61539,
+  "cards": {
+    "Enduring Vitality": "Name:Enduring Vitality\nManaCost:1 G G\nTypes:Enchantment Creature Elk Glimmer\nPT:3/3\nK:Vigilance\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddAbility$ AnyMana | Description$ Creatures you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment | RemoveCardTypes$ True\nOracle:Vigilance\\nCreatures you control have \"{T}: Add one mana of any color.\"\\nWhen Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Vitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

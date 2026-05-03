@@ -1,0 +1,23 @@
+{
+  "id": "mardu-heart-piercer-corpus-m681",
+  "description": "M6 corpus — Mardu Heart-Piercer; in-hand parse.",
+  "seed": 61688,
+  "cards": {
+    "Mardu Heart-Piercer": "Name:Mardu Heart-Piercer\nManaCost:3 R\nTypes:Creature Human Archer\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDealDamage | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, CARDNAME deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Mardu Heart-Piercer enters, if you attacked this turn, Mardu Heart-Piercer deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Heart-Piercer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

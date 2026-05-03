@@ -1,0 +1,23 @@
+{
+  "id": "portcullis-corpus-m681",
+  "description": "M6 corpus — Portcullis; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Portcullis": "Name:Portcullis\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Creature | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | IsPresent$ Creature | PresentCompare$ GE3 | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature enters, if there are two or more other creatures on the battlefield, exile that creature. Return that card to the battlefield under its owner's control when CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCardLKICopy | RememberChanged$ True | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBDelayTrig\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigReturn | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ Return that card to the battlefield under its owner's control when CARDNAME leaves the battlefield.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsTriggerRemembered | Origin$ Exile | Destination$ Battlefield\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, if there are two or more other creatures on the battlefield, exile that creature. Return that card to the battlefield under its owner's control when Portcullis leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portcullis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

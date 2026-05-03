@@ -1,0 +1,23 @@
+{
+  "id": "healing-grace-corpus-m681",
+  "description": "M6 corpus — Healing Grace; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Healing Grace": "Name:Healing Grace\nManaCost:W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Prevent the next 3 damage that would be dealt to any target this turn by a source of your choice. You gain 3 life.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to prevent damage to | ReplacementEffects$ GraceDamage | ForgetOnMoved$ Battlefield | RememberObjects$ Targeted | SubAbility$ DBGainLife\nSVar:GraceDamage:Event$ DamageDone | ValidTarget$ Card.IsRemembered,Player.IsRemembered | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ GraceDmg | PreventionEffect$ True | Description$ Prevent the next 3 damage that would be dealt to any target this turn by a source of your choice.\nSVar:GraceDmg:DB$ ReplaceDamage | Amount$ ShieldAmount\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nSVar:ShieldAmount:Number$3\nAI:RemoveDeck:All\nOracle:Prevent the next 3 damage that would be dealt to any target this turn by a source of your choice. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Healing Grace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

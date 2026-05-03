@@ -1,0 +1,23 @@
+{
+  "id": "insidious-roots-corpus-m681",
+  "description": "M6 corpus — Insidious Roots; in-hand parse.",
+  "seed": 61628,
+  "cards": {
+    "Insidious Roots": "Name:Insidious Roots\nManaCost:B G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddAbility$ AnyMana | Description$ Creature tokens you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more creature cards leave your graveyard, create a 0/1 green Plant creature token, then put a +1/+1 counter on each Plant you control.\nSVar:TrigToken:DB$ Token | TokenScript$ g_0_1_plant | SubAbility$ DBCounters\nSVar:DBCounters:DB$ PutCounterAll | ValidCards$ Plant.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Graveyard|Token|Counters & Type$Plant\nDeckHints:Type$Plant\nOracle:Creature tokens you control have \"{T}: Add one mana of any color.\"\\nWhenever one or more creature cards leave your graveyard, create a 0/1 green Plant creature token, then put a +1/+1 counter on each Plant you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insidious Roots"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

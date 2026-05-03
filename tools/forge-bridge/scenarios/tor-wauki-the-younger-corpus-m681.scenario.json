@@ -1,0 +1,25 @@
+{
+  "id": "tor-wauki-the-younger-corpus-m681",
+  "description": "M6 corpus — Tor Wauki the Younger; ETB-on-bf.",
+  "seed": 61852,
+  "cards": {
+    "Tor Wauki the Younger": "Name:Tor Wauki the Younger\nManaCost:3 B R\nTypes:Legendary Creature Human Archer\nPT:3/3\nK:Reach\nK:Lifelink\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.Other+YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus1 | IsCombat$ False | Description$ If another source you control would deal noncombat damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:DmgPlus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nDeckHints:Type$Instant|Sorcery\nOracle:Reach, lifelink\\nIf another source you control would deal noncombat damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\\nWhenever you cast an instant or sorcery spell, Tor Wauki the Younger deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tor Wauki the Younger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

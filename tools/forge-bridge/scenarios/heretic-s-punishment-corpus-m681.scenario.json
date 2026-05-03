@@ -1,0 +1,25 @@
+{
+  "id": "heretic-s-punishment-corpus-m681",
+  "description": "M6 corpus — Heretic's Punishment; ETB-on-bf.",
+  "seed": 61611,
+  "cards": {
+    "Heretic's Punishment": "Name:Heretic's Punishment\nManaCost:4 R\nTypes:Enchantment\nA:AB$ Mill | Cost$ 3 R | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBHereticDamage | SpellDescription$ Choose any target, then mill three cards. CARDNAME deals damage to that permanent or player equal to the highest mana value among the milled cards.\nSVar:DBHereticDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ HereticX | SubAbility$ DBHereticCleanup\nSVar:DBHereticCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HereticX:Remembered$GreatestCardManaCost\nAI:RemoveDeck:All\nOracle:{3}{R}: Choose any target, then mill three cards. Heretic's Punishment deals damage to that permanent or player equal to the highest mana value among the milled cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heretic's Punishment"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

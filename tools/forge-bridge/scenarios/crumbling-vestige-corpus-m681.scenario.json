@@ -1,0 +1,23 @@
+{
+  "id": "crumbling-vestige-corpus-m681",
+  "description": "M6 corpus — Crumbling Vestige; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Crumbling Vestige": "Name:Crumbling Vestige\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ When CARDNAME enters, add one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nDeckHas:Ability$Mana.Colorless\nOracle:Crumbling Vestige enters tapped.\\nWhen Crumbling Vestige enters, add one mana of any color.\\n{T}: Add {C}. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crumbling Vestige"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

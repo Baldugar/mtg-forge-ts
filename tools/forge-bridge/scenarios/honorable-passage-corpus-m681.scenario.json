@@ -1,0 +1,23 @@
+{
+  "id": "honorable-passage-corpus-m681",
+  "description": "M6 corpus — Honorable Passage; in-hand parse.",
+  "seed": 61615,
+  "cards": {
+    "Honorable Passage": "Name:Honorable Passage\nManaCost:1 W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ The next time a source of your choice would deal damage to any target this turn, prevent that damage. If damage from a red source is prevented this way, CARDNAME deals that much damage to the source's controller.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to prevent damage to | ReplacementEffects$ RepDmg | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:RepDmg:Event$ DamageDone | ValidTarget$ Card.IsRemembered,Player.IsRemembered | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ DealDamage | PreventionEffect$ True | Description$ The next time a source of your choice would deal damage to any target this turn, prevent that damage. If damage from a red source is prevented this way, EFFECTSOURCE deals that much damage to the source's controller.\nSVar:DealDamage:DB$ DealDamage | Defined$ ReplacedSourceController | DamageSource$ EffectSource | NumDmg$ X | ConditionDefined$ ReplacedSource | ConditionPresent$ Card.RedSource | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nOracle:The next time a source of your choice would deal damage to any target this turn, prevent that damage. If damage from a red source is prevented this way, Honorable Passage deals that much damage to the source's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honorable Passage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

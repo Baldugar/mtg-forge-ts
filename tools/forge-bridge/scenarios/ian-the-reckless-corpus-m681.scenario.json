@@ -1,0 +1,23 @@
+{
+  "id": "ian-the-reckless-corpus-m681",
+  "description": "M6 corpus — Ian the Reckless; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Ian the Reckless": "Name:Ian the Reckless\nManaCost:1 R\nTypes:Legendary Creature Human Warrior\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Card.Self+modified | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, if it's modified, you may have it deal damage equal to its power to you and any target. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | Defined$ You | NumDmg$ X | DamageMap$ True | SubAbility$ DBDealDamageSelf\nSVar:DBDealDamageSelf:DB$ DealDamage | Defined$ You | NumDmg$ X | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Aura|Equipment & Ability$Counters\nOracle:Whenever Ian the Reckless attacks, if it's modified, you may have it deal damage equal to its power to you and any target. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ian the Reckless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

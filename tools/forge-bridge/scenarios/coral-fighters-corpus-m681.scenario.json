@@ -1,0 +1,25 @@
+{
+  "id": "coral-fighters-corpus-m681",
+  "description": "M6 corpus — Coral Fighters; ETB-on-bf.",
+  "seed": 61505,
+  "cards": {
+    "Coral Fighters": "Name:Coral Fighters\nManaCost:1 U\nTypes:Creature Merfolk Soldier\nPT:1/1\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, look at the top card of defending player's library. You may put that card on the bottom of that player's library.\nSVar:TrigDig:DB$ Dig | Defined$ TriggeredDefendingPlayer | DigNum$ 1 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition2$ 0\nAI:RemoveDeck:All\nOracle:Whenever Coral Fighters attacks and isn't blocked, look at the top card of defending player's library. You may put that card on the bottom of that player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Coral Fighters"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

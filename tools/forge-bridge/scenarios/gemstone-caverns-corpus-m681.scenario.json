@@ -1,0 +1,23 @@
+{
+  "id": "gemstone-caverns-corpus-m681",
+  "description": "M6 corpus — Gemstone Caverns; in-hand parse.",
+  "seed": 61579,
+  "cards": {
+    "Gemstone Caverns": "Name:Gemstone Caverns\nManaCost:no cost\nTypes:Legendary Land\nK:MayEffectFromOpeningHand:FromOpeningHand:!PlayFirst\nSVar:FromOpeningHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SubAbility$ LuckCounter | SpellDescription$ If CARDNAME is in your opening hand and you're not the starting player, you may begin the game with CARDNAME on the battlefield with a luck counter on it. If you do, exile a card from your hand.\nSVar:LuckCounter:DB$ PutCounter | CounterType$ LUCK | CounterNum$ 1 | Defined$ Self | SubAbility$ ExileFromHand\nSVar:ExileFromHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | SpellDescription$ If you do, exile a card from your hand.\nA:AB$ Mana | Cost$ T | Produced$ C | ConditionCheckSVar$ CheckCounter | ConditionSVarCompare$ EQ0 | SubAbility$ DBMana | SpellDescription$ Add {C}. If CARDNAME has a luck counter on it, instead add one mana of any color.\nSVar:DBMana:DB$ Mana | Produced$ Any | ConditionCheckSVar$ CheckCounter | ConditionSVarCompare$ GE1\nSVar:CheckCounter:Count$CardCounters.LUCK\n# TODO: The AI is not yet fully aware that this card can generate any color of mana at any time if it has a luck counter on it.\nAI:RemoveDeck:All\nOracle:If Gemstone Caverns is in your opening hand and you're not the starting player, you may begin the game with Gemstone Caverns on the battlefield with a luck counter on it. If you do, exile a card from your hand.\\n{T}: Add {C}. If Gemstone Caverns has a luck counter on it, instead add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gemstone Caverns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jailbreak-corpus-m681",
+  "description": "M6 corpus — Jailbreak; in-hand parse.",
+  "seed": 61633,
+  "cards": {
+    "Jailbreak": "Name:Jailbreak\nManaCost:1 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target permanent in an opponent's graveyard | ValidTgts$ Permanent.OppOwn | SubAbility$ DBDelayedTrigger | SpellDescription$ Return target permanent card in an opponent's graveyard to the battlefield under their control.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | RememberObjects$ Targeted | Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.IsTriggerRemembered | Execute$ TrigReturn | SpellDescription$ When that permanent enters, return up to one target permanent card with equal or lesser mana value from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select up to one target permanent with equal or lesser mana value | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.YouOwn+cmcLEX\nSVar:X:TriggeredCard$CardManaCost\nDeckHas:Ability$Graveyard\nOracle:Return target permanent card in an opponent's graveyard to the battlefield under their control. When that permanent enters, return up to one target permanent card with equal or lesser mana value from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jailbreak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

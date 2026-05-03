@@ -1,0 +1,23 @@
+{
+  "id": "omnath-locus-of-rage-corpus-m681",
+  "description": "M6 corpus — Omnath, Locus of Rage; in-hand parse.",
+  "seed": 61722,
+  "cards": {
+    "Omnath, Locus of Rage": "Name:Omnath, Locus of Rage\nManaCost:3 R R G G\nTypes:Legendary Creature Elemental\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Landfall — Whenever a land you control enters, create a 5/5 red and green Elemental creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ rg_5_5_elemental | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Elemental.Other+YouCtrl | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME or another Elemental you control dies, NICKNAME deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nOracle:Landfall — Whenever a land you control enters, create a 5/5 red and green Elemental creature token.\\nWhenever Omnath, Locus of Rage or another Elemental you control dies, Omnath deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omnath, Locus of Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

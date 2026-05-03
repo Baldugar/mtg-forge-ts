@@ -1,0 +1,23 @@
+{
+  "id": "foundry-champion-corpus-m681",
+  "description": "M6 corpus — Foundry Champion; in-hand parse.",
+  "seed": 61571,
+  "cards": {
+    "Foundry Champion": "Name:Foundry Champion\nManaCost:4 R W\nTypes:Creature Elemental Soldier\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals damage to any target equal to the number of creatures you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nA:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nA:AB$ Pump | Cost$ W | Defined$ Self | NumDef$ +1 | SpellDescription$ CARDNAME gets +0/+1 until end of turn.\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When Foundry Champion enters, it deals damage to any target equal to the number of creatures you control.\\n{R}: Foundry Champion gets +1/+0 until end of turn.\\n{W}: Foundry Champion gets +0/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foundry Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

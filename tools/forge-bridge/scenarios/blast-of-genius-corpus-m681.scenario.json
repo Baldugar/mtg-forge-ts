@@ -1,0 +1,23 @@
+{
+  "id": "blast-of-genius-corpus-m681",
+  "description": "M6 corpus — Blast of Genius; in-hand parse.",
+  "seed": 61459,
+  "cards": {
+    "Blast of Genius": "Name:Blast of Genius\nManaCost:4 U R\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 3 | SubAbility$ DBDiscard | SpellDescription$ Choose any target. Draw three cards and discard a card. CARDNAME deals damage equal to the discarded card's mana value to that permanent or player.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:Random\nOracle:Choose any target. Draw three cards, then discard a card. Blast of Genius deals damage equal to the discarded card's mana value to that permanent or player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blast of Genius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

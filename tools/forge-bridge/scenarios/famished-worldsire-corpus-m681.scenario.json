@@ -1,0 +1,23 @@
+{
+  "id": "famished-worldsire-corpus-m681",
+  "description": "M6 corpus — Famished Worldsire; in-hand parse.",
+  "seed": 61549,
+  "cards": {
+    "Famished Worldsire": "Name:Famished Worldsire\nManaCost:5 G G G\nTypes:Creature Leviathan\nPT:0/0\nK:Ward:3\nK:Devour:3:Land\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When this creature enters, look at the top X cards of your library, where X is this creature's power. Put any number of land cards from among them onto the battlefield tapped, then shuffle.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ Any | ChangeValid$ Land | DestinationZone$ Battlefield | Tapped$ True | SkipReorder$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You\nSVar:X:Count$CardPower\nOracle:Ward {3}\\nDevour land 3 (As this creature enters, you may sacrifice any number of lands. It enters with three times that many +1/+1 counters on it.)\\nWhen this creature enters, look at the top X cards of your library, where X is this creature's power. Put any number of land cards from among them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Famished Worldsire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

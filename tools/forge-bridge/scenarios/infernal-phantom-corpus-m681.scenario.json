@@ -1,0 +1,23 @@
+{
+  "id": "infernal-phantom-corpus-m681",
+  "description": "M6 corpus — Infernal Phantom; in-hand parse.",
+  "seed": 61625,
+  "cards": {
+    "Infernal Phantom": "Name:Infernal Phantom\nManaCost:3 R\nTypes:Creature Spirit\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gets +2/+0 until end of turn.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME dies, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nDeckNeeds:Type$Enchantment\nOracle:Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, Infernal Phantom gets +2/+0 until end of turn.\\nWhen Infernal Phantom dies, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Phantom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

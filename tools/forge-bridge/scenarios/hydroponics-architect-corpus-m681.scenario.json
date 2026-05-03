@@ -1,0 +1,23 @@
+{
+  "id": "hydroponics-architect-corpus-m681",
+  "description": "M6 corpus — Hydroponics Architect; in-hand parse.",
+  "seed": 61618,
+  "cards": {
+    "Hydroponics Architect": "Name:Hydroponics Architect\nManaCost:U\nTypes:Creature Insect\nPT:1/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigRandom | TriggerDescription$ Whenever this creature attacks, a random land card in your library perpetually becomes a basic Island in addition to its other types and gains \"When this land enters, draw a card.\"\nSVar:TrigRandom:DB$ ChooseCard | Choices$ Land.YouOwn | ChoiceZone$ Library | AtRandom$ True | Amount$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Types$ Basic,Island | Triggers$ LandETBDraw | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:LandETBDraw:Mode$ ChangesZone | ValidCard$ Card.Self | Execute$ TrigDraw | Origin$ Any | Destination$ Battlefield | TriggerDescription$ When this land enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying\\nWhenever this creature attacks, a random land card in your library perpetually becomes a basic Island in addition to its other types and gains \"When this land enters, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydroponics Architect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

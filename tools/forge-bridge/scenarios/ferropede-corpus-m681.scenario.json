@@ -1,0 +1,23 @@
+{
+  "id": "ferropede-corpus-m681",
+  "description": "M6 corpus — Ferropede; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Ferropede": "Name:Ferropede\nManaCost:3\nTypes:Artifact Creature Insect\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may remove a counter from target permanent.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ 1\nOracle:Ferropede can't be blocked.\\nWhenever Ferropede deals combat damage to a player, you may remove a counter from target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ferropede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

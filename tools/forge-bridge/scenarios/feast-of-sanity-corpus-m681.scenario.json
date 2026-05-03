@@ -1,0 +1,25 @@
+{
+  "id": "feast-of-sanity-corpus-m681",
+  "description": "M6 corpus — Feast of Sanity; ETB-on-bf.",
+  "seed": 61551,
+  "cards": {
+    "Feast of Sanity": "Name:Feast of Sanity\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you discard a card, CARDNAME deals 1 damage to any target and you gain 1 life.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 1 damage to any target and you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHints:Ability$Discard\nDeckHas:Ability$LifeGain\nOracle:Whenever you discard a card, Feast of Sanity deals 1 damage to any target and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Feast of Sanity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

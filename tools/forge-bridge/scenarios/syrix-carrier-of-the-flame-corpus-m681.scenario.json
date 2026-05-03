@@ -1,0 +1,23 @@
+{
+  "id": "syrix-carrier-of-the-flame-corpus-m681",
+  "description": "M6 corpus — Syrix, Carrier of the Flame; in-hand parse.",
+  "seed": 61829,
+  "cards": {
+    "Syrix, Carrier of the Flame": "Name:Syrix, Carrier of the Flame\nManaCost:2 B R\nTypes:Legendary Creature Phoenix\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigPhoenix | CheckSVar$ X | TriggerDescription$ At the beginning of each end step, if a creature card left your graveyard this turn, target Phoenix you control deals damage equal to its power to any target.\nSVar:TrigPhoenix:DB$ Pump | ValidTgts$ Phoenix.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target Phoenix you control | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | AILogic$ PowerDmg | NumDmg$ Y | DamageSource$ ParentTarget\nSVar:X:Count$LeftGraveyardThisTurn Card.Creature+YouOwn\nSVar:Y:ParentTargeted$CardPower\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Phoenix.Other+YouCtrl | TriggerZones$ Graveyard | Execute$ TrigPlay | OptionalDecider$ You | TriggerDescription$ Whenever another Phoenix you control dies, you may cast CARDNAME from your graveyard.\nSVar:TrigPlay:DB$ Play | Optional$ True\nDeckNeeds:Type$Phoenix\nDeckHints:Ability$Graveyard\nDeckHas:Ability$Graveyard\nOracle:Flying, haste\\nAt the beginning of each end step, if a creature card left your graveyard this turn, target Phoenix you control deals damage equal to its power to any target.\\nWhenever another Phoenix you control dies, you may cast Syrix, Carrier of the Flame from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syrix, Carrier of the Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

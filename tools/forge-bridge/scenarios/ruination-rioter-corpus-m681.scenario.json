@@ -1,0 +1,23 @@
+{
+  "id": "ruination-rioter-corpus-m681",
+  "description": "M6 corpus — Ruination Rioter; in-hand parse.",
+  "seed": 61774,
+  "cards": {
+    "Ruination Rioter": "Name:Ruination Rioter\nManaCost:R G\nTypes:Creature Human Berserker\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies, you may have it deal damage to any target equal to the number of land cards in your graveyard.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$ValidGraveyard Land.YouOwn\nOracle:When Ruination Rioter dies, you may have it deal damage to any target equal to the number of land cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruination Rioter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

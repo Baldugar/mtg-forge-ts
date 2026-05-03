@@ -1,0 +1,23 @@
+{
+  "id": "stadium-vendors-corpus-m681",
+  "description": "M6 corpus — Stadium Vendors; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Stadium Vendors": "Name:Stadium Vendors\nManaCost:3 R\nTypes:Creature Goblin\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoosePlayer | TriggerDescription$ When CARDNAME enters, choose a player. That player adds two mana of any one color they choose.\nSVar:TrigChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player | ChoiceTitle$ Choose a player | AILogic$ Pump | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ Any | Defined$ ChosenPlayer | Amount$ 2\nOracle:When Stadium Vendors enters, choose a player. That player adds two mana of any one color they choose.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stadium Vendors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

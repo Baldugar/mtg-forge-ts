@@ -1,0 +1,23 @@
+{
+  "id": "harm-s-way-corpus-m681",
+  "description": "M6 corpus — Harm's Way; in-hand parse.",
+  "seed": 61600,
+  "cards": {
+    "Harm's Way": "Name:Harm's Way\nManaCost:W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ The next 2 damage that a source of your choice would deal to you and/or permanents you control this turn is dealt to any target instead.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to redirect damage to | ReplacementEffects$ ReDamage | RememberObjects$ Targeted\nSVar:ReDamage:Event$ DamageDone | ActiveZones$ Command | ValidTarget$ You,Permanent.YouCtrl | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SplitDamage | DamageTarget$ Remembered | Description$ The next 2 damage that a source of your choice would deal to you and/or permanents you control this turn is dealt to any target instead.\nSVar:SplitDamage:DB$ ReplaceSplitDamage | DamageTarget$ Remembered | VarName$ ShieldAmount | DivideShield$ True\nSVar:ShieldAmount:Number$2\nAI:RemoveDeck:All\nOracle:The next 2 damage that a source of your choice would deal to you and/or permanents you control this turn is dealt to any target instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harm's Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

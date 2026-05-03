@@ -1,0 +1,23 @@
+{
+  "id": "conflagrate-corpus-m681",
+  "description": "M6 corpus — Conflagrate; in-hand parse.",
+  "seed": 61503,
+  "cards": {
+    "Conflagrate": "Name:Conflagrate\nManaCost:X X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of targets.\nSVar:MaxTgts:PlayerCountPlayers$Amount/Plus.MaxPermanents\nSVar:MaxPermanents:Count$Valid Any\nSVar:X:Count$xPaid\nK:Flashback:R R Discard<X/Card/cards>\nOracle:Conflagrate deals X damage divided as you choose among any number of targets.\\nFlashback—{R}{R}, Discard X cards. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conflagrate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

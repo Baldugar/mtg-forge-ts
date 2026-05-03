@@ -1,0 +1,23 @@
+{
+  "id": "the-legend-of-roku-corpus-m681",
+  "description": "M6 corpus — The Legend of Roku; in-hand parse.",
+  "seed": 61837,
+  "cards": {
+    "The Legend of Roku": "Name:The Legend of Roku\nManaCost:2 R R\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBMana,DBTransform\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. Until the end of your next turn, you may play those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ MayPlay | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ Until the end of your next turn, you may play those cards.\nSVar:DBMana:DB$ Mana | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Exile the top three cards of your library. Until the end of your next turn, you may play those cards.\\nII — Add one mana of any color.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Avatar Roku\nManaCost:no cost\nTypes:Legendary Creature Avatar\nPT:4/4\nK:Firebending:4\nA:AB$ Token | Cost$ 8 | TokenScript$ r_4_4_dragon_flying_firebending_4 | TokenOwner$ You | SpellDescription$ Create a 4/4 red Dragon creature token with flying and firebending 4.\nOracle:Firebending 4 (Whenever this creature attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)\\n{8}: Create a 4/4 red Dragon creature token with flying and firebending 4.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Legend of Roku"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

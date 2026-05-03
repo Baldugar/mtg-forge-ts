@@ -1,0 +1,23 @@
+{
+  "id": "teroh-s-vanguard-corpus-m681",
+  "description": "M6 corpus — Teroh's Vanguard; in-hand parse.",
+  "seed": 61833,
+  "cards": {
+    "Teroh's Vanguard": "Name:Teroh's Vanguard\nManaCost:3 W\nTypes:Creature Human Nomad\nPT:2/3\nK:Flash\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigETB | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"When CARDNAME enters, creatures you control gain protection from black until end of turn.\"\nSVar:TrigETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, creatures you control gain protection from black until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Protection from black\nOracle:Flash\\nThreshold — As long as there are seven or more cards in your graveyard, Teroh's Vanguard has \"When Teroh's Vanguard enters, creatures you control gain protection from black until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teroh's Vanguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

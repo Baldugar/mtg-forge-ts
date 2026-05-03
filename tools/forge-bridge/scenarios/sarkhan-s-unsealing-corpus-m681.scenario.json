@@ -1,0 +1,25 @@
+{
+  "id": "sarkhan-s-unsealing-corpus-m681",
+  "description": "M6 corpus — Sarkhan's Unsealing; ETB-on-bf.",
+  "seed": 61784,
+  "cards": {
+    "Sarkhan's Unsealing": "Name:Sarkhan's Unsealing\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature.powerGE4+powerLE6 | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with power 4, 5, or 6, CARDNAME deals 4 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to any target.\nT:Mode$ SpellCast | ValidCard$ Creature.powerGE7 | ValidActivatingPlayer$ You | Execute$ TrigDamageAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with power 7 or greater, CARDNAME deals 4 damage to each opponent and each creature and planeswalker they control.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.OppCtrl,Planeswalker.OppCtrl | ValidPlayers$ Player.Opponent | NumDmg$ 4 | ValidDescription$ each opponent and each creature and planeswalker they control.\nOracle:Whenever you cast a creature spell with power 4, 5, or 6, Sarkhan's Unsealing deals 4 damage to any target.\\nWhenever you cast a creature spell with power 7 or greater, Sarkhan's Unsealing deals 4 damage to each opponent and each creature and planeswalker they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sarkhan's Unsealing"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

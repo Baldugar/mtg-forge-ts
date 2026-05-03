@@ -1,0 +1,23 @@
+{
+  "id": "uthgardt-fury-corpus-m681",
+  "description": "M6 corpus — Uthgardt Fury; in-hand parse.",
+  "seed": 61865,
+  "cards": {
+    "Uthgardt Fury": "Name:Uthgardt Fury\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4\nSVar:PlayMain1:TRUE\nS:Mode$ NoCleanupDamage | ValidCard$ Creature.OppCtrl | Description$ Damage isn't removed from creatures your opponents control during cleanup steps.\nOracle:When Uthgardt Fury enters, it deals 4 damage to any target.\\nDamage isn't removed from creatures your opponents control during cleanup steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uthgardt Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

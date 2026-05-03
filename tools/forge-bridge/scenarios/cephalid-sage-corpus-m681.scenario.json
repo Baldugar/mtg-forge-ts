@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-sage-corpus-m681",
+  "description": "M6 corpus — Cephalid Sage; in-hand parse.",
+  "seed": 61491,
+  "cards": {
+    "Cephalid Sage": "Name:Cephalid Sage\nManaCost:3 U\nTypes:Creature Octopus\nPT:2/3\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigETB | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"When CARDNAME enters, draw three cards, then discard two cards.\"\nSVar:TrigETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then discard two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | Defined$ You\nOracle:Threshold — As long as there are seven or more cards in your graveyard, Cephalid Sage has \"When Cephalid Sage enters, draw three cards, then discard two cards.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Sage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

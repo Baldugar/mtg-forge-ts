@@ -1,0 +1,23 @@
+{
+  "id": "blisterstick-shaman-corpus-m681",
+  "description": "M6 corpus — Blisterstick Shaman; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Blisterstick Shaman": "Name:Blisterstick Shaman\nManaCost:2 R\nTypes:Creature Goblin Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:When Blisterstick Shaman enters, it deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blisterstick Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

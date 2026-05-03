@@ -1,0 +1,23 @@
+{
+  "id": "court-of-ire-corpus-m681",
+  "description": "M6 corpus — Court of Ire; in-hand parse.",
+  "seed": 61507,
+  "cards": {
+    "Court of Ire": "Name:Court of Ire\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to any target. If you're the monarch, it deals 7 damage instead.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Monarch.7.2\nOracle:When Court of Ire enters, you become the monarch.\\nAt the beginning of your upkeep, Court of Ire deals 2 damage to any target. If you're the monarch, it deals 7 damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Court of Ire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

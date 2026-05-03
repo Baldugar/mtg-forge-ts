@@ -1,0 +1,23 @@
+{
+  "id": "preyseizer-dragon-corpus-m681",
+  "description": "M6 corpus — Preyseizer Dragon; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Preyseizer Dragon": "Name:Preyseizer Dragon\nManaCost:4 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Devour:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage to any target equal to the number of +1/+1 counters on CARDNAME.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardCounters.P1P1\nOracle:Flying\\nDevour 2 (As this enters, you may sacrifice any number of creatures. This creature enters with twice that many +1/+1 counters on it.)\\nWhenever Preyseizer Dragon attacks, it deals damage to any target equal to the number of +1/+1 counters on Preyseizer Dragon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preyseizer Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

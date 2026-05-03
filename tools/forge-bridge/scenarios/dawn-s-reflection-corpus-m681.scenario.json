@@ -1,0 +1,23 @@
+{
+  "id": "dawn-s-reflection-corpus-m681",
+  "description": "M6 corpus — Dawn's Reflection; in-hand parse.",
+  "seed": 61514,
+  "cards": {
+    "Dawn's Reflection": "Name:Dawn's Reflection\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional two mana in any combination of colors.\nSVar:TrigMana:DB$ Mana | Produced$ Combo Any | Amount$ 2 | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nOracle:Enchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional two mana in any combination of colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawn's Reflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

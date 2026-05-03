@@ -1,0 +1,23 @@
+{
+  "id": "constricting-sliver-corpus-m681",
+  "description": "M6 corpus — Constricting Sliver; in-hand parse.",
+  "seed": 61504,
+  "cards": {
+    "Constricting Sliver": "Name:Constricting Sliver\nManaCost:5 W\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Sliver+YouCtrl | AddTrigger$ ConstrictingTrig | Description$ Sliver creatures you control have \"When this creature enters, you may exile target creature an opponent controls until this creature leaves the battlefield.\"\nSVar:ConstrictingTrig:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | ValidCard$ Card.Self | Execute$ ConstrictingExile | TriggerDescription$ When CARDNAME enters, you may exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:ConstrictingExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | ConditionPresent$ Card.Self | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:Sliver creatures you control have \"When this creature enters, you may exile target creature an opponent controls until this creature leaves the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Constricting Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

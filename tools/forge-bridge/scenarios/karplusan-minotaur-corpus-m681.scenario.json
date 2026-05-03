@@ -1,0 +1,25 @@
+{
+  "id": "karplusan-minotaur-corpus-m681",
+  "description": "M6 corpus — Karplusan Minotaur; ETB-on-bf.",
+  "seed": 61644,
+  "cards": {
+    "Karplusan Minotaur": "Name:Karplusan Minotaur\nManaCost:2 R R\nTypes:Creature Minotaur Warrior\nPT:3/3\nK:Cumulative upkeep:FlipCoin<1>:Flip a coin.\nT:Mode$ FlippedCoin | ValidPlayer$ You | ValidResult$ Win | TriggerZones$ Battlefield | Execute$ TrigYouDmg | TriggerDescription$ Whenever you win a coin flip, CARDNAME deals 1 damage to any target.\nSVar:TrigYouDmg:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Any\nT:Mode$ FlippedCoin | ValidPlayer$ You | ValidResult$ Lose | TriggerZones$ Battlefield | Execute$ TrigOppDmg | TriggerDescription$ Whenever you lose a coin flip, CARDNAME deals 1 damage to any target of an opponent's choice.\nSVar:TrigOppDmg:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Any | TargetingPlayer$ Opponent\nAI:RemoveDeck:All\nOracle:Cumulative upkeep—Flip a coin. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhenever you win a coin flip, Karplusan Minotaur deals 1 damage to any target.\\nWhenever you lose a coin flip, Karplusan Minotaur deals 1 damage to any target of an opponent's choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karplusan Minotaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

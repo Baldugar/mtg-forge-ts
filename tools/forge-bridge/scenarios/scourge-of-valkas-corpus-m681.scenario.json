@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-valkas-corpus-m681",
+  "description": "M6 corpus — Scourge of Valkas; in-hand parse.",
+  "seed": 61787,
+  "cards": {
+    "Scourge of Valkas": "Name:Scourge of Valkas\nManaCost:2 R R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Dragon.Other+YouCtrl | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME or another Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ NumDragons | DamageSource$ TriggeredCard\nSVar:NumDragons:Count$Valid Dragon.YouCtrl\nA:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Dragon\nOracle:Flying\\nWhenever Scourge of Valkas or another Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control.\\n{R}: Scourge of Valkas gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of Valkas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

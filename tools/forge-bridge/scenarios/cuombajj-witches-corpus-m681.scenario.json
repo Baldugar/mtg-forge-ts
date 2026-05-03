@@ -1,0 +1,25 @@
+{
+  "id": "cuombajj-witches-corpus-m681",
+  "description": "M6 corpus — Cuombajj Witches; ETB-on-bf.",
+  "seed": 61510,
+  "cards": {
+    "Cuombajj Witches": "Name:Cuombajj Witches\nManaCost:B B\nTypes:Creature Human Wizard\nPT:1/3\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | DamageMap$ True | SubAbility$ DBDmg | SpellDescription$ CARDNAME deals 1 damage to any target and 1 damage to any target of an opponent's choice.\nSVar:DBDmg:DB$ DealDamage | TargetingPlayer$ Player.Opponent | ValidTgts$ Any | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nAI:RemoveDeck:All\nOracle:{T}: Cuombajj Witches deals 1 damage to any target and 1 damage to any target of an opponent's choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cuombajj Witches"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

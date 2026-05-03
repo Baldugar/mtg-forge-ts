@@ -1,0 +1,23 @@
+{
+  "id": "omnath-locus-of-the-roil-corpus-m681",
+  "description": "M6 corpus — Omnath, Locus of the Roil; in-hand parse.",
+  "seed": 61723,
+  "cards": {
+    "Omnath, Locus of the Roil": "Name:Omnath, Locus of the Roil\nManaCost:1 G U R\nTypes:Legendary Creature Elemental\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals damage to any target equal to the number of Elementals you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Elemental.YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on target Elemental you control. If you control eight or more lands, draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Elemental.YouCtrl | TgtPrompt$ Select target Elemental you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GE8\nDeckHas:Ability$Counters\nDeckHints:Type$Elemental\nOracle:When Omnath, Locus of the Roil enters, it deals damage to any target equal to the number of Elementals you control.\\nLandfall — Whenever a land you control enters, put a +1/+1 counter on target Elemental you control. If you control eight or more lands, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omnath, Locus of the Roil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sentinel-tower-corpus-m681",
+  "description": "M6 corpus — Sentinel Tower; ETB-on-bf.",
+  "seed": 61791,
+  "cards": {
+    "Sentinel Tower": "Name:Sentinel Tower\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigDmg | PlayerTurn$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever an instant or sorcery spell is cast during your turn, CARDNAME deals damage to any target equal to 1 plus the number of instant and sorcery spells cast before that spell this turn.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggerObjectsCurrentCastSpells$Valid Sorcery,Instant\nOracle:Whenever an instant or sorcery spell is cast during your turn, Sentinel Tower deals damage to any target equal to 1 plus the number of instant and sorcery spells cast before that spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sentinel Tower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

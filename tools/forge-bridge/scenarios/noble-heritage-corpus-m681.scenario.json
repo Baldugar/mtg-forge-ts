@@ -1,0 +1,23 @@
+{
+  "id": "noble-heritage-corpus-m681",
+  "description": "M6 corpus — Noble Heritage; in-hand parse.",
+  "seed": 61716,
+  "cards": {
+    "Noble Heritage": "Name:Noble Heritage\nManaCost:1 W\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ ETB & Upkeep | Description$ Commander creatures you own have \"When this creature enters and at the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. For each opponent who does, you gain protection from that player until your next turn.\" (You can't be targeted, dealt damage, or enchanted by anything controlled by that player.)\nSVar:ETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When this creature enters and at the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. For each opponent who does, you gain protection from that player until your next turn.\nSVar:Upkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | Secondary$ True | TriggerDescription$ When this creature enters and at the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. For each opponent who does, you gain protection from that player until your next turn.\nSVar:TrigChoose:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoice | SubAbility$ DBPutCounter\nSVar:DBChoice:DB$ ChooseCard | Defined$ RememberedPlayer | Amount$ 1 | MinAmount$ 0 | Choices$ Creature.RememberedPlayerCtrl | RememberChosen$ True | AILogic$ OrzhovAdvokist\nSVar:DBPutCounter:DB$ PutCounterAll | Placer$ Controller | ValidCards$ Creature.IsRemembered | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ You | KW$ Protection:Player.PlayerUID_ChosenPlayerUID:ChosenPlayerName | DefinedKW$ RememberedController.Opponent | Duration$ UntilYourNextTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nOracle:Commander creatures you own have \"When this creature enters and at the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. For each opponent who does, you gain protection from that player until your next turn.\" (You can't be targeted, dealt damage, or enchanted by anything controlled by that player.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noble Heritage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

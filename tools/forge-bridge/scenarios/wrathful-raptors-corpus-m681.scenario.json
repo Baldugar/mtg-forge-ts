@@ -1,0 +1,23 @@
+{
+  "id": "wrathful-raptors-corpus-m681",
+  "description": "M6 corpus — Wrathful Raptors; in-hand parse.",
+  "seed": 61883,
+  "cards": {
+    "Wrathful Raptors": "Name:Wrathful Raptors\nManaCost:4 R\nTypes:Creature Dinosaur\nPT:5/5\nK:Trample\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Dinosaur.YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Dinosaur you control is dealt damage, it deals that much damage to any target that isn't a Dinosaur.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any.!Dinosaur | TgtPrompt$ Select any target that isn't a Dinosaur\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Dinosaur\nOracle:Trample\\nWhenever a Dinosaur you control is dealt damage, it deals that much damage to any target that isn't a Dinosaur.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrathful Raptors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

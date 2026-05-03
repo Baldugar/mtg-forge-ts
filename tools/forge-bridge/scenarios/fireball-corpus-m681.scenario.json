@@ -1,0 +1,23 @@
+{
+  "id": "fireball-corpus-m681",
+  "description": "M6 corpus — Fireball; in-hand parse.",
+  "seed": 61555,
+  "cards": {
+    "Fireball": "Name:Fireball\nManaCost:X R\nTypes:Sorcery\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Amount$ IncreaseCost | Relative$ True | EffectZone$ All | Description$ This spell costs {1} more to cast for each target beyond the first.\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTargets | DivideEvenly$ RoundedDown | SpellDescription$ CARDNAME deals X damage divided evenly, rounded down, among any number of targets.\nSVar:X:Count$xPaid\nSVar:MaxTargets:SVar$MaxPlayers/Plus.MaxPermanents\nSVar:MaxPlayers:PlayerCountPlayers$Amount\nSVar:MaxPermanents:Count$Valid Any\nSVar:IncreaseCost:TargetedObjects$Amount/Minus.1\nOracle:This spell costs {1} more to cast for each target beyond the first.\\nFireball deals X damage divided evenly, rounded down, among any number of targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fireball"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

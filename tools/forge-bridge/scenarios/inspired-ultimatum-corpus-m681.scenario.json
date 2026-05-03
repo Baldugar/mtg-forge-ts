@@ -1,0 +1,23 @@
+{
+  "id": "inspired-ultimatum-corpus-m681",
+  "description": "M6 corpus — Inspired Ultimatum; in-hand parse.",
+  "seed": 61629,
+  "cards": {
+    "Inspired Ultimatum": "Name:Inspired Ultimatum\nManaCost:U U R R R W W\nTypes:Sorcery\nA:SP$ GainLife | LifeAmount$ 5 | ValidTgts$ Player | SubAbility$ DBDamage | SpellDescription$ Target player gains 5 life, CARDNAME deals 5 damage to any target, then you draw five cards.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 5 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 5\nOracle:Target player gains 5 life, Inspired Ultimatum deals 5 damage to any target, then you draw five cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspired Ultimatum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

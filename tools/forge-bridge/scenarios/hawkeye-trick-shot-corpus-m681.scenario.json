@@ -1,0 +1,23 @@
+{
+  "id": "hawkeye-trick-shot-corpus-m681",
+  "description": "M6 corpus — Hawkeye, Trick Shot; in-hand parse.",
+  "seed": 61603,
+  "cards": {
+    "Hawkeye, Trick Shot": "Name:Hawkeye, Trick Shot\nManaCost:3 R\nTypes:Legendary Creature Human Archer Hero\nPT:3/4\nK:First Strike\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Hero.Other+YouCtrl | Execute$ TrigDamage | TriggerDescription$ Whenever NICKNAME or another Hero you control enters, it deals damage equal to the number of Heroes you control to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | DamageSource$ TriggeredCard\nSVar:X:Count$Valid Hero.YouCtrl\nDeckHints:Type$Hero\nOracle:First strike, reach\\nWhenever Hawkeye or another Hero you control enters, it deals damage equal to the number of Heroes you control to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hawkeye, Trick Shot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

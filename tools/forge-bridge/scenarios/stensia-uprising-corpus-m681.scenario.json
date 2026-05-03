@@ -1,0 +1,23 @@
+{
+  "id": "stensia-uprising-corpus-m681",
+  "description": "M6 corpus — Stensia Uprising; in-hand parse.",
+  "seed": 61821,
+  "cards": {
+    "Stensia Uprising": "Name:Stensia Uprising\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 red Human creature token. Then if you control exactly thirteen permanents, you may sacrifice CARDNAME. When you do, it deals 7 damage to any target.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_human | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | ConditionPresent$ Permanent.YouCtrl | ConditionCompare$ EQ13 | SacValid$ Self | Optional$ True | RememberSacrificed$ True | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ TrigDamage | SubAbility$ DBCleanup | TriggerDescription$ When you sacrifice CARDNAME, it deals 7 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 7\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Sacrifice\nOracle:At the beginning of your end step, create a 1/1 red Human creature token. Then if you control exactly thirteen permanents, you may sacrifice Stensia Uprising. When you do, it deals 7 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stensia Uprising"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

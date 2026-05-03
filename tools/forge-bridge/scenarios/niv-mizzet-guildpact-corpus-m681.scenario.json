@@ -1,0 +1,23 @@
+{
+  "id": "niv-mizzet-guildpact-corpus-m681",
+  "description": "M6 corpus — Niv-Mizzet, Guildpact; in-hand parse.",
+  "seed": 61714,
+  "cards": {
+    "Niv-Mizzet, Guildpact": "Name:Niv-Mizzet, Guildpact\nManaCost:W U B R G\nTypes:Legendary Creature Dragon Avatar\nPT:6/6\nK:Flying\nK:Hexproof:Card.MultiColor:multicolored\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ DBDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, it deals X damage to any target, target player draws X cards, and you gain X life, where X is the number of different color pairs among permanents you control that are exactly two colors.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | ValidTgts$ Player | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Card.YouCtrl$DifferentColorPair\nOracle:Flying, hexproof from multicolored\\nWhenever Niv-Mizzet, Guildpact deals combat damage to a player, it deals X damage to any target, target player draws X cards, and you gain X life, where X is the number of different color pairs among permanents you control that are exactly two colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niv-Mizzet, Guildpact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

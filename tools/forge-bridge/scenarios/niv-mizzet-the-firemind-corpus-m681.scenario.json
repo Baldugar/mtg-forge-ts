@@ -1,0 +1,25 @@
+{
+  "id": "niv-mizzet-the-firemind-corpus-m681",
+  "description": "M6 corpus — Niv-Mizzet, the Firemind; ETB-on-bf.",
+  "seed": 61715,
+  "cards": {
+    "Niv-Mizzet, the Firemind": "Name:Niv-Mizzet, the Firemind\nManaCost:2 U U R R\nTypes:Legendary Creature Dragon Wizard\nPT:4/4\nK:Flying\nA:AB$ Draw | Cost$ T | NumCards$ 1 | AILogic$ AtOppEOT | SpellDescription$ Draw a card.\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you draw a card, CARDNAME deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:Flying\\nWhenever you draw a card, Niv-Mizzet, the Firemind deals 1 damage to any target.\\n{T}: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Niv-Mizzet, the Firemind"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

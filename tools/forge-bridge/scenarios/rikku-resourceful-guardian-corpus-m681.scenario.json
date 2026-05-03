@@ -1,0 +1,25 @@
+{
+  "id": "rikku-resourceful-guardian-corpus-m681",
+  "description": "M6 corpus — Rikku, Resourceful Guardian; ETB-on-bf.",
+  "seed": 61767,
+  "cards": {
+    "Rikku, Resourceful Guardian": "Name:Rikku, Resourceful Guardian\nManaCost:2 U\nTypes:Legendary Creature Human Artificer\nPT:2/3\nT:Mode$ CounterPlayerAddedAll | ValidObject$ Creature.inRealZoneBattlefield | TriggerZones$ Battlefield | ValidSource$ You | Execute$ TrigEffect | TriggerDescription$ Whenever you put one or more counters on a creature, until end of turn, that creature can't be blocked by creatures your opponents control.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ TriggeredObjectLKICopy | StaticAbilities$ BlockRestrict\nSVar:BlockRestrict:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | ValidBlocker$ Creature.OppCtrl | Description$ That creature can't be blocked by creatures your opponents control.\nA:AB$ Pump | Cost$ 1 T | PrecostDesc$ Steal — | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBMove | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Move a counter from target creature an opponent controls onto target creature you control. Activate only as a sorcery.\nSVar:DBMove:DB$ MoveCounter | Source$ ParentTarget | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to move counter to | CounterType$ Any | CounterNum$ 1 | StackDescription$ None\nOracle:Whenever you put one or more counters on a creature, until end of turn, that creature can't be blocked by creatures your opponents control.\\nSteal — {1}, {T}: Move a counter from target creature an opponent controls onto target creature you control. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rikku, Resourceful Guardian"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

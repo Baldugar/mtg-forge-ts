@@ -1,0 +1,23 @@
+{
+  "id": "undying-flames-corpus-m681",
+  "description": "M6 corpus — Undying Flames; in-hand parse.",
+  "seed": 61861,
+  "cards": {
+    "Undying Flames": "Name:Undying Flames\nManaCost:4 R R\nTypes:Sorcery\nK:Epic\nA:SP$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ UndyingDamage | NoPutDesc$ True | SpellDescription$ Exile cards from the top of your library until you exile a nonland card. CARDNAME deals damage to any target equal to that card's mana value.\nSVar:UndyingDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ FlameX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:FlameX:Remembered$CardManaCost\nAI:RemoveDeck:All\nOracle:Exile cards from the top of your library until you exile a nonland card. Undying Flames deals damage to any target equal to that card's mana value.\\nEpic (For the rest of the game, you can't cast spells. At the beginning of each of your upkeeps, copy this spell except for its epic ability. You may choose a new target for the copy.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undying Flames"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

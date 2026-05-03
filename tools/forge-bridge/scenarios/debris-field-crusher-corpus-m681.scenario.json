@@ -1,0 +1,23 @@
+{
+  "id": "debris-field-crusher-corpus-m681",
+  "description": "M6 corpus — Debris Field Crusher; in-hand parse.",
+  "seed": 61516,
+  "cards": {
+    "Debris Field Crusher": "Name:Debris Field Crusher\nManaCost:4 R\nTypes:Artifact Spacecraft\nPT:1/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When this Spacecraft enters, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nK:Station:8\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddAbility$ CrusherPump | Description$ STATION 8+ Flying,,,{1}{R}: This Spacecraft gets +2/+0 until end of turn.\nSVar:CrusherPump:AB$ Pump | Cost$ 1 R | NumAtt$ +2 | SpellDescription$ This Spacecraft gets +2/+0 until end of turn.\nOracle:When this Spacecraft enters, it deals 3 damage to any target.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 8+.)\\nSTATION 8+\\nFlying\\n{1}{R}: This Spacecraft gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Debris Field Crusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

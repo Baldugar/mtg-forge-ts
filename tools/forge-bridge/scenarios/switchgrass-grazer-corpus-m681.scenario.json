@@ -1,0 +1,23 @@
+{
+  "id": "switchgrass-grazer-corpus-m681",
+  "description": "M6 corpus — Switchgrass Grazer; in-hand parse.",
+  "seed": 61827,
+  "cards": {
+    "Switchgrass Grazer": "Name:Switchgrass Grazer\nManaCost:2 R R\nTypes:Creature Horse Mount\nPT:4/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to any target. If CARDNAME is saddled and a creature was dealt damage this way, that creature perpetually gains \"This creature can't block\" and \"Damage isn't removed from this creature during cleanup steps.\"\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | RememberDamaged$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ CantBlock,NoDamageRemoval | Duration$ Perpetual | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionPresent2$ Card.Self+IsSaddled | SubAbility$ DBCleanup\nSVar:CantBlock:Mode$ CantBlock | ValidCard$ Creature.Self | Description$ CARDNAME can't block.\nSVar:NoDamageRemoval:Mode$ NoCleanupDamage | ValidCard$ Card.Self | Description$ Damage isn't removed from this creature during cleanup steps.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Saddle:1\nOracle:Haste\\nWhenever Switchgrass Grazer attacks, it deals 1 damage to any target. If Switchgrass Grazer is saddled and a creature was dealt damage this way, that creature perpetually gains \"This creature can't block\" and \"Damage isn't removed from this creature during cleanup steps.\"\\nSaddle 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Switchgrass Grazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

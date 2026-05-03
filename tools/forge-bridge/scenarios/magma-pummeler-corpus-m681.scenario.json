@@ -1,0 +1,23 @@
+{
+  "id": "magma-pummeler-corpus-m681",
+  "description": "M6 corpus — Magma Pummeler; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Magma Pummeler": "Name:Magma Pummeler\nManaCost:X R R\nTypes:Creature Elemental\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+counters_GE1_P1P1 | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME while it has a +1/+1 counter on it, prevent that damage and remove that many +1/+1 counters from it. When one or more counters are removed from CARDNAME this way, it deals that much damage to any target.\nSVar:Counters:DB$ RemoveCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ Y | RememberRemoved$ True | SubAbility$ DBImmediateTrigger\nSVar:Y:ReplaceCount$DamageAmount\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigDamage | RememberSVarAmount$ Z | SubAbility$ DBCleanup | TriggerDescription$ When one or more counters are removed from CARDNAME this way, it deals that much damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Count$TriggerRememberAmount\nSVar:Z:Count$RememberedSize\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Magma Pummeler enters with X +1/+1 counters on it.\\nIf damage would be dealt to Magma Pummeler while it has a +1/+1 counter on it, prevent that damage and remove that many +1/+1 counters from it. When one or more counters are removed from Magma Pummeler this way, it deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magma Pummeler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

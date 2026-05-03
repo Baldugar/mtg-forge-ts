@@ -1,0 +1,23 @@
+{
+  "id": "spin-into-myth-corpus-m681",
+  "description": "M6 corpus — Spin into Myth; in-hand parse.",
+  "seed": 61814,
+  "cards": {
+    "Spin into Myth": "Name:Spin into Myth\nManaCost:4 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SubAbility$ ChooseP | SpellDescription$ Put target creature on top of its owner's library, then fateseal 2. (To fateseal 2, look at the top two cards of an opponent's library, then put any number of them on the bottom of that player's library and the rest on top in any order.)\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | Defined$ ChosenPlayer | DigNum$ 2 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition$ -1 | LibraryPosition2$ 0\nOracle:Put target creature on top of its owner's library, then fateseal 2. (To fateseal 2, look at the top two cards of an opponent's library, then put any number of them on the bottom of that player's library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spin into Myth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

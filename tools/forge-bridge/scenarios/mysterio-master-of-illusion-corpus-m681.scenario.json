@@ -1,0 +1,23 @@
+{
+  "id": "mysterio-master-of-illusion-corpus-m681",
+  "description": "M6 corpus — Mysterio, Master of Illusion; in-hand parse.",
+  "seed": 61706,
+  "cards": {
+    "Mysterio, Master of Illusion": "Name:Mysterio, Master of Illusion\nVariant:UniversesWithin:FlavorName:The Watcher on the Road\nManaCost:3 U\nTypes:Legendary Creature Human Villain\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 3/3 blue Illusion Villain creature token for each nontoken Villain you control. Exile those tokens when NICKNAME leaves the battlefield.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ u_3_3_illusion_villain | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedLKI | Triggers$ TrigExile | Duration$ Permanent | ForgetOnMoved$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigExile:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.EffectSource | Execute$ ExileTwin | TriggerDescription$ Exile those tokens when EFFECTSOURCE leaves the battlefield.\nSVar:ExileTwin:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile\nSVar:X:Count$Valid Villain.!token+YouCtrl\nDeckHas:Ability$Token\nDeckHints:Type$Villain\nOracle:When Mysterio enters, create a 3/3 blue Illusion Villain creature token for each nontoken Villain you control. Exile those tokens when Mysterio leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mysterio, Master of Illusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

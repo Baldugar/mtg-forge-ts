@@ -1,0 +1,23 @@
+{
+  "id": "smoldering-werewolf-corpus-m681",
+  "description": "M6 corpus — Smoldering Werewolf; in-hand parse.",
+  "seed": 61802,
+  "cards": {
+    "Smoldering Werewolf": "Name:Smoldering Werewolf\nManaCost:2 R R\nTypes:Creature Werewolf Horror\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each of up to two target creatures.\nSVar:TrigDealDamage:DB$ DealDamage | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | NumDmg$ 1\nA:AB$ SetState | Cost$ 4 R R | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nSVar:PlayMain1:TRUE\nAlternateMode:DoubleFaced\nOracle:When Smoldering Werewolf enters, it deals 1 damage to each of up to two target creatures.\\n{4}{R}{R}: Transform Smoldering Werewolf.\n\nALTERNATE\n\nName:Erupting Dreadwolf\nManaCost:no cost\nTypes:Creature Eldrazi Werewolf\nPT:6/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nOracle:Whenever Erupting Dreadwolf attacks, it deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoldering Werewolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

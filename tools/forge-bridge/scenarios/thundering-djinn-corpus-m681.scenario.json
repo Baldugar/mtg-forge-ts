@@ -1,0 +1,23 @@
+{
+  "id": "thundering-djinn-corpus-m681",
+  "description": "M6 corpus — Thundering Djinn; in-hand parse.",
+  "seed": 61848,
+  "cards": {
+    "Thundering Djinn": "Name:Thundering Djinn\nManaCost:3 U R\nTypes:Creature Djinn\nPT:3/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage to any target equal to the number of cards you've drawn this turn.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$YouDrewThisTurn\nAI:RemoveDeck:All\nOracle:Flying\\nWhenever Thundering Djinn attacks, it deals damage to any target equal to the number of cards you've drawn this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

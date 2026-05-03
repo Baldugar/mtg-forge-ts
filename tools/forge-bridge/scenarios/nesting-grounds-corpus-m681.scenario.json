@@ -1,0 +1,25 @@
+{
+  "id": "nesting-grounds-corpus-m681",
+  "description": "M6 corpus — Nesting Grounds; ETB-on-bf.",
+  "seed": 61711,
+  "cards": {
+    "Nesting Grounds": "Name:Nesting Grounds\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Pump | Cost$ 1 T | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | SubAbility$ DBMove | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Move a counter from target permanent you control onto another target permanent. Activate only as a sorcery.\nSVar:DBMove:DB$ MoveCounter | Source$ ParentTarget | ValidTgts$ Permanent | TgtPrompt$ Select target permanent to move counter to | TargetUnique$ True | CounterType$ Any | CounterNum$ 1 | StackDescription$ None\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{1}, {T}: Move a counter from target permanent you control onto another target permanent. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nesting Grounds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

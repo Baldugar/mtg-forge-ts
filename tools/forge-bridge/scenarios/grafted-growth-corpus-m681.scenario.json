@@ -1,0 +1,23 @@
+{
+  "id": "grafted-growth-corpus-m681",
+  "description": "M6 corpus — Grafted Growth; in-hand parse.",
+  "seed": 61594,
+  "cards": {
+    "Grafted Growth": "Name:Grafted Growth\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature or Vehicle you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl,Vehicle.YouCtrl | TgtPrompt$ Select target creature or Vehicle you control | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddAbility$ ABManaAny2 | Description$ Enchanted land has \"{T}: Add two mana of any one color.\"\nSVar:ABManaAny2:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nDeckHas:Ability$Counters\nDeckHints:Type$Vehicle\nOracle:Enchant land\\nWhen Grafted Growth enters, put a +1/+1 counter on target creature or Vehicle you control.\\nEnchanted land has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grafted Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

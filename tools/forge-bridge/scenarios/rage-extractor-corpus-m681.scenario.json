@@ -1,0 +1,25 @@
+{
+  "id": "rage-extractor-corpus-m681",
+  "description": "M6 corpus — Rage Extractor; ETB-on-bf.",
+  "seed": 61757,
+  "cards": {
+    "Rage Extractor": "Name:Rage Extractor\nManaCost:4 RP\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.CostsPhyrexianMana | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a spell with {H} in its mana cost, CARDNAME deals damage equal to that spell's mana value to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:BuffedBy:Card.CostsPhyrexianMana\nAI:RemoveDeck:Random\nOracle:({R/P} can be paid with either {R} or 2 life.)\\nWhenever you cast a spell with {H} in its mana cost, Rage Extractor deals damage equal to that spell's mana value to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rage Extractor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "roar-of-the-crowd-corpus-m681",
+  "description": "M6 corpus — Roar of the Crowd; in-hand parse.",
+  "seed": 61770,
+  "cards": {
+    "Roar of the Crowd": "Name:Roar of the Crowd\nManaCost:3 R\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDamage | SpellDescription$ Choose a creature type. CARDNAME deals damage to any target equal to the number of permanents you control of the chosen type.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl\nAI:RemoveDeck:All\nOracle:Choose a creature type. Roar of the Crowd deals damage to any target equal to the number of permanents you control of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roar of the Crowd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

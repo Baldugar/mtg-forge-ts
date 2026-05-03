@@ -1,0 +1,23 @@
+{
+  "id": "valakut-the-molten-pinnacle-corpus-m681",
+  "description": "M6 corpus — Valakut, the Molten Pinnacle; in-hand parse.",
+  "seed": 61867,
+  "cards": {
+    "Valakut, the Molten Pinnacle": "Name:Valakut, the Molten Pinnacle\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | ValidCard$ Mountain.YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage | IsPresent$ Mountain.YouCtrl | PresentCompare$ GE6 | NoResolvingCheck$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Mountain you control enters, if you control at least five other Mountains, you may have CARDNAME deal 3 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | ConditionPresent$ Mountain.YouCtrl+!TriggeredCard | ConditionCompare$ GE5 | OptionalDecider$ You\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nOracle:Valakut, the Molten Pinnacle enters tapped.\\nWhenever a Mountain you control enters, if you control at least five other Mountains, you may have Valakut, the Molten Pinnacle deal 3 damage to any target.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valakut, the Molten Pinnacle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

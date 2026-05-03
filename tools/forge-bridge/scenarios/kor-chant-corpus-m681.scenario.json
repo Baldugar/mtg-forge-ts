@@ -1,0 +1,23 @@
+{
+  "id": "kor-chant-corpus-m681",
+  "description": "M6 corpus — Kor Chant; in-hand parse.",
+  "seed": 61656,
+  "cards": {
+    "Kor Chant": "Name:Kor Chant\nManaCost:2 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to redirect the damage from | SubAbility$ DBChooseSource | StackDescription$ SpellDescription | SpellDescription$ All damage that would be dealt this turn to target creature you control by a source of your choice is dealt to another target creature instead.\nSVar:DBChooseSource:DB$ ChooseSource | Choices$ Card,Emblem | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ValidTgts$ Creature | TargetUnique$ True | TgtPrompt$ Select target creature to redirect the damage to | ReplacementEffects$ SelflessDamage | Triggers$ OutOfSight | ImprintCards$ ParentTarget | RememberObjects$ ThisTargetedCard | ConditionDefined$ ParentTarget | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ Creature.IsImprinted | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SelflessDmg | DamageTarget$ Remembered | Description$ All damage that would be dealt this turn to target creature you control by a source of your choice is dealt to another target creature instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card\nSVar:OutOfSight:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted,Card.IsRemembered | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:All damage that would be dealt this turn to target creature you control by a source of your choice is dealt to another target creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

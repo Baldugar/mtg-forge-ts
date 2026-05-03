@@ -1,0 +1,23 @@
+{
+  "id": "munda-ambush-leader-corpus-m681",
+  "description": "M6 corpus — Munda, Ambush Leader; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Munda, Ambush Leader": "Name:Munda, Ambush Leader\nManaCost:2 R W\nTypes:Legendary Creature Kor Ally\nPT:3/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigDig | OptionalDecider$ You | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, you may look at the top four cards of your library. If you do, reveal any number of Ally cards from among them, then put those cards on top of your library in any order and the rest on the bottom in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ Any | ChangeValid$ Ally | DestinationZone$ Library | LibraryPosition$ 0\nDeckHints:Type$Ally\nOracle:Haste\\nRally — Whenever Munda, Ambush Leader or another Ally you control enters, you may look at the top four cards of your library. If you do, reveal any number of Ally cards from among them, then put those cards on top of your library in any order and the rest on the bottom in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Munda, Ambush Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

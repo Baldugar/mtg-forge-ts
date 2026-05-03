@@ -1,0 +1,23 @@
+{
+  "id": "steamcore-weird-corpus-m681",
+  "description": "M6 corpus — Steamcore Weird; in-hand parse.",
+  "seed": 61820,
+  "cards": {
+    "Steamcore Weird": "Name:Steamcore Weird\nManaCost:3 U\nTypes:Creature Weird\nPT:1/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if {R} was spent to cast it, it deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any | ConditionManaSpent$ R\nSVar:ManaNeededToAvoidNegativeEffect:red\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red\nOracle:When Steamcore Weird enters, if {R} was spent to cast it, it deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steamcore Weird"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

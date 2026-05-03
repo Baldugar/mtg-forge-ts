@@ -1,0 +1,23 @@
+{
+  "id": "gang-of-devils-corpus-m681",
+  "description": "M6 corpus — Gang of Devils; in-hand parse.",
+  "seed": 61577,
+  "cards": {
+    "Gang of Devils": "Name:Gang of Devils\nManaCost:5 R\nTypes:Creature Devil\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ DevilTakeYou | TriggerDescription$ When CARDNAME dies, it deals 3 damage divided as you choose among one, two, or three targets.\nSVar:DevilTakeYou:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target to distribute damage to | NumDmg$ 3 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3\nOracle:When Gang of Devils dies, it deals 3 damage divided as you choose among one, two, or three targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gang of Devils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

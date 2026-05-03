@@ -1,0 +1,23 @@
+{
+  "id": "cone-of-flame-corpus-m681",
+  "description": "M6 corpus — Cone of Flame; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Cone of Flame": "Name:Cone of Flame\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target to deal 1 damage to | NumDmg$ 1 | DamageMap$ True | SubAbility$ DBDamageTwo | SpellDescription$ CARDNAME deals 1 damage to any target, 2 damage to another target, and 3 damage to a third target.\nSVar:DBDamageTwo:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select another target to deal 2 damage to | NumDmg$ 2 | TargetUnique$ True | SubAbility$ DBDamageThree\nSVar:DBDamageThree:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select another target to deal 3 damage to | NumDmg$ 3 | TargetUnique$ True | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Cone of Flame deals 1 damage to any target, 2 damage to another target, and 3 damage to a third target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cone of Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

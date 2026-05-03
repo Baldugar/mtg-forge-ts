@@ -1,0 +1,23 @@
+{
+  "id": "knickknack-ouphe-corpus-m681",
+  "description": "M6 corpus — Knickknack Ouphe; in-hand parse.",
+  "seed": 61653,
+  "cards": {
+    "Knickknack Ouphe": "Name:Knickknack Ouphe\nManaCost:X G\nTypes:Creature Ouphe\nPT:1/1\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with X +1/+1 counters on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top X cards of your library. You may put any number of Aura cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | Reveal$ True | ChangeValid$ Aura.cmcLEX | ChangeNum$ Any | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nSVar:X:Count$xPaid\nOracle:Knickknack Ouphe enters with X +1/+1 counters on it.\\nWhen Knickknack Ouphe enters, reveal the top X cards of your library. You may put any number of Aura cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knickknack Ouphe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

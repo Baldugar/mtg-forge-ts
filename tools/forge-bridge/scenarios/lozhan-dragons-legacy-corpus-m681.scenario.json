@@ -1,0 +1,25 @@
+{
+  "id": "lozhan-dragons-legacy-corpus-m681",
+  "description": "M6 corpus — Lozhan, Dragons' Legacy; ETB-on-bf.",
+  "seed": 61678,
+  "cards": {
+    "Lozhan, Dragons' Legacy": "Name:Lozhan, Dragons' Legacy\nManaCost:3 U R\nTypes:Legendary Creature Dragon Shaman\nPT:4/2\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.Adventure,Dragon | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Adventure spell or Dragon spell, CARDNAME deals damage equal to that spell's mana value to any target that isn't a commander.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any.!IsCommander | TgtPrompt$ Select any target that isn't a commander | NumDmg$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:BuffedBy:Creature.AdventureCard,Dragon\nDeckHints:Type$Adventure|Dragon\nOracle:Flying\\nWhenever you cast an Adventure spell or Dragon spell, Lozhan, Dragons' Legacy deals damage equal to that spell's mana value to any target that isn't a commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lozhan, Dragons' Legacy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

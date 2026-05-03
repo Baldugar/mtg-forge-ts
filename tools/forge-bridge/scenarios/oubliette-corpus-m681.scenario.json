@@ -1,0 +1,23 @@
+{
+  "id": "oubliette-corpus-m681",
+  "description": "M6 corpus — Oubliette; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Oubliette": "Name:Oubliette\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPhaseOut | TriggerDescription$ When CARDNAME enters, target creature phases out until CARDNAME leaves the battlefield. Tap that creature as it phases in this way. (Auras and Equipment phase out with it. While permanents are phased out, they're treated as though they don't exist.)\nSVar:TrigPhaseOut:DB$ Phases | ValidTgts$ Creature | WontPhaseInNormal$ True | ConditionPresent$ Card.Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigComeBack | RememberObjects$ Targeted | ImprintCards$ Self | ConditionPresent$ Card.Self | Duration$ Permanent | ForgetOnPhasedIn$ True\nSVar:TrigComeBack:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted | Execute$ DBPhaseIn | TriggerZones$ Command | TriggerController$ TriggeredCardController | Static$ True | TriggerDescription$ Target creature phases out until CARDNAME leaves the battlefield. Tap that creature as it phases in this way.\nSVar:DBPhaseIn:DB$ Phases | Defined$ Remembered | Tapped$ True | PhaseInOrOut$ True | SubAbility$ DBExileSelf\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nAI:RemoveDeck:All\nOracle:When Oubliette enters, target creature phases out until Oubliette leaves the battlefield. Tap that creature as it phases in this way. (Auras and Equipment phase out with it. While permanents are phased out, they're treated as though they don't exist.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oubliette"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

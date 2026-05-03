@@ -1,0 +1,23 @@
+{
+  "id": "mount-velus-manticore-corpus-m681",
+  "description": "M6 corpus — Mount Velus Manticore; in-hand parse.",
+  "seed": 61700,
+  "cards": {
+    "Mount Velus Manticore": "Name:Mount Velus Manticore\nManaCost:2 R R\nTypes:Enchantment Creature Manticore\nPT:3/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigDiscard | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of combat on your turn, you may discard a card. When you do, CARDNAME deals X damage to any target, where X is the number of card types the discarded card has.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | Execute$ TrigDamage | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | TriggerDescription$ When you do, CARDNAME deals X damage to any target, where X is the number of card types the discarded card has.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggerRemembered$CardTypes\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:At the beginning of combat on your turn, you may discard a card. When you do, Mount Velus Manticore deals X damage to any target, where X is the number of card types the discarded card has.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mount Velus Manticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

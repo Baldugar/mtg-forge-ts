@@ -1,0 +1,23 @@
+{
+  "id": "vibrance-corpus-m681",
+  "description": "M6 corpus — Vibrance; in-hand parse.",
+  "seed": 61871,
+  "cards": {
+    "Vibrance": "Name:Vibrance\nManaCost:3 RG RG\nTypes:Creature Elemental Incarnation\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ CastSA>Count$Adamant_2.Red.2.0 | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this creature enters, if {R}{R} was spent to cast it, this creature deals 3 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ CastSA>Count$Adamant_2.Green.2.0 | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When this creature enters, if {G}{G} was spent to cast it, search your library for a land card, reveal it, put it into your hand, then shuffle. You gain 2 life.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nK:Evoke:RG RG\nOracle:When this creature enters, if {R}{R} was spent to cast it, this creature deals 3 damage to any target.\\nWhen this creature enters, if {G}{G} was spent to cast it, search your library for a land card, reveal it, put it into your hand, then shuffle. You gain 2 life.\\nEvoke {R/G}{R/G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vibrance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

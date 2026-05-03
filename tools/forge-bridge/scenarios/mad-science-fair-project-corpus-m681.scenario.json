@@ -1,0 +1,23 @@
+{
+  "id": "mad-science-fair-project-corpus-m681",
+  "description": "M6 corpus — Mad Science Fair Project; in-hand parse.",
+  "seed": 61680,
+  "cards": {
+    "Mad Science Fair Project": "Name:Mad Science Fair Project\nManaCost:3\nTypes:Artifact\nA:AB$ Pump | Cost$ T | ValidTgts$ Player | SubAbility$ DBRoll\nSVar:DBRoll:DB$ RollDice | ResultSubAbilities$ 1-3:AddC,Else:AddAny | AILogic$ Main2 | SpellDescription$ {T}: Roll a six-sided die. On a 3 or lower, target player adds {C}. Otherwise, that player adds one mana of any color they choose.\nSVar:AddC:DB$ Mana | Produced$ C | Defined$ Targeted\nSVar:AddAny:DB$ Mana | Produced$ Any | Defined$ Targeted\nSVar:PlayMain1:TRUE\nOracle:{T}: Roll a six-sided die. On a 3 or lower, target player adds {C}. Otherwise, that player adds one mana of any color they choose.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mad Science Fair Project"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

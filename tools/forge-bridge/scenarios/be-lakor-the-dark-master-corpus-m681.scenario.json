@@ -1,0 +1,23 @@
+{
+  "id": "be-lakor-the-dark-master-corpus-m681",
+  "description": "M6 corpus — Be'lakor, the Dark Master; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Be'lakor, the Dark Master": "Name:Be'lakor, the Dark Master\nManaCost:3 U B R\nTypes:Legendary Creature Demon Noble\nPT:6/5\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Prince of Chaos — When CARDNAME enters, you draw X cards and you lose X life, where X is the number of Demons you control.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Demon.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Lord of Torment — Whenever another Demon you control enters, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Y\nSVar:X:Count$Valid Demon.YouCtrl\nSVar:Y:TriggeredCard$CardPower\nSVar:BuffedBy:Demon\nDeckHints:Type$Demon\nOracle:Flying\\nPrince of Chaos — When Be'lakor, the Dark Master enters, you draw X cards and you lose X life, where X is the number of Demons you control.\\nLord of Torment — Whenever another Demon you control enters, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Be'lakor, the Dark Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

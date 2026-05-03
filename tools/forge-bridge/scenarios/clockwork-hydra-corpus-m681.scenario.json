@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-hydra-corpus-m681",
+  "description": "M6 corpus — Clockwork Hydra; in-hand parse.",
+  "seed": 61499,
+  "cards": {
+    "Clockwork Hydra": "Name:Clockwork Hydra\nManaCost:5\nTypes:Artifact Creature Hydra\nPT:0/0\nK:etbCounter:P1P1:4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigClockworkRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it. If you do, CARDNAME deals 1 damage to any target.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigClockworkRemoveCounter | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it. If you do, CARDNAME deals 1 damage to any target.\nSVar:TrigClockworkRemoveCounter:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 1 | RememberRemoved$ True | SubAbility$ DBClockworkDamage\nSVar:DBClockworkDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | ConditionCheckSVar$ ClockworkX | SubAbility$ DBClockworkCleanup\nA:AB$ PutCounter | Cost$ T | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBClockworkCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:ClockworkX:Count$RememberedSize\nOracle:Clockwork Hydra enters with four +1/+1 counters on it.\\nWhenever Clockwork Hydra attacks or blocks, remove a +1/+1 counter from it. If you do, Clockwork Hydra deals 1 damage to any target.\\n{T}: Put a +1/+1 counter on Clockwork Hydra.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

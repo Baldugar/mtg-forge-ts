@@ -1,0 +1,23 @@
+{
+  "id": "karumonix-the-rat-king-corpus-m681",
+  "description": "M6 corpus — Karumonix, the Rat King; in-hand parse.",
+  "seed": 61646,
+  "cards": {
+    "Karumonix, the Rat King": "Name:Karumonix, the Rat King\nManaCost:1 B B\nTypes:Legendary Creature Phyrexian Rat\nPT:3/3\nK:Toxic:1\nS:Mode$ Continuous | Affected$ Rat.YouCtrl+Other | AddKeyword$ Toxic:1 | Description$ Other Rats you control have toxic 1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When NICKNAME enters, look at the top five cards of your library. You may reveal any number of Rat cards from among them and put the revealed cards into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ForceRevealToController$ True | ChangeNum$ Any | ChangeValid$ Rat | RestRandomOrder$ True\nDeckNeeds:Type$Rat\nOracle:Toxic 1\\nOther Rats you control have toxic 1.\\nWhen Karumonix enters, look at the top five cards of your library. You may reveal any number of Rat cards from among them and put the revealed cards into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karumonix, the Rat King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

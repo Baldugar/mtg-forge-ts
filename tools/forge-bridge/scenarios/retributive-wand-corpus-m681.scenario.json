@@ -1,0 +1,23 @@
+{
+  "id": "retributive-wand-corpus-m681",
+  "description": "M6 corpus — Retributive Wand; in-hand parse.",
+  "seed": 61765,
+  "cards": {
+    "Retributive Wand": "Name:Retributive Wand\nManaCost:3\nTypes:Artifact\nA:AB$ DealDamage | Cost$ 3 T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, it deals 5 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 5\nOracle:{3}, {T}: Retributive Wand deals 1 damage to any target.\\nWhen Retributive Wand is put into a graveyard from the battlefield, it deals 5 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retributive Wand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

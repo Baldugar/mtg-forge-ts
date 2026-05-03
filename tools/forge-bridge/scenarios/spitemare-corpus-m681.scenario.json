@@ -1,0 +1,23 @@
+{
+  "id": "spitemare-corpus-m681",
+  "description": "M6 corpus — Spitemare; in-hand parse.",
+  "seed": 61815,
+  "cards": {
+    "Spitemare": "Name:Spitemare\nManaCost:2 RW RW\nTypes:Creature Elemental\nPT:3/3\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to any target.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Spitemare is dealt damage, it deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spitemare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

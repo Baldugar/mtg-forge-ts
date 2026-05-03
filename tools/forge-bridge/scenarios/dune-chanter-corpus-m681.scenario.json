@@ -1,0 +1,25 @@
+{
+  "id": "dune-chanter-corpus-m681",
+  "description": "M6 corpus — Dune Chanter; ETB-on-bf.",
+  "seed": 61531,
+  "cards": {
+    "Dune Chanter": "Name:Dune Chanter\nManaCost:2 G\nTypes:Creature Plant Druid\nPT:2/3\nK:Reach\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AffectedZone$ All | AddType$ Desert | Description$ Lands you control and land cards you own that aren't on the battlefield are Deserts in addition to their other types.\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddAbility$ AnyMana | Description$ Lands you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nA:AB$ Mill | Cost$ T | NumCards$ 2 | Defined$ You | RememberMilled$ True | SubAbility$ DBGainLife | SpellDescription$ Mill two cards. You gain 1 life for each land card milled this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.Land\nDeckHas:Ability$Graveyard|LifeGain & Type$Desert\nOracle:Reach\\nLands you control and land cards you own that aren't on the battlefield are Deserts in addition to their other types.\\nLands you control have \"{T}: Add one mana of any color.\"\\n{T}: Mill two cards. You gain 1 life for each land card milled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dune Chanter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cemetery-desecrator-corpus-m681",
+  "description": "M6 corpus — Cemetery Desecrator; in-hand parse.",
+  "seed": 61489,
+  "cards": {
+    "Cemetery Desecrator": "Name:Cemetery Desecrator\nManaCost:4 B B\nTypes:Creature Zombie\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters or dies, exile another card from a graveyard. When you do, ABILITY\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, exile another card from a graveyard. When you do, ABILITY\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Hidden$ True | RememberChanged$ True | ChangeType$ Card.Other | ChangeNum$ 1 | Mandatory$ True | AILogic$ ExilePreference:HighestCMC | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ Remembered | SubAbility$ DBCleanup | Execute$ TrigCharm | TriggerDescription$ When you do, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBRemoveCounter,DBPump\nSVar:DBRemoveCounter:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ X | SpellDescription$ Remove X counters from target permanent, where X is the mana value of the exiled card.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | IsCurse$ True | NumAtt$ -X | NumDef$ -X | SpellDescription$ Target creature an opponent controls gets -X/-X until end of turn, where X is the mana value of the exiled card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardManaCost\nDeckHas:Ability$Graveyard\nOracle:Menace\\nWhen Cemetery Desecrator enters or dies, exile another card from a graveyard. When you do, choose one —\\n• Remove X counters from target permanent, where X is the mana value of the exiled card.\\n• Target creature an opponent controls gets -X/-X until end of turn, where X is the mana value of the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cemetery Desecrator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

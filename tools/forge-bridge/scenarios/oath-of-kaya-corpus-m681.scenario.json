@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-kaya-corpus-m681",
+  "description": "M6 corpus — Oath of Kaya; in-hand parse.",
+  "seed": 61719,
+  "cards": {
+    "Oath of Kaya": "Name:Oath of Kaya\nManaCost:1 W B\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to any target and you gain 3 life.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nT:Mode$ AttackersDeclared | AttackedTarget$ Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent attacks a planeswalker you control with one or more creatures, CARDNAME deals 2 damage to that player and you gain 2 life.\nSVar:TrigDmg:DB$ DealDamage | Defined$ AttackingPlayer | NumDmg$ 2 | SubAbility$ DBGainLife2\nSVar:DBGainLife2:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:When Oath of Kaya enters, it deals 3 damage to any target and you gain 3 life.\\nWhenever an opponent attacks a planeswalker you control with one or more creatures, Oath of Kaya deals 2 damage to that player and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Kaya"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

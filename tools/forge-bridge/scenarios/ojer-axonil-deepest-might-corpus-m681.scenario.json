@@ -1,0 +1,23 @@
+{
+  "id": "ojer-axonil-deepest-might-corpus-m681",
+  "description": "M6 corpus — Ojer Axonil, Deepest Might; in-hand parse.",
+  "seed": 61721,
+  "cards": {
+    "Ojer Axonil, Deepest Might": "Name:Ojer Axonil, Deepest Might\nManaCost:2 R R\nTypes:Legendary Creature God\nPT:4/4\nK:Trample\nR:Event$ DamageDone | ActiveZones$ Battlefield | DamageAmount$ LTX | ValidSource$ Card.RedSource+YouCtrl | IsCombat$ False | ValidTarget$ Opponent | ReplaceWith$ DmgPlus | Description$ If a red source you control would deal an amount of noncombat damage less than NICKNAME's power to an opponent, that source deals damage equal to NICKNAME's power instead.\nSVar:DmgPlus:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:Count$CardPower\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigTransform | TriggerDescription$ When NICKNAME dies, return it to the battlefield tapped and transformed under its owner's control.\nSVar:TrigTransform:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True | Tapped$ True\nAlternateMode:DoubleFaced\nOracle:Trample\\nIf a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead.\\nWhen Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control.\n\nALTERNATE\n\nName:Temple of Power\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ SetState | Cost$ 2 R T | CheckSVar$ X | SVarCompare$ GE4 | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.\nSVar:X:Count$NonCombatDamageThisTurn Card.Red+YouCtrl Any\nOracle:(Transforms from Ojer Axonil, Deepest Might.)\\n{T}: Add {R}.\\n{2}{R}, {T}: Transform Temple of Power. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ojer Axonil, Deepest Might"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

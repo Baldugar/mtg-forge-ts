@@ -1,0 +1,23 @@
+{
+  "id": "fireblade-charger-corpus-m681",
+  "description": "M6 corpus — Fireblade Charger; in-hand parse.",
+  "seed": 61556,
+  "cards": {
+    "Fireblade Charger": "Name:Fireblade Charger\nManaCost:R\nTypes:Creature Goblin Warrior\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self+equipped | AddKeyword$ Haste | Description$ As long as CARDNAME is equipped, it has haste.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME dies, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nSVar:EquipMe:Once\nDeckHints:Type$Equipment\nOracle:As long as Fireblade Charger is equipped, it has haste.\\nWhen Fireblade Charger dies, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fireblade Charger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

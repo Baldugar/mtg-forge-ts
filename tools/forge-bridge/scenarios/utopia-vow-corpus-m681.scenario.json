@@ -1,0 +1,23 @@
+{
+  "id": "utopia-vow-corpus-m681",
+  "description": "M6 corpus — Utopia Vow; in-hand parse.",
+  "seed": 61866,
+  "cards": {
+    "Utopia Vow": "Name:Utopia Vow\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ AnyMana | Description$ Enchanted creature has \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NonStackingAttachEffect:True\n# TODO: For AI, this acts as a curse spell to lock the opponent's creature while giving the opponent mana advantage (similar to Path to Exile). Could probably be improved to be used on own useless creatures instead when possible.\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\nEnchanted creature has \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Utopia Vow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

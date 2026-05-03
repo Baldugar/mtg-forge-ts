@@ -1,0 +1,25 @@
+{
+  "id": "empowered-autogenerator-corpus-m681",
+  "description": "M6 corpus — Empowered Autogenerator; ETB-on-bf.",
+  "seed": 61538,
+  "cards": {
+    "Empowered Autogenerator": "Name:Empowered Autogenerator\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ PutCounter | Cost$ T | CounterType$ CHARGE | CounterNum$ 1 | SubAbility$ DBMana | SpellDescription$ Put a charge counter on CARDNAME. Add X mana of any one color, where X is the number of charge counters on CARDNAME.\nSVar:DBMana:DB$ Mana | Produced$ Any | Amount$ X\nSVar:X:Count$CardCounters.CHARGE\nOracle:Empowered Autogenerator enters tapped.\\n{T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Empowered Autogenerator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

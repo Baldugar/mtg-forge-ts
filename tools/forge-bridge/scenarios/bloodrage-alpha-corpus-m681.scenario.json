@@ -1,0 +1,23 @@
+{
+  "id": "bloodrage-alpha-corpus-m681",
+  "description": "M6 corpus — Bloodrage Alpha; in-hand parse.",
+  "seed": 61464,
+  "cards": {
+    "Bloodrage Alpha": "Name:Bloodrage Alpha\nManaCost:3 R\nTypes:Creature Wolf\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTarget,DBDelayTrig\nSVar:DBTarget:DB$ Pump | ValidTgts$ Wolf.Other+YouCtrl,Werewolf.Other+YouCtrl | AILogic$ Fight | TgtPrompt$ Select another target Wolf or Werewolf you control | SubAbility$ DBFight | StackDescription$ {c:ThisTargetedCard} | SpellDescription$ Another target Wolf or Werewolf you control fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | StackDescription$ fights {c:ThisTargetedCard}.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Wolf,Werewolf | ValidActivatingPlayer$ You | Execute$ TrigAnimate | SpellDescription$ When you cast your next Wolf or Werewolf spell, it gains \"When this creature enters, it fights up to one target creature you don't control.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCardLKICopy | Duration$ Permanent | Triggers$ ETBFight\nSVar:ETBFight:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When this creature enters, it fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nDeckHints:Type$Wolf|Werewolf\nOracle:When Bloodrage Alpha enters, choose one —\\n• Another target Wolf or Werewolf you control fights target creature you don't control.\\n• When you cast your next Wolf or Werewolf spell, it gains \"When this creature enters, it fights up to one target creature you don't control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodrage Alpha"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bellowsbreath-ogre-corpus-m681",
+  "description": "M6 corpus — Bellowsbreath Ogre; in-hand parse.",
+  "seed": 61457,
+  "cards": {
+    "Bellowsbreath Ogre": "Name:Bellowsbreath Ogre\nManaCost:2 R\nTypes:Artifact Creature Ogre Shaman\nPT:3/3\nK:Starting intensity:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage equal to its intensity to any target, then perpetually increase its intensity by 1.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBIntensify\nSVar:DBIntensify:DB$ Intensify\nSVar:X:Count$Intensity\nSVar:HasAttackEffect:TRUE\nOracle:Starting intensity 1\\nWhenever Bellowsbreath Ogre attacks, it deals damage equal to its intensity to any target, then perpetually increase its intensity by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bellowsbreath Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

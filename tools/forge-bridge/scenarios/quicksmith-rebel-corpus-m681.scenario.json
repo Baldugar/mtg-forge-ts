@@ -1,0 +1,23 @@
+{
+  "id": "quicksmith-rebel-corpus-m681",
+  "description": "M6 corpus — Quicksmith Rebel; in-hand parse.",
+  "seed": 61755,
+  "cards": {
+    "Quicksmith Rebel": "Name:Quicksmith Rebel\nManaCost:3 R\nTypes:Creature Human Artificer\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, target artifact you control gains \"{T}: This artifact deals 2 damage to any target\" for as long as you control CARDNAME.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control | Abilities$ ABDealDamage | Duration$ AsLongAsControl\nSVar:ABDealDamage:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:PlayMain1:TRUE\nOracle:When Quicksmith Rebel enters, target artifact you control gains \"{T}: This artifact deals 2 damage to any target\" for as long as you control Quicksmith Rebel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quicksmith Rebel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

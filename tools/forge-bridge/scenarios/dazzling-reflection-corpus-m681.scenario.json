@@ -1,0 +1,23 @@
+{
+  "id": "dazzling-reflection-corpus-m681",
+  "description": "M6 corpus — Dazzling Reflection; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Dazzling Reflection": "Name:Dazzling Reflection\nManaCost:1 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ You gain life equal to target creature's power.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | SubAbility$ DBEffect | LifeAmount$ X\nSVar:X:Targeted$CardPower\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ Dazzle | ImprintCards$ Targeted | Triggers$ OutOfSight\nSVar:Dazzle:Event$ DamageDone | ValidSource$ Card.IsImprinted | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the targeted creature would deal damage this turn, prevent that damage.\nSVar:OutOfSight:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.IsImprinted | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:You gain life equal to target creature's power. The next time that creature would deal damage this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dazzling Reflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

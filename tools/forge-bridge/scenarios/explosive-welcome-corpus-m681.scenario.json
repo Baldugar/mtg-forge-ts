@@ -1,0 +1,23 @@
+{
+  "id": "explosive-welcome-corpus-m681",
+  "description": "M6 corpus — Explosive Welcome; in-hand parse.",
+  "seed": 61546,
+  "cards": {
+    "Explosive Welcome": "Name:Explosive Welcome\nManaCost:7 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target (5 damage) | NumDmg$ 5 | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 5 damage to any target and 3 damage to any other target. Add {R}{R}{R}.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target (3 damage) | TargetUnique$ True | NumDmg$ 3 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 3\nOracle:Explosive Welcome deals 5 damage to any target and 3 damage to any other target. Add {R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Explosive Welcome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

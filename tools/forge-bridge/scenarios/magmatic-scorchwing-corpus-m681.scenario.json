@@ -1,0 +1,23 @@
+{
+  "id": "magmatic-scorchwing-corpus-m681",
+  "description": "M6 corpus — Magmatic Scorchwing; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Magmatic Scorchwing": "Name:Magmatic Scorchwing\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Land.YouCtrl+nonBasic | PresentCompare$ EQ0 | PresentZone$ Library | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if there are no nonbasic land cards in your library, CARDNAME deals 3 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Magmatic Scorchwing enters, if there are no nonbasic land cards in your library, Magmatic Scorchwing deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magmatic Scorchwing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

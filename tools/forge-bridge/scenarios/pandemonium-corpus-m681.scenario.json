@@ -1,0 +1,23 @@
+{
+  "id": "pandemonium-corpus-m681",
+  "description": "M6 corpus — Pandemonium; in-hand parse.",
+  "seed": 61733,
+  "cards": {
+    "Pandemonium": "Name:Pandemonium\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever a creature enters, that creature's controller may have it deal damage equal to its power to any target of their choice.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | DamageSource$ TriggeredCard | TargetingPlayer$ TriggeredCardController\nSVar:X:TriggeredCard$CardPower\nSVar:PlayMain1:TRUE\nSVar:AIPriorityModifier:9\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, that creature's controller may have it deal damage equal to its power to any target of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pandemonium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

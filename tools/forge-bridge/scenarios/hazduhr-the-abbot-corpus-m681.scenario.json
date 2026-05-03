@@ -1,0 +1,25 @@
+{
+  "id": "hazduhr-the-abbot-corpus-m681",
+  "description": "M6 corpus — Hazduhr the Abbot; ETB-on-bf.",
+  "seed": 61604,
+  "cards": {
+    "Hazduhr the Abbot": "Name:Hazduhr the Abbot\nManaCost:3 W W\nTypes:Legendary Creature Human Cleric\nPT:2/5\nA:AB$ ChooseCard | Cost$ X T | ValidTgts$ Creature.White+YouCtrl | TgtPrompt$ Select target white creature you control | Mandatory$ True | Defined$ You | SubAbility$ DBSetVarBefore | SpellDescription$ The next X damage that would be dealt this turn to target white creature you control is dealt to CARDNAME instead. | StackDescription$ SpellDescription\nSVar:DBSetVarBefore:DB$ StoreSVar | SVar$ Y | Type$ Calculate | Expression$ X | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ HazduhrDamage | Triggers$ OutOfSight | RememberObjects$ Targeted | ImprintCards$ Self | SubAbility$ DBCleanup\nSVar:HazduhrDamage:Event$ DamageDone | ValidTarget$ Card.IsRemembered | ReplaceWith$ HazduhrDmg | DamageTarget$ Imprinted | Description$ The next X damage that would be dealt this turn to target white creature you control is dealt to EFFECTSOURCE instead.\nSVar:HazduhrDmg:DB$ ReplaceSplitDamage | DamageTarget$ Imprinted | VarName$ Y\nSVar:OutOfSight:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted,Card.IsRemembered | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:Count$xPaid\n# X Will get overwritten by Announce\nSVar:Y:Number$0\nAI:RemoveDeck:All\nOracle:{X}, {T}: The next X damage that would be dealt this turn to target white creature you control is dealt to Hazduhr the Abbot instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hazduhr the Abbot"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

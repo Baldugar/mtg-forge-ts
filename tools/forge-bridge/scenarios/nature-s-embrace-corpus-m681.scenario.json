@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-embrace-corpus-m681",
+  "description": "M6 corpus — Nature's Embrace; in-hand parse.",
+  "seed": 61709,
+  "cards": {
+    "Nature's Embrace": "Name:Nature's Embrace\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature,Land:creature or land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ As long as enchanted permanent is a creature, it gets +2/+2.\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddAbility$ DBMana | Description$ As long as enchanted permanent is a land, it has \"{T}: Add two mana of any one color.\"\nSVar:DBMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nOracle:Enchant creature or land\\nAs long as enchanted permanent is a creature, it gets +2/+2.\\nAs long as enchanted permanent is a land, it has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "terminal-velocity-corpus-m681",
+  "description": "M6 corpus — Terminal Velocity; in-hand parse.",
+  "seed": 61832,
+  "cards": {
+    "Terminal Velocity": "Name:Terminal Velocity\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact.YouOwn,Creature.YouOwn | SubAbility$ DBPump | RememberChanged$ True | AILogic$ BeforeCombat | SpellDescription$ You may put an artifact or creature card from your hand onto the battlefield. That permanent gains haste, \"When this permanent leaves the battlefield, it deals damage equal to its mana value to each creature,\" and \"At the beginning of your end step, sacrifice this permanent.\"\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | Duration$ Permanent | Triggers$ LeaveTrigger,EndTrigger | SubAbility$ DBCleanup\nSVar:LeaveTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When this permanent leaves the battlefield, it deals damage equal to its mana value to each creature.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidDescription$ each creature. | NumDmg$ X\nSVar:EndTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, sacrifice this permanent.\nSVar:TrigSac:DB$ Sacrifice\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nSVar:PlayMain1:TRUE\nOracle:You may put an artifact or creature card from your hand onto the battlefield. That permanent gains haste, \"When this permanent leaves the battlefield, it deals damage equal to its mana value to each creature,\" and \"At the beginning of your end step, sacrifice this permanent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terminal Velocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

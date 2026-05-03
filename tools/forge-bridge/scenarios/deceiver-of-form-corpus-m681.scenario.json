@@ -1,0 +1,23 @@
+{
+  "id": "deceiver-of-form-corpus-m681",
+  "description": "M6 corpus — Deceiver of Form; in-hand parse.",
+  "seed": 61517,
+  "cards": {
+    "Deceiver of Form": "Name:Deceiver of Form\nManaCost:6 C\nTypes:Creature Eldrazi\nPT:8/8\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBReveal | TriggerDescription$ At the beginning of combat on your turn, reveal the top card of your library. If a creature card is revealed this way, you may have creatures you control other than CARDNAME become copies of that card until end of turn. You may put that card on the bottom of your library.\nSVar:DBReveal:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card | RememberRevealed$ True | SubAbility$ CloneArmy\nSVar:CloneArmy:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Creature.YouCtrl+Other | RepeatSubAbility$ DBCopy | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | Optional$ True | OptionPrompt$ Clone your other creatures with revealed?\nSVar:DBCopy:DB$ Clone | Defined$ Remembered | CloneTarget$ Imprinted | Duration$ UntilEndOfTurn\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ FakeScry\nSVar:FakeScry:DB$ Dig | DigNum$ 1 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition2$ 0\nAI:RemoveDeck:All\nDeckNeeds:Ability$Mana.Colorless\nOracle:({C} represents colorless mana.)\\nAt the beginning of combat on your turn, reveal the top card of your library. If a creature card is revealed this way, you may have creatures you control other than Deceiver of Form become copies of that card until end of turn. You may put that card on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deceiver of Form"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

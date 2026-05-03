@@ -1,0 +1,23 @@
+{
+  "id": "extra-arms-corpus-m681",
+  "description": "M6 corpus — Extra Arms; in-hand parse.",
+  "seed": 61547,
+  "cards": {
+    "Extra Arms": "Name:Extra Arms\nManaCost:4 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, it deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | DamageSource$ TriggeredAttackerLKICopy | NumDmg$ 2\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nWhenever enchanted creature attacks, it deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extra Arms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

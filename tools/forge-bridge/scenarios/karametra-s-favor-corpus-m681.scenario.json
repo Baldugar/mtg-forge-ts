@@ -1,0 +1,23 @@
+{
+  "id": "karametra-s-favor-corpus-m681",
+  "description": "M6 corpus — Karametra's Favor; in-hand parse.",
+  "seed": 61642,
+  "cards": {
+    "Karametra's Favor": "Name:Karametra's Favor\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ AnyMana | Description$ Enchanted creature has \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen Karametra's Favor enters, draw a card.\\nEnchanted creature has \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karametra's Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

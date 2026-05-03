@@ -1,0 +1,23 @@
+{
+  "id": "centaur-chieftain-corpus-m681",
+  "description": "M6 corpus — Centaur Chieftain; in-hand parse.",
+  "seed": 61490,
+  "cards": {
+    "Centaur Chieftain": "Name:Centaur Chieftain\nManaCost:3 G\nTypes:Creature Centaur\nPT:3/3\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigETB | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"When CARDNAME enters, creatures you control get +1/+1 and gain trample until end of turn.\"\nSVar:TrigETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 and gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nOracle:Haste\\nThreshold — As long as there are seven or more cards in your graveyard, Centaur Chieftain has \"When Centaur Chieftain enters, creatures you control get +1/+1 and gain trample until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Centaur Chieftain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragon-tempest-corpus-m681",
+  "description": "M6 corpus — Dragon Tempest; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Dragon Tempest": "Name:Dragon Tempest\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.YouCtrl+withFlying | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with flying enters, it gains haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCard | KW$ Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Dragon.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ NumDragons | DamageSource$ TriggeredCard\nSVar:NumDragons:Count$Valid Dragon.YouCtrl\nSVar:BuffedBy:Creature.withFlying\nDeckHints:Type$Dragon & Keyword$Flying\nOracle:Whenever a creature you control with flying enters, it gains haste until end of turn.\\nWhenever a Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Tempest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

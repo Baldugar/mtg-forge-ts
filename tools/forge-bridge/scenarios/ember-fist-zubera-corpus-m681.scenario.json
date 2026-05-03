@@ -1,0 +1,23 @@
+{
+  "id": "ember-fist-zubera-corpus-m681",
+  "description": "M6 corpus — Ember-Fist Zubera; in-hand parse.",
+  "seed": 61536,
+  "cards": {
+    "Ember-Fist Zubera": "Name:Ember-Fist Zubera\nManaCost:1 R\nTypes:Creature Zubera Spirit\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals damage to any target equal to the number of Zubera that died this turn.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Zubera\nDeckHints:Type$Zubera\nOracle:When Ember-Fist Zubera dies, it deals damage to any target equal to the number of Zubera that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ember-Fist Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "master-the-way-corpus-m681",
+  "description": "M6 corpus — Master the Way; in-hand parse.",
+  "seed": 61690,
+  "cards": {
+    "Master the Way": "Name:Master the Way\nManaCost:3 U R\nTypes:Sorcery\nA:SP$ Draw | SubAbility$ DBDamage | SpellDescription$ Draw a card. CARDNAME deals damage to any target equal to the number of cards in your hand.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardsInYourHand\nOracle:Draw a card. Master the Way deals damage to any target equal to the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master the Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

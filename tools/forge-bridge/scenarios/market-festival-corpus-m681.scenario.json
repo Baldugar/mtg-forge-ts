@@ -1,0 +1,23 @@
+{
+  "id": "market-festival-corpus-m681",
+  "description": "M6 corpus — Market Festival; in-hand parse.",
+  "seed": 61689,
+  "cards": {
+    "Market Festival": "Name:Market Festival\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional two mana in any combination of colors.\nSVar:TrigMana:DB$ Mana | Produced$ Combo Any | Amount$ 2 | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nOracle:Enchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional two mana in any combination of colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Market Festival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

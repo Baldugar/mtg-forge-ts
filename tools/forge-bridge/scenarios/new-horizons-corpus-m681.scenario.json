@@ -1,0 +1,23 @@
+{
+  "id": "new-horizons-corpus-m681",
+  "description": "M6 corpus — New Horizons; in-hand parse.",
+  "seed": 61712,
+  "cards": {
+    "New Horizons": "Name:New Horizons\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ NewHorizonsTap | Description$ Enchanted land has \"{T}: Add two mana of any one color.\"\nSVar:NewHorizonsTap:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nDeckHas:Ability$Counters\nOracle:Enchant land\\nWhen New Horizons enters, put a +1/+1 counter on target creature you control.\\nEnchanted land has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "New Horizons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

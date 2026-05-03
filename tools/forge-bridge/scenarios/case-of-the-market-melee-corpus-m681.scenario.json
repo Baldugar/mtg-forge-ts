@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-market-melee-corpus-m681",
+  "description": "M6 corpus — Case of the Market Melee; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Case of the Market Melee": "Name:Case of the Market Melee\nManaCost:1 R\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this Case enters, it deals 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nS:Mode$ NoCleanupDamage | ValidCard$ Creature | Description$ Damage isn't removed from creatures during cleanup steps.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Creature.isDamaged | PresentCompare$ GE3 | ValidPlayer$ You | IsPresent2$ Card.Self+!IsSolved | TriggerZones$ Battlefield | Execute$ TrigSolve | TriggerDescription$ To solve — Three or more creatures are damaged.\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nT:Mode$ AttackersDeclared | IsPresent$ Card.Self+IsSolved | ValidAttackers$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Solved — Whenever you attack with one or more creatures, this Case deals that much damage divided as you choose among any number of targets.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any number of targets | DividedAsYouChoose$ TriggerObjectsAttackers$Amount | NumDmg$ TriggerObjectsAttackers$Amount | TargetMin$ 0 | TargetMax$ TriggerObjectsAttackers$Amount\nOracle:When this Case enters, it deals 1 damage to any target.\\nDamage isn't removed from creatures during cleanup steps.\\nTo solve — Three or more creatures are damaged.\\nSolved — Whenever you attack with one or more creatures, this Case deals that much damage divided as you choose among any number of targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Market Melee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "choco-seeker-of-paradise-corpus-m681",
+  "description": "M6 corpus — Choco, Seeker of Paradise; in-hand parse.",
+  "seed": 61493,
+  "cards": {
+    "Choco, Seeker of Paradise": "Name:Choco, Seeker of Paradise\nManaCost:1 G W U\nTypes:Legendary Creature Bird\nPT:3/5\nT:Mode$ AttackersDeclared | ValidAttackers$ Bird.YouCtrl | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Card | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition2$ 0 | SkipReorder$ True | RememberChanged$ True | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ Y | ChangeNum$ Any | ChangeValid$ Land | Tapped$ True | DestinationZone$ Battlefield | DestinationZone2$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, NICKNAME gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nSVar:X:TriggerObjectsAttackers$Amount\nSVar:Y:SVar$X/Minus.Z\nSVar:Z:Remembered$Amount\nOracle:Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.\\nLandfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Choco, Seeker of Paradise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

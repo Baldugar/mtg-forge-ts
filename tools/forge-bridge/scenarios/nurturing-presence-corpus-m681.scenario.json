@@ -1,0 +1,23 @@
+{
+  "id": "nurturing-presence-corpus-m681",
+  "description": "M6 corpus — Nurturing Presence; in-hand parse.",
+  "seed": 61718,
+  "cards": {
+    "Nurturing Presence": "Name:Nurturing Presence\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddTrigger$ NurturingChangeZone | AddSVar$ NurturingPump | Description$ Enchanted creature has \"Whenever a creature you control enters, this creature gets +1/+1 until end of turn.\"\nSVar:NurturingChangeZone:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ NurturingPump | TriggerDescription$ Whenever a creature you control enters, CARDNAME gets +1/+1 until end of turn.\nSVar:NurturingPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature has \"Whenever a creature you control enters, this creature gets +1/+1 until end of turn.\"\\nWhen Nurturing Presence enters, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nurturing Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

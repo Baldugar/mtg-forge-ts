@@ -1,0 +1,23 @@
+{
+  "id": "argothian-uprooting-corpus-m681",
+  "description": "M6 corpus — Argothian Uprooting; in-hand parse.",
+  "seed": 61448,
+  "cards": {
+    "Argothian Uprooting": "Name:Argothian Uprooting\nManaCost:X G\nTypes:Sorcery\nA:SP$ PutCounter | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select up to X target lands you control | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBAnimate | SpellDescription$ Put two +1/+1 counters on each of up to X target lands you control. They each become 0/0 Elemental creatures with reach, haste, and \"When this creature leaves the battlefield, conjure a card named Forest onto the battlefield tapped.\" They're still lands.\nSVar:DBAnimate:DB$ Animate | Defined$ ParentTarget | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Haste & Reach | Duration$ Permanent | Triggers$ DiesTrig\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When this creature leaves the battlefield, conjure a card named Forest onto the battlefield tapped.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Forest | Zone$ Battlefield | Tapped$ True\nSVar:X:Count$xPaid\nDeckHas:Type$Elemental & Ability$Counters\nOracle:Put two +1/+1 counters on each of up to X target lands you control. They each become 0/0 Elemental creatures with reach, haste, and \"When this creature leaves the battlefield, conjure a card named Forest onto the battlefield tapped.\" They're still lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argothian Uprooting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

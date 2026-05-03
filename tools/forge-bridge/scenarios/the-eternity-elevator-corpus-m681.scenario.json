@@ -1,0 +1,25 @@
+{
+  "id": "the-eternity-elevator-corpus-m681",
+  "description": "M6 corpus — The Eternity Elevator; ETB-on-bf.",
+  "seed": 61836,
+  "cards": {
+    "The Eternity Elevator": "Name:The Eternity Elevator\nManaCost:5\nTypes:Legendary Artifact Spacecraft\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | SpellDescription$ Add {C}{C}{C}.\nK:Station:20\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE20_CHARGE | AddAbility$ ElevatorMana | Description$ STATION 20+ {T}: Add X mana of any one color, where X is the number of charge counters on CARDNAME.\nSVar:ElevatorMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is the number of charge counters on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nOracle:{T}: Add {C}{C}{C}.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)\\nSTATION 20+\\n{T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Eternity Elevator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

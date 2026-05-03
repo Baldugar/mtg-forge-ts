@@ -1,0 +1,23 @@
+{
+  "id": "captain-s-maneuver-corpus-m681",
+  "description": "M6 corpus — Captain's Maneuver; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Captain's Maneuver": "Name:Captain's Maneuver\nManaCost:X R W\nTypes:Instant\n# Turn targeted creature or player into chosen\nA:SP$ ChoosePlayer | ValidTgts$ Creature,Player,Planeswalker | Choices$ ThisTargetedPlayer | Defined$ You | SubAbility$ DBChooseCreature | StackDescription$ SpellDescription | SpellDescription$ The next X damage that would be dealt to target creature, planeswalker, or player this turn is dealt to another target creature, planeswalker, or player instead.\nSVar:DBChooseCreature:DB$ ChooseCard | DefinedCards$ ParentTargeted | Mandatory$ True | Defined$ You | SubAbility$ DBSetVarBefore\nSVar:DBSetVarBefore:DB$ StoreSVar | SVar$ Y | Type$ Calculate | Expression$ X | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ValidTgts$ Creature,Player,Planeswalker | TargetUnique$ True | TgtPrompt$ Select another target to redirect the damage to | ReplacementEffects$ ManeuverDamage | Triggers$ OutOfSight | RememberObjects$ ThisTargetedCard & ThisTargetedPlayer | SubAbility$ DBCleanup\nSVar:ManeuverDamage:Event$ DamageDone | ValidTarget$ Card.Creature+ChosenCard,Card.Planeswalker+ChosenCard,Player.Chosen | ReplaceWith$ ManeuverDmg | DamageTarget$ Remembered | Description$ The next X damage that would be dealt to target creature, planeswalker, or player this turn is dealt to another target creature, planeswalker, or player instead.\nSVar:ManeuverDmg:DB$ ReplaceSplitDamage | DamageTarget$ Remembered | VarName$ Y\nSVar:OutOfSight:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.ChosenCard,Card.IsRemembered | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearChosenPlayer$ True\nSVar:X:Count$xPaid\n# X Will get overwritten by Announce\nSVar:Y:Number$0\nAI:RemoveDeck:All\nOracle:The next X damage that would be dealt to target creature, planeswalker, or player this turn is dealt to another target creature, planeswalker, or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain's Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

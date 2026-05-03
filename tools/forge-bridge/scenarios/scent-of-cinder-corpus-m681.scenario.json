@@ -1,0 +1,23 @@
+{
+  "id": "scent-of-cinder-corpus-m681",
+  "description": "M6 corpus — Scent of Cinder; in-hand parse.",
+  "seed": 61786,
+  "cards": {
+    "Scent of Cinder": "Name:Scent of Cinder\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Reveal | Defined$ You | RevealValid$ Card.Red | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBScentOfCinderDamage | SpellDescription$ Reveal any number of red cards in your hand. CARDNAME deals X damage to any target, where X is the number of cards revealed this way.\nSVar:DBScentOfCinderDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ ScentOfCinderX | SubAbility$ DBScentOfCinderCleanup\nSVar:ScentOfCinderX:Remembered$Amount\nSVar:DBScentOfCinderCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Reveal any number of red cards in your hand. Scent of Cinder deals X damage to any target, where X is the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scent of Cinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

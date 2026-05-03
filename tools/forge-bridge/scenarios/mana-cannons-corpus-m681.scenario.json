@@ -1,0 +1,23 @@
+{
+  "id": "mana-cannons-corpus-m681",
+  "description": "M6 corpus — Mana Cannons; in-hand parse.",
+  "seed": 61685,
+  "cards": {
+    "Mana Cannons": "Name:Mana Cannons\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, CARDNAME deals X damage to any target, where X is the number of colors that spell is.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CardNumColors\nSVar:BuffedBy:Card.MultiColor\nAI:RemoveDeck:Random\nOracle:Whenever you cast a multicolored spell, Mana Cannons deals X damage to any target, where X is the number of colors that spell is.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Cannons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

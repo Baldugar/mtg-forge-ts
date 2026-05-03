@@ -1,0 +1,23 @@
+{
+  "id": "meteorite-corpus-m681",
+  "description": "M6 corpus — Meteorite; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Meteorite": "Name:Meteorite\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:PlayMain1:TRUE\nOracle:When Meteorite enters, it deals 2 damage to any target.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meteorite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

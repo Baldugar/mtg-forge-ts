@@ -1,0 +1,23 @@
+{
+  "id": "wakka-devoted-guardian-corpus-m681",
+  "description": "M6 corpus — Wakka, Devoted Guardian; in-hand parse.",
+  "seed": 61875,
+  "cards": {
+    "Wakka, Devoted Guardian": "Name:Wakka, Devoted Guardian\nManaCost:2 G W\nTypes:Legendary Creature Human Warrior\nPT:4/4\nK:Reach\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, destroy target artifact that player controls and put a +1/+1 counter on NICKNAME.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact damaged player controls | SubAbility$ TrigPutCounter\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigPutCounterAll | TriggerDescription$ Blitzball Captain — At the beginning of your end step, if a counter was put on NICKNAME this turn, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$CountersAddedThisTurn Any Player Card.Self\nOracle:Reach, trample\\nWhenever Wakka deals combat damage to a player, destroy up to one target artifact that player controls and put a +1/+1 counter on Wakka.\\nBlitzball Captain — At the beginning of your end step, if a counter was put on Wakka this turn, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wakka, Devoted Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

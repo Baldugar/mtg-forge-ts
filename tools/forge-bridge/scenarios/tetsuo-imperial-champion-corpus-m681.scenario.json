@@ -1,0 +1,23 @@
+{
+  "id": "tetsuo-imperial-champion-corpus-m681",
+  "description": "M6 corpus — Tetsuo, Imperial Champion; in-hand parse.",
+  "seed": 61834,
+  "cards": {
+    "Tetsuo, Imperial Champion": "Name:Tetsuo, Imperial Champion\nManaCost:U B R\nTypes:Legendary Creature Human Samurai\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Card.Self+equipped | Execute$ TrigChoose | TriggerDescription$ Whenever CARDNAME attacks, if it's equipped, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBDealDamage,DBCast\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SpellDescription$ NICKNAME deals damage equal to the highest mana value among Equipment attached to it to any target.\nSVar:DBCast:DB$ Play | ValidZone$ Hand | Valid$ Instant.YouCtrl+cmcLEX,Sorcery.YouCtrl+cmcLEX | ValidSA$ Spell | Optional$ True | WithoutManaCost$ True | AILogic$ ReplaySpell | SpellDescription$ You may cast an instant or sorcery spell from your hand with mana value less than or equal to the highest mana value among Equipment attached to NICKNAME without paying its mana cost.\nSVar:X:Count$Valid Equipment.Attached$GreatestCardManaCost\nSVar:EquipMe:Once\nDeckHints:Type$Equipment\nOracle:Whenever Tetsuo, Imperial Champion attacks, if it's equipped, choose one —\\n• Tetsuo deals damage equal to the highest mana value among Equipment attached to it to any target.\\n• You may cast an instant or sorcery spell from your hand with mana value less than or equal to the highest mana value among Equipment attached to Tetsuo without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tetsuo, Imperial Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

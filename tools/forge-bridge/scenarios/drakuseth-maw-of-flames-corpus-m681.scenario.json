@@ -1,0 +1,23 @@
+{
+  "id": "drakuseth-maw-of-flames-corpus-m681",
+  "description": "M6 corpus — Drakuseth, Maw of Flames; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Drakuseth, Maw of Flames": "Name:Drakuseth, Maw of Flames\nManaCost:4 R R R\nTypes:Legendary Creature Dragon\nPT:7/7\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Whenever CARDNAME attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | DamageMap$ True | SubAbility$ MoreDamage\nSVar:MoreDamage:DB$ DealDamage | ValidTgts$ Any | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two other targets | TargetUnique$ True | NumDmg$ 3 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Flying\\nWhenever Drakuseth, Maw of Flames attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drakuseth, Maw of Flames"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

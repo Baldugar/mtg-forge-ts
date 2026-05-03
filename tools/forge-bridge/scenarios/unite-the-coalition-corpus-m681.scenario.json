@@ -1,0 +1,23 @@
+{
+  "id": "unite-the-coalition-corpus-m681",
+  "description": "M6 corpus — Unite the Coalition; in-hand parse.",
+  "seed": 61862,
+  "cards": {
+    "Unite the Coalition": "Name:Unite the Coalition\nManaCost:2 W U B R G\nTypes:Instant\nA:SP$ Charm | Choices$ DBPhaseOut,DBDraw,DBExileGrave,DBDamage,DBDestroy | CharmNum$ 5 | CanRepeatModes$ True\nSVar:DBPhaseOut:DB$ Phases | ValidTgts$ Permanent | SpellDescription$ Target permanent phases out.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | SpellDescription$ Target player draws a card.\nSVar:DBExileGrave:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | IsCurse$ True | SpellDescription$ Exile target player's graveyard.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nOracle:Choose five. You may choose the same mode more than once.\\n• Target permanent phases out.\\n• Target player draws a card.\\n• Exile target player's graveyard.\\n• Unite the Coalition deals 2 damage to any target.\\n• Destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unite the Coalition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

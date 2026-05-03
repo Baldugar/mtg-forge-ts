@@ -1,0 +1,23 @@
+{
+  "id": "power-of-fire-corpus-m681",
+  "description": "M6 corpus — Power of Fire; in-hand parse.",
+  "seed": 61743,
+  "cards": {
+    "Power of Fire": "Name:Power of Fire\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Damage | Description$ Enchanted creature has \"{T}: This creature deals 1 damage to any target.\"\nSVar:Damage:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power of Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

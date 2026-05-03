@@ -1,0 +1,23 @@
+{
+  "id": "refraction-trap-corpus-m681",
+  "description": "M6 corpus — Refraction Trap; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "Refraction Trap": "Name:Refraction Trap\nManaCost:3 W\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ W | CheckSVar$ X | Description$ If an opponent cast a red instant or sorcery spell this turn, you may pay {W} rather than pay this spell's mana cost.\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Prevent the next 3 damage that a source of your choice would deal to you and/or permanents you control this turn. If damage is prevented this way, CARDNAME deals that much damage to any target.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to deal prevented damage to | ReplacementEffects$ ReDamage | RememberObjects$ Targeted\nSVar:ReDamage:Event$ DamageDone | ActiveZones$ Command | ValidTarget$ You,Permanent.YouCtrl | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ PreventDamage | PreventionEffect$ NextN | Description$ Prevent the next 3 damage that a source of your choice would deal to you and/or permanents you control this turn. If damage is prevented this way, EFFECTSOURCE deals that much damage to any target.\nSVar:PreventDamage:DB$ ReplaceDamage | Amount$ ShieldAmount | DivideShield$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ Y | Defined$ Remembered | DamageSource$ EffectSource\nSVar:X:Count$ThisTurnCast_Instant.Red+OppCtrl,Sorcery.Red+OppCtrl\nSVar:ShieldAmount:Number$3\nSVar:Y:ReplaceCount$DamageAmount\nAI:RemoveDeck:All\nOracle:If an opponent cast a red instant or sorcery spell this turn, you may pay {W} rather than pay this spell's mana cost.\\nPrevent the next 3 damage that a source of your choice would deal to you and/or permanents you control this turn. If damage is prevented this way, Refraction Trap deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Refraction Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

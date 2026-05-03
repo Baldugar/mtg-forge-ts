@@ -1,0 +1,23 @@
+{
+  "id": "galvanic-arc-corpus-m681",
+  "description": "M6 corpus — Galvanic Arc; in-hand parse.",
+  "seed": 61576,
+  "cards": {
+    "Galvanic Arc": "Name:Galvanic Arc\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ First Strike | Description$ Enchanted creature has first strike.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nOracle:Enchant creature\\nWhen Galvanic Arc enters, it deals 3 damage to any target.\\nEnchanted creature has first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galvanic Arc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-find-the-path-corpus-m681",
+  "description": "M6 corpus — A-Find the Path; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "A-Find the Path": "Name:A-Find the Path\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBVenture | TriggerDescription$ When CARDNAME enters, venture into the dungeon.\nSVar:DBVenture:DB$ Venture | Defined$ You\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddAbility$ ABMana | Description$ Enchanted land has \"{T}: Add two mana of any one color.\"\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nOracle:Enchant land\\nWhen Find the Path enters, venture into the dungeon.\\nEnchanted land has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Find the Path"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grab-the-reins-corpus-m681",
+  "description": "M6 corpus — Grab the Reins; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Grab the Reins": "Name:Grab the Reins\nManaCost:3 R\nTypes:Instant\nK:Entwine:2 R\nA:SP$ Charm | Choices$ DBGainControl,DBSac\nSVar:DBGainControl:DB$ GainControl | ValidTgts$ Creature | TgtPrompt$ Select target creature to gain control of | LoseControl$ EOT | AddKWs$ Haste | SpellDescription$ Until end of turn, you gain control of target creature and it gains haste.\nSVar:DBSac:DB$ Sacrifice | Amount$ 1 | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ GrabDmg | SpellDescription$ Sacrifice a creature, then CARDNAME deals damage equal to that creature's power to any target.\nSVar:GrabDmg:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target to deal the damage to | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Until end of turn, you gain control of target creature and it gains haste.\\n• Sacrifice a creature. Grab the Reins deals damage equal to that creature's power to any target.\\nEntwine {2}{R} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grab the Reins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

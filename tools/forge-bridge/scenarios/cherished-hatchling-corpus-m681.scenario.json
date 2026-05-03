@@ -1,0 +1,23 @@
+{
+  "id": "cherished-hatchling-corpus-m681",
+  "description": "M6 corpus — Cherished Hatchling; in-hand parse.",
+  "seed": 61492,
+  "cards": {
+    "Cherished Hatchling": "Name:Cherished Hatchling\nManaCost:1 G\nTypes:Creature Dinosaur\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigEffect | TriggerDescription$ When CARDNAME dies, you may cast Dinosaur spells this turn as though they had flash, and whenever you cast a Dinosaur spell this turn, it gains \"When this creature enters, you may have it fight another target creature.\"\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ STFlash | Triggers$ HatchlingCast\nSVar:STFlash:Mode$ CastWithFlash | ValidCard$ Dinosaur | ValidSA$ Spell | Caster$ You | Description$ You may cast Dinosaur spells this turn as though they had flash.\nSVar:HatchlingCast:Mode$ SpellCast | ValidCard$ Dinosaur | ValidActivatingPlayer$ You | Execute$ TrigHatchlingAnimate | TriggerZones$ Command | TriggerDescription$ Whenever you cast a Dinosaur spell this turn, it gains \"When this creature enters, you may have it fight another target creature.\"\nSVar:TrigHatchlingAnimate:DB$ Animate | Defined$ TriggeredCardLKICopy | Duration$ Permanent | Triggers$ TrigETBHatchling\nSVar:TrigETBHatchling:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ HatchlingFight | OptionalDecider$ You | TriggerDescription$ When this creature enters, you may have it fight another target creature.\nSVar:HatchlingFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature\nDeckHints:Type$Dinosaur\nOracle:When Cherished Hatchling dies, you may cast Dinosaur spells this turn as though they had flash, and whenever you cast a Dinosaur spell this turn, it gains \"When this creature enters, you may have it fight another target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cherished Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

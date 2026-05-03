@@ -1,0 +1,23 @@
+{
+  "id": "warstorm-surge-corpus-m681",
+  "description": "M6 corpus — Warstorm Surge; in-hand parse.",
+  "seed": 61877,
+  "cards": {
+    "Warstorm Surge": "Name:Warstorm Surge\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control enters, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | DamageSource$ TriggeredCard\nSVar:X:TriggeredCard$CardPower\nOracle:Whenever a creature you control enters, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warstorm Surge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

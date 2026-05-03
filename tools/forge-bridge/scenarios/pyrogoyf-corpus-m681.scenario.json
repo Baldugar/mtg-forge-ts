@@ -1,0 +1,23 @@
+{
+  "id": "pyrogoyf-corpus-m681",
+  "description": "M6 corpus — Pyrogoyf; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "Pyrogoyf": "Name:Pyrogoyf\nManaCost:3 R\nTypes:Creature Lhurgoyf\nPT:*/1+*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Lhurgoyf+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another Lhurgoyf creature you control enters, that creature deals damage equal to its power to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Z | DamageSource$ TriggeredCard\nSVar:X:Count$ValidGraveyard Card$CardTypes\nSVar:Y:SVar$X/Plus.1\nSVar:Z:TriggeredCard$CardPower\nDeckHints:Type$Lhurgoyf\nOracle:Pyrogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\\nWhenever Pyrogoyf or another Lhurgoyf creature you control enters, that creature deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyrogoyf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

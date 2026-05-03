@@ -1,0 +1,23 @@
+{
+  "id": "sparktongue-dragon-corpus-m681",
+  "description": "M6 corpus — Sparktongue Dragon; in-hand parse.",
+  "seed": 61808,
+  "cards": {
+    "Sparktongue Dragon": "Name:Sparktongue Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | OptionalDecider$ You | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPayCost | TriggerDescription$ When CARDNAME enters, you may pay {2}{R}. When you do, it deals 3 damage to any target.\nSVar:TrigPayCost:AB$ ImmediateTrigger | Cost$ 2 R | Execute$ TrigABDealDamage | TriggerDescription$ When you pay {2}{R}, CARDNAME deals 3 damage to any target.\nSVar:TrigABDealDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Flying\\nWhen Sparktongue Dragon enters, you may pay {2}{R}. When you do, it deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sparktongue Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

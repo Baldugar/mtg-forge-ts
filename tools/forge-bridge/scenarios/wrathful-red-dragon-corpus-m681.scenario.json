@@ -1,0 +1,23 @@
+{
+  "id": "wrathful-red-dragon-corpus-m681",
+  "description": "M6 corpus — Wrathful Red Dragon; in-hand parse.",
+  "seed": 61884,
+  "cards": {
+    "Wrathful Red Dragon": "Name:Wrathful Red Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Dragon.YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Dragon you control is dealt damage, it deals that much damage to any target that isn't a Dragon.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any.!Dragon | TgtPrompt$ Select any target that isn't a Dragon\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Dragon\nOracle:Flying\\nWhenever a Dragon you control is dealt damage, it deals that much damage to any target that isn't a Dragon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrathful Red Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

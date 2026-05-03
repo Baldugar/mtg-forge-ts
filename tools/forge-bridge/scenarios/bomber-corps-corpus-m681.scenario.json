@@ -1,0 +1,23 @@
+{
+  "id": "bomber-corps-corpus-m681",
+  "description": "M6 corpus — Bomber Corps; in-hand parse.",
+  "seed": 61466,
+  "cards": {
+    "Bomber Corps": "Name:Bomber Corps\nManaCost:1 R\nTypes:Creature Human Soldier\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDmg | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME deals 1 damage to any target.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:Battalion — Whenever Bomber Corps and at least two other creatures attack, Bomber Corps deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bomber Corps"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

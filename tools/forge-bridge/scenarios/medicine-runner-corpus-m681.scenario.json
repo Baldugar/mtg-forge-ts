@@ -1,0 +1,23 @@
+{
+  "id": "medicine-runner-corpus-m681",
+  "description": "M6 corpus — Medicine Runner; in-hand parse.",
+  "seed": 61692,
+  "cards": {
+    "Medicine Runner": "Name:Medicine Runner\nManaCost:1 GW\nTypes:Creature Elf Cleric\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRemoveCounter | TriggerDescription$ When CARDNAME enters, you may remove a counter from target permanent.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ 1\nOracle:When Medicine Runner enters, you may remove a counter from target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Medicine Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

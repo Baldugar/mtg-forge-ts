@@ -1,0 +1,23 @@
+{
+  "id": "precognition-corpus-m681",
+  "description": "M6 corpus — Precognition; in-hand parse.",
+  "seed": 61744,
+  "cards": {
+    "Precognition": "Name:Precognition\nManaCost:4 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, you may look at the top card of target opponent's library. If you do, you may put that card on the bottom of that player's library.\nSVar:TrigDig:DB$ Dig | ValidTgts$ Opponent | DigNum$ 1 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition2$ 0\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may look at the top card of target opponent's library. If you do, you may put that card on the bottom of that player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Precognition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "self-destruct-corpus-m681",
+  "description": "M6 corpus — Self-Destruct; in-hand parse.",
+  "seed": 61790,
+  "cards": {
+    "Self-Destruct": "Name:Self-Destruct\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | AILogic$ PowerDmg | NumDmg$ X | DamageMap$ True | SubAbility$ DBDealDamage2 | DamageSource$ ThisTargetedCard | SpellDescription$ Target creature you control deals X damage to any other target and X damage to itself, where X is its power.\nSVar:DBDealDamage2:DB$ DealDamage | ValidTgts$ Any | TargetUnique$ True | NumDmg$ Y | SubAbility$ DBDamageResolve | DamageSource$ ParentTarget\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Targeted$CardPower\nSVar:Y:ParentTargeted$CardPower\nOracle:Target creature you control deals X damage to any other target and X damage to itself, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Self-Destruct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

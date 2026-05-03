@@ -1,0 +1,23 @@
+{
+  "id": "storm-fleet-pyromancer-corpus-m681",
+  "description": "M6 corpus — Storm Fleet Pyromancer; in-hand parse.",
+  "seed": 61823,
+  "cards": {
+    "Storm Fleet Pyromancer": "Name:Storm Fleet Pyromancer\nManaCost:4 R\nTypes:Creature Human Pirate Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDealDamage | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, CARDNAME deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Storm Fleet Pyromancer enters, if you attacked this turn, Storm Fleet Pyromancer deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm Fleet Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

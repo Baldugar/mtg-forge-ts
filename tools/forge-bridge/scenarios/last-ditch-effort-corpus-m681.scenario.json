@@ -1,0 +1,23 @@
+{
+  "id": "last-ditch-effort-corpus-m681",
+  "description": "M6 corpus — Last-Ditch Effort; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Last-Ditch Effort": "Name:Last-Ditch Effort\nManaCost:R\nTypes:Instant\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDamage | SpellDescription$ Sacrifice any number of creatures. CARDNAME deals that much damage to any target.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ DmgX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Creature.YouCtrl\nSVar:DmgX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sacrifice any number of creatures. Last-Ditch Effort deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last-Ditch Effort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

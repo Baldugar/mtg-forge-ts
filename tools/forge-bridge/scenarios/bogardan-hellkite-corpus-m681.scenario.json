@@ -1,0 +1,23 @@
+{
+  "id": "bogardan-hellkite-corpus-m681",
+  "description": "M6 corpus — Bogardan Hellkite; in-hand parse.",
+  "seed": 61465,
+  "cards": {
+    "Bogardan Hellkite": "Name:Bogardan Hellkite\nManaCost:6 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ Dmg1 | TriggerDescription$ When CARDNAME enters, it deals 5 damage divided as you choose among any number of targets.\nSVar:Dmg1:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any number of targets to distribute damage to | NumDmg$ 5 | TargetMin$ 0 | TargetMax$ 5 | DividedAsYouChoose$ 5\nOracle:Flash\\nFlying\\nWhen Bogardan Hellkite enters, it deals 5 damage divided as you choose among any number of targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bogardan Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

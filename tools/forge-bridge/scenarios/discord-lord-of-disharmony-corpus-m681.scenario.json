@@ -1,0 +1,23 @@
+{
+  "id": "discord-lord-of-disharmony-corpus-m681",
+  "description": "M6 corpus — Discord, Lord of Disharmony; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Discord, Lord of Disharmony": "Name:Discord, Lord of Disharmony\nManaCost:2 B R\nTypes:Legendary Creature Chimera\nPT:3/5\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ChooseName | TriggerDescription$ At the beginning of your end step, choose a random nonland Magic card name. Until your next end step, you may cast a copy of a spell with that name, and mana of any type can be spent to cast it. If you cast a spell this way, copy this ability if NICKNAME is on the battlefield.\nSVar:ChooseName:DB$ NameCard | ValidCards$ Card.nonLand | Defined$ You | AtRandom$ True | SubAbility$ CreateAbility\nSVar:CreateAbility:DB$ Effect | Abilities$ DiscordCast | Triggers$ TrigHostLeaves | Duration$ UntilYourNextEndStep | ImprintCards$ OriginalHost.inZoneBattlefield | SubAbility$ CleanupName\nSVar:CleanupName:DB$ Cleanup | ClearNamedCard$ True\nSVar:DiscordCast:ST$ Play | ActivationZone$ Command | Cost$ 0 | CopyFromChosenName$ True | ManaConversion$ AnyType->AnyColor | ValidSA$ Spell.CouldCastTiming+NamedSpell | Optional$ True | RememberPlayed$ True | SubAbility$ CheckCast | DescriptionFromChosenName$ True | SpellDescription$ Cast a copy of the spell with the chosen name. If NICKNAME is on the battlefield, copy its ability.\nSVar:WasCast:Remembered$Valid Card\nSVar:CheckCast:DB$ Branch | BranchConditionSVar$ WasCast | TrueSubAbility$ ExileAbility\nSVar:ExileAbility:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile | SubAbility$ CleanupMemory\nSVar:CleanupMemory:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True | SubAbility$ MaybeRepeat\nSVar:MaybeRepeat:DB$ ImmediateTrigger | ConditionPresent$ Card | ConditionDefined$ Imprinted | Execute$ ChooseName | TriggerDescription$ Choose a random nonland Magic card name. Until your next end step, you may cast a copy of a spell with that name, and mana of any type can be spent to cast it. If you cast a spell this way, copy this ability if NICKNAME is on the battlefield.\nSVar:TrigHostLeaves:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.IsImprinted | TriggerZones$ Command | Execute$ OnHostLost\nSVar:OnHostLost:DB$ Cleanup | ClearImprinted$ True\nAI:RemoveDeck:All\nOracle:Flying\\nAt the beginning of your end step, choose a random nonland Magic card name. Until your next end step, you may cast a copy of a spell with that name, and mana of any type can be spent to cast it. If you cast a spell this way, copy this ability if Discord is on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discord, Lord of Disharmony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

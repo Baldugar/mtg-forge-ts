@@ -1,0 +1,23 @@
+{
+  "id": "archangel-of-wrath-corpus-m681",
+  "description": "M6 corpus — Archangel of Wrath; in-hand parse.",
+  "seed": 61447,
+  "cards": {
+    "Archangel of Wrath": "Name:Archangel of Wrath\nManaCost:2 W W\nTypes:Creature Angel\nPT:3/4\nK:Kicker:B:R\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if it was kicked, it deals 2 damage to any target.\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | CheckSVar$ X | SVarCompare$ EQ2 | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if it was kicked twice, it deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:X:Count$TimesKicked\nDeckHints:Color$Black|Red\nOracle:Kicker {B} and/or {R} (You may pay an additional {B} and/or {R} as you cast this spell.)\\nFlying, lifelink\\nWhen Archangel of Wrath enters, if it was kicked, it deals 2 damage to any target.\\nWhen Archangel of Wrath enters, if it was kicked twice, it deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archangel of Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

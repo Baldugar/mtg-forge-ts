@@ -1,0 +1,23 @@
+{
+  "id": "spider-man-2099-corpus-m681",
+  "description": "M6 corpus — Spider-Man 2099; in-hand parse.",
+  "seed": 61813,
+  "cards": {
+    "Spider-Man 2099": "Name:Spider-Man 2099\nVariant:UniversesWithin:FlavorName:Uharis, the Stormspinner\nManaCost:U R\nTypes:Legendary Creature Spider Human Hero\nPT:2/3\nK:Double Strike\nK:Vigilance\nS:Mode$ CantBeCast | ValidCard$ Card.Self | EffectZone$ All | Caster$ Player.Active | CheckSVar$ Z | SVarCompare$ LE3 | Description$ You can't cast CARDNAME during your first, second, or third turns of the game.\nSVar:Z:Count$YourTurns\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ Y | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your end step, if you've played a land or cast a spell this turn from anywhere other than your hand, CARDNAME deals damage equal to his power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | AILogic$ PowerDmg\nSVar:X:Count$CardPower\nT:Mode$ LandPlayed | Origin$ Exile,Library,Graveyard | ValidCard$ Land.YouCtrl | Execute$ StoreVar | Static$ True\nSVar:StoreVar:DB$ StoreSVar | SVar$ LandsPlayedFromNotHand | Type$ Number | Expression$ 1\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ StoreSVar | SVar$ LandsPlayedFromNotHand | Type$ Number | Expression$ 0\nSVar:Y:Count$ThisTurnCast_Card.YouCtrl+!wasCastFromYourHand/Plus.LandsPlayedFromNotHand\nSVar:LandsPlayedFromNotHand:Number$0\nOracle:From the Future — You can't cast Spider-Man 2099 during your first, second, or third turns of the game.\\nDouble strike, vigilance\\nAt the beginning of your end step, if you've played a land or cast a spell this turn from anywhere other than your hand, Spider-Man 2099 deals damage equal to his power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Man 2099"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

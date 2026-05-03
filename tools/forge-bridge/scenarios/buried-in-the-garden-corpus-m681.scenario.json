@@ -1,0 +1,23 @@
+{
+  "id": "buried-in-the-garden-corpus-m681",
+  "description": "M6 corpus — Buried in the Garden; in-hand parse.",
+  "seed": 61473,
+  "cards": {
+    "Buried in the Garden": "Name:Buried in the Garden\nManaCost:2 G W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent you don't control until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+YouDontCtrl | TgtPrompt$ Select target nonland permanent you don't control | Duration$ UntilHostLeavesPlay\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Amount$ 1 | Defined$ TriggeredCardController\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Permanent.nonLand+YouDontCtrl\nOracle:Enchant land\\nWhen Buried in the Garden enters, exile target nonland permanent you don't control until Buried in the Garden leaves the battlefield.\\nWhenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Buried in the Garden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

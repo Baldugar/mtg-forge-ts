@@ -1,0 +1,23 @@
+{
+  "id": "tibalt-s-rager-corpus-m681",
+  "description": "M6 corpus — Tibalt's Rager; in-hand parse.",
+  "seed": 61849,
+  "cards": {
+    "Tibalt's Rager": "Name:Tibalt's Rager\nManaCost:1 R\nTypes:Creature Devil\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nA:AB$ Pump | Cost$ 1 R | NumAtt$ +2 | SpellDescription$ CARDNAME gets +2/+0 until end of turn.\nOracle:When Tibalt's Rager dies, it deals 1 damage to any target.\\n{1}{R}: Tibalt's Rager gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tibalt's Rager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

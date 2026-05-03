@@ -1,0 +1,25 @@
+{
+  "id": "rumbling-aftershocks-corpus-m681",
+  "description": "M6 corpus — Rumbling Aftershocks; ETB-on-bf.",
+  "seed": 61775,
+  "cards": {
+    "Rumbling Aftershocks": "Name:Rumbling Aftershocks\nManaCost:4 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl+kicked | TriggerZones$ Battlefield | Execute$ DamageSomeone | OptionalDecider$ You | TriggerDescription$ Whenever you cast a kicked spell, you may have CARDNAME deal damage to any target equal to the number of times that spell was kicked.\nSVar:DamageSomeone:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredSpellAbility$TimesKicked\nAI:RemoveDeck:Random\nOracle:Whenever you cast a kicked spell, you may have Rumbling Aftershocks deal damage to any target equal to the number of times that spell was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rumbling Aftershocks"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

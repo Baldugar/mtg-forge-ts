@@ -1,0 +1,23 @@
+{
+  "id": "tyrant-of-valakut-corpus-m681",
+  "description": "M6 corpus — Tyrant of Valakut; in-hand parse.",
+  "seed": 61859,
+  "cards": {
+    "Tyrant of Valakut": "Name:Tyrant of Valakut\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/4\nK:Surge:3 R R\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+surged | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, if its surge cost was paid, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nOracle:Surge {3}{R}{R} (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)\\nFlying\\nWhen Tyrant of Valakut enters, if its surge cost was paid, it deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyrant of Valakut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

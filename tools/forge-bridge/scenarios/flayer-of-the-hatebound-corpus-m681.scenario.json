@@ -1,0 +1,23 @@
+{
+  "id": "flayer-of-the-hatebound-corpus-m681",
+  "description": "M6 corpus — Flayer of the Hatebound; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "Flayer of the Hatebound": "Name:Flayer of the Hatebound\nManaCost:5 R\nTypes:Creature Devil\nPT:4/2\nK:Undying\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self+YouOwn,Creature.YouOwn+Other | Execute$ ReanimateDmg | TriggerDescription$ Whenever CARDNAME or another creature enters from your graveyard, that creature deals damage equal to its power to any target.\nSVar:ReanimateDmg:DB$ DealDamage | ValidTgts$ Any | DamageSource$ TriggeredCardLKICopy | NumDmg$ Damage\nSVar:Damage:TriggeredCard$CardPower\nOracle:Undying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\\nWhenever Flayer of the Hatebound or another creature enters from your graveyard, that creature deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flayer of the Hatebound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

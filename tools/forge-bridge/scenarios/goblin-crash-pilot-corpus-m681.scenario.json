@@ -1,0 +1,23 @@
+{
+  "id": "goblin-crash-pilot-corpus-m681",
+  "description": "M6 corpus — Goblin Crash Pilot; in-hand parse.",
+  "seed": 61590,
+  "cards": {
+    "Goblin Crash Pilot": "Name:Goblin Crash Pilot\nManaCost:1 R\nTypes:Creature Goblin Pilot\nPT:2/1\nT:Mode$ Crewed | ValidCrew$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature crews a Vehicle, that Vehicle gains haste until end of turn. At the beginning of the next end step, sacrifice that Vehicle. When you sacrifice a creature this way, it deals damage equal to its power to any target.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCardLKICopy | KW$ Haste | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigSac | TriggerDescription$ At the beginning of the next end step, sacrifice that Vehicle. | RememberObjects$ TriggeredCardLKICopy | ConditionDefined$ TriggeredCardLKICopy | ConditionPresent$ Vehicle\nSVar:TrigSac:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI | Controller$ You | RememberSacrificed$ True | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ RememberedLKI | ConditionPresent$ Creature | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | Execute$ TrigDamage | TriggerDescription$ When you sacrifice a creature this way, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardPower\nOracle:Whenever this creature crews a Vehicle, that Vehicle gains haste until end of turn. At the beginning of the next end step, sacrifice that Vehicle. When you sacrifice a creature this way, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Crash Pilot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

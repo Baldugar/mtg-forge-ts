@@ -1,0 +1,23 @@
+{
+  "id": "orcish-bowmasters-corpus-m681",
+  "description": "M6 corpus — Orcish Bowmasters; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Orcish Bowmasters": "Name:Orcish Bowmasters\nManaCost:1 B\nTypes:Creature Orc Archer\nPT:1/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters and whenever an opponent draws a card except the first one they draw in each of their draw steps, CARDNAME deals 1 damage to any target. Then amass Orcs 1.\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | FirstCardInDrawStep$ False | Secondary$ True | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters and whenever an opponent draws a card except the first one they draw in each of their draw steps, CARDNAME deals 1 damage to any target. Then amass Orcs 1.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Any | SubAbility$ DBAmass\nSVar:DBAmass:DB$ Amass | Type$ Orc | Num$ 1\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:Flash\\nWhen Orcish Bowmasters enters and whenever an opponent draws a card except the first one they draw in each of their draw steps, Orcish Bowmasters deals 1 damage to any target. Then amass Orcs 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Bowmasters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

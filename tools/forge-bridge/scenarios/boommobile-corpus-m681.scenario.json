@@ -1,0 +1,23 @@
+{
+  "id": "boommobile-corpus-m681",
+  "description": "M6 corpus — Boommobile; in-hand parse.",
+  "seed": 61469,
+  "cards": {
+    "Boommobile": "Name:Boommobile\nManaCost:2 R R\nTypes:Artifact Vehicle\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ When this Vehicle enters, add four mana of any one color. Spend this mana only to activate abilities.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Amount$ 4 | RestrictValid$ Activated\nA:AB$ DealDamage | Cost$ X 2 R | ValidTgts$ Any | NumDmg$ X | Exhaust$ True | SubAbility$ DBPutCounter | SpellDescription$ This Vehicle deals X damage to any target. Put a +1/+1 counter on this Vehicle. (Activate each exhaust ability only once.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nK:Crew:2\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:When this Vehicle enters, add four mana of any one color. Spend this mana only to activate abilities.\\nExhaust — {X}{2}{R}: This Vehicle deals X damage to any target. Put a +1/+1 counter on this Vehicle. (Activate each exhaust ability only once.)\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boommobile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

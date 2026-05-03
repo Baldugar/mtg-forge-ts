@@ -1,0 +1,23 @@
+{
+  "id": "sliv-mizzet-hivemind-corpus-m681",
+  "description": "M6 corpus — Sliv-Mizzet, Hivemind; in-hand parse.",
+  "seed": 61799,
+  "cards": {
+    "Sliv-Mizzet, Hivemind": "Name:Sliv-Mizzet, Hivemind\nManaCost:2 U U R R\nTypes:Legendary Creature Dragon Sliver\nPT:4/4\nS:Mode$ Continuous | Affected$ Permanent.Sliver+YouCtrl | AddKeyword$ Flying | AddTrigger$ PingTrig | AddAbility$ Draw | Description$ Slivers you control have flying and \"Whenever you draw a card, this creature deals 1 damage to any target\" and \"{T}: Draw a card.\"\nSVar:PingTrig:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you draw a card, CARDNAME deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nSVar:Draw:AB$ Draw | Cost$ T | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:PlayMain1:TRUE\nOracle:Slivers you control have flying and \"Whenever you draw a card, this creature deals 1 damage to any target\" and \"{T}: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sliv-Mizzet, Hivemind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

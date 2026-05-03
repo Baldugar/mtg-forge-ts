@@ -1,0 +1,23 @@
+{
+  "id": "captain-ripley-vance-corpus-m681",
+  "description": "M6 corpus — Captain Ripley Vance; in-hand parse.",
+  "seed": 61483,
+  "cards": {
+    "Captain Ripley Vance": "Name:Captain Ripley Vance\nManaCost:2 R\nTypes:Legendary Creature Human Pirate\nPT:3/2\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivatorThisTurnCast$ EQ3 | TriggerDescription$ Whenever you cast your third spell each turn, put a +1/+1 counter on CARDNAME, then it deals damage equal to its power to any target.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Whenever you cast your third spell each turn, put a +1/+1 counter on Captain Ripley Vance, then it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain Ripley Vance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

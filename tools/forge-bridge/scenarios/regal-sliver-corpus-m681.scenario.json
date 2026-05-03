@@ -1,0 +1,23 @@
+{
+  "id": "regal-sliver-corpus-m681",
+  "description": "M6 corpus — Regal Sliver; in-hand parse.",
+  "seed": 61763,
+  "cards": {
+    "Regal Sliver": "Name:Regal Sliver\nManaCost:3 W\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Sliver+YouCtrl | AddTrigger$ ETBTrig | Description$ Sliver creatures you control have \"When this creature enters, Slivers you control get +1/+1 until end of turn if you're the monarch. Otherwise, you become the monarch.\"\nSVar:ETBTrig:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When this creature enters, Slivers you control get +1/+1 until end of turn if you're the monarch. Otherwise, you become the monarch.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Sliver.YouCtrl | NumAtt$ +1 | NumDef$ +1 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBMonarch\nSVar:DBMonarch:DB$ BecomeMonarch | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0\nSVar:X:Count$Monarch.1.0\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Sliver\nDeckHints:Type$Sliver\nOracle:Sliver creatures you control have \"When this creature enters, Slivers you control get +1/+1 until end of turn if you're the monarch. Otherwise, you become the monarch.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regal Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "burning-anger-corpus-m681",
+  "description": "M6 corpus — Burning Anger; in-hand parse.",
+  "seed": 61474,
+  "cards": {
+    "Burning Anger": "Name:Burning Anger\nManaCost:4 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TapDmg | AddSVar$ BurningAngerDmg | Description$ Enchanted creature has \"{T}: This creature deals damage equal to its power to any target.\"\nSVar:TapDmg:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ BurningAngerDmg | SpellDescription$ CARDNAME deals damage equal to its power to any target.\nSVar:BurningAngerDmg:Count$CardPower\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature has \"{T}: This creature deals damage equal to its power to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning Anger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

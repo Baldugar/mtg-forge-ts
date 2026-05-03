@@ -1,0 +1,23 @@
+{
+  "id": "bigger-on-the-inside-corpus-m681",
+  "description": "M6 corpus — Bigger on the Inside; in-hand parse.",
+  "seed": 61458,
+  "cards": {
+    "Bigger on the Inside": "Name:Bigger on the Inside\nManaCost:3 R G\nTypes:Enchantment Aura\nK:Enchant:Artifact,Land:artifact or land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | AddAbility$ ABMana | Description$ Enchanted permanent has \"{T}: Target player adds two mana of any one color. The next spell they cast this turn has cascade.\" (When they cast their next spell, they exile cards from the top of their library until they exile a nonland card that costs less. They may cast it without paying its mana cost. They put the exiled cards on the bottom in a random order.)\nSVar:ABMana:AB$ Mana | Cost$ T | Defined$ Targeted | ValidTgts$ Player | Produced$ Any | Amount$ 2 | SubAbility$ DBEffect | SpellDescription$ Target player adds two mana of any one color. The next spell they cast this turn has cascade. (When they cast their next spell, they exile cards from the top of their library until they exile a nonland card that costs less. They may cast it without paying its mana cost. They put the exiled cards on the bottom in a random order.)\nSVar:DBEffect:DB$ Effect | StaticAbilities$ GrantCascade | EffectOwner$ Targeted | ForgetOnCast$ Card.YouCtrl\nSVar:GrantCascade:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Stack | AddKeyword$ Cascade | Description$ The next spell you cast this turn has cascade.\nOracle:Enchant artifact or land\\nEnchanted permanent has \"{T}: Target player adds two mana of any one color. The next spell they cast this turn has cascade.\" (When they cast their next spell, they exile cards from the top of their library until they exile a nonland card that costs less. They may cast it without paying its mana cost. They put the exiled cards on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bigger on the Inside"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gift-of-paradise-corpus-m681",
+  "description": "M6 corpus — Gift of Paradise; in-hand parse.",
+  "seed": 61582,
+  "cards": {
+    "Gift of Paradise": "Name:Gift of Paradise\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ AbundantGrowthTap | Description$ Enchanted land has \"{T}: Add two mana of any one color.\"\nSVar:AbundantGrowthTap:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nDeckHas:Ability$LifeGain\nOracle:Enchant land\\nWhen Gift of Paradise enters, you gain 3 life.\\nEnchanted land has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift of Paradise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "incendiary-corpus-m681",
+  "description": "M6 corpus — Incendiary; in-hand parse.",
+  "seed": 61624,
+  "cards": {
+    "Incendiary": "Name:Incendiary\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a fuse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FUSE | CounterNum$ 1\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDamage | TriggerDescription$ When enchanted creature dies, CARDNAME deals X damage to any target, where X is the number of fuse counters on CARDNAME.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardCounters.FUSE\nOracle:Enchant creature\\nAt the beginning of your upkeep, you may put a fuse counter on Incendiary.\\nWhen enchanted creature dies, Incendiary deals X damage to any target, where X is the number of fuse counters on Incendiary.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incendiary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

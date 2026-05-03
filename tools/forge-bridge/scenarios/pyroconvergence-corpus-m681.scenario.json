@@ -1,0 +1,25 @@
+{
+  "id": "pyroconvergence-corpus-m681",
+  "description": "M6 corpus — Pyroconvergence; ETB-on-bf.",
+  "seed": 61752,
+  "cards": {
+    "Pyroconvergence": "Name:Pyroconvergence\nManaCost:4 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nSVar:BuffedBy:Card.MultiColor\nAI:RemoveDeck:Random\nOracle:Whenever you cast a multicolored spell, Pyroconvergence deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pyroconvergence"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

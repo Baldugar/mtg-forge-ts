@@ -1,0 +1,23 @@
+{
+  "id": "mangara-s-tome-corpus-m681",
+  "description": "M6 corpus — Mangara's Tome; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Mangara's Tome": "Name:Mangara's Tome\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for five cards, exile them in a face-down pile, and shuffle that pile. Then shuffle your library.\nSVar:TrigSearch:DB$ ChangeZone | ChangeNum$ 5 | Mandatory$ True | ChangeType$ Card | Origin$ Library | Destination$ Exile | ShuffleChangedPile$ True | ExileFaceDown$ True | RememberChanged$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Exile | Destination$ Any | Static$ True | Execute$ TrigForget\nSVar:TrigForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Effect | Cost$ 2 | RememberObjects$ RememberedFirst | Triggers$ TrigLeavePlay | ReplacementEffects$ DrawReplace | ImprintCards$ Self | SpellDescription$ The next time you would draw a card this turn, instead put the top card of the exiled pile into its owner's hand.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ RepMangarasTome | Description$ The next time you would draw a card this turn, instead put the top card of the exiled pile into its owner's hand.\nSVar:TrigLeavePlay:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted | Execute$ ExileEffect | Static$ True\nSVar:RepMangarasTome:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:When Mangara's Tome enters, search your library for five cards, exile them in a face-down pile, and shuffle that pile. Then shuffle your library.\\n{2}: The next time you would draw a card this turn, instead put the top card of the exiled pile into its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mangara's Tome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

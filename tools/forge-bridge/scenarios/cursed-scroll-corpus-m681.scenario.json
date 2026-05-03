@@ -1,0 +1,25 @@
+{
+  "id": "cursed-scroll-corpus-m681",
+  "description": "M6 corpus — Cursed Scroll; ETB-on-bf.",
+  "seed": 61511,
+  "cards": {
+    "Cursed Scroll": "Name:Cursed Scroll\nManaCost:1\nTypes:Artifact\nA:AB$ NameCard | Cost$ 3 T | Defined$ You | SubAbility$ DBReveal | AILogic$ CursedScroll | SpellDescription$ Choose a card name, then reveal a card at random from your hand. If that card has the chosen name, CARDNAME deals 2 damage to any target.\nSVar:DBReveal:DB$ Reveal | Random$ True | RememberRevealed$ True | Defined$ You | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nSVar:PreferredHandSize:1\nOracle:{3}, {T}: Choose a card name, then reveal a card at random from your hand. If that card has the chosen name, Cursed Scroll deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cursed Scroll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

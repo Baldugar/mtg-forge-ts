@@ -1,0 +1,23 @@
+{
+  "id": "dreadhorde-butcher-corpus-m681",
+  "description": "M6 corpus — Dreadhorde Butcher; in-hand parse.",
+  "seed": 61529,
+  "cards": {
+    "Dreadhorde Butcher": "Name:Dreadhorde Butcher\nManaCost:B R\nTypes:Creature Zombie Warrior\nPT:1/1\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME dies, it deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Haste\\nWhenever Dreadhorde Butcher deals combat damage to a player or planeswalker, put a +1/+1 counter on Dreadhorde Butcher.\\nWhen Dreadhorde Butcher dies, it deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadhorde Butcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

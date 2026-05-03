@@ -1,0 +1,23 @@
+{
+  "id": "ertai-s-meddling-corpus-m681",
+  "description": "M6 corpus — Ertai's Meddling; in-hand parse.",
+  "seed": 61542,
+  "cards": {
+    "Ertai's Meddling": "Name:Ertai's Meddling\nManaCost:X U\nTypes:Instant\nText:X can't be 0.\\r\\n\nA:SP$ ChangeZone | Cost$ XMin1 X U | TgtZone$ Stack | TargetType$ Spell | ValidTgts$ Card | Origin$ Stack | Destination$ Exile | Imprint$ True | WithCountersType$ DELAY | WithCountersAmount$ X | WithCountersPlacer$ TargetedController | SubAbility$ DBDelayEffect | SpellDescription$ Target spell's controller exiles it with X delay counters on it.\nSVar:X:Count$xPaid\nSVar:DBDelayEffect:DB$ Effect | EffectOwner$ TargetedController | RememberSpell$ Targeted | ImprintCards$ Imprinted | ConditionDefined$ Imprinted | ConditionPresent$ Card.inZoneExile | Triggers$ TrigDelay,TrigExile | Duration$ Permanent | SubAbility$ DBForget\nSVar:DBForget:DB$ Cleanup | ClearImprinted$ True\n# Add a fake trigger to display spell ability text ingame\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigLoseDelay | TriggerDescription$ At the beginning of each of that player's upkeeps, if that card is exiled, remove a delay counter from it. If the card has no delay counters on it, the player puts it onto the stack as a copy of the original spell.\nSVar:TrigDelay:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigLoseDelay | TriggerDescription$ At the beginning of each of that player's upkeeps, if that card is exiled, remove a delay counter from it. If the card has no delay counters on it, the player puts it onto the stack as a copy of the original spell.\nSVar:TrigLoseDelay:DB$ RemoveCounter | Defined$ Imprinted | CounterType$ DELAY | CounterNum$ 1 | SubAbility$ DBPutOntoStack\nSVar:DBPutOntoStack:DB$ CopySpellAbility | Defined$ Remembered | Controller$ You | UseOriginalHost$ True | ConditionDefined$ Imprinted | ConditionPresent$ Card.counters_EQ0_DELAY\nSVar:TrigExile:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsImprinted | TriggerZones$ Command | Execute$ TrigExileSelf\nSVar:TrigExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:X can't be 0.\\nTarget spell's controller exiles it with X delay counters on it.\\nAt the beginning of each of that player's upkeeps, if that card is exiled, remove a delay counter from it. If the card has no delay counters on it, the player puts it onto the stack as a copy of the original spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ertai's Meddling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

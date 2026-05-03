@@ -1,0 +1,23 @@
+{
+  "id": "urban-utopia-corpus-m681",
+  "description": "M6 corpus — Urban Utopia; in-hand parse.",
+  "seed": 61864,
+  "cards": {
+    "Urban Utopia": "Name:Urban Utopia\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ FreeCard | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:FreeCard:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ AbundantGrowthTap | Description$ Enchanted land has \"{T}: Add one mana of any color.\"\nSVar:AbundantGrowthTap:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Enchant land\\nWhen Urban Utopia enters, draw a card.\\nEnchanted land has \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urban Utopia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "harmonic-sliver-corpus-m681",
+  "description": "M6 corpus — Harmonic Sliver; in-hand parse.",
+  "seed": 61599,
+  "cards": {
+    "Harmonic Sliver": "Name:Harmonic Sliver\nManaCost:1 G W\nTypes:Creature Sliver\nPT:1/1\nS:Mode$ Continuous | Affected$ Sliver | AddTrigger$ HarmonicETB | Description$ All Slivers have \"When this permanent enters, destroy target artifact or enchantment.\"\nSVar:HarmonicETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ HarmonicDestroy | TriggerDescription$ When this permanent enters, destroy target artifact or enchantment.\nSVar:HarmonicDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment.\nSVar:BuffedBy:Sliver\nOracle:All Slivers have \"When this permanent enters, destroy target artifact or enchantment.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harmonic Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "kjeldoran-guard-corpus-m681",
+  "description": "M6 corpus — Kjeldoran Guard; ETB-on-bf.",
+  "seed": 61650,
+  "cards": {
+    "Kjeldoran Guard": "Name:Kjeldoran Guard\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/1\nA:AB$ Pump | Cost$ T | NumAtt$ +1 | NumDef$ +1 | ValidTgts$ Creature | ActivationPhases$ BeginCombat->EndCombat | IsPresent$ Land.Snow+DefenderCtrl | PresentCompare$ EQ0 | SubAbility$ KjeldoranGuardEffect | SpellDescription$ Target creature gets +1/+1 until end of turn. When that creature leaves the battlefield this turn, sacrifice CARDNAME. Activate only during combat and only if defending player controls no snow lands.\nSVar:KjeldoranGuardEffect:DB$ Effect | Triggers$ TrigSacGuard | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:TrigSacGuard:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Any | Execute$ EliteDefence | TriggerDescription$ When the targeted creature leaves the battlefield this turn, sacrifice EFFECTSOURCE.\nSVar:EliteDefence:DB$ SacrificeAll | Defined$ EffectSource\nOracle:{T}: Target creature gets +1/+1 until end of turn. When that creature leaves the battlefield this turn, sacrifice Kjeldoran Guard. Activate only during combat and only if defending player controls no snow lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kjeldoran Guard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

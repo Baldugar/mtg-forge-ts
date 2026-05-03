@@ -1,0 +1,23 @@
+{
+  "id": "electropotence-corpus-m681",
+  "description": "M6 corpus — Electropotence; in-hand parse.",
+  "seed": 61534,
+  "cards": {
+    "Electropotence": "Name:Electropotence\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control enters, you may pay {2}{R}. If you do, that creature deals damage equal to its power to any target.\nSVar:TrigDamage:AB$ DealDamage | Cost$ 2 R | ValidTgts$ Any | DamageSource$ TriggeredCardLKICopy | NumDmg$ Damage\nSVar:Damage:TriggeredCard$CardPower\nOracle:Whenever a creature you control enters, you may pay {2}{R}. If you do, that creature deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electropotence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

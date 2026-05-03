@@ -1,0 +1,23 @@
+{
+  "id": "mythos-of-illuna-corpus-m681",
+  "description": "M6 corpus — Mythos of Illuna; in-hand parse.",
+  "seed": 61708,
+  "cards": {
+    "Mythos of Illuna": "Name:Mythos of Illuna\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ CopyPermanent | ValidTgts$ Permanent | ConditionManaNotSpent$ R G | SubAbility$ CopyFight | StackDescription$ SpellDescription | SpellDescription$ Create a token that's a copy of target permanent. If {R}{G} was spent to cast this spell, instead create a token that's a copy of that permanent, except the token has \"When this permanent enters, if it's a creature, it fights up to one target creature you don't control.\"\nSVar:CopyFight:DB$ CopyPermanent | Defined$ Targeted | ConditionManaSpent$ R G | AddTriggers$ TrigChange | AddSVars$ TrigFight,TrigChange | StackDescription$ None\nSVar:TrigChange:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, if it's a creature, it fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nDeckHas:Ability$Token\nOracle:Create a token that's a copy of target permanent. If {R}{G} was spent to cast this spell, instead create a token that's a copy of that permanent, except the token has \"When this permanent enters, if it's a creature, it fights up to one target creature you don't control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mythos of Illuna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

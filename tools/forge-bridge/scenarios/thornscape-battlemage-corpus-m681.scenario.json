@@ -1,0 +1,23 @@
+{
+  "id": "thornscape-battlemage-corpus-m681",
+  "description": "M6 corpus — Thornscape Battlemage; in-hand parse.",
+  "seed": 61846,
+  "cards": {
+    "Thornscape Battlemage": "Name:Thornscape Battlemage\nManaCost:2 G\nTypes:Creature Elf Wizard\nPT:2/2\nK:Kicker:R:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 1 | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked with its {R} kicker, it deals 2 damage to any target.\nSVar:TrigKicker:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 2 | Execute$ TrigKicker2 | TriggerDescription$ When CARDNAME enters, if it was kicked with its {W} kicker, destroy target artifact.\nSVar:TrigKicker2:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select target artifact\nSVar:PlayMain1:TRUE\nDeckHints:Color$Red|White\nOracle:Kicker {R} and/or {W} (You may pay an additional {R} and/or {W} as you cast this spell.)\\nWhen Thornscape Battlemage enters, if it was kicked with its {R} kicker, it deals 2 damage to any target.\\nWhen Thornscape Battlemage enters, if it was kicked with its {W} kicker, destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thornscape Battlemage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

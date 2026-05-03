@@ -1,0 +1,23 @@
+{
+  "id": "springleaf-parade-corpus-m681",
+  "description": "M6 corpus — Springleaf Parade; in-hand parse.",
+  "seed": 61817,
+  "cards": {
+    "Springleaf Parade": "Name:Springleaf Parade\nManaCost:X G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create X 1/1 colorless Shapeshifter creature tokens with changeling. (They're every creature type.)\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_shapeshifter_changeling | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddAbility$ AnyMana | Description$ Creature tokens you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:When this enchantment enters, create X 1/1 colorless Shapeshifter creature tokens with changeling. (They're every creature type.)\\nCreature tokens you control have \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springleaf Parade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

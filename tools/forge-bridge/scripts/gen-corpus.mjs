@@ -146,8 +146,13 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const usesAvatarMechanics = lines.some((l) =>
       /(?:ManaCost:|Cost\$).*\b(?:Waterbend|Earthbend|Airbend|Firebend)</.test(l),
     );
-    // SVar with literal "Any" used as numeric — TS evaluator throws.
-    const hasAnyAsNumber = lines.some((l) => /^SVar:[^:]+:.*\bAny\b/.test(l) && !l.includes("Any.YouCtrl"));
+    // SVar with literal "Any" in a numeric param context — TS evaluator
+    // throws when reducing 'Any' to a number. Most "Any" appearances are
+    // legitimate (ValidTgts$ Any, Produced$ Any, Destination$ Any, etc.).
+    // Narrow the filter to ONLY numeric params: Num*, *Amount, X.
+    const hasAnyAsNumber = lines.some((l) =>
+      /^SVar:[^:]+:.*\b(NumDmg|NumAtt|NumDef|NumCards|Amount|LifeAmount|CounterNum|TokenAmount|XValue)\$\s*Any\b/.test(l),
+    );
     // Tokens that don't follow the standard `<color>_<P>_<T>_<subtype>...`
     // naming (e.g. "sword", "beau", "c_a_lander_sac_search") — synthesize
     // fallback can't infer their PT/subtype so we skip the cards using them.

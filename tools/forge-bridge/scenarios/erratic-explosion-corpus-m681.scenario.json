@@ -1,0 +1,23 @@
+{
+  "id": "erratic-explosion-corpus-m681",
+  "description": "M6 corpus — Erratic Explosion; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Erratic Explosion": "Name:Erratic Explosion\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RememberFound$ True | SubAbility$ Damage | SpellDescription$ Choose any target. Reveal cards from the top of your library until you reveal a nonland card. CARDNAME deals damage equal to that card's mana value to that permanent or player. Put the revealed cards on the bottom of your library in any order.\nSVar:Damage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Choose any target. Reveal cards from the top of your library until you reveal a nonland card. Erratic Explosion deals damage equal to that card's mana value to that permanent or player. Put the revealed cards on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erratic Explosion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

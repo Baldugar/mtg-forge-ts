@@ -1,0 +1,23 @@
+{
+  "id": "zoanthrope-corpus-m681",
+  "description": "M6 corpus — Zoanthrope; in-hand parse.",
+  "seed": 61886,
+  "cards": {
+    "Zoanthrope": "Name:Zoanthrope\nManaCost:X U R\nTypes:Creature Tyranid\nPT:0/0\nK:Ravenous\nK:Flying\nK:Ward:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Warp Blast — When CARDNAME enters, it deals X damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nFlying, ward {2}\\nWarp Blast — When Zoanthrope enters, it deals X damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zoanthrope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

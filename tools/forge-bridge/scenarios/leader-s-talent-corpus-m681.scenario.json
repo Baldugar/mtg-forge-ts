@@ -1,0 +1,23 @@
+{
+  "id": "leader-s-talent-corpus-m681",
+  "description": "M6 corpus — Leader's Talent; in-hand parse.",
+  "seed": 61664,
+  "cards": {
+    "Leader's Talent": "Name:Leader's Talent\nManaCost:1 W\nTypes:Enchantment Class\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, put a +1/+1 counter on target attacking creature.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature\nK:Class:2:2 W:AddTrigger$ TriggerLeaves\nSVar:TriggerLeaves:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.YouCtrl+HasCounters | TriggerZones$ Battlefield | Execute$ TrigGainLife | Secondary$ True | TriggerDescription$ Whenever a creature you control leaves the battlefield, if it had a counter on it, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nK:Class:3:3 W:AddTrigger$ TriggerSpell\nSVar:TriggerSpell:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigPutCounterAll | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever you cast a spell, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhenever you attack, put a +1/+1 counter on target attacking creature.\\n{2}{W}: Level 2\\nWhenever a creature you control leaves the battlefield, if it had a counter on it, you gain 2 life.\\n{3}{W}: Level 3\\nWhenever you cast a spell, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leader's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

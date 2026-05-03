@@ -1,0 +1,23 @@
+{
+  "id": "rite-of-harmony-corpus-m681",
+  "description": "M6 corpus — Rite of Harmony; in-hand parse.",
+  "seed": 61769,
+  "cards": {
+    "Rite of Harmony": "Name:Rite of Harmony\nManaCost:G W\nTypes:Instant\nK:Flashback:2 G W\nA:SP$ Effect | Triggers$ CreatureEnchantmentETB | SpellDescription$ Whenever a creature or enchantment you control enters this turn, draw a card.\nSVar:CreatureEnchantmentETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl,Enchantment.YouCtrl | TriggerZones$ Command | Execute$ TrigDraw | TriggerDescription$ Whenever a creature or enchantment you control enters this turn, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Type$Enchantment\nOracle:Whenever a creature or enchantment you control enters this turn, draw a card.\\nFlashback {2}{G}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rite of Harmony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

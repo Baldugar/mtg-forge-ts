@@ -1,0 +1,23 @@
+{
+  "id": "thunder-of-unity-corpus-m681",
+  "description": "M6 corpus — Thunder of Unity; in-hand parse.",
+  "seed": 61847,
+  "cards": {
+    "Thunder of Unity": "Name:Thunder of Unity\nManaCost:R W B\nTypes:Enchantment Saga\nK:Chapter:3:DBDraw,DBEffect,DBEffect\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBLoseLife | SpellDescription$ You draw two cards and you lose 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nSVar:DBEffect:DB$ Effect | Triggers$ CreatureETB | SpellDescription$ Whenever a creature you control enters this turn, each opponent loses 1 life and you gain 1 life.\nSVar:CreatureETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control enters this turn, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — You draw two cards and you lose 2 life.\\nII,III — Whenever a creature you control enters this turn, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunder of Unity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

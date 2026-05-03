@@ -1,0 +1,23 @@
+{
+  "id": "soul-s-fire-corpus-m681",
+  "description": "M6 corpus — Soul's Fire; in-hand parse.",
+  "seed": 61806,
+  "cards": {
+    "Soul's Fire": "Name:Soul's Fire\nManaCost:2 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to any target.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Any | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul's Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

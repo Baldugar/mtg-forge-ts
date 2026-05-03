@@ -1,0 +1,23 @@
+{
+  "id": "pyre-spawn-corpus-m681",
+  "description": "M6 corpus — Pyre Spawn; in-hand parse.",
+  "seed": 61751,
+  "cards": {
+    "Pyre Spawn": "Name:Pyre Spawn\nManaCost:4 R R\nTypes:Creature Elemental\nPT:6/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nOracle:When Pyre Spawn dies, it deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyre Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "first-day-of-class-corpus-m681",
+  "description": "M6 corpus — First Day of Class; in-hand parse.",
+  "seed": 61559,
+  "cards": {
+    "First Day of Class": "Name:First Day of Class\nManaCost:1 R\nTypes:Instant\nA:SP$ Effect | Triggers$ CreatureETB | SubAbility$ DBLearn | SpellDescription$ Whenever a creature you control enters this turn, put a +1/+1 counter on it and it gains haste until end of turn.\nSVar:CreatureETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control enters this turn, put a +1/+1 counter on it and it gains haste until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredCard | KW$ Haste\nSVar:DBLearn:DB$ Learn | SpellDescription$ Learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control enters this turn, put a +1/+1 counter on it and it gains haste until end of turn.\\nLearn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First Day of Class"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

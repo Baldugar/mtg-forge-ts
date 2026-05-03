@@ -1,0 +1,23 @@
+{
+  "id": "plasm-capture-corpus-m681",
+  "description": "M6 corpus — Plasm Capture; in-hand parse.",
+  "seed": 61741,
+  "cards": {
+    "Plasm Capture": "Name:Plasm Capture\nManaCost:G G U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | RememberCounteredCMC$ True | ValidTgts$ Card | SubAbility$ DBDelTrig | SpellDescription$ Counter target spell. At the beginning of your next first main phase, add X mana in any combination of colors, where X is that spell's mana value.\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | Execute$ AddMana | TriggerDescription$ At the beginning of your next first main phase, add X mana in any combination of colors, where X is that spell's mana value. | RememberNumber$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AddMana:DB$ Mana | Produced$ Combo Any | Amount$ X\nSVar:X:Count$TriggerRememberAmount\nOracle:Counter target spell. At the beginning of your next first main phase, add X mana in any combination of colors, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plasm Capture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

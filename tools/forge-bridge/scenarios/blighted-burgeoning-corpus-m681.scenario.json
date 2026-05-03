@@ -1,0 +1,23 @@
+{
+  "id": "blighted-burgeoning-corpus-m681",
+  "description": "M6 corpus — Blighted Burgeoning; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Blighted Burgeoning": "Name:Blighted Burgeoning\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME enters, incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 2\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Amount$ 1 | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nDeckHas:Ability$Counters|Token\nOracle:Enchant land\\nWhen Blighted Burgeoning enters, incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\nWhenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blighted Burgeoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

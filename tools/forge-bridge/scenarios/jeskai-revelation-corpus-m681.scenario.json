@@ -1,0 +1,23 @@
+{
+  "id": "jeskai-revelation-corpus-m681",
+  "description": "M6 corpus — Jeskai Revelation; in-hand parse.",
+  "seed": 61634,
+  "cards": {
+    "Jeskai Revelation": "Name:Jeskai Revelation\nManaCost:4 U R W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent,Card.inZoneStack | TgtZone$ Stack,Battlefield | TgtPrompt$ Select target spell or permanent | Origin$ Battlefield,Stack | Destination$ Hand | SubAbility$ DBDealDmg | SpellDescription$ Return target spell or permanent to its owner's hand.\nSVar:DBDealDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | SubAbility$ DBToken | SpellDescription$ CARDNAME deals 4 damage to any target.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_monk_prowess | TokenOwner$ You | SubAbility$ DBDraw | SpellDescription$ Create two 1/1 white Monk creature tokens with prowess.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBGainLife | SpellDescription$ Draw two cards.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nOracle:Return target spell or permanent to its owner's hand. Jeskai Revelation deals 4 damage to any target. Create two 1/1 white Monk creature tokens with prowess. Draw two cards. You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeskai Revelation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

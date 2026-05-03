@@ -1,0 +1,23 @@
+{
+  "id": "jund-sojourners-corpus-m681",
+  "description": "M6 corpus — Jund Sojourners; in-hand parse.",
+  "seed": 61639,
+  "cards": {
+    "Jund Sojourners": "Name:Jund Sojourners\nManaCost:B R G\nTypes:Creature Lizard Shaman\nPT:3/2\nK:Cycling:2 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME or it dies, you may have it deal 1 damage to any target.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When you cycle CARDNAME or it dies, you may have it deal 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:When you cycle Jund Sojourners or it dies, you may have it deal 1 damage to any target.\\nCycling {2}{R} ({2}{R}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jund Sojourners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

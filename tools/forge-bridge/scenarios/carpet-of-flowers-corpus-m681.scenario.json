@@ -1,0 +1,23 @@
+{
+  "id": "carpet-of-flowers-corpus-m681",
+  "description": "M6 corpus — Carpet of Flowers; in-hand parse.",
+  "seed": 61486,
+  "cards": {
+    "Carpet of Flowers": "Name:Carpet of Flowers\nManaCost:G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Main1,Main2 | ValidPlayer$ You | CheckSVar$ CarpetX | SVarCompare$ EQ0 | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ At the beginning of each of your main phases, if you haven't added mana with this ability this turn, you may add X mana of any one color, where X is the number of Islands target opponent controls.\nSVar:TrigMana:DB$ Pump | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Amount$ NumManaMax | Produced$ Any | SubAbility$ CheckPlus\nSVar:CheckPlus:DB$ StoreSVar | SVar$ CarpetX | Type$ Number | Expression$ 1\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ StoreSVar | SVar$ CarpetX | Type$ Number | Expression$ 0\nSVar:NumManaMax:Count$Valid Island.TargetedPlayerCtrl\nSVar:CarpetX:Number$0\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:At the beginning of each of your main phases, if you haven't added mana with this ability this turn, you may add X mana of any one color, where X is the number of Islands target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carpet of Flowers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flaming-tyrannosaurus-corpus-m681",
+  "description": "M6 corpus — Flaming Tyrannosaurus; in-hand parse.",
+  "seed": 61562,
+  "cards": {
+    "Flaming Tyrannosaurus": "Name:Flaming Tyrannosaurus\nManaCost:5 R R\nTypes:Creature Dinosaur\nPT:5/5\nK:Menace\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Paradox — Whenever you cast a spell from anywhere other than your hand, CARDNAME deals 3 damage to any target. Then put a +1/+1 counter on CARDNAME.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamageDies | TriggerDescription$ When CARDNAME dies, it deals damage equal to its power to each opponent.\nSVar:TrigDamageDies:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Menace\\nParadox — Whenever you cast a spell from anywhere other than your hand, Flaming Tyrannosaurus deals 3 damage to any target. Then put a +1/+1 counter on Flaming Tyrannosaurus.\\nWhen Flaming Tyrannosaurus dies, it deals damage equal to its power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaming Tyrannosaurus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

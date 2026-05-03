@@ -1,0 +1,23 @@
+{
+  "id": "searing-meditation-corpus-m681",
+  "description": "M6 corpus — Searing Meditation; in-hand parse.",
+  "seed": 61789,
+  "cards": {
+    "Searing Meditation": "Name:Searing Meditation\nManaCost:1 R W\nTypes:Enchantment\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDamage | TriggerDescription$ Whenever you gain life, you may pay {2}. If you do, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:AB$ DealDamage | Cost$ 2 | NumDmg$ 2 | ValidTgts$ Any\nAI:RemoveDeck:Random\nOracle:Whenever you gain life, you may pay {2}. If you do, Searing Meditation deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Searing Meditation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

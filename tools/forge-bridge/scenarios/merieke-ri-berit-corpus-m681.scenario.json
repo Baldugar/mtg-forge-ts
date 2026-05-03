@@ -1,0 +1,23 @@
+{
+  "id": "merieke-ri-berit-corpus-m681",
+  "description": "M6 corpus — Merieke Ri Berit; in-hand parse.",
+  "seed": 61693,
+  "cards": {
+    "Merieke Ri Berit": "Name:Merieke Ri Berit\nManaCost:W U B\nTypes:Legendary Creature Human\nPT:1/1\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ CARDNAME doesn't untap during your untap step.\nA:AB$ GainControl | Cost$ T | ValidTgts$ Creature | LoseControl$ LeavesPlay,LoseControl | SubAbility$ DBEffect | SpellDescription$ Gain control of target creature for as long as you control CARDNAME. When CARDNAME leaves the battlefield or becomes untapped, destroy that creature. It can't be regenerated.\nSVar:DBEffect:DB$ Effect | RememberObjects$ ParentTarget | ExileOnMoved$ Battlefield | Triggers$ LeavesPlay,Untap | Duration$ Permanent | ConditionPresent$ Card.StrictlySelf\nSVar:LeavesPlay:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.EffectSource | OneOff$ True | Execute$ DBDestroy | TriggerDescription$ When EFFECTSOURCE leaves the battlefield, or becomes untapped, destroy that creature. It can't be regenerated.\nSVar:Untap:Mode$ Untaps | ValidCard$ Card.EffectSource | Execute$ DBDestroy | Secondary$ True | OneOff$ True | TriggerDescription$ When EFFECTSOURCE leaves the battlefield, or becomes untapped, destroy that creature. It can't be regenerated.\nSVar:DBDestroy:DB$ Destroy | Defined$ RememberedLKI | NoRegen$ True\nOracle:Merieke Ri Berit doesn't untap during your untap step.\\n{T}: Gain control of target creature for as long as you control Merieke Ri Berit. When Merieke Ri Berit leaves the battlefield or becomes untapped, destroy that creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merieke Ri Berit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

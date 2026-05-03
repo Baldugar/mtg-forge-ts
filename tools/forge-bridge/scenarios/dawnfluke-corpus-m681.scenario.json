@@ -1,0 +1,23 @@
+{
+  "id": "dawnfluke-corpus-m681",
+  "description": "M6 corpus — Dawnfluke; in-hand parse.",
+  "seed": 61513,
+  "cards": {
+    "Dawnfluke": "Name:Dawnfluke\nManaCost:3 W\nTypes:Creature Elemental\nPT:0/3\nK:Flash\nK:Evoke:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPrevent | TriggerDescription$ When CARDNAME enters, prevent the next 3 damage that would be dealt to any target this turn.\nSVar:TrigPrevent:DB$ PreventDamage | ValidTgts$ Any | Amount$ 3\nAI:RemoveDeck:All\nSVar:AmbushAI:True\nOracle:Flash\\nWhen Dawnfluke enters, prevent the next 3 damage that would be dealt to any target this turn.\\nEvoke {W} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawnfluke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

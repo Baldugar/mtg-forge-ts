@@ -1,0 +1,23 @@
+{
+  "id": "cleaving-skyrider-corpus-m681",
+  "description": "M6 corpus — Cleaving Skyrider; in-hand parse.",
+  "seed": 61498,
+  "cards": {
+    "Cleaving Skyrider": "Name:Cleaving Skyrider\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:2/2\nK:Flash\nK:Kicker:2 R\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if it was kicked, it deals X damage to any target, where X is the number of attacking creatures.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Creature.attacking\nSVar:BuffedBy:Creature.attacking\nOracle:Flash\\nKicker {2}{R} (You may pay an additional {2}{R} as you cast this spell.)\\nFlying\\nWhen Cleaving Skyrider enters, if it was kicked, it deals X damage to any target, where X is the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cleaving Skyrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

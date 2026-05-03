@@ -1,0 +1,23 @@
+{
+  "id": "sonic-shrieker-corpus-m681",
+  "description": "M6 corpus — Sonic Shrieker; in-hand parse.",
+  "seed": 61805,
+  "cards": {
+    "Sonic Shrieker": "Name:Sonic Shrieker\nManaCost:2 R W B\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When this creature enters, it deals 2 damage to any target and you gain 2 life. If a player is dealt damage this way, they discard a card.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | RememberDamaged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ TgtChoose | NumCards$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Player | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen this creature enters, it deals 2 damage to any target and you gain 2 life. If a player is dealt damage this way, they discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sonic Shrieker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

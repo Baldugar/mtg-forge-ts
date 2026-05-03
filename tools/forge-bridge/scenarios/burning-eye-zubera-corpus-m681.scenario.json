@@ -1,0 +1,23 @@
+{
+  "id": "burning-eye-zubera-corpus-m681",
+  "description": "M6 corpus — Burning-Eye Zubera; in-hand parse.",
+  "seed": 61475,
+  "cards": {
+    "Burning-Eye Zubera": "Name:Burning-Eye Zubera\nManaCost:2 R R\nTypes:Creature Zubera Spirit\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | CheckOnTriggeredCard$ X GE4 | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, if 4 or more damage was dealt to it this turn, CARDNAME deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nSVar:X:Count$TotalDamageReceivedThisTurn\nOracle:When Burning-Eye Zubera dies, if 4 or more damage was dealt to it this turn, Burning-Eye Zubera deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning-Eye Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

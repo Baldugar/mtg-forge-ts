@@ -1,0 +1,23 @@
+{
+  "id": "trace-of-abundance-corpus-m681",
+  "description": "M6 corpus — Trace of Abundance; in-hand parse.",
+  "seed": 61855,
+  "cards": {
+    "Trace of Abundance": "Name:Trace of Abundance\nManaCost:RW G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddKeyword$ Shroud | Description$ Enchanted land has shroud. (It can't be the target of spells or abilities.)\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Defined$ TriggeredCardController\nAI:RemoveDeck:All\nOracle:Enchant land\\nEnchanted land has shroud. (It can't be the target of spells or abilities.)\\nWhenever enchanted land is tapped for mana, its controller adds an additional one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trace of Abundance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nissa-resurgent-animist-corpus-m681",
+  "description": "M6 corpus — Nissa, Resurgent Animist; in-hand parse.",
+  "seed": 61713,
+  "cards": {
+    "Nissa, Resurgent Animist": "Name:Nissa, Resurgent Animist\nManaCost:2 G\nTypes:Legendary Creature Elf Scout\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Landfall — Whenever a land you control enters, add one mana of any color. Then if this is the second time this ability has resolved this turn, reveal cards from the top of your library until you reveal an Elf or Elemental card. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigMana:DB$ Mana | Produced$ Any | SubAbility$ RevealUntil\nSVar:RevealUntil:DB$ DigUntil | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ2 | Valid$ Elf,Elemental | ValidDescription$ elf or elemental | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nSVar:X:Count$ResolvedThisTurn\nDeckHints:Type$Elemental|Elf\nOracle:Landfall — Whenever a land you control enters, add one mana of any color. Then if this is the second time this ability has resolved this turn, reveal cards from the top of your library until you reveal an Elf or Elemental card. Put that card into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa, Resurgent Animist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

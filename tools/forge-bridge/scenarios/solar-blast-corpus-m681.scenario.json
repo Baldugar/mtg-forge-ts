@@ -1,0 +1,23 @@
+{
+  "id": "solar-blast-corpus-m681",
+  "description": "M6 corpus — Solar Blast; in-hand parse.",
+  "seed": 61803,
+  "cards": {
+    "Solar Blast": "Name:Solar Blast\nManaCost:3 R\nTypes:Instant\nK:Cycling:1 R R\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may have it deal 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:Solar Blast deals 3 damage to any target.\\nCycling {1}{R}{R} ({1}{R}{R}, Discard this card: Draw a card.)\\nWhen you cycle Solar Blast, you may have it deal 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solar Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "coalition-relic-corpus-m681",
+  "description": "M6 corpus — Coalition Relic; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Coalition Relic": "Name:Coalition Relic\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nA:AB$ PutCounter | Cost$ T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemove | TriggerDescription$ At the beginning of your first main phase, remove all charge counters from CARDNAME. Add one mana of any color for each charge counter removed this way.\nSVar:TrigRemove:DB$ RemoveCounter | CounterType$ CHARGE | CounterNum$ All | RememberRemoved$ True | SubAbility$ TrigGetMana\nSVar:TrigGetMana:DB$ Mana | Produced$ Combo Any | Amount$ NumRemoved | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumRemoved:Count$RememberedSize\nOracle:{T}: Add one mana of any color.\\n{T}: Put a charge counter on Coalition Relic.\\nAt the beginning of your first main phase, remove all charge counters from Coalition Relic. Add one mana of any color for each charge counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coalition Relic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

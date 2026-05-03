@@ -1,0 +1,23 @@
+{
+  "id": "largepox-corpus-m681",
+  "description": "M6 corpus — Largepox; in-hand parse.",
+  "seed": 61660,
+  "cards": {
+    "Largepox": "Name:Largepox\nManaCost:B B B B\nTypes:Sorcery\nA:SP$ Discard | Mode$ TgtChoose | Defined$ Player | SubAbility$ DBLoseLife | SpellDescription$ Each player discards a card, then loses 1 life, then sacrifices an artifact, a creature, an enchantment, a land, a planeswalker, and a kindred permanent, then exiles a card from their graveyard, then puts the top card of their library into their graveyard, then removes a counter from a permanent they control, then gets a poison counter.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 1 | AILifeThreshold$ 1 | SubAbility$ DBSacArtifact\nSVar:DBSacArtifact:DB$ Sacrifice | SacValid$ Artifact | Defined$ Player | SubAbility$ DBSacCreature\nSVar:DBSacCreature:DB$ Sacrifice | SacValid$ Creature | Defined$ Player | SubAbility$ DBSacEnchantment\nSVar:DBSacEnchantment:DB$ Sacrifice | SacValid$ Enchantment | Defined$ Player | SubAbility$ DBSacLand\nSVar:DBSacLand:DB$ Sacrifice | SacValid$ Land | Defined$ Player | SubAbility$ DBSacPlaneswalker\nSVar:DBSacPlaneswalker:DB$ Sacrifice | SacValid$ Planeswalker | Defined$ Player | SubAbility$ DBSacKindred\nSVar:DBSacKindred:DB$ Sacrifice | SacValid$ Kindred | Defined$ Player | SubAbility$ DBGraveyard\nSVar:DBGraveyard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ Player | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ 1 | Defined$ Player | SubAbility$ DBCounter\nSVar:DBCounter:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChooseCounter | SubAbility$ DBPoison\nSVar:DBChooseCounter:DB$ ChooseCard | Choices$ Permanent.RememberedPlayerCtrl+HasCounters | Defined$ Remembered | Amount$ 1 | Mandatory$ True | SubAbility$ DBOneCounter\nSVar:DBOneCounter:DB$ RemoveCounter | Defined$ ChosenCard | CounterNum$ 1 | CounterType$ Any\nSVar:DBPoison:DB$ Poison | Defined$ Player | Num$ 1\nOracle:Each player discards a card, then loses 1 life, then sacrifices an artifact, a creature, an enchantment, a land, a planeswalker, and a kindred permanent, then exiles a card from their graveyard, then puts the top card of their library into their graveyard, then removes a counter from a permanent they control, then gets a poison counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Largepox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

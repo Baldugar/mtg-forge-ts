@@ -1,0 +1,23 @@
+{
+  "id": "pull-of-the-mist-moon-corpus-m681",
+  "description": "M6 corpus — Pull of the Mist Moon; in-hand parse.",
+  "seed": 61749,
+  "cards": {
+    "Pull of the Mist Moon": "Name:Pull of the Mist Moon\nManaCost:1 W W\nTypes:Enchantment\nK:Kicker:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, if it was kicked, choose a nonland permanent in your hand. It perpetually gains \"When this permanent enters, exile target nonland permanent an opponent controls until this permanent leaves the battlefield.\"\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Permanent.nonLand+YouOwn | ChoiceTitle$ Choose a nonland permanent in your hand | Mandatory$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ ETBExile | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:ETBExile:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this permanent enters, exile target nonland permanent an opponent controls until this permanent leaves the battlefield.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:OblivionRing:TRUE\nDeckHints:Color$Blue\nOracle:Kicker {1}{U}\\nWhen Pull of the Mist Moon enters, exile target nonland permanent an opponent controls until Pull of the Mist Moon leaves the battlefield.\\nWhen Pull of the Mist Moon enters, if it was kicked, choose a nonland permanent in your hand. It perpetually gains \"When this permanent enters, exile target nonland permanent an opponent controls until this permanent leaves the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pull of the Mist Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

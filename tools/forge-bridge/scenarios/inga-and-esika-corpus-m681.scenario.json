@@ -1,0 +1,25 @@
+{
+  "id": "inga-and-esika-corpus-m681",
+  "description": "M6 corpus — Inga and Esika; ETB-on-bf.",
+  "seed": 61627,
+  "cards": {
+    "Inga and Esika": "Name:Inga and Esika\nManaCost:2 G U\nTypes:Legendary Creature Human God\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddAbility$ Mana | AddKeyword$ Vigilance | Description$ Creatures you control have vigilance and \"{T}: Add one mana of any color. Spend this mana only to cast a creature spell.\"\nSVar:Mana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Creature | SpellDescription$ Add one mana of any color. Spend this mana only to cast a creature spell.\nT:Mode$ SpellCast | ValidCard$ Creature | ValidSA$ Spell.ManaFromCreature_3 | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, if three or more mana from creatures was spent to cast it, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Creatures you control have vigilance and \"{T}: Add one mana of any color. Spend this mana only to cast a creature spell.\"\\nWhenever you cast a creature spell, if three or more mana from creatures was spent to cast it, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inga and Esika"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

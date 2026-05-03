@@ -1,0 +1,23 @@
+{
+  "id": "lightning-volley-corpus-m681",
+  "description": "M6 corpus — Lightning Volley; in-hand parse.",
+  "seed": 61671,
+  "cards": {
+    "Lightning Volley": "Name:Lightning Volley\nManaCost:3 R\nTypes:Instant\nA:SP$ AnimateAll | ValidCards$ Creature.YouCtrl | Abilities$ LVAbs | SpellDescription$ Until end of turn, creatures you control gain \"{T}: This creature deals 1 damage to any target.\"\nSVar:LVAbs:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nAI:RemoveDeck:All\nOracle:Until end of turn, creatures you control gain \"{T}: This creature deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Volley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

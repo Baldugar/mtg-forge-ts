@@ -1,0 +1,23 @@
+{
+  "id": "skeleton-archer-corpus-m681",
+  "description": "M6 corpus — Skeleton Archer; in-hand parse.",
+  "seed": 61796,
+  "cards": {
+    "Skeleton Archer": "Name:Skeleton Archer\nManaCost:3 B\nTypes:Creature Skeleton Archer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:When Skeleton Archer enters, it deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeleton Archer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

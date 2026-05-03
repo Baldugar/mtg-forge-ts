@@ -1,0 +1,23 @@
+{
+  "id": "special-move-corpus-m681",
+  "description": "M6 corpus — Special Move; in-hand parse.",
+  "seed": 61810,
+  "cards": {
+    "Special Move": "Name:Special Move\nManaCost:2 R\nTypes:Instant\nA:SP$ Charm | Choices$ DBJumpKick,DBDashAttack,DBFootToss | CharmNum$ 2\nSVar:DBJumpKick:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Jump Kick — Destroy target artifact.\nSVar:DBDashAttack:DB$ PutCounter | ValidTgts$ Creature.attacking+YouCtrl,Creature.blocking+YouCtrl | TgtPrompt$ Select target attacking or blocking creature you control | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Dash Attack — Put two +1/+1 counters on target attacking or blocking creature you control.\nSVar:DBFootToss:DB$ Pump | ValidTgts$ Creature.YouCtrl | RememberObjects$ ThisTargetedCard | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | SpellDescription$ Foot Toss — Target creature you control deals damage equal to its power to any other target. Then sacrifice it.\nSVar:DBDamage:DB$ DealDamage | AILogic$ PowerDmg | ValidTgts$ Any.NotDefinedParentTarget,Player | DamageSource$ ParentTarget | NumDmg$ X | SubAbility$ DBSac\nSVar:DBSac:DB$ SacrificeAll | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:ParentTargeted$CardPower\nOracle:Choose two —\\n• Jump Kick — Destroy target artifact.\\n• Dash Attack — Put two +1/+1 counters on target attacking or blocking creature you control.\\n• Foot Toss — Target creature you control deals damage equal to its power to any other target. Then sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Special Move"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

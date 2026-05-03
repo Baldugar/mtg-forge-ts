@@ -1,0 +1,23 @@
+{
+  "id": "path-of-annihilation-corpus-m681",
+  "description": "M6 corpus — Path of Annihilation; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Path of Annihilation": "Name:Path of Annihilation\nManaCost:3 G\nTypes:Enchantment\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_0_1_eldrazi_spawn_sac\nS:Mode$ Continuous | Affected$ Eldrazi.YouCtrl | AddAbility$ AnyMana | Description$ Eldrazi you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nT:Mode$ SpellCast | ValidCard$ Creature.cmcGE7 | ValidActivatingPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with mana value 7 or greater, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4\nOracle:Devoid (This card has no color.)\\nWhen Path of Annihilation enters, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\\nEldrazi you control have \"{T}: Add one mana of any color.\"\\nWhenever you cast a creature spell with mana value 7 or greater, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of Annihilation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

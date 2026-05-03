@@ -1,0 +1,23 @@
+{
+  "id": "meteor-shower-corpus-m681",
+  "description": "M6 corpus — Meteor Shower; in-hand parse.",
+  "seed": 61695,
+  "cards": {
+    "Meteor Shower": "Name:Meteor Shower\nManaCost:X X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select targets to distribute damage to | NumDmg$ DistroDmg | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ DistroDmg | SpellDescription$ CARDNAME deals X plus 1 damage divided as you choose among any number of targets.\nSVar:MaxTgts:PlayerCountPlayers$Amount/Plus.MaxPermanents\nSVar:MaxPermanents:Count$Valid Any\nSVar:DistroDmg:SVar$X/Plus.1\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Meteor Shower deals X plus 1 damage divided as you choose among any number of targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meteor Shower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

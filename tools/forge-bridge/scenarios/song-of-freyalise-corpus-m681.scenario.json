@@ -1,0 +1,23 @@
+{
+  "id": "song-of-freyalise-corpus-m681",
+  "description": "M6 corpus — Song of Freyalise; in-hand parse.",
+  "seed": 61804,
+  "cards": {
+    "Song of Freyalise": "Name:Song of Freyalise\nManaCost:1 G\nTypes:Enchantment Saga\nK:Chapter:3:DBAnimateAll,DBAnimateAll,DBPutCounterAll\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | Abilities$ AnyMana | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, creatures you control gain \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll | SpellDescription$ Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance & Trample & Indestructible\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Until your next turn, creatures you control gain \"{T}: Add one mana of any color.\"\\nIII — Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Song of Freyalise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "kjeldoran-elite-guard-corpus-m681",
+  "description": "M6 corpus — Kjeldoran Elite Guard; ETB-on-bf.",
+  "seed": 61649,
+  "cards": {
+    "Kjeldoran Elite Guard": "Name:Kjeldoran Elite Guard\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/2\nA:AB$ Pump | Cost$ T | NumAtt$ +2 | NumDef$ +2 | ValidTgts$ Creature | ActivationPhases$ BeginCombat->EndCombat | SubAbility$ EliteGuardEffect | SpellDescription$ Target creature gets +2/+2 until end of turn. When that creature leaves the battlefield this turn, sacrifice CARDNAME. Activate only during combat.\nSVar:EliteGuardEffect:DB$ Effect | Name$ Elite Guard Escort | Triggers$ LostTheGuarded | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:LostTheGuarded:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Any | Execute$ EliteDefence | TriggerDescription$ When the targeted creature leaves the battlefield this turn, sacrifice EFFECTSOURCE.\nSVar:EliteDefence:DB$ SacrificeAll | Defined$ EffectSource\nOracle:{T}: Target creature gets +2/+2 until end of turn. When that creature leaves the battlefield this turn, sacrifice Kjeldoran Elite Guard. Activate only during combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kjeldoran Elite Guard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

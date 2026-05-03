@@ -1,0 +1,23 @@
+{
+  "id": "smoldering-egg-corpus-m681",
+  "description": "M6 corpus — Smoldering Egg; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Smoldering Egg": "Name:Smoldering Egg\nManaCost:1 R\nTypes:Creature Dragon Egg\nPT:0/4\nK:Defender\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharge | TriggerDescription$ Whenever you cast an instant or sorcery spell, put a number of ember counters on CARDNAME equal to the amount of mana spent to cast that spell. Then if CARDNAME has seven or more ember counters on it, remove them and transform CARDNAME.\nSVar:TrigCharge:DB$ PutCounter | Defined$ Self | CounterType$ EMBER | CounterNum$ X | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Ember | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ EMBER | CounterNum$ All | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:X:TriggeredCard$CastTotalManaSpent\nSVar:Ember:Count$Valid Card.Self+counters_GE7_EMBER\nDeckHas:Ability$Counters\nDeckNeeds:Type$Instant|Sorcery\nAlternateMode:DoubleFaced\nOracle:Defender\\nWhenever you cast an instant or sorcery spell, put a number of ember counters on Smoldering Egg equal to the amount of mana spent to cast that spell. Then if Smoldering Egg has seven or more ember counters on it, remove them and transform Smoldering Egg.\n\nALTERNATE\n\nName:Ashmouth Dragon\nManaCost:no cost\nColors:red\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nWhenever you cast an instant or sorcery spell, Ashmouth Dragon deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoldering Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

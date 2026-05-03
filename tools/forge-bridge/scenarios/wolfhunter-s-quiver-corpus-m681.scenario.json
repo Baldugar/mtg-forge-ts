@@ -1,0 +1,23 @@
+{
+  "id": "wolfhunter-s-quiver-corpus-m681",
+  "description": "M6 corpus — Wolfhunter's Quiver; in-hand parse.",
+  "seed": 61882,
+  "cards": {
+    "Wolfhunter's Quiver": "Name:Wolfhunter's Quiver\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:5\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddAbility$ Damage & DamageWerewolf | Description$ Equipped creature has \"{T}: This creature deals 1 damage to any target\" and \"{T}: This creature deals 3 damage to target Werewolf creature.\"\nSVar:Damage:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:DamageWerewolf:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.Werewolf | TgtPrompt$ Select target Werewolf creature | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target Werewolf creature.\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature has \"{T}: This creature deals 1 damage to any target\" and \"{T}: This creature deals 3 damage to target Werewolf creature.\"\\nEquip {5}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfhunter's Quiver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

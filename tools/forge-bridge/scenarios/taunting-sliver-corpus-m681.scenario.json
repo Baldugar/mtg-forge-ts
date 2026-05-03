@@ -1,0 +1,23 @@
+{
+  "id": "taunting-sliver-corpus-m681",
+  "description": "M6 corpus — Taunting Sliver; in-hand parse.",
+  "seed": 61830,
+  "cards": {
+    "Taunting Sliver": "Name:Taunting Sliver\nManaCost:3 U\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Sliver+YouCtrl | AddTrigger$ ETBTrig | Description$ Sliver creatures you control have \"When this creature enters, goad target creature an opponent controls.\" (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:ETBTrig:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigGoad | TriggerDescription$ When this creature enters, goad target creature an opponent controls. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Target creature an opponent controls\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Sliver\nDeckHints:Type$Sliver\nOracle:Sliver creatures you control have \"When this creature enters, goad target creature an opponent controls.\" (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taunting Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

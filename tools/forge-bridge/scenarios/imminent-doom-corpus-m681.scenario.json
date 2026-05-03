@@ -1,0 +1,23 @@
+{
+  "id": "imminent-doom-corpus-m681",
+  "description": "M6 corpus — Imminent Doom; in-hand parse.",
+  "seed": 61623,
+  "cards": {
+    "Imminent Doom": "Name:Imminent Doom\nManaCost:2 R\nTypes:Enchantment\nK:etbCounter:DOOM:1\nT:Mode$ SpellCast | ValidCard$ Card.cmcEQX | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a spell with mana value equal to the number of doom counters on CARDNAME, CARDNAME deals that much damage to any target. Then put a doom counter on CARDNAME.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Y | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DOOM | CounterNum$ 1\nSVar:X:Count$CardCounters.DOOM\nSVar:Y:TriggeredCardLKI$CardManaCost\nOracle:Imminent Doom enters with a doom counter on it.\\nWhenever you cast a spell with mana value equal to the number of doom counters on Imminent Doom, Imminent Doom deals that much damage to any target. Then put a doom counter on Imminent Doom.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imminent Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

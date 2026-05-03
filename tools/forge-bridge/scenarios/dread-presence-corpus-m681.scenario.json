@@ -1,0 +1,23 @@
+{
+  "id": "dread-presence-corpus-m681",
+  "description": "M6 corpus — Dread Presence; in-hand parse.",
+  "seed": 61528,
+  "cards": {
+    "Dread Presence": "Name:Dread Presence\nManaCost:3 B\nTypes:Creature Nightmare\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Swamp.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever a Swamp you control enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBDmg\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 2 damage to any target and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nOracle:Whenever a Swamp you control enters, choose one —\\n• You draw a card and you lose 1 life.\\n• Dread Presence deals 2 damage to any target and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

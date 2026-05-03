@@ -1,0 +1,23 @@
+{
+  "id": "rolling-hamsphere-corpus-m681",
+  "description": "M6 corpus — Rolling Hamsphere; in-hand parse.",
+  "seed": 61772,
+  "cards": {
+    "Rolling Hamsphere": "Name:Rolling Hamsphere\nManaCost:7\nTypes:Artifact Vehicle\nPT:4/4\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each Hamster you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create three 1/1 red Hamster creature tokens, then it deals X damage to any target, where X is the number of Hamsters you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_hamster | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nK:Crew:3\nSVar:X:Count$Valid Hamster.YouCtrl\nOracle:Rolling Hamsphere gets +1/+1 for each Hamster you control.\\nWhenever Rolling Hamsphere attacks, create three 1/1 red Hamster creature tokens, then it deals X damage to any target, where X is the number of Hamsters you control.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rolling Hamsphere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

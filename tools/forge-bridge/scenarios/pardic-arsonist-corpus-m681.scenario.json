@@ -1,0 +1,23 @@
+{
+  "id": "pardic-arsonist-corpus-m681",
+  "description": "M6 corpus — Pardic Arsonist; in-hand parse.",
+  "seed": 61736,
+  "cards": {
+    "Pardic Arsonist": "Name:Pardic Arsonist\nManaCost:2 R R\nTypes:Creature Human Barbarian\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigETB | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME has \"When CARDNAME enters, it deals 3 damage to any target.\"\nSVar:TrigETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nOracle:Threshold — As long as there are seven or more cards in your graveyard, Pardic Arsonist has \"When Pardic Arsonist enters, it deals 3 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pardic Arsonist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

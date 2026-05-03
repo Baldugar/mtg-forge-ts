@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-fire-and-ice-and-war-and-peace-corpus-m681",
+  "description": "M6 corpus — Sword of Fire and Ice and War and Peace; in-hand parse.",
+  "seed": 61828,
+  "cards": {
+    "Sword of Fire and Ice and War and Peace": "Name:Sword of Fire and Ice and War and Peace\nManaCost:6\nTypes:Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | AddToughness$ 4 | AddSVar$ SwordOfFireAndIceCE | AddKeyword$ Protection from white & Protection from blue & Protection from red | Description$ Equipped creature gets +4/+4 and has protection from white, blue, and red.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to an opponent, CARDNAME deals 2 damage to any target and you draw a card. Then, it deals damage to defending player equal to the number of cards in their hand and you gain 1 life for each card in your hand.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBWar\nSVar:DBWar:DB$ DealDamage | Defined$ TriggeredTarget | NumDmg$ X | SubAbility$ DBGain\nSVar:X:TriggeredTarget$CardsInHand\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:Y:Count$CardsInYourHand\nSVar:SwordOfFireAndIceCE:SVar:MustBeBlocked:AttackingPlayerConservative\nOracle:Equipped creature gets +4/+4 and has protection from white, blue, and red.\\nWhenever equipped creature deals combat damage to an opponent, Sword of Fire and Ice and War and Peace deals 2 damage to any target and you draw a card. Then, it deals damage to defending player equal to the number of cards in their hand and you gain 1 life for each card in your hand.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Fire and Ice and War and Peace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hofri-ghostforge-corpus-m681",
+  "description": "M6 corpus — Hofri Ghostforge; in-hand parse.",
+  "seed": 61613,
+  "cards": {
+    "Hofri Ghostforge": "Name:Hofri Ghostforge\nManaCost:3 R W\nTypes:Legendary Creature Dwarf Cleric\nPT:4/5\nS:Mode$ Continuous | Affected$ Spirit.YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Trample & Haste | Description$ Spirits you control get +1/+1 and have trample and haste.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+!token+YouCtrl | Execute$ TrigChange | TriggerDescription$ Whenever another nontoken creature you control dies, exile it. If you do, create a token that's a copy of that creature, except it's a Spirit in addition to its other types and it has \"When this creature leaves the battlefield, return the exiled card to its owner's graveyard.\"\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | AddTypes$ Spirit | AddSVars$ HofriTrigReturn | AddTriggers$ TrigLeavesBattlefield | ConditionDefined$ Remembered | ConditionPresent$ Card | TokenRemembered$ Remembered | SubAbility$ DBCleanup\nSVar:TrigLeavesBattlefield:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ HofriTrigReturn | TriggerDescription$ When this creature leaves the battlefield, return the exiled card to your graveyard.\nSVar:HofriTrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Graveyard | Defined$ Remembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nDeckHints:Type$Spirit\nOracle:Spirits you control get +1/+1 and have trample and haste.\\nWhenever another nontoken creature you control dies, exile it. If you do, create a token that's a copy of that creature, except it's a Spirit in addition to its other types and it has \"When this creature leaves the battlefield, return the exiled card to its owner's graveyard.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hofri Ghostforge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rope-line-attendant-corpus-m681",
+  "description": "M6 corpus — Rope Line Attendant; in-hand parse.",
+  "seed": 61773,
+  "cards": {
+    "Rope Line Attendant": "Name:Rope Line Attendant\nManaCost:G W\nTypes:Creature Cat Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, creature cards in your hand perpetually gain \"When this creature enters, create a 1/1 green and white Citizen creature token.\"\nSVar:TrigAnimate:DB$ AnimateAll | Zone$ Hand | ValidCards$ Creature.YouOwn | Triggers$ ETBToken | Duration$ Perpetual\nSVar:ETBToken:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a 1/1 green and white Citizen creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_citizen\nDeckHas:Ability$Token\nOracle:When Rope Line Attendant enters, creature cards in your hand perpetually gain \"When this creature enters, create a 1/1 green and white Citizen creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rope Line Attendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

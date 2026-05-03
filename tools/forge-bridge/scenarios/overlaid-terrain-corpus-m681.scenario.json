@@ -1,0 +1,23 @@
+{
+  "id": "overlaid-terrain-corpus-m681",
+  "description": "M6 corpus — Overlaid Terrain; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Overlaid Terrain": "Name:Overlaid Terrain\nManaCost:2 G G\nTypes:Enchantment\nK:ETBReplacement:Other:TrigSac\nSVar:TrigSac:DB$ SacrificeAll | ValidCards$ Land.YouCtrl | SpellDescription$ As CARDNAME enters, sacrifice all lands you control.\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddAbility$ AnyMana | Description$ Lands you control have \"{T}: Add two mana of any one color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:As Overlaid Terrain enters, sacrifice all lands you control.\\nLands you control have \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overlaid Terrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

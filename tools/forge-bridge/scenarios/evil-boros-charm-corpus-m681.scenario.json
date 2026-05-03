@@ -1,0 +1,23 @@
+{
+  "id": "evil-boros-charm-corpus-m681",
+  "description": "M6 corpus — Evil Boros Charm; in-hand parse.",
+  "seed": 61544,
+  "cards": {
+    "Evil Boros Charm": "Name:Evil Boros Charm\nManaCost:BR WB\nTypes:Instant\nA:SP$ Charm | Choices$ DBDmg,PumpAll,Token\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 2 damage to any target and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:PumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+unblocked | NumAtt$ +1 | SpellDescription$ Unblocked attacking creatures get +1/+0 until end of turn.\nSVar:Token:DB$ Token | TokenScript$ c_1_1_spirit_lifelink_haste | SpellDescription$ Create a 1/1 colorless Spirit creature token with lifelink and haste.\nDeckHas:Ability$Token\nOracle:Choose one —\\n• Evil Boros Charm deals 2 damage to any target and you gain 2 life.\\n• Unblocked attacking creatures get +1/+0 until end of turn.\\n• Create a 1/1 colorless Spirit creature token with lifelink and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evil Boros Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

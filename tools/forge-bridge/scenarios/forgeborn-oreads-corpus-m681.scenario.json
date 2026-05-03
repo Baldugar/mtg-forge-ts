@@ -1,0 +1,23 @@
+{
+  "id": "forgeborn-oreads-corpus-m681",
+  "description": "M6 corpus — Forgeborn Oreads; in-hand parse.",
+  "seed": 61569,
+  "cards": {
+    "Forgeborn Oreads": "Name:Forgeborn Oreads\nManaCost:2 R R\nTypes:Enchantment Creature Nymph\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigDamage | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, CARDNAME deals 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Forgeborn Oreads or another enchantment you control enters, Forgeborn Oreads deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgeborn Oreads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spawn-of-thraxes-corpus-m681",
+  "description": "M6 corpus — Spawn of Thraxes; in-hand parse.",
+  "seed": 61809,
+  "cards": {
+    "Spawn of Thraxes": "Name:Spawn of Thraxes\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals damage to any target equal to the number of Mountains you control.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$Valid Mountain.YouCtrl\nOracle:Flying\\nWhen Spawn of Thraxes enters, it deals damage to any target equal to the number of Mountains you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawn of Thraxes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "candlekeep-sage-corpus-m681",
+  "description": "M6 corpus — Candlekeep Sage; in-hand parse.",
+  "seed": 61481,
+  "cards": {
+    "Candlekeep Sage": "Name:Candlekeep Sage\nManaCost:2 U\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ ETB & LTB | Description$ Commander creatures you own have \"When this creature enters or leaves the battlefield, draw a card.\"\nSVar:ETB:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters or leaves the battlefield, draw a card.\nSVar:LTB:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ When this creature enters or leaves the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nAI:RemoveDeck:NonCommander\nOracle:Commander creatures you own have \"When this creature enters or leaves the battlefield, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Candlekeep Sage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

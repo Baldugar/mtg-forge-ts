@@ -1,0 +1,23 @@
+{
+  "id": "weirding-wood-corpus-m681",
+  "description": "M6 corpus — Weirding Wood; in-hand parse.",
+  "seed": 61878,
+  "cards": {
+    "Weirding Wood": "Name:Weirding Wood\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ WeirdingWoodTap | Description$ Enchanted land has \"{T}: Add two mana of any one color.\"\nSVar:WeirdingWoodTap:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nDeckHas:Ability$Investigate|Token\nOracle:Enchant land\\nWhen Weirding Wood enters, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\nEnchanted land has \"{T}: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weirding Wood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

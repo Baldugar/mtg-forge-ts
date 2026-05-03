@@ -1,0 +1,23 @@
+{
+  "id": "goblin-boom-keg-corpus-m681",
+  "description": "M6 corpus — Goblin Boom Keg; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Goblin Boom Keg": "Name:Goblin Boom Keg\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, it deals 3 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nSVar:SacMe:4\nOracle:At the beginning of your upkeep, sacrifice Goblin Boom Keg.\\nWhen Goblin Boom Keg is put into a graveyard from the battlefield, it deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Boom Keg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

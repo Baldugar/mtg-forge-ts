@@ -1,0 +1,23 @@
+{
+  "id": "idol-of-the-deep-king-corpus-m681",
+  "description": "M6 corpus — Idol of the Deep King; in-hand parse.",
+  "seed": 61621,
+  "cards": {
+    "Idol of the Deep King": "Name:Idol of the Deep King\nManaCost:2 R\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nK:Craft:2 R ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Flash\\nWhen Idol of the Deep King enters, it deals 2 damage to any target.\\nCraft with artifact {2}{R} ({2}{R}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Sovereign's Macuahuitl\nManaCost:no cost\nColors:red\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nK:Equip:2\nOracle:When Sovereign's Macuahuitl enters, attach it to target creature you control.\\nEquipped creature gets +2/+0.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Idol of the Deep King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "burning-vengeance-corpus-m681",
+  "description": "M6 corpus — Burning Vengeance; ETB-on-bf.",
+  "seed": 61476,
+  "cards": {
+    "Burning Vengeance": "Name:Burning Vengeance\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from your graveyard, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever you cast a spell from your graveyard, Burning Vengeance deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Burning Vengeance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
