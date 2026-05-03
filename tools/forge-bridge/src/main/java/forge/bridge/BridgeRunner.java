@@ -1363,26 +1363,13 @@ public final class BridgeRunner {
             // engine emits. Pre-compute the generic count from the cost
             // string (e.g. "1, T" → 1 generic) and emit synthetic
             // ManaSpent events after the ability resolves.
-            int genericCount = 0;
-            try {
-                forge.game.cost.Cost preCost = sa.getPayCosts();
-                if (preCost != null) {
-                    forge.game.cost.CostPartMana mana = preCost.getCostMana();
-                    if (mana != null) {
-                        // Use toString and parse — API varies between Forge versions.
-                        String costStr = mana.toString().trim();
-                        // costStr is like "{1}" or "{2}" for generic-only; "{1}{R}" for hybrid.
-                        // Count the leading numeric portion.
-                        java.util.regex.Matcher m =
-                            java.util.regex.Pattern.compile("\\{(\\d+)\\}").matcher(costStr);
-                        while (m.find()) {
-                            genericCount += Integer.parseInt(m.group(1));
-                        }
-                    }
-                }
-            } catch (Throwable ignored) {
-                // Defensive: if the cost-mana API differs, just don't synthesize.
-            }
+            // M7.0e — Track mana pool size before/after activate to
+            // synthesize ManaSpent events. Forge's CostPayment for
+            // activated abilities doesn't fire GameEventManaPool with
+            // Removed mode, so the bridge's onManaPool subscriber misses
+            // them. Diff approach: count total mana in pool pre-activate
+            // and post-activate-and-resolve, emit ManaSpent per spent mana.
+            int preMana = p.getManaPool().totalMana();
             boolean ok = ComputerUtil.handlePlayingSpellAbility(p, sa, () -> {
                 /* targets already bound above */
             });
@@ -1390,7 +1377,9 @@ public final class BridgeRunner {
                 rec.recordSynthetic("BridgeActivateFailed",
                     "activate: " + cardName + " idx=" + idx);
             } else {
-                for (int g = 0; g < genericCount; g++) {
+                int postMana = p.getManaPool().totalMana();
+                int spent = preMana - postMana;
+                for (int g = 0; g < spent; g++) {
                     Map<String, Object> mp = new LinkedHashMap<>();
                     mp.put("color", (int) MagicColor.COLORLESS);
                     rec.push("ManaSpent", mp);
