@@ -1,0 +1,23 @@
+{
+  "id": "unleash-the-flux-corpus-m686",
+  "description": "M6 corpus — Unleash the Flux; in-hand parse.",
+  "seed": 61797,
+  "cards": {
+    "Unleash the Flux": "Name:Unleash the Flux\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When you encounter CARDNAME, each player sacrifices a nonland permanent, then you flip a coin. If you lose the flip, repeat this process. (Then planeswalk away from this phenomenon.)\nSVar:TrigEffect:DB$ Repeat | RepeatCheckSVar$ PlayerCountRemembered$HasPropertyYou | RepeatSVarCompare$ GT0 | RepeatSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Player | SacValid$ Permanent.nonLand | SubAbility$ DBCoin\nSVar:DBCoin:DB$ FlipACoin | RememberLoser$ True | WinSubAbility$ PWAway\nSVar:PWAway:DB$ Planeswalk | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you encounter Unleash the Flux, each player sacrifices a nonland permanent, then you flip a coin. If you lose the flip, repeat this process. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unleash the Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

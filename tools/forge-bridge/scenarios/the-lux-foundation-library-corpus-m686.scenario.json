@@ -1,0 +1,23 @@
+{
+  "id": "the-lux-foundation-library-corpus-m686",
+  "description": "M6 corpus — The Lux Foundation Library; in-hand parse.",
+  "seed": 61769,
+  "cards": {
+    "The Lux Foundation Library": "Name:The Lux Foundation Library\nManaCost:no cost\nTypes:Plane The Library\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | TriggerZones$ Command | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control deals combat damage to a player, you may draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, put a shadow counter on target creature. (A creature with shadow can block or be blocked by only creatures with shadow.)\nSVar:RolledChaos:DB$ PutCounter | CounterType$ Shadow | ValidTgts$ Creature\nSVar:AIRollPlanarDieParams:Mode$ Always | HasCreatureInPlay$ True | RollInMain1$ True\nDeckHas:Ability$Counters\nOracle:Players have no maximum hand size.\\nWhenever a creature you control deals combat damage to a player, you may draw a card.\\nWhenever chaos ensues, put a shadow counter on target creature. (A creature with shadow can block or be blocked by only creatures with shadow.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Lux Foundation Library"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

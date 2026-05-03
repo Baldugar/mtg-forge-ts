@@ -1,0 +1,23 @@
+{
+  "id": "ketria-corpus-m686",
+  "description": "M6 corpus — Ketria; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Ketria": "Name:Ketria\nManaCost:no cost\nTypes:Plane Ikoria\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerZones$ Command | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put your choice of a vigilance, menace, or trample counter on target creature you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCounter | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put your choice of a vigilance, menace, or trample counter on target creature you control.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ Vigilance,Menace,Trample | CounterTypePerDefined$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, exile cards from the top of your library until you exile a nonland permanent card. Put that card onto the battlefield or into your hand.\nSVar:RolledChaos:DB$ DigUntil | ValidPlayer$ You | Valid$ Permanent.nonLand | ValidDescription$ nonland permanent | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | DestinationAlternative$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:When you planeswalk to Ketria and at the beginning of your upkeep, put your choice of a vigilance, menace, or trample counter on target creature you control.\\nWhenever chaos ensues, exile cards from the top of your library until you exile a nonland permanent card. Put that card onto the battlefield or into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ketria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

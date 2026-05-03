@@ -1,0 +1,23 @@
+{
+  "id": "spatial-merging-corpus-m686",
+  "description": "M6 corpus — Spatial Merging; in-hand parse.",
+  "seed": 61724,
+  "cards": {
+    "Spatial Merging": "Name:Spatial Merging\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When you encounter CARDNAME, reveal cards from the top of your planar deck until you reveal two plane cards. Simultaneously planeswalk to both of them. Put all other cards revealed this way on the bottom of your planar deck in any order.\nSVar:TrigDig:DB$ DigUntil | Amount$ 2 | Valid$ Plane | DigZone$ PlanarDeck | RememberFound$ True | FoundDestination$ PlanarDeck | RevealedDestination$ PlanarDeck | RevealedLibraryPosition$ -1 | SubAbility$ DBPWTo\nSVar:DBPWTo:DB$ Planeswalk | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you encounter Spatial Merging, reveal cards from the top of your planar deck until you reveal two plane cards. Simultaneously planeswalk to both of them. Put all other cards revealed this way on the bottom of your planar deck in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spatial Merging"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

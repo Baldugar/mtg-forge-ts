@@ -1,0 +1,23 @@
+{
+  "id": "riptide-island-corpus-m686",
+  "description": "M6 corpus — Riptide Island; in-hand parse.",
+  "seed": 61694,
+  "cards": {
+    "Riptide Island": "Name:Riptide Island\nManaCost:no cost\nTypes:Plane Dominaria\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create two 1/1 colorless Sliver creature tokens.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigToken | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create two 1/1 colorless Sliver creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_sliver | TokenOwner$ You\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, Slivers you control gain haste and get +X/+X until end of turn, where X is the number of Slivers you control.\nSVar:RolledChaos:DB$ PumpAll | ValidCards$ Sliver.YouCtrl | NumAtt$ +X | NumDef$ +X | KW$ Haste\nSVar:X:Count$Valid Sliver.YouCtrl\nDeckHas:Ability$Token & Type$Sliver\nDeckHints:Type$Sliver\nOracle:When you planeswalk to Riptide Island and at the beginning of your upkeep, create two 1/1 colorless Sliver creature tokens.\\nWhenever chaos ensues, Slivers you control gain haste and get +X/+X until end of turn, where X is the number of Slivers you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Island"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

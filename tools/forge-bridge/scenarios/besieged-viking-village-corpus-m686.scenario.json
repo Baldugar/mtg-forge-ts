@@ -1,0 +1,23 @@
+{
+  "id": "besieged-viking-village-corpus-m686",
+  "description": "M6 corpus — Besieged Viking Village; in-hand parse.",
+  "seed": 61470,
+  "cards": {
+    "Besieged Viking Village": "Name:Besieged Viking Village\nManaCost:no cost\nTypes:Plane Earth\nS:Mode$ Continuous | Affected$ Creature | AddAbility$ ABBoast | EffectZone$ Command | Description$ All creatures have \"Boast — {1}: Put a +1/+1 counter on this creature.\" (Activate only if that creature attacked this turn and only once each turn.)\nSVar:ABBoast:AB$ PutCounter | Cost$ 1 | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | Boast$ True | Description$ Boast — Put a +1/+1 counter on this creature. (Activate only if that creature attacked this turn and only once each turn.)\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever chaos ensues, put an indestructible counter on target creature you control that attacked this turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl+attackedThisTurn | TgtPrompt$ Select target creature you control that attacked this turn | CounterType$ Indestructible | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:All creatures have \"Boast — {1}: Put a +1/+1 counter on this creature.\" (Activate only if that creature attacked this turn and only once each turn.)\\nWhenever chaos ensues, put an indestructible counter on target creature you control that attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Besieged Viking Village"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

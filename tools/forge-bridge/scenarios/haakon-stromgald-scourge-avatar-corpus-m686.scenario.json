@@ -1,0 +1,23 @@
+{
+  "id": "haakon-stromgald-scourge-avatar-corpus-m686",
+  "description": "M6 corpus — Haakon, Stromgald Scourge Avatar; in-hand parse.",
+  "seed": 61543,
+  "cards": {
+    "Haakon, Stromgald Scourge Avatar": "Name:Haakon, Stromgald Scourge Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-3\nA:AB$ Effect | ActivationZone$ Command | Cost$ PayLife<1> | TgtZone$ Graveyard | ValidTgts$ Creature.YouOwn | PumpZone$ Graveyard | TgtPrompt$ Select target creature in your graveyard, you may play it this turn | RememberObjects$ Targeted | StaticAbilities$ Play | ExileOnMoved$ Graveyard | SpellDescription$ You may cast target creature card in your graveyard this turn.\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may play remembered card.\nT:Mode$ SpellCast | ValidCard$ Creature.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a creature spell from your graveyard, it becomes a black Zombie Knight.\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCard | Types$ Zombie,Knight | Colors$ Black | OverwriteColors$ True | Duration$ Permanent | RemoveCreatureTypes$ True\nR:Event$ Moved | ValidCard$ Card.Zombie+Knight | Destination$ Graveyard | ReplaceWith$ DBExile | Description$ If a Zombie Knight would be put into your graveyard from the battlefield, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:Hand +0, life -3\\nPay 1 life: You may cast target creature card in your graveyard this turn.\\nWhenever you cast a creature spell from your graveyard, it becomes a black Zombie Knight.\\nIf a Zombie Knight would be put into your graveyard from the battlefield, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haakon, Stromgald Scourge Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

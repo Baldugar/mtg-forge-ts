@@ -1,0 +1,23 @@
+{
+  "id": "velis-vel-corpus-m686",
+  "description": "M6 corpus — Velis Vel; in-hand parse.",
+  "seed": 61802,
+  "cards": {
+    "Velis Vel": "Name:Velis Vel\nManaCost:no cost\nTypes:Plane Lorwyn\nS:Mode$ Continuous | Affected$ Creature | AddPower$ AffectedX | AddToughness$ AffectedX | EffectZone$ Command | Description$ Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Elemental Shamans and an Elemental Spirit are on the battlefield, each gets +2/+2.)\nSVar:AffectedX:Count$Valid Creature.sharesCreatureTypeWith+Other\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target creature gains all creature types until end of turn.\nSVar:RolledChaos:DB$ Animate | ValidTgts$ Creature | AddAllCreatureTypes$ True\nSVar:AIRollPlanarDieParams:Mode$ Always | HasCreatureInPlay$ True\nOracle:Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Elemental Shamans and an Elemental Spirit are on the battlefield, each gets +2/+2.)\\nWhenever chaos ensues, target creature gains all creature types until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Velis Vel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

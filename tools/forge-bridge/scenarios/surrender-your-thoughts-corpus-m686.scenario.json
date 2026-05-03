@@ -1,0 +1,23 @@
+{
+  "id": "surrender-your-thoughts-corpus-m686",
+  "description": "M6 corpus — Surrender Your Thoughts; in-hand parse.",
+  "seed": 61738,
+  "cards": {
+    "Surrender Your Thoughts": "Name:Surrender Your Thoughts\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBChoose | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, that player discards four cards. If the player chooses others, each of your other opponents discards two cards.\nSVar:DBChoose:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ Self,Others | AILogic$ SelfOthers\nSVar:Self:DB$ Discard | Mode$ TgtChoose | Defined$ ParentTarget | NumCards$ 4 | SpellDescription$ Self\nSVar:Others:DB$ Discard | Mode$ TgtChoose | Defined$ OppNonParentTarget | NumCards$ 2 | SpellDescription$ Others\nOracle:When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, that player discards four cards. If the player chooses others, each of your other opponents discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surrender Your Thoughts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

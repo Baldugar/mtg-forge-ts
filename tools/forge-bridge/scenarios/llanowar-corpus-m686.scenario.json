@@ -1,0 +1,23 @@
+{
+  "id": "llanowar-corpus-m686",
+  "description": "M6 corpus — Llanowar; in-hand parse.",
+  "seed": 61597,
+  "cards": {
+    "Llanowar": "Name:Llanowar\nManaCost:no cost\nTypes:Plane Dominaria\nS:Mode$ Continuous | Affected$ Creature | EffectZone$ Command | AddAbility$ LlanowarAb | Description$ All creatures have \"{T}: Add {G}{G}.\".\nSVar:LlanowarAb:AB$ Mana | Cost$ T | Amount$ 2 | Produced$ G | SpellDescription$ Add {G}{G}.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, untap all creatures you control.\nSVar:RolledChaos:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nSVar:AIRollPlanarDieParams:Mode$ Always | HasCreatureInPlay$ True\nOracle:All creatures have \"{T}: Add {G}{G}.\"\\nWhenever chaos ensues, untap all creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Llanowar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

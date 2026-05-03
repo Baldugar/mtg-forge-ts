@@ -1,0 +1,23 @@
+{
+  "id": "panopticon-corpus-m686",
+  "description": "M6 corpus — Panopticon; in-hand parse.",
+  "seed": 61672,
+  "cards": {
+    "Panopticon": "Name:Panopticon\nManaCost:no cost\nTypes:Plane Mirrodin\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ PanopticonDraw | TriggerDescription$ When you planeswalk to CARDNAME, draw a card.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | Execute$ PanopticonDraw | TriggerZones$ Command | TriggerDescription$ At the beginning of your draw step, draw an additional card.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ PanopticonDraw | TriggerDescription$ Whenever chaos ensues, draw a card.\nSVar:PanopticonDraw:DB$ Draw\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:When you planeswalk to Panopticon, draw a card.\\nAt the beginning of your draw step, draw an additional card.\\nWhenever chaos ensues, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Panopticon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hired-heist-corpus-m686",
+  "description": "M6 corpus — Hired Heist; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Hired Heist": "Name:Hired Heist\nManaCost:no cost\nTypes:Conspiracy\nK:Hidden agenda\nT:Mode$ DamageDone | ValidSource$ Creature.NamedCard+YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Command | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control with the chosen name deals combat damage to a player, you may pay {U}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ U | NumCards$ 1\nSVar:AgendaLogic:BestCreatureInComputerDeck\nOracle:Hidden agenda (Start the game with this conspiracy face down in the command zone and secretly choose a card name. You may turn this conspiracy face up any time and reveal that name.)\\nWhenever a creature you control with the chosen name deals combat damage to a player, you may pay {U}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hired Heist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "strixhaven-corpus-m686",
+  "description": "M6 corpus — Strixhaven; in-hand parse.",
+  "seed": 61734,
+  "cards": {
+    "Strixhaven": "Name:Strixhaven\nManaCost:no cost\nTypes:Plane Arcavios\nS:Mode$ Continuous | AddKeyword$ Demonstrate | EffectZone$ Command | Affected$ Instant,Sorcery | AffectedZone$ Stack | Description$ Instant and sorcery spells players cast have demonstrate. (Whenever a player casts an instant or sorcery spell, they may copy it. If they do, they choose an opponent to also copy it. Players may choose new targets for their copies.)\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, return up to one target instant or sorcery card from a graveyard to its owner's hand.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | Destination$ Hand | ValidTgts$ Instant,Sorcery | TgtPrompt$ Select up to target instant or sorcery spell from any graveyard\nDeckHas:Ability$Graveyard\nDeckHints:Type$Instant|Sorcery\nOracle:Instant and sorcery spells players cast have demonstrate. (Whenever a player casts an instant or sorcery spell, they may copy it. If they do, they choose an opponent to also copy it. Players may choose new targets for their copies.)\\nWhenever chaos ensues, return up to one target instant or sorcery card from a graveyard to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strixhaven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

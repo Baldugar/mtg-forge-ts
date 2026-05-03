@@ -1,0 +1,23 @@
+{
+  "id": "my-crushing-masterstroke-corpus-m686",
+  "description": "M6 corpus — My Crushing Masterstroke; in-hand parse.",
+  "seed": 61631,
+  "cards": {
+    "My Crushing Masterstroke": "Name:My Crushing Masterstroke\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigControl | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, gain control of all nonland permanents your opponents control until end of turn. Untap those permanents. They gain haste until end of turn. Each of them attacks its owner this turn if able.\nSVar:TrigControl:DB$ GainControl | AllValid$ Permanent.OppCtrl+nonLand | Untap$ True | AddKWs$ Haste | LoseControl$ EOT | RememberControlled$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ AttackOwner\nSVar:AttackOwner:Mode$ MustAttack | ValidCreature$ Card.Self | MustAttack$ CardOwner | Description$ This permanent attacks its owner this turn if able.\nOracle:When you set this scheme in motion, gain control of all nonland permanents your opponents control until end of turn. Untap those permanents. They gain haste until end of turn. Each of them attacks its owner this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Crushing Masterstroke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

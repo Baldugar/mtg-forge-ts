@@ -1,0 +1,23 @@
+{
+  "id": "chaos-is-my-plaything-corpus-m686",
+  "description": "M6 corpus — Chaos Is My Plaything; in-hand parse.",
+  "seed": 61480,
+  "cards": {
+    "Chaos Is My Plaything": "Name:Chaos Is My Plaything\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, for each opponent, exile target permanent that player controls. Then each player reveals cards from the top of their library until they reveal a permanent card, puts it onto the battlefield, and puts the rest on the bottom of their library in a random order.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.OppCtrl | TgtPrompt$ Select up to one target creature each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | SubAbility$ DBDigUntil\nSVar:DBDigUntil:DB$ DigUntil | Defined$ Player | Valid$ Permanent | ValidDescription$ permanent | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | FoundDestination$ Battlefield\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:When you set this scheme in motion, for each opponent, exile target permanent that player controls. Then each player reveals cards from the top of their library until they reveal a permanent card, puts it onto the battlefield, and puts the rest on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaos Is My Plaything"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "you-live-only-because-i-will-it-corpus-m686",
+  "description": "M6 corpus — You Live Only Because I Will It; in-hand parse.",
+  "seed": 61815,
+  "cards": {
+    "You Live Only Because I Will It": "Name:You Live Only Because I Will It\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigRedistribute | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, you may redistribute any number of life totals.\nSVar:TrigRedistribute:DB$ SetLife | PlayerChoices$ Player | ChoiceAmount$ Any | ChoicePrompt$ Choose any number of players | Redistribute$ True\nOracle:When you set this scheme in motion, you may redistribute any number of life totals.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "You Live Only Because I Will It"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "enigma-sphinx-avatar-corpus-m686",
+  "description": "M6 corpus — Enigma Sphinx Avatar; in-hand parse.",
+  "seed": 61509,
+  "cards": {
+    "Enigma Sphinx Avatar": "Name:Enigma Sphinx Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+5\nT:Mode$ SpellCast | ValidCard$ Artifact.nonColorless | ValidActivatingPlayer$ You | CheckSVar$ NumColoredCast | SVarCompare$ EQ1 | Execute$ TrigSearch | NoResolvingCheck$ True | TriggerZones$ Command | TriggerDescription$ Whenever you cast a colored artifact spell for the first time each turn, search your library for a colored artifact card chosen at random whose mana value is less than that spell's mana value. You may play that card without paying its mana cost. If you don't, put that card on the bottom of your library.\nSVar:TrigSearch:DB$ ChangeZone | AtRandom$ True | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | ChangeType$ Artifact.nonColorless+cmcLTX | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | Controller$ You | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumColoredCast:Count$ThisTurnCast_Artifact.nonColorless+YouCtrl\nSVar:X:Count$TriggeredCardManaCost\nOracle:Hand -1, life +5\\nWhenever you cast a colored artifact spell for the first time each turn, search your library for a colored artifact card chosen at random whose mana value is less than that spell's mana value. You may play that card without paying its mana cost. If you don't, put that card on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enigma Sphinx Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

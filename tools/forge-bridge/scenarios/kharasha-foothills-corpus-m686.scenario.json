@@ -1,0 +1,23 @@
+{
+  "id": "kharasha-foothills-corpus-m686",
+  "description": "M6 corpus — Kharasha Foothills; in-hand parse.",
+  "seed": 61586,
+  "cards": {
+    "Kharasha Foothills": "Name:Kharasha Foothills\nManaCost:no cost\nTypes:Plane Mongseng\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Command | Attacked$ Player | Execute$ TrigCopy | TriggerDescription$ Whenever a creature you control attacks a player, for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent. Exile those tokens at the beginning of the next end step.\nSVar:TrigCopy:DB$ RepeatEach | RepeatPlayers$ OppNonTriggeredDefender | RepeatSubAbility$ DBCopy | ChangeZoneTable$ True | SubAbility$ DelTrig\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredAttackerLKICopy | TokenAttacking$ Remembered | TokenTapped$ True | Optional$ True | ImprintTokens$ True\n# The DelayedTrigger is for all player, not just for each attacking, so can't use AtEOT there\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigExile | RememberObjects$ ImprintedLKI | TriggerDescription$ At the beginning of the next end step, exile those tokens. | SubAbility$ DBCleanup\nSVar:TrigExile:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Battlefield | Destination$ Exile\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you may sacrifice any number of creatures. If you do, CARDNAME deals that much damage to target creature.\nSVar:RolledChaos:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDmg\nSVar:SacX:Count$Valid Creature.YouCtrl\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ DmgX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:DmgX:Remembered$Amount\nOracle:Whenever a creature you control attacks a player, for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent. Exile those tokens at the beginning of the next end step.\\nWhenever chaos ensues, you may sacrifice any number of creatures. If you do, Kharasha Foothills deals that much damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kharasha Foothills"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

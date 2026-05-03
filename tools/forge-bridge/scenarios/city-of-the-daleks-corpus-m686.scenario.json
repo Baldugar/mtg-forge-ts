@@ -1,0 +1,23 @@
+{
+  "id": "city-of-the-daleks-corpus-m686",
+  "description": "M6 corpus — City of the Daleks; in-hand parse.",
+  "seed": 61485,
+  "cards": {
+    "City of the Daleks": "Name:City of the Daleks\nManaCost:no cost\nTypes:Plane Skaro\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Command | TriggerDescription$ Whenever you attack, target opponent loses X life, where X is the number of artifacts you control.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigRepeat | TriggerDescription$ Whenever chaos ensues, for each opponent, you create a 3/3 black Dalek artifact creature token with menace that attacks that opponent this turn if able. Those tokens gain haste. Sacrifice them at the beginning of the next end step.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBToken | ChangeZoneTable$ True | SubAbility$ DBSac\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_a_dalek_menace | RememberTokens$ True | ImprintTokens$ True | PumpKeywords$ Haste | SubAbility$ DBEff\nSVar:DBEff:DB$ Effect | RememberObjects$ Remembered | ExileOnMoved$ Battlefield | StaticAbilities$ MustAttack | SubAbility$ DBCleanup\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | MustAttack$ RememberedPlayer | Description$ This creature attacks its designated player each combat if able.\nSVar:DBSac:DB$ Pump | Defined$ Imprinted | AtEOT$ Sacrifice | SubAbility$ DBCleanup2\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Count$Valid Artifact.YouCtrl\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Dalek\nDeckNeeds:Type$Artifact\nOracle:Whenever you attack, target opponent loses X life, where X is the number of artifacts you control.\\nWhenever chaos ensues, for each opponent, you create a 3/3 black Dalek artifact creature token with menace that attacks that opponent this turn if able. Those tokens gain haste. Sacrifice them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "City of the Daleks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

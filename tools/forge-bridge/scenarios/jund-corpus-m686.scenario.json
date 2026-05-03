@@ -1,0 +1,23 @@
+{
+  "id": "jund-corpus-m686",
+  "description": "M6 corpus — Jund; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "Jund": "Name:Jund\nManaCost:no cost\nTypes:Plane Alara\nT:Mode$ SpellCast | ValidCard$ Creature.Black,Creature.Red,Creature.Green | ValidActivatingPlayer$ Player | TriggerZones$ Command | Execute$ DevourPump | TriggerDescription$ Whenever a player casts a black, red, or green creature spell, it gains devour 5. (As the creature enters, its controller may sacrifice any number of creatures. The creature enters with five times that many +1/+1 counters on it.)\nSVar:DevourPump:DB$ Animate | Defined$ TriggeredCardLKICopy | Keywords$ Devour:5 | Duration$ Permanent\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, create two 1/1 red Goblin creature tokens.\nSVar:RolledChaos:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nOracle:Whenever a player casts a black, red, or green creature spell, it gains devour 5. (As the creature enters, its controller may sacrifice any number of creatures. The creature enters with five times that many +1/+1 counters on it.)\\nWhenever chaos ensues, create two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jund"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

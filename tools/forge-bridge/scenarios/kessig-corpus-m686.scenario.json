@@ -1,0 +1,23 @@
+{
+  "id": "kessig-corpus-m686",
+  "description": "M6 corpus — Kessig; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Kessig": "Name:Kessig\nManaCost:no cost\nTypes:Plane Innistrad\nR:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Creature.nonWerewolf | ActiveZones$ Command | Description$ Prevent all combat damage that would be dealt by non-Werewolf creatures.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, each creature you control gets +2/+2, gains trample, and becomes a Werewolf in addition to its other types until end of turn.\nSVar:RolledChaos:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | Types$ Werewolf | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | NumAtt$ +2 | NumDef$ +2\nSVar:AIRollPlanarDieParams:Mode$ Always | RollInMain1$ True | HasCreatureInPlay$ True\nOracle:Prevent all combat damage that would be dealt by non-Werewolf creatures.\\nWhenever chaos ensues, each creature you control gets +2/+2, gains trample, and becomes a Werewolf in addition to its other types until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kessig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

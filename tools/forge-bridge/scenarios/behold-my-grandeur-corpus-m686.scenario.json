@@ -1,0 +1,23 @@
+{
+  "id": "behold-my-grandeur-corpus-m686",
+  "description": "M6 corpus — Behold My Grandeur; in-hand parse.",
+  "seed": 61468,
+  "cards": {
+    "Behold My Grandeur": "Name:Behold My Grandeur\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBAddMana | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, add {U}{B}{R}.\nSVar:DBAddMana:DB$ Mana | Produced$ U B R\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBSearch | TriggerZones$ Command | OptionalDecider$ You | CheckSVar$ X | SVarCompare$ GE6 | TriggerDescription$ When you set this scheme in motion, if you control six or more lands, you may search your library for a card with mana value 6 or greater, reveal it, put it into your hand, then shuffle.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.cmcGE6 | ChangeNum$ 1 | ShuffleNonMandatory$ True\nSVar:X:Count$Valid Land.YouCtrl\nOracle:When you set this scheme in motion, add {U}{B}{R}.\\nWhen you set this scheme in motion, if you control six or more lands, you may search your library for a card with mana value 6 or greater, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Behold My Grandeur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

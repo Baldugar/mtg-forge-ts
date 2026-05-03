@@ -1,0 +1,23 @@
+{
+  "id": "nephalia-corpus-m686",
+  "description": "M6 corpus — Nephalia; in-hand parse.",
+  "seed": 61650,
+  "cards": {
+    "Nephalia": "Name:Nephalia\nManaCost:no cost\nTypes:Plane Innistrad\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigMill | TriggerDescription$ At the beginning of your end step, mill seven cards. Then return a card at random from your graveyard to your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 7 | SubAbility$ DBRandom\nSVar:DBRandom:DB$ ChooseCard | Choices$ Card.YouOwn | ChoiceZone$ Graveyard | AtRandom$ True | Amount$ 1 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ChosenCard\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, return target card from your graveyard to your hand.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouOwn\nSVar:AIRollPlanarDieParams:Mode$ Always | CardsInGraveyardGE$ 1\nOracle:At the beginning of your end step, mill seven cards. Then return a card at random from your graveyard to your hand.\\nWhenever chaos ensues, return target card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nephalia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stronghold-furnace-corpus-m686",
+  "description": "M6 corpus — Stronghold Furnace; in-hand parse.",
+  "seed": 61735,
+  "cards": {
+    "Stronghold Furnace": "Name:Stronghold Furnace\nManaCost:no cost\nTypes:Plane Rath\nR:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card,Emblem | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ Y\nSVar:Y:ReplaceCount$DamageAmount/Twice\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, CARDNAME deals 1 damage to any target.\nSVar:RolledChaos:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\\nWhenever chaos ensues, Stronghold Furnace deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stronghold Furnace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

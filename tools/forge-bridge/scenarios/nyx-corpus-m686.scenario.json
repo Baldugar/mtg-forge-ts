@@ -1,0 +1,23 @@
+{
+  "id": "nyx-corpus-m686",
+  "description": "M6 corpus — Nyx; in-hand parse.",
+  "seed": 61659,
+  "cards": {
+    "Nyx": "Name:Nyx\nManaCost:no cost\nTypes:Plane Theros\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Creature.!token | AddType$ Enchantment | Description$ Nontoken creatures are enchantments in addition to their other types.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Command | Execute$ TrigGainLife | TriggerDescription$ Constellation — Whenever an enchantment you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, choose a color. Add an amount of mana of that color equal to your devotion to that color.\nSVar:RolledChaos:DB$ ChooseColor | SubAbility$ DBMana | AILogic$ MostProminentComputerControls | AINoRecursiveCheck$ True\nSVar:DBMana:DB$ Mana | Produced$ Chosen | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenColor$ True\nSVar:X:Count$Devotion.Chosen\nDeckHas:Ability$LifeGain\nDeckHints:Type$Enchantment\nOracle:Nontoken creatures are enchantments in addition to their other types.\\nConstellation — Whenever an enchantment you control enters, you gain 1 life.\\nWhenever chaos ensues, choose a color. Add an amount of mana of that color equal to your devotion to that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nyx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

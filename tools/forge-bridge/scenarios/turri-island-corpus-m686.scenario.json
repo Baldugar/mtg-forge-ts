@@ -1,0 +1,23 @@
+{
+  "id": "turri-island-corpus-m686",
+  "description": "M6 corpus — Turri Island; in-hand parse.",
+  "seed": 61791,
+  "cards": {
+    "Turri Island": "Name:Turri Island\nManaCost:no cost\nTypes:Plane Ir\nS:Mode$ ReduceCost | EffectZone$ Command | ValidCard$ Creature | Type$ Spell | Amount$ 2 | Description$ Creature spells cost {2} less to cast.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, reveal the top three cards of your library. Put all creature cards revealed this way into your hand and the rest into your graveyard.\nSVar:RolledChaos:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature | DestinationZone2$ Graveyard\nSVar:AIRollPlanarDieParams:Mode$ Random\nOracle:Creature spells cost {2} less to cast.\\nWhenever chaos ensues, reveal the top three cards of your library. Put all creature cards revealed this way into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turri Island"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

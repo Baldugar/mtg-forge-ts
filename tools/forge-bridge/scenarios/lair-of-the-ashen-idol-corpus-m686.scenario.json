@@ -1,0 +1,23 @@
+{
+  "id": "lair-of-the-ashen-idol-corpus-m686",
+  "description": "M6 corpus — Lair of the Ashen Idol; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Lair of the Ashen Idol": "Name:Lair of the Ashen Idol\nManaCost:no cost\nTypes:Plane Azgol\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ SacToIdol | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature. If you can't, planeswalk.\nSVar:SacToIdol:DB$ Sacrifice | Defined$ You | SacValid$ Creature | SubAbility$ IdolWalk | RememberSacrificed$ True\nSVar:IdolWalk:DB$ Planeswalk | ConditionCheckSVar$ IdolX | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:IdolX:Remembered$Amount\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, any number of target players each create a 2/2 black Zombie creature token.\nSVar:RolledChaos:DB$ Token | ValidTgts$ Player | TgtPrompt$ Select target player to receive zombie token | TargetMin$ 0 | TargetMax$ MaxTgt | TokenScript$ b_2_2_zombie | TokenOwner$ Targeted\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:At the beginning of your upkeep, sacrifice a creature. If you can't, planeswalk.\\nWhenever chaos ensues, any number of target players each create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lair of the Ashen Idol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

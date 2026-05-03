@@ -1,0 +1,23 @@
+{
+  "id": "morinfen-avatar-corpus-m686",
+  "description": "M6 corpus — Morinfen Avatar; in-hand parse.",
+  "seed": 61621,
+  "cards": {
+    "Morinfen Avatar": "Name:Morinfen Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+30\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life for each permanent you control.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ Ouch\nSVar:Ouch:Count$Valid Permanent.YouCtrl\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Hand +0, life +30\\nAt the beginning of your upkeep, you lose 1 life for each permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morinfen Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

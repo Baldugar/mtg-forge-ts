@@ -1,0 +1,23 @@
+{
+  "id": "my-wish-is-your-command-corpus-m686",
+  "description": "M6 corpus — My Wish Is Your Command; in-hand parse.",
+  "seed": 61641,
+  "cards": {
+    "My Wish Is Your Command": "Name:My Wish Is Your Command\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ MyWish | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent reveals their hand. You may choose a noncreature, nonland card revealed this way and cast it without paying its mana cost.\nSVar:MyWish:DB$ RevealHand | Defined$ Player.Opponent | RememberRevealed$ True | SubAbility$ MyPleasure\nSVar:MyPleasure:DB$ Play | Valid$ Card.nonCreature+nonLand+IsRemembered | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you set this scheme in motion, each opponent reveals their hand. You may choose a noncreature, nonland card revealed this way and cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Wish Is Your Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

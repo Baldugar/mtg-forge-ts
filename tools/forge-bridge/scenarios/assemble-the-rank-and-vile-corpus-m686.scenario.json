@@ -1,0 +1,23 @@
+{
+  "id": "assemble-the-rank-and-vile-corpus-m686",
+  "description": "M6 corpus — Assemble the Rank and Vile; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Assemble the Rank and Vile": "Name:Assemble the Rank and Vile\nManaCost:no cost\nTypes:Conspiracy\nK:Hidden agenda\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Creature.NamedCard+YouCtrl | AffectedZone$ Battlefield | AddTrigger$ AtRaVDie | AddSVar$ AtRaVZombie | Description$ Creatures you control with the chosen name have \"When this creature dies, you may pay {B}. If you do, put a 2/2 black Zombie creature token onto the battlefield tapped.\"\nSVar:AtRaVDie:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ AtRaVZombie | TriggerDescription$ When this creature dies, you may pay {B}. If you do, put a 2/2 black Zombie creature token onto the battlefield tapped.\nSVar:AtRaVZombie:AB$ Token | Cost$ B | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True\nSVar:AgendaLogic:BestCreatureInComputerDeck\nOracle:Hidden agenda (Start the game with this conspiracy face down in the command zone and secretly choose a card name. You may turn this conspiracy face up any time and reveal that name.)\\nCreatures you control with the chosen name have \"When this creature dies, you may pay {B}. If you do, create a tapped 2/2 black Zombie creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Assemble the Rank and Vile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

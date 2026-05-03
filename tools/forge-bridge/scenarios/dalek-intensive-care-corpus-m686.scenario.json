@@ -1,0 +1,23 @@
+{
+  "id": "dalek-intensive-care-corpus-m686",
+  "description": "M6 corpus — Dalek Intensive Care; in-hand parse.",
+  "seed": 61490,
+  "cards": {
+    "Dalek Intensive Care": "Name:Dalek Intensive Care\nManaCost:no cost\nTypes:Plane The Dalek Asylum\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, exile a non-Dalek creature you control. If you do, create a 3/3 black Dalek artifact creature token with menace. It gains haste until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, exile a non-Dalek creature you control. If you do, create a 3/3 black Dalek artifact creature token with menace. It gains haste until end of turn.\nSVar:TrigExile:AB$ Token | Cost$ Mandatory Exile<1/Creature.nonDalek/non-Dalek creature> | TokenScript$ b_3_3_a_dalek_menace | PumpKeywords$ Haste | PumpDuration$ EOT\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target Dalek you control deals damage equal to its power to target creature you don't control.\nSVar:RolledChaos:DB$ Pump | ValidTgts$ Dalek.YouCtrl | TgtPrompt$ Select target Dalek you control | AILogic$ PowerDmg | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$Token & Type$Artifact|Dalek\nOracle:When you planeswalk to Dalek Intensive Care and at the beginning of your upkeep, exile a non-Dalek creature you control. If you do, create a 3/3 black Dalek artifact creature token with menace. It gains haste until end of turn.\\nWhenever chaos ensues, target Dalek you control deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dalek Intensive Care"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

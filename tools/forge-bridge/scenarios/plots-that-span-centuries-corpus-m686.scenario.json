@@ -1,0 +1,23 @@
+{
+  "id": "plots-that-span-centuries-corpus-m686",
+  "description": "M6 corpus — Plots That Span Centuries; in-hand parse.",
+  "seed": 61679,
+  "cards": {
+    "Plots That Span Centuries": "Name:Plots That Span Centuries\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ PlotEffect | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, the next time you would set a scheme in motion, set three schemes in motion instead.\nSVar:PlotEffect:DB$ Effect | Name$ Plots Scheme | Duration$ Permanent | ReplacementEffects$ PlotPower\nSVar:PlotPower:Event$ SetInMotion | ReplaceWith$ PlotRep | Description$ The next time you would set a scheme in motion, set three schemes in motion instead.\nSVar:PlotRep:DB$ SetInMotion | RepeatNum$ 3 | SubAbility$ ExilePlot\nSVar:ExilePlot:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:When you set this scheme in motion, the next time you would set a scheme in motion, set three schemes in motion instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plots That Span Centuries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "undercity-reaches-corpus-m686",
+  "description": "M6 corpus — Undercity Reaches; in-hand parse.",
+  "seed": 61794,
+  "cards": {
+    "Undercity Reaches": "Name:Undercity Reaches\nManaCost:no cost\nTypes:Plane Ravnica\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Player | OptionalDecider$ TriggeredSourceController | CombatDamage$ True | TriggerZones$ Command | Execute$ TrigDraw | TriggerDescription$ Whenever a creature deals combat damage to a player, its controller may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredSourceController | NumCards$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you have no maximum hand size for the rest of the game.\nSVar:RolledChaos:DB$ Effect | StaticAbilities$ STHandSize | Duration$ Permanent\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Whenever a creature deals combat damage to a player, its controller may draw a card.\\nWhenever chaos ensues, you have no maximum hand size for the rest of the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercity Reaches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

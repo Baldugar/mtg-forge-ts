@@ -1,0 +1,23 @@
+{
+  "id": "the-fate-of-the-flammable-corpus-m686",
+  "description": "M6 corpus — The Fate of the Flammable; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "The Fate of the Flammable": "Name:The Fate of the Flammable\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBChoose | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, this scheme deals 6 damage to that player. If the player chooses others, this scheme deals 3 damage to each of your other opponents.\nSVar:DBChoose:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ Self,Others | AILogic$ SelfOthers\nSVar:Self:DB$ DealDamage | Defined$ ParentTarget | NumDmg$ 6 | SpellDescription$ Self\nSVar:Others:DB$ DealDamage | Defined$ OppNonParentTarget | NumDmg$ 3 | SpellDescription$ Others\nOracle:When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, this scheme deals 6 damage to that player. If the player chooses others, this scheme deals 3 damage to each of your other opponents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fate of the Flammable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

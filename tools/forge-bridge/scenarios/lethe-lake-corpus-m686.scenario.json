@@ -1,0 +1,23 @@
+{
+  "id": "lethe-lake-corpus-m686",
+  "description": "M6 corpus — Lethe Lake; in-hand parse.",
+  "seed": 61595,
+  "cards": {
+    "Lethe Lake": "Name:Lethe Lake\nManaCost:no cost\nTypes:Plane Arkhos\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ LetheMill | TriggerDescription$ At the beginning of your upkeep, mill ten cards.\nSVar:LetheMill:DB$ Mill | NumCards$ 10\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target player mills ten cards.\nSVar:RolledChaos:DB$ Mill | ValidTgts$ Player | NumCards$ 10\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:At the beginning of your upkeep, mill ten cards.\\nWhenever chaos ensues, target player mills ten cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lethe Lake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

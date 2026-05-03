@@ -1,0 +1,23 @@
+{
+  "id": "nature-shields-its-own-corpus-m686",
+  "description": "M6 corpus — Nature Shields Its Own; in-hand parse.",
+  "seed": 61646,
+  "cards": {
+    "Nature Shields Its Own": "Name:Nature Shields Its Own\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ AttackerUnblocked | ValidCard$ Creature | ValidDefender$ You,Planeswalker.YouCtrl | TriggerZones$ Command | Execute$ TrigToken | TriggerDescription$ Whenever a creature attacks and isn't blocked, if you're the defending player, create a 0/1 green Plant creature token that's blocking that creature.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ g_0_1_plant | TokenBlocking$ TriggeredAttacker\nT:Mode$ AttackersDeclared | Execute$ DelTrigEOC | CheckSVar$ NatureShields | SVarCompare$ GE4 | NoResolvingCheck$ True | TriggerZones$ Command | AttackedTarget$ You | TriggerDescription$ When four or more creatures attack you, abandon this scheme at end of combat.\nSVar:DelTrigEOC:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ Abandon | TriggerDescription$ Abandon this scheme at end of combat.\nSVar:Abandon:DB$ Abandon\nSVar:NatureShields:Count$Valid Creature.attackingYou\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nWhenever a creature attacks and isn't blocked, if you're the defending player, create a 0/1 green Plant creature token that's blocking that creature.\\nWhen four or more creatures attack you, abandon this scheme at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature Shields Its Own"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

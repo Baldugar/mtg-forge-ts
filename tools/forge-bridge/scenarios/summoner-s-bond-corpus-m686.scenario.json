@@ -1,0 +1,23 @@
+{
+  "id": "summoner-s-bond-corpus-m686",
+  "description": "M6 corpus — Summoner's Bond; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Summoner's Bond": "Name:Summoner's Bond\nManaCost:no cost\nTypes:Conspiracy\nK:Double agenda\nT:Mode$ SpellCast | ValidCard$ Creature.NamedCard | ValidActivatingPlayer$ You | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ Whenever you cast a creature spell with one of the chosen names, you may search your library for a creature card with the other chosen name, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.NamedCard+!sharesNameWith TriggeredCard\nOracle:Double agenda (Start the game with this conspiracy face down in the command zone and secretly choose two different card names. You may turn this conspiracy face up any time and reveal those names.)\\nWhenever you cast a creature spell with one of the chosen names, you may search your library for a creature card with the other chosen name, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summoner's Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

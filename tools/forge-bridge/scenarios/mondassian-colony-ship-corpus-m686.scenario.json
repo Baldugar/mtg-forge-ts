@@ -1,0 +1,23 @@
+{
+  "id": "mondassian-colony-ship-corpus-m686",
+  "description": "M6 corpus — Mondassian Colony Ship; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Mondassian Colony Ship": "Name:Mondassian Colony Ship\nManaCost:no cost\nTypes:Plane Spacecraft\nT:Mode$ Attacks | ValidCard$ Creature | TriggerZones$ Command | Execute$ AnimosityPump | TriggerDescription$ Whenever a creature attacks, it gets +1/+1 until end of turn for each other creature its controller controls that shares a creature type with it.\nSVar:AnimosityPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.!TriggeredAttacker+ControlledBy AttackingPlayer+sharesCreatureTypeWith TriggeredAttacker\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigSetState | TriggerDescription$ Whenever chaos ensues, turn target creature face down. It becomes a 2/2 Cyberman artifact creature.\nSVar:TrigSetState:DB$ SetState | ValidTgts$ Creature | Mode$ TurnFaceDown | FaceDownSetType$ Artifact & Creature & Cyberman | FaceDownPower$ 2 | FaceDownToughness$ 2\nDeckHas:Type$Cyberman\nOracle:Whenever a creature attacks, it gets +1/+1 until end of turn for each other creature its controller controls that shares a creature type with it.\\nWhenever chaos ensues, turn target creature face down. It becomes a 2/2 Cyberman artifact creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mondassian Colony Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

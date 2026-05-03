@@ -1,0 +1,23 @@
+{
+  "id": "paliano-corpus-m686",
+  "description": "M6 corpus — Paliano; in-hand parse.",
+  "seed": 61671,
+  "cards": {
+    "Paliano": "Name:Paliano\nManaCost:no cost\nTypes:Plane Fiora\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CheckSVar$ Monarch | SVarCompare$ EQ0 | CombatDamage$ True | Execute$ TrigMonarch | TriggerZones$ Command | TriggerDescription$ When one or more creatures you control deal combat damage to a player, if there is no monarch, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, create a 1/1 black Assassin creature token with deathtouch and haste.\nSVar:RolledChaos:DB$ Token | TokenScript$ b_1_1_assassin_deathtouch_haste | TokenOwner$ You\nSVar:Monarch:PlayerCountPlayers$HasPropertyisMonarch\nDeckHas:Ability$Token & Type$Assassin\nOracle:When one or more creatures you control deal combat damage to a player, if there is no monarch, you become the monarch.\\nWhenever chaos ensues, create a 1/1 black Assassin creature token with deathtouch and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paliano"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

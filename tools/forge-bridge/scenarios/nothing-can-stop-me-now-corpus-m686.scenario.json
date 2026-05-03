@@ -1,0 +1,23 @@
+{
+  "id": "nothing-can-stop-me-now-corpus-m686",
+  "description": "M6 corpus — Nothing Can Stop Me Now; in-hand parse.",
+  "seed": 61658,
+  "cards": {
+    "Nothing Can Stop Me Now": "Name:Nothing Can Stop Me Now\nManaCost:no cost\nTypes:Ongoing Scheme\nText:(An ongoing scheme remains face up until it's abandoned.)\nR:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ You | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a source an opponent controls would deal damage to you, prevent 1 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 1\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | SVarCompare$ GE5 | TriggerZones$ Command | Execute$ Abandon | TriggerDescription$ At the beginning of each end step, if you've been dealt 5 or more damage this turn, abandon this scheme.\nSVar:Abandon:DB$ Abandon\nSVar:X:PlayerCountPropertyYou$DamageThisTurn\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nIf a source an opponent controls would deal damage to you, prevent 1 of that damage.\\nAt the beginning of each end step, if you've been dealt 5 or more damage this turn, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nothing Can Stop Me Now"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "aretopolis-corpus-m686",
+  "description": "M6 corpus — Aretopolis; in-hand parse.",
+  "seed": 61457,
+  "cards": {
+    "Aretopolis": "Name:Aretopolis\nManaCost:no cost\nTypes:Plane Kephalai\nT:Mode$ PlaneswalkedTo | ValidCard$ Plane.Self | Execute$ AcquireScrolls | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, put a scroll counter on CARDNAME, then you gain life equal to the number of scroll counters on it.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ AcquireScrolls | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, put a scroll counter on CARDNAME, then you gain life equal to the number of scroll counters on it.\nSVar:AcquireScrolls:DB$ PutCounter | Defined$ Self | CounterType$ SCROLL | CounterNum$ 1 | SubAbility$ ScrollsOfLife\nSVar:ScrollsOfLife:DB$ GainLife | Defined$ You | LifeAmount$ NumScrolls\nSVar:NumScrolls:Count$CardCounters.SCROLL\nT:Mode$ Always | TriggerZones$ Command | CheckSVar$ NumScrolls | SVarCompare$ GE10 | Execute$ RolledWalk | TriggerDescription$ When CARDNAME has ten or more scroll counters on it, planeswalk.\nSVar:RolledWalk:DB$ Planeswalk\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever chaos ensues, put a scroll counter on CARDNAME, then draw cards equal to the number of scroll counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ SCROLL | SubAbility$ ScrollsOfKnowledge\nSVar:ScrollsOfKnowledge:DB$ Draw | NumCards$ NumScrolls\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:When you planeswalk to Aretopolis or at the beginning of your upkeep, put a scroll counter on Aretopolis, then you gain life equal to the number of scroll counters on it.\\nWhen Aretopolis has ten or more scroll counters on it, planeswalk.\\nWhenever chaos ensues, put a scroll counter on Aretopolis, then draw cards equal to the number of scroll counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aretopolis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

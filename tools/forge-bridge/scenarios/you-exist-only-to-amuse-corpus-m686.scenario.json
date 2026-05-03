@@ -1,0 +1,23 @@
+{
+  "id": "you-exist-only-to-amuse-corpus-m686",
+  "description": "M6 corpus — You Exist Only to Amuse; in-hand parse.",
+  "seed": 61814,
+  "cards": {
+    "You Exist Only to Amuse": "Name:You Exist Only to Amuse\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, ABILITY\nSVar:TrigCharm:DB$ Charm | CharmNum$ Count$Compare X GE6.2.1 | Choices$ DBToken,DBAnimateAll | AdditionalDescription$ If you control six or more lands, choose both instead.\nSVar:DBToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_devil_burn | SpellDescription$ Create three 1/1 red Devil creature tokens with \"When this creature dies, it deals 1 damage to any target.\"\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.OppCtrl | Power$ 1 | Toughness$ 1 | RemoveAllAbilities$ True | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, creatures your opponents control have base power and toughness 1/1 and lose all abilities.\nSVar:X:Count$Valid Land.YouCtrl\nDeckHas:Ability$Token\nOracle:When you set this scheme in motion, choose one. If you control six or more lands, choose both instead.\\n• Create three 1/1 red Devil creature tokens with \"When this creature dies, it deals 1 damage to any target.\"\\n• Until your next turn, creatures your opponents control have base power and toughness 1/1 and lose all abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "You Exist Only to Amuse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

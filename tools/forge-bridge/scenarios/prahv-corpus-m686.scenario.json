@@ -1,0 +1,23 @@
+{
+  "id": "prahv-corpus-m686",
+  "description": "M6 corpus — Prahv; in-hand parse.",
+  "seed": 61684,
+  "cards": {
+    "Prahv": "Name:Prahv\nManaCost:no cost\nTypes:Plane Ravnica\nS:Mode$ CantAttack | EffectZone$ Command | ValidCard$ Creature.ControlledBy You.castSpellThisTurn | Description$ If you cast a spell this turn, you can't attack with creatures.\nS:Mode$ CantBeCast | EffectZone$ Command | ValidCard$ Card | Caster$ You.attackedWithCreaturesThisTurn | Description$ If you attacked with creatures this turn, you can't cast spells.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you gain life equal to the number of cards in your hand.\nSVar:RolledChaos:DB$ GainLife | LifeAmount$ PrahvX | Defined$ You\nSVar:PrahvX:Count$ValidHand Card.YouOwn\nSVar:AIRollPlanarDieParams:Mode$ Always | CardsInHandGE$ 2\nOracle:If you cast a spell this turn, you can't attack with creatures.\\nIf you attacked with creatures this turn, you can't cast spells.\\nWhenever chaos ensues, you gain life equal to the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prahv"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

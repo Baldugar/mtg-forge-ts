@@ -1,0 +1,23 @@
+{
+  "id": "i-am-duskmourn-corpus-m686",
+  "description": "M6 corpus — I Am Duskmourn; in-hand parse.",
+  "seed": 61556,
+  "cards": {
+    "I Am Duskmourn": "Name:I Am Duskmourn\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigPlay | TriggerDescription$ At the beginning of your end step, you may cast a spell from your hand without paying its mana cost. If you do, abandon this scheme.\nSVar:TrigPlay:DB$ Play | Valid$ Card.YouCtrl | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Optional$ True | RememberPlayed$ True\nSVar:Abandon:DB$ Abandon | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nAt the beginning of your end step, you may cast a spell from your hand without paying its mana cost. If you do, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Am Duskmourn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

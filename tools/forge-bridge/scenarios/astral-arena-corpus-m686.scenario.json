@@ -1,0 +1,23 @@
+{
+  "id": "astral-arena-corpus-m686",
+  "description": "M6 corpus — Astral Arena; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Astral Arena": "Name:Astral Arena\nManaCost:no cost\nTypes:Plane Kolbahan\nS:Mode$ AttackRestrict | EffectZone$ Command | MaxAttackers$ 1 | Description$ No more than one creature can attack each combat.\nS:Mode$ BlockRestrict | EffectZone$ Command | MaxBlockers$ 1 | Description$ No more than one creature can block each combat.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, CARDNAME deals 2 damage to each creature.\nSVar:RolledChaos:DB$ DamageAll | NumDmg$ 2 | ValidCards$ Creature\nSVar:AIRollPlanarDieParams:Mode$ Random | MinTurn$ 5\nOracle:No more than one creature can attack each combat.\\nNo more than one creature can block each combat.\\nWhenever chaos ensues, Astral Arena deals 2 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astral Arena"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mount-keralia-corpus-m686",
+  "description": "M6 corpus — Mount Keralia; in-hand parse.",
+  "seed": 61624,
+  "cards": {
+    "Mount Keralia": "Name:Mount Keralia\nManaCost:no cost\nTypes:Plane Regatha\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ BuildPressure | TriggerDescription$ At the beginning of your end step, put a pressure counter on CARDNAME.\nSVar:BuildPressure:DB$ PutCounter | Defined$ Self | CounterType$ PRESSURE | CounterNum$ 1\nT:Mode$ PlaneswalkedFrom | ValidCard$ Plane.Self | Execute$ Eruption | TriggerDescription$ When you planeswalk away from CARDNAME, it deals damage equal to the number of pressure counters on it to each creature and each planeswalker.\nSVar:Eruption:DB$ DamageAll | ValidCards$ Creature,Planeswalker | ValidDescription$ each creature and each planeswalker. | NumDmg$ KeraliaX\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, prevent all damage that planes named Mount Keralia would deal this game to permanents you control.\nSVar:RolledChaos:DB$ Effect | ReplacementEffects$ RPrevent | EffectOwner$ You | Duration$ Permanent | SpellDescription$ Prevent all damage that planes named Mount Keralia would deal this game to permanents you control.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Permanent.YouCtrl | ValidSource$ Plane.namedMount Keralia | Description$ Prevent all damage that planes named Mount Keralia would deal this game to permanents you control.\nSVar:KeraliaX:TriggeredCard$CardCounters.PRESSURE\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True\nOracle:At the beginning of your end step, put a pressure counter on Mount Keralia.\\nWhen you planeswalk away from Mount Keralia, it deals damage equal to the number of pressure counters on it to each creature and each planeswalker.\\nWhenever chaos ensues, prevent all damage that planes named Mount Keralia would deal this game to permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mount Keralia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

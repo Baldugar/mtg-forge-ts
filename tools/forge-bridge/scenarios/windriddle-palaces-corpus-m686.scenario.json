@@ -1,0 +1,23 @@
+{
+  "id": "windriddle-palaces-corpus-m686",
+  "description": "M6 corpus — Windriddle Palaces; in-hand parse.",
+  "seed": 61809,
+  "cards": {
+    "Windriddle Palaces": "Name:Windriddle Palaces\nManaCost:no cost\nTypes:Plane Belenon\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Card.TopLibrary | AffectedZone$ Library | MayLookAt$ Player | Description$ Players play with the top card of their libraries revealed.\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Card.TopLibrary | AffectedZone$ Library | MayPlay$ You | Description$ You may play lands and cast spells from the top of any player's library.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, each player mills a card.\nSVar:RolledChaos:DB$ Mill | NumCards$ 1 | Defined$ Player\nSVar:AIRollPlanarDieParams:Mode$ Random | Chance$ 30\nOracle:Players play with the top card of their libraries revealed.\\nYou may play lands and cast spells from the top of any player's library.\\nWhenever chaos ensues, each player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windriddle Palaces"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

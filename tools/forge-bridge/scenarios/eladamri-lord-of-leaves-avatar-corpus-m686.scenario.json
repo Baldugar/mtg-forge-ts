@@ -1,0 +1,23 @@
+{
+  "id": "eladamri-lord-of-leaves-avatar-corpus-m686",
+  "description": "M6 corpus — Eladamri, Lord of Leaves Avatar; in-hand parse.",
+  "seed": 61503,
+  "cards": {
+    "Eladamri, Lord of Leaves Avatar": "Name:Eladamri, Lord of Leaves Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/+2\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ Player | TriggerZones$ Command | Execute$ TrigAddMana | TriggerDescription$ At the beginning of each player's precombat main phase, that player adds {G}{G}.\nSVar:TrigAddMana:DB$ Mana | Produced$ G | Amount$ 2 | Defined$ TriggeredPlayer\nAI:RemoveDeck:Random\nOracle:Hand -1, life +2\\nAt the beginning of each player's precombat main phase, that player adds {G}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eladamri, Lord of Leaves Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

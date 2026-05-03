@@ -1,0 +1,23 @@
+{
+  "id": "skybreen-corpus-m686",
+  "description": "M6 corpus — Skybreen; in-hand parse.",
+  "seed": 61719,
+  "cards": {
+    "Skybreen": "Name:Skybreen\nManaCost:no cost\nTypes:Plane Kaldheim\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Card.TopLibrary | AffectedZone$ Library | MayLookAt$ Player | Description$ Players play with the top card of their libraries revealed.\nS:Mode$ CantBeCast | EffectZone$ Command | ValidCard$ Card.sharesCardTypeWith EachTopLibrary | Description$ Spells that share a card type with the top card of a library can't be cast.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target player loses life equal to the number of cards in their hand.\nSVar:RolledChaos:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ Y\nSVar:Y:TargetedPlayer$CardsInHand\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Players play with the top card of their libraries revealed.\\nSpells that share a card type with the top card of a library can't be cast.\\nWhenever chaos ensues, target player loses life equal to the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skybreen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

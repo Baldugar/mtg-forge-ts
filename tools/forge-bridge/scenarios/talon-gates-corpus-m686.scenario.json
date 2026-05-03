@@ -1,0 +1,23 @@
+{
+  "id": "talon-gates-corpus-m686",
+  "description": "M6 corpus — Talon Gates; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Talon Gates": "Name:Talon Gates\nManaCost:no cost\nTypes:Plane Dominaria\nA:AB$ ChangeZone | Cost$ 0 | Origin$ Hand | Destination$ Exile | ChangeType$ Card.nonLand+YouCtrl | DefinedPlayer$ You | RememberChanged$ True | SorcerySpeed$ True | ActivationZone$ Command | SubAbility$ TimeInGates | StackDescription$ REP Any time you could cast a sorcery, you may exile_{p:You} exiles & your hand_their hand & , where X is its mana value._. & If the_The & doesn't have suspend, it gains suspend._gains suspend if it doesn't have suspend. | SpellDescription$ Any time you could cast a sorcery, you may exile a nonland card from your hand with X time counters on it, where X is its mana value. If the exiled card doesn't have suspend, it gains suspend.\n# Removed reminder text because it's too long for SA choice window. Add back when we wrap SA choices text. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, the player casts it without paying its mana cost. If it's a creature, it has haste.)\nSVar:TimeInGates:DB$ PutCounter | Defined$ Remembered | CounterType$ TIME | CounterNum$ GateX | SubAbility$ GiveSuspend | TgtZone$ Exile | StackDescription$ None\nSVar:GiveSuspend:DB$ PumpAll | ValidCards$ Card.IsRemembered+withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup | StackDescription$ If it doesn't have suspend, it gains suspend.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:GateX:Remembered$CardManaCost\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, remove two time counters from each suspended card you own.\nSVar:RolledChaos:DB$ RemoveCounterAll | ValidCards$ Card.suspended+YouOwn | CounterType$ TIME | CounterNum$ 2 | ValidZone$ Exile\nSVar:AIRollPlanarDieParams:Mode$ Always | RollInMain1$ True | MaxRollsPerTurn$ 9\nOracle:Any time you could cast a sorcery, you may exile a nonland card from your hand with X time counters on it, where X is its mana value. If the exiled card doesn't have suspend, it gains suspend. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, the player casts it without paying its mana cost. If it's a creature, it has haste.)\\nWhenever chaos ensues, remove two time counters from each suspended card you own.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talon Gates"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

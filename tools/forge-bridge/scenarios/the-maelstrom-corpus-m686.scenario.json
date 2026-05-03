@@ -1,0 +1,23 @@
+{
+  "id": "the-maelstrom-corpus-m686",
+  "description": "M6 corpus — The Maelstrom; in-hand parse.",
+  "seed": 61770,
+  "cards": {
+    "The Maelstrom": "Name:The Maelstrom\nManaCost:no cost\nTypes:Plane Alara\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigDig | OptionalDecider$ You | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, you may reveal the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDig | TriggerZones$ Command | Secondary$ True | OptionalDecider$ You | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, you may reveal the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | Optional$ True | ChangeNum$ 1 | ChangeValid$ Permanent | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition2$ -1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, return target permanent card from your graveyard to the battlefield.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target permanent card in your graveyard | ValidTgts$ Permanent.YouOwn\nSVar:AIRollPlanarDieParams:Mode$ Always | CardsInGraveyardGE$ 1\nOracle:When you planeswalk to The Maelstrom or at the beginning of your upkeep, you may reveal the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.\\nWhenever chaos ensues, return target permanent card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Maelstrom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

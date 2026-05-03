@@ -1,0 +1,23 @@
+{
+  "id": "may-civilization-collapse-corpus-m686",
+  "description": "M6 corpus — May Civilization Collapse; in-hand parse.",
+  "seed": 61609,
+  "cards": {
+    "May Civilization Collapse": "Name:May Civilization Collapse\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBChoose | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, that player sacrifices two lands. If the player chooses others, each of your other opponents sacrifices a land.\nSVar:DBChoose:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ Self,Others | AILogic$ SelfOthers\nSVar:Self:DB$ Sacrifice | SacValid$ Land | Defined$ ParentTarget | Amount$ 2 | SpellDescription$ Self\nSVar:Others:DB$ Sacrifice | SacValid$ Land | Defined$ OppNonParentTarget | Amount$ 1 | SpellDescription$ Others\nOracle:When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, that player sacrifices two lands. If the player chooses others, each of your other opponents sacrifices a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "May Civilization Collapse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

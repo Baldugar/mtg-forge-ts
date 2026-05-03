@@ -1,0 +1,23 @@
+{
+  "id": "approach-my-molten-realm-corpus-m686",
+  "description": "M6 corpus — Approach My Molten Realm; in-hand parse.",
+  "seed": 61454,
+  "cards": {
+    "Approach My Molten Realm": "Name:Approach My Molten Realm\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ MoltenEffect | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, until your next turn, if a source would deal damage, it deals double that damage instead.\nSVar:MoltenEffect:DB$ Effect | ReplacementEffects$ MoltenRealm | Duration$ UntilYourNextTurn\nSVar:MoltenRealm:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card,Emblem | ReplaceWith$ DmgTwice | Description$ Until your next turn, if a source would deal damage, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ MoltenX\nSVar:MoltenX:ReplaceCount$DamageAmount/Twice\nOracle:When you set this scheme in motion, until your next turn, if a source would deal damage, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Approach My Molten Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

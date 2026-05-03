@@ -1,0 +1,23 @@
+{
+  "id": "chaotic-aether-corpus-m686",
+  "description": "M6 corpus — Chaotic Aether; in-hand parse.",
+  "seed": 61481,
+  "cards": {
+    "Chaotic Aether": "Name:Chaotic Aether\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ Aether | TriggerDescription$ When you encounter CARDNAME, each blank roll of the planar dice is a {CHAOS} roll until a player planeswalks away from a plane. (Then planeswalk away from this phenomenon.)\nSVar:Aether:DB$ Effect | ReplacementEffects$ BlankIsChaos | Triggers$ TPWAway | SubAbility$ PWAway | Duration$ Permanent\nSVar:PWAway:DB$ Planeswalk\nSVar:BlankIsChaos:Event$ PlanarDiceResult | ValidRoll$ Blank | ReplaceWith$ REChaos | Description$ Each blank roll of the planar die is a {CHAOS} roll until a player planeswalks away from a plane.\nSVar:REChaos:DB$ ReplaceEffect | VarName$ Result | VarValue$ Chaos | VarType$ PlanarDice\nSVar:TPWAway:Mode$ PlaneswalkedFrom | ValidCard$ Plane | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:When you encounter Chaotic Aether, each blank roll of the planar die is a {CHAOS} roll until a player planeswalks away from a plane. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaotic Aether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

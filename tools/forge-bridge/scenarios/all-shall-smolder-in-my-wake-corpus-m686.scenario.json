@@ -1,0 +1,23 @@
+{
+  "id": "all-shall-smolder-in-my-wake-corpus-m686",
+  "description": "M6 corpus — All Shall Smolder in My Wake; in-hand parse.",
+  "seed": 61450,
+  "cards": {
+    "All Shall Smolder in My Wake": "Name:All Shall Smolder in My Wake\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ Ignite | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, destroy up to one target artifact, up to one target enchantment, and up to one target nonbasic land.\nSVar:Ignite:DB$ Pump | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact | TgtPrompt$ Select target artifact to destroy | AILogic$ Destroy | IsCurse$ True | SubAbility$ Burn\nSVar:Burn:DB$ Pump | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment to destroy | AILogic$ Destroy | IsCurse$ True | SubAbility$ Smolder\nSVar:Smolder:DB$ Pump | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land to destroy | AILogic$ Destroy | IsCurse$ True | SubAbility$ Burninate\nSVar:Burninate:DB$ Destroy | Defined$ Targeted\nOracle:When you set this scheme in motion, destroy up to one target artifact, up to one target enchantment, and up to one target nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "All Shall Smolder in My Wake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

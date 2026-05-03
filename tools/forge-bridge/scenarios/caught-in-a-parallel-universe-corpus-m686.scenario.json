@@ -1,0 +1,23 @@
+{
+  "id": "caught-in-a-parallel-universe-corpus-m686",
+  "description": "M6 corpus — Caught in a Parallel Universe; in-hand parse.",
+  "seed": 61478,
+  "cards": {
+    "Caught in a Parallel Universe": "Name:Caught in a Parallel Universe\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigChooseCard | TriggerDescription$ When you encounter CARDNAME, each player chooses a creature controlled by the player to their left. Each player creates a token that's a copy of the creature they chose, except it has menace. (Then planeswalk away from this phenomenon.)\nSVar:TrigChooseCard:DB$ ChooseCard | Defined$ Player | Choices$ Creature | ControlledByPlayer$ Left | ChoiceTitle$ Choose a creature controlled by the player to your left | Reveal$ True | Mandatory$ True | ChosenMap$ True | SubAbility$ DBClone\nSVar:DBClone:DB$ CopyPermanent | Defined$ ChosenMap | AddKeywords$ Menace | SubAbility$ DBPlaneswalk\nSVar:DBPlaneswalk:DB$ Planeswalk\nDeckHas:Ability$Token\nOracle:When you encounter Caught in a Parallel Universe, each player chooses a creature controlled by the player to their left. Each player creates a token that's a copy of the creature they chose, except it has menace. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caught in a Parallel Universe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

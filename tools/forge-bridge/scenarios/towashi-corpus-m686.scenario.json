@@ -1,0 +1,23 @@
+{
+  "id": "towashi-corpus-m686",
+  "description": "M6 corpus — Towashi; in-hand parse.",
+  "seed": 61787,
+  "cards": {
+    "Towashi": "Name:Towashi\nManaCost:no cost\nTypes:Plane Kamigawa\nS:Mode$ Continuous | Affected$ Creature.modified+YouCtrl | AddKeyword$ Trample | EffectZone$ Command | AddTrigger$ DrawTrig | Description$ Modified creatures you control have trample and \"Whenever this creature deals combat damage to a player or planeswalker, draw a card.\" (Equipment, Auras you control, and counters are modifications.)\nSVar:DrawTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player or planeswalker, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, distribute three +1/+1 counters among one, two, or three target creatures you control.\nSVar:RolledChaos:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3\nDeckHas:Ability$Counters\nDeckHints:Type$Aura|Equipment & Ability$Counters\nOracle:Modified creatures you control have trample and \"Whenever this creature deals combat damage to a player or planeswalker, draw a card.\"(Equipment, Auras you control, and counters are modifications.)\\nWhenever chaos ensues, distribute three +1/+1 counters among one, two, or three target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Towashi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

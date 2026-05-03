@@ -1,0 +1,23 @@
+{
+  "id": "feed-the-machine-corpus-m686",
+  "description": "M6 corpus — Feed the Machine; in-hand parse.",
+  "seed": 61520,
+  "cards": {
+    "Feed the Machine": "Name:Feed the Machine\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBChoose | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, the player sacrifices two creatures. If the player chooses others, each of your other opponents sacrifices a creature.\nSVar:DBChoose:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ Self,Others | AILogic$ SelfOthers\nSVar:Self:DB$ Sacrifice | SacValid$ Creature | Defined$ ParentTarget | Amount$ 2 | SpellDescription$ Self\nSVar:Others:DB$ Sacrifice | SacValid$ Creature | Defined$ OppNonParentTarget | Amount$ 1 | SpellDescription$ Others\nOracle:When you set this scheme in motion, target opponent chooses self or others. If that player chooses self, the player sacrifices two creatures. If the player chooses others, each of your other opponents sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feed the Machine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

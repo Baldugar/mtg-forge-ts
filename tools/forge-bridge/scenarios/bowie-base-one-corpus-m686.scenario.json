@@ -1,0 +1,23 @@
+{
+  "id": "bowie-base-one-corpus-m686",
+  "description": "M6 corpus — Bowie Base One; in-hand parse.",
+  "seed": 61475,
+  "cards": {
+    "Bowie Base One": "Name:Bowie Base One\nManaCost:no cost\nTypes:Plane Mars\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigGoad | TriggerZones$ Command | TriggerDescription$ At the beginning of your end step, goad target creature controlled by the player to your left. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature.ControlledBy NextPlayerToYourLeft | TgtPrompt$ Select target creature controlled by the player to your left\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPump | TriggerDescription$ Whenever chaos ensues, target creature gains islandwalk until end of turn. (It can't be blocked as long as defending player controls an Island.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ Landwalk:Island\nOracle:At the beginning of your end step, goad target creature controlled by the player to your left. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\\nWhenever chaos ensues, target creature gains islandwalk until end of turn. (It can't be blocked as long as defending player controls an Island.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bowie Base One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

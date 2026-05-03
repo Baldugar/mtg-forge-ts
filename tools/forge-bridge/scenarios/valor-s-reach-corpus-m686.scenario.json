@@ -1,0 +1,23 @@
+{
+  "id": "valor-s-reach-corpus-m686",
+  "description": "M6 corpus — Valor's Reach; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Valor's Reach": "Name:Valor's Reach\nManaCost:no cost\nTypes:Plane Kylem\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YourTeamCtrl | Execute$ TrigPumpAll | IsPresent$ Creature.attacking | PresentCompare$ EQ2 | NoResolvingCheck$ True | TriggerZones$ Command | AttackingPlayer$ You | TriggerDescription$ Whenever your team attacks with exactly two creatures, those creatures gain double strike until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YourTeamCtrl+attacking | KW$ Double Strike\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, untap up to two target creatures your team controls. If it's a main phase, there is an additional combat phase after this phase, followed by an additional main phase.\nSVar:RolledChaos:DB$ Untap | ValidTgts$ Creature.YourTeamCtrl | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures your team controls | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | FollowedBy$ Main2 | ConditionPhases$ Main1,Main2\nOracle:Whenever your team attacks with exactly two creatures, those creatures gain double strike until end of turn.\\nWhenever chaos ensues, untap up to two target creatures your team controls. If it's a main phase, there is an additional combat phase after this phase, followed by an additional main phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valor's Reach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "i-call-on-the-ancient-magics-corpus-m686",
+  "description": "M6 corpus — I Call on the Ancient Magics; in-hand parse.",
+  "seed": 61561,
+  "cards": {
+    "I Call on the Ancient Magics": "Name:I Call on the Ancient Magics\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ OppTutor | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each other player searches their library for a card, reveals it, and puts it into their hand. Then you search your library for two cards and put them into your hand. Each player shuffles.\nSVar:OppTutor:DB$ ChangeZone | DefinedPlayer$ Player.Other | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Reveal$ True | Mandatory$ True | SubAbility$ MyMagic\nSVar:MyMagic:DB$ ChangeZone | DefinedPlayer$ You | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 2 | Mandatory$ True\nOracle:When you set this scheme in motion, each other player searches their library for a card, reveals it, and puts it into their hand. Then you search your library for two cards and put them into your hand. Each player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Call on the Ancient Magics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ink-eyes-servant-of-oni-avatar-corpus-m686",
+  "description": "M6 corpus — Ink-Eyes, Servant of Oni Avatar; in-hand parse.",
+  "seed": 61570,
+  "cards": {
+    "Ink-Eyes, Servant of Oni Avatar": "Name:Ink-Eyes, Servant of Oni Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-3\nT:Mode$ NewGame | Execute$ TrigDiscard | TriggerZones$ Command | TriggerDescription$ At the beginning of the game, look at target opponent's hand and choose a nonland card from it. That player discards that card.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | Mode$ RevealYouChoose | NumCards$ 1 | DiscardValid$ Card.nonLand\nA:AB$ ChangeZone | ActivationZone$ Command | Cost$ X PayLife<X> | ValidTgts$ Creature.OppOwn+cmcEQX | TgtPrompt$ Select target creature with mana value X from an opponent's graveyard | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | SpellDescription$ Put target creature card with mana value X from an opponent's graveyard onto the battlefield under your control.\nSVar:X:Count$xPaid\nOracle:Hand +0, life -3\\nAt the beginning of the game, look at target opponent's hand and choose a nonland card from it. That player discards that card.\\n{X}, Pay X life: Put target creature card with mana value X from an opponent's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ink-Eyes, Servant of Oni Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

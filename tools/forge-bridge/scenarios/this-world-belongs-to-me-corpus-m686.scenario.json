@@ -1,0 +1,23 @@
+{
+  "id": "this-world-belongs-to-me-corpus-m686",
+  "description": "M6 corpus — This World Belongs to Me; in-hand parse.",
+  "seed": 61782,
+  "cards": {
+    "This World Belongs to Me": "Name:This World Belongs to Me\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDraw | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, draw two cards. You may play an additional land this turn.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Name$ This World Belongs to Me's Effect — Exploration | StaticAbilities$ Exploration | AILogic$ Always\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nOracle:When you set this scheme in motion, draw two cards. You may play an additional land this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "This World Belongs to Me"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

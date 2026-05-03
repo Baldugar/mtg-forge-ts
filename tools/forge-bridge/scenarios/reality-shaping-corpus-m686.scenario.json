@@ -1,0 +1,23 @@
+{
+  "id": "reality-shaping-corpus-m686",
+  "description": "M6 corpus — Reality Shaping; in-hand parse.",
+  "seed": 61691,
+  "cards": {
+    "Reality Shaping": "Name:Reality Shaping\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigPutFromHand | TriggerDescription$ When you encounter CARDNAME, starting with you, each player may put a permanent card from their hand onto the battlefield. (Then planeswalk away from this phenomenon.)\nSVar:TrigPutFromHand:DB$ RepeatEach | StartingWith$ You | RepeatPlayers$ Player | RepeatSubAbility$ DBChangeZone | SubAbility$ PWAway\nSVar:DBChangeZone:DB$ ChangeZone | DefinedPlayer$ Player.IsRemembered | Choser$ Player.IsRemembered | ChangeType$ Permanent | ChangeNum$ 1 | Origin$ Hand | Destination$ Battlefield\nSVar:PWAway:DB$ Planeswalk\nOracle:When you encounter Reality Shaping, starting with you, each player may put a permanent card from their hand onto the battlefield. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reality Shaping"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

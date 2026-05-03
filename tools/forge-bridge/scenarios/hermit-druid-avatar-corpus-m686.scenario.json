@@ -1,0 +1,23 @@
+{
+  "id": "hermit-druid-avatar-corpus-m686",
+  "description": "M6 corpus — Hermit Druid Avatar; in-hand parse.",
+  "seed": 61548,
+  "cards": {
+    "Hermit Druid Avatar": "Name:Hermit Druid Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-2/-2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Command | TriggerDescription$ At the beginning of your upkeep, put a land card from your library chosen at random onto the battlefield.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | AtRandom$ True | ChangeType$ Land\nOracle:Hand -2, life -2\\nAt the beginning of your upkeep, put a land card from your library chosen at random onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hermit Druid Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

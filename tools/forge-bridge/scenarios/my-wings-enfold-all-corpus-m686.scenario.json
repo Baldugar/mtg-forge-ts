@@ -1,0 +1,23 @@
+{
+  "id": "my-wings-enfold-all-corpus-m686",
+  "description": "M6 corpus — My Wings Enfold All; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "My Wings Enfold All": "Name:My Wings Enfold All\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBEffect\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards.\nSVar:DBEffect:DB$ Effect | Triggers$ CastTrig | SpellDescription$ Until end of turn, whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy.\nSVar:CastTrig:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigCopySpell | TriggerZones$ Command | TriggerDescription$ Whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:When you set this scheme in motion, choose one —\\n• Draw two cards.\\n• Until end of turn, whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Wings Enfold All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

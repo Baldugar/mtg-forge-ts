@@ -1,0 +1,23 @@
+{
+  "id": "sliver-queen-avatar-corpus-m686",
+  "description": "M6 corpus — Sliver Queen Avatar; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Sliver Queen Avatar": "Name:Sliver Queen Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+7\nT:Mode$ SpellCast | ValidCard$ Creature.nonSliver | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigCopy | TriggerDescription$ Whenever you cast a non-Sliver creature spell, exile that spell. If you do, create a token that's a copy of a random non-Shapeshifter Sliver creature card with the same mana value as that spell.\nSVar:TrigCopy:DB$ ChangeZone | Defined$ TriggeredCardLKICopy | Origin$ Stack | Destination$ Exile | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | ValidSupportedCopy$ Creature.Sliver+nonShapeshifter+cmcEQX | RandomCopied$ True | RandomNum$ 1 | ConditionCheckSVar$ RememberedSize | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nSVar:RememberedSize:Remembered$Amount\nOracle:Hand +0, life +7\\nWhenever you cast a non-Sliver creature spell, exile that spell. If you do, create a token that's a copy of a random non-Shapeshifter Sliver creature card with the same mana value as that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sliver Queen Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

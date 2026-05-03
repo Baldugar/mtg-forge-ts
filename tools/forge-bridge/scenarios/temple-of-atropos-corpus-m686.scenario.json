@@ -1,0 +1,23 @@
+{
+  "id": "temple-of-atropos-corpus-m686",
+  "description": "M6 corpus — Temple of Atropos; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "Temple of Atropos": "Name:Temple of Atropos\nManaCost:no cost\nTypes:Plane Time\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigAddPhase | TriggerDescription$ At the beginning of each of your postcombat main phases, there is an additional beginning phase after this phase. (The beginning phase includes the untap, upkeep, and draw steps.)\nSVar:TrigAddPhase:DB$ AddPhase | ExtraPhase$ Beginning\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigReverseOrder | TriggerDescription$ When chaos ensues, reverse the game's turn order. Then planeswalk. (For example, if play had proceeded clockwise around the table, it now goes counterclockwise.)\nSVar:TrigReverseOrder:DB$ ReverseTurnOrder | SubAbility$ DBPlaneswalk\nSVar:DBPlaneswalk:DB$ Planeswalk\nOracle:At the beginning of each of your postcombat main phases, there is an additional beginning phase after this phase. (The beginning phase includes the untap, upkeep, and draw steps.)\\nWhen chaos ensues, reverse the game's turn order. Then planeswalk. (For example, if play had proceeded clockwise around the table, it now goes counterclockwise.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temple of Atropos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

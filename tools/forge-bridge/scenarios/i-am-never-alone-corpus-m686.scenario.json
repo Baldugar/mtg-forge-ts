@@ -1,0 +1,23 @@
+{
+  "id": "i-am-never-alone-corpus-m686",
+  "description": "M6 corpus — I Am Never Alone; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "I Am Never Alone": "Name:I Am Never Alone\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBCopyCommander | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create a token that's a copy of your commander, except it's not legendary.\nSVar:DBCopyCommander:DB$ CopyPermanent | Choices$ Card.IsCommander+YouOwn | Defined$ ValidAll Card.IsCommander+YouOwn | ChoiceTitle$ Choose a commander you own | NonLegendary$ True\nOracle:When you set this scheme in motion, create a token that's a copy of your commander, except it's not legendary.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Am Never Alone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

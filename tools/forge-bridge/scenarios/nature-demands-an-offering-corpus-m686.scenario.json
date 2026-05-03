@@ -1,0 +1,23 @@
+{
+  "id": "nature-demands-an-offering-corpus-m686",
+  "description": "M6 corpus — Nature Demands an Offering; in-hand parse.",
+  "seed": 61645,
+  "cards": {
+    "Nature Demands an Offering": "Name:Nature Demands an Offering\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ ChooseCreature | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, target opponent chooses a creature you don't control and puts it on top of its owner's library, then repeats this process for an artifact, an enchantment, and a land. Then the owner of each permanent chosen this way shuffles.\nSVar:ChooseCreature:DB$ ChooseCard | ValidTgts$ Opponent | Choices$ Creature.YouDontCtrl | Mandatory$ True | SubAbility$ BounceCreature\nSVar:BounceCreature:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Library | Imprint$ True | Unimprint$ True | LibraryPosition$ 0 | SubAbility$ DBRemember1\nSVar:DBRemember1:DB$ Pump | RememberObjects$ ImprintedOwner | SubAbility$ ChooseArtifact\nSVar:ChooseArtifact:DB$ ChooseCard | Defined$ ParentTarget | Choices$ Artifact.YouDontCtrl | Mandatory$ True | SubAbility$ BounceArtifact\nSVar:BounceArtifact:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Library | Imprint$ True | Unimprint$ True | LibraryPosition$ 0 | SubAbility$ DBRemember2\nSVar:DBRemember2:DB$ Pump | RememberObjects$ ImprintedOwner | SubAbility$ ChooseEnchant\nSVar:ChooseEnchant:DB$ ChooseCard | Defined$ ParentTarget | Choices$ Enchantment.YouDontCtrl | Mandatory$ True | SubAbility$ BounceEnchant\nSVar:BounceEnchant:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Library | Imprint$ True | Unimprint$ True | LibraryPosition$ 0 | SubAbility$ DBRemember3\nSVar:DBRemember3:DB$ Pump | RememberObjects$ ImprintedOwner | SubAbility$ ChooseLand\nSVar:ChooseLand:DB$ ChooseCard | Defined$ ParentTarget | Choices$ Land.YouDontCtrl | Mandatory$ True | SubAbility$ BounceLand\nSVar:BounceLand:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Library | Imprint$ True | Unimprint$ True | LibraryPosition$ 0 | SubAbility$ DBRemember4\nSVar:DBRemember4:DB$ Pump | RememberObjects$ ImprintedOwner | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:When you set this scheme in motion, target opponent chooses a creature you don't control and puts it on top of its owner's library, then repeats this process for an artifact, an enchantment, and a land. Then the owner of each permanent chosen this way shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature Demands an Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

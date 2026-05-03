@@ -1,0 +1,23 @@
+{
+  "id": "enigma-ridges-corpus-m686",
+  "description": "M6 corpus — Enigma Ridges; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Enigma Ridges": "Name:Enigma Ridges\nManaCost:no cost\nTypes:Plane Echoir\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerDescription$ When you planeswalk to CARDNAME, each player who controls fewer lands than the player who controls the most lands searches their library for a number of basic land cards less than or equal to the difference, reveals them, puts them into their hand, then shuffles.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ConditionCheckSVar$ X | ConditionSVarCompare$ LTY | DefinedPlayer$ Remembered | Chooser$ Remembered | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ Z | Origin$ Library | Destination$ Hand\nSVar:X:Count$Valid Land.RememberedPlayerCtrl\nSVar:Y:PlayerCountPlayers$HighestValid Land.YouCtrl\nSVar:Z:SVar$Y/Minus.X\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, draw a card, then you may put a land card from your hand onto the battlefield.\nSVar:RolledChaos:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBChangeZoneBis\nSVar:DBChangeZoneBis:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Land | ChangeNum$ 1\nOracle:When you planeswalk to Enigma Ridges, each player who controls fewer lands than the player who controls the most lands searches their library for a number of basic land cards less than or equal to the difference, reveals them, puts them into their hand, then shuffles.\\nWhenever chaos ensues, draw a card, then you may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enigma Ridges"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

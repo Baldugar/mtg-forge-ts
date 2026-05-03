@@ -1,0 +1,23 @@
+{
+  "id": "imprison-this-insolent-wretch-corpus-m686",
+  "description": "M6 corpus — Imprison This Insolent Wretch; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Imprison This Insolent Wretch": "Name:Imprison This Insolent Wretch\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ ChooseTheWretch | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, choose an opponent.\nSVar:ChooseTheWretch:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse\nR:Event$ Untap | ActiveZones$ Command | ValidCard$ Permanent.ChosenCtrl | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Permanents the chosen player controls don't untap during their untap step.\nT:Mode$ Attacks | ValidCard$ Card | Attacked$ Player.Chosen | Execute$ Abandon | TriggerZones$ Command | TriggerDescription$ When the chosen player is attacked or becomes the target of a spell or ability, abandon this scheme.\nT:Mode$ BecomesTarget | ValidTarget$ Player.Chosen | TriggerZones$ Command | Execute$ Abandon | Secondary$ True | TriggerDescription$ When the chosen player is attacked or becomes the target of a spell or ability, abandon this scheme.\nSVar:Abandon:DB$ Abandon\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nWhen you set this scheme in motion, choose an opponent.\\nPermanents the chosen player controls don't untap during their untap step.\\nWhen the chosen player is attacked or becomes the target of a spell or ability, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imprison This Insolent Wretch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

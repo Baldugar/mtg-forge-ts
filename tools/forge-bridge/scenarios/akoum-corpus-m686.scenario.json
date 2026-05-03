@@ -1,0 +1,23 @@
+{
+  "id": "akoum-corpus-m686",
+  "description": "M6 corpus — Akoum; in-hand parse.",
+  "seed": 61447,
+  "cards": {
+    "Akoum": "Name:Akoum\nManaCost:no cost\nTypes:Plane Zendikar\nS:Mode$ CastWithFlash | ValidCard$ Enchantment | ValidSA$ Spell | EffectZone$ Command | Caster$ Player | Description$ Players may cast enchantment spells as though they had flash.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, destroy target creature that isn't enchanted.\nSVar:RolledChaos:DB$ Destroy | ValidTgts$ Creature.!enchanted | TgtPrompt$ Select target creature that isn't enchanted\nSVar:AIRollPlanarDieParams:Mode$ Always | OppHasCreatureInPlay$ True | RollInMain1$ True\nOracle:Players may cast enchantment spells as though they had flash.\\nWhenever chaos ensues, destroy target creature that isn't enchanted.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akoum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phage-the-untouchable-avatar-corpus-m686",
+  "description": "M6 corpus — Phage the Untouchable Avatar; in-hand parse.",
+  "seed": 61676,
+  "cards": {
+    "Phage the Untouchable Avatar": "Name:Phage the Untouchable Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-5\nA:AB$ Effect | Cost$ PayLife<1> | ActivationZone$ Command | Triggers$ TrigPhageDestroy | SpellDescription$ Until end of turn, whenever a creature deals combat damage to you, destroy that creature.\nSVar:TrigPhageDestroy:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ You | TriggerZones$ Command | CombatDamage$ True | Execute$ PhageAvatarDestroy | TriggerDescription$ Whenever a creature deals combat damage to you, destroy that creature.\nSVar:PhageAvatarDestroy:DB$ Destroy | Defined$ TriggeredSourceLKICopy\nA:AB$ Effect | Cost$ PayLife<1> | ActivationZone$ Command | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Triggers$ TrigPhageCreature | RememberObjects$ Targeted | SpellDescription$ Until end of turn, whenever target creature you control deals combat damage to a creature, destroy the damaged creature.\nSVar:TrigPhageCreature:Mode$ DamageDone | ValidSource$ Creature.IsRemembered | ValidTarget$ Creature | TriggerZones$ Command | CombatDamage$ True | Execute$ PhageAvatarDestroy2 | TriggerDescription$ Whenever target creature you control deals combat damage to a creature, destroy the damaged creature.\nSVar:PhageAvatarDestroy2:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nOracle:Hand +0, life -5\\nPay 1 life: Until end of turn, whenever a creature deals combat damage to you, destroy that creature.\\nPay 1 life: Until end of turn, whenever target creature you control deals combat damage to a creature, destroy the damaged creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phage the Untouchable Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

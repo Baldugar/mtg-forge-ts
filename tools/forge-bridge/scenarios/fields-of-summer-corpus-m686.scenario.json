@@ -1,0 +1,23 @@
+{
+  "id": "fields-of-summer-corpus-m686",
+  "description": "M6 corpus — Fields of Summer; in-hand parse.",
+  "seed": 61522,
+  "cards": {
+    "Fields of Summer": "Name:Fields of Summer\nManaCost:no cost\nTypes:Plane Moag\nT:Mode$ SpellCast | OptionalDecider$ TriggeredActivator | TriggerZones$ Command | Execute$ LifeSummer | TriggerDescription$ Whenever a player casts a spell, that player may gain 2 life.\nSVar:LifeSummer:DB$ GainLife | Defined$ TriggeredActivator | LifeAmount$ 2\nT:Mode$ ChaosEnsues | TriggerZones$ Command | OptionalDecider$ You | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you may gain 10 life.\nSVar:RolledChaos:DB$ GainLife | LifeAmount$ 10 | Defined$ You\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Whenever a player casts a spell, that player may gain 2 life.\\nWhenever chaos ensues, you may gain 10 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fields of Summer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

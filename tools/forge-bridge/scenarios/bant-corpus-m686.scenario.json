@@ -1,0 +1,23 @@
+{
+  "id": "bant-corpus-m686",
+  "description": "M6 corpus — Bant; in-hand parse.",
+  "seed": 61465,
+  "cards": {
+    "Bant": "Name:Bant\nManaCost:no cost\nTypes:Plane Alara\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Creature | AddKeyword$ Exalted | Description$ All creatures have exalted.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, put a divinity counter on target green, white, or blue creature. That creature has indestructible for as long as it has a divinity counter on it.\nSVar:RolledChaos:DB$ PutCounter | ValidTgts$ Creature.Green,Creature.White,Creature.Blue | CounterType$ DIVINITY | CounterNum$ 1 | SubAbility$ DivineCharacter\nSVar:DivineCharacter:DB$ Animate | Defined$ Targeted | staticAbilities$ IndestructibleAspect | Duration$ Permanent\nSVar:IndestructibleAspect:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.Self+counters_GE1_DIVINITY | AddKeyword$ Indestructible\nSVar:AIRollPlanarDieParams:Mode$ Always | HasColorCreatureInPlay$ GWU\nOracle:All creatures have exalted. (Whenever a creature attacks alone, it gets +1/+1 until end of turn for each instance of exalted among permanents its controller controls.)\\nWhenever chaos ensues, put a divinity counter on target green, white, or blue creature. That creature has indestructible for as long as it has a divinity counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

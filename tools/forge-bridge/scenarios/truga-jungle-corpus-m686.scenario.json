@@ -1,0 +1,23 @@
+{
+  "id": "truga-jungle-corpus-m686",
+  "description": "M6 corpus — Truga Jungle; in-hand parse.",
+  "seed": 61790,
+  "cards": {
+    "Truga Jungle": "Name:Truga Jungle\nManaCost:no cost\nTypes:Plane Ergamon\nS:Mode$ Continuous | EffectZone$ Command | AffectedZone$ Battlefield | Affected$ Land | AddAbility$ AnyMana | Description$ All lands have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, reveal the top three cards of your library. Put all land cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:RolledChaos:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Land\nSVar:AIRollPlanarDieParams:Mode$ Random | Chance$ 20\nOracle:All lands have \"{T}: Add one mana of any color.\"\\nWhenever chaos ensues, reveal the top three cards of your library. Put all land cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Truga Jungle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

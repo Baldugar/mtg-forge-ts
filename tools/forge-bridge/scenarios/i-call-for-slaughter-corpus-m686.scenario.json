@@ -1,0 +1,23 @@
+{
+  "id": "i-call-for-slaughter-corpus-m686",
+  "description": "M6 corpus — I Call for Slaughter; in-hand parse.",
+  "seed": 61560,
+  "cards": {
+    "I Call for Slaughter": "Name:I Call for Slaughter\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create three 1/1 red Devil creature tokens with \"When this creature dies, it deals 1 damage to any target.\" They gain haste until end of turn. If a source you control would deal damage this turn, it deals that much damage plus 1 instead.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_devil_burn | PumpKeywords$ Haste | PumpDuration$ EOT | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DamageEvent\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ReplaceWith$ DmgPlusOne | Description$ If a source you control would deal damage this turn, it deals that much damage plus 1 instead.\nSVar:DmgPlusOne:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nOracle:When you set this scheme in motion, create three 1/1 red Devil creature tokens with \"When this creature dies, it deals 1 damage to any target.\" They gain haste until end of turn. If a source you control would deal damage this turn, it deals that much damage plus 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Call for Slaughter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

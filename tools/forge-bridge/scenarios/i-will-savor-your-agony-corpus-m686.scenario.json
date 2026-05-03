@@ -1,0 +1,23 @@
+{
+  "id": "i-will-savor-your-agony-corpus-m686",
+  "description": "M6 corpus — I Will Savor Your Agony; in-hand parse.",
+  "seed": 61564,
+  "cards": {
+    "I Will Savor Your Agony": "Name:I Will Savor Your Agony\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBDraw,DBGainLife | CharmNum$ 3 | CanRepeatModes$ True\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature | SpellDescription$ Destroy target creature.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | TgtPrompt$ Select target player (to draw a card) | SpellDescription$ Target player draws a card.\nSVar:DBGainLife:DB$ GainLife | ValidTgts$ Player | TgtPrompt$ Select target player (to gain 5 life) | LifeAmount$ 5 | SpellDescription$ Target player gains 5 life.\nOracle:When you set this scheme in motion, choose three. You may choose the same mode more than once.\\n• Destroy target creature.\\n• Target player draws a card.\\n• Target player gains 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Will Savor Your Agony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

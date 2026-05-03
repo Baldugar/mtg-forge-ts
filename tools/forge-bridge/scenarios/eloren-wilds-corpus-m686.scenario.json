@@ -1,0 +1,23 @@
+{
+  "id": "eloren-wilds-corpus-m686",
+  "description": "M6 corpus — Eloren Wilds; in-hand parse.",
+  "seed": 61504,
+  "cards": {
+    "Eloren Wilds": "Name:Eloren Wilds\nManaCost:no cost\nTypes:Plane Shandalar\nT:Mode$ TapsForMana | ValidCard$ Permanent | Execute$ TrigMana | TriggerZones$ Command | Static$ True | TriggerDescription$ Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target player can't cast spells until a player planeswalks.\nSVar:RolledChaos:DB$ Effect | ValidTgts$ Player | IsCurse$ True | StaticAbilities$ STCantCast | Triggers$ TrigPlaneswalk | RememberObjects$ Targeted | Duration$ Permanent\nSVar:STCantCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.IsRemembered | Description$ Target player can't cast spells until a player planeswalks.\nSVar:TrigPlaneswalk:Mode$ PlaneswalkedTo | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\\nWhenever chaos ensues, target player can't cast spells until a player planeswalks.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eloren Wilds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sisay-corpus-m686",
+  "description": "M6 corpus — Sisay; in-hand parse.",
+  "seed": 61717,
+  "cards": {
+    "Sisay": "Name:Sisay\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-2/-3\nT:Mode$ TapsForMana | TriggerZones$ Command | ValidCard$ Land | Activator$ You | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever you tap a land for mana, add one mana of any type that land produced.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You\nAI:RemoveDeck:All\nOracle:Hand -2, life -3\\nWhenever you tap a land for mana, add one mana of any type that land produced.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sisay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

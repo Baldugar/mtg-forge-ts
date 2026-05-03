@@ -1,0 +1,23 @@
+{
+  "id": "oracle-corpus-m686",
+  "description": "M6 corpus — Oracle; in-hand parse.",
+  "seed": 61665,
+  "cards": {
+    "Oracle": "Name:Oracle\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/+9\nA:AB$ Untap | ActivationZone$ Command | Cost$ 0 | ValidTgts$ Creature.attacking+youCtrl | TgtPrompt$ Select target attacking creature you control | SubAbility$ Reconsider | SpellDescription$ Untap target attacking creature you control and remove it from combat.\nSVar:Reconsider:DB$ RemoveFromCombat | Defined$ Targeted\nAI:RemoveDeck:All\nOracle:Hand +1, life +9\\n{0}: Untap target attacking creature you control and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oracle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

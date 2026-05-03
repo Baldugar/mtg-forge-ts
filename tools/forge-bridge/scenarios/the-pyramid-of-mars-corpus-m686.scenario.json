@@ -1,0 +1,23 @@
+{
+  "id": "the-pyramid-of-mars-corpus-m686",
+  "description": "M6 corpus — The Pyramid of Mars; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "The Pyramid of Mars": "Name:The Pyramid of Mars\nManaCost:no cost\nTypes:Plane Mars\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When you planeswalk to CARDNAME and at beginning of your upkeep, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSurveil | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at beginning of your upkeep, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigReanimate | TriggerDescription$ Whenever chaos ensues, return target creature card from your graveyard to the battlefield.\nSVar:TrigReanimate:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature card in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nOracle:When you planeswalk to The Pyramid of Mars and at beginning of your upkeep, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\nWhenever chaos ensues, return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Pyramid of Mars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

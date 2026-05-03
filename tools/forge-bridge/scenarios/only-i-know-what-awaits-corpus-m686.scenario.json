@@ -1,0 +1,23 @@
+{
+  "id": "only-i-know-what-awaits-corpus-m686",
+  "description": "M6 corpus — Only I Know What Awaits; in-hand parse.",
+  "seed": 61663,
+  "cards": {
+    "Only I Know What Awaits": "Name:Only I Know What Awaits\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, for each card type among permanents your opponents control, you may put a permanent card of that type from your hand onto the battlefield.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatTypesFrom$ Valid Permanent.OppCtrl | RepeatSubAbility$ ChooseCard | SubAbility$ DBChangeZoneAll\nSVar:ChooseCard:DB$ ChooseCard | Choices$ Card.YouOwn+ChosenType | ChoiceTitle$ You may choose a card of this type to put onto the battlefield | ChoiceTitleAppend$ ChosenType | ChoiceZone$ Hand\nSVar:DBChangeZoneAll:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Hand | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When you set this scheme in motion, for each card type among permanents your opponents control, you may put a permanent card of that type from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Only I Know What Awaits"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

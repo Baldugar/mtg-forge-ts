@@ -1,0 +1,23 @@
+{
+  "id": "embrace-my-diabolical-vision-corpus-m686",
+  "description": "M6 corpus — Embrace My Diabolical Vision; in-hand parse.",
+  "seed": 61506,
+  "cards": {
+    "Embrace My Diabolical Vision": "Name:Embrace My Diabolical Vision\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ GraveEmbrace | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each player shuffles their hand and graveyard into their library. You draw seven cards, then each other player draws four cards.\nSVar:GraveEmbrace:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard,Hand | Destination$ Library | Shuffle$ True | SubAbility$ MyVision\nSVar:MyVision:DB$ Draw | Defined$ You | NumCards$ 7 | SubAbility$ PitifulDraw\nSVar:PitifulDraw:DB$ Draw | Defined$ Player.Other | NumCards$ 4\nOracle:When you set this scheme in motion, each player shuffles their hand and graveyard into their library. You draw seven cards, then each other player draws four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embrace My Diabolical Vision"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

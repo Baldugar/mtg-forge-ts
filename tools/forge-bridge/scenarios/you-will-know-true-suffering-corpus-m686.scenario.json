@@ -1,0 +1,23 @@
+{
+  "id": "you-will-know-true-suffering-corpus-m686",
+  "description": "M6 corpus — You Will Know True Suffering; in-hand parse.",
+  "seed": 61816,
+  "cards": {
+    "You Will Know True Suffering": "Name:You Will Know True Suffering\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, it deals damage equal to your commander's mana value to each noncommander creature your opponents control.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.!IsCommander+OppCtrl | ValidDescription$ each noncommander creature your opponents control. | NumDmg$ X\nSVar:X:Count$ValidAll Card.IsCommander+YouOwn$CardManaCost\nOracle:When you set this scheme in motion, it deals damage equal to your commander's mana value to each noncommander creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "You Will Know True Suffering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

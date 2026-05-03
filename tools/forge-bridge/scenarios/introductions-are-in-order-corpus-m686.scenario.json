@@ -1,0 +1,23 @@
+{
+  "id": "introductions-are-in-order-corpus-m686",
+  "description": "M6 corpus — Introductions Are in Order; in-hand parse.",
+  "seed": 61573,
+  "cards": {
+    "Introductions Are in Order": "Name:Introductions Are in Order\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTutorCreature,DBPutCreature\nSVar:DBTutorCreature:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Creature | ChangeNum$ 1 | SpellDescription$ Search your library for a creature card, reveal it, put it into your hand, then shuffle.\nSVar:DBPutCreature:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Card.Creature | ChangeNum$ 1 | SpellDescription$ or you may put a creature card from your hand onto the battlefield.\nOracle:When you set this scheme in motion, choose one —\\n• Search your library for a creature card, reveal it, put it into your hand, then shuffle.\\n• You may put a creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Introductions Are in Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

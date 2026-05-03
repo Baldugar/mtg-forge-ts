@@ -1,0 +1,23 @@
+{
+  "id": "which-of-you-burns-brightest-corpus-m686",
+  "description": "M6 corpus — Which of You Burns Brightest?; in-hand parse.",
+  "seed": 61808,
+  "cards": {
+    "Which of You Burns Brightest?": "Name:Which of You Burns Brightest?\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DarkEffect | TriggerZones$ Command | OptionalDecider$ You | TriggerDescription$ When you set this scheme in motion, you may pay {X}. If you do, this scheme deals X damage to target opponent or planeswalker and each creature that player or that planeswalker's controller controls.\nSVar:DarkEffect:AB$ DealDamage | Cost$ X | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X | SubAbility$ DmgAll | DamageMap$ True\nSVar:DmgAll:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature.ControlledBy TargetedOrController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$xPaid\nOracle:When you set this scheme in motion, you may pay {X}. If you do, this scheme deals X damage to target opponent or planeswalker and each creature that player or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Which of You Burns Brightest?"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

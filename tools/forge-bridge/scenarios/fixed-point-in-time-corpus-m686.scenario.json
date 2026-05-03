@@ -1,0 +1,23 @@
+{
+  "id": "fixed-point-in-time-corpus-m686",
+  "description": "M6 corpus — Fixed Point in Time; in-hand parse.",
+  "seed": 61524,
+  "cards": {
+    "Fixed Point in Time": "Name:Fixed Point in Time\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When you encounter CARDNAME, until your next turn, if a player would planeswalk as a result of rolling the planar die, chaos ensues instead. (Then planeswalk away from this phenomenon.)\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReplacePlaneswalk | Duration$ UntilYourNextTurn | SubAbility$ PWAway\nSVar:ReplacePlaneswalk:Event$ Planeswalk | ValidCause$ PlanarDie | ReplaceWith$ Chaos | Description$ If a player would planeswalk as a result of rolling the planar die, chaos ensues instead.\nSVar:Chaos:DB$ ChaosEnsues\nSVar:PWAway:DB$ Planeswalk\nOracle:When you encounter Fixed Point in Time, until your next turn, if a player would planeswalk as a result of rolling the planar die, chaos ensues instead. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fixed Point in Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

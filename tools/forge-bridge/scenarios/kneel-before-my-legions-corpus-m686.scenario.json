@@ -1,0 +1,23 @@
+{
+  "id": "kneel-before-my-legions-corpus-m686",
+  "description": "M6 corpus — Kneel Before My Legions; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Kneel Before My Legions": "Name:Kneel Before My Legions\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBPumpAll\nSVar:DBToken:DB$ Token | TokenScript$ c_4_4_a_scarecrow_vigilance | TokenOwner$ You | SpellDescription$ Create a 4/4 colorless Scarecrow artifact creature token with vigilance.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Vigilance & Trample | SpellDescription$ Creatures you control get +3/+3 and gain vigilance and trample until end of turn.\nOracle:When you set this scheme in motion, choose one —\\n• Create a 4/4 colorless Scarecrow artifact creature token with vigilance.\\n• Creatures you control get +3/+3 and gain vigilance and trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kneel Before My Legions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

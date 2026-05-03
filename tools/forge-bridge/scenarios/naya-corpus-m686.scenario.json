@@ -1,0 +1,23 @@
+{
+  "id": "naya-corpus-m686",
+  "description": "M6 corpus — Naya; in-hand parse.",
+  "seed": 61647,
+  "cards": {
+    "Naya": "Name:Naya\nManaCost:no cost\nTypes:Plane Alara\nS:Mode$ Continuous | Affected$ You | EffectZone$ Command | AdjustLandPlays$ Unlimited | Description$ You may play any number of lands on each of your turns.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target red, green, or white creature you control gets +1/+1 until end of turn for each land you control.\nSVar:RolledChaos:DB$ Pump | ValidTgts$ Creature.Red+YouCtrl,Creature.Green+YouCtrl,Creature.White+YouCtrl | TgtPrompt$ Select target red, green, or white creature you control | NumAtt$ +Y | NumDef$ +Y\nSVar:Y:Count$Valid Land.YouCtrl\nSVar:AIRollPlanarDieParams:Mode$ Always | HasColorCreatureInPlay$ RGW\nOracle:You may play any number of lands on each of your turns.\\nWhenever chaos ensues, target red, green, or white creature you control gets +1/+1 until end of turn for each land you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naya"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

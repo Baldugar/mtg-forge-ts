@@ -1,0 +1,23 @@
+{
+  "id": "worldknit-corpus-m686",
+  "description": "M6 corpus — Worldknit; in-hand parse.",
+  "seed": 61810,
+  "cards": {
+    "Worldknit": "Name:Worldknit\nManaCost:no cost\nTypes:Conspiracy\nT:Mode$ NewGame | TriggerZones$ Command | Execute$ TrigWorldknit | Static$ True | TriggerDescription$ As long as every card in your card pool started the game in your library or in the command zone, lands you control have \"{T}: Add one mana of any color.\"\nSVar:TrigWorldknit:DB$ StoreSVar | SVar$ X | Type$ Number | Expression$ 1 | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQ0\nS:Mode$ Continuous | Affected$ Land.YouCtrl | EffectZone$ Command | CheckSVar$ X | AddAbility$ AnyMana | Description$ Lands you control have \"{T}: Add one mana of any one color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any one color.\nSVar:X:Number$0\nSVar:Y:Count$ValidSideboard Card.YouOwn\nOracle:(Start the game with this conspiracy face up in the command zone.)\\nAs long as every card in your card pool started the game in your library or in the command zone, lands you control have \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldknit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

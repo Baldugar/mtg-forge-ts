@@ -1,0 +1,23 @@
+{
+  "id": "mirri-the-cursed-avatar-corpus-m686",
+  "description": "M6 corpus — Mirri the Cursed Avatar; in-hand parse.",
+  "seed": 61615,
+  "cards": {
+    "Mirri the Cursed Avatar": "Name:Mirri the Cursed Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-2/-3\nS:Mode$ Continuous | EffectZone$ Command | AffectedZone$ Battlefield | Affected$ Creature.YouCtrl | AddAbility$ MirriPump | AddSVar$ MirriPutCounter | Description$ Creatures you control have \"{T}: Another target creature gets -1/-1 until end of turn. Put a +1/+1 counter on this creature.\"\nSVar:MirriPump:AB$ Pump | Cost$ T | ValidTgts$ Creature.Other | NumAtt$ -1 | NumDef$ -1 | SubAbility$ MirriPutCounter | SpellDescription$ Another target creature gets -1/-1 until end of turn. Put a +1/+1 counter on this creature.\nSVar:MirriPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Hand -2, life -3\\nCreatures you control have \"{T}: Another target creature gets -1/-1 until end of turn. Put a +1/+1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirri the Cursed Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

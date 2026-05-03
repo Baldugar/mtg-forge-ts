@@ -1,0 +1,23 @@
+{
+  "id": "mayael-the-anima-avatar-corpus-m686",
+  "description": "M6 corpus — Mayael the Anima Avatar; in-hand parse.",
+  "seed": 61610,
+  "cards": {
+    "Mayael the Anima Avatar": "Name:Mayael the Anima Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/+5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, reveal the top card of your library. If it's a creature card with power 5 or greater, put it into your hand. Otherwise, you may put it on the bottom of your library.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature.powerGE5 | LibraryPosition2$ 0 | RememberChanged$ True | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ 1 | DestinationZone$ Library | Optional$ True | LibraryPosition$ -1 | LibraryPosition2$ 0 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:X:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Hand +1, life +5\\nAt the beginning of your upkeep, reveal the top card of your library. If it's a creature card with power 5 or greater, put it into your hand. Otherwise, you may put it on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mayael the Anima Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

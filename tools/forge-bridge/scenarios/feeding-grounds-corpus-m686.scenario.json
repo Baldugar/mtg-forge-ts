@@ -1,0 +1,23 @@
+{
+  "id": "feeding-grounds-corpus-m686",
+  "description": "M6 corpus — Feeding Grounds; in-hand parse.",
+  "seed": 61521,
+  "cards": {
+    "Feeding Grounds": "Name:Feeding Grounds\nManaCost:no cost\nTypes:Plane Muraganda\nS:Mode$ ReduceCost | EffectZone$ Command | ValidCard$ Card.Green | Type$ Spell | Amount$ 1 | Description$ Green spells cost {1} less to cast.\nS:Mode$ ReduceCost | EffectZone$ Command | ValidCard$ Card.Red | Type$ Spell | Amount$ 1 | Description$ Red spells cost {1} less to cast.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ DBPutCounter | TriggerDescription$ Whenever chaos ensues, put X +1/+1 counters on target creature, where X is that creature's mana value.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:Targeted$CardManaCost\nSVar:AIRollPlanarDieParams:Mode$ Always | HasCreatureInPlay$ True\nOracle:Red spells cost {1} less to cast.\\nGreen spells cost {1} less to cast.\\nWhenever chaos ensues, put X +1/+1 counters on target creature, where X is that creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feeding Grounds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

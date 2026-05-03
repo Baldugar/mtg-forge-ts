@@ -1,0 +1,23 @@
+{
+  "id": "the-dark-barony-corpus-m686",
+  "description": "M6 corpus — The Dark Barony; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "The Dark Barony": "Name:The Dark Barony\nManaCost:no cost\nTypes:Plane Ulgrotha\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.!token+nonBlack | TriggerZones$ Command | Execute$ TrigLoseLife | TriggerDescription$ Whenever a nonblack card is put into a player's graveyard from anywhere, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardOwner | LifeAmount$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, each opponent discards a card.\nSVar:RolledChaos:DB$ Discard | Mode$ TgtChoose | Defined$ Opponent\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Whenever a nonblack card is put into a player's graveyard from anywhere, that player loses 1 life.\\nWhenever chaos ensues, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Dark Barony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

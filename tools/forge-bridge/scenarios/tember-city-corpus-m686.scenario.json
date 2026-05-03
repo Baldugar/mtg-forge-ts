@@ -1,0 +1,23 @@
+{
+  "id": "tember-city-corpus-m686",
+  "description": "M6 corpus — Tember City; in-hand parse.",
+  "seed": 61746,
+  "cards": {
+    "Tember City": "Name:Tember City\nManaCost:no cost\nTypes:Plane Kinshala\nT:Mode$ TapsForMana | ValidCard$ Land | Execute$ TrigDmg | TriggerZones$ Command | TriggerDescription$ Whenever a player taps a land for mana, CARDNAME deals 1 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, each other player sacrifices a nonland permanent.\nSVar:RolledChaos:DB$ Sacrifice | Defined$ Player.Other | SacValid$ Permanent.nonLand\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Whenever a player taps a land for mana, Tember City deals 1 damage to that player.\\nWhenever chaos ensues, each other player sacrifices a nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tember City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

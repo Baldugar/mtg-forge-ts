@@ -1,0 +1,23 @@
+{
+  "id": "maelstrom-archangel-avatar-corpus-m686",
+  "description": "M6 corpus — Maelstrom Archangel Avatar; in-hand parse.",
+  "seed": 61602,
+  "cards": {
+    "Maelstrom Archangel Avatar": "Name:Maelstrom Archangel Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+5\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigNote | Static$ True\nSVar:TrigNote:DB$ Pump | NoteCards$ TriggeredSource | NoteCardsFor$ MaelstromArchangelAvatar | SubAbility$ DBHit\nSVar:DBHit:DB$ StoreSVar | SVar$ Hits | Type$ CountSVar | Expression$ Hits/Plus.1\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Pump | ClearNotedCardsFor$ MaelstromArchangelAvatar | SubAbility$ DBReset\nSVar:DBReset:DB$ StoreSVar | SVar$ Hits | Type$ Number | Expression$ 0\nSVar:Hits:Number$0\nT:Mode$ Phase | Phase$ EndCombat | CheckSVar$ Hits | ValidPlayer$ Player | TriggerZones$ Command | Execute$ TrigRepeatEach | TriggerDescription$ At end of combat, for each creature you controlled at the time it dealt combat damage to a player this turn, copy a random card with the same mana cost as that creature. You may pay {3}. If you do, choose one of those copies. If a copy of a permanent card is chosen, you may create a token that's a copy of that card. If a copy of an instant or sorcery card is chosen, you may cast the copy without paying its mana cost.\nSVar:TrigRepeatEach:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Card.NotedForMaelstromArchangelAvatar | Zone$ Battlefield,Graveyard,Exile,Library,Hand | RepeatSubAbility$ DBCopyRandom | SubAbility$ DBReveal\nSVar:DBCopyRandom:DB$ NameCard | Defined$ You | AtRandom$ True | ValidCards$ Card.ManaCost=Imprinted | SubAbility$ DBMake\nSVar:DBMake:DB$ MakeCard | Name$ ChosenName | Zone$ None | RememberMade$ True | SubAbility$ DBClearNamed\nSVar:DBClearNamed:DB$ Cleanup | ClearNamedCard$ True\nSVar:DBReveal:DB$ Reveal | Defined$ You | RevealDefined$ Remembered | RevealToAll$ True | RevealTitle$ Cards created by Maelstrom Archangel Avatar | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | UnlessCost$ 3 | UnlessPayer$ You | UnlessSwitched$ True | Choices$ Card.IsRemembered | ChoiceZone$ None | SubAbility$ DBCopyPerm | SpellDescription$ You may pay {3}. If you do, choose one of those copies. If a copy of a permanent card is chosen, you may create a token that's a copy of that card. If a copy of an instant or sorcery card is chosen, you may cast the copy without paying its mana cost.\nSVar:DBCopyPerm:DB$ CopyPermanent | Optional$ True | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Permanent | ConditionCompare$ GE1 | SubAbility$ DBCastSp\nSVar:DBCastSp:DB$ Play | Defined$ ChosenCard | ZoneRegardless$ True | Optional$ True | WithoutManaCost$ True | ValidSA$ Spell | ConditionDefined$ ChosenCard | ConditionPresent$ Permanent | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nOracle:Hand +0, life +5\\nAt end of combat, for each creature you controlled at the time it dealt combat damage to a player this turn, copy a random card with the same mana cost as that creature. You may pay {3}. If you do, choose one of those copies. If a copy of a permanent card is chosen, you may create a token that's a copy of that card. If a copy of an instant or sorcery card is chosen, you may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maelstrom Archangel Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ten-wizards-mountain-corpus-m686",
+  "description": "M6 corpus — Ten Wizards Mountain; in-hand parse.",
+  "seed": 61748,
+  "cards": {
+    "Ten Wizards Mountain": "Name:Ten Wizards Mountain\nManaCost:no cost\nTypes:Plane Shenmeng\nT:Mode$ PlanarDice | TriggerZones$ Command | Execute$ RolledDie | TriggerDescription$ Whenever you roll the planar die, put a +1/+1 counter on up to one target creature.\nSVar:RolledDie:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, creatures you control gain flying until end of turn.\nSVar:RolledChaos:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying\nDeckHas:Ability$Counters\nOracle:Whenever you roll the planar die, put a +1/+1 counter on up to one target creature.\\nWhenever chaos ensues, creatures you control gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ten Wizards Mountain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

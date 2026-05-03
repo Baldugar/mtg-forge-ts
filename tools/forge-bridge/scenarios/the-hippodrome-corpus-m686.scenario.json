@@ -1,0 +1,23 @@
+{
+  "id": "the-hippodrome-corpus-m686",
+  "description": "M6 corpus — The Hippodrome; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "The Hippodrome": "Name:The Hippodrome\nManaCost:no cost\nTypes:Plane Segovia\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Creature | AddPower$ -5 | Description$ All creatures get -5/-0.\nT:Mode$ ChaosEnsues | OptionalDecider$ You | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you may destroy target creature if its power is 0 or less.\nSVar:RolledChaos:DB$ Destroy | ValidTgts$ Creature | ConditionCheckSVar$ TgtPow | ConditionSVarCompare$ EQ1 | AITgts$ Creature.OppCtrl+powerLE0\nSVar:TgtPow:Targeted$Valid Creature.powerLE0\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:All creatures get -5/-0.\\nWhenever chaos ensues, you may destroy target creature if its power is 0 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Hippodrome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

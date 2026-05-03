@@ -1,0 +1,23 @@
+{
+  "id": "murderous-redcap-avatar-corpus-m686",
+  "description": "M6 corpus — Murderous Redcap Avatar; in-hand parse.",
+  "seed": 61627,
+  "cards": {
+    "Murderous Redcap Avatar": "Name:Murderous Redcap Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+HasCounters | TriggerZones$ Command | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control enters with a counter on it, you may have it deal damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | DamageSource$ TriggeredCard | NumDmg$ Damage\nSVar:Damage:TriggeredCard$CardPower\nOracle:Hand +0, life -2\\nWhenever a creature you control enters with a counter on it, you may have it deal damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murderous Redcap Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

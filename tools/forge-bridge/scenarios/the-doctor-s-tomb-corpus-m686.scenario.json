@@ -1,0 +1,23 @@
+{
+  "id": "the-doctor-s-tomb-corpus-m686",
+  "description": "M6 corpus — The Doctor's Tomb; in-hand parse.",
+  "seed": 61758,
+  "cards": {
+    "The Doctor's Tomb": "Name:The Doctor's Tomb\nManaCost:no cost\nTypes:Plane Trenzalore\nR:Event$ Moved | ActiveZones$ Command | Destination$ Graveyard | ValidCard$ Card.Creature | ReplaceWith$ Exile | Description$ If a creature would die, instead exile it and that creature's controller loses 2 life.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ ReplacedCardController | LifeAmount$ 2\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigRedistribute | TriggerDescription$ Whenever chaos ensues, redistribute any number of players' life totals. (Each of those players gets one life total back.)\nSVar:TrigRedistribute:DB$ SetLife | PlayerChoices$ Player | ChoiceAmount$ Any | ChoicePrompt$ Choose any number of players | Redistribute$ True\nOracle:If a creature would die, instead exile it and that creature's controller loses 2 life.\\nWhenever chaos ensues, redistribute any number of players' life totals. (Each of those players gets one life total back.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Doctor's Tomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "i-am-untouchable-corpus-m686",
+  "description": "M6 corpus — I Am Untouchable; in-hand parse.",
+  "seed": 61558,
+  "cards": {
+    "I Am Untouchable": "Name:I Am Untouchable\nManaCost:no cost\nTypes:Ongoing Scheme\nS:Mode$ Continuous | EffectZone$ Command | Affected$ You,Permanent.YouCtrl | AddKeyword$ Hexproof | Description$ You and permanents you control have hexproof.\nT:Mode$ DamageDoneOnce | ValidTarget$ You | CombatDamage$ True | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ When combat damage is dealt to you, create a 4/4 colorless Scarecrow artifact creature token with vigilance, then abandon this scheme.\nSVar:TrigToken:DB$ Token | TokenScript$ c_4_4_a_scarecrow_vigilance | TokenOwner$ You | SubAbility$ DBAbandon\nSVar:DBAbandon:DB$ Abandon\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nYou and permanents you control have hexproof.\\nWhen combat damage is dealt to you, create a 4/4 colorless Scarecrow artifact creature token with vigilance, then abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Am Untouchable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

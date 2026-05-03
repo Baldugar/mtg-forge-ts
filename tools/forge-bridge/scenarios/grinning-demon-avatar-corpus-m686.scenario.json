@@ -1,0 +1,23 @@
+{
+  "id": "grinning-demon-avatar-corpus-m686",
+  "description": "M6 corpus — Grinning Demon Avatar; in-hand parse.",
+  "seed": 61540,
+  "cards": {
+    "Grinning Demon Avatar": "Name:Grinning Demon Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/-2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Command | Execute$ GrinningDiscard | TriggerDescription$ Whenever a nontoken creature you control dies, target opponent discards a card.\nSVar:GrinningDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:Hand -1, life -2\\nWhenever a nontoken creature you control dies, target opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grinning Demon Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

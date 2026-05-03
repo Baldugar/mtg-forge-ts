@@ -1,0 +1,23 @@
+{
+  "id": "selesnya-loft-gardens-corpus-m686",
+  "description": "M6 corpus — Selesnya Loft Gardens; in-hand parse.",
+  "seed": 61709,
+  "cards": {
+    "Selesnya Loft Gardens": "Name:Selesnya Loft Gardens\nManaCost:no cost\nTypes:Plane Ravnica\nR:Event$ CreateToken | ActiveZones$ Command | ReplaceWith$ DoubleToken | EffectOnly$ True | Description$ If an effect would create one or more tokens, it creates twice that many of those tokens instead.\nSVar:DoubleToken:DB$ ReplaceToken | Type$ Amount\nR:Event$ AddCounter | ActiveZones$ Command | ValidCard$ Permanent.inZoneBattlefield | EffectOnly$ True | ReplaceWith$ DoubleCounters | Description$ If an effect would put one or more counters on a permanent, it puts twice that many of those counters on that permanent instead.\nSVar:DoubleCounters:DB$ ReplaceCounter | Amount$ Z\nSVar:Z:ReplaceCount$CounterNum/Twice\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, until end of turn, whenever you tap a land for mana, add one mana of any type that land produced.\nSVar:RolledChaos:DB$ Effect | AILogic$ Always | Triggers$ TrigTapForMana\nSVar:TrigTapForMana:Mode$ TapsForMana | TriggerZones$ Command | ValidCard$ Land | Activator$ You | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever you tap a land for mana, add one mana of any type that land produced.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You\nSVar:AIRollPlanarDieParams:Mode$ Always | MinTurn$ 1 | RollInMain1$ True\nOracle:If an effect would create one or more tokens, it creates twice that many of those tokens instead.\\nIf an effect would put one or more counters on a permanent, it puts twice that many of those counters on that permanent instead.\\nWhenever chaos ensues, until end of turn, whenever you tap a land for mana, add one mana of any type that land produced.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selesnya Loft Gardens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

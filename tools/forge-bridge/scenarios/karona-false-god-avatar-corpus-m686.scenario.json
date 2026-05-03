@@ -1,0 +1,23 @@
+{
+  "id": "karona-false-god-avatar-corpus-m686",
+  "description": "M6 corpus — Karona, False God Avatar; in-hand parse.",
+  "seed": 61582,
+  "cards": {
+    "Karona, False God Avatar": "Name:Karona, False God Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/+8\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigExchangeChoose | TriggerDescription$ At the beginning of your upkeep, exchange control of a permanent you control chosen at random and a permanent target opponent controls chosen at random.\nSVar:TrigExchangeChoose:DB$ ChooseCard | ValidTgts$ Opponent | Choices$ Permanent.TargetedPlayerCtrl | AtRandom$ True | Amount$ 1 | RememberChosen$ True | SubAbility$ ChooseYou\nSVar:ChooseYou:DB$ ChooseCard | Choices$ Permanent.YouCtrl | Amount$ 1 | AtRandom$ True | RememberChosen$ True | SubAbility$ DBExchange\nSVar:DBExchange:DB$ ExchangeControl | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Hand -1, life +8\\nAt the beginning of your upkeep, exchange control of a permanent you control chosen at random and a permanent target opponent controls chosen at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karona, False God Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

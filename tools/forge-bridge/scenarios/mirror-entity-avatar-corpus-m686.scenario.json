@@ -1,0 +1,23 @@
+{
+  "id": "mirror-entity-avatar-corpus-m686",
+  "description": "M6 corpus — Mirror Entity Avatar; in-hand parse.",
+  "seed": 61616,
+  "cards": {
+    "Mirror Entity Avatar": "Name:Mirror Entity Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/-2\nA:AB$ ChooseType | ActivationZone$ Command | Cost$ X | Defined$ You | Type$ Creature | AILogic$ MostProminentComputerControls | SubAbility$ DBAnimate | SpellDescription$ Choose a creature type. Until end of turn, creatures you control of the chosen type have base power and toughness X/X and gain all creature types.\nSVar:DBAnimate:DB$ AnimateAll | Power$ X | Toughness$ X | AddAllCreatureTypes$ True | ValidCards$ Creature.YouCtrl+ChosenType\nSVar:X:Count$xPaid\nOracle:Hand +1, life -2\\n{X}: Choose a creature type. Until end of turn, creatures you control of the chosen type have base power and toughness X/X and gain all creature types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror Entity Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

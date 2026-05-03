@@ -1,0 +1,23 @@
+{
+  "id": "the-eon-fog-corpus-m686",
+  "description": "M6 corpus — The Eon Fog; in-hand parse.",
+  "seed": 61760,
+  "cards": {
+    "The Eon Fog": "Name:The Eon Fog\nManaCost:no cost\nTypes:Plane Equilor\nR:Event$ BeginPhase | ActiveZones$ Command | Phase$ Untap | Skip$ True | Description$ Players skip their untap steps.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, untap all permanents you control.\nSVar:RolledChaos:DB$ UntapAll | ValidCards$ Permanent.YouCtrl\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Players skip their untap steps.\\nWhenever chaos ensues, untap all permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Eon Fog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

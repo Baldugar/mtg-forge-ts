@@ -1,0 +1,23 @@
+{
+  "id": "goldmeadow-corpus-m686",
+  "description": "M6 corpus — Goldmeadow; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "Goldmeadow": "Name:Goldmeadow\nManaCost:no cost\nTypes:Plane Lorwyn\nT:Mode$ ChangesZone | ValidCard$ Land | Destination$ Battlefield | Execute$ TripleGoat | TriggerZones$ Command | TriggerDescription$ Whenever a land enters, that land's controller creates three 0/1 white Goat creature tokens.\nSVar:TripleGoat:DB$ Token | TokenScript$ w_0_1_goat | TokenOwner$ TriggeredCardController | TokenAmount$ 3\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, create a 0/1 white Goat creature token.\nSVar:RolledChaos:DB$ Token | TokenScript$ w_0_1_goat | TokenOwner$ You\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Whenever a land enters, that land's controller creates three 0/1 white Goat creature tokens.\\nWhenever chaos ensues, create a 0/1 white Goat creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldmeadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "your-own-face-mocks-you-corpus-m686",
+  "description": "M6 corpus — Your Own Face Mocks You; in-hand parse.",
+  "seed": 61821,
+  "cards": {
+    "Your Own Face Mocks You": "Name:Your Own Face Mocks You\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigCopyPermanent | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, choose up to two target creatures your opponents control. For each one, create a token that's a copy of it. If you created fewer than two tokens this way, create a number of 4/4 colorless Scarecrow artifact creature tokens with vigilance equal to the difference.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | ValidTgts$ Creature.OppCtrl | AILogic$ DuplicatePerms | TargetMin$ 0 | TargetMax$ 2 | RememberTokens$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ Difference | TokenScript$ c_4_4_a_scarecrow_vigilance | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:Difference:Number$2/Minus.X\nOracle:When you set this scheme in motion, choose up to two target creatures your opponents control. For each one, create a token that's a copy of it. If you created fewer than two tokens this way, create a number of 4/4 colorless Scarecrow artifact creature tokens with vigilance equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Own Face Mocks You"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

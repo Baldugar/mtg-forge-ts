@@ -1,0 +1,23 @@
+{
+  "id": "platinum-angel-avatar-corpus-m686",
+  "description": "M6 corpus — Platinum Angel Avatar; in-hand parse.",
+  "seed": 61678,
+  "cards": {
+    "Platinum Angel Avatar": "Name:Platinum Angel Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/-2\nR:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | Layer$ CantHappen | CheckSVar$ AvatarAX | CheckSecondSVar$ AvatarCX | CheckThirdSVar$ AvatarEX | CheckFourthSVar$ AvatarLX | Description$ If you control an artifact, a creature, an enchantment, and a land, you can't lose the game and your opponents can't win the game.\nR:Event$ GameWin | ActiveZones$ Command | ValidPlayer$ Opponent | Layer$ CantHappen | CheckSVar$ AvatarAX | CheckSecondSVar$ AvatarCX | CheckThirdSVar$ AvatarEX | CheckFourthSVar$ AvatarLX | Secondary$ True | Description$ If you control an artifact, a creature, an enchantment, and a land, you can't lose the game and your opponents can't win the game.\nSVar:AvatarAX:Count$Valid Artifact.YouCtrl\nSVar:AvatarCX:Count$Valid Creature.YouCtrl\nSVar:AvatarEX:Count$Valid Enchantment.YouCtrl\nSVar:AvatarLX:Count$Valid Land.YouCtrl\nOracle:Hand -1, life -2\\nIf you control an artifact, a creature, an enchantment, and a land, you can't lose the game and your opponents can't win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Platinum Angel Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

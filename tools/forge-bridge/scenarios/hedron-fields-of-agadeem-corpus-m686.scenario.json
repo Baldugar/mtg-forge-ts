@@ -1,0 +1,23 @@
+{
+  "id": "hedron-fields-of-agadeem-corpus-m686",
+  "description": "M6 corpus — Hedron Fields of Agadeem; in-hand parse.",
+  "seed": 61546,
+  "cards": {
+    "Hedron Fields of Agadeem": "Name:Hedron Fields of Agadeem\nManaCost:no cost\nTypes:Plane Zendikar\nS:Mode$ CantAttack | EffectZone$ Command | ValidCard$ Creature.powerGE7 | Description$ Creatures with power 7 or greater can't attack or block.\nS:Mode$ CantBlockBy | EffectZone$ Command | ValidBlocker$ Creature.powerGE7 | Secondary$ True | Description$ Creatures with power 7 or greater can't attack or block.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, create a 7/7 colorless Eldrazi creature token with annihilator 1. (Whenever it attacks, defending player sacrifices a permanent.)\nSVar:RolledChaos:DB$ Token | TokenScript$ c_7_7_eldrazi_annihilator\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:Creatures with power 7 or greater can't attack or block.\\nWhenever chaos ensues, create a 7/7 colorless Eldrazi creature token with annihilator 1. (Whenever it attacks, defending player sacrifices a permanent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hedron Fields of Agadeem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

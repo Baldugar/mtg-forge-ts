@@ -1,0 +1,23 @@
+{
+  "id": "esper-corpus-m686",
+  "description": "M6 corpus — Esper; in-hand parse.",
+  "seed": 61512,
+  "cards": {
+    "Esper": "Name:Esper\nManaCost:no cost\nTypes:Plane Alara\nS:Mode$ ReduceCost | EffectZone$ Command | ValidCard$ Artifact | Type$ Spell | Amount$ 1 | Description$ Artifact spells cost {1} less to cast.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, creatures you control that are white, blue, and/or black become artifacts in addition to other types until end of turn. Then each artifact creature you control gains vigilance, menace, and lifelink until end of turn.\nSVar:RolledChaos:DB$ AnimateAll | ValidCards$ Creature.YouCtrl+Black,Creature.YouCtrl+Blue,Creature.YouCtrl+White | Types$ Artifact | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.Artifact+YouCtrl | KW$ Vigilance & Menace & Lifelink\nDeckHas:Ability$LifeGain\nDeckHints:Type$Artifact\nOracle:Artifact spells cost {1} less to cast.\\nWhenever chaos ensues, creatures you control that are white, blue, and/or black become artifacts in addition to other types until end of turn. Then each artifact creature you control gains vigilance, menace, and lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "i-know-all-i-see-all-corpus-m686",
+  "description": "M6 corpus — I Know All, I See All; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "I Know All, I See All": "Name:I Know All, I See All\nManaCost:no cost\nTypes:Ongoing Scheme\nS:Mode$ UntapOtherPlayer | ValidCard$ Permanent.YouCtrl | EffectZone$ Command | Description$ Untap all permanents you control during each other player's untap step.\nT:Mode$ Phase | Phase$ End of Turn | Execute$ Abandon | TriggerZones$ Command | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ At the beginning of each end step, if three or more cards were put into your graveyard this turn from anywhere, abandon this scheme.\nSVar:Abandon:DB$ Abandon\nSVar:X:Count$ThisTurnEntered_Graveyard_Card.YouOwn\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nUntap all permanents you control during each opponent's untap step.\\nAt the beginning of each end step, if three or more cards were put into your graveyard this turn from anywhere, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Know All, I See All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

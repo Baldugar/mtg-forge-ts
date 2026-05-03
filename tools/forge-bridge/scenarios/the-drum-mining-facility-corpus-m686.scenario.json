@@ -1,0 +1,23 @@
+{
+  "id": "the-drum-mining-facility-corpus-m686",
+  "description": "M6 corpus — The Drum, Mining Facility; in-hand parse.",
+  "seed": 61759,
+  "cards": {
+    "The Drum, Mining Facility": "Name:The Drum, Mining Facility\nManaCost:no cost\nTypes:Plane Earth\nT:Mode$ PlanarDice | TriggerZones$ Command | Execute$ RolledDie | ValidPlayer$ You | TriggerDescription$ Whenever you roll the planar die, creatures you control get +1/+1 and gain haste until end of turn.\nSVar:RolledDie:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Haste\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigEndTurn | TriggerDescription$ Whenever chaos ensues, end the turn. (Exile all spells and abilities from the stack, including this card. The player whose turn it is discards down to their maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\nSVar:TrigEndTurn:DB$ EndTurn\nOracle:Whenever you roll the planar die, creatures you control get +1/+1 and gain haste until end of turn.\\nWhenever chaos ensues, end the turn. (Exile all spells and abilities from the stack. The player whose turn it is discards down to their maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Drum, Mining Facility"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

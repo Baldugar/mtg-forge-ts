@@ -1,0 +1,23 @@
+{
+  "id": "evil-comes-to-fruition-corpus-m686",
+  "description": "M6 corpus — Evil Comes to Fruition; in-hand parse.",
+  "seed": 61517,
+  "cards": {
+    "Evil Comes to Fruition": "Name:Evil Comes to Fruition\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ NewEvil | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create seven 0/1 green Plant creature tokens. If you control ten or more lands, create seven 3/3 green Elemental creature tokens instead.\nSVar:NewEvil:DB$ Token | TokenAmount$ 7 | TokenScript$ g_0_1_plant | TokenOwner$ You | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT10 | SubAbility$ MatureEvil\nSVar:MatureEvil:DB$ Token | TokenAmount$ 7 | TokenScript$ g_3_3_elemental | TokenOwner$ You | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GE10\nOracle:When you set this scheme in motion, create seven 0/1 green Plant creature tokens. If you control ten or more lands, create seven 3/3 green Elemental creature tokens instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evil Comes to Fruition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

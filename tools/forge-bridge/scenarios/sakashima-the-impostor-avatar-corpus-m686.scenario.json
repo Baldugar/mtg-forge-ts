@@ -1,0 +1,23 @@
+{
+  "id": "sakashima-the-impostor-avatar-corpus-m686",
+  "description": "M6 corpus — Sakashima the Impostor Avatar; in-hand parse.",
+  "seed": 61703,
+  "cards": {
+    "Sakashima the Impostor Avatar": "Name:Sakashima the Impostor Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+1\nA:AB$ ChooseCard | Cost$ 2 | ActivationZone$ Command | Choices$ Creature.YouCtrl | Amount$ 1 | AILogic$ Clone | SubAbility$ DBClone | SpellDescription$ Choose a creature you control. It becomes a copy of target creature except for its name.\nSVar:DBClone:DB$ Clone | CloneTarget$ ChosenCard | ValidTgts$ Creature | TgtPrompt$ Select target creature to copy | KeepName$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Hand +0, life +1\\n{2}: Choose a creature you control. It becomes a copy of target creature except for its name.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sakashima the Impostor Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

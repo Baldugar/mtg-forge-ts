@@ -1,0 +1,23 @@
+{
+  "id": "fallen-angel-avatar-corpus-m686",
+  "description": "M6 corpus — Fallen Angel Avatar; in-hand parse.",
+  "seed": 61518,
+  "cards": {
+    "Fallen Angel Avatar": "Name:Fallen Angel Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigDrain | TriggerZones$ Command | TriggerDescription$ Whenever a creature you control dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Hand +0, life -5\\nWhenever a creature you control dies, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fallen Angel Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

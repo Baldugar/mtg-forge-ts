@@ -1,0 +1,23 @@
+{
+  "id": "planewide-disaster-corpus-m686",
+  "description": "M6 corpus — Planewide Disaster; in-hand parse.",
+  "seed": 61677,
+  "cards": {
+    "Planewide Disaster": "Name:Planewide Disaster\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ Disaster | TriggerDescription$ When you encounter CARDNAME, destroy all creatures. (Then planeswalk away from this phenomenon.)\nSVar:Disaster:DB$ DestroyAll | ValidCards$ Creature | SubAbility$ PWAway\nSVar:PWAway:DB$ Planeswalk\nOracle:When you encounter Planewide Disaster, destroy all creatures. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planewide Disaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stonehewer-giant-avatar-corpus-m686",
+  "description": "M6 corpus — Stonehewer Giant Avatar; in-hand parse.",
+  "seed": 61732,
+  "cards": {
+    "Stonehewer Giant Avatar": "Name:Stonehewer Giant Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/-5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Command | Execute$ TrigCopyEquip | TriggerDescription$ Whenever a creature you control enters, create a token that's a copy of a random Equipment card with mana value less than that creature's mana value. Attach that Equipment to that creature.\nSVar:TrigCopyEquip:DB$ CopyPermanent | Defined$ TriggeredCard | ValidSupportedCopy$ Equipment.cmcLTX | RandomCopied$ True | RandomNum$ 1 | AttachAfter$ True | AttachedTo$ TriggeredCardLKICopy\nSVar:X:TriggeredCard$CardManaCost\nOracle:Hand +1, life -5\\nWhenever a creature you control enters, create a token that's a copy of a random Equipment card with mana value less than that creature's mana value. Attach that Equipment to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonehewer Giant Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dungeon-master-corpus-m686",
+  "description": "M6 corpus — Dungeon Master; in-hand parse.",
+  "seed": 61498,
+  "cards": {
+    "Dungeon Master": "Name:Dungeon Master\nManaCost:2 W U\nTypes:Legendary Planeswalker Dungeon Master\nLoyalty:1\nK:ETBReplacement:Other:RollLoyal\nSVar:RollLoyal:DB$ RollDice | Sides$ 4 | ResultSVar$ Result | SubAbility$ DBLoyalty | SpellDescription$ Add 1d4 loyalty counters to CARDNAME.\nSVar:DBLoyalty:DB$ PutCounter | Defined$ Self | CounterType$ LOYALTY | CounterNum$ Result | ETB$ True\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Opponent | TokenOwner$ Targeted | TokenScript$ b_1_1_skeleton_opp_life | Planeswalker$ True | SpellDescription$ Target opponent creates a 1/1 black Skeleton creature token with \"When this creature dies, each opponent gains 2 life.\"\nA:AB$ RollDice | Cost$ AddCounter<1/LOYALTY> | Sides$ 20 | ResultSubAbilities$ 1:DBSkipTurn,12-20:DBDraw | Planeswalker$ True | SpellDescription$ Roll a d20. If you roll a 1, skip your next turn. If you roll a 12 or higher, draw a card.\nSVar:DBSkipTurn:DB$ SkipTurn | Defined$ You | NumTurns$ 1\nSVar:DBDraw:DB$ Draw\nA:AB$ Token | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | TokenScript$ r_3_3_fighter_first_strike | SubAbility$ DBCleric | SpellDescription$ You get an adventuring party. (Your party is a 3/3 red Fighter with first strike, a 1/1 white Cleric with lifelink, a 2/2 black Rogue with hexproof, and a 1/1 blue Wizard with flying.)\nSVar:DBCleric:DB$ Token | TokenScript$ w_1_1_cleric_lifelink | SubAbility$ DBRogue\nSVar:DBRogue:DB$ Token | TokenScript$ b_2_2_rogue_hexproof | SubAbility$ DBWizard\nSVar:DBWizard:DB$ Token | TokenScript$ u_1_1_wizard_flying\nDeckHas:Ability$Token|LifeGain\nDeckHints:Ability$Party\nOracle:[+1]: Target opponent creates a 1/1 black Skeleton creature token with \"When this creature dies, each opponent gains 2 life.\"\\n[+1]: Roll a d20. If you roll a 1, skip your next turn. If you roll a 12 or higher, draw a card.\\n[-6]: You get an adventuring party. (Your party is a 3/3 red Fighter with first strike, a 1/1 white Cleric with lifelink, a 2/2 black Rogue with hexproof, and a 1/1 blue Wizard with flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dungeon Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

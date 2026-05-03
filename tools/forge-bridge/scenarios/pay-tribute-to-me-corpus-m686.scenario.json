@@ -1,0 +1,23 @@
+{
+  "id": "pay-tribute-to-me-corpus-m686",
+  "description": "M6 corpus — Pay Tribute to Me; in-hand parse.",
+  "seed": 61673,
+  "cards": {
+    "Pay Tribute to Me": "Name:Pay Tribute to Me\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBSac | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent sacrifices a creature. If you control six or more lands, each opponent sacrifices another creature.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Player.Opponent | SubAbility$ DBSac2\nSVar:DBSac2:DB$ Sacrifice | SacValid$ Creature | Defined$ Player.Opponent | ConditionPresent$ Land.YouCtrl | PresentCompare$ GE6\nOracle:When you set this scheme in motion, each opponent sacrifices a creature. If you control six or more lands, each opponent sacrifices another creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pay Tribute to Me"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "know-naught-but-fire-corpus-m686",
+  "description": "M6 corpus — Know Naught but Fire; in-hand parse.",
+  "seed": 61590,
+  "cards": {
+    "Know Naught but Fire": "Name:Know Naught but Fire\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DmgAll | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, it deals damage to each opponent equal to the number of cards in that player's hand.\nSVar:DmgAll:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBDamage | DamageMap$ True\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ X\nSVar:X:PlayerCountRemembered$CardsInHand\nOracle:When you set this scheme in motion, it deals damage to each opponent equal to the number of cards in that player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Know Naught but Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

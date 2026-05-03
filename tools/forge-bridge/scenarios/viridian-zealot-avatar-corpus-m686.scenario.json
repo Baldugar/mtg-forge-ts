@@ -1,0 +1,23 @@
+{
+  "id": "viridian-zealot-avatar-corpus-m686",
+  "description": "M6 corpus — Viridian Zealot Avatar; in-hand parse.",
+  "seed": 61803,
+  "cards": {
+    "Viridian Zealot Avatar": "Name:Viridian Zealot Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+2\nA:AB$ Destroy | ActivationZone$ Command | Cost$ 2 Sac<1/Creature> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBChangeZone | SpellDescription$ Destroy target artifact or enchantment. Search your library for a card with the same name as the sacrificed creature, reveal that card, put it into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.sharesNameWith Sacrificed | ChangeNum$ 1 | StackDescription$ Search your library for a card with the same name as the sacrificed creature, reveal that card, and put it into your hand. Then shuffle.\nOracle:Hand +0, life +2\\n{2}, Sacrifice a creature: Destroy target artifact or enchantment. Search your library for a card with the same name as the sacrificed creature, reveal that card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viridian Zealot Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

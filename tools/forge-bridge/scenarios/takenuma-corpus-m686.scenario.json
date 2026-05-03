@@ -1,0 +1,23 @@
+{
+  "id": "takenuma-corpus-m686",
+  "description": "M6 corpus — Takenuma; in-hand parse.",
+  "seed": 61741,
+  "cards": {
+    "Takenuma": "Name:Takenuma\nManaCost:no cost\nTypes:Plane Kamigawa\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature | Execute$ TakenumaDraw | TriggerZones$ Command | TriggerDescription$ Whenever a creature leaves the battlefield, its controller draws a card.\nSVar:TakenumaDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, return target creature you control to its owner's hand.\nSVar:RolledChaos:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature to return to your hand | Origin$ Battlefield | Destination$ Hand\nOracle:Whenever a creature leaves the battlefield, its controller draws a card.\\nWhenever chaos ensues, return target creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Takenuma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

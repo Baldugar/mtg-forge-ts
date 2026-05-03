@@ -1,0 +1,23 @@
+{
+  "id": "agyrem-corpus-m686",
+  "description": "M6 corpus — Agyrem; in-hand parse.",
+  "seed": 61446,
+  "cards": {
+    "Agyrem": "Name:Agyrem\nManaCost:no cost\nTypes:Plane Ravnica\nT:Mode$ ChangesZone | ValidCard$ Creature.White | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDelay | TriggerZones$ Command | TriggerDescription$ Whenever a white creature dies, return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigDelay:DB$ Effect | Name$ Agyrem's Effect — White Creatures Feign Death | Triggers$ TrigEOT | RememberObjects$ TriggeredCard | Duration$ Permanent\nSVar:TrigEOT:Mode$ Phase | Phase$ End of Turn | Execute$ AgyremReturn | TriggerDescription$ Return creature to the battlefield under its owner's control at the beginning of the next end step.\nSVar:AgyremReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ AgyremCleanup\nSVar:AgyremCleanup:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nT:Mode$ ChangesZone | ValidCard$ Creature.nonWhite | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDelay2 | TriggerZones$ Command | TriggerDescription$ Whenever a nonwhite creature dies, return it to its owner's hand at the beginning of the next end step.\nSVar:TrigDelay2:DB$ Effect | Name$ Agyrem's Effect — Nonwhite Creatures Rebirthed | Triggers$ TrigEOT2 | RememberObjects$ TriggeredCard | Duration$ Permanent\nSVar:TrigEOT2:Mode$ Phase | Phase$ End of Turn | Execute$ AgyremReturn2 | TriggerDescription$ Return creature to its owner's hand at the beginning of the next end step.\nSVar:AgyremReturn2:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Hand | SubAbility$ AgyremCleanup\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, creatures can't attack you until a player planeswalks.\nSVar:RolledChaos:DB$ Effect | Name$ Agyrem's Effect — None Can Attack You | StaticAbilities$ STCantAttack | Triggers$ TrigPlaneswalk | Duration$ Permanent\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Creature | Target$ You | Description$ Creatures can't attack you until a player planeswalks.\nSVar:TrigPlaneswalk:Mode$ PlaneswalkedTo | Execute$ AgyremCleanup | Static$ True\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Whenever a white creature dies, return it to the battlefield under its owner's control at the beginning of the next end step.\\nWhenever a nonwhite creature dies, return it to its owner's hand at the beginning of the next end step.\\nWhenever chaos ensues, creatures can't attack you until a player planeswalks.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agyrem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

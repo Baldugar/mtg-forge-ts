@@ -1,0 +1,23 @@
+{
+  "id": "unit-headquarters-corpus-m686",
+  "description": "M6 corpus — UNIT Headquarters; in-hand parse.",
+  "seed": 61796,
+  "cards": {
+    "UNIT Headquarters": "Name:UNIT Headquarters\nManaCost:no cost\nTypes:Plane Earth\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create a tapped 1/1 white Soldier creature token.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigToken | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create a tapped 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenTapped$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever chaos ensues, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Soldier & Color$White\nOracle:When you planeswalk to UNIT Headquarters and at the beginning of your upkeep, create a tapped 1/1 white Soldier creature token.\\nWhenever chaos ensues, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "UNIT Headquarters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

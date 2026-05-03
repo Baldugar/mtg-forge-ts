@@ -1,0 +1,23 @@
+{
+  "id": "mine-is-the-only-truth-corpus-m686",
+  "description": "M6 corpus — Mine Is the Only Truth; in-hand parse.",
+  "seed": 61613,
+  "cards": {
+    "Mine Is the Only Truth": "Name:Mine Is the Only Truth\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Command | Execute$ TrigDrawCard | TriggerDescription$ Whenever a player casts a spell, you draw a card.\nSVar:TrigDrawCard:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | CheckSVar$ DrewLastTurn | Execute$ DBAbandon | TriggerDescription$ At the beginning of your upkeep, if you drew a card last turn, abandon this scheme.\nSVar:DBAbandon:DB$ Abandon\nSVar:DrewLastTurn:Count$YouDrewLastTurn\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nWhenever a player casts a spell, you draw a card.\\nAt the beginning of your upkeep, if you drew a card last turn, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mine Is the Only Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

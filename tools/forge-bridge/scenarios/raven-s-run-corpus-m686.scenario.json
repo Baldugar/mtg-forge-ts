@@ -1,0 +1,23 @@
+{
+  "id": "raven-s-run-corpus-m686",
+  "description": "M6 corpus — Raven's Run; in-hand parse.",
+  "seed": 61689,
+  "cards": {
+    "Raven's Run": "Name:Raven's Run\nManaCost:no cost\nTypes:Plane Shadowmoor\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Creature | AddKeyword$ Wither | Description$ All creatures have wither (They deal damage to creatures in the form of -1/-1 counters.)\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever chaos ensues, put a -1/-1 counter on target creature, two -1/-1 counters on another target creature, and three -1/-1 counters on a third target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | TargetUnique$ True | CounterType$ M1M1 | SubAbility$ DBPutTwo\nSVar:DBPutTwo:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select another target creature | TargetUnique$ True | CounterType$ M1M1 | CounterNum$ 2 | SubAbility$ DBPutThree\nSVar:DBPutThree:DB$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select a third target creature | TargetUnique$ True | CounterType$ M1M1 | CounterNum$ 3\nSVar:AIRollPlanarDieParams:Mode$ Always | OppHasCreatureInPlay$ True\nOracle:All creatures have wither. (They deal damage to creatures in the form of -1/-1 counters.)\\nWhenever chaos ensues, put a -1/-1 counter on target creature, two -1/-1 counters on another target creature, and three -1/-1 counters on a third target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raven's Run"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

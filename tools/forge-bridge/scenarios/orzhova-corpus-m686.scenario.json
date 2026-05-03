@@ -1,0 +1,23 @@
+{
+  "id": "orzhova-corpus-m686",
+  "description": "M6 corpus — Orzhova; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Orzhova": "Name:Orzhova\nManaCost:no cost\nTypes:Plane Ravnica\nT:Mode$ PlaneswalkedFrom | ValidCard$ Plane.Self | Execute$ OrzhovaDeal | TriggerDescription$ When you planeswalk away from CARDNAME, each player returns all creature cards from their graveyard to the battlefield.\nSVar:OrzhovaDeal:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, for each opponent, exile up to one target creature card from that player's graveyard.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature each opponent controls. | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:When you planeswalk away from Orzhova, each player returns all creature cards from their graveyard to the battlefield.\\nWhenever chaos ensues, for each opponent, exile up to one target creature card from that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orzhova"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

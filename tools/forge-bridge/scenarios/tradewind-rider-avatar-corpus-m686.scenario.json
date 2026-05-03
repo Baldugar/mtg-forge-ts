@@ -1,0 +1,23 @@
+{
+  "id": "tradewind-rider-avatar-corpus-m686",
+  "description": "M6 corpus — Tradewind Rider Avatar; in-hand parse.",
+  "seed": 61788,
+  "cards": {
+    "Tradewind Rider Avatar": "Name:Tradewind Rider Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/+4\nA:AB$ RepeatEach | Cost$ 3 | ActivationZone$ Command | RepeatPlayers$ Player | RepeatSubAbility$ DBBounce | SpellDescription$ Each player returns a permanent they control to its owner's hand unless they pay 2 life.\nSVar:DBBounce:DB$ ChangeZone | ChangeType$ Permanent | ChangeNum$ 1 | DefinedPlayer$ Remembered | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | UnlessPayer$ Remembered | UnlessCost$ PayLife<2>\nOracle:Hand +1, life +4\\n{3}: Each player returns a permanent they control to its owner's hand unless they pay 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tradewind Rider Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

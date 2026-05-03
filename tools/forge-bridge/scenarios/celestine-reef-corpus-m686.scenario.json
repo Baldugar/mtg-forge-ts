@@ -1,0 +1,23 @@
+{
+  "id": "celestine-reef-corpus-m686",
+  "description": "M6 corpus — Celestine Reef; in-hand parse.",
+  "seed": 61479,
+  "cards": {
+    "Celestine Reef": "Name:Celestine Reef\nManaCost:no cost\nTypes:Plane Luvion\nS:Mode$ CantAttack | EffectZone$ Command | ValidCard$ Creature.withoutFlying+!hasKeywordLandwalk:Island | Description$ Creatures without flying or islandwalk can't attack.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, until a player planeswalks, you can't lose the game and your opponents can't win the game.\nSVar:RolledChaos:DB$ Effect | ReplacementEffects$ DBYouCantLose,DBOppCantWin | Triggers$ TrigPlaneswalk | Duration$ Permanent\nSVar:DBYouCantLose:Event$ GameLoss | ValidPlayer$ You | Layer$ CantHappen | Description$ Until a player planeswalks, you can't lose the game and your opponents can't win the game.\nSVar:DBOppCantWin:Event$ GameWin | ValidPlayer$ Opponent | Layer$ CantHappen | Secondary$ True | Description$ Until a player planeswalks, you can't lose the game and your opponents can't win the game.\nSVar:TrigPlaneswalk:Mode$ PlaneswalkedTo | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Creatures without flying or islandwalk can't attack.\\nWhenever chaos ensues, until a player planeswalks, you can't lose the game and your opponents can't win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celestine Reef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

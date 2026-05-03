@@ -1,0 +1,23 @@
+{
+  "id": "pompeii-corpus-m686",
+  "description": "M6 corpus — Pompeii; in-hand parse.",
+  "seed": 61680,
+  "cards": {
+    "Pompeii": "Name:Pompeii\nManaCost:no cost\nTypes:Plane Earth\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put an eruption counter on it.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put an eruption counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ ERUPTION | CounterNum$ 1\nT:Mode$ PlanarDice | Result$ Blank | Execute$ TrigScry | TriggerZones$ Command | TriggerDescription$ Whenever you roll a blank on the planar die, scry 2. Then put an eruption counter on CARDNAME.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2 | SubAbility$ TrigPutCounter\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigDamageAll | TriggerDescription$ When chaos ensues, CARDNAME deals damage to each creature and each player equal to the number of eruption counters on CARDNAME. Each player sacrifices a land. Then planeswalk.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ X | SubAbility$ DBSacLand\nSVar:DBSacLand:DB$ Sacrifice | SacValid$ Land | Defined$ Player | SubAbility$ DBPlaneswalk\nSVar:DBPlaneswalk:DB$ Planeswalk\nSVar:X:Count$CardCounters.ERUPTION\nDeckHas:Ability$Counters|Sacrifice\nOracle:When you planeswalk to Pompeii and at the beginning of your upkeep, put an eruption counter on it.\\nWhenever you roll a blank on the planar die, scry 2. Then put an eruption counter on Pompeii.\\nWhen chaos ensues, Pompeii deals damage to each creature and each player equal to the number of eruption counters on Pompeii. Each player sacrifices a land. Then planeswalk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pompeii"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

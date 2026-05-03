@@ -1,0 +1,23 @@
+{
+  "id": "ghirapur-corpus-m686",
+  "description": "M6 corpus — Ghirapur; in-hand parse.",
+  "seed": 61532,
+  "cards": {
+    "Ghirapur": "Name:Ghirapur\nManaCost:no cost\nTypes:Plane Kaladesh\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigAnimateAll | TriggerDescription$ At the beginning of combat on your turn, until end of turn, each noncreature, non-Vehicle artifact you control becomes a 5/3 Vehicle in addition to its other types and gains trample, haste, and crew 2.\nSVar:TrigAnimateAll:DB$ AnimateAll | ValidCards$ Artifact.nonCreature+YouCtrl+nonVehicle | Power$ 5 | Toughness$ 3 | Types$ Vehicle | Keywords$ Crew:2 & Trample & Haste\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, return target noncreature artifact card from your graveyard to your hand.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select target noncreature artifact spell from your graveyard\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact\nOracle:At the beginning of combat on your turn, until end of turn, each noncreature, non-Vehicle artifact you control becomes a 5/3 Vehicle in addition to its other types and gains trample, haste, and crew 2.\\nWhenever chaos ensues, return target noncreature artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghirapur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

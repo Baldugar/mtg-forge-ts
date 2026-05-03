@@ -1,0 +1,23 @@
+{
+  "id": "singing-towers-of-darillium-corpus-m686",
+  "description": "M6 corpus — Singing Towers of Darillium; in-hand parse.",
+  "seed": 61716,
+  "cards": {
+    "Singing Towers of Darillium": "Name:Singing Towers of Darillium\nManaCost:no cost\nTypes:Plane Darillium\nS:Mode$ Continuous | Affected$ Card.nonLand+YouOwn+withoutForetell | EffectZone$ Command | AffectedZone$ Hand | AddKeyword$ Foretell | Description$ Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigEffect | TriggerDescription$ Whenever chaos ensues, you may cast a foretold card you own from exile without paying its mana cost this turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ MayCastForetell | Triggers$ SpellCast\nSVar:MayCastForetell:Mode$ Continuous | Affected$ Card.foretold+YouOwn+nonLand | MayPlayWithoutManaCost$ True | MayPlay$ True | MayPlayLimit$ 1 | AffectedZone$ Exile | Description$ You may cast a foretold card you own from exile without paying its mana cost this turn.\nSVar:SpellCast:Mode$ SpellCast | Static$ True | ValidSA$ Spell.MayPlaySource | ValidActivatingPlayer$ You | OneOff$ True | TriggerZones$ Command | Execute$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\\nWhenever chaos ensues, you may cast a foretold card you own from exile without paying its mana cost this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Singing Towers of Darillium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

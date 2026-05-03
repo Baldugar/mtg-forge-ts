@@ -1,0 +1,23 @@
+{
+  "id": "mortal-flesh-is-weak-corpus-m686",
+  "description": "M6 corpus — Mortal Flesh Is Weak; in-hand parse.",
+  "seed": 61623,
+  "cards": {
+    "Mortal Flesh Is Weak": "Name:Mortal Flesh Is Weak\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ ShowTheWeakness | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent's life total becomes the lowest life total among your opponents.\nSVar:ShowTheWeakness:DB$ SetLife | Defined$ Player.Opponent | LifeAmount$ X\nSVar:X:PlayerCountOpponents$LowestLifeTotal\nOracle:When you set this scheme in motion, each opponent's life total becomes the lowest life total among your opponents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortal Flesh Is Weak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

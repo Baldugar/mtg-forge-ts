@@ -1,0 +1,23 @@
+{
+  "id": "every-dream-a-nightmare-corpus-m686",
+  "description": "M6 corpus — Every Dream a Nightmare; in-hand parse.",
+  "seed": 61514,
+  "cards": {
+    "Every Dream a Nightmare": "Name:Every Dream a Nightmare\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBRepeat | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent discards a card. You draw a card for each land card discarded this way.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ Dream | SubAbility$ Nightmare\nSVar:Dream:DB$ Discard | Defined$ Player.IsRemembered | Mode$ TgtChoose | NumCards$ 1 | Mandatory$ True | RememberDiscarded$ True\nSVar:Nightmare:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Land.RememberedPlayerCtrl\nOracle:When you set this scheme in motion, each opponent discards a card. You draw a card for each land card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Every Dream a Nightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

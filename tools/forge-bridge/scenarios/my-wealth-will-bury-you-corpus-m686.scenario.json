@@ -1,0 +1,23 @@
+{
+  "id": "my-wealth-will-bury-you-corpus-m686",
+  "description": "M6 corpus — My Wealth Will Bury You; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "My Wealth Will Bury You": "Name:My Wealth Will Bury You\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create a number of Treasure tokens equal to the number of artifacts and enchantments your opponents control. If they control fewer than four artifacts and enchantments, create four Treasure tokens instead. (Treasure tokens are artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:X:Count$Valid Artifact.OppCtrl,Enchantment.OppCtrl\nSVar:Y:Count$Compare X GE4.X.4\nOracle:When you set this scheme in motion, create a number of Treasure tokens equal to the number of artifacts and enchantments your opponents control. If they control fewer than four artifacts and enchantments, create four Treasure tokens instead. (Treasure tokens are artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Wealth Will Bury You"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

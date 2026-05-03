@@ -1,0 +1,23 @@
+{
+  "id": "arcbound-overseer-avatar-corpus-m686",
+  "description": "M6 corpus — Arcbound Overseer Avatar; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Arcbound Overseer Avatar": "Name:Arcbound Overseer Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ BuildCounter | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may put a +1/+1 counter on target creature you control.\nSVar:BuildCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ ChargeCounter | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on target permanent you control.\nSVar:ChargeCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control\nOracle:Hand +0, life +3\\nAt the beginning of your upkeep, you may put a +1/+1 counter on target creature you control.\\nAt the beginning of your upkeep, you may put a charge counter on target permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcbound Overseer Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

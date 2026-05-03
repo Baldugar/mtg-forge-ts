@@ -80,7 +80,9 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     //   - Battles need defense counters seeded.
     const typesLine = lines.find((l) => l.startsWith("Types:")) ?? "";
     const t = typesLine.slice(6);
-    if (/Scheme|Conspiracy|Vanguard|Phenomenon|Plane(\b|$)|Dungeon/.test(t)) continue;
+    // M6.86 — Schemes/Conspiracies/etc. live in non-battlefield zones. Force
+    // these to in-hand for parse-only verification (no engine resolution).
+    const isSchemeFamily = /Scheme|Conspiracy|Vanguard|Phenomenon|Plane(\b|$)|Dungeon/.test(t);
     const isAura = lines.some((l) => l.startsWith("K:Enchant:"));
     const isSaga = /\bSaga\b/.test(t);
     const isVehicle = /\bVehicle\b/.test(t);
@@ -316,6 +318,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       usesAvatarMechanics ||
       hasAnyAsNumber ||
       hasExoticToken ||
+      isSchemeFamily ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||

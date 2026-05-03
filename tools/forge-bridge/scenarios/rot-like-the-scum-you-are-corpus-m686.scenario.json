@@ -1,0 +1,23 @@
+{
+  "id": "rot-like-the-scum-you-are-corpus-m686",
+  "description": "M6 corpus — Rot Like the Scum You Are; in-hand parse.",
+  "seed": 61698,
+  "cards": {
+    "Rot Like the Scum You Are": "Name:Rot Like the Scum You Are\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create a 2/2 green Ooze creature token, then put a number of +1/+1 counters on it equal to the number of lands your opponents control.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_ooze | RememberTokens$ True | TokenOwner$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterNum$ X | CounterType$ P1P1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Land.OppCtrl\nOracle:When you set this scheme in motion, create a 2/2 green Ooze creature token, then put a number of +1/+1 counters on it equal to the number of lands your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rot Like the Scum You Are"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

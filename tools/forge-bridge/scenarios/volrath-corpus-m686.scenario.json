@@ -1,0 +1,23 @@
+{
+  "id": "volrath-corpus-m686",
+  "description": "M6 corpus — Volrath; in-hand parse.",
+  "seed": 61804,
+  "cards": {
+    "Volrath": "Name:Volrath\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+2/-3\nT:Mode$ ChangesZone | TriggerZones$ Command | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+YouOwn | OptionalDecider$ You | Execute$ GetUp | TriggerDescription$ Whenever a creature you control is put into your graveyard from the battlefield, you may put it on top of your library.\nSVar:GetUp:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library\nOracle:Hand +2, life -3\\nWhenever a creature you control is put into your graveyard from the battlefield, you may put it on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-fertile-lands-of-saulvinia-corpus-m686",
+  "description": "M6 corpus — The Fertile Lands of Saulvinia; in-hand parse.",
+  "seed": 61762,
+  "cards": {
+    "The Fertile Lands of Saulvinia": "Name:The Fertile Lands of Saulvinia\nManaCost:no cost\nTypes:Plane Antausia\nT:Mode$ TapsForMana | ValidCard$ Land | Execute$ AddMana | TriggerZones$ Command | Static$ True | TriggerDescription$ Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\nSVar:AddMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigDigUntil | TriggerDescription$ Whenever chaos ensues, reveal cards from the top of your planar deck until you reveal a plane card. Chaos ensues on that plane. Then put all cards revealed this way on the bottom of your planar deck in any order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Plane | DigZone$ PlanarDeck | RememberFound$ True | FoundDestination$ PlanarDeck | FoundLibraryPosition$ -1 | RevealedDestination$ PlanarDeck | RevealedLibraryPosition$ -1 | SubAbility$ DBChaosEnsues\nSVar:DBChaosEnsues:DB$ ChaosEnsues | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\\nWhenever chaos ensues, reveal cards from the top of your planar deck until you reveal a plane card. Chaos ensues on that plane. Then put all cards revealed this way on the bottom of your planar deck in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fertile Lands of Saulvinia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

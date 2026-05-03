@@ -1,0 +1,23 @@
+{
+  "id": "mirrored-depths-corpus-m686",
+  "description": "M6 corpus — Mirrored Depths; in-hand parse.",
+  "seed": 61617,
+  "cards": {
+    "Mirrored Depths": "Name:Mirrored Depths\nManaCost:no cost\nTypes:Plane Karsus\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Command | Execute$ TrigFlip | TriggerDescription$ Whenever a player casts a spell, that player flips a coin. If the player loses the flip, counter that spell.\nSVar:TrigFlip:DB$ FlipACoin | Flipper$ TriggeredActivator | LoseSubAbility$ DBCounter\nSVar:DBCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target player reveals the top card of their library. If it's a nonland card, you may cast it without paying its mana cost.\nSVar:RolledChaos:DB$ PeekAndReveal | ValidTgts$ Player | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | WithoutManaCost$ True | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Whenever a player casts a spell, that player flips a coin. If the player loses the flip, counter that spell.\\nWhenever chaos ensues, target player reveals the top card of their library. If it's a nonland card, you may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirrored Depths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "power-without-equal-corpus-m686",
+  "description": "M6 corpus — Power Without Equal; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Power Without Equal": "Name:Power Without Equal\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDraw | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, draw three cards. You have no maximum hand size until your next turn. If you control six or more lands, you may cast up to three spells from your hand without paying their mana costs.\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ UntilYourNextTurn | SubAbility$ DBPlay\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nSVar:DBPlay:DB$ Play | Valid$ Card.YouCtrl+nonLand | ValidZone$ Hand | Controller$ You | WithoutManaCost$ True | Amount$ 3 | Optional$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GE6\nSVar:X:Count$Valid Land.YouCtrl\nOracle:When you set this scheme in motion, draw three cards. You have no maximum hand size until your next turn. If you control six or more lands, you may cast up to three spells from your hand without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Without Equal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

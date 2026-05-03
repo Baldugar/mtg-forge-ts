@@ -1,0 +1,23 @@
+{
+  "id": "unyaro-corpus-m686",
+  "description": "M6 corpus — Unyaro; in-hand parse.",
+  "seed": 61798,
+  "cards": {
+    "Unyaro": "Name:Unyaro\nManaCost:no cost\nTypes:Plane Zhalfir\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Command | ValidPlayer$ You | CheckSVar$ X | Execute$ TrigUntapAll | TriggerDescription$ At the beginning of your end step, if you planeswalked to CARDNAME this turn, untap all creatures. They phase out until a player planeswalks. (Treat them and anything attached to them as though they didn't exist.)\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature | SubAbility$ DBPhaseOut\nSVar:DBPhaseOut:DB$ Phases | AllValid$ Creature | WontPhaseInNormal$ True | RememberAffected$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ PlaneswalkTrig | OneOff$ True | RememberObjects$ Remembered | Duration$ Permanent | ForgetOnPhasedIn$ True | SubAbility$ DBCleanup\nSVar:PlaneswalkTrig:Mode$ PlaneswalkedTo | Execute$ TrigPhaseIn | TriggerZones$ Command | Static$ True | TriggerDescription$ They phase out until a player planeswalks.\nSVar:TrigPhaseIn:DB$ Phases | Defined$ Remembered | PhaseInOrOut$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountPropertyYou$PlaneswalkedToThisTurn Unyaro\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigToken | TriggerDescription$ Whenever chaos ensues, create two 2/2 white and blue Knight creature tokens with vigilance.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ wu_2_2_knight_vigilance\nDeckHas:Ability$Token & Color$White|Blue & Type$Knight\nOracle:At the beginning of your end step, if you planeswalked to Unyaro this turn, untap all creatures. They phase out until a player planeswalks. (Treat them and anything attached to them as though they didn't exist.)\\nWhenever chaos ensues, create two 2/2 white and blue Knight creature tokens with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unyaro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

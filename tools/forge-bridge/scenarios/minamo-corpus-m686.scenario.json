@@ -1,0 +1,23 @@
+{
+  "id": "minamo-corpus-m686",
+  "description": "M6 corpus — Minamo; in-hand parse.",
+  "seed": 61612,
+  "cards": {
+    "Minamo": "Name:Minamo\nManaCost:no cost\nTypes:Plane Kamigawa\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Command | Execute$ TrigDraw | TriggerDescription$ Whenever a player casts a spell, that player may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredActivator | OptionalDecider$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, each player may return a blue card from their graveyard to their hand.\nSVar:RolledChaos:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBChangeZoneAll\nSVar:DBChoose:DB$ ChooseCard | Choices$ Card.RememberedPlayerCtrl+Blue | ChoiceZone$ Graveyard | Defined$ Player.IsRemembered | Amount$ 1 | RememberChosen$ True\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIRollPlanarDieParams:Mode$ Always | HasColorInGraveyard$ U\nOracle:Whenever a player casts a spell, that player may draw a card.\\nWhenever chaos ensues, each player may return a blue card from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minamo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

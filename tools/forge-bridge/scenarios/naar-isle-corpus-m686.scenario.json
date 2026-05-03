@@ -1,0 +1,23 @@
+{
+  "id": "naar-isle-corpus-m686",
+  "description": "M6 corpus — Naar Isle; in-hand parse.",
+  "seed": 61642,
+  "cards": {
+    "Naar Isle": "Name:Naar Isle\nManaCost:no cost\nTypes:Plane Wildfire\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a flame counter on CARDNAME, then CARDNAME deals damage to you equal to the number of flame counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ FLAME | CounterNum$ 1 | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ You | NumDmg$ Y\nSVar:Y:Count$CardCounters.FLAME\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, CARDNAME deals 3 damage to target player or planeswalker.\nSVar:RolledChaos:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:At the beginning of your upkeep, put a flame counter on Naar Isle, then Naar Isle deals damage to you equal to the number of flame counters on it.\\nWhenever chaos ensues, Naar Isle deals 3 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naar Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

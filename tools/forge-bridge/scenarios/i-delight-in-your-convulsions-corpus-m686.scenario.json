@@ -1,0 +1,23 @@
+{
+  "id": "i-delight-in-your-convulsions-corpus-m686",
+  "description": "M6 corpus — I Delight in Your Convulsions; in-hand parse.",
+  "seed": 61562,
+  "cards": {
+    "I Delight in Your Convulsions": "Name:I Delight in Your Convulsions\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DarkEffect | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent loses 3 life. You gain life equal to the life lost this way.\nSVar:DarkEffect:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ You gain life equal to the life lost this way.\nSVar:AFLifeLost:Number$0\nOracle:When you set this scheme in motion, each opponent loses 3 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "I Delight in Your Convulsions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

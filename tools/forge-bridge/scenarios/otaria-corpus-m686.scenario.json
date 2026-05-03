@@ -1,0 +1,23 @@
+{
+  "id": "otaria-corpus-m686",
+  "description": "M6 corpus — Otaria; in-hand parse.",
+  "seed": 61670,
+  "cards": {
+    "Otaria": "Name:Otaria\nManaCost:no cost\nTypes:Plane Dominaria\nS:Mode$ Continuous | Affected$ Instant,Sorcery | EffectZone$ Command | AffectedZone$ Graveyard | AddKeyword$ Flashback | Description$ Instant and sorcery cards in graveyards have flashback. The flashback cost is equal to the card's mana cost. (Its owner may cast the card from their graveyard for its mana cost. Then they exile it.)\nS:Mode$ Continuous | Affected$ Instant.wasCastFromGraveyard,Sorcery.wasCastFromGraveyard | EffectZone$ Command | AffectedZone$ Stack | AddKeyword$ Flashback | Secondary$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, take an extra turn after this one.\nSVar:RolledChaos:DB$ AddTurn | NumTurns$ 1\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Instant and sorcery cards in graveyards have flashback. The flashback cost is equal to the card's mana cost. (Its owner may cast the card from their graveyard for its mana cost. Then they exile it.)\\nWhenever chaos ensues, take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Otaria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

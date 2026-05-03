@@ -1,0 +1,23 @@
+{
+  "id": "delight-in-the-hunt-corpus-m686",
+  "description": "M6 corpus — Delight in the Hunt; in-hand parse.",
+  "seed": 61494,
+  "cards": {
+    "Delight in the Hunt": "Name:Delight in the Hunt\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBToken | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create a 3/3 black Horror creature token and prevent all damage that would be dealt to creatures you control this turn.\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_horror | TokenOwner$ You | SubAbility$ DBPrevent\nSVar:DBPrevent:DB$ Effect | ReplacementEffects$ RPrevent\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Creature.YouCtrl | Description$ Prevent all damage that would be dealt to creatures you control this turn.\nOracle:When you set this scheme in motion, create a 3/3 black Horror creature token and prevent all damage that would be dealt to creatures you control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delight in the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

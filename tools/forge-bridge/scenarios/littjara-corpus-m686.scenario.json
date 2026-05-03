@@ -1,0 +1,23 @@
+{
+  "id": "littjara-corpus-m686",
+  "description": "M6 corpus — Littjara; in-hand parse.",
+  "seed": 61596,
+  "cards": {
+    "Littjara": "Name:Littjara\nManaCost:no cost\nTypes:Plane Kaldheim\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create a 2/2 blue Shapeshifter creature token with changeling. (It is every creature type.)\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigToken | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, create a 2/2 blue Shapeshifter creature token with changeling. (It is every creature type.)\nSVar:TrigToken:DB$ Token | TokenScript$ u_2_2_shapeshifter_changeling | TokenOwner$ You\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, choose a creature type. Put a +1/+1 counter on each creature you control of that type.\nSVar:RolledChaos:DB$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBPutCounterAll | AILogic$ MostProminentComputerControls\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.ChosenType+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Shapeshifter\nOracle:When you planeswalk to Littjara and at the beginning of your upkeep, create a 2/2 blue Shapeshifter creature token with changeling. (It is every creature type.)\\nWhenever chaos ensues, choose a creature type. Put a +1/+1 counter on each creature you control of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Littjara"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oni-of-wild-places-avatar-corpus-m686",
+  "description": "M6 corpus — Oni of Wild Places Avatar; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Oni of Wild Places Avatar": "Name:Oni of Wild Places Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-2\nS:Mode$ Continuous | EffectZone$ Command | AffectedZone$ Battlefield | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Creatures you control have haste.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Creature | PresentZone$ Battlefield | PresentPlayer$ You | Execute$ TrigBounce | TriggerZones$ Command | TriggerDescription$ At the beginning of your upkeep, return a creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.YouCtrl\nOracle:Hand +0, life -2\\nCreatures you control have haste.\\nAt the beginning of your upkeep, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oni of Wild Places Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

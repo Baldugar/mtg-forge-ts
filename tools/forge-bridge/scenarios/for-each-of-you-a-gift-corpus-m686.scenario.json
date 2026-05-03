@@ -1,0 +1,23 @@
+{
+  "id": "for-each-of-you-a-gift-corpus-m686",
+  "description": "M6 corpus — For Each of You, a Gift; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "For Each of You, a Gift": "Name:For Each of You, a Gift\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, for each opponent, create a 3/3 black Horror creature token that attacks that player each combat if able.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBToken | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_horror | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBEff\nSVar:DBEff:DB$ Effect | RememberObjects$ Remembered | ExileOnMoved$ Battlefield | Duration$ Permanent | StaticAbilities$ MustAttack | SubAbility$ DBCleanup\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | MustAttack$ RememberedPlayer | Description$ This creature attacks its designated player each combat if able.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you set this scheme in motion, for each opponent, create a 3/3 black Horror creature token that attacks that player each combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "For Each of You, a Gift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

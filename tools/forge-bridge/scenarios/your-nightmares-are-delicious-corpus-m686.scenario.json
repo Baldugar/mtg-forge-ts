@@ -1,0 +1,23 @@
+{
+  "id": "your-nightmares-are-delicious-corpus-m686",
+  "description": "M6 corpus — Your Nightmares Are Delicious; in-hand parse.",
+  "seed": 61820,
+  "cards": {
+    "Your Nightmares Are Delicious": "Name:Your Nightmares Are Delicious\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent who has more than five cards in hand discards cards equal to the difference. Then if fewer than three cards were discarded this way, you draw three cards.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBDiscard | SubAbility$ DBDraw\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | NumCards$ X | Mode$ TgtChoose | RememberDiscarded$ True\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ LT3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountRemembered$CardsInHand/Minus.5\nOracle:When you set this scheme in motion, each opponent who has more than five cards in hand discards cards equal to the difference. Then if fewer than three cards were discarded this way, you draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Nightmares Are Delicious"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

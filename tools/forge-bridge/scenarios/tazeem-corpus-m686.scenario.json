@@ -1,0 +1,23 @@
+{
+  "id": "tazeem-corpus-m686",
+  "description": "M6 corpus — Tazeem; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Tazeem": "Name:Tazeem\nManaCost:no cost\nTypes:Plane Zendikar\nS:Mode$ CantBlock | ValidCard$ Creature | EffectZone$ Command | Description$ Creatures can't block.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, draw a card for each land you control.\nSVar:RolledChaos:DB$ Draw | NumCards$ Y | Defined$ You\nSVar:Y:Count$Valid Land.YouCtrl\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Creatures can't block.\\nWhenever chaos ensues, draw a card for each land you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tazeem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

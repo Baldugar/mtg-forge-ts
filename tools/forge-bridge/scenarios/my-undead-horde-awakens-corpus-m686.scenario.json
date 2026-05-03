@@ -1,0 +1,23 @@
+{
+  "id": "my-undead-horde-awakens-corpus-m686",
+  "description": "M6 corpus — My Undead Horde Awakens; in-hand parse.",
+  "seed": 61637,
+  "cards": {
+    "My Undead Horde Awakens": "Name:My Undead Horde Awakens\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigNecromancy | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may put target creature card from an opponent's graveyard onto the battlefield under your control.\nSVar:TrigNecromancy:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | RememberChanged$ True\nT:Mode$ ChangesZone | ValidCard$ Creature.IsRemembered | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigAbandon | TriggerZones$ Command | TriggerDescription$ When a creature put onto the battlefield with this scheme dies, abandon this scheme.\nSVar:TrigAbandon:DB$ Abandon\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nAt the beginning of your end step, you may put target creature card from an opponent's graveyard onto the battlefield under your control.\\nWhen a creature put onto the battlefield with this scheme dies, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Undead Horde Awakens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

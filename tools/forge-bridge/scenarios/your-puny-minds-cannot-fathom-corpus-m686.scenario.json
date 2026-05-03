@@ -1,0 +1,23 @@
+{
+  "id": "your-puny-minds-cannot-fathom-corpus-m686",
+  "description": "M6 corpus — Your Puny Minds Cannot Fathom; in-hand parse.",
+  "seed": 61823,
+  "cards": {
+    "Your Puny Minds Cannot Fathom": "Name:Your Puny Minds Cannot Fathom\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ GreatMind | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, draw four cards. You have no maximum hand size until your next turn.\nSVar:GreatMind:DB$ Draw | Defined$ You | NumCards$ 4 | SubAbility$ Unfathomable\nSVar:Unfathomable:DB$ Effect | StaticAbilities$ STHandSize | Duration$ UntilYourNextTurn\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nOracle:When you set this scheme in motion, draw four cards. You have no maximum hand size until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Puny Minds Cannot Fathom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

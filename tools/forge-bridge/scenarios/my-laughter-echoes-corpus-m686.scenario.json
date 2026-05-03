@@ -1,0 +1,23 @@
+{
+  "id": "my-laughter-echoes-corpus-m686",
+  "description": "M6 corpus — My Laughter Echoes; in-hand parse.",
+  "seed": 61635,
+  "cards": {
+    "My Laughter Echoes": "Name:My Laughter Echoes\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.!OnGoing | Execute$ Abandon | TriggerZones$ Command | TriggerDescription$ Whenever you set a non-ongoing scheme in motion, you may abandon this scheme. If you do, set that scheme in motion again.\nSVar:Abandon:DB$ Abandon | Optional$ True | RememberAbandoned$ True | SubAbility$ DBSetInMotionAgain\nSVar:DBSetInMotionAgain:DB$ SetInMotion | Again$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nWhenever you set a non-ongoing scheme in motion, you may abandon this scheme. If you do, set that scheme in motion again.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Laughter Echoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

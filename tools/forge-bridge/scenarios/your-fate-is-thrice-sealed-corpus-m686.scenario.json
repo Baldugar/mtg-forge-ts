@@ -1,0 +1,23 @@
+{
+  "id": "your-fate-is-thrice-sealed-corpus-m686",
+  "description": "M6 corpus — Your Fate Is Thrice Sealed; in-hand parse.",
+  "seed": 61817,
+  "cards": {
+    "Your Fate Is Thrice Sealed": "Name:Your Fate Is Thrice Sealed\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ RevealFate | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, reveal the top three cards of your library. Put all land cards revealed this way onto the battlefield and the rest into your hand.\nSVar:RevealFate:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Land | DestinationZone$ Battlefield | DestinationZone2$ Hand\nOracle:When you set this scheme in motion, reveal the top three cards of your library. Put all land cards revealed this way onto the battlefield and the rest into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Fate Is Thrice Sealed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

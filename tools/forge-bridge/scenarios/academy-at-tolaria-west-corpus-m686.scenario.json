@@ -1,0 +1,23 @@
+{
+  "id": "academy-at-tolaria-west-corpus-m686",
+  "description": "M6 corpus — Academy at Tolaria West; in-hand parse.",
+  "seed": 61443,
+  "cards": {
+    "Academy at Tolaria West": "Name:Academy at Tolaria West\nManaCost:no cost\nTypes:Plane Dominaria\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | IsPresent$ Card.YouOwn | PresentZone$ Hand | PresentCompare$ EQ0 | Execute$ AcademicDraw | TriggerDescription$ At the beginning of your end step, if you have no cards in hand, draw seven cards.\nSVar:AcademicDraw:DB$ Draw | Defined$ You | NumCards$ 7\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigDiscard | TriggerDescription$ Whenever chaos ensues, discard your hand.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | Defined$ You\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | CardsInHandLE$ 2\nDeckHas:Ability$Discard\nOracle:At the beginning of your end step, if you have no cards in hand, draw seven cards.\\nWhenever chaos ensues, discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Academy at Tolaria West"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

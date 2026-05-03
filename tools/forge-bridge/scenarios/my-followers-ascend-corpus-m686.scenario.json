@@ -1,0 +1,23 @@
+{
+  "id": "my-followers-ascend-corpus-m686",
+  "description": "M6 corpus — My Followers Ascend; in-hand parse.",
+  "seed": 61632,
+  "cards": {
+    "My Followers Ascend": "Name:My Followers Ascend\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigBranch | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, put five +1/+1 counters on a creature you control and it gains flying and vigilance until end of turn. If you control no creatures, instead create a 4/4 colorless Scarecrow artifact creature token with vigilance.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ EQ0 | TrueSubAbility$ DBToken | FalseSubAbility$ DBPutCounter\nSVar:DBToken:DB$ Token | TokenScript$ c_4_4_a_scarecrow_vigilance | TokenOwner$ You\nSVar:DBPutCounter:DB$ PutCounter | Choices$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 5 | RememberChosen$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Flying & Vigilance | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When you set this scheme in motion, put five +1/+1 counters on a creature you control and it gains flying and vigilance until end of turn. If you control no creatures, instead create a 4/4 colorless Scarecrow artifact creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Followers Ascend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

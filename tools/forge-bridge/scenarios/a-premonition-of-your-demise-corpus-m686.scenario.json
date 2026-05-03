@@ -1,0 +1,23 @@
+{
+  "id": "a-premonition-of-your-demise-corpus-m686",
+  "description": "M6 corpus — A Premonition of Your Demise; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "A Premonition of Your Demise": "Name:A Premonition of Your Demise\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDig | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, reveal the top two cards of your library and put them into your hand. When you reveal one or more nonland cards this way, this scheme deals damage equal to their total mana value to any target.\nSVar:DBDig:DB$ Dig | DigNum$ 2 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | RememberChanged$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | Execute$ TrigDamage | SubAbility$ DBCleanup | SpellDescription$ When you reveal one or more nonland cards this way, this scheme deals damage equal to their total mana value to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.IsRemembered+nonLand$CardManaCost\nOracle:When you set this scheme in motion, reveal the top two cards of your library and put them into your hand. When you reveal one or more nonland cards this way, this scheme deals damage equal to their total mana value to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A Premonition of Your Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

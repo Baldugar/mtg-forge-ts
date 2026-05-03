@@ -1,0 +1,23 @@
+{
+  "id": "horizon-boughs-corpus-m686",
+  "description": "M6 corpus — Horizon Boughs; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Horizon Boughs": "Name:Horizon Boughs\nManaCost:no cost\nTypes:Plane Pyrulea\nS:Mode$ UntapOtherPlayer | ValidCard$ Permanent | EffectZone$ Command | Description$ All permanents untap during each player's untap step.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ DBFetch | TriggerDescription$ Whenever chaos ensues, you may search your library for up to three basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:DBFetch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 3 | ShuffleNonMandatory$ True\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:All permanents untap during each player's untap step.\\nWhenever chaos ensues, you may search your library for up to three basic land cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horizon Boughs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

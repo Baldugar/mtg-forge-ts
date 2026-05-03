@@ -1,0 +1,23 @@
+{
+  "id": "the-golden-city-of-orazca-corpus-m686",
+  "description": "M6 corpus — The Golden City of Orazca; in-hand parse.",
+  "seed": 61764,
+  "cards": {
+    "The Golden City of Orazca": "Name:The Golden City of Orazca\nManaCost:no cost\nTypes:Plane Ixalan\nK:Ascend\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerZones$ Command | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, create a Treasure token. Then draw a card if you have the city's blessing.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Condition$ Blessing\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, you may put a permanent card from your hand onto the battlefield tapped.\nSVar:RolledChaos:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | Tapped$ True | ChangeType$ Permanent | ChangeNum$ 1\nDeckHas:Ability$Token & Type$Treasure\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nWhenever one or more creatures you control deal combat damage to a player, create a Treasure token. Then draw a card if you have the city's blessing.\\nWhenever chaos ensues, you may put a permanent card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Golden City of Orazca"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

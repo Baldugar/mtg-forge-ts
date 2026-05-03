@@ -1,0 +1,23 @@
+{
+  "id": "eladamri-corpus-m686",
+  "description": "M6 corpus — Eladamri; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Eladamri": "Name:Eladamri\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/+15\nA:AB$ Effect | ActivationZone$ Command | Cost$ 0 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature to redirect damage from | ReplacementEffects$ RedirectDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | Duration$ Permanent | SpellDescription$ The next 1 damage that would be dealt to target creature you control is dealt to you instead.\nSVar:RedirectDamage:Event$ DamageDone | ValidTarget$ Creature.IsRemembered | ReplaceWith$ RedirectDmg | DamageTarget$ You | Description$ The next 1 damage that would be dealt to target creature you control is dealt to you instead.\nSVar:RedirectDmg:DB$ ReplaceSplitDamage | DamageTarget$ You\nAI:RemoveDeck:All\nOracle:Hand -1, life +15\\n{0}: The next 1 damage that would be dealt to target creature you control is dealt to you instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eladamri"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "only-blood-ends-your-nightmares-corpus-m686",
+  "description": "M6 corpus — Only Blood Ends Your Nightmares; in-hand parse.",
+  "seed": 61662,
+  "cards": {
+    "Only Blood Ends Your Nightmares": "Name:Only Blood Ends Your Nightmares\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigSacEach | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent sacrifices a creature. Then each opponent who didn't sacrifice a creature discards two cards.\nSVar:TrigSacEach:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBDiscard | SubAbility$ DBCleanup\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ TgtChoose | NumCards$ 2 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.RememberedPlayerCtrl\nOracle:When you set this scheme in motion, each opponent sacrifices a creature. Then each opponent who didn't sacrifice a creature discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Only Blood Ends Your Nightmares"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "izzet-steam-maze-corpus-m686",
+  "description": "M6 corpus — Izzet Steam Maze; in-hand parse.",
+  "seed": 61577,
+  "cards": {
+    "Izzet Steam Maze": "Name:Izzet Steam Maze\nManaCost:no cost\nTypes:Plane Ravnica\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Player | Execute$ TrigCopy | TriggerZones$ Command | TriggerDescription$ Whenever a player casts an instant or sorcery spell, that player copies it. The player may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ TriggeredActivator | MayChooseTarget$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, instant and sorcery spells you cast this turn cost {3} less to cast.\nSVar:RolledChaos:DB$ Effect | StaticAbilities$ ReduceSPCost\nSVar:ReduceSPCost:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 3 | Description$ Instant and sorcery spells you cast this turn cost {3} less to cast.\nSVar:AIRollPlanarDieParams:Mode$ Always | RollInMain1$ True\nOracle:Whenever a player casts an instant or sorcery spell, that player copies it. The player may choose new targets for the copy.\\nWhenever chaos ensues, instant and sorcery spells you cast this turn cost {3} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izzet Steam Maze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

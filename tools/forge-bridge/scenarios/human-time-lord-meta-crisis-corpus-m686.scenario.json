@@ -1,0 +1,23 @@
+{
+  "id": "human-time-lord-meta-crisis-corpus-m686",
+  "description": "M6 corpus — Human-Time Lord Meta-Crisis; in-hand parse.",
+  "seed": 61554,
+  "cards": {
+    "Human-Time Lord Meta-Crisis": "Name:Human-Time Lord Meta-Crisis\nManaCost:no cost\nTypes:Phenomenon\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigChooseCard | TriggerDescription$ When you encounter CARDNAME, each player chooses one or two creatures they control. Each player creates a token that's a copy of the first creature they chose, except it isn't legendary. Then each player who chose a second creature puts a number of +1/+1 counters on the token they created equal to the power of the second creature they chose. (Then planeswalk away from this phenomenon.)\nSVar:TrigChooseCard:DB$ ChooseCard | Defined$ Player | Choices$ Creature | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose one or two creatures you control | Reveal$ True | MinAmount$ 1 | Amount$ 2 | Mandatory$ True | ChosenMap$ True | SubAbility$ DBClone\nSVar:DBClone:DB$ CopyPermanent | Defined$ ChosenMap | ChosenMapIndex$ 0 | NonLegendary$ True | RememberTokens$ True | SubAbility$ DBPutCountersAll\nSVar:DBPutCountersAll:DB$ PutCounterAll | Placer$ Owner | ValidCards$ Card.IsRemembered | CounterType$ P1P1 | AmountByChosenMap$ Count$CardPower INDEX 1 | SubAbility$ DBPlaneswalk\nSVar:DBPlaneswalk:DB$ Planeswalk | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Legendary\nOracle:When you encounter Human-Time Lord Meta-Crisis, each player chooses one or two creatures they control. Each player creates a token that's a copy of the first creature they chose, except it isn't legendary. Then each player who chose a second creature puts a number of +1/+1 counters on the token they created equal to the power of the second creature they chose. (Then planeswalk away from this phenomenon.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Human-Time Lord Meta-Crisis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

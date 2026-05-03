@@ -1,0 +1,23 @@
+{
+  "id": "murasa-corpus-m686",
+  "description": "M6 corpus — Murasa; in-hand parse.",
+  "seed": 61626,
+  "cards": {
+    "Murasa": "Name:Murasa\nManaCost:no cost\nTypes:Plane Zendikar\nT:Mode$ ChangesZone | ValidCard$ Creature.!token | Origin$ Any | Destination$ Battlefield | TriggerZones$ Command | Execute$ TrigRamp | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever a nontoken creature enters, its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigRamp:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | DefinedPlayer$ TriggeredCardController | ShuffleNonMandatory$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, target land becomes a 4/4 creature that's still a land.\nSVar:RolledChaos:DB$ Animate | ValidTgts$ Land | Power$ 4 | Toughness$ 4 | Types$ Creature | Duration$ Permanent\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Whenever a nontoken creature enters, its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\\nWhenever chaos ensues, target land becomes a 4/4 creature that's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murasa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necropotence-avatar-corpus-m686",
+  "description": "M6 corpus — Necropotence Avatar; in-hand parse.",
+  "seed": 61648,
+  "cards": {
+    "Necropotence Avatar": "Name:Necropotence Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/+4\nR:Event$ BeginPhase | ActiveZones$ Command | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Phase | Phase$ End Of Turn | ValidPlayer$ You | TriggerZones$ Command | CheckSVar$ Turns | SVarCompare$ GT1 | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if it's not the first turn of the game, put a death counter on CARDNAME. You draw X cards and you lose X life, where X is the number of death counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DEATH | CounterNum$ 1 | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CardCounters.DEATH\nSVar:Turns:Count$TotalTurns\nAI:RemoveDeck:All\nOracle:Hand +0, life +4\\nSkip your draw step.\\nAt the beginning of your end step, if it's not the first turn of the game, put a death counter on Necropotence Avatar. You draw X cards and you lose X life, where X is the number of death counters on Necropotence Avatar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necropotence Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

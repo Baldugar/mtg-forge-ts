@@ -1,0 +1,23 @@
+{
+  "id": "every-hope-shall-vanish-corpus-m686",
+  "description": "M6 corpus — Every Hope Shall Vanish; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Every Hope Shall Vanish": "Name:Every Hope Shall Vanish\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DiscardHope | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent reveals their hand. Choose a nonland card from each of those hands. Those players discard those cards.\nSVar:DiscardHope:DB$ Discard | Defined$ Player.Opponent | Mode$ RevealYouChoose | DiscardValid$ Card.nonLand | NumCards$ 1\nOracle:When you set this scheme in motion, each opponent reveals their hand. Choose a nonland card from each of those hands. Those players discard those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Every Hope Shall Vanish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

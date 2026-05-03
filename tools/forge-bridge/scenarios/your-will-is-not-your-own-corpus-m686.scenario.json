@@ -1,0 +1,23 @@
+{
+  "id": "your-will-is-not-your-own-corpus-m686",
+  "description": "M6 corpus — Your Will Is Not Your Own; in-hand parse.",
+  "seed": 61824,
+  "cards": {
+    "Your Will Is Not Your Own": "Name:Your Will Is Not Your Own\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | Execute$ DarkEffect | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, gain control of target creature an opponent controls until end of turn. Untap that creature. It gets +3/+3 and gains trample and haste until end of turn.\nSVar:DarkEffect:DB$ GainControl | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Untap$ True | LoseControl$ EOT | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | NumAtt$ +3 | NumDef$ +3 | KW$ Haste & Trample\nOracle:When you set this scheme in motion, gain control of target creature an opponent controls until end of turn. Untap that creature. It gets +3/+3 and gains trample and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Will Is Not Your Own"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-dominion-corpus-m686",
+  "description": "M6 corpus — Norn's Dominion; in-hand parse.",
+  "seed": 61655,
+  "cards": {
+    "Norn's Dominion": "Name:Norn's Dominion\nManaCost:no cost\nTypes:Plane New Phyrexia\nT:Mode$ PlaneswalkedFrom | ValidCard$ Plane.Self | Execute$ TrigDestroy | TriggerDescription$ When you planeswalk away from CARDNAME, destroy each nonland permanent without a fate counter on it, then remove all fate counters from all permanents.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Permanent.nonLand+counters_LT1_FATE | SubAbility$ DBRemove\nSVar:DBRemove:DB$ RemoveCounterAll | ValidCards$ Permanent | CounterType$ FATE | AllCounters$ True\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | OptionalDecider$ You | TriggerDescription$ Whenever chaos ensues, you may put a fate counter on target permanent.\nSVar:RolledChaos:DB$ PutCounter | ValidTgts$ Permanent | CounterType$ FATE | CounterNum$ 1\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:When you planeswalk away from Norn's Dominion, destroy each nonland permanent without a fate counter on it, then remove all fate counters from all permanents.\\nWhenever chaos ensues, you may put a fate counter on target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Dominion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

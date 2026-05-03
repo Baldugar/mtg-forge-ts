@@ -1,0 +1,23 @@
+{
+  "id": "the-fourth-sphere-corpus-m686",
+  "description": "M6 corpus — The Fourth Sphere; in-hand parse.",
+  "seed": 61763,
+  "cards": {
+    "The Fourth Sphere": "Name:The Fourth Sphere\nManaCost:no cost\nTypes:Plane Phyrexia\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ FourthSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a nonblack creature.\nSVar:FourthSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.nonBlack\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, put a 2/2 black zombie token onto the battlefield.\nSVar:RolledChaos:DB$ Token | TokenScript$ b_2_2_zombie\nSVar:AIRollPlanarDieParams:Mode$ Always | LowPriority$ True | MaxRollsPerTurn$ 9\nOracle:At the beginning of your upkeep, sacrifice a nonblack creature.\\nWhenever chaos ensues, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fourth Sphere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

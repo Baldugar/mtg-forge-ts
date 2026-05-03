@@ -1,0 +1,23 @@
+{
+  "id": "when-will-you-learn-corpus-m686",
+  "description": "M6 corpus — When Will You Learn?; in-hand parse.",
+  "seed": 61807,
+  "cards": {
+    "When Will You Learn?": "Name:When Will You Learn?\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBExile | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent exiles the top card of their library. You may cast any number of spells from among cards exiled this way without paying their mana costs.\nSVar:DBExile:DB$ Dig | Defined$ Player.Opponent | DestinationZone$ Exile | DigNum$ 1 | ChangeNum$ All | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered+nonLand | ValidZone$ Exile | Controller$ You | WithoutManaCost$ True | Amount$ All | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you set this scheme in motion, each opponent exiles the top card of their library. You may cast any number of spells from among cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "When Will You Learn?"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

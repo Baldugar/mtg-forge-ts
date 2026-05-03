@@ -1,0 +1,23 @@
+{
+  "id": "greven-il-vec-corpus-m686",
+  "description": "M6 corpus — Greven il-Vec; in-hand parse.",
+  "seed": 61539,
+  "cards": {
+    "Greven il-Vec": "Name:Greven il-Vec\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/+2\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Creature | TriggerZones$ Command | Execute$ TrigDestroy | TriggerDescription$ Whenever a creature you control deals damage to a creature, destroy the other creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | NoRegen$ True\nOracle:Hand -1, life +2\\nWhenever a creature you control deals damage to a creature, destroy the other creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greven il-Vec"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

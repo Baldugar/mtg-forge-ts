@@ -1,0 +1,23 @@
+{
+  "id": "the-great-forest-corpus-m686",
+  "description": "M6 corpus — The Great Forest; in-hand parse.",
+  "seed": 61766,
+  "cards": {
+    "The Great Forest": "Name:The Great Forest\nManaCost:no cost\nTypes:Plane Lorwyn\nS:Mode$ CombatDamageToughness | ValidCard$ Creature | Description$ Each creature assigns combat damage equal to its toughness rather than its power.\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, creatures you control get +0/+2 and gain trample until end of turn.\nSVar:RolledChaos:DB$ PumpAll | ValidCards$ Creature.ActivePlayerCtrl | NumDef$ +2 | KW$ Trample\nSVar:AIRollPlanarDieParams:Mode$ Always | MinTurn$ 3 | RollInMain1$ True\nOracle:Each creature assigns combat damage equal to its toughness rather than its power.\\nWhenever chaos ensues, creatures you control get +0/+2 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Great Forest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

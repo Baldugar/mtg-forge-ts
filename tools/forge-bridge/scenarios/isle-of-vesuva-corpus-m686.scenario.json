@@ -1,0 +1,23 @@
+{
+  "id": "isle-of-vesuva-corpus-m686",
+  "description": "M6 corpus — Isle of Vesuva; in-hand parse.",
+  "seed": 61575,
+  "cards": {
+    "Isle of Vesuva": "Name:Isle of Vesuva\nManaCost:no cost\nTypes:Plane Dominaria\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token | TriggerZones$ Command | Execute$ TrigVesuvaCopy | TriggerDescription$ Whenever a nontoken creature enters, its controller creates a token that's a copy of that creature.\nSVar:TrigVesuvaCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | Controller$ TriggeredCardController\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, destroy target creature and all other creatures with the same name as that creature.\nSVar:RolledChaos:DB$ Destroy | ValidTgts$ Creature | SubAbility$ DestroyOtherAll\nSVar:DestroyOtherAll:DB$ DestroyAll | ValidCards$ Targeted.sameName+Other\nSVar:AIRollPlanarDieParams:Mode$ Always | OppHasCreatureInPlay$ True\nOracle:Whenever a nontoken creature enters, its controller creates a token that's a copy of that creature.\\nWhenever chaos ensues, destroy target creature and all other creatures with the same name as that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isle of Vesuva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

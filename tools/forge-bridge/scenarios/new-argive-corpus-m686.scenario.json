@@ -1,0 +1,23 @@
+{
+  "id": "new-argive-corpus-m686",
+  "description": "M6 corpus — New Argive; in-hand parse.",
+  "seed": 61651,
+  "cards": {
+    "New Argive": "Name:New Argive\nManaCost:no cost\nTypes:Plane Dominaria\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+Historic | TriggerZones$ Command | Execute$ TrigPump | TriggerDescription$ Whenever a historic creature you control attacks, it gets +2/+2 until end of turn. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +2 | NumDef$ +2\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, reveal cards from the top of your library until you reveal a historic card. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:RolledChaos:DB$ DigUntil | Valid$ Card.Historic | ValidDescription$ historic card | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | FoundDestination$ Hand\nDeckHints:Type$Legendary & Type$Artifact|Saga\nOracle:Whenever a historic creature you control attacks, it gets +2/+2 until end of turn. (Artifacts, legendaries, and Sagas are historic.)\\nWhenever chaos ensues, reveal cards from the top of your library until you reveal a historic card. Put that card into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "New Argive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

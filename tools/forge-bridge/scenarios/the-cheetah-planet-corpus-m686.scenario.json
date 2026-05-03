@@ -1,0 +1,23 @@
+{
+  "id": "the-cheetah-planet-corpus-m686",
+  "description": "M6 corpus — The Cheetah Planet; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "The Cheetah Planet": "Name:The Cheetah Planet\nManaCost:no cost\nTypes:Plane Outside Mutter's Spiral\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put two +1/+1 counters on target non-Cat creature you control. It becomes a Cat in addition to its other types.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, put two +1/+1 counters on target non-Cat creature you control. It becomes a Cat in addition to its other types.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.nonCat+YouCtrl | TgtPrompt$ Select target non-Cat creature you control | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Cat | Duration$ Permanent\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPumpAll | TriggerDescription$ Whenever chaos ensues, all Cats gain provoke until end of turn. (Whenever a Cat attacks, its controller may have target creature defending player controls untap and block it if able.)\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Card.Cat | KW$ Provoke\nDeckHas:Ability$Counters & Type$Cat\nDeckHints:Type$Cat\nOracle:When you planeswalk to The Cheetah Planet and at the beginning of your upkeep, put two +1/+1 counters on target non-Cat creature you control. It becomes a Cat in addition to its other types.\\nWhenever chaos ensues, all Cats gain provoke until end of turn. (Whenever a Cat attacks, its controller may have target creature defending player controls untap and block it if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Cheetah Planet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

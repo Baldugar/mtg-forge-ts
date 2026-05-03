@@ -1,0 +1,23 @@
+{
+  "id": "starke-corpus-m686",
+  "description": "M6 corpus — Starke; in-hand parse.",
+  "seed": 61730,
+  "cards": {
+    "Starke": "Name:Starke\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+0/-2\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Command | Execute$ SituationalEthics | OptionalDecider$ You | TriggerDescription$ At the beginning of your draw step, you may draw an additional card. If you do, put a card from your hand on the bottom of your library.\nSVar:SituationalEthics:DB$ Draw | Defined$ You | SubAbility$ Switch\nSVar:Switch:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1 | Mandatory$ True\nOracle:Hand +0, life -2\\nAt the beginning of your draw step, you may draw an additional card. If you do, put a card from your hand on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

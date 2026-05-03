@@ -1,0 +1,23 @@
+{
+  "id": "no-one-will-hear-your-cries-corpus-m686",
+  "description": "M6 corpus — No One Will Hear Your Cries; in-hand parse.",
+  "seed": 61653,
+  "cards": {
+    "No One Will Hear Your Cries": "Name:No One Will Hear Your Cries\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, each opponent chooses a creature they control, then sacrifices the rest.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ Opponent | Choices$ Creature | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose a creature to keep | Mandatory$ True | Reveal$ True | SubAbility$ DBSacrificeAll\nSVar:DBSacrificeAll:DB$ SacrificeAll | ValidCards$ Creature.nonChosenCard+OppCtrl | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When you set this scheme in motion, each opponent chooses a creature they control, then sacrifices the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "No One Will Hear Your Cries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

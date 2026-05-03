@@ -1,0 +1,23 @@
+{
+  "id": "immersturm-corpus-m686",
+  "description": "M6 corpus — Immersturm; in-hand parse.",
+  "seed": 61567,
+  "cards": {
+    "Immersturm": "Name:Immersturm\nManaCost:no cost\nTypes:Plane Valla\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Command | Execute$ TrigDamage | OptionalDecider$ TriggeredCardController | TriggerDescription$ Whenever a creature enters, that creature's controller may have it deal damage equal to its power to any target of their choice.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Y | DamageSource$ TriggeredCardLKICopy | TargetingPlayer$ TriggeredCardController\nSVar:Y:TriggeredCard$CardPower\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, exile target creature, then return it to the battlefield under its owner's control.\nSVar:RolledChaos:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | SubAbility$ RestorationReturn\nSVar:RestorationReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIRollPlanarDieParams:Mode$ Always | HasCreatureInPlay$ True\nOracle:Whenever a creature enters, that creature's controller may have it deal damage equal to its power to any target of their choice.\\nWhenever chaos ensues, exile target creature, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Immersturm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

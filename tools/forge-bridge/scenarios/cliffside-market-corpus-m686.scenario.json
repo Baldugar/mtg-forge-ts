@@ -1,0 +1,23 @@
+{
+  "id": "cliffside-market-corpus-m686",
+  "description": "M6 corpus — Cliffside Market; in-hand parse.",
+  "seed": 61486,
+  "cards": {
+    "Cliffside Market": "Name:Cliffside Market\nManaCost:no cost\nTypes:Plane Mercadia\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigLife | OptionalDecider$ You | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, you may exchange life totals with target player.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLife | TriggerZones$ Command | Secondary$ True | OptionalDecider$ You | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, you may exchange life totals with target player.\nSVar:TrigLife:DB$ ExchangeLife | ValidTgts$ Player | TgtPrompt$ Select target player to exchange life totals with\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, exchange control of two target permanents that share a card type.\nSVar:RolledChaos:DB$ ExchangeControl | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Permanent | TgtPrompt$ Select target permanents that share a permanent type | TargetsWithSameCardType$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:When you planeswalk to Cliffside Market or at the beginning of your upkeep, you may exchange life totals with target player.\\nWhenever chaos ensues, exchange control of two target permanents that share a card type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cliffside Market"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

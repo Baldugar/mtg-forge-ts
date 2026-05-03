@@ -1,0 +1,23 @@
+{
+  "id": "drench-the-soil-in-their-blood-corpus-m686",
+  "description": "M6 corpus — Drench the Soil in Their Blood; in-hand parse.",
+  "seed": 61497,
+  "cards": {
+    "Drench the Soil in Their Blood": "Name:Drench the Soil in Their Blood\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ BloodyCombat | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, after this main phase, there is an additional combat phase followed by an additional main phase. Creatures you control gain vigilance until end of turn.\nSVar:BloodyCombat:DB$ AddPhase | ExtraPhase$ Combat | FollowedBy$ Main2 | ConditionPhases$ Main1,Main2 | SubAbility$ MakeVigilant\nSVar:MakeVigilant:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance\nOracle:When you set this scheme in motion, after this main phase, there is an additional combat phase followed by an additional main phase. Creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drench the Soil in Their Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

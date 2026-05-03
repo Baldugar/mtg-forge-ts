@@ -1,0 +1,23 @@
+{
+  "id": "orcish-squatters-avatar-corpus-m686",
+  "description": "M6 corpus — Orcish Squatters Avatar; in-hand parse.",
+  "seed": 61666,
+  "cards": {
+    "Orcish Squatters Avatar": "Name:Orcish Squatters Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:-1/-1\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigGetMana | TriggerDescription$ At the beginning of your precombat main phase, add {C} for each land target opponent controls.\nSVar:TrigGetMana:DB$ Pump | ValidTgts$ Player | RememberObjects$ Targeted | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ C | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Land.RememberedPlayerCtrl\nOracle:Hand -1, life -1\\nAt the beginning of your precombat main phase, add {C} for each land target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Squatters Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

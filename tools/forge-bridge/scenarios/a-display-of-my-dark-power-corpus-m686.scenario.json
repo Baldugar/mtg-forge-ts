@@ -1,0 +1,23 @@
+{
+  "id": "a-display-of-my-dark-power-corpus-m686",
+  "description": "M6 corpus — A Display of My Dark Power; in-hand parse.",
+  "seed": 61440,
+  "cards": {
+    "A Display of My Dark Power": "Name:A Display of My Dark Power\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DarkEffect | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, until your next turn, whenever a player taps a land for mana, that player adds one mana of any type that land produced.\nSVar:DarkEffect:DB$ Effect | Name$ Dark Power Scheme | Duration$ UntilYourNextTurn | Triggers$ DarkPower\nSVar:DarkPower:Mode$ TapsForMana | ValidCard$ Land | Execute$ DarkMana | TriggerZones$ Command | Static$ True | TriggerDescription$ Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\nSVar:DarkMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator\nOracle:When you set this scheme in motion, until your next turn, whenever a player taps a land for mana, that player adds one mana of any type that land produced.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A Display of My Dark Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

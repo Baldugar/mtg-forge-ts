@@ -1,0 +1,23 @@
+{
+  "id": "my-champion-stands-supreme-corpus-m686",
+  "description": "M6 corpus — My Champion Stands Supreme; in-hand parse.",
+  "seed": 61630,
+  "cards": {
+    "My Champion Stands Supreme": "Name:My Champion Stands Supreme\nManaCost:no cost\nTypes:Ongoing Scheme\nS:Mode$ Continuous | Affected$ Card.IsCommander+YouOwn | EffectZone$ Command | AddKeyword$ Ward:2 | Description$ Your commander has ward {2}.\nT:Mode$ Attacks | ValidCard$ Card.IsCommander+YouOwn | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever your commander attacks, put two +1/+1 counters on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredAttackerLKICopy | CounterType$ P1P1 | CounterNum$ 2\nT:Mode$ ChangesZone | ValidCard$ Card.IsCommander+YouOwn | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigAbandon | TriggerZones$ Command | TriggerDescription$ When your commander leaves the battlefield, abandon this scheme.\nSVar:TrigAbandon:DB$ Abandon\nOracle:(An ongoing scheme remains face up until it's abandoned.)\\nYour commander has ward {2}.\\nWhenever your commander attacks, put two +1/+1 counters on it.\\nWhen your commander leaves the battlefield, abandon this scheme.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "My Champion Stands Supreme"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

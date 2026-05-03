@@ -1,0 +1,23 @@
+{
+  "id": "running-is-useless-corpus-m686",
+  "description": "M6 corpus — Running Is Useless; in-hand parse.",
+  "seed": 61702,
+  "cards": {
+    "Running Is Useless": "Name:Running Is Useless\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDestroy | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, choose any number of creatures with different mana values. Destroy those creatures.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature | TargetsWithDifferentCMC$ True | TargetMax$ AmountToChoose | TargetMin$ 0 | TgtPrompt$ Choose any number of creatures with different mana values.\nSVar:AmountToChoose:Count$Valid Creature\nOracle:When you set this scheme in motion, choose any number of creatures with different mana values. Destroy those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Running Is Useless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

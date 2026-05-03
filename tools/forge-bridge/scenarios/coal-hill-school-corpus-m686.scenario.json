@@ -1,0 +1,23 @@
+{
+  "id": "coal-hill-school-corpus-m686",
+  "description": "M6 corpus — Coal Hill School; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Coal Hill School": "Name:Coal Hill School\nManaCost:no cost\nTypes:Plane Earth\nT:Mode$ SpellCast | ValidCard$ Card.Historic | Execute$ TrigDraw | TriggerZones$ Command | TriggerDescription$ Whenever a player casts a historic spell, that player draws a card. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredActivator | NumCards$ 1\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigReturn | TriggerDescription$ Whenever chaos ensues, return target historic card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Historic+YouOwn | TgtPrompt$ Select target historic card\nDeckHints:Type$Artifact|Saga|Legendary\nOracle:Whenever a player casts a historic spell, that player draws a card. (Artifacts, legendaries, and Sagas are historic.)\\nWhenever chaos ensues, return target historic card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coal Hill School"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

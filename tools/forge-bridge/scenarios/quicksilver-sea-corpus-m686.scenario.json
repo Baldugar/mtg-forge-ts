@@ -1,0 +1,23 @@
+{
+  "id": "quicksilver-sea-corpus-m686",
+  "description": "M6 corpus — Quicksilver Sea; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Quicksilver Sea": "Name:Quicksilver Sea\nManaCost:no cost\nTypes:Plane Mirrodin\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ QuicksilverScry | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, scry 4. (Look at the top four cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ QuicksilverScry | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME or at the beginning of your upkeep, scry 4. (Look at the top four cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:QuicksilverScry:DB$ Scry | ScryNum$ 4\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, reveal the top card of your library. You may play it without paying its mana cost.\nSVar:RolledChaos:DB$ PeekAndReveal | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | Controller$ You | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:When you planeswalk to Quicksilver Sea or at the beginning of your upkeep, scry 4. (Look at the top four cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\\nWhenever chaos ensues, reveal the top card of your library. You may play it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quicksilver Sea"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

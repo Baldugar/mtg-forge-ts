@@ -1,0 +1,23 @@
+{
+  "id": "your-inescapable-doom-corpus-m686",
+  "description": "M6 corpus — Your Inescapable Doom; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Your Inescapable Doom": "Name:Your Inescapable Doom\nManaCost:no cost\nTypes:Ongoing Scheme\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a doom counter on this scheme, then this scheme deals damage equal to the number of doom counters on it to the opponent with the highest life total among your opponents. If two or more players are tied for highest life total, you choose one.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DOOM | CounterNum$ 1 | SubAbility$ DBChoosePlayer\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent+lifeEQX | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ Y\nSVar:X:PlayerCountOpponents$HighestLifeTotal\nSVar:Y:Count$CardCounters.DOOM\nOracle:(An ongoing scheme remains face up.)\\nAt the beginning of your end step, put a doom counter on this scheme, then this scheme deals damage equal to the number of doom counters on it to the opponent with the highest life total among your opponents. If two or more players are tied for highest life total, you choose one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Your Inescapable Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

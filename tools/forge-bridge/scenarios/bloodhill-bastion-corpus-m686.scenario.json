@@ -1,0 +1,23 @@
+{
+  "id": "bloodhill-bastion-corpus-m686",
+  "description": "M6 corpus — Bloodhill Bastion; in-hand parse.",
+  "seed": 61472,
+  "cards": {
+    "Bloodhill Bastion": "Name:Bloodhill Bastion\nManaCost:no cost\nTypes:Plane Equilor\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Command | ValidCard$ Creature | Execute$ TrigPump | TriggerDescription$ Whenever a creature enters, it gains double strike and haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCard | KW$ Double Strike & Haste\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, exile target nontoken creature you control, then return it to the battlefield under your control.\nSVar:RolledChaos:DB$ ChangeZone | ValidTgts$ Creature.!token+YouCtrl | TgtPrompt$ Select target nontoken creature you control | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | ForgetOtherTargets$ True | SubAbility$ RestorationReturn\nSVar:RestorationReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | GainControl$ True\nSVar:AIRollPlanarDieParams:Mode$ Always | MinTurn$ 3 | RollInMain1$ True\nOracle:Whenever a creature enters, it gains double strike and haste until end of turn.\\nWhenever chaos ensues, exile target nontoken creature you control, then return it to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodhill Bastion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

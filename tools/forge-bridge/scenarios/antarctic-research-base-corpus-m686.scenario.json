@@ -1,0 +1,23 @@
+{
+  "id": "antarctic-research-base-corpus-m686",
+  "description": "M6 corpus — Antarctic Research Base; in-hand parse.",
+  "seed": 61452,
+  "cards": {
+    "Antarctic Research Base": "Name:Antarctic Research Base\nManaCost:no cost\nTypes:Plane Earth\nT:Mode$ PlaneswalkedTo | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, investigate.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigInvestigate | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When you planeswalk to CARDNAME and at the beginning of your upkeep, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ TrigPutCounter | TriggerDescription$ Whenever chaos ensues, put X +1/+1 counters on target creature you control, where X is the number of artifacts you control. It becomes a Plant in addition to its other types.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Plant | Duration$ Permanent\nSVar:X:Count$Valid Artifact.YouCtrl\nDeckHas:Ability$Token|Counters & Type$Clue|Artifact|Plant\nOracle:When you planeswalk to Antarctic Research Base and at the beginning of your upkeep, investigate.\\nWhenever chaos ensues, put X +1/+1 counters on target creature you control, where X is the number of artifacts you control. It becomes a Plant in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Antarctic Research Base"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

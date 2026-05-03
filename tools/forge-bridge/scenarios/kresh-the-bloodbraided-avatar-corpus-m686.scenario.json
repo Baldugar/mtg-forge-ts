@@ -1,0 +1,23 @@
+{
+  "id": "kresh-the-bloodbraided-avatar-corpus-m686",
+  "description": "M6 corpus — Kresh the Bloodbraided Avatar; in-hand parse.",
+  "seed": 61591,
+  "cards": {
+    "Kresh the Bloodbraided Avatar": "Name:Kresh the Bloodbraided Avatar\nManaCost:no cost\nTypes:Vanguard\nHandLifeModifier:+1/-3\nT:Mode$ Devoured | ValidDevoured$ Creature.YouCtrl | TriggerZones$ Command | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control is devoured, create an X/X green Ooze creature token, where X is the devoured creature's power.\nSVar:TrigToken:DB$ Token | TokenScript$ g_x_x_ooze | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SpellDescription$ Create an X/X green Ooze creature token.\nSVar:X:TriggeredDevoured$CardPower\nOracle:Hand +1, life -3\\nWhenever a creature you control is devoured, create an X/X green Ooze creature token, where X is the devoured creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kresh the Bloodbraided Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

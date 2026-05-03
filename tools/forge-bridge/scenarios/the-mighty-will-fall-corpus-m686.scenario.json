@@ -1,0 +1,23 @@
+{
+  "id": "the-mighty-will-fall-corpus-m686",
+  "description": "M6 corpus — The Mighty Will Fall; in-hand parse.",
+  "seed": 61772,
+  "cards": {
+    "The Mighty Will Fall": "Name:The Mighty Will Fall\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBChoosePlayer | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, choose an opponent with the highest life total among your opponents. That player loses 7 life.\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent+lifeEQX | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ ChosenPlayer | LifeAmount$ 7\nSVar:X:PlayerCountOpponents$HighestLifeTotal\nOracle:When you set this scheme in motion, choose an opponent with the highest life total among your opponents. That player loses 7 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Mighty Will Fall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

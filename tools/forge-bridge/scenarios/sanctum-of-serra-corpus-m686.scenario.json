@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-of-serra-corpus-m686",
+  "description": "M6 corpus — Sanctum of Serra; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Sanctum of Serra": "Name:Sanctum of Serra\nManaCost:no cost\nTypes:Plane Serra's Realm\nT:Mode$ PlaneswalkedFrom | ValidCard$ Plane.Self | Execute$ TrigDestroy | TriggerDescription$ When you planeswalk away from CARDNAME, destroy all nonland permanents.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Permanent.nonLand | ValidDescription$ all nonland permanents\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | OptionalDecider$ You | TriggerDescription$ Whenever chaos ensues, you may have your life total become 20.\nSVar:RolledChaos:DB$ SetLife | Defined$ You | LifeAmount$ 20\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:When you planeswalk away from Sanctum of Serra, destroy all nonland permanents.\\nWhenever chaos ensues, you may have your life total become 20.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum of Serra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stairs-to-infinity-corpus-m686",
+  "description": "M6 corpus — Stairs to Infinity; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Stairs to Infinity": "Name:Stairs to Infinity\nManaCost:no cost\nTypes:Plane Xerex\nS:Mode$ Continuous | EffectZone$ Command | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size.\nT:Mode$ PlanarDice | TriggerZones$ Command | Execute$ RolledDie | TriggerDescription$ Whenever you roll the planar die, draw a card.\nSVar:RolledDie:DB$ Draw\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, reveal the top card of your planar deck. You may put it on the bottom of your planar deck.\nSVar:RolledChaos:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | Reveal$ True | SourceZone$ PlanarDeck | DestinationZone$ PlanarDeck | DestinationZone2$ PlanarDeck | LibraryPosition$ -1 | LibraryPosition2$ 0 | ChangeValid$ Plane,Phenomenon | Optional$ True\nSVar:AIRollPlanarDieParams:Mode$ Always\nOracle:Players have no maximum hand size.\\nWhenever you roll the planar die, draw a card.\\nWhenever chaos ensues, reveal the top card of your planar deck. You may put it on the bottom of your planar deck.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stairs to Infinity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

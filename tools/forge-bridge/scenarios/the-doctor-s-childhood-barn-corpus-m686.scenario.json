@@ -1,0 +1,23 @@
+{
+  "id": "the-doctor-s-childhood-barn-corpus-m686",
+  "description": "M6 corpus — The Doctor's Childhood Barn; in-hand parse.",
+  "seed": 61757,
+  "cards": {
+    "The Doctor's Childhood Barn": "Name:The Doctor's Childhood Barn\nManaCost:no cost\nTypes:Plane Gallifrey\nR:Event$ Moved | ValidCard$ Creature | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Command | Description$ Creatures enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, for each opponent, choose up to one target nonland permanent that opponent controls. Untap those permanents. They phase out. They can't phase in for as long as CARDNAME remains face up. When a player planeswalks, those permanents phase in.\nSVar:RolledChaos:DB$ Untap | ValidTgts$ Permanent.nonLand+OppCtrl | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtPrompt$ Select up to one target nonland permanent each opponent controls | SubAbility$ DBPhase\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:DBPhase:DB$ Phases | Defined$ Targeted | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigPlaneswalk | StaticAbilities$ CantPhaseIn | RememberObjects$ Targeted | Duration$ Permanent | ForgetOnPhasedIn$ True\nSVar:CantPhaseIn:Mode$ CantPhaseIn | ValidCard$ Card.phasedOutIsRemembered | IsPresent$ Card.EffectSource+faceUp | PresentZone$ Command | Description$ Those permanents can't phase in for as long as EFFECTSOURCE remains face up. When a player planeswalks, those permanents phase in.\nSVar:TrigPlaneswalk:Mode$ PlaneswalkedTo | Execute$ DBPhaseIn | TriggerZones$ Command | Secondary$ True | TriggerDescription$ When a player planeswalks, those permanents phase in.\nSVar:DBPhaseIn:DB$ Phases | Defined$ Remembered | PhaseInOrOut$ True\nOracle:Creatures enter tapped.\\nWhenever chaos ensues, for each opponent, choose up to one target nonland permanent that opponent controls. Untap those permanents. They phase out. They can't phase in for as long as The Doctor's Childhood Barn remains face up. When a player planeswalks, those permanents phase in.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Doctor's Childhood Barn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

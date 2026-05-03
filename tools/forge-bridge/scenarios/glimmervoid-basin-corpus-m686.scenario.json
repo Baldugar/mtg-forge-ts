@@ -1,0 +1,23 @@
+{
+  "id": "glimmervoid-basin-corpus-m686",
+  "description": "M6 corpus — Glimmervoid Basin; in-hand parse.",
+  "seed": 61535,
+  "cards": {
+    "Glimmervoid Basin": "Name:Glimmervoid Basin\nManaCost:no cost\nTypes:Plane Mirrodin\nT:Mode$ SpellCast | ValidSA$ Instant.singleTarget,Sorcery.singleTarget | Execute$ TrigCopy | TriggerZones$ Command | TriggerDescription$ Whenever a player casts an instant or sorcery spell with a single target, that player copies that spell for each other spell, permanent, card not on the battlefield, and/or player the spell could target. Each copy targets a different one of them.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ TriggeredActivator | CopyForEachCanTarget$ Spell,Permanent,Card,Player\nT:Mode$ ChaosEnsues | TriggerZones$ Command | Execute$ RolledChaos | TriggerDescription$ Whenever chaos ensues, choose target creature. Each player except that creature's controller creates a token that's a copy of that creature.\nSVar:RolledChaos:DB$ RepeatEach | RepeatPlayers$ NonTargetedController | RepeatSubAbility$ DBCopy | ValidTgts$ Creature | ChangeZoneTable$ True\nSVar:DBCopy:DB$ CopyPermanent | Defined$ ParentTarget | Controller$ Remembered\nAI:RemoveDeck:All\nOracle:Whenever a player casts an instant or sorcery spell with a single target, that player copies that spell for each other spell, permanent, card not on the battlefield, and/or player the spell could target. Each copy targets a different one of them.\\nWhenever chaos ensues, choose target creature. Each player except that creature's controller creates a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimmervoid Basin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "there-is-no-refuge-corpus-m686",
+  "description": "M6 corpus — There Is No Refuge; in-hand parse.",
+  "seed": 61781,
+  "cards": {
+    "There Is No Refuge": "Name:There Is No Refuge\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, it deals 3 damage to up to one target creature. Create a 3/3 black Horror creature token.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ 3 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_horror | TokenOwner$ You\nOracle:When you set this scheme in motion, it deals 3 damage to up to one target creature. Create a 3/3 black Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "There Is No Refuge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "realms-befitting-my-majesty-corpus-m686",
+  "description": "M6 corpus — Realms Befitting My Majesty; in-hand parse.",
+  "seed": 61692,
+  "cards": {
+    "Realms Befitting My Majesty": "Name:Realms Befitting My Majesty\nManaCost:no cost\nTypes:Scheme\nT:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ GetRealms | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:GetRealms:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2\nOracle:When you set this scheme in motion, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Realms Befitting My Majesty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
