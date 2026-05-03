@@ -290,6 +290,9 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // ETB resolution diverges.
     // Hard-skip = parser/loader cannot handle the card script at all.
     // Soft-skip (in-hand-only) = parser handles it but ETB/cast diverges.
+    // True hard-skips: parser/loader fails outright on the card script.
+    // alt-cost in Cost$ fields fails parser too (the cost evaluator treats
+    // it as mana). These need a parser fix before they can join the cohort.
     const skip =
       hasAltCostInManaCost ||
       usesAvatarMechanics ||
