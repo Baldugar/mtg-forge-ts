@@ -1,0 +1,120 @@
+{
+  "scenarioId": "counterspell-vs-bolt-self-17-m657",
+  "seed": 55953,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "oldLife": 20,
+        "newLife": 14,
+        "delta": -6,
+        "cause": "scenarioSetup"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "color": 8,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 1,
+        "payerSeat": 1
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "cardId": 1,
+        "controllerSeat": 1
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 1,
+        "targetKind": "player",
+        "targetId": 1,
+        "amount": 3,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "oldLife": 14,
+        "newLife": 11,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      20,
+      11
+    ],
+    "handSizes": [
+      1,
+      0
+    ],
+    "battlefield": [],
+    "graveyards": [
+      [],
+      [
+        "Lightning Bolt"
+      ]
+    ],
+    "stackSize": 0
+  }
+}

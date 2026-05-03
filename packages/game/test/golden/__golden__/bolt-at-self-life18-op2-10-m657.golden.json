@@ -1,0 +1,155 @@
+{
+  "scenarioId": "bolt-at-self-life18-op2-10-m657",
+  "seed": 55882,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 18,
+        "delta": -2,
+        "cause": "scenarioSetup"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": 8,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 0,
+        "payerSeat": 0
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "cardId": 0,
+        "controllerSeat": 0
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 0,
+        "targetKind": "player",
+        "targetId": 0,
+        "amount": 3,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 18,
+        "newLife": 15,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      15,
+      20
+    ],
+    "handSizes": [
+      0,
+      0
+    ],
+    "battlefield": [
+      {
+        "name": "Grizzly Bears",
+        "controller": 1,
+        "tapped": false
+      },
+      {
+        "name": "Llanowar Elves",
+        "controller": 1,
+        "tapped": false
+      }
+    ],
+    "graveyards": [
+      [
+        "Lightning Bolt"
+      ],
+      []
+    ],
+    "stackSize": 0
+  }
+}
