@@ -1,0 +1,48 @@
+{
+  "id": "swords-to-plowshares-at-opp-llanowar-elves-mylife18-14-m669",
+  "description": "M6.69 — Swords to Plowshares at opp Llanowar Elves; my life 18.",
+  "seed": 60462,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife | SpellDescription$ Exile target creature.\nSVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Exile target creature. Its controller gains life equal to its power.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 18,
+      "hand": [
+        "Swords to Plowshares"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Swords to Plowshares",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Llanowar Elves"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

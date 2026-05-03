@@ -1,0 +1,48 @@
+{
+  "id": "helix-at-llanowar-elves-mylife10-opplife14-23-m669",
+  "description": "M6.69 — Helix at opp Llanowar Elves; my life 10, opp life 14.",
+  "seed": 60567,
+  "cards": {
+    "Lightning Helix": "Name:Lightning Helix\nManaCost:R W\nTypes:Instant\nA:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife | SpellDescription$ Helix.\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nOracle:Lightning Helix parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 10,
+      "hand": [
+        "Lightning Helix"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "W"
+      ]
+    },
+    {
+      "life": 14,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Helix",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Llanowar Elves"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

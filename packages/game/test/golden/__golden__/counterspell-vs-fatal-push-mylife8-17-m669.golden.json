@@ -1,0 +1,144 @@
+{
+  "scenarioId": "counterspell-vs-fatal-push-mylife8-17-m669",
+  "seed": 60497,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 8,
+        "delta": -12,
+        "cause": "scenarioSetup"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "CardTargeted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "targetId": 1,
+        "sourceCardId": 3,
+        "targetingSeat": 1
+      }
+    },
+    {
+      "kind": "CrimeCommitted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "sourceCardId": 3,
+        "victimSeat": 0,
+        "victimCardId": 1
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "color": 4,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "payerSeat": 1
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "cardId": 3,
+        "controllerSeat": 1
+      }
+    },
+    {
+      "kind": "CardDestroyed",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "sourceId": 3,
+        "cause": "effect"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      8,
+      20
+    ],
+    "handSizes": [
+      1,
+      0
+    ],
+    "battlefield": [],
+    "graveyards": [
+      [
+        "Soul Warden"
+      ],
+      [
+        "Fatal Push"
+      ]
+    ],
+    "stackSize": 0
+  }
+}
