@@ -42,6 +42,8 @@ import { Graveyard } from "../zone/zones/graveyard.js";
 import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
 import { OutsideTheGame } from "../zone/zones/outside-the-game.js";
+import { PlanarDeck } from "../zone/zones/planar-deck.js";
+import { SchemeDeck } from "../zone/zones/scheme-deck.js";
 import { Sideboard } from "../zone/zones/sideboard.js";
 
 /**
@@ -122,6 +124,58 @@ export interface ConspiracyAssignment {
   readonly cardId: EntityId;
 }
 
+/**
+ * Per-seat Planechase assignment (CR 901). Each seat in a Planechase
+ * match brings a planar deck (a separate, hidden, ordered pile of Plane
+ * and Phenomenon cards) which lives in `ZoneType.PlanarDeck`. The active
+ * plane lives face-up in seat 0's `ZoneType.Command` zone — the active
+ * plane is shared across the table by convention (Forge's
+ * MatchPlayer.planeStack lives on the active player's command zone, and
+ * we mirror that by keeping the single active plane on seat 0's command
+ * zone for the duration of the match).
+ *
+ * `planarDeck` enumerates EntityIds that land in the named seat's
+ * PlanarDeck zone in the order given (top-of-deck first). `activePlane`
+ * is the EntityId placed face-up in seat 0's command zone — its printed
+ * statics + triggers + replacements activate immediately so continuous
+ * effects like "creatures get +1/+0" register with the layer engine and
+ * abilities tagged for the Command zone fire from there.
+ *
+ * EntityIds in `planarDeck` and `activePlane` must already be present in
+ * `game.cards` at call time. They must NOT appear in any seat's library
+ * (planes/phenomena are strictly outside the 60-card deck).
+ */
+export interface PlanechaseAssignment {
+  readonly seat: PlayerSeat;
+  readonly planarDeck: readonly EntityId[];
+  readonly activePlane: EntityId;
+}
+
+/**
+ * Per-seat Archenemy assignment (CR 904). The archenemy plays alone
+ * against the rest of the table — they start with extra life (40 by
+ * default per CR 904.5) and bring their own SCHEME deck (an ordered,
+ * hidden, face-down pile of Scheme cards) which lives in
+ * `ZoneType.SchemeDeck`. At the beginning of each archenemy upkeep, the
+ * archenemy "sets in motion" the top scheme: the engine moves the top
+ * card to the Command zone face-up where its triggered abilities resolve
+ * (CR 904.7).
+ *
+ * `schemeDeck` enumerates EntityIds that land in the named seat's
+ * SchemeDeck zone in the order given (top-of-deck first). EntityIds must
+ * already be present in `game.cards` at call time; they must NOT appear
+ * in any seat's library (schemes are strictly outside the 60-card deck).
+ *
+ * `startingLife` overrides the archenemy's life total — defaults to 40
+ * per CR 904.5. Pass an explicit value (e.g. 30 for "Two-Headed Giant
+ * archenemy" variants) to override.
+ */
+export interface ArchenemyAssignment {
+  readonly seat: PlayerSeat;
+  readonly schemeDeck: readonly EntityId[];
+  readonly startingLife?: number;
+}
+
 export interface SetupOptions {
   readonly decks: SetupDecks;
   /**
@@ -155,6 +209,43 @@ export interface SetupOptions {
    * (face-down placement + secret name choice) lives in SP6.
    */
   readonly conspiracies?: readonly ConspiracyAssignment[];
+  /**
+   * Optional Planechase variant (CR 901). Each entry seeds one seat's
+   * planar deck (a hidden, ordered pile in `ZoneType.PlanarDeck`) and
+   * declares the seat's `activePlane` — the active plane is placed
+   * face-up in seat 0's command zone (shared-active-plane convention).
+   * setupGame activates the active plane's printed statics + triggers +
+   * replacements so abilities with `EffectZone$ Command` /
+   * `TriggerZones$ Command` register and fire from the command zone for
+   * the duration of the active plane's tenure.
+   *
+   * Cards in `planarDeck` must already exist in `game.cards`; they must
+   * NOT appear in any library (planes/phenomena are a separate,
+   * command-zone-aggregate pile per `isPartOfCommandZone`). When two or
+   * more seats supply Planechase entries, all planar decks populate but
+   * only seat 0's `activePlane` lands in the command zone — the other
+   * seats' active-plane choices stage on top of their planar deck (CR
+   * 901.6 ordering: when a player planeswalks, they reveal cards until a
+   * Plane is found; pre-staging lets that pipeline pop the right card).
+   */
+  readonly planechase?: readonly PlanechaseAssignment[];
+  /**
+   * Optional Archenemy variant (CR 904). Each entry designates one seat
+   * as an archenemy: setupGame seeds the seat's `schemeDeck` into
+   * `ZoneType.SchemeDeck` (preserving caller order — top-of-deck first)
+   * and sets that seat's life to `startingLife` (default 40 per CR
+   * 904.5). Schemes themselves are not activated at setup time — they
+   * remain hidden in the SchemeDeck until set in motion via
+   * `GameAction.setInMotion`, which moves the top scheme to the Command
+   * zone, activates its triggers + statics, and emits the
+   * SchemeSetInMotion event so `T:Mode$ SetInMotion` triggers fire.
+   *
+   * Cards in `schemeDeck` must already exist in `game.cards`; they must
+   * NOT appear in any library. A seat may carry zero or one
+   * ArchenemyAssignment entries — multi-archenemy variants are not
+   * supported (CR 904.4 caps the archenemy count at one per game).
+   */
+  readonly archenemy?: readonly ArchenemyAssignment[];
 }
 
 // Per-player zone set covered by SP1. Sideboard/Ante/etc. populate in SP2 as
@@ -173,6 +264,16 @@ const createPlayerZones = (seat: PlayerSeat): Map<ZoneType, Zone> => {
   // Wave 66 — Sideboard (CR 100.4) + OutsideTheGame (engine-side staging).
   m.set(ZoneType.Sideboard, new Sideboard(ZoneType.Sideboard, seat));
   m.set(ZoneType.OutsideTheGame, new OutsideTheGame(ZoneType.OutsideTheGame, seat));
+  // M7.13b — Planechase (CR 901). Each player gets an empty PlanarDeck
+  // by default; setupGame populates it from the optional `planechase`
+  // SetupOptions field. Keeping the zone empty (rather than absent)
+  // means SBA / zone-query consumers always find a non-null source zone.
+  m.set(ZoneType.PlanarDeck, new PlanarDeck(ZoneType.PlanarDeck, seat));
+  // M7.13c — Archenemy (CR 904). Each player gets an empty SchemeDeck
+  // by default; setupGame populates the archenemy's pile from the
+  // optional `archenemy` SetupOptions field. Non-archenemy seats keep
+  // an empty SchemeDeck so zone queries always find a non-null source.
+  m.set(ZoneType.SchemeDeck, new SchemeDeck(ZoneType.SchemeDeck, seat));
   return m;
 };
 
@@ -392,6 +493,153 @@ export function* setupGame(
       // populated but the registry never sees them (so layer/SBA queries
       // miss the conspiracy's continuous effects).
       onZoneChange(game, slot.cardId, ZoneType.None, ZoneType.Command);
+    }
+  }
+
+  // Step 1f (CR 901): Planechase placement. For each declared seat, push
+  // every `planarDeck` id into that seat's PlanarDeck zone (preserving
+  // caller order — top-of-deck first) and place the `activePlane` in
+  // seat 0's Command zone (shared-active-plane convention; the planar
+  // die roll mutates this single slot for everyone). The active plane's
+  // printed statics + triggers + replacements activate immediately so
+  // continuous effects with `EffectZone$ Command` register with the
+  // layer engine and triggers tagged `TriggerZones$ Command` fire from
+  // the command zone for the duration of the plane's tenure. When the
+  // plane is replaced (by a planeswalk roll), SP6's planar-die
+  // orchestration is responsible for unbinding via the inverse zone-
+  // change emission.
+  const planechase = opts.planechase;
+  if (planechase !== undefined) {
+    // The shared active plane lives in seat 0's command zone by
+    // convention. Multiple seats may carry planechase entries (each with
+    // their own planar deck) but only the FIRST entry's `activePlane` is
+    // promoted to the command zone — the others stage on top of their
+    // own planar deck so a future planeswalk pops the right card.
+    let activePlanePlaced = false;
+    for (const slot of planechase) {
+      const player = game.players.find((p) => p.seat === slot.seat);
+      if (!player) {
+        throw new GameStateIntegrityError(
+          `setupGame: planechase assignment for unknown seat ${slot.seat as unknown as number}`,
+        );
+      }
+      const planarZone = player.zones.get(ZoneType.PlanarDeck);
+      if (!planarZone) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} missing PlanarDeck zone`,
+        );
+      }
+      // Seed the planar deck. Cards must already exist in game.cards;
+      // their .zone pointer is rewritten to PlanarDeck so zone queries
+      // return the right answer.
+      for (const id of slot.planarDeck) {
+        const c = game.cards.get(id);
+        if (!c) {
+          throw new GameStateIntegrityError(
+            `setupGame: planar-deck card id ${id as unknown as number} not in game.cards`,
+          );
+        }
+        planarZone.add(id);
+        c.zone = ZoneType.PlanarDeck;
+      }
+      // The first planechase slot owns the shared active plane. Place
+      // it in seat 0's command zone, activate its abilities, and replay
+      // the None → Command transition so the static-effect registry
+      // sees the plane's continuous statics.
+      if (!activePlanePlaced) {
+        const seat0 = game.players[0];
+        if (!seat0) {
+          throw new GameStateIntegrityError(
+            "setupGame: planechase requires at least one player at seat 0 for the active plane",
+          );
+        }
+        const seat0Cmd = seat0.zones.get(ZoneType.Command);
+        if (!seat0Cmd) {
+          throw new GameStateIntegrityError(
+            "setupGame: seat 0 missing Command zone for Planechase active plane",
+          );
+        }
+        const planeCard = game.cards.get(slot.activePlane);
+        if (!planeCard) {
+          throw new GameStateIntegrityError(
+            `setupGame: active-plane card id ${slot.activePlane as unknown as number} not in game.cards`,
+          );
+        }
+        // Defensive: pull the active plane out of the planar deck if the
+        // caller seeded it there (CR 901 keeps the active plane and the
+        // planar deck disjoint).
+        planarZone.remove(slot.activePlane);
+        seat0Cmd.add(slot.activePlane);
+        planeCard.zone = ZoneType.Command;
+        // Activate the plane's printed abilities. Planes are never cast
+        // (`ManaCost:no cost`), so we skip activated/spell abilities and
+        // bind only the trigger / static / replacement layers their
+        // printed text needs — same pattern as Conspiracy.
+        planeCard.activateTriggersFromDefinition(game);
+        planeCard.activateStaticsFromDefinition(game);
+        planeCard.activateReplacementsFromDefinition(game);
+        // Hand-off to the static-effect registry via the standard zone-
+        // activation discipline. Without this, intrinsicStatics is
+        // populated but the registry never sees the plane's continuous
+        // statics — layer/SBA queries would miss them.
+        onZoneChange(game, slot.activePlane, ZoneType.None, ZoneType.Command);
+        activePlanePlaced = true;
+      }
+    }
+  }
+
+  // Step 1g (CR 904): Archenemy placement. For each declared seat, set
+  // the archenemy's life to the requested startingLife (default 40 per
+  // CR 904.5) and seed the schemeDeck ids into that seat's SchemeDeck
+  // zone in caller order (top-of-deck first). Schemes are NOT activated
+  // here — they stay hidden in the SchemeDeck until GameAction.setInMotion
+  // pops the top, places it in the Command zone, and fires its triggers.
+  //
+  // Why pop-on-demand instead of pre-activating: setInMotion is the
+  // canonical lifecycle entry for a scheme — the SchemeSetInMotion event
+  // it emits is what `T:Mode$ SetInMotion` triggers match against. If we
+  // activated triggers at setup time, the trigger would fire once when
+  // the scheme moved out of SchemeDeck (and never again). Forge keeps
+  // schemes asleep until set in motion; we mirror that.
+  const archenemy = opts.archenemy;
+  if (archenemy !== undefined) {
+    for (const slot of archenemy) {
+      const player = game.players.find((p) => p.seat === slot.seat);
+      if (!player) {
+        throw new GameStateIntegrityError(
+          `setupGame: archenemy assignment for unknown seat ${slot.seat as unknown as number}`,
+        );
+      }
+      const schemeZone = player.zones.get(ZoneType.SchemeDeck);
+      if (!schemeZone) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} missing SchemeDeck zone`,
+        );
+      }
+      // Apply the archenemy's starting life — defaults to 40 per CR
+      // 904.5. Direct assignment is correct here: setupGame runs before
+      // any life-change replacements latch (apply-loop is idle), and
+      // the variant-mandated life total is a setup-time property, not
+      // a gameable life-change event.
+      player.life = slot.startingLife ?? 40;
+      // Seed the scheme deck. Cards must already exist in game.cards;
+      // their .zone pointer is rewritten to SchemeDeck so zone queries
+      // return the right answer.
+      for (const id of slot.schemeDeck) {
+        const c = game.cards.get(id);
+        if (!c) {
+          throw new GameStateIntegrityError(
+            `setupGame: scheme card id ${id as unknown as number} not in game.cards`,
+          );
+        }
+        // Defensive: pull the scheme out of the library if the caller
+        // accidentally seeded it there (CR 904 keeps schemes strictly
+        // outside the 60-card deck).
+        const lib = player.zones.get(ZoneType.Library);
+        if (lib) lib.remove(id);
+        schemeZone.add(id);
+        c.zone = ZoneType.SchemeDeck;
+      }
     }
   }
 

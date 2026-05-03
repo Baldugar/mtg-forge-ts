@@ -1972,6 +1972,77 @@ export class GameAction {
     for (const id of shuffled) library.add(id);
   }
 
+  // === Variant operations ===
+
+  /**
+   * Archenemy "set in motion" — CR 904.7. Pop the top card of the named
+   * seat's SchemeDeck, place it in that seat's Command zone face-up,
+   * activate its printed triggers + statics + replacements, and emit
+   * SchemeSetInMotion so `T:Mode$ SetInMotion` triggers fire.
+   *
+   * No-op if the SchemeDeck is empty (Forge: at the start of upkeep, if
+   * no schemes remain in the scheme deck, the archenemy turn proceeds
+   * without an extra trigger; setInMotion is a no-op in that state).
+   *
+   * Why a dedicated mutator (and not moveTo + manual emit): setInMotion
+   * is the canonical lifecycle entry for a scheme — multiple sites
+   * (upkeep step, Forge's beginCombat/Effects, debug consoles, scenario
+   * scripts) need a single name. The mutator owns the four-step
+   * choreography (pop + place + activate + emit) so callers can't
+   * accidentally skip the trigger registration that schemes depend on.
+   *
+   * @param seat — the archenemy whose top scheme is set in motion.
+   */
+  *setInMotion(seat: PlayerSeat): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const player = game.getPlayer(seat);
+    const schemeZone = player.zones.get(Zt.SchemeDeck);
+    if (!schemeZone) {
+      throw new GameStateIntegrityError(
+        `setInMotion: seat ${seat as unknown as number} missing SchemeDeck zone`,
+      );
+    }
+    const cmdZone = player.zones.get(Zt.Command);
+    if (!cmdZone) {
+      throw new GameStateIntegrityError(
+        `setInMotion: seat ${seat as unknown as number} missing Command zone`,
+      );
+    }
+    // Pop the top of the scheme deck. Top-of-deck convention: index 0
+    // (matches Library/PlanarDeck ordering — caller-pushed first id is
+    // top). When the deck is empty, this is a no-op (no event emitted).
+    const topId = schemeZone.peekAt(0);
+    if (topId === undefined) return;
+    schemeZone.removeAt(0);
+    cmdZone.add(topId);
+    const card = game.cards.get(topId);
+    if (card) {
+      card.zone = Zt.Command;
+      // Activate the scheme's printed abilities. Schemes have no spell-
+      // cost (`ManaCost:no cost`) and are never cast; we bind triggers
+      // (the SetInMotion trigger lives here) + statics (Ongoing schemes
+      // expose `EffectZone$ Command` continuous statics) + replacements.
+      card.activateTriggersFromDefinition(game);
+      card.activateStaticsFromDefinition(game);
+      card.activateReplacementsFromDefinition(game);
+      // Hand-off to the static-effect registry via the standard zone-
+      // activation discipline so the scheme's continuous statics
+      // register with the layer engine. Mirrors the Conspiracy /
+      // Planechase / Vanguard pattern in setupGame.
+      onZoneChange(game, topId, Zt.SchemeDeck, Zt.Command);
+    }
+    // Emit the canonical event LAST — triggerRegistry.onEvent fires
+    // after the scheme is physically in the command zone and its
+    // own SetInMotion trigger is registered (so ValidCard$ Card.Self
+    // matches the freshly-registered trigger on this same event).
+    yield game.emitEvent(
+      mkEvent("SchemeSetInMotion", game.turn, game.phase, {
+        schemeCardId: topId,
+        archenemySeat: seat,
+      }),
+    );
+  }
+
   // === SP2/SP3 stubs ===
 
   // WHY: SP2/SP3 stubs. The `function*` keyword alone makes these generators;

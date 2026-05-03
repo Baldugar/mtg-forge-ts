@@ -206,6 +206,29 @@ export class Game {
     detail: string;
   }[] = [];
 
+  /**
+   * M7.13b — Planechase variant API (CR 901). The planar die has six
+   * faces: four blank, one Chaos, one Planeswalker. `rollDie()` consumes
+   * a single integer off `rng` and maps it deterministically to one of
+   * the three observable outcomes; SP6 wires this to the per-turn
+   * "roll the planar die" action and routes "planeswalker" rolls through
+   * the active-plane swap pipeline (CR 901.6) and "chaos" rolls through
+   * the active plane's `ChaosEnsues` triggers (CR 901.10).
+   *
+   * The face distribution (4 blank / 1 chaos / 1 planeswalker) matches
+   * Forge's `forge.game.player.PlayerController.choosePlanarDieResult`
+   * and the printed planar die. Returning a discriminated string keeps
+   * the API testable without depending on the SP6 orchestration layer.
+   */
+  readonly planar = {
+    rollDie: (): "chaos" | "planeswalker" | "blank" => {
+      const face = this.rng.nextInt(0, 6);
+      if (face === 0) return "chaos";
+      if (face === 1) return "planeswalker";
+      return "blank";
+    },
+  };
+
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
     if (opts.lobbyPlayers.length < opts.rules.playerCount.min) {
       throw new GameStateIntegrityError(
