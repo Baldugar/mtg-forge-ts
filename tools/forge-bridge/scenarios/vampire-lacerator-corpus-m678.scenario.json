@@ -1,0 +1,23 @@
+{
+  "id": "vampire-lacerator-corpus-m678",
+  "description": "M6 corpus — Vampire Lacerator; in-hand parse.",
+  "seed": 63250,
+  "cards": {
+    "Vampire Lacerator": "Name:Vampire Lacerator\nManaCost:B\nTypes:Creature Vampire Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 1 life unless an opponent has 10 or less life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | ConditionCheckSVar$ OpponentSmallest | ConditionSVarCompare$ GE11\nSVar:OpponentSmallest:PlayerCountOpponents$LowestLifeTotal\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you lose 1 life unless an opponent has 10 or less life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Lacerator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

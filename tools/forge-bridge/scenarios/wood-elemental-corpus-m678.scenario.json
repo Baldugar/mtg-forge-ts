@@ -1,0 +1,23 @@
+{
+  "id": "wood-elemental-corpus-m678",
+  "description": "M6 corpus — Wood Elemental; in-hand parse.",
+  "seed": 64371,
+  "cards": {
+    "Wood Elemental": "Name:Wood Elemental\nManaCost:3 G\nTypes:Creature Elemental\nPT:*/*\nK:ETBReplacement:Other:TrigSac\nSVar:TrigSac:DB$ Sacrifice | Amount$ SacX | SacValid$ Forest.untapped | Defined$ You | RememberSacrificed$ True | Optional$ True | SpellDescription$ As CARDNAME enters, sacrifice any number of untapped Forests.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of Forests sacrificed as it entered.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Forest.YouCtrl+untapped\nSVar:NeedsToPlayVar:SacX GE5\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:As Wood Elemental enters, sacrifice any number of untapped Forests.\\nWood Elemental's power and toughness are each equal to the number of Forests sacrificed as it entered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wood Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

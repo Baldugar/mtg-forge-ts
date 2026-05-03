@@ -1,0 +1,23 @@
+{
+  "id": "vault-plunderer-corpus-m678",
+  "description": "M6 corpus — Vault Plunderer; in-hand parse.",
+  "seed": 63304,
+  "cards": {
+    "Vault Plunderer": "Name:Vault Plunderer\nManaCost:2 B\nTypes:Creature Human Rogue\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, target player draws a card and loses 1 life.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Player | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 1\nOracle:When Vault Plunderer enters, target player draws a card and loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vault Plunderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

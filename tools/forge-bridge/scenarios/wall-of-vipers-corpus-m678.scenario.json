@@ -1,0 +1,25 @@
+{
+  "id": "wall-of-vipers-corpus-m678",
+  "description": "M6 corpus — Wall of Vipers; ETB-on-bf.",
+  "seed": 63806,
+  "cards": {
+    "Wall of Vipers": "Name:Wall of Vipers\nManaCost:2 B\nTypes:Creature Snake Wall\nPT:2/4\nK:Defender\nA:AB$ Pump | Cost$ 3 | Defined$ Self | Activator$ Player | AILogic$ Destroy | IsCurse$ True | SubAbility$ SnakeBite | SpellDescription$ Destroy CARDNAME and target creature it's blocking. Any player may activate this ability.\nSVar:SnakeBite:DB$ Pump | ValidTgts$ Creature.blockedBySource | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nAI:RemoveDeck:All\nOracle:Defender (This creature can't attack.)\\n{3}: Destroy Wall of Vipers and target creature it's blocking. Any player may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wall of Vipers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

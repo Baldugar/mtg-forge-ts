@@ -1,0 +1,25 @@
+{
+  "id": "tainted-remedy-corpus-m678",
+  "description": "M6 corpus — Tainted Remedy; ETB-on-bf.",
+  "seed": 61604,
+  "cards": {
+    "Tainted Remedy": "Name:Tainted Remedy\nManaCost:2 B\nTypes:Enchantment\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ReplaceWith$ RLoseLife | AILogic$ LoseLife | Description$ If an opponent would gain life, that player loses that much life instead.\nSVar:RLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ ReplacedPlayer\nSVar:X:ReplaceCount$LifeGained\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:If an opponent would gain life, that player loses that much life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tainted Remedy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

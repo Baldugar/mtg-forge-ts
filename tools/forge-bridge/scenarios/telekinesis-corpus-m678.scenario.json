@@ -1,0 +1,23 @@
+{
+  "id": "telekinesis-corpus-m678",
+  "description": "M6 corpus — Telekinesis; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Telekinesis": "Name:Telekinesis\nManaCost:U U\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBEffect | SpellDescription$ Tap target creature.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SubAbility$ DBPump | SpellDescription$ Prevent all combat damage that would be dealt by that creature this turn.\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RUntap | Triggers$ ExileEff | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | Duration$ Permanent | StackDescription$ SpellDescription\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by that creature this turn.\nSVar:RUntap:Event$ Untap | ValidCard$ Creature.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ It doesn't untap during its controller's next two untap steps.\nSVar:ExileEff:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.controlsCard.IsRemembered | Execute$ Exile | Static$ True\nSVar:Exile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile | ConditionCheckSVar$ Count$ActivatedThisGame\nOracle:Tap target creature. Prevent all combat damage that would be dealt by that creature this turn. It doesn't untap during its controller's next two untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Telekinesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

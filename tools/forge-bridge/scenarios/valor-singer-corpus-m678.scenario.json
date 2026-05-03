@@ -1,0 +1,23 @@
+{
+  "id": "valor-singer-corpus-m678",
+  "description": "M6 corpus — Valor Singer; in-hand parse.",
+  "seed": 63239,
+  "cards": {
+    "Valor Singer": "Name:Valor Singer\nManaCost:2 R\nTypes:Creature Tiefling Bard\nPT:2/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1\nSVar:PlayMain1:TRUE\nOracle:Combat Inspiration — At the beginning of combat on your turn, target creature you control gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valor Singer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

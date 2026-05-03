@@ -1,0 +1,23 @@
+{
+  "id": "venerable-warsinger-corpus-m678",
+  "description": "M6 corpus — Venerable Warsinger; in-hand parse.",
+  "seed": 63353,
+  "cards": {
+    "Venerable Warsinger": "Name:Venerable Warsinger\nManaCost:1 R W\nTypes:Creature Spirit Cleric\nPT:3/3\nK:Vigilance\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may return target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of damage CARDNAME dealt to that player.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.cmcLEX+YouCtrl | TgtPrompt$ Select target creature card in your graveyard with mana value X or less | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Graveyard\nOracle:Vigilance, trample\\nWhenever Venerable Warsinger deals combat damage to a player, you may return target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of damage Venerable Warsinger dealt to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venerable Warsinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

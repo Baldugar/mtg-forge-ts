@@ -1,0 +1,23 @@
+{
+  "id": "syndicate-recruiter-corpus-m678",
+  "description": "M6 corpus — Syndicate Recruiter; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Syndicate Recruiter": "Name:Syndicate Recruiter\nManaCost:2 U B\nTypes:Creature Vampire Rogue\nPT:4/5\nK:Flying\nK:Ward:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters, mill four cards. Then if there are five or more mana values among cards in your graveyard, conjure a card named Dig Up the Body into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5 | Conjure$ True | Name$ Dig Up the Body | Zone$ Hand\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nOracle:Flying\\nWard 1\\nWhenever Syndicate Recruiter enters, mill four cards. Then if there are five or more mana values among cards in your graveyard, conjure a card named Dig Up the Body into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syndicate Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

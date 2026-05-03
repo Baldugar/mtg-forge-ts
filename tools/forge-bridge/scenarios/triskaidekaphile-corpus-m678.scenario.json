@@ -1,0 +1,23 @@
+{
+  "id": "triskaidekaphile-corpus-m678",
+  "description": "M6 corpus — Triskaidekaphile; in-hand parse.",
+  "seed": 62750,
+  "cards": {
+    "Triskaidekaphile": "Name:Triskaidekaphile\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/3\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.YouCtrl | PresentZone$ Hand | PresentCompare$ EQ13 | TriggerZones$ Battlefield | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if you have exactly 13 cards in your hand, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nA:AB$ Draw | Cost$ 3 U | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:You have no maximum hand size.\\nAt the beginning of your upkeep, if you have exactly 13 cards in your hand, you win the game.\\n{3}{U}: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triskaidekaphile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tempt-with-vengeance-corpus-m678",
+  "description": "M6 corpus — Tempt with Vengeance; in-hand parse.",
+  "seed": 61863,
+  "cards": {
+    "Tempt with Vengeance": "Name:Tempt with Vengeance\nManaCost:X R\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ r_1_1_elemental_haste | TokenOwner$ You | SubAbility$ DBRepeat | StackDescription$ SpellDescription | SpellDescription$ Tempting offer — Create X 1/1 red Elemental creature tokens with haste. Each opponent may create X 1/1 red Elemental creature tokens with haste. For each opponent who does, create X 1/1 red Elemental creature tokens with haste.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBTokenOpp | RepeatPlayers$ Player.Opponent | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to create X 1/1 red Elemental creature tokens with haste? | SubAbility$ DBToken | ChangeZoneTable$ True\nSVar:DBTokenOpp:DB$ Token | TokenAmount$ X | TokenScript$ r_1_1_elemental_haste | TokenOwner$ Player.IsRemembered | SubAbility$ DBCount\nSVar:DBCount:DB$ StoreSVar | SVar$ Y | Type$ CountSVar | Expression$ Y/Plus.1\nSVar:DBToken:DB$ Token | TokenAmount$ Z | TokenScript$ r_1_1_elemental_haste | TokenOwner$ You | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ Y | Type$ Number | Expression$ 0\nSVar:Y:Number$0\nSVar:X:Count$xPaid\nSVar:Z:SVar$X/Times.Y\nOracle:Tempting offer — Create X 1/1 red Elemental creature tokens with haste. Each opponent may create X 1/1 red Elemental creature tokens with haste. For each opponent who does, create X 1/1 red Elemental creature tokens with haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempt with Vengeance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

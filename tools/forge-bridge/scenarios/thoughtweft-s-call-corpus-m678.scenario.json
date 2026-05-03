@@ -1,0 +1,23 @@
+{
+  "id": "thoughtweft-s-call-corpus-m678",
+  "description": "M6 corpus — Thoughtweft's Call; in-hand parse.",
+  "seed": 62236,
+  "cards": {
+    "Thoughtweft's Call": "Name:Thoughtweft's Call\nManaCost:W\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBSeek,DBPumpAll\nSVar:DBSeek:DB$ Seek | Type$ Kithkin | RememberFound$ True | SubAbility$ DBDelayTrig | SpellDescription$ Seek a Kithkin card. At the beginning of the next end step, if that card is in your hand, exile it.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | PresentZone$ Hand | IsPresent$ Card.IsTriggerRemembered | Execute$ TrigExile | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ Exile that card at the beginning of the next end step.\nSVar:TrigExile:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Hand | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | PumpZone$ Hand | Duration$ Perpetual | NumAtt$ +1 | NumDef$ +1 | StackDescription$ REP your_{p:You}'s | SpellDescription$ Creature cards in your hand perpetually get +1/+1.\nOracle:Choose one —\\n• Seek a Kithkin card. At the beginning of the next end step, if that card is in your hand, exile it.\\n• Creature cards in your hand perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thoughtweft's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

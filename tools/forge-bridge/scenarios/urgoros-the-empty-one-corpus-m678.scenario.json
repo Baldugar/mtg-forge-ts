@@ -1,0 +1,23 @@
+{
+  "id": "urgoros-the-empty-one-corpus-m678",
+  "description": "M6 corpus — Urgoros, the Empty One; in-hand parse.",
+  "seed": 63172,
+  "cards": {
+    "Urgoros, the Empty One": "Name:Urgoros, the Empty One\nManaCost:4 B B\nTypes:Legendary Creature Specter\nPT:4/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card at random. If the player can't, you draw a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ Random | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Urgoros, the Empty One deals combat damage to a player, that player discards a card at random. If the player can't, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urgoros, the Empty One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

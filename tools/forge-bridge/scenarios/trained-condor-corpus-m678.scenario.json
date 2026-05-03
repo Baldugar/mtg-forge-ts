@@ -1,0 +1,23 @@
+{
+  "id": "trained-condor-corpus-m678",
+  "description": "M6 corpus — Trained Condor; in-hand parse.",
+  "seed": 62616,
+  "cards": {
+    "Trained Condor": "Name:Trained Condor\nManaCost:2 U\nTypes:Creature Bird\nPT:2/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature you control gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | KW$ Flying\nOracle:Flying\\nWhenever Trained Condor attacks, another target creature you control gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trained Condor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

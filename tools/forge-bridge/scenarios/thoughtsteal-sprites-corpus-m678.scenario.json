@@ -1,0 +1,25 @@
+{
+  "id": "thoughtsteal-sprites-corpus-m678",
+  "description": "M6 corpus — Thoughtsteal Sprites; ETB-on-bf.",
+  "seed": 62231,
+  "cards": {
+    "Thoughtsteal Sprites": "Name:Thoughtsteal Sprites\nManaCost:1 U\nTypes:Creature Faerie Rogue\nPT:2/1\nK:Flying\nK:Double team\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigDraft | ActivationLimit$ 1 | TriggerDescription$ Whenever you cast a spell during an opponent's turn, draft a card from CARDNAME's spellbook, then discard a card. This ability triggers only once each turn.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Bitterblossom,Brazen Borrower,Faebloom Trick,Faerie Fencing,Faerie Mastermind,Flitterwing Nuisance,Glen Elendra Guardian,High Fae Prankster,Hypnotic Sprite,Likeness Looter,Pestermite,Picklock Prankster,Spell Stutter,Vendillion Clique,Voracious Tome-Skimmer | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nOracle:Flying\\nDouble team\\nWhenever you cast a spell during an opponent's turn, draft a card from Thoughtsteal Sprites's spellbook, then discard a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thoughtsteal Sprites"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

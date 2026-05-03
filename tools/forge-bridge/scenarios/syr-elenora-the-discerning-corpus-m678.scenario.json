@@ -1,0 +1,23 @@
+{
+  "id": "syr-elenora-the-discerning-corpus-m678",
+  "description": "M6 corpus — Syr Elenora, the Discerning; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "Syr Elenora, the Discerning": "Name:Syr Elenora, the Discerning\nManaCost:3 U U\nTypes:Legendary Creature Human Knight\nPT:*/4\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ RaiseCost | ValidTarget$ Card.Self | Activator$ Player.Opponent | Type$ Spell | Amount$ 2 | Description$ Spells your opponents cast that target NICKNAME cost {2} more to cast.\nOracle:Syr Elenora, the Discerning's power is equal to the number of cards in your hand.\\nWhen Syr Elenora enters, draw a card.\\nSpells your opponents cast that target Syr Elenora cost {2} more to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Elenora, the Discerning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "urborg-lhurgoyf-corpus-m678",
+  "description": "M6 corpus — Urborg Lhurgoyf; in-hand parse.",
+  "seed": 63159,
+  "cards": {
+    "Urborg Lhurgoyf": "Name:Urborg Lhurgoyf\nManaCost:1 G\nTypes:Creature Lhurgoyf\nPT:*/1+*\nK:Kicker:U:B\nK:ETBReplacement:Other:TrigMill\nSVar:TrigMill:DB$ Mill | NumCards$ Z | Defined$ You | SpellDescription$ As CARDNAME enters, mill three cards for each time it was kicked.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the number of creature cards in your graveyard and its toughness is equal to that number plus 1.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:Y:SVar$X/Plus.1\nSVar:Z:Count$TimesKicked/Times.3\nOracle:Kicker {U} and/or {B} (You may pay an additional {U} and/or {B} as you cast this spell.)\\nAs Urborg Lhurgoyf enters, mill three cards for each time it was kicked.\\nUrborg Lhurgoyf's power is equal to the number of creature cards in your graveyard and its toughness is equal to that number plus 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urborg Lhurgoyf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

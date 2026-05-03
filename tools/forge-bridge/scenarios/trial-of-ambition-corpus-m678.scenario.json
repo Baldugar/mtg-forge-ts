@@ -1,0 +1,23 @@
+{
+  "id": "trial-of-ambition-corpus-m678",
+  "description": "M6 corpus — Trial of Ambition; in-hand parse.",
+  "seed": 62724,
+  "cards": {
+    "Trial of Ambition": "Name:Trial of Ambition\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When CARDNAME enters, target opponent sacrifices a creature.\nSVar:TrigSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Cartouche.YouCtrl | Execute$ TrigReturn | TriggerDescription$ When a Cartouche you control enters, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nSVar:NeedsToPlay:Creature.OppCtrl\nDeckHints:Type$Cartouche\nOracle:When Trial of Ambition enters, target opponent sacrifices a creature.\\nWhen a Cartouche you control enters, return Trial of Ambition to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trial of Ambition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

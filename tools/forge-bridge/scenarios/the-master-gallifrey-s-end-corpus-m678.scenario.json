@@ -1,0 +1,23 @@
+{
+  "id": "the-master-gallifrey-s-end-corpus-m678",
+  "description": "M6 corpus — The Master, Gallifrey's End; in-hand parse.",
+  "seed": 62071,
+  "cards": {
+    "The Master, Gallifrey's End": "Name:The Master, Gallifrey's End\nManaCost:2 B R\nTypes:Legendary Creature Time Lord Rogue\nPT:4/3\nT:Mode$ ChangesZone | ValidCard$ Creature.Artifact+!token+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Make Them Pay — Whenever a nontoken artifact creature you control dies, you may exile it. If you do, choose an opponent with the most life among your opponents. That player faces a villainous choice — They lose 4 life, or you create a token that's a copy of that card.\nSVar:TrigExile:DB$ ChangeZone | RememberChanged$ True | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBChoosePlayer\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent+lifeEQX | SubAbility$ DBChoice\nSVar:X:Count$OppGreatestLifeTotal\nSVar:DBChoice:DB$ VillainousChoice | Defined$ ChosenPlayer | Choices$ DBLoseLife,DBCopy | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Player.IsRemembered | SpellDescription$ Opponent loses 4 life.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SubAbility$ DBCleanup | SpellDescription$ You create a token that's a copy of the exiled card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Artifact\nDeckHas:Ability$Token\nOracle:Make Them Pay — Whenever a nontoken artifact creature you control dies, you may exile it. If you do, choose an opponent with the most life among your opponents. That player faces a villainous choice — They lose 4 life, or you create a token that's a copy of that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Master, Gallifrey's End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "zimone-s-hypothesis-corpus-m678",
+  "description": "M6 corpus — Zimone's Hypothesis; in-hand parse.",
+  "seed": 64673,
+  "cards": {
+    "Zimone's Hypothesis": "Name:Zimone's Hypothesis\nManaCost:3 U U\nTypes:Instant\nA:SP$ PutCounter | Choices$ Creature | ChoiceTitle$ Choose a creature | CounterType$ P1P1 | CounterNum$ 1 | Optional$ True | SubAbility$ DBGenericChoice | SpellDescription$ You may put a +1/+1 counter on a creature. Then choose odd or even. Return each creature with power of the chosen quality to its owner's hand. (Zero is even.)\nSVar:DBGenericChoice:DB$ GenericChoice | Choices$ Odd,Even\nSVar:Odd:DB$ ChangeZoneAll | ChangeType$ Creature.powerOdd | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Odd\nSVar:Even:DB$ ChangeZoneAll | ChangeType$ Creature.powerEven | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Even\nOracle:You may put a +1/+1 counter on a creature. Then choose odd or even. Return each creature with power of the chosen quality to its owner's hand. (Zero is even.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zimone's Hypothesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

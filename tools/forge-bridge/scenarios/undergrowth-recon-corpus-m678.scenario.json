@@ -1,0 +1,23 @@
+{
+  "id": "undergrowth-recon-corpus-m678",
+  "description": "M6 corpus — Undergrowth Recon; in-hand parse.",
+  "seed": 63020,
+  "cards": {
+    "Undergrowth Recon": "Name:Undergrowth Recon\nManaCost:1 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Tapped$ True | TgtPrompt$ Select target land card in your graveyard | Destination$ Battlefield | ValidTgts$ Land.YouOwn\nDeckHints:Ability$Graveyard|Mill|Dredge|Discard\nDeckHas:Ability$Graveyard\nOracle:At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undergrowth Recon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

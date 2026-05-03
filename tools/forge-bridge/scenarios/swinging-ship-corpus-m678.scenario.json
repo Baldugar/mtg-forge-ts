@@ -1,0 +1,25 @@
+{
+  "id": "swinging-ship-corpus-m678",
+  "description": "M6 corpus — Swinging Ship; ETB-on-bf.",
+  "seed": 61503,
+  "cards": {
+    "Swinging Ship": "Name:Swinging Ship\nManaCost:no cost\nTypes:Artifact Attraction\nK:Visit:TrigEffect\nSVar:TrigEffect:DB$ Effect | Triggers$ STShip | SpellDescription$ Visit — After the first combat phase this turn, there's an additional combat phase. At the beginning of that combat, untap all creatures that attacked this turn.\nSVar:STShip:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ You | FirstCombat$ True | Execute$ TrigAdditionalCombat | TriggerDescription$ After the first combat phase this turn, there's an additional combat phase. At the beginning of that combat, untap all creatures that attacked this turn.\nSVar:TrigAdditionalCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.attackedThisTurn\nSVar:PlayMain1:TRUE\nOracle:Visit — After the first combat phase this turn, there's an additional combat phase. At the beginning of that combat, untap all creatures that attacked this turn.\n\n# --- VARIANTS ---\n\nVariant:A:Lights:2 6\nVariant:B:Lights:4 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Swinging Ship"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

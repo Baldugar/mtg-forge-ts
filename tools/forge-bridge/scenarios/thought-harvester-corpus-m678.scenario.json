@@ -1,0 +1,25 @@
+{
+  "id": "thought-harvester-corpus-m678",
+  "description": "M6 corpus — Thought Harvester; ETB-on-bf.",
+  "seed": 62213,
+  "cards": {
+    "Thought Harvester": "Name:Thought Harvester\nManaCost:3 U\nTypes:Creature Eldrazi Drone\nPT:2/4\nK:Devoid\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you cast a colorless spell, target opponent exiles the top card of their library.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ValidTgts$ Opponent | TgtPrompt$ Choose target opponent\nSVar:BuffedBy:Card.Colorless\nDeckHints:Color$Colorless\nOracle:Devoid (This card has no color.)\\nFlying\\nWhenever you cast a colorless spell, target opponent exiles the top card of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thought Harvester"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

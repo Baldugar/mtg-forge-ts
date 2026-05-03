@@ -1,0 +1,25 @@
+{
+  "id": "whipgrass-entangler-corpus-m678",
+  "description": "M6 corpus — Whipgrass Entangler; ETB-on-bf.",
+  "seed": 64086,
+  "cards": {
+    "Whipgrass Entangler": "Name:Whipgrass Entangler\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:1/3\nA:AB$ Animate | Cost$ 1 W | ValidTgts$ Creature | staticAbilities$ WhipgrassCantAttack,WhipgrassCantBlock | SpellDescription$ Until end of turn, target creature gains \"This creature can't attack or block unless its controller pays {1} for each Cleric on the battlefield.\"\nSVar:WhipgrassCantAttack:Mode$ CantAttackUnless | ValidCard$ Card.Self | Cost$ WhipgrassClericNum | Description$ CARDNAME can't attack or block unless you pay 1 for each Cleric on the battlefield.\nSVar:WhipgrassCantBlock:Mode$ CantBlockUnless | ValidCard$ Card.Self | Cost$ WhipgrassClericNum\nSVar:WhipgrassClericNum:Count$Valid Cleric\nAI:RemoveDeck:All\nOracle:{1}{W}: Until end of turn, target creature gains \"This creature can't attack or block unless its controller pays {1} for each Cleric on the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Whipgrass Entangler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

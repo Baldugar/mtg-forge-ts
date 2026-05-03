@@ -1,0 +1,25 @@
+{
+  "id": "vortex-elemental-corpus-m678",
+  "description": "M6 corpus — Vortex Elemental; ETB-on-bf.",
+  "seed": 63690,
+  "cards": {
+    "Vortex Elemental": "Name:Vortex Elemental\nManaCost:U\nTypes:Creature Elemental\nPT:0/1\nA:AB$ ChangeZoneAll | Cost$ U | ChangeType$ Card.Self,Creature.blockingSource,Creature.blockedBySource | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | Shuffle$ True | SpellDescription$ Put CARDNAME and each creature blocking or blocked by it on top of their owners' libraries, then those players shuffle.\nA:AB$ MustBlock | Cost$ 3 U U | ValidTgts$ Creature | TgtPrompt$ Select target creature that must block this creature this turn | SpellDescription$ Target creature blocks CARDNAME this turn if able.\nAI:RemoveDeck:All\nOracle:{U}: Put Vortex Elemental and each creature blocking or blocked by it on top of their owners' libraries, then those players shuffle.\\n{3}{U}{U}: Target creature blocks Vortex Elemental this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vortex Elemental"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

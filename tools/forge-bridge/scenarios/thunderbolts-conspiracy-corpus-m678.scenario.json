@@ -1,0 +1,23 @@
+{
+  "id": "thunderbolts-conspiracy-corpus-m678",
+  "description": "M6 corpus — Thunderbolts Conspiracy; in-hand parse.",
+  "seed": 62311,
+  "cards": {
+    "Thunderbolts Conspiracy": "Name:Thunderbolts Conspiracy\nManaCost:3 B\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Villain.YouCtrl | Execute$ TrigChange | TriggerDescription$ Whenever a Villain you control dies, return it to the battlefield under its owner's control with a finality counter on it. That creature is a Hero in addition to its other types. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | WithCountersType$ FINALITY | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Hero\nOracle:Whenever a Villain you control dies, return it to the battlefield under its owner's control with a finality counter on it. That creature is a Hero in addition to its other types. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderbolts Conspiracy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

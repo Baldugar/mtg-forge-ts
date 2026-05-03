@@ -1,0 +1,23 @@
+{
+  "id": "the-key-to-the-vault-corpus-m678",
+  "description": "M6 corpus — The Key to the Vault; in-hand parse.",
+  "seed": 62060,
+  "cards": {
+    "The Key to the Vault": "Name:The Key to the Vault\nManaCost:1 U\nTypes:Legendary Artifact Equipment\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, look at that many cards from the top of your library. You may exile a nonland card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Card.nonLand | RememberChanged$ True | DestinationZone$ Exile | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nK:Equip:2 U\nOracle:Whenever equipped creature deals combat damage to a player, look at that many cards from the top of your library. You may exile a nonland card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\\nEquip {2}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Key to the Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "zombie-mob-corpus-m678",
+  "description": "M6 corpus — Zombie Mob; in-hand parse.",
+  "seed": 64697,
+  "cards": {
+    "Zombie Mob": "Name:Zombie Mob\nManaCost:2 B B\nTypes:Creature Zombie\nPT:2/0\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each creature card in your graveyard.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExileAll | TriggerDescription$ When CARDNAME enters, exile all creature cards from your graveyard.\nSVar:TrigExileAll:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Exile\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nSVar:NeedsToPlayVar:X GE2\nOracle:Zombie Mob enters with a +1/+1 counter on it for each creature card in your graveyard.\\nWhen Zombie Mob enters, exile all creature cards from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zombie Mob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "twice-upon-a-time-corpus-m678",
+  "description": "M6 corpus — Twice Upon a Time; in-hand parse.",
+  "seed": 62862,
+  "cards": {
+    "Twice Upon a Time": "Name:Twice Upon a Time\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ AddTurn | NumTurns$ 1 | SubAbility$ DBChange | IsPresent$ Doctor.YouCtrl | PresentCompare$ GE2 | SpellDescription$ Cast this spell only if you control two or more Doctors.,,,,,,Take an extra turn after this one.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nDeckNeeds:Type$Doctor\nAlternateMode:Adventure\nOracle:Cast this spell only if you control two or more Doctors.\\nTake an extra turn after this one. Exile Twice Upon a Time.\n\nALTERNATE\n\nName:Unlikely Meeting\nManaCost:2 U\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Doctor | ChangeNum$ 1 | SpellDescription$ Search your library for a Doctor card, reveal it, put it into your hand, then shuffle.\nOracle:Search your library for a Doctor card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twice Upon a Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

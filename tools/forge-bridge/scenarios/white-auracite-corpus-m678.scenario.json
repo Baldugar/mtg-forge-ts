@@ -1,0 +1,23 @@
+{
+  "id": "white-auracite-corpus-m678",
+  "description": "M6 corpus — White Auracite; in-hand parse.",
+  "seed": 64114,
+  "cards": {
+    "White Auracite": "Name:White Auracite\nManaCost:2 W W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the battlefield.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Auracite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "xyris-the-writhing-storm-corpus-m678",
+  "description": "M6 corpus — Xyris, the Writhing Storm; in-hand parse.",
+  "seed": 64510,
+  "cards": {
+    "Xyris, the Writhing Storm": "Name:Xyris, the Writhing Storm\nManaCost:2 G U R\nTypes:Legendary Creature Snake Leviathan\nPT:3/5\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | FirstCardInDrawStep$ False | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an opponent draws a card except the first one they draw in each of their draw steps, create a 1/1 green Snake creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_snake\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you and that player each draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You & TriggeredTarget | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever an opponent draws a card except the first one they draw in each of their draw steps, create a 1/1 green Snake creature token.\\nWhenever Xyris, the Writhing Storm deals combat damage to a player, you and that player each draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xyris, the Writhing Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

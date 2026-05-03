@@ -1,0 +1,23 @@
+{
+  "id": "zenos-yae-galvus-corpus-m678",
+  "description": "M6 corpus — Zenos yae Galvus; in-hand parse.",
+  "seed": 64632,
+  "cards": {
+    "Zenos yae Galvus": "Name:Zenos yae Galvus\nManaCost:3 B B\nTypes:Legendary Creature Human Noble Warrior\nPT:4/4\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ My First Friend — When CARDNAME enters, choose a creature an opponent controls. Until end of turn, creatures other than CARDNAME and the chosen creature get -2/-2.\nSVar:TrigChoose:DB$ ChooseCard | Choices$ Creature.OppCtrl | Mandatory$ True | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.Other+!ChosenCardStrict | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.ChosenCardStrict | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ When the chosen creature leaves the battlefield, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:My First Friend — When Zenos yae Galvus enters, choose a creature an opponent controls. Until end of turn, creatures other than Zenos yae Galvus and the chosen creature get -2/-2.\\nWhen the chosen creature leaves the battlefield, transform Zenos yae Galvus.\n\nALTERNATE\n\nName:Shinryu, Transcendent Rival\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Dragon\nPT:8/8\nK:Flying\nR:Event$ Transform | ValidCard$ Card.Self | ReplaceWith$ DBChoose | Description$ As this creature transforms into NICKNAME, choose an opponent.\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent\nT:Mode$ LosesGame | ValidPlayer$ Player.Chosen | Execute$ TrigWinGame | TriggerZones$ Battlefield | TriggerDescription$ Burning Chains — When the chosen player loses the game, you win the game.\nSVar:TrigWinGame:DB$ WinsGame | Defined$ You\nOracle:Flying\\nAs this creature transforms into Shinryu, choose an opponent.\\nBurning Chains — When the chosen player loses the game, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zenos yae Galvus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

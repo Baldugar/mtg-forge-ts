@@ -1,0 +1,23 @@
+{
+  "id": "well-of-discovery-corpus-m678",
+  "description": "M6 corpus — Well of Discovery; in-hand parse.",
+  "seed": 64058,
+  "cards": {
+    "Well of Discovery": "Name:Well of Discovery\nManaCost:6\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Land.untapped+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you control no untapped lands, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nOracle:At the beginning of your end step, if you control no untapped lands, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Well of Discovery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

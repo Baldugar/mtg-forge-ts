@@ -1,0 +1,23 @@
+{
+  "id": "thief-of-sanity-corpus-m678",
+  "description": "M6 corpus — Thief of Sanity; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Thief of Sanity": "Name:Thief of Sanity\nManaCost:1 U B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, look at the top three cards of that player's library, exile one of them face down, then put the rest into their graveyard. For as long as that card remains exiled, you may look at it, and you may spend mana as though it were mana of any type to cast it.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | Defined$ TriggeredTarget | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | SkipReorder$ True | DestinationZone2$ Graveyard | RememberChanged$ True | ChangeValid$ Card | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may look at it, and you may spend mana as though it were mana of any type to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Thief of Sanity deals combat damage to a player, look at the top three cards of that player's library, exile one of them face down, then put the rest into their graveyard. You may look at and cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thief of Sanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

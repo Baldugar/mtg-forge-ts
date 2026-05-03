@@ -1,0 +1,23 @@
+{
+  "id": "unforge-corpus-m678",
+  "description": "M6 corpus — Unforge; in-hand parse.",
+  "seed": 63053,
+  "cards": {
+    "Unforge": "Name:Unforge\nManaCost:2 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Equipment | IsCurse$ True | SubAbility$ DBRem | StackDescription$ SpellDescription | SpellDescription$ Destroy target Equipment. If that Equipment was attached to a creature, CARDNAME deals 2 damage to that creature.\nSVar:DBRem:DB$ PumpAll | ValidCards$ Creature.EquippedByTargeted | RememberPumped$ True | StackDescription$ None | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | SubAbility$ DBDmg | StackDescription$ None\nSVar:DBDmg:DB$ DealDamage | Defined$ Remembered | NumDmg$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target Equipment. If that Equipment was attached to a creature, Unforge deals 2 damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unforge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

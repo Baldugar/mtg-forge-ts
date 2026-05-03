@@ -1,0 +1,23 @@
+{
+  "id": "vren-the-relentless-corpus-m678",
+  "description": "M6 corpus — Vren, the Relentless; in-hand parse.",
+  "seed": 63710,
+  "cards": {
+    "Vren, the Relentless": "Name:Vren, the Relentless\nManaCost:2 U B\nTypes:Legendary Creature Rat Rogue\nPT:3/4\nK:Ward:2\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | ReplaceWith$ DBExile | Description$ If a creature an opponent controls would die, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, create X 1/1 black Rat creature tokens with \"This creature gets +1/+1 for each other Rat you control,\" where X is the number of creatures your opponents controlled that were exiled this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_rat_relentless | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Exile_from_Battlefield_Creature.OppCtrl\nOracle:Ward {2}\\nIf a creature an opponent controls would die, exile it instead.\\nAt the beginning of each end step, create X 1/1 black Rat creature tokens with \"This creature gets +1/+1 for each other Rat you control,\" where X is the number of creatures your opponents controlled that were exiled this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vren, the Relentless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

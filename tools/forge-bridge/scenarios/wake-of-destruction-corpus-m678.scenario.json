@@ -1,0 +1,23 @@
+{
+  "id": "wake-of-destruction-corpus-m678",
+  "description": "M6 corpus — Wake of Destruction; in-hand parse.",
+  "seed": 63729,
+  "cards": {
+    "Wake of Destruction": "Name:Wake of Destruction\nManaCost:3 R R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Land | SubAbility$ DBWakeofDestructionDestroyThemAll | SpellDescription$ Destroy target land and all other lands with the same name as that land.\nSVar:DBWakeofDestructionDestroyThemAll:DB$ DestroyAll | ValidCards$ TargetedCard.Self,Land.NotDefinedTargeted+sharesNameWith Targeted\nAI:RemoveDeck:All\nOracle:Destroy target land and all other lands with the same name as that land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wake of Destruction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

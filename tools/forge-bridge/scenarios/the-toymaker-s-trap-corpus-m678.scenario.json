@@ -1,0 +1,23 @@
+{
+  "id": "the-toymaker-s-trap-corpus-m678",
+  "description": "M6 corpus — The Toymaker's Trap; in-hand parse.",
+  "seed": 62119,
+  "cards": {
+    "The Toymaker's Trap": "Name:The Toymaker's Trap\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChooseNumber | TriggerDescription$ At the beginning of your upkeep, secretly choose a number between 1 and 5 that hasn't been chosen. If you do, an opponent guesses which number you chose, then you reveal the number you chose. If they guessed wrong, they lose life equal to the number they guessed and you draw a card. If they guessed right, sacrifice CARDNAME.\nSVar:TrigChooseNumber:DB$ ChooseNumber | Secretly$ True | Min$ 1 | Max$ 5 | RemoveChoices$ Remembered | Guesser$ Opponent | GuessWrong$ DBLoseLife | GuessCorrect$ DBSac | RememberChosen$ True\nSVar:DBLoseLife:DB$ LoseLife | Defined$ RememberedPlayer | LifeAmount$ Count$ChosenNumber | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:DBSac:DB$ Sacrifice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, secretly choose a number between 1 and 5 that hasn't been chosen. If you do, an opponent guesses which number you chose, then you reveal the number you chose. If they guessed wrong, they lose life equal to the number they guessed and you draw a card. If they guessed right, sacrifice The Toymaker's Trap.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Toymaker's Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

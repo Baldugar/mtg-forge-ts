@@ -1,0 +1,23 @@
+{
+  "id": "tenuous-truce-corpus-m678",
+  "description": "M6 corpus — Tenuous Truce; in-hand parse.",
+  "seed": 61887,
+  "cards": {
+    "Tenuous Truce": "Name:Tenuous Truce\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Opponent\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Opponent.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of enchanted opponent's end step, you and that player each draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer & You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | AttackedTarget$ Player.EnchantedBy,Planeswalker.EnchantedPlayerCtrl | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ When you attack enchanted opponent or a planeswalker they control or when they attack you or a planeswalker you control, sacrifice CARDNAME.\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player.EnchantedBy | AttackedTarget$ You,Planeswalker.YouCtrl | Execute$ TrigSac | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ When you attack enchanted opponent or a planeswalker they control or when they attack you or a planeswalker you control, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nDeckHas:Ability$Sacrifice\nOracle:Enchant opponent\\nAt the beginning of enchanted opponent's end step, you and that player each draw a card.\\nWhen you attack enchanted opponent or a planeswalker they control or when they attack you or a planeswalker you control, sacrifice Tenuous Truce.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tenuous Truce"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

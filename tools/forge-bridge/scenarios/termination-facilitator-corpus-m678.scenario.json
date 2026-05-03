@@ -1,0 +1,23 @@
+{
+  "id": "termination-facilitator-corpus-m678",
+  "description": "M6 corpus — Termination Facilitator; in-hand parse.",
+  "seed": 61899,
+  "cards": {
+    "Termination Facilitator": "Name:Termination Facilitator\nManaCost:1 B\nTypes:Creature Human Assassin\nPT:1/3\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | CounterType$ BOUNTY | IsCurse$ True | SorcerySpeed$ True | SpellDescription$ Put a bounty counter on target creature or planeswalker. Activate only as a sorcery.\nT:Mode$ DamageDoneOnce | Execute$ TrigDestroy | ValidTarget$ Creature.OppCtrl+counters_GE1_BOUNTY,Planeswalker.OppCtrl+counters_GE1_BOUNTY | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature or planeswalker an opponent controls with a bounty counter on it is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nDeckHints:Name$Bounty Hunter|Chevill, Bane of Monsters|Mathas, Fiend Seeker\nOracle:{T}: Put a bounty counter on target creature or planeswalker. Activate only as a sorcery.\\nWhenever a creature or planeswalker an opponent controls with a bounty counter on it is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Termination Facilitator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

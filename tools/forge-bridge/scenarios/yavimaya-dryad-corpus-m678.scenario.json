@@ -1,0 +1,23 @@
+{
+  "id": "yavimaya-dryad-corpus-m678",
+  "description": "M6 corpus — Yavimaya Dryad; in-hand parse.",
+  "seed": 64526,
+  "cards": {
+    "Yavimaya Dryad": "Name:Yavimaya Dryad\nManaCost:1 G G\nTypes:Creature Dryad\nPT:2/1\nK:Landwalk:Forest\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRamp | TriggerDescription$ When CARDNAME enters, you may search your library for a Forest card, put it onto the battlefield tapped under target player's control, then shuffle.\nSVar:TrigRamp:DB$ Pump | ValidTgts$ Player | TgtPrompt$ Select target player to gain control of forest | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 1 | GainControl$ Targeted | Tapped$ True | ShuffleNonMandatory$ True\nOracle:Forestwalk (This creature can't be blocked as long as defending player controls a Forest.)\\nWhen Yavimaya Dryad enters, you may search your library for a Forest card, put it onto the battlefield tapped under target player's control, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yavimaya Dryad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

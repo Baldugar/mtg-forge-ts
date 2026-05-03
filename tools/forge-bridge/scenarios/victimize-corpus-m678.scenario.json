@@ -1,0 +1,23 @@
+{
+  "id": "victimize-corpus-m678",
+  "description": "M6 corpus — Victimize; in-hand parse.",
+  "seed": 63475,
+  "cards": {
+    "Victimize": "Name:Victimize\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ Rise | SpellDescription$ Choose two target creature cards in your graveyard. Sacrifice a creature. If you do, return the chosen cards to the battlefield tapped.\nSVar:Rise:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TargetMin$ 2 | TargetMax$ 2 | Origin$ Graveyard | Destination$ Battlefield | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | ConditionDescription$ If you do, | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Choose two target creature cards in your graveyard. Sacrifice a creature. If you do, return the chosen cards to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Victimize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

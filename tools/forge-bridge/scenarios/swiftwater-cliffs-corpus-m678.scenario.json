@@ -1,0 +1,23 @@
+{
+  "id": "swiftwater-cliffs-corpus-m678",
+  "description": "M6 corpus — Swiftwater Cliffs; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Swiftwater Cliffs": "Name:Swiftwater Cliffs\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nDeckHas:Ability$LifeGain\nOracle:Swiftwater Cliffs enters tapped.\\nWhen Swiftwater Cliffs enters, you gain 1 life.\\n{T}: Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swiftwater Cliffs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

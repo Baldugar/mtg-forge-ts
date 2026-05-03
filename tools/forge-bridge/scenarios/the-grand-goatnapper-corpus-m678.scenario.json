@@ -1,0 +1,25 @@
+{
+  "id": "the-grand-goatnapper-corpus-m678",
+  "description": "M6 corpus — The Grand Goatnapper; ETB-on-bf.",
+  "seed": 62046,
+  "cards": {
+    "The Grand Goatnapper": "Name:The Grand Goatnapper\nManaCost:2 B R\nTypes:Legendary Creature Goblin Rogue\nPT:3/4\nS:Mode$ Continuous | Affected$ Card.wasCastByYou | AffectedZone$ Stack | AddKeyword$ Affinity:Goat | Description$ Spells you cast have affinity for Goats.\nA:AB$ Animate | Cost$ T | ValidTgts$ Creature.nonGoat | TgtPrompt$ Select target non-Goat creature | Types$ Goat | Duration$ Perpetual | SorcerySpeed$ True | SubAbility$ DBConjure | SpellDescription$ Target non-Goat creature perpetually becomes a Goat in addition to its other types. Then conjure a card named Goatnap into your hand. Activate only as a sorcery.\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Goatnap | Zone$ Hand\nOracle:Spells you cast have affinity for Goats.\\n{T}: Target non-Goat creature perpetually becomes a Goat in addition to its other types. Then conjure a card named Goatnap into your hand. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Grand Goatnapper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tribune-of-rot-corpus-m678",
+  "description": "M6 corpus — Tribune of Rot; in-hand parse.",
+  "seed": 62732,
+  "cards": {
+    "Tribune of Rot": "Name:Tribune of Rot\nManaCost:1 BG BG\nTypes:Creature Elf Shaman\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, mill two cards. For each creature card milled this way, create a 1/1 green Saproling creature token.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | RememberMilled$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Mill|Token & Type$Saproling\nOracle:Whenever Tribune of Rot attacks, mill two cards. For each creature card milled this way, create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tribune of Rot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

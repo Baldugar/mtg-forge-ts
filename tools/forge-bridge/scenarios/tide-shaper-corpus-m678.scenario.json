@@ -1,0 +1,23 @@
+{
+  "id": "tide-shaper-corpus-m678",
+  "description": "M6 corpus — Tide Shaper; in-hand parse.",
+  "seed": 62365,
+  "cards": {
+    "Tide Shaper": "Name:Tide Shaper\nManaCost:U\nTypes:Creature Merfolk Wizard\nPT:1/1\nK:Kicker:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, if it was kicked, target land becomes an Island for as long as CARDNAME remains on the battlefield.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | IsPresent$ Island.OppCtrl | Description$ CARDNAME gets +1/+1 as long as an opponent controls an Island.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land | AITgts$ Land.OppCtrl | Types$ Island | RemoveLandTypes$ True | Duration$ AsLongAsInPlay | IsCurse$ True\nOracle:Kicker {1} (You may pay an additional {1} as you cast this spell.)\\nWhen Tide Shaper enters, if it was kicked, target land becomes an Island for as long as Tide Shaper remains on the battlefield.\\nTide Shaper gets +1/+1 as long as an opponent controls an Island.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tide Shaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

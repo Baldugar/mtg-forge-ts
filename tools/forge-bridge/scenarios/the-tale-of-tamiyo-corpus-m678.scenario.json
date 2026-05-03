@@ -1,0 +1,23 @@
+{
+  "id": "the-tale-of-tamiyo-corpus-m678",
+  "description": "M6 corpus — The Tale of Tamiyo; in-hand parse.",
+  "seed": 62113,
+  "cards": {
+    "The Tale of Tamiyo": "Name:The Tale of Tamiyo\nManaCost:2 U\nTypes:Legendary Enchantment Saga\nK:Chapter:4:DBRepeat,DBRepeat,DBRepeat,DBChangeZone\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBCleanAndGrind | MaxRepeat$ MaxRepeats | RepeatCheckSVar$ MilledSharesType | RepeatSVarCompare$ GE2 | SubAbility$ DBCleanup | SpellDescription$ Mill two cards. If two cards that share a card type were milled this way, draw a card and repeat this process.\nSVar:DBCleanAndGrind:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBGrind\nSVar:DBGrind:DB$ Mill | NumCards$ 2 | NoReveal$ True | RememberMilled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ MilledSharesType | ConditionSVarCompare$ GE2\nSVar:MaxRepeats:Count$ValidLibrary Card.YouOwn\nSVar:MilledSharesType:Remembered$Valid Card.sharesCardTypeWithOther Remembered\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ Yard | TgtPrompt$ Select any number of target instant, sorcery, and/or Tamiyo planeswalker cards in your graveyard | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn,Planeswalker.Tamiyo+YouOwn | RememberChanged$ True | SubAbility$ DBPlay | StackDescription$ SpellDescription | SpellDescription$ Exile any number of target instant, sorcery, and/or Tamiyo planeswalker cards from your graveyard. Copy them. You may cast any number of the copies.\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | Controller$ You | CopyCard$ True | ValidSA$ Spell | Optional$ True | Amount$ All | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Yard:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn,Planeswalker.Tamiyo+YouOwn\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Mill two cards. If two cards that share a card type were milled this way, draw a card and repeat this process.\\nIV — Exile any number of target instant, sorcery, and/or Tamiyo planeswalker cards from your graveyard. Copy them. You may cast any number of the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Tale of Tamiyo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "trouble-in-pairs-corpus-m678",
+  "description": "M6 corpus — Trouble in Pairs; ETB-on-bf.",
+  "seed": 62779,
+  "cards": {
+    "Trouble in Pairs": "Name:Trouble in Pairs\nManaCost:2 W W\nTypes:Enchantment\nR:Event$ BeginTurn | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ExtraTurn$ True | Skip$ True | Description$ If an opponent would begin an extra turn, that player skips that turn instead.\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.attackingYou | ValidAttackersAmount$ GE2 | AttackingPlayer$ Opponent | AttackedTarget$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.\nT:Mode$ SpellCast | ValidActivatingPlayer$ Opponent | ActivatorThisTurnCast$ EQ2 | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.\nT:Mode$ Drawn | ValidPlayer$ Opponent | Number$ 2 | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:If an opponent would begin an extra turn, that player skips that turn instead.\\nWhenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Trouble in Pairs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

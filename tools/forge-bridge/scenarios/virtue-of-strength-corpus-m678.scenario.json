@@ -1,0 +1,23 @@
+{
+  "id": "virtue-of-strength-corpus-m678",
+  "description": "M6 corpus — Virtue of Strength; in-hand parse.",
+  "seed": 63547,
+  "cards": {
+    "Virtue of Strength": "Name:Virtue of Strength\nManaCost:5 G G\nTypes:Enchantment\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidActivator$ You | ValidCard$ Land.Basic | ReplaceWith$ ProduceThrice | Description$ If you tap a basic land for mana, it produces three times as much of that mana instead.\nSVar:ProduceThrice:DB$ ReplaceMana | ReplaceAmount$ 3\nDeckHas:Ability$Graveyard\nAlternateMode:Adventure\nOracle:If you tap a basic land for mana, it produces three times as much of that mana instead.\n\nALTERNATE\n\nName:Garenbrig Growth\nManaCost:G\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature or land card in your graveyard | ValidTgts$ Creature.YouCtrl,Land.YouCtrl | SpellDescription$ Return target creature or land card from your graveyard to your hand. (Then exile this card. You may cast the enchantment later from exile.)\nOracle:Return target creature or land card from your graveyard to your hand. (Then exile this card. You may cast the enchantment later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virtue of Strength"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

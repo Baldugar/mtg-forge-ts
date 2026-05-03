@@ -1,0 +1,23 @@
+{
+  "id": "timely-reinforcements-corpus-m678",
+  "description": "M6 corpus — Timely Reinforcements; in-hand parse.",
+  "seed": 62415,
+  "cards": {
+    "Timely Reinforcements": "Name:Timely Reinforcements\nManaCost:2 W\nTypes:Sorcery\nA:SP$ GainLife | LifeAmount$ 6 | ConditionLifeTotal$ You | ConditionLifeAmount$ LTX | SubAbility$ DBToken | AILogic$ PlayForSub | SpellDescription$ If you have less life than an opponent, you gain 6 life. If you control fewer creatures than an opponent, create three 1/1 white Soldier creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_soldier | TokenOwner$ You | ConditionCheckSVar$ CreatureYouControl | ConditionSVarCompare$ LTCreatureOppControl\nSVar:X:PlayerCountOpponents$HighestLifeTotal\nSVar:CreatureYouControl:Count$Valid Creature.YouCtrl\nSVar:CreatureOppControl:PlayerCountOpponents$HighestValid Creature.YouCtrl\nOracle:If you have less life than an opponent, you gain 6 life. If you control fewer creatures than an opponent, create three 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timely Reinforcements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

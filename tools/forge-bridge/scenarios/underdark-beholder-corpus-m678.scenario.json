@@ -1,0 +1,23 @@
+{
+  "id": "underdark-beholder-corpus-m678",
+  "description": "M6 corpus — Underdark Beholder; in-hand parse.",
+  "seed": 63014,
+  "cards": {
+    "Underdark Beholder": "Name:Underdark Beholder\nManaCost:4 B B\nTypes:Creature Beholder\nPT:6/6\nK:etbCounter:EYESTALK:10\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | Description$ If damage would be dealt to CARDNAME, instead remove that many eyestalk counters from it. If you can't, sacrifice it.\nSVar:Counters:DB$ RemoveCounter | Defined$ ReplacedTarget | CounterType$ EYESTALK | CounterNum$ X | RememberRemoved$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | ConditionCheckSVar$ Y | ConditionSVarCompare$ LTX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:ReplaceCount$DamageAmount\nSVar:Y:Count$RememberedSize\nSVar:Z:Count$CardCounters.EYESTALK\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME attacks, reveal cards from the top of your library until you reveal an instant, sorcery, or enchantment card with converted mana cost less than the number of eyestalk counters on CARDNAME. You may cast it without paying its mana cost. Shuffle your library.\nSVar:TrigDig:DB$ DigUntil | Defined$ You | Amount$ 1 | Valid$ Card.Instant+cmcLEZ,Card.Sorcery+cmcLEZ,Card.Enchantment+cmcLEZ | NoMoveRevealed$ True | RememberFound$ True | SubAbility$ CascadeCast\nSVar:CascadeCast:DB$ Play | ValidSA$ Spell | Defined$ Remembered | WithoutManaCost$ True | Optional$ True | SubAbility$ Shuffle\nSVar:Shuffle:DB$ Shuffle | SubAbility$ DBCleanup\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Instant|Sorcery|Enchantment\nOracle:Underdark Beholder enters with ten eyestalk counters on it.\\nIf Underdark Beholder would be dealt damage, remove that many eyestalk counters from it instead. If you can't, sacrifice it.\\nWhenever Underdark Beholder attacks, reveal cards from the top of your library until you reveal an instant, sorcery, or enchantment card with converted mana cost less than the number of eyestalk counters on Underdark Beholder. You may cast it without paying its mana cost. Shuffle your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underdark Beholder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

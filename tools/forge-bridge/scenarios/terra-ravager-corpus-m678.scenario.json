@@ -1,0 +1,23 @@
+{
+  "id": "terra-ravager-corpus-m678",
+  "description": "M6 corpus — Terra Ravager; in-hand parse.",
+  "seed": 61902,
+  "cards": {
+    "Terra Ravager": "Name:Terra Ravager\nManaCost:2 R R\nTypes:Creature Elemental Beast\nPT:0/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of lands defending player controls.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Land.ControlledBy TriggeredDefendingPlayer\nOracle:Whenever Terra Ravager attacks, it gets +X/+0 until end of turn, where X is the number of lands defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terra Ravager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "teferi-s-imp-corpus-m678",
+  "description": "M6 corpus — Teferi's Imp; in-hand parse.",
+  "seed": 61781,
+  "cards": {
+    "Teferi's Imp": "Name:Teferi's Imp\nManaCost:2 U\nTypes:Creature Imp\nPT:1/1\nK:Flying\nK:Phasing\nT:Mode$ PhaseOut | ValidCard$ Card.phasedOutSelf | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME phases out, discard a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nT:Mode$ PhaseIn | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME phases in, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Flying\\nPhasing (This phases in or out before you untap during each of your untap steps. While it's phased out, it's treated as though it doesn't exist.)\\nWhenever Teferi's Imp phases out, discard a card.\\nWhenever Teferi's Imp phases in, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi's Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

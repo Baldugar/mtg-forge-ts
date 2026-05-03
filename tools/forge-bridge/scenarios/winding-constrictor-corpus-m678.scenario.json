@@ -1,0 +1,25 @@
+{
+  "id": "winding-constrictor-corpus-m678",
+  "description": "M6 corpus — Winding Constrictor; ETB-on-bf.",
+  "seed": 64226,
+  "cards": {
+    "Winding Constrictor": "Name:Winding Constrictor\nManaCost:B G\nTypes:Creature Snake\nPT:2/3\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Artifact.YouCtrl+inZoneBattlefield,Creature.YouCtrl+inZoneBattlefield | ReplaceWith$ AddOneMoreCounters | Description$ If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ AddOneMoreCounters | Description$ If you would get one or more counters, you get that many plus one of each of those kinds of counters instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Counters\nOracle:If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.\\nIf you would get one or more counters, you get that many plus one of each of those kinds of counters instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Winding Constrictor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

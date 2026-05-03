@@ -1,0 +1,23 @@
+{
+  "id": "winnow-corpus-m678",
+  "description": "M6 corpus — Winnow; in-hand parse.",
+  "seed": 64270,
+  "cards": {
+    "Winnow": "Name:Winnow\nManaCost:1 W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Permanent.nonLand | ConditionCheckSVar$ WinnowCheck | ConditionSVarCompare$ GE2 | SubAbility$ DBDraw | SpellDescription$ Destroy target nonland permanent if another permanent with the same name is on the battlefield. Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:WinnowCheck:Count$Valid Permanent.sharesNameWith Targeted\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Destroy target nonland permanent if another permanent with the same name is on the battlefield.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winnow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

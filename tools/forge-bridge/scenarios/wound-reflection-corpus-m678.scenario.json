@@ -1,0 +1,23 @@
+{
+  "id": "wound-reflection-corpus-m678",
+  "description": "M6 corpus — Wound Reflection; in-hand parse.",
+  "seed": 64438,
+  "cards": {
+    "Wound Reflection": "Name:Wound Reflection\nManaCost:5 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ RepeatOpps | TriggerDescription$ At the beginning of each end step, each opponent loses life equal to the life they lost this turn. (Damage causes loss of life.)\nSVar:RepeatOpps:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TrigLoseLife\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X\nSVar:X:PlayerCountRemembered$LifeLostThisTurn\nOracle:At the beginning of each end step, each opponent loses life equal to the life they lost this turn. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wound Reflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

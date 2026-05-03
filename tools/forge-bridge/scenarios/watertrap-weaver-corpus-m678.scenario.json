@@ -1,0 +1,23 @@
+{
+  "id": "watertrap-weaver-corpus-m678",
+  "description": "M6 corpus — Watertrap Weaver; in-hand parse.",
+  "seed": 63969,
+  "cards": {
+    "Watertrap Weaver": "Name:Watertrap Weaver\nManaCost:2 U\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:PlayMain1:TRUE\nOracle:When Watertrap Weaver enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Watertrap Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

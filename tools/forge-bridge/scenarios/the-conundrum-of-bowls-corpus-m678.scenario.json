@@ -1,0 +1,23 @@
+{
+  "id": "the-conundrum-of-bowls-corpus-m678",
+  "description": "M6 corpus — The Conundrum of Bowls; in-hand parse.",
+  "seed": 62006,
+  "cards": {
+    "The Conundrum of Bowls": "Name:The Conundrum of Bowls\nManaCost:2 U U\nTypes:Enchantment Saga\nK:Chapter:3:SeekSmall,SeekBig,Cast\nSVar:SeekSmall:DB$ Seek | Type$ Card.cmcLTX | SpellDescription$ Seek a card with mana value less than the number of cards in your hand.\nSVar:SeekBig:DB$ Seek | Type$ Card.cmcGTX | SpellDescription$ Seek a card with mana value greater than the number of cards in your hand.\nSVar:Cast:DB$ Play | Valid$ Card.YouCtrl+cmcEQX | ValidSA$ Spell | Optional$ True | WithoutManaCost$ True | SpellDescription$ Count the number of cards in your hand. You may cast a spell with mana value equal to that number from your hand without paying its mana cost.\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:(As this Saga enters and after your draw step add a lore counter. Sacrifice after III.)\\nI — Seek a card with mana value less than the number of cards in your hand.\\nII — Seek a card with mana value greater than the number of cards in your hand.\\nIII — Count the number of cards in your hand. You may cast a spell with mana value equal to that number from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Conundrum of Bowls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

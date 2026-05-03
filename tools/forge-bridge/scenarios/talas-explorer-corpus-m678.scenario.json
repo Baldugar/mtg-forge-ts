@@ -1,0 +1,23 @@
+{
+  "id": "talas-explorer-corpus-m678",
+  "description": "M6 corpus — Talas Explorer; in-hand parse.",
+  "seed": 61632,
+  "cards": {
+    "Talas Explorer": "Name:Talas Explorer\nManaCost:1 U\nTypes:Creature Human Pirate Scout\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at target opponent's hand.\nSVar:TrigPeek:DB$ RevealHand | ValidTgts$ Opponent | Look$ True\nOracle:Flying\\nWhen Talas Explorer enters, look at target opponent's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talas Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

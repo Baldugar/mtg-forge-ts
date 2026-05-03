@@ -1,0 +1,23 @@
+{
+  "id": "toxic-scorpion-corpus-m678",
+  "description": "M6 corpus — Toxic Scorpion; in-hand parse.",
+  "seed": 62591,
+  "cards": {
+    "Toxic Scorpion": "Name:Toxic Scorpion\nManaCost:1 G\nTypes:Creature Scorpion\nPT:1/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target creature you control gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | KW$ Deathtouch\nOracle:Deathtouch\\nWhen Toxic Scorpion enters, another target creature you control gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toxic Scorpion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

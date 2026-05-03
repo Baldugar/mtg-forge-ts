@@ -1,0 +1,23 @@
+{
+  "id": "toby-beastie-befriender-corpus-m678",
+  "description": "M6 corpus — Toby, Beastie Befriender; in-hand parse.",
+  "seed": 62459,
+  "cards": {
+    "Toby, Beastie Befriender": "Name:Toby, Beastie Befriender\nManaCost:2 W\nTypes:Legendary Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 4/4 white Beast creature token with \"This creature can't attack or block alone.\"\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_beast_lonely | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddKeyword$ Flying | IsPresent$ Creature.token+YouCtrl | PresentCompare$ GE4 | Description$ As long as you control four or more creature tokens, creature tokens you control have flying.\nDeckHas:Ability$Token\nOracle:When Toby, Beastie Befriender enters, create a 4/4 white Beast creature token with \"This creature can't attack or block alone.\"\\nAs long as you control four or more creature tokens, creature tokens you control have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toby, Beastie Befriender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

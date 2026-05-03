@@ -1,0 +1,25 @@
+{
+  "id": "tibor-and-lumia-corpus-m678",
+  "description": "M6 corpus — Tibor and Lumia; ETB-on-bf.",
+  "seed": 62350,
+  "cards": {
+    "Tibor and Lumia": "Name:Tibor and Lumia\nManaCost:2 U R\nTypes:Legendary Creature Human Wizard\nPT:3/3\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ValidCard$ Card.Blue | TriggerZones$ Battlefield | Execute$ TrigFlying | TriggerDescription$ Whenever you cast a blue spell, target creature gains flying until end of turn.\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ValidCard$ Card.Red | TriggerZones$ Battlefield | Execute$ TrigTremor | TriggerDescription$ Whenever you cast a red spell, CARDNAME deals 1 damage to each creature without flying.\nSVar:TrigFlying:DB$ Pump | ValidTgts$ Creature | KW$ Flying\nSVar:TrigTremor:DB$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ 1 | ValidDescription$ each creature without flying.\nSVar:BuffedBy:Card.Blue\nOracle:Whenever you cast a blue spell, target creature gains flying until end of turn.\\nWhenever you cast a red spell, Tibor and Lumia deals 1 damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tibor and Lumia"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

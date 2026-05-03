@@ -1,0 +1,23 @@
+{
+  "id": "vicious-clown-corpus-m678",
+  "description": "M6 corpus — Vicious Clown; in-hand parse.",
+  "seed": 63467,
+  "cards": {
+    "Vicious Clown": "Name:Vicious Clown\nManaCost:2 R\nTypes:Creature Human Clown\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control with power 2 or less enters, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nSVar:BuffedBy:Creature.powerLE2\nOracle:Whenever another creature you control with power 2 or less enters, Vicious Clown gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vicious Clown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

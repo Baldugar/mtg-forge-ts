@@ -1,0 +1,23 @@
+{
+  "id": "weight-of-spires-corpus-m678",
+  "description": "M6 corpus — Weight of Spires; in-hand parse.",
+  "seed": 64040,
+  "cards": {
+    "Weight of Spires": "Name:Weight of Spires\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target creature equal to the number of nonbasic lands that creature's controller controls.\nSVar:X:Count$Valid Land.nonBasic+ControlledBy TargetedController\nAI:RemoveDeck:All\nOracle:Weight of Spires deals damage to target creature equal to the number of nonbasic lands that creature's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weight of Spires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

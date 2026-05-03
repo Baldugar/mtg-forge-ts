@@ -1,0 +1,23 @@
+{
+  "id": "yedora-grave-gardener-corpus-m678",
+  "description": "M6 corpus — Yedora, Grave Gardener; in-hand parse.",
+  "seed": 64544,
+  "cards": {
+    "Yedora, Grave Gardener": "Name:Yedora, Grave Gardener\nManaCost:4 G\nTypes:Legendary Creature Treefolk Druid\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token+Other | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever another nontoken creature you control dies, you may return it to the battlefield face down under its owner's control. It's a Forest land. (It has no other types or abilities.)\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | FaceDown$ True | FaceDownSetType$ Land & Forest\nOracle:Whenever another nontoken creature you control dies, you may return it to the battlefield face down under its owner's control. It's a Forest land. (It has no other types or abilities.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yedora, Grave Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

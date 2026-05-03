@@ -1,0 +1,23 @@
+{
+  "id": "thunderwolf-cavalry-corpus-m678",
+  "description": "M6 corpus — Thunderwolf Cavalry; in-hand parse.",
+  "seed": 62342,
+  "cards": {
+    "Thunderwolf Cavalry": "Name:Thunderwolf Cavalry\nManaCost:4 W\nTypes:Creature Astartes Warrior\nPT:4/4\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigPutCounter | CombatDamage$ True | TriggerDescription$ Crushing Teeth — Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:First strike\\nCrushing Teeth — Whenever Thunderwolf Cavalry deals combat damage to a player, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderwolf Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

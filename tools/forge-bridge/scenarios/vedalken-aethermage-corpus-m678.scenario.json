@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-aethermage-corpus-m678",
+  "description": "M6 corpus — Vedalken Aethermage; in-hand parse.",
+  "seed": 63315,
+  "cards": {
+    "Vedalken Aethermage": "Name:Vedalken Aethermage\nManaCost:1 U\nTypes:Creature Vedalken Wizard\nPT:1/2\nK:Flash\nK:TypeCycling:Wizard:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target Sliver to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Sliver | TgtPrompt$ Select target Sliver | Origin$ Battlefield | Destination$ Hand\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Vedalken Aethermage enters, return target Sliver to its owner's hand.\\nWizardcycling {3} ({3}, Discard this card: Search your library for a Wizard card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Aethermage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

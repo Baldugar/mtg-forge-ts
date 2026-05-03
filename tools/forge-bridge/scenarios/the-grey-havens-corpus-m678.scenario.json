@@ -1,0 +1,23 @@
+{
+  "id": "the-grey-havens-corpus-m678",
+  "description": "M6 corpus — The Grey Havens; in-hand parse.",
+  "seed": 62049,
+  "cards": {
+    "The Grey Havens": "Name:The Grey Havens\nManaCost:no cost\nTypes:Legendary Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | SpellDescription$ Add {C}.\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Color | Valid$ Defined.ValidGraveyard Creature.Legendary+YouOwn | ReflectProperty$ Is | SpellDescription$ Add one mana of any color among legendary creature cards in your graveyard.\nDeckHints:Type$Legendary & Type$Creature\nOracle:When The Grey Havens enters, scry 1.\\n{T}: Add {C}.\\n{T}: Add one mana of any color among legendary creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Grey Havens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

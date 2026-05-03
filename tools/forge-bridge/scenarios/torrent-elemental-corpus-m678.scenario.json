@@ -1,0 +1,23 @@
+{
+  "id": "torrent-elemental-corpus-m678",
+  "description": "M6 corpus — Torrent Elemental; in-hand parse.",
+  "seed": 62538,
+  "cards": {
+    "Torrent Elemental": "Name:Torrent Elemental\nManaCost:4 U\nTypes:Creature Elemental\nPT:3/5\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, tap all creatures defending player controls.\nSVar:TrigTap:DB$ TapAll | ValidCards$ Creature.ControlledBy TriggeredDefendingPlayer\nA:AB$ ChangeZone | Cost$ 3 BG BG | ActivationZone$ Exile | Origin$ Exile | Destination$ Battlefield | Tapped$ True | SorcerySpeed$ True | SpellDescription$ Put CARDNAME from exile onto the battlefield tapped. Activate only as a sorcery.\nOracle:Flying\\nWhenever Torrent Elemental attacks, tap all creatures defending player controls.\\n{3}{B/G}{B/G}: Put Torrent Elemental from exile onto the battlefield tapped. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torrent Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

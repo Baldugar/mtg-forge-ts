@@ -1,0 +1,25 @@
+{
+  "id": "undergrowth-stadium-corpus-m678",
+  "description": "M6 corpus — Undergrowth Stadium; ETB-on-bf.",
+  "seed": 63022,
+  "cards": {
+    "Undergrowth Stadium": "Name:Undergrowth Stadium\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you have two or more opponents.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ ETBCheckSVar2 | ConditionSVarCompare$ LT2\nSVar:ETBCheckSVar2:PlayerCountOpponents$Amount\nA:AB$ Mana | Cost$ T | Produced$ Combo B G | SpellDescription$ Add {B} or {G}.\nOracle:Undergrowth Stadium enters tapped unless you have two or more opponents.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Undergrowth Stadium"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

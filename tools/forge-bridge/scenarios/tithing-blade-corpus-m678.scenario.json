@@ -1,0 +1,23 @@
+{
+  "id": "tithing-blade-corpus-m678",
+  "description": "M6 corpus — Tithing Blade; in-hand parse.",
+  "seed": 62450,
+  "cards": {
+    "Tithing Blade": "Name:Tithing Blade\nManaCost:1 B\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each opponent sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature\nK:Craft:4 B ExileCtrlOrGrave<1/Creature.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$LifeGain|Graveyard\nAlternateMode:DoubleFaced\nOracle:When Tithing Blade enters, each opponent sacrifices a creature.\\nCraft with creature {4}{B} ({4}{B}, Exile this artifact, Exile a creature you control or a creature card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Consuming Sepulcher\nManaCost:no cost\nColors:black\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:At the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tithing Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

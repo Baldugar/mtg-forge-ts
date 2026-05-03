@@ -1,0 +1,23 @@
+{
+  "id": "terrifying-presence-corpus-m678",
+  "description": "M6 corpus — Terrifying Presence; in-hand parse.",
+  "seed": 61912,
+  "cards": {
+    "Terrifying Presence": "Name:Terrifying Presence\nManaCost:1 G\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | SpellDescription$ Prevent all damage that would be dealt this turn by creatures other than target creature.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidSource$ Creature.!IsRemembered | Description$ Prevent all damage that would be dealt this turn by creatures other than target creature.\nAI:RemoveDeck:All\nOracle:Prevent all combat damage that would be dealt by creatures other than target creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terrifying Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

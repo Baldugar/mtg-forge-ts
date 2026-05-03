@@ -1,0 +1,25 @@
+{
+  "id": "warped-tusker-corpus-m678",
+  "description": "M6 corpus — Warped Tusker; ETB-on-bf.",
+  "seed": 63905,
+  "cards": {
+    "Warped Tusker": "Name:Warped Tusker\nManaCost:7\nTypes:Creature Eldrazi Trilobite\nPT:6/8\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you cast or cycle CARDNAME, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When you cast or cycle CARDNAME, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nK:Cycling:2 G\nOracle:Reach\\nWhen you cast or cycle Warped Tusker, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\\nCycling {2}{G} ({2}{G}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warped Tusker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

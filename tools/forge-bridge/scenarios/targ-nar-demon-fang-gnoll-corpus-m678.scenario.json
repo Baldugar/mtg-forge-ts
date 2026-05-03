@@ -1,0 +1,23 @@
+{
+  "id": "targ-nar-demon-fang-gnoll-corpus-m678",
+  "description": "M6 corpus — Targ Nar, Demon-Fang Gnoll; in-hand parse.",
+  "seed": 61710,
+  "cards": {
+    "Targ Nar, Demon-Fang Gnoll": "Name:Targ Nar, Demon-Fang Gnoll\nManaCost:R G\nTypes:Legendary Creature Gnoll\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, attacking creatures get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +1\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nA:AB$ Pump | Cost$ 2 R G | NumAtt$ Double | NumDef$ Double | StackDescription$ SpellDescription | SpellDescription$ Double NICKNAME's power and toughness until end of turn.\nOracle:Pack tactics — Whenever Targ Nar, Demon-Fang Gnoll attacks, if you attacked with creatures with total power 6 or greater this combat, attacking creatures get +1/+0 until end of turn.\\n{2}{R}{G}: Double Targ Nar's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Targ Nar, Demon-Fang Gnoll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

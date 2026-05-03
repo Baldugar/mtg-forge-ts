@@ -1,0 +1,23 @@
+{
+  "id": "ventifact-bottle-corpus-m678",
+  "description": "M6 corpus — Ventifact Bottle; in-hand parse.",
+  "seed": 63390,
+  "cards": {
+    "Ventifact Bottle": "Name:Ventifact Bottle\nManaCost:3\nTypes:Artifact\nA:AB$ PutCounter | Cost$ X 1 T | CounterType$ CHARGE | CounterNum$ X | SorcerySpeed$ True | SpellDescription$ Put X charge counters on CARDNAME. Activate only as a sorcery.\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGetMana | CheckSVar$ Y | TriggerDescription$ At the beginning of your first main phase, if CARDNAME has a charge counter on it, tap it and remove all charge counters from it. Add {C} for each charge counter removed this way.\nSVar:TrigGetMana:DB$ Mana | Produced$ C | Amount$ Y | SubAbility$ TrigRemove\nSVar:TrigRemove:DB$ RemoveCounter | CounterType$ CHARGE | CounterNum$ Y | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.CHARGE\nAI:RemoveDeck:All\nOracle:{X}{1}, {T}: Put X charge counters on Ventifact Bottle. Activate only as a sorcery.\\nAt the beginning of your first main phase, if Ventifact Bottle has a charge counter on it, tap it and remove all charge counters from it. Add {C} for each charge counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ventifact Bottle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

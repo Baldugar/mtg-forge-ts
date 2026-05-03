@@ -1,0 +1,23 @@
+{
+  "id": "vines-of-vastwood-corpus-m678",
+  "description": "M6 corpus — Vines of Vastwood; in-hand parse.",
+  "seed": 63516,
+  "cards": {
+    "Vines of Vastwood": "Name:Vines of Vastwood\nManaCost:G\nTypes:Instant\nK:Kicker:G\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | SubAbility$ DBEffect | SpellDescription$ Target creature can't be the target of spells or abilities your opponents control this turn. If this spell was kicked, that creature gets +4/+4 until end of turn.\nSVar:DBEffect:DB$ Effect | Defined$ Targeted | AILogic$ Always | StaticAbilities$ STCantTarget | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:STCantTarget:Mode$ CantTarget | ValidTarget$ Card.IsRemembered | Activator$ Player.Opponent | Description$ Target creature can't be the target of spells or abilities your opponents control this turn.\nSVar:X:Count$Kicked.4.0\nOracle:Kicker {G} (You may pay an additional {G} as you cast this spell.)\\nTarget creature can't be the target of spells or abilities your opponents control this turn. If this spell was kicked, that creature gets +4/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vines of Vastwood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

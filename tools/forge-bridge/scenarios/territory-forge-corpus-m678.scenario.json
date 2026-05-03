@@ -1,0 +1,23 @@
+{
+  "id": "territory-forge-corpus-m678",
+  "description": "M6 corpus — Territory Forge; in-hand parse.",
+  "seed": 61925,
+  "cards": {
+    "Territory Forge": "Name:Territory Forge\nManaCost:4 R\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+wasCastByYou | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if you cast it, exile target artifact or land.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact,Land | TgtPrompt$ Select target artifact or land | Mandatory$ True | Origin$ Battlefield | Destination$ Exile\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Card.ExiledWithSource | GainsAbilitiesOfZones$ Exile | Description$ CARDNAME has all activated abilities of the exiled card.\nOracle:When Territory Forge enters, if you cast it, exile target artifact or land.\\nTerritory Forge has all activated abilities of the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territory Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

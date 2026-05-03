@@ -1,0 +1,25 @@
+{
+  "id": "words-of-war-corpus-m678",
+  "description": "M6 corpus — Words of War; ETB-on-bf.",
+  "seed": 64406,
+  "cards": {
+    "Words of War": "Name:Words of War\nManaCost:2 R\nTypes:Enchantment\nA:AB$ Effect | Cost$ 1 | ValidTgts$ Any | RememberObjects$ Targeted | ImprintCards$ Self | ReplacementEffects$ DrawReplace | SpellDescription$ The next time you would draw a card this turn, CARDNAME deals 2 damage to any target instead.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ WarDamage | Description$ The next time you would draw a card this turn, EFFECTSOURCE deals 2 damage to any target instead.\nSVar:WarDamage:DB$ DealDamage | Defined$ Remembered | DamageSource$ Imprinted | NumDmg$ 2 | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{1}: The next time you would draw a card this turn, Words of War deals 2 damage to any target instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Words of War"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

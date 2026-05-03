@@ -1,0 +1,23 @@
+{
+  "id": "wrangler-of-the-damned-corpus-m678",
+  "description": "M6 corpus — Wrangler of the Damned; in-hand parse.",
+  "seed": 64441,
+  "cards": {
+    "Wrangler of the Damned": "Name:Wrangler of the Damned\nManaCost:3 W U\nTypes:Creature Human Soldier\nPT:1/4\nK:Flash\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ LT1 | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you haven't cast a spell from your hand this turn, create a 2/2 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_spirit_flying | TokenOwner$ You\nSVar:X:Count$ThisTurnCast_Card.wasCastFromYourHandByYou\nDeckHas:Ability$Token & Type$Spirit\nOracle:Flash\\nAt the beginning of your end step, if you haven't cast a spell from your hand this turn, create a 2/2 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrangler of the Damned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

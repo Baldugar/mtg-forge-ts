@@ -1,0 +1,23 @@
+{
+  "id": "vinebred-brawler-corpus-m678",
+  "description": "M6 corpus — Vinebred Brawler; in-hand parse.",
+  "seed": 63514,
+  "cards": {
+    "Vinebred Brawler": "Name:Vinebred Brawler\nManaCost:2 G\nTypes:Creature Elf Berserker\nPT:4/2\nK:CARDNAME must be blocked if able.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, another target Elf you control gets +2/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Elf.Other+YouCtrl | TgtPrompt$ Select another target Elf you control | NumAtt$ +2 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Elf\nOracle:This creature must be blocked if able.\\nWhenever this creature attacks, another target Elf you control gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vinebred Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

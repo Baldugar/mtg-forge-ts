@@ -1,0 +1,23 @@
+{
+  "id": "wojek-halberdiers-corpus-m678",
+  "description": "M6 corpus — Wojek Halberdiers; in-hand parse.",
+  "seed": 64355,
+  "cards": {
+    "Wojek Halberdiers": "Name:Wojek Halberdiers\nManaCost:R W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionPump | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME gains first strike until end of turn.\nSVar:TrigBattalionPump:DB$ Pump | KW$ First Strike | Defined$ Self\nOracle:Battalion — Whenever Wojek Halberdiers and at least two other creatures attack, Wojek Halberdiers gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wojek Halberdiers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

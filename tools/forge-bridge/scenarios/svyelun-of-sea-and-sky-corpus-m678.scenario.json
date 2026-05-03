@@ -1,0 +1,23 @@
+{
+  "id": "svyelun-of-sea-and-sky-corpus-m678",
+  "description": "M6 corpus — Svyelun of Sea and Sky; in-hand parse.",
+  "seed": 61453,
+  "cards": {
+    "Svyelun of Sea and Sky": "Name:Svyelun of Sea and Sky\nManaCost:1 U U\nTypes:Legendary Creature Merfolk God\nPT:3/4\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | IsPresent$ Merfolk.Other+YouCtrl | PresentCompare$ GE2 | Description$ As long as you control two other Merfolk, CARDNAME has indestructible. (Damage and effects that say \"destroy\" don't destroy it.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME attacks, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Merfolk.Other+YouCtrl | AddKeyword$ Ward:1 | Description$ Other Merfolk you control have ward {1}. (Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\nDeckNeeds:Type$Merfolk\nOracle:Svyelun of Sea and Sky has indestructible as long as you control at least two other Merfolk.\\nWhenever Svyelun attacks, draw a card.\\nOther Merfolk you control have ward {1}. (Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Svyelun of Sea and Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

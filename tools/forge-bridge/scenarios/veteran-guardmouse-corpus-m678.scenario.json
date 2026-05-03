@@ -1,0 +1,23 @@
+{
+  "id": "veteran-guardmouse-corpus-m678",
+  "description": "M6 corpus — Veteran Guardmouse; in-hand parse.",
+  "seed": 63428,
+  "cards": {
+    "Veteran Guardmouse": "Name:Veteran Guardmouse\nManaCost:3 RW\nTypes:Creature Mouse Soldier\nPT:3/4\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | Valiant$ True | Execute$ TrigPump | TriggerDescription$ Valiant — Whenever CARDNAME becomes the target of a spell or ability you control for the first time each turn, it gets +1/+0 and gains first strike until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | KW$ First Strike | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:Valiant — Whenever Veteran Guardmouse becomes the target of a spell or ability you control for the first time each turn, it gets +1/+0 and gains first strike until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Guardmouse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

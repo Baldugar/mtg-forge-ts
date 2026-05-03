@@ -1,0 +1,23 @@
+{
+  "id": "thada-adel-acquisitor-corpus-m678",
+  "description": "M6 corpus — Thada Adel, Acquisitor; in-hand parse.",
+  "seed": 61957,
+  "cards": {
+    "Thada Adel, Acquisitor": "Name:Thada Adel, Acquisitor\nManaCost:1 U U\nTypes:Legendary Creature Merfolk Rogue\nPT:2/2\nK:Landwalk:Island\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, search that player's library for an artifact card and exile it. Then that player shuffles. Until end of turn, you may play that card.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TriggeredTarget | Chooser$ You | ChangeType$ Artifact | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWhenever Thada Adel, Acquisitor deals combat damage to a player, search that player's library for an artifact card and exile it. Then that player shuffles. Until end of turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thada Adel, Acquisitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

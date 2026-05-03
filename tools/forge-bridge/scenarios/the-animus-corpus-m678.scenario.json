@@ -1,0 +1,23 @@
+{
+  "id": "the-animus-corpus-m678",
+  "description": "M6 corpus — The Animus; in-hand parse.",
+  "seed": 61982,
+  "cards": {
+    "The Animus": "Name:The Animus\nManaCost:2\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your end step, exile up to one target legendary creature card from a graveyard with a memory counter on it.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.Legendary | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target legendary creature card from a graveyard | Origin$ Graveyard | Destination$ Exile | WithCountersType$ MEMORY\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature.Legendary+counters_GE1_MEMORY | TgtZone$ Exile | SorcerySpeed$ True | TgtPrompt$ Select target creature card in exile with a memory counter on it | SubAbility$ DBClone | StackDescription$ SpellDescription | SpellDescription$ Until your next turn, target legendary creature you control becomes a copy of target creature card in exile with a memory counter on it. Activate only as a sorcery.\nSVar:DBClone:DB$ Clone | Defined$ ParentTarget | ValidTgts$ Creature.Legendary+YouCtrl | CloneTarget$ ThisTargetedCard | TgtPrompt$ Select target legendary creature you control | Duration$ UntilYourNextTurn\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Ability$Sacrifice|Discard|Mill & Type$Legendary\nOracle:At the beginning of your end step, exile up to one target legendary creature card from a graveyard with a memory counter on it.\\n{T}: Until your next turn, target legendary creature you control becomes a copy of target creature card in exile with a memory counter on it. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Animus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unlucky-witness-corpus-m678",
+  "description": "M6 corpus — Unlucky Witness; in-hand parse.",
+  "seed": 63088,
+  "cards": {
+    "Unlucky Witness": "Name:Unlucky Witness\nManaCost:R\nTypes:Creature Human Citizen\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile the top two cards of your library. Until your next end step, you may play one of those cards.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | Triggers$ Play1,Play2 | RememberObjects$ Remembered | ForgetOnMoved$ Exile | Duration$ UntilYourNextEndStep | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | AffectedZone$ Exile | Affected$ Card.IsRemembered | MayPlay$ True | Description$ Until your next end step, you may play one of those cards.\nSVar:Play1:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:Play2:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Unlucky Witness dies, exile the top two cards of your library. Until your next end step, you may play one of those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unlucky Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

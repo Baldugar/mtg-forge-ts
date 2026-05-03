@@ -1,0 +1,23 @@
+{
+  "id": "tragic-arrogance-corpus-m678",
+  "description": "M6 corpus — Tragic Arrogance; in-hand parse.",
+  "seed": 62601,
+  "cards": {
+    "Tragic Arrogance": "Name:Tragic Arrogance\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ YouChoose | SubAbility$ SacAllOthers | StackDescription$ SpellDescription | SpellDescription$ For each player, you choose from among the permanents that player controls an artifact, a creature, an enchantment, and a planeswalker. Then each player sacrifices all other nonland permanents they control.\nSVar:YouChoose:DB$ ChooseCard | Defined$ You | Choices$ Permanent | ChooseEach$ Artifact & Creature & Enchantment & Planeswalker | ControlledByPlayer$ Remembered | RememberChosen$ True | Mandatory$ True | Reveal$ True\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Permanent.nonLand+!IsRemembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:For each player, you choose from among the permanents that player controls an artifact, a creature, an enchantment, and a planeswalker. Then each player sacrifices all other nonland permanents they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tragic Arrogance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

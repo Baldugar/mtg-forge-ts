@@ -1,0 +1,23 @@
+{
+  "id": "thor-guardian-of-midgard-corpus-m678",
+  "description": "M6 corpus — Thor, Guardian of Midgard; in-hand parse.",
+  "seed": 62183,
+  "cards": {
+    "Thor, Guardian of Midgard": "Name:Thor, Guardian of Midgard\nManaCost:3 R R\nTypes:Legendary Creature God Warrior Hero\nPT:5/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | OptionalDecider$ You | ValidTarget$ Opponent | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ RememberedCard | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying\\nWhenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thor, Guardian of Midgard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

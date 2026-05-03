@@ -1,0 +1,23 @@
+{
+  "id": "warmind-infantry-corpus-m678",
+  "description": "M6 corpus — Warmind Infantry; in-hand parse.",
+  "seed": 63892,
+  "cards": {
+    "Warmind Infantry": "Name:Warmind Infantry\nManaCost:2 R\nTypes:Creature Elemental Soldier\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionPump | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigBattalionPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nOracle:Battalion — Whenever Warmind Infantry and at least two other creatures attack, Warmind Infantry gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warmind Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

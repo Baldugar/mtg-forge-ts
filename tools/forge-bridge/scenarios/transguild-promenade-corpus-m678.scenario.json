@@ -1,0 +1,23 @@
+{
+  "id": "transguild-promenade-corpus-m678",
+  "description": "M6 corpus — Transguild Promenade; in-hand parse.",
+  "seed": 62639,
+  "cards": {
+    "Transguild Promenade": "Name:Transguild Promenade\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NeedsToPlay:Land.untapped+YouCtrl\nOracle:Transguild Promenade enters tapped.\\nWhen Transguild Promenade enters, sacrifice it unless you pay {1}.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transguild Promenade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-cloning-of-shredder-corpus-m678",
+  "description": "M6 corpus — The Cloning of Shredder; in-hand parse.",
+  "seed": 62005,
+  "cards": {
+    "The Cloning of Shredder": "Name:The Cloning of Shredder\nManaCost:4 B B\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBCopy2,DBCopy2\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.YouOwn | SubAbility$ DBCopy1 | RememberChanged$ True | TgtPrompt$ Select target creature card in your graveyard | SpellDescription$ Exile target creature card from your graveyard. Create a token that's a copy of it, except it isn't legendary and is a Mutant in addition to its other types.\nSVar:DBCopy1:DB$ CopyPermanent | Defined$ Remembered | Controller$ You | NonLegendary$ True | AddTypes$ Mutant | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBCopy2:DB$ CopyPermanent | Defined$ ExiledWith | Controller$ You | NonLegendary$ True | AddTypes$ Mutant\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Exile target creature card from your graveyard. Create a token that's a copy of it, except it isn't legendary and is a Mutant in addition to its other types.\\nII, III — Create a token that's a copy of a card exiled with this Saga, except it isn't legendary and is a Mutant in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Cloning of Shredder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

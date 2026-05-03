@@ -1,0 +1,23 @@
+{
+  "id": "valiant-emberkin-corpus-m678",
+  "description": "M6 corpus — Valiant Emberkin; in-hand parse.",
+  "seed": 63224,
+  "cards": {
+    "Valiant Emberkin": "Name:Valiant Emberkin\nManaCost:1 R W\nTypes:Enchantment Creature Mouse Glimmer\nPT:1/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME enters or attacks, target creature you control perpetually gets +1/+0.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, target creature you control perpetually gets +1/+0.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | Duration$ Perpetual\nS:Mode$ Panharmonicon | ValidMode$ BecomesTarget,BecomesTargetOnce | ValidCard$ Permanent.YouCtrl | ValidTarget$ Creature.YouCtrl | Description$ If a creature you control becoming the target of a spell or ability causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nOracle:Haste\\Whenever Valiant Emberkin enters or attacks, target creature you control perpetually gets +1/+0.\\nIf a creature you control becoming the target of a spell or ability causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valiant Emberkin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

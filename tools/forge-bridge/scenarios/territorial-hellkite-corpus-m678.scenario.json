@@ -1,0 +1,23 @@
+{
+  "id": "territorial-hellkite-corpus-m678",
+  "description": "M6 corpus — Territorial Hellkite; in-hand parse.",
+  "seed": 61919,
+  "cards": {
+    "Territorial Hellkite": "Name:Territorial Hellkite\nManaCost:2 R R\nTypes:Creature Dragon\nPT:6/5\nK:Flying\nK:Haste\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose an opponent at random that CARDNAME didn't attack during your last combat. CARDNAME attacks that player this combat if able. If you can't choose an opponent this way, tap CARDNAME.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent+!IsRemembered | Random$ True | ChooseSubAbility$ DBPump | CantChooseSubAbility$ DBTap\nSVar:DBPump:DB$ Effect | Defined$ Self | StaticAbilities$ AttackChosen | Duration$ UntilEndOfCombat\nSVar:AttackChosen:Mode$ MustAttack | ValidCreature$ Card.EffectSource | MustAttack$ ChosenPlayer | Description$ EFFECTSOURCE attacks that player this combat if able.\nSVar:DBTap:DB$ Tap | Defined$ Self | SubAbility$ DBCleanup\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigClearRem | Static$ True\nSVar:TrigClearRem:DB$ Cleanup | ClearRemembered$ True | SubAbility$ TrigRemember\nSVar:TrigRemember:DB$ Pump | RememberObjects$ TriggeredDefendingPlayer\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBCleanup | IsPresent$ Card.!attackedThisTurn+Self | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True | ClearRemembered$ True\nOracle:Flying, haste\\nAt the beginning of combat on your turn, choose an opponent at random that Territorial Hellkite didn't attack during your last combat. Territorial Hellkite attacks that player this combat if able. If you can't choose an opponent this way, tap Territorial Hellkite.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territorial Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

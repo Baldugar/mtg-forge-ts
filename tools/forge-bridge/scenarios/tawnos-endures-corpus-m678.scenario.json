@@ -1,0 +1,23 @@
+{
+  "id": "tawnos-endures-corpus-m678",
+  "description": "M6 corpus — Tawnos Endures; in-hand parse.",
+  "seed": 61744,
+  "cards": {
+    "Tawnos Endures": "Name:Tawnos Endures\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | RememberTargets$ True | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBAnimate | SpellDescription$ Exile target creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ Permanent | Triggers$ UpkeepTrig | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It gains \"At the beginning of your upkeep, if this card is exiled, it perpetually gets +1/+1, then you may put it onto the battlefield.\"\nSVar:UpkeepTrig:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Exile | Execute$ TrigPerpetual | ValidPlayer$ You | TriggerDescription$ At the beginning of your upkeep, if this card is exiled, it perpetually gets +1/+1, then you may put it onto the battlefield.\nSVar:TrigPerpetual:DB$ Pump | PumpZone$ Exile | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Self | Origin$ Exile | Destination$ Battlefield | Optional$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target creature. It gains \"At the beginning of your upkeep, if this card is exiled, it perpetually gets +1/+1, then you may put it onto the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tawnos Endures"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

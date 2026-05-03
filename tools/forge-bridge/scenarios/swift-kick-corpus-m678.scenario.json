@@ -1,0 +1,23 @@
+{
+  "id": "swift-kick-corpus-m678",
+  "description": "M6 corpus — Swift Kick; in-hand parse.",
+  "seed": 61490,
+  "cards": {
+    "Swift Kick": "Name:Swift Kick\nManaCost:3 R\nTypes:Instant\nA:SP$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBSwiftKick | NumAtt$ +1 | StackDescription$ None | SpellDescription$ Target creature you control gets +1/+0 until end of turn. It fights target creature you don't control.\nSVar:DBSwiftKick:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TargetUnique$ True | TgtPrompt$ Choose target creature to fight the first target\nOracle:Target creature you control gets +1/+0 until end of turn. It fights target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swift Kick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

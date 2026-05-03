@@ -1,0 +1,23 @@
+{
+  "id": "vulshok-battlemaster-corpus-m678",
+  "description": "M6 corpus — Vulshok Battlemaster; in-hand parse.",
+  "seed": 63716,
+  "cards": {
+    "Vulshok Battlemaster": "Name:Vulshok Battlemaster\nManaCost:4 R\nTypes:Creature Human Warrior\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttachAll | TriggerDescription$ When CARDNAME enters, attach all Equipment on the battlefield to it. (Control of the Equipment doesn't change.)\nSVar:TrigAttachAll:DB$ Attach | Object$ Valid Equipment | Defined$ Self | SpellDescription$ attach all Equipment on the battlefield to CARDNAME.\nOracle:Haste\\nWhen Vulshok Battlemaster enters, attach all Equipment on the battlefield to it. (Control of the Equipment doesn't change.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vulshok Battlemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

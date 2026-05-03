@@ -1,0 +1,25 @@
+{
+  "id": "xathrid-gorgon-corpus-m678",
+  "description": "M6 corpus — Xathrid Gorgon; ETB-on-bf.",
+  "seed": 64497,
+  "cards": {
+    "Xathrid Gorgon": "Name:Xathrid Gorgon\nManaCost:5 B\nTypes:Creature Gorgon\nPT:3/6\nK:Deathtouch\nA:AB$ PutCounter | Cost$ 2 B T | ValidTgts$ Creature | CounterNum$ 1 | CounterType$ PETRIFICATION | IsCurse$ True | SubAbility$ TurnToStone | SpellDescription$ Put a petrification counter on target creature. It gains defender and becomes a colorless artifact in addition to its other types. Its activated abilities can't be activated. (A creature with defender can't attack.)\nSVar:TurnToStone:DB$ Animate | Defined$ Targeted | Keywords$ Defender | Colors$ Colorless | OverwriteColors$ True | Types$ Artifact | Duration$ Permanent | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ CantActivate | ForgetOnMoved$ Battlefield | Duration$ Permanent\nSVar:CantActivate:Mode$ CantBeActivated | ValidCard$ Card.IsRemembered | Description$ Its activated abilities can't be activated.\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\n{2}{B}, {T}: Put a petrification counter on target creature. It gains defender and becomes a colorless artifact in addition to its other types. Its activated abilities can't be activated. (A creature with defender can't attack.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Xathrid Gorgon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

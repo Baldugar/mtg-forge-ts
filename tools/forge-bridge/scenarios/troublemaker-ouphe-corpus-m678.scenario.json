@@ -1,0 +1,23 @@
+{
+  "id": "troublemaker-ouphe-corpus-m678",
+  "description": "M6 corpus — Troublemaker Ouphe; in-hand parse.",
+  "seed": 62780,
+  "cards": {
+    "Troublemaker Ouphe": "Name:Troublemaker Ouphe\nManaCost:1 G\nTypes:Creature Ouphe\nPT:2/2\nK:Bargain\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+bargained | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if it was bargained, exile target artifact or enchantment an opponent controls.\nSVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls | Origin$ Battlefield | Destination$ Exile\nDeckHints:Type$Artifact|Enchantment & Ability$Token\nDeckHas:Ability$Sacrifice\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nWhen Troublemaker Ouphe enters, if it was bargained, exile target artifact or enchantment an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Troublemaker Ouphe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

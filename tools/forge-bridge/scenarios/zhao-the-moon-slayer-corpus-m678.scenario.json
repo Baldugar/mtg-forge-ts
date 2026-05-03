@@ -1,0 +1,25 @@
+{
+  "id": "zhao-the-moon-slayer-corpus-m678",
+  "description": "M6 corpus — Zhao, the Moon Slayer; ETB-on-bf.",
+  "seed": 64660,
+  "cards": {
+    "Zhao, the Moon Slayer": "Name:Zhao, the Moon Slayer\nManaCost:1 R\nTypes:Legendary Creature Human Soldier\nPT:2/2\nK:Menace\nR:Event$ Moved | ValidCard$ Land.nonBasic | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Nonbasic lands enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nA:AB$ PutCounter | Cost$ 7 | CounterType$ CONQUEROR | CounterNum$ 1 | SpellDescription$ Put a conqueror counter on NICKNAME.\nS:Mode$ Continuous | Affected$ Land.nonBasic | AddType$ Mountain | RemoveLandTypes$ True | IsPresent$ Card.Self+counters_GE1_CONQUEROR | Description$ As long as NICKNAME has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have \"{T}: Add {R}.\")\nOracle:Menace\\nNonbasic lands enter tapped.\\n{7}: Put a conqueror counter on Zhao.\\nAs long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have \"{T}: Add {R}.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zhao, the Moon Slayer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

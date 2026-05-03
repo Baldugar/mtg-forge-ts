@@ -1,0 +1,23 @@
+{
+  "id": "unravel-corpus-m678",
+  "description": "M6 corpus — Unravel; in-hand parse.",
+  "seed": 63107,
+  "cards": {
+    "Unravel": "Name:Unravel\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Counter target spell. If the amount of mana spent to cast that spell was less than its mana value, you draw a card.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ LTY\nSVar:X:Targeted$CastTotalManaSpent\nSVar:Y:Targeted$CardManaCost\nOracle:Counter target spell. If the amount of mana spent to cast that spell was less than its mana value, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unravel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

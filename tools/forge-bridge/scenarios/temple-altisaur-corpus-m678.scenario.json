@@ -1,0 +1,25 @@
+{
+  "id": "temple-altisaur-corpus-m678",
+  "description": "M6 corpus — Temple Altisaur; ETB-on-bf.",
+  "seed": 61828,
+  "cards": {
+    "Temple Altisaur": "Name:Temple Altisaur\nManaCost:4 W\nTypes:Creature Dinosaur\nPT:3/4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Permanent.Dinosaur+YouCtrl+Other | ReplaceWith$ DmgMinus1 | PreventionEffect$ True | Description$ If a source would deal damage to another Dinosaur you control, prevent all but 1 of that damage.\nSVar:DmgMinus1:DB$ ReplaceDamage | Amount$ ShieldAmount\nSVar:ShieldAmount:ReplaceCount$DamageAmount/Minus.1\nDeckHints:Type$Dinosaur\nOracle:If a source would deal damage to another Dinosaur you control, prevent all but 1 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Temple Altisaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

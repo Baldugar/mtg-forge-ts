@@ -1,0 +1,23 @@
+{
+  "id": "wolfbitten-captive-corpus-m678",
+  "description": "M6 corpus — Wolfbitten Captive; in-hand parse.",
+  "seed": 64360,
+  "cards": {
+    "Wolfbitten Captive": "Name:Wolfbitten Captive\nManaCost:G\nTypes:Creature Human Werewolf\nPT:1/1\nA:AB$ Pump | Cost$ 1 G | NumAtt$ +2 | NumDef$ +2 | ActivationLimit$ 1 | SpellDescription$ CARDNAME gets +2/+2 until end of turn. Activate only once each turn.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{1}{G}: Wolfbitten Captive gets +2/+2 until end of turn. Activate only once each turn.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Wolfbitten Captive.\n\nALTERNATE\n\nName:Krallenhorde Killer\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:2/2\nA:AB$ Pump | Cost$ 3 G | NumAtt$ +4 | NumDef$ +4 | ActivationLimit$ 1 | SpellDescription$ CARDNAME gets +4/+4 until end of turn. Activate only once each turn.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:{3}{G}: Krallenhorde Killer gets +4/+4 until end of turn. Activate only once each turn.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Krallenhorde Killer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfbitten Captive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

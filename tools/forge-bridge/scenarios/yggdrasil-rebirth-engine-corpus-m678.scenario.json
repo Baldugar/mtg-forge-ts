@@ -1,0 +1,23 @@
+{
+  "id": "yggdrasil-rebirth-engine-corpus-m678",
+  "description": "M6 corpus — Yggdrasil, Rebirth Engine; in-hand parse.",
+  "seed": 64553,
+  "cards": {
+    "Yggdrasil, Rebirth Engine": "Name:Yggdrasil, Rebirth Engine\nManaCost:3\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, exile all creature cards from your graveyard.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Exile\nA:AB$ Dig | Cost$ T | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | SpellDescription$ Exile the top three cards of your library.\nA:AB$ ChangeZone | Cost$ 4 T | Origin$ Exile | Destination$ Battlefield | Mandatory$ True | Hidden$ True | ChangeType$ Creature.ExiledWithSource | SorcerySpeed$ True | GainControl$ True | SubAbility$ DBPump | RememberChanged$ True | SpellDescription$ Put a creature card exiled with NICKNAME onto the battlefield under your control. It gains haste until end of turn. Activate only as a sorcery.\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Yggdrasil, Rebirth Engine enters, exile all creature cards from your graveyard.\\n{T}: Exile the top three cards of your library.\\n{4}, {T}: Put a creature card exiled with Yggdrasil onto the battlefield under your control. It gains haste until end of turn. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yggdrasil, Rebirth Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

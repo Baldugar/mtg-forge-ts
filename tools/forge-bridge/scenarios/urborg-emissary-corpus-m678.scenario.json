@@ -1,0 +1,23 @@
+{
+  "id": "urborg-emissary-corpus-m678",
+  "description": "M6 corpus — Urborg Emissary; in-hand parse.",
+  "seed": 63157,
+  "cards": {
+    "Urborg Emissary": "Name:Urborg Emissary\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:3/1\nK:Kicker:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, return target permanent to its owner's hand.\nSVar:TrigKicker:DB$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand\nSVar:NeedsToPlayKicked:Permanent.OppCtrl\nOracle:Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\\nWhen Urborg Emissary enters, if it was kicked, return target permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urborg Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

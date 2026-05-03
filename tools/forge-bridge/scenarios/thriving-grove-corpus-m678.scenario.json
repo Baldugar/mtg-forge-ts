@@ -1,0 +1,23 @@
+{
+  "id": "thriving-grove-corpus-m678",
+  "description": "M6 corpus — Thriving Grove; in-hand parse.",
+  "seed": 62286,
+  "cards": {
+    "Thriving Grove": "Name:Thriving Grove\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ green | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than green.\nA:AB$ Mana | Cost$ T | Produced$ Combo G Chosen | SpellDescription$ Add {G} or one mana of the chosen color.\nOracle:Thriving Grove enters tapped.\\nAs Thriving Grove enters, choose a color other than green.\\n{T}: Add {G} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Grove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tears-of-rage-corpus-m678",
+  "description": "M6 corpus — Tears of Rage; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "Tears of Rage": "Name:Tears of Rage\nManaCost:2 R R\nTypes:Instant\nText:Cast this spell only during the declare attackers step.\\r\\n\nA:SP$ PumpAll | ActivationPhases$ Declare Attackers | ValidCards$ Creature.attacking+YouCtrl | NumAtt$ +X | AtEOT$ Sacrifice | SpellDescription$ Attacking creatures you control get +X/+0 until end of turn, where X is the number of attacking creatures. Sacrifice those creatures at the beginning of the next end step.\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nAI:RemoveDeck:All\nOracle:Cast this spell only during the declare attackers step.\\nAttacking creatures you control get +X/+0 until end of turn, where X is the number of attacking creatures. Sacrifice those creatures at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tears of Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

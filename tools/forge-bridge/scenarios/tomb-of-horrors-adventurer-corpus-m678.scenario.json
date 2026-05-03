@@ -1,0 +1,23 @@
+{
+  "id": "tomb-of-horrors-adventurer-corpus-m678",
+  "description": "M6 corpus — Tomb of Horrors Adventurer; in-hand parse.",
+  "seed": 62482,
+  "cards": {
+    "Tomb of Horrors Adventurer": "Name:Tomb of Horrors Adventurer\nManaCost:5 U\nTypes:Creature Elf Monk\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | ActivatorThisTurnCast$ EQ2 | ValidActivatingPlayer$ You | TriggerDescription$ Whenever you cast your second spell each turn, copy it. If you've completed a dungeon, copy that spell twice instead. You may choose new targets for the copies. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Amount$ Y | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:X:DungeonsCompleted$Amount\nSVar:Y:Count$Compare X GE1.2.1\nDeckHas:Ability$Token\nOracle:When Tomb of Horrors Adventurer enters, you take the initiative.\\nWhenever you cast your second spell each turn, copy it. If you've completed a dungeon, copy that spell twice instead. You may choose new targets for the copies. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tomb of Horrors Adventurer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

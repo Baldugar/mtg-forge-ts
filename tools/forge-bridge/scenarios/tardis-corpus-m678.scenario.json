@@ -1,0 +1,23 @@
+{
+  "id": "tardis-corpus-m678",
+  "description": "M6 corpus — TARDIS; in-hand parse.",
+  "seed": 61708,
+  "cards": {
+    "TARDIS": "Name:TARDIS\nManaCost:2\nTypes:Artifact Vehicle\nPT:2/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Card.Time Lord+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever CARDNAME attacks, if you control a Time Lord, the next spell you cast this turn has cascade and you may planeswalk.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ GrantCascade | Triggers$ ExileEffect | SubAbility$ DBPlaneswalk\nSVar:DBPlaneswalk:DB$ Planeswalk | Optional$ True\nSVar:GrantCascade:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Stack | AddKeyword$ Cascade | Description$ The next spell you cast this turn has cascade and you may planeswalk.\nSVar:ExileEffect:Mode$ SpellCast | EffectZone$ Command | ValidCard$ Card.YouCtrl | Execute$ RemoveEffect | Static$ True\nSVar:RemoveEffect:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Type$Time Lord\nOracle:Flying\\nWhenever TARDIS attacks, if you control a Time Lord, the next spell you cast this turn has cascade and you may planeswalk.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "TARDIS"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

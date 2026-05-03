@@ -1,0 +1,25 @@
+{
+  "id": "vernal-fen-corpus-m678",
+  "description": "M6 corpus — Vernal Fen; ETB-on-bf.",
+  "seed": 63409,
+  "cards": {
+    "Vernal Fen": "Name:Vernal Fen\nManaCost:no cost\nTypes:Land Swamp Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {B} or {G}.)\\nThis land enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vernal Fen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

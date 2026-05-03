@@ -1,0 +1,23 @@
+{
+  "id": "zombie-apocalypse-corpus-m678",
+  "description": "M6 corpus — Zombie Apocalypse; in-hand parse.",
+  "seed": 64693,
+  "cards": {
+    "Zombie Apocalypse": "Name:Zombie Apocalypse\nManaCost:3 B B B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | SubAbility$ DBDestroy | ChangeType$ Creature.Zombie+YouCtrl | Tapped$ True | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return all Zombie creature cards from your graveyard to the battlefield tapped, then destroy all Humans.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Human\nAI:RemoveDeck:Random\nOracle:Return all Zombie creature cards from your graveyard to the battlefield tapped, then destroy all Humans.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zombie Apocalypse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "trygon-predator-corpus-m678",
+  "description": "M6 corpus — Trygon Predator; in-hand parse.",
+  "seed": 62807,
+  "cards": {
+    "Trygon Predator": "Name:Trygon Predator\nManaCost:1 G U\nTypes:Creature Beast\nPT:2/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | OptionalDecider$ You | CombatDamage$ True | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may destroy target artifact or enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget,Enchantment.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact or enchantment damaged player controls\nOracle:Flying\\nWhenever Trygon Predator deals combat damage to a player, you may destroy target artifact or enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trygon Predator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

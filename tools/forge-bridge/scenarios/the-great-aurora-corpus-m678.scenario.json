@@ -1,0 +1,23 @@
+{
+  "id": "the-great-aurora-corpus-m678",
+  "description": "M6 corpus — The Great Aurora; in-hand parse.",
+  "seed": 62048,
+  "cards": {
+    "The Great Aurora": "Name:The Great Aurora\nManaCost:6 G G G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBShuffle | SubAbility$ RepeatLands | StackDescription$ SpellDescription | SpellDescription$ Each player shuffles all cards from their hand and all permanents they own into their library, then draws that many cards. Each player may put any number of land cards from their hand onto the battlefield. Exile CARDNAME.\n# ChangeType is fine being \"Card\" because if it's on the battlefield, it has to be a permanent\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Card.RememberedPlayerOwn | Origin$ Hand,Battlefield | Destination$ Library | Shuffle$ True | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ Remembered$Amount | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RepeatLands:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBAurora | SubAbility$ ExileAurora\nSVar:DBAurora:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | DefinedPlayer$ Remembered | Chooser$ Remembered | ChangeType$ Land | ChangeNum$ HandSize\nSVar:HandSize:Count$ValidHand Land.RememberedPlayerCtrl\nSVar:ExileAurora:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | Defined$ Self\nOracle:Each player shuffles all cards from their hand and all permanents they own into their library, then draws that many cards. Each player may put any number of land cards from their hand onto the battlefield. Exile The Great Aurora.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Great Aurora"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "valgavoth-s-lair-corpus-m678",
+  "description": "M6 corpus — Valgavoth's Lair; in-hand parse.",
+  "seed": 63221,
+  "cards": {
+    "Valgavoth's Lair": "Name:Valgavoth's Lair\nManaCost:no cost\nTypes:Enchantment Land\nK:Hexproof\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:Hexproof\\nValgavoth's Lair enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valgavoth's Lair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "verdeloth-the-ancient-corpus-m678",
+  "description": "M6 corpus — Verdeloth the Ancient; in-hand parse.",
+  "seed": 63400,
+  "cards": {
+    "Verdeloth the Ancient": "Name:Verdeloth the Ancient\nManaCost:4 G G\nTypes:Legendary Creature Treefolk\nPT:4/7\nK:Kicker:X\nS:Mode$ Continuous | Affected$ Creature.Saproling,Creature.Treefolk+Other | AddPower$ 1 | AddToughness$ 1 | Description$ Saproling creatures and other Treefolk creatures get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, create X 1/1 green Saproling creature tokens.\nSVar:TrigKicker:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You | Secondary$ True | SpellDescription$ Create X 1/1 green Saproling creature tokens.\nSVar:X:Count$xPaid\nDeckHints:Type$Fungus|Treefolk\nDeckHas:Ability$Token\nOracle:Kicker {X} (You may pay an additional {X} as you cast this spell.)\\nSaproling creatures and other Treefolk creatures get +1/+1.\\nWhen Verdeloth the Ancient enters, if it was kicked, create X 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdeloth the Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

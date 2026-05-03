@@ -1,0 +1,23 @@
+{
+  "id": "thopter-assembly-corpus-m678",
+  "description": "M6 corpus — Thopter Assembly; in-hand parse.",
+  "seed": 62178,
+  "cards": {
+    "Thopter Assembly": "Name:Thopter Assembly\nManaCost:6\nTypes:Artifact Creature Thopter\nPT:5/5\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Thopter.Other+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, if you control no Thopters other than CARDNAME, return CARDNAME to its owner's hand and create five 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ 5 | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Flying\\nAt the beginning of your upkeep, if you control no Thopters other than Thopter Assembly, return Thopter Assembly to its owner's hand and create five 1/1 colorless Thopter artifact creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thopter Assembly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wind-scarred-crag-corpus-m678",
+  "description": "M6 corpus — Wind-Scarred Crag; in-hand parse.",
+  "seed": 64214,
+  "cards": {
+    "Wind-Scarred Crag": "Name:Wind-Scarred Crag\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nDeckHas:Ability$LifeGain\nOracle:Wind-Scarred Crag enters tapped.\\nWhen Wind-Scarred Crag enters, you gain 1 life.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wind-Scarred Crag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-kami-war-corpus-m678",
+  "description": "M6 corpus — The Kami War; in-hand parse.",
+  "seed": 62057,
+  "cards": {
+    "The Kami War": "Name:The Kami War\nManaCost:1 W U B R G\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBBounce,DBTransform\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | SpellDescription$ Exile target nonland permanent an opponent controls.\nSVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.nonLand+Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target nonland permanent | SubAbility$ DBDiscard | SpellDescription$ Return up to one other target nonland permanent to its owner's hand.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Then each opponent discards a card.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Exile target nonland permanent an opponent controls.\\nII — Return up to one other target nonland permanent to its owner's hand. Then each opponent discards a card.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:O-Kagachi Made Manifest\nManaCost:no cost\nTypes:Enchantment Creature Dragon Spirit\nPT:6/6\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | SetColor$ All | Description$ CARDNAME is all colors.\nK:Flying\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ Whenever CARDNAME attacks, defending player chooses a nonland card in your graveyard. Return that card to your hand. CARDNAME gets +X/+0 until end of turn, where X is the mana value of that card.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ TriggeredDefendingPlayer | Choices$ Card.YouOwn+nonLand | Mandatory$ True | ChoiceZone$ Graveyard | AILogic$ WorstCard | RememberChosen$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +X | SubAbility$ DBCleanup\nSVar:X:Remembered$CardManaCost\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard\nOracle:O-Kagachi Made Manifest is all colors.\\nFlying, trample\\nWhenever O-Kagachi Made Manifest attacks, defending player chooses a nonland card in your graveyard. Return that card to your hand. O-Kagachi Made Manifest gets +X/+0 until end of turn, where X is the mana value of that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Kami War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

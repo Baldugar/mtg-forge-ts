@@ -1,0 +1,23 @@
+{
+  "id": "veilborn-ghoul-corpus-m678",
+  "description": "M6 corpus — Veilborn Ghoul; in-hand parse.",
+  "seed": 63337,
+  "cards": {
+    "Veilborn Ghoul": "Name:Veilborn Ghoul\nManaCost:4 B\nTypes:Creature Zombie\nPT:4/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Swamp.YouCtrl | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Whenever a Swamp you control enters, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nSVar:DiscardMe:3\nOracle:Veilborn Ghoul can't block.\\nWhenever a Swamp you control enters, you may return Veilborn Ghoul from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veilborn Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

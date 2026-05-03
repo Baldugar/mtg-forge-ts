@@ -1,0 +1,23 @@
+{
+  "id": "whirlpool-drake-corpus-m678",
+  "description": "M6 corpus — Whirlpool Drake; in-hand parse.",
+  "seed": 64094,
+  "cards": {
+    "Whirlpool Drake": "Name:Whirlpool Drake\nManaCost:3 U\nTypes:Creature Drake\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeAll | TriggerDescription$ When CARDNAME enters, shuffle the cards from your hand into your library, then draw that many cards.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeAll | TriggerDescription$ When CARDNAME dies, shuffle the cards from your hand into your library, then draw that many cards.\nSVar:TrigChangeAll:DB$ ChangeZoneAll | Defined$ You | Origin$ Hand | Destination$ Library | Shuffle$ True | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Flying\\nWhen Whirlpool Drake enters, shuffle the cards from your hand into your library, then draw that many cards.\\nWhen Whirlpool Drake dies, shuffle the cards from your hand into your library, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirlpool Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

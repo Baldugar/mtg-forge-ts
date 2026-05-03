@@ -1,0 +1,23 @@
+{
+  "id": "temporal-machinations-corpus-m678",
+  "description": "M6 corpus — Temporal Machinations; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Temporal Machinations": "Name:Temporal Machinations\nManaCost:2 U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target creature to its owner's hand. If you control an artifact, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ GE1\nOracle:Return target creature to its owner's hand. If you control an artifact, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temporal Machinations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

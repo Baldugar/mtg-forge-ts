@@ -1,0 +1,23 @@
+{
+  "id": "wall-crawl-corpus-m678",
+  "description": "M6 corpus — Wall Crawl; in-hand parse.",
+  "seed": 63758,
+  "cards": {
+    "Wall Crawl": "Name:Wall Crawl\nVariant:UniversesWithin:FlavorName:Rouse the Swarm\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create a 2/1 green Spider creature token with reach, then you gain 1 life for each Spider you control.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_1_spider_reach | TokenOwner$ You | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nS:Mode$ Continuous | Affected$ Spider.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Spiders you control get +1/+1 and can't be blocked by creatures with defender.\nS:Mode$ CantBlockBy | ValidAttacker$ Spider.YouCtrl | ValidBlocker$ Creature.withDefender | Secondary$ True | Description$ Spiders you control get +1/+1 and can't be blocked by creatures with defender.\nSVar:X:Count$Valid Spider.YouCtrl\nDeckHints:Type$Spider\nOracle:When this enchantment enters, create a 2/1 green Spider creature token with reach, then you gain 1 life for each Spider you control.\\nSpiders you control get +1/+1 and can't be blocked by creatures with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall Crawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

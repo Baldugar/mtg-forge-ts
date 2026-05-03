@@ -1,0 +1,23 @@
+{
+  "id": "treeshaker-chimera-corpus-m678",
+  "description": "M6 corpus — Treeshaker Chimera; in-hand parse.",
+  "seed": 62695,
+  "cards": {
+    "Treeshaker Chimera": "Name:Treeshaker Chimera\nManaCost:5 G G\nTypes:Creature Chimera\nPT:8/5\nK:All creatures able to block CARDNAME do so.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nOracle:All creatures able to block Treeshaker Chimera do so.\\nWhen Treeshaker Chimera dies, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treeshaker Chimera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

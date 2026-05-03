@@ -1,0 +1,23 @@
+{
+  "id": "tangled-colony-corpus-m678",
+  "description": "M6 corpus — Tangled Colony; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Tangled Colony": "Name:Tangled Colony\nManaCost:1 B\nTypes:Creature Rat\nPT:3/2\nS:Mode$ CantBlock | ValidCard$ Creature.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create X 1/1 black Rat creature tokens with \"This creature can't block,\" where X is the amount of damage dealt to it this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You\nSVar:X:Count$TotalDamageReceivedThisTurn\nDeckHas:Ability$Token\nOracle:Tangled Colony can't block.\\nWhen Tangled Colony dies, create X 1/1 black Rat creature tokens with \"This creature can't block,\" where X is the amount of damage dealt to it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tangled Colony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

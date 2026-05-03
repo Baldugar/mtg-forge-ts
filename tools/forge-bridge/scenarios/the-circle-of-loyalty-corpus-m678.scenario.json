@@ -1,0 +1,25 @@
+{
+  "id": "the-circle-of-loyalty-corpus-m678",
+  "description": "M6 corpus — The Circle of Loyalty; ETB-on-bf.",
+  "seed": 62003,
+  "cards": {
+    "The Circle of Loyalty": "Name:The Circle of Loyalty\nManaCost:4 W W\nTypes:Legendary Artifact\nK:Affinity:Knight\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nT:Mode$ SpellCast | ValidCard$ Card.Legendary | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a legendary spell, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You\nA:AB$ Token | Cost$ 3 W T | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You | SpellDescription$ Create a 2/2 white Knight creature token with vigilance.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Legendary\nDeckHas:Ability$Token\nDeckHints:Type$Knight|Legendary\nOracle:Affinity for Knights (This spell costs {1} less to cast for each Knight you control.)\\nCreatures you control get +1/+1.\\nWhenever you cast a legendary spell, create a 2/2 white Knight creature token with vigilance.\\n{3}{W}, {T}: Create a 2/2 white Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Circle of Loyalty"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "voltaic-visionary-corpus-m678",
+  "description": "M6 corpus — Voltaic Visionary; in-hand parse.",
+  "seed": 63674,
+  "cards": {
+    "Voltaic Visionary": "Name:Voltaic Visionary\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:3/1\nA:AB$ DealDamage | Cost$ T | NumDmg$ 2 | Defined$ You | SorcerySpeed$ True | SubAbility$ DBExile | SpellDescription$ CARDNAME deals 2 damage to you.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | StackDescription$ SpellDescription | SpellDescription$ You may play that card this turn. Activate only as a sorcery.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nT:Mode$ SpellCast | ValidCard$ Card.ExiledWithSourceLKI | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ When you play a card exiled with CARDNAME, transform it.\nT:Mode$ LandPlayed | ValidCard$ Land.ExiledWithSourceLKI | Execute$ TrigTransform | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When you play a card exiled with CARDNAME, transform it.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{T}: Voltaic Visionary deals 2 damage to you. Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\\nWhen you play a card exiled with Voltaic Visionary, transform it.\n\nALTERNATE\n\nName:Volt-Charged Berserker\nManaCost:no cost\nColors:red\nTypes:Creature Human Berserker\nPT:4/3\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nOracle:Volt-Charged Berserker can't block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voltaic Visionary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

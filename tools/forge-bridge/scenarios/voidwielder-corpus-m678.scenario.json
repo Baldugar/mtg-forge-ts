@@ -1,0 +1,23 @@
+{
+  "id": "voidwielder-corpus-m678",
+  "description": "M6 corpus — Voidwielder; in-hand parse.",
+  "seed": 63639,
+  "cards": {
+    "Voidwielder": "Name:Voidwielder\nManaCost:4 U\nTypes:Creature Human Wizard\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nOracle:When Voidwielder enters, you may return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voidwielder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

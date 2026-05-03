@@ -1,0 +1,25 @@
+{
+  "id": "uncivil-unrest-corpus-m678",
+  "description": "M6 corpus — Uncivil Unrest; ETB-on-bf.",
+  "seed": 62985,
+  "cards": {
+    "Uncivil Unrest": "Name:Uncivil Unrest\nManaCost:4 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.!token+YouCtrl | AddKeyword$ Riot | Description$ Nontoken creatures you control have riot. (They enter with your choice of a +1/+1 counter or haste.)\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.YouCtrl+counters_GE1_P1P1 | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a creature you control with a +1/+1 counter on it would deal damage to a permanent or player, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Nontoken creatures you control have riot. (They enter with your choice of a +1/+1 counter or haste.)\\nIf a creature you control with a +1/+1 counter on it would deal damage to a permanent or player, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Uncivil Unrest"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

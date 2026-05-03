@@ -1,0 +1,23 @@
+{
+  "id": "take-the-bait-corpus-m678",
+  "description": "M6 corpus — Take the Bait; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Take the Bait": "Name:Take the Bait\nManaCost:2 R W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | OpponentTurn$ True | ActivationPhases$ BeginCombat->EndCombat | SubAbility$ DBUnTapAll | SpellDescription$ Prevent all combat damage that would be dealt to you and planeswalkers you control this turn. Untap all attacking creatures and goad them. After this phase, there is an additional combat phase.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ You,Planeswalker.YouCtrl\nSVar:DBUnTapAll:DB$ UntapAll | ValidCards$ Creature.attacking | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Valid Creature.attacking | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:Cast this spell only during an opponent's turn and only during combat.\\nPrevent all combat damage that would be dealt to you and planeswalkers you control this turn. Untap all attacking creatures and goad them. After this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take the Bait"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

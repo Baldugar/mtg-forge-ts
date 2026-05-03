@@ -1,0 +1,23 @@
+{
+  "id": "triceraton-commander-corpus-m678",
+  "description": "M6 corpus — Triceraton Commander; in-hand parse.",
+  "seed": 62739,
+  "cards": {
+    "Triceraton Commander": "Name:Triceraton Commander\nManaCost:X X W W\nTypes:Creature Dinosaur Soldier\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever this creature attacks, Dinosaurs you control other than this creature get +1/+1 and gain flying until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Dinosaur.StrictlyOther+YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create X 2/2 white Dinosaur Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_2_2_dinosaur_soldier | TokenOwner$ You\nSVar:X:Count$xPaid\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Dinosaur\nOracle:Flying\\nWhenever this creature attacks, Dinosaurs you control other than this creature get +1/+1 and gain flying until end of turn.\\nWhen this creature enters, create X 2/2 white Dinosaur Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triceraton Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

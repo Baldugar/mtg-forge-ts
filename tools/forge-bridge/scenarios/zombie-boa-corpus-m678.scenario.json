@@ -1,0 +1,25 @@
+{
+  "id": "zombie-boa-corpus-m678",
+  "description": "M6 corpus — Zombie Boa; ETB-on-bf.",
+  "seed": 64694,
+  "cards": {
+    "Zombie Boa": "Name:Zombie Boa\nManaCost:4 B\nTypes:Creature Zombie Snake\nPT:3/3\nA:AB$ ChooseColor | Cost$ 1 B | Defined$ You | AILogic$ MostProminentInHumanDeck | SorcerySpeed$ True | SubAbility$ DBEffect | SpellDescription$ Choose a color. Whenever CARDNAME becomes blocked by a creature of that color this turn, destroy that creature. Activate only as a sorcery.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigBlocked | RememberObjects$ Self\nSVar:TrigBlocked:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.IsRemembered | ValidBlocker$ Creature.ChosenColor | Execute$ ABDestroy | TriggerDescription$ Whenever EFFECTSOURCE becomes blocked by a creature of the chosen color this turn, destroy that creature.\nSVar:ABDestroy:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nAI:RemoveDeck:All\nOracle:{1}{B}: Choose a color. Whenever Zombie Boa becomes blocked by a creature of that color this turn, destroy that creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zombie Boa"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

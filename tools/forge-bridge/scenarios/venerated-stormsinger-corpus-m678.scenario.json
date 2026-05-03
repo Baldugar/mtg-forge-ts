@@ -1,0 +1,23 @@
+{
+  "id": "venerated-stormsinger-corpus-m678",
+  "description": "M6 corpus — Venerated Stormsinger; in-hand parse.",
+  "seed": 63355,
+  "cards": {
+    "Venerated Stormsinger": "Name:Venerated Stormsinger\nManaCost:3 B\nTypes:Creature Orc Cleric\nPT:3/3\nK:Mobilize:1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)\\nWhenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venerated Stormsinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

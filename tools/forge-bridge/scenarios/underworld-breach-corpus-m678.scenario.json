@@ -1,0 +1,23 @@
+{
+  "id": "underworld-breach-corpus-m678",
+  "description": "M6 corpus — Underworld Breach; in-hand parse.",
+  "seed": 63028,
+  "cards": {
+    "Underworld Breach": "Name:Underworld Breach\nManaCost:1 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Card.YouOwn+nonLand | AffectedZone$ Graveyard | AddKeyword$ Escape:CardManaCost ExileFromGrave<3/Card.Other/other> | Description$ Each nonland card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:EndOfTurnLeavePlay:True\nSVar:PlayMain1:TRUE\nOracle:Each nonland card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\\nAt the beginning of the end step, sacrifice Underworld Breach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underworld Breach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

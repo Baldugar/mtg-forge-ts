@@ -1,0 +1,23 @@
+{
+  "id": "the-hourglass-coven-corpus-m678",
+  "description": "M6 corpus — The Hourglass Coven; in-hand parse.",
+  "seed": 62051,
+  "cards": {
+    "The Hourglass Coven": "Name:The Hourglass Coven\nManaCost:4 B B\nTypes:Legendary Creature Hag Warlock\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraft | TriggerDescription$ When CARDNAME enters, draft a card from CARDNAME's spellbook twice, then put those cards onto the battlefield.\nSVar:TrigDraft:DB$ Draft | DraftNum$ 2 | Spellbook$ Hag of Syphoned Breath,Hag of Dark Duress,Hag of Ceaseless Torment,Hag of Inner Weakness,Hag of Death's Legion,Hag of Scoured Thoughts,Hag of Twisted Visions,Hag of Mage's Doom,Hag of Noxious Nightmares | RememberDrafted$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Warlock.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Warlocks you control get +1/+1.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Warlock\nOracle:When The Hourglass Coven enters, draft a card from The Hourglass Coven's spellbook twice, then put those cards onto the battlefield.\\nOther Warlocks you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Hourglass Coven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

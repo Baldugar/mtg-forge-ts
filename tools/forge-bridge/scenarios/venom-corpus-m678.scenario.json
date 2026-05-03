@@ -1,0 +1,23 @@
+{
+  "id": "venom-corpus-m678",
+  "description": "M6 corpus — Venom; in-hand parse.",
+  "seed": 63371,
+  "cards": {
+    "Venom": "Name:Venom\nManaCost:1 G G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.nonWall | ValidBlocker$ Card.AttachedBy | Execute$ DelTrigBlocked | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked by a non-Wall creature, destroy the other creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.AttachedBy | ValidBlocker$ Creature.nonWall | Execute$ DelTrigBlocker | Secondary$ True | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked by a non-Wall creature, destroy the other creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Destroy blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Destroy blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nOracle:Enchant creature\\nWhenever enchanted creature blocks or becomes blocked by a non-Wall creature, destroy the other creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

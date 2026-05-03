@@ -1,0 +1,25 @@
+{
+  "id": "timber-paladin-corpus-m678",
+  "description": "M6 corpus — Timber Paladin; ETB-on-bf.",
+  "seed": 62390,
+  "cards": {
+    "Timber Paladin": "Name:Timber Paladin\nManaCost:1 G\nTypes:Artifact Creature Knight\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 3 | CheckSVar$ X | SVarCompare$ EQ1 | SetToughness$ 3 | Description$ As long as CARDNAME is enchanted by exactly one Aura, it has base power and toughness 3/3.\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 5 | CheckSVar$ X | SVarCompare$ EQ2 | SetToughness$ 5 | AddKeyword$ Vigilance | Description$ As long as CARDNAME is enchanted by exactly two Auras, it has base power and toughness 5/5 and vigilance.\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 10 | CheckSVar$ X | SVarCompare$ GE3 | SetToughness$ 10 | AddKeyword$ Vigilance & Trample | Description$ As long as CARDNAME is enchanted by three or more Auras, it has base power and toughness 10/10, vigilance, and trample.\nSVar:X:Count$Valid Aura.Attached\nSVar:EnchantMe:Multiple\nDeckNeeds:Type$Aura\nOracle:As long as Timber Paladin is enchanted by exactly one Aura, it has base power and toughness 3/3.\\nAs long as Timber Paladin is enchanted by exactly two Auras, it has base power and toughness 5/5 and vigilance.\\nAs long as Timber Paladin is enchanted by three or more Auras, it has base power and toughness 10/10, vigilance, and trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Timber Paladin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

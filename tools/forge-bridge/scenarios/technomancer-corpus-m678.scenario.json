@@ -1,0 +1,23 @@
+{
+  "id": "technomancer-corpus-m678",
+  "description": "M6 corpus — Technomancer; in-hand parse.",
+  "seed": 61763,
+  "cards": {
+    "Technomancer": "Name:Technomancer\nManaCost:5 B B\nTypes:Artifact Creature Necron Wizard\nPT:5/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards, then return any number of artifact creature cards with total mana value 6 or less from your graveyard to the battlefield.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | WithTotalCMC$ 6 | ChangeNum$ X | SelectPrompt$ choose any number of artifact creatures with total mana value 6 or less. | Hidden$ True | AnyNumber$ True | ChangeType$ Artifact.Creature+YouOwn\nSVar:X:Count$ValidGraveyard Artifact.Creature+YouOwn\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Type$Artifact\nOracle:When Technomancer enters, mill three cards, then return any number of artifact creature cards with total mana value 6 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Technomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

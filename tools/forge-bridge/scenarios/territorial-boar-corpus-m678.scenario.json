@@ -1,0 +1,23 @@
+{
+  "id": "territorial-boar-corpus-m678",
+  "description": "M6 corpus — Territorial Boar; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Territorial Boar": "Name:Territorial Boar\nManaCost:1 G\nTypes:Creature Boar\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerGE4+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control with power 4 or greater enters, CARDNAME gets +1/+1 and gains vigilance until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance\nAI:RemoveDeck:Random\nSVar:BuffedBy:Creature.powerGE4\nOracle:Whenever a creature you control with power 4 or greater enters, Territorial Boar gets +1/+1 and gains vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territorial Boar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-spirit-oasis-corpus-m678",
+  "description": "M6 corpus — The Spirit Oasis; in-hand parse.",
+  "seed": 62108,
+  "cards": {
+    "The Spirit Oasis": "Name:The Spirit Oasis\nManaCost:2 U\nTypes:Legendary Enchantment Shrine\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw1 | TriggerDescription$ When CARDNAME enters, draw a card for each Shrine you control.\nSVar:TrigDraw1:DB$ Draw | NumCards$ X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Shrine.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw2 | TriggerDescription$ Whenever another Shrine you control enters, draw a card.\nSVar:TrigDraw2:DB$ Draw\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHints:Type$Shrine\nOracle:When The Spirit Oasis enters, draw a card for each Shrine you control.\\nWhenever another Shrine you control enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Spirit Oasis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

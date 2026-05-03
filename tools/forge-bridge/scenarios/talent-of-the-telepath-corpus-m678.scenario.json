@@ -1,0 +1,23 @@
+{
+  "id": "talent-of-the-telepath-corpus-m678",
+  "description": "M6 corpus — Talent of the Telepath; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "Talent of the Telepath": "Name:Talent of the Telepath\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ PeekAndReveal | ValidTgts$ Opponent | Reveal$ True | NoPeek$ True | PeekAmount$ 7 | RememberRevealed$ True | SubAbility$ TelepathCast | SpellDescription$ Target opponent reveals the top seven cards of their library. You may cast an instant or sorcery spell from among them without paying its mana cost. Then that player puts the rest into their graveyard. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you may cast up to two instant and/or sorcery spells from among the revealed cards instead of one.\nSVar:TelepathCast:DB$ Play | ValidZone$ Library | Valid$ Card.IsRemembered | ValidSA$ Instant,Sorcery | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ X | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Compare Y GE2.2.1\nSVar:Y:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nOracle:Target opponent reveals the top seven cards of their library. You may cast an instant or sorcery spell from among them without paying its mana cost. Then that player puts the rest into their graveyard.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you may cast up to two instant and/or sorcery spells from among the revealed cards instead of one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talent of the Telepath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

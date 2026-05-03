@@ -1,0 +1,25 @@
+{
+  "id": "turtle-lair-corpus-m678",
+  "description": "M6 corpus — Turtle Lair; ETB-on-bf.",
+  "seed": 62852,
+  "cards": {
+    "Turtle Lair": "Name:Turtle Lair\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Ninja,Spell.Turtle | SpellDescription$ Add one mana of any color. Spend this mana only to cast a Ninja or Turtle spell.\nA:AB$ Effect | Cost$ 3 T | ValidTgts$ Ninja,Turtle | TgtPrompt$ Select target Ninja or Turtle | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target Ninja or Turtle can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHints:Type$Ninja|Turtle\nOracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a Ninja or Turtle spell.\\n{3}, {T}: Target Ninja or Turtle can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Turtle Lair"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

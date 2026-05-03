@@ -1,0 +1,23 @@
+{
+  "id": "the-grand-tour-corpus-m678",
+  "description": "M6 corpus — The Grand Tour; in-hand parse.",
+  "seed": 62047,
+  "cards": {
+    "The Grand Tour": "Name:The Grand Tour\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.!token | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target nontoken permanent | RememberTargets$ True | SubAbility$ DBHand | SpellDescription$ Exile target permanent,\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ DBDiscard | SpellDescription$ then put it into its owner's hand.\nSVar:DBDiscard:DB$ Discard | Mode$ Defined | Defined$ RememberedOwner | DefinedCards$ Remembered | SubAbility$ DBLibrary | SpellDescription$ That player discards that card,\nSVar:DBLibrary:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0 | Defined$ Remembered | SubAbility$ DBReturn | SpellDescription$ then puts it on top of their library.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | SubAbility$ DBCleanup | SpellDescription$ Then they put it onto the battlefield.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile target permanent, then put it into its owner's hand. That player discards that card, then puts it on top of their library. Then they put it onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Grand Tour"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

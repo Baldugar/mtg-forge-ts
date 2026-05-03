@@ -1,0 +1,23 @@
+{
+  "id": "treasure-hunter-corpus-m678",
+  "description": "M6 corpus — Treasure Hunter; in-hand parse.",
+  "seed": 62680,
+  "cards": {
+    "Treasure Hunter": "Name:Treasure Hunter\nManaCost:2 W\nTypes:Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target artifact card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouCtrl\nOracle:When Treasure Hunter enters, you may return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasure Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

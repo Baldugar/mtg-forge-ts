@@ -1,0 +1,23 @@
+{
+  "id": "vendilion-clique-corpus-m678",
+  "description": "M6 corpus — Vendilion Clique; in-hand parse.",
+  "seed": 63350,
+  "cards": {
+    "Vendilion Clique": "Name:Vendilion Clique\nManaCost:1 U U\nTypes:Legendary Creature Faerie Wizard\nPT:3/1\nK:Flying\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPickCard | TriggerDescription$ When CARDNAME enters, look at target player's hand. You may choose a nonland card from it. If you do, that player reveals the chosen card, puts it on the bottom of their library, then draws a card.\nSVar:TrigPickCard:DB$ ChangeZone | ValidTgts$ Player | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeType$ Card.nonLand | ChangeNum$ 1 | Hidden$ True | RememberChanged$ True | Chooser$ You | Optional$ True | IsCurse$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Targeted | NumCards$ 1 | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nFlying\\nWhen Vendilion Clique enters, look at target player's hand. You may choose a nonland card from it. If you do, that player reveals the chosen card, puts it on the bottom of their library, then draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vendilion Clique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

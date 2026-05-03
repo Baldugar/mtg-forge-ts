@@ -1,0 +1,23 @@
+{
+  "id": "undead-augur-corpus-m678",
+  "description": "M6 corpus — Undead Augur; in-hand parse.",
+  "seed": 62996,
+  "cards": {
+    "Undead Augur": "Name:Undead Augur\nManaCost:B B\nTypes:Creature Zombie Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Zombie.Other+YouCtrl | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME or another Zombie you control dies, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Whenever Undead Augur or another Zombie you control dies, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undead Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

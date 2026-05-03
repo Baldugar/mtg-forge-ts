@@ -1,0 +1,23 @@
+{
+  "id": "ultimate-magic-holy-corpus-m678",
+  "description": "M6 corpus — Ultimate Magic: Holy; in-hand parse.",
+  "seed": 62946,
+  "cards": {
+    "Ultimate Magic: Holy": "Name:Ultimate Magic: Holy\nManaCost:2 W\nTypes:Instant\nK:Foretell:2 W\nA:SP$ PumpAll | ValidCards$ Permanent.YouCtrl | KW$ Indestructible | SubAbility$ DBEffect | SpellDescription$ Permanents you control gain indestructible until end of turn. If this spell was cast from exile, prevent all damage that would be dealt to you this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | Description$ Prevent all damage that would be dealt to you this turn.\nSVar:X:Count$wasCastFromExile.1.0\nOracle:Permanents you control gain indestructible until end of turn. If this spell was cast from exile, prevent all damage that would be dealt to you this turn.\\nForetell {2}{W} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultimate Magic: Holy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

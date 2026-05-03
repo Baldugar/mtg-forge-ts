@@ -1,0 +1,25 @@
+{
+  "id": "warmth-corpus-m678",
+  "description": "M6 corpus — Warmth; ETB-on-bf.",
+  "seed": 63896,
+  "cards": {
+    "Warmth": "Name:Warmth\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever an opponent casts a red spell, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a red spell, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warmth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

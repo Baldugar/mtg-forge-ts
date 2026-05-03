@@ -1,0 +1,23 @@
+{
+  "id": "swarmborn-giant-corpus-m678",
+  "description": "M6 corpus — Swarmborn Giant; in-hand parse.",
+  "seed": 61472,
+  "cards": {
+    "Swarmborn Giant": "Name:Swarmborn Giant\nManaCost:2 G G\nTypes:Creature Giant\nPT:6/6\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever you're dealt combat damage, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nA:AB$ PutCounter | Cost$ 4 G G | Monstrosity$ 2\nS:Mode$ Continuous | Affected$ Card.Self+IsMonstrous | AddKeyword$ Reach | Description$ As long as CARDNAME is monstrous, it has reach.\nDeckHas:Ability$Counters\nOracle:When you're dealt combat damage, sacrifice Swarmborn Giant.\\n{4}{G}{G}: Monstrosity 2. (If this creature isn't monstrous, put two +1/+1 counters on it and it becomes monstrous.)\\nAs long as Swarmborn Giant is monstrous, it has reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swarmborn Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

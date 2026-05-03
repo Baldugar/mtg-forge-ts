@@ -1,0 +1,25 @@
+{
+  "id": "terraformer-corpus-m678",
+  "description": "M6 corpus — Terraformer; ETB-on-bf.",
+  "seed": 61904,
+  "cards": {
+    "Terraformer": "Name:Terraformer\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ ChooseType | Cost$ 1 | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Choose a basic land type. Each land you control becomes that type until end of turn.\nSVar:DBAnimate:DB$ AnimateAll | ValidCards$ Land.YouCtrl | Types$ ChosenType | RemoveLandTypes$ True\nAI:RemoveDeck:All\nOracle:{1}: Choose a basic land type. Each land you control becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Terraformer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

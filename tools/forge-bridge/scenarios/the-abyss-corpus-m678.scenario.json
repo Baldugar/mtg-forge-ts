@@ -1,0 +1,23 @@
+{
+  "id": "the-abyss-corpus-m678",
+  "description": "M6 corpus — The Abyss; in-hand parse.",
+  "seed": 61981,
+  "cards": {
+    "The Abyss": "Name:The Abyss\nManaCost:3 B\nTypes:World Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, destroy target nonartifact creature that player controls of their choice. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonArtifact+ActivePlayerCtrl | TgtPrompt$ Choose target nonartifact creature. | NoRegen$ True | TargetingPlayer$ TriggeredPlayer\nAI:RemoveDeck:Random\nDeckHints:Type$Artifact|Thopter|Golem|Construct|Assembly-Worker|Myr\nOracle:At the beginning of each player's upkeep, destroy target nonartifact creature that player controls of their choice. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Abyss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

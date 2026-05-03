@@ -1,0 +1,23 @@
+{
+  "id": "will-of-the-temur-corpus-m678",
+  "description": "M6 corpus — Will of the Temur; in-hand parse.",
+  "seed": 64197,
+  "cards": {
+    "Will of the Temur": "Name:Will of the Temur\nManaCost:5 U\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBProjection,DBFruition | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both instead.\nSVar:DBProjection:DB$ CopyPermanent | ValidTgts$ Permanent | SetPower$ 4 | SetToughness$ 4 | AddTypes$ Dragon & Creature | AddKeywords$ Flying | SpellDescription$ Create a token that's a copy of target permanent, except it's a 4/4 Dragon creature with flying in addition to its other types.\nSVar:DBFruition:DB$ Draw | ValidTgts$ Player | NumCards$ X | SpellDescription$ Target player draws cards equal to the greatest mana value among permanents you control.\nSVar:X:Count$Valid Permanent.YouCtrl$GreatestCardManaCost\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nDeckHas:Ability$Token\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both instead.\\n• Create a token that's a copy of target permanent, except it's a 4/4 Dragon creature with flying in addition to its other types.\\n• Target player draws cards equal to the greatest mana value among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Will of the Temur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

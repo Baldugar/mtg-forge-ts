@@ -1,0 +1,23 @@
+{
+  "id": "tempt-with-reflections-corpus-m678",
+  "description": "M6 corpus — Tempt with Reflections; in-hand parse.",
+  "seed": 61862,
+  "cards": {
+    "Tempt with Reflections": "Name:Tempt with Reflections\nManaCost:3 U\nTypes:Sorcery\nA:SP$ CopyPermanent | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | StackDescription$ SpellDescription | SubAbility$ DBRepeat | SpellDescription$ Tempting offer — Choose target creature you control. Create a token that's a copy of that creature. Each opponent may create a token that's a copy of that creature. For each opponent who does, create a token that's a copy of that creature.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBCopyPermanent | RepeatPlayers$ Player.Opponent | SubAbility$ CopyAgain | ChangeZoneTable$ True | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to create a token that's a copy of that creature?\nSVar:DBCopyPermanent:DB$ CopyPermanent | Defined$ ParentTarget | Controller$ Player.IsRemembered | SubAbility$ DBCount\nSVar:DBCount:DB$ StoreSVar | SVar$ X | Type$ CountSVar | Expression$ X/Plus.1\nSVar:CopyAgain:DB$ CopyPermanent | Defined$ ParentTarget | NumCopies$ X | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ X | Type$ Number | Expression$ 0\nSVar:X:Number$0\nOracle:Tempting offer — Choose target creature you control. Create a token that's a copy of that creature. Each opponent may create a token that's a copy of that creature. For each opponent who does, create a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempt with Reflections"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

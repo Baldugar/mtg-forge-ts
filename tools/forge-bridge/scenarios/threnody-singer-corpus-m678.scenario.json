@@ -1,0 +1,23 @@
+{
+  "id": "threnody-singer-corpus-m678",
+  "description": "M6 corpus — Threnody Singer; in-hand parse.",
+  "seed": 62278,
+  "cards": {
+    "Threnody Singer": "Name:Threnody Singer\nManaCost:1 U\nTypes:Creature Siren\nPT:1/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -X/-0 until end of turn, where X is your devotion to blue. (Each {U} in the mana costs of permanents you control counts toward your devotion to blue.)\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | IsCurse$ True | NumAtt$ -X\nSVar:X:Count$Devotion.Blue\nOracle:Flash\\nFlying\\nWhen Threnody Singer enters, target creature an opponent controls gets -X/-0 until end of turn, where X is your devotion to blue. (Each {U} in the mana costs of permanents you control counts toward your devotion to blue.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Threnody Singer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

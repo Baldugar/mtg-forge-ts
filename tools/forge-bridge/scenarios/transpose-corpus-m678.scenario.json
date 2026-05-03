@@ -1,0 +1,23 @@
+{
+  "id": "transpose-corpus-m678",
+  "description": "M6 corpus — Transpose; in-hand parse.",
+  "seed": 62646,
+  "cards": {
+    "Transpose": "Name:Transpose\nManaCost:2 B\nTypes:Instant\nA:SP$ Draw | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card. You lose 1 life. If this spell was cast from your hand, create a 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\"\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_0_1_wizard_snipe | TokenOwner$ You | ConditionDefined$ Self | ConditionPresent$ Card.wasCastFromYourHand | ConditionCompare$ EQ1\nK:Rebound\nOracle:Draw a card, then discard a card. You lose 1 life. If this spell was cast from your hand, create a 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\"\\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transpose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

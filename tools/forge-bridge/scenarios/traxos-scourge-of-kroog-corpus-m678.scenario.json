@@ -1,0 +1,25 @@
+{
+  "id": "traxos-scourge-of-kroog-corpus-m678",
+  "description": "M6 corpus — Traxos, Scourge of Kroog; ETB-on-bf.",
+  "seed": 62669,
+  "cards": {
+    "Traxos, Scourge of Kroog": "Name:Traxos, Scourge of Kroog\nManaCost:4\nTypes:Legendary Artifact Creature Construct\nPT:7/7\nK:Trample\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ NICKNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ NICKNAME doesn't untap during your untap step.\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a historic spell, untap NICKNAME. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:BuffedBy:Card.Historic\nOracle:Trample\\nTraxos enters tapped and doesn't untap during your untap step.\\nWhenever you cast a historic spell, untap Traxos. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Traxos, Scourge of Kroog"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

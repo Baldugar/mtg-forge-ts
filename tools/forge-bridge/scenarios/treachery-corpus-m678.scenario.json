@@ -1,0 +1,23 @@
+{
+  "id": "treachery-corpus-m678",
+  "description": "M6 corpus — Treachery; in-hand parse.",
+  "seed": 62675,
+  "cards": {
+    "Treachery": "Name:Treachery\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap up to five lands.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 5\nSVar:PlayMain1:TRUE\nSVar:FreeSpellAI:True\nOracle:Enchant creature\\nWhen Treachery enters, untap up to five lands.\\nYou control enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treachery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

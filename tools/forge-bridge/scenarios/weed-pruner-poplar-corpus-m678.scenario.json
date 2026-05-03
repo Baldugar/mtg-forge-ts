@@ -1,0 +1,23 @@
+{
+  "id": "weed-pruner-poplar-corpus-m678",
+  "description": "M6 corpus — Weed-Pruner Poplar; in-hand parse.",
+  "seed": 64030,
+  "cards": {
+    "Weed-Pruner Poplar": "Name:Weed-Pruner Poplar\nManaCost:4 B\nTypes:Creature Treefolk Assassin\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of your upkeep, target creature other than CARDNAME gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:At the beginning of your upkeep, target creature other than Weed-Pruner Poplar gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weed-Pruner Poplar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

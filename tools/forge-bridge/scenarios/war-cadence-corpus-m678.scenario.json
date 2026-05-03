@@ -1,0 +1,25 @@
+{
+  "id": "war-cadence-corpus-m678",
+  "description": "M6 corpus — War Cadence; ETB-on-bf.",
+  "seed": 63839,
+  "cards": {
+    "War Cadence": "Name:War Cadence\nManaCost:2 R\nTypes:Enchantment\nA:AB$ Effect | Cost$ X R | StaticAbilities$ CadenceStaticAb | Stackable$ False | SetChosenNumber$ X | AILogic$ RestrictBlocking | SpellDescription$ This turn, creatures can't block unless their controller pays {X} for each blocking creature they control.\nSVar:CadenceStaticAb:Mode$ CantBlockUnless | Cost$ XChosen | Description$ This turn, creatures can't block unless their controller pays {X} for each blocking creature they control.\nSVar:X:Count$xPaid\nSVar:XChosen:Count$ChosenNumber\nSVar:NonStackingEffect:True\nOracle:{X}{R}: This turn, creatures can't block unless their controller pays {X} for each blocking creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "War Cadence"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

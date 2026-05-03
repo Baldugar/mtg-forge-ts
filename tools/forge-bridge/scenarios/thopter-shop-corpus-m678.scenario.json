@@ -1,0 +1,23 @@
+{
+  "id": "thopter-shop-corpus-m678",
+  "description": "M6 corpus — Thopter Shop; in-hand parse.",
+  "seed": 62181,
+  "cards": {
+    "Thopter Shop": "Name:Thopter Shop\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZoneAll | TriggerZones$ Battlefield | ValidCards$ Creature.Artifact+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more artifact creatures you control die, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Token | Cost$ 2 W T | TokenScript$ c_1_1_a_thopter_flying | SpellDescription$ Create a 1/1 colorless Thopter artifact creature token with flying.\nDeckHints:Ability$Sacrifice & Color$White\nDeckHas:Ability$Token & Type$Thopter & Keyword$Flying\nOracle:Whenever one or more artifact creatures you control die, draw a card. This ability triggers only once each turn.\\n{2}{W}, {T}: Create a 1/1 colorless Thopter artifact creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thopter Shop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

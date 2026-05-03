@@ -1,0 +1,23 @@
+{
+  "id": "this-is-how-it-ends-corpus-m678",
+  "description": "M6 corpus — This Is How It Ends; in-hand parse.",
+  "seed": 62171,
+  "cards": {
+    "This Is How It Ends": "Name:This Is How It Ends\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ DBChoice | SpellDescription$ The owner of target creature shuffles it into their library,\nSVar:DBChoice:DB$ VillainousChoice | Defined$ TargetedOwner | Choices$ DBLoseLife,DBShuffleAnother | SpellDescription$ then faces a villainous choice — They lose 5 life, or they shuffle another creature they own into their library.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 5 | Defined$ Remembered | SpellDescription$ Targeted creature's owner loses 5 life.\nSVar:DBShuffleAnother:DB$ ChangeZone | ChangeType$ Creature.OwnedBy Remembered | DefinedPlayer$ Remembered | Chooser$ Remembered | ChangeNum$ 1 | Mandatory$ True | Origin$ Battlefield | Destination$ Library | Shuffle$ True | Hidden$ True | SpellDescription$ Targeted creature's owner shuffles another creature they own into their library.\nOracle:Target creature's owner shuffles it into their library, then faces a villainous choice — They lose 5 life, or they shuffle another creature they own into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "This Is How It Ends"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

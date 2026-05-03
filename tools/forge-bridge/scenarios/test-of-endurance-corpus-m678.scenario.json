@@ -1,0 +1,23 @@
+{
+  "id": "test-of-endurance-corpus-m678",
+  "description": "M6 corpus — Test of Endurance; in-hand parse.",
+  "seed": 61935,
+  "cards": {
+    "Test of Endurance": "Name:Test of Endurance\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | LifeTotal$ You | LifeAmount$ GE50 | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if you have 50 or more life, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if you have 50 or more life, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Test of Endurance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

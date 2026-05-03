@@ -1,0 +1,23 @@
+{
+  "id": "transmogrant-s-crown-corpus-m678",
+  "description": "M6 corpus — Transmogrant's Crown; in-hand parse.",
+  "seed": 62641,
+  "cards": {
+    "Transmogrant's Crown": "Name:Transmogrant's Crown\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Equip:2:::AlternateCost$ B\nOracle:Equipped creature gets +2/+0.\\nWhenever equipped creature dies, draw a card.\\nEquip {2} or {B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transmogrant's Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

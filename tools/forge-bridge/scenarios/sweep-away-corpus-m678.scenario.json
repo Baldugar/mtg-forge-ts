@@ -1,0 +1,23 @@
+{
+  "id": "sweep-away-corpus-m678",
+  "description": "M6 corpus — Sweep Away; in-hand parse.",
+  "seed": 61482,
+  "cards": {
+    "Sweep Away": "Name:Sweep Away\nManaCost:2 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | IsCurse$ True | SubAbility$ DBDefaultAction | StackDescription$ SpellDescription | SpellDescription$ Return target creature to its owner's hand. If that creature is attacking, you may put it on top of its owner's library instead.\nSVar:DBDefaultAction:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBChoose\nSVar:DBChoose:DB$ GenericChoice | Choices$ DBTopLibChoice,DBHandChoice | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:DBTopLibChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ If that creature is attacking, you may put it on top of its owner's library instead.\nSVar:DBHandChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nSVar:X:Targeted$Valid Creature.attacking\nOracle:Return target creature to its owner's hand. If that creature is attacking, you may put it on top of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sweep Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

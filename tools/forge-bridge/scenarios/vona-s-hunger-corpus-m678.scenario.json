@@ -1,0 +1,23 @@
+{
+  "id": "vona-s-hunger-corpus-m678",
+  "description": "M6 corpus — Vona's Hunger; in-hand parse.",
+  "seed": 63677,
+  "cards": {
+    "Vona's Hunger": "Name:Vona's Hunger\nManaCost:2 B\nTypes:Instant\nK:Ascend\nA:SP$ Sacrifice | SacValid$ Creature | Defined$ Player.Opponent | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBRepeatEach | SpellDescription$ Each opponent sacrifices a creature. If you have the city's blessing, instead each opponent sacrifices half the creatures they control, rounded up.\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Opponent | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | RepeatSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ Y | SacValid$ Creature | Defined$ Remembered\nSVar:X:Count$Blessing.1.0\nSVar:Y:Count$Valid Creature.RememberedPlayerCtrl/HalfUp\nAI:RemoveDeck:All\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nEach opponent sacrifices a creature. If you have the city's blessing, instead each opponent sacrifices half the creatures they control, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vona's Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

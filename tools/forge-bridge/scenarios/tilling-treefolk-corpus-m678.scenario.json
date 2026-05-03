@@ -1,0 +1,23 @@
+{
+  "id": "tilling-treefolk-corpus-m678",
+  "description": "M6 corpus — Tilling Treefolk; in-hand parse.",
+  "seed": 62385,
+  "cards": {
+    "Tilling Treefolk": "Name:Tilling Treefolk\nManaCost:2 G\nTypes:Creature Treefolk Druid\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return up to two target land cards from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Land.YouCtrl | TargetMin$ 0 | TargetMax$ 2\nOracle:When Tilling Treefolk enters, you may return up to two target land cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tilling Treefolk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

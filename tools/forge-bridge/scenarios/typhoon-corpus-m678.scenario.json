@@ -1,0 +1,23 @@
+{
+  "id": "typhoon-corpus-m678",
+  "description": "M6 corpus — Typhoon; in-hand parse.",
+  "seed": 62909,
+  "cards": {
+    "Typhoon": "Name:Typhoon\nManaCost:2 G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TyphoonDmg | DamageMap$ True | SpellDescription$ CARDNAME deals damage to each opponent equal to the number of Islands that player controls.\nSVar:TyphoonDmg:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Island.RememberedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:Typhoon deals damage to each opponent equal to the number of Islands that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Typhoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

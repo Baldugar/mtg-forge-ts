@@ -1,0 +1,23 @@
+{
+  "id": "yuan-ti-scaleshield-corpus-m678",
+  "description": "M6 corpus — Yuan-Ti Scaleshield; in-hand parse.",
+  "seed": 64590,
+  "cards": {
+    "Yuan-Ti Scaleshield": "Name:Yuan-Ti Scaleshield\nManaCost:2 G\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Permanent.YouCtrl | KW$ Hexproof & Indestructible | SubAbility$ DBSeek | SpellDescription$ Permanents you control gain hexproof and indestructible until end of turn. Seek a creature card if an opponent has cast a spell with mana value 3 or less this turn.\nSVar:DBSeek:DB$ Seek | ConditionCheckSVar$ X | Type$ Creature\nSVar:X:Count$ThisTurnCast_Card.cmcLE3+OppCtrl\nOracle:Permanents you control gain hexproof and indestructible until end of turn.\\nSeek a creature card if an opponent has cast a spell with mana value 3 or less this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuan-Ti Scaleshield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

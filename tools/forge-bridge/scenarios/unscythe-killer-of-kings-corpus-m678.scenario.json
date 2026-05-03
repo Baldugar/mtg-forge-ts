@@ -1,0 +1,23 @@
+{
+  "id": "unscythe-killer-of-kings-corpus-m678",
+  "description": "M6 corpus — Unscythe, Killer of Kings; in-hand parse.",
+  "seed": 63113,
+  "cards": {
+    "Unscythe, Killer of Kings": "Name:Unscythe, Killer of Kings\nManaCost:U B B R\nTypes:Legendary Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | AddKeyword$ First Strike | Description$ Equipped creature gets +3/+3 and has first strike.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy Equipped | Execute$ UnscytheTrigExile | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a creature dealt damage by equipped creature this turn dies, you may exile that card. If you do, create a 2/2 black Zombie creature token.\nSVar:UnscytheTrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ UnscytheDBToken\nSVar:UnscytheDBToken:DB$ Token | TokenOwner$ You | TokenScript$ b_2_2_zombie | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ UnscytheDBCleanup\nSVar:UnscytheDBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Equipped creature gets +3/+3 and has first strike.\\nWhenever a creature dealt damage by equipped creature this turn dies, you may exile that card. If you do, create a 2/2 black Zombie creature token.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unscythe, Killer of Kings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

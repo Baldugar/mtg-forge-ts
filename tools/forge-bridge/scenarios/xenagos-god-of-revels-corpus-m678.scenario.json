@@ -1,0 +1,23 @@
+{
+  "id": "xenagos-god-of-revels-corpus-m678",
+  "description": "M6 corpus — Xenagos, God of Revels; in-hand parse.",
+  "seed": 64500,
+  "cards": {
+    "Xenagos, God of Revels": "Name:Xenagos, God of Revels\nManaCost:3 R G\nTypes:Legendary Enchantment Creature God\nPT:6/5\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to red and green is less than seven, NICKNAME isn't a creature.\nSVar:X:Count$DevotionDual.Red.Green\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target creature you control gains haste and gets +X/+X until end of turn, where X is that creature's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +Y | NumDef$ +Y | KW$ Haste\nSVar:Y:Targeted$CardPower\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Permanent.Red,Permanent.Green\nOracle:Indestructible\\nAs long as your devotion to red and green is less than seven, Xenagos isn't a creature.\\nAt the beginning of combat on your turn, another target creature you control gains haste and gets +X/+X until end of turn, where X is that creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xenagos, God of Revels"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

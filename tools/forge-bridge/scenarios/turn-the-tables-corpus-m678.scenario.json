@@ -1,0 +1,23 @@
+{
+  "id": "turn-the-tables-corpus-m678",
+  "description": "M6 corpus — Turn the Tables; in-hand parse.",
+  "seed": 62839,
+  "cards": {
+    "Turn the Tables": "Name:Turn the Tables\nManaCost:3 W W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ DamageEvent | RememberObjects$ Targeted | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | IsCurse$ True | AILogic$ Fog | SpellDescription$ All combat damage that would be dealt to you this turn is dealt to target attacking creature instead.\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Creature | ValidTarget$ You | ReplaceWith$ TurnTheTables | IsCombat$ True | DamageTarget$ Remembered | Description$ All combat damage that would be dealt to you this turn is dealt to target attacking creature instead.\nSVar:TurnTheTables:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card\nOracle:All combat damage that would be dealt to you this turn is dealt to target attacking creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turn the Tables"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

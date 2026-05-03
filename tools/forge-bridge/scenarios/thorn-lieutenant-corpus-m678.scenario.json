@@ -1,0 +1,23 @@
+{
+  "id": "thorn-lieutenant-corpus-m678",
+  "description": "M6 corpus — Thorn Lieutenant; in-hand parse.",
+  "seed": 62185,
+  "cards": {
+    "Thorn Lieutenant": "Name:Thorn Lieutenant\nManaCost:1 G\nTypes:Creature Elf Warrior\nPT:2/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME becomes the target of a spell or ability an opponent controls, create a 1/1 green Elf Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ g_1_1_elf_warrior\nA:AB$ Pump | Cost$ 5 G | NumAtt$ +4 | NumDef$ +4 | SpellDescription$ CARDNAME gets +4/+4 until end of turn.\nDeckHas:Ability$Token\nOracle:Whenever Thorn Lieutenant becomes the target of a spell or ability an opponent controls, create a 1/1 green Elf Warrior creature token.\\n{5}{G}: Thorn Lieutenant gets +4/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thorn Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

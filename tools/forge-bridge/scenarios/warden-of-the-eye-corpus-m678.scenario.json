@@ -1,0 +1,23 @@
+{
+  "id": "warden-of-the-eye-corpus-m678",
+  "description": "M6 corpus — Warden of the Eye; in-hand parse.",
+  "seed": 63875,
+  "cards": {
+    "Warden of the Eye": "Name:Warden of the Eye\nManaCost:2 U R W\nTypes:Creature Djinn Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMove | TriggerDescription$ When CARDNAME enters, return target noncreature, nonland card from your graveyard to your hand.\nSVar:TrigMove:DB$ ChangeZone | Mandatory$ True | ValidTgts$ Card.nonCreature+nonLand+YouCtrl | TgtPrompt$ Select target noncreature nonland card | Origin$ Graveyard | Destination$ Hand\nOracle:When Warden of the Eye enters, return target noncreature, nonland card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warden of the Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

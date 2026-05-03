@@ -1,0 +1,23 @@
+{
+  "id": "yuan-shao-s-infantry-corpus-m678",
+  "description": "M6 corpus — Yuan Shao's Infantry; in-hand parse.",
+  "seed": 64589,
+  "cards": {
+    "Yuan Shao's Infantry": "Name:Yuan Shao's Infantry\nManaCost:3 R\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Alone$ True | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks alone, it can't be blocked this combat.\nSVar:TrigUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | Duration$ UntilEndOfCombat\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this combat.\nOracle:Whenever Yuan Shao's Infantry attacks alone, Yuan Shao's Infantry can't be blocked this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuan Shao's Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

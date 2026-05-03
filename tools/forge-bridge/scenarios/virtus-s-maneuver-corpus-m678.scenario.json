@@ -1,0 +1,23 @@
+{
+  "id": "virtus-s-maneuver-corpus-m678",
+  "description": "M6 corpus — Virtus's Maneuver; in-hand parse.",
+  "seed": 63550,
+  "cards": {
+    "Virtus's Maneuver": "Name:Virtus's Maneuver\nManaCost:2 B\nTypes:Sorcery\nA:SP$ AssignGroup | Defined$ Player | Choices$ DBToHand,DBSacrifice | AILogic$ FriendOrFoe | SpellDescription$ For each player, choose friend or foe. Each friend returns a creature card from their graveyard to their hand. Each foe sacrifices a creature they control.\nSVar:DBToHand:DB$ ChangeZone | DefinedPlayer$ Remembered | ChangeType$ Creature | Hidden$ True | Mandatory$ True | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Each friend returns a creature card from their graveyard to their hand\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Remembered | SacValid$ Creature | StackDescription$ SpellDescription | SpellDescription$ Each foe sacrifices a creature they control\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:SVar$Z1/Plus.Z2\nSVar:Z1:Count$ValidGraveyard Creature.YourTeamCtrl\nSVar:Z2:Count$Valid Creature.OppCtrl\nOracle:For each player, choose friend or foe. Each friend returns a creature card from their graveyard to their hand. Each foe sacrifices a creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virtus's Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

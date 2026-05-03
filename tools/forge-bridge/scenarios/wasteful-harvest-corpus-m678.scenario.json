@@ -1,0 +1,23 @@
+{
+  "id": "wasteful-harvest-corpus-m678",
+  "description": "M6 corpus — Wasteful Harvest; in-hand parse.",
+  "seed": 63938,
+  "cards": {
+    "Wasteful Harvest": "Name:Wasteful Harvest\nManaCost:2 G\nTypes:Instant\nA:SP$ Mill | NumCards$ 5 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill five cards. You may put a permanent card from among the cards milled this way into your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | Hidden$ True | ChangeType$ Permanent.IsRemembered | ChangeNum$ 1 | SelectPrompt$ You may choose a permanent card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill\nDeckHints:Ability$Graveyard\nOracle:Mill five cards. You may put a permanent card from among the cards milled this way into your hand. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wasteful Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

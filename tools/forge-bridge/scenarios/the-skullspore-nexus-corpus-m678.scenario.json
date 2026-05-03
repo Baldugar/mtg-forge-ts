@@ -1,0 +1,23 @@
+{
+  "id": "the-skullspore-nexus-corpus-m678",
+  "description": "M6 corpus — The Skullspore Nexus; in-hand parse.",
+  "seed": 62105,
+  "cards": {
+    "The Skullspore Nexus": "Name:The Skullspore Nexus\nManaCost:6 G G\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {X} less to cast, where X is the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.!token+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.\nSVar:TrigToken:DB$ Token | TokenScript$ g_x_x_fungus_dinosaur | TokenPower$ Z | TokenToughness$ Z\nSVar:Z:TriggerObjectsCards$CardPower\nA:AB$ Pump | Cost$ 2 T | NumAtt$ Double | ValidTgts$ Creature | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ Double target creature's power until end of turn.\nDeckHas:Ability$Token & Type$Fungus|Dinosaur\nOracle:This spell costs {X} less to cast, where X is the greatest power among creatures you control.\\nWhenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.\\n{2}, {T}: Double target creature's power until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Skullspore Nexus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

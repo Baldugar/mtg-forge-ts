@@ -1,0 +1,23 @@
+{
+  "id": "watcher-of-the-spheres-corpus-m678",
+  "description": "M6 corpus — Watcher of the Spheres; in-hand parse.",
+  "seed": 63949,
+  "cards": {
+    "Watcher of the Spheres": "Name:Watcher of the Spheres\nManaCost:W U\nTypes:Creature Bird Wizard\nPT:2/2\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Creature.withFlying | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Creature spells with flying you cast cost {1} less to cast.\nDeckHints:Keyword$Flying\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl+withFlying | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature with flying you control enters, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nSVar:BuffedBy:Creature.withFlying\nOracle:Flying\\nCreature spells with flying you cast cost {1} less to cast.\\nWhenever another creature with flying you control enters, Watcher of the Spheres gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Watcher of the Spheres"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tragic-banshee-corpus-m678",
+  "description": "M6 corpus — Tragic Banshee; in-hand parse.",
+  "seed": 62602,
+  "cards": {
+    "Tragic Banshee": "Name:Tragic Banshee\nManaCost:4 B\nTypes:Creature Spirit\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Morbid — When this creature enters, target creature an opponent controls gets -1/-1 until end of turn. If a creature died this turn, that creature gets -13/-13 instead.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$Morbid.13.1\nOracle:Morbid — When this creature enters, target creature an opponent controls gets -1/-1 until end of turn. If a creature died this turn, that creature gets -13/-13 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tragic Banshee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

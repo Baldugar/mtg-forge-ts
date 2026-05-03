@@ -1,0 +1,23 @@
+{
+  "id": "taunt-corpus-m678",
+  "description": "M6 corpus — Taunt; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Taunt": "Name:Taunt\nManaCost:U\nTypes:Sorcery\nA:SP$ DelayedTrigger | ValidTgts$ Player | Mode$ Phase | Phase$ Upkeep-> | DelayedTriggerDefinedPlayer$ Targeted | RememberObjects$ Targeted | Execute$ TrigEffect | Static$ True | SpellDescription$ During target player's next turn, creatures that player controls attack you if able.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ DelayTriggerRemembered | StaticAbilities$ MustAttack | SubAbility$ DBCleanup\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.RememberedPlayerCtrl | MustAttack$ You | Description$ During target player's next turn, creatures that player controls attack you if able.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:During target player's next turn, creatures that player controls attack you if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

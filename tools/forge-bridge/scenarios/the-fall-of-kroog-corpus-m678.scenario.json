@@ -1,0 +1,23 @@
+{
+  "id": "the-fall-of-kroog-corpus-m678",
+  "description": "M6 corpus — The Fall of Kroog; in-hand parse.",
+  "seed": 62030,
+  "cards": {
+    "The Fall of Kroog": "Name:The Fall of Kroog\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ DBDestroy | StackDescription$ SpellDescription | SpellDescription$ Choose target opponent. Destroy target land that player controls. CARDNAME deals 3 damage to that player and 1 damage to each creature they control.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Land.ControlledBy ParentTarget | TgtPrompt$ Select target land that player controls | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedPlayer | NumDmg$ 3 | SubAbility$ DBDamageAll | DamageMap$ True | StackDescription$ None\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature.ControlledBy TargetedPlayer | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Choose target opponent. Destroy target land that player controls. The Fall of Kroog deals 3 damage to that player and 1 damage to each creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fall of Kroog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

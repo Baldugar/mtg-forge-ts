@@ -1,0 +1,23 @@
+{
+  "id": "teetering-peaks-corpus-m678",
+  "description": "M6 corpus — Teetering Peaks; in-hand parse.",
+  "seed": 61772,
+  "cards": {
+    "Teetering Peaks": "Name:Teetering Peaks\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2\nAI:RemoveDeck:Random\nOracle:Teetering Peaks enters tapped.\\nWhen Teetering Peaks enters, target creature gets +2/+0 until end of turn.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teetering Peaks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

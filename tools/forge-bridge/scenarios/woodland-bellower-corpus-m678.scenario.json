@@ -1,0 +1,23 @@
+{
+  "id": "woodland-bellower-corpus-m678",
+  "description": "M6 corpus — Woodland Bellower; in-hand parse.",
+  "seed": 64382,
+  "cards": {
+    "Woodland Bellower": "Name:Woodland Bellower\nManaCost:4 G G\nTypes:Creature Beast\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a nonlegendary green creature card with mana value 3 or less, put it onto the battlefield, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Creature+Green+nonLegendary+cmcLE3 | ChangeNum$ 1\nOracle:When Woodland Bellower enters, you may search your library for a nonlegendary green creature card with mana value 3 or less, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodland Bellower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

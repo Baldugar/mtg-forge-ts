@@ -1,0 +1,23 @@
+{
+  "id": "thornbow-archer-corpus-m678",
+  "description": "M6 corpus — Thornbow Archer; in-hand parse.",
+  "seed": 62190,
+  "cards": {
+    "Thornbow Archer": "Name:Thornbow Archer\nManaCost:B\nTypes:Creature Elf Archer\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks, each opponent who doesn't control an Elf loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent+controlsElf_EQ0 | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Thornbow Archer attacks, each opponent who doesn't control an Elf loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thornbow Archer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

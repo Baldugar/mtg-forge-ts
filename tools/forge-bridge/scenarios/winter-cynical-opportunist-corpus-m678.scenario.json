@@ -1,0 +1,23 @@
+{
+  "id": "winter-cynical-opportunist-corpus-m678",
+  "description": "M6 corpus — Winter, Cynical Opportunist; in-hand parse.",
+  "seed": 64273,
+  "cards": {
+    "Winter, Cynical Opportunist": "Name:Winter, Cynical Opportunist\nManaCost:2 B G\nTypes:Legendary Creature Human Warlock\nPT:2/5\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever NICKNAME attacks, mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Delirium$ True | TriggerZones$ Battlefield | Execute$ TrigExileDelirium | TriggerDescription$ Delirium — At the beginning of your end step, you may exile any number of cards from your graveyard with four or more card types among them. If you do, put a permanent card from among them onto the battlefield with a finality counter on it.\nSVar:TrigExileDelirium:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.YouOwn | ChangeNum$ X | RememberChanged$ True | Hidden$ True | WithTotalCardTypes$ 4 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | WithCountersType$ FINALITY | Hidden$ True | ChangeType$ Permanent.YouOwn+IsRemembered | ChangeNum$ 1 | SubAbility$ DBCleanup | Mandatory$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Card.YouOwn\nAI:RemoveDeck:All\nOracle:Deathtouch\\nWhenever Winter attacks, mill three cards.\\nDelirium — At the beginning of your end step, you may exile any number of cards from your graveyard with four or more card types among them. If you do, put a permanent card from among them onto the battlefield with a finality counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winter, Cynical Opportunist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

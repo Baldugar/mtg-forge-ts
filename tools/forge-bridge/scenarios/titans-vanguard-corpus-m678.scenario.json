@@ -1,0 +1,23 @@
+{
+  "id": "titans-vanguard-corpus-m678",
+  "description": "M6 corpus — Titans' Vanguard; in-hand parse.",
+  "seed": 62445,
+  "cards": {
+    "Titans' Vanguard": "Name:Titans' Vanguard\nManaCost:3 R G\nTypes:Creature Eldrazi\nPT:5/5\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When you cast this spell and whenever CARDNAME attacks, put a +1/+1 counter on each colorless creature you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When you cast this spell and whenever CARDNAME attacks, put a +1/+1 counter on each colorless creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.Colorless+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nK:Trample\nDeckHas:Ability$Counters\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell and whenever Titans' Vanguard attacks, put a +1/+1 counter on each colorless creature you control.\\nTrample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titans' Vanguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

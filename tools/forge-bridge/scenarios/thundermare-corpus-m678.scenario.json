@@ -1,0 +1,23 @@
+{
+  "id": "thundermare-corpus-m678",
+  "description": "M6 corpus — Thundermare; in-hand parse.",
+  "seed": 62330,
+  "cards": {
+    "Thundermare": "Name:Thundermare\nManaCost:5 R\nTypes:Creature Elemental Horse\nPT:5/5\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all other creatures.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.StrictlyOther\nOracle:Haste (This creature can attack and {T} as soon as it comes under your control.)\\nWhen Thundermare enters, tap all other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundermare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

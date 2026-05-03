@@ -1,0 +1,25 @@
+{
+  "id": "urborg-corpus-m678",
+  "description": "M6 corpus — Urborg; ETB-on-bf.",
+  "seed": 63154,
+  "cards": {
+    "Urborg": "Name:Urborg\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1 | SpellDescription$ Add {B}.\nA:AB$ GenericChoice | Cost$ T | ValidTgts$ Creature | Choices$ DebuffFS,DebuffSW | Defined$ You | SpellDescription$ Target creature loses first strike or swampwalk until end of turn.\nSVar:DebuffFS:DB$ Debuff | Keywords$ First Strike | Defined$ Targeted | SpellDescription$ Target creature loses first strike until end of turn.\nSVar:DebuffSW:DB$ Debuff | Defined$ Targeted | Keywords$ Landwalk:Swamp | SpellDescription$ Target creature loses swampwalk until end of turn.\nAI:RemoveDeck:All\nOracle:{T}: Add {B}.\\n{T}: Target creature loses first strike or swampwalk until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Urborg"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

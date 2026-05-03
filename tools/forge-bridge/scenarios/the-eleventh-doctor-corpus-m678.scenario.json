@@ -1,0 +1,23 @@
+{
+  "id": "the-eleventh-doctor-corpus-m678",
+  "description": "M6 corpus — The Eleventh Doctor; in-hand parse.",
+  "seed": 62024,
+  "cards": {
+    "The Eleventh Doctor": "Name:The Eleventh Doctor\nManaCost:1 W U\nTypes:Legendary Creature Time Lord Doctor\nPT:3/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigChangeZone | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ I. AM. TALKING! — Whenever CARDNAME deals combat damage to a player, you may exile a card from your hand with a number of time counters on it equal to its mana value. If it doesn't have suspend, it gains suspend.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | WithCountersType$ TIME | WithCountersAmount$ X | RememberChanged$ True | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ PumpAll | ValidCards$ Card.IsRemembered+withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nA:AB$ Effect | Cost$ 2 | ValidTgts$ Creature.powerLE3 | TgtPrompt$ Select target creature with power 3 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 3 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nOracle:I. AM. TALKING! — Whenever The Eleventh Doctor deals combat damage to a player, you may exile a card from your hand with a number of time counters on it equal to its mana value. If it doesn't have suspend, it gains suspend.\\n{2}: Target creature with power 3 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Eleventh Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

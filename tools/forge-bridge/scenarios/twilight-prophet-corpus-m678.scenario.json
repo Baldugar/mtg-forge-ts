@@ -1,0 +1,23 @@
+{
+  "id": "twilight-prophet-corpus-m678",
+  "description": "M6 corpus — Twilight Prophet; in-hand parse.",
+  "seed": 62868,
+  "cards": {
+    "Twilight Prophet": "Name:Twilight Prophet\nManaCost:2 B B\nTypes:Creature Vampire Cleric\nPT:2/4\nK:Flying\nK:Ascend\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | Blessing$ True | TriggerDescription$ At the beginning of your upkeep, if you have the city's blessing, reveal the top card of your library and put it into your hand. Each opponent loses X life and you gain X life, where X is that card's mana value.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | RememberChanged$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Player.Opponent | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Flying\\nAscend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nAt the beginning of your upkeep, if you have the city's blessing, reveal the top card of your library and put it into your hand. Each opponent loses X life and you gain X life, where X is that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twilight Prophet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

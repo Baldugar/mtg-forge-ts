@@ -1,0 +1,25 @@
+{
+  "id": "valley-floodcaller-corpus-m678",
+  "description": "M6 corpus — Valley Floodcaller; ETB-on-bf.",
+  "seed": 63231,
+  "cards": {
+    "Valley Floodcaller": "Name:Valley Floodcaller\nManaCost:2 U\nTypes:Creature Otter Wizard\nPT:2/2\nK:Flash\nS:Mode$ CastWithFlash | ValidCard$ Card.nonCreature | ValidSA$ Spell | Caster$ You | Description$ You may cast noncreature spells as though they had flash.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a noncreature spell, Birds, Frogs, Otters, and Rats you control get +1/+1 until end of turn. Untap them.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Bird.YouCtrl,Frog.YouCtrl,Otter.YouCtrl,Rat.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SubAbility$ TrigUntapAll\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Bird.YouCtrl,Frog.YouCtrl,Otter.YouCtrl,Rat.YouCtrl\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Flash\\nYou may cast noncreature spells as though they had flash.\\nWhenever you cast a noncreature spell, Birds, Frogs, Otters, and Rats you control get +1/+1 until end of turn. Untap them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Valley Floodcaller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

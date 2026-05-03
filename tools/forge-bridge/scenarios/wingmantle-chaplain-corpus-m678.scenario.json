@@ -1,0 +1,23 @@
+{
+  "id": "wingmantle-chaplain-corpus-m678",
+  "description": "M6 corpus — Wingmantle Chaplain; in-hand parse.",
+  "seed": 64259,
+  "cards": {
+    "Wingmantle Chaplain": "Name:Wingmantle Chaplain\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:0/3\nK:Defender\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigBird | TriggerDescription$ When CARDNAME enters, create a 1/1 white Bird creature token with flying for each creature with defender you control.\nSVar:TrigBird:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenAmount$ X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.withDefender+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another creature you control with defender enters, create a 1/1 white Bird creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying\nSVar:X:Count$Valid Creature.withDefender+YouCtrl\nDeckHints:Keyword$Defender\nDeckHas:Ability$Token\nOracle:Defender\\nWhen Wingmantle Chaplain enters, create a 1/1 white Bird creature token with flying for each creature with defender you control.\\nWhenever another creature you control with defender enters, create a 1/1 white Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingmantle Chaplain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

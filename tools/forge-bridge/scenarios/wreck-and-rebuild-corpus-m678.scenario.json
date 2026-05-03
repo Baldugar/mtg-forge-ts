@@ -1,0 +1,23 @@
+{
+  "id": "wreck-and-rebuild-corpus-m678",
+  "description": "M6 corpus — Wreck and Rebuild; in-hand parse.",
+  "seed": 64448,
+  "cards": {
+    "Wreck and Rebuild": "Name:Wreck and Rebuild\nManaCost:1 R G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DestroyArtifact,DBMill\nSVar:DestroyArtifact:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBMill:DB$ Mill | NumCards$ 5 | Defined$ You | SubAbility$ DBReturn | SpellDescription$ Mill five cards, then you may put a land card from your graveyard onto the battlefield tapped.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Land.YouOwn | Hidden$ True | Tapped$ True\nK:Flashback:3 R G\nOracle:Choose one —\\n• Destroy target artifact or enchantment.\\n• Mill five cards, then you may put a land card from your graveyard onto the battlefield tapped.\\nFlashback {3}{R}{G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wreck and Rebuild"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

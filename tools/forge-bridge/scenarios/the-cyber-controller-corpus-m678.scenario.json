@@ -1,0 +1,23 @@
+{
+  "id": "the-cyber-controller-corpus-m678",
+  "description": "M6 corpus — The Cyber-Controller; in-hand parse.",
+  "seed": 62013,
+  "cards": {
+    "The Cyber-Controller": "Name:The Cyber-Controller\nManaCost:X U U B\nTypes:Legendary Artifact Creature Cyberman\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill1 | TriggerDescription$ When CARDNAME enters, each opponent mills X cards. Put all creature cards milled this way onto the battlefield face down under your control. They're 2/2 Cyberman artifact creatures.\nSVar:TrigMill1:DB$ Mill | Defined$ Opponent | NumCards$ X | RememberMilled$ True | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZone | Origin$ Graveyard,Exile | GainControl$ True | Destination$ Battlefield | Defined$ Remembered.Creature | FaceDown$ True | FaceDownPower$ 2 | FaceDownToughness$ 2 | FaceDownSetType$ Artifact & Creature & Cyberman | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.Artifact+YouCtrl+Other | AddToughness$ 1 | AddPower$ 1 | Description$ Other artifact creatures you control get +1/+1.\nSVar:X:Count$xPaid\nDeckHas:Ability$Mill\nDeckHints:Type$Artifact & Type$Creature\nOracle:When The Cyber-Controller enters, each opponent mills X cards. Put all creature cards milled this way onto the battlefield face down under your control. They're 2/2 Cyberman artifact creatures.\\nOther artifact creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Cyber-Controller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

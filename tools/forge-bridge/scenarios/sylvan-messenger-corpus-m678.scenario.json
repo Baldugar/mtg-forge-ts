@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-messenger-corpus-m678",
+  "description": "M6 corpus — Sylvan Messenger; in-hand parse.",
+  "seed": 61543,
+  "cards": {
+    "Sylvan Messenger": "Name:Sylvan Messenger\nManaCost:3 G\nTypes:Creature Elf\nPT:2/2\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top four cards of your library. Put all Elf cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Elf\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nWhen Sylvan Messenger enters, reveal the top four cards of your library. Put all Elf cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Messenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

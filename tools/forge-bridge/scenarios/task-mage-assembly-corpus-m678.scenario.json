@@ -1,0 +1,23 @@
+{
+  "id": "task-mage-assembly-corpus-m678",
+  "description": "M6 corpus — Task Mage Assembly; in-hand parse.",
+  "seed": 61721,
+  "cards": {
+    "Task Mage Assembly": "Name:Task Mage Assembly\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Creature | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When there are no creatures on the battlefield, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ DealDamage | Cost$ 2 | ValidTgts$ Creature | NumDmg$ 1 | Activator$ Player | SorcerySpeed$ True | SpellDescription$ CARDNAME deals 1 damage to target creature. Any player may activate this ability but only as a sorcery.\nSVar:NeedsToPlay:Creature.YouCtrl\nSVar:NonStackingEffect:True\nOracle:When there are no creatures on the battlefield, sacrifice Task Mage Assembly.\\n{2}: Task Mage Assembly deals 1 damage to target creature. Any player may activate this ability but only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Task Mage Assembly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

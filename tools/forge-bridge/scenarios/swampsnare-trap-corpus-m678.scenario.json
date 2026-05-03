@@ -1,0 +1,23 @@
+{
+  "id": "swampsnare-trap-corpus-m678",
+  "description": "M6 corpus — Swampsnare Trap; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Swampsnare Trap": "Name:Swampsnare Trap\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | ValidTarget$ Creature.withFlying | EffectZone$ All | Description$ This spell costs {1} less to cast if it targets a creature with flying.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -5 | AddToughness$ -3 | Description$ Enchanted creature gets -5/-3.\nOracle:This spell costs {1} less to cast if it targets a creature with flying.\\nEnchant creature\\nEnchanted creature gets -5/-3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swampsnare Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

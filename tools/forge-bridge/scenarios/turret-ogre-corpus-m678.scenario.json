@@ -1,0 +1,23 @@
+{
+  "id": "turret-ogre-corpus-m678",
+  "description": "M6 corpus — Turret Ogre; in-hand parse.",
+  "seed": 62849,
+  "cards": {
+    "Turret Ogre": "Name:Turret Ogre\nManaCost:3 R\nTypes:Creature Ogre Warrior\nPT:4/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Creature.Other+YouCtrl+powerGE4 | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if you control another creature with power 4 or greater, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nOracle:Reach (This creature can block creatures with flying.)\\nWhen Turret Ogre enters, if you control another creature with power 4 or greater, Turret Ogre deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turret Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

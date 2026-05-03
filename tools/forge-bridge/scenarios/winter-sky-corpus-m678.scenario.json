@@ -1,0 +1,23 @@
+{
+  "id": "winter-sky-corpus-m678",
+  "description": "M6 corpus — Winter Sky; in-hand parse.",
+  "seed": 64277,
+  "cards": {
+    "Winter Sky": "Name:Winter Sky\nManaCost:R\nTypes:Sorcery\nA:SP$ FlipACoin | WinSubAbility$ DBDamageAll | LoseSubAbility$ DBDraw | SpellDescription$ Flip a coin. If you win the flip, CARDNAME deals 1 damage to each creature and each player. If you lose the flip, each player draws a card.\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature | ValidPlayers$ Player | ValidDescription$ each creature and each player.\nSVar:DBDraw:DB$ Draw | Defined$ Player\nAI:RemoveDeck:All\nOracle:Flip a coin. If you win the flip, Winter Sky deals 1 damage to each creature and each player. If you lose the flip, each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winter Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

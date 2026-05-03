@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-primordial-corpus-m678",
+  "description": "M6 corpus — Sylvan Primordial; in-hand parse.",
+  "seed": 61547,
+  "cards": {
+    "Sylvan Primordial": "Name:Sylvan Primordial\nManaCost:5 G G\nTypes:Creature Avatar\nPT:6/8\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DestroyOneEach | TriggerDescription$ When CARDNAME enters, for each opponent, destroy target noncreature permanent that player controls. For each permanent destroyed this way, search your library for a Forest card and put that card onto the battlefield tapped. Then shuffle.\nSVar:DestroyOneEach:DB$ Destroy | ValidTgts$ Permanent.nonCreature+OppCtrl | TgtPrompt$ For each opponent, select target noncreature permanent that player controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | RememberDestroyed$ True | SubAbility$ GetForests\nSVar:GetForests:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ X | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:Reach\\nWhen Sylvan Primordial enters, for each opponent, destroy target noncreature permanent that player controls. For each permanent destroyed this way, search your library for a Forest card and put that card onto the battlefield tapped. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Primordial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

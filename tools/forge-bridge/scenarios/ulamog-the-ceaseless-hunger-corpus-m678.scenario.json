@@ -1,0 +1,23 @@
+{
+  "id": "ulamog-the-ceaseless-hunger-corpus-m678",
+  "description": "M6 corpus — Ulamog, the Ceaseless Hunger; in-hand parse.",
+  "seed": 62937,
+  "cards": {
+    "Ulamog, the Ceaseless Hunger": "Name:Ulamog, the Ceaseless Hunger\nManaCost:10\nTypes:Legendary Creature Eldrazi\nPT:10/10\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When you cast this spell, exile two target permanents.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Permanent | TargetMin$ 2 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Exile\nK:Indestructible\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, defending player exiles the top twenty cards of their library.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredDefendingPlayer | DestinationZone$ Exile | DigNum$ 20 | ChangeNum$ All\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nOracle:When you cast this spell, exile two target permanents.\\nIndestructible\\nWhenever Ulamog, the Ceaseless Hunger attacks, defending player exiles the top twenty cards of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulamog, the Ceaseless Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

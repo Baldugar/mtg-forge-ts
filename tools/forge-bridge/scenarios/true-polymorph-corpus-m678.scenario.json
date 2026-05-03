@@ -1,0 +1,23 @@
+{
+  "id": "true-polymorph-corpus-m678",
+  "description": "M6 corpus — True Polymorph; in-hand parse.",
+  "seed": 62792,
+  "cards": {
+    "True Polymorph": "Name:True Polymorph\nManaCost:4 U U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature to polymorph | SubAbility$ DBClone | StackDescription$ {c:ThisTargetedCard} | SpellDescription$ Target artifact or creature becomes a copy of another target artifact or creature.\nSVar:DBClone:DB$ Clone | CloneTarget$ ParentTarget | ValidTgts$ Artifact,Creature | TgtPrompt$ Select another target artifact or creature to copy | TargetUnique$ True | StackDescription$ becomes a copy of {c:ThisTargetedCard}.\nAI:RemoveDeck:Random\nOracle:Target artifact or creature becomes a copy of another target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "True Polymorph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vigilant-sentry-corpus-m678",
+  "description": "M6 corpus — Vigilant Sentry; ETB-on-bf.",
+  "seed": 63489,
+  "cards": {
+    "Vigilant Sentry": "Name:Vigilant Sentry\nManaCost:1 W W\nTypes:Creature Human Nomad\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | AddAbility$ Pump | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +1/+1 and has \"{T}: Target attacking or blocking creature gets +3/+3 until end of turn.\"\nSVar:Pump:AB$ Pump | Cost$ T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumAtt$ +3 | NumDef$ +3 | SpellDescription$ Target attacking or blocking creature gets +3/+3 until end of turn.\nOracle:Threshold — As long as there are seven or more cards in your graveyard, Vigilant Sentry gets +1/+1 and has \"{T}: Target attacking or blocking creature gets +3/+3 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vigilant Sentry"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

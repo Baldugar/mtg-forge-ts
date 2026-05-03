@@ -1,0 +1,23 @@
+{
+  "id": "unfinished-business-corpus-m678",
+  "description": "M6 corpus — Unfinished Business; in-hand parse.",
+  "seed": 63052,
+  "cards": {
+    "Unfinished Business": "Name:Unfinished Business\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | SubAbility$ DBAttach | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to the battlefield, then return up to two target Aura and/or Equipment cards from your graveyard to the battlefield attached to that creature. (If the Auras can't enchant that creature, they remain in your graveyard.)\nSVar:DBAttach:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Aura.YouCtrl,Equipment.YouCtrl | AttachedTo$ ParentTarget | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target Equipments or Auras from your graveyard\nDeckHas:Ability$Graveyard\nDeckHints:Type$Aura|Equipment\nOracle:Return target creature card from your graveyard to the battlefield, then return up to two target Aura and/or Equipment cards from your graveyard to the battlefield attached to that creature. (If the Auras can't enchant that creature, they remain in your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unfinished Business"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

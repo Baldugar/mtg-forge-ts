@@ -1,0 +1,23 @@
+{
+  "id": "the-sound-of-drums-corpus-m678",
+  "description": "M6 corpus — The Sound of Drums; in-hand parse.",
+  "seed": 62106,
+  "cards": {
+    "The Sound of Drums": "Name:The Sound of Drums\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | Goad$ True | Description$ Enchanted creature is goaded.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.EnchantedBy | ValidTarget$ Permanent,Player | IsCombat$ True | ReplaceWith$ DmgTwice | Description$ If enchanted creature would deal combat damage to a permanent or player, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ ReplaceCount$DamageAmount/Twice\nA:AB$ ChangeZone | Cost$ 2 R | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nDeckHas:Ability$Graveyard\nOracle:Enchant creature\\nEnchanted creature is goaded.\\nIf enchanted creature would deal combat damage to a permanent or player, it deals double that damage instead.\\n{2}{R}: Return The Sound of Drums from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Sound of Drums"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

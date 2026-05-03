@@ -1,0 +1,23 @@
+{
+  "id": "waterspout-elemental-corpus-m678",
+  "description": "M6 corpus — Waterspout Elemental; in-hand parse.",
+  "seed": 63966,
+  "cards": {
+    "Waterspout Elemental": "Name:Waterspout Elemental\nManaCost:3 U U\nTypes:Creature Elemental\nPT:3/4\nK:Flying\nK:Kicker:U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, return all other creatures to their owners' hands and you skip your next turn.\nSVar:TrigKicker:DB$ ChangeZoneAll | ChangeType$ Creature.StrictlyOther | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBSkipTurn\nSVar:DBSkipTurn:DB$ SkipTurn | NumTurns$ 1 | Defined$ You\nAI:RemoveDeck:All\nOracle:Kicker {U} (You may pay an additional {U} as you cast this spell.)\\nFlying\\nWhen Waterspout Elemental enters, if it was kicked, return all other creatures to their owners' hands and you skip your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waterspout Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

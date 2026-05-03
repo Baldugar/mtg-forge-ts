@@ -1,0 +1,23 @@
+{
+  "id": "the-ring-goes-south-corpus-m678",
+  "description": "M6 corpus — The Ring Goes South; in-hand parse.",
+  "seed": 62096,
+  "cards": {
+    "The Ring Goes South": "Name:The Ring Goes South\nManaCost:3 G\nTypes:Sorcery\nA:SP$ RingTemptsYou | SubAbility$ DBDigUntil | SpellDescription$ The Ring tempts you. Then reveal cards from the top of your library until you reveal X land cards, where X is the number of legendary creatures you control. Put those land cards onto the battlefield tapped and the rest on the bottom of your library in a random order.\nSVar:DBDigUntil:DB$ DigUntil | Amount$ X | Valid$ Land | ValidDescription$ land | FoundDestination$ Battlefield | Tapped$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nSVar:X:Count$Valid Creature.Legendary+YouCtrl\nOracle:The Ring tempts you. Then reveal cards from the top of your library until you reveal X land cards, where X is the number of legendary creatures you control. Put those land cards onto the battlefield tapped and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Ring Goes South"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "teval-arbiter-of-virtue-corpus-m678",
+  "description": "M6 corpus — Teval, Arbiter of Virtue; ETB-on-bf.",
+  "seed": 61946,
+  "cards": {
+    "Teval, Arbiter of Virtue": "Name:Teval, Arbiter of Virtue\nManaCost:2 B G U\nTypes:Legendary Creature Spirit Dragon\nPT:6/6\nK:Flying\nK:Lifelink\nS:Mode$ Continuous | Affected$ Card.YouCtrl+wasCast | AffectedZone$ Stack | AddKeyword$ Delve | Description$ Spells you cast have delve. (Each card you exile from your graveyard while casting those spells pays for {1}.)\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you cast a spell, you lose life equal to its mana value.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Flying, lifelink\\nSpells you cast have delve. (Each card you exile from your graveyard while casting those spells pays for {1}.)\\nWhenever you cast a spell, you lose life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Teval, Arbiter of Virtue"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

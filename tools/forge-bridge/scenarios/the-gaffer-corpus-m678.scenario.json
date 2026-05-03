@@ -1,0 +1,23 @@
+{
+  "id": "the-gaffer-corpus-m678",
+  "description": "M6 corpus — The Gaffer; in-hand parse.",
+  "seed": 62044,
+  "cards": {
+    "The Gaffer": "Name:The Gaffer\nManaCost:2 W\nTypes:Legendary Creature Halfling Peasant\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, if you gained 3 or more life this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nDeckNeeds:Ability$LifeGain\nOracle:At the beginning of each end step, if you gained 3 or more life this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Gaffer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

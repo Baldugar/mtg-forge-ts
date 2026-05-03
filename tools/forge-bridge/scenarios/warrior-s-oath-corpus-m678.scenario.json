@@ -1,0 +1,23 @@
+{
+  "id": "warrior-s-oath-corpus-m678",
+  "description": "M6 corpus — Warrior's Oath; in-hand parse.",
+  "seed": 63918,
+  "cards": {
+    "Warrior's Oath": "Name:Warrior's Oath\nManaCost:R R\nTypes:Sorcery\nA:SP$ AddTurn | NumTurns$ 1 | ExtraTurnDelayedTrigger$ DBDelTrig | ExtraTurnDelayedTriggerExcute$ TrigLose | SpellDescription$ Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\nSVar:DBDelTrig:ThisTurn$ True | Mode$ Phase | Phase$ End of Turn | Execute$ TrigLose | TriggerDescription$ At the beginning of that turn's end step, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nAI:RemoveDeck:All\nOracle:Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warrior's Oath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

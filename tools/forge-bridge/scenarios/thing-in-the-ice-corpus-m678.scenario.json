@@ -1,0 +1,23 @@
+{
+  "id": "thing-in-the-ice-corpus-m678",
+  "description": "M6 corpus — Thing in the Ice; in-hand parse.",
+  "seed": 62156,
+  "cards": {
+    "Thing in the Ice": "Name:Thing in the Ice\nManaCost:1 U\nTypes:Creature Horror\nPT:0/4\nK:Defender\nK:etbCounter:ICE:4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast an instant or sorcery spell, remove an ice counter from CARDNAME. Then if it has no ice counters on it, transform it.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ ICE | CounterNum$ 1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionPresent$ Card.Self+counters_EQ0_ICE | Mode$ Transform\nDeckHas:Ability$Counters\nDeckHints:Type$Horror\nDeckNeeds:Type$Instant|Sorcery\nAlternateMode:DoubleFaced\nOracle:Defender\\nThing in the Ice enters with four ice counters on it.\\nWhenever you cast an instant or sorcery spell, remove an ice counter from Thing in the Ice. Then if it has no ice counters on it, transform it.\n\nALTERNATE\n\nName:Awoken Horror\nManaCost:no cost\nColors:blue\nTypes:Creature Kraken Horror\nPT:7/8\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever this creature transforms into CARDNAME, return all non-Horror creatures to their owner's hands.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Creature.nonHorror | Origin$ Battlefield | Destination$ Hand\nOracle:When this creature transforms into Awoken Horror, return all non-Horror creatures to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thing in the Ice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

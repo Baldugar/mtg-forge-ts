@@ -1,0 +1,23 @@
+{
+  "id": "wagon-wrecker-corpus-m678",
+  "description": "M6 corpus — Wagon Wrecker; in-hand parse.",
+  "seed": 63724,
+  "cards": {
+    "Wagon Wrecker": "Name:Wagon Wrecker\nManaCost:1 R\nTypes:Creature Ogre Mercenary\nPT:2/1\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigRandom | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, a random nonland card in that player's hand perpetually gains \"When you cast this spell, you lose 2 life.\"\nSVar:TrigRandom:DB$ ChooseCard | Choices$ Card.nonLand+OwnedBy TriggeredTarget | ChoiceZone$ Hand | AtRandom$ True | Amount$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ CastSpellLoseLife | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:CastSpellLoseLife:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When you cast this spell, you lose 2 life.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 2\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Menace\\nWhenever Wagon Wrecker deals combat damage to a player, a random nonland card in that player's hand perpetually gains \"When you cast this spell, you lose 2 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wagon Wrecker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

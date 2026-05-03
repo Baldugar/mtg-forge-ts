@@ -1,0 +1,23 @@
+{
+  "id": "tunnel-of-love-corpus-m678",
+  "description": "M6 corpus — Tunnel of Love; in-hand parse.",
+  "seed": 62826,
+  "cards": {
+    "Tunnel of Love": "Name:Tunnel of Love\nManaCost:no cost\nTypes:Artifact Attraction\nK:Visit:TrigChoose\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | AILogic$ Curse | SubAbility$ DBChoose | SpellDescription$ Choose an opponent. They choose a creature they control, then you choose a creature you control. You may exile the chosen creatures. If you do, return them to the battlefield under their owners' control at the beginning of the next end step. Otherwise, the chosen creatures fight each other.\nSVar:DBChoose:DB$ ChooseCard | Defined$ ChosenPlayer | RememberChosen$ True | Choices$ Creature.ControlledBy ChosenPlayer | Amount$ 1 | SubAbility$ DBChooseYou\nSVar:DBChooseYou:DB$ ChooseCard | Defined$ You | RememberChosen$ True | Choices$ Creature.YouCtrl | Mandatory$ True | Amount$ 1 | SubAbility$ DBGenericChoice\nSVar:DBGenericChoice:DB$ GenericChoice | Choices$ DBBlink,DBFight\nSVar:DBBlink:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile | SubAbility$ DelTrig | RememberChanged$ True | SpellDescription$ You may exile the chosen creatures. If you do, return them to the battlefield under their owners' control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | RememberObjects$ Remembered | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | SubAbility$ DBCleanup | TriggerDescription$ Return exiled card to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nSVar:DBFight:DB$ Fight | Defined$ Remembered | SubAbility$ DBCleanup | SpellDescription$ The chosen creatures fight each other.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nOracle:Visit — Choose an opponent. They choose a creature they control, then you choose a creature you control. You may exile the chosen creatures. If you do, return them to the battlefield under their owners' control at the beginning of the next end step. Otherwise, the chosen creatures fight each other.\n\n# --- VARIANTS ---\n\nVariant:A:Lights:2 6\nVariant:B:Lights:3 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tunnel of Love"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

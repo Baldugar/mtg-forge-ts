@@ -1,0 +1,23 @@
+{
+  "id": "sygg-river-cutthroat-corpus-m678",
+  "description": "M6 corpus — Sygg, River Cutthroat; in-hand parse.",
+  "seed": 61533,
+  "cards": {
+    "Sygg, River Cutthroat": "Name:Sygg, River Cutthroat\nManaCost:UB UB\nTypes:Legendary Creature Merfolk Rogue\nPT:1/3\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ At the beginning of each end step, if an opponent lost 3 or more life this turn, you may draw a card. (Damage causes loss of life.)\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:PlayerCountRegisteredOpponents$HighestLifeLostThisTurn\nOracle:At the beginning of each end step, if an opponent lost 3 or more life this turn, you may draw a card. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sygg, River Cutthroat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thirsting-axe-corpus-m678",
+  "description": "M6 corpus — Thirsting Axe; in-hand parse.",
+  "seed": 62167,
+  "cards": {
+    "Thirsting Axe": "Name:Thirsting Axe\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ 4 | Description$ Equipped creature gets +4/+0.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Card.EquippedBy+!dealtCombatDamageThisTurn Creature | TriggerZones$ Battlefield | Execute$ SacrificeEquippee | TriggerDescription$ At the beginning of your end step, if equipped creature didn't deal combat damage to a creature this turn, sacrifice it.\nSVar:SacrificeEquippee:DB$ SacrificeAll | Defined$ Equipped\nOracle:Equipped creature gets +4/+0.\\nAt the beginning of your end step, if equipped creature didn't deal combat damage to a creature this turn, sacrifice it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thirsting Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

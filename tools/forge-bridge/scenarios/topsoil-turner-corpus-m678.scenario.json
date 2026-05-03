@@ -1,0 +1,23 @@
+{
+  "id": "topsoil-turner-corpus-m678",
+  "description": "M6 corpus — Topsoil Turner; in-hand parse.",
+  "seed": 62513,
+  "cards": {
+    "Topsoil Turner": "Name:Topsoil Turner\nManaCost:2 G\nTypes:Creature Treefolk Druid\nPT:2/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimateAll | TriggerDescription$ When this creature enters, each Forest and Treefolk card in your hand perpetually gains \"{T}: Add {G}{G}.\"\nSVar:TrigAnimateAll:DB$ AnimateAll | Zone$ Hand | ValidCards$ Forest.YouOwn,Treefolk.YouOwn | Abilities$ TwoG | Duration$ Perpetual\nSVar:TwoG:AB$ Mana | Cost$ T | Produced$ G | Amount$ 2 | SpellDescription$ Add {G}{G}.\nOracle:Reach\\nWhen this creature enters, each Forest and Treefolk card in your hand perpetually gains \"{T}: Add {G}{G}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Topsoil Turner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

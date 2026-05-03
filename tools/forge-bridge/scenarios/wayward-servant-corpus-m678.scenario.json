@@ -1,0 +1,23 @@
+{
+  "id": "wayward-servant-corpus-m678",
+  "description": "M6 corpus — Wayward Servant; in-hand parse.",
+  "seed": 63994,
+  "cards": {
+    "Wayward Servant": "Name:Wayward Servant\nManaCost:W B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Zombie.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever another Zombie you control enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nDeckHints:Type$Zombie\nOracle:Whenever another Zombie you control enters, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wayward Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

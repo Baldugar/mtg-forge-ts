@@ -1,0 +1,23 @@
+{
+  "id": "timesifter-corpus-m678",
+  "description": "M6 corpus — Timesifter; in-hand parse.",
+  "seed": 62417,
+  "cards": {
+    "Timesifter": "Name:Timesifter\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each upkeep, each player exiles the top card of their library. The player who exiled the card with the highest mana value takes an extra turn after this one. If two or more players' cards are tied for highest, the tied players repeat this process until the tie is broken.\nSVar:TrigExile:DB$ Dig | Defined$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ FindHighestCMCFirst\nSVar:FindHighestCMCFirst:DB$ Pump | ImprintCards$ ValidAll Card.greatestRememberedCMC | SubAbility$ FindOne\nSVar:FindOne:DB$ Repeat | RepeatCheckSVar$ X | RepeatSVarCompare$ GE2 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE2 | RepeatSubAbility$ DBClear | SubAbility$ DBAddTurn\nSVar:DBClear:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ ImprintedController | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ ClearImprint\nSVar:ClearImprint:DB$ Cleanup | ClearImprinted$ True | SubAbility$ FindHighestCMC\nSVar:FindHighestCMC:DB$ Pump | ImprintCards$ ValidAll Card.greatestRememberedCMC\nSVar:X:Count$ValidExile Card.IsImprinted\nSVar:DBAddTurn:DB$ AddTurn | Defined$ ImprintedController | NumTurns$ 1 | ShowMessage$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nAI:RemoveDeck:Random\nOracle:At the beginning of each upkeep, each player exiles the top card of their library. The player who exiled the card with the highest mana value takes an extra turn after this one. If two or more players' cards are tied for highest, the tied players repeat this process until the tie is broken.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timesifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

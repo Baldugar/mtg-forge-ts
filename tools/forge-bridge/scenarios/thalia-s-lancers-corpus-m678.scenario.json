@@ -1,0 +1,23 @@
+{
+  "id": "thalia-s-lancers-corpus-m678",
+  "description": "M6 corpus — Thalia's Lancers; in-hand parse.",
+  "seed": 61965,
+  "cards": {
+    "Thalia's Lancers": "Name:Thalia's Lancers\nManaCost:3 W W\nTypes:Creature Human Knight\nPT:4/4\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a legendary card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Legendary | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:First strike\\nWhen Thalia's Lancers enters, you may search your library for a legendary card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalia's Lancers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

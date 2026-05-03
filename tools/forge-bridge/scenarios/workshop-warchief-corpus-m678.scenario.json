@@ -1,0 +1,23 @@
+{
+  "id": "workshop-warchief-corpus-m678",
+  "description": "M6 corpus — Workshop Warchief; in-hand parse.",
+  "seed": 64413,
+  "cards": {
+    "Workshop Warchief": "Name:Workshop Warchief\nManaCost:3 G G\nTypes:Creature Rhino Warrior\nPT:5/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 4/4 green Rhino Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_4_4_rhino_warrior\nK:Blitz:4 G G\nDeckHas:Ability$LifeGain|Token|Sacrifice\nOracle:Trample\\nWhen Workshop Warchief enters, you gain 3 life.\\nWhen Workshop Warchief dies, create a 4/4 green Rhino Warrior creature token.\\nBlitz {4}{G}{G} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Workshop Warchief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

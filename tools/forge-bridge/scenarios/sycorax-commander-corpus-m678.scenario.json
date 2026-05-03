@@ -1,0 +1,23 @@
+{
+  "id": "sycorax-commander-corpus-m678",
+  "description": "M6 corpus — Sycorax Commander; in-hand parse.",
+  "seed": 61531,
+  "cards": {
+    "Sycorax Commander": "Name:Sycorax Commander\nManaCost:2 B R\nTypes:Creature Alien Soldier\nPT:4/2\nK:First Strike\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChoice | TriggerDescription$ Sanctified Rules of Combat — When CARDNAME enters, each opponent faces a villainous choice — That opponent discards all the cards in their hand, then draws that many cards minus one, or CARDNAME deals damage to that player equal to the number of cards in their hand.\nSVar:TrigChoice:DB$ VillainousChoice | Defined$ Opponent | Choices$ DBDiscard,DBDamage\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Opponent discards their hand, then draws that many cards minus one.\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ CleanDrawn\nSVar:CleanDrawn:DB$ Cleanup | ClearRemembered$ True\n# This calculation isn't considering the remembered player, only the remembered cards\nSVar:X:Remembered$Amount/Minus.1\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ Y | SpellDescription$ CARDNAME deals damage to opponent equal to the number of cards in their hand.\nSVar:Y:Count$ValidHand Card.OwnedBy Player.IsRemembered\nOracle:First strike, haste\\nSanctified Rules of Combat — When Sycorax Commander enters, each opponent faces a villainous choice — That opponent discards all the cards in their hand, then draws that many cards minus one, or Sycorax Commander deals damage to that player equal to the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sycorax Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

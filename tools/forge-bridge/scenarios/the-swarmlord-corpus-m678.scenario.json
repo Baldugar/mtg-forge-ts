@@ -1,0 +1,23 @@
+{
+  "id": "the-swarmlord-corpus-m678",
+  "description": "M6 corpus — The Swarmlord; in-hand parse.",
+  "seed": 62111,
+  "cards": {
+    "The Swarmlord": "Name:The Swarmlord\nManaCost:3 G U R\nTypes:Legendary Creature Tyranid\nPT:5/5\nK:etbCounter:P1P1:X::Rapid Regeneration — CARDNAME enters with two +1/+1 counters on it for each time you've cast your commander from the command zone this game.\nSVar:X:Count$TotalCommanderCastFromCommandZone/Twice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+HasCounters | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Xenos Cunning — Whenever a creature you control with a counter on it dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Rapid Regeneration — The Swarmlord enters with two +1/+1 counters on it for each time you've cast your commander from the command zone this game.\\nXenos Cunning — Whenever a creature you control with a counter on it dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Swarmlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

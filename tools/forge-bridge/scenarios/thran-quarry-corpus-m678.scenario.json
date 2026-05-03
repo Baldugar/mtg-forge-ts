@@ -1,0 +1,23 @@
+{
+  "id": "thran-quarry-corpus-m678",
+  "description": "M6 corpus — Thran Quarry; in-hand parse.",
+  "seed": 62256,
+  "cards": {
+    "Thran Quarry": "Name:Thran Quarry\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, if you control no creatures, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:At the beginning of the end step, if you control no creatures, sacrifice Thran Quarry.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thran Quarry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

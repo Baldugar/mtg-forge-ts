@@ -1,0 +1,23 @@
+{
+  "id": "thriving-isle-corpus-m678",
+  "description": "M6 corpus — Thriving Isle; in-hand parse.",
+  "seed": 62288,
+  "cards": {
+    "Thriving Isle": "Name:Thriving Isle\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ blue | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than blue.\nA:AB$ Mana | Cost$ T | Produced$ Combo U Chosen | SpellDescription$ Add {U} or one mana of the chosen color.\nOracle:Thriving Isle enters tapped.\\nAs Thriving Isle enters, choose a color other than blue.\\n{T}: Add {U} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

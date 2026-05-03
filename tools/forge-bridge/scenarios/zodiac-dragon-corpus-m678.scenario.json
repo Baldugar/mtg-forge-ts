@@ -1,0 +1,23 @@
+{
+  "id": "zodiac-dragon-corpus-m678",
+  "description": "M6 corpus — Zodiac Dragon; in-hand parse.",
+  "seed": 64678,
+  "cards": {
+    "Zodiac Dragon": "Name:Zodiac Dragon\nManaCost:7 R R\nTypes:Creature Dragon\nPT:8/8\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+YouOwn | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME is put into your graveyard from the battlefield, you may return it to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:When Zodiac Dragon is put into your graveyard from the battlefield, you may return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zodiac Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

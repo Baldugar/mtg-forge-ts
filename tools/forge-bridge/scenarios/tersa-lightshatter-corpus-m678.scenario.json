@@ -1,0 +1,23 @@
+{
+  "id": "tersa-lightshatter-corpus-m678",
+  "description": "M6 corpus — Tersa Lightshatter; in-hand parse.",
+  "seed": 61932,
+  "cards": {
+    "Tersa Lightshatter": "Name:Tersa Lightshatter\nManaCost:2 R\nTypes:Legendary Creature Orc Wizard\nPT:3/3\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard up to two cards, then draw that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:Y:Remembered$Amount\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Threshold$ True | TriggerDescription$ Whenever CARDNAME attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard. You may play that card this turn.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | DefinedPlayer$ You | Hidden$ True | Mandatory$ True | AtRandom$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Haste\\nWhen Tersa Lightshatter enters, discard up to two cards, then draw that many cards.\\nWhenever Tersa Lightshatter attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tersa Lightshatter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

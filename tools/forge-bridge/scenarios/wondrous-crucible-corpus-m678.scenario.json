@@ -1,0 +1,23 @@
+{
+  "id": "wondrous-crucible-corpus-m678",
+  "description": "M6 corpus — Wondrous Crucible; in-hand parse.",
+  "seed": 64370,
+  "cards": {
+    "Wondrous Crucible": "Name:Wondrous Crucible\nManaCost:7\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Permanent.YouCtrl | AddKeyword$ Ward:2 | Description$ Permanents you control have ward {2}.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your end step, mill two cards, then exile a nonland card at random from your graveyard. Copy it. You may cast the copy without paying its mana cost. (A copy of a permanent spell becomes a token.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 2 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | DefinedPlayer$ You | Destination$ Exile | ChangeNum$ 1 | ChangeType$ Card.nonLand | AtRandom$ True | Origin$ Graveyard | Hidden$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Optional$ True | CopyCard$ True | WithoutManaCost$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|Token|Mill\nOracle:Permanents you control have ward {2}.\\nAt the beginning of your end step, mill two cards, then exile a nonland card at random from your graveyard. Copy it. You may cast the copy without paying its mana cost. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wondrous Crucible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

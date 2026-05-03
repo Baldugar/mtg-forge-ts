@@ -1,0 +1,23 @@
+{
+  "id": "wayspeaker-bodyguard-corpus-m678",
+  "description": "M6 corpus — Wayspeaker Bodyguard; in-hand parse.",
+  "seed": 63990,
+  "cards": {
+    "Wayspeaker Bodyguard": "Name:Wayspeaker Bodyguard\nManaCost:3 W\nTypes:Creature Orc Monk\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, return target nonland permanent card with mana value 2 or less from your graveyard to the your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn+nonLand+cmcLE2 | TgtPrompt$ Select target nonland permanent card with mana value 2 or less in your graveyard\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Flurry — Whenever you cast your second spell each turn, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nOracle:When this creature enters, return target nonland permanent card with mana value 2 or less from your graveyard to your hand.\\nFlurry — Whenever you cast your second spell each turn, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wayspeaker Bodyguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-day-of-the-doctor-corpus-m678",
+  "description": "M6 corpus — The Day of the Doctor; in-hand parse.",
+  "seed": 62016,
+  "cards": {
+    "The Day of the Doctor": "Name:The Day of the Doctor\nManaCost:3 R W\nTypes:Enchantment Saga\nK:Chapter:4:DBDig,DBDig,DBDig,DBChoose\nSVar:DBDig:DB$ DigUntil | Defined$ You | Valid$ Card.Legendary | FoundDestination$ Exile | RevealedDestination$ Exile | RememberRevealed$ True | ImprintFound$ True | SubAbility$ DBEffect | SpellDescription$ Exile cards from the top of your library until you exile a legendary card. You may play that card for as long as CARDNAME remains on the battlefield. Put the rest of those exiled cards on the bottom of your library in a random order.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Imprinted | Duration$ UntilHostLeavesPlay | ForgetOnMoved$ Exile | SubAbility$ DBRestRandomOrder\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card for as long as CARDNAME remains on the battlefield.\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered+!IsImprinted | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | MinAmount$ 0 | Amount$ 3 | Choices$ Doctor | ChoiceTitle$ Choose up to three Doctors | SubAbility$ DBGenericChoice | SpellDescription$ Choose up to three Doctors. You may exile all other creatures. If you do, CARDNAME deals 13 damage to you.\nSVar:DBGenericChoice:DB$ GenericChoice | Choices$ DBExileAll,DBCleanupBis\nSVar:DBExileAll:DB$ ChangeZoneAll | ChangeType$ Creature.nonChosenCard | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBDamage | SpellDescription$ Exile all other creatures. If you do, CARDNAME deals 13 damage to you.\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ 13 | SubAbility$ DBCleanupBis\nSVar:DBCleanupBis:DB$ Cleanup | ClearChosenCard$ True | SpellDescription$ Don't exile all other creatures.\nAI:RemoveDeck:Random\nDeckNeeds:Type$Doctor|Legendary\nOracle:I, II, III — Exile cards from the top of your library until you exile a legendary card. You may play that card for as long as The Day of the Doctor remains on the battlefield. Put the rest of those exiled cards on the bottom of your library in a random order.\\nIV — Choose up to three Doctors. You may exile all other creatures. If you do, The Day of the Doctor deals 13 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Day of the Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

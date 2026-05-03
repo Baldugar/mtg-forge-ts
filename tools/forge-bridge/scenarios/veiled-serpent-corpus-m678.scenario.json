@@ -1,0 +1,25 @@
+{
+  "id": "veiled-serpent-corpus-m678",
+  "description": "M6 corpus — Veiled Serpent; ETB-on-bf.",
+  "seed": 63340,
+  "cards": {
+    "Veiled Serpent": "Name:Veiled Serpent\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent casts a spell, if CARDNAME is an enchantment, CARDNAME becomes a 4/4 Serpent creature with \"This creature can't attack unless defending player controls an Island.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 4 | staticAbilities$ VeiledSerpentST | Types$ Creature,Serpent | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nK:Cycling:2\nSVar:VeiledSerpentST:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nOracle:When an opponent casts a spell, if Veiled Serpent is an enchantment, Veiled Serpent becomes a 4/4 Serpent creature with \"This creature can't attack unless defending player controls an Island.\"\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Veiled Serpent"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

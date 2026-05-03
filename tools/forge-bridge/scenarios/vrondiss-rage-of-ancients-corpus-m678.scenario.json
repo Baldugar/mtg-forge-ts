@@ -1,0 +1,23 @@
+{
+  "id": "vrondiss-rage-of-ancients-corpus-m678",
+  "description": "M6 corpus — Vrondiss, Rage of Ancients; in-hand parse.",
+  "seed": 63712,
+  "cards": {
+    "Vrondiss, Rage of Ancients": "Name:Vrondiss, Rage of Ancients\nManaCost:3 R G\nTypes:Legendary Creature Dragon Barbarian\nPT:5/4\nT:Mode$ DamageDoneOnce | Execute$ TrigToken | ValidTarget$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, you may create a 5/4 red and green Dragon Spirit creature token with \"When this creature deals damage, sacrifice it.\"\nSVar:TrigToken:DB$ Token | TokenScript$ rg_5_4_dragon_spirit_damagesac\nT:Mode$ RolledDieOnce | TriggerZones$ Battlefield | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigDamageSelf | TriggerDescription$ Whenever you roll one or more dice, you may have NICKNAME deal 1 damage to itself.\nSVar:TrigDamageSelf:DB$ DealDamage | Defined$ Self | NumDmg$ 1\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$Token|Sacrifice\nOracle:Enrage — Whenever Vrondiss, Rage of Ancients is dealt damage, you may create a 5/4 red and green Dragon Spirit creature token with \"When this creature deals damage, sacrifice it.\"\\nWhenever you roll one or more dice, you may have Vrondiss deal 1 damage to itself.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vrondiss, Rage of Ancients"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "werewolf-pack-leader-corpus-m678",
+  "description": "M6 corpus — Werewolf Pack Leader; in-hand parse.",
+  "seed": 64065,
+  "cards": {
+    "Werewolf Pack Leader": "Name:Werewolf Pack Leader\nManaCost:G G\nTypes:Creature Human Werewolf\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, draw a card.\nA:AB$ Animate | Cost$ 3 G | Defined$ Self | Power$ 5 | Toughness$ 3 | Keywords$ Trample | RemoveTypes$ Human | SpellDescription$ Until end of turn, CARDNAME has base power and toughness 5/3, gains trample, and isn't a Human.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nOracle:Pack tactics — Whenever Werewolf Pack Leader attacks, if you attacked with creatures with total power 6 or greater this combat, draw a card.\\n{3}{G}: Until end of turn, Werewolf Pack Leader has base power and toughness 5/3, gains trample, and isn't a Human.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Werewolf Pack Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

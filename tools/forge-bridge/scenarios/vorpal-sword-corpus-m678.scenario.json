@@ -1,0 +1,25 @@
+{
+  "id": "vorpal-sword-corpus-m678",
+  "description": "M6 corpus — Vorpal Sword; ETB-on-bf.",
+  "seed": 63687,
+  "cards": {
+    "Vorpal Sword": "Name:Vorpal Sword\nManaCost:B\nTypes:Artifact Equipment\nK:Equip:B B\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Deathtouch | Description$ Equipped creature gets +2/+0 and has deathtouch.\nA:AB$ Animate | Cost$ 5 B B B | Defined$ Self | Triggers$ TrigDamageDone | SubAbility$ DBAddSVar | SpellDescription$ Until end of turn, CARDNAME gains \"Whenever equipped creature deals combat damage to a player, that player loses the game.\"\nSVar:DBAddSVar:DB$ Animate | Defined$ Equipped | sVars$ MustBeBlocked\nSVar:MustBeBlocked:True\nSVar:TrigDamageDone:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ DBLose | TriggerDescription$ Whenever equipped creature deals combat damage to a player, that player loses the game.\nSVar:DBLose:DB$ LosesGame | Defined$ TriggeredTarget\nOracle:Equipped creature gets +2/+0 and has deathtouch.\\n{5}{B}{B}{B}: Until end of turn, Vorpal Sword gains \"Whenever equipped creature deals combat damage to a player, that player loses the game.\"\\nEquip {B}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vorpal Sword"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

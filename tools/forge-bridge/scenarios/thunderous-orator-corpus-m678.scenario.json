@@ -1,0 +1,23 @@
+{
+  "id": "thunderous-orator-corpus-m678",
+  "description": "M6 corpus — Thunderous Orator; in-hand parse.",
+  "seed": 62334,
+  "cards": {
+    "Thunderous Orator": "Name:Thunderous Orator\nManaCost:1 W\nTypes:Creature Kor Wizard\nPT:2/2\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigFlying | TriggerDescription$ Whenever CARDNAME attacks, it gains flying until end of turn if you control a creature with flying. The same is true for first strike, double strike, deathtouch, indestructible, lifelink, menace, and trample.\nSVar:TrigFlying:DB$ Pump | Defined$ Self | KW$ Flying | ConditionPresent$ Creature.YouCtrl+withFlying | SubAbility$ DBFirstStrike\nSVar:DBFirstStrike:DB$ Pump | Defined$ Self | KW$ First Strike | ConditionPresent$ Creature.YouCtrl+withFirst Strike | SubAbility$ DBDoubleStrike\nSVar:DBDoubleStrike:DB$ Pump | Defined$ Self | KW$ Double Strike | ConditionPresent$ Creature.YouCtrl+withDouble Strike | SubAbility$ DBDeathtouch\nSVar:DBDeathtouch:DB$ Pump | Defined$ Self | KW$ Deathtouch | ConditionPresent$ Creature.YouCtrl+withDeathtouch | SubAbility$ DBIndestructible\nSVar:DBIndestructible:DB$ Pump | Defined$ Self | KW$ Indestructible | ConditionPresent$ Creature.YouCtrl+withIndestructible | SubAbility$ DBLifelink\nSVar:DBLifelink:DB$ Pump | Defined$ Self | KW$ Lifelink | ConditionPresent$ Creature.YouCtrl+withLifelink | SubAbility$ DBMenace\nSVar:DBMenace:DB$ Pump | Defined$ Self | KW$ Menace | ConditionPresent$ Creature.YouCtrl+withMenace | SubAbility$ DBTrample\nSVar:DBTrample:DB$ Pump | Defined$ Self | KW$ Trample | ConditionPresent$ Creature.YouCtrl+withTrample\nDeckHints:Keyword$Flying|First Strike|Double Strike|Deathtouch|Indestructible|Lifelink|Menace|Trample\nOracle:Vigilance\\nWhenever Thunderous Orator attacks, it gains flying until end of turn if you control a creature with flying. The same is true for first strike, double strike, deathtouch, indestructible, lifelink, menace, and trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderous Orator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

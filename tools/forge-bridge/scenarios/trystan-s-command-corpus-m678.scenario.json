@@ -1,0 +1,23 @@
+{
+  "id": "trystan-s-command-corpus-m678",
+  "description": "M6 corpus — Trystan's Command; in-hand parse.",
+  "seed": 62808,
+  "cards": {
+    "Trystan's Command": "Name:Trystan's Command\nManaCost:4 B G\nTypes:Kindred Sorcery Elf\nA:SP$ Charm | Choices$ DBCopy,DBChangeZone,DBDestroy,DBPumpAll | CharmNum$ 2\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Elf.YouCtrl | TgtPrompt$ Select target Elf you control | SpellDescription$ Create a token that's a copy of target Elf you control.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select one or two target permanent cards in your graveyard | TargetMin$ 1 | TargetMax$ 2 | TgtZone$ Graveyard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return one or two target permanent cards from your graveyard to your hand.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature,Enchantment | TgtPrompt$ Select target creature or enchantment | SpellDescription$ Destroy target creature or enchantment.\nSVar:DBPumpAll:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ +3 | NumDef$ +3 | SubAbility$ DBUntapAll | SpellDescription$ Creatures target player controls get +3/+3 until end of turn. Untap them.\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.TargetedPlayerCtrl\nDeckHas:Ability$Token\nDeckHints:Type$Elf\nOracle:Choose two —\\n• Create a token that's a copy of target Elf you control.\\n• Return one or two target permanent cards from your graveyard to your hand.\\n• Destroy target creature or enchantment.\\n• Creatures target player controls get +3/+3 until end of turn. Untap them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trystan's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unhallowed-pact-corpus-m678",
+  "description": "M6 corpus — Unhallowed Pact; in-hand parse.",
+  "seed": 63058,
+  "cards": {
+    "Unhallowed Pact": "Name:Unhallowed Pact\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.!token\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under your control.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Enchant creature\\nWhen enchanted creature dies, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unhallowed Pact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thought-hemorrhage-corpus-m678",
+  "description": "M6 corpus — Thought Hemorrhage; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Thought Hemorrhage": "Name:Thought Hemorrhage\nManaCost:2 B R\nTypes:Sorcery\nA:SP$ NameCard | ValidCards$ Card.nonLand | SubAbility$ DBReveal | ValidDescription$ nonland | SpellDescription$ Choose a nonland card name. Target player reveals their hand. CARDNAME deals 3 damage to that player for each card with the chosen name revealed this way. Search that player's graveyard, hand, and library for all cards with that name and exile them. Then that player shuffles their library.\nSVar:DBReveal:DB$ RevealHand | RememberRevealed$ True | ValidTgts$ Player | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X | SubAbility$ ExileYard\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ Targeted | ChangeType$ Card.NamedCard | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | AlreadyRevealed$ True | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nSVar:X:Remembered$Valid Card.NamedCard/Times.3\nAI:RemoveDeck:All\nOracle:Choose a nonland card name. Target player reveals their hand. Thought Hemorrhage deals 3 damage to that player for each card with the chosen name revealed this way. Search that player's graveyard, hand, and library for all cards with that name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thought Hemorrhage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

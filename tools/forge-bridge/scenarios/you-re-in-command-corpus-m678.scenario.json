@@ -1,0 +1,23 @@
+{
+  "id": "you-re-in-command-corpus-m678",
+  "description": "M6 corpus — You're in Command; in-hand parse.",
+  "seed": 64583,
+  "cards": {
+    "You're in Command": "Name:You're in Command\nManaCost:1 W\nTypes:Sorcery\nA:SP$ AlterAttribute | ValidTgts$ Creature.YouOwn+YouCtrl | IncludeAllComponentCards$ True | Attributes$ Commander | RememberTargets$ True | SubAbility$ DBDemote | SpellDescription$ Choose target creature you own and control. That creature becomes your commander. Any other commanders you have are no longer your commander. (That creature starts with a commander tax of {0}.)\nSVar:DBDemote:DB$ AlterAttribute | Defined$ ValidAll Card.YouOwn+!IsRemembered+IsCommander | Attributes$ Commander | Activate$ False | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose target creature you own and control. That creature becomes your commander. Any other commanders you have are no longer your commander. (That creature starts with a commander tax of {0}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "You're in Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

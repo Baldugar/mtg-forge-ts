@@ -1,0 +1,23 @@
+{
+  "id": "tower-winder-corpus-m678",
+  "description": "M6 corpus — Tower Winder; in-hand parse.",
+  "seed": 62579,
+  "cards": {
+    "Tower Winder": "Name:Tower Winder\nManaCost:1 G\nTypes:Creature Snake\nPT:1/1\nK:Reach\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library and/or graveyard for a card named Command Tower, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedCommand Tower\nDeckHints:Name$Command Tower\nOracle:Reach, deathtouch\\nWhen Tower Winder enters, search your library and/or graveyard for a card named Command Tower, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tower Winder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

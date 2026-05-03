@@ -1,0 +1,25 @@
+{
+  "id": "triton-cavalry-corpus-m678",
+  "description": "M6 corpus — Triton Cavalry; ETB-on-bf.",
+  "seed": 62752,
+  "cards": {
+    "Triton Cavalry": "Name:Triton Cavalry\nManaCost:3 U\nTypes:Creature Merfolk Soldier\nPT:2/4\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigBounce | OptionalDecider$ You | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, you may return target enchantment to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Enchantment | Origin$ Battlefield | Destination$ Hand\nOracle:Heroic — Whenever you cast a spell that targets Triton Cavalry, you may return target enchantment to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Triton Cavalry"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

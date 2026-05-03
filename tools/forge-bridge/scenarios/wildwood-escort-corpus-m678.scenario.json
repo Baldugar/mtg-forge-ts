@@ -1,0 +1,23 @@
+{
+  "id": "wildwood-escort-corpus-m678",
+  "description": "M6 corpus — Wildwood Escort; in-hand parse.",
+  "seed": 64190,
+  "cards": {
+    "Wildwood Escort": "Name:Wildwood Escort\nManaCost:4 G\nTypes:Creature Elf Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return target creature or battle card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature or battle card in your graveyard | ValidTgts$ Creature.YouOwn,Battle.YouOwn\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ Exile | Description$ If CARDNAME would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nDeckHints:Type$Battle\nDeckHas:Ability$Graveyard\nOracle:When Wildwood Escort enters, return target creature or battle card from your graveyard to your hand.\\nIf Wildwood Escort would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildwood Escort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

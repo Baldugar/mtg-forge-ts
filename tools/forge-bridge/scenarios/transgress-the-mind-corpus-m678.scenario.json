@@ -1,0 +1,23 @@
+{
+  "id": "transgress-the-mind-corpus-m678",
+  "description": "M6 corpus — Transgress the Mind; in-hand parse.",
+  "seed": 62637,
+  "cards": {
+    "Transgress the Mind": "Name:Transgress the Mind\nManaCost:1 B\nTypes:Sorcery\nK:Devoid\nA:SP$ RevealHand | Defined$ Targeted | ValidTgts$ Player | SubAbility$ ExileCard | StackDescription$ SpellDescription | SpellDescription$ Target player reveals their hand.\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.cmcGE3 | ChangeNum$ 1 | IsCurse$ True | Mandatory$ True | AlreadyRevealed$ True | StackDescription$ You choose a card from it with mana value 3 or greater and exile that card.\nOracle:Devoid (This card has no color.)\\nTarget player reveals their hand. You choose a card from it with mana value 3 or greater and exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transgress the Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

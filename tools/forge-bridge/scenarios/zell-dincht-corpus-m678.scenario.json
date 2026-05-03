@@ -1,0 +1,23 @@
+{
+  "id": "zell-dincht-corpus-m678",
+  "description": "M6 corpus — Zell Dincht; in-hand parse.",
+  "seed": 64623,
+  "cards": {
+    "Zell Dincht": "Name:Zell Dincht\nManaCost:2 R\nTypes:Legendary Creature Human Monk\nPT:0/3\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +1/+0 for each land you control.\nSVar:X:Count$Valid Land.YouCtrl\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, return a land you control to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Land.YouCtrl | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SelectPrompt$ Select a land you control to return to its owner's hand\nOracle:You may play an additional land on each of your turns.\\nZell Dincht gets +1/+0 for each land you control.\\nAt the beginning of your end step, return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zell Dincht"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

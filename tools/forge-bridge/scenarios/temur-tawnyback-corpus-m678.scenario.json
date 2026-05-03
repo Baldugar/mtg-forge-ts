@@ -1,0 +1,23 @@
+{
+  "id": "temur-tawnyback-corpus-m678",
+  "description": "M6 corpus — Temur Tawnyback; in-hand parse.",
+  "seed": 61874,
+  "cards": {
+    "Temur Tawnyback": "Name:Temur Tawnyback\nManaCost:2G 2U 2R\nTypes:Creature Beast\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:When this creature enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temur Tawnyback"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

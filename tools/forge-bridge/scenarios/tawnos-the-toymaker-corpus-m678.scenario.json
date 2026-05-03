@@ -1,0 +1,25 @@
+{
+  "id": "tawnos-the-toymaker-corpus-m678",
+  "description": "M6 corpus — Tawnos, the Toymaker; ETB-on-bf.",
+  "seed": 61745,
+  "cards": {
+    "Tawnos, the Toymaker": "Name:Tawnos, the Toymaker\nManaCost:3 G U\nTypes:Legendary Creature Human Artificer\nPT:3/5\nT:Mode$ SpellCast | TriggerZones$ Battlefield | OptionalDecider$ You | ValidCard$ Creature.Bird,Creature.Beast | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerDescription$ Whenever you cast a Beast or Bird creature spell, you may copy it, except it's an artifact in addition to its other types. (The copy becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AddTypes$ Artifact\nDeckHas:Ability$Token & Type$Artifact\nDeckNeeds:Type$Beast|Bird\nOracle:Whenever you cast a Beast or Bird creature spell, you may copy it, except it's an artifact in addition to its other types. (The copy becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tawnos, the Toymaker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

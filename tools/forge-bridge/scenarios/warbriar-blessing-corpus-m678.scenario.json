@@ -1,0 +1,23 @@
+{
+  "id": "warbriar-blessing-corpus-m678",
+  "description": "M6 corpus — Warbriar Blessing; in-hand parse.",
+  "seed": 63860,
+  "cards": {
+    "Warbriar Blessing": "Name:Warbriar Blessing\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, enchanted creature fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:TrigFight:DB$ Fight | Defined$ Enchanted | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddToughness$ 2 | Description$ Enchanted creature gets +0/+2.\nOracle:Enchant creature you control\\nWhen Warbriar Blessing enters, enchanted creature fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\\nEnchanted creature gets +0/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warbriar Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "temur-sabertooth-corpus-m678",
+  "description": "M6 corpus — Temur Sabertooth; ETB-on-bf.",
+  "seed": 61873,
+  "cards": {
+    "Temur Sabertooth": "Name:Temur Sabertooth\nManaCost:2 G G\nTypes:Creature Cat\nPT:4/3\nA:AB$ ChangeZone | Cost$ 1 G | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Creature.YouCtrl+Other | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBPump | SpellDescription$ You may return another creature you control to its owner's hand. If you do, CARDNAME gains indestructible until end of turn. | StackDescription$ SpellDescription\nSVar:DBPump:DB$ Pump | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | Defined$ Self | KW$ Indestructible | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{1}{G}: You may return another creature you control to its owner's hand. If you do, Temur Sabertooth gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Temur Sabertooth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

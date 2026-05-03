@@ -1,0 +1,23 @@
+{
+  "id": "tarnation-vista-corpus-m678",
+  "description": "M6 corpus — Tarnation Vista; in-hand parse.",
+  "seed": 61717,
+  "cards": {
+    "Tarnation Vista": "Name:Tarnation Vista\nManaCost:no cost\nTypes:Land Cave\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nA:AB$ Mana | Cost$ 1 T | Produced$ Special EachColorAmong_Valid Permanent.YouCtrl+MonoColor | SpellDescription$ For each color among monocolored permanents you control, add one mana of that color.\nOracle:Tarnation Vista enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\\n{1}, {T}: For each color among monocolored permanents you control, add one mana of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tarnation Vista"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

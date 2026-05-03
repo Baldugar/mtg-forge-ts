@@ -1,0 +1,23 @@
+{
+  "id": "viconia-drow-apostate-corpus-m678",
+  "description": "M6 corpus — Viconia, Drow Apostate; in-hand parse.",
+  "seed": 63473,
+  "cards": {
+    "Viconia, Drow Apostate": "Name:Viconia, Drow Apostate\nManaCost:2 B\nTypes:Legendary Creature Elf Cleric\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE4 | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if there are four or more creature cards in your graveyard, return a creature card at random from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Hand | Hidden$ True | AtRandom$ True\nK:Choose a Background\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill|Discard|Graveyard\nOracle:At the beginning of your upkeep, if there are four or more creature cards in your graveyard, return a creature card at random from your graveyard to your hand.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viconia, Drow Apostate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

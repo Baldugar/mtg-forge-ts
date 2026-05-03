@@ -1,0 +1,23 @@
+{
+  "id": "tuya-bearclaw-corpus-m678",
+  "description": "M6 corpus — Tuya Bearclaw; in-hand parse.",
+  "seed": 62861,
+  "cards": {
+    "Tuya Bearclaw": "Name:Tuya Bearclaw\nManaCost:1 R G\nTypes:Legendary Creature Human Warrior\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+X until end of turn, where X is the greatest power among other creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl+Other$GreatestCardPower\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Creature\nOracle:Whenever Tuya Bearclaw attacks, it gets +X/+X until end of turn, where X is the greatest power among other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tuya Bearclaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

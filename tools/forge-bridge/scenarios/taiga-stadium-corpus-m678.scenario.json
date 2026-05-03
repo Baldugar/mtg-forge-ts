@@ -1,0 +1,25 @@
+{
+  "id": "taiga-stadium-corpus-m678",
+  "description": "M6 corpus — Taiga Stadium; ETB-on-bf.",
+  "seed": 61594,
+  "cards": {
+    "Taiga Stadium": "Name:Taiga Stadium\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a white, blue, or black permanent.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Permanent.White+YouCtrl,Permanent.Blue+YouCtrl,Permanent.Black+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:Taiga Stadium enters tapped unless you control a white, blue, or black permanent.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Taiga Stadium"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

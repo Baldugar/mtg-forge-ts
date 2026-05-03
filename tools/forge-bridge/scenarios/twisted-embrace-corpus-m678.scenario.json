@@ -1,0 +1,23 @@
+{
+  "id": "twisted-embrace-corpus-m678",
+  "description": "M6 corpus — Twisted Embrace; in-hand parse.",
+  "seed": 62889,
+  "cards": {
+    "Twisted Embrace": "Name:Twisted Embrace\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl,Artifact.YouCtrl:artifact or creature you control\nSVar:AttachAITgts:Creature,Vehicle\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature or planeswalker an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ As long as enchanted permanent is a creature, it gets +1/+1.\nDeckHints:Type$Creature|Vehicle\nOracle:Enchant artifact or creature you control\\nWhen Twisted Embrace enters, destroy target creature or planeswalker an opponent controls.\\nAs long as enchanted permanent is a creature, it gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twisted Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

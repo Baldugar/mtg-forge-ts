@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-construction-drone-corpus-m678",
+  "description": "M6 corpus — Urza's Construction Drone; in-hand parse.",
+  "seed": 63186,
+  "cards": {
+    "Urza's Construction Drone": "Name:Urza's Construction Drone\nManaCost:3\nTypes:Artifact Creature Construct\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure cards named Urza's Mine, Urza's Power Plant, and Urza's Tower into your library, then shuffle.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Names$ Urza's Mine,Urza's Tower,Urza's Power Plant | Zone$ Library\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ Whenever CARDNAME attacks or dies, seek an Urza's land card.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigSeek | Secondary$ True | Execute$ TrigSeek | TriggerDescription$ Whenever CARDNAME attacks or dies, seek an Urza's land card.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Land+Urza's\nSVar:HasAttackEffect:TRUE\nDeckHas:Type$Urza's\nDeckHints:Type$Urza's\nOracle:When Urza's Construction Drone enters, conjure cards named Urza's Mine, Urza's Power Plant, and Urza's Tower into your library, then shuffle.\\nWhenever Urza's Construction Drone attacks or dies, seek an Urza's land card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Construction Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

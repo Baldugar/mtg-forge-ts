@@ -1,0 +1,25 @@
+{
+  "id": "vedalken-ghoul-corpus-m678",
+  "description": "M6 corpus — Vedalken Ghoul; ETB-on-bf.",
+  "seed": 63323,
+  "cards": {
+    "Vedalken Ghoul": "Name:Vedalken Ghoul\nManaCost:U B\nTypes:Creature Vedalken Zombie\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player loses 4 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 4\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Vedalken Ghoul becomes blocked, defending player loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vedalken Ghoul"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

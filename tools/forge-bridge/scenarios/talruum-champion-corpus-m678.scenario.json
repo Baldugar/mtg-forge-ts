@@ -1,0 +1,25 @@
+{
+  "id": "talruum-champion-corpus-m678",
+  "description": "M6 corpus — Talruum Champion; ETB-on-bf.",
+  "seed": 61664,
+  "cards": {
+    "Talruum Champion": "Name:Talruum Champion\nManaCost:4 R\nTypes:Creature Minotaur\nPT:3/3\nK:First Strike\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigBlocks | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature loses first strike until end of turn.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigBlocked | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature loses first strike until end of turn.\nSVar:TrigBlocks:DB$ Debuff | Defined$ TriggeredAttackerLKICopy | Keywords$ First Strike\nSVar:TrigBlocked:DB$ Debuff | Defined$ TriggeredBlockerLKICopy | Keywords$ First Strike\nOracle:First strike\\nWhenever Talruum Champion blocks or becomes blocked by a creature, that creature loses first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Talruum Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-s-touch-corpus-m678",
+  "description": "M6 corpus — Tezzeret's Touch; in-hand parse.",
+  "seed": 61956,
+  "cards": {
+    "Tezzeret's Touch": "Name:Tezzeret's Touch\nManaCost:1 U B\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAITgts:Card.nonCreature\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Card.AttachedBy | SetPower$ 5 | SetToughness$ 5 | AddType$ Creature | Description$ Enchanted artifact is a creature with base power and toughness 5/5 in addition to its other types.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted artifact is put into a graveyard, return that card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:Random\nOracle:Enchant artifact\\nEnchanted artifact is a creature with base power and toughness 5/5 in addition to its other types.\\nWhen enchanted artifact is put into a graveyard, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret's Touch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

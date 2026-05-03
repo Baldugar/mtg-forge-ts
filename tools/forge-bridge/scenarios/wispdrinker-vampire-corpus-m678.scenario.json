@@ -1,0 +1,23 @@
+{
+  "id": "wispdrinker-vampire-corpus-m678",
+  "description": "M6 corpus — Wispdrinker Vampire; in-hand parse.",
+  "seed": 64303,
+  "cards": {
+    "Wispdrinker Vampire": "Name:Wispdrinker Vampire\nManaCost:2 W B\nTypes:Creature Vampire Rogue\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigGain | TriggerDescription$ Whenever another creature you control with power 2 or less enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigGain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ PumpAll | Cost$ 5 W B | ValidCards$ Creature.powerLE2+YouCtrl | KW$ Deathtouch & Lifelink | SpellDescription$ Creatures you control with power 2 or less gain deathtouch and lifelink until end of turn.\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhenever another creature you control with power 2 or less enters, each opponent loses 1 life and you gain 1 life.\\n{5}{W}{B}: Creatures you control with power 2 or less gain deathtouch and lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wispdrinker Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

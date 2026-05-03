@@ -1,0 +1,23 @@
+{
+  "id": "zealots-en-dal-corpus-m678",
+  "description": "M6 corpus — Zealots en-Dal; in-hand parse.",
+  "seed": 64615,
+  "cards": {
+    "Zealots en-Dal": "Name:Zealots en-Dal\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Permanent.nonLand+White+YouCtrl | PresentCompare$ EQX | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if all nonland permanents you control are white, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$Valid Permanent.nonLand+YouCtrl\nOracle:At the beginning of your upkeep, if all nonland permanents you control are white, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zealots en-Dal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

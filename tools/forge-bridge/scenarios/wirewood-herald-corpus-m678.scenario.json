@@ -1,0 +1,23 @@
+{
+  "id": "wirewood-herald-corpus-m678",
+  "description": "M6 corpus — Wirewood Herald; in-hand parse.",
+  "seed": 64293,
+  "cards": {
+    "Wirewood Herald": "Name:Wirewood Herald\nManaCost:1 G\nTypes:Creature Elf\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may search your library for an Elf card, reveal that card, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Elf | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Wirewood Herald dies, you may search your library for an Elf card, reveal that card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wirewood Herald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

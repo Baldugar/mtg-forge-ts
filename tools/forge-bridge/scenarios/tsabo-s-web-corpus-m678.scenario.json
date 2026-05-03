@@ -1,0 +1,23 @@
+{
+  "id": "tsabo-s-web-corpus-m678",
+  "description": "M6 corpus — Tsabo's Web; in-hand parse.",
+  "seed": 62811,
+  "cards": {
+    "Tsabo's Web": "Name:Tsabo's Web\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Land.hasNonManaActivatedAbility | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Each land with an activated ability that isn't a mana ability doesn't untap during its controller's untap step.\nAI:RemoveDeck:Random\nOracle:When Tsabo's Web enters, draw a card.\\nEach land with an activated ability that isn't a mana ability doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tsabo's Web"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

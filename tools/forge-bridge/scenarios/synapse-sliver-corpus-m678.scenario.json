@@ -1,0 +1,23 @@
+{
+  "id": "synapse-sliver-corpus-m678",
+  "description": "M6 corpus — Synapse Sliver; in-hand parse.",
+  "seed": 61558,
+  "cards": {
+    "Synapse Sliver": "Name:Synapse Sliver\nManaCost:4 U\nTypes:Creature Sliver\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Sliver | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | OptionalDecider$ TriggeredSourceController | Execute$ TrigDraw | TriggerDescription$ Whenever a Sliver deals combat damage to a player, its controller may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredSourceController | NumCards$ 1\nSVar:PlayMain1:TRUE\nOracle:Whenever a Sliver deals combat damage to a player, its controller may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Synapse Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

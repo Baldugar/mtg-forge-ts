@@ -1,0 +1,23 @@
+{
+  "id": "wild-ricochet-corpus-m678",
+  "description": "M6 corpus — Wild Ricochet; in-hand parse.",
+  "seed": 64165,
+  "cards": {
+    "Wild Ricochet": "Name:Wild Ricochet\nManaCost:2 R R\nTypes:Instant\nA:SP$ ChangeTargets | TargetType$ Spell | Optional$ True | ValidTgts$ Instant,Sorcery | SubAbility$ DBCopy | SpellDescription$ You may choose new targets for target instant or sorcery spell. Then copy that spell. You may choose new targets for the copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Targeted | Controller$ You | MayChooseTarget$ True\nAI:RemoveDeck:All\nOracle:You may choose new targets for target instant or sorcery spell. Then copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Ricochet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

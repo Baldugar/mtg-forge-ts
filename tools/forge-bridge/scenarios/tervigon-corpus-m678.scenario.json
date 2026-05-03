@@ -1,0 +1,23 @@
+{
+  "id": "tervigon-corpus-m678",
+  "description": "M6 corpus — Tervigon; in-hand parse.",
+  "seed": 61933,
+  "cards": {
+    "Tervigon": "Name:Tervigon\nManaCost:X 1 G\nTypes:Creature Tyranid\nPT:0/0\nK:Ravenous\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Spawn Termagants — Whenever CARDNAME deals combat damage to a player, create that many 1/1 green Tyranid creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ g_1_1_tyranid\nSVar:X:Count$xPaid\nSVar:Y:TriggerCount$DamageAmount\nDeckHas:Ability$Counters|Token\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nTrample\\nSpawn Termagants — Whenever Tervigon deals combat damage to a player, create that many 1/1 green Tyranid creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tervigon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

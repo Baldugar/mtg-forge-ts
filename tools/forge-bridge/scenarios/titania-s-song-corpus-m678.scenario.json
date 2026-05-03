@@ -1,0 +1,23 @@
+{
+  "id": "titania-s-song-corpus-m678",
+  "description": "M6 corpus — Titania's Song; in-hand parse.",
+  "seed": 62438,
+  "cards": {
+    "Titania's Song": "Name:Titania's Song\nManaCost:3 G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Artifact.nonCreature | SetPower$ AffectedX | SetToughness$ AffectedX | AddType$ Artifact & Creature | RemoveCardTypes$ True | RemoveAllAbilities$ True | Description$ Each noncreature artifact loses all abilities and is an artifact creature with power and toughness each equal to its mana value.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigEffect | Static$ True | TriggerDescription$ If CARDNAME leaves the battlefield, this effect continues until end of turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ KWAnimateAll\nSVar:KWAnimateAll:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Artifact.nonCreature | SetPower$ AffectedX | SetToughness$ AffectedX | AddType$ Creature | RemoveAllAbilities$ True | Description$ Each noncreature artifact loses all abilities and is an artifact creature with power and toughness each equal to its mana value.\nSVar:AffectedX:Count$CardManaCost\nSVar:NonStackingEffect:True\nSVar:PlayMain1:ALWAYS\nSVar:NeedsToPlayVar:CountOpps GTCountMe\nSVar:CountOpps:Count$Valid Artifact.OppCtrl/LimitMax.5\nSVar:CountMe:Count$Valid Artifact.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Enchantment|Creature|Planeswalker\nOracle:Each noncreature artifact loses all abilities and becomes an artifact creature with power and toughness each equal to its mana value. If Titania's Song leaves the battlefield, this effect continues until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titania's Song"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

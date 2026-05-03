@@ -1,0 +1,23 @@
+{
+  "id": "yahenni-s-expertise-corpus-m678",
+  "description": "M6 corpus — Yahenni's Expertise; in-hand parse.",
+  "seed": 64511,
+  "cards": {
+    "Yahenni's Expertise": "Name:Yahenni's Expertise\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True | SubAbility$ DBPlay | SpellDescription$ All creatures get -3/-3 until end of turn. You may cast a spell with mana value 3 or less from your hand without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLE3 | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nOracle:All creatures get -3/-3 until end of turn.\\nYou may cast a spell with mana value 3 or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yahenni's Expertise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

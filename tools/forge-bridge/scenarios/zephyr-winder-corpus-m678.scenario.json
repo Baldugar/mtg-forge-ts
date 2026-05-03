@@ -1,0 +1,23 @@
+{
+  "id": "zephyr-winder-corpus-m678",
+  "description": "M6 corpus — Zephyr Winder; in-hand parse.",
+  "seed": 64643,
+  "cards": {
+    "Zephyr Winder": "Name:Zephyr Winder\nManaCost:1 U\nTypes:Creature Elemental\nPT:2/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, untap up to one target creature.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1\nOracle:Flying\\nWhenever Zephyr Winder deals combat damage to a player, untap up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zephyr Winder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

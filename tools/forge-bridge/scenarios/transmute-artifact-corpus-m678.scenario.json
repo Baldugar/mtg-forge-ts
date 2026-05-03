@@ -1,0 +1,23 @@
+{
+  "id": "transmute-artifact-corpus-m678",
+  "description": "M6 corpus — Transmute Artifact; in-hand parse.",
+  "seed": 62645,
+  "cards": {
+    "Transmute Artifact": "Name:Transmute Artifact\nManaCost:U U\nTypes:Sorcery\nA:SP$ Sacrifice | SacValid$ Artifact | RememberSacrificed$ True | SpellDescription$ Sacrifice an artifact. If you do, search your library for an artifact card. If that card's mana value is less than or equal to the sacrificed artifact's mana value, put it onto the battlefield. If it's greater, you may pay {X}, where X is the difference. If you do, put it onto the battlefield. If you don't, put it into its owner's graveyard. Then shuffle. | SubAbility$ StoreCanSearch | StackDescription$ SpellDescription\nSVar:StoreCanSearch:DB$ StoreSVar | SVar$ SackedCMC | Type$ Number | Expression$ -1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ StoreCMC\nSVar:StoreCMC:DB$ StoreSVar | SVar$ SackedCMC | Type$ Calculate | Expression$ Y | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBClear\nSVar:DBClear:DB$ Cleanup | ClearRemembered$ True | SubAbility$ SearchLibrary\nSVar:SearchLibrary:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Artifact | ChangeNum$ 1 | SubAbility$ EqualTransmute | StackDescription$ None | RememberChanged$ True | ConditionCheckSVar$ SackedCMC | ConditionSVarCompare$ GE0\nSVar:EqualTransmute:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | NoLooking$ True | Mandatory$ True | Defined$ Remembered | ChangeNum$ 1 | ConditionCheckSVar$ SackedCMC | ConditionSVarCompare$ GEY | SubAbility$ PayForTransmute | StackDescription$ None\nSVar:PayForTransmute:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | NoLooking$ True | Mandatory$ True | Defined$ Remembered | ChangeNum$ 1 | ConditionCheckSVar$ SackedCMC | ConditionSVarCompare$ LTY | UnlessCost$ X | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ CostNotPaid | StackDescription$ None | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:CostNotPaid:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | NoLooking$ True | Mandatory$ True | Defined$ Remembered | ChangeNum$ 1 | ConditionCheckSVar$ SackedCMC | ConditionSVarCompare$ LTY | StackDescription$ None | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1\n# Everything working but when no artifact is sacrificed SackedCMC to be overridden to see if a sacrifice actually happened\nSVar:Y:RememberedLKI$CardManaCost\nSVar:SackedCMC:Number$0\nSVar:X:SVar$Y/Minus.SackedCMC\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:Sacrifice an artifact. If you do, search your library for an artifact card. If that card's mana value is less than or equal to the sacrificed artifact's mana value, put it onto the battlefield. If it's greater, you may pay {X}, where X is the difference. If you do, put it onto the battlefield. If you don't, put it into its owner's graveyard. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transmute Artifact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "suspicious-nanny-corpus-m678",
+  "description": "M6 corpus — Suspicious Nanny; in-hand parse.",
+  "seed": 61445,
+  "cards": {
+    "Suspicious Nanny": "Name:Suspicious Nanny\nManaCost:4 U\nTypes:Creature Human Spy Rigger\nPT:3/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigReassemble | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, it reassembles target Contraption that player controls.\nSVar:TrigReassemble:DB$ AssembleContraption | Reassemble$ True | DefinedContraption$ Targeted | ValidTgts$ Contraption.ControlledBy TriggeredTarget | TgtPrompt$ Select target contraption damaged player controls\nOracle:Whenever Suspicious Nanny deals combat damage to a player, it reassembles target Contraption that player controls. (Gain control of it and move it onto one of your sprockets.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suspicious Nanny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

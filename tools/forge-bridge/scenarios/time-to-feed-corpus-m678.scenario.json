@@ -1,0 +1,23 @@
+{
+  "id": "time-to-feed-corpus-m678",
+  "description": "M6 corpus — Time to Feed; in-hand parse.",
+  "seed": 62408,
+  "cards": {
+    "Time to Feed": "Name:Time to Feed\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | AILogic$ Fight | SubAbility$ DBDelayedTrigger | StackDescription$ When {c:ThisTargetedCard} dies this turn, {p:You} gains 3 life. | SpellDescription$ Choose target creature an opponent controls.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ ParentTarget | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigGainLife | SubAbility$ DBFight | StackDescription$ None | SpellDescription$ When that creature dies this turn, you gain 3 life.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | StackDescription$ {c:ThisTargetedCard} fights that creature. | SpellDescription$ Target creature you control fights that creature.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nOracle:Choose target creature an opponent controls. When that creature dies this turn, you gain 3 life. Target creature you control fights that creature. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time to Feed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

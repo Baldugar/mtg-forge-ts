@@ -1,0 +1,23 @@
+{
+  "id": "tectonic-hellion-corpus-m678",
+  "description": "M6 corpus — Tectonic Hellion; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "Tectonic Hellion": "Name:Tectonic Hellion\nManaCost:5 R R\nTypes:Creature Hellion\nPT:8/5\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks, each player who controls the most lands sacrifices two lands.\nSVar:TrigSac:DB$ Sacrifice | Amount$ 2 | SacValid$ Land | Defined$ Player.withMostTypeLand\nAI:RemoveDeck:Random\nOracle:Haste\\nWhenever Tectonic Hellion attacks, each player who controls the most lands sacrifices two lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tectonic Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

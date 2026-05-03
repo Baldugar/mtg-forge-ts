@@ -1,0 +1,25 @@
+{
+  "id": "vulpine-harvester-corpus-m678",
+  "description": "M6 corpus — Vulpine Harvester; ETB-on-bf.",
+  "seed": 63714,
+  "cards": {
+    "Vulpine Harvester": "Name:Vulpine Harvester\nManaCost:3 W\nTypes:Creature Phyrexian Fox\nPT:3/3\nT:Mode$ AttackersDeclared | ValidAttackers$ Phyrexian.YouCtrl | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Phyrexians you control attack, return target artifact card from your graveyard to the battlefield if its mana value is less than or equal to their total power.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLEX | TgtPrompt$ Select target artifact in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$Valid Phyrexian.YouCtrl+attacking$CardPower\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact\nDeckNeeds:Type$Phyrexian\nOracle:Whenever one or more Phyrexians you control attack, return target artifact card from your graveyard to the battlefield if its mana value is less than or equal to their total power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vulpine Harvester"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

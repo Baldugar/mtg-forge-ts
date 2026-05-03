@@ -1,0 +1,25 @@
+{
+  "id": "zellix-sanity-flayer-corpus-m678",
+  "description": "M6 corpus — Zellix, Sanity Flayer; ETB-on-bf.",
+  "seed": 64624,
+  "cards": {
+    "Zellix, Sanity Flayer": "Name:Zellix, Sanity Flayer\nManaCost:2 U\nTypes:Legendary Creature Horror\nPT:2/3\nK:Choose a Background\nT:Mode$ MilledOnce | ValidPlayer$ Player | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Hive Mind — Whenever a player mills one or more creature cards, you create a 1/1 black Horror creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_horror\nA:AB$ Mill | Cost$ 1 T | NumCards$ 3 | ValidTgts$ Player | TgtPrompt$ Select a player | SpellDescription$ Target player mills three cards.\nDeckHas:Ability$Mill|Token\nOracle:Hive Mind — Whenever a player mills one or more creature cards, you create a 1/1 black Horror creature token.\\n{1}, {T}: Target player mills three cards.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zellix, Sanity Flayer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

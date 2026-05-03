@@ -1,0 +1,23 @@
+{
+  "id": "wanderguard-sentry-corpus-m678",
+  "description": "M6 corpus — Wanderguard Sentry; in-hand parse.",
+  "seed": 63821,
+  "cards": {
+    "Wanderguard Sentry": "Name:Wanderguard Sentry\nManaCost:4 U\nTypes:Creature Drone\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at target opponent's hand.\nSVar:TrigPeek:DB$ RevealHand | ValidTgts$ Opponent | Look$ True\nOracle:When Wanderguard Sentry enters, look at target opponent's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wanderguard Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

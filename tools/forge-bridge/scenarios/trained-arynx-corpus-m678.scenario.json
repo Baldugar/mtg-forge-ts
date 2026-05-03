@@ -1,0 +1,23 @@
+{
+  "id": "trained-arynx-corpus-m678",
+  "description": "M6 corpus — Trained Arynx; in-hand parse.",
+  "seed": 62613,
+  "cards": {
+    "Trained Arynx": "Name:Trained Arynx\nManaCost:1 W\nTypes:Creature Cat Beast Mount\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while saddled, it gains first strike until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry\nK:Saddle:2\nOracle:Whenever Trained Arynx attacks while saddled, it gains first strike until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\\nSaddle 2 (Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trained Arynx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "throne-of-empires-corpus-m678",
+  "description": "M6 corpus — Throne of Empires; ETB-on-bf.",
+  "seed": 62293,
+  "cards": {
+    "Throne of Empires": "Name:Throne of Empires\nManaCost:4\nTypes:Artifact\nA:AB$ Token | Cost$ 1 T | TokenAmount$ X | TokenScript$ w_1_1_soldier | TokenOwner$ You | SpellDescription$ Create a 1/1 white Soldier creature token. Create five of those tokens instead if you control artifacts named Crown of Empires and Scepter of Empires.\nSVar:X:Count$Compare AllM12Empires GT0.5.1\nSVar:AllM12Empires:SVar$Z/Times.Y\nSVar:Z:Count$Valid Artifact.namedCrown of Empires+YouCtrl\nSVar:Y:Count$Valid Artifact.namedScepter of Empires+YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Name$Scepter of Empires|Crown of Empires\nOracle:{1}, {T}: Create a 1/1 white Soldier creature token. Create five of those tokens instead if you control artifacts named Crown of Empires and Scepter of Empires.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Throne of Empires"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

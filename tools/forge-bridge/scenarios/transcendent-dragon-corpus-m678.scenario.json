@@ -1,0 +1,23 @@
+{
+  "id": "transcendent-dragon-corpus-m678",
+  "description": "M6 corpus — Transcendent Dragon; in-hand parse.",
+  "seed": 62632,
+  "cards": {
+    "Transcendent Dragon": "Name:Transcendent Dragon\nManaCost:4 U U\nTypes:Creature Dragon\nPT:4/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastByYou+Self | Destination$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When this creature enters, if you cast it, counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard, then you may cast it without paying its mana cost.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell | RememberCountered$ True | Destination$ Exile | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+IsRemembered | ValidSA$ Spell | ValidZone$ Exile | WithoutManaCost$ True | Controller$ You | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nFlying\\nWhen this creature enters, if you cast it, counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard, then you may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transcendent Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

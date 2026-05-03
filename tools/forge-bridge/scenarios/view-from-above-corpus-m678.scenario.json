@@ -1,0 +1,23 @@
+{
+  "id": "view-from-above-corpus-m678",
+  "description": "M6 corpus — View from Above; in-hand parse.",
+  "seed": 63482,
+  "cards": {
+    "View from Above": "Name:View from Above\nManaCost:1 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ Flying | SubAbility$ DBBounce | SpellDescription$ Target creature gains flying until end of turn. If you control a white permanent, return CARDNAME to its owner's hand.\nSVar:DBBounce:DB$ ChangeZone | Origin$ Stack | Destination$ Hand | ConditionPresent$ Permanent.White+YouCtrl | ConditionCompare$ GE1 | Defined$ Parent\nDeckHints:Color$White\nOracle:Target creature gains flying until end of turn. If you control a white permanent, return View from Above to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "View from Above"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

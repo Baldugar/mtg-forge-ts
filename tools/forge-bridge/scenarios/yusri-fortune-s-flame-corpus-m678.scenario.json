@@ -1,0 +1,23 @@
+{
+  "id": "yusri-fortune-s-flame-corpus-m678",
+  "description": "M6 corpus — Yusri, Fortune's Flame; in-hand parse.",
+  "seed": 64597,
+  "cards": {
+    "Yusri, Fortune's Flame": "Name:Yusri, Fortune's Flame\nManaCost:1 U R\nTypes:Legendary Creature Efreet\nPT:2/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChooseNumber | TriggerDescription$ Whenever CARDNAME attacks, choose a number between 1 and 5. Flip that many coins. For each flip you win, draw a card. For each flip you lose, NICKNAME deals 2 damage to you. If you won five flips this way, you may cast spells from your hand this turn without paying their mana costs.\nSVar:TrigChooseNumber:DB$ ChooseNumber | Defined$ You | Min$ 1 | Max$ 5 | AILogic$ Max | SubAbility$ FlipCoin\nSVar:FlipCoin:DB$ FlipACoin | Amount$ X | WinSubAbility$ DBDraw | LoseSubAbility$ DBDamage | RememberNumber$ Wins | SubAbility$ DBEffect\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Wins\nSVar:DBDamage:DB$ DealDamage | NumDmg$ Damage | Defined$ You\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | Stackable$ False | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQ5 | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.nonLand+YouOwn | MayPlay$ True | MayPlayWithoutManaCost$ True | AffectedZone$ Hand | Description$ You may cast spells from your hand this turn without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ChosenNumber\nSVar:Y:Count$RememberedNumber\nSVar:Damage:SVar$Losses/Times.2\nOracle:Flying\\nWhenever Yusri, Fortune's Flame attacks, choose a number between 1 and 5. Flip that many coins. For each flip you win, draw a card. For each flip you lose, Yusri deals 2 damage to you. If you won five flips this way, you may cast spells from your hand this turn without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yusri, Fortune's Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

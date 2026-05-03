@@ -1,0 +1,23 @@
+{
+  "id": "thraben-sentry-corpus-m678",
+  "description": "M6 corpus — Thraben Sentry; in-hand parse.",
+  "seed": 62248,
+  "cards": {
+    "Thraben Sentry": "Name:Thraben Sentry\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ Whenever another creature you control dies, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nWhenever another creature you control dies, you may transform Thraben Sentry.\n\nALTERNATE\n\nName:Thraben Militia\nManaCost:no cost\nColors:white\nTypes:Creature Human Soldier\nPT:5/4\nK:Trample\nOracle:Trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thraben Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

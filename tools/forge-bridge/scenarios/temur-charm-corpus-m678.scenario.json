@@ -1,0 +1,23 @@
+{
+  "id": "temur-charm-corpus-m678",
+  "description": "M6 corpus — Temur Charm; in-hand parse.",
+  "seed": 61869,
+  "cards": {
+    "Temur Charm": "Name:Temur Charm\nManaCost:G U R\nTypes:Instant\nA:SP$ Charm | Choices$ Pump,Counter,Effect\nSVar:Pump:DB$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Choose target creature you control | NumAtt$ +1 | NumDef$ +1 | StackDescription$ None | SubAbility$ DBFight | SpellDescription$ Target creature you control gets +1/+1 until end of turn. It fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | AILogic$ FightSub\nSVar:Counter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ 3 | SpellDescription$ Counter target spell unless its controller pays {3}.\nSVar:Effect:DB$ Effect | StaticAbilities$ KWPump | SpellDescription$ Creatures with power 3 or less can't block this turn.\nSVar:KWPump:Mode$ Continuous | Affected$ Creature.powerLE3 | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures with power 3 or less can't block this turn.\nOracle:Choose one —\\n• Target creature you control gets +1/+1 until end of turn. It fights target creature you don't control.\\n• Counter target spell unless its controller pays {3}.\\n• Creatures with power 3 or less can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temur Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "witty-roastmaster-corpus-m678",
+  "description": "M6 corpus — Witty Roastmaster; in-hand parse.",
+  "seed": 64338,
+  "cards": {
+    "Witty Roastmaster": "Name:Witty Roastmaster\nManaCost:2 R\nTypes:Creature Devil Citizen\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Alliance — Whenever another creature you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nSVar:BuffedBy:Creature\nOracle:Alliance — Whenever another creature you control enters, Witty Roastmaster deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witty Roastmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

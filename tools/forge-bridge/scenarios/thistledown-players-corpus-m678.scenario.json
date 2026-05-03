@@ -1,0 +1,23 @@
+{
+  "id": "thistledown-players-corpus-m678",
+  "description": "M6 corpus — Thistledown Players; in-hand parse.",
+  "seed": 62175,
+  "cards": {
+    "Thistledown Players": "Name:Thistledown Players\nManaCost:2 W\nTypes:Creature Mouse Bard\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, untap target nonland permanent.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Thistledown Players attacks, untap target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thistledown Players"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

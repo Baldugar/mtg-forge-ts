@@ -1,0 +1,25 @@
+{
+  "id": "zulaport-enforcer-corpus-m678",
+  "description": "M6 corpus — Zulaport Enforcer; ETB-on-bf.",
+  "seed": 64711,
+  "cards": {
+    "Zulaport Enforcer": "Name:Zulaport Enforcer\nManaCost:B\nTypes:Creature Human Warrior\nPT:1/1\nK:Level up:4\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 3 | SetToughness$ 3 | IsPresent$ Card.Self+counters_GE1_LEVEL+counters_LT3_LEVEL | Description$ LEVEL 1-2 3/3\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 5 | SetToughness$ 5 | IsPresent$ Card.Self+counters_GE3_LEVEL | AddStaticAbility$ SCantBlock | Description$ LEVEL 3+ 5/5 CARDNAME can't be blocked except by black creatures.\nSVar:SCantBlock:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.nonBlack | Secondary$ True | Description$ CARDNAME can't be blocked except by black creatures.\nOracle:Level up {4} ({4}: Put a level counter on this. Level up only as a sorcery.)\\nLEVEL 1-2\\n3/3\\nLEVEL 3+\\n5/5\\nZulaport Enforcer can't be blocked except by black creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zulaport Enforcer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

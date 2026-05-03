@@ -1,0 +1,23 @@
+{
+  "id": "tempt-with-bunnies-corpus-m678",
+  "description": "M6 corpus — Tempt with Bunnies; in-hand parse.",
+  "seed": 61857,
+  "cards": {
+    "Tempt with Bunnies": "Name:Tempt with Bunnies\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Draw | SubAbility$ DBToken1 | SpellDescription$ Tempting offer — Draw a card and create a 1/1 white Rabbit creature token. Then each opponent may draw a card and create a 1/1 white Rabbit creature token. For each opponent who does, you draw a card and you create a 1/1 white Rabbit creature token.\nSVar:DBToken1:DB$ Token | TokenScript$ w_1_1_rabbit | TokenOwner$ You | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBDraw1 | RepeatPlayers$ Player.Opponent | SubAbility$ DBDraw2 | ChangeZoneTable$ True | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to draw a card and create a 1/1 white Rabbit creature token?\nSVar:DBDraw1:DB$ Draw | Defined$ Player.IsRemembered | SubAbility$ DBToken2\nSVar:DBToken2:DB$ Token | TokenScript$ w_1_1_rabbit | TokenOwner$ Player.IsRemembered | SubAbility$ DBCount\nSVar:DBCount:DB$ StoreSVar | SVar$ X | Type$ CountSVar | Expression$ X/Plus.1\nSVar:DBDraw2:DB$ Draw | NumCards$ X | SubAbility$ DBToken3\nSVar:DBToken3:DB$ Token | TokenScript$ w_1_1_rabbit | TokenAmount$ X | TokenOwner$ You | SubAbility$ DBReset\nSVar:DBReset:DB$ StoreSVar | SVar$ X | Type$ Number | Expression$ 0\nSVar:X:Number$0\nOracle:Tempting offer — Draw a card and create a 1/1 white Rabbit creature token. Then each opponent may draw a card and create a 1/1 white Rabbit creature token. For each opponent who does, you draw a card and you create a 1/1 white Rabbit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempt with Bunnies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

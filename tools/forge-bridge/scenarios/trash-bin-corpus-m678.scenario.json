@@ -1,0 +1,25 @@
+{
+  "id": "trash-bin-corpus-m678",
+  "description": "M6 corpus — Trash Bin; ETB-on-bf.",
+  "seed": 62654,
+  "cards": {
+    "Trash Bin": "Name:Trash Bin\nManaCost:no cost\nTypes:Artifact Attraction\nK:Visit:TrigMill\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | SubAbility$ DBReturn | SpellDescription$ Mill two cards, then return a creature card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn | AtRandom$ True | Hidden$ True\nDeckHas:Ability$Graveyard|Mill\nOracle:Visit — Mill two cards, then return a card at random from your graveyard to your hand. (To mill a card, a player puts the top card of their library into their graveyard.)\n\n# --- VARIANTS ---\n\nVariant:A:Lights:2 6\nVariant:B:Lights:3 6\nVariant:C:Lights:4 6\nVariant:D:Lights:5 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Trash Bin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

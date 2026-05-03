@@ -1,0 +1,25 @@
+{
+  "id": "walking-wall-corpus-m678",
+  "description": "M6 corpus — Walking Wall; ETB-on-bf.",
+  "seed": 63757,
+  "cards": {
+    "Walking Wall": "Name:Walking Wall\nManaCost:4\nTypes:Artifact Creature Wall\nPT:0/6\nK:Defender\nA:AB$ Pump | Cost$ 3 | NumAtt$ +3 | NumDef$ -1 | ActivationLimit$ 1 | SubAbility$ DBEffect | SpellDescription$ CARDNAME gets +3/-1 until end of turn and can attack this turn as though it didn't have defender. Activate only once each turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CanAttack | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ It can attack this turn as though it didn't have defender.\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nOracle:Defender\\n{3}: Walking Wall gets +3/-1 until end of turn and can attack this turn as though it didn't have defender. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Walking Wall"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

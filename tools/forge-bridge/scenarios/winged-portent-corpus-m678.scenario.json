@@ -1,0 +1,23 @@
+{
+  "id": "winged-portent-corpus-m678",
+  "description": "M6 corpus — Winged Portent; in-hand parse.",
+  "seed": 64256,
+  "cards": {
+    "Winged Portent": "Name:Winged Portent\nManaCost:1 U U\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SpellDescription$ Draw a card for each creature [with flying] you control.\nA:SP$ Draw | Cost$ 4 G U | NumCards$ Y | PrecostDesc$ Cleave | CostDesc$ {4}{G}{U} | NonBasicSpell$ True | SpellDescription$ (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.)\nSVar:X:Count$Valid Creature.withFlying+YouCtrl\nSVar:Y:Count$Valid Creature.YouCtrl\nOracle:Cleave {4}{G}{U} (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.)\\nDraw a card for each creature [with flying] you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winged Portent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wei-assassins-corpus-m678",
+  "description": "M6 corpus — Wei Assassins; in-hand parse.",
+  "seed": 64034,
+  "cards": {
+    "Wei Assassins": "Name:Wei Assassins\nManaCost:3 B B\nTypes:Creature Human Soldier Assassin\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, target opponent chooses a creature they control. Destroy that creature.\nSVar:TrigSac:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | Destroy$ True\nOracle:When Wei Assassins enters, target opponent chooses a creature they control. Destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wei Assassins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

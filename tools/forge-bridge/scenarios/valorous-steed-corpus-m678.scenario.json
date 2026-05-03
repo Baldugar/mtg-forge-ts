@@ -1,0 +1,23 @@
+{
+  "id": "valorous-steed-corpus-m678",
+  "description": "M6 corpus — Valorous Steed; in-hand parse.",
+  "seed": 63242,
+  "cards": {
+    "Valorous Steed": "Name:Valorous Steed\nManaCost:4 W\nTypes:Creature Unicorn\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ w_2_2_knight_vigilance\nDeckHas:Ability$Token\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhen Valorous Steed enters, create a 2/2 white Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valorous Steed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

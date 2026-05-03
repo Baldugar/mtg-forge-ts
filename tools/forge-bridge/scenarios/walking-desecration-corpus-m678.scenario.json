@@ -1,0 +1,25 @@
+{
+  "id": "walking-desecration-corpus-m678",
+  "description": "M6 corpus — Walking Desecration; ETB-on-bf.",
+  "seed": 63752,
+  "cards": {
+    "Walking Desecration": "Name:Walking Desecration\nManaCost:2 B\nTypes:Creature Zombie\nPT:1/1\nA:AB$ ChooseType | Cost$ B T | Defined$ You | Type$ Creature | SubAbility$ DBEffect | SpellDescription$ Creatures of the creature type of your choice attack this turn if able.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MustAttack | StackDescription$ None\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.ChosenType | Description$ Creatures of the chosen creature type attack this turn if able.\nAI:RemoveDeck:All\nOracle:{B}, {T}: Creatures of the creature type of your choice attack this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Walking Desecration"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

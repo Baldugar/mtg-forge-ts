@@ -1,0 +1,23 @@
+{
+  "id": "wanderlust-corpus-m678",
+  "description": "M6 corpus — Wanderlust; in-hand parse.",
+  "seed": 63834,
+  "cards": {
+    "Wanderlust": "Name:Wanderlust\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, Wanderlust deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wanderlust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

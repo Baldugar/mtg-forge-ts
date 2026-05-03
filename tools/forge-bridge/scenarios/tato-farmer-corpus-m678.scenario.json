@@ -1,0 +1,23 @@
+{
+  "id": "tato-farmer-corpus-m678",
+  "description": "M6 corpus — Tato Farmer; in-hand parse.",
+  "seed": 61727,
+  "cards": {
+    "Tato Farmer": "Name:Tato Farmer\nManaCost:2 G\nTypes:Creature Zombie Mutant Peasant\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigRadiation | OptionalDecider$ You | TriggerDescription$ Landfall — Whenever a land you control enters, you may get two rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ You | Num$ 2\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Land.milledThisTurn | Tapped$ True | TgtPrompt$ Select target land card in a graveyard that was milled this turn | SpellDescription$ Put target land card in a graveyard that was milled this turn onto the battlefield under your control tapped.\nDeckHints:Ability$Mill\nOracle:Landfall — Whenever a land you control enters, you may get two rad counters.\\n{T}: Put target land card in a graveyard that was milled this turn onto the battlefield under your control tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tato Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

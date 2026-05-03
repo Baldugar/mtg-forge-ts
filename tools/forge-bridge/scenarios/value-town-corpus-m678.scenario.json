@@ -1,0 +1,23 @@
+{
+  "id": "value-town-corpus-m678",
+  "description": "M6 corpus — Value Town; in-hand parse.",
+  "seed": 63244,
+  "cards": {
+    "Value Town": "Name:Value Town\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nAlternateMode:Adventure\nOracle:Value Town enters the battlefield tapped.\\n{T}: Add {U} or {R}.\n\nALTERNATE\n\nName:Take a Trip to . . .\nManaCost:4 U R\nTypes:Sorcery Adventure\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBDamage | SpellDescription$ Draw two cards. This spell deals 2 damage to each opponent. (Then exile this card. You may play the land later from exile.)\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 2\nOracle:Draw two cards. This spell deals 2 damage to each opponent. (Then exile this card. You may play the land later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Value Town"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

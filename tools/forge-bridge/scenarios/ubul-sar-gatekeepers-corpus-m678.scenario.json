@@ -1,0 +1,23 @@
+{
+  "id": "ubul-sar-gatekeepers-corpus-m678",
+  "description": "M6 corpus — Ubul Sar Gatekeepers; in-hand parse.",
+  "seed": 62925,
+  "cards": {
+    "Ubul Sar Gatekeepers": "Name:Ubul Sar Gatekeepers\nManaCost:3 B\nTypes:Creature Zombie Soldier\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Gate.YouCtrl | PresentCompare$ GE2 | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, if you control two or more Gates, target creature an opponent controls gets -2/-2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True\nDeckHints:Type$Gate\nOracle:When Ubul Sar Gatekeepers enters, if you control two or more Gates, target creature an opponent controls gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ubul Sar Gatekeepers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

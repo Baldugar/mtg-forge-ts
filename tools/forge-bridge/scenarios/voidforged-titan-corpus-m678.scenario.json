@@ -1,0 +1,23 @@
+{
+  "id": "voidforged-titan-corpus-m678",
+  "description": "M6 corpus — Voidforged Titan; in-hand parse.",
+  "seed": 63633,
+  "cards": {
+    "Voidforged Titan": "Name:Voidforged Titan\nManaCost:4 B\nTypes:Artifact Creature Robot Warrior\nPT:5/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDraw | TriggerDescription$ Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, you draw a card and lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$Void.1.0\nDeckHas:Ability$Counters\nOracle:Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, you draw a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voidforged Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

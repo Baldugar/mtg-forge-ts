@@ -1,0 +1,23 @@
+{
+  "id": "venser-s-journal-corpus-m678",
+  "description": "M6 corpus — Venser's Journal; in-hand parse.",
+  "seed": 63387,
+  "cards": {
+    "Venser's Journal": "Name:Venser's Journal\nManaCost:5\nTypes:Artifact\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you gain 1 life for each card in your hand.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:You have no maximum hand size.\\nAt the beginning of your upkeep, you gain 1 life for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venser's Journal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

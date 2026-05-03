@@ -1,0 +1,25 @@
+{
+  "id": "veiled-apparition-corpus-m678",
+  "description": "M6 corpus — Veiled Apparition; ETB-on-bf.",
+  "seed": 63338,
+  "cards": {
+    "Veiled Apparition": "Name:Veiled Apparition\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent casts a spell, if CARDNAME is an enchantment, CARDNAME becomes a 3/3 Illusion creature with flying and \"At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}{U}.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 3 | Toughness$ 3 | Keywords$ Flying | Triggers$ UpkeepCostTrigger | Types$ Creature,Illusion | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}{U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1 U\nOracle:When an opponent casts a spell, if Veiled Apparition is an enchantment, Veiled Apparition becomes a 3/3 Illusion creature with flying and \"At the beginning of your upkeep, sacrifice Veiled Apparition unless you pay {1}{U}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Veiled Apparition"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

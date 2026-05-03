@@ -1,0 +1,23 @@
+{
+  "id": "voidmage-husher-corpus-m678",
+  "description": "M6 corpus — Voidmage Husher; in-hand parse.",
+  "seed": 63635,
+  "cards": {
+    "Voidmage Husher": "Name:Voidmage Husher\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, counter target activated ability.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast a spell, you may return CARDNAME to its owner's hand.\nSVar:TrigCounter:DB$ Counter | TargetType$ Activated | TgtPrompt$ Select target ability | ValidTgts$ Permanent\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Voidmage Husher enters, counter target activated ability. (Mana abilities can't be targeted.)\\nWhenever you cast a spell, you may return Voidmage Husher to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voidmage Husher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

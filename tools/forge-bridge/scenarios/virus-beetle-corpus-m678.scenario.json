@@ -1,0 +1,23 @@
+{
+  "id": "virus-beetle-corpus-m678",
+  "description": "M6 corpus — Virus Beetle; in-hand parse.",
+  "seed": 63556,
+  "cards": {
+    "Virus Beetle": "Name:Virus Beetle\nManaCost:1 B\nTypes:Artifact Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:When Virus Beetle enters, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virus Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

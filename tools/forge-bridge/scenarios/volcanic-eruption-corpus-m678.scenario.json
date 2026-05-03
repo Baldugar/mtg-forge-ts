@@ -1,0 +1,23 @@
+{
+  "id": "volcanic-eruption-corpus-m678",
+  "description": "M6 corpus — Volcanic Eruption; in-hand parse.",
+  "seed": 63649,
+  "cards": {
+    "Volcanic Eruption": "Name:Volcanic Eruption\nManaCost:X U U U\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ X | TargetMax$ X | ValidTgts$ Mountain | TgtPrompt$ Select target Mountain | RememberTargets$ True | SpellDescription$ Destroy X target Mountains. CARDNAME deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way. | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | NumDmg$ Y | ValidCards$ Creature | ValidPlayers$ Player | ValidDescription$ each creature and each player. | SubAbility$ DBCleanup\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidGraveyard Mountain.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Destroy X target Mountains. Volcanic Eruption deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volcanic Eruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

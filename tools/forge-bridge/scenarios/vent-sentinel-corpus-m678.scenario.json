@@ -1,0 +1,25 @@
+{
+  "id": "vent-sentinel-corpus-m678",
+  "description": "M6 corpus — Vent Sentinel; ETB-on-bf.",
+  "seed": 63389,
+  "cards": {
+    "Vent Sentinel": "Name:Vent Sentinel\nManaCost:3 R\nTypes:Creature Elemental\nPT:2/4\nK:Defender\nA:AB$ DealDamage | Cost$ 1 R T | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target player or planeswalker equal to the number of creatures with defender you control.\nSVar:X:Count$Valid Creature.withDefender+YouCtrl\nOracle:Defender\\n{1}{R}, {T}: Vent Sentinel deals damage to target player or planeswalker equal to the number of creatures with defender you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vent Sentinel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

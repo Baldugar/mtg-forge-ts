@@ -1,0 +1,23 @@
+{
+  "id": "ultimate-magic-meteor-corpus-m678",
+  "description": "M6 corpus — Ultimate Magic: Meteor; in-hand parse.",
+  "seed": 62947,
+  "cards": {
+    "Ultimate Magic: Meteor": "Name:Ultimate Magic: Meteor\nManaCost:5 R\nTypes:Sorcery\nK:Foretell:5 R\nA:SP$ DamageAll | ValidCards$ Creature | NumDmg$ 7 | SubAbility$ DBRepeat | SpellDescription$ CARDNAME deals 7 damage to each creature. If this spell was cast from exile, for each opponent, choose an artifact or land that player controls. Destroy the chosen permanents.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | ConditionCheckSVar$ X | SubAbility$ DBDestroy\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Artifact.ControlledBy Remembered,Land.ControlledBy Remembered | Mandatory$ True | RememberChosen$ True\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Permanent.IsRemembered | ConditionCheckSVar$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:X:Count$wasCastFromExile.1.0\nOracle:Ultimate Magic: Meteor deals 7 damage to each creature. If this spell was cast from exile, for each opponent, choose an artifact or land that player controls. Destroy the chosen permanents.\\nForetell {5}{R} (During your turn, you may pay 2 and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultimate Magic: Meteor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

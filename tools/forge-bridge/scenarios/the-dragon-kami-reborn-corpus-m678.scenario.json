@@ -1,0 +1,23 @@
+{
+  "id": "the-dragon-kami-reborn-corpus-m678",
+  "description": "M6 corpus — The Dragon-Kami Reborn; in-hand parse.",
+  "seed": 62018,
+  "cards": {
+    "The Dragon-Kami Reborn": "Name:The Dragon-Kami Reborn\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:3:DBHatching,DBHatching,DBTransform\nSVar:DBHatching:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDig | SpellDescription$ You gain 2 life. Look at the top three cards of your library. Exile one of them face down with a hatching counter on it, then put the rest on the bottom of your library in any order.\nSVar:DBDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | DestinationZone$ Exile | ExileWithCounters$ HATCHING | ExileFaceDown$ True | WithMayLook$ True\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — You gain 2 life. Look at the top three cards of your library. Exile one of them face down with a hatching counter on it, then put the rest on the bottom of your library in any order.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Dragon-Kami's Egg\nManaCost:no cost\nColors:green\nTypes:Enchantment Creature Egg\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Dragon.YouCtrl | Execute$ TrigPlay | TriggerDescription$ Whenever CARDNAME or a Dragon you control dies, you may cast a creature spell from among cards you own in exile with hatching counters on them without paying its mana cost.\nSVar:TrigPlay:DB$ Play | Valid$ Creature.YouOwn+counters_GE1_HATCHING | ValidSA$ Spell.Creature | ValidZone$ Exile | Controller$ You | WithoutManaCost$ True | Optional$ True\nSVar:SacMe:5\nDeckHints:Type$Dragon\nOracle:Whenever Dragon-Kami's Egg or a Dragon you control dies, you may cast a creature spell from among cards you own in exile with hatching counters on them without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Dragon-Kami Reborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

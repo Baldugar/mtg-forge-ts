@@ -1,0 +1,23 @@
+{
+  "id": "unmoored-ego-corpus-m678",
+  "description": "M6 corpus — Unmoored Ego; in-hand parse.",
+  "seed": 63091,
+  "cards": {
+    "Unmoored Ego": "Name:Unmoored Ego\nManaCost:1 U B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | SubAbility$ ExileYard | StackDescription$ SpellDescription | SpellDescription$ Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player.Opponent | ChangeType$ Card.NamedCard | Chooser$ You | ChangeNum$ 4 | Hidden$ True | RememberChanged$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ Y | Chooser$ You | RememberChanged$ True | Imprint$ True | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ Y | Chooser$ You | RememberChanged$ True | Shuffle$ True | SubAbility$ DBDraw | StackDescription$ None\nSVar:DBDraw:DB$ Draw | Defined$ Targeted | NumCards$ Z | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Remembered$Amount\nSVar:Y:SVar$X/NMinus.4\nSVar:Z:Imprinted$Amount\nOracle:Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unmoored Ego"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

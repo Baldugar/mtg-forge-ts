@@ -1,0 +1,23 @@
+{
+  "id": "unidentified-hovership-corpus-m678",
+  "description": "M6 corpus — Unidentified Hovership; in-hand parse.",
+  "seed": 63068,
+  "cards": {
+    "Unidentified Hovership": "Name:Unidentified Hovership\nManaCost:1 W W\nTypes:Artifact Vehicle\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile up to one target creature with toughness 5 or less.\nSVar:TrigChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.toughnessLE5 | TgtPrompt$ Select target creature with toughness 5 or less. | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDread | TriggerDescription$ When CARDNAME leaves the battlefield, the exiled card's owner manifests dread.\nSVar:TrigDread:DB$ ManifestDread | DefinedPlayer$ RememberedOwner | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:1\nOracle:Flying\\nWhen Unidentified Hovership enters, exile up to one target creature with toughness 5 or less.\\nWhen Unidentified Hovership leaves the battlefield, the exiled card's owner manifests dread.\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unidentified Hovership"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

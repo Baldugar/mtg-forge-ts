@@ -1,0 +1,23 @@
+{
+  "id": "wormfang-behemoth-corpus-m678",
+  "description": "M6 corpus — Wormfang Behemoth; in-hand parse.",
+  "seed": 64425,
+  "cards": {
+    "Wormfang Behemoth": "Name:Wormfang Behemoth\nManaCost:3 U U\nTypes:Creature Nightmare Fish Beast\nPT:5/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all cards from your hand.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl | Origin$ Hand | Destination$ Exile | RememberChanged$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to their owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:When Wormfang Behemoth enters, exile all cards from your hand.\\nWhen Wormfang Behemoth leaves the battlefield, return the exiled cards to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wormfang Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

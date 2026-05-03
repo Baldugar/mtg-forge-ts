@@ -1,0 +1,23 @@
+{
+  "id": "wrath-of-marit-lage-corpus-m678",
+  "description": "M6 corpus — Wrath of Marit Lage; in-hand parse.",
+  "seed": 64443,
+  "cards": {
+    "Wrath of Marit Lage": "Name:Wrath of Marit Lage\nManaCost:3 U U\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.Red | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Red creatures don't untap during their controllers' untap steps.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all red creatures.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.Red\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:When Wrath of Marit Lage enters, tap all red creatures.\\nRed creatures don't untap during their controllers' untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrath of Marit Lage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

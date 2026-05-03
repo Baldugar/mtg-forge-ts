@@ -1,0 +1,23 @@
+{
+  "id": "wyleth-soul-of-steel-corpus-m678",
+  "description": "M6 corpus — Wyleth, Soul of Steel; in-hand parse.",
+  "seed": 64485,
+  "cards": {
+    "Wyleth, Soul of Steel": "Name:Wyleth, Soul of Steel\nManaCost:1 R W\nTypes:Legendary Creature Human Warrior\nPT:2/2\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw a card for each Aura and Equipment attached to it.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Equipment.Attached,Aura.Attached\nSVar:HasAttackEffect:TRUE\nSVar:EnchantMe:Multiple\nSVar:EquipMe:Multiple\nDeckHints:Type$Aura|Equipment\nOracle:Trample\\nWhenever Wyleth, Soul of Steel attacks, draw a card for each Aura and Equipment attached to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wyleth, Soul of Steel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

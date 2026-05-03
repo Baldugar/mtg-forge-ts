@@ -1,0 +1,25 @@
+{
+  "id": "words-of-wind-corpus-m678",
+  "description": "M6 corpus — Words of Wind; ETB-on-bf.",
+  "seed": 64409,
+  "cards": {
+    "Words of Wind": "Name:Words of Wind\nManaCost:2 U\nTypes:Enchantment\nA:AB$ Effect | Cost$ 1 | ReplacementEffects$ DrawReplace | SpellDescription$ The next time you would draw a card this turn, each player returns a permanent they control to its owner's hand instead.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ BounceAll | Description$ The next time you would draw a card this turn, each player returns a permanent they control to its owner's hand instead.\nSVar:BounceAll:DB$ ChangeZone | DefinedPlayer$ Player | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{1}: The next time you would draw a card this turn, each player returns a permanent they control to its owner's hand instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Words of Wind"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

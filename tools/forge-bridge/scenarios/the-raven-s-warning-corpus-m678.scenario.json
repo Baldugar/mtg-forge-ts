@@ -1,0 +1,23 @@
+{
+  "id": "the-raven-s-warning-corpus-m678",
+  "description": "M6 corpus — The Raven's Warning; in-hand parse.",
+  "seed": 62093,
+  "cards": {
+    "The Raven's Warning": "Name:The Raven's Warning\nManaCost:1 W U\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBEffect,DBWish\nSVar:DBToken:DB$ Token | TokenScript$ u_1_1_bird_flying | TokenOwner$ You | SubAbility$ DBGainLife | SpellDescription$ Create a 1/1 blue Bird creature token with flying. You gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDamage | SpellDescription$ Whenever one or more creatures you control with flying deal combat damage to a player this turn, look at that player's hand and draw a card.\nSVar:TrigDamage:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl+withFlying | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPeek | TriggerDescription$ Whenever one or more creatures you control with flying deal combat damage to a player this turn, look at that player's hand and draw a card.\nSVar:TrigPeek:DB$ RevealHand | Defined$ TriggeredTarget | SubAbility$ DBDraw | Look$ True | SpellDescription$ Look at that player's hand.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:DBWish:DB$ ChangeZone | Origin$ Sideboard | Destination$ Library | OptionalDecider$ You | ChangeType$ Card.YouOwn | ChangeNum$ 1 | Optional$ True | Hidden$ True | SpellDescription$ You may put a card you own from outside the game on top of your library.\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a 1/1 blue Bird creature token with flying. You gain 2 life.\\nII — Whenever one or more creatures you control with flying deal combat damage to a player this turn, look at that player's hand and draw a card.\\nIII — You may put a card you own from outside the game on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Raven's Warning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

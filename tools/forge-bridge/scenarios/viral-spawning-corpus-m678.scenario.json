@@ -1,0 +1,23 @@
+{
+  "id": "viral-spawning-corpus-m678",
+  "description": "M6 corpus — Viral Spawning; in-hand parse.",
+  "seed": 63530,
+  "cards": {
+    "Viral Spawning": "Name:Viral Spawning\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_3_3_phyrexian_beast_toxic | TokenOwner$ You | SpellDescription$ Create a 3/3 green Phyrexian Beast creature token with toxic 1. (Players dealt combat damage by this creature also get a poison counter.)\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ X | SVarCompare$ GE3 | EffectZone$ Graveyard | AffectedZone$ Graveyard | AddKeyword$ Flashback:2 G | Description$ Corrupted — As long as an opponent has three or more poison counters and CARDNAME is in your graveyard, it has flashback {2}{G}. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHas:Ability$Graveyard|Token|Counters & Type$Phyrexian|Beast & Keyword$Toxic\nDeckHints:Ability$Proliferate & Keyword$Infect|Toxic\nOracle:Create a 3/3 green Phyrexian Beast creature token with toxic 1. (Players dealt combat damage by this creature also get a poison counter.)\\nCorrupted — As long as an opponent has three or more poison counters and Viral Spawning is in your graveyard, it has flashback {2}{G}. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viral Spawning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

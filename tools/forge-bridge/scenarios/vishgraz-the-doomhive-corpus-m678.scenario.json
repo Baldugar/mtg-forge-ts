@@ -1,0 +1,23 @@
+{
+  "id": "vishgraz-the-doomhive-corpus-m678",
+  "description": "M6 corpus — Vishgraz, the Doomhive; in-hand parse.",
+  "seed": 63563,
+  "cards": {
+    "Vishgraz, the Doomhive": "Name:Vishgraz, the Doomhive\nManaCost:2 W B G\nTypes:Legendary Creature Phyrexian Insect\nPT:3/3\nK:Menace\nK:Toxic:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 colorless Phyrexian Mite artifact creature tokens with toxic 1 and \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ c_1_1_a_phyrexian_mite_toxic_noblock\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ NICKNAME gets +1/+1 for each poison counter your opponents have.\nSVar:X:Count$TotalOppPoisonCounters\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Mite|Artifact\nDeckHints:Ability$Counters & Keyword$Infect|Toxic|Poisonous\nOracle:Menace, toxic 1 (Players dealt combat damage by this creature also get a poison counter.)\\nWhen Vishgraz, the Doomhive enters, create three 1/1 colorless Phyrexian Mite artifact creature tokens with toxic 1 and \"This creature can't block.\"\\nVishgraz gets +1/+1 for each poison counter your opponents have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vishgraz, the Doomhive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

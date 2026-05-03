@@ -1,0 +1,25 @@
+{
+  "id": "the-mindskinner-corpus-m678",
+  "description": "M6 corpus — The Mindskinner; ETB-on-bf.",
+  "seed": 62076,
+  "cards": {
+    "The Mindskinner": "Name:The Mindskinner\nManaCost:U U U\nTypes:Legendary Enchantment Creature Nightmare\nPT:10/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent | ReplaceWith$ Mill | AlwaysReplace$ True | PreventionEffect$ True | ExecuteMode$ PerSource | Description$ If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.\nSVar:Mill:DB$ Mill | Defined$ Opponent | NumCards$ X\nSVar:X:ReplaceCount$DamageAmount\nOracle:The Mindskinner can't be blocked.\\nIf a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Mindskinner"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

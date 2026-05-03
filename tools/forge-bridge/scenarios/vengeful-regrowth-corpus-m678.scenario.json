@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-regrowth-corpus-m678",
+  "description": "M6 corpus — Vengeful Regrowth; in-hand parse.",
+  "seed": 63368,
+  "cards": {
+    "Vengeful Regrowth": "Name:Vengeful Regrowth\nManaCost:4 G G\nTypes:Sorcery\nK:Flashback:6 G G\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 3 | TgtPrompt$ Choose target land card in your graveyard | ValidTgts$ Land.YouCtrl | RememberChanged$ True | Tapped$ True | SubAbility$ DBToken | SpellDescription$ Return up to three target land cards from your graveyard to the battlefield tapped. Create that many 4/2 green Plant Warrior creature tokens with reach.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenOwner$ You | TokenScript$ g_4_2_plant_warrior_reach | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Graveyard|Token & Type$Plant|Warrior\nOracle:Return up to three target land cards from your graveyard to the battlefield tapped. Create that many 4/2 green Plant Warrior creature tokens with reach.\\nFlashback {6}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Regrowth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

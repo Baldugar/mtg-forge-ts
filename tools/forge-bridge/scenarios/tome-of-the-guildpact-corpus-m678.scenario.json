@@ -1,0 +1,25 @@
+{
+  "id": "tome-of-the-guildpact-corpus-m678",
+  "description": "M6 corpus — Tome of the Guildpact; ETB-on-bf.",
+  "seed": 62489,
+  "cards": {
+    "Tome of the Guildpact": "Name:Tome of the Guildpact\nManaCost:5\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Whenever you cast a multicolored spell, draw a card.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tome of the Guildpact"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

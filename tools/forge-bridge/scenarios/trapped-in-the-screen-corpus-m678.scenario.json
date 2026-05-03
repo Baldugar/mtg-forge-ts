@@ -1,0 +1,23 @@
+{
+  "id": "trapped-in-the-screen-corpus-m678",
+  "description": "M6 corpus — Trapped in the Screen; in-hand parse.",
+  "seed": 62651,
+  "cards": {
+    "Trapped in the Screen": "Name:Trapped in the Screen\nManaCost:2 W\nTypes:Enchantment\nK:Ward:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target artifact, creature, or enchantment an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact, creature, or enchantment an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:Ward {2} (Whenever this enchantment becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\\nWhen Trapped in the Screen enters, exile target artifact, creature, or enchantment an opponent controls until Trapped in the Screen leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trapped in the Screen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

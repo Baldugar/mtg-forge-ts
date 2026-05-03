@@ -1,0 +1,23 @@
+{
+  "id": "undergrowth-corpus-m678",
+  "description": "M6 corpus — Undergrowth; in-hand parse.",
+  "seed": 63019,
+  "cards": {
+    "Undergrowth": "Name:Undergrowth\nManaCost:G\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ 2 R | Description$ As an additional cost to cast this spell, you may pay {2}{R}.\nA:SP$ Fog | Condition$ OptionalCost | ConditionOptionalPaid$ False | SubAbility$ DBEffect | SpellDescription$ Prevent all combat damage that would be dealt this turn. If this spell's additional cost was paid, this effect doesn't affect combat damage that would be dealt by red creatures. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Effect | Condition$ OptionalCost | ConditionOptionalPaid$ True | StaticAbilities$ KWPump\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.nonRed | AddKeyword$ Prevent all combat damage that would be dealt by CARDNAME. | Description$ Prevent all combat damage this turn except that from red creatures.\nAI:RemoveDeck:All\nDeckHints:Color$Red\nOracle:As an additional cost to cast this spell, you may pay {2}{R}.\\nPrevent all combat damage that would be dealt this turn. If this spell's additional cost was paid, this effect doesn't affect combat damage that would be dealt by red creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undergrowth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

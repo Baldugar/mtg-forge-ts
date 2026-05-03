@@ -1,0 +1,23 @@
+{
+  "id": "veteran-charger-corpus-m678",
+  "description": "M6 corpus — Veteran Charger; in-hand parse.",
+  "seed": 63427,
+  "cards": {
+    "Veteran Charger": "Name:Veteran Charger\nManaCost:2 G\nTypes:Creature Centaur Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand. It perpetually gets +2/+2.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | NumAtt$ +2 | NumDef$ +2 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When Veteran Charger enters, choose a creature card in your hand. It perpetually gets +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Charger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

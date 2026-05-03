@@ -1,0 +1,23 @@
+{
+  "id": "vampire-slayer-corpus-m678",
+  "description": "M6 corpus — Vampire Slayer; in-hand parse.",
+  "seed": 63257,
+  "cards": {
+    "Vampire Slayer": "Name:Vampire Slayer\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Vampire | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals damage to a Vampire, destroy that creature.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nOracle:Whenever Vampire Slayer deals damage to a Vampire, destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Slayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "xantcha-sleeper-agent-corpus-m678",
+  "description": "M6 corpus — Xantcha, Sleeper Agent; in-hand parse.",
+  "seed": 64493,
+  "cards": {
+    "Xantcha, Sleeper Agent": "Name:Xantcha, Sleeper Agent\nManaCost:1 B R\nTypes:Legendary Creature Phyrexian Minion\nPT:5/5\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ NICKNAME attacks each combat if able.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBChooseOpp | Layer$ Control | Description$ CARDNAME enters under the control of an opponent of your choice.\nSVar:DBChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ MoveToPlay\nSVar:MoveToPlay:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | GainControl$ ChosenPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nS:Mode$ CantAttack | ValidCard$ Card.Self | Target$ Player.CardOwner,Planeswalker.ControlledBy Player.CardOwner | Description$ NICKNAME can't attack its owner or planeswalkers its owner controls.\nA:AB$ Draw | Cost$ 3 | NumCards$ 1 | Activator$ Player | SubAbility$ DBLoseLife | SpellDescription$ NICKNAME's controller loses 2 life and you draw a card. Any player may activate this ability.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ CardController\nOracle:Xantcha, Sleeper Agent enters under the control of an opponent of your choice.\\nXantcha attacks each combat if able and can't attack its owner or planeswalkers its owner controls.\\n{3}: Xantcha's controller loses 2 life and you draw a card. Any player may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xantcha, Sleeper Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

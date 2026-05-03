@@ -1,0 +1,23 @@
+{
+  "id": "yuki-onna-corpus-m678",
+  "description": "M6 corpus — Yuki-Onna; in-hand parse.",
+  "seed": 64591,
+  "cards": {
+    "Yuki-Onna": "Name:Yuki-Onna\nManaCost:3 R\nTypes:Creature Spirit\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nOracle:When Yuki-Onna enters, destroy target artifact.\\nWhenever you cast a Spirit or Arcane spell, you may return Yuki-Onna to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuki-Onna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

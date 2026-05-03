@@ -1,0 +1,23 @@
+{
+  "id": "transcendence-corpus-m678",
+  "description": "M6 corpus — Transcendence; in-hand parse.",
+  "seed": 62631,
+  "cards": {
+    "Transcendence": "Name:Transcendence\nManaCost:3 W W W\nTypes:Enchantment\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ValidLoseReason$ LifeReachedZero | Layer$ CantHappen | Description$ You don't lose the game for having 0 or less life.\nT:Mode$ Always | LifeTotal$ You | LifeAmount$ GE20 | TriggerZones$ Battlefield | Execute$ TrigLoseGame | TriggerDescription$ When you have 20 or more life, you lose the game.\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLifeGain | TriggerDescription$ Whenever you lose life, you gain 2 life for each 1 life you lost. (Damage dealt to you causes you to lose life.)\nSVar:TrigLoseGame:DB$ LosesGame | Defined$ You\nSVar:TrigLifeGain:DB$ GainLife | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount/Times.2\nSVar:AICastPreference:NeverCastIfLifeAbove$ 5\nAI:RemoveDeck:Random\nOracle:You don't lose the game for having 0 or less life.\\nWhen you have 20 or more life, you lose the game.\\nWhenever you lose life, you gain 2 life for each 1 life you lost. (Damage dealt to you causes you to lose life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transcendence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

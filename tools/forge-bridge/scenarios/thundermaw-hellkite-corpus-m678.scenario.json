@@ -1,0 +1,23 @@
+{
+  "id": "thundermaw-hellkite-corpus-m678",
+  "description": "M6 corpus — Thundermaw Hellkite; in-hand parse.",
+  "seed": 62331,
+  "cards": {
+    "Thundermaw Hellkite": "Name:Thundermaw Hellkite\nManaCost:3 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ThunderDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each creature with flying your opponents control. Tap those creatures.\nSVar:ThunderDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.withFlying+OppCtrl | SubAbility$ ThunderTap\nSVar:ThunderTap:DB$ TapAll | ValidCards$ Creature.withFlying+OppCtrl\nOracle:Flying\\nHaste (This creature can attack and {T} as soon as it comes under your control.)\\nWhen Thundermaw Hellkite enters, it deals 1 damage to each creature with flying your opponents control. Tap those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundermaw Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

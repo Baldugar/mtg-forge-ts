@@ -1,0 +1,23 @@
+{
+  "id": "vicious-battlerager-corpus-m678",
+  "description": "M6 corpus — Vicious Battlerager; in-hand parse.",
+  "seed": 63466,
+  "cards": {
+    "Vicious Battlerager": "Name:Vicious Battlerager\nManaCost:3 B\nTypes:Creature Dwarf Barbarian\nPT:1/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Spiked Retribution — Whenever CARDNAME becomes blocked by a creature, that creature's controller loses 5 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredBlockerController | LifeAmount$ 5\nOracle:When Vicious Battlerager enters, you take the initiative.\\nSpiked Retribution — Whenever Vicious Battlerager becomes blocked by a creature, that creature's controller loses 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vicious Battlerager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

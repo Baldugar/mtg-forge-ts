@@ -1,0 +1,23 @@
+{
+  "id": "swift-maneuver-corpus-m678",
+  "description": "M6 corpus — Swift Maneuver; in-hand parse.",
+  "seed": 61491,
+  "cards": {
+    "Swift Maneuver": "Name:Swift Maneuver\nManaCost:1 W\nTypes:Instant\nA:SP$ PreventDamage | ValidTgts$ Any | Amount$ 2 | SubAbility$ DelTrigSlowtrip | SpellDescription$ Prevent the next 2 damage that would be dealt to any target this turn. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Prevent the next 2 damage that would be dealt to any target this turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swift Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

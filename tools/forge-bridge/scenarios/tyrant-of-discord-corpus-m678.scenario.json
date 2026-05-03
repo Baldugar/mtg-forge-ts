@@ -1,0 +1,23 @@
+{
+  "id": "tyrant-of-discord-corpus-m678",
+  "description": "M6 corpus — Tyrant of Discord; in-hand parse.",
+  "seed": 62914,
+  "cards": {
+    "Tyrant of Discord": "Name:Tyrant of Discord\nManaCost:4 R R R\nTypes:Creature Elemental\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ When CARDNAME enters, target opponent chooses a permanent they control at random and sacrifices it. If a nonland permanent is sacrificed this way, repeat this process.\nSVar:TrigRepeat:DB$ Repeat | ValidTgts$ Opponent | RepeatSubAbility$ DBClear | RepeatDefined$ Remembered | RepeatPresent$ Permanent.nonland | RepeatCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBClear:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | Defined$ Targeted | SacValid$ Permanent | Amount$ 1 | RememberSacrificed$ True | Random$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nOracle:When Tyrant of Discord enters, target opponent chooses a permanent they control at random and sacrifices it. If a nonland permanent is sacrificed this way, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyrant of Discord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

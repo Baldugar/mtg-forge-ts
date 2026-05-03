@@ -1,0 +1,23 @@
+{
+  "id": "unexpected-allies-corpus-m678",
+  "description": "M6 corpus — Unexpected Allies; in-hand parse.",
+  "seed": 63045,
+  "cards": {
+    "Unexpected Allies": "Name:Unexpected Allies\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl+!token | TgtPrompt$ Select target nontoken creature you control | KW$ Double team | NumAtt$ +2 | SubAbility$ TrigEffect | SpellDescription$ Target nontoken creature you control gets +2/+0 and gains double team until end of turn. It also gains first strike until end of turn if it has the same name as another creature you control or a creature card in your graveyard.\nSVar:TrigEffect:DB$ Pump | ConditionCheckSVar$ X | Defined$ Targeted | KW$ First Strike\nSVar:X:Count$Valid Creature.NotDefinedTargeted+YouCtrl+sharesNameWith Targeted/Plus.Y\nSVar:Y:Count$ValidGraveyard Creature.YouOwn+sharesNameWith Targeted\nDeckHas:Keyword$Double team|First Strike\nOracle:Target nontoken creature you control gets +2/+0 and gains double team until end of turn. It also gains first strike until end of turn if it has the same name as another creature you control or a creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unexpected Allies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

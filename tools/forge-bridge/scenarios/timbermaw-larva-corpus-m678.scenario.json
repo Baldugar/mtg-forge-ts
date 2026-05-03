@@ -1,0 +1,23 @@
+{
+  "id": "timbermaw-larva-corpus-m678",
+  "description": "M6 corpus — Timbermaw Larva; in-hand parse.",
+  "seed": 62394,
+  "cards": {
+    "Timbermaw Larva": "Name:Timbermaw Larva\nManaCost:3 G\nTypes:Creature Beast\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each Forest you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Forest.YouCtrl\nOracle:Whenever Timbermaw Larva attacks, it gets +1/+1 until end of turn for each Forest you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timbermaw Larva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

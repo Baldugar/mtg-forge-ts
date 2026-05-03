@@ -1,0 +1,23 @@
+{
+  "id": "tolarian-emissary-corpus-m678",
+  "description": "M6 corpus — Tolarian Emissary; in-hand parse.",
+  "seed": 62471,
+  "cards": {
+    "Tolarian Emissary": "Name:Tolarian Emissary\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:1/2\nK:Flying\nK:Kicker:1 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target enchantment.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment\nSVar:NeedsToPlayKicked:Enchantment.OppCtrl\nDeckHints:Color$White\nOracle:Kicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nFlying\\nWhen Tolarian Emissary enters, if it was kicked, destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolarian Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

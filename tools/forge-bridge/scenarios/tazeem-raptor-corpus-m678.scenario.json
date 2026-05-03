@@ -1,0 +1,23 @@
+{
+  "id": "tazeem-raptor-corpus-m678",
+  "description": "M6 corpus — Tazeem Raptor; in-hand parse.",
+  "seed": 61752,
+  "cards": {
+    "Tazeem Raptor": "Name:Tazeem Raptor\nManaCost:2 W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return a land you control to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouCtrl | ChangeNum$ 1 | SelectPrompt$ Choose a land to return to its owner's hand\nOracle:Flying\\nWhen Tazeem Raptor enters, you may return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tazeem Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

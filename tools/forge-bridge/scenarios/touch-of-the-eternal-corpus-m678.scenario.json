@@ -1,0 +1,23 @@
+{
+  "id": "touch-of-the-eternal-corpus-m678",
+  "description": "M6 corpus — Touch of the Eternal; in-hand parse.",
+  "seed": 62559,
+  "cards": {
+    "Touch of the Eternal": "Name:Touch of the Eternal\nManaCost:5 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigLife | TriggerDescription$ At the beginning of your upkeep, your life total becomes equal to the number of permanents you control.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Permanent.YouCtrl\nOracle:At the beginning of your upkeep, count the number of permanents you control. Your life total becomes that number.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Touch of the Eternal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

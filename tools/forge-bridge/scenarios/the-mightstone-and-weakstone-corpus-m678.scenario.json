@@ -1,0 +1,23 @@
+{
+  "id": "the-mightstone-and-weakstone-corpus-m678",
+  "description": "M6 corpus — The Mightstone and Weakstone; in-hand parse.",
+  "seed": 62075,
+  "cards": {
+    "The Mightstone and Weakstone": "Name:The Mightstone and Weakstone\nManaCost:5\nTypes:Legendary Artifact Powerstone\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBPump\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SpellDescription$ Draw two cards.\nSVar:DBPump:DB$ Pump | IsCurse$ True | ValidTgts$ Creature | NumAtt$ -5 | NumDef$ -5 | SpellDescription$ Target creature gets -5/-5 until end of turn.\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | RestrictValid$ CantCastNonArtifactSpells | SpellDescription$ Add {C}{C}. This mana can't be spent to cast nonartifact spells.\nDeckHints:Name$Urza, Lord Protector\nMeldPair:Urza, Lord Protector\nAlternateMode:Meld\nOracle:When The Mightstone and Weakstone enters, choose one —\\n• Draw two cards.\\n• Target creature gets -5/-5 until end of turn.\\n{T}: Add {C}{C}. This mana can't be spent to cast nonartifact spells.\\n(Melds with Urza, Lord Protector.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Mightstone and Weakstone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

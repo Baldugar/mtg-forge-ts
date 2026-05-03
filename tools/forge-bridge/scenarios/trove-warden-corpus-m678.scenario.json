@@ -1,0 +1,23 @@
+{
+  "id": "trove-warden-corpus-m678",
+  "description": "M6 corpus — Trove Warden; in-hand parse.",
+  "seed": 62783,
+  "cards": {
+    "Trove Warden": "Name:Trove Warden\nManaCost:2 W W\nTypes:Creature Cat Beast\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Landfall — Whenever a land you control enters, exile target permanent card with mana value 3 or less from your graveyard.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Permanent.YouOwn+cmcLE3 | TgtPrompt$ Select target permanent card with mana value 3 or less from your graveyard | Origin$ Graveyard | Destination$ Exile\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, put each permanent card exiled with it onto the battlefield under the control of that card's owner.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Permanent.ExiledWithSource | Origin$ Exile | Destination$ Battlefield\nSVar:BuffedBy:Land\nDeckHas:Ability$Graveyard\nOracle:Vigilance\\nLandfall — Whenever a land you control enters, exile target permanent card with mana value 3 or less from your graveyard.\\nWhen Trove Warden dies, put each permanent card exiled with it onto the battlefield under the control of that card's owner.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trove Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

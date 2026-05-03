@@ -1,0 +1,23 @@
+{
+  "id": "vodalian-merchant-corpus-m678",
+  "description": "M6 corpus — Vodalian Merchant; in-hand parse.",
+  "seed": 63605,
+  "cards": {
+    "Vodalian Merchant": "Name:Vodalian Merchant\nManaCost:1 U\nTypes:Creature Merfolk\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:When Vodalian Merchant enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vodalian Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "torch-breath-corpus-m678",
+  "description": "M6 corpus — Torch Breath; in-hand parse.",
+  "seed": 62518,
+  "cards": {
+    "Torch Breath": "Name:Torch Breath\nManaCost:X R\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | ValidTarget$ Permanent.Blue | EffectZone$ All | Description$ This spell costs {2} less to cast if it targets a blue permanent.\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature or planeswalker.\nSVar:X:Count$xPaid\nOracle:This spell costs {2} less to cast if it targets a blue permanent.\\nThis spell can't be countered.\\nTorch Breath deals X damage to target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torch Breath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

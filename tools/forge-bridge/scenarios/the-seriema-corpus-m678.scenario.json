@@ -1,0 +1,23 @@
+{
+  "id": "the-seriema-corpus-m678",
+  "description": "M6 corpus — The Seriema; in-hand parse.",
+  "seed": 62102,
+  "cards": {
+    "The Seriema": "Name:The Seriema\nManaCost:1 W W\nTypes:Legendary Artifact Spacecraft\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for a legendary creature card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Legendary | ChangeNum$ 1\nK:Station:7\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE7_CHARGE | AddType$ Creature | AddKeyword$ Flying | AddStaticAbility$ DBStatic | Description$ STATION 7+ Flying Other tapped legendary creatures you control have indestructible.\nSVar:DBStatic:Mode$ Continuous | Affected$ Creature.Legendary+YouCtrl+Other+tapped | AddKeyword$ Indestructible | Secondary$ True | Description$ Other tapped legendary creatures you control have indestructible.\nAI:RemoveDeck:Random\nDeckHints:Type$Legendary\nOracle:When The Seriema enters, search your library for a legendary creature card, reveal it, put it into your hand, then shuffle.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)\\nSTATION 7+\\nFlying\\nOther tapped legendary creatures you control have indestructible.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Seriema"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

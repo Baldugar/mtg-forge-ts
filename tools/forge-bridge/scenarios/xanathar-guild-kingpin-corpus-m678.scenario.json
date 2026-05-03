@@ -1,0 +1,23 @@
+{
+  "id": "xanathar-guild-kingpin-corpus-m678",
+  "description": "M6 corpus — Xanathar, Guild Kingpin; in-hand parse.",
+  "seed": 64489,
+  "cards": {
+    "Xanathar, Guild Kingpin": "Name:Xanathar, Guild Kingpin\nManaCost:4 U B\nTypes:Legendary Creature Beholder\nPT:5/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ XanEffect | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, choose target opponent. Until end of turn, that player can't cast spells, you may look at the top card of their library any time, you may play the top card of their library, and you may spend mana as though it were mana of any color to cast spells this way.\nSVar:XanEffect:DB$ Effect | ValidTgts$ Opponent | StaticAbilities$ STCantBeCast,STCanPeek,STCanPlay | RememberObjects$ Targeted | AILogic$ Always\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.IsRemembered | Description$ Until end of turn, the targeted player can't cast spells.\nSVar:STCanPeek:Mode$ Continuous | Affected$ Card.TopLibrary+RememberedPlayerCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of that player's library any time.\nSVar:STCanPlay:Mode$ Continuous | Affected$ Card.TopLibrary+RememberedPlayerCtrl | AffectedZone$ Library | MayPlay$ True | MayPlayIgnoreType$ True | Description$ You may play the top card of that player's library, and you may spend mana as though it were mana of any color to cast spells this way.\nOracle:At the beginning of your upkeep, choose target opponent. Until end of turn, that player can't cast spells, you may look at the top card of their library any time, you may play the top card of their library, and you may spend mana as though it were mana of any color to cast spells this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xanathar, Guild Kingpin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

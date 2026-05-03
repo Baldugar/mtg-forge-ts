@@ -1,0 +1,23 @@
+{
+  "id": "wurmquake-corpus-m678",
+  "description": "M6 corpus — Wurmquake; in-hand parse.",
+  "seed": 64482,
+  "cards": {
+    "Wurmquake": "Name:Wurmquake\nManaCost:4 G G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_x_x_phyrexian_wurm_trample_toxic | TokenPower$ X | TokenToughness$ X | SubAbility$ DBToken | SpellDescription$ Corrupted — Create an X/X green Phyrexian Wurm creature token with trample and toxic 1, where X is the amount of mana spent to cast this spell.\nSVar:DBToken:DB$ Token | TokenScript$ g_x_x_phyrexian_wurm_trample_toxic | TokenPower$ X | TokenToughness$ X | TokenAmount$ Y | SpellDescription$ Then for each opponent with three or more poison counters, you create another one of those tokens.\nSVar:X:Count$CastTotalManaSpent\nSVar:Y:PlayerCountOpponents$HasPropertyIsCorrupted\nK:Flashback:8 G G\nDeckHas:Ability$Token|Graveyard & Type$Phyrexian|Wurm & Keyword$Toxic\nDeckHints:Keyword$Toxic|Poisonous\nOracle:Corrupted — Create an X/X green Phyrexian Wurm creature token with trample and toxic 1, where X is the amount of mana spent to cast this spell. Then for each opponent with three or more poison counters, you create another one of those tokens.\\nFlashback {8}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wurmquake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

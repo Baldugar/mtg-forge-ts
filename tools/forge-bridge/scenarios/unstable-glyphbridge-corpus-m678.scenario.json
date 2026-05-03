@@ -1,0 +1,23 @@
+{
+  "id": "unstable-glyphbridge-corpus-m678",
+  "description": "M6 corpus — Unstable Glyphbridge; in-hand parse.",
+  "seed": 63119,
+  "cards": {
+    "Unstable Glyphbridge": "Name:Unstable Glyphbridge\nManaCost:3 W W\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigRepeat | TriggerDescription$ When CARDNAME enters, if you cast it, for each player, choose a creature with power 2 or less that player controls. Then destroy all creatures except creatures chosen this way.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBDestroyAll\nSVar:DBChoose:DB$ ChooseCard | Choices$ Creature.RememberedPlayerCtrl+powerLE2 | Mandatory$ True | ChoiceTitle$ Choose a creature card with power 2 or less | ImprintChosen$ True\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.!IsImprinted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nK:Craft:3 W W ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Mill|Graveyard|Token\nAlternateMode:DoubleFaced\nOracle:When Unstable Glyphbridge enters, if you cast it, for each player, choose a creature with power 2 or less that player controls. Then destroy all creatures except creatures chosen this way.\\nCraft with artifact {3}{W}{W} ({3}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Sandswirl Wanderglyph\nManaCost:no cost\nColors:white\nTypes:Artifact Creature Golem\nPT:5/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player.Opponent+Active | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever an opponent casts a spell during their turn, they can't attack you or planeswalkers you control this turn.\nSVar:TrigEffect:DB$ Effect | EffectOwner$ TriggeredActivator | StaticAbilities$ STCantAttack | RememberObjects$ You\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Creature.YouCtrl | Target$ Player.IsRemembered,Planeswalker.ControlledBy Remembered | Description$ You can't attack that player or planeswalkers they control this turn.\nS:Mode$ CantBeCast | Caster$ Player.Opponent+attackedYouTheirCurrentTurn,Player.Opponent+attackedYouCtrlTheirCurrentTurn_Planeswalker | Description$ Each opponent who attacked you or a planeswalker you control this turn can't cast spells.\nOracle:Flying\\nWhenever an opponent casts a spell during their turn, they can't attack you or planeswalkers you control this turn.\\nEach opponent who attacked you or a planeswalker you control this turn can't cast spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unstable Glyphbridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

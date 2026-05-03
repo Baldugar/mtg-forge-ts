@@ -1,0 +1,23 @@
+{
+  "id": "talion-s-throneguard-corpus-m678",
+  "description": "M6 corpus — Talion's Throneguard; in-hand parse.",
+  "seed": 61643,
+  "cards": {
+    "Talion's Throneguard": "Name:Talion's Throneguard\nManaCost:2 U U\nTypes:Creature Faerie Wizard\nPT:4/2\nK:Flash\nK:Bargain\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one target spell or nonland permanent to its owner's hand. If CARDNAME was bargained, that card perpetually gains \"This spell costs {2} more to cast.\"\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand,Card.inZoneStack | TgtZone$ Stack,Battlefield | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield,Stack | Destination$ Hand | RememberChanged$ True | TgtPrompt$ Select up to one target spell or nonland permanent | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | ConditionDefined$ Self | ConditionPresent$ Card.bargained | staticAbilities$ RaiseCost | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:RaiseCost:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | Description$ This spell costs {2} more to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Artifact|Enchantment & Ability$Token\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nBargain\\nFlying\\nWhen Talion's Throneguard enters, return up to one target spell or nonland permanent to its owner's hand. If Talion's Throneguard was bargained, that card perpetually gains \"This spell costs {2} more to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talion's Throneguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "that-s-rough-buddy-corpus-m678",
+  "description": "M6 corpus — That's Rough Buddy; in-hand parse.",
+  "seed": 61976,
+  "cards": {
+    "That's Rough Buddy": "Name:That's Rough Buddy\nManaCost:1 W\nTypes:Instant Lesson\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBDraw | SpellDescription$ Put a +1/+1 counter on target creature. Put two +1/+1 counters on that creature instead if a creature left the battlefield under your control this turn. Draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:X:Count$Compare Y GE1.2.1\nSVar:Y:Count$LeftBattlefieldThisTurn Creature.YouCtrl\nOracle:Put a +1/+1 counter on target creature. Put two +1/+1 counters on that creature instead if a creature left the battlefield under your control this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "That's Rough Buddy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

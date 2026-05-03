@@ -1,0 +1,23 @@
+{
+  "id": "warren-instigator-corpus-m678",
+  "description": "M6 corpus — Warren Instigator; in-hand parse.",
+  "seed": 63909,
+  "cards": {
+    "Warren Instigator": "Name:Warren Instigator\nManaCost:R R\nTypes:Creature Goblin Berserker\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, you may put a Goblin creature card from your hand onto the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Goblin | ChangeNum$ 1\nK:Double Strike\nOracle:Double strike\\nWhenever Warren Instigator deals damage to an opponent, you may put a Goblin creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warren Instigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "time-wipe-corpus-m678",
+  "description": "M6 corpus — Time Wipe; in-hand parse.",
+  "seed": 62411,
+  "cards": {
+    "Time Wipe": "Name:Time Wipe\nManaCost:2 W W U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBDestroy | SpellDescription$ Return a creature you control to your hand, then destroy all creatures.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature | SpellDescription$ Destroy all creatures.\nOracle:Return a creature you control to its owner's hand, then destroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Wipe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

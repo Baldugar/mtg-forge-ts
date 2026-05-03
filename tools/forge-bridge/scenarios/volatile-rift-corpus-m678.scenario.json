@@ -1,0 +1,23 @@
+{
+  "id": "volatile-rift-corpus-m678",
+  "description": "M6 corpus — Volatile Rift; in-hand parse.",
+  "seed": 63645,
+  "cards": {
+    "Volatile Rift": "Name:Volatile Rift\nManaCost:RG RG\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Library | Destination$ Hand | ValidCard$ Creature.YouOwn | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Vivid — Whenever a creature card is put into your hand from your library, it perpetually gets +X/+0, where X is the number of colors among permanents you control.\nSVar:TrigPump:DB$ Pump | PumpZone$ Hand | TriggeredCardLKICopy | NumAtt$ +X | Duration$ Perpetual\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — Whenever a creature card is put into your hand from your library, it perpetually gets +X/+0, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volatile Rift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

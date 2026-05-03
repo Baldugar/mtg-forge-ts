@@ -1,0 +1,23 @@
+{
+  "id": "thermokarst-corpus-m678",
+  "description": "M6 corpus — Thermokarst; in-hand parse.",
+  "seed": 62143,
+  "cards": {
+    "Thermokarst": "Name:Thermokarst\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBGainLife | SpellDescription$ Destroy target land. If that land was a snow land, you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Land.Snow | ConditionCompare$ EQ1 | ConditionDescription$ If that land was a snow land,\nOracle:Destroy target land. If that land was a snow land, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thermokarst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

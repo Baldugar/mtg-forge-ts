@@ -1,0 +1,25 @@
+{
+  "id": "witch-s-clinic-corpus-m678",
+  "description": "M6 corpus — Witch's Clinic; ETB-on-bf.",
+  "seed": 64312,
+  "cards": {
+    "Witch's Clinic": "Name:Witch's Clinic\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Pump | Cost$ 2 T | ValidTgts$ Card.IsCommander | AITgts$ Card.IsCommander+YourTeamCtrl | TgtPrompt$ Select target commander | KW$ Lifelink | SpellDescription$ Target commander gains lifelink until end of turn.\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$LifeGain\nOracle:{T}: Add {C}.\\n{2}, {T}: Target commander gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Witch's Clinic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thoughtweft-lieutenant-corpus-m678",
+  "description": "M6 corpus — Thoughtweft Lieutenant; in-hand parse.",
+  "seed": 62235,
+  "cards": {
+    "Thoughtweft Lieutenant": "Name:Thoughtweft Lieutenant\nManaCost:G W\nTypes:Creature Kithkin Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Kithkin.YouCtrl+Other | Execute$ TrigPump | TriggerDescription$ Whenever this creature or another Kithkin you control enters, target creature you control gets +1/+1 and gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nSVar:BuffedBy:Kithkin\nDeckHints:Type$Kithkin\nOracle:Whenever this creature or another Kithkin you control enters, target creature you control gets +1/+1 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thoughtweft Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

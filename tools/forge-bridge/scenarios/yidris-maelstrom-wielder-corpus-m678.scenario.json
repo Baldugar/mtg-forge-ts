@@ -1,0 +1,23 @@
+{
+  "id": "yidris-maelstrom-wielder-corpus-m678",
+  "description": "M6 corpus — Yidris, Maelstrom Wielder; in-hand parse.",
+  "seed": 64554,
+  "cards": {
+    "Yidris, Maelstrom Wielder": "Name:Yidris, Maelstrom Wielder\nManaCost:U B R G\nTypes:Legendary Creature Ogre Wizard\nPT:5/4\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCascade | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, as you cast spells from your hand this turn, they gain cascade. (When you cast the spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\nSVar:TrigCascade:DB$ Effect | StaticAbilities$ GrantCascade\nSVar:GrantCascade:Mode$ Continuous | Affected$ Card.YouCtrl+YouOwn+wasCastFromHand | AffectedZone$ Stack | AddKeyword$ Cascade | Description$ As you cast spells from your hand this turn, they gain cascade.\nOracle:Trample\\nWhenever Yidris, Maelstrom Wielder deals combat damage to a player, as you cast spells from your hand this turn, they gain cascade. (When you cast the spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yidris, Maelstrom Wielder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

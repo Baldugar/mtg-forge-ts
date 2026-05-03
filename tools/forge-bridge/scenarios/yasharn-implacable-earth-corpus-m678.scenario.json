@@ -1,0 +1,23 @@
+{
+  "id": "yasharn-implacable-earth-corpus-m678",
+  "description": "M6 corpus — Yasharn, Implacable Earth; in-hand parse.",
+  "seed": 64520,
+  "cards": {
+    "Yasharn, Implacable Earth": "Name:Yasharn, Implacable Earth\nManaCost:2 G W\nTypes:Legendary Creature Elemental Boar\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLands | TriggerDescription$ When NICKNAME enters, search your library for a basic Forest card and a basic Plains card, reveal those cards, put them into your hand, then shuffle.\nSVar:TrigLands:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ EACH Forest.Basic & Plains.Basic\nS:Mode$ CantPayLife | ValidPlayer$ Player | ValidCause$ Spell,Activated | ForCost$ True | Description$ Players can't pay life or sacrifice nonland permanents to cast spells or activate abilities.\nS:Mode$ CantSacrifice | ValidCard$ Permanent.nonLand | ValidCause$ Spell,Activated | ForCost$ True | Secondary$ True | Description$ Players can't pay life or sacrifice nonland permanents to cast spells or activate abilities.\nAI:RemoveDeck:Random\nOracle:When Yasharn enters, search your library for a basic Forest card and a basic Plains card, reveal those cards, put them into your hand, then shuffle.\\nPlayers can't pay life or sacrifice nonland permanents to cast spells or activate abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yasharn, Implacable Earth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

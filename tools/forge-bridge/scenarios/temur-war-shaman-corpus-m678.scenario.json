@@ -1,0 +1,23 @@
+{
+  "id": "temur-war-shaman-corpus-m678",
+  "description": "M6 corpus — Temur War Shaman; in-hand parse.",
+  "seed": 61875,
+  "cards": {
+    "Temur War Shaman": "Name:Temur War Shaman\nManaCost:4 G G\nTypes:Creature Human Shaman\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigManifest | TriggerDescription$ When CARDNAME enters, manifest the top card of your library. (Put that card onto the battlefield face down as a 2/2 creature. You may turn it face up at any time for its mana cost if it is a creature card.)\nSVar:TrigManifest:DB$ Manifest\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.Creature+YouCtrl | Execute$ TrigFight | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a permanent you control is turned face up, if it is a creature, you may have it fight target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nOracle:When Temur War Shaman enters, manifest the top card of your library. (Put that card onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nWhenever a permanent you control is turned face up, if it's a creature, you may have it fight target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temur War Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

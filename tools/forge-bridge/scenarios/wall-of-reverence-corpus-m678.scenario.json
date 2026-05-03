@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-reverence-corpus-m678",
+  "description": "M6 corpus — Wall of Reverence; in-hand parse.",
+  "seed": 63792,
+  "cards": {
+    "Wall of Reverence": "Name:Wall of Reverence\nManaCost:3 W\nTypes:Creature Spirit Wall\nPT:1/6\nK:Defender\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may gain life equal to the power of target creature you control.\nSVar:TrigDig:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | AILogic$ HighestPower | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Defender, flying\\nAt the beginning of your end step, you may gain life equal to the power of target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Reverence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

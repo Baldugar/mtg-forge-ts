@@ -1,0 +1,25 @@
+{
+  "id": "the-council-of-four-corpus-m678",
+  "description": "M6 corpus — The Council of Four; ETB-on-bf.",
+  "seed": 62007,
+  "cards": {
+    "The Council of Four": "Name:The Council of Four\nManaCost:3 W U\nTypes:Legendary Creature Human Noble\nPT:0/8\nT:Mode$ Drawn | ValidPlayer$ Player.Active | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a player draws their second card during their turn, you draw a card.\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player.Active | ActivatorThisTurnCast$ EQ2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight\nDeckHints:Type$Knight\nDeckHas:Ability$Token\nOracle:Whenever a player draws their second card during their turn, you draw a card.\\nWhenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Council of Four"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

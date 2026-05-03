@@ -1,0 +1,25 @@
+{
+  "id": "witherbloom-apprentice-corpus-m678",
+  "description": "M6 corpus — Witherbloom Apprentice; ETB-on-bf.",
+  "seed": 64320,
+  "cards": {
+    "Witherbloom Apprentice": "Name:Witherbloom Apprentice\nManaCost:B G\nTypes:Creature Human Druid\nPT:2/2\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainOneLife\nSVar:DBGainOneLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Instant|Sorcery\nOracle:Magecraft — Whenever you cast or copy an instant or sorcery spell, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Witherbloom Apprentice"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

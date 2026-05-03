@@ -1,0 +1,23 @@
+{
+  "id": "vile-entomber-corpus-m678",
+  "description": "M6 corpus — Vile Entomber; in-hand parse.",
+  "seed": 63497,
+  "cards": {
+    "Vile Entomber": "Name:Vile Entomber\nManaCost:2 B B\nTypes:Creature Zombie Warlock\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a card, put that card into your graveyard, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeNum$ 1 | Mandatory$ True | ChangeType$ Card\nDeckHas:Ability$Graveyard\nOracle:Deathtouch\\nWhen Vile Entomber enters, search your library for a card, put that card into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vile Entomber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

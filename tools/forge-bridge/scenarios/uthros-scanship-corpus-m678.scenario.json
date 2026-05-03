@@ -1,0 +1,23 @@
+{
+  "id": "uthros-scanship-corpus-m678",
+  "description": "M6 corpus — Uthros Scanship; in-hand parse.",
+  "seed": 63203,
+  "cards": {
+    "Uthros Scanship": "Name:Uthros Scanship\nManaCost:3 U\nTypes:Artifact Spacecraft\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this Spacecraft enters, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:Station:8\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_CHARGE | AddType$ Creature | AddKeyword$ Flying | Description$ STATION 8+ Flying\nOracle:When this Spacecraft enters, draw two cards, then discard a card.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 8+.)\\nSTATION 8+\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uthros Scanship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vantress-gargoyle-corpus-m678",
+  "description": "M6 corpus — Vantress Gargoyle; ETB-on-bf.",
+  "seed": 63284,
+  "cards": {
+    "Vantress Gargoyle": "Name:Vantress Gargoyle\nManaCost:1 U\nTypes:Artifact Creature Gargoyle\nPT:5/4\nK:Flying\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ HasCardsInGraveyard_Card_GE7 | Description$ CARDNAME can't attack unless defending player has seven or more cards in their graveyard.\nS:Mode$ CantBlock | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ LT4 | Description$ CARDNAME can't block unless you have four or more cards in hand.\nSVar:X:Count$ValidHand Card.YouOwn\nA:AB$ Mill | Cost$ T | NumCards$ 1 | Defined$ Player | SpellDescription$ Each player mills a card.\nAI:RemoveDeck:Random\nOracle:Flying\\nVantress Gargoyle can't attack unless defending player has seven or more cards in their graveyard.\\nVantress Gargoyle can't block unless you have four or more cards in hand.\\n{T}: Each player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vantress Gargoyle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

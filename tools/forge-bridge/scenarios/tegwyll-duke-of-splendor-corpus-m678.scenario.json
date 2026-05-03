@@ -1,0 +1,23 @@
+{
+  "id": "tegwyll-duke-of-splendor-corpus-m678",
+  "description": "M6 corpus — Tegwyll, Duke of Splendor; in-hand parse.",
+  "seed": 61789,
+  "cards": {
+    "Tegwyll, Duke of Splendor": "Name:Tegwyll, Duke of Splendor\nManaCost:1 U B\nTypes:Legendary Creature Faerie Noble\nPT:2/3\nK:Flying\nK:Deathtouch\nS:Mode$ Continuous | Affected$ Creature.Faerie+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Faerie creatures you control get +1/+1.\nT:Mode$ ChangesZone | ValidCard$ Faerie.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever another Faerie you control dies, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nDeckHints:Type$Faerie\nOracle:Flying, deathtouch\\nOther Faeries you control get +1/+1.\\nWhenever another Faerie you control dies, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tegwyll, Duke of Splendor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

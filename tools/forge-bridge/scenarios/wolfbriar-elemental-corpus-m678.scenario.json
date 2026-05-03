@@ -1,0 +1,23 @@
+{
+  "id": "wolfbriar-elemental-corpus-m678",
+  "description": "M6 corpus — Wolfbriar Elemental; in-hand parse.",
+  "seed": 64361,
+  "cards": {
+    "Wolfbriar Elemental": "Name:Wolfbriar Elemental\nManaCost:2 G G\nTypes:Creature Elemental\nPT:4/4\nK:Multikicker:G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 green Wolf creature token for each time it was kicked.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_2_2_wolf | TokenOwner$ You\nSVar:X:Count$TimesKicked\nDeckHas:Ability$Token\nOracle:Multikicker {G} (You may pay an additional {G} any number of times as you cast this spell.)\\nWhen Wolfbriar Elemental enters, create a 2/2 green Wolf creature token for each time it was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfbriar Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

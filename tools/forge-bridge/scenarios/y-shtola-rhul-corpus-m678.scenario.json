@@ -1,0 +1,23 @@
+{
+  "id": "y-shtola-rhul-corpus-m678",
+  "description": "M6 corpus — Y'shtola Rhul; in-hand parse.",
+  "seed": 64587,
+  "cards": {
+    "Y'shtola Rhul": "Name:Y'shtola Rhul\nManaCost:4 U U\nTypes:Legendary Creature Cat Druid\nPT:3/5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your end step, exile target creature you control, then return it to the battlefield under its owner's control. Then if it's the first end step of the turn, there is an additional end step after this step.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBAddEOT\nSVar:DBAddEOT:DB$ AddPhase | ExtraPhase$ End of Turn | AfterPhase$ End of Turn | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1\nSVar:X:Count$FinishedEndOfTurnsThisTurn\nOracle:At the beginning of your end step, exile target creature you control, then return it to the battlefield under its owner's control. Then if it's the first end step of the turn, there is an additional end step after this step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Y'shtola Rhul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

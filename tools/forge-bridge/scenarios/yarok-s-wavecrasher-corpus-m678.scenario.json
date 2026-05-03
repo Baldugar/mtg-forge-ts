@@ -1,0 +1,23 @@
+{
+  "id": "yarok-s-wavecrasher-corpus-m678",
+  "description": "M6 corpus — Yarok's Wavecrasher; in-hand parse.",
+  "seed": 64519,
+  "cards": {
+    "Yarok's Wavecrasher": "Name:Yarok's Wavecrasher\nManaCost:3 U\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return another creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Other+YouCtrl\nSVar:NeedsToPlay:Creature.YouCtrl+!token\nOracle:When Yarok's Wavecrasher enters, return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yarok's Wavecrasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

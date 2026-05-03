@@ -1,0 +1,25 @@
+{
+  "id": "zurzoth-chaos-rider-corpus-m678",
+  "description": "M6 corpus — Zurzoth, Chaos Rider; ETB-on-bf.",
+  "seed": 64721,
+  "cards": {
+    "Zurzoth, Chaos Rider": "Name:Zurzoth, Chaos Rider\nManaCost:2 R\nTypes:Legendary Creature Devil\nPT:2/3\nT:Mode$ Drawn | ValidPlayer$ Player.Opponent+NonActive | Number$ 1 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an opponent draws their first card each turn, if it's not their turn, you create a 1/1 red Devil creature token with \"When this creature dies, it deals 1 damage to any target.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_devil_burn | TokenOwner$ You\nT:Mode$ AttackersDeclared | ValidAttackers$ Devil.YouCtrl | AttackedTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever one or more Devils you control attack one or more players, you and those players each draw a card, then discard a card at random.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredAttackedTarget & You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TriggeredAttackedTarget & You | NumCards$ 1 | Mode$ Random\nDeckHas:Ability$Token\nOracle:Whenever an opponent draws their first card each turn, if it's not their turn, you create a 1/1 red Devil creature token with \"When this creature dies, it deals 1 damage to any target.\"\\nWhenever one or more Devils you control attack one or more players, you and those players each draw a card, then discard a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zurzoth, Chaos Rider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

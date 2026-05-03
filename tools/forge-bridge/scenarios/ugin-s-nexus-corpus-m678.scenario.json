@@ -1,0 +1,25 @@
+{
+  "id": "ugin-s-nexus-corpus-m678",
+  "description": "M6 corpus — Ugin's Nexus; ETB-on-bf.",
+  "seed": 62933,
+  "cards": {
+    "Ugin's Nexus": "Name:Ugin's Nexus\nManaCost:5\nTypes:Legendary Artifact\nR:Event$ BeginTurn | ActiveZones$ Battlefield | ExtraTurn$ True | Skip$ True | Description$ If a player would begin an extra turn, that player skips that turn instead.\nR:Event$ Moved | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ DBExile | Description$ If CARDNAME would be put into a graveyard from the battlefield, instead exile it and take an extra turn after this one.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBAddTurn\nSVar:DBAddTurn:DB$ AddTurn | Defined$ ReplacedCardLKIController | NumTurns$ 1\nAI:RemoveDeck:Random\nSVar:SacMe:5\nOracle:If a player would begin an extra turn, that player skips that turn instead.\\nIf Ugin's Nexus would be put into a graveyard from the battlefield, instead exile it and take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ugin's Nexus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

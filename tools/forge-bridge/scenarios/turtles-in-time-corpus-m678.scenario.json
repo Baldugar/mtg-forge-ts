@@ -1,0 +1,23 @@
+{
+  "id": "turtles-in-time-corpus-m678",
+  "description": "M6 corpus — Turtles in Time; in-hand parse.",
+  "seed": 62856,
+  "cards": {
+    "Turtles in Time": "Name:Turtles in Time\nManaCost:5 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBGenericChoice | SpellDescription$ Return all creatures to their owners' hands. Each player may shuffle their hand and graveyard into their library, then each player who does draws seven cards. Exile CARDNAME.\nSVar:DBGenericChoice:DB$ GenericChoice | Defined$ Player | TempRemember$ Chooser | Choices$ Stargate,Homebody | ShowChoice$ ExceptSelf | SubAbility$ DBTimetwister | AILogic$ Timetwister\nSVar:Stargate:DB$ Pump | Defined$ Remembered | NoteCards$ Self | NoteCardsFor$ Stargate | SpellDescription$ Yes, I want to shuffle my hand and graveyard into my library.\nSVar:Homebody:DB$ Pump | Defined$ Remembered | SpellDescription$ NO, I DO NOT want to shuffle my hand and graveyard into my library.\nSVar:DBTimetwister:DB$ ChangeZoneAll | ChangeType$ Card.OwnedBy Player.NotedForStargate | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | UseAllOriginZones$ True | SubAbility$ DBRepeatDraw | StackDescription$ None\nSVar:DBRepeatDraw:DB$ Draw | Defined$ Player.NotedForStargate | NumCards$ 7 | SubAbility$ DBClearNoted | StackDescription$ None\nSVar:DBClearNoted:DB$ Pump | Defined$ Player | ClearNotedCardsFor$ Stargate | SubAbility$ DBChange | StackDescription$ None\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nOracle:Return all creatures to their owners' hands. Each player may shuffle their hand and graveyard into their library, then each player who does draws seven cards.\\nExile Turtles in Time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turtles in Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

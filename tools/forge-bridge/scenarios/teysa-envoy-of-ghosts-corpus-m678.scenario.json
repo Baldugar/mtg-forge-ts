@@ -1,0 +1,23 @@
+{
+  "id": "teysa-envoy-of-ghosts-corpus-m678",
+  "description": "M6 corpus — Teysa, Envoy of Ghosts; in-hand parse.",
+  "seed": 61948,
+  "cards": {
+    "Teysa, Envoy of Ghosts": "Name:Teysa, Envoy of Ghosts\nManaCost:5 W B\nTypes:Legendary Creature Human Advisor\nPT:4/4\nK:Vigilance\nK:Protection:Creature\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ You | CombatDamage$ True | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature deals combat damage to you, destroy that creature. Create a 1/1 white and black Spirit creature token with flying.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredSourceLKICopy | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ wb_1_1_spirit_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Vigilance, protection from creatures\\nWhenever a creature deals combat damage to you, destroy that creature. Create a 1/1 white and black Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teysa, Envoy of Ghosts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ulrich-of-the-krallenhorde-corpus-m678",
+  "description": "M6 corpus — Ulrich of the Krallenhorde; in-hand parse.",
+  "seed": 62942,
+  "cards": {
+    "Ulrich of the Krallenhorde": "Name:Ulrich of the Krallenhorde\nManaCost:3 R G\nTypes:Legendary Creature Human Werewolf\nPT:4/4\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, target creature gets +4/+4 until end of turn.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, target creature gets +4/+4 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +4 | NumDef$ +4\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:PlayMain1:TRUE\nAlternateMode:DoubleFaced\nOracle:Whenever this creature enters or transforms into Ulrich of the Krallenhorde, target creature gets +4/+4 until end of turn.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Ulrich of the Krallenhorde.\n\nALTERNATE\n\nName:Ulrich, Uncontested Alpha\nManaCost:no cost\nColors:red,green\nTypes:Legendary Creature Werewolf\nPT:6/6\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigFight | OptionalDecider$ You | TriggerDescription$ Whenever this creature transforms into CARDNAME, you may have it fight target non-Werewolf creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.nonWerewolf+YouDontCtrl | TgtPrompt$ Choose target non-Werewolf creature you don't control\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Whenever this creature transforms into Ulrich, Uncontested Alpha, you may have it fight target non-Werewolf creature you don't control.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Ulrich, Uncontested Alpha.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulrich of the Krallenhorde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

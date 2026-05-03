@@ -1,0 +1,23 @@
+{
+  "id": "the-blue-spirit-corpus-m678",
+  "description": "M6 corpus — The Blue Spirit; in-hand parse.",
+  "seed": 61996,
+  "cards": {
+    "The Blue Spirit": "Name:The Blue Spirit\nManaCost:3 U\nTypes:Legendary Creature Human Rogue Ally\nPT:2/4\nS:Mode$ CastWithFlash | ValidCard$ Creature | ValidSA$ Spell | Caster$ You | CheckSVar$ X | SVarCompare$ EQ0 | Description$ You may cast the first creature spell you cast each turn as though it had flash.\nT:Mode$ ChangesZone | Phase$ BeginCombat->EndCombat | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a nontoken creature you control enters during combat, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$ThisTurnCast_Creature.YouCtrl\nOracle:You may cast the first creature spell you cast each turn as though it had flash.\\nWhenever a nontoken creature you control enters during combat, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Blue Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

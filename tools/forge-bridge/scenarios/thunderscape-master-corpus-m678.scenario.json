@@ -1,0 +1,25 @@
+{
+  "id": "thunderscape-master-corpus-m678",
+  "description": "M6 corpus — Thunderscape Master; ETB-on-bf.",
+  "seed": 62338,
+  "cards": {
+    "Thunderscape Master": "Name:Thunderscape Master\nManaCost:2 R R\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ LoseLife | Cost$ B B T | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 2 life and you gain 2 life.\nA:AB$ PumpAll | Cost$ G G T | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Creatures you control get +2/+2 until end of turn.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:{B}{B}, {T}: Target player loses 2 life and you gain 2 life.\\n{G}{G}, {T}: Creatures you control get +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thunderscape Master"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

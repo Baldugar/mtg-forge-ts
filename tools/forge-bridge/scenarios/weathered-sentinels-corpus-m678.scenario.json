@@ -1,0 +1,23 @@
+{
+  "id": "weathered-sentinels-corpus-m678",
+  "description": "M6 corpus — Weathered Sentinels; in-hand parse.",
+  "seed": 64010,
+  "cards": {
+    "Weathered Sentinels": "Name:Weathered Sentinels\nManaCost:3\nTypes:Artifact Creature Wall\nPT:2/5\nK:Defender\nK:Vigilance\nK:Reach\nK:Trample\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self | ValidAttacked$ Player.attackedYouTheirLastTurn | Description$ CARDNAME can attack players who attacked you during their last turn as though it didn't have defender.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +3/+3 and gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +3 | NumDef$ +3 | KW$ Indestructible\nSVar:HasAttackEffect:TRUE\nOracle:Defender, vigilance, reach, trample\\nWeathered Sentinels can attack players who attacked you during their last turn as though it didn't have defender.\\nWhenever Weathered Sentinels attacks, it gets +3/+3 and gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weathered Sentinels"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

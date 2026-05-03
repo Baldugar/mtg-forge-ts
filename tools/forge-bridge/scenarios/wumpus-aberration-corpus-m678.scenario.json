@@ -1,0 +1,25 @@
+{
+  "id": "wumpus-aberration-corpus-m678",
+  "description": "M6 corpus — Wumpus Aberration; ETB-on-bf.",
+  "seed": 64479,
+  "cards": {
+    "Wumpus Aberration": "Name:Wumpus Aberration\nManaCost:3 G\nTypes:Creature Eldrazi Beast\nPT:6/6\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | CheckSVar$ CastSA>Count$Adamant_1.Colorless.0.1 | Execute$ TrigChangeZone | TriggerDescription$ When you cast this spell, if {C} wasn't spent to cast it, target opponent may put a creature card from their hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Creature | ChangeNum$ 1 | Optional$ True\nK:Trample\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell, if {C} wasn't spent to cast it, target opponent may put a creature card from their hand onto the battlefield.\\nTrample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wumpus Aberration"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

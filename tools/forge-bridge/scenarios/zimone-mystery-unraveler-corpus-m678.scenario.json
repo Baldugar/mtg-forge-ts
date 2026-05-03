@@ -1,0 +1,23 @@
+{
+  "id": "zimone-mystery-unraveler-corpus-m678",
+  "description": "M6 corpus — Zimone, Mystery Unraveler; in-hand parse.",
+  "seed": 64671,
+  "cards": {
+    "Zimone, Mystery Unraveler": "Name:Zimone, Mystery Unraveler\nManaCost:2 G U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDread | TriggerDescription$ Landfall — Whenever a land you control enters, manifest dread if this is the first time this ability has resolved this turn. Otherwise, you may turn a permanent you control face up. (To manifest dread, look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigDread:DB$ ManifestDread | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBTurnFaceUp\nSVar:DBTurnFaceUp:DB$ SetState | Optional$ True | Choices$ Permanent.faceDown+YouCtrl | ChoiceTitle$ Select a face-down permanent you control | ConditionCheckSVar$ X | ConditionSVarCompare$ GT1 | Mode$ TurnFaceUp\nSVar:X:Count$ResolvedThisTurn\nSVar:BuffedBy:Land\nOracle:Landfall — Whenever a land you control enters, manifest dread if this is the first time this ability has resolved this turn. Otherwise, you may turn a permanent you control face up. (To manifest dread, look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zimone, Mystery Unraveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

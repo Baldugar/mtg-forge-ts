@@ -1,0 +1,23 @@
+{
+  "id": "valduk-keeper-of-the-flame-corpus-m678",
+  "description": "M6 corpus — Valduk, Keeper of the Flame; in-hand parse.",
+  "seed": 63219,
+  "cards": {
+    "Valduk, Keeper of the Flame": "Name:Valduk, Keeper of the Flame\nManaCost:2 R\nTypes:Legendary Creature Human Shaman\nPT:3/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, for each Aura and Equipment attached to CARDNAME, create a 3/1 red Elemental creature token with trample and haste. Exile those tokens at the beginning of the next end step.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ r_3_1_elemental_trample_haste | AtEOT$ Exile\nSVar:X:Count$Valid Equipment.Attached,Aura.Attached\nSVar:EnchantMe:Multiple\nSVar:EquipMe:Multiple\nDeckHints:Type$Equipment|Aura\nDeckHas:Ability$Token\nOracle:At the beginning of combat on your turn, for each Aura and Equipment attached to Valduk, Keeper of the Flame, create a 3/1 red Elemental creature token with trample and haste. Exile those tokens at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valduk, Keeper of the Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thunder-dragon-corpus-m678",
+  "description": "M6 corpus — Thunder Dragon; in-hand parse.",
+  "seed": 62303,
+  "cards": {
+    "Thunder Dragon": "Name:Thunder Dragon\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAllNonFlyers | TriggerDescription$ When CARDNAME enters, it deals 3 damage to each creature without flying.\nSVar:TrigDamageAllNonFlyers:DB$ DamageAll | NumDmg$ 3 | ValidCards$ Creature.withoutFlying | ValidDescription$ each creature without flying.\nOracle:Flying\\nWhen Thunder Dragon enters, it deals 3 damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunder Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

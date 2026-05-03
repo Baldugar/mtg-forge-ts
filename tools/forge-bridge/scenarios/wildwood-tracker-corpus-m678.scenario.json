@@ -1,0 +1,23 @@
+{
+  "id": "wildwood-tracker-corpus-m678",
+  "description": "M6 corpus — Wildwood Tracker; in-hand parse.",
+  "seed": 64194,
+  "cards": {
+    "Wildwood Tracker": "Name:Wildwood Tracker\nManaCost:G\nTypes:Creature Elf Warrior\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | IsPresent$ Creature.nonHuman+Other+YouCtrl | TriggerDescription$ Whenever CARDNAME attacks or blocks, if you control another non-Human creature, CARDNAME gets +1/+1 until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | IsPresent$ Creature.nonHuman+Other+YouCtrl | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, if you control another non-Human creature, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nSVar:BuffedBy:Creature.nonHuman\nOracle:Whenever Wildwood Tracker attacks or blocks, if you control another non-Human creature, Wildwood Tracker gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildwood Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

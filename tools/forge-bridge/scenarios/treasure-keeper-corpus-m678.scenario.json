@@ -1,0 +1,23 @@
+{
+  "id": "treasure-keeper-corpus-m678",
+  "description": "M6 corpus — Treasure Keeper; in-hand parse.",
+  "seed": 62681,
+  "cards": {
+    "Treasure Keeper": "Name:Treasure Keeper\nManaCost:4\nTypes:Artifact Creature Construct\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | TriggerZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigKeeperCascade | TriggerDescription$ When CARDNAME dies, reveal cards from the top of your library until you reveal a nonland card with mana value 3 or less. You may cast that card without paying its mana cost. Put all revealed cards not cast this way on the bottom of your library in a random order.\nSVar:TrigKeeperCascade:DB$ DigUntil | Defined$ You | Amount$ 1 | Valid$ Card.nonLand+cmcLE3 | NoMoveRevealed$ True | ImprintRevealed$ True | RememberFound$ True | SubAbility$ CascadeCast\nSVar:CascadeCast:DB$ Play | Defined$ Remembered | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ CascadeMoveToLib\nSVar:CascadeMoveToLib:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered,Card.IsImprinted | Origin$ Library | Destination$ Library | RandomOrder$ True | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:When Treasure Keeper dies, reveal cards from the top of your library until you reveal a nonland card with mana value 3 or less. You may cast that card without paying its mana cost. Put all revealed cards not cast this way on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasure Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

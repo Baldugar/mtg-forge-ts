@@ -1,0 +1,23 @@
+{
+  "id": "ultima-weapon-corpus-m678",
+  "description": "M6 corpus — Ultima Weapon; in-hand parse.",
+  "seed": 62945,
+  "cards": {
+    "Ultima Weapon": "Name:Ultima Weapon\nManaCost:7\nTypes:Legendary Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigDestroy | TriggerDescription$ Whenever equipped creature attacks, destroy target creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 7 | AddToughness$ 7 | AddSVar$ AE | Description$ Equipped creature gets +7/+7.\nK:Equip:7\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Whenever equipped creature attacks, destroy target creature an opponent controls.\\nEquipped creature gets +7/+7.\\nEquip {7}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultima Weapon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

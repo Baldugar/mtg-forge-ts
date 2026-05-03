@@ -1,0 +1,23 @@
+{
+  "id": "takenuma-bleeder-corpus-m678",
+  "description": "M6 corpus — Takenuma Bleeder; in-hand parse.",
+  "seed": 61628,
+  "cards": {
+    "Takenuma Bleeder": "Name:Takenuma Bleeder\nManaCost:2 B\nTypes:Creature Ogre Shaman\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks or blocks, you lose 1 life if you don't control a Demon.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, you lose 1 life if you don't control a Demon.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | ConditionPresent$ Demon.YouCtrl | ConditionCompare$ EQ0\nDeckHints:Type$Demon\nOracle:Whenever Takenuma Bleeder attacks or blocks, you lose 1 life if you don't control a Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Takenuma Bleeder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

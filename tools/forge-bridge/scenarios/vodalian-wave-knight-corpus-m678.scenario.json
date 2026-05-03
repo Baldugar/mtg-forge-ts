@@ -1,0 +1,25 @@
+{
+  "id": "vodalian-wave-knight-corpus-m678",
+  "description": "M6 corpus — Vodalian Wave-Knight; ETB-on-bf.",
+  "seed": 63610,
+  "cards": {
+    "Vodalian Wave-Knight": "Name:Vodalian Wave-Knight\nManaCost:2 W U\nTypes:Creature Merfolk Knight\nPT:3/3\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on each other Merfolk and/or Knight you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Knight.YouCtrl+StrictlyOther,Merfolk.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckHints:Type$Merfolk|Knight\nOracle:Whenever you draw a card, put a +1/+1 counter on each other Merfolk and/or Knight you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vodalian Wave-Knight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

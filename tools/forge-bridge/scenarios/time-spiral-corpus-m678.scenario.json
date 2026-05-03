@@ -1,0 +1,23 @@
+{
+  "id": "time-spiral-corpus-m678",
+  "description": "M6 corpus — Time Spiral; in-hand parse.",
+  "seed": 62406,
+  "cards": {
+    "Time Spiral": "Name:Time Spiral\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | UseAllOriginZones$ True | AILogic$ Timetwister | SpellDescription$ Each player shuffles their hand and graveyard into their library, then draws seven cards. Exile CARDNAME. You untap up to six lands.\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBChange | StackDescription$ None\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBUntap | StackDescription$ None\nSVar:DBUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 6 | StackDescription$ None\nOracle:Exile Time Spiral. Each player shuffles their hand and graveyard into their library, then draws seven cards. You untap up to six lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Spiral"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

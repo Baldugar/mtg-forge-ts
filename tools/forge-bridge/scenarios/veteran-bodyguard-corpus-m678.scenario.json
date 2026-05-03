@@ -1,0 +1,25 @@
+{
+  "id": "veteran-bodyguard-corpus-m678",
+  "description": "M6 corpus — Veteran Bodyguard; ETB-on-bf.",
+  "seed": 63423,
+  "cards": {
+    "Veteran Bodyguard": "Name:Veteran Bodyguard\nManaCost:3 W W\nTypes:Creature Human\nPT:2/5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.unblocked | ValidTarget$ You | ReplaceWith$ DmgSelf | IsPresent$ Card.Self+untapped | DamageTarget$ Self | Description$ As long as CARDNAME is untapped, all damage that would be dealt to you by unblocked creatures is dealt to CARDNAME instead.\nSVar:DmgSelf:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Self | VarType$ Card\nOracle:As long as Veteran Bodyguard is untapped, all damage that would be dealt to you by unblocked creatures is dealt to Veteran Bodyguard instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Veteran Bodyguard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

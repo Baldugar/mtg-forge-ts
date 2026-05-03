@@ -1,0 +1,23 @@
+{
+  "id": "wild-beastmaster-corpus-m678",
+  "description": "M6 corpus — Wild Beastmaster; in-hand parse.",
+  "seed": 64144,
+  "cards": {
+    "Wild Beastmaster": "Name:Wild Beastmaster\nManaCost:2 G\nTypes:Creature Human Shaman\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, each other creature you control gets +X/+X until end of turn, where X is CARDNAME's power.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nOracle:Whenever Wild Beastmaster attacks, each other creature you control gets +X/+X until end of turn, where X is Wild Beastmaster's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Beastmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

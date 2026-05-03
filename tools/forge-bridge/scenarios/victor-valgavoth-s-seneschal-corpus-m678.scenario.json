@@ -1,0 +1,23 @@
+{
+  "id": "victor-valgavoth-s-seneschal-corpus-m678",
+  "description": "M6 corpus — Victor, Valgavoth's Seneschal; in-hand parse.",
+  "seed": 63476,
+  "cards": {
+    "Victor, Valgavoth's Seneschal": "Name:Victor, Valgavoth's Seneschal\nManaCost:1 W B\nTypes:Legendary Creature Human Warlock\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, surveil 2 if this is the first time this ability has resolved this turn. If it's the second time, each opponent discards a card. If it's the third time, put a creature card from a graveyard onto the battlefield under your control.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, surveil 2 if this is the first time this ability has resolved this turn. If it's the second time, each opponent discards a card. If it's the third time, put a creature card from a graveyard onto the battlefield under your control.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2 | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player.Opponent | Mode$ TgtChoose | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | Mandatory$ True | GainControl$ True | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ3 | SelectPrompt$ Select a creature card in a graveyard | Hidden$ True\nSVar:Resolved:Count$ResolvedThisTurn\nDeckNeeds:Type$Enchantment\nOracle:Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, surveil 2 if this is the first time this ability has resolved this turn. If it's the second time, each opponent discards a card. If it's the third time, put a creature card from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Victor, Valgavoth's Seneschal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

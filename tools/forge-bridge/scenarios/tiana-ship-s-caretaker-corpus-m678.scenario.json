@@ -1,0 +1,23 @@
+{
+  "id": "tiana-ship-s-caretaker-corpus-m678",
+  "description": "M6 corpus — Tiana, Ship's Caretaker; in-hand parse.",
+  "seed": 62349,
+  "cards": {
+    "Tiana, Ship's Caretaker": "Name:Tiana, Ship's Caretaker\nManaCost:3 R W\nTypes:Legendary Creature Angel Artificer\nPT:3/3\nK:Flying\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Equipment.YouCtrl,Aura.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ DelayedTrig | TriggerDescription$ Whenever an Aura or Equipment you control is put into a graveyard from the battlefield, you may return that card to its owner's hand at the beginning of the next end step.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return that card to its owner's hand at the beginning of the next end step.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ DelayTriggerRememberedLKI\nOracle:Flying, first strike\\nWhenever an Aura or Equipment you control is put into a graveyard from the battlefield, you may return that card to its owner's hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tiana, Ship's Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

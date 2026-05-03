@@ -1,0 +1,23 @@
+{
+  "id": "terror-of-mount-velus-corpus-m678",
+  "description": "M6 corpus — Terror of Mount Velus; in-hand parse.",
+  "seed": 61927,
+  "cards": {
+    "Terror of Mount Velus": "Name:Terror of Mount Velus\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, creatures you control gain double strike until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Double Strike\nOracle:Flying, double strike\\nWhen Terror of Mount Velus enters, creatures you control gain double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terror of Mount Velus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "twinmaw-stormbrood-corpus-m678",
+  "description": "M6 corpus — Twinmaw Stormbrood; in-hand parse.",
+  "seed": 62880,
+  "cards": {
+    "Twinmaw Stormbrood": "Name:Twinmaw Stormbrood\nManaCost:5 W\nTypes:Creature Dragon\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this creature enters, you gain 5 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 5\nAlternateMode:Omen\nOracle:Flying\\nWhen this creature enters, you gain 5 life.\n\nALTERNATE\n\nName:Charring Bite\nManaCost:1 R\nTypes:Sorcery Omen\nA:SP$ DealDamage | ValidTgts$ Creature.withoutFlying | TgtPrompt$ Select target creature without flying | NumDmg$ 5 | SpellDescription$ CARDNAME deals 5 damage to target creature without flying. (Then shuffle this card into its owner's library.)\nOracle:Charring Bite deals 5 damage to target creature without flying. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twinmaw Stormbrood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

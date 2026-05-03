@@ -1,0 +1,23 @@
+{
+  "id": "wayfaring-temple-corpus-m678",
+  "description": "M6 corpus — Wayfaring Temple; in-hand parse.",
+  "seed": 63988,
+  "cards": {
+    "Wayfaring Temple": "Name:Wayfaring Temple\nManaCost:1 G W\nTypes:Creature Elemental\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ DBCopy | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, populate. (Create a token that's a copy of a creature token you control.)\nSVar:DBCopy:DB$ CopyPermanent | Populate$ True\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nDeckHints:Ability$Token\nOracle:Wayfaring Temple's power and toughness are each equal to the number of creatures you control.\\nWhenever Wayfaring Temple deals combat damage to a player, populate. (Create a token that's a copy of a creature token you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wayfaring Temple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

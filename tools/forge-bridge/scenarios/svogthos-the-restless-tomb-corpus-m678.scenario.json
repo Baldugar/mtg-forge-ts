@@ -1,0 +1,25 @@
+{
+  "id": "svogthos-the-restless-tomb-corpus-m678",
+  "description": "M6 corpus — Svogthos, the Restless Tomb; ETB-on-bf.",
+  "seed": 61452,
+  "cards": {
+    "Svogthos, the Restless Tomb": "Name:Svogthos, the Restless Tomb\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Animate | Cost$ 3 B G | Defined$ Self | Types$ Creature,Zombie,Plant | Colors$ Black,Green | OverwriteColors$ True | staticAbilities$ Static | SpellDescription$ Until end of turn, CARDNAME becomes a black and green Plant Zombie creature with \"This creature's power and toughness are each equal to the number of creature cards in your graveyard.\" It's still a land.\nSVar:Static:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | SetPower$ X | SetToughness$ X | Description$ This creature's power and toughness are each equal to the number of creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{3}{B}{G}: Until end of turn, Svogthos, the Restless Tomb becomes a black and green Plant Zombie creature with \"This creature's power and toughness are each equal to the number of creature cards in your graveyard.\" It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Svogthos, the Restless Tomb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

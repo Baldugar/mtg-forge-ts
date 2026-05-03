@@ -1,0 +1,23 @@
+{
+  "id": "topple-the-statue-corpus-m678",
+  "description": "M6 corpus — Topple the Statue; in-hand parse.",
+  "seed": 62511,
+  "cards": {
+    "Topple the Statue": "Name:Topple the Statue\nManaCost:2 W\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Permanent | SubAbility$ DBDestroyAll | SpellDescription$ Tap target permanent. If it's an artifact, destroy it.\nSVar:DBDestroyAll:DB$ Destroy | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Artifact | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Tap target permanent. If it's an artifact, destroy it.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Topple the Statue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

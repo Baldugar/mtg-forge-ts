@@ -1,0 +1,25 @@
+{
+  "id": "thistledown-duo-corpus-m678",
+  "description": "M6 corpus — Thistledown Duo; ETB-on-bf.",
+  "seed": 62173,
+  "cards": {
+    "Thistledown Duo": "Name:Thistledown Duo\nManaCost:2 WU\nTypes:Creature Kithkin Soldier Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump11 | TriggerDescription$ Whenever you cast a white spell, CARDNAME gets +1/+1 until end of turn.\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpKW | TriggerDescription$ Whenever you cast a blue spell, CARDNAME gains flying until end of turn.\nSVar:TrigPump11:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nSVar:TrigPumpKW:DB$ Pump | KW$ Flying | Defined$ Self\nSVar:BuffedBy:Card.White,Card.Blue\nOracle:Whenever you cast a white spell, Thistledown Duo gets +1/+1 until end of turn.\\nWhenever you cast a blue spell, Thistledown Duo gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thistledown Duo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

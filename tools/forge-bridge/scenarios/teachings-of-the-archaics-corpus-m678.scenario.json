@@ -1,0 +1,23 @@
+{
+  "id": "teachings-of-the-archaics-corpus-m678",
+  "description": "M6 corpus — Teachings of the Archaics; in-hand parse.",
+  "seed": 61757,
+  "cards": {
+    "Teachings of the Archaics": "Name:Teachings of the Archaics\nManaCost:2 U\nTypes:Sorcery Lesson\nA:SP$ Draw | NumCards$ X | ConditionCheckSVar$ Opp | ConditionSVarCompare$ GTMe | SpellDescription$ If an opponent has more cards in hand than you, draw two cards. Draw three cards instead if an opponent has at least four more cards in hand than you.\nSVar:Opp:PlayerCountOpponents$HighestCardsInHand\nSVar:Me:Count$CardsInYourHand\nSVar:MePlus:SVar$Me/Plus.4\nSVar:X:Count$Compare Opp GEMePlus.3.2\nOracle:If an opponent has more cards in hand than you, draw two cards. Draw three cards instead if an opponent has at least four more cards in hand than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teachings of the Archaics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

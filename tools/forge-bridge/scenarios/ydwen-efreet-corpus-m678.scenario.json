@@ -1,0 +1,25 @@
+{
+  "id": "ydwen-efreet-corpus-m678",
+  "description": "M6 corpus — Ydwen Efreet; ETB-on-bf.",
+  "seed": 64543,
+  "cards": {
+    "Ydwen Efreet": "Name:Ydwen Efreet\nManaCost:R R R\nTypes:Creature Efreet\nPT:3/6\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ FlipCoin | TriggerDescription$ Whenever CARDNAME blocks, flip a coin. If you lose the flip, remove CARDNAME from combat and it can't block this turn. Creatures it was blocking that had become blocked by only CARDNAME this combat become unblocked.\nSVar:FlipCoin:DB$ FlipACoin | LoseSubAbility$ DBRemoveFromCombat\nSVar:DBRemoveFromCombat:DB$ RemoveFromCombat | Defined$ Self | UnblockCreaturesBlockedOnlyBy$ Self | SubAbility$ DBCantBlock\nSVar:DBCantBlock:DB$ Pump | Defined$ Self | KW$ HIDDEN CARDNAME can't block.\nOracle:Whenever Ydwen Efreet blocks, flip a coin. If you lose the flip, remove Ydwen Efreet from combat and it can't block this turn. Creatures it was blocking that had become blocked by only Ydwen Efreet this combat become unblocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ydwen Efreet"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

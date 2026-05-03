@@ -1,0 +1,23 @@
+{
+  "id": "the-triumph-of-anax-corpus-m678",
+  "description": "M6 corpus — The Triumph of Anax; in-hand parse.",
+  "seed": 62120,
+  "cards": {
+    "The Triumph of Anax": "Name:The Triumph of Anax\nManaCost:2 R\nTypes:Enchantment Saga\nK:Chapter:4:DBPump,DBPump,DBPump,DBPick\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | KW$ Trample | SpellDescription$ Until end of turn, target creature gains trample and gets +X/+0, where X is the number of lore counters on CARDNAME.\nSVar:X:Count$CardCounters.LORE\nSVar:PlayMain1:TRUE\nSVar:DBPick:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | SpellDescription$ Target creature you control fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Until end of turn, target creature gains trample and gets +X/+0, where X is the number of lore counters on The Triumph of Anax.\\nIV — Target creature you control fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Triumph of Anax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "whitewater-naiads-corpus-m678",
+  "description": "M6 corpus — Whitewater Naiads; in-hand parse.",
+  "seed": 64128,
+  "cards": {
+    "Whitewater Naiads": "Name:Whitewater Naiads\nManaCost:3 U U\nTypes:Enchantment Creature Nymph\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigUnblockable | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, target creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Whitewater Naiads or another enchantment you control enters, target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whitewater Naiads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

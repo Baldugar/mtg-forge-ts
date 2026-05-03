@@ -1,0 +1,25 @@
+{
+  "id": "warrior-en-kor-corpus-m678",
+  "description": "M6 corpus — Warrior en-Kor; ETB-on-bf.",
+  "seed": 63914,
+  "cards": {
+    "Warrior en-Kor": "Name:Warrior en-Kor\nManaCost:W W\nTypes:Creature Kor Warrior Knight\nPT:2/2\nA:AB$ Effect | Cost$ 0 | Name$ en-Kor Redirection | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to redirect the damage to | ReplacementEffects$ EnKor | Duration$ UntilHostLeavesPlayOrEOT | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next 1 damage that would be dealt to CARDNAME this turn is dealt to target creature you control instead.\nSVar:EnKor:Event$ DamageDone | ValidTarget$ Creature.EffectSource | ReplaceWith$ EnKorDmg | DamageTarget$ Remembered | Description$ The next 1 damage that would be dealt to EFFECTSOURCE this turn is dealt to target creature you control instead.\nSVar:EnKorDmg:DB$ ReplaceSplitDamage | DamageTarget$ Remembered\nAI:RemoveDeck:All\nOracle:{0}: The next 1 damage that would be dealt to Warrior en-Kor this turn is dealt to target creature you control instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warrior en-Kor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

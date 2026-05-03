@@ -1,0 +1,23 @@
+{
+  "id": "turbocharged-escape-corpus-m678",
+  "description": "M6 corpus — Turbocharged Escape; in-hand parse.",
+  "seed": 62833,
+  "cards": {
+    "Turbocharged Escape": "Name:Turbocharged Escape\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature.nonVehicle | SubAbility$ DBChooseCard | StackDescription$ SpellDescription | SpellDescription$ Destroy all non-Vehicle creatures. Then choose a Vehicle you control. It perpetually becomes an artifact creature.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Vehicle | ChoiceTitle$ Choose a Vehicle you control | SubAbility$ DBAnimate | StackDescription$ None\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Types$ Creature,Artifact | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Destroy all non-Vehicle creatures. Then choose a Vehicle you control. It perpetually becomes an artifact creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turbocharged Escape"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

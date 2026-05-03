@@ -1,0 +1,23 @@
+{
+  "id": "titanic-brawl-corpus-m678",
+  "description": "M6 corpus — Titanic Brawl; in-hand parse.",
+  "seed": 62439,
+  "cards": {
+    "Titanic Brawl": "Name:Titanic Brawl\nManaCost:1 G\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | ValidTarget$ Creature.YouCtrl+counters_GE1_P1P1 | Description$ This spell costs {1} less to cast if it targets a creature you control with a +1/+1 counter on it.\nDeckHints:Ability$Counters\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nOracle:This spell costs {1} less to cast if it targets a creature you control with a +1/+1 counter on it.\\nTarget creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titanic Brawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

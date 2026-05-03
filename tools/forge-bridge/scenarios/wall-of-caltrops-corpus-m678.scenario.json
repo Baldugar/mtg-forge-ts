@@ -1,0 +1,25 @@
+{
+  "id": "wall-of-caltrops-corpus-m678",
+  "description": "M6 corpus — Wall of Caltrops; ETB-on-bf.",
+  "seed": 63763,
+  "cards": {
+    "Wall of Caltrops": "Name:Wall of Caltrops\nManaCost:1 W\nTypes:Creature Wall\nPT:2/1\nK:Defender\nT:Mode$ AttackerBlocked | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ MakeEffective | IsPresent$ Creature.Wall+Other+sharesBlockingAssignmentWith | IsPresent2$ Creature.nonWall+sharesBlockingAssignmentWith | PresentCompare2$ EQ0 | TriggerDescription$ Whenever CARDNAME blocks a creature, if at least one other Wall creature is blocking that creature and no non-Wall creatures are blocking that creature, CARDNAME gains banding until end of turn. (If any creatures with banding you control are blocking a creature, you divide that creature's combat damage, not its controller, among any of the creatures it's being blocked by.)\nSVar:MakeEffective:DB$ Pump | KW$ Banding | Defined$ Self\nOracle:Defender (This creature can't attack.)\\nWhenever Wall of Caltrops blocks a creature, if at least one other Wall creature is blocking that creature and no non-Wall creatures are blocking that creature, Wall of Caltrops gains banding until end of turn. (If any creatures with banding you control are blocking a creature, you divide that creature's combat damage, not its controller, among any of the creatures it's being blocked by.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wall of Caltrops"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

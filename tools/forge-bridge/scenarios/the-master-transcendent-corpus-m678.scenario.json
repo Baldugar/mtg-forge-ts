@@ -1,0 +1,23 @@
+{
+  "id": "the-master-transcendent-corpus-m678",
+  "description": "M6 corpus — The Master, Transcendent; in-hand parse.",
+  "seed": 62073,
+  "cards": {
+    "The Master, Transcendent": "Name:The Master, Transcendent\nManaCost:1 B G U\nTypes:Legendary Artifact Creature Mutant\nPT:2/4\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerDescription$ When CARDNAME enters, target player gets two rad counters.\nSVar:TrigRadiation:DB$ Radiation | ValidTgts$ Player | Num$ 2\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Creature.milledThisTurn | TgtPrompt$ Select target creature in a graveyard that was milled this turn | StaticEffect$ Animate | SpellDescription$ Put target creature card in a graveyard that was milled this turn onto the battlefield under your control. It's a green Mutant with base power and toughness 3/3. (It loses its other colors and creature types.)\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Mutant | SetColor$ Green | SetPower$ 3 | SetToughness$ 3 | RemoveCreatureTypes$ True\nDeckHas:Ability$Mill\nDeckHints:Ability$Mill\nOracle:When The Master, Transcendent enters, target player gets two rad counters.\\n{T}: Put target creature card in a graveyard that was milled this turn onto the battlefield under your control. It's a green Mutant with base power and toughness 3/3. (It loses its other colors and creature types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Master, Transcendent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "threats-undetected-corpus-m678",
+  "description": "M6 corpus — Threats Undetected; in-hand parse.",
+  "seed": 62269,
+  "cards": {
+    "Threats Undetected": "Name:Threats Undetected\nManaCost:2 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Creature | ChangeNum$ 4 | DifferentPower$ True | RememberChanged$ True | Reveal$ True | Shuffle$ False | SubAbility$ DBChoosePlayer | SpellDescription$ Search your library for up to four creature cards with different powers and reveal them. An opponent chooses two of those cards. Shuffle the chosen cards into your library and put the rest into your hand.\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ OppPickTwo\nSVar:OppPickTwo:DB$ ChooseCard | Defined$ ChosenPlayer | Amount$ 2 | Mandatory$ True | ChoiceTitle$ Choose two cards to shuffle into opponent's library | Choices$ Card.IsRemembered | ChoiceZone$ Library | ForgetChosen$ True | SubAbility$ MoveNotChosen\nSVar:MoveNotChosen:DB$ ChangeZoneAll | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Creature\nOracle:Search your library for up to four creature cards with different powers and reveal them. An opponent chooses two of those cards. Shuffle the chosen cards into your library and put the rest into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Threats Undetected"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

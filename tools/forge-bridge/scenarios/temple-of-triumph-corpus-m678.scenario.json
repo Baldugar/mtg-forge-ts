@@ -1,0 +1,23 @@
+{
+  "id": "temple-of-triumph-corpus-m678",
+  "description": "M6 corpus — Temple of Triumph; in-hand parse.",
+  "seed": 61842,
+  "cards": {
+    "Temple of Triumph": "Name:Temple of Triumph\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Temple of Triumph enters tapped.\\nWhen Temple of Triumph enters, scry 1.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temple of Triumph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

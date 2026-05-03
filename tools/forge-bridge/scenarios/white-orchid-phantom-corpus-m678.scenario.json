@@ -1,0 +1,23 @@
+{
+  "id": "white-orchid-phantom-corpus-m678",
+  "description": "M6 corpus — White Orchid Phantom; in-hand parse.",
+  "seed": 64119,
+  "cards": {
+    "White Orchid Phantom": "Name:White Orchid Phantom\nManaCost:W W\nTypes:Creature Spirit Knight\nPT:2/2\nK:Flying\nK:First Strike\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to one target nonbasic land. Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select up to one target nonbasic land | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBSearch | AILogic$ GhostQuarter\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ TargetedController | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True\nOracle:Flying, first strike\\nWhen White Orchid Phantom enters, destroy up to one target nonbasic land. Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Orchid Phantom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

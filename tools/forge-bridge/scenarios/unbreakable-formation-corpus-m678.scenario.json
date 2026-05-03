@@ -1,0 +1,23 @@
+{
+  "id": "unbreakable-formation-corpus-m678",
+  "description": "M6 corpus — Unbreakable Formation; in-hand parse.",
+  "seed": 62974,
+  "cards": {
+    "Unbreakable Formation": "Name:Unbreakable Formation\nManaCost:2 W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible | SubAbility$ DBAddendum | SpellDescription$ Creatures you control gain indestructible until end of turn.\nSVar:DBAddendum:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance | ConditionPlayerTurn$ True | ConditionPhases$ Main1,Main2 | ConditionDefined$ Self | ConditionPresent$ Card.wasCast | SubAbility$ DBPutCounters | SpellDescription$ Addendum — If you cast this spell during your main phase, put a +1/+1 counter on each of those creatures and they gain vigilance until end of turn.\nSVar:DBPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | ConditionPlayerTurn$ True | ConditionPhases$ Main1,Main2 | ConditionDefined$ Self | ConditionPresent$ Card.wasCast | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Creatures you control gain indestructible until end of turn.\\nAddendum — If you cast this spell during your main phase, put a +1/+1 counter on each of those creatures and they gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unbreakable Formation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

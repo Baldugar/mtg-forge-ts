@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-offering-corpus-m678",
+  "description": "M6 corpus — Sylvan Offering; in-hand parse.",
+  "seed": 61545,
+  "cards": {
+    "Sylvan Offering": "Name:Sylvan Offering\nManaCost:X G\nTypes:Sorcery\nA:SP$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBToken | SpellDescription$ Choose an opponent. You and that player each create an X/X green Treefolk creature token. Choose an opponent. You and that player each create X 1/1 green Elf Warrior creature tokens.\nSVar:DBToken:DB$ Token | TokenScript$ g_x_x_treefolk | TokenOwner$ .Chosen,You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBToken2\nSVar:DBToken2:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_elf_warrior | TokenOwner$ .Chosen,You\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose an opponent. You and that player each create an X/X green Treefolk creature token.\\nChoose an opponent. You and that player each create X 1/1 green Elf Warrior creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

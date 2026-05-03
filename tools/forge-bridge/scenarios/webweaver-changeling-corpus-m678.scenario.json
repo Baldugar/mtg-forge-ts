@@ -1,0 +1,23 @@
+{
+  "id": "webweaver-changeling-corpus-m678",
+  "description": "M6 corpus — Webweaver Changeling; in-hand parse.",
+  "seed": 64026,
+  "cards": {
+    "Webweaver Changeling": "Name:Webweaver Changeling\nManaCost:3 G G\nTypes:Creature Shapeshifter\nPT:3/5\nK:Changeling\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | IsPresent$ Creature.YouCtrl | PresentCompare$ GE3 | PresentZone$ Graveyard | TriggerDescription$ When CARDNAME enters, if there are three or more creature cards in your graveyard, you gain 5 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 5\nSVar:PlayMain1:Random\nOracle:Changeling (This card is every creature type.)\\nReach\\nWhen Webweaver Changeling enters, if there are three or more creature cards in your graveyard, you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Webweaver Changeling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

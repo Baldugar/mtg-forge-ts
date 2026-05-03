@@ -1,0 +1,23 @@
+{
+  "id": "tempest-caller-corpus-m678",
+  "description": "M6 corpus — Tempest Caller; in-hand parse.",
+  "seed": 61819,
+  "cards": {
+    "Tempest Caller": "Name:Tempest Caller\nManaCost:2 U U\nTypes:Creature Merfolk Wizard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all creatures target opponent controls.\nSVar:TrigTapAll:DB$ TapAll | ValidTgts$ Opponent | ValidCards$ Creature\nSVar:PlayMain1:TRUE\nOracle:When Tempest Caller enters, tap all creatures target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempest Caller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

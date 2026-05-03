@@ -1,0 +1,23 @@
+{
+  "id": "wedding-ring-corpus-m678",
+  "description": "M6 corpus — Wedding Ring; in-hand parse.",
+  "seed": 64027,
+  "cards": {
+    "Wedding Ring": "Name:Wedding Ring\nManaCost:2 W W\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCast | Origin$ Any | Destination$ Battlefield | Execute$ TrigCopy | TriggerDescription$ When CARDNAME enters, if it was cast, target opponent creates a token that's a copy of it.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Opponent | Defined$ Self | Controller$ TargetedPlayer\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | ValidPlayer$ Player.Opponent+Active+controlsArtifact.namedWedding Ring | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent who controls an artifact named Wedding Ring draws a card during their turn, you draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ LifeGained | ValidPlayer$ Player.Opponent+Active+controlsArtifact.namedWedding Ring | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever an opponent who controls an artifact named Wedding Ring gains life during their turn, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount\nDeckHas:Ability$LifeGain\nOracle:When Wedding Ring enters, if it was cast, target opponent creates a token that's a copy of it.\\nWhenever an opponent who controls an artifact named Wedding Ring draws a card during their turn, you draw a card.\\nWhenever an opponent who controls an artifact named Wedding Ring gains life during their turn, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wedding Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

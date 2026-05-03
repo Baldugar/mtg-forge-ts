@@ -1,0 +1,23 @@
+{
+  "id": "yawgmoth-demon-corpus-m678",
+  "description": "M6 corpus — Yawgmoth Demon; in-hand parse.",
+  "seed": 64537,
+  "cards": {
+    "Yawgmoth Demon": "Name:Yawgmoth Demon\nManaCost:4 B B\nTypes:Creature Phyrexian Demon\nPT:6/6\nK:Flying\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigElderSpawnSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice an artifact. If you don't, tap CARDNAME and it deals 2 damage to you.\nSVar:TrigElderSpawnSacrifice:DB$ Sacrifice | SacValid$ Artifact | Optional$ True | RememberSacrificed$ True | SubAbility$ DBElderSpawnSacrificeMe\nSVar:DBElderSpawnSacrificeMe:DB$ Tap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Artifact | ConditionCompare$ EQ0 | SubAbility$ DBElderSpawnDamage\nSVar:DBElderSpawnDamage:DB$ DealDamage | Defined$ You | NumDmg$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Artifact | ConditionCompare$ EQ0 | SubAbility$ DBElderSpawnCleanup\nSVar:DBElderSpawnCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$Valid Artifact.YouCtrl\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nFirst strike (This creature deals combat damage before creatures without first strike.)\\nAt the beginning of your upkeep, you may sacrifice an artifact. If you don't, tap Yawgmoth Demon and it deals 2 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yawgmoth Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wingbright-thief-corpus-m678",
+  "description": "M6 corpus — Wingbright Thief; in-hand parse.",
+  "seed": 64252,
+  "cards": {
+    "Wingbright Thief": "Name:Wingbright Thief\nManaCost:W U\nTypes:Enchantment Creature Bird Glimmer\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals each nonland card in their hand. You choose one of them. That card perpetually gains \"When you cast this spell, each opponent draws a card and gains 3 life.\"\nSVar:TrigReveal:DB$ Reveal | ValidTgts$ Opponent | RevealAllValid$ Card.nonLand+TargetedPlayerOwn | SubAbility$ DBChooseCard | RememberRevealed$ True\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.IsRemembered | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Duration$ Perpetual | Defined$ ChosenCard | Triggers$ CastSpellDrawGainLife | SubAbility$ DBCleanup\nSVar:CastSpellDrawGainLife:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When you cast this spell, each opponent draws a card and gains 3 life.\nSVar:TrigDraw:DB$ Draw | Defined$ Opponent | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ Opponent | LifeAmount$ 3\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Flying\\nWhen Wingbright Thief enters, target opponent reveals each nonland card in their hand. You choose one of them. That card perpetually gains \"When you cast this spell, each opponent draws a card and gains 3 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingbright Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

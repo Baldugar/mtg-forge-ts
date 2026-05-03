@@ -1,0 +1,25 @@
+{
+  "id": "ulvenwald-tracker-corpus-m678",
+  "description": "M6 corpus — Ulvenwald Tracker; ETB-on-bf.",
+  "seed": 62956,
+  "cards": {
+    "Ulvenwald Tracker": "Name:Ulvenwald Tracker\nManaCost:G\nTypes:Creature Human Shaman\nPT:1/1\nA:AB$ Pump | Cost$ 1 G T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ TrackerFight | StackDescription$ None | SpellDescription$ Target creature you control fights another target creature.\nSVar:TrackerFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature | TargetUnique$ True | TgtPrompt$ Select another target creature\nAI:RemoveDeck:All\nOracle:{1}{G}, {T}: Target creature you control fights another target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ulvenwald Tracker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

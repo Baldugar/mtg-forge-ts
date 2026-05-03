@@ -1,0 +1,23 @@
+{
+  "id": "trench-gorger-corpus-m678",
+  "description": "M6 corpus — Trench Gorger; in-hand parse.",
+  "seed": 62709,
+  "cards": {
+    "Trench Gorger": "Name:Trench Gorger\nManaCost:6 U U\nTypes:Creature Leviathan\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, you may search your library for any number of land cards, exile them, then shuffle. If you do, CARDNAME has base power and base toughness each equal to the number of cards exiled this way.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Land | ChangeNum$ X | RememberChanged$ True | SubAbility$ TrenchAnimate | ShuffleNonMandatory$ True\nSVar:TrenchAnimate:DB$ Animate | Power$ Y | Toughness$ Y | Duration$ Permanent | SubAbility$ DBCleanUp\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Land.YouCtrl\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Trample\\nWhen Trench Gorger enters, you may search your library for any number of land cards, exile them, then shuffle. If you do, Trench Gorger has base power and base toughness each equal to the number of cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trench Gorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

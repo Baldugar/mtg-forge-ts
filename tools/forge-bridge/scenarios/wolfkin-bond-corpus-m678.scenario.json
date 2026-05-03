@@ -1,0 +1,23 @@
+{
+  "id": "wolfkin-bond-corpus-m678",
+  "description": "M6 corpus — Wolfkin Bond; in-hand parse.",
+  "seed": 64364,
+  "cards": {
+    "Wolfkin Bond": "Name:Wolfkin Bond\nManaCost:4 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 green Wolf creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2.\nDeckHas:Ability$Token\nOracle:Enchant creature\\nWhen Wolfkin Bond enters, create a 2/2 green Wolf creature token.\\nEnchanted creature gets +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfkin Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

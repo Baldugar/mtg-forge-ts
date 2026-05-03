@@ -1,0 +1,23 @@
+{
+  "id": "taste-of-paradise-corpus-m678",
+  "description": "M6 corpus — Taste of Paradise; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Taste of Paradise": "Name:Taste of Paradise\nManaCost:3 G\nTypes:Sorcery\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Cost$ 1 G | Amount$ PseudoKicker | EffectZone$ All | Description$ As an additional cost to cast this spell, you may pay {1}{G} any number of times.\nA:SP$ GainLife | LifeAmount$ SVar$X/Times.3 | Announce$ PseudoKicker | SpellDescription$ You gain 3 life plus an additional 3 life for each additional {1}{G} you paid.\nSVar:X:SVar$PseudoKicker/Plus.1\nSVar:PseudoKicker:Number$0\nDeckHas:Ability$LifeGain\nOracle:As an additional cost to cast this spell, you may pay {1}{G} any number of times.\\nYou gain 3 life plus an additional 3 life for each additional {1}{G} you paid.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taste of Paradise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

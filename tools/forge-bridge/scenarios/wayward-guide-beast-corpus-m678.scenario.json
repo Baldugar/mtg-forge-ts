@@ -1,0 +1,23 @@
+{
+  "id": "wayward-guide-beast-corpus-m678",
+  "description": "M6 corpus — Wayward Guide-Beast; in-hand parse.",
+  "seed": 63993,
+  "cards": {
+    "Wayward Guide-Beast": "Name:Wayward Guide-Beast\nManaCost:R\nTypes:Creature Beast\nPT:2/2\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return a land you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Land.YouCtrl | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SelectPrompt$ Select a land you control to return to its owner's hand\nOracle:Trample, haste\\nWhenever Wayward Guide-Beast deals combat damage to a player, return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wayward Guide-Beast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

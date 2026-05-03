@@ -1,0 +1,25 @@
+{
+  "id": "uba-mask-corpus-m678",
+  "description": "M6 corpus — Uba Mask; ETB-on-bf.",
+  "seed": 62924,
+  "cards": {
+    "Uba Mask": "Name:Uba Mask\nManaCost:4\nTypes:Artifact\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ Player | ReplaceWith$ ExileTop | Description$ If a player would draw a card, that player exiles that card face up instead.\nSVar:ExileTop:DB$ Dig | Defined$ ReplacedPlayer | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | NoReveal$ True\nS:Mode$ Continuous | MayPlay$ True | MayPlayPlayer$ CardOwner | Affected$ Card.ExiledWithSource+ThisTurnEntered | AffectedZone$ Exile | Description$ Each player may play lands and cast spells from among cards they exiled with CARDNAME this turn.\nOracle:If a player would draw a card, that player exiles that card face up instead.\\nEach player may play lands and cast spells from among cards they exiled with Uba Mask this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Uba Mask"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

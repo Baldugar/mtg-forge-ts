@@ -1,0 +1,23 @@
+{
+  "id": "vicious-conquistador-corpus-m678",
+  "description": "M6 corpus — Vicious Conquistador; in-hand parse.",
+  "seed": 63468,
+  "cards": {
+    "Vicious Conquistador": "Name:Vicious Conquistador\nManaCost:B\nTypes:Creature Vampire Soldier\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Whenever Vicious Conquistador attacks, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vicious Conquistador"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "walking-sponge-corpus-m678",
+  "description": "M6 corpus — Walking Sponge; ETB-on-bf.",
+  "seed": 63756,
+  "cards": {
+    "Walking Sponge": "Name:Walking Sponge\nManaCost:1 U\nTypes:Creature Sponge\nPT:1/1\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature | StackDescription$ None | SubAbility$ MakeChoice | SpellDescription$ Target creature loses your choice of flying, first strike, or trample until end of turn.\nSVar:MakeChoice:DB$ GenericChoice | Choices$ SpongeFly,SpongeStrike,SpongeTramp\nSVar:SpongeFly:DB$ Animate | Defined$ Targeted | RemoveKeywords$ Flying | SpellDescription$ Targeted creature loses flying.\nSVar:SpongeStrike:DB$ Animate | Defined$ Targeted | RemoveKeywords$ First Strike | SpellDescription$ Targeted creature loses first strike.\nSVar:SpongeTramp:DB$ Animate | Defined$ Targeted | RemoveKeywords$ Trample | SpellDescription$ Targeted creature loses trample.\nAI:RemoveDeck:All\nOracle:{T}: Target creature loses your choice of flying, first strike, or trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Walking Sponge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vengevine-corpus-m678",
+  "description": "M6 corpus — Vengevine; ETB-on-bf.",
+  "seed": 63370,
+  "cards": {
+    "Vengevine": "Name:Vengevine\nManaCost:2 G G\nTypes:Creature Elemental\nPT:4/3\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | CheckSVar$ X | SVarCompare$ EQ2 | NoResolvingCheck$ True | TriggerZones$ Graveyard | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Whenever you cast a spell, if it's the second creature spell you cast this turn, you may return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$ThisTurnCast_Creature.YouCtrl\nOracle:Haste\\nWhenever you cast a spell, if it's the second creature spell you cast this turn, you may return Vengevine from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vengevine"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

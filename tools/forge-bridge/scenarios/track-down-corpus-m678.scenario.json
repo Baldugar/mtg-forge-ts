@@ -1,0 +1,23 @@
+{
+  "id": "track-down-corpus-m678",
+  "description": "M6 corpus — Track Down; in-hand parse.",
+  "seed": 62594,
+  "cards": {
+    "Track Down": "Name:Track Down\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Scry | ScryNum$ 3 | SubAbility$ DBReveal | SpellDescription$ Scry 3, then reveal the top card of your library. If it's a creature or land card, draw a card.\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | RememberRevealed$ True | DestinationZone$ Library | LibraryPosition$ 0 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Creature,Land\nOracle:Scry 3, then reveal the top card of your library. If it's a creature or land card, draw a card. (To scry 3, look at the top three cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Track Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-dismisser-corpus-m678",
+  "description": "M6 corpus — Vedalken Dismisser; in-hand parse.",
+  "seed": 63320,
+  "cards": {
+    "Vedalken Dismisser": "Name:Vedalken Dismisser\nManaCost:5 U\nTypes:Creature Vedalken Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target creature on top of its owner's library.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0\nOracle:When Vedalken Dismisser enters, put target creature on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Dismisser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

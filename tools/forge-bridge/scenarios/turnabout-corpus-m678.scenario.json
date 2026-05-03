@@ -1,0 +1,23 @@
+{
+  "id": "turnabout-corpus-m678",
+  "description": "M6 corpus — Turnabout; in-hand parse.",
+  "seed": 62845,
+  "cards": {
+    "Turnabout": "Name:Turnabout\nManaCost:2 U U\nTypes:Instant\nA:SP$ ChooseType | Type$ Card | ValidTypes$ Artifact,Creature,Land | SubAbility$ DBTapOrUntapAll | SpellDescription$ Choose artifact, creature, or land. Tap all untapped permanents of the chosen type target player controls, or untap all tapped permanents of that type that player controls.\nSVar:DBTapOrUntapAll:DB$ TapOrUntapAll | ValidTgts$ Player | ValidCards$ Card.ChosenType | ValidMessage$ permanents of the chosen type target player controls\nAI:RemoveDeck:All\nOracle:Choose artifact, creature, or land. Tap all untapped permanents of the chosen type target player controls, or untap all tapped permanents of that type that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turnabout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

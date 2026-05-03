@@ -1,0 +1,23 @@
+{
+  "id": "syphon-flesh-corpus-m678",
+  "description": "M6 corpus — Syphon Flesh; in-hand parse.",
+  "seed": 61572,
+  "cards": {
+    "Syphon Flesh": "Name:Syphon Flesh\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ Player.Other | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBToken | SpellDescription$ Each other player sacrifices a creature. You create a 2/2 black Zombie creature token for each creature sacrificed this way.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Each other player sacrifices a creature. You create a 2/2 black Zombie creature token for each creature sacrificed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syphon Flesh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

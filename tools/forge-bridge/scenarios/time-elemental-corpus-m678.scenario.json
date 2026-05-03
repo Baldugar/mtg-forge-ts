@@ -1,0 +1,23 @@
+{
+  "id": "time-elemental-corpus-m678",
+  "description": "M6 corpus — Time Elemental; in-hand parse.",
+  "seed": 62400,
+  "cards": {
+    "Time Elemental": "Name:Time Elemental\nManaCost:2 U\nTypes:Creature Elemental\nPT:0/2\nA:AB$ ChangeZone | Cost$ 2 U U T | ValidTgts$ Permanent.!enchanted | TgtPrompt$ Select target unenchanted permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target permanent that isn't enchanted to its owner's hand.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelayedTrig | TriggerDescription$ When CARDNAME attacks or blocks, at end of combat, sacrifice it and it deals 5 damage to you.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelayedTrig | Secondary$ True | TriggerDescription$ When CARDNAME attacks or blocks, at end of combat, sacrifice it and it deals 5 damage to you.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigSacrifice | TriggerDescription$ At end of combat, sacrifice CARDNAME and CARDNAME deals 5 damage to you.\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ Self | Controller$ You | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 5 | Defined$ You\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:When Time Elemental attacks or blocks, at end of combat, sacrifice it and it deals 5 damage to you.\\n{2}{U}{U}, {T}: Return target permanent that isn't enchanted to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

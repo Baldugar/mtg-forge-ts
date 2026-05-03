@@ -1,0 +1,23 @@
+{
+  "id": "untimely-malfunction-corpus-m678",
+  "description": "M6 corpus — Untimely Malfunction; in-hand parse.",
+  "seed": 63130,
+  "cards": {
+    "Untimely Malfunction": "Name:Untimely Malfunction\nManaCost:1 R\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBChangeTargets,DBCantBlock\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBChangeTargets:DB$ ChangeTargets | TargetType$ SpellAbility.singleTarget | ValidTgts$ Card,Emblem | TgtPrompt$ Select target spell or ability with a single target | SpellDescription$ Change the target of target spell or ability with a single target.\nSVar:DBCantBlock:DB$ Pump | ValidTgts$ Creature | TargetMin$ 1 | TargetMax$ 2 | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ One or two target creatures can't block this turn.\nOracle:Choose one —\\n• Destroy target artifact.\\n• Change the target of target spell or ability with a single target.\\n• One or two target creatures can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Untimely Malfunction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

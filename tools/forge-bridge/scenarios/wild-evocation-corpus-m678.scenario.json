@@ -1,0 +1,23 @@
+{
+  "id": "wild-evocation-corpus-m678",
+  "description": "M6 corpus — Wild Evocation; in-hand parse.",
+  "seed": 64151,
+  "cards": {
+    "Wild Evocation": "Name:Wild Evocation\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigEvoke | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player reveals a card at random from their hand. If it's a land card, the player puts it onto the battlefield. Otherwise, the player casts it without paying its mana cost if able.\nSVar:TrigEvoke:DB$ Reveal | Random$ True | RememberRevealed$ True | Defined$ TriggeredPlayer | SubAbility$ DBEvokeLand\nSVar:DBEvokeLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ ValidHand Land.IsRemembered | ForgetChanged$ True | SubAbility$ DBEvokePlay\nSVar:DBEvokePlay:DB$ Play | ValidZone$ Hand | Controller$ TriggeredPlayer | Defined$ Remembered | ValidSA$ Spell | WithoutManaCost$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player reveals a card at random from their hand. If it's a land card, the player puts it onto the battlefield. Otherwise, the player casts it without paying its mana cost if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Evocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

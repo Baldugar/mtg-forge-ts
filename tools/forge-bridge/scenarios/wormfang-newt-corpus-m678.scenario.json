@@ -1,0 +1,23 @@
+{
+  "id": "wormfang-newt-corpus-m678",
+  "description": "M6 corpus — Wormfang Newt; in-hand parse.",
+  "seed": 64428,
+  "cards": {
+    "Wormfang Newt": "Name:Wormfang Newt\nManaCost:1 U\nTypes:Creature Nightmare Salamander Beast\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile a land you control.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChooseCard | Choices$ Land.YouCtrl | Mandatory$ True | Amount$ 1 | ChoiceTitle$ Choose a land to exile | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ChosenCard | RememberChanged$ True\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:When Wormfang Newt enters, exile a land you control.\\nWhen Wormfang Newt leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wormfang Newt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

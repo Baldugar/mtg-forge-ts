@@ -1,0 +1,25 @@
+{
+  "id": "widespread-panic-corpus-m678",
+  "description": "M6 corpus — Widespread Panic; ETB-on-bf.",
+  "seed": 64139,
+  "cards": {
+    "Widespread Panic": "Name:Widespread Panic\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Shuffled | ValidPlayer$ Player | ShuffleFromEffect$ True | ShuffleBySelfControlled$ True | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever a spell or ability causes its controller to shuffle their library, that player puts a card from their hand on top of their library.\nSVar:TrigChangeZone:DB$ ChangeZone | DefinedPlayer$ TriggeredPlayer | Chooser$ TriggeredPlayer | ChangeType$ Card | ChangeNum$ 1 | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | Mandatory$ True\nAI:RemoveDeck:Random\nOracle:Whenever a spell or ability causes its controller to shuffle their library, that player puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Widespread Panic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

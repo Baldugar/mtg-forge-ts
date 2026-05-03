@@ -1,0 +1,23 @@
+{
+  "id": "tempered-in-solitude-corpus-m678",
+  "description": "M6 corpus — Tempered in Solitude; in-hand parse.",
+  "seed": 61816,
+  "cards": {
+    "Tempered in Solitude": "Name:Tempered in Solitude\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a creature you control attacks alone, exile the top card of your library. You may play that card this turn.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ You | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever a creature you control attacks alone, exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempered in Solitude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

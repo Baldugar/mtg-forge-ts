@@ -1,0 +1,23 @@
+{
+  "id": "voracious-hatchling-corpus-m678",
+  "description": "M6 corpus — Voracious Hatchling; in-hand parse.",
+  "seed": 63681,
+  "cards": {
+    "Voracious Hatchling": "Name:Voracious Hatchling\nManaCost:3 WB\nTypes:Creature Elemental\nPT:6/6\nK:etbCounter:M1M1:4\nK:Lifelink\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a white spell, remove a -1/-1 counter from CARDNAME.\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a black spell, remove a -1/-1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nSVar:BuffedBy:Card.White,Card.Black\nOracle:Lifelink\\nVoracious Hatchling enters with four -1/-1 counters on it.\\nWhenever you cast a white spell, remove a -1/-1 counter from Voracious Hatchling.\\nWhenever you cast a black spell, remove a -1/-1 counter from Voracious Hatchling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voracious Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

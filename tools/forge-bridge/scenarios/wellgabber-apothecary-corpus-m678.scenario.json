@@ -1,0 +1,25 @@
+{
+  "id": "wellgabber-apothecary-corpus-m678",
+  "description": "M6 corpus — Wellgabber Apothecary; ETB-on-bf.",
+  "seed": 64063,
+  "cards": {
+    "Wellgabber Apothecary": "Name:Wellgabber Apothecary\nManaCost:4 W\nTypes:Creature Merfolk Cleric\nPT:2/3\nA:AB$ Effect | Cost$ 1 W | ValidTgts$ Creature.Merfolk+tapped,Creature.Kithkin+tapped | TgtPrompt$ Select target tapped Merfolk or Kithkin creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all damage that would be dealt to target tapped Merfolk or Kithkin creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to that creature this turn.\nOracle:{1}{W}: Prevent all damage that would be dealt to target tapped Merfolk or Kithkin creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wellgabber Apothecary"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

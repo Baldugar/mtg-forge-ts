@@ -1,0 +1,23 @@
+{
+  "id": "toralf-s-disciple-corpus-m678",
+  "description": "M6 corpus — Toralf's Disciple; in-hand parse.",
+  "seed": 62516,
+  "cards": {
+    "Toralf's Disciple": "Name:Toralf's Disciple\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:3/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ Whenever CARDNAME attacks, conjure four cards named Lightning Bolt into your library, then shuffle.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Lightning Bolt | Zone$ Library | Amount$ 4\nDeckHas:Type$Instant\nOracle:Haste\\nWhenever Toralf's Disciple attacks, conjure four cards named Lightning Bolt into your library, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toralf's Disciple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

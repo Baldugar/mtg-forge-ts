@@ -1,0 +1,23 @@
+{
+  "id": "wary-zone-guard-corpus-m678",
+  "description": "M6 corpus — Wary Zone Guard; in-hand parse.",
+  "seed": 63930,
+  "cards": {
+    "Wary Zone Guard": "Name:Wary Zone Guard\nManaCost:2 G\nTypes:Creature Human Survivor\nPT:3/3\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, return up to one target land card from your graveyard to the battlefield. CARDNAME perpetually gets +1/+1.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Land.YouCtrl | TargetMin$ 0 | TgtPrompt$ Select up to one target land card from your graveyard | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | PumpZone$ Battlefield | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nOracle:Wary Zone Guard enters tapped.\\nSurvival — At the beginning of your second main phase, if Wary Zone Guard is tapped, return up to one target land card from your graveyard to the battlefield. Wary Zone Guard perpetually gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wary Zone Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

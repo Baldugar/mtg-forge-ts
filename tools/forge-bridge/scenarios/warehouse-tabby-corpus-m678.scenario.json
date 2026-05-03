@@ -1,0 +1,23 @@
+{
+  "id": "warehouse-tabby-corpus-m678",
+  "description": "M6 corpus — Warehouse Tabby; in-hand parse.",
+  "seed": 63882,
+  "cards": {
+    "Warehouse Tabby": "Name:Warehouse Tabby\nManaCost:B\nTypes:Creature Cat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an enchantment you control is put into a graveyard from the battlefield, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You\nA:AB$ Pump | Cost$ 1 B | Defined$ Self | KW$ Deathtouch | SpellDescription$ CARDNAME gains deathtouch until end of turn.\nDeckHas:Ability$Token & Type$Rat\nDeckHints:Type$Enchantment\nOracle:Whenever an enchantment you control is put into a graveyard from the battlefield, create a 1/1 black Rat creature token with \"This creature can't block.\"\\n{1}{B}: Warehouse Tabby gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warehouse Tabby"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

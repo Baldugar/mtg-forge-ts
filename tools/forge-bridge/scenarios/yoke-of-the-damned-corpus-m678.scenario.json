@@ -1,0 +1,23 @@
+{
+  "id": "yoke-of-the-damned-corpus-m678",
+  "description": "M6 corpus — Yoke of the Damned; in-hand parse.",
+  "seed": 64557,
+  "cards": {
+    "Yoke of the Damned": "Name:Yoke of the Damned\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When a creature dies, destroy enchanted creature.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Enchanted\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen a creature dies, destroy enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yoke of the Damned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

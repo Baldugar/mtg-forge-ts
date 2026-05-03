@@ -1,0 +1,23 @@
+{
+  "id": "tetzimoc-primal-death-corpus-m678",
+  "description": "M6 corpus — Tetzimoc, Primal Death; in-hand parse.",
+  "seed": 61944,
+  "cards": {
+    "Tetzimoc, Primal Death": "Name:Tetzimoc, Primal Death\nManaCost:4 B B\nTypes:Legendary Creature Elder Dinosaur\nPT:6/6\nK:Deathtouch\nA:AB$ PutCounter | Cost$ B | ActivationZone$ Hand | CostDesc$ {B}, Reveal CARDNAME from your hand: | PlayerTurn$ True | ValidTgts$ Creature | CounterType$ PREY | CounterNum$ 1 | IsCurse$ True | AILogic$ MarkOppCreature | SpellDescription$ Put a prey counter on target creature. Activate only during your turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy each creature your opponents control with a prey counter on it.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.OppCtrl+counters_GE1_PREY | AILogic$ Always\nOracle:Deathtouch\\n{B}, Reveal Tetzimoc, Primal Death from your hand: Put a prey counter on target creature. Activate only during your turn.\\nWhen Tetzimoc enters, destroy each creature your opponents control with a prey counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tetzimoc, Primal Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

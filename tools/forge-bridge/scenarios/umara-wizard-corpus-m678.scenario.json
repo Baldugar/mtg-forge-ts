@@ -1,0 +1,23 @@
+{
+  "id": "umara-wizard-corpus-m678",
+  "description": "M6 corpus — Umara Wizard; in-hand parse.",
+  "seed": 62959,
+  "cards": {
+    "Umara Wizard": "Name:Umara Wizard\nManaCost:4 U\nTypes:Creature Merfolk Wizard\nPT:4/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery,Wizard | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlying | TriggerDescription$ Whenever you cast an instant, sorcery, or Wizard spell, CARDNAME gains flying until end of turn.\nSVar:TrigFlying:DB$ Pump | Defined$ Self | KW$ Flying\nDeckNeeds:Type$Instant|Sorcery|Wizard\nAlternateMode:Modal\nOracle:Whenever you cast an instant, sorcery, or Wizard spell, Umara Wizard gains flying until end of turn.\n\nALTERNATE\n\nName:Umara Skyfalls\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nOracle:Umara Skyfalls enters tapped.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umara Wizard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

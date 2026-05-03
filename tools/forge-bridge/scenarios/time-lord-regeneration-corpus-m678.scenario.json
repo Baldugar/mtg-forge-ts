@@ -1,0 +1,23 @@
+{
+  "id": "time-lord-regeneration-corpus-m678",
+  "description": "M6 corpus — Time Lord Regeneration; in-hand parse.",
+  "seed": 62401,
+  "cards": {
+    "Time Lord Regeneration": "Name:Time Lord Regeneration\nManaCost:U\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Time Lord.YouCtrl | TgtPrompt$ Select target Time Lord you control | Triggers$ DiesTrig | SpellDescription$ Until end of turn, target Time Lord you control gains \"When this creature dies, reveal cards from the top of your library until you reveal a Time Lord creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\"\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When this creature dies, reveal cards from the top of your library until you reveal a Time Lord creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:TrigReveal:DB$ DigUntil | Defined$ You | Valid$ Creature.Time Lord | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | StackDescription$ None\nDeckNeeds:Type$Time Lord\nOracle:Until end of turn, target Time Lord you control gains \"When this creature dies, reveal cards from the top of your library until you reveal a Time Lord creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Lord Regeneration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

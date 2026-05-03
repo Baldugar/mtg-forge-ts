@@ -1,0 +1,23 @@
+{
+  "id": "tainted-well-corpus-m678",
+  "description": "M6 corpus — Tainted Well; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Tainted Well": "Name:Tainted Well\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:ChangeType\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddType$ Swamp | RemoveLandTypes$ True | Description$ Enchanted land is a Swamp.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant land\\nWhen Tainted Well enters, draw a card.\\nEnchanted land is a Swamp.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tainted Well"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

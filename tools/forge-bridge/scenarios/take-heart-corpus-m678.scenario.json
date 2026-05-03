@@ -1,0 +1,23 @@
+{
+  "id": "take-heart-corpus-m678",
+  "description": "M6 corpus — Take Heart; in-hand parse.",
+  "seed": 61616,
+  "cards": {
+    "Take Heart": "Name:Take Heart\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBGainLife | SpellDescription$ Target creature gets +2/+2 until end of turn. You gain 1 life for each attacking creature you control.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+attacking\nOracle:Target creature gets +2/+2 until end of turn. You gain 1 life for each attacking creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

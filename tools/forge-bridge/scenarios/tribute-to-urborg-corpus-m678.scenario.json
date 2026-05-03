@@ -1,0 +1,23 @@
+{
+  "id": "tribute-to-urborg-corpus-m678",
+  "description": "M6 corpus — Tribute to Urborg; in-hand parse.",
+  "seed": 62738,
+  "cards": {
+    "Tribute to Urborg": "Name:Tribute to Urborg\nManaCost:1 B\nTypes:Instant\nK:Kicker:1 U\nA:SP$ Pump | ValidTgts$ Creature | IsCurse$ True | NumAtt$ -2 | NumDef$ -2 | SubAbility$ KickerPump | SpellDescription$ Target creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets an additional -1/-1 until end of turn for each instant and sorcery card in your graveyard.\nSVar:KickerPump:DB$ Pump | Condition$ Kicked | Defined$ Targeted | NumAtt$ -X | NumDef$ -X\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Ability$Graveyard & Color$Blue & Type$Instant|Sorcery\nOracle:Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\\nTarget creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets an additional -1/-1 until end of turn for each instant and sorcery card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tribute to Urborg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "war-s-toll-corpus-m678",
+  "description": "M6 corpus — War's Toll; ETB-on-bf.",
+  "seed": 63922,
+  "cards": {
+    "War's Toll": "Name:War's Toll\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land | Activator$ Opponent | TriggerZones$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ Whenever an opponent taps a land for mana, tap all lands that player controls.\nSVar:TrigTapAll:DB$ TapAll | Defined$ TriggeredActivator | ValidCards$ Land\n# TODO fix for shared turn modes like TwoHeadedGiant\nS:Mode$ AttackRequirement | ValidCard$ Creature.OppCtrl | ValidAttacker$ Creature.OppCtrl | Description$ If a creature an opponent controls attacks, all creatures that player controls attack if able.\nSVar:NonStackingEffect:True\nOracle:Whenever an opponent taps a land for mana, tap all lands that player controls.\\nIf a creature an opponent controls attacks, all creatures that opponent controls attack if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "War's Toll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

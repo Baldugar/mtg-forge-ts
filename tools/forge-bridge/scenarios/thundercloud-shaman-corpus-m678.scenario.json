@@ -1,0 +1,23 @@
+{
+  "id": "thundercloud-shaman-corpus-m678",
+  "description": "M6 corpus — Thundercloud Shaman; in-hand parse.",
+  "seed": 62315,
+  "cards": {
+    "Thundercloud Shaman": "Name:Thundercloud Shaman\nManaCost:3 R R\nTypes:Creature Giant Shaman\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals damage equal to the number of Giants you control to each non-Giant creature.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.nonGiant | NumDmg$ X | ValidDescription$ each non-Giant creature.\nSVar:X:Count$Valid Giant.YouCtrl\nDeckNeeds:Type$Giant\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:When Thundercloud Shaman enters, it deals damage equal to the number of Giants you control to each non-Giant creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundercloud Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

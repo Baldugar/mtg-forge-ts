@@ -1,0 +1,23 @@
+{
+  "id": "tannuk-memorial-ensign-corpus-m678",
+  "description": "M6 corpus — Tannuk, Memorial Ensign; in-hand parse.",
+  "seed": 61697,
+  "cards": {
+    "Tannuk, Memorial Ensign": "Name:Tannuk, Memorial Ensign\nManaCost:1 R G\nTypes:Legendary Creature Kavu Pilot\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Landfall — Whenever a land you control enters, NICKNAME deals 1 damage to each opponent. If this is the second time this ability has resolved this turn, draw a card.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2\nSVar:Resolved:Count$ResolvedThisTurn\nOracle:Landfall — Whenever a land you control enters, Tannuk deals 1 damage to each opponent. If this is the second time this ability has resolved this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tannuk, Memorial Ensign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

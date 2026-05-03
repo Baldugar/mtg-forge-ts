@@ -1,0 +1,25 @@
+{
+  "id": "warchanter-skald-corpus-m678",
+  "description": "M6 corpus — Warchanter Skald; ETB-on-bf.",
+  "seed": 63863,
+  "cards": {
+    "Warchanter Skald": "Name:Warchanter Skald\nManaCost:2 W\nTypes:Creature Dwarf Cleric\nPT:2/3\nT:Mode$ Taps | ValidCard$ Card.Self | IsPresent$ Card.Self+enchanted,Card.Self+equipped | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME becomes tapped, if it's enchanted or equipped, create a 2/1 red Dwarf Berserker creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_1_dwarf_berserker | TokenOwner$ You\nSVar:EnchantMe:Once\nSVar:EquipMe:Once\nDeckHas:Ability$Token\nDeckNeeds:Type$Enchantment|Equipment\nOracle:Whenever Warchanter Skald becomes tapped, if it's enchanted or equipped, create a 2/1 red Dwarf Berserker creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warchanter Skald"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

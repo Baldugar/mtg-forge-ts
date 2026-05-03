@@ -1,0 +1,25 @@
+{
+  "id": "wavecrash-triton-corpus-m678",
+  "description": "M6 corpus — Wavecrash Triton; ETB-on-bf.",
+  "seed": 63980,
+  "cards": {
+    "Wavecrash Triton": "Name:Wavecrash Triton\nManaCost:2 U\nTypes:Creature Merfolk Wizard\nPT:1/4\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nOracle:Heroic — Whenever you cast a spell that targets Wavecrash Triton, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wavecrash Triton"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

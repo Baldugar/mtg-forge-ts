@@ -1,0 +1,23 @@
+{
+  "id": "trade-the-helm-corpus-m678",
+  "description": "M6 corpus — Trade the Helm; in-hand parse.",
+  "seed": 62600,
+  "cards": {
+    "Trade the Helm": "Name:Trade the Helm\nManaCost:4 U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Choose target artifact or creature you control | SubAbility$ DBExchange | SpellDescription$ Exchange control of target artifact or creature you control and target artifact or creature an opponent controls.\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Choose target artifact or creature an opponent controls\nK:Cycling:2\nOracle:Exchange control of target artifact or creature you control and target artifact or creature an opponent controls.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trade the Helm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

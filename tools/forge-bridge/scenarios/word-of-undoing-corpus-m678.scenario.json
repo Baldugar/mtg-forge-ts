@@ -1,0 +1,23 @@
+{
+  "id": "word-of-undoing-corpus-m678",
+  "description": "M6 corpus — Word of Undoing; in-hand parse.",
+  "seed": 64405,
+  "cards": {
+    "Word of Undoing": "Name:Word of Undoing\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBChangeZoneAll | RememberTargets$ True | SpellDescription$ Return target creature and all white Auras you own attached to it to their owners' hands.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Remembered.Aura+White+Attached+YouOwn | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Color$White\nOracle:Return target creature and all white Auras you own attached to it to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Word of Undoing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

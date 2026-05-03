@@ -1,0 +1,23 @@
+{
+  "id": "venture-forth-corpus-m678",
+  "description": "M6 corpus — Venture Forth; in-hand parse.",
+  "seed": 63391,
+  "cards": {
+    "Venture Forth": "Name:Venture Forth\nManaCost:3 G\nTypes:Sorcery\nK:Suspend:3:1 G\nA:SP$ DigUntil | Defined$ You | Valid$ Permanent.Land | ValidDescription$ land | FoundDestination$ Exile | RevealedDestination$ Exile | ImprintFound$ True | RememberRevealed$ True | SubAbility$ DBToPlay | SpellDescription$ Exile cards from the top of your library until you exile a land card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:DBToPlay:DB$ ChangeZone | Defined$ Imprinted | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBRestRandomOrder\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | SubAbility$ DBExileSelf\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3 | SpellDescription$ Exile CARDNAME with three time counters on it.\nOracle:Exile cards from the top of your library until you exile a land card. Put that card onto the battlefield and the rest on the bottom of your library in a random order. Exile Venture Forth with three time counters on it.\\nSuspend 3—{1}{G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venture Forth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

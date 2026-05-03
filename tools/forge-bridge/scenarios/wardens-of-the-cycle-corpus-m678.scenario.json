@@ -1,0 +1,23 @@
+{
+  "id": "wardens-of-the-cycle-corpus-m678",
+  "description": "M6 corpus — Wardens of the Cycle; in-hand parse.",
+  "seed": 63879,
+  "cards": {
+    "Wardens of the Cycle": "Name:Wardens of the Cycle\nManaCost:1 B G G\nTypes:Creature Elf Warlock\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ Morbid | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Morbid — At the beginning of your end step, if a creature died this turn, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBGainLife,DBDraw\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | Defined$ You | SpellDescription$ You gain 2 life.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — At the beginning of your end step, if a creature died this turn, choose one —\\n• You gain 2 life.\\n• You draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wardens of the Cycle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

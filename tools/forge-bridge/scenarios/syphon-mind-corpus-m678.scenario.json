@@ -1,0 +1,23 @@
+{
+  "id": "syphon-mind-corpus-m678",
+  "description": "M6 corpus — Syphon Mind; in-hand parse.",
+  "seed": 61575,
+  "cards": {
+    "Syphon Mind": "Name:Syphon Mind\nManaCost:3 B\nTypes:Sorcery\nA:SP$ Discard | Defined$ Player.Other | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Each other player discards a card. You draw a card for each card discarded this way.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Each other player discards a card. You draw a card for each card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syphon Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

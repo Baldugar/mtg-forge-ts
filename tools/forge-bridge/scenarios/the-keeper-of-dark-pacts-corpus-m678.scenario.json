@@ -1,0 +1,23 @@
+{
+  "id": "the-keeper-of-dark-pacts-corpus-m678",
+  "description": "M6 corpus — The Keeper of Dark Pacts; in-hand parse.",
+  "seed": 62058,
+  "cards": {
+    "The Keeper of Dark Pacts": "Name:The Keeper of Dark Pacts\nManaCost:4 B\nTypes:Legendary Creature Human Wizard\nPT:4/4\nK:Starting intensity:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life and draw a card. Then, double the amount of life you lose and cards you draw for the rest of the game from this ability. (This is true even if this leaves the battlefield and returns.)\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBIntensify\nSVar:DBIntensify:DB$ Intensify | Amount$ X\nSVar:X:Count$Intensity\nOracle:At the beginning of your upkeep, you lose 1 life and draw a card. Then, double the amount of life you lose and cards you draw for the rest of the game from this ability. (This is true even if this leaves the battlefield and returns.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Keeper of Dark Pacts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

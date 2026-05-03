@@ -1,0 +1,23 @@
+{
+  "id": "thwart-the-enemy-corpus-m678",
+  "description": "M6 corpus — Thwart the Enemy; in-hand parse.",
+  "seed": 62344,
+  "cards": {
+    "Thwart the Enemy": "Name:Thwart the Enemy\nManaCost:2 G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog | SpellDescription$ Prevent all damage that would be dealt this turn by creatures your opponents control.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidSource$ Creature.OppCtrl+inZoneBattlefield | Description$ Prevent all damage that would be dealt this turn by creatures your opponents control.\nAI:RemoveDeck:All\nOracle:Prevent all damage that would be dealt this turn by creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thwart the Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vance-s-blasting-cannons-corpus-m678",
+  "description": "M6 corpus — Vance's Blasting Cannons; in-hand parse.",
+  "seed": 63268,
+  "cards": {
+    "Vance's Blasting Cannons": "Name:Vance's Blasting Cannons\nManaCost:3 R\nTypes:Legendary Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library. If it's a nonland card, you may cast that card this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | ConditionDefined$ RememberedCard | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast the remembered nonland card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | ActivatorThisTurnCast$ EQ3 | OptionalDecider$ You | TriggerDescription$ Whenever you cast your third spell in a turn, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform | AILogic$ Always\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, exile the top card of your library. If it's a nonland card, you may cast that card this turn.\\nWhenever you cast your third spell in a turn, you may transform Vance's Blasting Cannons.\n\nALTERNATE\n\nName:Spitfire Bastion\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ R | Amount$ 1 | SpellDescription$ Add {R}.\nA:AB$ DealDamage | Cost$ 2 R T | ValidTgts$ Any | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:(Transforms from Vance's Blasting Cannons.)\\n{T}: Add {R}.\\n{2}{R}, {T}: Spitfire Bastion deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vance's Blasting Cannons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tilonalli-s-crown-corpus-m678",
+  "description": "M6 corpus — Tilonalli's Crown; in-hand parse.",
+  "seed": 62386,
+  "cards": {
+    "Tilonalli's Crown": "Name:Tilonalli's Crown\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to enchanted creature.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Enchanted | NumDmg$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddKeyword$ Trample | Description$ Enchanted creature gets +3/+0 and has trample.\nOracle:Enchant creature\\nWhen Tilonalli's Crown enters, it deals 1 damage to enchanted creature.\\nEnchanted creature gets +3/+0 and has trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tilonalli's Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

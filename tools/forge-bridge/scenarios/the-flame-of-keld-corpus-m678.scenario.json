@@ -1,0 +1,23 @@
+{
+  "id": "the-flame-of-keld-corpus-m678",
+  "description": "M6 corpus — The Flame of Keld; in-hand parse.",
+  "seed": 62040,
+  "cards": {
+    "The Flame of Keld": "Name:The Flame of Keld\nManaCost:1 R\nTypes:Enchantment Saga\nK:Chapter:3:TrigDiscard,TrigDraw,TrigEffect\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | Defined$ You | SpellDescription$ Discard your hand.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SpellDescription$ Draw two cards.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ FlameOfKeldDamageEvent | SpellDescription$ If a red source you control would deal damage to a permanent or player this turn, it deals that much damage plus 2 instead.\nSVar:FlameOfKeldDamageEvent:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.RedSource | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus2 | Description$ If a red source you control would deal damage to a permanent or player this turn, it deals that much damage plus 2 instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.2\nAI:RemoveDeck:Random\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Discard your hand.\\nII — Draw two cards.\\nIII — If a red source you control would deal damage to a permanent or player this turn, it deals that much damage plus 2 to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Flame of Keld"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

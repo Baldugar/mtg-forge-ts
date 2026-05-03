@@ -1,0 +1,25 @@
+{
+  "id": "ugin-s-mastery-corpus-m678",
+  "description": "M6 corpus — Ugin's Mastery; ETB-on-bf.",
+  "seed": 62932,
+  "cards": {
+    "Ugin's Mastery": "Name:Ugin's Mastery\nManaCost:4\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigManifest | TriggerDescription$ Whenever you cast a colorless creature spell, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl | Execute$ TrigState | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Whenever you attack with creatures with total power 6 or greater, you may turn a face-down creature you control face up.\nSVar:TrigState:DB$ SetState | Choices$ Creature.faceDown+YouCtrl | ChoiceTitle$ Select a face-down creature you control | Mode$ TurnFaceUp\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nOracle:Whenever you cast a colorless creature spell, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nWhenever you attack with creatures with total power 6 or greater, you may turn a face-down creature you control face up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ugin's Mastery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

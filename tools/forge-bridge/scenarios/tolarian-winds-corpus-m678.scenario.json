@@ -1,0 +1,23 @@
+{
+  "id": "tolarian-winds-corpus-m678",
+  "description": "M6 corpus — Tolarian Winds; in-hand parse.",
+  "seed": 62476,
+  "cards": {
+    "Tolarian Winds": "Name:Tolarian Winds\nManaCost:1 U\nTypes:Instant\nA:SP$ Discard | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard all the cards in your hand, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Discard all the cards in your hand, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolarian Winds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

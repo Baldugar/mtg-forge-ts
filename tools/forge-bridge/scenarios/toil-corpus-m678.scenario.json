@@ -1,0 +1,23 @@
+{
+  "id": "toil-corpus-m678",
+  "description": "M6 corpus — Toil; in-hand parse.",
+  "seed": 62464,
+  "cards": {
+    "Toil": "Name:Toil\nManaCost:2 B\nTypes:Sorcery\nK:Fuse\nA:SP$ Draw | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBLoseLife | SpellDescription$ Target player draws two cards and loses 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Targeted\nAlternateMode:Split\nOracle:Target player draws two cards and loses 2 life.\\nFuse (You may cast one or both halves of this card from your hand.)\n\nALTERNATE\n\nName:Trouble\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of cards in target player's hand to that player.\nSVar:X:TargetedPlayer$CardsInHand\nOracle:Trouble deals damage to target player equal to the number of cards in that player's hand.\\nFuse (You may cast one or both halves of this card from your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

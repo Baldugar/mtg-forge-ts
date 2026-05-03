@@ -1,0 +1,25 @@
+{
+  "id": "thought-dissector-corpus-m678",
+  "description": "M6 corpus — Thought Dissector; ETB-on-bf.",
+  "seed": 62209,
+  "cards": {
+    "Thought Dissector": "Name:Thought Dissector\nManaCost:4\nTypes:Artifact\nA:AB$ DigUntil | Cost$ X T | ValidTgts$ Opponent | MaxRevealed$ X | Valid$ Artifact | IsCurse$ True | ValidDescription$ artifact | RevealedDestination$ Graveyard | FoundDestination$ Battlefield | GainControl$ True | RememberFound$ True | SubAbility$ SacThought | SpellDescription$ Target opponent reveals cards from the top of their library until an artifact card or X cards are revealed, whichever comes first. If an artifact card is revealed this way, put it onto the battlefield under your control and sacrifice CARDNAME. Put the rest of the revealed cards into that player's graveyard.\nSVar:SacThought:DB$ Sacrifice | ConditionCheckSVar$ Found | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Found:Remembered$Amount\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{X}, {T}: Target opponent reveals cards from the top of their library until an artifact card or X cards are revealed, whichever comes first. If an artifact card is revealed this way, put it onto the battlefield under your control and sacrifice Thought Dissector. Put the rest of the revealed cards into that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thought Dissector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

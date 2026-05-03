@@ -1,0 +1,23 @@
+{
+  "id": "two-handed-axe-corpus-m678",
+  "description": "M6 corpus — Two-Handed Axe; in-hand parse.",
+  "seed": 62897,
+  "cards": {
+    "Two-Handed Axe": "Name:Two-Handed Axe\nManaCost:2 R\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigPump | TriggerDescription$ Whenever equipped creature attacks, double its power until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ Double\nK:Equip:1 R\nAlternateMode:Adventure\nOracle:Whenever equipped creature attacks, double its power until end of turn.\\nEquip {1}{R}\n\nALTERNATE\n\nName:Sweeping Cleave\nManaCost:1 R\nTypes:Instant Adventure\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Double Strike | SpellDescription$ Target creature you control gains double strike until end of turn. (Then exile this card. You may cast the artifact later from exile.)\nOracle:Target creature you control gains double strike until end of turn. (Then exile this card. You may cast the artifact later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Two-Handed Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

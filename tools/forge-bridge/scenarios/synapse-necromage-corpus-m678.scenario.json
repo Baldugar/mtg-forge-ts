@@ -1,0 +1,23 @@
+{
+  "id": "synapse-necromage-corpus-m678",
+  "description": "M6 corpus — Synapse Necromage; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Synapse Necromage": "Name:Synapse Necromage\nManaCost:2 B\nTypes:Creature Fungus Wizard\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create two 1/1 black Fungus creature tokens with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_1_1_fungus_noblock\nOracle:When Synapse Necromage dies, create two 1/1 black Fungus creature tokens with \"This creature can't block.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Synapse Necromage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

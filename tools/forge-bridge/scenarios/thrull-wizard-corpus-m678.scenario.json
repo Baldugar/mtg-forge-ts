@@ -1,0 +1,25 @@
+{
+  "id": "thrull-wizard-corpus-m678",
+  "description": "M6 corpus — Thrull Wizard; ETB-on-bf.",
+  "seed": 62297,
+  "cards": {
+    "Thrull Wizard": "Name:Thrull Wizard\nManaCost:2 B\nTypes:Creature Thrull Wizard\nPT:1/1\nA:AB$ GenericChoice | Cost$ 1 B | TgtPrompt$ Select target black spell | TargetType$ Spell | ValidTgts$ Card.Black | TgtZone$ Stack | Choices$ PayB,Pay3 | Defined$ TargetedController | AILogic$ PayUnlessCost | SpellDescription$ Counter target black spell unless that spell's controller pays {B} or {3}.\nSVar:PayB:DB$ Counter | Defined$ Targeted | UnlessCost$ B | SpellDescription$ Counter spell unless you pay {B}.\nSVar:Pay3:DB$ Counter | Defined$ Targeted | UnlessCost$ 3 | SpellDescription$ Counter spell unless you pay {3}.\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{1}{B}: Counter target black spell unless that spell's controller pays {B} or {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thrull Wizard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

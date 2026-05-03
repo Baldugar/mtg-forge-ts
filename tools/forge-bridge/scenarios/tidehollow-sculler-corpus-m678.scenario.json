@@ -1,0 +1,23 @@
+{
+  "id": "tidehollow-sculler-corpus-m678",
+  "description": "M6 corpus — Tidehollow Sculler; in-hand parse.",
+  "seed": 62370,
+  "cards": {
+    "Tidehollow Sculler": "Name:Tidehollow Sculler\nManaCost:W B\nTypes:Artifact Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to its owner's hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | RememberChanged$ True | ForgetOtherRemembered$ True\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Tidehollow Sculler enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card.\\nWhen Tidehollow Sculler leaves the battlefield, return the exiled card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tidehollow Sculler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

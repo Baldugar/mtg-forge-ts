@@ -1,0 +1,23 @@
+{
+  "id": "thunderkin-awakener-corpus-m678",
+  "description": "M6 corpus — Thunderkin Awakener; in-hand parse.",
+  "seed": 62328,
+  "cards": {
+    "Thunderkin Awakener": "Name:Thunderkin Awakener\nManaCost:1 R\nTypes:Creature Elemental Shaman\nPT:1/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, choose target Elemental creature card in your graveyard with toughness less than CARDNAME's toughness. Return that card to the battlefield tapped and attacking. Sacrifice it at the beginning of the next end step.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Elemental+YouCtrl+toughnessLTX | TgtPrompt$ Select target Elemental creature card in your graveyard | Mandatory$ True | Tapped$ True | Attacking$ True | AtEOT$ Sacrifice\nSVar:X:Count$CardToughness\nOracle:Haste\\nWhenever Thunderkin Awakener attacks, choose target Elemental creature card in your graveyard with toughness less than Thunderkin Awakener's toughness. Return that card to the battlefield tapped and attacking. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderkin Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

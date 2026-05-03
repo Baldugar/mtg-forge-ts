@@ -1,0 +1,25 @@
+{
+  "id": "thrasta-tempest-s-roar-corpus-m678",
+  "description": "M6 corpus — Thrasta, Tempest's Roar; ETB-on-bf.",
+  "seed": 62265,
+  "cards": {
+    "Thrasta, Tempest's Roar": "Name:Thrasta, Tempest's Roar\nManaCost:10 G G\nTypes:Legendary Creature Dinosaur\nPT:7/7\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {3} less to cast for each other spell cast this turn.\nSVar:X:Count$ThisTurnCast_Card/Times.3\nK:Trample\nK:Haste\nK:Trample:Planeswalker\nS:Mode$ Continuous | Affected$ Card.Self+ThisTurnEntered | AddKeyword$ Hexproof | Description$ CARDNAME has hexproof as long as it entered this turn.\nOracle:This spell costs {3} less to cast for each other spell cast this turn.\\nTrample, haste\\nTrample over planeswalkers (This creature can deal excess combat damage to the controller of the planeswalker it's attacking.)\\nThrasta, Tempest's Roar has hexproof as long as it entered this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thrasta, Tempest's Roar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

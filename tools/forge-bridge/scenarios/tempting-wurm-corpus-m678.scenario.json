@@ -1,0 +1,23 @@
+{
+  "id": "tempting-wurm-corpus-m678",
+  "description": "M6 corpus — Tempting Wurm; in-hand parse.",
+  "seed": 61865,
+  "cards": {
+    "Tempting Wurm": "Name:Tempting Wurm\nManaCost:1 G\nTypes:Creature Wurm\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EachOpponent | TriggerDescription$ When CARDNAME enters, each opponent may put any number of artifact, creature, enchantment, and/or land cards from their hand onto the battlefield.\nSVar:EachOpponent:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TemptingChange\nSVar:TemptingChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact,Creature,Enchantment,Land | DefinedPlayer$ Remembered | ChangeNum$ X\nSVar:X:Count$ValidHand Artifact.RememberedPlayerCtrl,Creature.RememberedPlayerCtrl,Enchantment.RememberedPlayerCtrl,Land.RememberedPlayerCtrl\nSVar:NeedsToPlayVar:Y LE2\nSVar:Y:Count$ValidHand Card.OppOwn\nOracle:When Tempting Wurm enters, each opponent may put any number of artifact, creature, enchantment, and/or land cards from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempting Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

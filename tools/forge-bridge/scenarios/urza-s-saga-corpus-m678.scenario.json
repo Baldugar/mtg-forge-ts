@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-saga-corpus-m678",
+  "description": "M6 corpus — Urza's Saga; in-hand parse.",
+  "seed": 63197,
+  "cards": {
+    "Urza's Saga": "Name:Urza's Saga\nManaCost:no cost\nTypes:Enchantment Land Urza's Saga\nK:Chapter:3:Animate1,Animate2,Tutor\nSVar:Animate1:DB$ Animate | Defined$ Self | Abilities$ ABMana | Duration$ Permanent | SpellDescription$ CARDNAME gains \"{T}: Add {C}.\"\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:Animate2:DB$ Animate | Defined$ Self | Abilities$ ABToken | Duration$ Permanent | SpellDescription$ CARDNAME gains \"{2}, {T}: Create a 0/0 colorless Construct artifact creature token with 'This creature gets +1/+1 for each artifact you control.'\"\nSVar:ABToken:AB$ Token | Cost$ 2 T | TokenScript$ c_0_0_a_construct_total_artifacts | SpellDescription$ Create a 0/0 colorless Construct artifact creature token with \"This creature gets +1/+1 for each artifact you control.\"\nSVar:Tutor:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact.ManaCost0,Artifact.ManaCost1 | ChangeNum$ 1 | SpellDescription$ Search your library for an artifact card with mana cost {0} or {1}, put it onto the battlefield, then shuffle.\nDeckHas:Ability$Token\nDeckNeeds:Type$Artifact\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Urza's Saga gains \"{T}: Add {C}.\"\\nII — Urza's Saga gains \"{2}, {T}: Create a 0/0 colorless Construct artifact creature token with 'This creature gets +1/+1 for each artifact you control.'\"\\nIII — Search your library for an artifact card with mana cost {0} or {1}, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Saga"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

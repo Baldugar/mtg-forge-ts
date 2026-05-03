@@ -1,0 +1,25 @@
+{
+  "id": "total-war-corpus-m678",
+  "description": "M6 corpus — Total War; ETB-on-bf.",
+  "seed": 62549,
+  "cards": {
+    "Total War": "Name:Total War\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ AttackersDeclared | Execute$ TrigDestroy | TriggerZones$ Battlefield | AttackingPlayer$ Player | TriggerDescription$ Whenever a player attacks with one or more creatures, destroy all untapped non-Wall creatures that player controls that didn't attack, except for creatures the player hasn't controlled continuously since the beginning of the turn.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.nonWall+!firstTurnControlled+untapped+ActivePlayerCtrl+!attacking\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Whenever a player attacks with one or more creatures, destroy all untapped non-Wall creatures that player controls that didn't attack, except for creatures the player hasn't controlled continuously since the beginning of the turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Total War"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

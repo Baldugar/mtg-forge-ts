@@ -1,0 +1,23 @@
+{
+  "id": "to-the-slaughter-corpus-m678",
+  "description": "M6 corpus — To the Slaughter; in-hand parse.",
+  "seed": 62455,
+  "cards": {
+    "To the Slaughter": "Name:To the Slaughter\nManaCost:2 B\nTypes:Instant\nA:SP$ StoreSVar | SVar$ XDelirium | Type$ Count | Expression$ Delirium.1.0 | SubAbility$ DBSacrifice | StackDescription$ SpellDescription | SpellDescription$ Target player sacrifices a creature or planeswalker. Delirium — If there are four or more card types among cards in your graveyard, instead that player sacrifices a creature and a planeswalker.\nSVar:DBSacrifice:DB$ Sacrifice | ValidTgts$ Player | SacValid$ Creature,Planeswalker | ConditionCheckSVar$ XDelirium | ConditionSVarCompare$ EQ0 | SubAbility$ DBSacrificeBoth | StackDescription$ None\nSVar:DBSacrificeBoth:DB$ Sacrifice | Defined$ Targeted | SacValid$ Creature & Planeswalker | SacEachValid$ True | ConditionCheckSVar$ XDelirium | StackDescription$ None\nSVar:XDelirium:Number$0\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Target player sacrifices a creature or planeswalker.\\nDelirium — If there are four or more card types among cards in your graveyard, instead that player sacrifices a creature and a planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "To the Slaughter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

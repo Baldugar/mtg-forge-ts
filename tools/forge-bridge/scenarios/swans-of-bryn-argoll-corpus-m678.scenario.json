@@ -1,0 +1,25 @@
+{
+  "id": "swans-of-bryn-argoll-corpus-m678",
+  "description": "M6 corpus — Swans of Bryn Argoll; ETB-on-bf.",
+  "seed": 61464,
+  "cards": {
+    "Swans of Bryn Argoll": "Name:Swans of Bryn Argoll\nManaCost:2 WU WU\nTypes:Creature Bird Spirit\nPT:4/3\nK:Flying\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBDraw | PreventionEffect$ True | ExecuteMode$ PerSource | Description$ If a source would deal damage to CARDNAME, prevent that damage. The source's controller draws cards equal to the damage prevented this way.\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ ReplacedSourceController\nSVar:X:ReplaceCount$DamageAmount\nOracle:Flying\\nIf a source would deal damage to Swans of Bryn Argoll, prevent that damage. The source's controller draws cards equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Swans of Bryn Argoll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

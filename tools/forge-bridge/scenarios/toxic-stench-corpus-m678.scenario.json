@@ -1,0 +1,23 @@
+{
+  "id": "toxic-stench-corpus-m678",
+  "description": "M6 corpus — Toxic Stench; in-hand parse.",
+  "seed": 62592,
+  "cards": {
+    "Toxic Stench": "Name:Toxic Stench\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ LT7 | SubAbility$ DBDestroy | SpellDescription$ Target nonblack creature gets -1/-1 until end of turn.\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | NoRegen$ True | Condition$ Threshold | SpellDescription$ Threshold — If there are seven or more cards in your graveyard, instead destroy that creature. It can't be regenerated.\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Target nonblack creature gets -1/-1 until end of turn.\\nThreshold — If there are seven or more cards in your graveyard, instead destroy that creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toxic Stench"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

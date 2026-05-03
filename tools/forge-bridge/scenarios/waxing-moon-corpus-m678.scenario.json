@@ -1,0 +1,23 @@
+{
+  "id": "waxing-moon-corpus-m678",
+  "description": "M6 corpus — Waxing Moon; in-hand parse.",
+  "seed": 63985,
+  "cards": {
+    "Waxing Moon": "Name:Waxing Moon\nManaCost:1 G\nTypes:Instant\nA:SP$ SetState | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card.Werewolf+YouCtrl | TgtPrompt$ Select target Werewolf you control | Mode$ Transform | SubAbility$ DBPumpAll | SpellDescription$ Transform up to one target Werewolf you control. Creatures you control gain trample until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | KW$ Trample | ValidCards$ Creature.YouCtrl\nAI:RemoveDeck:Random\nDeckNeeds:Type$Werewolf\nOracle:Transform up to one target Werewolf you control. Creatures you control gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waxing Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

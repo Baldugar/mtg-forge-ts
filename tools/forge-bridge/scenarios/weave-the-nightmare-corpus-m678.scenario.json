@@ -1,0 +1,23 @@
+{
+  "id": "weave-the-nightmare-corpus-m678",
+  "description": "M6 corpus — Weave the Nightmare; in-hand parse.",
+  "seed": 64017,
+  "cards": {
+    "Weave the Nightmare": "Name:Weave the Nightmare\nManaCost:1 U B\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBHeist,DBPump,DBCounter | AdditionalDescription$ If you control a nonland permanent you don't own as you cast this spell, you may choose two instead.\nSVar:DBHeist:DB$ Heist | ValidTgts$ Opponent | SpellDescription$ Heist target opponent's library.\nSVar:DBPump:DB$ Pump | IsCurse$ True | ValidTgts$ Creature | NumAtt$ -5 | NumDef$ -5 | SpellDescription$ Target creature gets -5/-5 until end of turn.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target noncreature spell | ValidTgts$ Card.nonCreature | SpellDescription$ Counter target noncreature spell.\nSVar:Y:Count$Valid Permanent.nonLand+YouDontOwn+YouCtrl\nOracle:Choose one. If you control a nonland permanent you don't own as you cast this spell, you may choose two instead.\\n• Heist target opponent's library.\\n• Target creature gets -5/-5 until end of turn.\\n• Counter target noncreature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weave the Nightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

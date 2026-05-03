@@ -1,0 +1,23 @@
+{
+  "id": "swathcutter-giant-corpus-m678",
+  "description": "M6 corpus — Swathcutter Giant; in-hand parse.",
+  "seed": 61479,
+  "cards": {
+    "Swathcutter Giant": "Name:Swathcutter Giant\nManaCost:4 R W\nTypes:Creature Giant Soldier\nPT:5/5\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to each creature defending player controls.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.ControlledBy TriggeredDefendingPlayer | NumDmg$ 1 | ValidDescription$ each creature defending player controls.\nSVar:HasAttackEffect:TRUE\nOracle:Vigilance\\nWhenever Swathcutter Giant attacks, it deals 1 damage to each creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swathcutter Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

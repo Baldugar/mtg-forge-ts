@@ -1,0 +1,23 @@
+{
+  "id": "withering-wisps-corpus-m678",
+  "description": "M6 corpus — Withering Wisps; in-hand parse.",
+  "seed": 64326,
+  "cards": {
+    "Withering Wisps": "Name:Withering Wisps\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, if no creatures are on the battlefield, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ DamageAll | Cost$ B | NumDmg$ 1 | ValidCards$ Creature | ValidPlayers$ Player | ValidDescription$ each creature and each player. | ActivationLimit$ X | AILogic$ DmgAllCreaturesAndPlayers | SpellDescription$ CARDNAME deals 1 damage to each creature and each player. Activate no more times each turn than the number of snow Swamps you control.\nSVar:X:Count$Valid Swamp.Snow+YouCtrl\nSVar:NeedsToPlay:Creature\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:At the beginning of the end step, if no creatures are on the battlefield, sacrifice Withering Wisps.\\n{B}: Withering Wisps deals 1 damage to each creature and each player. Activate no more times each turn than the number of snow Swamps you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Withering Wisps"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

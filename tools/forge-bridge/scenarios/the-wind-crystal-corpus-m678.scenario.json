@@ -1,0 +1,25 @@
+{
+  "id": "the-wind-crystal-corpus-m678",
+  "description": "M6 corpus — The Wind Crystal; ETB-on-bf.",
+  "seed": 62130,
+  "cards": {
+    "The Wind Crystal": "Name:The Wind Crystal\nManaCost:2 W W\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Card.White | Type$ Spell | Activator$ You | Amount$ 1 | Description$ White spells you cast cost {1} less to cast.\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainDouble | AILogic$ DoubleLife | Description$ If you would gain life, you gain twice that much life instead.\nSVar:GainDouble:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nA:AB$ PumpAll | Cost$ 4 W W T | ValidCards$ Creature.YouCtrl | KW$ Flying & Lifelink | SpellDescription$ Creatures you control gain flying and lifelink until end of turn.\nSVar:X:ReplaceCount$LifeGained/Twice\nDeckHints:Ability$LifeGain\nOracle:White spells you cast cost {1} less to cast.\\nIf you would gain life, you gain twice that much life instead.\\n{4}{W}{W}, {T}: Creatures you control gain flying and lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Wind Crystal"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

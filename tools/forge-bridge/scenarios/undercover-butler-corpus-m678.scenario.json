@@ -1,0 +1,23 @@
+{
+  "id": "undercover-butler-corpus-m678",
+  "description": "M6 corpus — Undercover Butler; in-hand parse.",
+  "seed": 63012,
+  "cards": {
+    "Undercover Butler": "Name:Undercover Butler\nManaCost:2 UB\nTypes:Creature Human Rogue\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player.withMostLife | Execute$ DBUnblockable | TriggerDescription$ Whenever CARDNAME attacks the player with the most life or tied for most life, it can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever Undercover Butler attacks the player with the most life or tied for most life, it can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercover Butler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

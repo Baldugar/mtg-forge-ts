@@ -1,0 +1,23 @@
+{
+  "id": "umbris-fear-manifest-corpus-m678",
+  "description": "M6 corpus — Umbris, Fear Manifest; in-hand parse.",
+  "seed": 62964,
+  "cards": {
+    "Umbris, Fear Manifest": "Name:Umbris, Fear Manifest\nManaCost:3 U B\nTypes:Legendary Creature Nightmare Horror\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each card your opponents own in exile.\nSVar:X:Count$ValidExile Card.OppOwn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Nightmare.Other+YouCtrl,Horror.Other+YouCtrl | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME or another Nightmare or Horror you control enters, target opponent exiles cards from the top of their library until they exile a land card.\nSVar:TrigExile:DB$ DigUntil | ValidTgts$ Opponent | Valid$ Land | ValidDescription$ land | FoundDestination$ Exile | RevealedDestination$ Exile | IsCurse$ True\nDeckHints:Type$Nightmare|Horror\nOracle:Umbris, Fear Manifest gets +1/+1 for each card your opponents own in exile.\\nWhenever Umbris or another Nightmare or Horror you control enters, target opponent exiles cards from the top of their library until they exile a land card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umbris, Fear Manifest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

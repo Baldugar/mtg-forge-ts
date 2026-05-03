@@ -1,0 +1,23 @@
+{
+  "id": "tephraderm-corpus-m678",
+  "description": "M6 corpus — Tephraderm; in-hand parse.",
+  "seed": 61890,
+  "cards": {
+    "Tephraderm": "Name:Tephraderm\nManaCost:4 R\nTypes:Creature Beast\nPT:4/5\nT:Mode$ DamageDone | ValidSource$ Creature.inZoneBattlefield | ValidTarget$ Card.Self | Execute$ TrigDealDamage1 | TriggerDescription$ Whenever a creature deals damage to CARDNAME, CARDNAME deals that much damage to that creature.\nT:Mode$ DamageDone | ValidSource$ Instant,Sorcery | ValidTarget$ Card.Self | Execute$ TrigDealDamage2 | TriggerDescription$ Whenever a spell deals damage to CARDNAME, CARDNAME deals that much damage to that spell's controller.\nSVar:TrigDealDamage1:DB$ DealDamage | Defined$ TriggeredSourceLKICopy | NumDmg$ X\nSVar:TrigDealDamage2:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever a creature deals damage to Tephraderm, Tephraderm deals that much damage to that creature.\\nWhenever a spell deals damage to Tephraderm, Tephraderm deals that much damage to that spell's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tephraderm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

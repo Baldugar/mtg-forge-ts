@@ -1,0 +1,23 @@
+{
+  "id": "vastwood-zendikon-corpus-m678",
+  "description": "M6 corpus — Vastwood Zendikon; in-hand parse.",
+  "seed": 63296,
+  "cards": {
+    "Vastwood Zendikon": "Name:Vastwood Zendikon\nManaCost:4 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddType$ Creature & Elemental | SetColor$ Green | SetPower$ 6 | SetToughness$ 4 | Description$ Enchanted land is a 6/4 green Elemental creature. It's still a land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted land dies, return that card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Enchant land\\nEnchanted land is a 6/4 green Elemental creature. It's still a land.\\nWhen enchanted land dies, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vastwood Zendikon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tattered-mummy-corpus-m678",
+  "description": "M6 corpus — Tattered Mummy; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Tattered Mummy": "Name:Tattered Mummy\nManaCost:1 B\nTypes:Creature Zombie Jackal\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2\nOracle:When Tattered Mummy dies, each opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tattered Mummy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

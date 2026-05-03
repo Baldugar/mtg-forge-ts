@@ -1,0 +1,23 @@
+{
+  "id": "ugin-s-construct-corpus-m678",
+  "description": "M6 corpus — Ugin's Construct; in-hand parse.",
+  "seed": 62929,
+  "cards": {
+    "Ugin's Construct": "Name:Ugin's Construct\nManaCost:4\nTypes:Artifact Creature Construct\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a permanent that's one or more colors.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Permanent.nonColorless\nSVar:X:Count$Valid Permanent.nonColorless+YouCtrl\nSVar:NeedsToPlayVar:X LE0\nOracle:When Ugin's Construct enters, sacrifice a permanent that's one or more colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ugin's Construct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

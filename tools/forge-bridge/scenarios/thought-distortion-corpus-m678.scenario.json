@@ -1,0 +1,23 @@
+{
+  "id": "thought-distortion-corpus-m678",
+  "description": "M6 corpus — Thought Distortion; in-hand parse.",
+  "seed": 62210,
+  "cards": {
+    "Thought Distortion": "Name:Thought Distortion\nManaCost:4 B B\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ RevealHand | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBExile | SpellDescription$ Target opponent reveals their hand. Exile all noncreature, nonland cards from that player's hand and graveyard.\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Hand,Graveyard | Destination$ Exile | ChangeType$ Card.nonCreature+nonLand+TargetedPlayerCtrl\nOracle:This spell can't be countered.\\nTarget opponent reveals their hand. Exile all noncreature, nonland cards from that player's hand and graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thought Distortion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

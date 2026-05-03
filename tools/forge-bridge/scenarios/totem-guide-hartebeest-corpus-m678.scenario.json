@@ -1,0 +1,23 @@
+{
+  "id": "totem-guide-hartebeest-corpus-m678",
+  "description": "M6 corpus — Totem-Guide Hartebeest; in-hand parse.",
+  "seed": 62551,
+  "cards": {
+    "Totem-Guide Hartebeest": "Name:Totem-Guide Hartebeest\nManaCost:4 W\nTypes:Creature Antelope\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Aura card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Aura | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nDeckNeeds:Type$Aura\nOracle:When Totem-Guide Hartebeest enters, you may search your library for an Aura card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Totem-Guide Hartebeest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

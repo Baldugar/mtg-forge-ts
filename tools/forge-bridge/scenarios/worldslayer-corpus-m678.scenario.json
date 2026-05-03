@@ -1,0 +1,23 @@
+{
+  "id": "worldslayer-corpus-m678",
+  "description": "M6 corpus — Worldslayer; in-hand parse.",
+  "seed": 64421,
+  "cards": {
+    "Worldslayer": "Name:Worldslayer\nManaCost:5\nTypes:Artifact Equipment\nK:Equip:5\nT:Mode$ DamageDone | ValidSource$ Card.EquippedBy | ValidTarget$ Player | Execute$ TrigDestroyAll | TriggerZones$ Battlefield | CombatDamage$ True | TriggerDescription$ Whenever equipped creature deals combat damage to a player, destroy all permanents other than CARDNAME.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.Other\nAI:RemoveDeck:Random\nOracle:Whenever equipped creature deals combat damage to a player, destroy all permanents other than Worldslayer.\\nEquip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldslayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

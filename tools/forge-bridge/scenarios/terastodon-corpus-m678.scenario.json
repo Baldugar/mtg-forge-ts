@@ -1,0 +1,23 @@
+{
+  "id": "terastodon-corpus-m678",
+  "description": "M6 corpus — Terastodon; in-hand parse.",
+  "seed": 61894,
+  "cards": {
+    "Terastodon": "Name:Terastodon\nManaCost:6 G G\nTypes:Creature Elephant\nPT:9/9\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, you may destroy up to three target noncreature permanents. For each permanent put into a graveyard this way, its controller creates a 3/3 green Elephant creature token.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Permanent.nonCreature | TgtPrompt$ Choose up to three noncreature permanents. | SubAbility$ MakeTokens\nSVar:MakeTokens:DB$ RepeatEach | RepeatSubAbility$ DBToken | DefinedCards$ Targeted | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | ConditionDefined$ Remembered | ConditionPresent$ Card.inRealZoneGraveyard | TokenScript$ g_3_3_elephant | TokenOwner$ RememberedController\nDeckHints:Ability$Token\nOracle:When Terastodon enters, you may destroy up to three target noncreature permanents. For each permanent put into a graveyard this way, its controller creates a 3/3 green Elephant creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terastodon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

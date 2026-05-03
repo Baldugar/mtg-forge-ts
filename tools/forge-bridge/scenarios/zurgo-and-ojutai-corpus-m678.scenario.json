@@ -1,0 +1,23 @@
+{
+  "id": "zurgo-and-ojutai-corpus-m678",
+  "description": "M6 corpus — Zurgo and Ojutai; in-hand parse.",
+  "seed": 64717,
+  "cards": {
+    "Zurgo and Ojutai": "Name:Zurgo and Ojutai\nManaCost:2 U R W\nTypes:Legendary Creature Orc Dragon\nPT:4/4\nK:Flying\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self+ThisTurnEntered | AddKeyword$ Hexproof | Description$ CARDNAME has hexproof as long as it entered this turn.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Dragon.YouCtrl | ValidTarget$ Player,Battle | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever one or more Dragons you control deal combat damage to a player or battle, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order. You may return one of those Dragons to its owner's hand.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | NoReveal$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Hidden$ True | ChooseFromDefined$ TriggeredSources | Origin$ Battlefield | Destination$ Hand\nDeckHints:Type$Dragon\nOracle:Flying, haste\\nZurgo and Ojutai has hexproof as long as it entered this turn.\\nWhenever one or more Dragons you control deal combat damage to a player or battle, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order. You may return one of those Dragons to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zurgo and Ojutai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

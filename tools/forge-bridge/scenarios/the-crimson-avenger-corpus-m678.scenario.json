@@ -1,0 +1,23 @@
+{
+  "id": "the-crimson-avenger-corpus-m678",
+  "description": "M6 corpus — The Crimson Avenger; in-hand parse.",
+  "seed": 62010,
+  "cards": {
+    "The Crimson Avenger": "Name:The Crimson Avenger\nManaCost:3 R R\nTypes:Legendary Creature Human Wizard\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters the battlefield, choose target spell an opponent controls. Reveal cards from the top of your library until you reveal a card that shares a mana value with it. Cast that card without paying its mana cost. Then shuffle your library.\nSVar:TrigChoose:DB$ Pump | TargetType$ Spell | TgtZone$ Stack | ValidTgts$ Card.OppCtrl | TgtPrompt$ Select target spell an opponent controls | SubAbility$ CrimsonCascade\nSVar:CrimsonCascade:DB$ DigUntil | Defined$ You | Amount$ 1 | Valid$ Card.cmcEQX | NoMoveRevealed$ True | RememberFound$ True | SubAbility$ CascadeCast\nSVar:CascadeCast:DB$ Play | Defined$ Remembered | WithoutManaCost$ True | ValidSA$ Spell | SubAbility$ YouShuffle\nSVar:YouShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Targeted$CardManaCost\nOracle:Flash\\nWhen The Crimson Avenger enters the battlefield, choose target spell an opponent controls. Reveal cards from the top of your library until you reveal a card that shares a mana value with it. Cast that card without paying its mana cost. Then shuffle your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Crimson Avenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "talion-the-kindly-lord-corpus-m678",
+  "description": "M6 corpus — Talion, the Kindly Lord; in-hand parse.",
+  "seed": 61642,
+  "cards": {
+    "Talion, the Kindly Lord": "Name:Talion, the Kindly Lord\nManaCost:2 U B\nTypes:Legendary Creature Faerie Noble\nPT:3/4\nK:Flying\nK:ETBReplacement:Other:ChooseNumber\nSVar:ChooseNumber:DB$ ChooseNumber | Min$ 1 | Max$ 10 | Defined$ You | SpellDescription$ As CARDNAME enters, choose a number between 1 and 10.\nT:Mode$ SpellCast | ValidCard$ Card.cmcEQChosen,Card.powerEQChosen,Card.toughnessEQChosen | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent casts a spell with mana value, power, or toughness equal to the chosen number, that player loses 2 life and you draw a card.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:Flying\\nAs Talion, the Kindly Lord enters, choose a number between 1 and 10.\\nWhenever an opponent casts a spell with mana value, power, or toughness equal to the chosen number, that player loses 2 life and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talion, the Kindly Lord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

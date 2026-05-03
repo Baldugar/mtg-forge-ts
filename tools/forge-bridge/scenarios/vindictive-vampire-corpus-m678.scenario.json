@@ -1,0 +1,23 @@
+{
+  "id": "vindictive-vampire-corpus-m678",
+  "description": "M6 corpus — Vindictive Vampire; in-hand parse.",
+  "seed": 63509,
+  "cards": {
+    "Vindictive Vampire": "Name:Vindictive Vampire\nManaCost:3 B\nTypes:Creature Vampire\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever another creature you control dies, CARDNAME deals 1 damage to each opponent and you gain 1 life.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever another creature you control dies, Vindictive Vampire deals 1 damage to each opponent and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vindictive Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

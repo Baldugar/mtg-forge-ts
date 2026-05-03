@@ -1,0 +1,25 @@
+{
+  "id": "trusty-boomerang-corpus-m678",
+  "description": "M6 corpus — Trusty Boomerang; ETB-on-bf.",
+  "seed": 62800,
+  "cards": {
+    "Trusty Boomerang": "Name:Trusty Boomerang\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ BoomerangTap | Description$ Equipped creature has \"{1}, {T}: Tap target creature. Return CARDNAME to its owner's hand.\"\nSVar:BoomerangTap:AB$ Tap | Cost$ 1 T | ValidTgts$ Creature | SubAbility$ DBChangeZone | SpellDescription$ Tap target creature. Return ORIGINALHOST to its owner's hand.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ OriginalHost | Origin$ Battlefield | Destination$ Hand\nK:Equip:1\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature has \"{1}, {T}: Tap target creature. Return Trusty Boomerang to its owner's hand.\"\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Trusty Boomerang"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

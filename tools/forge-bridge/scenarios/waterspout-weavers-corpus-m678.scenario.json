@@ -1,0 +1,23 @@
+{
+  "id": "waterspout-weavers-corpus-m678",
+  "description": "M6 corpus — Waterspout Weavers; in-hand parse.",
+  "seed": 63968,
+  "cards": {
+    "Waterspout Weavers": "Name:Waterspout Weavers\nManaCost:3 U U\nTypes:Creature Merfolk Wizard\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigKinship | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Kinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with CARDNAME, you may reveal it. If you do, each creature you control gains flying until end of turn.\nSVar:TrigKinship:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card.sharesCreatureTypeWith | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Kinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with Waterspout Weavers, you may reveal it. If you do, each creature you control gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waterspout Weavers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

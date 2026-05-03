@@ -1,0 +1,23 @@
+{
+  "id": "truth-or-consequences-corpus-m678",
+  "description": "M6 corpus — Truth or Consequences; in-hand parse.",
+  "seed": 62804,
+  "cards": {
+    "Truth or Consequences": "Name:Truth or Consequences\nManaCost:2 U R\nTypes:Sorcery\nA:SP$ Vote | Defined$ Player | Secretly$ True | Choices$ DBDraw,DBChoose | StoreVoteNum$ True | SpellDescription$ Secret council — Each player secretly votes for truth or consequences, then those votes are revealed. You draw cards equal to the number of truth votes. Then choose an opponent at random. CARDNAME deals 3 damage to that player for each consequences vote.\nSVar:DBDraw:DB$ Draw | NumCards$ VoteNum | SubAbility$ DBChoose | SpellDescription$ Truth\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | Random$ True | SubAbility$ DBDamage | SpellDescription$ Consequences\nSVar:DBDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ X\nSVar:X:SVar$VoteNum/Times.3\nOracle:Secret council — Each player secretly votes for truth or consequences, then those votes are revealed. You draw cards equal to the number of truth votes. Then choose an opponent at random. Truth or Consequences deals 3 damage to that player for each consequences vote.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Truth or Consequences"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

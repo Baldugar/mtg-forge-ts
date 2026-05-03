@@ -1,0 +1,23 @@
+{
+  "id": "wild-crocodile-corpus-m678",
+  "description": "M6 corpus — Wild Crocodile; in-hand parse.",
+  "seed": 64148,
+  "cards": {
+    "Wild Crocodile": "Name:Wild Crocodile\nManaCost:1 G\nTypes:Host Creature Crocodile\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | Host$ True | TriggerDescription$ When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nOracle:When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

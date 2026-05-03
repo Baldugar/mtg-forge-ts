@@ -1,0 +1,25 @@
+{
+  "id": "yawgmoth-s-agenda-corpus-m678",
+  "description": "M6 corpus — Yawgmoth's Agenda; ETB-on-bf.",
+  "seed": 64538,
+  "cards": {
+    "Yawgmoth's Agenda": "Name:Yawgmoth's Agenda\nManaCost:3 B B\nTypes:Enchantment\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ You | NumLimitEachTurn$ 1 | Description$ You can't cast more than one spell each turn.\nS:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Graveyard | MayPlay$ True | Description$ You may play lands and cast spells from your graveyard.\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidCard$ Card.!token+YouOwn | ReplaceWith$ Exile | Description$ If a card would be put into your graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:You can't cast more than one spell each turn.\\nYou may play lands and cast spells from your graveyard.\\nIf a card would be put into your graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Yawgmoth's Agenda"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

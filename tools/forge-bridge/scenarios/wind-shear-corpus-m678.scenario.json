@@ -1,0 +1,23 @@
+{
+  "id": "wind-shear-corpus-m678",
+  "description": "M6 corpus — Wind Shear; in-hand parse.",
+  "seed": 64215,
+  "cards": {
+    "Wind Shear": "Name:Wind Shear\nManaCost:2 G\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.withFlying+attacking | NumAtt$ -2 | NumDef$ -2 | SubAbility$ DBDebuff | IsCurse$ True | SpellDescription$ Attacking creatures with flying get -2/-2 and lose flying until end of turn.\nSVar:DBDebuff:DB$ AnimateAll | ValidCards$ Creature.withFlying+attacking | RemoveKeywords$ Flying\nOracle:Attacking creatures with flying get -2/-2 and lose flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wind Shear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

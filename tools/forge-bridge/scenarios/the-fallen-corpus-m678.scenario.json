@@ -1,0 +1,23 @@
+{
+  "id": "the-fallen-corpus-m678",
+  "description": "M6 corpus — The Fallen; in-hand parse.",
+  "seed": 62031,
+  "cards": {
+    "The Fallen": "Name:The Fallen\nManaCost:1 B B B\nTypes:Creature Zombie\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each opponent and planeswalker it has dealt damage to this game.\nSVar:TrigDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent+wasDealtDamageThisGameBy Self | ValidCards$ Planeswalker.wasDealtDamageByThisGame | NumDmg$ 1\nOracle:At the beginning of your upkeep, The Fallen deals 1 damage to each opponent and planeswalker it has dealt damage to this game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fallen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

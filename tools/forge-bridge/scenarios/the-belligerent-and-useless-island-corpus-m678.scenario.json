@@ -1,0 +1,23 @@
+{
+  "id": "the-belligerent-and-useless-island-corpus-m678",
+  "description": "M6 corpus — The Belligerent and Useless Island; in-hand parse.",
+  "seed": 61989,
+  "cards": {
+    "The Belligerent and Useless Island": "Name:The Belligerent and Useless Island\nManaCost:no cost\nTypes:Legendary Artifact Land Vehicle Island\nPT:2/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters the battlefield tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or battle, draw a card then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nK:Crew:2\nDeckHas:Ability$Discard\nOracle:The Belligerent and Useless Island enters the battlefield tapped.\\nWhenever The Belligerent and Useless Island deals combat damage to a player or battle, draw a card then discard a card.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Belligerent and Useless Island"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

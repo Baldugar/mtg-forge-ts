@@ -1,0 +1,23 @@
+{
+  "id": "worldpurge-corpus-m678",
+  "description": "M6 corpus — Worldpurge; in-hand parse.",
+  "seed": 64420,
+  "cards": {
+    "Worldpurge": "Name:Worldpurge\nManaCost:4 WU WU WU WU\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBChoose | SpellDescription$ Return all permanents to their owners' hands. Each player chooses up to seven cards in their hand, then shuffles the rest into their library. Each player loses all unspent mana.\nSVar:DBChoose:DB$ ChooseCard | MinAmount$ 0 | Amount$ 7 | Defined$ Player | ControlledByPlayer$ Chooser | ChoiceZone$ Hand | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ ValidHand Card.nonChosenCard | Origin$ Hand | Destination$ Library | Shuffle$ True | SubAbility$ DBEmpty\nSVar:DBEmpty:DB$ DrainMana | Defined$ Player\nAI:RemoveDeck:All\nOracle:Return all permanents to their owners' hands. Each player chooses up to seven cards in their hand, then shuffles the rest into their library. Each player loses all unspent mana.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldpurge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

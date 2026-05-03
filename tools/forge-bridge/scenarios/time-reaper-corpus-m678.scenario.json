@@ -1,0 +1,23 @@
+{
+  "id": "time-reaper-corpus-m678",
+  "description": "M6 corpus — Time Reaper; in-hand parse.",
+  "seed": 62403,
+  "cards": {
+    "Time Reaper": "Name:Time Reaper\nManaCost:3 B B\nTypes:Creature Alien Horror\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChangeZone | TriggerDescription$ Consume Anomaly — Whenever CARDNAME deals combat damage to a player, put target face-up card they own in exile on the bottom of their library. If you do, you gain 3 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Exile | LibraryPosition$ -1 | Destination$ Library | ValidTgts$ Card.faceUp | TgtPrompt$ Select target face-up card in exile | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nOracle:Flying, haste\\nConsume Anomaly — Whenever Time Reaper deals combat damage to a player, put target face-up card they own in exile on the bottom of their library. If you do, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Reaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

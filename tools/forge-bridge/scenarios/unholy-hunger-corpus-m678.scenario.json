@@ -1,0 +1,23 @@
+{
+  "id": "unholy-hunger-corpus-m678",
+  "description": "M6 corpus — Unholy Hunger; in-hand parse.",
+  "seed": 63064,
+  "cards": {
+    "Unholy Hunger": "Name:Unholy Hunger\nManaCost:3 B B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2\nOracle:Destroy target creature.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unholy Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

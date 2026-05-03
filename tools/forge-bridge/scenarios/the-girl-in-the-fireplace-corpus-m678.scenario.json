@@ -1,0 +1,23 @@
+{
+  "id": "the-girl-in-the-fireplace-corpus-m678",
+  "description": "M6 corpus — The Girl in the Fireplace; in-hand parse.",
+  "seed": 62045,
+  "cards": {
+    "The Girl in the Fireplace": "Name:The Girl in the Fireplace\nManaCost:2 W\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBTokenBis,DBTimeTravelTrig\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human_noble_vanishing_prevention | SpellDescription$ Create a 1/1 white Human Noble creature token with vanishing 3 and \"Prevent all damage that would be dealt to this creature.\"\nSVar:DBTokenBis:DB$ Token | TokenScript$ w_2_2_horse_horsemanship | SpellDescription$ Create a 2/2 white Horse creature token with \"Doctors you control have horsemanship.\" (They can't be blocked except by creatures with horsemanship.)\nSVar:DBTimeTravelTrig:DB$ Effect | Triggers$ DamageDraw | SpellDescription$ Whenever a creature you control deals combat damage to a player this turn, time travel.\nSVar:DamageDraw:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Command | Execute$ TrigTimeTravel | TriggerDescription$ Whenever a creature you control deals combat damage to a player this turn, time travel.\nSVar:TrigTimeTravel:DB$ TimeTravel\nDeckHas:Ability$Token & Type$Horse|Human|Noble\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a 1/1 white Human Noble creature token with vanishing 3 and \"Prevent all damage that would be dealt to this creature.\"\\nII — Create a 2/2 white Horse creature token with \"Doctors you control have horsemanship.\" (They can't be blocked except by creatures with horsemanship.)\\nIII — Whenever a creature you control deals combat damage to a player this turn, time travel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Girl in the Fireplace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

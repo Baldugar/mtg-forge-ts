@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-war-and-peace-corpus-m678",
+  "description": "M6 corpus — Sword of War and Peace; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Sword of War and Peace": "Name:Sword of War and Peace\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfWarAndPeaceCE | AddKeyword$ Protection from red & Protection from white | Description$ Equipped creature gets +2/+2 and has protection from red and from white.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, CARDNAME deals damage to that player equal to the number of cards in their hand and you gain 1 life for each card in your hand.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredTarget | NumDmg$ X | SubAbility$ DBGain\nSVar:X:TriggeredTarget$CardsInHand\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:Y:Count$CardsInYourHand\nSVar:SwordOfWarAndPeaceCE:SVar:MustBeBlocked:AttackingPlayerConservative\nOracle:Equipped creature gets +2/+2 and has protection from red and from white.\\nWhenever equipped creature deals combat damage to a player, Sword of War and Peace deals damage to that player equal to the number of cards in their hand and you gain 1 life for each card in your hand.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of War and Peace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

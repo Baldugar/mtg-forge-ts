@@ -1,0 +1,23 @@
+{
+  "id": "thassa-s-intervention-corpus-m678",
+  "description": "M6 corpus — Thassa's Intervention; in-hand parse.",
+  "seed": 61970,
+  "cards": {
+    "Thassa's Intervention": "Name:Thassa's Intervention\nManaCost:X U U\nTypes:Instant\nA:SP$ Charm | Choices$ DBDig,DBCounter\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ 2 | DestinationZone$ Hand | LibraryPosition$ 0 | RestRandomOrder$ True | Optional$ True | SpellDescription$ Look at the top X cards of your library. Put up to two of them into your hand and the rest on the bottom of your library in a random order.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | UnlessCost$ XX | UnlessPayer$ TargetedController | SpellDescription$ Counter target spell unless its controller pays twice {X}.\nSVar:X:Count$xPaid\nSVar:XX:SVar$X/Twice\nOracle:Choose one —\\n• Look at the top X cards of your library. Put up to two of them into your hand and the rest on the bottom of your library in a random order.\\n• Counter target spell unless its controller pays twice {X}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thassa's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

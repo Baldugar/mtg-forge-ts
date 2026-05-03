@@ -1,0 +1,23 @@
+{
+  "id": "temple-of-mystery-corpus-m678",
+  "description": "M6 corpus — Temple of Mystery; in-hand parse.",
+  "seed": 61837,
+  "cards": {
+    "Temple of Mystery": "Name:Temple of Mystery\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo U G | SpellDescription$ Add {U} or {G}.\nOracle:Temple of Mystery enters tapped.\\nWhen Temple of Mystery enters, scry 1.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temple of Mystery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

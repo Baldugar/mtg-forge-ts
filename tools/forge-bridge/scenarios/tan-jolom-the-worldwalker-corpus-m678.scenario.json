@@ -1,0 +1,23 @@
+{
+  "id": "tan-jolom-the-worldwalker-corpus-m678",
+  "description": "M6 corpus — Tan Jolom, the Worldwalker; in-hand parse.",
+  "seed": 61673,
+  "cards": {
+    "Tan Jolom, the Worldwalker": "Name:Tan Jolom, the Worldwalker\nManaCost:1 G W U\nTypes:Legendary Creature Spirit\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose up to one target artifact or land you control that isn't a creature or token. Until end of turn, it becomes a 3/3 Spirit creature with vigilance and double team in addition to its other types.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Artifact.nonCreature+!token+YouCtrl,Land.nonCreature+!token+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact or land you control that isn't a creature or token | Power$ 3 | Toughness$ 3 | Types$ Creature,Spirit | Keywords$ Vigilance & Double team\nOracle:At the beginning of combat on your turn, choose up to one target artifact or land you control that isn't a creature or token. Until end of turn, it becomes a 3/3 Spirit creature with vigilance and double team in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tan Jolom, the Worldwalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

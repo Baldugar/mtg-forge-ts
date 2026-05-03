@@ -1,0 +1,25 @@
+{
+  "id": "targeting-rocket-corpus-m678",
+  "description": "M6 corpus — Targeting Rocket; ETB-on-bf.",
+  "seed": 61712,
+  "cards": {
+    "Targeting Rocket": "Name:Targeting Rocket\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, target creature blocks this turn if able.\nSVar:TrigCrank:DB$ Effect | ValidTgts$ Creature | StaticAbilities$ MustBlock | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | IsCurse$ True\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nOracle:Whenever you crank Targeting Rocket, target creature blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Targeting Rocket"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vnwxt-verbose-host-corpus-m678",
+  "description": "M6 corpus — Vnwxt, Verbose Host; ETB-on-bf.",
+  "seed": 63598,
+  "cards": {
+    "Vnwxt, Verbose Host": "Name:Vnwxt, Verbose Host\nManaCost:1 U\nTypes:Legendary Creature Homunculus\nPT:0/4\nK:Start your engines\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddReplacementEffect$ RepDraw | Description$ Max speed — If you would draw a card, draw two cards instead.\nSVar:RepDraw:Event$ Draw | Secondary$ True | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DrawTwo | Description$ Max speed — If you would draw a card, draw two cards instead.\nSVar:DrawTwo:DB$ Draw | Defined$ You | NumCards$ 2\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nYou have no maximum hand size.\\nMax speed — If you would draw a card, draw two cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vnwxt, Verbose Host"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

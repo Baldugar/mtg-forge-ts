@@ -1,0 +1,23 @@
+{
+  "id": "warhost-s-frenzy-corpus-m678",
+  "description": "M6 corpus — Warhost's Frenzy; in-hand parse.",
+  "seed": 63885,
+  "cards": {
+    "Warhost's Frenzy": "Name:Warhost's Frenzy\nManaCost:2 R\nTypes:Instant\nK:Kicker:B\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | SubAbility$ DBEffect | SpellDescription$ Creatures you control get +2/+0 until end of turn. If this spell was kicked, whenever a creature you control dies this turn, draw a card.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDies | Condition$ Kicked\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control dies this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHints:Color$Black\nOracle:Kicker {B} (You may pay an additional {B} as you cast this spell.)\\nCreatures you control get +2/+0 until end of turn. If this spell was kicked, whenever a creature you control dies this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warhost's Frenzy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

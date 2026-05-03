@@ -1,0 +1,23 @@
+{
+  "id": "thalakos-dreamsower-corpus-m678",
+  "description": "M6 corpus — Thalakos Dreamsower; in-hand parse.",
+  "seed": 61958,
+  "cards": {
+    "Thalakos Dreamsower": "Name:Thalakos Dreamsower\nManaCost:2 U\nTypes:Creature Thalakos Wizard\nPT:1/1\nK:Shadow\nK:You may choose not to untap CARDNAME during your untap step.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, tap target creature. That creature doesn't untap during its controller's untap step for as long as CARDNAME remains tapped.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | IsCurse$ True | ReplacementEffects$ DontUntap | Duration$ UntilUntaps | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ It doesn't untap during its controller's untap step for as long as EFFECTSOURCE remains tapped.\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nYou may choose not to untap Thalakos Dreamsower during your untap step.\\nWhenever Thalakos Dreamsower deals damage to an opponent, tap target creature. That creature doesn't untap during its controller's untap step for as long as Thalakos Dreamsower remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalakos Dreamsower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

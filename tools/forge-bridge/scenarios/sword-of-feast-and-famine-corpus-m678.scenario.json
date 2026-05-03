@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-feast-and-famine-corpus-m678",
+  "description": "M6 corpus — Sword of Feast and Famine; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Sword of Feast and Famine": "Name:Sword of Feast and Famine\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfFeastAndFamineCE | AddKeyword$ Protection from black & Protection from green | Description$ Equipped creature gets +2/+2 and has protection from black and from green.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, that player discards a card and you untap all lands you control.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Land.YouCtrl\nSVar:SwordOfFeastAndFamineCE:SVar:MustBeBlocked:AttackingPlayerConservative\nOracle:Equipped creature gets +2/+2 and has protection from black and from green.\\nWhenever equipped creature deals combat damage to a player, that player discards a card and you untap all lands you control.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Feast and Famine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

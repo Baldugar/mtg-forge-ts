@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-body-and-mind-corpus-m678",
+  "description": "M6 corpus — Sword of Body and Mind; in-hand parse.",
+  "seed": 61514,
+  "cards": {
+    "Sword of Body and Mind": "Name:Sword of Body and Mind\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfBodyAndMindCE | AddKeyword$ Protection from green & Protection from blue | Description$ Equipped creature gets +2/+2 and has protection from green and from blue.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you create a 2/2 green Wolf creature token and that player mills ten cards.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ 10\nSVar:SwordOfBodyAndMindCE:SVar:MustBeBlocked:AttackingPlayerConservative\nDeckHas:Ability$Token\nOracle:Equipped creature gets +2/+2 and has protection from green and from blue.\\nWhenever equipped creature deals combat damage to a player, you create a 2/2 green Wolf creature token and that player mills ten cards.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Body and Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

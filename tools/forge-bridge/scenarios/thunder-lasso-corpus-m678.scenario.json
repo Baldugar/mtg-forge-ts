@@ -1,0 +1,23 @@
+{
+  "id": "thunder-lasso-corpus-m678",
+  "description": "M6 corpus — Thunder Lasso; in-hand parse.",
+  "seed": 62304,
+  "cards": {
+    "Thunder Lasso": "Name:Thunder Lasso\nManaCost:2 W\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigTap | TriggerDescription$ Whenever equipped creature attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nK:Equip:2\nOracle:When Thunder Lasso enters, attach it to target creature you control.\\nEquipped creature gets +1/+1.\\nWhenever equipped creature attacks, tap target creature defending player controls.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunder Lasso"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

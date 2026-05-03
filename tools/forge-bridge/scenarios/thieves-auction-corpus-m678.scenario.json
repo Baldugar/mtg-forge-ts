@@ -1,0 +1,23 @@
+{
+  "id": "thieves-auction-corpus-m678",
+  "description": "M6 corpus — Thieves' Auction; in-hand parse.",
+  "seed": 62151,
+  "cards": {
+    "Thieves' Auction": "Name:Thieves' Auction\nManaCost:4 R R R\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Permanent.!token | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBRepeatChoose | StackDescription$ SpellDescription | SpellDescription$ Exile all nontoken permanents. Starting with you, each player chooses one of the exiled cards and puts it onto the battlefield tapped under their control. Repeat this process until all cards exiled this way have been chosen.\nSVar:DBRepeatChoose:DB$ Repeat | RepeatSubAbility$ DBRepeat | RepeatDefined$ Remembered | RepeatPresent$ Card | StackDescription$ None\nSVar:DBRepeat:DB$ RepeatEach | StartingWith$ You | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Card.IsRemembered | ForgetChosen$ True | ChoiceZone$ Exile | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ ChosenCard | GainControl$ Player.IsRemembered | Tapped$ True\nAI:RemoveDeck:All\nOracle:Exile all nontoken permanents. Starting with you, each player chooses one of the exiled cards and puts it onto the battlefield tapped under their control. Repeat this process until all cards exiled this way have been chosen.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieves' Auction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

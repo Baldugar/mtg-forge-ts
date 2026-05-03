@@ -1,0 +1,23 @@
+{
+  "id": "wingsteed-trainer-corpus-m678",
+  "description": "M6 corpus — Wingsteed Trainer; in-hand parse.",
+  "seed": 64269,
+  "cards": {
+    "Wingsteed Trainer": "Name:Wingsteed Trainer\nManaCost:3 W\nTypes:Creature Human\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters or attacks, conjure a Stormfront Pegasus card into your hand.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, conjure a Stormfront Pegasus card into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Stormfront Pegasus | Zone$ Hand\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Pegasus\nOracle:Whenever Wingsteed Trainer enters or attacks, conjure a Stormfront Pegasus card into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingsteed Trainer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

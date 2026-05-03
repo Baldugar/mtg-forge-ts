@@ -1,0 +1,23 @@
+{
+  "id": "suspended-sentence-corpus-m678",
+  "description": "M6 corpus — Suspended Sentence; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "Suspended Sentence": "Name:Suspended Sentence\nManaCost:3 B\nTypes:Instant\nK:Suspend:3:1 B\nA:SP$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBLoseLife | SpellDescription$ Destroy target creature an opponent controls. That player loses 3 life. Exile CARDNAME with three time counters on it.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 3 | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3\nOracle:Destroy target creature an opponent controls. That player loses 3 life. Exile Suspended Sentence with three time counters on it.\\nSuspend 3—{1}{B} (Rather than cast this card from your hand, pay {1}{B} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suspended Sentence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

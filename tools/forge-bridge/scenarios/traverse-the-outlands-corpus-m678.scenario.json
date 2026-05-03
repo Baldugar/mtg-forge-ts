@@ -1,0 +1,23 @@
+{
+  "id": "traverse-the-outlands-corpus-m678",
+  "description": "M6 corpus — Traverse the Outlands; in-hand parse.",
+  "seed": 62666,
+  "cards": {
+    "Traverse the Outlands": "Name:Traverse the Outlands\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ X | Tapped$ True | SpellDescription$ Search your library for up to X basic land cards, where X is the greatest power among creatures you control. Put those cards onto the battlefield tapped, then shuffle.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:NeedsToPlay:Creature.YouCtrl+powerGE2\nOracle:Search your library for up to X basic land cards, where X is the greatest power among creatures you control. Put those cards onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Traverse the Outlands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

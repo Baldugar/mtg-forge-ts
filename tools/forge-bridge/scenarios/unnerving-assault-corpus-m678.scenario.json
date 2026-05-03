@@ -1,0 +1,23 @@
+{
+  "id": "unnerving-assault-corpus-m678",
+  "description": "M6 corpus — Unnerving Assault; in-hand parse.",
+  "seed": 63102,
+  "cards": {
+    "Unnerving Assault": "Name:Unnerving Assault\nManaCost:2 UR\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | IsCurse$ True | ConditionManaSpent$ U | SubAbility$ RPaid | SpellDescription$ Creatures your opponents control get -1/-0 until end of turn if {U} was spent to cast this spell, and creatures you control get +1/+0 until end of turn if {R} was spent to cast this spell. (Do both if {U}{R} was spent.)\nSVar:RPaid:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | ConditionManaSpent$ R\nAI:RemoveDeck:All\nOracle:Creatures your opponents control get -1/-0 until end of turn if {U} was spent to cast this spell, and creatures you control get +1/+0 until end of turn if {R} was spent to cast this spell. (Do both if {U}{R} was spent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unnerving Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

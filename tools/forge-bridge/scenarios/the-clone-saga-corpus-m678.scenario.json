@@ -1,0 +1,23 @@
+{
+  "id": "the-clone-saga-corpus-m678",
+  "description": "M6 corpus — The Clone Saga; in-hand parse.",
+  "seed": 62004,
+  "cards": {
+    "The Clone Saga": "Name:The Clone Saga\nVariant:UniversesWithin:FlavorName:Lost in Littjara\nManaCost:3 U\nTypes:Enchantment Saga\nK:Chapter:3:DBSurveil,DBCopyEffect,DBDrawEffect\nSVar:DBSurveil:DB$ Surveil | Amount$ 3 | SpellDescription$ Surveil 3.\nSVar:DBCopyEffect:DB$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | SpellDescription$ When you next cast a creature spell this turn, copy it, except the copy isn't legendary.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | NonLegendary$ True\nSVar:DBDrawEffect:DB$ NameCard | Defined$ You | SubAbility$ DBEffect | SpellDescription$ Choose a card name. Whenever a creature with the chosen name deals combat damage to a player this turn, draw a card.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDamage\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Creature.NamedCard | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever a creature with the chosen name deals combat damage to a player this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:(As this Saga enters step, add a lore counter. Sacrifice after III.)\\nI — Surveil 3.\\nII — When you next cast a creature spell this turn, copy it, except the copy isn't legendary.\\nIII — Choose a card name. Whenever a creature with the chosen name deals combat damage to a player this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Clone Saga"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

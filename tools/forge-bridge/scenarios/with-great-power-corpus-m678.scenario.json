@@ -1,0 +1,23 @@
+{
+  "id": "with-great-power-corpus-m678",
+  "description": "M6 corpus — With Great Power . . .; in-hand parse.",
+  "seed": 64318,
+  "cards": {
+    "With Great Power . . .": "Name:With Great Power . . .\nVariant:UniversesWithin:FlavorName:Chosen by Valgavoth\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | AddSVar$ EqMe & EnMe | Description$ Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ DmgEnchanted | DamageTarget$ Enchanted | Description$ All damage that would be dealt to you is dealt to enchanted creature instead.\nSVar:DmgEnchanted:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Enchanted | VarType$ Card\nSVar:X:Count$Valid Aura.AttachedTo Creature.EnchantedBy,Equipment.AttachedTo Creature.EnchantedBy/Times.2\nSVar:EqMe:SVar:EquipMe:Multiple\nSVar:EnMe:SVar:EnchantMe:Multiple\nOracle:Enchant creature you control\\nEnchanted creature gets +2/+2 for each Aura and Equipment attached to it.\\nAll damage that would be dealt to you is dealt to enchanted creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "With Great Power . . ."
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

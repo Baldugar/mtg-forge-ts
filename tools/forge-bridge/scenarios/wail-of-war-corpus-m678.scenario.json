@@ -1,0 +1,23 @@
+{
+  "id": "wail-of-war-corpus-m678",
+  "description": "M6 corpus — Wail of War; in-hand parse.",
+  "seed": 63726,
+  "cards": {
+    "Wail of War": "Name:Wail of War\nManaCost:2 B\nTypes:Instant\nA:SP$ Charm | Choices$ DBPumpAll,DBReturn\nSVar:DBPumpAll:DB$ PumpAll | ValidTgts$ Opponent | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1 | SpellDescription$ Creatures target opponent controls get -1/-1 until end of turn.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creature cards in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return up to two target creature cards from your graveyard to your hand.\nOracle:Choose one —\\n• Creatures target opponent controls get -1/-1 until end of turn.\\n• Return up to two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wail of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

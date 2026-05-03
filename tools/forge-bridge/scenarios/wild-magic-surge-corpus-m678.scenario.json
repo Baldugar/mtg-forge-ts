@@ -1,0 +1,23 @@
+{
+  "id": "wild-magic-surge-corpus-m678",
+  "description": "M6 corpus — Wild Magic Surge; in-hand parse.",
+  "seed": 64158,
+  "cards": {
+    "Wild Magic Surge": "Name:Wild Magic Surge\nManaCost:R R\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Permanent.OppCtrl | RememberLKI$ True | AlwaysRemember$ True | TgtPrompt$ Select target permanent an opponent controls | SubAbility$ DBDigUntil | SpellDescription$ Destroy target permanent an opponent controls. Its controller reveals cards from the top of their library until they reveal a permanent card that shares a card type with that permanent. They put that card onto the battlefield and the rest on the bottom of their library in a random order.\nSVar:DBDigUntil:DB$ DigUntil | Defined$ RememberedController | Valid$ Permanent.sharesCardTypeWith RememberedLKI | ValidDescription$ permanent card that shares a card type with the destroyed permanent | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Destroy target permanent an opponent controls. Its controller reveals cards from the top of their library until they reveal a permanent card that shares a card type with that permanent. They put that card onto the battlefield and the rest on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Magic Surge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vengeful-archon-corpus-m678",
+  "description": "M6 corpus — Vengeful Archon; ETB-on-bf.",
+  "seed": 63360,
+  "cards": {
+    "Vengeful Archon": "Name:Vengeful Archon\nManaCost:4 W W W\nTypes:Creature Archon\nPT:7/7\nK:Flying\nA:AB$ Pump | Cost$ X | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker damaged by shield effect | IsCurse$ True | SubAbility$ ArchonPrevention | StackDescription$ None | AILogic$ Never | SpellDescription$ Prevent the next X damage that would be dealt to you this turn. If damage is prevented this way, CARDNAME deals that much damage to target player or planeswalker.\nSVar:ArchonPrevention:DB$ PreventDamage | Defined$ You | Amount$ X | PreventionSubAbility$ ArchonsVengeance | ShieldEffectTarget$ ParentTarget\nSVar:ArchonsVengeance:DB$ DealDamage | Defined$ ShieldEffectTarget | NumDmg$ PreventedDamage | SpellDescription$ CARDNAME deals that much damage to target player or planeswalker.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Flying\\n{X}: Prevent the next X damage that would be dealt to you this turn. If damage is prevented this way, Vengeful Archon deals that much damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vengeful Archon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

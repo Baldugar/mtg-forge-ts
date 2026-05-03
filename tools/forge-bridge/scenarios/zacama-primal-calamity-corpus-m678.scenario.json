@@ -1,0 +1,23 @@
+{
+  "id": "zacama-primal-calamity-corpus-m678",
+  "description": "M6 corpus — Zacama, Primal Calamity; in-hand parse.",
+  "seed": 64598,
+  "cards": {
+    "Zacama, Primal Calamity": "Name:Zacama, Primal Calamity\nManaCost:6 R G W\nTypes:Legendary Creature Elder Dinosaur\nPT:9/9\nK:Vigilance\nK:Reach\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastByYou+Self | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, if you cast it, untap all lands you control.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Land.YouCtrl\nA:AB$ DealDamage | Cost$ 2 R | ValidTgts$ Creature | NumDmg$ 3 | SpellDescription$ NICKNAME deals 3 damage to target creature.\nA:AB$ Destroy | Cost$ 2 G | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nA:AB$ GainLife | Cost$ 2 W | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHints:Type$Dinosaur\nOracle:Vigilance, reach, trample\\nWhen Zacama, Primal Calamity enters, if you cast it, untap all lands you control.\\n{2}{R}: Zacama deals 3 damage to target creature.\\n{2}{G}: Destroy target artifact or enchantment.\\n{2}{W}: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zacama, Primal Calamity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

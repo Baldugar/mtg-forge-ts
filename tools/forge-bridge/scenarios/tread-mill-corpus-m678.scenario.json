@@ -1,0 +1,25 @@
+{
+  "id": "tread-mill-corpus-m678",
+  "description": "M6 corpus — Tread Mill; ETB-on-bf.",
+  "seed": 62676,
+  "cards": {
+    "Tread Mill": "Name:Tread Mill\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature gets +1/+2, gains vigilance, and becomes an artifact in addition to its other types.\nSVar:TrigCrank:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +2 | KW$ Vigilance | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Artifact\nOracle:Whenever you crank Tread Mill, until end of turn, target creature gets +1/+2, gains vigilance, and becomes an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tread Mill"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

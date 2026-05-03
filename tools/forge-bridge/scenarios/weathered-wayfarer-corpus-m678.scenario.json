@@ -1,0 +1,25 @@
+{
+  "id": "weathered-wayfarer-corpus-m678",
+  "description": "M6 corpus — Weathered Wayfarer; ETB-on-bf.",
+  "seed": 64011,
+  "cards": {
+    "Weathered Wayfarer": "Name:Weathered Wayfarer\nManaCost:W\nTypes:Creature Human Nomad Cleric\nPT:1/1\nA:AB$ ChangeZone | Cost$ W T | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1 | CheckSVar$ X | SVarCompare$ GTY | SpellDescription$ Search your library for a land card, reveal it, put it into your hand, then shuffle. Activate only if an opponent controls more lands than you.\nSVar:X:PlayerCountOpponents$HighestValid Land.YouCtrl\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:{W}, {T}: Search your library for a land card, reveal it, put it into your hand, then shuffle. Activate only if an opponent controls more lands than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Weathered Wayfarer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

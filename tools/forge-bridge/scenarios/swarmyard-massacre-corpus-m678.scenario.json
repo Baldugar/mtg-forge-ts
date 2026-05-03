@@ -1,0 +1,23 @@
+{
+  "id": "swarmyard-massacre-corpus-m678",
+  "description": "M6 corpus — Swarmyard Massacre; in-hand parse.",
+  "seed": 61474,
+  "cards": {
+    "Swarmyard Massacre": "Name:Swarmyard Massacre\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_1_1_squirrel | TokenAmount$ 2 | TokenOwner$ You | SubAbility$ DBPumpAll | SpellDescription$ Create two 1/1 green Squirrel creature tokens. Then each creature that isn't an Insect, Rat, Spider, or Squirrel gets -1/-1 until end of turn for each creature you control that's an Insect, Rat, Spider, or Squirrel.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.nonInsect+nonRat+nonSpider+nonSquirrel | NumAtt$ -X | NumDef$ -X\nSVar:X:Count$Valid Insect.YouCtrl,Rat.YouCtrl,Spider.YouCtrl,Squirrel.YouCtrl\nDeckHints:Type$Insect|Rat|Spider|Squirrel\nDeckHas:Ability$Token\nOracle:Create two 1/1 green Squirrel creature tokens. Then each creature that isn't an Insect, Rat, Spider, or Squirrel gets -1/-1 until end of turn for each creature you control that's an Insect, Rat, Spider, or Squirrel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swarmyard Massacre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

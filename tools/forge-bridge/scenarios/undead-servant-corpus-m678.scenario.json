@@ -1,0 +1,23 @@
+{
+  "id": "undead-servant-corpus-m678",
+  "description": "M6 corpus — Undead Servant; in-hand parse.",
+  "seed": 62999,
+  "cards": {
+    "Undead Servant": "Name:Undead Servant\nManaCost:3 B\nTypes:Creature Zombie\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 black Zombie creature token for each card named Undead Servant in your graveyard.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:X:Count$ValidGraveyard Card.YouOwn+namedUndead Servant\nDeckHints:Name$Undead Servant\nOracle:When Undead Servant enters, create a 2/2 black Zombie creature token for each card named Undead Servant in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undead Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vinesoul-spider-corpus-m678",
+  "description": "M6 corpus — Vinesoul Spider; in-hand parse.",
+  "seed": 63518,
+  "cards": {
+    "Vinesoul Spider": "Name:Vinesoul Spider\nManaCost:1 G\nTypes:Creature Elemental Spider\nPT:3/2\nK:Reach\nT:Mode$ Phase | Phase$ End of Turn | Execute$ TrigChange | ValidPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, put a random land card from your library into your graveyard.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Land.YouOwn | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard\nOracle:Reach\\nAt the beginning of your end step, put a random land card from your library into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vinesoul Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

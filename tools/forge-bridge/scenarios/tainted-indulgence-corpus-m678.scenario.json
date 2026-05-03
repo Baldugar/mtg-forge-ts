@@ -1,0 +1,23 @@
+{
+  "id": "tainted-indulgence-corpus-m678",
+  "description": "M6 corpus — Tainted Indulgence; in-hand parse.",
+  "seed": 61600,
+  "cards": {
+    "Tainted Indulgence": "Name:Tainted Indulgence\nManaCost:U B\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ Draw two cards. Then discard a card unless there are five or more mana values among cards in your graveyard.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | ConditionCheckSVar$ X | ConditionSVarCompare$ LE4\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nDeckHas:Ability$Discard|Graveyard\nOracle:Draw two cards. Then discard a card unless there are five or more mana values among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tainted Indulgence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

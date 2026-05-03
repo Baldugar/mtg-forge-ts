@@ -1,0 +1,23 @@
+{
+  "id": "wolfkin-outcast-corpus-m678",
+  "description": "M6 corpus — Wolfkin Outcast; in-hand parse.",
+  "seed": 64365,
+  "cards": {
+    "Wolfkin Outcast": "Name:Wolfkin Outcast\nManaCost:5 G\nTypes:Creature Human Werewolf\nPT:5/4\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Wolf.YouCtrl,Werewolf.YouCtrl | Description$ This spell costs {2} less to cast if you control a Wolf or a Werewolf.\nK:Daybound\nSVar:BuffedBy:Wolf,Werewolf\nDeckHints:Type$Wolf|Werewolf\nAlternateMode:DoubleFaced\nOracle:This spell costs {2} less to cast if you control a Wolf or Werewolf.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Wedding Crasher\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Wolf.Other+YouCtrl,Werewolf.Other+YouCtrl | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME or another Wolf or Werewolf you control dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Nightbound\nOracle:Whenever Wedding Crasher or another Wolf or Werewolf you control dies, draw a card.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfkin Outcast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

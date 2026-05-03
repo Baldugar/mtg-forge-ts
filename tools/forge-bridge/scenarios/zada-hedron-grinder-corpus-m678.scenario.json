@@ -1,0 +1,25 @@
+{
+  "id": "zada-hedron-grinder-corpus-m678",
+  "description": "M6 corpus — Zada, Hedron Grinder; ETB-on-bf.",
+  "seed": 64599,
+  "cards": {
+    "Zada, Hedron Grinder": "Name:Zada, Hedron Grinder\nManaCost:3 R\nTypes:Legendary Creature Goblin Ally\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Card.Self | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell that targets only CARDNAME, copy the spell for each other creature you control that spell could target. Each copy targets a different one of those creatures.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ You | CopyForEachCanTarget$ Creature.YouCtrl\nOracle:Whenever you cast an instant or sorcery spell that targets only Zada, Hedron Grinder, copy that spell for each other creature you control that the spell could target. Each copy targets a different one of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zada, Hedron Grinder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "village-messenger-corpus-m678",
+  "description": "M6 corpus — Village Messenger; in-hand parse.",
+  "seed": 63502,
+  "cards": {
+    "Village Messenger": "Name:Village Messenger\nManaCost:R\nTypes:Creature Human Werewolf\nPT:1/1\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Haste\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Village Messenger.\n\nALTERNATE\n\nName:Moonrise Intruder\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:2/2\nK:Menace\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Moonrise Intruder.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Messenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vodalian-knights-corpus-m678",
+  "description": "M6 corpus — Vodalian Knights; in-hand parse.",
+  "seed": 63603,
+  "cards": {
+    "Vodalian Knights": "Name:Vodalian Knights\nManaCost:1 U U\nTypes:Creature Merfolk Knight\nPT:2/2\nK:First Strike\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ Pump | Cost$ U | Defined$ Self | KW$ Flying | SpellDescription$ CARDNAME gains flying until end of turn.\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:First strike\\nVodalian Knights can't attack unless defending player controls an Island.\\nWhen you control no Islands, sacrifice Vodalian Knights.\\n{U}: Vodalian Knights gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vodalian Knights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

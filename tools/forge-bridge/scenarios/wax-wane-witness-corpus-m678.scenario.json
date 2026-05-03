@@ -1,0 +1,25 @@
+{
+  "id": "wax-wane-witness-corpus-m678",
+  "description": "M6 corpus — Wax-Wane Witness; ETB-on-bf.",
+  "seed": 63983,
+  "cards": {
+    "Wax-Wane Witness": "Name:Wax-Wane Witness\nManaCost:3 W\nTypes:Creature Bat Cleric\nPT:2/4\nK:Flying\nK:Vigilance\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPump | TriggerDescription$ Whenever you gain or lose life during your turn, CARDNAME gets +1/+0 until end of turn.\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever you gain or lose life during your turn, CARDNAME gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nOracle:Flying, vigilance\\nWhenever you gain or lose life during your turn, Wax-Wane Witness gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wax-Wane Witness"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

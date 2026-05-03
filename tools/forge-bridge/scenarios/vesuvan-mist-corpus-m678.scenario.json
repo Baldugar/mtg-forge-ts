@@ -1,0 +1,23 @@
+{
+  "id": "vesuvan-mist-corpus-m678",
+  "description": "M6 corpus — Vesuvan Mist; in-hand parse.",
+  "seed": 63418,
+  "cards": {
+    "Vesuvan Mist": "Name:Vesuvan Mist\nManaCost:1 U\nTypes:Instant\nK:Kicker:1 B\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+!token | TgtPrompt$ Select target nontoken, nonland permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBConjure | SpellDescription$ Return target nontoken, nonland permanent to its owner's hand.\nSVar:DBConjure:DB$ MakeCard | Condition$ Kicked | Conjure$ True | DefinedName$ Targeted | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate | StackDescription$ SpellDescription | SpellDescription$ If this spell was kicked, conjure a duplicate of that card into your hand.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Color$Black\nOracle:Kicker {1}{B}\\nReturn target nontoken, nonland permanent to its owner's hand. If this spell was kicked, conjure a duplicate of that card into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vesuvan Mist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

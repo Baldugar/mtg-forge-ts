@@ -1,0 +1,23 @@
+{
+  "id": "tempest-hawk-corpus-m678",
+  "description": "M6 corpus — Tempest Hawk; in-hand parse.",
+  "seed": 61822,
+  "cards": {
+    "Tempest Hawk": "Name:Tempest Hawk\nManaCost:2 W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigSearch | OptionalDecider$ You | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, you may search your library for a card named Tempest Hawk, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedTempest Hawk | ChangeNum$ 1 | ShuffleNonMandatory$ True\nK:A deck can have any number of cards named CARDNAME.\nOracle:Flying\\nWhenever this creature deals combat damage to a player, you may search your library for a card named Tempest Hawk, reveal it, put it into your hand, then shuffle.\\nA deck can have any number of cards named Tempest Hawk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempest Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

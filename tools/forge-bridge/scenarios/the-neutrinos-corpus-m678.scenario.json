@@ -1,0 +1,23 @@
+{
+  "id": "the-neutrinos-corpus-m678",
+  "description": "M6 corpus — The Neutrinos; in-hand parse.",
+  "seed": 62081,
+  "cards": {
+    "The Neutrinos": "Name:The Neutrinos\nManaCost:2 R W\nTypes:Legendary Creature Elf Rebel\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Alliance — Whenever another creature you control enters, CARDNAME get +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attack, exile up to one target creature you own, then return it to the battlefield under your control tapped and attacking.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TargetMin$ 0 | TargetMax$ 1 | ValidTgtsDesc$ creature you own | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | Tapped$ True | Attacking$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Creature\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nAlliance — Whenever another creature you control enters, The Neutrinos get +1/+0 until end of turn.\\nWhenever The Neutrinos attack, exile up to one target creature you own, then return it to the battlefield under your control tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Neutrinos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

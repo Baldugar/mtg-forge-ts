@@ -1,0 +1,23 @@
+{
+  "id": "the-fourteenth-doctor-corpus-m678",
+  "description": "M6 corpus — The Fourteenth Doctor; in-hand parse.",
+  "seed": 62043,
+  "cards": {
+    "The Fourteenth Doctor": "Name:The Fourteenth Doctor\nManaCost:RG W U\nTypes:Legendary Creature Time Lord Doctor\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When you cast this spell, reveal the top fourteen cards of your library. Put all Doctor cards revealed this way into your graveyard and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 14 | Reveal$ True | ChangeNum$ All | ChangeValid$ Doctor | DestinationZone$ Graveyard | RestRandomOrder$ True\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Doctor.YouOwn+ThisTurnEnteredFrom_Library | ChoiceZone$ Graveyard | PumpKeywords$ Haste | PumpDuration$ EOT | SpellDescription$ You may have CARDNAME enter as a copy of a Doctor card in your graveyard that was put there from your library this turn. If you do, it gains haste until end of turn.\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Doctor\nOracle:When you cast this spell, reveal the top fourteen cards of your library. Put all Doctor cards revealed this way into your graveyard and the rest on the bottom of your library in a random order.\\nYou may have The Fourteenth Doctor enter as a copy of a Doctor card in your graveyard that was put there from your library this turn. If you do, it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fourteenth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

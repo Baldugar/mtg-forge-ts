@@ -1,0 +1,23 @@
+{
+  "id": "zombie-cannibal-corpus-m678",
+  "description": "M6 corpus — Zombie Cannibal; in-hand parse.",
+  "seed": 64695,
+  "cards": {
+    "Zombie Cannibal": "Name:Zombie Cannibal\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may exile target card from that player's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in that player's graveyard | ValidTgts$ Card | TargetsWithDefinedController$ TriggeredTarget | SpellDescription$ Exile target card from that player's graveyard.\nOracle:Whenever Zombie Cannibal deals combat damage to a player, you may exile target card from that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zombie Cannibal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

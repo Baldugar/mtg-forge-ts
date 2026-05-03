@@ -1,0 +1,23 @@
+{
+  "id": "thassa-deep-dwelling-corpus-m678",
+  "description": "M6 corpus — Thassa, Deep-Dwelling; in-hand parse.",
+  "seed": 61968,
+  "cards": {
+    "Thassa, Deep-Dwelling": "Name:Thassa, Deep-Dwelling\nManaCost:3 U\nTypes:Legendary Enchantment Creature God\nPT:6/5\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT5 | Description$ As long as your devotion to blue is less than five, NICKNAME is not a creature.\nSVar:X:Count$Devotion.Blue\nSVar:BuffedBy:Permanent.Blue\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your end step, exile up to one other target creature you control, then return that card to the battlefield under your control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ValidTgts$ Creature.Other+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Tap | Cost$ 3 U | ValidTgts$ Creature.Other | IsCurse$ True | SpellDescription$ Tap another target creature.\nOracle:Indestructible\\nAs long as your devotion to blue is less than five, Thassa isn't a creature.\\nAt the beginning of your end step, exile up to one other target creature you control, then return that card to the battlefield under your control.\\n{3}{U}: Tap another target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thassa, Deep-Dwelling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

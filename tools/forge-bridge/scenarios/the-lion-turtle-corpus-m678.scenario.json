@@ -1,0 +1,23 @@
+{
+  "id": "the-lion-turtle-corpus-m678",
+  "description": "M6 corpus — The Lion-Turtle; in-hand parse.",
+  "seed": 62064,
+  "cards": {
+    "The Lion-Turtle": "Name:The Lion-Turtle\nManaCost:1 G U\nTypes:Legendary Creature Elder Cat Turtle\nPT:3/6\nK:Vigilance\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ LT3 | Description$ CARDNAME can't attack or block unless there are three or more Lesson cards in your graveyard.\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nSVar:X:Count$ValidGraveyard Lesson.YouOwn\nOracle:Vigilance, reach\\nWhen The Lion-Turtle enters, you gain 3 life.\\nThe Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Lion-Turtle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

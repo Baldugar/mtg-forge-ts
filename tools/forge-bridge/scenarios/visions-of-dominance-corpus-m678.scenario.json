@@ -1,0 +1,23 @@
+{
+  "id": "visions-of-dominance-corpus-m678",
+  "description": "M6 corpus — Visions of Dominance; in-hand parse.",
+  "seed": 63567,
+  "cards": {
+    "Visions of Dominance": "Name:Visions of Dominance\nManaCost:2 G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | SubAbility$ DBPump | StackDescription$ Put a +1/+1 counter on {c:Targeted}, then double the number of +1/+1 counters on it. | SpellDescription$ Put a +1/+1 counter on target creature, then double the number of +1/+1 counters on it.\nSVar:DBPump:DB$ MultiplyCounter | Defined$ Targeted | CounterType$ P1P1 | StackDescription$ None\nK:Flashback:8 G G:ReduceCost$ X:This spell costs {X} less to cast this way, where X is the greatest mana value of a commander you own on the battlefield or in the command zone.\nSVar:X:Count$ValidBattlefield,Command Card.IsCommander+YouOwn$GreatestCardManaCost\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature, then double the number of +1/+1 counters on it.\\nFlashback {8}{G}{G}. This spell costs {X} less to cast this way, where X is the greatest mana value of a commander you own on the battlefield or in the command zone. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visions of Dominance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

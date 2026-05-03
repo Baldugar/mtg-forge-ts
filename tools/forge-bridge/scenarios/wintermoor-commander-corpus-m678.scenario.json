@@ -1,0 +1,23 @@
+{
+  "id": "wintermoor-commander-corpus-m678",
+  "description": "M6 corpus — Wintermoor Commander; in-hand parse.",
+  "seed": 64278,
+  "cards": {
+    "Wintermoor Commander": "Name:Wintermoor Commander\nManaCost:W B\nTypes:Creature Human Knight\nPT:2/*\nK:Deathtouch\nS:Mode$ Continuous | CharacteristicDefining$ True | SetToughness$ X | Description$ CARDNAME's toughness is equal to the number of Knights you control.\nSVar:X:Count$Valid Knight.YouCtrl\nSVar:BuffedBy:Knight\nSVar:NoZeroToughnessAI:True\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target Knight you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Knight.YouCtrl+Other | TgtPrompt$ Select another target Knight you control | KW$ Indestructible\nDeckHints:Type$Knight\nOracle:Deathtouch\\nWintermoor Commander's toughness is equal to the number of Knights you control.\\nWhenever Wintermoor Commander attacks, another target Knight you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wintermoor Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

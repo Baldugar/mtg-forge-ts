@@ -1,0 +1,23 @@
+{
+  "id": "undying-malice-corpus-m678",
+  "description": "M6 corpus — Undying Malice; in-hand parse.",
+  "seed": 63039,
+  "cards": {
+    "Undying Malice": "Name:Undying Malice\nManaCost:B\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature | Triggers$ DiesTrigger | StackDescription$ Until end of turn, {c:Targeted} gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\" | SpellDescription$ Until end of turn, target creature gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\"\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy | WithCountersType$ P1P1\nDeckHas:Ability$Counters\nOracle:Until end of turn, target creature gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undying Malice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

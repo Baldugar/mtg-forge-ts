@@ -1,0 +1,23 @@
+{
+  "id": "vraska-s-stoneglare-corpus-m678",
+  "description": "M6 corpus — Vraska's Stoneglare; in-hand parse.",
+  "seed": 63709,
+  "cards": {
+    "Vraska's Stoneglare": "Name:Vraska's Stoneglare\nManaCost:4 B G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature. You gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Targeted$CardToughness | SubAbility$ DBSearch | StackDescription$ REP You gain_{p:You} gains | SpellDescription$ You gain life equal to its toughness.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedVraska; Regal Gorgon | Optional$ True | SpellDescription$ You may search your library and/or graveyard from a card named Vraska, Regal Gorgon, reveal it, and put it into your hand. If you search your library this way, shuffle it.\nDeckHints:Name$Vraska, Regal Gorgon\nDeckHas:Ability$LifeGain\nOracle:Destroy target creature. You gain life equal to its toughness. You may search your library and/or graveyard for a card named Vraska, Regal Gorgon, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska's Stoneglare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

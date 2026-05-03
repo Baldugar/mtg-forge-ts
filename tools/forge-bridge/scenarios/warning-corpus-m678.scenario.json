@@ -1,0 +1,23 @@
+{
+  "id": "warning-corpus-m678",
+  "description": "M6 corpus — Warning; in-hand parse.",
+  "seed": 63897,
+  "cards": {
+    "Warning": "Name:Warning\nManaCost:W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nOracle:Prevent all combat damage that would be dealt by target attacking creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

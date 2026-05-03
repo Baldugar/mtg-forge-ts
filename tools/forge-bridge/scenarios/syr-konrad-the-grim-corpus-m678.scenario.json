@@ -1,0 +1,23 @@
+{
+  "id": "syr-konrad-the-grim-corpus-m678",
+  "description": "M6 corpus — Syr Konrad, the Grim; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Syr Konrad, the Grim": "Name:Syr Konrad, the Grim\nManaCost:3 B B\nTypes:Legendary Creature Human Knight\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Hand,Graveyard,Exile,Stack,Library,Command | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, CARDNAME deals 1 damage to each opponent.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigDmg | Secondary$ True | TriggerDescription$ Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, CARDNAME deals 1 damage to each opponent.\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Any | ValidCard$ Card.Creature+Other+YouOwn | TriggerZones$ Battlefield | Execute$ TrigDmg | Secondary$ True | TriggerDescription$ Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nA:AB$ Mill | Cost$ 1 B | NumCards$ 1 | Defined$ Player | AILogic$ AtOppEOT | SpellDescription$ Each player mills a card.\nOracle:Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, Syr Konrad, the Grim deals 1 damage to each opponent.\\n{1}{B}: Each player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Konrad, the Grim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

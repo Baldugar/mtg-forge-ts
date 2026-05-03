@@ -1,0 +1,23 @@
+{
+  "id": "ulamog-the-defiler-corpus-m678",
+  "description": "M6 corpus — Ulamog, the Defiler; in-hand parse.",
+  "seed": 62938,
+  "cards": {
+    "Ulamog, the Defiler": "Name:Ulamog, the Defiler\nManaCost:10\nTypes:Legendary Creature Eldrazi\nPT:7/7\nK:Ward:Sac<2/Permanent>\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When you cast this spell, target opponent exiles the top of half their library, rounded up.\nSVar:TrigExile:DB$ Dig | ValidTgts$ Opponent | DestinationZone$ Exile | DigNum$ Z | ChangeNum$ All\nSVar:Z:TargetedPlayer$CardsInLibrary/HalfUp\nK:etbCounter:P1P1:Y:no Condition:CARDNAME enters with a number of +1/+1 counters on it equal to the greatest mana value among cards in exile.\nSVar:Y:Count$ValidExile Card$GreatestCardManaCost\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Annihilator:X | Description$ NICKNAME has annihilator X, where X is the number of +1/+1 counters on it.\nSVar:X:Count$CardCounters.P1P1\nDeckHas:Ability$Sacrifice|Counters\nOracle:When you cast this spell, target opponent exiles the top half of their library, rounded up.\\nWard–Sacrifice two permanents.\\nUlamog, the Defiler enters with a number of +1/+1 counters on it equal to the greatest mana value among cards in exile.\\nUlamog has annihilator X, where X is the number of +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulamog, the Defiler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

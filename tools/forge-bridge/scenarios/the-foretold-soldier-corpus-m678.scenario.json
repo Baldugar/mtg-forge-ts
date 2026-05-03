@@ -1,0 +1,25 @@
+{
+  "id": "the-foretold-soldier-corpus-m678",
+  "description": "M6 corpus — The Foretold Soldier; ETB-on-bf.",
+  "seed": 62042,
+  "cards": {
+    "The Foretold Soldier": "Name:The Foretold Soldier\nManaCost:2 G G\nTypes:Creature Alien Zombie Soldier\nPT:6/6\nK:Foretell:1 G\nK:CARDNAME must be blocked if able.\nS:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ CARDNAME can't be blocked by more than one creature.\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals damage, exile it face down. It becomes foretold.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | ExileFaceDown$ True | Mandatory$ True | Foretold$ True\nOracle:The Foretold Soldier must be blocked if able.\\nThe Foretold Soldier can't be blocked by more than one creature.\\nWhenever The Foretold Soldier deals damage, exile it face down. It becomes foretold.\\nForetell {1}{G} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Foretold Soldier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

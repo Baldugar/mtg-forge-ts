@@ -1,0 +1,23 @@
+{
+  "id": "verazol-the-split-current-corpus-m678",
+  "description": "M6 corpus — Verazol, the Split Current; in-hand parse.",
+  "seed": 63392,
+  "cards": {
+    "Verazol, the Split Current": "Name:Verazol, the Split Current\nManaCost:X G U\nTypes:Legendary Creature Serpent\nPT:0/0\nK:etbCounter:P1P1:Y:no Condition:CARDNAME enters with a +1/+1 counter on it for each mana spent to cast it.\nSVar:X:Count$xPaid\nSVar:Y:Count$CastTotalManaSpent\nT:Mode$ SpellCast | ValidSA$ Spell.Kicked | ValidActivatingPlayer$ You | Execute$ DBRemoveCounters | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast a kicked spell, you may remove two +1/+1 counters from NICKNAME. If you do, copy that spell. You may choose new targets for that copy. (A copy of a permanent spell becomes a token.)\nSVar:DBRemoveCounters:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 2 | RememberRemoved$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopySpellAbility | ConditionCheckSVar$ Z | SubAbility$ DBCleanup | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Z:Count$RememberedSize\nDeckHas:Ability$Counters\nOracle:Verazol, the Split Current enters with a +1/+1 counter on it for each mana spent to cast it.\\nWhenever you cast a kicked spell, you may remove two +1/+1 counters from Verazol. If you do, copy that spell. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verazol, the Split Current"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

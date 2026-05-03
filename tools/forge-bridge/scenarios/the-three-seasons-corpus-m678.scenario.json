@@ -1,0 +1,23 @@
+{
+  "id": "the-three-seasons-corpus-m678",
+  "description": "M6 corpus — The Three Seasons; in-hand parse.",
+  "seed": 62117,
+  "cards": {
+    "The Three Seasons": "Name:The Three Seasons\nManaCost:G U\nTypes:Enchantment Saga\nK:Chapter:3:DBMill,DBChangeZone1,DBChangeZone2\nSVar:DBMill:DB$ Mill | NumCards$ 3 | Defined$ You | SpellDescription$ Mill three cards.\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target snow permanent cards in your graveyard | ValidTgts$ Permanent.Snow+YouOwn | SpellDescription$ Return up to two target snow permanent cards from your graveyard to your hand.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | DefinedPlayer$ Player | Chooser$ You | ChangeNum$ 3 | Hidden$ True | Shuffle$ True | Mandatory$ True | SpellDescription$ Choose three cards in each graveyard. Their owners shuffle those cards into their libraries.\nDeckHas:Ability$Mill\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Mill three cards.\\nII — Return up to two target snow permanent cards from your graveyard to your hand.\\nIII — Choose three cards in each graveyard. Their owners shuffle those cards into their libraries.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Three Seasons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

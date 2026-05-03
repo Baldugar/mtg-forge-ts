@@ -1,0 +1,23 @@
+{
+  "id": "watcher-for-tomorrow-corpus-m678",
+  "description": "M6 corpus — Watcher for Tomorrow; in-hand parse.",
+  "seed": 63944,
+  "cards": {
+    "Watcher for Tomorrow": "Name:Watcher for Tomorrow\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Hideaway:4\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBReturn | TriggerDescription$ When CARDNAME leaves the battlefield, put the exiled card into its owner's hand.\nSVar:DBReturn:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Hand\nOracle:Hideaway 4 (When this permanent enters, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\\nWatcher for Tomorrow enters tapped.\\nWhen Watcher for Tomorrow leaves the battlefield, put the exiled card into its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Watcher for Tomorrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-phasing-of-zhalfir-corpus-m678",
+  "description": "M6 corpus — The Phasing of Zhalfir; in-hand parse.",
+  "seed": 62086,
+  "cards": {
+    "The Phasing of Zhalfir": "Name:The Phasing of Zhalfir\nManaCost:2 U U\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:DBPhase,DBPhase,DBDestroyAll\nSVar:DBPhase:DB$ Phases | ValidTgts$ Permanent.nonLand+Other | TgtPrompt$ Select another target nonland permanent | SubAbility$ DBEffect | SpellDescription$ Another target nonland permanent phases out. It can't phase in for as long as you control CARDNAME.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CantPhaseIn | RememberObjects$ Targeted | Duration$ AsLongAsControl\nSVar:CantPhaseIn:Mode$ CantPhaseIn | ValidCard$ Card.phasedOutIsRemembered | Description$ It can't phase in for as long as you control EFFECTSOURCE.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBRepeat | SpellDescription$ Destroy all creatures. For each creature destroyed this way, its controller creates a 2/2 black Phyrexian creature token.\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | DefinedCards$ DirectRemembered | RepeatSubAbility$ DBToken | SubAbility$ DBCleanup | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenOwner$ ImprintedController | TokenScript$ b_2_2_phyrexian\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ true\nDeckHas:Ability$Token & Type$Phyrexian & Color$Black\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI, II — Another target nonland permanent phases out. It can't phase in for as long as you control The Phasing of Zhalfir.\\nIII — Destroy all creatures. For each creature destroyed this way, its controller creates a 2/2 black Phyrexian creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Phasing of Zhalfir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

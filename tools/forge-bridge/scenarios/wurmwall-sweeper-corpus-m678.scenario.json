@@ -1,0 +1,23 @@
+{
+  "id": "wurmwall-sweeper-corpus-m678",
+  "description": "M6 corpus — Wurmwall Sweeper; in-hand parse.",
+  "seed": 64484,
+  "cards": {
+    "Wurmwall Sweeper": "Name:Wurmwall Sweeper\nManaCost:2\nTypes:Artifact Spacecraft\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this Spacecraft enters, surveil 2.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nK:Station:4\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE4_CHARGE | AddType$ Creature | AddKeyword$ Flying | Description$ STATION 4+ Flying\nOracle:When this Spacecraft enters, surveil 2.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 4+.)\\nSTATION 4+\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wurmwall Sweeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

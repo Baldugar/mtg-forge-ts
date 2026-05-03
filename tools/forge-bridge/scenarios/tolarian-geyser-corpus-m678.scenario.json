@@ -1,0 +1,23 @@
+{
+  "id": "tolarian-geyser-corpus-m678",
+  "description": "M6 corpus — Tolarian Geyser; in-hand parse.",
+  "seed": 62472,
+  "cards": {
+    "Tolarian Geyser": "Name:Tolarian Geyser\nManaCost:2 U\nTypes:Sorcery\nK:Kicker:W\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target creature to its owner's hand. Draw a card. If this spell was kicked, you gain 3 life.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | Condition$ Kicked\nDeckHas:Ability$LifeGain\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nReturn target creature to its owner's hand. Draw a card. If this spell was kicked, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolarian Geyser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

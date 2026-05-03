@@ -1,0 +1,23 @@
+{
+  "id": "twists-and-turns-corpus-m678",
+  "description": "M6 corpus — Twists and Turns; in-hand parse.",
+  "seed": 62895,
+  "cards": {
+    "Twists and Turns": "Name:Twists and Turns\nManaCost:G\nTypes:Enchantment\nR:Event$ Explore | ActiveZones$ Battlefield | ValidExplorer$ Creature.YouCtrl | ReplaceWith$ DBScry | Description$ If a creature you control would explore, instead you scry 1, then that creature explores.\nSVar:DBScry:DB$ Scry | SubAbility$ DBExplore\nSVar:DBExplore:DB$ Explore | Defined$ ReplacedCard\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExplore | TriggerDescription$ When CARDNAME enters, target creature you control explores.\nSVar:TrigExplore:DB$ Explore | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | CheckSVar$ Count$Valid Land.YouCtrl | SVarCompare$ GE7 | Execute$ TrigTransform | TriggerDescription$ When a land you control enters, if you control seven or more lands, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:If a creature you control would explore, instead you scry 1, then that creature explores.\\nWhen Twists and Turns enters, target creature you control explores.\\nWhen a land you control enters, if you control seven or more lands, transform Twists and Turns.\n\nALTERNATE\n\nName:Mycoid Maze\nManaCost:no cost\nTypes:Land Cave\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Dig | Cost$ 3 G T | ForceRevealToController$ True | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature | RestRandomOrder$ True | SpellDescription$ Look at the top four cards of your library. You may reveal a creature card from among them and put them into your hand. Put the rest on the bottom of your library in a random order.\nOracle:(Transforms from Twists and Turns.)\\n{T}: Add {G}.\\n{3}{G}, {T}: Look at the top four cards of your library. You may reveal a creature card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twists and Turns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

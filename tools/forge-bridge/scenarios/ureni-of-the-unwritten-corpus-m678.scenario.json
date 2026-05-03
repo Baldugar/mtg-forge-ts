@@ -1,0 +1,23 @@
+{
+  "id": "ureni-of-the-unwritten-corpus-m678",
+  "description": "M6 corpus — Ureni of the Unwritten; in-hand parse.",
+  "seed": 63168,
+  "cards": {
+    "Ureni of the Unwritten": "Name:Ureni of the Unwritten\nManaCost:4 G U R\nTypes:Legendary Creature Spirit Dragon\nPT:7/7\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever NICKNAME enters or attacks, look at the top eight cards of your library. You may put a Dragon creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, look at the top eight cards of your library. You may put a Dragon creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 8 | ChangeNum$ 1 | ChangeValid$ Creature.Dragon | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | Optional$ True\nSVar:HasAttackEffect:TRUE\nOracle:Flying, trample\\nWhenever Ureni enters or attacks, look at the top eight cards of your library. You may put a Dragon creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ureni of the Unwritten"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

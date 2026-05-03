@@ -1,0 +1,23 @@
+{
+  "id": "warden-of-the-woods-corpus-m678",
+  "description": "M6 corpus — Warden of the Woods; in-hand parse.",
+  "seed": 63878,
+  "cards": {
+    "Warden of the Woods": "Name:Warden of the Woods\nManaCost:4 G G\nTypes:Creature Treefolk\nPT:5/7\nK:Vigilance\nT:Mode$ BecomesTarget | ValidSource$ SpellAbility.OppCtrl | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability an opponent controls, you may draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | OptionalDecider$ You\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhenever Warden of the Woods becomes the target of a spell or ability an opponent controls, you may draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warden of the Woods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

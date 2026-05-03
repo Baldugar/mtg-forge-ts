@@ -1,0 +1,23 @@
+{
+  "id": "virtue-of-persistence-corpus-m678",
+  "description": "M6 corpus — Virtue of Persistence; in-hand parse.",
+  "seed": 63546,
+  "cards": {
+    "Virtue of Persistence": "Name:Virtue of Persistence\nManaCost:5 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ChangeNum$ 1 | Mandatory$ True | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature\nDeckHas:Ability$LifeGain|Graveyard\nDeckHints:Ability$Mill|Discard\nAlternateMode:Adventure\nOracle:At the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control.\n\nALTERNATE\n\nName:Locthwain Scorn\nManaCost:1 B\nTypes:Sorcery Adventure\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | SubAbility$ DBGainLife | IsCurse$ True | SpellDescription$ Target creature gets -3/-3 until end of turn.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nOracle:Target creature gets -3/-3 until end of turn. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virtue of Persistence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

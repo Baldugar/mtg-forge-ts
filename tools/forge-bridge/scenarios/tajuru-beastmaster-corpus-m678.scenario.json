@@ -1,0 +1,23 @@
+{
+  "id": "tajuru-beastmaster-corpus-m678",
+  "description": "M6 corpus — Tajuru Beastmaster; in-hand parse.",
+  "seed": 61608,
+  "cards": {
+    "Tajuru Beastmaster": "Name:Tajuru Beastmaster\nManaCost:5 G\nTypes:Creature Elf Warrior Ally\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Tajuru Beastmaster or another Ally you control enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tajuru Beastmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

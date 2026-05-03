@@ -1,0 +1,23 @@
+{
+  "id": "yomiji-who-bars-the-way-corpus-m678",
+  "description": "M6 corpus — Yomiji, Who Bars the Way; in-hand parse.",
+  "seed": 64560,
+  "cards": {
+    "Yomiji, Who Bars the Way": "Name:Yomiji, Who Bars the Way\nManaCost:5 W W\nTypes:Legendary Creature Spirit\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.Legendary+Other | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a legendary permanent other than CARDNAME is put into a graveyard from the battlefield, return that card to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Whenever a legendary permanent other than Yomiji, Who Bars the Way is put into a graveyard from the battlefield, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yomiji, Who Bars the Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "valakut-exploration-corpus-m678",
+  "description": "M6 corpus — Valakut Exploration; in-hand parse.",
+  "seed": 63215,
+  "cards": {
+    "Valakut Exploration": "Name:Valakut Exploration\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Landfall — Whenever a land you control enters, exile the top card of your library. You may play that card for as long as it remains exiled.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | Duration$ Permanent | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card for as long as it remains exiled.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigGraveyard | CheckSVar$ Y | SVarCompare$ GT0 | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if there are cards exiled with CARDNAME, put them into their owner's graveyard, then CARDNAME deals that much damage to each opponent.\nSVar:TrigGraveyard:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Graveyard | RememberChanged$ True | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ X | SubAbility$ DBCleanup\nSVar:X:Remembered$Amount\nSVar:Y:Count$ValidExile Card.ExiledWithSource\nSVar:BuffedBy:Land\nDeckHas:Ability$Graveyard\nOracle:Landfall — Whenever a land you control enters, exile the top card of your library. You may play that card for as long as it remains exiled.\\nAt the beginning of your end step, if there are cards exiled with Valakut Exploration, put them into their owner's graveyard, then Valakut Exploration deals that much damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valakut Exploration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

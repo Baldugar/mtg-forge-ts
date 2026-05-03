@@ -1,0 +1,23 @@
+{
+  "id": "tifa-martial-artist-corpus-m678",
+  "description": "M6 corpus — Tifa, Martial Artist; in-hand parse.",
+  "seed": 62377,
+  "cards": {
+    "Tifa, Martial Artist": "Name:Tifa, Martial Artist\nManaCost:1 R G W\nTypes:Legendary Creature Human Monk\nPT:4/4\nK:Melee\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl+powerGE7 | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigUntapAll | TriggerDescription$ Whenever one or more creatures you control with power 7 or greater deal combat damage to a player, untap all creatures you control. If it's the first combat phase of your turn, there is an additional combat phase after this phase.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | ConditionFirstCombat$ True | AfterPhase$ EndCombat\nOracle:Melee (Whenever this creature attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)\\nWhenever one or more creatures you control with power 7 or greater deal combat damage to a player, untap all creatures you control. If it's the first combat phase of your turn, there is an additional combat phase after this phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tifa, Martial Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

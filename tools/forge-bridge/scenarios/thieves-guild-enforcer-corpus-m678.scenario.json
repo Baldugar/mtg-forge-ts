@@ -1,0 +1,23 @@
+{
+  "id": "thieves-guild-enforcer-corpus-m678",
+  "description": "M6 corpus — Thieves' Guild Enforcer; in-hand parse.",
+  "seed": 62153,
+  "cards": {
+    "Thieves' Guild Enforcer": "Name:Thieves' Guild Enforcer\nManaCost:B\nTypes:Creature Human Rogue\nPT:1/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Rogue.Other+YouCtrl | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME or another Rogue you control enters, each opponent mills two cards.\nSVar:TrigMill:DB$ Mill | Defined$ Player.Opponent | NumCards$ 2\nSVar:BuffedBy:Rogue\nDeckHints:Type$Rogue\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 1 | AddKeyword$ Deathtouch | CheckSVar$ X | SVarCompare$ GE8 | Description$ As long as an opponent has eight or more cards in their graveyard, CARDNAME gets +2/+1 and has deathtouch.\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nOracle:Flash\\nWhenever Thieves' Guild Enforcer or another Rogue you control enters, each opponent mills two cards.\\nAs long as an opponent has eight or more cards in their graveyard, Thieves' Guild Enforcer gets +2/+1 and has deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieves' Guild Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

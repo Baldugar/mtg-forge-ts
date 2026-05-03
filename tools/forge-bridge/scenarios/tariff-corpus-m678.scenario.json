@@ -1,0 +1,23 @@
+{
+  "id": "tariff-corpus-m678",
+  "description": "M6 corpus — Tariff; in-hand parse.",
+  "seed": 61714,
+  "cards": {
+    "Tariff": "Name:Tariff\nManaCost:1 W\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChooseCard | SpellDescription$ Each player sacrifices the creature they control with the highest mana value unless they pay that creature's mana cost. If two or more creatures a player controls are tied for highest, that player chooses one.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.greatestCMC_CreatureControlledByRemembered | Mandatory$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | Defined$ Player.IsRemembered | SacValid$ Card.ChosenCard | SacMessage$ the creature with the highest mana value | UnlessCost$ DefinedCost_ChosenCard | UnlessPayer$ Player.IsRemembered\nAI:RemoveDeck:All\nOracle:Each player sacrifices the creature they control with the highest mana value unless they pay that creature's mana cost. If two or more creatures a player controls are tied for highest, that player chooses one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tariff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

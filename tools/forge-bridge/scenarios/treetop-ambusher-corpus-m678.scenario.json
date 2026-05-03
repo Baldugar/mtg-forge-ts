@@ -1,0 +1,23 @@
+{
+  "id": "treetop-ambusher-corpus-m678",
+  "description": "M6 corpus — Treetop Ambusher; in-hand parse.",
+  "seed": 62697,
+  "cards": {
+    "Treetop Ambusher": "Name:Treetop Ambusher\nManaCost:1 G\nTypes:Creature Elf Berserker\nPT:2/1\nK:Dash:1 G\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target creature you control gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nOracle:Dash {1}{G} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)\\nWhenever Treetop Ambusher attacks, target creature you control gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treetop Ambusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

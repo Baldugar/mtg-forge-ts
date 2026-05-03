@@ -1,0 +1,23 @@
+{
+  "id": "waylay-corpus-m678",
+  "description": "M6 corpus — Waylay; in-hand parse.",
+  "seed": 63989,
+  "cards": {
+    "Waylay": "Name:Waylay\nManaCost:2 W\nTypes:Instant\nA:SP$ Token | TokenAmount$ 3 | TokenScript$ w_2_2_knight | RememberTokens$ True | SubAbility$ DBDelayedTrigger | SpellDescription$ Create three 2/2 white Knight creature tokens.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | RememberObjects$ Remembered | Mode$ Phase | Phase$ Cleanup | Execute$ TrigExileAll | SubAbility$ DBCleanup | SpellDescription$ Exile them at the beginning of the next cleanup step.\nSVar:TrigExileAll:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Battlefield | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Knight\nOracle:Create three 2/2 white Knight creature tokens. Exile them at the beginning of the next cleanup step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waylay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vigean-intuition-corpus-m678",
+  "description": "M6 corpus — Vigean Intuition; in-hand parse.",
+  "seed": 63485,
+  "cards": {
+    "Vigean Intuition": "Name:Vigean Intuition\nManaCost:3 G U\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Card | SubAbility$ DBDig | SpellDescription$ Choose a card type, then reveal the top four cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\nSVar:DBDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card.ChosenType | DestinationZone2$ Graveyard\nAI:RemoveDeck:All\nOracle:Choose a card type, then reveal the top four cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vigean Intuition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

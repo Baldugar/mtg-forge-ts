@@ -1,0 +1,23 @@
+{
+  "id": "tormentor-exarch-corpus-m678",
+  "description": "M6 corpus — Tormentor Exarch; in-hand parse.",
+  "seed": 62530,
+  "cards": {
+    "Tormentor Exarch": "Name:Tormentor Exarch\nManaCost:3 R\nTypes:Creature Phyrexian Cleric\nPT:2/2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBPump,DBCurse\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SpellDescription$ Target creature gets +2/+0 until end of turn.\nSVar:DBCurse:DB$ Pump | ValidTgts$ Creature | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -0/-2 until end of turn.\nSVar:PlayMain1:TRUE\nOracle:When Tormentor Exarch enters, choose one —\\n• Target creature gets +2/+0 until end of turn.\\n• Target creature gets -0/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tormentor Exarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

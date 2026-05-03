@@ -1,0 +1,25 @@
+{
+  "id": "tawnos-s-wand-corpus-m678",
+  "description": "M6 corpus — Tawnos's Wand; ETB-on-bf.",
+  "seed": 61748,
+  "cards": {
+    "Tawnos's Wand": "Name:Tawnos's Wand\nManaCost:4\nTypes:Artifact\nA:AB$ Effect | Cost$ 2 T | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nAI:RemoveDeck:Random\nOracle:{2}, {T}: Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tawnos's Wand"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

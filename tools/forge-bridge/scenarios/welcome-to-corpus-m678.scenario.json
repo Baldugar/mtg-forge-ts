@@ -1,0 +1,23 @@
+{
+  "id": "welcome-to-corpus-m678",
+  "description": "M6 corpus — Welcome to . . .; in-hand parse.",
+  "seed": 64046,
+  "cards": {
+    "Welcome to . . .": "Name:Welcome to . . .\nManaCost:1 G G\nTypes:Enchantment Saga\nK:Chapter:3:DBAnimateAll,DBToken,DBWrath\nSVar:DBAnimateAll:DB$ Animate | ValidTgts$ Artifact.nonCreature+OppCtrl | TgtPrompt$ Select target noncreature artifact | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | Defined$ Targeted | Power$ 0 | Toughness$ 4 | Types$ Creature,Artifact,Wall | Keywords$ Defender | Duration$ AsLongAsControl | SpellDescription$ For each opponent, up to one target noncreature artifact they control becomes a 0/4 Wall artifact creature with defender for as long as you control this Saga.\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenScript$ g_3_3_dinosaur_trample | PumpKeywords$ Haste | SpellDescription$ Create a 3/3 green Dinosaur creature token with trample. It gains haste until end of turn.\nSVar:DBWrath:DB$ DestroyAll | ValidCards$ Creature.Wall | SubAbility$ DBTransform | SpellDescription$ Destroy all Walls. Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Dinosaur\nDeckHints:Type$Dinosaur & Ability$Graveyard|Mill\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — For each opponent, up to one target noncreature artifact they control becomes a 0/4 Wall artifact creature with defender for as long as you control this Saga.\\nII — Create a 3/3 green Dinosaur creature token with trample. It gains haste until end of turn.\\nIII — Destroy all Walls. Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Jurassic Park\nManaCost:no cost\nTypes:Legendary Land\nS:Mode$ Continuous | Affected$ Dinosaur.YouOwn | AffectedZone$ Graveyard | AddKeyword$ Escape:CardManaCost ExileFromGrave<3/Card.Other/other> | Description$ Each Dinosaur card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add {G} for each Dinosaur you control.\nSVar:X:Count$Valid Dinosaur.YouCtrl\nOracle:(Transforms from Welcome to . . .)\\nEach Dinosaur card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)\\n{T}: Add {G} for each Dinosaur you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Welcome to . . ."
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

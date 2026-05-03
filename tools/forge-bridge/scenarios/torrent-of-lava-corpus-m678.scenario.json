@@ -1,0 +1,23 @@
+{
+  "id": "torrent-of-lava-corpus-m678",
+  "description": "M6 corpus — Torrent of Lava; in-hand parse.",
+  "seed": 62540,
+  "cards": {
+    "Torrent of Lava": "Name:Torrent of Lava\nManaCost:X R R\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to each creature without flying. | StackDescription$ SpellDescription\nSVar:X:Count$xPaid\nS:Mode$ Continuous | Affected$ Creature | AddAbility$ TOPrevent | AddSVar$ DBPrevent & DBReplace | EffectZone$ Stack | Description$ As long as CARDNAME is on the stack, each creature has \"{T}: Prevent the next 1 damage that would be dealt to this creature by CARDNAME this turn.\"\nSVar:TOPrevent:AB$ Effect | Cost$ T | RememberObjects$ Self | ImprintCards$ OriginalHost | ReplacementEffects$ DBPrevent | ForgetOnMoved$ Battlefield | SpellDescription$ Prevent the next 1 damage that would be dealt to CARDNAME by ORIGINALHOST this turn. | StackDescription$ SpellDescription\nSVar:DBPrevent:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.IsImprinted | ValidTarget$ Card.IsRemembered | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ Prevent the next 1 damage that would be dealt to EFFECTSOURCE by ORIGINALHOST this turn.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 1 | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Torrent of Lava deals X damage to each creature without flying.\\nAs long as Torrent of Lava is on the stack, each creature has \"{T}: Prevent the next 1 damage that would be dealt to this creature by Torrent of Lava this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torrent of Lava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

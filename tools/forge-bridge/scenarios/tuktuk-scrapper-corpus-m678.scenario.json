@@ -1,0 +1,23 @@
+{
+  "id": "tuktuk-scrapper-corpus-m678",
+  "description": "M6 corpus — Tuktuk Scrapper; in-hand parse.",
+  "seed": 62818,
+  "cards": {
+    "Tuktuk Scrapper": "Name:Tuktuk Scrapper\nManaCost:3 R\nTypes:Creature Goblin Artificer Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TuktukDestroy | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may destroy target artifact. If that artifact is put into a graveyard this way, CARDNAME deals damage to that artifact's controller equal to the number of Allies you control.\nSVar:TuktukDestroy:DB$ Destroy | ValidTgts$ Artifact | RememberDestroyed$ True | SubAbility$ TuktukDamage\nSVar:TuktukDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | ConditionCheckSVar$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Ally.YouCtrl\nSVar:Y:Remembered$Amount\nDeckHints:Type$Ally\nOracle:Whenever Tuktuk Scrapper or another Ally you control enters, you may destroy target artifact. If that artifact is put into a graveyard this way, Tuktuk Scrapper deals damage to that artifact's controller equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tuktuk Scrapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

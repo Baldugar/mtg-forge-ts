@@ -1,0 +1,23 @@
+{
+  "id": "uro-titan-of-nature-s-wrath-corpus-m678",
+  "description": "M6 corpus — Uro, Titan of Nature's Wrath; in-hand parse.",
+  "seed": 63175,
+  "cards": {
+    "Uro, Titan of Nature's Wrath": "Name:Uro, Titan of Nature's Wrath\nManaCost:1 G U\nTypes:Legendary Creature Elder Giant\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When NICKNAME enters, sacrifice it unless it escaped.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self | ConditionNotPresent$ Card.Self+escaped\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When NICKNAME enters or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When NICKNAME enters or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | SubAbility$ DBLand\nSVar:DBLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1\nK:Escape:G G U U ExileFromGrave<5/Card.Other/other>\nDeckHas:Ability$LifeGain\nOracle:When Uro enters, sacrifice it unless it escaped.\\nWhenever Uro enters or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\\nEscape—{G}{G}{U}{U}, Exile five other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uro, Titan of Nature's Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-second-doctor-corpus-m678",
+  "description": "M6 corpus — The Second Doctor; in-hand parse.",
+  "seed": 62100,
+  "cards": {
+    "The Second Doctor": "Name:The Second Doctor\nManaCost:2 W U\nTypes:Legendary Creature Time Lord Doctor\nPT:2/4\nS:Mode$ Continuous | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ How Civil of You — At the beginning of your end step, each player may draw a card. Each opponent who does can't attack you or permanents you control during their next turn.\nSVar:TrigDraw:DB$ Draw | OptionalDecider$ True | Defined$ Player | RememberDrawn$ True | NumCards$ 1 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | EffectOwner$ RememberedOwner.Opponent | RememberObjects$ You | StaticAbilities$ STCantAttack | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Creature.YouCtrl | Target$ Player.IsRemembered,Permanent.RememberedPlayerCtrl | Description$ Each opponent who does can't attack you or permanents you control during their next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Players have no maximum hand size.\\nHow Civil of You — At the beginning of your end step, each player may draw a card. Each opponent who does can't attack you or permanents you control during their next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Second Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

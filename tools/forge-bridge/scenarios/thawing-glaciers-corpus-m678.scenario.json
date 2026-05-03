@@ -1,0 +1,25 @@
+{
+  "id": "thawing-glaciers-corpus-m678",
+  "description": "M6 corpus — Thawing Glaciers; ETB-on-bf.",
+  "seed": 61980,
+  "cards": {
+    "Thawing Glaciers": "Name:Thawing Glaciers\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ 1 T | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | Shuffle$ True | SubAbility$ DBDelTrig | SpellDescription$ Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle. Return CARDNAME to its owner's hand at the beginning of the next cleanup step.\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Cleanup | ValidPlayer$ Player | Execute$ TrigBounce | TriggerDescription$ Return CARDNAME to its owner's hand at the beginning of the next cleanup step.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nOracle:Thawing Glaciers enters tapped.\\n{1}, {T}: Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle. Return Thawing Glaciers to its owner's hand at the beginning of the next cleanup step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thawing Glaciers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

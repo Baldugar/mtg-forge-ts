@@ -1,0 +1,23 @@
+{
+  "id": "timely-ward-corpus-m678",
+  "description": "M6 corpus — Timely Ward; in-hand parse.",
+  "seed": 62416,
+  "cards": {
+    "Timely Ward": "Name:Timely Ward\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CastWithFlash | ValidCard$ Card.Self | ValidSA$ Spell.IsTargeting Valid Card.IsCommander | EffectZone$ All | Caster$ You | Description$ You may cast this spell as though it had flash if it targets a commander.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Indestructible | Description$ Enchanted creature has indestructible.\nAI:RemoveDeck:All\nOracle:You may cast this spell as though it had flash if it targets a commander.\\nEnchant creature\\nEnchanted creature has indestructible.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timely Ward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

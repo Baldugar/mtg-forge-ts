@@ -1,0 +1,25 @@
+{
+  "id": "zealous-inquisitor-corpus-m678",
+  "description": "M6 corpus — Zealous Inquisitor; ETB-on-bf.",
+  "seed": 64618,
+  "cards": {
+    "Zealous Inquisitor": "Name:Zealous Inquisitor\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:2/2\nA:AB$ Effect | Cost$ 1 W | ValidTgts$ Creature | TgtPrompt$ Select target creature to redirect the damage to | ReplacementEffects$ Zealous | Duration$ UntilHostLeavesPlayOrEOT | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next 1 damage that would be dealt to CARDNAME this turn is dealt to target creature instead.\nSVar:Zealous:Event$ DamageDone | ValidTarget$ Creature.EffectSource | ReplaceWith$ ZealousDmg | DamageTarget$ Remembered | Description$ The next 1 damage that would be dealt to EFFECTSOURCE this turn is dealt to target creature instead.\nSVar:ZealousDmg:DB$ ReplaceSplitDamage | DamageTarget$ Remembered\nAI:RemoveDeck:All\nOracle:{1}{W}: The next 1 damage that would be dealt to Zealous Inquisitor this turn is dealt to target creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zealous Inquisitor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

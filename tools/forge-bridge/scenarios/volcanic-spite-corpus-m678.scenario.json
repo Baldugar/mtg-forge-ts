@@ -1,0 +1,23 @@
+{
+  "id": "volcanic-spite-corpus-m678",
+  "description": "M6 corpus — Volcanic Spite; in-hand parse.",
+  "seed": 63655,
+  "cards": {
+    "Volcanic Spite": "Name:Volcanic Spite\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker,Battle | TgtPrompt$ Select target creature, planeswalker, or battle | NumDmg$ 3 | SubAbility$ DBBottom | SpellDescription$ CARDNAME deals 3 damage to target creature, planeswalker, or battle.\nSVar:DBBottom:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ You may put a card from your hand on the bottom of your library.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If you do, draw a card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Volcanic Spite deals 3 damage to target creature, planeswalker, or battle. You may put a card from your hand on the bottom of your library. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volcanic Spite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

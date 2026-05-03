@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-sinew-and-steel-corpus-m678",
+  "description": "M6 corpus — Sword of Sinew and Steel; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Sword of Sinew and Steel": "Name:Sword of Sinew and Steel\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfSinewAndSteelCE | AddKeyword$ Protection from black & Protection from red | Description$ Equipped creature gets +2/+2 and has protection from black and from red.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDestroyPlaneswalker | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, destroy up to one target planeswalker and up to one target artifact.\nSVar:TrigDestroyPlaneswalker:DB$ Destroy | ValidTgts$ Planeswalker | TgtPrompt$ Select target planeswalker | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DestroyArtifact | SpellDescription$ Destroy up to one target planeswalker.\nSVar:DestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Destroy up to one target artifact.\nSVar:SwordOfSinewAndSteelCE:SVar:MustBeBlocked:AttackingPlayerConservative\nOracle:Equipped creature gets +2/+2 and has protection from black and from red.\\nWhenever equipped creature deals combat damage to a player, destroy up to one target planeswalker and up to one target artifact.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Sinew and Steel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

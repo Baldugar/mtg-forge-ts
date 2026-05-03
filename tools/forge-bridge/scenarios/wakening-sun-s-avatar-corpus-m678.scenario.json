@@ -1,0 +1,23 @@
+{
+  "id": "wakening-sun-s-avatar-corpus-m678",
+  "description": "M6 corpus — Wakening Sun's Avatar; in-hand parse.",
+  "seed": 63737,
+  "cards": {
+    "Wakening Sun's Avatar": "Name:Wakening Sun's Avatar\nManaCost:5 W W W\nTypes:Creature Dinosaur Avatar\nPT:7/7\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, destroy all non-Dinosaur creatures.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonDinosaur\nOracle:When Wakening Sun's Avatar enters, if you cast it from your hand, destroy all non-Dinosaur creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wakening Sun's Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

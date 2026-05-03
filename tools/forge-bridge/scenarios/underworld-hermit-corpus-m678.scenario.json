@@ -1,0 +1,23 @@
+{
+  "id": "underworld-hermit-corpus-m678",
+  "description": "M6 corpus — Underworld Hermit; in-hand parse.",
+  "seed": 63032,
+  "cards": {
+    "Underworld Hermit": "Name:Underworld Hermit\nManaCost:4 B B\nTypes:Creature Human Peasant\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 green Squirrel creature tokens equal to your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_squirrel | TokenOwner$ You\nSVar:X:Count$Devotion.Black\nDeckHas:Ability$Token\nOracle:When Underworld Hermit enters, create a number of 1/1 green Squirrel creature tokens equal to your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underworld Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

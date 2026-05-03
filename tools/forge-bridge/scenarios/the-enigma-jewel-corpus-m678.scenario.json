@@ -1,0 +1,23 @@
+{
+  "id": "the-enigma-jewel-corpus-m678",
+  "description": "M6 corpus — The Enigma Jewel; in-hand parse.",
+  "seed": 62027,
+  "cards": {
+    "The Enigma Jewel": "Name:The Enigma Jewel\nManaCost:U\nTypes:Legendary Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | RestrictValid$ Activated | SpellDescription$ Add {C}{C}. Spend this mana only to activate abilities.\nK:Craft:8 U XMin4 ExileCtrlOrGrave<X/Permanent.Other+nonLand+hasAbility Activated/nonlands with activated abilities>\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:The Enigma Jewel enters tapped.\\n{T}: Add {C}{C}. Spend this mana only to activate abilities.\\nCraft with four or more nonlands with activated abilities {8}{U} ({8}{U}, Exile this artifact, Exile the four or more from among other permanents you control and/or cards in your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Locus of Enlightenment\nManaCost:no cost\nColors:blue\nTypes:Legendary Artifact\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOfDefined$ ExiledWith | GainsAbilitiesLimitPerTurn$ 1 | Description$ CARDNAME has each activated ability of the exiled cards used to craft it. You may activate each of those abilities only once each turn.\nT:Mode$ AbilityCast | ValidActivatingPlayer$ You | ValidSA$ SpellAbility.!ManaAbility | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever you activate an ability that isn't a mana ability, copy it. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Locus of Enlightenment has each activated ability of the exiled cards used to craft it. You may activate each of those abilities only once each turn.\\nWhenever you activate an ability that isn't a mana ability, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Enigma Jewel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

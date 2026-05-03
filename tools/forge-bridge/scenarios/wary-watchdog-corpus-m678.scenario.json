@@ -1,0 +1,23 @@
+{
+  "id": "wary-watchdog-corpus-m678",
+  "description": "M6 corpus — Wary Watchdog; in-hand parse.",
+  "seed": 63929,
+  "cards": {
+    "Wary Watchdog": "Name:Wary Watchdog\nManaCost:1 G\nTypes:Creature Dog\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters or dies, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSurveil | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nOracle:When Wary Watchdog enters or dies, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wary Watchdog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

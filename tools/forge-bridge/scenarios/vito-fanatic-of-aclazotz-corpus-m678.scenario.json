@@ -1,0 +1,25 @@
+{
+  "id": "vito-fanatic-of-aclazotz-corpus-m678",
+  "description": "M6 corpus — Vito, Fanatic of Aclazotz; ETB-on-bf.",
+  "seed": 63578,
+  "cards": {
+    "Vito, Fanatic of Aclazotz": "Name:Vito, Fanatic of Aclazotz\nManaCost:2 W B\nTypes:Legendary Creature Vampire Demon\nPT:4/4\nK:Flying\nT:Mode$ Sacrificed | ValidCard$ Permanent.Other | ValidPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice another permanent, you gain 2 life if this is the first time this ability has resolved this turn. If it's the second time, each opponent loses 2 life. If it's the third time, create a 4/3 white and black Vampire Demon creature token with flying.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ1 | LifeAmount$ 2 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ wb_4_3_vampire_demon_flying | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ3\nSVar:Resolved:Count$ResolvedThisTurn\nDeckHas:Ability$LifeGain|Token\nOracle:Flying\\nWhenever you sacrifice another permanent, you gain 2 life if this is the first time this ability has resolved this turn. If it's the second time, each opponent loses 2 life. If it's the third time, create a 4/3 white and black Vampire Demon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vito, Fanatic of Aclazotz"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

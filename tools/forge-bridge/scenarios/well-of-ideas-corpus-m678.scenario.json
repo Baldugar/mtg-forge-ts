@@ -1,0 +1,23 @@
+{
+  "id": "well-of-ideas-corpus-m678",
+  "description": "M6 corpus — Well of Ideas; in-hand parse.",
+  "seed": 64059,
+  "cards": {
+    "Well of Ideas": "Name:Well of Ideas\nManaCost:5 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw1 | TriggerDescription$ When CARDNAME enters, draw two cards.\nSVar:TrigDraw1:DB$ Draw | Defined$ You | NumCards$ 2\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player.Other | TriggerZones$ Battlefield | Execute$ TrigDraw2 | TriggerDescription$ At the beginning of each other player's draw step, that player draws an additional card.\nSVar:TrigDraw2:DB$ Draw | Defined$ TriggeredPlayer\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw1 | TriggerDescription$ At the beginning of your draw step, draw two additional cards.\nOracle:When Well of Ideas enters, draw two cards.\\nAt the beginning of each other player's draw step, that player draws an additional card.\\nAt the beginning of your draw step, draw two additional cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Well of Ideas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

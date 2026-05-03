@@ -1,0 +1,23 @@
+{
+  "id": "tzaangor-shaman-corpus-m678",
+  "description": "M6 corpus — Tzaangor Shaman; in-hand parse.",
+  "seed": 62923,
+  "cards": {
+    "Tzaangor Shaman": "Name:Tzaangor Shaman\nManaCost:2 U R\nTypes:Creature Mutant Shaman\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | CombatDamage$ True | ValidTarget$ Player | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDelayedTrigger | TriggerDescription$ Sorcerous Elixir — Whenever CARDNAME deals combat damage to a player, copy the next instant or sorcery spell you cast this turn when you cast it. You may choose new targets for the copy.\nSVar:TrigDelayedTrigger:DB$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nSorcerous Elixir — Whenever Tzaangor Shaman deals combat damage to a player, copy the next instant or sorcery spell you cast this turn when you cast it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tzaangor Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

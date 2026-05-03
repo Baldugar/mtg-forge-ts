@@ -1,0 +1,23 @@
+{
+  "id": "unified-will-corpus-m678",
+  "description": "M6 corpus — Unified Will; in-hand parse.",
+  "seed": 63071,
+  "cards": {
+    "Unified Will": "Name:Unified Will\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | ConditionCheckSVar$ YourPeerGroup | ConditionSVarCompare$ GTY | SpellDescription$ Counter target spell if you control more creatures than that spell's controller.\nSVar:YourPeerGroup:Count$Valid Creature.YouCtrl\nSVar:Y:Count$Valid Creature.ControlledBy TargetedController\nSVar:NeedsToPlayVar:YourPeerGroup GTY\nOracle:Counter target spell if you control more creatures than that spell's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unified Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

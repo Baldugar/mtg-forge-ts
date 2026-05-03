@@ -1,0 +1,23 @@
+{
+  "id": "threefold-signal-corpus-m678",
+  "description": "M6 corpus — Threefold Signal; in-hand parse.",
+  "seed": 62277,
+  "cards": {
+    "Threefold Signal": "Name:Threefold Signal\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 3.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3\nS:Mode$ Continuous | Affected$ Card.YouCtrl+numColorsEQ3 | AffectedZone$ Stack | AddKeyword$ Replicate:3 | Description$ Each spell you cast that's exactly three colors has replicate {3}. (When you cast it, copy it for each time you paid its replicate cost. You may choose new targets for the copies. A copy of a permanent spell becomes a token.)\nAI:RemoveDeck:Random\nOracle:When Threefold Signal enters, scry 3.\\nEach spell you cast that's exactly three colors has replicate {3}. (When you cast it, copy it for each time you paid its replicate cost. You may choose new targets for the copies. A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Threefold Signal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

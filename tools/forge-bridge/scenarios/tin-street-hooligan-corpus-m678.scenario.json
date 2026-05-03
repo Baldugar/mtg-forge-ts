@@ -1,0 +1,23 @@
+{
+  "id": "tin-street-hooligan-corpus-m678",
+  "description": "M6 corpus — Tin Street Hooligan; in-hand parse.",
+  "seed": 62424,
+  "cards": {
+    "Tin Street Hooligan": "Name:Tin Street Hooligan\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | ManaSpent$ G | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, if {G} was spent to cast it, destroy target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact\nSVar:ManaNeededToAvoidNegativeEffect:green\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nOracle:When Tin Street Hooligan enters, if {G} was spent to cast it, destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tin Street Hooligan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

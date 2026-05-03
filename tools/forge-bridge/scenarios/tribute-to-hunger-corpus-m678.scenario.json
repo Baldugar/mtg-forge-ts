@@ -1,0 +1,23 @@
+{
+  "id": "tribute-to-hunger-corpus-m678",
+  "description": "M6 corpus — Tribute to Hunger; in-hand parse.",
+  "seed": 62736,
+  "cards": {
+    "Tribute to Hunger": "Name:Tribute to Hunger\nManaCost:2 B\nTypes:Instant\nA:SP$ Sacrifice | SacValid$ Creature | ValidTgts$ Opponent | Amount$ 1 | RememberSacrificed$ True | SubAbility$ DBGainLife | SpellDescription$ Target opponent sacrifices a creature.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup | StackDescription$ REP You gain_{p:You} gains | SpellDescription$ You gain life equal to that creature's toughness.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nDeckHas:Ability$LifeGain\nOracle:Target opponent sacrifices a creature. You gain life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tribute to Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tethered-griffin-corpus-m678",
+  "description": "M6 corpus — Tethered Griffin; in-hand parse.",
+  "seed": 61939,
+  "cards": {
+    "Tethered Griffin": "Name:Tethered Griffin\nManaCost:W\nTypes:Creature Griffin\nPT:2/3\nK:Flying\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Enchantment.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no enchantments, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Enchantment.YouCtrl\nAI:RemoveDeck:Random\nDeckNeeds:Type$Enchantment\nOracle:Flying\\nWhen you control no enchantments, sacrifice Tethered Griffin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tethered Griffin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

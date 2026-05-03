@@ -1,0 +1,23 @@
+{
+  "id": "the-fifteenth-doctor-corpus-m678",
+  "description": "M6 corpus — The Fifteenth Doctor; in-hand parse.",
+  "seed": 62032,
+  "cards": {
+    "The Fifteenth Doctor": "Name:The Fifteenth Doctor\nManaCost:2 U R\nTypes:Legendary Creature Time Lord Doctor\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME enters or attacks, mill three cards. You may put an artifact card with mana value 2 or 3 from among them into your hand.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, mill three cards. You may put an artifact card with mana value 2 or 3 from among them into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Optional$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Artifact.IsRemembered+cmcEQ2,Artifact.IsRemembered+cmcEQ3 | SubAbility$ DBCleanup | SelectPrompt$ You may put an artifact card with mana value 2 or 3 from among the milled cards into your hand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.nonArtifact+YouCtrl | EffectZone$ Battlefield | AffectedZone$ Stack | CheckSVar$ X | SVarCompare$ EQ0 | AddKeyword$ Improvise | Description$ The first nonartifact spell you cast each turn has improvise. (Your artifacts can help cast that spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\nSVar:X:Count$ThisTurnCast_Card.nonArtifact+YouCtrl\nOracle:Whenever The Fifteenth Doctor enters or attacks, mill three cards. You may put an artifact card with mana value 2 or 3 from among them into your hand.\\nThe first nonartifact spell you cast each turn has improvise. (Your artifacts can help cast that spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fifteenth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

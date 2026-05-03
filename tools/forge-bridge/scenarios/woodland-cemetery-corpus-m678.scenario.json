@@ -1,0 +1,25 @@
+{
+  "id": "woodland-cemetery-corpus-m678",
+  "description": "M6 corpus — Woodland Cemetery; ETB-on-bf.",
+  "seed": 64383,
+  "cards": {
+    "Woodland Cemetery": "Name:Woodland Cemetery\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Swamp or a Forest.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Swamp.YouCtrl,Forest.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo B G | SpellDescription$ Add {B} or {G}.\nOracle:Woodland Cemetery enters tapped unless you control a Swamp or a Forest.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Woodland Cemetery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

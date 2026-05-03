@@ -1,0 +1,23 @@
+{
+  "id": "toluz-clever-conductor-corpus-m678",
+  "description": "M6 corpus — Toluz, Clever Conductor; in-hand parse.",
+  "seed": 62478,
+  "cards": {
+    "Toluz, Clever Conductor": "Name:Toluz, Clever Conductor\nManaCost:WU U UB\nTypes:Legendary Creature Human Rogue\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConnive | TriggerDescription$ When CARDNAME enters, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nSVar:TrigConnive:DB$ Connive\nT:Mode$ DiscardedAll | ValidPlayer$ You | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you discard one or more cards, exile them from your graveyard.\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.TriggeredCards\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When NICKNAME dies, put the cards exiled with it into their owner's hand.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Hand\nDeckHas:Ability$Discard|Counters\nDeckHints:Ability$Discard\nOracle:When Toluz, Clever Conductor enters, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\\nWhenever you discard one or more cards, exile them from your graveyard.\\nWhen Toluz dies, put the cards exiled with it into their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toluz, Clever Conductor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

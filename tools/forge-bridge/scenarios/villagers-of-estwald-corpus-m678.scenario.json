@@ -1,0 +1,23 @@
+{
+  "id": "villagers-of-estwald-corpus-m678",
+  "description": "M6 corpus — Villagers of Estwald; in-hand parse.",
+  "seed": 63504,
+  "cards": {
+    "Villagers of Estwald": "Name:Villagers of Estwald\nManaCost:2 G\nTypes:Creature Human Werewolf\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Villagers of Estwald.\n\nALTERNATE\n\nName:Howlpack of Estwald\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:4/6\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:At the beginning of each upkeep, if a player cast two or more spells last turn, transform Howlpack of Estwald.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Villagers of Estwald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

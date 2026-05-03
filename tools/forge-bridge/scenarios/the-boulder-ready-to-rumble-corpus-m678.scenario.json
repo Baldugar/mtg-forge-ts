@@ -1,0 +1,23 @@
+{
+  "id": "the-boulder-ready-to-rumble-corpus-m678",
+  "description": "M6 corpus — The Boulder, Ready to Rumble; in-hand parse.",
+  "seed": 61997,
+  "cards": {
+    "The Boulder, Ready to Rumble": "Name:The Boulder, Ready to Rumble\nManaCost:3 G\nTypes:Legendary Creature Human Warrior Performer\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ Whenever NICKNAME attacks, earthbend X, where X is the number of creatures you control with power 4 or greater. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ X\nSVar:X:Count$Valid Creature.YouCtrl+powerGE4\nSVar:HasAttackEffect:TRUE\nOracle:Whenever The Boulder attacks, earthbend X, where X is the number of creatures you control with power 4 or greater. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Boulder, Ready to Rumble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

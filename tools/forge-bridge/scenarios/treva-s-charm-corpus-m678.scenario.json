@@ -1,0 +1,23 @@
+{
+  "id": "treva-s-charm-corpus-m678",
+  "description": "M6 corpus — Treva's Charm; in-hand parse.",
+  "seed": 62719,
+  "cards": {
+    "Treva's Charm": "Name:Treva's Charm\nManaCost:G W U\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBChangeZone,DBDraw\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target attacking creature.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Destroy target enchantment.\\n• Exile target attacking creature.\\n• Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treva's Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

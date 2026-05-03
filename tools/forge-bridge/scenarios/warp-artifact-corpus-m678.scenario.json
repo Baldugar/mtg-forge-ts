@@ -1,0 +1,23 @@
+{
+  "id": "warp-artifact-corpus-m678",
+  "description": "M6 corpus — Warp Artifact; in-hand parse.",
+  "seed": 63898,
+  "cards": {
+    "Warp Artifact": "Name:Warp Artifact\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted artifact's controller, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:Enchant artifact\\nAt the beginning of the upkeep of enchanted artifact's controller, Warp Artifact deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warp Artifact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

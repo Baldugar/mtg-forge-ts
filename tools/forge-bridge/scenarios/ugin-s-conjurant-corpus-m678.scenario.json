@@ -1,0 +1,23 @@
+{
+  "id": "ugin-s-conjurant-corpus-m678",
+  "description": "M6 corpus — Ugin's Conjurant; in-hand parse.",
+  "seed": 62928,
+  "cards": {
+    "Ugin's Conjurant": "Name:Ugin's Conjurant\nManaCost:X\nTypes:Creature Spirit Monk\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+counters_GE1_P1P1 | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME while it has a +1/+1 counter on it, prevent that damage and remove that many +1/+1 counters from CARDNAME.\nSVar:Counters:DB$ RemoveCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Ugin's Conjurant enters with X +1/+1 counters on it.\\nIf damage would be dealt to Ugin's Conjurant while it has a +1/+1 counter on it, prevent that damage and remove that many +1/+1 counters from Ugin's Conjurant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ugin's Conjurant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

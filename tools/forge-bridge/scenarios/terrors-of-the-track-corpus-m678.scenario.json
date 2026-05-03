@@ -1,0 +1,23 @@
+{
+  "id": "terrors-of-the-track-corpus-m678",
+  "description": "M6 corpus — Terrors of the Track; in-hand parse.",
+  "seed": 61930,
+  "cards": {
+    "Terrors of the Track": "Name:Terrors of the Track\nManaCost:1 B\nTypes:Creature Dinosaur\nPT:2/1\nK:Flying\nK:Double team\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | ActivationLimit$ 1 | TriggerDescription$ Whenever this creature or another creature dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Flying\\nDouble team\\nWhenever this creature or another creature dies, each opponent loses 1 life and you gain 1 life. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terrors of the Track"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "visage-of-bolas-corpus-m678",
+  "description": "M6 corpus — Visage of Bolas; in-hand parse.",
+  "seed": 63557,
+  "cards": {
+    "Visage of Bolas": "Name:Visage of Bolas\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Nicol Bolas, the Deceiver, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedNicol Bolas; the Deceiver | ChangeNum$ 1 | Optional$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U B R | SpellDescription$ Add {U}, {B}, or {R}.\nDeckHints:Name$Nicol Bolas, the Deceiver\nOracle:When Visage of Bolas enters, you may search your library and/or graveyard for a card named Nicol Bolas, the Deceiver, reveal it, and put it into your hand. If you search your library this way, shuffle.\\n{T}: Add {U}, {B}, or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visage of Bolas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

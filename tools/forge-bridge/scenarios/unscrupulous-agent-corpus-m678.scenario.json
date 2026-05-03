@@ -1,0 +1,23 @@
+{
+  "id": "unscrupulous-agent-corpus-m678",
+  "description": "M6 corpus — Unscrupulous Agent; in-hand parse.",
+  "seed": 63112,
+  "cards": {
+    "Unscrupulous Agent": "Name:Unscrupulous Agent\nManaCost:1 B\nTypes:Creature Elf Detective\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, target opponent exiles a card from their hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 1 | IsCurse$ True | Mandatory$ True\nOracle:When Unscrupulous Agent enters, target opponent exiles a card from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unscrupulous Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "undercity-upheaval-corpus-m678",
+  "description": "M6 corpus — Undercity Upheaval; in-hand parse.",
+  "seed": 63009,
+  "cards": {
+    "Undercity Upheaval": "Name:Undercity Upheaval\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select any number of creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ X | DividedAsYouChoose$ X | TargetMin$ 0 | TargetMax$ X | SubAbility$ DBPump | SpellDescription$ Distribute X +1/+1 counters among any number of target creatures you control, where X is the number of creature cards in your graveyard as you cast this spell.\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance | SpellDescription$ Creatures you control gain vigilance until end of turn.\nSVar:X:Count$LastStateGraveyardWithFallback Creature.YouOwn\nDeckHints:Ability$Discard|Sacrifice\nDeckHas:Ability$Counters\nOracle:Undergrowth — Distribute X +1/+1 counters among any number of target creatures you control, where X is the number of creature cards in your graveyard as you cast this spell. Creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercity Upheaval"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

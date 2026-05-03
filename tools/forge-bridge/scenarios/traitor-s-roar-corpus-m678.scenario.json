@@ -1,0 +1,23 @@
+{
+  "id": "traitor-s-roar-corpus-m678",
+  "description": "M6 corpus — Traitor's Roar; in-hand parse.",
+  "seed": 62623,
+  "cards": {
+    "Traitor's Roar": "Name:Traitor's Roar\nManaCost:4 BR\nTypes:Sorcery\nA:SP$ Tap | ValidTgts$ Creature.untapped | TgtPrompt$ Select target untapped creature | SubAbility$ DBDamage | SpellDescription$ Tap target untapped creature. It deals damage equal to its power to its controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | DamageSource$ Targeted | NumDmg$ X\nSVar:X:Targeted$CardPower\nK:Conspire\nOracle:Tap target untapped creature. It deals damage equal to its power to its controller.\\nConspire (As you cast this spell, you may tap two untapped creatures you control that share a color with it. When you do, copy it and you may choose a new target for the copy.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Traitor's Roar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

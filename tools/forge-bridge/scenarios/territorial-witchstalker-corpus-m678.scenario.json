@@ -1,0 +1,23 @@
+{
+  "id": "territorial-witchstalker-corpus-m678",
+  "description": "M6 corpus — Territorial Witchstalker; in-hand parse.",
+  "seed": 61923,
+  "cards": {
+    "Territorial Witchstalker": "Name:Territorial Witchstalker\nManaCost:1 G\nTypes:Creature Wolf\nPT:2/3\nK:Defender\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | IsPresent$ Creature.YouCtrl+powerGE4 | TriggerDescription$ At the beginning of combat on your turn, if you control a creature with power 4 or greater, CARDNAME gets +1/+0 until end of turn and can attack this turn as though it didn't have defender.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | Defined$ Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CanAttack | ExileOnMoved$ Battlefield\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nOracle:Defender\\nAt the beginning of combat on your turn, if you control a creature with power 4 or greater, Territorial Witchstalker gets +1/+0 until end of turn and can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territorial Witchstalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

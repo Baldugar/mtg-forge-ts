@@ -1,0 +1,23 @@
+{
+  "id": "the-last-agni-kai-corpus-m678",
+  "description": "M6 corpus — The Last Agni Kai; in-hand parse.",
+  "seed": 62062,
+  "cards": {
+    "The Last Agni Kai": "Name:The Last Agni Kai\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature an opponent controls. If the creature the opponent controls is dealt excess damage this way, add that much {R}. Until end of turn, you don't lose unspent red mana as steps and phases end.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.OppCtrl | ExcessSVar$ Excess | ExcessSVarCondition$ Creature.targetedBy+OppCtrl | SubAbility$ DBMana | TgtPrompt$ Select target creature an opponent controls.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ Excess | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ Unspent\nSVar:Unspent:Mode$ UnspentMana | ValidPlayer$ You | ManaType$ Red | Description$ You don't lose unspent red mana as steps and phases end.\nOracle:Target creature you control fights target creature an opponent controls. If the creature the opponent controls is dealt excess damage this way, add that much {R}.\\nUntil end of turn, you don't lose unspent red mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Last Agni Kai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

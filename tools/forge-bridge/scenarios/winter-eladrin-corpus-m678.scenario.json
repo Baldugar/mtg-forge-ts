@@ -1,0 +1,23 @@
+{
+  "id": "winter-eladrin-corpus-m678",
+  "description": "M6 corpus — Winter Eladrin; in-hand parse.",
+  "seed": 64274,
+  "cards": {
+    "Winter Eladrin": "Name:Winter Eladrin\nManaCost:2 U\nTypes:Creature Faerie Elf Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Gust of Wind — When CARDNAME enters, return up to one other target creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one other target creature\nOracle:Gust of Wind — When Winter Eladrin enters, return up to one other target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winter Eladrin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

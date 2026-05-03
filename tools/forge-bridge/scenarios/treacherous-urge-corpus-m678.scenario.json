@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-urge-corpus-m678",
+  "description": "M6 corpus — Treacherous Urge; in-hand parse.",
+  "seed": 62674,
+  "cards": {
+    "Treacherous Urge": "Name:Treacherous Urge\nManaCost:4 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ValidTgts$ Opponent | ChangeType$ Creature | GainControl$ True | SubAbility$ DBPump | RememberChanged$ True | IsCurse$ True | SpellDescription$ Target opponent reveals their hand. You may put a creature card from it onto the battlefield under your control. That creature gains haste. Sacrifice it at the beginning of the next end step.\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | Duration$ Permanent | AtEOT$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target opponent reveals their hand. You may put a creature card from it onto the battlefield under your control. That creature gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Urge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

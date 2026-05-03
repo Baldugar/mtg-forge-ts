@@ -1,0 +1,23 @@
+{
+  "id": "venomous-breath-corpus-m678",
+  "description": "M6 corpus — Venomous Breath; in-hand parse.",
+  "seed": 63375,
+  "cards": {
+    "Venomous Breath": "Name:Venomous Breath\nManaCost:3 G\nTypes:Instant\nA:SP$ DelayedTrigger | ValidTgts$ Creature | Mode$ Phase | ThisTurn$ True | Phase$ EndCombat | ValidPlayer$ Player | Execute$ VenomousBreathTrigDestroy | SpellDescription$ Choose target creature. At this turn's next end of combat, destroy all creatures that blocked or were blocked by it this turn. | RememberObjects$ Targeted\nSVar:VenomousBreathTrigDestroy:DB$ Pump | RememberObjects$ DelayTriggerRemembered | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.blockedRemembered,Creature.blockedByRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Choose target creature. At this turn's next end of combat, destroy all creatures that blocked or were blocked by it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venomous Breath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

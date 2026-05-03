@@ -1,0 +1,23 @@
+{
+  "id": "the-master-formed-anew-corpus-m678",
+  "description": "M6 corpus — The Master, Formed Anew; in-hand parse.",
+  "seed": 62070,
+  "cards": {
+    "The Master, Formed Anew": "Name:The Master, Formed Anew\nManaCost:U B\nTypes:Legendary Creature Time Lord Rogue\nPT:0/1\nK:ETBReplacement:Copy:DBCopy:Optional\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Body Thief — When you cast this spell, you may exile a creature you control and put a takeover counter on it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Hidden$ True | ChangeType$ Creature.YouCtrl | WithCountersType$ TAKEOVER\nSVar:DBCopy:DB$ Clone | Choices$ Creature.counters_GE1_TAKEOVER | ChoiceZone$ Exile | SpellDescription$ You may have CARDNAME enter as a copy of a creature card in exile with a takeover counter on it.\nOracle:Body Thief — When you cast this spell, you may exile a creature you control and put a takeover counter on it.\\nYou may have The Master, Formed Anew enter as a copy of a creature card in exile with a takeover counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Master, Formed Anew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

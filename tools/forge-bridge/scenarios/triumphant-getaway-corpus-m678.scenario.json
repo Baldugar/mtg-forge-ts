@@ -1,0 +1,23 @@
+{
+  "id": "triumphant-getaway-corpus-m678",
+  "description": "M6 corpus — Triumphant Getaway; in-hand parse.",
+  "seed": 62762,
+  "cards": {
+    "Triumphant Getaway": "Name:Triumphant Getaway\nManaCost:1 U B R\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigHeist | TriggerDescription$ When CARDNAME enters, heist target opponent's library twice.\nSVar:TrigHeist:DB$ Heist | ValidTgts$ Opponent | Num$ 2\nT:Mode$ SpellCast | ValidCard$ Card.YouDontOwn | ValidActivatingPlayer$ You | Execute$ TrigDrain | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell you don't own, each opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | LifeAmount$ 2\nOracle:Flash\\nWhen Triumphant Getaway enters, heist target opponent's library twice.\\nWhenever you cast a spell you don't own, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triumphant Getaway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

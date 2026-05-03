@@ -1,0 +1,23 @@
+{
+  "id": "thundering-broodwagon-corpus-m678",
+  "description": "M6 corpus — Thundering Broodwagon; in-hand parse.",
+  "seed": 62320,
+  "cards": {
+    "Thundering Broodwagon": "Name:Thundering Broodwagon\nManaCost:2 B B G G\nTypes:Artifact Vehicle\nPT:6/5\nK:Menace\nK:Reach\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When this Vehicle enters, destroy target nonland permanent an opponent controls with mana value 4 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand+OppCtrl+cmcLE4 | TgtPrompt$ Select target nonland permanent an opponent controls with mana value 4 or less\nK:Crew:3\nK:Cycling:2\nOracle:Menace, reach\\nWhen this Vehicle enters, destroy target nonland permanent an opponent controls with mana value 4 or less.\\nCrew 3\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Broodwagon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

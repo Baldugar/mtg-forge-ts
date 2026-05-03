@@ -1,0 +1,25 @@
+{
+  "id": "wildfire-cerberus-corpus-m678",
+  "description": "M6 corpus — Wildfire Cerberus; ETB-on-bf.",
+  "seed": 64178,
+  "cards": {
+    "Wildfire Cerberus": "Name:Wildfire Cerberus\nManaCost:4 R\nTypes:Creature Dog\nPT:4/3\nA:AB$ PutCounter | Cost$ 5 R R | Monstrosity$ 1\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME becomes monstrous, it deals 2 damage to each opponent and each creature they control.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.OppCtrl | ValidPlayers$ Player.Opponent | NumDmg$ 2 | ValidDescription$ each opponent and each creature they control.\nDeckHas:Ability$Counters\nOracle:{5}{R}{R}: Monstrosity 1. (If this creature isn't monstrous, put a +1/+1 counter on it and it becomes monstrous.)\\nWhen Wildfire Cerberus becomes monstrous, it deals 2 damage to each opponent and each creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wildfire Cerberus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "weathered-bodyguards-corpus-m678",
+  "description": "M6 corpus — Weathered Bodyguards; ETB-on-bf.",
+  "seed": 64008,
+  "cards": {
+    "Weathered Bodyguards": "Name:Weathered Bodyguards\nManaCost:5 W\nTypes:Creature Human Soldier\nPT:2/5\nK:Morph:3 W\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.unblocked | ValidTarget$ You | ReplaceWith$ DmgSelf | IsCombat$ True | IsPresent$ Card.Self+untapped | DamageTarget$ Self | Description$ As long as CARDNAME is untapped, all combat damage that would be dealt to you by unblocked creatures is dealt to CARDNAME instead.\nSVar:DmgSelf:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Self | VarType$ Card\nOracle:As long as Weathered Bodyguards is untapped, all combat damage that would be dealt to you by unblocked creatures is dealt to Weathered Bodyguards instead.\\nMorph {3}{W} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Weathered Bodyguards"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

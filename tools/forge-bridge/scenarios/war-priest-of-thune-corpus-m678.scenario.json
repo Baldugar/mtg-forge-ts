@@ -1,0 +1,23 @@
+{
+  "id": "war-priest-of-thune-corpus-m678",
+  "description": "M6 corpus — War Priest of Thune; in-hand parse.",
+  "seed": 63851,
+  "cards": {
+    "War Priest of Thune": "Name:War Priest of Thune\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment\nOracle:When War Priest of Thune enters, you may destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "War Priest of Thune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "trusted-advisor-corpus-m678",
+  "description": "M6 corpus — Trusted Advisor; in-hand parse.",
+  "seed": 62797,
+  "cards": {
+    "Trusted Advisor": "Name:Trusted Advisor\nManaCost:U\nTypes:Creature Human Advisor\nPT:1/2\nS:Mode$ Continuous | Affected$ You | RaiseMaxHandSize$ 2 | Description$ Your maximum hand size is increased by two.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a blue creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.Blue+YouCtrl\nAI:RemoveDeck:All\nOracle:Your maximum hand size is increased by two.\\nAt the beginning of your upkeep, return a blue creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trusted Advisor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

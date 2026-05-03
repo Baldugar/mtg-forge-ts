@@ -1,0 +1,25 @@
+{
+  "id": "weaver-of-lies-corpus-m678",
+  "description": "M6 corpus — Weaver of Lies; ETB-on-bf.",
+  "seed": 64021,
+  "cards": {
+    "Weaver of Lies": "Name:Weaver of Lies\nManaCost:5 U U\nTypes:Creature Beast\nPT:4/4\nK:Morph:4 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ DBWeaverofLiesSetState | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, turn any number of target creatures with morph abilities other than CARDNAME face down.\nSVar:DBWeaverofLiesSetState:DB$ SetState | ValidTgts$ Creature.withMorph+Other,Creature.withMegamorph+Other | TargetMin$ 0 | TargetMax$ WeaverofLiesX | Mode$ TurnFaceDown | SpellDescription$ Turn CARDNAME face down.\nSVar:WeaverofLiesX:Count$Valid Creature.withMorph+Other,Creature.withMegamorph+Other\nAI:RemoveDeck:All\nOracle:Morph {4}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Weaver of Lies is turned face up, turn any number of target creatures with morph abilities other than Weaver of Lies face down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Weaver of Lies"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

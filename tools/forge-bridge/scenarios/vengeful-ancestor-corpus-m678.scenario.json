@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-ancestor-corpus-m678",
+  "description": "M6 corpus — Vengeful Ancestor; in-hand parse.",
+  "seed": 63359,
+  "cards": {
+    "Vengeful Ancestor": "Name:Vengeful Ancestor\nManaCost:2 R R\nTypes:Creature Spirit Dragon\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGoad | TriggerDescription$ Whenever CARDNAME enters or attacks, goad target creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGoad | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, goad target creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature | TgtPrompt$ Select target creature\nT:Mode$ Attacks | ValidCard$ Creature.IsGoaded | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a goaded creature attacks, it deals 1 damage to its controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredAttackerController | DamageSource$ TriggeredAttackerLKICopy | NumDmg$ 1\nOracle:Flying\\nWhenever Vengeful Ancestor enters or attacks, goad target creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\\nWhenever a goaded creature attacks, it deals 1 damage to its controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Ancestor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

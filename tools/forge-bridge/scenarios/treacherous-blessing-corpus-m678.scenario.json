@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-blessing-corpus-m678",
+  "description": "M6 corpus — Treacherous Blessing; in-hand parse.",
+  "seed": 62671,
+  "cards": {
+    "Treacherous Blessing": "Name:Treacherous Blessing\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you cast a spell, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nOracle:When Treacherous Blessing enters, draw three cards.\\nWhenever you cast a spell, you lose 1 life.\\nWhen Treacherous Blessing becomes the target of a spell or ability, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

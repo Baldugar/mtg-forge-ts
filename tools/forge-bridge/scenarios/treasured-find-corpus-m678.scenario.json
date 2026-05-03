@@ -1,0 +1,23 @@
+{
+  "id": "treasured-find-corpus-m678",
+  "description": "M6 corpus — Treasured Find; in-hand parse.",
+  "seed": 62684,
+  "cards": {
+    "Treasured Find": "Name:Treasured Find\nManaCost:B G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouOwn | SubAbility$ DBChange | SpellDescription$ Return target card from your graveyard to your hand. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:Return target card from your graveyard to your hand. Exile Treasured Find.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasured Find"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

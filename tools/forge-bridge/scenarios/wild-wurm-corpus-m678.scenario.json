@@ -1,0 +1,23 @@
+{
+  "id": "wild-wurm-corpus-m678",
+  "description": "M6 corpus — Wild Wurm; in-hand parse.",
+  "seed": 64172,
+  "cards": {
+    "Wild Wurm": "Name:Wild Wurm\nManaCost:3 R\nTypes:Creature Wurm\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlipACoin | TriggerDescription$ When CARDNAME enters, flip a coin. If you lose the flip, return CARDNAME to its owner's hand.\nSVar:TrigFlipACoin:DB$ FlipACoin | LoseSubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nOracle:When Wild Wurm enters, flip a coin. If you lose the flip, return Wild Wurm to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

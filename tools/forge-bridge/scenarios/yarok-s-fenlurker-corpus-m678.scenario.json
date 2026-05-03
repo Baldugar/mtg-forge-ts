@@ -1,0 +1,23 @@
+{
+  "id": "yarok-s-fenlurker-corpus-m678",
+  "description": "M6 corpus — Yarok's Fenlurker; in-hand parse.",
+  "seed": 64518,
+  "cards": {
+    "Yarok's Fenlurker": "Name:Yarok's Fenlurker\nManaCost:B B\nTypes:Creature Horror\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, each opponent exiles a card from their hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Player.Opponent | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | IsCurse$ True\nA:AB$ Pump | Cost$ 2 B | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nOracle:When Yarok's Fenlurker enters, each opponent exiles a card from their hand.\\n{2}{B}: Yarok's Fenlurker gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yarok's Fenlurker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

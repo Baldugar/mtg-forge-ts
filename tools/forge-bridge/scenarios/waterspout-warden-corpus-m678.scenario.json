@@ -1,0 +1,23 @@
+{
+  "id": "waterspout-warden-corpus-m678",
+  "description": "M6 corpus — Waterspout Warden; in-hand parse.",
+  "seed": 63967,
+  "cards": {
+    "Waterspout Warden": "Name:Waterspout Warden\nManaCost:2 U\nTypes:Creature Frog Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Creature.Self | CheckSVar$ X | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, if another creature entered the battlefield under your control this turn, CARDNAME gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl+StrictlyOther\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Waterspout Warden attacks, if another creature entered the battlefield under your control this turn, Waterspout Warden gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waterspout Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

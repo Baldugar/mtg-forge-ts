@@ -1,0 +1,25 @@
+{
+  "id": "warden-of-the-wall-corpus-m678",
+  "description": "M6 corpus — Warden of the Wall; ETB-on-bf.",
+  "seed": 63877,
+  "cards": {
+    "Warden of the Wall": "Name:Warden of the Wall\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ NotPlayerTurn | EffectZone$ Battlefield | SetPower$ 2 | SetToughness$ 3 | AddType$ Creature & Gargoyle | AddKeyword$ Flying | Description$ As long as it's not your turn, CARDNAME is a 2/3 Gargoyle artifact creature with flying.\nOracle:Warden of the Wall enters tapped.\\n{T}: Add {C}.\\nAs long as it's not your turn, Warden of the Wall is a 2/3 Gargoyle artifact creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warden of the Wall"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "throne-of-eldraine-corpus-m678",
+  "description": "M6 corpus — Throne of Eldraine; in-hand parse.",
+  "seed": 62292,
+  "cards": {
+    "Throne of Eldraine": "Name:Throne of Eldraine\nManaCost:5\nTypes:Legendary Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | Amount$ 4 | RestrictValid$ Spell.ChosenColor+MonoColor | SpellDescription$ Add four mana of the chosen color. Spend this mana only to cast monocolored spells of that color.\nA:AB$ Draw | Cost$ 3 T | NumCards$ 2 | ManaRestriction$ ChosenColor | SpellDescription$ Draw two cards. Spend only mana of the chosen color to activate this ability.\nOracle:As Throne of Eldraine enters, choose a color.\\n{T}: Add four mana of the chosen color. Spend this mana only to cast monocolored spells of that color.\\n{3}, {T}: Draw two cards. Spend only mana of the chosen color to activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throne of Eldraine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

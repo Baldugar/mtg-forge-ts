@@ -1,0 +1,23 @@
+{
+  "id": "thunderbond-vanguard-corpus-m678",
+  "description": "M6 corpus — Thunderbond Vanguard; in-hand parse.",
+  "seed": 62312,
+  "cards": {
+    "Thunderbond Vanguard": "Name:Thunderbond Vanguard\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nK:ETBReplacement:Copy:EssenceClone:Mandatory:Battlefield:Creature.token+YouCtrl\nSVar:EssenceClone:DB$ Clone | Defined$ Self | CloneTarget$ ReplacedCard | SpellDescription$ Each creature token you control enters as a copy of this creature.\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nDeckNeeds:Ability$Token\nOracle:Thunderbond Vanguard's power and toughness are each equal to the number of creatures you control.\\nEach creature token you control enters as a copy of this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderbond Vanguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tormented-hero-corpus-m678",
+  "description": "M6 corpus — Tormented Hero; ETB-on-bf.",
+  "seed": 62527,
+  "cards": {
+    "Tormented Hero": "Name:Tormented Hero\nManaCost:B\nTypes:Creature Human Warrior\nPT:2/1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, each opponent loses 1 life. You gain life equal to the life lost this way.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:Tormented Hero enters tapped.\\nHeroic — Whenever you cast a spell that targets Tormented Hero, each opponent loses 1 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tormented Hero"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

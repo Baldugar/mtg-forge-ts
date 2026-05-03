@@ -1,0 +1,23 @@
+{
+  "id": "woebringer-demon-corpus-m678",
+  "description": "M6 corpus — Woebringer Demon; in-hand parse.",
+  "seed": 64350,
+  "cards": {
+    "Woebringer Demon": "Name:Woebringer Demon\nManaCost:3 B B\nTypes:Creature Demon\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a creature. If the player can't, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature | SubAbility$ DBSacSelf | RememberSacrificed$ True\nSVar:DBSacSelf:DB$ Sacrifice | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$Valid Creature.YouDontCtrl\nOracle:Flying\\nAt the beginning of each player's upkeep, that player sacrifices a creature. If the player can't, sacrifice Woebringer Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woebringer Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

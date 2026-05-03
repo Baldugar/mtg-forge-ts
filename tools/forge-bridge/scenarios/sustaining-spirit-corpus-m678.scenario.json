@@ -1,0 +1,25 @@
+{
+  "id": "sustaining-spirit-corpus-m678",
+  "description": "M6 corpus — Sustaining Spirit; ETB-on-bf.",
+  "seed": 61448,
+  "cards": {
+    "Sustaining Spirit": "Name:Sustaining Spirit\nManaCost:1 W\nTypes:Creature Angel Spirit\nPT:0/3\nK:Cumulative upkeep:1 W\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | ReplaceWith$ ReduceLoss | Description$ Damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nOracle:Cumulative upkeep {1}{W} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nDamage that would reduce your life total to less than 1 reduces it to 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sustaining Spirit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

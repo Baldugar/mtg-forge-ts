@@ -1,0 +1,23 @@
+{
+  "id": "wildest-dreams-corpus-m678",
+  "description": "M6 corpus — Wildest Dreams; in-hand parse.",
+  "seed": 64176,
+  "cards": {
+    "Wildest Dreams": "Name:Wildest Dreams\nManaCost:X X G\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ X | TargetMax$ X | ValidTgts$ Card.YouOwn | TgtPrompt$ Select X target cards in your graveyard | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBExile | SpellDescription$ Return X target cards from your graveyard to your hand. Exile CARDNAME.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Count$xPaid\nDeckHas:Ability$Graveyard\nOracle:Return X target cards from your graveyard to your hand. Exile Wildest Dreams.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildest Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

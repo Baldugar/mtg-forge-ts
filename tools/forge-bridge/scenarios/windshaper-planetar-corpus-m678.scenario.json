@@ -1,0 +1,23 @@
+{
+  "id": "windshaper-planetar-corpus-m678",
+  "description": "M6 corpus — Windshaper Planetar; in-hand parse.",
+  "seed": 64239,
+  "cards": {
+    "Windshaper Planetar": "Name:Windshaper Planetar\nManaCost:4 W\nTypes:Creature Angel\nPT:4/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Phase$ Declare Attackers | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEachAttacker | TriggerDescription$ When CARDNAME enters during the declare attackers step, for each attacking creature, you may reselect which player or permanent that creature is attacking. (It can't attack its controller or their permanents.)\nSVar:TrigEachAttacker:DB$ ChangeCombatants | Defined$ Valid Creature.attacking | Optional$ True | Attacking$ True\nAI:RemoveDeck:All\nOracle:Flash\\nFlying\\nWhen Windshaper Planetar enters during the declare attackers step, for each attacking creature, you may reselect which player or permanent that creature is attacking. (It can't attack its controller or their permanents.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windshaper Planetar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

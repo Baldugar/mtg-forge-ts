@@ -1,0 +1,23 @@
+{
+  "id": "war-of-the-last-alliance-corpus-m678",
+  "description": "M6 corpus — War of the Last Alliance; in-hand parse.",
+  "seed": 63849,
+  "cards": {
+    "War of the Last Alliance": "Name:War of the Last Alliance\nManaCost:3 W\nTypes:Enchantment Saga\nK:Chapter:3:DBSearch,DBSearch,DBPump\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Legendary | ChangeNum$ 1 | SpellDescription$ Search your library for a legendary creature card, reveal it, put it into your hand, then shuffle.\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Double Strike | SubAbility$ TrigTempt | SpellDescription$ Creatures you control gain double strike until end of turn.\nSVar:TrigTempt:DB$ RingTemptsYou\nDeckNeeds:Type$Legendary & Type$Creature\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Search your library for a legendary creature card, reveal it, put it into your hand, then shuffle.\\nIII — Creatures you control gain double strike until end of turn. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "War of the Last Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

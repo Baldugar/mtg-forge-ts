@@ -1,0 +1,23 @@
+{
+  "id": "winds-of-qal-sisma-corpus-m678",
+  "description": "M6 corpus — Winds of Qal Sisma; in-hand parse.",
+  "seed": 64234,
+  "cards": {
+    "Winds of Qal Sisma": "Name:Winds of Qal Sisma\nManaCost:1 G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent1 | AILogic$ Fog | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ EQ0 | SubAbility$ DBEffect | SpellDescription$ Prevent all combat damage that would be dealt this turn. Ferocious — If you control a creature with power 4 or greater, instead prevent all combat damage that would be dealt this turn by creatures your opponents control.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent2 | AILogic$ Fog | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ GE1\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | Description$ Prevent all combat damage that would be dealt this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | ValidSource$ Creature.OppCtrl | IsCombat$ True | ActiveZones$ Command | Description$ Prevent all combat damage that would be dealt this turn by creatures your opponents control.\nOracle:Prevent all combat damage that would be dealt this turn.\\nFerocious — If you control a creature with power 4 or greater, instead prevent all combat damage that would be dealt this turn by creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winds of Qal Sisma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

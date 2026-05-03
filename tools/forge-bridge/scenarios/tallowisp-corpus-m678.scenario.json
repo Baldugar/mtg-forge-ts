@@ -1,0 +1,25 @@
+{
+  "id": "tallowisp-corpus-m678",
+  "description": "M6 corpus — Tallowisp; ETB-on-bf.",
+  "seed": 61655,
+  "cards": {
+    "Tallowisp": "Name:Tallowisp\nManaCost:1 W\nTypes:Creature Spirit\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigSearch | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may search your library for an Aura card with enchant creature, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Aura.hasKeywordEnchant:Creature | ChangeNum$ 1 | Shuffle$ True | ShuffleNonMandatory$ True\nSVar:BuffedBy:Arcane,Spirit\nOracle:Whenever you cast a Spirit or Arcane spell, you may search your library for an Aura card with enchant creature, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tallowisp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

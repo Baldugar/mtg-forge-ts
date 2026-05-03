@@ -1,0 +1,23 @@
+{
+  "id": "take-inventory-corpus-m678",
+  "description": "M6 corpus — Take Inventory; in-hand parse.",
+  "seed": 61618,
+  "cards": {
+    "Take Inventory": "Name:Take Inventory\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDraw | SpellDescription$ Draw a card, then draw cards equal to the number of cards named Take Inventory in your graveyard.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$ValidGraveyard Card.YouOwn+namedTake Inventory\nDeckNeeds:Name$Take Inventory\nOracle:Draw a card, then draw cards equal to the number of cards named Take Inventory in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take Inventory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

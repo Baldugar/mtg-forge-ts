@@ -1,0 +1,23 @@
+{
+  "id": "wheel-of-torture-corpus-m678",
+  "description": "M6 corpus — Wheel of Torture; in-hand parse.",
+  "seed": 64072,
+  "cards": {
+    "Wheel of Torture": "Name:Wheel of Torture\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals X damage to that player, where X is 3 minus the number of cards in their hand.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:TriggeredPlayer$CardsInHand/NMinus.3\nOracle:At the beginning of each opponent's upkeep, Wheel of Torture deals X damage to that player, where X is 3 minus the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wheel of Torture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

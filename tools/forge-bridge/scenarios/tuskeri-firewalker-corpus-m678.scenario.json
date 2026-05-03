@@ -1,0 +1,25 @@
+{
+  "id": "tuskeri-firewalker-corpus-m678",
+  "description": "M6 corpus — Tuskeri Firewalker; ETB-on-bf.",
+  "seed": 62859,
+  "cards": {
+    "Tuskeri Firewalker": "Name:Tuskeri Firewalker\nManaCost:2 R\nTypes:Creature Human Berserker\nPT:3/2\nA:AB$ Dig | Cost$ 1 | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | Boast$ True | SpellDescription$ Exile the top card of your library. You may play that card this turn. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Boast — {1}: Exile the top card of your library. You may play that card this turn. (Activate only if this creature attacked this turn and only once each turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tuskeri Firewalker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

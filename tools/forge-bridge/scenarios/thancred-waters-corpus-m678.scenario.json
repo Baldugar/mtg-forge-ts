@@ -1,0 +1,23 @@
+{
+  "id": "thancred-waters-corpus-m678",
+  "description": "M6 corpus — Thancred Waters; in-hand parse.",
+  "seed": 61967,
+  "cards": {
+    "Thancred Waters": "Name:Thancred Waters\nManaCost:4 W\nTypes:Legendary Creature Human Warrior\nPT:3/5\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump1 | TriggerDescription$ Royal Guard — When CARDNAME enters, another target legendary permanent you control gains indestructible for as long as you control CARDNAME.\nSVar:TrigPump1:DB$ Pump | ValidTgts$ Permanent.Legendary+Other+YouCtrl | TgtPrompt$ Select another target legendary permanent you control | KW$ Indestructible | Duration$ AsLongAsControl\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump2 | TriggerDescription$ Whenever you cast a noncreature spell, CARDNAME gains indestructible until end of turn.\nSVar:TrigPump2:DB$ Pump | KW$ Indestructible | Defined$ Self\nSVar:PlayMain1:TRUE\nOracle:Flash\\nRoyal Guard — When Thancred Waters enters, another target legendary permanent you control gains indestructible for as long as you control Thancred Waters.\\nWhenever you cast a noncreature spell, Thancred Waters gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thancred Waters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

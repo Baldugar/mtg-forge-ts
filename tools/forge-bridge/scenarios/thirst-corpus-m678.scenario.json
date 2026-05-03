@@ -1,0 +1,23 @@
+{
+  "id": "thirst-corpus-m678",
+  "description": "M6 corpus — Thirst; in-hand parse.",
+  "seed": 62163,
+  "cards": {
+    "Thirst": "Name:Thirst\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ U\nOracle:Enchant creature\\nWhen Thirst enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nAt the beginning of your upkeep, sacrifice Thirst unless you pay {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

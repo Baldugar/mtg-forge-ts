@@ -1,0 +1,23 @@
+{
+  "id": "traverse-valley-corpus-m678",
+  "description": "M6 corpus — Traverse Valley; in-hand parse.",
+  "seed": 62668,
+  "cards": {
+    "Traverse Valley": "Name:Traverse Valley\nManaCost:G\nTypes:Sorcery\nK:Kicker:Forage\nA:SP$ Seek | Type$ Land.nonBasic | RememberFound$ True | SubAbility$ DBChangeZone | SpellDescription$ Seek a nonbasic land card.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Tapped$ True | Condition$ Kicked | Origin$ Hand | Destination$ Battlefield | SubAbility$ DBCleanup | SpellDescription$ If this spell was kicked, put that card onto the battlefield tapped.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Kicker — Forage.\\nSeek a nonbasic land card. If this spell was kicked, put that card onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Traverse Valley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

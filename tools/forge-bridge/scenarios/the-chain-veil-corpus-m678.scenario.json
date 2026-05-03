@@ -1,0 +1,23 @@
+{
+  "id": "the-chain-veil-corpus-m678",
+  "description": "M6 corpus — The Chain Veil; in-hand parse.",
+  "seed": 62001,
+  "cards": {
+    "The Chain Veil": "Name:The Chain Veil\nManaCost:4\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | SVarCompare$ EQ0 | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you didn't activate a loyalty ability of a planeswalker this turn, you lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nA:AB$ Effect | Cost$ 4 T | StaticAbilities$ LoyaltyAbs | AILogic$ ChainVeil | SpellDescription$ For each planeswalker you control, you may activate one of its loyalty abilities once this turn as though none of its loyalty abilities had been activated this turn.\nSVar:LoyaltyAbs:Mode$ NumLoyaltyAct | ValidCard$ Planeswalker.YouCtrl | Additional$ 1 | Description$ For each planeswalker you control, you may activate one of its loyalty abilities once this turn as though none of its loyalty abilities had been activated this turn.\nSVar:X:Count$ThisTurnActivated_Activated.Loyalty+Planeswalker+YouCtrl\nSVar:NeedsToPlay:Planeswalker.YouCtrl\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:At the beginning of your end step, if you didn't activate a loyalty ability of a planeswalker this turn, you lose 2 life.\\n{4}, {T}: For each planeswalker you control, you may activate one of its loyalty abilities once this turn as though none of its loyalty abilities have been activated this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Chain Veil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

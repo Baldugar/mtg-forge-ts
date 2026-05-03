@@ -1,0 +1,23 @@
+{
+  "id": "test-of-talents-corpus-m678",
+  "description": "M6 corpus — Test of Talents; in-hand parse.",
+  "seed": 61936,
+  "cards": {
+    "Test of Talents": "Name:Test of Talents\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Instant,Sorcery | SubAbility$ ExileYard | SpellDescription$ Counter target spell. Search its controller's graveyard, hand, and library for all cards with the same name as that spell and exile them. That player shuffles, then draws a card for each card exiled from their hand this way. | StackDescription$ SpellDescription\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TargetedController | ChangeType$ TargetedCard.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None | RememberChanged$ True\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ Draw | StackDescription$ None\nSVar:Draw:DB$ Draw | Defined$ TargetedController | NumCards$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nOracle:Counter target instant or sorcery spell. Search its controller's graveyard, hand, and library for any number of cards with the same name as that spell and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Test of Talents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

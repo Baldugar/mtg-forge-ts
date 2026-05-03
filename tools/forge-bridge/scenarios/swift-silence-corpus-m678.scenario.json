@@ -1,0 +1,23 @@
+{
+  "id": "swift-silence-corpus-m678",
+  "description": "M6 corpus — Swift Silence; in-hand parse.",
+  "seed": 61495,
+  "cards": {
+    "Swift Silence": "Name:Swift Silence\nManaCost:2 W U U\nTypes:Instant\nA:SP$ Counter | Defined$ ValidStack Spell.Other | RememberCountered$ True | SubAbility$ DBDraw | SpellDescription$ Counter all other spells. Draw a card for each spell countered this way.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Counter all other spells. Draw a card for each spell countered this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swift Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

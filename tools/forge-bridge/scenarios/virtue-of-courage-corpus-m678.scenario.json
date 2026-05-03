@@ -1,0 +1,23 @@
+{
+  "id": "virtue-of-courage-corpus-m678",
+  "description": "M6 corpus — Virtue of Courage; in-hand parse.",
+  "seed": 63543,
+  "cards": {
+    "Virtue of Courage": "Name:Virtue of Courage\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | OptionalDecider$ You | ValidTarget$ Opponent | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ RememberedCard | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nAlternateMode:Adventure\nOracle:Whenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.\n\nALTERNATE\n\nName:Embereth Blaze\nManaCost:1 R\nTypes:Instant Adventure\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target. (Then exile this card. You may cast the enchantment later from exile.)\nOracle:Embereth Blaze deals 2 damage to any target. (Then exile this card. You may cast the enchantment later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virtue of Courage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

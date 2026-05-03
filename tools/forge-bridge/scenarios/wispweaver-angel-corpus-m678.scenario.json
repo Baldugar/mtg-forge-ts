@@ -1,0 +1,23 @@
+{
+  "id": "wispweaver-angel-corpus-m678",
+  "description": "M6 corpus — Wispweaver Angel; in-hand parse.",
+  "seed": 64304,
+  "cards": {
+    "Wispweaver Angel": "Name:Wispweaver Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ RestorationExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile another target creature you control, then return that card to the battlefield under its owner's control.\nSVar:RestorationExile:DB$ ChangeZone | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | ForgetOtherTargets$ True | SubAbility$ RestorationReturn\nSVar:RestorationReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Flying\\nWhen Wispweaver Angel enters, you may exile another target creature you control, then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wispweaver Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

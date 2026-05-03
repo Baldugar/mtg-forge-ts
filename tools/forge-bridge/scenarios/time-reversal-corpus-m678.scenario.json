@@ -1,0 +1,23 @@
+{
+  "id": "time-reversal-corpus-m678",
+  "description": "M6 corpus — Time Reversal; in-hand parse.",
+  "seed": 62404,
+  "cards": {
+    "Time Reversal": "Name:Time Reversal\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | UseAllOriginZones$ True | SubAbility$ DBDraw | AILogic$ Timetwister | SpellDescription$ Each player shuffles their graveyard and hand into their library, then draws seven cards. Exile CARDNAME.\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:Each player shuffles their hand and graveyard into their library, then draws seven cards. Exile Time Reversal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Reversal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

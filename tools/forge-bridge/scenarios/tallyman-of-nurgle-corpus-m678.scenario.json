@@ -1,0 +1,23 @@
+{
+  "id": "tallyman-of-nurgle-corpus-m678",
+  "description": "M6 corpus — Tallyman of Nurgle; in-hand parse.",
+  "seed": 61656,
+  "cards": {
+    "Tallyman of Nurgle": "Name:Tallyman of Nurgle\nManaCost:2 B\nTypes:Creature Astartes Warrior\nPT:2/3\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Y | Execute$ DBDrawSeven | TriggerDescription$ The Seven-fold Chant — At the beginning of your end step, if a creature died this turn, you draw a card and you lose 1 life. If seven or more creatures died this turn, instead you draw seven cards and you lose 7 life.\nSVar:DBDrawSeven:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLifeSeven\nSVar:DBLoseLifeSeven:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$Compare Y GE7.7.1\nSVar:Y:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHints:Ability$Sacrifice\nOracle:Lifelink\\nThe Seven-fold Chant — At the beginning of your end step, if a creature died this turn, you draw a card and you lose 1 life. If seven or more creatures died this turn, instead you draw seven cards and you lose 7 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tallyman of Nurgle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "y-shtola-night-s-blessed-corpus-m678",
+  "description": "M6 corpus — Y'shtola, Night's Blessed; in-hand parse.",
+  "seed": 64586,
+  "cards": {
+    "Y'shtola, Night's Blessed": "Name:Y'shtola, Night's Blessed\nManaCost:1 W U B\nTypes:Legendary Creature Cat Warlock\nPT:2/4\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE4 | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, if a player lost 4 or more life this turn, you draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:PlayerCountDefinedRegistered$HighestLifeLostThisTurn\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature+cmcGE3 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a noncreature spell with mana value 3 or greater, NICKNAME deals 2 damage to each opponent and you gain 2 life.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Opponent | NumDmg$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:BuffedBy:Card.nonCreature+cmcGE3\nDeckHas:Ability$LifeGain\nOracle:Vigilance\\nAt the beginning of each end step, if a player lost 4 or more life this turn, you draw a card.\\nWhenever you cast a noncreature spell with mana value 3 or greater, Y'shtola deals 2 damage to each opponent and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Y'shtola, Night's Blessed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vernal-sovereign-corpus-m678",
+  "description": "M6 corpus — Vernal Sovereign; in-hand parse.",
+  "seed": 63410,
+  "cards": {
+    "Vernal Sovereign": "Name:Vernal Sovereign\nManaCost:4 G W\nTypes:Creature Elemental Elk\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a green and white Elemental creature token with \"This creature's power and toughness are each equal to the number of creatures you control.\"\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a green and white Elemental creature token with \"This creature's power and toughness are each equal to the number of creatures you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ gw_x_x_elemental_total_creatures | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Whenever Vernal Sovereign enters or attacks, create a green and white Elemental creature token with \"This creature's power and toughness are each equal to the number of creatures you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vernal Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

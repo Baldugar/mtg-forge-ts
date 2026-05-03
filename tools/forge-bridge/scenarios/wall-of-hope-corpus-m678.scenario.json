@@ -1,0 +1,23 @@
+{
+  "id": "wall-of-hope-corpus-m678",
+  "description": "M6 corpus — Wall of Hope; in-hand parse.",
+  "seed": 63778,
+  "cards": {
+    "Wall of Hope": "Name:Wall of Hope\nManaCost:W\nTypes:Creature Wall\nPT:0/3\nK:Defender\nT:Mode$ DamageDoneOnce | DamageSource$ Any | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME is dealt damage, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Defender (This creature can't attack.)\\nWhenever Wall of Hope is dealt damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

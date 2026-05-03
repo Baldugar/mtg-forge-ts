@@ -1,0 +1,23 @@
+{
+  "id": "viashino-sandsprinter-corpus-m678",
+  "description": "M6 corpus — Viashino Sandsprinter; in-hand parse.",
+  "seed": 63456,
+  "cards": {
+    "Viashino Sandsprinter": "Name:Viashino Sandsprinter\nManaCost:1 R R\nTypes:Creature Lizard Warrior\nPT:4/1\nK:Haste\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nSVar:EndOfTurnLeavePlay:True\nK:Cycling:R\nOracle:Trample, haste\\nAt the beginning of the end step, return Viashino Sandsprinter to its owner's hand. (Return it only if it's on the battlefield.)\\nCycling {R} ({R}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viashino Sandsprinter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

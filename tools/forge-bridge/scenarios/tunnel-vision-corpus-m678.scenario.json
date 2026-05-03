@@ -1,0 +1,23 @@
+{
+  "id": "tunnel-vision-corpus-m678",
+  "description": "M6 corpus — Tunnel Vision; in-hand parse.",
+  "seed": 62829,
+  "cards": {
+    "Tunnel Vision": "Name:Tunnel Vision\nManaCost:5 U\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | SubAbility$ FindThePrecious | AILogic$ MostProminentInHumanDeck | SpellDescription$ Choose a card name. Target player reveals cards from the top of their library until a card with that name is revealed. If it is, that player puts the rest of the revealed cards into their graveyard and puts the card with the chosen name on top of their library. Otherwise, the player shuffles.\nSVar:FindThePrecious:DB$ DigUntil | ValidTgts$ Player | IsCurse$ True | Valid$ Card.NamedCard | ValidDescription$ the named | NoMoveFound$ True | FoundDestination$ Library | FoundLibraryPosition$ 0 | RevealedDestination$ Graveyard | NoneFoundDestination$ Library | NoneFoundLibraryPosition$ 0 | Shuffle$ True | ShuffleCondition$ NoneFound\nAI:RemoveDeck:All\nOracle:Choose a card name. Target player reveals cards from the top of their library until a card with that name is revealed. If it is, that player puts the rest of the revealed cards into their graveyard and puts the card with the chosen name on top of their library. Otherwise, the player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tunnel Vision"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

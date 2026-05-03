@@ -1,0 +1,23 @@
+{
+  "id": "sway-of-the-stars-corpus-m678",
+  "description": "M6 corpus — Sway of the Stars; in-hand parse.",
+  "seed": 61481,
+  "cards": {
+    "Sway of the Stars": "Name:Sway of the Stars\nManaCost:8 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard,Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | UseAllOriginZones$ True | SpellDescription$ Each player shuffles their hand, graveyard, and all permanents they own into their library, then draws seven cards. Each player's life total becomes 7.\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBSetLife | StackDescription$ None\nSVar:DBSetLife:DB$ SetLife | Defined$ Player | LifeAmount$ 7 | StackDescription$ None\nAI:RemoveDeck:All\nOracle:Each player shuffles their hand, graveyard, and all permanents they own into their library, then draws seven cards. Each player's life total becomes 7.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sway of the Stars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

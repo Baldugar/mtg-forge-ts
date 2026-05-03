@@ -1,0 +1,23 @@
+{
+  "id": "updraft-corpus-m678",
+  "description": "M6 corpus — Updraft; in-hand parse.",
+  "seed": 63140,
+  "cards": {
+    "Updraft": "Name:Updraft\nManaCost:1 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ Flying | SpellDescription$ Target creature gains flying until end of turn. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target creature gains flying until end of turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Updraft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

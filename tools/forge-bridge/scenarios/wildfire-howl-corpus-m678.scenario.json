@@ -1,0 +1,23 @@
+{
+  "id": "wildfire-howl-corpus-m678",
+  "description": "M6 corpus — Wildfire Howl; in-hand parse.",
+  "seed": 64183,
+  "cards": {
+    "Wildfire Howl": "Name:Wildfire Howl\nManaCost:1 R R\nTypes:Sorcery\nK:Gift\nSVar:GiftAbility:DB$ Draw | Defined$ Promised | GiftDescription$ a card\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | TargetMin$ X | TargetMax$ X | SubAbility$ DBDamageAll | DamageMap$ True | SpellDescription$ CARDNAME deals 2 damage to each creature. If the gift was promised, instead CARDNAME deals 1 damage to any target and 2 damage to each creature.\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ 2 | ValidCards$ Creature | ValidDescription$ each creature | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$PromisedGift.1.0\nOracle:Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)\\nWildfire Howl deals 2 damage to each creature. If the gift was promised, instead Wildfire Howl deals 1 damage to any target and 2 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildfire Howl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

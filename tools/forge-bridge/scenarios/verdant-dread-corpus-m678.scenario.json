@@ -1,0 +1,23 @@
+{
+  "id": "verdant-dread-corpus-m678",
+  "description": "M6 corpus — Verdant Dread; in-hand parse.",
+  "seed": 63395,
+  "cards": {
+    "Verdant Dread": "Name:Verdant Dread\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Card.namedVerdant Dread | Origin$ Any | Destination$ Battlefield | Execute$ TrigManifestDread | TriggerDescription$ Whenever CARDNAME or another card named Verdant Dread enters, manifest dread.\nSVar:TrigManifestDread:DB$ ManifestDread\nA:AB$ MakeCard | Cost$ 3 G G | Conjure$ True | Name$ Verdant Dread | Zone$ Battlefield | SorcerySpeed$ True | SpellDescription$ Conjure a card named Verdant Dread onto the battlefield. Activate only as a sorcery.\nOracle:Whenever Verdant Dread or another card named Verdant Dread enters, manifest dread.\\n{3}{G}{G}: Conjure a card named Verdant Dread onto the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdant Dread"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

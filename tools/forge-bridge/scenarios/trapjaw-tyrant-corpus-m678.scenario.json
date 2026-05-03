@@ -1,0 +1,23 @@
+{
+  "id": "trapjaw-tyrant-corpus-m678",
+  "description": "M6 corpus — Trapjaw Tyrant; in-hand parse.",
+  "seed": 62649,
+  "cards": {
+    "Trapjaw Tyrant": "Name:Trapjaw Tyrant\nManaCost:3 W W\nTypes:Creature Dinosaur\nPT:5/5\nT:Mode$ DamageDoneOnce | Execute$ TrigExile | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:HasCombatEffect:TRUE\nOracle:Enrage — Whenever Trapjaw Tyrant is dealt damage, exile target creature an opponent controls until Trapjaw Tyrant leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trapjaw Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

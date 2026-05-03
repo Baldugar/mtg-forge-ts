@@ -1,0 +1,23 @@
+{
+  "id": "wakedancer-corpus-m678",
+  "description": "M6 corpus — Wakedancer; in-hand parse.",
+  "seed": 63736,
+  "cards": {
+    "Wakedancer": "Name:Wakedancer\nManaCost:2 B\nTypes:Creature Human Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Morbid | Execute$ TrigToken | TriggerDescription$ Morbid — When CARDNAME enters, if a creature died this turn, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — When Wakedancer enters, if a creature died this turn, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wakedancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

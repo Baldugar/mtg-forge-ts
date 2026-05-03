@@ -1,0 +1,23 @@
+{
+  "id": "wolfcaller-s-howl-corpus-m678",
+  "description": "M6 corpus — Wolfcaller's Howl; in-hand parse.",
+  "seed": 64362,
+  "cards": {
+    "Wolfcaller's Howl": "Name:Wolfcaller's Howl\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create X 2/2 green Wolf creature tokens, where X is the number of your opponents with four or more cards in hand.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_2_2_wolf | TokenOwner$ You\nSVar:X:PlayerCountOpponents$HasPropertyHasCardsInHand_Card_GE4\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, create X 2/2 green Wolf creature tokens, where X is the number of your opponents with four or more cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfcaller's Howl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

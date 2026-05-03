@@ -1,0 +1,23 @@
+{
+  "id": "valor-of-the-worthy-corpus-m678",
+  "description": "M6 corpus — Valor of the Worthy; in-hand parse.",
+  "seed": 63238,
+  "cards": {
+    "Valor of the Worthy": "Name:Valor of the Worthy\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.AttachedBy | Execute$ TrigToken | TriggerDescription$ When enchanted creature leaves the battlefield, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature gets +1/+1.\\nWhen enchanted creature leaves the battlefield, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valor of the Worthy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

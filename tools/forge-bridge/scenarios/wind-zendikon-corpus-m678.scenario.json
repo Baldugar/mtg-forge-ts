@@ -1,0 +1,23 @@
+{
+  "id": "wind-zendikon-corpus-m678",
+  "description": "M6 corpus — Wind Zendikon; in-hand parse.",
+  "seed": 64218,
+  "cards": {
+    "Wind Zendikon": "Name:Wind Zendikon\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddType$ Creature & Elemental | SetColor$ Blue | SetPower$ 2 | SetToughness$ 2 | AddKeyword$ Flying | Description$ Enchanted land is a 2/2 blue Elemental creature with flying. It's still a land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted land dies, return that card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Enchant land\\nEnchanted land is a 2/2 blue Elemental creature with flying. It's still a land.\\nWhen enchanted land dies, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wind Zendikon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "voracious-vampire-corpus-m678",
+  "description": "M6 corpus — Voracious Vampire; in-hand parse.",
+  "seed": 63684,
+  "cards": {
+    "Voracious Vampire": "Name:Voracious Vampire\nManaCost:2 B\nTypes:Creature Vampire Knight\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target Vampire you control gets +1/+1 and gains menace until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Vampire.YouCtrl | TgtPrompt$ Select target Vampire you control | NumAtt$ +1 | NumDef$ +1 | KW$ Menace\nSVar:PlayMain1:TRUE\nOracle:Menace\\nWhen Voracious Vampire enters, target Vampire you control gets +1/+1 and gains menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voracious Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

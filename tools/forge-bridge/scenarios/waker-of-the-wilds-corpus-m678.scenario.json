@@ -1,0 +1,25 @@
+{
+  "id": "waker-of-the-wilds-corpus-m678",
+  "description": "M6 corpus — Waker of the Wilds; ETB-on-bf.",
+  "seed": 63738,
+  "cards": {
+    "Waker of the Wilds": "Name:Waker of the Wilds\nManaCost:2 G G\nTypes:Creature Merfolk Shaman\nPT:3/3\nA:AB$ PutCounter | Cost$ X G G | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBAnimate | SpellDescription$ Put X +1/+1 counters on target land you control. That land becomes a 0/0 Elemental creature with haste. It's still a land.\nSVar:DBAnimate:DB$ Animate | Defined$ ParentTarget | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Haste | Duration$ Permanent\nSVar:X:Count$xPaid\nOracle:{X}{G}{G}: Put X +1/+1 counters on target land you control. That land becomes a 0/0 Elemental creature with haste. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Waker of the Wilds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

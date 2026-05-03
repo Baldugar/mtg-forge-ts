@@ -1,0 +1,23 @@
+{
+  "id": "yore-tiller-nephilim-corpus-m678",
+  "description": "M6 corpus — Yore-Tiller Nephilim; in-hand parse.",
+  "seed": 64561,
+  "cards": {
+    "Yore-Tiller Nephilim": "Name:Yore-Tiller Nephilim\nManaCost:W U B R\nTypes:Creature Nephilim\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, return target creature card from your graveyard to the battlefield tapped and attacking.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl | Tapped$ True | Attacking$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Yore-Tiller Nephilim attacks, return target creature card from your graveyard to the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yore-Tiller Nephilim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

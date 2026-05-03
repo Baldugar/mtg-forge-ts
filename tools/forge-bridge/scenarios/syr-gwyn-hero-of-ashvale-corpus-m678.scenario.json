@@ -1,0 +1,23 @@
+{
+  "id": "syr-gwyn-hero-of-ashvale-corpus-m678",
+  "description": "M6 corpus — Syr Gwyn, Hero of Ashvale; in-hand parse.",
+  "seed": 61582,
+  "cards": {
+    "Syr Gwyn, Hero of Ashvale": "Name:Syr Gwyn, Hero of Ashvale\nManaCost:3 R W B\nTypes:Legendary Creature Human Knight\nPT:5/5\nK:Vigilance\nK:Menace\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+equipped | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an equipped creature you control attacks, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nS:Mode$ Continuous | Affected$ Equipment.YouCtrl | AddKeyword$ Equip:0:Creature.YouCtrl+Knight:Knight | Description$ Equipment you control have equip Knight {0}.\nDeckHints:Type$Knight\nOracle:Vigilance, menace\\nWhenever an equipped creature you control attacks, you draw a card and you lose 1 life.\\nEquipment you control have equip Knight {0}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Gwyn, Hero of Ashvale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

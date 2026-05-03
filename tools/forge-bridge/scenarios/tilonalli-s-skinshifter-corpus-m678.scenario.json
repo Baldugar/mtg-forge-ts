@@ -1,0 +1,23 @@
+{
+  "id": "tilonalli-s-skinshifter-corpus-m678",
+  "description": "M6 corpus — Tilonalli's Skinshifter; in-hand parse.",
+  "seed": 62388,
+  "cards": {
+    "Tilonalli's Skinshifter": "Name:Tilonalli's Skinshifter\nManaCost:2 R\nTypes:Creature Human Shaman\nPT:0/1\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBClone | TriggerZones$ Battlefield | Mandatory$ True | TriggerDescription$ Whenever CARDNAME attacks, it becomes a copy of another target nonlegendary attacking creature until end of turn.\nSVar:DBClone:DB$ Clone | CloneTarget$ Self | ValidTgts$ Creature.nonLegendary+Other+attacking | TgtPrompt$ Select target nonlegendary attacking creature to copy | Duration$ UntilEndOfTurn\nOracle:Haste\\nWhenever Tilonalli's Skinshifter attacks, it becomes a copy of another target nonlegendary attacking creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tilonalli's Skinshifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

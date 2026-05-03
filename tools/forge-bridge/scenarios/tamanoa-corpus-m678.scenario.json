@@ -1,0 +1,25 @@
+{
+  "id": "tamanoa-corpus-m678",
+  "description": "M6 corpus — Tamanoa; ETB-on-bf.",
+  "seed": 61668,
+  "cards": {
+    "Tamanoa": "Name:Tamanoa\nManaCost:R G W\nTypes:Creature Spirit\nPT:2/4\nT:Mode$ DamageDealtOnce | ValidSource$ Card.nonCreature+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a noncreature source you control deals damage, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever a noncreature source you control deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tamanoa"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

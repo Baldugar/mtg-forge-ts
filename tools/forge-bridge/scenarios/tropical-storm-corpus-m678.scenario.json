@@ -1,0 +1,23 @@
+{
+  "id": "tropical-storm-corpus-m678",
+  "description": "M6 corpus — Tropical Storm; in-hand parse.",
+  "seed": 62775,
+  "cards": {
+    "Tropical Storm": "Name:Tropical Storm\nManaCost:X G\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature.withFlying | NumDmg$ X | SubAbility$ DBDamage | SpellDescription$ CARDNAME deals X damage to each creature with flying and 1 additional damage to each blue creature.\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature.Blue | NumDmg$ 1\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Tropical Storm deals X damage to each creature with flying and 1 additional damage to each blue creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tropical Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "zangief-the-red-cyclone-corpus-m678",
+  "description": "M6 corpus — Zangief, the Red Cyclone; in-hand parse.",
+  "seed": 64606,
+  "cards": {
+    "Zangief, the Red Cyclone": "Name:Zangief, the Red Cyclone\nVariant:UniversesWithin:FlavorName:Maarika, Brutal Gladiator\nManaCost:2 B R G\nTypes:Legendary Creature Human Warrior\nPT:7/4\nK:CARDNAME must be blocked if able.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | Condition$ PlayerTurn | Description$ Iron Muscle — As long as it's your turn, NICKNAME has indestructible.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature.wasDealtExcessDamageThisTurn | Execute$ TrigSac | TriggerDescription$ Spinning Piledriver — Whenever NICKNAME deals damage to a creature, if that creature was dealt excess damage this turn, that creature's controller sacrifices a noncreature, nonland permanent.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent.nonCreature+nonLand | SacMessage$ noncreature, nonland permanent | Defined$ TriggeredTargetController\nOracle:Zangief, the Red Cyclone must be blocked if able.\\nIron Muscle — As long as it's your turn, Zangief has indestructible.\\nSpinning Piledriver — Whenever Zangief deals damage to a creature, if that creature was dealt excess damage this turn, that creature's controller sacrifices a noncreature, nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zangief, the Red Cyclone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "transmogrifying-licid-corpus-m678",
+  "description": "M6 corpus — Transmogrifying Licid; ETB-on-bf.",
+  "seed": 62643,
+  "cards": {
+    "Transmogrifying Licid": "Name:Transmogrifying Licid\nManaCost:3\nTypes:Artifact Creature Licid\nPT:2/2\nA:AB$ Animate | Cost$ 1 T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ 1 | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {1} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddType$ Artifact | Description$ Enchanted creature gets +1/+1 and is an artifact in addition to its other types.\nAI:RemoveDeck:All\nOracle:{1}, {T}: Transmogrifying Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {1} to end this effect.\\nEnchanted creature gets +1/+1 and is an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Transmogrifying Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

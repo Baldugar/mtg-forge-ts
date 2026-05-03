@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-dead-corpus-m678",
+  "description": "M6 corpus — Vengeful Dead; in-hand parse.",
+  "seed": 63362,
+  "cards": {
+    "Vengeful Dead": "Name:Vengeful Dead\nManaCost:3 B\nTypes:Creature Zombie\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Zombie.Other | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another Zombie dies, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Whenever Vengeful Dead or another Zombie dies, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

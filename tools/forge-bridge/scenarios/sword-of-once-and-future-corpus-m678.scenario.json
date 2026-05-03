@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-once-and-future-corpus-m678",
+  "description": "M6 corpus — Sword of Once and Future; in-hand parse.",
+  "seed": 61518,
+  "cards": {
+    "Sword of Once and Future": "Name:Sword of Once and Future\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfOnceAndFutureCE | AddKeyword$ Protection from blue & Protection from black | Description$ Equipped creature gets +2/+2 and has protection from blue and from black.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, surveil 2. Then you may cast an instant or sorcery spell with mana value 2 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2 | SubAbility$ DBCastFromYard\nSVar:DBCastFromYard:DB$ Play | Valid$ Card.YouOwn | ValidSA$ Instant.cmcLE2,Sorcery.cmcLE2 | ValidZone$ Graveyard | Optional$ True | WithoutManaCost$ True | Amount$ 1 | Controller$ You | ReplaceGraveyard$ Exile\nSVar:SwordOfOnceAndFutureCE:SVar:MustBeBlocked:AttackingPlayerConservative\nOracle:Equipped creature gets +2/+2 and has protection from blue and from black.\\nWhenever equipped creature deals combat damage to a player, surveil 2. Then you may cast an instant or sorcery spell with mana value 2 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Once and Future"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-rage-corpus-m678",
+  "description": "M6 corpus — Urza's Rage; in-hand parse.",
+  "seed": 63194,
+  "cards": {
+    "Urza's Rage": "Name:Urza's Rage\nManaCost:2 R\nTypes:Instant\nK:Kicker:8 R\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ Kicked | SpellDescription$ CARDNAME deals 3 damage to any target. If this spell was kicked, instead it deals 10 damage to that permanent or player and the damage can't be prevented.\nSVar:Kicked:DB$ DealDamage | Defined$ Targeted | NumDmg$ 10 | NoPrevention$ True | Condition$ Kicked | ConditionDescription$ If CARDNAME was kicked,\nSVar:X:Count$Kicked.0.3\nSVar:Y:Count$Kicked.10.0\nOracle:Kicker {8}{R} (You may pay an additional {8}{R} as you cast this spell.)\\nThis spell can't be countered.\\nUrza's Rage deals 3 damage to any target. If this spell was kicked, instead it deals 10 damage to that permanent or player and the damage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

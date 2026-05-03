@@ -1,0 +1,25 @@
+{
+  "id": "warrior-angel-corpus-m678",
+  "description": "M6 corpus — Warrior Angel; ETB-on-bf.",
+  "seed": 63913,
+  "cards": {
+    "Warrior Angel": "Name:Warrior Angel\nManaCost:4 W W\nTypes:Creature Angel Warrior\nPT:3/4\nK:Flying\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Flying\\nWhenever Warrior Angel deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Warrior Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

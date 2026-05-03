@@ -1,0 +1,23 @@
+{
+  "id": "swiftgear-drake-corpus-m678",
+  "description": "M6 corpus — Swiftgear Drake; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "Swiftgear Drake": "Name:Swiftgear Drake\nManaCost:5\nTypes:Artifact Creature Drake\nPT:2/4\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put up to one target card from a graveyard on the bottom of its owner's library.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Card | TgtPrompt$ Select up to one target card in a graveyard | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nOracle:Flying, haste\\nWhen Swiftgear Drake enters, put up to one target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swiftgear Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

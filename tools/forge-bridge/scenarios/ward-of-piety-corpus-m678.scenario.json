@@ -1,0 +1,23 @@
+{
+  "id": "ward-of-piety-corpus-m678",
+  "description": "M6 corpus — Ward of Piety; in-hand parse.",
+  "seed": 63868,
+  "cards": {
+    "Ward of Piety": "Name:Ward of Piety\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ Effect | Cost$ 1 W | Name$ Redirection Ward | ValidTgts$ Any | TgtPrompt$ Select any target to redirect the damage to | ReplacementEffects$ WardDamage | RememberObjects$ Targeted | ImprintCards$ Enchanted | ExileOnMoved$ Battlefield | SpellDescription$ The next 1 damage that would be dealt to enchanted creature this turn is dealt to any target instead.\nSVar:WardDamage:Event$ DamageDone | ValidTarget$ Creature.IsImprinted | ReplaceWith$ WardDmg | DamageTarget$ Remembered | Description$ The next 1 damage that would be dealt to enchanted creature this turn is dealt to any target instead.\nSVar:WardDmg:DB$ ReplaceSplitDamage | DamageTarget$ Remembered\nAI:RemoveDeck:All\nOracle:Enchant creature\\n{1}{W}: The next 1 damage that would be dealt to enchanted creature this turn is dealt to any target instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ward of Piety"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

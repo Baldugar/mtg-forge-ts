@@ -1,0 +1,23 @@
+{
+  "id": "totentanz-swarm-piper-corpus-m678",
+  "description": "M6 corpus — Totentanz, Swarm Piper; in-hand parse.",
+  "seed": 62553,
+  "cards": {
+    "Totentanz, Swarm Piper": "Name:Totentanz, Swarm Piper\nManaCost:1 B R\nTypes:Legendary Creature Human Warlock Bard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control dies, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You\nA:AB$ Pump | Cost$ 1 B | ValidTgts$ Rat.attacking | TgtPrompt$ Select target attacking Rat | KW$ Deathtouch | SpellDescription$ Target attacking Rat gains deathtouch until end of turn.\nDeckHas:Ability$Token & Type$Rat\nDeckHints:Type$Rat\nOracle:Whenever Totentanz, Swarm Piper or another nontoken creature you control dies, create a 1/1 black Rat creature token with \"This creature can't block.\"\\n{1}{B}: Target attacking Rat you control gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Totentanz, Swarm Piper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

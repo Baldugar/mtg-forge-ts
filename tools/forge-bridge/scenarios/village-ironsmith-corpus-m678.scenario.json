@@ -1,0 +1,23 @@
+{
+  "id": "village-ironsmith-corpus-m678",
+  "description": "M6 corpus — Village Ironsmith; in-hand parse.",
+  "seed": 63501,
+  "cards": {
+    "Village Ironsmith": "Name:Village Ironsmith\nManaCost:1 R\nTypes:Creature Human Werewolf\nPT:1/1\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:First strike\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Village Ironsmith.\n\nALTERNATE\n\nName:Ironfang\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/1\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:First strike\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Ironfang.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Ironsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

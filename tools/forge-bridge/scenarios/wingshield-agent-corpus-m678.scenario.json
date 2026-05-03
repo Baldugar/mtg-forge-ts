@@ -1,0 +1,23 @@
+{
+  "id": "wingshield-agent-corpus-m678",
+  "description": "M6 corpus — Wingshield Agent; in-hand parse.",
+  "seed": 64267,
+  "cards": {
+    "Wingshield Agent": "Name:Wingshield Agent\nManaCost:2 U\nTypes:Creature Human Soldier\nPT:2/3\nK:etbCounter:SHIELD:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, up to one other target creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | TargetMin$ 0 | TargetMax$ 1 | KW$ Flying\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Wingshield Agent enters with a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\nWhenever Wingshield Agent attacks, up to one other target creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingshield Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

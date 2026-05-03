@@ -1,0 +1,23 @@
+{
+  "id": "unified-strike-corpus-m678",
+  "description": "M6 corpus — Unified Strike; in-hand parse.",
+  "seed": 63070,
+  "cards": {
+    "Unified Strike": "Name:Unified Strike\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SpellDescription$ Exile target attacking creature if its power is less than or equal to the number of Soldiers on the battlefield.\nSVar:Y:Count$Valid Soldier\nSVar:X:Targeted$Valid Creature.powerLEY\nAI:RemoveDeck:Random\nOracle:Exile target attacking creature if its power is less than or equal to the number of Soldiers on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unified Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

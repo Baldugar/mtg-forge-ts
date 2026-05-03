@@ -1,0 +1,23 @@
+{
+  "id": "warp-world-corpus-m678",
+  "description": "M6 corpus — Warp World; in-hand parse.",
+  "seed": 63899,
+  "cards": {
+    "Warp World": "Name:Warp World\nManaCost:5 R R R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBShuffle | SubAbility$ ChangePermanent | StackDescription$ SpellDescription | SpellDescription$ Each player shuffles all permanents they own into their library, then reveals that many cards from the top of their library. Each player puts all artifact, creature, and land cards revealed this way onto the battlefield, then does the same for enchantment cards, then puts all cards revealed this way that weren't put onto the battlefield on the bottom of their library.\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Permanent.RememberedPlayerOwn | Imprint$ True | Origin$ Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ DBDig\nSVar:DBDig:DB$ PeekAndReveal | Defined$ Remembered | PeekAmount$ WarpX | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBCleanImprint\nSVar:DBCleanImprint:DB$ Cleanup | ClearImprinted$ True\nSVar:WarpX:Imprinted$Amount\nSVar:ChangePermanent:DB$ ChangeZoneAll | ChangeType$ Artifact.IsRemembered,Creature.IsRemembered,Land.IsRemembered | Origin$ Library | Destination$ Battlefield | ForgetChanged$ True | SubAbility$ ChangeEnchantment\nSVar:ChangeEnchantment:DB$ ChangeZoneAll | ChangeType$ Enchantment.IsRemembered | Origin$ Library | Destination$ Battlefield | ForgetChanged$ True | SubAbility$ GotoBottom\nSVar:GotoBottom:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each player shuffles all permanents they own into their library, then reveals that many cards from the top of their library. Each player puts all artifact, creature, and land cards revealed this way onto the battlefield, then does the same for enchantment cards, then puts all cards revealed this way that weren't put onto the battlefield on the bottom of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warp World"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

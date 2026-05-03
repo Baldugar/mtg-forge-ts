@@ -1,0 +1,23 @@
+{
+  "id": "triton-tactics-corpus-m678",
+  "description": "M6 corpus — Triton Tactics; in-hand parse.",
+  "seed": 62756,
+  "cards": {
+    "Triton Tactics": "Name:Triton Tactics\nManaCost:U\nTypes:Instant\nA:SP$ Pump | TargetMin$ 0 | TargetMax$ 2 | NumDef$ +3 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | SubAbility$ DBUntap | SpellDescription$ Up to two target creatures each get +0/+3 until end of turn. Untap those creatures. At this turn's next end of combat, tap each creature that was blocked by one of those creatures this turn and it doesn't untap during its controller's next untap step.\nSVar:DBUntap:DB$ Untap | Defined$ ParentTarget | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | ThisTurn$ True | Mode$ Phase | Phase$ EndCombat | Execute$ TrigRemember | TriggerDescription$ At this turn's next end of combat, tap each creature that was blocked by one of those creatures this turn and it doesn't untap during its controller's next untap step. | RememberObjects$ ParentTarget\nSVar:TrigRemember:DB$ Pump | RememberObjects$ DelayTriggerRemembered | SubAbility$ TrigTap\nSVar:TrigTap:DB$ TapAll | ValidCards$ Creature.blockedByRemembered | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.blockedByRemembered | Duration$ Permanent | KW$ HIDDEN This card doesn't untap during your next untap step. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Up to two target creatures each get +0/+3 until end of turn. Untap those creatures. At this turn's next end of combat, tap each creature that was blocked by one of those creatures this turn and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triton Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

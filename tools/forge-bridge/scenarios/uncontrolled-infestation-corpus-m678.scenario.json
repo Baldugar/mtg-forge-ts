@@ -1,0 +1,23 @@
+{
+  "id": "uncontrolled-infestation-corpus-m678",
+  "description": "M6 corpus — Uncontrolled Infestation; in-hand parse.",
+  "seed": 62992,
+  "cards": {
+    "Uncontrolled Infestation": "Name:Uncontrolled Infestation\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Land.nonBasic:nonbasic land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerDescription$ When enchanted land becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant nonbasic land\\nWhen enchanted land becomes tapped, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uncontrolled Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "villainous-wrath-corpus-m678",
+  "description": "M6 corpus — Villainous Wrath; in-hand parse.",
+  "seed": 63507,
+  "cards": {
+    "Villainous Wrath": "Name:Villainous Wrath\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | SubAbility$ DBDestroyAll | SpellDescription$ Target opponent loses life equal to the number of creatures they control. Then destroy all creatures.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature\nSVar:X:Count$Valid Creature.TargetedPlayerCtrl\nOracle:Target opponent loses life equal to the number of creatures they control. Then destroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Villainous Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

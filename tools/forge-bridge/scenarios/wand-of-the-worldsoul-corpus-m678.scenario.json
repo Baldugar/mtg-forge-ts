@@ -1,0 +1,25 @@
+{
+  "id": "wand-of-the-worldsoul-corpus-m678",
+  "description": "M6 corpus — Wand of the Worldsoul; ETB-on-bf.",
+  "seed": 63815,
+  "cards": {
+    "Wand of the Worldsoul": "Name:Wand of the Worldsoul\nManaCost:2 W\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Effect | Cost$ T | StaticAbilities$ GrantConvoke | ForgetOnCast$ Card.YouCtrl | SpellDescription$ The next spell you cast this turn has convoke.\nSVar:GrantConvoke:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Stack | AddKeyword$ Convoke | Description$ The next spell you cast this turn has convoke.\nOracle:Wand of the Worldsoul enters tapped.\\n{T}: Add {W}.\\n{T}: The next spell you cast this turn has convoke.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wand of the Worldsoul"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

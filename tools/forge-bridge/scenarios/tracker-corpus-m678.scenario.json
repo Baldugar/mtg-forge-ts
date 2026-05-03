@@ -1,0 +1,25 @@
+{
+  "id": "tracker-corpus-m678",
+  "description": "M6 corpus — Tracker; ETB-on-bf.",
+  "seed": 62595,
+  "cards": {
+    "Tracker": "Name:Tracker\nManaCost:2 G\nTypes:Creature Human\nPT:2/2\nA:AB$ DealDamage | Cost$ G G T | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DamageThis | SpellDescription$ CARDNAME deals damage equal to its power to target creature. That creature deals damage equal to its power to CARDNAME.\nSVar:DamageThis:DB$ DealDamage | Defined$ Self | DamageSource$ Targeted | NumDmg$ Y\nSVar:X:Count$CardPower\nSVar:Y:Targeted$CardPower\nOracle:{G}{G}, {T}: Tracker deals damage equal to its power to target creature. That creature deals damage equal to its power to Tracker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tracker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

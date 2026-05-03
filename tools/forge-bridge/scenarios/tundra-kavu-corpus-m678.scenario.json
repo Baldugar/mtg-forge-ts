@@ -1,0 +1,25 @@
+{
+  "id": "tundra-kavu-corpus-m678",
+  "description": "M6 corpus — Tundra Kavu; ETB-on-bf.",
+  "seed": 62820,
+  "cards": {
+    "Tundra Kavu": "Name:Tundra Kavu\nManaCost:2 R\nTypes:Creature Kavu\nPT:2/2\nA:AB$ Pump | Cost$ T | ValidTgts$ Land | SubAbility$ TypeChoice | StackDescription$ Target land becomes a | SpellDescription$ Target land becomes a Plains or an Island until end of turn.\nSVar:TypeChoice:DB$ GenericChoice | Choices$ SVar1,SVar2 | StackDescription$ Plains or an Island until end of turn.\nSVar:SVar1:DB$ Animate | Defined$ Targeted | Types$ Plains | RemoveLandTypes$ True | SpellDescription$ Targeted land becomes a Plains until end of turn.\nSVar:SVar2:DB$ Animate | Defined$ Targeted | Types$ Island | RemoveLandTypes$ True | SpellDescription$ Targeted land becomes an Island until end of turn.\nAI:RemoveDeck:All\nOracle:{T}: Target land becomes a Plains or an Island until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tundra Kavu"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

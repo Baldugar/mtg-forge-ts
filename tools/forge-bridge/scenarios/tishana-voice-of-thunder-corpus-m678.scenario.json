@@ -1,0 +1,23 @@
+{
+  "id": "tishana-voice-of-thunder-corpus-m678",
+  "description": "M6 corpus — Tishana, Voice of Thunder; in-hand parse.",
+  "seed": 62430,
+  "cards": {
+    "Tishana, Voice of Thunder": "Name:Tishana, Voice of Thunder\nManaCost:5 G U\nTypes:Legendary Creature Merfolk Shaman\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each creature you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ NumCreats\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:NumCreats:Count$Valid Creature.YouCtrl\nOracle:Tishana, Voice of Thunder's power and toughness are each equal to the number of cards in your hand.\\nYou have no maximum hand size.\\nWhen Tishana enters, draw a card for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tishana, Voice of Thunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

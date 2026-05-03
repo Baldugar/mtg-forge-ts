@@ -1,0 +1,25 @@
+{
+  "id": "unnatural-selection-corpus-m678",
+  "description": "M6 corpus — Unnatural Selection; ETB-on-bf.",
+  "seed": 63098,
+  "cards": {
+    "Unnatural Selection": "Name:Unnatural Selection\nManaCost:1 U\nTypes:Enchantment\nA:AB$ ChooseType | Cost$ 1 | Defined$ You | Type$ Creature | InvalidTypes$ Wall | SubAbility$ DBAnimate | SpellDescription$ Choose a creature type other than Wall. Target creature becomes that type until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Creature | Types$ ChosenType | RemoveCreatureTypes$ True\nAI:RemoveDeck:All\nOracle:{1}: Choose a creature type other than Wall. Target creature becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Unnatural Selection"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

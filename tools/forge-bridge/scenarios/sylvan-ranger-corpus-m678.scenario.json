@@ -1,0 +1,23 @@
+{
+  "id": "sylvan-ranger-corpus-m678",
+  "description": "M6 corpus — Sylvan Ranger; in-hand parse.",
+  "seed": 61548,
+  "cards": {
+    "Sylvan Ranger": "Name:Sylvan Ranger\nManaCost:1 G\nTypes:Creature Elf Scout Ranger\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:When Sylvan Ranger enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

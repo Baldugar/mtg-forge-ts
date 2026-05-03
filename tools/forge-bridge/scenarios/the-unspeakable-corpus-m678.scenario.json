@@ -1,0 +1,23 @@
+{
+  "id": "the-unspeakable-corpus-m678",
+  "description": "M6 corpus — The Unspeakable; in-hand parse.",
+  "seed": 62122,
+  "cards": {
+    "The Unspeakable": "Name:The Unspeakable\nManaCost:6 U U U\nTypes:Legendary Creature Spirit\nPT:6/7\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may return target Arcane card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Arcane.YouCtrl\nDeckHints:Name$Peer Through Depths|Reach Through Mists|Sift Through Sands|The Unspeakable & Type$Arcane|Spirit\nOracle:Flying, trample\\nWhenever The Unspeakable deals combat damage to a player, you may return target Arcane card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Unspeakable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

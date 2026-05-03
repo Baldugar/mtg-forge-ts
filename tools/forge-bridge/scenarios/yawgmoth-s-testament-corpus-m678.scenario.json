@@ -1,0 +1,23 @@
+{
+  "id": "yawgmoth-s-testament-corpus-m678",
+  "description": "M6 corpus — Yawgmoth's Testament; in-hand parse.",
+  "seed": 64540,
+  "cards": {
+    "Yawgmoth's Testament": "Name:Yawgmoth's Testament\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Effect | ReplacementEffects$ GraveExileToLibrary | StaticAbilities$ STPlay | AINoRecursiveCheck$ True | SpellDescription$ Until end of turn, you may play face-up cards you own from exile. If a card would be put into your graveyard or exile from anywhere this turn, put it on the bottom of your library instead.\nSVar:STPlay:Mode$ Continuous | Affected$ Card.YouOwn+faceUp | AffectedZone$ Exile | MayPlay$ True | Description$ You may play face-up cards you own from exile.\nSVar:GraveExileToLibrary:Event$ Moved | ActiveZones$ Command | Destination$ Graveyard,Exile | ValidCard$ Card.!token+YouOwn | ReplaceWith$ PutLibrary | Description$ If a card would be put into your graveyard or exile from anywhere this turn, put it on the bottom of your library instead.\nSVar:PutLibrary:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard | LibraryPosition$ -1 | Reveal$ True\nSVar:PlayMain1:ALWAYS\nOracle:Until end of turn, you may play face-up cards you own from exile.\\nIf a card would be put into your graveyard or exile from anywhere this turn, put it on the bottom of your library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yawgmoth's Testament"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

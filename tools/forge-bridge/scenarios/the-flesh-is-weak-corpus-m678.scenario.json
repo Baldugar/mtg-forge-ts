@@ -1,0 +1,23 @@
+{
+  "id": "the-flesh-is-weak-corpus-m678",
+  "description": "M6 corpus — The Flesh Is Weak; in-hand parse.",
+  "seed": 62041,
+  "cards": {
+    "The Flesh Is Weak": "Name:The Flesh Is Weak\nManaCost:2 W U B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddType$ Artifact | Description$ Creatures you control with +1/+1 counters on them are artifacts in addition to their other types.\nS:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.nonArtifact | AddPower$ -1 | AddToughness$ -1 | Description$ Nonartifact creatures get -1/-1.\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact\nOracle:When The Flesh Is Weak enters, put a +1/+1 counter on each creature you control.\\nCreatures you control with +1/+1 counters on them are artifacts in addition to their other types\\nNonartifact creatures get -1/-1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Flesh Is Weak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

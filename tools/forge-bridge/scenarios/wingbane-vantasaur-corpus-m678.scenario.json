@@ -1,0 +1,23 @@
+{
+  "id": "wingbane-vantasaur-corpus-m678",
+  "description": "M6 corpus — Wingbane Vantasaur; in-hand parse.",
+  "seed": 64249,
+  "cards": {
+    "Wingbane Vantasaur": "Name:Wingbane Vantasaur\nManaCost:2 G G\nTypes:Creature Dinosaur\nPT:4/5\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ SavageStomp,Naturalize\nSVar:SavageStomp:DB$ MakeCard | Conjure$ True | Name$ Savage Stomp | Zone$ Hand | SpellDescription$ Conjure a card named Savage Stomp into your hand.\nSVar:Naturalize:DB$ MakeCard | Conjure$ True | Name$ Naturalize | Zone$ Hand | SpellDescription$ Conjure a card named Naturalize into your hand.\nOracle:Reach\\nWhen Wingbane Vantasaur enters, choose one —\\n• Conjure a card named Savage Stomp into your hand.\\n• Conjure a card named Naturalize into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingbane Vantasaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

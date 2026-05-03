@@ -1,0 +1,25 @@
+{
+  "id": "war-tax-corpus-m678",
+  "description": "M6 corpus — War Tax; ETB-on-bf.",
+  "seed": 63856,
+  "cards": {
+    "War Tax": "Name:War Tax\nManaCost:2 U\nTypes:Enchantment\nA:AB$ Effect | Cost$ X U | StaticAbilities$ AttackTax | SetChosenNumber$ X | SpellDescription$ This turn, creatures can't attack unless their controller pays {X} for each attacking creature they control.\nSVar:AttackTax:Mode$ CantAttackUnless | ValidCard$ Creature | Cost$ XChosen | Description$ Creatures can't attack unless their controller pays {X} for each attacking creature they control.\nSVar:X:Count$xPaid\nSVar:XChosen:Count$ChosenNumber\nAI:RemoveDeck:All\nOracle:{X}{U}: This turn, creatures can't attack unless their controller pays {X} for each attacking creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "War Tax"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

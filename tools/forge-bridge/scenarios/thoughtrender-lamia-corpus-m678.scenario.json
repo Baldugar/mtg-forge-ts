@@ -1,0 +1,23 @@
+{
+  "id": "thoughtrender-lamia-corpus-m678",
+  "description": "M6 corpus — Thoughtrender Lamia; in-hand parse.",
+  "seed": 62229,
+  "cards": {
+    "Thoughtrender Lamia": "Name:Thoughtrender Lamia\nManaCost:4 B B\nTypes:Enchantment Creature Lamia\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigDiscard | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Thoughtrender Lamia or another enchantment you control enters, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thoughtrender Lamia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tide-of-war-corpus-m678",
+  "description": "M6 corpus — Tide of War; ETB-on-bf.",
+  "seed": 62364,
+  "cards": {
+    "Tide of War": "Name:Tide of War\nManaCost:4 R R\nTypes:Enchantment\nT:Mode$ BlockersDeclared | Execute$ WarFlip | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures block, flip a coin. If you win the flip, each blocking creature is sacrificed by its controller. If you lose the flip, each blocked creature is sacrificed by its controller.\nSVar:WarFlip:DB$ FlipACoin | WinSubAbility$ SacBlockers | LoseSubAbility$ SacAttackers\nSVar:SacBlockers:DB$ SacrificeAll | Defined$ TriggeredBlockers\nSVar:SacAttackers:DB$ SacrificeAll | Defined$ TriggeredAttackers\nAI:RemoveDeck:Random\nOracle:Whenever one or more creatures block, flip a coin. If you win the flip, each blocking creature is sacrificed by its controller. If you lose the flip, each blocked creature is sacrificed by its controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tide of War"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tower-worker-corpus-m678",
+  "description": "M6 corpus — Tower Worker; ETB-on-bf.",
+  "seed": 62580,
+  "cards": {
+    "Tower Worker": "Name:Tower Worker\nManaCost:3\nTypes:Artifact Creature Assembly-Worker\nPT:1/3\nK:Reach\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | SpellDescription$ Add {C}. If you control creatures named Mine Worker and Power Plant Worker, add {C}{C}{C} instead.\nSVar:X:Count$Compare TronCheck GT0.3.1\nSVar:TronCheck:SVar$Z/Times.Y\nSVar:Z:Count$Valid Creature.YouCtrl+namedMine Worker\nSVar:Y:Count$Valid Creature.YouCtrl+namedPower Plant Worker\nDeckNeeds:Name$Mine Worker|Power Plant Worker\nOracle:Reach\\n{T}: Add {C}. If you control creatures named Mine Worker and Power Plant Worker, add {C}{C}{C} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tower Worker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

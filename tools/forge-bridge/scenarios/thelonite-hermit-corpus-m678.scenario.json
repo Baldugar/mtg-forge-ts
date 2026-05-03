@@ -1,0 +1,25 @@
+{
+  "id": "thelonite-hermit-corpus-m678",
+  "description": "M6 corpus — Thelonite Hermit; ETB-on-bf.",
+  "seed": 62136,
+  "cards": {
+    "Thelonite Hermit": "Name:Thelonite Hermit\nManaCost:3 G\nTypes:Creature Elf Shaman\nPT:1/1\nK:Morph:3 G G\nS:Mode$ Continuous | Affected$ Creature.Saproling | AddPower$ 1 | AddToughness$ 1 | Description$ All Saprolings get +1/+1.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, create four 1/1 green Saproling creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHints:Type$Fungus\nDeckHas:Ability$Token\nOracle:All Saprolings get +1/+1.\\nMorph {3}{G}{G} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Thelonite Hermit is turned face up, create four 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thelonite Hermit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "territorial-kavu-corpus-m678",
+  "description": "M6 corpus — Territorial Kavu; in-hand parse.",
+  "seed": 61920,
+  "cards": {
+    "Territorial Kavu": "Name:Territorial Kavu\nManaCost:R G\nTypes:Creature Kavu\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ Domain — CARDNAME's power and toughness are each equal to the number of basic land types among lands you control.\nSVar:X:Count$Domain\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDiscard,DBExile\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard a card. If you do, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Card | TgtPrompt$ Select up to one target card in a graveyard | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Exile | SpellDescription$ Exile up to one target card from a graveyard.\nDeckHas:Ability$Discard\nOracle:Domain — Territorial Kavu's power and toughness are each equal to the number of basic land types among lands you control.\\nWhenever Territorial Kavu attacks, choose one —\\n• Discard a card. If you do, draw a card.\\n• Exile up to one target card from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territorial Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

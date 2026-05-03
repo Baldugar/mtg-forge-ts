@@ -1,0 +1,23 @@
+{
+  "id": "traveler-s-cloak-corpus-m678",
+  "description": "M6 corpus — Traveler's Cloak; in-hand parse.",
+  "seed": 62660,
+  "cards": {
+    "Traveler's Cloak": "Name:Traveler's Cloak\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nK:ETBReplacement:Other:ChooseLT\nSVar:ChooseLT:DB$ ChooseType | Defined$ You | Type$ Land | AILogic$ ChosenLandwalk | SpellDescription$ As CARDNAME enters, choose a land type.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Landwalk:ChosenType | Description$ Enchanted creature has landwalk of the chosen type. (It can't be blocked as long as defending player controls a land of that type.)\nOracle:Enchant creature\\nAs Traveler's Cloak enters, choose a land type.\\nWhen Traveler's Cloak enters, draw a card.\\nEnchanted creature has landwalk of the chosen type. (It can't be blocked as long as defending player controls a land of that type.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Traveler's Cloak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

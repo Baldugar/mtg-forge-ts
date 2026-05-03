@@ -1,0 +1,23 @@
+{
+  "id": "viridian-harvest-corpus-m678",
+  "description": "M6 corpus — Viridian Harvest; in-hand parse.",
+  "seed": 63538,
+  "cards": {
+    "Viridian Harvest": "Name:Viridian Harvest\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigGainLife | TriggerDescription$ When enchanted artifact is put into a graveyard, you gain 6 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 6\nAI:RemoveDeck:Random\nOracle:Enchant artifact\\nWhen enchanted artifact is put into a graveyard, you gain 6 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viridian Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

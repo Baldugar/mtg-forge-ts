@@ -1,0 +1,23 @@
+{
+  "id": "tiger-seal-corpus-m678",
+  "description": "M6 corpus — Tiger-Seal; in-hand parse.",
+  "seed": 62381,
+  "cards": {
+    "Tiger-Seal": "Name:Tiger-Seal\nManaCost:U\nTypes:Creature Cat Seal\nPT:3/3\nK:Vigilance\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of your upkeep, tap this creature.\nSVar:TrigTap:DB$ Tap | Defined$ Self\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you draw your second card each turn, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:Vigilance\\nAt the beginning of your upkeep, tap this creature.\\nWhenever you draw your second card each turn, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tiger-Seal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

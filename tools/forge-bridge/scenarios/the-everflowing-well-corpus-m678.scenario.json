@@ -1,0 +1,23 @@
+{
+  "id": "the-everflowing-well-corpus-m678",
+  "description": "M6 corpus — The Everflowing Well; in-hand parse.",
+  "seed": 62028,
+  "cards": {
+    "The Everflowing Well": "Name:The Everflowing Well\nManaCost:2 U\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards, then draw two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | Defined$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE8 | Execute$ TrigTransform | TriggerDescription$ Descend 8 — At the beginning of your upkeep, if there are eight or more permanent cards in your graveyard, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Ability$Graveyard|Mill\nAlternateMode:DoubleFaced\nOracle:When The Everflowing Well enters, mill two cards, then draw two cards.\\nDescend 8 — At the beginning of your upkeep, if there are eight or more permanent cards in your graveyard, transform The Everflowing Well.\n\nALTERNATE\n\nName:The Myriad Pools\nManaCost:no cost\nTypes:Legendary Artifact Land\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nT:Mode$ SpellCast | ValidCard$ Permanent | ValidSA$ Spell.ManaFromCard.StrictlySelf | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerDescription$ Whenever you cast a permanent spell using mana produced by CARDNAME, up to one other target permanent you control becomes a copy of that spell until end of turn.\nSVar:TrigCopy:DB$ Clone | Defined$ TriggeredCardLKICopy | CloneTarget$ Targeted | ValidTgts$ Permanent.YouCtrl+Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target permanent you control | Duration$ UntilEndOfTurn\nOracle:(Transforms from The Everflowing Well.)\\n{T}: Add {U}.\\nWhenever you cast a permanent spell using mana produced by The Myriad Pools, up to one other target permanent you control becomes a copy of that spell until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Everflowing Well"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

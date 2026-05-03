@@ -1,0 +1,23 @@
+{
+  "id": "volition-reins-corpus-m678",
+  "description": "M6 corpus — Volition Reins; in-hand parse.",
+  "seed": 63666,
+  "cards": {
+    "Volition Reins": "Name:Volition Reins\nManaCost:3 U U U\nTypes:Enchantment Aura\nK:Enchant:Permanent:permanent\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | GainControl$ You | Description$ You control enchanted permanent.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.EnchantedBy+tapped | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, if enchanted permanent is tapped, untap it.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted\nSVar:PlayMain1:TRUE\nOracle:Enchant permanent\\nWhen Volition Reins enters, if enchanted permanent is tapped, untap it.\\nYou control enchanted permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volition Reins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

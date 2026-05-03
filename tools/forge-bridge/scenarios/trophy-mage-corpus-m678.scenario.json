@@ -1,0 +1,23 @@
+{
+  "id": "trophy-mage-corpus-m678",
+  "description": "M6 corpus — Trophy Mage; in-hand parse.",
+  "seed": 62774,
+  "cards": {
+    "Trophy Mage": "Name:Trophy Mage\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an artifact card with mana value 3, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Artifact.cmcEQ3 | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Trophy Mage enters, you may search your library for an artifact card with mana value 3, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trophy Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

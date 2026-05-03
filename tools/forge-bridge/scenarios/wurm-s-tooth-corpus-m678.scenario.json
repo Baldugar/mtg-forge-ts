@@ -1,0 +1,25 @@
+{
+  "id": "wurm-s-tooth-corpus-m678",
+  "description": "M6 corpus — Wurm's Tooth; ETB-on-bf.",
+  "seed": 64483,
+  "cards": {
+    "Wurm's Tooth": "Name:Wurm's Tooth\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Green | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a green spell, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nOracle:Whenever a player casts a green spell, you may gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wurm's Tooth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

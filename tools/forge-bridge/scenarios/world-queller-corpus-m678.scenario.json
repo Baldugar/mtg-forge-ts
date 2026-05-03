@@ -1,0 +1,23 @@
+{
+  "id": "world-queller-corpus-m678",
+  "description": "M6 corpus — World Queller; in-hand parse.",
+  "seed": 64415,
+  "cards": {
+    "World Queller": "Name:World Queller\nManaCost:3 W W\nTypes:Creature Avatar\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ ChooseType | TriggerDescription$ At the beginning of your upkeep, you may choose a card type. If you do, each player sacrifices a permanent of that type.\nSVar:ChooseType:DB$ ChooseType | Defined$ You | Type$ Card | SubAbility$ TrigSac\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent.ChosenType | Defined$ Player\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may choose a card type. If you do, each player sacrifices a permanent of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "World Queller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "yawgmoth-s-vile-offering-corpus-m678",
+  "description": "M6 corpus — Yawgmoth's Vile Offering; in-hand parse.",
+  "seed": 64541,
+  "cards": {
+    "Yawgmoth's Vile Offering": "Name:Yawgmoth's Vile Offering\nManaCost:4 B\nTypes:Legendary Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Creature,Planeswalker | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target creature or planeswalker card in a graveyard | SubAbility$ DBDestroy | SpellDescription$ Put up to one target creature or planeswalker card from a graveyard onto the battlefield under your control. Destroy up to one target creature or planeswalker. Exile CARDNAME.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\\nPut up to one target creature or planeswalker card from a graveyard onto the battlefield under your control. Destroy up to one target creature or planeswalker. Exile Yawgmoth's Vile Offering.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yawgmoth's Vile Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

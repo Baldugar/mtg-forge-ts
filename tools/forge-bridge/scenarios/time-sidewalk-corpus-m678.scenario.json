@@ -1,0 +1,23 @@
+{
+  "id": "time-sidewalk-corpus-m678",
+  "description": "M6 corpus — Time Sidewalk; in-hand parse.",
+  "seed": 62405,
+  "cards": {
+    "Time Sidewalk": "Name:Time Sidewalk\nManaCost:4 U U U U\nTypes:Sorcery\nK:MayEffectFromOpeningHand:ExileCard\nA:SP$ AddTurn | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nSVar:ExileCard:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Exile | RememberChanged$ True | SubAbility$ DBMakeCard | SpellDescription$ If this card is in your opening hand, you may exile it. If you do, create four Time Walk token cards and shuffle them into your deck.\nSVar:DBMakeCard:DB$ MakeCard | TokenCard$ True | Name$ Time Walk | Amount$ 4 | Zone$ Library | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | ConditionCompare$ GE1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Take an extra turn after this one.\\nIf this card is in your opening hand, you may exile it. If you do, create four Time Walk token cards and shuffle them into your deck.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Sidewalk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

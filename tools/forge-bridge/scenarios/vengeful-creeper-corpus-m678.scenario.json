@@ -1,0 +1,25 @@
+{
+  "id": "vengeful-creeper-corpus-m678",
+  "description": "M6 corpus — Vengeful Creeper; ETB-on-bf.",
+  "seed": 63361,
+  "cards": {
+    "Vengeful Creeper": "Name:Vengeful Creeper\nManaCost:4 G\nTypes:Creature Plant Elemental\nPT:5/5\nK:Disguise:5 G\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, destroy target artifact or enchantment an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls\nOracle:Disguise {5}{G} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Vengeful Creeper is turned face up, destroy target artifact or enchantment an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vengeful Creeper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

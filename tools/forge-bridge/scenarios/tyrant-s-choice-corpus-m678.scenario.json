@@ -1,0 +1,23 @@
+{
+  "id": "tyrant-s-choice-corpus-m678",
+  "description": "M6 corpus — Tyrant's Choice; in-hand parse.",
+  "seed": 62915,
+  "cards": {
+    "Tyrant's Choice": "Name:Tyrant's Choice\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Vote | Defined$ Player | Choices$ TyrantsChoiceSac,TyrantsChoiceLoseLife | VoteTiedAbility$ TyrantsChoiceLoseLife | AILogic$ Torture | SpellDescription$ Will of the Council — Starting with you, each player votes for death or torture. If death gets more votes, each opponent sacrifices a creature. If torture gets more votes or the vote is tied, each opponent loses 4 life.\nSVar:TyrantsChoiceSac:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature | SpellDescription$ Death\nSVar:TyrantsChoiceLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 4 | SpellDescription$ Torture\nOracle:Will of the council — Starting with you, each player votes for death or torture. If death gets more votes, each opponent sacrifices a creature. If torture gets more votes or the vote is tied, each opponent loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyrant's Choice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

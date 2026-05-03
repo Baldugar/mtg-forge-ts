@@ -1,0 +1,25 @@
+{
+  "id": "wayta-trainer-prodigy-corpus-m678",
+  "description": "M6 corpus — Wayta, Trainer Prodigy; ETB-on-bf.",
+  "seed": 63991,
+  "cards": {
+    "Wayta, Trainer Prodigy": "Name:Wayta, Trainer Prodigy\nManaCost:R G W\nTypes:Legendary Creature Human Warrior\nPT:1/5\nK:Haste\nA:AB$ Pump | Cost$ 2 G T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | ReduceCost$ X | StackDescription$ None | SpellDescription$ Target creature you control fights another target creature.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature | TargetUnique$ True | TgtPrompt$ Select another target creature\nSVar:X:Count$Compare Y EQ2.2.0\nSVar:Y:AllTargeted$Valid Creature.YouCtrl\nS:Mode$ Panharmonicon | ValidMode$ DamageDoneOnce,DamageDone | ValidTarget$ Creature.YouCtrl | ValidCard$ Permanent.YouCtrl | Description$ If a creature you control being dealt damage causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nOracle:Haste\\n{2}{G}, {T}: Target creature you control fights another target creature. This ability costs {2} less to activate if it targets two creatures you control.\\nIf a creature you control being dealt damage causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wayta, Trainer Prodigy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

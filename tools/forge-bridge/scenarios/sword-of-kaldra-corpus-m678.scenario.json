@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-kaldra-corpus-m678",
+  "description": "M6 corpus — Sword of Kaldra; in-hand parse.",
+  "seed": 61517,
+  "cards": {
+    "Sword of Kaldra": "Name:Sword of Kaldra\nManaCost:4\nTypes:Legendary Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 5 | AddToughness$ 5 | Description$ Equipped creature gets +5/+5.\nT:Mode$ DamageDone | ValidSource$ Card.EquippedBy | ValidTarget$ Creature | Execute$ TrigExile | TriggerDescription$ When equipped creature deals damage to a creature, exile that creature.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredTargetLKICopy | Origin$ Battlefield | Destination$ Exile\nDeckHints:Name$Helm of Kaldra|Shield of Kaldra\nOracle:Equipped creature gets +5/+5.\\nWhenever equipped creature deals damage to a creature, exile that creature. (Exile it only if it's still on the battlefield.)\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery. This card enters unattached and stays on the battlefield if the creature leaves.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Kaldra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

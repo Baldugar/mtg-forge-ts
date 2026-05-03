@@ -1,0 +1,23 @@
+{
+  "id": "theros-charm-corpus-m678",
+  "description": "M6 corpus — Theros Charm; in-hand parse.",
+  "seed": 62144,
+  "cards": {
+    "Theros Charm": "Name:Theros Charm\nManaCost:3 W\nTypes:Instant\nA:SP$ Charm | Choices$ IdyllicTutor,RevokeExistence,Reprisal | Defined$ You\nSVar:IdyllicTutor:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Enchantment | ChangeNum$ 1 | SpellDescription$ Search your library for an enchantment card, reveal it, put it into your hand, then shuffle.\nSVar:RevokeExistence:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target artifact or enchantment.\nSVar:Reprisal:DB$ Destroy | ValidTgts$ Creature.powerGE4 | TgtPrompt$ Select target creature with power 4 or greater | NoRegen$ True | SpellDescription$ Destroy target creature with power 4 or greater. It can't be regenerated.\nDeckHints:Type$Enchantment\nOracle:Choose one —\\n• Idyllic Tutor (Search for an enchantment.)\\n• Revoke Existence (Exile an artifact or enchantment.)\\n• Reprisal (Destroy a creature with power 4 or greater. It can't be regenerated.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Theros Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "truce-corpus-m678",
+  "description": "M6 corpus — Truce; in-hand parse.",
+  "seed": 62785,
+  "cards": {
+    "Truce": "Name:Truce\nManaCost:2 W\nTypes:Instant\nA:SP$ Draw | Defined$ Player | Upto$ True | NumCards$ 2 | RememberDrawn$ AllReplaced | SubAbility$ DBRepeat | AILogic$ GainLife | SpellDescription$ Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBGainLife | SubAbility$ DBCleanup | StackDescription$ For each card less than two a player draws this way, that player gains 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | Defined$ Player.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Valid Card.RememberedPlayerOwn/NMinus.2\nSVar:X:SVar$Y/Twice\nAI:RemoveDeck:All\nOracle:Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Truce"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

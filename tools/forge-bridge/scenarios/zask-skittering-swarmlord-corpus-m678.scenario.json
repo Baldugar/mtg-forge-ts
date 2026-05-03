@@ -1,0 +1,23 @@
+{
+  "id": "zask-skittering-swarmlord-corpus-m678",
+  "description": "M6 corpus — Zask, Skittering Swarmlord; in-hand parse.",
+  "seed": 64612,
+  "cards": {
+    "Zask, Skittering Swarmlord": "Name:Zask, Skittering Swarmlord\nManaCost:3 G G\nTypes:Legendary Creature Insect\nPT:5/5\nS:Mode$ Continuous | Affected$ Land.YouOwn,Insect.YouOwn | ValidAfterStack$ Spell.Insect | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may play lands and cast Insect spells from your graveyard.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Insect.YouCtrl+Other | Execute$ TrigChange | TriggerDescription$ Whenever another Insect you control dies, put it on the bottom of its owner's library, then mill two cards. (Put the top two cards of your library into your graveyard.)\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ 2\nA:AB$ Pump | Cost$ 1 BG | ValidTgts$ Insect | NumAtt$ +1 | KW$ Deathtouch | SpellDescription$ Target Insect gets +1/+0 and gains deathtouch until end of turn.\nDeckHas:Ability$Mill|Graveyard & Keyword$Deathtouch\nDeckNeeds:Type$Insect\nOracle:You may play lands and cast Insect spells from your graveyard.\\nWhenever another Insect you control dies, put it on the bottom of its owner's library, then mill two cards. (Put the top two cards of your library into your graveyard.)\\n{1}{B/G}: Target Insect gets +1/+0 and gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zask, Skittering Swarmlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

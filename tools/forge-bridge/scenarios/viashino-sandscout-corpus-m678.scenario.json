@@ -1,0 +1,23 @@
+{
+  "id": "viashino-sandscout-corpus-m678",
+  "description": "M6 corpus — Viashino Sandscout; in-hand parse.",
+  "seed": 63455,
+  "cards": {
+    "Viashino Sandscout": "Name:Viashino Sandscout\nManaCost:1 R\nTypes:Creature Lizard Scout\nPT:2/1\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nSVar:EndOfTurnLeavePlay:True\nOracle:Haste (This creature can attack and {T} as soon as it comes under your control.)\\nAt the beginning of the end step, return Viashino Sandscout to its owner's hand. (Return it only if it's on the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viashino Sandscout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

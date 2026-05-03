@@ -1,0 +1,23 @@
+{
+  "id": "voice-of-many-corpus-m678",
+  "description": "M6 corpus — Voice of Many; in-hand parse.",
+  "seed": 63616,
+  "cards": {
+    "Voice of Many": "Name:Voice of Many\nManaCost:2 G G\nTypes:Creature Elf Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each opponent who controls fewer creatures than you.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:PlayerCountOpponents$HasPropertyhasFewerCreaturesInPlayThanYou\nOracle:When Voice of Many enters, draw a card for each opponent who controls fewer creatures than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voice of Many"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

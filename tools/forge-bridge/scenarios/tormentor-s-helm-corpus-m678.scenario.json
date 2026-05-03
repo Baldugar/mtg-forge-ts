@@ -1,0 +1,25 @@
+{
+  "id": "tormentor-s-helm-corpus-m678",
+  "description": "M6 corpus — Tormentor's Helm; ETB-on-bf.",
+  "seed": 62531,
+  "cards": {
+    "Tormentor's Helm": "Name:Tormentor's Helm\nManaCost:R\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ AttackerBlocked | ValidCard$ Creature.EquippedBy | Execute$ TrigDealDamage | TriggerDescription$ Whenever equipped creature becomes blocked, it deals 1 damage to defending player.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredDefendingPlayer | NumDmg$ 1\nSVar:HasAttackEffect:Blocked\nOracle:Equipped creature gets +1/+1.\\nWhenever equipped creature becomes blocked, it deals 1 damage to defending player.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tormentor's Helm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

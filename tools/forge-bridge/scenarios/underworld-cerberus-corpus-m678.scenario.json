@@ -1,0 +1,23 @@
+{
+  "id": "underworld-cerberus-corpus-m678",
+  "description": "M6 corpus — Underworld Cerberus; in-hand parse.",
+  "seed": 63029,
+  "cards": {
+    "Underworld Cerberus": "Name:Underworld Cerberus\nManaCost:3 B R\nTypes:Creature Dog\nPT:6/6\nS:Mode$ MinMaxBlocker | ValidCard$ Creature.Self | Min$ 3 | Description$ CARDNAME can't be blocked except by three or more creatures.\nS:Mode$ CantTarget | AffectedZone$ Graveyard | Description$ Cards in graveyards can't be the targets of spells or abilities.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile it and each player returns all creature cards from their graveyard to their hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | UseAllOriginZones$ True | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature\nOracle:Underworld Cerberus can't be blocked except by three or more creatures.\\nCards in graveyards can't be the targets of spells or abilities.\\nWhen Underworld Cerberus dies, exile it and each player returns all creature cards from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underworld Cerberus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vigorous-charge-corpus-m678",
+  "description": "M6 corpus — Vigorous Charge; in-hand parse.",
+  "seed": 63491,
+  "cards": {
+    "Vigorous Charge": "Name:Vigorous Charge\nManaCost:G\nTypes:Instant\nK:Kicker:W\nA:SP$ Pump | ValidTgts$ Creature | KW$ Trample | SubAbility$ VigorousPumping | SpellDescription$ Target creature gains trample until end of turn. Whenever that creature deals combat damage this turn, if this spell was kicked, you gain life equal to that damage.\nSVar:VigorousPumping:DB$ Effect | Triggers$ TrigDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | Condition$ Kicked | ConditionDescription$ If CARDNAME was kicked,\nSVar:TrigDamage:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Creature.IsRemembered | Execute$ VigorousLife | TriggerDescription$ Whenever the targeted creature deals combat damage this turn, you gain life equal to that damage.\nSVar:VigorousLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nDeckHints:Color$White\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nTarget creature gains trample until end of turn. Whenever that creature deals combat damage this turn, if this spell was kicked, you gain life equal to that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vigorous Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

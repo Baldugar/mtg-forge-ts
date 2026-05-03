@@ -1,0 +1,23 @@
+{
+  "id": "tempest-owl-corpus-m678",
+  "description": "M6 corpus — Tempest Owl; in-hand parse.",
+  "seed": 61824,
+  "cards": {
+    "Tempest Owl": "Name:Tempest Owl\nManaCost:1 U\nTypes:Creature Bird\nPT:1/2\nK:Flying\nK:Kicker:4 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, if it was kicked, tap up to three target permanents.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 3 | TgtPrompt$ Select up to three target permanents | ValidTgts$ Permanent\nOracle:Kicker {4}{U} (You may pay an additional {4}{U} as you cast this spell.)\\nFlying\\nWhen Tempest Owl enters, if it was kicked, tap up to three target permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempest Owl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

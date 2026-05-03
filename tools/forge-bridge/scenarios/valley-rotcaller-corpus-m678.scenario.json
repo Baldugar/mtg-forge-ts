@@ -1,0 +1,23 @@
+{
+  "id": "valley-rotcaller-corpus-m678",
+  "description": "M6 corpus — Valley Rotcaller; in-hand parse.",
+  "seed": 63234,
+  "cards": {
+    "Valley Rotcaller": "Name:Valley Rotcaller\nManaCost:1 B\nTypes:Creature Squirrel Warlock\nPT:1/3\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks, each opponent loses X life and you gain X life, where X is the number of other Squirrels, Bats, Lizards, and Rats you control.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Squirrel.YouCtrl+StrictlyOther,Bat.YouCtrl+StrictlyOther,Lizard.YouCtrl+StrictlyOther,Rat.YouCtrl+StrictlyOther\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nWhenever Valley Rotcaller attacks, each opponent loses X life and you gain X life, where X is the number of other Squirrels, Bats, Lizards, and Rats you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valley Rotcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

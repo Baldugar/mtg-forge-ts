@@ -1,0 +1,23 @@
+{
+  "id": "whispersteel-dagger-corpus-m678",
+  "description": "M6 corpus — Whispersteel Dagger; in-hand parse.",
+  "seed": 64113,
+  "cards": {
+    "Whispersteel Dagger": "Name:Whispersteel Dagger\nManaCost:2 B\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | OptionalDecider$ You | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may cast a creature spell from that player's graveyard this turn, and you may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ MayCastGrave | RememberObjects$ TriggeredTarget\nSVar:MayCastGrave:Mode$ Continuous | Affected$ Creature.RememberedPlayerCtrl | MayPlay$ True | MayPlayLimit$ 1 | MayPlayIgnoreType$ True | AffectedZone$ Graveyard | Description$ You may cast a creature spell from that player's graveyard this turn, and you may spend mana as though it were mana of any color to cast that spell.\nK:Equip:3\nOracle:Equipped creature gets +2/+0.\\nWhenever equipped creature deals combat damage to a player, you may cast a creature spell from that player's graveyard this turn, and you may spend mana as though it were mana of any color to cast that spell.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whispersteel Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

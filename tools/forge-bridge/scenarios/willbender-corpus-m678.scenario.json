@@ -1,0 +1,25 @@
+{
+  "id": "willbender-corpus-m678",
+  "description": "M6 corpus — Willbender; ETB-on-bf.",
+  "seed": 64199,
+  "cards": {
+    "Willbender": "Name:Willbender\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/2\nK:Morph:1 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, change the target of target spell or ability with a single target.\nSVar:TrigChange:DB$ ChangeTargets | TargetType$ SpellAbility.singleTarget | ValidTgts$ Card,Emblem | TgtPrompt$ Select target spell or ability with a single target\nAI:RemoveDeck:All\nOracle:Morph {1}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Willbender is turned face up, change the target of target spell or ability with a single target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Willbender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

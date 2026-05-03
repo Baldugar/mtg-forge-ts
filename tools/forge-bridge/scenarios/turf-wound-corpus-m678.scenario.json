@@ -1,0 +1,23 @@
+{
+  "id": "turf-wound-corpus-m678",
+  "description": "M6 corpus — Turf Wound; in-hand parse.",
+  "seed": 62834,
+  "cards": {
+    "Turf Wound": "Name:Turf Wound\nManaCost:2 R\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Player | StaticAbilities$ STCantPlayLand | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SubAbility$ DBDraw | SpellDescription$ Target player can't play lands this turn.\nSVar:STCantPlayLand:Mode$ CantPlayLand | Player$ Player.IsRemembered | Description$ Target player can't play lands this turn.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Target player can't play lands this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turf Wound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "three-wishes-corpus-m678",
+  "description": "M6 corpus — Three Wishes; in-hand parse.",
+  "seed": 62276,
+  "cards": {
+    "Three Wishes": "Name:Three Wishes\nManaCost:1 U U\nTypes:Instant\nA:SP$ Dig | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library face down. You may look at those cards for as long as they remain exiled. Until your next turn, you may play those cards. At the beginning of your next upkeep, put any of those cards you didn't play into your graveyard.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STCanLookAtMayPlay | Duration$ UntilYourNextTurn | SubAbility$ DBDelTrig\nSVar:STCanLookAtMayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at those cards for as long as they remain exiled. Until your next turn, you may play those cards.\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ MoveToYard | RememberObjects$ RememberedLKI | TriggerDescription$ At the beginning of your next upkeep, put any of those cards you didn't play into your graveyard. | SubAbility$ DBCleanup\nSVar:MoveToYard:DB$ ChangeZone | Origin$ Exile | Destination$ Graveyard | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Exile the top three cards of your library face down. You may look at those cards for as long as they remain exiled. Until your next turn, you may play those cards. At the beginning of your next upkeep, put any of those cards you didn't play into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Three Wishes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

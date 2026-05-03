@@ -1,0 +1,23 @@
+{
+  "id": "woodcaller-automaton-corpus-m678",
+  "description": "M6 corpus — Woodcaller Automaton; in-hand parse.",
+  "seed": 64374,
+  "cards": {
+    "Woodcaller Automaton": "Name:Woodcaller Automaton\nManaCost:10\nTypes:Artifact Creature Construct\nPT:8/8\nK:Prototype:2 G G:3:3\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, if you cast it, untap target land you control. It becomes a Treefolk creature with haste and base power and toughness equal to CARDNAME's power and toughness. It's still a land.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Power$ X | Toughness$ Y | Defined$ Targeted | Types$ Creature,Treefolk | Keywords$ Haste | Duration$ Permanent\nSVar:X:Count$CardPower\nSVar:Y:Count$CardToughness\nDeckHas:Type$Treefolk\nDeckHints:Color$Green\nOracle:Prototype {2}{G}{G} — 3/3 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nWhen Woodcaller Automaton enters, if you cast it, untap target land you control. It becomes a Treefolk creature with haste and base power and toughness equal to Woodcaller Automaton's power and toughness. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodcaller Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "war-of-the-spark-corpus-m678",
+  "description": "M6 corpus — War of the Spark; in-hand parse.",
+  "seed": 63850,
+  "cards": {
+    "War of the Spark": "Name:War of the Spark\nManaCost:3 B\nTypes:Enchantment Saga\nK:Chapter:3:TrigChangeZone,TrigSac,TrigExile\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | ChangeType$ Creature.Zombie+setWAR,Planeswalker.setWAR | DefinedPlayer$ Player | ChangeNum$ 1 | SpellDescription$ Each player may put a planeswalker or Zombie card from War of the Spark from their hand or graveyard onto the battlefield.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature,Planeswalker | RememberSacrificed$ True | Optional$ True | SubAbility$ DBEdict | SpellDescription$ Sacrifice any number of creatures and/or planeswalkers. Each opponent sacrifices that many creatures and/or planeswalkers.\nSVar:DBEdict:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature,Planeswalker | Amount$ EdictX\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Bolas | TgtPrompt$ Select up to one target Bolas | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBProliferate | SpellDescription$ Exile up to one target Bolas. Proliferate three times.\nSVar:DBProliferate:DB$ Proliferate | Amount$ 3 | SpellDescription$ Proliferate three times.\nSVar:SacX:Count$Valid Creature.YouCtrl/Plus.SacPlanes\nSVar:SacPlanes:Count$Valid Planeswalker.YouCtrl\nSVar:EdictX:Remembered$Amount\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Each player may put a planeswalker or Zombie card from War of the Spark from their hand or graveyard onto the battlefield.\\nII — Sacrifice any number of creatures and/or planeswalkers. Each opponent sacrifices that many creatures and/or planeswalkers.\\nIII — Exile up to one target Bolas. Proliferate three times.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "War of the Spark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

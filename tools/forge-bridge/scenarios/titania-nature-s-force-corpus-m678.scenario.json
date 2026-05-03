@@ -1,0 +1,23 @@
+{
+  "id": "titania-nature-s-force-corpus-m678",
+  "description": "M6 corpus — Titania, Nature's Force; in-hand parse.",
+  "seed": 62433,
+  "cards": {
+    "Titania, Nature's Force": "Name:Titania, Nature's Force\nManaCost:4 G G\nTypes:Legendary Creature Elemental\nPT:6/6\nS:Mode$ Continuous | Affected$ Forest.YouOwn | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may play Forests from your graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Forest.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a Forest you control enters, create a 5/3 green Elemental creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_5_3_elemental | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Elemental.YouCtrl | Execute$ TrigMill | TriggerDescription$ Whenever an Elemental you control dies, you may mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | Optional$ True\nSVar:BuffedBy:Forest\nDeckHints:Type$Elemental\nDeckHas:Ability$Graveyard|Mill\nOracle:You may play Forests from your graveyard.\\nWhenever a Forest you control enters, create a 5/3 green Elemental creature token.\\nWhenever an Elemental you control dies, you may mill three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titania, Nature's Force"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

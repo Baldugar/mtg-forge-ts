@@ -1,0 +1,23 @@
+{
+  "id": "uchuulon-corpus-m678",
+  "description": "M6 corpus — Uchuulon; in-hand parse.",
+  "seed": 62927,
+  "cards": {
+    "Uchuulon": "Name:Uchuulon\nManaCost:3 B\nTypes:Creature Crab Ooze Horror\nPT:*/4\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of Crabs, Oozes, and/or Horrors you control.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Horrific Symbiosis — At the beginning of your end step, exile up to one target creature card from an opponent's graveyard. If you do, create a token that's a copy of CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.OppOwn | TgtPrompt$ Select up to one target creature card from an opponent's graveyard | TargetMin$ 0 | TargetMax$ 1 | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Self | NumCopies$ Y | SubAbility$ DBCleanup\nSVar:X:Count$Valid Crab.YouCtrl,Ooze.YouCtrl,Horror.YouCtrl\nSVar:Y:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Crab,Ooze,Horror\nDeckHints:Type$Crab|Ooze|Horror\nDeckHas:Ability$Token\nOracle:Uchuulon's power is equal to the number of Crabs, Oozes, and/or Horrors you control.\\nHorrific Symbiosis — At the beginning of your end step, exile up to one target creature card from an opponent's graveyard. If you do, create a token that's a copy of Uchuulon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uchuulon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

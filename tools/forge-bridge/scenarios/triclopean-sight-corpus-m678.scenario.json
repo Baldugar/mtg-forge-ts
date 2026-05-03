@@ -1,0 +1,23 @@
+{
+  "id": "triclopean-sight-corpus-m678",
+  "description": "M6 corpus — Triclopean Sight; in-hand parse.",
+  "seed": 62743,
+  "cards": {
+    "Triclopean Sight": "Name:Triclopean Sight\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:Flash\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Description$ Enchanted creature gets +1/+1 and has vigilance.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap enchanted creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted\nOracle:Flash\\nEnchant creature\\nWhen Triclopean Sight enters, untap enchanted creature.\\nEnchanted creature gets +1/+1 and has vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triclopean Sight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

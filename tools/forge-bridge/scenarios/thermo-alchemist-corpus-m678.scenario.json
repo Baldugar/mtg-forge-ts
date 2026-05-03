@@ -1,0 +1,25 @@
+{
+  "id": "thermo-alchemist-corpus-m678",
+  "description": "M6 corpus — Thermo-Alchemist; ETB-on-bf.",
+  "seed": 62142,
+  "cards": {
+    "Thermo-Alchemist": "Name:Thermo-Alchemist\nManaCost:1 R\nTypes:Creature Human Shaman\nPT:0/3\nK:Defender\nA:AB$ DealDamage | Cost$ T | Defined$ Player.Opponent | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast an instant or sorcery spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:Defender\\n{T}: Thermo-Alchemist deals 1 damage to each opponent.\\nWhenever you cast an instant or sorcery spell, untap Thermo-Alchemist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Thermo-Alchemist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

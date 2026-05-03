@@ -1,0 +1,23 @@
+{
+  "id": "the-elder-dragon-war-corpus-m678",
+  "description": "M6 corpus — The Elder Dragon War; in-hand parse.",
+  "seed": 62023,
+  "cards": {
+    "The Elder Dragon War": "Name:The Elder Dragon War\nManaCost:2 R R\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:DBDealDamage,DBDiscard,DBToken\nSVar:DBDealDamage:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Opponent | NumDmg$ 2 | ValidDescription$ each creature and each opponent. | SpellDescription$ CARDNAME deals 2 damage to each creature and each opponent.\nSVar:DBDiscard:DB$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard any number of cards, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$RememberedSize\nSVar:DBToken:DB$ Token | TokenScript$ r_4_4_dragon_flying | SpellDescription$ Create a 4/4 red Dragon creature token with flying.\nDeckHas:Ability$Token\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI — The Elder Dragon War deals 2 damage to each creature and each opponent.\\nII — Discard any number of cards, then draw that many cards.\\nIII — Create a 4/4 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Elder Dragon War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

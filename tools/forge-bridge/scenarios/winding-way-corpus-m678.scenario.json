@@ -1,0 +1,23 @@
+{
+  "id": "winding-way-corpus-m678",
+  "description": "M6 corpus — Winding Way; in-hand parse.",
+  "seed": 64227,
+  "cards": {
+    "Winding Way": "Name:Winding Way\nManaCost:1 G\nTypes:Sorcery\nA:SP$ ChooseType | Type$ Card | ValidTypes$ Creature,Land | SubAbility$ DBDig | StackDescription$ SpellDescription | SpellDescription$ Choose creature or land.\nSVar:DBDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card.ChosenType | DestinationZone2$ Graveyard | StackDescription$ SpellDescription | SpellDescription$ Reveal the top four cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard.\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nOracle:Choose creature or land. Reveal the top four cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winding Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ursine-monstrosity-corpus-m678",
+  "description": "M6 corpus — Ursine Monstrosity; in-hand parse.",
+  "seed": 63178,
+  "cards": {
+    "Ursine Monstrosity": "Name:Ursine Monstrosity\nManaCost:2 G\nTypes:Creature Bear Mutant\nPT:3/3\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, mill a card and choose an opponent at random. CARDNAME attacks that player this combat if able. Until end of turn, CARDNAME gains indestructible and gets +1/+1 for each card type among cards in your graveyard.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1 | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | Random$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ AttackChosen | Duration$ UntilEndOfCombat | SubAbility$ DBPump\nSVar:AttackChosen:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | MustAttack$ ChosenPlayer | Description$ EFFECTSOURCE attacks that player this combat if able.\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X | KW$ Indestructible\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypes\nOracle:Trample\\nAt the beginning of combat on your turn, mill a card and choose an opponent at random. Ursine Monstrosity attacks that player this combat if able. Until end of turn, Ursine Monstrosity gains indestructible and gets +1/+1 for each card type among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ursine Monstrosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "voice-of-the-vermin-corpus-m678",
+  "description": "M6 corpus — Voice of the Vermin; in-hand parse.",
+  "seed": 63620,
+  "cards": {
+    "Voice of the Vermin": "Name:Voice of the Vermin\nManaCost:3 G\nTypes:Creature Human Citizen\nPT:2/2\nK:etbCounter:SHIELD:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ Whenever CARDNAME attacks, target creature you control has base power and toughness 4/4 until end of turn.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Power$ 4 | Toughness$ 4\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Voice of the Vermin enters with a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\nWhenever Voice of the Vermin attacks, target creature you control has base power and toughness 4/4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voice of the Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

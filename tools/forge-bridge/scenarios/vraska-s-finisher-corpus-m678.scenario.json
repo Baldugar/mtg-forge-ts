@@ -1,0 +1,23 @@
+{
+  "id": "vraska-s-finisher-corpus-m678",
+  "description": "M6 corpus — Vraska's Finisher; in-hand parse.",
+  "seed": 63707,
+  "cards": {
+    "Vraska's Finisher": "Name:Vraska's Finisher\nManaCost:2 B\nTypes:Creature Gorgon Assassin\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature or planeswalker an opponent controls that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+wasDealtDamageThisTurn,Planeswalker.OppCtrl+wasDealtDamageThisTurn | TgtPrompt$ Select target creature or planeswalker an opponent controls that was dealt damage this turn.\nOracle:When Vraska's Finisher enters, destroy target creature or planeswalker an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska's Finisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wormfang-drake-corpus-m678",
+  "description": "M6 corpus — Wormfang Drake; in-hand parse.",
+  "seed": 64426,
+  "cards": {
+    "Wormfang Drake": "Name:Wormfang Drake\nManaCost:2 U\nTypes:Creature Nightmare Drake\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ETBExileAbility | TriggerDescription$ When CARDNAME enters, sacrifice it unless you exile a creature you control other than CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ ETBExileReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:ETBExileAbility:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | Hidden$ True | Optional$ True | SubAbility$ ETBExileSacrifice | ChangeType$ Creature.Other+YouCtrl\nSVar:ETBExileSacrifice:DB$ Sacrifice | Defined$ Card.Self | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0\nSVar:ETBExileReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ ETBExileCleanup\nSVar:ETBExileCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen Wormfang Drake enters, sacrifice it unless you exile a creature you control other than Wormfang Drake.\\nWhen Wormfang Drake leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wormfang Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

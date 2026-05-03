@@ -1,0 +1,23 @@
+{
+  "id": "venser-shaper-savant-corpus-m678",
+  "description": "M6 corpus — Venser, Shaper Savant; in-hand parse.",
+  "seed": 63385,
+  "cards": {
+    "Venser, Shaper Savant": "Name:Venser, Shaper Savant\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ VensersBounce | TriggerDescription$ When CARDNAME enters, return target spell or permanent to its owner's hand.\nSVar:VensersBounce:DB$ ChangeZone | ValidTgts$ Permanent,Card.inZoneStack | TgtZone$ Stack,Battlefield | Origin$ Battlefield,Stack | Destination$ Hand\nOracle:Flash\\nWhen Venser, Shaper Savant enters, return target spell or permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venser, Shaper Savant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

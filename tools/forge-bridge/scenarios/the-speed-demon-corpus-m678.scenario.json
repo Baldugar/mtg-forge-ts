@@ -1,0 +1,23 @@
+{
+  "id": "the-speed-demon-corpus-m678",
+  "description": "M6 corpus — The Speed Demon; in-hand parse.",
+  "seed": 62107,
+  "cards": {
+    "The Speed Demon": "Name:The Speed Demon\nManaCost:3 B B\nTypes:Legendary Creature Demon\nPT:5/5\nK:Flying\nK:Trample\nK:Start your engines\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, you draw X cards and lose X life, where X is your speed.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Count$YourSpeed | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ Count$YourSpeed\nOracle:Flying, trample\\nStart your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nAt the beginning of your end step, you draw X cards and lose X life, where X is your speed.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Speed Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

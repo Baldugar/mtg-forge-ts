@@ -1,0 +1,23 @@
+{
+  "id": "the-duke-of-midrange-corpus-m678",
+  "description": "M6 corpus — The Duke of Midrange; in-hand parse.",
+  "seed": 62019,
+  "cards": {
+    "The Duke of Midrange": "Name:The Duke of Midrange\nManaCost:2 B R G\nTypes:Legendary Creature Lhurgoyf Wizard\nPT:*/1+*\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters the battlefield, choose one of Thoughtseize, Lightning Bolt, or Abrupt Decay. Cast a copy of the chosen card without paying its mana cost.\nSVar:TrigChoose:DB$ NameCard | Defined$ You | ChooseFromList$ Thoughtseize,Lightning Bolt,Abrupt Decay | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | CopyFromChosenName$ True | WithoutManaCost$ True | StackDescription$ None\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the number of card types among all cards in all graveyards, and its toughness is equal to that number plus 1.\nSVar:X:Count$ValidGraveyard Card$CardTypes\nSVar:Y:SVar$X/Plus.1\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Graveyard\nOracle:When The Duke of Midrange enters the battlefield, choose one of Thoughtseize, Lightning Bolt, or Abrupt Decay. Cast a copy of the chosen card without paying its mana cost.\\nThe Duke of Midrange's power is equal to the number of card types among all cards in all graveyards, and its toughness is equal to that number plus 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Duke of Midrange"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

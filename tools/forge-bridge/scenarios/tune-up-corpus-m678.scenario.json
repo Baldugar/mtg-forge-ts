@@ -1,0 +1,23 @@
+{
+  "id": "tune-up-corpus-m678",
+  "description": "M6 corpus — Tune Up; in-hand parse.",
+  "seed": 62824,
+  "cards": {
+    "Tune Up": "Name:Tune Up\nManaCost:3 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Artifact.YouOwn | TgtPrompt$ Choose target artifact card in your graveyard | SubAbility$ DBAnimate | SpellDescription$ Return target artifact card from your graveyard to the battlefield. If it's a Vehicle, it becomes an artifact creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Vehicle | Types$ Artifact,Creature | Duration$ Permanent\nDeckHas:Ability$Graveyard\nOracle:Return target artifact card from your graveyard to the battlefield. If it's a Vehicle, it becomes an artifact creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tune Up"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

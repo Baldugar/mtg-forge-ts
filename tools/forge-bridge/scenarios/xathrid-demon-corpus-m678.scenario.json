@@ -1,0 +1,23 @@
+{
+  "id": "xathrid-demon-corpus-m678",
+  "description": "M6 corpus — Xathrid Demon; in-hand parse.",
+  "seed": 64496,
+  "cards": {
+    "Xathrid Demon": "Name:Xathrid Demon\nManaCost:3 B B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature other than CARDNAME, then each opponent loses life equal to the sacrificed creature's power. If you can't sacrifice a creature, tap CARDNAME and you lose 7 life.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.Other | RememberSacrificed$ True | SubAbility$ DBLoseLifeOpp\nSVar:DBLoseLifeOpp:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBLoseLifeYou\nSVar:DBLoseLifeYou:DB$ LoseLife | Defined$ You | LifeAmount$ 7 | ConditionCheckSVar$ Y | ConditionSVarCompare$ LT1 | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionCheckSVar$ Y | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nSVar:Y:Remembered$Amount\nSVar:NeedsToPlayVar:Z GE6\nSVar:Z:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a creature other than Xathrid Demon, then each opponent loses life equal to the sacrificed creature's power. If you can't sacrifice a creature, tap Xathrid Demon and you lose 7 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xathrid Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

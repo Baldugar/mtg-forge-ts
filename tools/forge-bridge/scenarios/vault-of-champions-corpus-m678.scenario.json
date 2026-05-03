@@ -1,0 +1,25 @@
+{
+  "id": "vault-of-champions-corpus-m678",
+  "description": "M6 corpus — Vault of Champions; ETB-on-bf.",
+  "seed": 63301,
+  "cards": {
+    "Vault of Champions": "Name:Vault of Champions\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you have two or more opponents.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ ETBCheckSVar2 | ConditionSVarCompare$ LT2\nSVar:ETBCheckSVar2:PlayerCountOpponents$Amount\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nOracle:Vault of Champions enters tapped unless you have two or more opponents.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vault of Champions"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

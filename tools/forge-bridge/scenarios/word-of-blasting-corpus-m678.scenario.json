@@ -1,0 +1,23 @@
+{
+  "id": "word-of-blasting-corpus-m678",
+  "description": "M6 corpus — Word of Blasting; in-hand parse.",
+  "seed": 64403,
+  "cards": {
+    "Word of Blasting": "Name:Word of Blasting\nManaCost:1 R\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Wall | TgtPrompt$ Select target Wall | SubAbility$ DBDamage | SpellDescription$ Destroy target Wall. It can't be regenerated. CARDNAME deals damage equal to that Wall's mana value to the Wall's controller.\nSVar:DBDamage:DB$ DealDamage | NumDmg$ X | Defined$ TargetedController\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:Random\nOracle:Destroy target Wall. It can't be regenerated. Word of Blasting deals damage equal to that Wall's mana value to the Wall's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Word of Blasting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

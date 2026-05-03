@@ -1,0 +1,23 @@
+{
+  "id": "thelon-s-curse-corpus-m678",
+  "description": "M6 corpus — Thelon's Curse; in-hand parse.",
+  "seed": 62137,
+  "cards": {
+    "Thelon's Curse": "Name:Thelon's Curse\nManaCost:G G\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.Blue | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Blue creatures don't untap during their controllers' untap steps.\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of each player's upkeep, that player may choose any number of tapped blue creatures they control and pay {U} for each creature chosen this way. If the player does, untap those creatures.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ TriggeredPlayer | Amount$ X | Choices$ Creature.tapped+Blue | TargetControls$ True | ChoiceTitle$ Choose any number of tapped nongreen creatures you control | ChoiceZone$ Battlefield | SubAbility$ DBUntap\nSVar:DBUntap:DB$ RepeatEach | DefinedCards$ ChosenCard | RepeatSubAbility$ UntapEach\nSVar:UntapEach:DB$ Untap | Defined$ Remembered | UnlessCost$ U | UnlessPayer$ RememberedController | UnlessSwitched$ True | ShowCurrentCard$ Remembered\nSVar:X:Count$Valid Creature.tapped+Blue+ActivePlayerCtrl\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Blue creatures don't untap during their controllers' untap steps.\\nAt the beginning of each player's upkeep, that player may choose any number of tapped blue creatures they control and pay {U} for each creature chosen this way. If the player does, untap those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thelon's Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

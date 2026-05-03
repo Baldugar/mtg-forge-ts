@@ -1,0 +1,23 @@
+{
+  "id": "tempt-with-glory-corpus-m678",
+  "description": "M6 corpus — Tempt with Glory; in-hand parse.",
+  "seed": 61859,
+  "cards": {
+    "Tempt with Glory": "Name:Tempt with Glory\nManaCost:5 W\nTypes:Sorcery\nA:SP$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBRepeat | StackDescription$ SpellDescription | SpellDescription$ Tempting offer — Put a +1/+1 counter on each creature you control. Each opponent may put a +1/+1 counter on each creature they control. For each opponent who does, put a +1/+1 counter on each creature you control.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBPutCounter | RepeatPlayers$ Player.Opponent | SubAbility$ PutCounterAgain | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to put a +1/+1 counter on each creature you control?\nSVar:DBPutCounter:DB$ PutCounterAll | ValidCards$ Creature.RememberedPlayerCtrl | Placer$ Controller | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCount\nSVar:DBCount:DB$ StoreSVar | SVar$ X | Type$ CountSVar | Expression$ X/Plus.1\nSVar:PutCounterAgain:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ X | Type$ Number | Expression$ 0\nSVar:X:Number$0\nOracle:Tempting offer — Put a +1/+1 counter on each creature you control. Each opponent may put a +1/+1 counter on each creature they control. For each opponent who does, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempt with Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

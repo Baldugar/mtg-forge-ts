@@ -1,0 +1,23 @@
+{
+  "id": "tamiyo-s-compleation-corpus-m678",
+  "description": "M6 corpus — Tamiyo's Compleation; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Tamiyo's Compleation": "Name:Tamiyo's Compleation\nManaCost:3 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Artifact,Creature,Planeswalker:artifact, creature, or planeswalker\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted permanent. If it's an Equipment, unattach it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBUnattach\nSVar:DBUnattach:DB$ Unattach | Defined$ Enchanted | ConditionDefined$ Enchanted | ConditionPresent$ Equipment\nS:Mode$ Continuous | Affected$ Permanent.AttachedBy | RemoveAllAbilities$ True | Description$ Enchanted permanent loses all abilities and doesn't untap during its controller's untap step.\nR:Event$ Untap | ValidCard$ Permanent.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Secondary$ True | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nOracle:Flash\\nEnchant artifact, creature, or planeswalker\\nWhen Tamiyo's Compleation enters, tap enchanted permanent. If it's an Equipment, unattach it.\\nEnchanted permanent loses all abilities and doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tamiyo's Compleation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tempt-with-mayhem-corpus-m678",
+  "description": "M6 corpus — Tempt with Mayhem; in-hand parse.",
+  "seed": 61861,
+  "cards": {
+    "Tempt with Mayhem": "Name:Tempt with Mayhem\nManaCost:1 R R\nTypes:Instant\nA:SP$ RepeatEach | ValidTgts$ Instant,Sorcery | TgtZone$ Stack | TgtPrompt$ Select target instant or sorcery spell | RepeatSubAbility$ DBCopy | RepeatPlayers$ Player.Opponent | SubAbility$ DBCopySelf | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to copy the targeted spell? | SpellDescription$ Tempting offer — Choose target instant or sorcery spell. Each opponent may copy that spell and may choose new targets for the copy they control. You copy that spell once plus an additional time for each opponent who copied the spell this way. You may choose new targets for the copies you control.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Targeted | Controller$ Remembered | MayChooseTarget$ True | RememberCopies$ True\nSVar:DBCopySelf:DB$ CopySpellAbility | Defined$ Targeted | Amount$ X | MayChooseTarget$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountRememberedController$Amount/Plus.1\nOracle:Tempting offer — Choose target instant or sorcery spell. Each opponent may copy that spell and may choose new targets for the copy they control. You copy that spell once plus an additional time for each opponent who copied the spell this way. You may choose new targets for the copies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempt with Mayhem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "windgrace-acolyte-corpus-m678",
+  "description": "M6 corpus — Windgrace Acolyte; in-hand parse.",
+  "seed": 64223,
+  "cards": {
+    "Windgrace Acolyte": "Name:Windgrace Acolyte\nManaCost:4 B\nTypes:Creature Cat Warrior\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards and you gain 3 life.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Flying\\nWhen Windgrace Acolyte enters, mill three cards and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Windgrace Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

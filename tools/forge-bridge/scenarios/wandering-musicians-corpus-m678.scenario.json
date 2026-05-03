@@ -1,0 +1,23 @@
+{
+  "id": "wandering-musicians-corpus-m678",
+  "description": "M6 corpus — Wandering Musicians; in-hand parse.",
+  "seed": 63827,
+  "cards": {
+    "Wandering Musicians": "Name:Wandering Musicians\nManaCost:3 RW\nTypes:Creature Human Bard Ally\nPT:2/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever this creature attacks, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nOracle:Whenever this creature attacks, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wandering Musicians"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

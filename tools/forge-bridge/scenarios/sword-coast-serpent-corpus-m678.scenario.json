@@ -1,0 +1,23 @@
+{
+  "id": "sword-coast-serpent-corpus-m678",
+  "description": "M6 corpus — Sword Coast Serpent; in-hand parse.",
+  "seed": 61512,
+  "cards": {
+    "Sword Coast Serpent": "Name:Sword Coast Serpent\nManaCost:5 U U\nTypes:Creature Serpent Dragon\nPT:6/6\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | CheckSVar$ X | Description$ CARDNAME can't be blocked as long as you've cast a noncreature spell this turn.\nSVar:X:Count$ThisTurnCast_Card.nonCreature+YouCtrl\nSVar:BuffedBy:Card.nonCreature+nonLand\nAlternateMode:Adventure\nOracle:Sword Coast Serpent can't be blocked as long as you've cast a noncreature spell this turn.\n\nALTERNATE\n\nName:Capsizing Wave\nManaCost:1 U\nTypes:Instant Adventure\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nOracle:Return target creature to its owner's hand. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword Coast Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

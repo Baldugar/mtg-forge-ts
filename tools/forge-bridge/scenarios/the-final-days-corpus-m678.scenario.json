@@ -1,0 +1,23 @@
+{
+  "id": "the-final-days-corpus-m678",
+  "description": "M6 corpus — The Final Days; in-hand parse.",
+  "seed": 62034,
+  "cards": {
+    "The Final Days": "Name:The Final Days\nManaCost:2 B B\nTypes:Sorcery\nK:Flashback:4 B B\nA:SP$ Token | TokenScript$ b_2_2_horror | TokenTapped$ True | TokenAmount$ Y | StackDescription$ REP Create two_{p:You} creates {n:Y} & . If this spell was cast from a graveyard, instead create X of those tokens, where X is the number of creature cards in your graveyard._. | SpellDescription$ Create two tapped 2/2 black Horror creature tokens. If this spell was cast from a graveyard, instead create X of those tokens, where X is the number of creature cards in your graveyard.\nSVar:Y:Count$wasCastFromGraveyard.X.2\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nOracle:Create two tapped 2/2 black Horror creature tokens. If this spell was cast from a graveyard, instead create X of those tokens, where X is the number of creature cards in your graveyard.\\nFlashback {4}{B}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Final Days"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

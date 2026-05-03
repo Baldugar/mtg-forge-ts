@@ -1,0 +1,23 @@
+{
+  "id": "warping-wail-corpus-m678",
+  "description": "M6 corpus — Warping Wail; in-hand parse.",
+  "seed": 63906,
+  "cards": {
+    "Warping Wail": "Name:Warping Wail\nManaCost:1 C\nTypes:Instant\nA:SP$ Charm | Choices$ DBExile,DBCounter,DBToken\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Creature.powerLE1,Creature.toughnessLE1 | TgtPrompt$ Choose target creature with power or toughness 1 or less | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature with power or toughness 1 or less.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Sorcery | TgtPrompt$ Counter target sorcery spell | SpellDescription$ Counter target sorcery spell.\nSVar:DBToken:DB$ Token | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Eldrazi Scion creature token. It has \"Sacrifice this creature: Add {C}.\"\nDeckHas:Ability$Token\nDeckNeeds:Ability$Mana.Colorless\nOracle:({C} represents colorless mana.)\\nChoose one —\\n• Exile target creature with power or toughness 1 or less.\\n• Counter target sorcery spell.\\n• Create a 1/1 colorless Eldrazi Scion creature token. It has \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warping Wail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

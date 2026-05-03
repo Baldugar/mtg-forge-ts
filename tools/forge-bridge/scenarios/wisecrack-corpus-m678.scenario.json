@@ -1,0 +1,23 @@
+{
+  "id": "wisecrack-corpus-m678",
+  "description": "M6 corpus — Wisecrack; in-hand parse.",
+  "seed": 64298,
+  "cards": {
+    "Wisecrack": "Name:Wisecrack\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | DamageSource$ Targeted | SubAbility$ DBDamage | SpellDescription$ Target creature deals damage equal to its power to itself. If that creature is attacking, CARDNAME deals 2 damage to that creature's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2 | ConditionPresent$ Creature.targetedBy+attacking | ConditionCompare$ GE1\nSVar:X:Targeted$CardPower\nOracle:Target creature deals damage equal to its power to itself. If that creature is attacking, Wisecrack deals 2 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wisecrack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

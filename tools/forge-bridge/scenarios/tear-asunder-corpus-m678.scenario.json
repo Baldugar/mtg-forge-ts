@@ -1,0 +1,23 @@
+{
+  "id": "tear-asunder-corpus-m678",
+  "description": "M6 corpus — Tear Asunder; in-hand parse.",
+  "seed": 61760,
+  "cards": {
+    "Tear Asunder": "Name:Tear Asunder\nManaCost:1 G\nTypes:Instant\nK:Kicker:1 B\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target artifact or enchantment | ValidTgts$ Artifact,Enchantment | TargetMin$ X | TargetMax$ X | SubAbility$ DBChangeZone | SpellDescription$ Exile target artifact or enchantment. If this spell was kicked, exile target nonland permanent instead.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ Y | TargetMax$ Y | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Condition$ Kicked\nSVar:X:Count$Kicked.0.1\nSVar:Y:Count$Kicked.1.0\nDeckHints:Color$Black\nOracle:Kicker {1}{B} (You may pay an additional {1}{B} as you cast this spell.)\\nExile target artifact or enchantment. If this spell was kicked, exile target nonland permanent instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tear Asunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

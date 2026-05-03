@@ -1,0 +1,23 @@
+{
+  "id": "the-wedding-of-river-song-corpus-m678",
+  "description": "M6 corpus — The Wedding of River Song; in-hand parse.",
+  "seed": 62129,
+  "cards": {
+    "The Wedding of River Song": "Name:The Wedding of River Song\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBExile | SpellDescription$ Draw two cards, then you may exile a nonland card from your hand with a number of time counters on it equal to its mana value. Then target opponent does the same. Cards exiled this way that don't have suspend gain suspend.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card.nonLand | WithCountersType$ TIME | WithCountersAmount$ X | RememberChanged$ True | SubAbility$ OppDraw\nSVar:OppDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Opponent | SubAbility$ OppExile\nSVar:OppExile:DB$ ChangeZone | DefinedPlayer$ Targeted | Origin$ Hand | Destination$ Exile | Chooser$ Targeted | Hidden$ True | WithCountersType$ TIME | WithCountersAmount$ Y | ChangeType$ Card.nonLand | Imprint$ True | SubAbility$ GiveSuspend\nSVar:GiveSuspend:DB$ PumpAll | ValidCards$ Card.IsRemembered+withoutSuspend,Card.IsImprinted+withoutSuspend | KW$ Suspend | PumpZone$ Exile | Duration$ Permanent | SubAbility$ DBTimeTravel\nSVar:DBTimeTravel:DB$ TimeTravel | SpellDescription$ Time Travel. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Remembered$CardManaCost\nSVar:Y:Imprinted$CardManaCost\nOracle:Draw two cards, then you may exile a nonland card from your hand with a number of time counters on it equal to its mana value. Then target opponent does the same. Cards exiled this way that don't have suspend gain suspend. Time travel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wedding of River Song"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-temporal-anchor-corpus-m678",
+  "description": "M6 corpus — The Temporal Anchor; in-hand parse.",
+  "seed": 62115,
+  "cards": {
+    "The Temporal Anchor": "Name:The Temporal Anchor\nManaCost:3 U U U\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ At the beginning of your upkeep, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nT:Mode$ Scry | ValidPlayer$ You | ToBottom$ True | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you choose to put one or more cards on the bottom of your library while scrying, exile that many cards from the bottom of your library.\nSVar:TrigExile:DB$ Dig | DigNum$ X | ChangeNum$ All | FromBottom$ True | DestinationZone$ Exile\nSVar:X:TriggerCount$ScryBottom\nS:Mode$ Continuous | Condition$ PlayerTurn | MayPlay$ True | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | Description$ During your turn, you may play cards exiled with CARDNAME.\nOracle:At the beginning of your upkeep, scry 2.\\nWhenever you choose to put one or more cards on the bottom of your library while scrying, exile that many cards from the bottom of your library.\\nDuring your turn, you may play cards exiled with The Temporal Anchor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Temporal Anchor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

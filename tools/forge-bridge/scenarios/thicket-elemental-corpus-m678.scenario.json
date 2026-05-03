@@ -1,0 +1,23 @@
+{
+  "id": "thicket-elemental-corpus-m678",
+  "description": "M6 corpus — Thicket Elemental; in-hand parse.",
+  "seed": 62149,
+  "cards": {
+    "Thicket Elemental": "Name:Thicket Elemental\nManaCost:3 G G\nTypes:Creature Elemental\nPT:4/4\nK:Kicker:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ ThicketKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, you may reveal cards from the top of your library until you reveal a creature card. If you do, put that card onto the battlefield and shuffle all other cards revealed this way into your library.\nSVar:ThicketKicker:DB$ DigUntil | Valid$ Creature | ValidDescription$ creature card | FoundDestination$ Battlefield | Optional$ True | RevealedDestination$ Library | Shuffle$ True\nOracle:Kicker {1}{G} (You may pay an additional {1}{G} as you cast this spell.)\\nWhen Thicket Elemental enters, if it was kicked, you may reveal cards from the top of your library until you reveal a creature card. If you do, put that card onto the battlefield and shuffle all other cards revealed this way into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thicket Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tethmos-high-priest-corpus-m678",
+  "description": "M6 corpus — Tethmos High Priest; ETB-on-bf.",
+  "seed": 61941,
+  "cards": {
+    "Tethmos High Priest": "Name:Tethmos High Priest\nManaCost:2 W\nTypes:Creature Cat Cleric\nPT:2/3\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, return target creature card with mana value 2 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE2\nOracle:Heroic — Whenever you cast a spell that targets Tethmos High Priest, return target creature card with mana value 2 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tethmos High Priest"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

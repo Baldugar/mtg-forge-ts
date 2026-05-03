@@ -1,0 +1,23 @@
+{
+  "id": "trostani-discordant-corpus-m678",
+  "description": "M6 corpus — Trostani Discordant; in-hand parse.",
+  "seed": 62776,
+  "cards": {
+    "Trostani Discordant": "Name:Trostani Discordant\nManaCost:3 G W\nTypes:Legendary Creature Dryad\nPT:1/4\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Soldier creature tokens with lifelink.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier_lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainControl | TriggerDescription$ At the beginning of your end step, each player gains control of all creatures they own.\nSVar:TrigGainControl:DB$ GainControlVariant | AILogic$ GainControlOwns | AllValid$ Creature | ChangeController$ CardOwner\nOracle:Other creatures you control get +1/+1.\\nWhen Trostani Discordant enters, create two 1/1 white Soldier creature tokens with lifelink.\\nAt the beginning of your end step, each player gains control of all creatures they own.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trostani Discordant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

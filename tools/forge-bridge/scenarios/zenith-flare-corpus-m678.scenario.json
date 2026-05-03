@@ -1,0 +1,23 @@
+{
+  "id": "zenith-flare-corpus-m678",
+  "description": "M6 corpus — Zenith Flare; in-hand parse.",
+  "seed": 64631,
+  "cards": {
+    "Zenith Flare": "Name:Zenith Flare\nManaCost:2 R W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals X damage to any target and you gain X life, where X is the number of cards with a cycling ability in your graveyard.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidGraveyard Card.YouOwn+withCycling,Card.YouOwn+withTypeCycling\nDeckHas:Ability$LifeGain\nOracle:Zenith Flare deals X damage to any target and you gain X life, where X is the number of cards with a cycling ability in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zenith Flare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

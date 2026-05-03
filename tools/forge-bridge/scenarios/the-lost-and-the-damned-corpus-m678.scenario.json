@@ -1,0 +1,23 @@
+{
+  "id": "the-lost-and-the-damned-corpus-m678",
+  "description": "M6 corpus — The Lost and the Damned; in-hand parse.",
+  "seed": 62066,
+  "cards": {
+    "The Lost and the Damned": "Name:The Lost and the Damned\nManaCost:1 U R\nTypes:Enchantment\nT:Mode$ ChangesZone | ExcludedOrigins$ Hand | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a land you control enters from anywhere other than your hand or you cast a spell from anywhere other than your hand, create 3/3 red Spawn creature token.\nT:Mode$ ChangesZone | Origin$ Hand | Destination$ Battlefield | ValidCard$ Land.YouCtrl+YouDontOwn | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever a land you control enters from anywhere other than your hand or you cast a spell from anywhere other than your hand, create 3/3 red Spawn creature token.\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever a land you control enters from anywhere other than your hand or you cast a spell from anywhere other than your hand, create 3/3 red Spawn creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_3_3_spawn\nDeckHas:Ability$Token & Type$Spawn\nOracle:Whenever a land you control enters from anywhere other than your hand or you cast a spell from anywhere other than your hand, create 3/3 red Spawn creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Lost and the Damned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

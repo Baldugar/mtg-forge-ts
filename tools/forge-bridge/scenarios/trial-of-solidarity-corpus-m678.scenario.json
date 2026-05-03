@@ -1,0 +1,23 @@
+{
+  "id": "trial-of-solidarity-corpus-m678",
+  "description": "M6 corpus — Trial of Solidarity; in-hand parse.",
+  "seed": 62726,
+  "cards": {
+    "Trial of Solidarity": "Name:Trial of Solidarity\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +2/+1 and gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +1 | KW$ Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Cartouche.YouCtrl | Execute$ TrigReturn | TriggerDescription$ When a Cartouche you control enters, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayVar:X GE2\nSVar:X:Count$Valid Creature.YouCtrl\nDeckHints:Type$Cartouche\nOracle:When Trial of Solidarity enters, creatures you control get +2/+1 and gain vigilance until end of turn.\\nWhen a Cartouche you control enters, return Trial of Solidarity to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trial of Solidarity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

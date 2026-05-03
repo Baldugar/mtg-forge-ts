@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-the-animist-corpus-m678",
+  "description": "M6 corpus — Sword of the Animist; in-hand parse.",
+  "seed": 61520,
+  "cards": {
+    "Sword of the Animist": "Name:Sword of the Animist\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Whenever equipped creature attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ShuffleNonMandatory$ True\nOracle:Equipped creature gets +1/+1.\\nWhenever equipped creature attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of the Animist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

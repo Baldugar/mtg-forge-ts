@@ -1,0 +1,23 @@
+{
+  "id": "zndrsplt-s-judgment-corpus-m678",
+  "description": "M6 corpus — Zndrsplt's Judgment; in-hand parse.",
+  "seed": 64676,
+  "cards": {
+    "Zndrsplt's Judgment": "Name:Zndrsplt's Judgment\nManaCost:4 U\nTypes:Sorcery\nA:SP$ AssignGroup | Defined$ Player | Choices$ FriendRepeat,FoeBounce | AILogic$ FriendOrFoe | SpellDescription$ For each player, choose friend or foe. Each friend creates a token that's a copy of a creature they control. Each foe returns a creature they control to its owner's hand.\nSVar:FriendRepeat:DB$ RepeatEach | RepeatPlayers$ Remembered | RepeatSubAbility$ DBClone | ClearRememberedBeforeLoop$ True | ChangeZoneTable$ True | StackDescription$ Each friend creates a token that's a copy of a creature they control. | SpellDescription$ Friend creates a token that's a copy of a creature they control.\nSVar:DBClone:DB$ CopyPermanent | Choices$ Creature.RememberedPlayerCtrl | Chooser$ Remembered | Controller$ Remembered\nSVar:FoeBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature | Mandatory$ True | Hidden$ True | DefinedPlayer$ Remembered | SpellDescription$ Each foe returns a creature they control to its owner's hand.\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:SVar$Z1/Plus.Z2\nSVar:Z1:Count$Valid Creature.YourTeamCtrl\nSVar:Z2:Count$Valid Creature.OppCtrl\nOracle:For each player, choose friend or foe. Each friend creates a token that's a copy of a creature they control. Each foe returns a creature they control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zndrsplt's Judgment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

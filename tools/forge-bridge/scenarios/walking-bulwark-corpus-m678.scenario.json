@@ -1,0 +1,25 @@
+{
+  "id": "walking-bulwark-corpus-m678",
+  "description": "M6 corpus — Walking Bulwark; ETB-on-bf.",
+  "seed": 63750,
+  "cards": {
+    "Walking Bulwark": "Name:Walking Bulwark\nManaCost:1\nTypes:Artifact Creature Golem\nPT:0/3\nK:Defender\nA:AB$ Pump | Cost$ 2 | ValidTgts$ Creature.withDefender | KW$ Haste | SorcerySpeed$ True | TgtPrompt$ Select target creature with defender | StackDescription$ SpellDescription | SubAbility$ DBEffect | SpellDescription$ Until end of turn, target creature with defender gains haste, can attack as though it didn't have defender, and assigns combat damage equal to its toughness rather than its power. Activate only as a sorcery.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ CanAttack,CombatDamageToughness | ForgetOnMoved$ Battlefield\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.IsRemembered | Description$ This creature gains haste, can attack as though it didn't have defender, and assigns combat damage equal to its toughness rather than its power.\nSVar:CombatDamageToughness:Mode$ CombatDamageToughness | ValidCard$ Card.IsRemembered | Secondary$ True | Description$ This creature gains haste, can attack as though it didn't have defender, and assigns combat damage equal to its toughness rather than its power.\nDeckHas:Keyword$Haste\nDeckHints:Keyword$Defender\nOracle:Defender\\n{2}: Until end of turn, target creature with defender gains haste, can attack as though it didn't have defender, and assigns combat damage equal to its toughness rather than its power. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Walking Bulwark"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

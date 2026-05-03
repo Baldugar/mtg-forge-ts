@@ -1,0 +1,23 @@
+{
+  "id": "vesuvan-shapeshifter-corpus-m678",
+  "description": "M6 corpus — Vesuvan Shapeshifter; in-hand parse.",
+  "seed": 63419,
+  "cards": {
+    "Vesuvan Shapeshifter": "Name:Vesuvan Shapeshifter\nManaCost:3 U U\nTypes:Creature Shapeshifter\nPT:0/0\nK:Morph:1 U\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | AddTriggers$ VesShapeUpkeepTrig | AddSVars$ VesShapeTurn,VesShapeUpkeepTrig | Duration$ UntilFacedown | SpellDescription$ As CARDNAME enters or is turned face up, you may choose another creature on the battlefield. If you do, until CARDNAME is turned face down, it becomes a copy of that creature, except it has \"At the beginning of your upkeep, you may turn this creature face down.\"\nSVar:VesShapeUpkeepTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ VesShapeTurn | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may turn CARDNAME face down.\nSVar:VesShapeTurn:DB$ SetState | Defined$ Self | Mode$ TurnFaceDown\nR:Event$ TurnFaceUp | ValidCard$ Card.Self | Optional$ True | ReplaceWith$ DBCopy | ActiveZones$ Battlefield | Secondary$ True | ReplacementResult$ Updated | Description$ As CARDNAME is turned face up, you may choose another creature on the battlefield. If you do, until CARDNAME is turned face down, it becomes a copy of that creature, except it has \"At the beginning of your upkeep, you may turn this creature face down.\"\nOracle:As Vesuvan Shapeshifter enters or is turned face up, you may choose another creature on the battlefield. If you do, until Vesuvan Shapeshifter is turned face down, it becomes a copy of that creature, except it has \"At the beginning of your upkeep, you may turn this creature face down.\"\\nMorph {1}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vesuvan Shapeshifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

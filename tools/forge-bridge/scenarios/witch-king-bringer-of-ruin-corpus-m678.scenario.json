@@ -1,0 +1,23 @@
+{
+  "id": "witch-king-bringer-of-ruin-corpus-m678",
+  "description": "M6 corpus — Witch-king, Bringer of Ruin; in-hand parse.",
+  "seed": 64308,
+  "cards": {
+    "Witch-king, Bringer of Ruin": "Name:Witch-king, Bringer of Ruin\nManaCost:4 B B\nTypes:Legendary Creature Wraith Noble\nPT:5/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks, defending player sacrifices a creature with the least power among creatures they control.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredDefendingPlayer | SacValid$ Creature.leastPowerControlledByTriggeredDefendingPlayer\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nWhenever Witch-king, Bringer of Ruin attacks, defending player sacrifices a creature with the least power among creatures they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witch-king, Bringer of Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

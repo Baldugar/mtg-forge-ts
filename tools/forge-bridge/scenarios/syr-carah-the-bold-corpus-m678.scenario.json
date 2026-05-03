@@ -1,0 +1,23 @@
+{
+  "id": "syr-carah-the-bold-corpus-m678",
+  "description": "M6 corpus — Syr Carah, the Bold; in-hand parse.",
+  "seed": 61579,
+  "cards": {
+    "Syr Carah, the Bold": "Name:Syr Carah, the Bold\nManaCost:3 R R\nTypes:Legendary Creature Human Knight\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Spell.Instant+YouCtrl,Spell.Sorcery+YouCtrl,Card.Self | ValidTarget$ Player | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or an instant or sorcery spell you control deals damage to a player, exile the top card of your library. You may play that card this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Duration$ EndOfTurn | RememberObjects$ Remembered | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card.\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ NICKNAME deals 1 damage to any target.\nSVar:NonCombatPriority:1\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever Syr Carah, the Bold or an instant or sorcery spell you control deals damage to a player, exile the top card of your library. You may play that card this turn.\\n{T}: Syr Carah deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Carah, the Bold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

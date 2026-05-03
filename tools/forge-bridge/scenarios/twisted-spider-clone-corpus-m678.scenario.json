@@ -1,0 +1,23 @@
+{
+  "id": "twisted-spider-clone-corpus-m678",
+  "description": "M6 corpus — Twisted Spider-Clone; in-hand parse.",
+  "seed": 62894,
+  "cards": {
+    "Twisted Spider-Clone": "Name:Twisted Spider-Clone\nManaCost:3 G\nTypes:Creature Spider Human\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ When this creature enters, put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+counters_GE1_P1P1 | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:When this creature enters, put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twisted Spider-Clone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

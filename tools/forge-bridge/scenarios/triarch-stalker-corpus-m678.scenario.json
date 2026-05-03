@@ -1,0 +1,23 @@
+{
+  "id": "triarch-stalker-corpus-m678",
+  "description": "M6 corpus — Triarch Stalker; in-hand parse.",
+  "seed": 62728,
+  "cards": {
+    "Triarch Stalker": "Name:Triarch Stalker\nManaCost:3 B B\nTypes:Artifact Creature Necron\nPT:4/5\nS:Mode$ Continuous | Affected$ Creature.attacking ChosenPlayer | AddKeyword$ Menace | Description$ Creatures attacking the last chosen player have menace.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Targeting Relay — At the beginning of combat on your turn, choose an opponent.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent\nDeckHas:Keyword$Menace\nOracle:Targeting Relay — At the beginning of combat on your turn, choose an opponent.\\nCreatures attacking the last chosen player have menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triarch Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

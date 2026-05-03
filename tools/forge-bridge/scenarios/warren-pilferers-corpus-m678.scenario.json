@@ -1,0 +1,23 @@
+{
+  "id": "warren-pilferers-corpus-m678",
+  "description": "M6 corpus — Warren Pilferers; in-hand parse.",
+  "seed": 63910,
+  "cards": {
+    "Warren Pilferers": "Name:Warren Pilferers\nManaCost:4 B\nTypes:Creature Goblin Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMove | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to your hand. If that card is a Goblin card, CARDNAME gains haste until end of turn.\nSVar:TrigMove:DB$ ChangeZone | Mandatory$ True | ValidTgts$ Card.Creature+YouCtrl | TgtPrompt$ Select target creature card | Origin$ Graveyard | Destination$ Hand | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Haste | SubAbility$ DBCleanUp | ConditionPresent$ Card.Goblin+IsRemembered | ConditionDefined$ Remembered | ConditionCompare$ EQ1\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:ALWAYS\nOracle:When Warren Pilferers enters, return target creature card from your graveyard to your hand. If that card is a Goblin card, Warren Pilferers gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warren Pilferers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

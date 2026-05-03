@@ -1,0 +1,23 @@
+{
+  "id": "unquestioned-authority-corpus-m678",
+  "description": "M6 corpus — Unquestioned Authority; in-hand parse.",
+  "seed": 63106,
+  "cards": {
+    "Unquestioned Authority": "Name:Unquestioned Authority\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Protection:Creature | Description$ Enchanted creature has protection from creatures.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nWhen Unquestioned Authority enters, draw a card.\\nEnchanted creature has protection from creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unquestioned Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

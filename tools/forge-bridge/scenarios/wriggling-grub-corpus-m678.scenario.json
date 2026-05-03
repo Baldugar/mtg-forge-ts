@@ -1,0 +1,23 @@
+{
+  "id": "wriggling-grub-corpus-m678",
+  "description": "M6 corpus — Wriggling Grub; in-hand parse.",
+  "seed": 64465,
+  "cards": {
+    "Wriggling Grub": "Name:Wriggling Grub\nManaCost:1 B\nTypes:Creature Worm\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create two 1/1 black and green Worm creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ bg_1_1_worm\nSVar:SacMe:4\nDeckHas:Ability$Token\nOracle:When Wriggling Grub dies, create two 1/1 black and green Worm creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wriggling Grub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

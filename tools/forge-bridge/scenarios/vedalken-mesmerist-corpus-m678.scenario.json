@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-mesmerist-corpus-m678",
+  "description": "M6 corpus — Vedalken Mesmerist; in-hand parse.",
+  "seed": 63328,
+  "cards": {
+    "Vedalken Mesmerist": "Name:Vedalken Mesmerist\nManaCost:1 U\nTypes:Creature Vedalken Wizard\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target creature an opponent controls gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | IsCurse$ True\nOracle:Whenever Vedalken Mesmerist attacks, target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Mesmerist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

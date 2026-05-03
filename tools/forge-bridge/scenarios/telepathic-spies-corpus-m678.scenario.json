@@ -1,0 +1,23 @@
+{
+  "id": "telepathic-spies-corpus-m678",
+  "description": "M6 corpus — Telepathic Spies; in-hand parse.",
+  "seed": 61804,
+  "cards": {
+    "Telepathic Spies": "Name:Telepathic Spies\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at target opponent's hand.\nSVar:TrigPeek:DB$ RevealHand | ValidTgts$ Opponent | Look$ True\nOracle:When Telepathic Spies enters, look at target opponent's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Telepathic Spies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

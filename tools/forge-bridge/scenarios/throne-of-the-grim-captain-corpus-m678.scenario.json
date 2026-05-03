@@ -1,0 +1,23 @@
+{
+  "id": "throne-of-the-grim-captain-corpus-m678",
+  "description": "M6 corpus — Throne of the Grim Captain; in-hand parse.",
+  "seed": 62295,
+  "cards": {
+    "Throne of the Grim Captain": "Name:Throne of the Grim Captain\nManaCost:2\nTypes:Legendary Artifact\nA:AB$ Mill | Cost$ T | NumCards$ 2 | SpellDescription$ Mill two cards.\nK:Craft:4 ExileCtrlOrGrave<1/Dinosaur.Other> ExileCtrlOrGrave<1/Merfolk.Other> ExileCtrlOrGrave<1/Pirate.Other> ExileCtrlOrGrave<1/Vampire.Other>:a Dinosaur, a Merfolk, a Pirate, and a Vampire:the four\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard|Mill\nAlternateMode:DoubleFaced\nOracle:{T}: Mill two cards.\\nCraft with a Dinosaur, a Merfolk, a Pirate, and a Vampire {4} ({4}, Exile this artifact, Exile the four from among permanents you control and/or cards in your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:The Grim Captain\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Skeleton Spirit Pirate\nPT:7/7\nK:Menace\nK:Trample\nK:Lifelink\nK:Hexproof\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, each opponent sacrifices a nonland permanent. Then you may put an exiled creature card used to craft CARDNAME onto the battlefield under your control tapped and attacking.\nSVar:DBSacrifice:DB$ Sacrifice | Amount$ 1 | SacValid$ Permanent.nonLand | Defined$ Opponent | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | ChooseFromDefined$ ExiledWith | ChangeNum$ 1 | Hidden$ True | Tapped$ True | Attacking$ True | GainControl$ True\nOracle:Menace, trample, lifelink, hexproof\\nWhenever The Grim Captain attacks, each opponent sacrifices a nonland permanent. Then you may put an exiled creature card used to craft The Grim Captain onto the battlefield under your control tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throne of the Grim Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

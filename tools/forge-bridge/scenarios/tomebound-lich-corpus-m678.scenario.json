@@ -1,0 +1,23 @@
+{
+  "id": "tomebound-lich-corpus-m678",
+  "description": "M6 corpus — Tomebound Lich; in-hand parse.",
+  "seed": 62493,
+  "cards": {
+    "Tomebound Lich": "Name:Tomebound Lich\nManaCost:1 U B\nTypes:Creature Zombie Wizard\nPT:1/3\nK:Deathtouch\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or deals combat damage to a player, draw a card, then discard a card.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or deals combat damage to a player, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhenever Tomebound Lich enters or deals combat damage to a player, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tomebound Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

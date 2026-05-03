@@ -1,0 +1,23 @@
+{
+  "id": "trove-mage-corpus-m678",
+  "description": "M6 corpus — Trove Mage; in-hand parse.",
+  "seed": 62782,
+  "cards": {
+    "Trove Mage": "Name:Trove Mage\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigSeek | TriggerDescription$ When CARDNAME enters, seek an artifact card from among the top ten cards of your library, then shuffle.\nSVar:TrigSeek:DB$ Seek | DefinedCards$ Top_10_OfLibrary | Type$ Artifact | SubAbility$ Shuffle\nSVar:Shuffle:DB$ Shuffle\nDeckNeeds:Type$Artifact\nOracle:When Trove Mage enters, seek an artifact card from among the top ten cards of your library, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trove Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tenacious-tomeseeker-corpus-m678",
+  "description": "M6 corpus — Tenacious Tomeseeker; in-hand parse.",
+  "seed": 61877,
+  "cards": {
+    "Tenacious Tomeseeker": "Name:Tenacious Tomeseeker\nManaCost:2 U\nTypes:Creature Human Knight\nPT:3/2\nK:Bargain\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+bargained | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if it was bargained, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nDeckHas:Ability$Sacrifice|Graveyard\nDeckHints:Type$Enchantment|Artifact|Instant|Sorcery & Ability$Token\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nWhen Tenacious Tomeseeker enters, if it was bargained, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tenacious Tomeseeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

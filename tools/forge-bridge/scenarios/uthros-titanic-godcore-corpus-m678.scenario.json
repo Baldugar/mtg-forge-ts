@@ -1,0 +1,25 @@
+{
+  "id": "uthros-titanic-godcore-corpus-m678",
+  "description": "M6 corpus — Uthros, Titanic Godcore; ETB-on-bf.",
+  "seed": 63204,
+  "cards": {
+    "Uthros, Titanic Godcore": "Name:Uthros, Titanic Godcore\nManaCost:no cost\nTypes:Land Planet\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nK:Station:12\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE12_CHARGE | AddAbility$ UthrosMana | Description$ STATION 12+ {U}, {T}: Add {U} for each artifact you control.\nSVar:UthrosMana:AB$ Mana | Cost$ U T | Produced$ U | Amount$ X | SpellDescription$ Add {U} for each artifact you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:This land enters tapped.\\n{T}: Add {U}.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)\\nSTATION 12+\\n{U}, {T}: Add {U} for each artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Uthros, Titanic Godcore"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

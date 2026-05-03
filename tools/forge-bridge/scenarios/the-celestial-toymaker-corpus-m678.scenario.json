@@ -1,0 +1,23 @@
+{
+  "id": "the-celestial-toymaker-corpus-m678",
+  "description": "M6 corpus — The Celestial Toymaker; in-hand parse.",
+  "seed": 62000,
+  "cards": {
+    "The Celestial Toymaker": "Name:The Celestial Toymaker\nManaCost:W U B\nTypes:Legendary Creature Rogue Artificer\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPeek | TriggerDescription$ Whenever CARDNAME attacks, look at the top three cards of your library. Exile any number of them in a face-down pile and the rest in a face-up pile. Defending player chooses one of those piles. Put that pile into your hand.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 3 | NoPeek$ True | NoReveal$ True | RememberPeeked$ True | SubAbility$ ExileDown\nSVar:ExileDown:DB$ ChangeZone | ChooseFromDefined$ Remembered | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | ChangeNum$ 3 | Imprint$ True | ForgetChanged$ True | SubAbility$ ExileRest\nSVar:ExileRest:DB$ ChangeZoneAll | Origin$ Library | Destination$ Exile | ChangeType$ Card.IsRemembered | SubAbility$ Separate\nSVar:Separate:DB$ TwoPiles | Defined$ You | DefinedPiles$ Imprinted,Remembered | Chooser$ TriggeredDefendingPlayer | ChosenPile$ DBHand | SubAbility$ DBCleanup\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ At the beginning of each end step, each opponent loses 2 life for each spell or ability that caused one or more players to guess or to group cards or permanents into a pile this turn.\nSVar:TrigLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ X\nSVar:X:Count$NumPiledGuessedSA/Twice\nOracle:Whenever The Celestial Toymaker attacks, look at the top three cards of your library. Exile any number of them in a face-down pile and the rest in a face-up pile. Defending player chooses one of those piles. Put that pile into your hand.\\nAt the beginning of each end step, each opponent loses 2 life for each spell or ability that caused one or more players to guess or to group cards or permanents into a pile this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Celestial Toymaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

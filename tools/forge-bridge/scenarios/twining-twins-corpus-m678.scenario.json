@@ -1,0 +1,23 @@
+{
+  "id": "twining-twins-corpus-m678",
+  "description": "M6 corpus — Twining Twins; in-hand parse.",
+  "seed": 62879,
+  "cards": {
+    "Twining Twins": "Name:Twining Twins\nManaCost:2 U U\nTypes:Creature Faerie Wizard\nPT:4/4\nK:Flying\nK:Vigilance\nK:Ward:1\nAlternateMode:Adventure\nOracle:Flying, vigilance, ward {1}\n\nALTERNATE\n\nName:Swift Spiral\nManaCost:1 W\nTypes:Instant Adventure\nA:SP$ ChangeZone | ValidTgts$ Creature.!token | TgtPrompt$ Select target nontoken creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DelTrig | RememberChanged$ True | StackDescription$ REP target nontoken creature_{c:Targeted} | SpellDescription$ Exile target nontoken creature. Return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ Return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target nontoken creature. Return it to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twining Twins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

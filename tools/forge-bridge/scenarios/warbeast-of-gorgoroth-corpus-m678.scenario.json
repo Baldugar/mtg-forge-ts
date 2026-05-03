@@ -1,0 +1,23 @@
+{
+  "id": "warbeast-of-gorgoroth-corpus-m678",
+  "description": "M6 corpus — Warbeast of Gorgoroth; in-hand parse.",
+  "seed": 63858,
+  "cards": {
+    "Warbeast of Gorgoroth": "Name:Warbeast of Gorgoroth\nManaCost:4 R\nTypes:Creature Beast\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+powerGE4+YouCtrl | Execute$ TrigAmass | TriggerDescription$ Whenever CARDNAME or another creature you control with power 4 or greater dies, amass Orcs 2. (Put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigAmass:DB$ Amass | Type$ Orc | Num$ 2\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:Whenever Warbeast of Gorgoroth or another creature you control with power 4 or greater dies, amass Orcs 2. (Put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warbeast of Gorgoroth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

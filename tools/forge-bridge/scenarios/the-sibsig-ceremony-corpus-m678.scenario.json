@@ -1,0 +1,23 @@
+{
+  "id": "the-sibsig-ceremony-corpus-m678",
+  "description": "M6 corpus — The Sibsig Ceremony; in-hand parse.",
+  "seed": 62103,
+  "cards": {
+    "The Sibsig Ceremony": "Name:The Sibsig Ceremony\nManaCost:B B B\nTypes:Legendary Enchantment\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Creature spells you cast cost {2} less to cast.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Creature.wasCastByYou+YouCtrl | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control enters, if you cast it, destroy that creature, then create a 2/2 black Zombie Druid creature token.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie_druid\nOracle:Creature spells you cast cost {2} less to cast.\\nWhenever a creature you control enters, if you cast it, destroy that creature, then create a 2/2 black Zombie Druid creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Sibsig Ceremony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

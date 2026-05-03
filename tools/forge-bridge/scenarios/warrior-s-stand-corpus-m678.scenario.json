@@ -1,0 +1,23 @@
+{
+  "id": "warrior-s-stand-corpus-m678",
+  "description": "M6 corpus — Warrior's Stand; in-hand parse.",
+  "seed": 63921,
+  "cards": {
+    "Warrior's Stand": "Name:Warrior's Stand\nManaCost:1 W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast this spell only during the declare attackers step and only if you've been attacked this step. Creatures you control get +2/+2 until end of turn.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nAI:RemoveDeck:All\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nCreatures you control get +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warrior's Stand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

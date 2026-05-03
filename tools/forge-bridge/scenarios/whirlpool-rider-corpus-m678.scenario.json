@@ -1,0 +1,23 @@
+{
+  "id": "whirlpool-rider-corpus-m678",
+  "description": "M6 corpus — Whirlpool Rider; in-hand parse.",
+  "seed": 64095,
+  "cards": {
+    "Whirlpool Rider": "Name:Whirlpool Rider\nManaCost:1 U\nTypes:Creature Merfolk\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeAll | TriggerDescription$ When CARDNAME enters, shuffle the cards from your hand into your library, then draw that many cards.\nSVar:TrigChangeAll:DB$ ChangeZoneAll | Defined$ You | Origin$ Hand | Destination$ Library | Shuffle$ True | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:When Whirlpool Rider enters, shuffle the cards from your hand into your library, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirlpool Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

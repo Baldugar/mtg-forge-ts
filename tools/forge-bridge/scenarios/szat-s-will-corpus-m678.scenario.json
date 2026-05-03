@@ -1,0 +1,23 @@
+{
+  "id": "szat-s-will-corpus-m678",
+  "description": "M6 corpus — Szat's Will; in-hand parse.",
+  "seed": 61587,
+  "cards": {
+    "Szat's Will": "Name:Szat's Will\nManaCost:4 B\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBOppSac,DBExile | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both.\nSVar:DBOppSac:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBSac | SpellDescription$ Each opponent sacrifices a creature they control with the greatest power.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.greatestPowerControlledByRemembered | ChoiceTitle$ Choose a creature you control with the greatest power | Mandatory$ True | Reveal$ True | RememberChosen$ True\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Card.OppCtrl | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBToken | SpellDescription$ Exile all cards from all opponents' graveyards, then create X 0/1 black Thrull creature tokens, where X is the greatest power among creature cards exiled this way.\nSVar:DBToken:DB$ Token | TokenScript$ b_0_1_thrull | TokenAmount$ Z | SubAbility$ DBCleanup\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nSVar:Z:Count$ValidExile Creature.IsRemembered$GreatestCardPower\nDeckHas:Ability$Token\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Each opponent sacrifices a creature they control with the greatest power.\\n• Exile all cards from all opponents' graveyards, then create X 0/1 black Thrull creature tokens, where X is the greatest power among creature cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Szat's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

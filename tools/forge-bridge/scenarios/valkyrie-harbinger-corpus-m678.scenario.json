@@ -1,0 +1,23 @@
+{
+  "id": "valkyrie-harbinger-corpus-m678",
+  "description": "M6 corpus — Valkyrie Harbinger; in-hand parse.",
+  "seed": 63228,
+  "cards": {
+    "Valkyrie Harbinger": "Name:Valkyrie Harbinger\nManaCost:4 W W\nTypes:Creature Angel Cleric\nPT:4/5\nK:Flying\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE4 | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if you gained 4 or more life this turn, create a 4/4 white Angel creature token with flying and vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying_vigilance | TokenOwner$ You\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$Token|LifeGain\nDeckHints:Ability$LifeGain\nOracle:Flying, lifelink\\nAt the beginning of each end step, if you gained 4 or more life this turn, create a 4/4 white Angel creature token with flying and vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valkyrie Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

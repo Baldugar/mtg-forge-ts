@@ -1,0 +1,23 @@
+{
+  "id": "white-scarab-corpus-m678",
+  "description": "M6 corpus — White Scarab; in-hand parse.",
+  "seed": 64121,
+  "cards": {
+    "White Scarab": "Name:White Scarab\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | ValidBlocker$ Creature.White | Description$ Enchanted creature can't be blocked by white creatures.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | IsPresent$ Permanent.White+OppCtrl | Description$ Enchanted creature gets +2/+2 as long as an opponent controls a white permanent.\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature can't be blocked by white creatures.\\nEnchanted creature gets +2/+2 as long as an opponent controls a white permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Scarab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

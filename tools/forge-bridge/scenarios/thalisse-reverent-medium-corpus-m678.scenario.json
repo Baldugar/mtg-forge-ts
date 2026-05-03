@@ -1,0 +1,23 @@
+{
+  "id": "thalisse-reverent-medium-corpus-m678",
+  "description": "M6 corpus — Thalisse, Reverent Medium; in-hand parse.",
+  "seed": 61966,
+  "cards": {
+    "Thalisse, Reverent Medium": "Name:Thalisse, Reverent Medium\nManaCost:3 W B\nTypes:Legendary Creature Human Cleric\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, create X 1/1 white Spirit creature tokens with flying, where X is the number of tokens you created this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Battlefield_Card.tokenCreated+YouOwn\nDeckHas:Ability$Token & Type$Spirit\nDeckNeeds:Ability$Token\nOracle:At the beginning of each end step, create X 1/1 white Spirit creature tokens with flying, where X is the number of tokens you created this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalisse, Reverent Medium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

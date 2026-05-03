@@ -1,0 +1,23 @@
+{
+  "id": "the-regalia-corpus-m678",
+  "description": "M6 corpus — The Regalia; in-hand parse.",
+  "seed": 62095,
+  "cards": {
+    "The Regalia": "Name:The Regalia\nManaCost:4\nTypes:Legendary Artifact Vehicle\nPT:4/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever CARDNAME attacks, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Land | ValidDescription$ land | FoundDestination$ Battlefield | Tapped$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nK:Crew:1\nOracle:Haste\\nWhenever The Regalia attacks, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Regalia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

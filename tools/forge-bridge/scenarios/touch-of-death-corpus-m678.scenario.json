@@ -1,0 +1,23 @@
+{
+  "id": "touch-of-death-corpus-m678",
+  "description": "M6 corpus — Touch of Death; in-hand parse.",
+  "seed": 62557,
+  "cards": {
+    "Touch of Death": "Name:Touch of Death\nManaCost:2 B\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target player or planeswalker. You gain 1 life. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Touch of Death deals 1 damage to target player or planeswalker. You gain 1 life.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Touch of Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

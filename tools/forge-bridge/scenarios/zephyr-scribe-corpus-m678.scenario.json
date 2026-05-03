@@ -1,0 +1,25 @@
+{
+  "id": "zephyr-scribe-corpus-m678",
+  "description": "M6 corpus — Zephyr Scribe; ETB-on-bf.",
+  "seed": 64640,
+  "cards": {
+    "Zephyr Scribe": "Name:Zephyr Scribe\nManaCost:2 U\nTypes:Creature Human Monk\nPT:2/1\nA:AB$ Draw | Cost$ U T | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a noncreature spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:BuffedBy:Card.nonLand+nonCreature\nAI:RemoveDeck:All\nOracle:{U}, {T}: Draw a card, then discard a card.\\nWhenever you cast a noncreature spell, untap Zephyr Scribe.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zephyr Scribe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

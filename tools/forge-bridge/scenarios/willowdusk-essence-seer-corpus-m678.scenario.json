@@ -1,0 +1,25 @@
+{
+  "id": "willowdusk-essence-seer-corpus-m678",
+  "description": "M6 corpus — Willowdusk, Essence Seer; ETB-on-bf.",
+  "seed": 64205,
+  "cards": {
+    "Willowdusk, Essence Seer": "Name:Willowdusk, Essence Seer\nManaCost:1 B G\nTypes:Legendary Creature Dryad Druid\nPT:3/3\nA:AB$ PutCounter | Cost$ 1 T | ValidTgts$ Creature.Other | TgtPrompt$ Choose another target creature | CounterType$ P1P1 | CounterNum$ X | SorcerySpeed$ True | SpellDescription$ Choose another target creature. Put a number of +1/+1 counters on it equal to the amount of life you gained this turn or the amount of life you lost this turn, whichever is greater. Activate only as a sorcery.\nSVar:X:SVar$Y/LimitMin.Z\nSVar:Y:Count$LifeYouGainedThisTurn\nSVar:Z:Count$LifeYouLostThisTurn\nDeckHas:Ability$Counters\nDeckHints:Ability$LifeGain\nOracle:{1}, {T}: Choose another target creature. Put a number of +1/+1 counters on it equal to the amount of life you gained this turn or the amount of life you lost this turn, whichever is greater. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Willowdusk, Essence Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vraan-executioner-thane-corpus-m678",
+  "description": "M6 corpus — Vraan, Executioner Thane; in-hand parse.",
+  "seed": 63703,
+  "cards": {
+    "Vraan, Executioner Thane": "Name:Vraan, Executioner Thane\nManaCost:1 B\nTypes:Legendary Creature Phyrexian Vampire\nPT:2/2\nT:Mode$ ChangesZoneAll | TriggerZones$ Battlefield | ValidCards$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDrain | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more other creatures you control die, each opponent loses 2 life and you gain 2 life. This ability triggers only once each turn.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Whenever one or more other creatures you control die, each opponent loses 2 life and you gain 2 life. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraan, Executioner Thane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

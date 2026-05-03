@@ -1,0 +1,23 @@
+{
+  "id": "teferi-s-puzzle-box-corpus-m678",
+  "description": "M6 corpus — Teferi's Puzzle Box; in-hand parse.",
+  "seed": 61785,
+  "cards": {
+    "Teferi's Puzzle Box": "Name:Teferi's Puzzle Box\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigChangeAll | TriggerDescription$ At the beginning of each player's draw step, that player puts the cards in their hand on the bottom of their library in any order, then draws that many cards.\nSVar:TrigChangeAll:DB$ ChangeZoneAll | DefinedPlayer$ TriggeredPlayer | Defined$ TriggeredPlayer | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ TriggeredPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's draw step, that player puts the cards in their hand on the bottom of their library in any order, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi's Puzzle Box"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "witherscale-wurm-corpus-m678",
+  "description": "M6 corpus — Witherscale Wurm; in-hand parse.",
+  "seed": 64327,
+  "cards": {
+    "Witherscale Wurm": "Name:Witherscale Wurm\nManaCost:4 G G\nTypes:Creature Wurm\nPT:9/9\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigPumpAttacker | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigPumpBlocker | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, remove all -1/-1 counters from it.\nSVar:TrigPumpAttacker:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Wither\nSVar:TrigPumpBlocker:DB$ Pump | Defined$ TriggeredBlockerLKICopy | KW$ Wither\nSVar:TrigRemoveCounter:DB$ RemoveCounter | CounterType$ M1M1 | CounterNum$ All\nSVar:All:Count$CardCounters.M1M1\nOracle:Whenever Witherscale Wurm blocks or becomes blocked by a creature, that creature gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)\\nWhenever Witherscale Wurm deals damage to an opponent, remove all -1/-1 counters from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witherscale Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

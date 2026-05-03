@@ -1,0 +1,25 @@
+{
+  "id": "woodlurker-mimic-corpus-m678",
+  "description": "M6 corpus — Woodlurker Mimic; ETB-on-bf.",
+  "seed": 64394,
+  "cards": {
+    "Woodlurker Mimic": "Name:Woodlurker Mimic\nManaCost:1 BG\nTypes:Creature Shapeshifter\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.Black+Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a spell that's both black and green, CARDNAME has base power and toughness 4/5 until end of turn and gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 5 | Keywords$ Wither\nSVar:BuffedBy:Card.Black+Green\nOracle:Whenever you cast a spell that's both black and green, Woodlurker Mimic has base power and toughness 4/5 until end of turn and gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Woodlurker Mimic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "viashino-cutthroat-corpus-m678",
+  "description": "M6 corpus — Viashino Cutthroat; in-hand parse.",
+  "seed": 63449,
+  "cards": {
+    "Viashino Cutthroat": "Name:Viashino Cutthroat\nManaCost:2 R R\nTypes:Creature Lizard\nPT:5/3\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nOracle:Haste\\nAt the beginning of the end step, return Viashino Cutthroat to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viashino Cutthroat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

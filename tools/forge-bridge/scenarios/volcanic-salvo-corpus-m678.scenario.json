@@ -1,0 +1,23 @@
+{
+  "id": "volcanic-salvo-corpus-m678",
+  "description": "M6 corpus — Volcanic Salvo; in-hand parse.",
+  "seed": 63654,
+  "cards": {
+    "Volcanic Salvo": "Name:Volcanic Salvo\nManaCost:10 R R\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {X} less to cast, where X is the total power of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$CardPower\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select target creature and/or planeswalkers | NumDmg$ 6 | SpellDescription$ CARDNAME deals 6 damage to each of up to two target creatures and/or planeswalkers.\nOracle:This spell costs {X} less to cast, where X is the total power of creatures you control.\\nVolcanic Salvo deals 6 damage to each of up to two target creatures and/or planeswalkers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volcanic Salvo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

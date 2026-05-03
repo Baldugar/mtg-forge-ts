@@ -1,0 +1,23 @@
+{
+  "id": "unbreathing-horde-corpus-m678",
+  "description": "M6 corpus — Unbreathing Horde; in-hand parse.",
+  "seed": 62975,
+  "cards": {
+    "Unbreathing Horde": "Name:Unbreathing Horde\nManaCost:2 B\nTypes:Creature Zombie\nPT:0/0\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each other Zombie you control and each Zombie card in your graveyard.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Valid Zombie.YouCtrl/Plus.Y\nSVar:Y:Count$ValidGraveyard Zombie.YouCtrl\nSVar:NeedsToPlayVar:X GE1\nAI:RemoveDeck:Random\nOracle:Unbreathing Horde enters with a +1/+1 counter on it for each other Zombie you control and each Zombie card in your graveyard.\\nIf Unbreathing Horde would be dealt damage, prevent that damage and remove a +1/+1 counter from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unbreathing Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

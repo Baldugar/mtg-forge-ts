@@ -1,0 +1,23 @@
+{
+  "id": "vastwood-fortification-corpus-m678",
+  "description": "M6 corpus — Vastwood Fortification; in-hand parse.",
+  "seed": 63293,
+  "cards": {
+    "Vastwood Fortification": "Name:Vastwood Fortification\nManaCost:G\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on target creature.\nDeckHas:Ability$Counters\nAlternateMode:Modal\nOracle:Put a +1/+1 counter on target creature.\n\nALTERNATE\n\nName:Vastwood Thicket\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:Vastwood Thicket enters tapped.\\n{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vastwood Fortification"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

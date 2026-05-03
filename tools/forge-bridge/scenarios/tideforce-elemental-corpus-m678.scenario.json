@@ -1,0 +1,23 @@
+{
+  "id": "tideforce-elemental-corpus-m678",
+  "description": "M6 corpus — Tideforce Elemental; in-hand parse.",
+  "seed": 62369,
+  "cards": {
+    "Tideforce Elemental": "Name:Tideforce Elemental\nManaCost:2 U\nTypes:Creature Elemental\nPT:2/1\nA:AB$ TapOrUntap | Cost$ U T | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | SpellDescription$ You may tap or untap another target creature.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Landfall — Whenever a land you control enters, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:All\nOracle:{U}, {T}: You may tap or untap another target creature.\\nLandfall — Whenever a land you control enters, you may untap Tideforce Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tideforce Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

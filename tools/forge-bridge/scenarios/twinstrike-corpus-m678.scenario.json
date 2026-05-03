@@ -1,0 +1,23 @@
+{
+  "id": "twinstrike-corpus-m678",
+  "description": "M6 corpus — Twinstrike; in-hand parse.",
+  "seed": 62886,
+  "cards": {
+    "Twinstrike": "Name:Twinstrike\nManaCost:3 B R\nTypes:Instant\nA:SP$ DealDamage | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Creature | NumDmg$ 2 | ConditionCheckSVar$ X | SubAbility$ DBDestroy | SpellDescription$ CARDNAME deals 2 damage to each of two target creatures.\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | Condition$ Hellbent | SpellDescription$ Hellbent — Destroy those creatures instead if you have no cards in hand.\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Twinstrike deals 2 damage to each of two target creatures.\\nHellbent — Destroy those creatures instead if you have no cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twinstrike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

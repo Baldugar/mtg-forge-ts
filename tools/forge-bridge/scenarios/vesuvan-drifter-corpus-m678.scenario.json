@@ -1,0 +1,23 @@
+{
+  "id": "vesuvan-drifter-corpus-m678",
+  "description": "M6 corpus — Vesuvan Drifter; in-hand parse.",
+  "seed": 63416,
+  "cards": {
+    "Vesuvan Drifter": "Name:Vesuvan Drifter\nManaCost:2 U\nTypes:Creature Shapeshifter\nPT:2/4\nK:Flying\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigReveal | OptionalDecider$ You | TriggerDescription$ At the beginning of each combat, you may reveal the top card of your library. If you reveal a creature card this way, CARDNAME becomes a copy of that card until end of turn, except it has flying.\nSVar:TrigReveal:DB$ PeekAndReveal | NoPeek$ True | SubAbility$ DBClone\nSVar:DBClone:DB$ Clone | ConditionDefined$ TopOfLibrary | ConditionPresent$ Creature | Defined$ TopOfLibrary | CloneTarget$ Self | Duration$ UntilEndOfTurn | AddKeywords$ Flying\nOracle:Flying\\nYou may look at the top card of your library any time.\\nAt the beginning of each combat, you may reveal the top card of your library. If you reveal a creature card this way, Vesuvan Drifter becomes a copy of that card until end of turn, except it has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vesuvan Drifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

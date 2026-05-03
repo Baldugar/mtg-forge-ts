@@ -1,0 +1,23 @@
+{
+  "id": "warleader-s-call-corpus-m678",
+  "description": "M6 corpus — Warleader's Call; in-hand parse.",
+  "seed": 63887,
+  "cards": {
+    "Warleader's Call": "Name:Warleader's Call\nManaCost:1 R W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever a creature you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:Creatures you control get +1/+1.\\nWhenever a creature you control enters, Warleader's Call deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warleader's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

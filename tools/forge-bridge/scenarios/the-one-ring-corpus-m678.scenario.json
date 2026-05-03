@@ -1,0 +1,23 @@
+{
+  "id": "the-one-ring-corpus-m678",
+  "description": "M6 corpus — The One Ring; in-hand parse.",
+  "seed": 62084,
+  "cards": {
+    "The One Ring": "Name:The One Ring\nManaCost:4\nTypes:Legendary Artifact\nK:Indestructible\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastByYou+Self | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, if you cast it, you gain protection from everything until your next turn.\nSVar:TrigPump:DB$ Pump | Defined$ You | Duration$ UntilYourNextTurn | KW$ Protection from everything\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 1 life for each burden counter on CARDNAME.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X\nA:AB$ PutCounter | Cost$ T | Defined$ Self | CounterType$ BURDEN | CounterNum$ 1 | SubAbility$ DBDraw | AILogic$ TheOneRing | SpellDescription$ Put a burden counter on CARDNAME, then draw a card for each burden counter on CARDNAME.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$CardCounters.BURDEN\nOracle:Indestructible\\nWhen The One Ring enters, if you cast it, you gain protection from everything until your next turn.\\nAt the beginning of your upkeep, you lose 1 life for each burden counter on The One Ring.\\n{T}: Put a burden counter on The One Ring, then draw a card for each burden counter on The One Ring.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The One Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

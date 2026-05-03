@@ -1,0 +1,25 @@
+{
+  "id": "wastescape-battlemage-corpus-m678",
+  "description": "M6 corpus — Wastescape Battlemage; ETB-on-bf.",
+  "seed": 63941,
+  "cards": {
+    "Wastescape Battlemage": "Name:Wastescape Battlemage\nManaCost:1 C\nTypes:Creature Eldrazi Wizard\nPT:2/2\nK:Kicker:G:1 U\nT:Mode$ SpellCast | ValidCard$ Card.Self+kicked 1 | Execute$ TrigExile | TriggerDescription$ When you cast this spell, if it was kicked with its {G} kicker, exile target artifact or enchantment an opponent controls.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls | Origin$ Battlefield | Destination$ Exile\nT:Mode$ SpellCast | ValidCard$ Card.Self+kicked 2 | Execute$ TrigReturn | TriggerDescription$ When you cast this spell, if it was kicked with its {1}{U} kicker, return target creature an opponent controls to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nDeckHints:Color$Blue|Green\nOracle:Kicker {G} and/or {1}{U}\\nWhen you cast this spell, if it was kicked with its {G} kicker, exile target artifact or enchantment an opponent controls.\\nWhen you cast this spell, if it was kicked with its {1}{U} kicker, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wastescape Battlemage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

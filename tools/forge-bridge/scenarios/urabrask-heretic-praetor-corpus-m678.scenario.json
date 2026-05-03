@@ -1,0 +1,23 @@
+{
+  "id": "urabrask-heretic-praetor-corpus-m678",
+  "description": "M6 corpus — Urabrask, Heretic Praetor; in-hand parse.",
+  "seed": 63149,
+  "cards": {
+    "Urabrask, Heretic Praetor": "Name:Urabrask, Heretic Praetor\nManaCost:3 R R\nTypes:Legendary Creature Phyrexian Praetor\nPT:4/4\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library. You may play it this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffectYou\nSVar:DBEffectYou:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, the next time they would draw a card this turn, instead they exile the top card of their library. They may play it this turn.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ TriggeredPlayer | ReplacementEffects$ DrawReplace | StaticAbilities$ PlayOpp | ExileOnMoved$ Exile\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ Player.IsRemembered | ReplaceWith$ Dig | IsPresent$ Card.IsRemembered | PresentZone$ Exile | PresentCompare$ EQ0 | Description$ At the beginning of each opponent's upkeep, the next time they would draw a card this turn, instead they exile the top card of their library. They may play it this turn.\nSVar:Dig:DB$ Dig | ConditionDefined$ Remembered | Defined$ ReplacedPlayer | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True\nSVar:PlayOpp:Mode$ Continuous | MayPlay$ True | MayPlayPlayer$ CardOwner | Affected$ Card.IsRemembered | AffectedZone$ Exile\nOracle:Haste\\nAt the beginning of your upkeep, exile the top card of your library. You may play it this turn.\\nAt the beginning of each opponent's upkeep, the next time they would draw a card this turn, instead they exile the top card of their library. They may play it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urabrask, Heretic Praetor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

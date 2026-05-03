@@ -1,0 +1,23 @@
+{
+  "id": "within-range-corpus-m678",
+  "description": "M6 corpus — Within Range; in-hand parse.",
+  "seed": 64328,
+  "cards": {
+    "Within Range": "Name:Within Range\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create two 1/1 red Warrior creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_warrior | TokenOwner$ You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigRepeatEach | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, each opponent loses life equal to the number of creatures attacking them.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:Count$Valid Creature.attacking RememberedPlayer\nOracle:When this enchantment enters, create two 1/1 red Warrior creature tokens.\\nWhenever you attack, each opponent loses life equal to the number of creatures attacking them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Within Range"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

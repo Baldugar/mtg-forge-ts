@@ -1,0 +1,23 @@
+{
+  "id": "the-first-tyrannic-war-corpus-m678",
+  "description": "M6 corpus — The First Tyrannic War; in-hand parse.",
+  "seed": 62038,
+  "cards": {
+    "The First Tyrannic War": "Name:The First Tyrannic War\nManaCost:2 G U R\nTypes:Enchantment Saga\nK:Chapter:3:DBChooseCard,DBDouble,DBDouble\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ You may select a creature card | Optional$ True | SubAbility$ DBPutX | SpellDescription$ You may put a creature card from your hand onto the battlefield. If its mana cost contains {X}, it enters with a number of +1/+1 counters on it equal to the number of lands you control.\nSVar:DBPutX:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ ChosenCard | WithCountersType$ P1P1 | WithCountersAmount$ Count$Valid Land.YouCtrl | ConditionDefined$ ChosenCard | ConditionPresent$ Card.hasXCost | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Card.hasXCost | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:DBDouble:DB$ MultiplyCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Multiplier$ 2 | SpellDescription$ Double the number of each kind of counter on target creature you control.\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — You may put a creature card from your hand onto the battlefield. If its mana cost contains {X}, it enters with a number of +1/+1 counters on it equal to the number of lands you control.\\nII, III — Double the number of each kind of counter on target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The First Tyrannic War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

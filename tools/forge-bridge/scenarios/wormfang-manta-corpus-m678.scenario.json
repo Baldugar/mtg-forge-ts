@@ -1,0 +1,23 @@
+{
+  "id": "wormfang-manta-corpus-m678",
+  "description": "M6 corpus — Wormfang Manta; in-hand parse.",
+  "seed": 64427,
+  "cards": {
+    "Wormfang Manta": "Name:Wormfang Manta\nManaCost:5 U U\nTypes:Creature Nightmare Fish Beast\nPT:6/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigSkip | TriggerDescription$ When CARDNAME enters, you skip your next turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigAdd | TriggerDescription$ When CARDNAME leaves the battlefield, you take an extra turn after this one.\nSVar:TrigAdd:DB$ AddTurn | NumTurns$ 1 | Defined$ You\nSVar:TrigSkip:DB$ SkipTurn | NumTurns$ 1 | Defined$ You\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Wormfang Manta enters, you skip your next turn.\\nWhen Wormfang Manta leaves the battlefield, you take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wormfang Manta"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

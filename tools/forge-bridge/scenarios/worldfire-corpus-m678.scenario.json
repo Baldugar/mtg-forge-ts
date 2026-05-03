@@ -1,0 +1,23 @@
+{
+  "id": "worldfire-corpus-m678",
+  "description": "M6 corpus — Worldfire; in-hand parse.",
+  "seed": 64418,
+  "cards": {
+    "Worldfire": "Name:Worldfire\nManaCost:6 R R R\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Permanent | Origin$ Battlefield | Destination$ Exile | SubAbility$ ExileAllHand | SpellDescription$ Exile all permanents. Exile all cards from all hands and graveyards. Each player's life total becomes 1.\nSVar:ExileAllHand:DB$ ChangeZoneAll | Origin$ Hand | Destination$ Exile | ChangeType$ Card | SubAbility$ ExileAllGrave\nSVar:ExileAllGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SubAbility$ SetAllLife\nSVar:SetAllLife:DB$ SetLife | Defined$ Player | LifeAmount$ 1\nOracle:Exile all permanents. Exile all cards from all hands and graveyards. Each player's life total becomes 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worldfire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

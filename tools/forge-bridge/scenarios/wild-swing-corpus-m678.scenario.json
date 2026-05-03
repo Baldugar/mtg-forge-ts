@@ -1,0 +1,23 @@
+{
+  "id": "wild-swing-corpus-m678",
+  "description": "M6 corpus — Wild Swing; in-hand parse.",
+  "seed": 64168,
+  "cards": {
+    "Wild Swing": "Name:Wild Swing\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Permanent.nonEnchantment | TgtPrompt$ Select target nonenchantment permanent | TargetMin$ 3 | TargetMax$ 3 | IsCurse$ True | SubAbility$ DBChooseRandom | StackDescription$ None | SpellDescription$ Choose three target nonenchantment permanents. Destroy one of them at random.\nSVar:DBChooseRandom:DB$ ChooseCard | Defined$ You | Amount$ 1 | AtRandom$ True | DefinedCards$ Targeted | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard\nOracle:Choose three target nonenchantment permanents. Destroy one of them at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Swing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

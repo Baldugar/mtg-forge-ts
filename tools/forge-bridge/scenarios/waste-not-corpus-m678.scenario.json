@@ -1,0 +1,25 @@
+{
+  "id": "waste-not-corpus-m678",
+  "description": "M6 corpus — Waste Not; ETB-on-bf.",
+  "seed": 63937,
+  "cards": {
+    "Waste Not": "Name:Waste Not\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Discarded | ValidCard$ Creature.OppOwn | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an opponent discards a creature card, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nT:Mode$ Discarded | ValidCard$ Land.OppOwn | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Whenever an opponent discards a land card, add {B}{B}.\nSVar:TrigMana:DB$ Mana | Produced$ B | Amount$ 2 | Defined$ You\nT:Mode$ Discarded | ValidCard$ Card.nonLand+nonCreature+OppOwn | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent discards a noncreature, nonland card, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an opponent discards a creature card, create a 2/2 black Zombie creature token.\\nWhenever an opponent discards a land card, add {B}{B}.\\nWhenever an opponent discards a noncreature, nonland card, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Waste Not"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

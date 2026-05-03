@@ -1,0 +1,23 @@
+{
+  "id": "the-hunger-tide-rises-corpus-m678",
+  "description": "M6 corpus — The Hunger Tide Rises; in-hand parse.",
+  "seed": 62052,
+  "cards": {
+    "The Hunger Tide Rises": "Name:The Hunger Tide Rises\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:4:DBToken,DBToken,DBToken,DBSacrifice\nSVar:DBToken:DB$ Token | TokenScript$ bg_1_1_insect | TokenOwner$ You | SpellDescription$ Create a 1/1 black and green Insect creature token.\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature | RememberSacrificed$ True | Optional$ True | SubAbility$ DBSearch | SpellDescription$ Sacrifice any number of creatures. Search your library and/or graveyard for a creature card with mana value less than or equal to the number of creatures sacrificed this way and put it onto the battlefield. If you search your library this way, shuffle.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouOwn+cmcLESearchX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Creature.YouCtrl\nSVar:SearchX:Remembered$Amount\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Create a 1/1 black and green Insect creature token.\\nIV — Sacrifice any number of creatures. Search your library and/or graveyard for a creature card with mana value less than or equal to the number of creatures sacrificed this way and put it onto the battlefield. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Hunger Tide Rises"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

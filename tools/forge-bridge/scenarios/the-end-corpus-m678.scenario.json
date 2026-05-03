@@ -1,0 +1,23 @@
+{
+  "id": "the-end-corpus-m678",
+  "description": "M6 corpus — The End; in-hand parse.",
+  "seed": 62025,
+  "cards": {
+    "The End": "Name:The End\nManaCost:2 B B\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | EffectZone$ All | Type$ Spell | Amount$ 2 | CheckSVar$ YourLife | SVarCompare$ LE5 | Description$ This spell costs {2} less to cast if your life total is 5 or less.\nSVar:YourLife:Count$YourLifeTotal\nA:SP$ ChangeZone | SubAbility$ ExileYard | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Exile target creature or planeswalker. Search its controller's graveyard, hand, and library for any number of cards with the same name as that permanent and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TargetedController | ChangeType$ TargetedCard.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None | RememberChanged$ True\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ Draw | StackDescription$ None\nSVar:Draw:DB$ Draw | Defined$ TargetedController | NumCards$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nOracle:This spell costs {2} less to cast if your life total is 5 or less.\\nExile target creature or planeswalker. Search its controller's graveyard, hand, and library for any number of cards with the same name as that permanent and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

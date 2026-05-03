@@ -1,0 +1,23 @@
+{
+  "id": "underfoot-underdogs-corpus-m678",
+  "description": "M6 corpus — Underfoot Underdogs; in-hand parse.",
+  "seed": 63016,
+  "cards": {
+    "Underfoot Underdogs": "Name:Underfoot Underdogs\nManaCost:2 R\nTypes:Creature Goblin Warrior\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a 1/1 red Goblin creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin\nA:AB$ Effect | Cost$ 1 T | ValidTgts$ Creature.powerLE2+YouCtrl | TgtPrompt$ Select target creature you control with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:When this creature enters, create a 1/1 red Goblin creature token.\\n{1}, {T}: Target creature you control with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underfoot Underdogs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

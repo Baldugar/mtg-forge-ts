@@ -1,0 +1,23 @@
+{
+  "id": "word-of-command-corpus-m678",
+  "description": "M6 corpus — Word of Command; in-hand parse.",
+  "seed": 64404,
+  "cards": {
+    "Word of Command": "Name:Word of Command\nManaCost:B B\nTypes:Instant\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | Look$ True | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Look at target opponent's hand and choose a card from it. You control that player until CARDNAME finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they're from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.IsRemembered | ChoiceZone$ Hand | Amount$ 1 | Mandatory$ True | SubAbility$ DBManaLandOnlyEffect\nSVar:DBManaLandOnlyEffect:DB$ Effect | EffectOwner$ TargetedPlayer | StaticAbilities$ DBLimitMana | ImprintOnHost$ True | Duration$ Permanent | SubAbility$ DBPlay\nSVar:DBLimitMana:Mode$ CantBeActivated | ValidSA$ Activated.nonLand,Activated.ManaAbilityCantPaidFor | Description$ While doing so, the player can activate mana abilities only if they're from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card.\nSVar:DBPlay:DB$ Play | Defined$ ChosenCard | Controller$ TargetedPlayer | ControlledByPlayer$ You | SubAbility$ DBExileEffect\nSVar:DBExileEffect:DB$ ChangeZone | Defined$ Imprinted | Origin$ Command | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | ClearChosenCard$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Look at target opponent's hand and choose a card from it. You control that player until Word of Command finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they're from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Word of Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

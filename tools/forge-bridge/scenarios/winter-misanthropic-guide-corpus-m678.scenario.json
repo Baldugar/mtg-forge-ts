@@ -1,0 +1,23 @@
+{
+  "id": "winter-misanthropic-guide-corpus-m678",
+  "description": "M6 corpus — Winter, Misanthropic Guide; in-hand parse.",
+  "seed": 64275,
+  "cards": {
+    "Winter, Misanthropic Guide": "Name:Winter, Misanthropic Guide\nManaCost:1 B R G\nTypes:Legendary Creature Human Warlock\nPT:3/4\nK:Ward:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, each player draws two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 2\nS:Mode$ Continuous | Condition$ Delirium | Affected$ Opponent | SetMaxHandSize$ Y | Description$ Delirium — As long as there are four or more card types among cards in your graveyard, each opponent's maximum hand size is equal to seven minus the number of those card types.\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypes\nSVar:Y:Number$7/Minus.X\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Ward {2}\\nAt the beginning of your upkeep, each player draws two cards.\\nDelirium — As long as there are four or more card types among cards in your graveyard, each opponent's maximum hand size is equal to seven minus the number of those card types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winter, Misanthropic Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wild-wasteland-corpus-m678",
+  "description": "M6 corpus — Wild Wasteland; in-hand parse.",
+  "seed": 64171,
+  "cards": {
+    "Wild Wasteland": "Name:Wild Wasteland\nManaCost:2 R\nTypes:Enchantment\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ ExileTwo | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, exile the top two cards of your library. You may play those cards this turn.\nSVar:ExileTwo:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ EndOfTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Skip your draw step.\\nAt the beginning of your upkeep, exile the top two cards of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wild Wasteland"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

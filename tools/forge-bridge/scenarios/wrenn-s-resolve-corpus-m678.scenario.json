@@ -1,0 +1,23 @@
+{
+  "id": "wrenn-s-resolve-corpus-m678",
+  "description": "M6 corpus — Wrenn's Resolve; in-hand parse.",
+  "seed": 64456,
+  "cards": {
+    "Wrenn's Resolve": "Name:Wrenn's Resolve\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of your library. Until the end of your next turn, you may play those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play the exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile the top two cards of your library. Until the end of your next turn, you may play those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrenn's Resolve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tomik-wielder-of-law-corpus-m678",
+  "description": "M6 corpus — Tomik, Wielder of Law; ETB-on-bf.",
+  "seed": 62495,
+  "cards": {
+    "Tomik, Wielder of Law": "Name:Tomik, Wielder of Law\nManaCost:1 W B\nTypes:Legendary Creature Human Advisor\nPT:2/4\nK:Affinity:Planeswalker\nK:Flying\nK:Vigilance\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player.Opponent | CheckSVar$ X | SVarCompare$ GE2 | Execute$ TrigDrain | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, that opponent loses 3 life and you draw a card.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredAttackingPlayer | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You\nSVar:X:Count$ValidAll Creature.attackingYouOrYourPWLKI\nDeckHas:Type$Planeswalker\nOracle:Affinity for planeswalkers (This spell costs {1} less to cast for each planeswalker you control.)\\nFlying, vigilance\\nWhenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, that opponent loses 3 life and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tomik, Wielder of Law"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

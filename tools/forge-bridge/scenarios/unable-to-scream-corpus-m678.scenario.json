@@ -1,0 +1,23 @@
+{
+  "id": "unable-to-scream-corpus-m678",
+  "description": "M6 corpus — Unable to Scream; in-hand parse.",
+  "seed": 62966,
+  "cards": {
+    "Unable to Scream": "Name:Unable to Scream\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | SetPower$ 0 | SetToughness$ 2 | RemoveAllAbilities$ True | AddType$ Artifact & Creature & Toy | Description$ Enchanted creature loses all abilities and is a Toy artifact creature with base power and toughness 0/2 in addition to its other types.\nR:Event$ TurnFaceUp | ValidCard$ Card.EnchantedBy+faceDown | Layer$ CantHappen | ActiveZones$ Battlefield | Description$ As long as enchanted creature is face down, it can't be turned face up.\nDeckHas:Type$Toy\nOracle:Enchant creature\\nEnchanted creature loses all abilities and is a Toy artifact creature with base power and toughness 0/2 in addition to its other types.\\nAs long as enchanted creature is face down, it can't be turned face up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unable to Scream"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

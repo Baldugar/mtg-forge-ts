@@ -1,0 +1,23 @@
+{
+  "id": "write-into-being-corpus-m678",
+  "description": "M6 corpus — Write into Being; in-hand parse.",
+  "seed": 64468,
+  "cards": {
+    "Write into Being": "Name:Write into Being\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 2 | ChangeNum$ 1 | NoLooking$ True | RememberChanged$ True | PrimaryPrompt$ Choose a card to Manifest | DestinationZone$ Library | LibraryPosition$ 0 | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBManifest | SpellDescription$ Look at the top two cards of your library. Manifest one of those cards, then put the other on the top or bottom of your library. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.) | StackDescription$ SpellDescription\nSVar:DBManifest:DB$ Manifest | Amount$ 1 | Defined$ Remembered | SubAbility$ DBDigRemaining\nSVar:DBDigRemaining:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | NoReveal$ True | NoLooking$ True | Optional$ True | DestinationZone$ Library | LibraryPosition$ 0 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Look at the top two cards of your library. Manifest one of those cards, then put the other on the top or bottom of your library. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Write into Being"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

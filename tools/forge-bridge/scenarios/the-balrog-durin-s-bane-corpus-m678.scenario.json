@@ -1,0 +1,23 @@
+{
+  "id": "the-balrog-durin-s-bane-corpus-m678",
+  "description": "M6 corpus — The Balrog, Durin's Bane; in-hand parse.",
+  "seed": 61985,
+  "cards": {
+    "The Balrog, Durin's Bane": "Name:The Balrog, Durin's Bane\nManaCost:5 B R\nTypes:Legendary Creature Avatar Demon\nPT:7/5\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each permanent sacrificed this turn.\nSVar:X:PlayerCount$SacrificedThisTurn Permanent\nK:Haste\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | ValidBlocker$ Creature.nonLegendary | Description$ CARDNAME can't be blocked except by legendary creatures.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When NICKNAME dies, destroy target artifact or creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls.\nDeckHints:Ability$Sacrifice\nOracle:This spell costs {1} less to cast for each permanent sacrificed this turn.\\nHaste\\nThe Balrog, Durin's Bane can't be blocked except by legendary creatures.\\nWhen The Balrog dies, destroy target artifact or creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Balrog, Durin's Bane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

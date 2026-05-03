@@ -1,0 +1,25 @@
+{
+  "id": "voidmage-apprentice-corpus-m678",
+  "description": "M6 corpus — Voidmage Apprentice; ETB-on-bf.",
+  "seed": 63634,
+  "cards": {
+    "Voidmage Apprentice": "Name:Voidmage Apprentice\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nK:Morph:2 U U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, counter target spell.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell\nAI:RemoveDeck:All\nOracle:Morph {2}{U}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Voidmage Apprentice is turned face up, counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Voidmage Apprentice"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

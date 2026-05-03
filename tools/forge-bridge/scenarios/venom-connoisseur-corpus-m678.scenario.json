@@ -1,0 +1,23 @@
+{
+  "id": "venom-connoisseur-corpus-m678",
+  "description": "M6 corpus — Venom Connoisseur; in-hand parse.",
+  "seed": 63372,
+  "cards": {
+    "Venom Connoisseur": "Name:Venom Connoisseur\nManaCost:1 G\nTypes:Creature Human Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Alliance — Whenever another creature you control enters, CARDNAME gains deathtouch until end of turn. If this is the second time this ability has resolved this turn, all creatures you control gain deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Deathtouch | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Deathtouch | ConditionCheckSVar$ CreatureETBAmount | ConditionSVarCompare$ EQ2\nSVar:CreatureETBAmount:Count$ResolvedThisTurn\nSVar:BuffedBy:Creature\nOracle:Alliance — Whenever another creature you control enters, Venom Connoisseur gains deathtouch until end of turn. If this is the second time this ability has resolved this turn, all creatures you control gain deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venom Connoisseur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "unstable-frontier-corpus-m678",
+  "description": "M6 corpus — Unstable Frontier; ETB-on-bf.",
+  "seed": 63118,
+  "cards": {
+    "Unstable Frontier": "Name:Unstable Frontier\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChooseType | Cost$ T | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Target land you control becomes the basic land type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | Types$ ChosenType | RemoveLandTypes$ True\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{T}: Target land you control becomes the basic land type of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Unstable Frontier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

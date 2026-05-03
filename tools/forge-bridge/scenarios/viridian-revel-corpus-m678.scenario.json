@@ -1,0 +1,23 @@
+{
+  "id": "viridian-revel-corpus-m678",
+  "description": "M6 corpus — Viridian Revel; in-hand parse.",
+  "seed": 63541,
+  "cards": {
+    "Viridian Revel": "Name:Viridian Revel\nManaCost:1 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.OppOwn | Execute$ TrigDraw | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever an artifact is put into an opponent's graveyard from the battlefield, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an artifact is put into an opponent's graveyard from the battlefield, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Viridian Revel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

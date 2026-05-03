@@ -1,0 +1,23 @@
+{
+  "id": "tobias-doomed-conqueror-corpus-m678",
+  "description": "M6 corpus — Tobias, Doomed Conqueror; in-hand parse.",
+  "seed": 62458,
+  "cards": {
+    "Tobias, Doomed Conqueror": "Name:Tobias, Doomed Conqueror\nManaCost:2 W U\nTypes:Legendary Creature Human Soldier\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 2/2 black Zombie creature token for each nontoken creature you controlled that died this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.!token+YouCtrl\nDeckHas:Ability$Token\nOracle:Flash\\nWhen Tobias, Doomed Conqueror dies, create a 2/2 black Zombie creature token for each nontoken creature you controlled that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tobias, Doomed Conqueror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

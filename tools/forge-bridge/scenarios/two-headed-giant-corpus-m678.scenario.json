@@ -1,0 +1,23 @@
+{
+  "id": "two-headed-giant-corpus-m678",
+  "description": "M6 corpus — Two-Headed Giant; in-hand parse.",
+  "seed": 62900,
+  "cards": {
+    "Two-Headed Giant": "Name:Two-Headed Giant\nManaCost:2 R R\nTypes:Creature Giant Warrior\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBFlip | TriggerDescription$ Whenever CARDNAME attacks, flip two coins. If both come up heads, CARDNAME gains double strike until end of turn. If both come up tails, CARDNAME gains menace until end of turn.\nSVar:DBFlip:DB$ FlipACoin | Amount$ 2 | NoCall$ True | HeadsSubAbility$ DBHeadsPump | TailsSubAbility$ DBTailsPump\nSVar:DBHeadsPump:DB$ Pump | Defined$ Self | KW$ Double Strike | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ2\nSVar:DBTailsPump:DB$ Pump | Defined$ Self | KW$ Menace | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ2\nOracle:Whenever Two-Headed Giant attacks, flip two coins. If both coins come up heads, Two-Headed Giant gains double strike until end of turn. If both coins come up tails, Two-Headed Giant gains menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Two-Headed Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

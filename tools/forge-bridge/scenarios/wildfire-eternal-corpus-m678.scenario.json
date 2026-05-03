@@ -1,0 +1,25 @@
+{
+  "id": "wildfire-eternal-corpus-m678",
+  "description": "M6 corpus — Wildfire Eternal; ETB-on-bf.",
+  "seed": 64182,
+  "cards": {
+    "Wildfire Eternal": "Name:Wildfire Eternal\nManaCost:3 R\nTypes:Creature Zombie Jackal Cleric\nPT:1/4\nK:Afflict:4\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPlay | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may cast an instant or sorcery spell from your hand without paying its mana cost.\nSVar:TrigPlay:DB$ Play | ValidZone$ Hand | Valid$ Card.YouOwn | ValidSA$ Instant,Sorcery | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ 1\nOracle:Afflict 4 (Whenever this creature becomes blocked, defending player loses 4 life.)\\nWhenever Wildfire Eternal attacks and isn't blocked, you may cast an instant or sorcery spell from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wildfire Eternal"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

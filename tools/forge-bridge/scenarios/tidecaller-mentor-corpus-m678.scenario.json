@@ -1,0 +1,23 @@
+{
+  "id": "tidecaller-mentor-corpus-m678",
+  "description": "M6 corpus — Tidecaller Mentor; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Tidecaller Mentor": "Name:Tidecaller Mentor\nManaCost:1 U B\nTypes:Creature Rat Wizard\nPT:3/3\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | Threshold$ True | TriggerDescription$ Threshold — When CARDNAME enters, if there are seven or more cards in your graveyard, return up to one target nonland permanent to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target nonland permanent\nOracle:Menace\\nThreshold — When Tidecaller Mentor enters, if there are seven or more cards in your graveyard, return up to one target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tidecaller Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

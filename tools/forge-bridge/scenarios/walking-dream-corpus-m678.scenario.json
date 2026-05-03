@@ -1,0 +1,25 @@
+{
+  "id": "walking-dream-corpus-m678",
+  "description": "M6 corpus — Walking Dream; ETB-on-bf.",
+  "seed": 63753,
+  "cards": {
+    "Walking Dream": "Name:Walking Dream\nManaCost:3 U\nTypes:Creature Illusion\nPT:3/3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ This creature can't be blocked.\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | CheckSVar$ X | SVarCompare$ GE2 | Description$ This creature doesn't untap during your untap step if an opponent controls two or more creatures.\nSVar:X:PlayerCountOpponents$HighestValid Creature.YouCtrl\nOracle:This creature can't be blocked.\\nThis creature doesn't untap during your untap step if an opponent controls two or more creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Walking Dream"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

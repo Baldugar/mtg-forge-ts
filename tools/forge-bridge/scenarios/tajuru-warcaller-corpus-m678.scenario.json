@@ -1,0 +1,23 @@
+{
+  "id": "tajuru-warcaller-corpus-m678",
+  "description": "M6 corpus — Tajuru Warcaller; in-hand parse.",
+  "seed": 61615,
+  "cards": {
+    "Tajuru Warcaller": "Name:Tajuru Warcaller\nManaCost:3 G G\nTypes:Creature Elf Warrior Ally\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control get +2/+2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Tajuru Warcaller or another Ally you control enters, creatures you control get +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tajuru Warcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

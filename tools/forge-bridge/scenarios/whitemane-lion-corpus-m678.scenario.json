@@ -1,0 +1,23 @@
+{
+  "id": "whitemane-lion-corpus-m678",
+  "description": "M6 corpus — Whitemane Lion; in-hand parse.",
+  "seed": 64126,
+  "cards": {
+    "Whitemane Lion": "Name:Whitemane Lion\nManaCost:1 W\nTypes:Creature Cat\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 1 | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl+!token\nOracle:Flash\\nWhen Whitemane Lion enters, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whitemane Lion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vladimir-and-godfrey-corpus-m678",
+  "description": "M6 corpus — Vladimir and Godfrey; ETB-on-bf.",
+  "seed": 63597,
+  "cards": {
+    "Vladimir and Godfrey": "Name:Vladimir and Godfrey\nManaCost:2 W\nTypes:Legendary Creature Zombie Knight\nPT:3/2\nA:AB$ ChangeZone | Cost$ 2 W | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | ActivationZone$ Graveyard | IsPresent$ Creature.YouCtrl+powerEQ1+toughnessEQ1 | Tapped$ True | SubAbility$ DBEffect | PrecostDesc$ Rejuvenation — | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped.\nSVar:DBEffect:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | StackDescription$ It perpetually gets +1/+1. | SpellDescription$ It perpetually gets +1/+1. Activate only if you control a 1/1 creature.\nSVar:SacMe:3\nSVar:DiscardMe:3\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nOracle:Rejuvenation — {2}{W}: Return Vladimir and Godfrey from your graveyard to the battlefield tapped. It perpetually gets +1/+1. Activate only if you control a 1/1 creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vladimir and Godfrey"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

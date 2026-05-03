@@ -1,0 +1,23 @@
+{
+  "id": "village-bell-ringer-corpus-m678",
+  "description": "M6 corpus — Village Bell-Ringer; in-hand parse.",
+  "seed": 63500,
+  "cards": {
+    "Village Bell-Ringer": "Name:Village Bell-Ringer\nManaCost:2 W\nTypes:Creature Human Scout\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap all creatures you control.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nSVar:AmbushAI:True\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Village Bell-Ringer enters, untap all creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Bell-Ringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

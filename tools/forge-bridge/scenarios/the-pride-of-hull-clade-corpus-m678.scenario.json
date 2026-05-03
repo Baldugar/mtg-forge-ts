@@ -1,0 +1,25 @@
+{
+  "id": "the-pride-of-hull-clade-corpus-m678",
+  "description": "M6 corpus — The Pride of Hull Clade; ETB-on-bf.",
+  "seed": 62087,
+  "cards": {
+    "The Pride of Hull Clade": "Name:The Pride of Hull Clade\nManaCost:10 G\nTypes:Legendary Creature Crocodile Elk Turtle\nPT:2/15\nK:Defender\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the total toughness of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$CardToughness\nA:AB$ Pump | Cost$ 2 U U | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | SubAbility$ DBEffect | SpellDescription$ Until end of turn, target creature you control gets +1/+0, gains \"Whenever this creature deals combat damage to a player, draw cards equal to its toughness,\" and can attack as though it didn't have defender.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | Triggers$ TrigDamage | StaticAbilities$ CanAttack | ForgetOnMoved$ Battlefield | SubAbility$ DBAnimate\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.IsRemembered | Description$ CARDNAME can attack as though it didn't have defender.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ TrigDamage\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw cards equal to its toughness.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Y\nSVar:Y:Count$CardToughness\nDeckHints:Type$Wall|Treefolk & Keyword$Defender\nOracle:This spell costs {X} less to cast, where X is the total toughness of creatures you control.\\nDefender\\n{2}{U}{U}: Until end of turn, target creature you control gets +1/+0, gains \"Whenever this creature deals combat damage to a player, draw cards equal to its toughness,\" and can attack as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Pride of Hull Clade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

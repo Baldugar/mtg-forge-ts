@@ -1,0 +1,23 @@
+{
+  "id": "yosei-the-morning-star-corpus-m678",
+  "description": "M6 corpus — Yosei, the Morning Star; in-hand parse.",
+  "seed": 64562,
+  "cards": {
+    "Yosei, the Morning Star": "Name:Yosei, the Morning Star\nManaCost:4 W W\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSkipPhase | TriggerDescription$ When CARDNAME dies, target player skips their next untap step. Tap up to five target permanents that player controls.\nSVar:TrigSkipPhase:DB$ SkipPhase | ValidTgts$ Player | Step$ Untap | IsCurse$ True | SubAbility$ TrigTap\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 5 | ValidTgts$ Permanent.ControlledBy ParentTarget\nOracle:Flying\\nWhen Yosei, the Morning Star dies, target player skips their next untap step. Tap up to five target permanents that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yosei, the Morning Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

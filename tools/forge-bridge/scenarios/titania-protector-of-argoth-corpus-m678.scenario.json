@@ -1,0 +1,23 @@
+{
+  "id": "titania-protector-of-argoth-corpus-m678",
+  "description": "M6 corpus — Titania, Protector of Argoth; in-hand parse.",
+  "seed": 62434,
+  "cards": {
+    "Titania, Protector of Argoth": "Name:Titania, Protector of Argoth\nManaCost:3 G G\nTypes:Legendary Creature Elemental\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target land card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Land.YouCtrl\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a land you control is put into a graveyard from the battlefield, create a 5/3 green Elemental creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_5_3_elemental | TokenOwner$ You\nOracle:When Titania, Protector of Argoth enters, return target land card from your graveyard to the battlefield.\\nWhenever a land you control is put into a graveyard from the battlefield, create a 5/3 green Elemental creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titania, Protector of Argoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

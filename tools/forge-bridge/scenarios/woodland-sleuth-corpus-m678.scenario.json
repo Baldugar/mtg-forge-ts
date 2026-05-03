@@ -1,0 +1,23 @@
+{
+  "id": "woodland-sleuth-corpus-m678",
+  "description": "M6 corpus — Woodland Sleuth; in-hand parse.",
+  "seed": 64390,
+  "cards": {
+    "Woodland Sleuth": "Name:Woodland Sleuth\nManaCost:3 G\nTypes:Creature Human Scout\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | CheckSVar$ Morbid | TriggerDescription$ Morbid — When CARDNAME enters, if a creature died this turn, return a creature card at random from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Hand | Hidden$ True | AtRandom$ True\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — When Woodland Sleuth enters, if a creature died this turn, return a creature card at random from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodland Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

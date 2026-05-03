@@ -1,0 +1,25 @@
+{
+  "id": "wild-research-corpus-m678",
+  "description": "M6 corpus — Wild Research; ETB-on-bf.",
+  "seed": 64164,
+  "cards": {
+    "Wild Research": "Name:Wild Research\nManaCost:2 R\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 1 W | Origin$ Library | Destination$ Hand | ChangeType$ Enchantment | ChangeNum$ 1 | Shuffle$ True | SubAbility$ DBDiscard | SpellDescription$ Search your library for an enchantment card and reveal that card. Put it into your hand, then discard a card at random. Then shuffle.\nA:AB$ ChangeZone | Cost$ 1 U | Origin$ Library | Destination$ Hand | ChangeType$ Instant | ChangeNum$ 1 | Shuffle$ True | SubAbility$ DBDiscard | SpellDescription$ Search your library for an instant card and reveal that card. Put it into your hand, then discard a card at random. Then shuffle.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random\nSVar:NonStackingEffect:True\nOracle:{1}{W}: Search your library for an enchantment card and reveal that card. Put it into your hand, then discard a card at random. Then shuffle.\\n{1}{U}: Search your library for an instant card and reveal that card. Put it into your hand, then discard a card at random. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wild Research"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

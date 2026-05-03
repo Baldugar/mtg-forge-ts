@@ -1,0 +1,25 @@
+{
+  "id": "words-of-worship-corpus-m678",
+  "description": "M6 corpus — Words of Worship; ETB-on-bf.",
+  "seed": 64411,
+  "cards": {
+    "Words of Worship": "Name:Words of Worship\nManaCost:2 W\nTypes:Enchantment\nA:AB$ Effect | Cost$ 1 | ReplacementEffects$ DrawReplace | SpellDescription$ The next time you would draw a card this turn, you gain 5 life instead.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ WordLife | Description$ The next time you would draw a card this turn, you gain 5 life instead.\nSVar:WordLife:DB$ GainLife | LifeAmount$ 5 | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{1}: The next time you would draw a card this turn, you gain 5 life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Words of Worship"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

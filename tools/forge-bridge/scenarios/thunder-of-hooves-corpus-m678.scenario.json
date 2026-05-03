@@ -1,0 +1,23 @@
+{
+  "id": "thunder-of-hooves-corpus-m678",
+  "description": "M6 corpus — Thunder of Hooves; in-hand parse.",
+  "seed": 62305,
+  "cards": {
+    "Thunder of Hooves": "Name:Thunder of Hooves\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DamageAll | NumDmg$ X | ValidCards$ Creature.withoutFlying | ValidPlayers$ Player | ValidDescription$ each creature without flying and each player. | SpellDescription$ CARDNAME deals X damage to each creature without flying and each player, where X is the number of Beasts on the battlefield.\nSVar:X:Count$Valid Beast\nAI:RemoveDeck:Random\nOracle:Thunder of Hooves deals X damage to each creature without flying and each player, where X is the number of Beasts on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunder of Hooves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

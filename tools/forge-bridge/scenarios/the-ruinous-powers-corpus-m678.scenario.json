@@ -1,0 +1,23 @@
+{
+  "id": "the-ruinous-powers-corpus-m678",
+  "description": "M6 corpus — The Ruinous Powers; in-hand parse.",
+  "seed": 62097,
+  "cards": {
+    "The Ruinous Powers": "Name:The Ruinous Powers\nManaCost:2 B R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of your upkeep, choose an opponent at random. Exile the top card of that player's library. Until end of turn, you may play that card and you may spend mana as though it were mana of any color to cast it. When you cast a spell this way, its owner loses life equal to its mana value.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | Random$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ ChosenPlayer | DigNum$ 1 | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | Triggers$ TriggerCastDoM | ForgetOnMoved$ Exile | ForgetOnCast$ False | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may play that card and you may spend mana as though it were mana of any color to cast it.\nSVar:TriggerCastDoM:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidSA$ Spell.MayPlaySource | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | OneOff$ True | Secondary$ True | TriggerDescription$ When you cast a spell this way, its owner loses life equal to its mana value.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardOwner | LifeAmount$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:At the beginning of your upkeep, choose an opponent at random. Exile the top card of that player's library. Until end of turn, you may play that card and you may spend mana as though it were mana of any color to cast it. When you cast a spell this way, its owner loses life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Ruinous Powers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

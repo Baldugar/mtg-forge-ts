@@ -1,0 +1,23 @@
+{
+  "id": "taranika-akroan-veteran-corpus-m678",
+  "description": "M6 corpus — Taranika, Akroan Veteran; in-hand parse.",
+  "seed": 61707,
+  "cards": {
+    "Taranika, Akroan Veteran": "Name:Taranika, Akroan Veteran\nManaCost:1 W W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, untap another target creature you control. Until end of turn, that creature has base power and toughness 4/4 and gains indestructible.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control. | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Power$ 4 | Toughness$ 4 | Keywords$ Indestructible\nOracle:Vigilance\\nWhenever Taranika, Akroan Veteran attacks, untap another target creature you control. Until end of turn, that creature has base power and toughness 4/4 and gains indestructible.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taranika, Akroan Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

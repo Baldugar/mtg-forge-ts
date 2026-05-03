@@ -1,0 +1,25 @@
+{
+  "id": "vivien-s-grizzly-corpus-m678",
+  "description": "M6 corpus — Vivien's Grizzly; ETB-on-bf.",
+  "seed": 63584,
+  "cards": {
+    "Vivien's Grizzly": "Name:Vivien's Grizzly\nManaCost:2 G\nTypes:Creature Bear Spirit\nPT:2/3\nA:AB$ PeekAndReveal | Cost$ 3 G | AILogic$ AtOppEOT | PeekAmount$ 1 | RevealValid$ Creature,Planeswalker | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBChangeZone | SpellDescription$ Look at the top card of your library. If it's a creature or planeswalker card, you may reveal it and put it into your hand. If you don't put the card into your hand, put it on the bottom of your library.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ TopOfLibrary | Origin$ Library | Destination$ Hand | ConditionDefined$ Remembered | ConditionPresent$ Creature,Planeswalker | ConditionCompare$ EQ1 | SubAbility$ DBBottom\nSVar:DBBottom:DB$ ChangeZone | Defined$ TopOfLibrary | Origin$ Library | Destination$ Library | Shuffle$ False | ConditionDefined$ Remembered | ConditionPresent$ Creature,Planeswalker | ConditionCompare$ EQ0 | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{3}{G}: Look at the top card of your library. If it's a creature or planeswalker card, you may reveal it and put it into your hand. If you don't put the card into your hand, put it on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vivien's Grizzly"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

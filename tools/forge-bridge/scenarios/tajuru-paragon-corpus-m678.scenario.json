@@ -1,0 +1,23 @@
+{
+  "id": "tajuru-paragon-corpus-m678",
+  "description": "M6 corpus — Tajuru Paragon; in-hand parse.",
+  "seed": 61610,
+  "cards": {
+    "Tajuru Paragon": "Name:Tajuru Paragon\nManaCost:1 G\nTypes:Creature Elf\nPT:3/2\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | AddType$ Cleric & Rogue & Warrior & Wizard | Description$ CARDNAME is also a Cleric, Rogue, Warrior, and Wizard.\nK:Kicker:3\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, if it was kicked, reveal the top six cards of your library. You may put a card that shares a creature type with it from among them into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | Reveal$ True | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature.sharesCreatureTypeWith Self | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nDeckHints:Ability$Party\nOracle:Tajuru Paragon is also a Cleric, Rogue, Warrior, and Wizard.\\nKicker {3}\\nWhen Tajuru Paragon enters, if it was kicked, reveal the top six cards of your library. You may put a card that shares a creature type with it from among them into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tajuru Paragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

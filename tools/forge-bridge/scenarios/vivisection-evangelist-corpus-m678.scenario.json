@@ -1,0 +1,23 @@
+{
+  "id": "vivisection-evangelist-corpus-m678",
+  "description": "M6 corpus — Vivisection Evangelist; in-hand parse.",
+  "seed": 63587,
+  "cards": {
+    "Vivisection Evangelist": "Name:Vivisection Evangelist\nManaCost:3 W B\nTypes:Creature Phyrexian Cleric\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ Corrupted — When CARDNAME enters, if an opponent has three or more poison counters, destroy target creature or planeswalker an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckNeeds:Keyword$Toxic|Infect\nOracle:Vigilance\\nCorrupted — When Vivisection Evangelist enters, if an opponent has three or more poison counters, destroy target creature or planeswalker an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivisection Evangelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

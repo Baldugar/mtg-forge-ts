@@ -1,0 +1,23 @@
+{
+  "id": "vindictive-mob-corpus-m678",
+  "description": "M6 corpus — Vindictive Mob; in-hand parse.",
+  "seed": 63508,
+  "cards": {
+    "Vindictive Mob": "Name:Vindictive Mob\nManaCost:4 B B\nTypes:Creature Human Berserker\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.Saproling | Description$ CARDNAME can't be blocked by Saprolings.\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:When Vindictive Mob enters, sacrifice a creature.\\nVindictive Mob can't be blocked by Saprolings.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vindictive Mob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

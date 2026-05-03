@@ -1,0 +1,25 @@
+{
+  "id": "webstrike-elite-corpus-m678",
+  "description": "M6 corpus — Webstrike Elite; ETB-on-bf.",
+  "seed": 64025,
+  "cards": {
+    "Webstrike Elite": "Name:Webstrike Elite\nManaCost:G G\nTypes:Creature Insect Archer\nPT:3/3\nK:Reach\nK:Cycling:X G G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When you cycle this card, destroy up to one target artifact or enchantment with mana value X.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.cmcEQX,Enchantment.cmcEQX | TgtPrompt$ Select up to one target artifact or enchantment with mana value X | TargetMin$ 0 | TargetMax$ 1\nSVar:X:Count$xPaid\nDeckHas:Ability$Discard\nOracle:Reach\\nCycling {X}{G}{G} ({X}{G}{G}, Discard this card: Draw a card.)\\nWhen you cycle this card, destroy up to one target artifact or enchantment with mana value X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Webstrike Elite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

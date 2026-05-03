@@ -1,0 +1,23 @@
+{
+  "id": "unesh-criosphinx-sovereign-corpus-m678",
+  "description": "M6 corpus — Unesh, Criosphinx Sovereign; in-hand parse.",
+  "seed": 63044,
+  "cards": {
+    "Unesh, Criosphinx Sovereign": "Name:Unesh, Criosphinx Sovereign\nManaCost:4 U U\nTypes:Legendary Creature Sphinx\nPT:4/4\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Sphinx | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Sphinx spells you cast cost {2} less to cast.\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Card.Sphinx+Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another Sphinx you control enters, reveal the top four cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\nSVar:TrigChangeZone:DB$ PeekAndReveal | PeekAmount$ 4 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBTwoPiles | SpellDescription$ Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ You | DefinedCards$ Remembered | Separator$ Opponent | ChosenPile$ DBHand | UnchosenPile$ DBGrave\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nSVar:BuffedBy:Sphinx\nOracle:Flying\\nSphinx spells you cast cost {2} less to cast.\\nWhenever Unesh, Criosphinx Sovereign or another Sphinx you control enters, reveal the top four cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unesh, Criosphinx Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

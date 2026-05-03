@@ -1,0 +1,25 @@
+{
+  "id": "tome-of-the-infinite-corpus-m678",
+  "description": "M6 corpus — Tome of the Infinite; ETB-on-bf.",
+  "seed": 62490,
+  "cards": {
+    "Tome of the Infinite": "Name:Tome of the Infinite\nManaCost:2 U\nTypes:Legendary Artifact\nA:AB$ MakeCard | Cost$ U T | Conjure$ True | AtRandom$ True | Spellbook$ Light of Hope,Swords to Plowshares,Force Spike,Ponder,Dark Ritual,Duress,Assault Strobe,Lightning Bolt,Fog,Giant Growth | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate | SpellDescription$ Conjure a random card from CARDNAME's spellbook into your hand.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{U}, {T}: Conjure a random card from Tome of the Infinite's spellbook into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tome of the Infinite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

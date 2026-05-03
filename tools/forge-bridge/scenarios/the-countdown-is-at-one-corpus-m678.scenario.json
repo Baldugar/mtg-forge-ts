@@ -1,0 +1,23 @@
+{
+  "id": "the-countdown-is-at-one-corpus-m678",
+  "description": "M6 corpus — The Countdown Is at One; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "The Countdown Is at One": "Name:The Countdown Is at One\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ Subgame | RememberPlayers$ NotWin | StartingLife$ 1 | SubAbility$ DBEffect | SpellDescription$ Players play a Magic subgame, starting at 1 life and using their libraries as their decks.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Player.IsRemembered | ReplacementEffects$ DmgEvent | Duration$ Permanent | SpellDescription$ For the rest of the main game, if a source would deal damage to a player who didn't win the subgame, it deals double that damage to that player instead.\nSVar:DmgEvent:Event$ DamageDone | ValidTarget$ Player.IsRemembered | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to a player who didn't win the subgame, it deals double that damage to that player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Players play a Magic subgame, starting at 1 life and using their libraries as their decks. For the rest of the main game, if a source would deal damage to a player who didn't win the subgame, it deals double that damage to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Countdown Is at One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

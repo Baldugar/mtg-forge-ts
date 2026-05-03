@@ -1,0 +1,23 @@
+{
+  "id": "throne-of-the-god-pharaoh-corpus-m678",
+  "description": "M6 corpus — Throne of the God-Pharaoh; in-hand parse.",
+  "seed": 62294,
+  "cards": {
+    "Throne of the God-Pharaoh": "Name:Throne of the God-Pharaoh\nManaCost:2\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, each opponent loses life equal to the number of tapped creatures you control.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Player.Opponent\nSVar:X:Count$Valid Creature.YouCtrl+tapped\nOracle:At the beginning of your end step, each opponent loses life equal to the number of tapped creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throne of the God-Pharaoh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

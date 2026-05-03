@@ -1,0 +1,25 @@
+{
+  "id": "zebra-unicorn-corpus-m678",
+  "description": "M6 corpus — Zebra Unicorn; ETB-on-bf.",
+  "seed": 64621,
+  "cards": {
+    "Zebra Unicorn": "Name:Zebra Unicorn\nManaCost:2 G W\nTypes:Creature Unicorn\nPT:2/2\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Zebra Unicorn deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zebra Unicorn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

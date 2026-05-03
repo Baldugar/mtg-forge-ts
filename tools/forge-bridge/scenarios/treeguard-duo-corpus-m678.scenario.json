@@ -1,0 +1,23 @@
+{
+  "id": "treeguard-duo-corpus-m678",
+  "description": "M6 corpus — Treeguard Duo; in-hand parse.",
+  "seed": 62694,
+  "cards": {
+    "Treeguard Duo": "Name:Treeguard Duo\nManaCost:3 G\nTypes:Creature Frog Rabbit\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, until end of turn, target creature you control gains vigilance and gets +X/+X, where X is the number of creatures you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X | KW$ Vigilance\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:When Treeguard Duo enters, until end of turn, target creature you control gains vigilance and gets +X/+X, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treeguard Duo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

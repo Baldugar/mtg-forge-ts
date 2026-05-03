@@ -1,0 +1,23 @@
+{
+  "id": "syr-faren-the-hengehammer-corpus-m678",
+  "description": "M6 corpus — Syr Faren, the Hengehammer; in-hand parse.",
+  "seed": 61581,
+  "cards": {
+    "Syr Faren, the Hengehammer": "Name:Syr Faren, the Hengehammer\nManaCost:G G\nTypes:Legendary Creature Human Knight\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature gets +X/+X until end of turn, where X is NICKNAME's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nOracle:Whenever Syr Faren, the Hengehammer attacks, another target attacking creature gets +X/+X until end of turn, where X is Syr Faren's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Faren, the Hengehammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

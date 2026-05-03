@@ -1,0 +1,23 @@
+{
+  "id": "thriving-bluff-corpus-m678",
+  "description": "M6 corpus — Thriving Bluff; in-hand parse.",
+  "seed": 62285,
+  "cards": {
+    "Thriving Bluff": "Name:Thriving Bluff\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ red | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than red.\nA:AB$ Mana | Cost$ T | Produced$ Combo R Chosen | SpellDescription$ Add {R} or one mana of the chosen color.\nOracle:Thriving Bluff enters tapped.\\nAs Thriving Bluff enters, choose a color other than red.\\n{T}: Add {R} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Bluff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

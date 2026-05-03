@@ -1,0 +1,23 @@
+{
+  "id": "the-spot-living-portal-corpus-m678",
+  "description": "M6 corpus — The Spot, Living Portal; in-hand parse.",
+  "seed": 62109,
+  "cards": {
+    "The Spot, Living Portal": "Name:The Spot, Living Portal\nVariant:UniversesWithin:FlavorName:Qoneus, Horizon Splicer\nManaCost:3 W B\nTypes:Legendary Creature Human Scientist Villain\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMarkBattlefield | TriggerDescription$ When NICKNAME enters, exile up to one target nonland permanent and up to one target nonland permanent card from a graveyard.\nSVar:TrigMarkBattlefield:DB$ Pump | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select up to one target nonland permanent | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBMarkGraveyard\nSVar:DBMarkGraveyard:DB$ Pump | ValidTgts$ Permanent.nonLand | TgtZone$ Graveyard | TgtPrompt$ Select up to one target nonland permanent card in a graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield,Graveyard | Destination$ Exile | Defined$ Targeted\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When NICKNAME dies, put him on the bottom of his owner's library. If you do, return the exiled cards to their owners' hands.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Hand | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When The Spot enters, exile up to one target nonland permanent and up to one target nonland permanent card from a graveyard.\\nWhen The Spot dies, put him on the bottom of his owner's library. If you do, return the exiled cards to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Spot, Living Portal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "yenna-redtooth-regent-corpus-m678",
+  "description": "M6 corpus — Yenna, Redtooth Regent; ETB-on-bf.",
+  "seed": 64548,
+  "cards": {
+    "Yenna, Redtooth Regent": "Name:Yenna, Redtooth Regent\nManaCost:2 G W\nTypes:Legendary Creature Elf Noble\nPT:4/4\nA:AB$ CopyPermanent | Cost$ 2 T | Defined$ Targeted | RememberTokens$ True | NonLegendary$ True | ValidTgts$ Enchantment.YouCtrl+doesNotShareNameWith OtherYourBattlefield | TgtPrompt$ Choose target enchantment you control that doesn't have the same name as another permanent you control. | SorcerySpeed$ True | SubAbility$ DBUntap | SpellDescription$ Choose target enchantment you control that doesn't have the same name as another permanent you control. Create a token that's a copy of it, except it isn't legendary. If the token is an Aura, untap CARDNAME, then scry 2. Activate only as a sorcery.\nSVar:DBUntap:DB$ Untap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.Aura | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card.Aura | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:{2}, {T}: Choose target enchantment you control that doesn't have the same name as another permanent you control. Create a token that's a copy of it, except it isn't legendary. If the token is an Aura, untap Yenna, Redtooth Regent, then scry 2. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Yenna, Redtooth Regent"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "venerated-teacher-corpus-m678",
+  "description": "M6 corpus — Venerated Teacher; in-hand parse.",
+  "seed": 63356,
+  "cards": {
+    "Venerated Teacher": "Name:Venerated Teacher\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPut | TriggerDescription$ When CARDNAME enters, put two level counters on each creature you control with level up.\nSVar:TrigPut:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+withLevel up | CounterType$ LEVEL | CounterNum$ 2\nAI:RemoveDeck:Random\nOracle:When Venerated Teacher enters, put two level counters on each creature you control with level up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venerated Teacher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

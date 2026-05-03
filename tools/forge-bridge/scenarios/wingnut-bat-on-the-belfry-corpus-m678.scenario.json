@@ -1,0 +1,23 @@
+{
+  "id": "wingnut-bat-on-the-belfry-corpus-m678",
+  "description": "M6 corpus — Wingnut, Bat on the Belfry; in-hand parse.",
+  "seed": 64260,
+  "cards": {
+    "Wingnut, Bat on the Belfry": "Name:Wingnut, Bat on the Belfry\nManaCost:1 R\nTypes:Legendary Creature Bat Mutant\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Alliance — Whenever another creature you control enters, NICKNAME gains your choice of flying, menace, or haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KWChoice$ Flying,Menace,Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, each other attacking creature gets +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +1\nSVar:BuffedBy:Creature\nSVar:HasAttackEffect:TRUE\nOracle:Alliance — Whenever another creature you control enters, Wingnut gains your choice of flying, menace, or haste until end of turn.\\nWhenever Wingnut attacks, each other attacking creature gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wingnut, Bat on the Belfry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

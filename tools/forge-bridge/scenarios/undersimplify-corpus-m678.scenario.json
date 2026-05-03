@@ -1,0 +1,23 @@
+{
+  "id": "undersimplify-corpus-m678",
+  "description": "M6 corpus — Undersimplify; in-hand parse.",
+  "seed": 63026,
+  "cards": {
+    "Undersimplify": "Name:Undersimplify\nManaCost:1 U\nTypes:Instant\nA:SP$ Pump | TargetType$ Spell | TgtZone$ Stack | ValidTgts$ Card | SubAbility$ DBEffect | StackDescription$ {p:You} chooses {s:Targeted}. | SpellDescription$ Choose target spell.\nSVar:DBEffect:DB$ Pump | ConditionDefined$ Targeted | ConditionPresent$ Spell.Creature | ConditionZone$ Stack | Defined$ TargetedSource | PumpZone$ Stack | NumAtt$ -2 | Duration$ Perpetual | SubAbility$ DBCounter | StackDescription$ SpellDescription | SpellDescription$ If it's a creature spell, it perpetually gets -2/-0.\nSVar:DBCounter:DB$ Counter | Defined$ Targeted | UnlessCost$ 2 | UnlessPayer$ TargetedController | SpellDescription$ Counter that spell unless its controller pays {2}.\nOracle:Choose target spell. If it's a creature spell, it perpetually gets -2/-0. Counter that spell unless its controller pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undersimplify"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

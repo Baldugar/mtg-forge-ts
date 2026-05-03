@@ -1,0 +1,25 @@
+{
+  "id": "words-of-waste-corpus-m678",
+  "description": "M6 corpus — Words of Waste; ETB-on-bf.",
+  "seed": 64407,
+  "cards": {
+    "Words of Waste": "Name:Words of Waste\nManaCost:2 B\nTypes:Enchantment\nA:AB$ Effect | Cost$ 1 | ReplacementEffects$ DrawReplace | SpellDescription$ The next time you would draw a card this turn, each opponent discards a card instead.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ WasteCard | Description$ The next time you would draw a card this turn, each opponent discards a card instead.\nSVar:WasteCard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{1}: The next time you would draw a card this turn, each opponent discards a card instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Words of Waste"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

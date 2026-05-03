@@ -1,0 +1,25 @@
+{
+  "id": "yawgmoth-s-edict-corpus-m678",
+  "description": "M6 corpus — Yawgmoth's Edict; ETB-on-bf.",
+  "seed": 64539,
+  "cards": {
+    "Yawgmoth's Edict": "Name:Yawgmoth's Edict\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent casts a white spell, that player loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a white spell, that player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Yawgmoth's Edict"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

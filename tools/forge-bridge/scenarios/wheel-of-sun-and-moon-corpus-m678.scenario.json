@@ -1,0 +1,23 @@
+{
+  "id": "wheel-of-sun-and-moon-corpus-m678",
+  "description": "M6 corpus — Wheel of Sun and Moon; in-hand parse.",
+  "seed": 64071,
+  "cards": {
+    "Wheel of Sun and Moon": "Name:Wheel of Sun and Moon\nManaCost:GW GW\nTypes:Enchantment Aura\nK:Enchant:Player\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidCard$ Card.!token+OwnedBy Player.EnchantedBy | ReplaceWith$ Reveal | Description$ If a card would be put into enchanted player's graveyard from anywhere, instead that card is revealed and put on the bottom of that player's library.\nSVar:Reveal:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard | LibraryPosition$ -1 | Reveal$ True | Shuffle$ False\nAI:RemoveDeck:Random\nOracle:Enchant player\\nIf a card would be put into enchanted player's graveyard from anywhere, instead that card is revealed and put on the bottom of that player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wheel of Sun and Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

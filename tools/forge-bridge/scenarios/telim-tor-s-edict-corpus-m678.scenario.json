@@ -1,0 +1,23 @@
+{
+  "id": "telim-tor-s-edict-corpus-m678",
+  "description": "M6 corpus — Telim'Tor's Edict; in-hand parse.",
+  "seed": 61811,
+  "cards": {
+    "Telim'Tor's Edict": "Name:Telim'Tor's Edict\nManaCost:R\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.YouCtrl,Permanent.YouOwn | TgtPrompt$ Select target permanent you own or control | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target permanent you own or control. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nOracle:Exile target permanent you own or control.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Telim'Tor's Edict"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

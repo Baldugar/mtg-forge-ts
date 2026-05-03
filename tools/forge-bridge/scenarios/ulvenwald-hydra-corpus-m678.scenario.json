@@ -1,0 +1,23 @@
+{
+  "id": "ulvenwald-hydra-corpus-m678",
+  "description": "M6 corpus — Ulvenwald Hydra; in-hand parse.",
+  "seed": 62952,
+  "cards": {
+    "Ulvenwald Hydra": "Name:Ulvenwald Hydra\nManaCost:4 G G\nTypes:Creature Hydra\nPT:*/*\nK:Reach\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land | ChangeNum$ 1 | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a land card, put it onto the battlefield tapped, then shuffle.\nSVar:BuffedBy:Land\nSVar:NeedsToPlayVar:X GE3\nOracle:Reach\\nUlvenwald Hydra's power and toughness are each equal to the number of lands you control.\\nWhen Ulvenwald Hydra enters, you may search your library for a land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulvenwald Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

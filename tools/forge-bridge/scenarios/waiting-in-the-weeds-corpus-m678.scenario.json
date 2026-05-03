@@ -1,0 +1,23 @@
+{
+  "id": "waiting-in-the-weeds-corpus-m678",
+  "description": "M6 corpus — Waiting in the Weeds; in-hand parse.",
+  "seed": 63728,
+  "cards": {
+    "Waiting in the Weeds": "Name:Waiting in the Weeds\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatSubAbility$ DBToken | RepeatPlayers$ Player | ChangeZoneTable$ True | SpellDescription$ Each player creates a 1/1 green Cat creature token for each untapped Forest they control.\nSVar:DBToken:DB$ Token | TokenAmount$ CountForest | TokenScript$ g_1_1_cat | TokenOwner$ Player.IsRemembered\nSVar:CountForest:Count$Valid Forest.untapped+RememberedPlayerCtrl\nAI:RemoveDeck:All\nOracle:Each player creates a 1/1 green Cat creature token for each untapped Forest they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waiting in the Weeds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

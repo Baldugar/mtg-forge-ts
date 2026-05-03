@@ -1,0 +1,25 @@
+{
+  "id": "tuvasa-the-sunlit-corpus-m678",
+  "description": "M6 corpus — Tuvasa the Sunlit; ETB-on-bf.",
+  "seed": 62860,
+  "cards": {
+    "Tuvasa the Sunlit": "Name:Tuvasa the Sunlit\nManaCost:G W U\nTypes:Legendary Creature Merfolk Shaman\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each enchantment you control.\nSVar:X:Count$Valid Enchantment.YouCtrl\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you cast your first enchantment spell each turn, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:BuffedBy:Enchantment\nOracle:Tuvasa the Sunlit gets +1/+1 for each enchantment you control.\\nWhenever you cast your first enchantment spell each turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tuvasa the Sunlit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

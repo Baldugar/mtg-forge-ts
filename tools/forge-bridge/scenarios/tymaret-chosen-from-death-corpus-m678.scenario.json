@@ -1,0 +1,25 @@
+{
+  "id": "tymaret-chosen-from-death-corpus-m678",
+  "description": "M6 corpus — Tymaret, Chosen from Death; ETB-on-bf.",
+  "seed": 62907,
+  "cards": {
+    "Tymaret, Chosen from Death": "Name:Tymaret, Chosen from Death\nManaCost:B B\nTypes:Legendary Enchantment Creature Demigod\nPT:2/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetToughness$ X | Description$ NICKNAME's toughness is equal to your devotion to black.\nSVar:X:Count$Devotion.Black\nSVar:BuffedBy:Permanent.Black\nA:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target cards in graveyards | RememberChanged$ True | SubAbility$ DBGainLife | StackDescription$ SpellDescription | SpellDescription$ Exile up to two target cards from graveyards. You gain 1 life for each creature card exiled this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Valid Creature\nDeckHas:Ability$LifeGain\nOracle:Tymaret's toughness is equal to your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\\n{1}{B}: Exile up to two target cards from graveyards. You gain 1 life for each creature card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tymaret, Chosen from Death"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

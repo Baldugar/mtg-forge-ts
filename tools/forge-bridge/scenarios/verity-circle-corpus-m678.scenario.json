@@ -1,0 +1,25 @@
+{
+  "id": "verity-circle-corpus-m678",
+  "description": "M6 corpus — Verity Circle; ETB-on-bf.",
+  "seed": 63405,
+  "cards": {
+    "Verity Circle": "Name:Verity Circle\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Taps | ValidCard$ Creature.OppCtrl | Attacker$ False | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature an opponent controls becomes tapped, if it isn't being declared as an attacker, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Tap | Cost$ 4 U | ValidTgts$ Creature.withoutFlying | TgtPrompt$ Select target creature without flying | SpellDescription$ Tap target creature without flying.\nOracle:Whenever a creature an opponent controls becomes tapped, if it isn't being declared as an attacker, you may draw a card.\\n{4}{U}: Tap target creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Verity Circle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

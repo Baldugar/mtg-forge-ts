@@ -1,0 +1,23 @@
+{
+  "id": "twitch-corpus-m678",
+  "description": "M6 corpus — Twitch; in-hand parse.",
+  "seed": 62896,
+  "cards": {
+    "Twitch": "Name:Twitch\nManaCost:2 U\nTypes:Instant\nA:SP$ TapOrUntap | ValidTgts$ Artifact,Creature,Land | TgtPrompt$ Select target artifact, creature, or land | SubAbility$ DBDraw | SpellDescription$ You may tap or untap target artifact, creature, or land.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:You may tap or untap target artifact, creature, or land.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twitch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

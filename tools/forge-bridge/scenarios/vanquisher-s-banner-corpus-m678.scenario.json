@@ -1,0 +1,23 @@
+{
+  "id": "vanquisher-s-banner-corpus-m678",
+  "description": "M6 corpus — Vanquisher's Banner; in-hand parse.",
+  "seed": 63283,
+  "cards": {
+    "Vanquisher's Banner": "Name:Vanquisher's Banner\nManaCost:5\nTypes:Artifact\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentComputerControlsOrOwns | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control of the chosen type get +1/+1.\nT:Mode$ SpellCast | ValidCard$ Creature.ChosenType | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell of the chosen type, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nOracle:As Vanquisher's Banner enters, choose a creature type.\\nCreatures you control of the chosen type get +1/+1.\\nWhenever you cast a creature spell of the chosen type, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vanquisher's Banner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

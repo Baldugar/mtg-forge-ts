@@ -1,0 +1,23 @@
+{
+  "id": "whiplash-trap-corpus-m678",
+  "description": "M6 corpus — Whiplash Trap; in-hand parse.",
+  "seed": 64088,
+  "cards": {
+    "Whiplash Trap": "Name:Whiplash Trap\nManaCost:3 U U\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ U | CheckSVar$ CreaturesEntered | Description$ If an opponent had two or more creatures enter the battlefield under their control this turn, you may pay {U} rather than pay this spell's mana cost.\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Choose two target creatures | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | SpellDescription$ Return two target creatures to their owners' hands.\nSVar:CreaturesEntered:PlayerCountOpponents$ConditionGE2 ThisTurnEntered_Battlefield_Creature.YouCtrl\nOracle:If an opponent had two or more creatures enter the battlefield under their control this turn, you may pay {U} rather than pay this spell's mana cost.\\nReturn two target creatures to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whiplash Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

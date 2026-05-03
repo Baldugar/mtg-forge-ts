@@ -1,0 +1,23 @@
+{
+  "id": "vessel-of-endless-rest-corpus-m678",
+  "description": "M6 corpus — Vessel of Endless Rest; in-hand parse.",
+  "seed": 63413,
+  "cards": {
+    "Vessel of Endless Rest": "Name:Vessel of Endless Rest\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ Disinter | TriggerDescription$ When CARDNAME enters, put target card in a graveyard on the bottom of its owner's library.\nSVar:Disinter:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Card | TgtPrompt$ Select target card from a graveyard | LibraryPosition$ -1\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Vessel of Endless Rest enters, put target card from a graveyard on the bottom of its owner's library.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vessel of Endless Rest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

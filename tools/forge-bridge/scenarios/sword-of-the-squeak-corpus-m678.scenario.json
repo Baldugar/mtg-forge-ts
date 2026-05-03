@@ -1,0 +1,23 @@
+{
+  "id": "sword-of-the-squeak-corpus-m678",
+  "description": "M6 corpus — Sword of the Squeak; in-hand parse.",
+  "seed": 61523,
+  "cards": {
+    "Sword of the Squeak": "Name:Sword of the Squeak\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each creature you control with base power or toughness 1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Hamster.YouCtrl,Mouse.YouCtrl,Rat.YouCtrl,Squirrel.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a Hamster, Mouse, Rat, or Squirrel you control enters, you may attach CARDNAME to that creature.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nK:Equip:2\nSVar:X:Count$Valid Creature.basePowerEQ1+YouCtrl,Creature.baseToughnessEQ1+YouCtrl\nOracle:Equipped creature gets +1/+1 for each creature you control with base power or toughness 1.\\nWhenever a Hamster, Mouse, Rat, or Squirrel you control enters, you may attach Sword of the Squeak to that creature.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of the Squeak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

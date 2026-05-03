@@ -1,0 +1,23 @@
+{
+  "id": "turtles-forever-corpus-m678",
+  "description": "M6 corpus — Turtles Forever; in-hand parse.",
+  "seed": 62855,
+  "cards": {
+    "Turtles Forever": "Name:Turtles Forever\nManaCost:3 W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Library,Sideboard | ChangeType$ Creature.Legendary | ChangeNum$ 4 | RememberChanged$ True | Exactly$ True | Reveal$ True | Shuffle$ False | DifferentNames$ True | SubAbility$ DBChangeZone | SpellDescription$ Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.\nSVar:DBChangeZone:DB$ ChangeZone | Chooser$ Opponent | SelectPrompt$ Choose two cards for the hand | NoLooking$ True | Hidden$ True | Origin$ Library,Sideboard | Destination$ Hand | ChangeType$ Card.IsRemembered | ChangeNum$ 2 | Mandatory$ True | SelectPrompt$ Select two cards for the hand | Shuffle$ False | ForgetChanged$ True | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Library,Sideboard | Destination$ Library | ChangeType$ Card.IsRemembered | Shuffle$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turtles Forever"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

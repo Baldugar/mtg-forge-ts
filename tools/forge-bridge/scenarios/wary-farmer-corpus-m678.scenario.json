@@ -1,0 +1,23 @@
+{
+  "id": "wary-farmer-corpus-m678",
+  "description": "M6 corpus — Wary Farmer; in-hand parse.",
+  "seed": 63926,
+  "cards": {
+    "Wary Farmer": "Name:Wary Farmer\nManaCost:1 GW GW\nTypes:Creature Kithkin Citizen\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | CheckSVar$ X | TriggerDescription$ At the beginning of your end step, if another creature entered the battlefield under your control this turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl+StrictlyOther\nDeckHas:Ability$Surveil|Graveyard\nOracle:At the beginning of your end step, if another creature entered the battlefield under your control this turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wary Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

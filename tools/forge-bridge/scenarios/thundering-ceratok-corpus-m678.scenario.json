@@ -1,0 +1,23 @@
+{
+  "id": "thundering-ceratok-corpus-m678",
+  "description": "M6 corpus — Thundering Ceratok; in-hand parse.",
+  "seed": 62321,
+  "cards": {
+    "Thundering Ceratok": "Name:Thundering Ceratok\nManaCost:4 G\nTypes:Creature Rhino\nPT:4/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | KW$ Trample\nSVar:PlayMain1:TRUE\nOracle:Trample\\nWhen Thundering Ceratok enters, other creatures you control gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Ceratok"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

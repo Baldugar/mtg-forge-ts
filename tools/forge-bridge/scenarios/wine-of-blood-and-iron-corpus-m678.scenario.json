@@ -1,0 +1,25 @@
+{
+  "id": "wine-of-blood-and-iron-corpus-m678",
+  "description": "M6 corpus — Wine of Blood and Iron; ETB-on-bf.",
+  "seed": 64244,
+  "cards": {
+    "Wine of Blood and Iron": "Name:Wine of Blood and Iron\nManaCost:3\nTypes:Artifact\nA:AB$ Pump | Cost$ 4 | ValidTgts$ Creature | NumAtt$ +X | SubAbility$ DBDelay | AILogic$ Berserk | SpellDescription$ Target creature gets +X/+0 until end of turn, where X is its power. Sacrifice CARDNAME at the beginning of the next end step.\nSVar:DBDelay:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigSac | TriggerDescription$ Sacrifice CARDNAME at the beginning of the next end step.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ Self | Controller$ You\nSVar:X:Targeted$CardPower\nOracle:{4}: Target creature gets +X/+0 until end of turn, where X is its power. Sacrifice Wine of Blood and Iron at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wine of Blood and Iron"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

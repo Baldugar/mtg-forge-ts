@@ -1,0 +1,25 @@
+{
+  "id": "twinflame-tyrant-corpus-m678",
+  "description": "M6 corpus — Twinflame Tyrant; ETB-on-bf.",
+  "seed": 62878,
+  "cards": {
+    "Twinflame Tyrant": "Name:Twinflame Tyrant\nManaCost:3 R R\nTypes:Creature Dragon\nPT:3/5\nK:Flying\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent,Permanent.OppCtrl | ReplaceWith$ DmgTwice | Description$ If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:Flying\\nIf a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Twinflame Tyrant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

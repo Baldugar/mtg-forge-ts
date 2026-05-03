@@ -1,0 +1,23 @@
+{
+  "id": "thaumatic-compass-corpus-m678",
+  "description": "M6 corpus — Thaumatic Compass; in-hand parse.",
+  "seed": 61977,
+  "cards": {
+    "Thaumatic Compass": "Name:Thaumatic Compass\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 3 T | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SpellDescription$ Search your library for a basic land card and put that card into your hand, then shuffle.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Land.YouCtrl | PresentCompare$ GE7 | Execute$ DBTransform | TriggerDescription$ At the beginning of your end step, if you control seven or more lands, transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{3}, {T}: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\nAt the beginning of your end step, if you control seven or more lands, transform Thaumatic Compass.\n\nALTERNATE\n\nName:Spires of Orazca\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | SpellDescription$ Add {C}.\nA:AB$ Untap | Cost$ T | ValidTgts$ Creature.attacking+OppCtrl | IsCurse$ True | TgtPrompt$ Select target attacking creature an opponent controls | SubAbility$ RemCombat | SpellDescription$ Untap target attacking creature an opponent controls and remove it from combat.\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Targeted | AILogic$ RemoveBestAttacker\nOracle:(Transforms from Thaumatic Compass.)\\n{T}: Add {C}.\\n{T}: Untap target attacking creature an opponent controls and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thaumatic Compass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

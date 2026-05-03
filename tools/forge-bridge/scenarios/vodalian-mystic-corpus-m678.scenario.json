@@ -1,0 +1,25 @@
+{
+  "id": "vodalian-mystic-corpus-m678",
+  "description": "M6 corpus — Vodalian Mystic; ETB-on-bf.",
+  "seed": 63606,
+  "cards": {
+    "Vodalian Mystic": "Name:Vodalian Mystic\nManaCost:1 U\nTypes:Creature Merfolk Wizard\nPT:1/1\nA:AB$ ChooseColor | Cost$ T | Defined$ You | SubAbility$ Animate | SpellDescription$ Target instant or sorcery spell becomes the color of your choice.\nSVar:Animate:DB$ Animate | ValidTgts$ Instant,Sorcery | TgtPrompt$ Select target instant or sorcery spell to change the color of | TgtZone$ Stack | Colors$ ChosenColor | OverwriteColors$ True | Duration$ Permanent\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{T}: Target instant or sorcery spell becomes the color of your choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vodalian Mystic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

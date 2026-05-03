@@ -1,0 +1,23 @@
+{
+  "id": "worst-fears-corpus-m678",
+  "description": "M6 corpus — Worst Fears; in-hand parse.",
+  "seed": 64434,
+  "cards": {
+    "Worst Fears": "Name:Worst Fears\nManaCost:7 B\nTypes:Sorcery\nA:SP$ ControlPlayer | ValidTgts$ Player | SubAbility$ DBChange | SpellDescription$ You control target player during that player's next turn. Exile CARDNAME. (You see all cards that player could see and make all decisions for that player.)\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:All\nOracle:You control target player during that player's next turn. Exile Worst Fears. (You see all cards that player could see and make all decisions for the player.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worst Fears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

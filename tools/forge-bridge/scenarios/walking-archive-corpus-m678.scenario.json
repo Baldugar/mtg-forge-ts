@@ -1,0 +1,23 @@
+{
+  "id": "walking-archive-corpus-m678",
+  "description": "M6 corpus — Walking Archive; in-hand parse.",
+  "seed": 63748,
+  "cards": {
+    "Walking Archive": "Name:Walking Archive\nManaCost:3\nTypes:Artifact Creature Golem\nPT:1/1\nK:etbCounter:P1P1:1\nK:Defender\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's upkeep, that player draws a card for each +1/+1 counter on CARDNAME.\nA:AB$ PutCounter | Cost$ 2 W U | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | Defined$ TriggeredPlayer\nSVar:X:Count$CardCounters.P1P1\nAI:RemoveDeck:Random\nOracle:Defender (This creature can't attack.)\\nWalking Archive enters with a +1/+1 counter on it.\\nAt the beginning of each player's upkeep, that player draws a card for each +1/+1 counter on Walking Archive.\\n{2}{W}{U}: Put a +1/+1 counter on Walking Archive.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Walking Archive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

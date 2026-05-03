@@ -1,0 +1,23 @@
+{
+  "id": "yuna-s-decision-corpus-m678",
+  "description": "M6 corpus — Yuna's Decision; in-hand parse.",
+  "seed": 64594,
+  "cards": {
+    "Yuna's Decision": "Name:Yuna's Decision\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBSacrifice,DBReturn\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBDraw | SpellDescription$ Continue the Pilgrimage — Sacrifice a creature. If you do, draw a card, then you may put a creature card and/or a land card from your hand onto the battlefield.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | SubAbility$ DBChangeZone | StackDescription$ None\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ EACH Creature & Land | ChangeTypeDesc$ creature and/or land card | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | Optional$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | StackDescription$ None\nSVar:DBReturn:DB$ ChangeZone | TargetMin$ 1 | TargetMax$ 2 | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select one or two target permanent cards in your graveyard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Find Another Way — Return one or two target permanent cards from your graveyard to your hand.\nOracle:Choose one —\\n• Continue the Pilgrimage — Sacrifice a creature. If you do, draw a card, then you may put a creature card and/or a land card from your hand onto the battlefield.\\n• Find Another Way — Return one or two target permanent cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuna's Decision"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

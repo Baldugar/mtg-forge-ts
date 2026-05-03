@@ -1,0 +1,23 @@
+{
+  "id": "winterthorn-blessing-corpus-m678",
+  "description": "M6 corpus — Winterthorn Blessing; in-hand parse.",
+  "seed": 64284,
+  "cards": {
+    "Winterthorn Blessing": "Name:Winterthorn Blessing\nManaCost:G U\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | CounterType$ P1P1 | CounterNum$ 1 | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBTap | SpellDescription$ Put a +1/+1 counter on up to one target creature you control. Tap up to one target creature you don't control, and that creature doesn't untap during its controller's next untap step.\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBPump | StackDescription$ Tap up to one target creature you don't control, and that creature doesn't untap during its controller's next untap step.\nSVar:DBPump:DB$ Pump | Defined$ ParentTarget | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nK:Flashback:1 G U\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on up to one target creature you control. Tap up to one target creature you don't control, and that creature doesn't untap during its controller's next untap step.\\nFlashback {1}{G}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winterthorn Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

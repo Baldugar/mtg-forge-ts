@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-humiliator-corpus-m678",
+  "description": "M6 corpus — Vedalken Humiliator; in-hand parse.",
+  "seed": 63325,
+  "cards": {
+    "Vedalken Humiliator": "Name:Vedalken Humiliator\nManaCost:3 U\nTypes:Creature Vedalken Wizard\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | Metalcraft$ True | TriggerDescription$ Metalcraft Whenever CARDNAME attacks, if you control three or more artifacts, creatures your opponents control lose all abilities and have base power and toughness 1/1 until end of turn.\nSVar:TrigPump:DB$ AnimateAll | ValidCards$ Creature.OppCtrl | Power$ 1 | Toughness$ 1 | RemoveAllAbilities$ True | IsCurse$ True\nOracle:Metalcraft — Whenever Vedalken Humiliator attacks, if you control three or more artifacts, creatures your opponents control lose all abilities and have base power and toughness 1/1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Humiliator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

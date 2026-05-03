@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-pharaoh-corpus-m678",
+  "description": "M6 corpus — Vengeful Pharaoh; in-hand parse.",
+  "seed": 63365,
+  "cards": {
+    "Vengeful Pharaoh": "Name:Vengeful Pharaoh\nManaCost:2 B B B\nTypes:Creature Zombie\nPT:5/4\nK:Deathtouch\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidTarget$ You,Planeswalker.YouCtrl | ValidSource$ Card | TriggerZones$ Graveyard | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | Execute$ TrigDestroy | TriggerDescription$ Whenever combat damage is dealt to you or a planeswalker you control, if CARDNAME is in your graveyard, destroy target attacking creature, then put CARDNAME on top of your library.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Library\nSVar:DiscardMe:4\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nWhenever combat damage is dealt to you or a planeswalker you control, if Vengeful Pharaoh is in your graveyard, destroy target attacking creature, then put Vengeful Pharaoh on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Pharaoh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "triumph-of-ferocity-corpus-m678",
+  "description": "M6 corpus — Triumph of Ferocity; in-hand parse.",
+  "seed": 62758,
+  "cards": {
+    "Triumph of Ferocity": "Name:Triumph of Ferocity\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFerociousDraw | TriggerDescription$ At the beginning of your upkeep, draw a card if you control the creature with the greatest power or tied for the greatest power.\nSVar:TrigFerociousDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | ConditionCheckSVar$ YourFerocity | ConditionSVarCompare$ GEOppsFerocity\nSVar:YourFerocity:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:OppsFerocity:Count$Valid Creature.YouDontCtrl$GreatestCardPower\nOracle:At the beginning of your upkeep, draw a card if you control the creature with the greatest power or tied for the greatest power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triumph of Ferocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

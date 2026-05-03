@@ -1,0 +1,23 @@
+{
+  "id": "warriors-lesson-corpus-m678",
+  "description": "M6 corpus — Warriors' Lesson; in-hand parse.",
+  "seed": 63917,
+  "cards": {
+    "Warriors' Lesson": "Name:Warriors' Lesson\nManaCost:G\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to two target creatures you control | TargetMin$ 0 | TargetMax$ 2 | Triggers$ WarriorLessonDmg | SpellDescription$ Until end of turn, up to two target creatures you control each gain \"Whenever this creature deals combat damage to a player, draw a card.\"\nSVar:WarriorLessonDmg:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ WarriorLessonDraw | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.\nSVar:WarriorLessonDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:All\nOracle:Until end of turn, up to two target creatures you control each gain \"Whenever this creature deals combat damage to a player, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warriors' Lesson"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

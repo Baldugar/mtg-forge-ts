@@ -1,0 +1,23 @@
+{
+  "id": "wicked-guardian-corpus-m678",
+  "description": "M6 corpus — Wicked Guardian; in-hand parse.",
+  "seed": 64132,
+  "cards": {
+    "Wicked Guardian": "Name:Wicked Guardian\nManaCost:3 B\nTypes:Creature Human Noble\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may have it deal 2 damage to another creature you control. If you do, draw a card.\nSVar:TrigChoose:DB$ ChooseCard | Choices$ Creature.YouCtrl+Other | ChoiceZone$ Battlefield | ChoiceTitle$ Select another creature you control | SubAbility$ DBDamageChosen\nSVar:DBDamageChosen:DB$ DealDamage | Defined$ ChosenCard | NumDmg$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ ChosenCard | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When Wicked Guardian enters, you may have it deal 2 damage to another creature you control. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wicked Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

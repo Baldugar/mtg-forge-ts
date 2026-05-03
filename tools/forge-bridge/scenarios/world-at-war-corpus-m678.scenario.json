@@ -1,0 +1,23 @@
+{
+  "id": "world-at-war-corpus-m678",
+  "description": "M6 corpus — World at War; in-hand parse.",
+  "seed": 64414,
+  "cards": {
+    "World at War": "Name:World at War\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ AddPhase | ExtraPhase$ Combat | AfterPhase$ Main2 | FollowedBy$ Main2 | BeforeFirstPostCombatMainEnd$ True | ExtraPhaseDelayedTrigger$ DelTrigUntap | ExtraPhaseDelayedTriggerExcute$ TrigUntapAll | SpellDescription$ After the second main phase this turn, there's an additional combat phase followed by an additional main phase. At the beginning of that combat, untap all creatures that attacked this turn.\nSVar:DelTrigUntap:Mode$ Phase | Phase$ BeginCombat | TriggerDescription$ At the beginning of that combat, untap all creatures that attacked this turn.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.attackedThisTurn\nK:Rebound\nOracle:After the second main phase this turn, there's an additional combat phase followed by an additional main phase. At the beginning of that combat, untap all creatures that attacked this turn.\\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "World at War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

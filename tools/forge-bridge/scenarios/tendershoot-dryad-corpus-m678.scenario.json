@@ -1,0 +1,23 @@
+{
+  "id": "tendershoot-dryad-corpus-m678",
+  "description": "M6 corpus — Tendershoot Dryad; in-hand parse.",
+  "seed": 61881,
+  "cards": {
+    "Tendershoot Dryad": "Name:Tendershoot Dryad\nManaCost:4 G\nTypes:Creature Dryad\nPT:2/2\nK:Ascend\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each upkeep, create a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Saproling+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Condition$ Blessing | IsPresent$ Card.Self | Description$ Saprolings you control get +2/+2 as long as you have the city's blessing.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Fungus\nDeckHas:Ability$Token\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nAt the beginning of each upkeep, create a 1/1 green Saproling creature token.\\nSaprolings you control get +2/+2 as long as you have the city's blessing.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tendershoot Dryad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

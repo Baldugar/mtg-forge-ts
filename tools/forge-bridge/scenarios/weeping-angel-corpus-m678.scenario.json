@@ -1,0 +1,25 @@
+{
+  "id": "weeping-angel-corpus-m678",
+  "description": "M6 corpus — Weeping Angel; ETB-on-bf.",
+  "seed": 64031,
+  "cards": {
+    "Weeping Angel": "Name:Weeping Angel\nManaCost:1 U B\nTypes:Artifact Creature Alien Angel\nPT:2/2\nK:Flash\nK:First Strike\nK:Vigilance\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.Self | ValidTarget$ Creature | IsCombat$ True | ReplaceWith$ ShuffleCreature | AlwaysReplace$ True | PreventionEffect$ True | Description$ If CARDNAME would deal combat damage to a creature, prevent that damage and that creature's owner shuffles it into their library.\nSVar:ShuffleCreature:DB$ ChangeZone | Defined$ ReplacedTarget | Origin$ Battlefield | Destination$ Library | Shuffle$ True\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever an opponent casts a creature spell, CARDNAME isn't a creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | RemoveTypes$ Creature\nOracle:Flash\\nFirst strike, vigilance\\nWhenever an opponent casts a creature spell, Weeping Angel isn't a creature until end of turn.\\nIf Weeping Angel would deal combat damage to a creature, prevent that damage and that creature's owner shuffles it into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Weeping Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

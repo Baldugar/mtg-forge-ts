@@ -1,0 +1,25 @@
+{
+  "id": "zuko-exiled-prince-corpus-m678",
+  "description": "M6 corpus — Zuko, Exiled Prince; ETB-on-bf.",
+  "seed": 64706,
+  "cards": {
+    "Zuko, Exiled Prince": "Name:Zuko, Exiled Prince\nManaCost:3 R\nTypes:Legendary Creature Human Noble\nPT:4/3\nK:Firebending:3\nA:AB$ Dig | Cost$ 3 | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play it this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)\\n{3}: Exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zuko, Exiled Prince"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

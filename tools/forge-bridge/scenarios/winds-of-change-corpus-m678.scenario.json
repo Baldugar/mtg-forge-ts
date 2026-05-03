@@ -1,0 +1,23 @@
+{
+  "id": "winds-of-change-corpus-m678",
+  "description": "M6 corpus — Winds of Change; in-hand parse.",
+  "seed": 64233,
+  "cards": {
+    "Winds of Change": "Name:Winds of Change\nManaCost:R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ ShuffleHand | SpellDescription$ Each player shuffles the cards from their hand into their library, then draws that many cards.\nSVar:ShuffleHand:DB$ ChangeZoneAll | Defined$ Player.IsRemembered | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | Shuffle$ True | SubAbility$ WindDraw\nSVar:WindDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ CleanTheWind\nSVar:CleanTheWind:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Each player shuffles the cards from their hand into their library, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Winds of Change"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

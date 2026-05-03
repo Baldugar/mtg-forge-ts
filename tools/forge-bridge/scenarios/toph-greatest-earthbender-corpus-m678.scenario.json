@@ -1,0 +1,23 @@
+{
+  "id": "toph-greatest-earthbender-corpus-m678",
+  "description": "M6 corpus — Toph, Greatest Earthbender; in-hand parse.",
+  "seed": 62505,
+  "cards": {
+    "Toph, Greatest Earthbender": "Name:Toph, Greatest Earthbender\nManaCost:2 R G\nTypes:Legendary Creature Human Warrior Ally\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When NICKNAME enters, earthbend X, where X is the amount of mana spent to cast her.\nSVar:TrigEarthbend:DB$ Earthbend | Num$ X\nS:Mode$ Continuous | Affected$ Creature.Land+YouCtrl | AddKeyword$ Double Strike | Description$ Land creatures you control have double strike.\nSVar:X:Count$CastTotalManaSpent\nOracle:When Toph enters, earthbend X, where X is the amount of mana spent to cast her.\\nLand creatures you control have double strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toph, Greatest Earthbender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

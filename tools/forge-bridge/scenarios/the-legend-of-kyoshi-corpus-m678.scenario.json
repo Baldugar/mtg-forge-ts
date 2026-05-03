@@ -1,0 +1,23 @@
+{
+  "id": "the-legend-of-kyoshi-corpus-m678",
+  "description": "M6 corpus — The Legend of Kyoshi; in-hand parse.",
+  "seed": 62063,
+  "cards": {
+    "The Legend of Kyoshi": "Name:The Legend of Kyoshi\nManaCost:4 G G\nTypes:Enchantment Saga\nK:Chapter:3:DBDraw,DBEarthbend,DBTransform\nSVar:DBDraw:DB$ Draw | NumCards$ X | SpellDescription$ Draw cards equal to the greatest power among creatures you control.\nSVar:DBEarthbend:DB$ Earthbend | Num$ Y | SubAbility$ DBAnimate | SpellDescription$ Earthbend X, where X is the number of cards in your hand. That land becomes an Island in addition to its other types.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Island | Duration$ Permanent\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:Y:Count$ValidHand Card.YouOwn\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters, and after your draw step, add a lore counter.)\\nI — Draw cards equal to the greatest power among creatures you control.\\nII — Earthbend X, where X is the number of cards in your hand. That land becomes an Island in addition to its other types.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Avatar Kyoshi\nManaCost:no cost\nTypes:Legendary Creature Avatar\nPT:5/4\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddKeyword$ Trample & Hexproof | Description$ Lands you control have trample and hexproof.\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Lands you control have trample and hexproof.\\n{T}: Add X mana of any one color, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Legend of Kyoshi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

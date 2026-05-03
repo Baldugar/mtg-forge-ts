@@ -1,0 +1,23 @@
+{
+  "id": "vampire-spawn-corpus-m678",
+  "description": "M6 corpus — Vampire Spawn; in-hand parse.",
+  "seed": 63259,
+  "cards": {
+    "Vampire Spawn": "Name:Vampire Spawn\nManaCost:2 B\nTypes:Creature Vampire\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:When Vampire Spawn enters, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

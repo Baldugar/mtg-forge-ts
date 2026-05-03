@@ -1,0 +1,23 @@
+{
+  "id": "underbridge-warlock-corpus-m678",
+  "description": "M6 corpus — Underbridge Warlock; in-hand parse.",
+  "seed": 63004,
+  "cards": {
+    "Underbridge Warlock": "Name:Underbridge Warlock\nManaCost:3 B B\nTypes:Creature Ogre Warlock\nPT:5/4\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBoon | TriggerDescription$ When CARDNAME enters, you get a one-time boon with \"At the beginning of your end step, if three or more creatures died this turn, each opponent loses 5 life and you gain 5 life.\"\nSVar:TrigBoon:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ EndStepTrig\nSVar:EndStepTrig:Mode$ Phase | Phase$ End of Turn | CheckSVar$ Morbid | SVarCompare$ GE3 | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigDrain | TriggerDescription$ At the beginning of your end step, if three or more creatures died this turn, each opponent loses 5 life and you gain 5 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 5 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 5\nSVar:Morbid:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Boon.YouOwn | PresentZone$ Command | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your end step, if you have a boon, you mill three cards, draw a card, and lose 2 life.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain|Mill\nDeckHints:Ability$Graveyard|Sacrifice|Token\nOracle:Deathtouch\\nWhen Underbridge Warlock enters, you get a one-time boon with \"At the beginning of your end step, if three or more creatures died this turn, each opponent loses 5 life and you gain 5 life.\"\\nAt the beginning of your end step, if you have a boon, you mill three cards, draw a card, and lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underbridge Warlock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

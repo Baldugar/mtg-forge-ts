@@ -1,0 +1,25 @@
+{
+  "id": "varchild-s-crusader-corpus-m678",
+  "description": "M6 corpus — Varchild's Crusader; ETB-on-bf.",
+  "seed": 63288,
+  "cards": {
+    "Varchild's Crusader": "Name:Varchild's Crusader\nManaCost:3 R\nTypes:Creature Human Knight\nPT:3/2\nA:AB$ Effect | Cost$ 0 | AtEOT$ Sacrifice | StaticAbilities$ KWPump | SpellDescription$ CARDNAME can't be blocked this turn except by Walls. Sacrifice CARDNAME at the beginning of the next end step.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.nonWall | Description$ EFFECTSOURCE can't be blocked this turn except by Walls.\nAI:RemoveDeck:All\nOracle:{0}: Varchild's Crusader can't be blocked this turn except by Walls. Sacrifice Varchild's Crusader at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Varchild's Crusader"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-fifth-doctor-corpus-m678",
+  "description": "M6 corpus — The Fifth Doctor; in-hand parse.",
+  "seed": 62033,
+  "cards": {
+    "The Fifth Doctor": "Name:The Fifth Doctor\nManaCost:2 W U\nTypes:Legendary Creature Time Lord Doctor\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Peaceful Coexistence — At the beginning of your end step, put a +1/+1 counter on each creature you control that didn't attack or enter this turn. Untap those creatures.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+!ThisTurnEntered+!attackedThisTurn | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl+!ThisTurnEntered+!attackedThisTurn\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Peaceful Coexistence — At the beginning of your end step, put a +1/+1 counter on each creature you control that didn't attack or enter this turn. Untap those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fifth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tenured-oilcaster-corpus-m678",
+  "description": "M6 corpus — Tenured Oilcaster; in-hand parse.",
+  "seed": 61888,
+  "cards": {
+    "Tenured Oilcaster": "Name:Tenured Oilcaster\nManaCost:3 B\nTypes:Creature Phyrexian Wizard\nPT:2/4\nK:Menace\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | CheckSVar$ X | SVarCompare$ GE8 | Description$ CARDNAME gets +3/+0 as long as an opponent has eight or more cards in their graveyard.\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, each player mills a card.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, each player mills a card.\nSVar:TrigMill:DB$ Mill | Defined$ Player | NumCards$ 1\nDeckHas:Ability$Mill\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nTenured Oilcaster gets +3/+0 as long as an opponent has eight or more cards in their graveyard.\\nWhenever Tenured Oilcaster attacks or blocks, each player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tenured Oilcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

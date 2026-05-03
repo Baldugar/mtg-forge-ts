@@ -1,0 +1,23 @@
+{
+  "id": "temporal-extortion-corpus-m678",
+  "description": "M6 corpus — Temporal Extortion; in-hand parse.",
+  "seed": 61848,
+  "cards": {
+    "Temporal Extortion": "Name:Temporal Extortion\nManaCost:B B B B\nTypes:Sorcery\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When you cast this spell, any player may pay half their life, rounded up. If a player does, counter CARDNAME.\nSVar:TrigCounter:DB$ Counter | UnlessCost$ LifeTotalHalfUp | Defined$ TriggeredSpellAbility | UnlessPayer$ Player | UnlessSwitched$ True | UnlessAI$ Never\nA:SP$ AddTurn | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nOracle:When you cast this spell, any player may pay half their life, rounded up. If a player does, counter Temporal Extortion.\\nTake an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temporal Extortion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

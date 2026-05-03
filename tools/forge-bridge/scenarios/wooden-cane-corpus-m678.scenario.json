@@ -1,0 +1,23 @@
+{
+  "id": "wooden-cane-corpus-m678",
+  "description": "M6 corpus — Wooden Cane; in-hand parse.",
+  "seed": 64379,
+  "cards": {
+    "Wooden Cane": "Name:Wooden Cane\nManaCost:3 W\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Equipment enters, create a 2/2 red Mutant creature token, then attach this Equipment to it.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_mutant | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nK:Equip:3\nDeckHas:Ability$Token\nOracle:When this Equipment enters, create a 2/2 red Mutant creature token, then attach this Equipment to it.\\nEquipped creature gets +2/+1.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wooden Cane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wave-of-vitriol-corpus-m678",
+  "description": "M6 corpus — Wave of Vitriol; in-hand parse.",
+  "seed": 63977,
+  "cards": {
+    "Wave of Vitriol": "Name:Wave of Vitriol\nManaCost:5 G G\nTypes:Sorcery\nA:SP$ SacrificeAll | ValidCards$ Artifact,Enchantment,Land.nonBasic | RememberSacrificed$ True | SubAbility$ DBRepeat | SpellDescription$ Each player sacrifices all artifacts, enchantments, and nonbasic lands they control. For each land sacrificed this way, its controller may search their library for a basic land card and put it onto the battlefield tapped. Then each player who searched their library this way shuffles.\nSVar:DBRepeat:DB$ RepeatEach | DefinedCards$ DirectRemembered.Land | UseImprinted$ True | RepeatSubAbility$ DBSearch | ClearRemembered$ True | SubAbility$ DBShuffle\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | RememberSearched$ True | DefinedPlayer$ ImprintedController | Chooser$ ImprintedController | NoShuffle$ True | Optional$ True\nSVar:DBShuffle:DB$ Shuffle | Defined$ Player.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Each player sacrifices all artifacts, enchantments, and nonbasic lands they control. For each land sacrificed this way, its controller may search their library for a basic land card and put it onto the battlefield tapped. Then each player who searched their library this way shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wave of Vitriol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

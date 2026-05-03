@@ -1,0 +1,23 @@
+{
+  "id": "thorn-mammoth-corpus-m678",
+  "description": "M6 corpus — Thorn Mammoth; in-hand parse.",
+  "seed": 62186,
+  "cards": {
+    "Thorn Mammoth": "Name:Thorn Mammoth\nManaCost:5 G G\nTypes:Creature Elephant\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigFight | TriggerDescription$ Whenever CARDNAME or another creature you control enters, CARDNAME fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nOracle:Trample\\nWhenever Thorn Mammoth or another creature you control enters, Thorn Mammoth fights up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thorn Mammoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

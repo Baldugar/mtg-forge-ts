@@ -1,0 +1,23 @@
+{
+  "id": "visions-of-brutality-corpus-m678",
+  "description": "M6 corpus — Visions of Brutality; in-hand parse.",
+  "seed": 63566,
+  "cards": {
+    "Visions of Brutality": "Name:Visions of Brutality\nManaCost:1 B\nTypes:Enchantment Aura\nK:Devoid\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't block.\nT:Mode$ DamageDealtOnce | ValidSource$ Card.AttachedBy | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage, its controller loses that much life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredSourceController | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Devoid (This card has no color.)\\nEnchant creature\\nEnchanted creature can't block.\\nWhenever enchanted creature deals damage, its controller loses that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visions of Brutality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

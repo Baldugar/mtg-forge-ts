@@ -1,0 +1,25 @@
+{
+  "id": "tolaria-west-corpus-m678",
+  "description": "M6 corpus — Tolaria West; ETB-on-bf.",
+  "seed": 62468,
+  "cards": {
+    "Tolaria West": "Name:Tolaria West\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nK:Transmute:1 U U\nAI:RemoveDeck:All\nOracle:Tolaria West enters tapped.\\n{T}: Add {U}.\\nTransmute {1}{U}{U} ({1}{U}{U}, Discard this card: Search your library for a card with mana value 0, reveal it, put it into your hand, then shuffle. Transmute only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tolaria West"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

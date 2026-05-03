@@ -1,0 +1,23 @@
+{
+  "id": "up-the-beanstalk-corpus-m678",
+  "description": "M6 corpus — Up the Beanstalk; in-hand parse.",
+  "seed": 63139,
+  "cards": {
+    "Up the Beanstalk": "Name:Up the Beanstalk\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters and whenever you cast a spell with mana value 5 or greater, draw a card.\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE5 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever you cast a spell with mana value 5 or greater, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:When Up the Beanstalk enters and whenever you cast a spell with mana value 5 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Up the Beanstalk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

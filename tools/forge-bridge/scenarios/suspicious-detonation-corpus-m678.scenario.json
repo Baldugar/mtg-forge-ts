@@ -1,0 +1,23 @@
+{
+  "id": "suspicious-detonation-corpus-m678",
+  "description": "M6 corpus — Suspicious Detonation; in-hand parse.",
+  "seed": 61444,
+  "cards": {
+    "Suspicious Detonation": "Name:Suspicious Detonation\nManaCost:4 R\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | CheckSVar$ X | Type$ Spell | Amount$ 3 | EffectZone$ All | Description$ This spell costs {3} less to cast if you've sacrificed an artifact this turn.\nSVar:X:PlayerCountPropertyYou$SacrificedThisTurn Artifact\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered. (This includes by the ward ability.)\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature.\nDeckHints:Ability$Sacrifice & Type$Map|Treasure|Food|Clue\nOracle:This spell costs {3} less to cast if you've sacrificed an artifact this turn.\\nThis spell can't be countered. (This includes by the ward ability.)\\nSuspicious Detonation deals 4 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suspicious Detonation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

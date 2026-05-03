@@ -1,0 +1,23 @@
+{
+  "id": "the-rack-corpus-m678",
+  "description": "M6 corpus — The Rack; in-hand parse.",
+  "seed": 62092,
+  "cards": {
+    "The Rack": "Name:The Rack\nManaCost:1\nTypes:Artifact\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | AILogic$ MostCardsInHand | SpellDescription$ As CARDNAME enters, choose an opponent.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.Chosen | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the chosen player's upkeep, CARDNAME deals X damage to that player, where X is 3 minus the number of cards in their hand.\nSVar:TrigDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ X\nSVar:X:Count$ValidHand Card.ChosenCtrl/NMinus.3\nOracle:As The Rack enters, choose an opponent.\\nAt the beginning of the chosen player's upkeep, The Rack deals X damage to that player, where X is 3 minus the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Rack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "temple-of-plenty-corpus-m678",
+  "description": "M6 corpus — Temple of Plenty; in-hand parse.",
+  "seed": 61838,
+  "cards": {
+    "Temple of Plenty": "Name:Temple of Plenty\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nOracle:Temple of Plenty enters tapped.\\nWhen Temple of Plenty enters, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\\n{T}: Add {G} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temple of Plenty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

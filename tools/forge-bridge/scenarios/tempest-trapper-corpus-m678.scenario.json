@@ -1,0 +1,25 @@
+{
+  "id": "tempest-trapper-corpus-m678",
+  "description": "M6 corpus — Tempest Trapper; ETB-on-bf.",
+  "seed": 61826,
+  "cards": {
+    "Tempest Trapper": "Name:Tempest Trapper\nManaCost:2 U\nTypes:Creature Otter Wizard\nPT:2/4\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | RestrictValid$ Spell.Instant,Spell.Sorcery | SpellDescription$ Add two mana in any combination of colors. Spend this mana only to cast instant or sorcery spells.\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | ActivatorThisTurnCast$ EQ3 | TriggerDescription$ Whenever you cast your third spell each turn, exile a random card from your library. Until end of turn, you may play that card without paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ You | ChangeType$ Card | ChangeNum$ 1 | Origin$ Library | Destination$ Exile | AtRandom$ True | Hidden$ True | NoLooking$ True | NoShuffle$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | MayPlayWithoutManaCost$ True | AffectedZone$ Exile | Description$ You may play remembered card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Add two mana in any combination of colors. Spend this mana only to cast instant or sorcery spells.\\nWhenever you cast your third spell each turn, exile a random card from your library. Until end of turn, you may play that card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Tempest Trapper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

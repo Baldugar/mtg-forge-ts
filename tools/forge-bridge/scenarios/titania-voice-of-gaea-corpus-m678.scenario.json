@@ -1,0 +1,23 @@
+{
+  "id": "titania-voice-of-gaea-corpus-m678",
+  "description": "M6 corpus — Titania, Voice of Gaea; in-hand parse.",
+  "seed": 62435,
+  "cards": {
+    "Titania, Voice of Gaea": "Name:Titania, Voice of Gaea\nManaCost:1 G G\nTypes:Legendary Creature Elemental\nPT:3/4\nK:Reach\nT:Mode$ ChangesZoneAll | ValidCards$ Land.YouOwn+!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever one or more land cards are put into your graveyard from anywhere, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ Phase | Phase$ Upkeep | CheckSVar$ X | SVarCompare$ GE4 | IsPresent$ Card.Self+YouCtrl+YouOwn | IsPresent2$ Land.YouCtrl+YouOwn+namedArgoth; Sanctum of Nature | ValidPlayer$ You | Execute$ Meld | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if there are four or more land cards in your graveyard and you both own and control CARDNAME and a land named Argoth, Sanctum of Nature, exile them, then meld them into Titania, Gaea Incarnate.\nSVar:Meld:DB$ Meld | Name$ Titania, Gaea Incarnate | Primary$ Titania, Voice of Gaea | Secondary$ Argoth, Sanctum of Nature | SecondaryType$ Land\nSVar:X:Count$ValidGraveyard Land.YouOwn\nDeckHas:Ability$Graveyard|Counters|LifeGain\nDeckHints:Ability$Discard|Mill|Graveyard|Dredge & Name$Argoth, Sanctum of Nature\nMeldPair:Argoth, Sanctum of Nature\nAlternateMode:Meld\nOracle:Reach\\nWhenever one or more land cards are put into your graveyard from anywhere, you gain 2 life.\\nAt the beginning of your upkeep, if there are four or more land cards in your graveyard and you both own and control Titania, Voice of Gaea and a land named Argoth, Sanctum of Nature, exile them, then meld them into Titania, Gaea Incarnate.\n\nALTERNATE\n\nName:Titania, Gaea Incarnate\nManaCost:no cost\nColors:green\nTypes:Legendary Creature Elemental Avatar\nPT:*/*\nK:Vigilance\nK:Reach\nK:Trample\nK:Haste\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When NICKNAME enters, return all land cards from your graveyard to the battlefield tapped.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Land.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nA:AB$ PutCounter | Cost$ 3 G | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | CounterType$ P1P1 | CounterNum$ 4 | SubAbility$ DBAnimate | SpellDescription$ Put 4 +1/+1 counters on target land you control. That land becomes a 0/0 Elemental creature with haste. It's still a land.\nSVar:DBAnimate:DB$ Animate | Defined$ ParentTarget | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Haste | Duration$ Permanent\nOracle:Vigilance, reach, trample, haste\\nTitania, Gaea Incarnate's power and toughness are each equal to the number of lands you control.\\nWhen Titania enters, return all land cards from your graveyard to the battlefield tapped.\\n{3}{G}: Put four +1/+1 counters on target land you control. It becomes a 0/0 Elemental creature with haste. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titania, Voice of Gaea"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

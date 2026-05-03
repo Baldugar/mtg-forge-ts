@@ -1,0 +1,23 @@
+{
+  "id": "ward-of-lights-corpus-m678",
+  "description": "M6 corpus — Ward of Lights; in-hand parse.",
+  "seed": 63867,
+  "cards": {
+    "Ward of Lights": "Name:Ward of Lights\nManaCost:W W\nTypes:Enchantment Aura\nK:MayFlashSac\nK:Enchant:Creature\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Protection:Card.ChosenColor:chosenColor:Card.CardUID_HostCardUID | Description$ Enchanted creature has protection from the chosen color. This effect doesn't remove CARDNAME.\nAI:RemoveDeck:All\nSVar:ChosenProtection:True\nOracle:You may cast Ward of Lights as though it had flash. If you cast it any time a sorcery couldn't have been cast, the controller of the permanent it becomes sacrifices it at the beginning of the next cleanup step.\\nEnchant creature\\nAs Ward of Lights enters, choose a color.\\nEnchanted creature has protection from the chosen color. This effect doesn't remove Ward of Lights.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ward of Lights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

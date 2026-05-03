@@ -1,0 +1,23 @@
+{
+  "id": "vampirism-corpus-m678",
+  "description": "M6 corpus — Vampirism; in-hand parse.",
+  "seed": 63267,
+  "cards": {
+    "Vampirism": "Name:Vampirism\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DelTrigSlowtrip | TriggerDescription$ When CARDNAME enters, draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each other creature you control.\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+!EnchantedBy | AddPower$ -1 | AddToughness$ -1 | Description$ Other creatures you control get -1/-1.\nSVar:X:Count$Valid Creature.YouCtrl+!EnchantedBy\nAI:RemoveDeck:All\nOracle:Enchant creature\\nWhen Vampirism enters, draw a card at the beginning of the next turn's upkeep.\\nEnchanted creature gets +1/+1 for each other creature you control.\\nOther creatures you control get -1/-1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampirism"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

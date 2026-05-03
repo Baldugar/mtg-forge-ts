@@ -1,0 +1,25 @@
+{
+  "id": "unbound-flourishing-corpus-m678",
+  "description": "M6 corpus — Unbound Flourishing; ETB-on-bf.",
+  "seed": 62972,
+  "cards": {
+    "Unbound Flourishing": "Name:Unbound Flourishing\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Permanent | ValidActivatingPlayer$ You | Execute$ TrigDouble | TriggerZones$ Battlefield | HasXManaCost$ True | TriggerDescription$ Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.\nSVar:TrigDouble:DB$ ChangeX | Defined$ TriggeredSpellAbility\nT:Mode$ SpellAbilityCast | ValidSA$ Instant,Sorcery,Activated | ValidActivatingPlayer$ You | Execute$ TrigCopySpell | HasXManaCost$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell or activate an ability, if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | AILogic$ Always\nOracle:Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.\\nWhenever you cast an instant or sorcery spell or activate an ability, if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Unbound Flourishing"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

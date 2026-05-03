@@ -1,0 +1,23 @@
+{
+  "id": "vermiculos-corpus-m678",
+  "description": "M6 corpus — Vermiculos; in-hand parse.",
+  "seed": 63406,
+  "cards": {
+    "Vermiculos": "Name:Vermiculos\nManaCost:4 B\nTypes:Creature Horror\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever an artifact enters, CARDNAME gets +4/+4 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +4 | NumDef$ +4\nSVar:BuffedBy:Artifact\nAI:RemoveDeck:Random\nOracle:Whenever an artifact enters, Vermiculos gets +4/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vermiculos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

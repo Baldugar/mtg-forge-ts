@@ -1,0 +1,23 @@
+{
+  "id": "vault-11-voter-s-dilemma-corpus-m678",
+  "description": "M6 corpus — Vault 11: Voter's Dilemma; in-hand parse.",
+  "seed": 63299,
+  "cards": {
+    "Vault 11: Voter's Dilemma": "Name:Vault 11: Voter's Dilemma\nManaCost:2 W B\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBVote,DBVote\nSVar:DBToken:DB$ Token | TokenAmount$ OneEach | TokenScript$ w_1_1_human_soldier\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:DBVote:DB$ Vote | Defined$ Player | Secretly$ True | VoteCard$ Creature | VoteMessage$ for a creature | UpTo$ True | VoteSubAbility$ DBDestroyAll | SpellDescription$ Each player secretly votes for up to one creature, then those votes are revealed. If no creature got votes, each player draws a card. Otherwise, destroy each creature with the most votes or tied for most votes.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.IsRemembered | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0\nSVar:X:Remembered$Amount\nDeckHas:Ability$Token & Type$Soldier\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — For each opponent, you create a 1/1 white Human Soldier creature token.\\nII, III — Each player secretly votes for up to one creature, then those votes are revealed. If no creature got votes, each player draws a card. Otherwise, destroy each creature with the most votes or tied for most votes.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vault 11: Voter's Dilemma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

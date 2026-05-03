@@ -1,0 +1,23 @@
+{
+  "id": "wailing-ghoul-corpus-m678",
+  "description": "M6 corpus — Wailing Ghoul; in-hand parse.",
+  "seed": 63727,
+  "cards": {
+    "Wailing Ghoul": "Name:Wailing Ghoul\nManaCost:1 B\nTypes:Creature Zombie\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nDeckHints:Ability$Delirium\nDeckHas:Ability$Graveyard\nOracle:When Wailing Ghoul enters, mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wailing Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

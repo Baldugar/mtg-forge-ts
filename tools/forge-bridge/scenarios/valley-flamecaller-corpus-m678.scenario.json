@@ -1,0 +1,25 @@
+{
+  "id": "valley-flamecaller-corpus-m678",
+  "description": "M6 corpus — Valley Flamecaller; ETB-on-bf.",
+  "seed": 63230,
+  "cards": {
+    "Valley Flamecaller": "Name:Valley Flamecaller\nManaCost:2 R\nTypes:Creature Lizard Warlock\nPT:3/3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Lizard.YouCtrl,Mouse.YouCtrl,Otter.YouCtrl,Raccoon.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus1 | Description$ If a Lizard, Mouse, Otter, or Raccoon you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.\nSVar:DmgPlus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nDeckHints:Type$Lizard|Mouse|Otter|Raccoon\nOracle:If a Lizard, Mouse, Otter, or Raccoon you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Valley Flamecaller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

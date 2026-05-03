@@ -1,0 +1,25 @@
+{
+  "id": "zevlor-elturel-exile-corpus-m678",
+  "description": "M6 corpus — Zevlor, Elturel Exile; ETB-on-bf.",
+  "seed": 64648,
+  "cards": {
+    "Zevlor, Elturel Exile": "Name:Zevlor, Elturel Exile\nManaCost:1 U B R\nTypes:Legendary Creature Tiefling Warrior\nPT:4/2\nK:Haste\nA:AB$ Effect | Cost$ 2 T | Triggers$ SpellCast | SpellDescription$ When you next cast an instant or sorcery spell that targets only a single opponent or a single permanent an opponent controls this turn, for each other opponent, choose that player or a permanent they control, copy that spell, and the copy targets the chosen player or permanent.\nSVar:SpellCast:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Opponent,Permanent.OppCtrl+inZoneBattlefield | Execute$ TrigCopy | OneOff$ True | TriggerZones$ Battlefield | TriggerDescription$ When you next cast an instant or sorcery spell that targets only a single opponent or a single permanent an opponent controls this turn, for each other opponent, choose that player or a permanent they control, copy that spell, and the copy targets the chosen player or permanent.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ You | DefinedTarget$ OppNonTriggeredSpellAbilityTargetsOrController\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:Haste\\n{2}, {T}: When you next cast an instant or sorcery spell that targets only a single opponent or a single permanent an opponent controls this turn, for each other opponent, choose that player or a permanent they control, copy that spell, and the copy targets the chosen player or permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zevlor, Elturel Exile"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

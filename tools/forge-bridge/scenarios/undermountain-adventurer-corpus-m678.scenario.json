@@ -1,0 +1,23 @@
+{
+  "id": "undermountain-adventurer-corpus-m678",
+  "description": "M6 corpus — Undermountain Adventurer; in-hand parse.",
+  "seed": 63024,
+  "cards": {
+    "Undermountain Adventurer": "Name:Undermountain Adventurer\nManaCost:3 G\nTypes:Creature Giant Warrior\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ Y | SpellDescription$ Add {G}{G}. If you've completed a dungeon, add six {G} instead.\nSVar:X:DungeonsCompleted$Amount\nSVar:Y:Count$Compare X GE1.6.2\nOracle:Vigilance\\nWhen Undermountain Adventurer enters, you take the initiative.\\n{T}: Add {G}{G}. If you've completed a dungeon, add six {G} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undermountain Adventurer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

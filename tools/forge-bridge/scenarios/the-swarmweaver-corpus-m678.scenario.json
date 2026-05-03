@@ -1,0 +1,23 @@
+{
+  "id": "the-swarmweaver-corpus-m678",
+  "description": "M6 corpus — The Swarmweaver; in-hand parse.",
+  "seed": 62112,
+  "cards": {
+    "The Swarmweaver": "Name:The Swarmweaver\nManaCost:2 B G\nTypes:Legendary Artifact Creature Scarecrow\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 black and green Insect creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ bg_1_1_insect_flying | TokenOwner$ You\nS:Mode$ Continuous | Condition$ Delirium | Affected$ Insect.YouCtrl,Spider.YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Deathtouch | Description$ Delirium — As long as there are four or more card types among cards in your graveyard, Insects and Spiders you control get +1/+1 and have deathtouch.\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:When The Swarmweaver enters, create two 1/1 black and green Insect creature tokens with flying.\\nDelirium — As long as there are four or more card types among cards in your graveyard, Insects and Spiders you control get +1/+1 and have deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Swarmweaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thundering-falls-corpus-m678",
+  "description": "M6 corpus — Thundering Falls; in-hand parse.",
+  "seed": 62323,
+  "cards": {
+    "Thundering Falls": "Name:Thundering Falls\nManaCost:no cost\nTypes:Land Island Mountain\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nDeckHints:Ability$Graveyard\nOracle:({T}: Add {U} or {R}.)\\nThundering Falls enters tapped.\\nWhen Thundering Falls enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Falls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

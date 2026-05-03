@@ -1,0 +1,23 @@
+{
+  "id": "the-immortal-sun-corpus-m678",
+  "description": "M6 corpus — The Immortal Sun; in-hand parse.",
+  "seed": 62053,
+  "cards": {
+    "The Immortal Sun": "Name:The Immortal Sun\nManaCost:6\nTypes:Legendary Artifact\nS:Mode$ CantBeActivated | Activator$ Player | ValidCard$ Planeswalker | ValidSA$ Activated.Loyalty | Description$ Players can't activate planeswalkers' loyalty abilities.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ ReduceCost | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Spells you cast cost {1} less to cast.\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Players can't activate planeswalkers' loyalty abilities.\\nAt the beginning of your draw step, draw an additional card.\\nSpells you cast cost {1} less to cast.\\nCreatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Immortal Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

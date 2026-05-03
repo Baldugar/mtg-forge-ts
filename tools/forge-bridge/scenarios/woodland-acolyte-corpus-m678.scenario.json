@@ -1,0 +1,23 @@
+{
+  "id": "woodland-acolyte-corpus-m678",
+  "description": "M6 corpus — Woodland Acolyte; in-hand parse.",
+  "seed": 64381,
+  "cards": {
+    "Woodland Acolyte": "Name:Woodland Acolyte\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ FreeCard | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:FreeCard:DB$ Draw | Defined$ You | NumCards$ 1\nAlternateMode:Adventure\nOracle:When Woodland Acolyte enters, draw a card.\n\nALTERNATE\n\nName:Mend the Wilds\nManaCost:G\nTypes:Instant Adventure\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select target permanent card from your graveyard | SpellDescription$ Put target permanent card from your graveyard on top of your library. (Then exile this card. You may cast the creature later from exile.)\nOracle:Put target permanent card from your graveyard on top of your library. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodland Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

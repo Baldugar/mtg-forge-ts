@@ -1,0 +1,23 @@
+{
+  "id": "tome-of-gadwick-corpus-m678",
+  "description": "M6 corpus — Tome of Gadwick; in-hand parse.",
+  "seed": 62488,
+  "cards": {
+    "Tome of Gadwick": "Name:Tome of Gadwick\nManaCost:U\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ Ward:1 | Description$ Equipped creature gets +1/+0 and has ward {1}.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigConjure | TriggerDescription$ Whenever equipped creature attacks, conjure a random card from CARDNAME's spellbook into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | AtRandom$ True | Spellbook$ Brainstorm,Consider,Obsessive Search,Opt,Peek,Piece It Together,Ponder,Preordain,Quicken,Serum Visions,Sleight of Hand,Thought Scour | Zone$ Hand\nK:Equip:1\nDeckHas:Type$Instant|Sorcery & Ability$Graveyard\nOracle:Equipped creature gets +1/+0 and has ward {1}.\\nWhenever equipped creature attacks, conjure a random card from Tome of Gadwick's spellbook into your hand.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tome of Gadwick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

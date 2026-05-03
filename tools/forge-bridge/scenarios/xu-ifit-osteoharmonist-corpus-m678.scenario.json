@@ -1,0 +1,25 @@
+{
+  "id": "xu-ifit-osteoharmonist-corpus-m678",
+  "description": "M6 corpus — Xu-Ifit, Osteoharmonist; ETB-on-bf.",
+  "seed": 64508,
+  "cards": {
+    "Xu-Ifit, Osteoharmonist": "Name:Xu-Ifit, Osteoharmonist\nManaCost:1 B B\nTypes:Legendary Creature Human Wizard\nPT:2/3\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SorcerySpeed$ True | StaticEffect$ Animate | SpellDescription$ Return target creature card from your graveyard to the battlefield. It's a Skeleton in addition to its other types and has no abilities. Activate only as a sorcery.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Skeleton | RemoveAllAbilities$ True\nOracle:{T}: Return target creature card from your graveyard to the battlefield. It's a Skeleton in addition to its other types and has no abilities. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Xu-Ifit, Osteoharmonist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

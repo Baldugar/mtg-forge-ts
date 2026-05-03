@@ -1,0 +1,23 @@
+{
+  "id": "zulaport-duelist-corpus-m678",
+  "description": "M6 corpus — Zulaport Duelist; in-hand parse.",
+  "seed": 64710,
+  "cards": {
+    "Zulaport Duelist": "Name:Zulaport Duelist\nManaCost:U\nTypes:Creature Human Rogue\nPT:1/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBPump | TriggerDescription$ When CARDNAME enters, up to one target creature gets -2/-0 until end of turn. Its controller mills two cards.\nSVar:DBPump:DB$ Pump | NumAtt$ -2 | IsCurse$ True | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ 2 | Defined$ TargetedController\nDeckHas:Ability$Mill\nOracle:Flash\\nWhen Zulaport Duelist enters, up to one target creature gets -2/-0 until end of turn. Its controller mills two cards. (They put the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zulaport Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

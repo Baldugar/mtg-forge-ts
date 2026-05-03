@@ -1,0 +1,23 @@
+{
+  "id": "the-rebellious-intelligence-corpus-m678",
+  "description": "M6 corpus — The Rebellious Intelligence; in-hand parse.",
+  "seed": 62094,
+  "cards": {
+    "The Rebellious Intelligence": "Name:The Rebellious Intelligence\nManaCost:5\nTypes:Legendary Artifact Creature Rebel\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigWish | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, put a random card from outside the game into your hand.\nSVar:TrigWish:DB$ ChangeZone | Origin$ Sideboard | Destination$ Hand | ChangeType$ Card.YouOwn | Hidden$ True | AtRandom$ True\nA:AB$ Mana | Cost$ T | Produced$ W U B R G | RestrictValid$ CantPayGenericCosts | SpellDescription$ Add {W}{U}{B}{R}{G}. This mana can't be spent to pay generic mana costs.\nOracle:At the beginning of your upkeep, put a random card from outside the game into your hand. (In Commander sealed, that's everything you didn't play with. In any other commander game, find a way to select a random Magic card.)\\n{T}: Add {W}{U}{B}{R}{G}. This mana can't be spent to pay generic mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Rebellious Intelligence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vile-deacon-corpus-m678",
+  "description": "M6 corpus — Vile Deacon; in-hand parse.",
+  "seed": 63496,
+  "cards": {
+    "Vile Deacon": "Name:Vile Deacon\nManaCost:2 B B\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+X until end of turn, where X is the number of Clerics on the battlefield.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Cleric\nOracle:Whenever Vile Deacon attacks, it gets +X/+X until end of turn, where X is the number of Clerics on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vile Deacon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

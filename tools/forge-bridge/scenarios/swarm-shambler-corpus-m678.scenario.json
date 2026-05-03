@@ -1,0 +1,23 @@
+{
+  "id": "swarm-shambler-corpus-m678",
+  "description": "M6 corpus — Swarm Shambler; in-hand parse.",
+  "seed": 61470,
+  "cards": {
+    "Swarm Shambler": "Name:Swarm Shambler\nManaCost:G\nTypes:Creature Fungus Beast\nPT:0/0\nK:etbCounter:P1P1:1\nT:Mode$ BecomesTarget | ValidTarget$ Creature.YouCtrl+counters_GE1_P1P1 | ValidSource$ Spell.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it becomes the target of a spell an opponent controls, create a 1/1 green Insect creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_insect | TokenOwner$ You\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nDeckHas:Ability$Counters|Token\nOracle:Swarm Shambler enters with a +1/+1 counter on it.\\nWhenever a creature you control with a +1/+1 counter on it becomes the target of a spell an opponent controls, create a 1/1 green Insect creature token.\\n{1}, {T}: Put a +1/+1 counter on Swarm Shambler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swarm Shambler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "uninvited-geist-corpus-m678",
+  "description": "M6 corpus — Uninvited Geist; in-hand parse.",
+  "seed": 63073,
+  "cards": {
+    "Uninvited Geist": "Name:Uninvited Geist\nManaCost:2 U\nTypes:Creature Spirit\nPT:2/2\nK:Skulk\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigTransform | CombatDamage$ True | TriggerDescription$ When CARDNAME deals combat damage to a player, transform it.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Skulk (This creature can't be blocked by creatures with greater power.)\\nWhen Uninvited Geist deals combat damage to a player, transform it.\n\nALTERNATE\n\nName:Unimpeded Trespasser\nManaCost:no cost\nColors:blue\nTypes:Creature Spirit\nPT:3/3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nOracle:Unimpeded Trespasser can't be blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uninvited Geist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

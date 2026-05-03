@@ -1,0 +1,23 @@
+{
+  "id": "their-number-is-legion-corpus-m678",
+  "description": "M6 corpus — Their Number Is Legion; in-hand parse.",
+  "seed": 62135,
+  "cards": {
+    "Their Number Is Legion": "Name:Their Number Is Legion\nManaCost:X B B B B\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ b_2_2_a_necron_warrior | TokenTapped$ True | SubAbility$ DBGainLife | SpellDescription$ Create X tapped 2/2 black Necron Warrior artifact creature tokens, then you gain life equal to the number of artifacts you control. Exile CARDNAME.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | StackDescription$ you gain life equal to the number of artifacts you control. | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ Exile CARDNAME.\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | Description$ You may cast CARDNAME from your graveyard.\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Artifact.YouCtrl\nDeckHas:Ability$Token|LifeGain|Graveyard & Type$Necron|Warrior\nDeckHints:Type$Artifact\nOracle:Create X tapped 2/2 black Necron Warrior artifact creature tokens, then you gain life equal to the number of artifacts you control. Exile Their Number Is Legion.\\nYou may cast Their Number Is Legion from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Their Number Is Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

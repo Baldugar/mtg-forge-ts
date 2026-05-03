@@ -1,0 +1,25 @@
+{
+  "id": "wickerwing-effigy-corpus-m678",
+  "description": "M6 corpus — Wickerwing Effigy; ETB-on-bf.",
+  "seed": 64137,
+  "cards": {
+    "Wickerwing Effigy": "Name:Wickerwing Effigy\nManaCost:3\nTypes:Artifact Creature Scarecrow\nPT:1/4\nK:Defender\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Creature.TopLibrary+YouCtrl | AffectedZone$ Library | MayPlay$ True | Description$ You may cast creature spells from the top of your library.\nT:Mode$ SpellCast | ValidCard$ Creature.wasCastFromYourLibrary | ValidActivatingPlayer$ You | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell from your library, it becomes a black Bird in addition to its other colors and types, has flying, and has base power and toughness 1/1.\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCardLKICopy | Colors$ Black | Types$ Bird | Keywords$ Flying | Power$ 1 | Toughness$ 1 | Duration$ Permanent\nOracle:Defender\\nYou may look at the top card of your library any time.\\nYou may cast creature spells from the top of your library.\\nWhenever you cast a creature spell from your library, it becomes a black Bird in addition to its other colors and types, has flying, and has base power and toughness 1/1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wickerwing Effigy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

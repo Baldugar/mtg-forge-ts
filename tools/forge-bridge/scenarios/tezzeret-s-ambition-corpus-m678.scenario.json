@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-s-ambition-corpus-m678",
+  "description": "M6 corpus — Tezzeret's Ambition; in-hand parse.",
+  "seed": 61951,
+  "cards": {
+    "Tezzeret's Ambition": "Name:Tezzeret's Ambition\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 3 | SpellDescription$ Draw three cards. If you control no artifacts, discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ EQ0 | Mode$ TgtChoose\nOracle:Draw three cards. If you control no artifacts, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret's Ambition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

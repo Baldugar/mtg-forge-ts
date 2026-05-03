@@ -1,0 +1,23 @@
+{
+  "id": "teach-by-example-corpus-m678",
+  "description": "M6 corpus — Teach by Example; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Teach by Example": "Name:Teach by Example\nManaCost:UR UR\nTypes:Instant\nA:SP$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:AIPriorityModifier:9\nOracle:When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teach by Example"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

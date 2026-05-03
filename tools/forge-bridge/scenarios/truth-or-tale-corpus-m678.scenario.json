@@ -1,0 +1,23 @@
+{
+  "id": "truth-or-tale-corpus-m678",
+  "description": "M6 corpus — Truth or Tale; in-hand parse.",
+  "seed": 62805,
+  "cards": {
+    "Truth or Tale": "Name:Truth or Tale\nManaCost:1 U\nTypes:Instant\nA:SP$ PeekAndReveal | PeekAmount$ 5 | NoPeek$ True | ImprintRevealed$ True | SubAbility$ DBTwoPile | SpellDescription$ Reveal the top five cards of your library and separate them into two piles. An opponent chooses one of those piles. Put a card from the chosen pile into your hand, then put all other cards revealed this way on the bottom of your library in any order.\nSVar:DBTwoPile:DB$ TwoPiles | Chooser$ Opponent | DefinedCards$ Imprinted | Separator$ You | ChosenPile$ DBHand | AILogic$ Worst\nSVar:DBHand:DB$ ChooseCard | Defined$ You | Choices$ Card.IsRemembered | ChoiceZone$ Library | Mandatory$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Library | Destination$ Hand | SubAbility$ DBMoveToBottom\nSVar:DBMoveToBottom:DB$ ChangeZoneAll | ChangeType$ Card.IsImprinted | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Reveal the top five cards of your library and separate them into two piles. An opponent chooses one of those piles. Put a card from the chosen pile into your hand, then put all other cards revealed this way on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Truth or Tale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

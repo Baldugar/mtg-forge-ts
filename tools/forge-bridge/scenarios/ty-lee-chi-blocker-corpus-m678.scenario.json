@@ -1,0 +1,23 @@
+{
+  "id": "ty-lee-chi-blocker-corpus-m678",
+  "description": "M6 corpus — Ty Lee, Chi Blocker; in-hand parse.",
+  "seed": 62906,
+  "cards": {
+    "Ty Lee, Chi Blocker": "Name:Ty Lee, Chi Blocker\nManaCost:2 U\nTypes:Legendary Creature Human Performer Ally\nPT:2/1\nK:Flash\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When NICKNAME enters, tap up to one target creature. It doesn't untap during its controller's untap step for as long as you control NICKNAME.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | ReplacementEffects$ DontUntap | Duration$ AsLongAsControl\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ That creature doesn't untap during its controller's untap step for as long as you control EFFECTSOURCE.\nSVar:PlayMain1:TRUE\nOracle:Flash\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Ty Lee enters, tap up to one target creature. It doesn't untap during its controller's untap step for as long as you control Ty Lee.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ty Lee, Chi Blocker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

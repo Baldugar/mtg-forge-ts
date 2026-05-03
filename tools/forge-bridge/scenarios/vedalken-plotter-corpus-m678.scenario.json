@@ -1,0 +1,23 @@
+{
+  "id": "vedalken-plotter-corpus-m678",
+  "description": "M6 corpus — Vedalken Plotter; in-hand parse.",
+  "seed": 63331,
+  "cards": {
+    "Vedalken Plotter": "Name:Vedalken Plotter\nManaCost:2 U\nTypes:Creature Vedalken Wizard\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTarget | TriggerDescription$ When CARDNAME enters, exchange control of target land you control and target land an opponent controls.\nSVar:TrigTarget:DB$ Pump | ValidTgts$ Land.YouCtrl | TgtPrompt$ Choose target land you control | SubAbility$ DBExchange | SpellDescription$ Exchange control of target land you control and target land an opponent controls.\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Land.OppCtrl | TgtPrompt$ Choose target land an opponent controls\nAI:RemoveDeck:All\nOracle:When Vedalken Plotter enters, exchange control of target land you control and target land an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vedalken Plotter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

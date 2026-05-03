@@ -1,0 +1,23 @@
+{
+  "id": "unlicensed-hearse-corpus-m678",
+  "description": "M6 corpus — Unlicensed Hearse; in-hand parse.",
+  "seed": 63083,
+  "cards": {
+    "Unlicensed Hearse": "Name:Unlicensed Hearse\nManaCost:2\nTypes:Artifact Vehicle\nPT:*/*\nA:AB$ ChangeZone | Cost$ T | TargetMin$ 0 | TargetMax$ 2 | TargetsWithSameController$ True | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to two target cards in a graveyard | ValidTgts$ Card | SpellDescription$ Exile up to two target cards from a single graveyard.\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards exiled with it.\nSVar:X:Count$ValidExile Card.ExiledWithSource\nK:Crew:2\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:{T}: Exile up to two target cards from a single graveyard.\\nUnlicensed Hearse's power and toughness are each equal to the number of cards exiled with it.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unlicensed Hearse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

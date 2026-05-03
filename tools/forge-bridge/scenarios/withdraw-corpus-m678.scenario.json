@@ -1,0 +1,23 @@
+{
+  "id": "withdraw-corpus-m678",
+  "description": "M6 corpus — Withdraw; in-hand parse.",
+  "seed": 64319,
+  "cards": {
+    "Withdraw": "Name:Withdraw\nManaCost:U U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBBounce | SpellDescription$ Return target creature to its owner's hand. Then return another target creature to its owner's hand unless its controller pays {1}.\nSVar:DBBounce:DB$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select another target creature | TargetUnique$ True | Origin$ Battlefield | Destination$ Hand | UnlessCost$ 1 | UnlessPayer$ TargetedController\nOracle:Return target creature to its owner's hand. Then return another target creature to its owner's hand unless its controller pays {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Withdraw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

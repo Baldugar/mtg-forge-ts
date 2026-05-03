@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-rebel-corpus-m678",
+  "description": "M6 corpus — Vengeful Rebel; in-hand parse.",
+  "seed": 63367,
+  "cards": {
+    "Vengeful Rebel": "Name:Vengeful Rebel\nManaCost:2 B\nTypes:Creature Aetherborn Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | Revolt$ True | TriggerDescription$ Revolt — When CARDNAME enters, if a permanent you controlled left the battlefield this turn, target creature an opponent controls gets -3/-3 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True\nOracle:Revolt — When Vengeful Rebel enters, if a permanent you controlled left the battlefield this turn, target creature an opponent controls gets -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Rebel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

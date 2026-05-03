@@ -1,0 +1,25 @@
+{
+  "id": "zhur-taa-druid-corpus-m678",
+  "description": "M6 corpus — Zhur-Taa Druid; ETB-on-bf.",
+  "seed": 64667,
+  "cards": {
+    "Zhur-Taa Druid": "Name:Zhur-Taa Druid\nManaCost:R G\nTypes:Creature Human Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nT:Mode$ TapsForMana | ValidCard$ Card.Self | Activator$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever you tap CARDNAME for mana, it deals 1 damage to each opponent.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ Player.Opponent\nOracle:{T}: Add {G}.\\nWhenever you tap Zhur-Taa Druid for mana, it deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Zhur-Taa Druid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

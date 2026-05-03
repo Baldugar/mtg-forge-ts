@@ -1,0 +1,23 @@
+{
+  "id": "wreck-remover-corpus-m678",
+  "description": "M6 corpus — Wreck Remover; in-hand parse.",
+  "seed": 64449,
+  "cards": {
+    "Wreck Remover": "Name:Wreck Remover\nManaCost:4\nTypes:Artifact Creature Construct\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever this creature enters or attacks, exile up to one target card from a graveyard. You gain 1 life.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever this creature enters or attacks, exile up to one target card from a graveyard. You gain 1 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target card in a graveyard to exile | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nK:Cycling:2\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature enters or attacks, exile up to one target card from a graveyard. You gain 1 life.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wreck Remover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

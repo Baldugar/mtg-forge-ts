@@ -1,0 +1,23 @@
+{
+  "id": "timid-drake-corpus-m678",
+  "description": "M6 corpus — Timid Drake; in-hand parse.",
+  "seed": 62418,
+  "cards": {
+    "Timid Drake": "Name:Timid Drake\nManaCost:2 U\nTypes:Creature Drake\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When another creature enters, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:AntiBuffedBy:Creature\nAI:RemoveDeck:All\nOracle:Flying\\nWhen another creature enters, return Timid Drake to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timid Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

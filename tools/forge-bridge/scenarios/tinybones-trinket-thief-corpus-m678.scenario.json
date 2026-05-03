@@ -1,0 +1,23 @@
+{
+  "id": "tinybones-trinket-thief-corpus-m678",
+  "description": "M6 corpus — Tinybones, Trinket Thief; in-hand parse.",
+  "seed": 62426,
+  "cards": {
+    "Tinybones, Trinket Thief": "Name:Tinybones, Trinket Thief\nManaCost:1 B\nTypes:Legendary Creature Skeleton Rogue\nPT:1/2\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, if an opponent discarded a card this turn, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:X:PlayerCountOpponents$CardsDiscardedThisTurn\nA:AB$ LoseLife | Cost$ 4 B B | Defined$ Player.Opponent+HasCardsInHand_Card_EQ0 | LifeAmount$ 10 | SpellDescription$ Each opponent with no cards in hand loses 10 life.\nDeckHints:Ability$Discard\nOracle:At the beginning of each end step, if an opponent discarded a card this turn, you draw a card and you lose 1 life.\\n{4}{B}{B}: Each opponent with no cards in hand loses 10 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinybones, Trinket Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

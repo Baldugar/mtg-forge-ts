@@ -1,0 +1,23 @@
+{
+  "id": "vial-smasher-the-fierce-corpus-m678",
+  "description": "M6 corpus — Vial Smasher the Fierce; in-hand parse.",
+  "seed": 63445,
+  "cards": {
+    "Vial Smasher the Fierce": "Name:Vial Smasher the Fierce\nManaCost:1 B R\nTypes:Legendary Creature Goblin Berserker\nPT:2/3\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | ValidCard$ Card | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first spell each turn, choose an opponent at random. CARDNAME deals damage equal to that spell's mana value to that player or a planeswalker that player controls.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | Random$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nK:Partner\nOracle:Whenever you cast your first spell each turn, choose an opponent at random. Vial Smasher the Fierce deals damage equal to that spell's mana value to that player or a planeswalker that player controls.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vial Smasher the Fierce"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

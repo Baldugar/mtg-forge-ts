@@ -1,0 +1,23 @@
+{
+  "id": "trial-corpus-m678",
+  "description": "M6 corpus — Trial; in-hand parse.",
+  "seed": 62721,
+  "cards": {
+    "Trial": "Name:Trial\nManaCost:W U\nTypes:Instant\nA:SP$ ChangeZoneAll | ValidTgts$ Creature | RememberTargets$ True | ChangeType$ Creature.blockingRemembered,Creature.isBlockedByRemembered | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBCleanup | UseAllOriginZones$ True | SpellDescription$ Return all creatures blocking or blocked by target creature to their owner's hand.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAlternateMode:Split\nOracle:Return all creatures blocking or blocked by target creature to their owner's hand.\n\nALTERNATE\n\nName:Error\nManaCost:U B\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target multicolored spell | ValidTgts$ Card.MultiColor | SpellDescription$ Counter target multicolored spell.\nOracle:Counter target multicolored spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

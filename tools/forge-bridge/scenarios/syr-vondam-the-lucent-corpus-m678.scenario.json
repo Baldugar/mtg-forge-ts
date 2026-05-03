@@ -1,0 +1,23 @@
+{
+  "id": "syr-vondam-the-lucent-corpus-m678",
+  "description": "M6 corpus — Syr Vondam, the Lucent; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Syr Vondam, the Lucent": "Name:Syr Vondam, the Lucent\nManaCost:2 W B B\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:Deathtouch\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever NICKNAME enters or attacks, other creatures you control get +1/+0 and gain deathtouch until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, other creatures you control get +1/+0 and gain deathtouch until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +1 | KW$ Deathtouch\nSVar:HasAttackEffect:TRUE\nOracle:Deathtouch, lifelink\\nWhenever Syr Vondam enters or attacks, other creatures you control get +1/+0 and gain deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Vondam, the Lucent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

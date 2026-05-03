@@ -1,0 +1,25 @@
+{
+  "id": "the-seedcore-corpus-m678",
+  "description": "M6 corpus — The Seedcore; ETB-on-bf.",
+  "seed": 62101,
+  "cards": {
+    "The Seedcore": "Name:The Seedcore\nManaCost:no cost\nTypes:Land Sphere\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Creature+Phyrexian | SpellDescription$ Add one mana of any color. Spend this mana only to cast Phyrexian creature spells.\nA:AB$ Pump | Cost$ T | PrecostDesc$ Corrupted — | CheckSVar$ X | SVarCompare$ GE3 | ValidTgts$ Creature.powerEQ1+toughnessEQ1 | TgtPrompt$ Select target 1/1 creature | NumAtt$ +2 | NumDef$ +1 | SpellDescription$ Target 1/1 creature gets +2/+1 until end of turn. Activate only if an opponent has three or more poison counters.\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckNeeds:Type$Phyrexian\nOracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast Phyrexian creature spells.\\nCorrupted — {T}: Target 1/1 creature gets +2/+1 until end of turn. Activate only if an opponent has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Seedcore"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-terrain-corpus-m678",
+  "description": "M6 corpus — Treacherous Terrain; in-hand parse.",
+  "seed": 62673,
+  "cards": {
+    "Treacherous Terrain": "Name:Treacherous Terrain\nManaCost:6 R G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DmgOpp | DamageMap$ True | SpellDescription$ CARDNAME deals damage to each opponent equal to the number of lands that player controls.\nSVar:DmgOpp:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Land.RememberedPlayerCtrl\nK:TypeCycling:Basic:2\nAI:RemoveDeck:All\nOracle:Treacherous Terrain deals damage to each opponent equal to the number of lands that player controls.\\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Terrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

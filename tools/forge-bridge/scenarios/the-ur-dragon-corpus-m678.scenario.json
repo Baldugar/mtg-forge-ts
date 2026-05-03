@@ -1,0 +1,25 @@
+{
+  "id": "the-ur-dragon-corpus-m678",
+  "description": "M6 corpus — The Ur-Dragon; ETB-on-bf.",
+  "seed": 62123,
+  "cards": {
+    "The Ur-Dragon": "Name:The Ur-Dragon\nManaCost:4 W U B R G\nTypes:Legendary Creature Dragon Avatar\nPT:10/10\nS:Mode$ ReduceCost | EffectZone$ Battlefield,Command | ValidCard$ Dragon.Other | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Eminence — As long as CARDNAME is in the command zone or on the battlefield, other Dragon spells you cast cost {1} less to cast.\nK:Flying\nT:Mode$ AttackersDeclared | ValidAttackers$ Dragon.YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Dragons you control attack, draw that many cards, then you may put a permanent card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent | ChangeNum$ 1\nSVar:X:TriggerObjectsAttackers$Amount\nOracle:Eminence — As long as The Ur-Dragon is in the command zone or on the battlefield, other Dragon spells you cast cost {1} less to cast.\\nFlying\\nWhenever one or more Dragons you control attack, draw that many cards, then you may put a permanent card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "The Ur-Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

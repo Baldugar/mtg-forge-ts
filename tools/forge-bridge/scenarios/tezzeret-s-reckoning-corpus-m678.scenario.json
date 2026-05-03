@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-s-reckoning-corpus-m678",
+  "description": "M6 corpus — Tezzeret's Reckoning; in-hand parse.",
+  "seed": 61953,
+  "cards": {
+    "Tezzeret's Reckoning": "Name:Tezzeret's Reckoning\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Card | ChangeNum$ 3 | Hidden$ True | AtRandom$ True | NoShuffle$ True | FaceDown$ True | Mandatory$ True | NoLooking$ True | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile three random cards from your library face down and look at them. For as long as they remain exiled, you may play one of those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | Triggers$ Play1,Play2 | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayLookAt$ You | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as they remain exiled, you may play one of those cards.\nSVar:Play1:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:Play2:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile three random cards from your library face down and look at them. For as long as they remain exiled, you may play one of those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret's Reckoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

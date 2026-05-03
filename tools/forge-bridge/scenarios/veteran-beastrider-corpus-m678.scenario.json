@@ -1,0 +1,23 @@
+{
+  "id": "veteran-beastrider-corpus-m678",
+  "description": "M6 corpus — Veteran Beastrider; in-hand parse.",
+  "seed": 63422,
+  "cards": {
+    "Veteran Beastrider": "Name:Veteran Beastrider\nManaCost:1 G W\nTypes:Creature Human Knight\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your end step, untap each creature you control.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nA:AB$ PumpAll | Cost$ 2 G W | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control get +1/+1 until end of turn.\nOracle:At the beginning of your end step, untap each creature you control.\\n{2}{G}{W}: Creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Beastrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

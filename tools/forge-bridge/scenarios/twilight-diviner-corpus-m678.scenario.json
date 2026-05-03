@@ -1,0 +1,23 @@
+{
+  "id": "twilight-diviner-corpus-m678",
+  "description": "M6 corpus — Twilight Diviner; in-hand parse.",
+  "seed": 62865,
+  "cards": {
+    "Twilight Diviner": "Name:Twilight Diviner\nManaCost:2 B\nTypes:Creature Elf Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the resto on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.Other+YouCtrl+wasCastFromGraveyard,Creature.Other+YouCtrl+ThisTurnEnteredFrom_Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigCopy | TriggerDescription$ Whenever one or more other creatures you control enter, if they entered or were cast from a graveyard, create a token that's a copy of one of them. This ability triggers only once each turn.\nSVar:TrigCopy:DB$ CopyPermanent | Choices$ Card.TriggeredCards | ChoiceTitle$ Choose one of those creatures to copy\nDeckHas:Ability$Surveil|Graveyard\nOracle:When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the resto on top of your library in any order.)\\nWhenever one or more other creatures you control enter, if they entered or were cast from a graveyard, create a token that's a copy of one of them. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twilight Diviner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

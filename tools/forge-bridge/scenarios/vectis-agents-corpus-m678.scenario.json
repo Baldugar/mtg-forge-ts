@@ -1,0 +1,25 @@
+{
+  "id": "vectis-agents-corpus-m678",
+  "description": "M6 corpus — Vectis Agents; ETB-on-bf.",
+  "seed": 63310,
+  "cards": {
+    "Vectis Agents": "Name:Vectis Agents\nManaCost:3 U B\nTypes:Artifact Creature Human Rogue\nPT:4/3\nA:AB$ Pump | Cost$ U B | NumAtt$ -2 | SubAbility$ DBUnblockable | SpellDescription$ CARDNAME gets -2/-0 until end of turn and can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:{U}{B}: Vectis Agents gets -2/-0 until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Vectis Agents"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

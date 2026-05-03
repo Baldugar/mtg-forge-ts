@@ -1,0 +1,23 @@
+{
+  "id": "taunt-from-the-rampart-corpus-m678",
+  "description": "M6 corpus — Taunt from the Rampart; in-hand parse.",
+  "seed": 61738,
+  "cards": {
+    "Taunt from the Rampart": "Name:Taunt from the Rampart\nManaCost:3 R W\nTypes:Sorcery\nA:SP$ Goad | Defined$ Valid Creature.OppCtrl | SubAbility$ DBEffect | SpellDescription$ Goad all creatures your opponents control. Until your next turn, those creatures can't block. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nSVar:DBEffect:DB$ Effect | RememberObjects$ Valid Creature.OppCtrl | StaticAbilities$ AllUnblockable | Duration$ UntilYourNextTurn\nSVar:AllUnblockable:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Card.IsRemembered | AddHiddenKeyword$ CARDNAME can't block. | Description$ Until your next turn, those creatures can't block.\nOracle:Goad all creatures your opponents control. Until your next turn, those creatures can't block. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taunt from the Rampart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

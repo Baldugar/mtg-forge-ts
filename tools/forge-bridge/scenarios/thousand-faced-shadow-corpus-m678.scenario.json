@@ -1,0 +1,23 @@
+{
+  "id": "thousand-faced-shadow-corpus-m678",
+  "description": "M6 corpus — Thousand-Faced Shadow; in-hand parse.",
+  "seed": 62237,
+  "cards": {
+    "Thousand-Faced Shadow": "Name:Thousand-Faced Shadow\nManaCost:U\nTypes:Creature Human Ninja\nPT:1/1\nK:Ninjutsu:2 U U\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self+attacking | Origin$ Hand | Destination$ Battlefield | Execute$ TrigCopy | TriggerDescription$ When CARDNAME enters from your hand, if it's attacking, create a token that's a copy of another target attacking creature. The token enters tapped and attacking.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Creature.Other+attacking | TgtPrompt$ Select another target attacking creature | TokenTapped$ True | TokenAttacking$ True\nDeckHas:Ability$Token\nOracle:Ninjutsu {2}{U}{U}\\nFlying\\nWhen Thousand-Faced Shadow enters from your hand, if it's attacking, create a token that's a copy of another target attacking creature. The token enters tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thousand-Faced Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

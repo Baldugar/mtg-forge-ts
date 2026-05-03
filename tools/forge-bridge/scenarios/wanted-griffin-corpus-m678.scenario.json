@@ -1,0 +1,23 @@
+{
+  "id": "wanted-griffin-corpus-m678",
+  "description": "M6 corpus — Wanted Griffin; in-hand parse.",
+  "seed": 63836,
+  "cards": {
+    "Wanted Griffin": "Name:Wanted Griffin\nManaCost:3 W\nTypes:Creature Griffin\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nDeckHas:Ability$Token & Type$Mercenary & Color$Red\nOracle:Flying\\nWhen Wanted Griffin dies, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wanted Griffin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

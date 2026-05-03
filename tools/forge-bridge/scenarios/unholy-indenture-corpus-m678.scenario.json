@@ -1,0 +1,23 @@
+{
+  "id": "unholy-indenture-corpus-m678",
+  "description": "M6 corpus — Unholy Indenture; in-hand parse.",
+  "seed": 63065,
+  "cards": {
+    "Unholy Indenture": "Name:Unholy Indenture\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under your control with a +1/+1 counter on it.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ P1P1 | Defined$ TriggeredNewCardLKICopy | GainControl$ True\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nWhen enchanted creature dies, return that card to the battlefield under your control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unholy Indenture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

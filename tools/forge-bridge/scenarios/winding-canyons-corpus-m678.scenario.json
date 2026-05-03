@@ -1,0 +1,25 @@
+{
+  "id": "winding-canyons-corpus-m678",
+  "description": "M6 corpus — Winding Canyons; ETB-on-bf.",
+  "seed": 64225,
+  "cards": {
+    "Winding Canyons": "Name:Winding Canyons\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Effect | Cost$ 2 T | StaticAbilities$ GiveFlash | SpellDescription$ Until end of turn, you may cast creature spells as though they had flash.\nSVar:GiveFlash:Mode$ CastWithFlash | ValidCard$ Creature | ValidSA$ Spell | Caster$ You | AffectedZone$ Exile,Graveyard,Hand,Library,Command | Description$ Until end of turn, you may cast creature spells as though they had flash.\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{2}, {T}: You may cast creature spells this turn as though they had flash.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Winding Canyons"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "wylie-duke-atiin-hero-corpus-m678",
+  "description": "M6 corpus — Wylie Duke, Atiin Hero; ETB-on-bf.",
+  "seed": 64486,
+  "cards": {
+    "Wylie Duke, Atiin Hero": "Name:Wylie Duke, Atiin Hero\nManaCost:1 G W\nTypes:Legendary Creature Human Ranger\nPT:4/2\nK:Vigilance\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME becomes tapped, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$LifeGain\nOracle:Vigilance\\nWhenever Wylie Duke, Atiin Hero becomes tapped, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Wylie Duke, Atiin Hero"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "waking-the-trolls-corpus-m678",
+  "description": "M6 corpus — Waking the Trolls; in-hand parse.",
+  "seed": 63742,
+  "cards": {
+    "Waking the Trolls": "Name:Waking the Trolls\nManaCost:4 R G\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBChangeZone,DBPump\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Land | SpellDescription$ Destroy target land.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Land | TgtPrompt$ Choose target land card. | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | SpellDescription$ Put target land card from a graveyard onto the battlefield under your control.\nSVar:DBPump:DB$ Pump | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBToken | SpellDescription$ Choose target player. If they control fewer lands than you, create a number of 4/4 green Troll Warrior creature tokens with trample equal to the difference.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ g_4_4_troll_warrior_trample | TokenOwner$ You\nSVar:X:Count$Valid Land.YouCtrl/Minus.Y\nSVar:Y:Count$Valid Land.TargetedPlayerCtrl\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Destroy target land.\\nII — Put target land card from a graveyard onto the battlefield under your control.\\nIII — Choose target opponent. If they control fewer lands than you, create a number of 4/4 green Troll Warrior creature tokens with trample equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waking the Trolls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

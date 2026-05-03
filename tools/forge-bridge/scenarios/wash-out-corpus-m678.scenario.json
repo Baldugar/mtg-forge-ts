@@ -1,0 +1,23 @@
+{
+  "id": "wash-out-corpus-m678",
+  "description": "M6 corpus — Wash Out; in-hand parse.",
+  "seed": 63933,
+  "cards": {
+    "Wash Out": "Name:Wash Out\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChooseColor | Defined$ You | AILogic$ MostProminentHumanCreatures | SubAbility$ DBWash | AILogic$ MostExcessOpponentControls | SpellDescription$ Return all permanents of the color of your choice to their owners' hands.\nSVar:DBWash:DB$ ChangeZoneAll | ChangeType$ Permanent.ChosenColor | Origin$ Battlefield | Destination$ Hand\nOracle:Return all permanents of the color of your choice to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wash Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
