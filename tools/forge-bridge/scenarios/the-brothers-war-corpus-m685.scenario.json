@@ -1,0 +1,23 @@
+{
+  "id": "the-brothers-war-corpus-m685",
+  "description": "M6 corpus — The Brothers' War; in-hand parse.",
+  "seed": 62106,
+  "cards": {
+    "The Brothers' War": "Name:The Brothers' War\nManaCost:3 R\nTypes:Enchantment Saga\nK:Chapter:3:DBPowerStone,DBEffect,DBDamage\nSVar:DBPowerStone:DB$ Token | TokenAmount$ 2 | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You | SpellDescription$ Create two tapped Powerstone tokens.\nSVar:DBEffect:DB$ Effect | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Player | RememberObjects$ Targeted | Duration$ UntilYourNextTurn | StaticAbilities$ MustAttack | SpellDescription$ Choose two target players. Until your next turn, each creature they control attacks the other chosen player each combat if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.RememberedPlayerCtrl+ActivePlayerCtrl | MustAttack$ Remembered.NonActive | Description$ Until your next turn, each creature the chosen player control attacks the other chosen player each combat if able.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select two different targets | NumDmg$ X | TargetMin$ 2 | TargetMax$ 2 | TargetUnique$ True | SpellDescription$ CARDNAME deals X damage to any target and X damage to any other target, where X is the number of artifacts you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nDeckHints:Type$Artifact\nDeckHas:Ability$Token & Type$Artifact\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create two tapped Powerstone tokens.\\nII — Choose two target players. Until your next turn, each creature they control attacks the other chosen player each combat if able.\\nIII — The Brothers' War deals X damage to any target and X damage to any other target, where X is the number of artifacts you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Brothers' War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

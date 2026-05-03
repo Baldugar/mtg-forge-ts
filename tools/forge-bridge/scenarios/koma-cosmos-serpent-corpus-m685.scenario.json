@@ -1,0 +1,23 @@
+{
+  "id": "koma-cosmos-serpent-corpus-m685",
+  "description": "M6 corpus — Koma, Cosmos Serpent; in-hand parse.",
+  "seed": 61780,
+  "cards": {
+    "Koma, Cosmos Serpent": "Name:Koma, Cosmos Serpent\nManaCost:3 G G U U\nTypes:Legendary Creature Serpent\nPT:6/6\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each upkeep, create a 3/3 blue Serpent creature token named Koma's Coil.\nSVar:TrigToken:DB$ Token | TokenScript$ komas_coil | TokenOwner$ You\nA:AB$ Charm | Cost$ Sac<1/Serpent.Other/another Serpent> | Choices$ DBTap,DBPump\nSVar:DBTap:DB$ Tap | ValidTgts$ Permanent | SubAbility$ DBConstrict | StackDescription$ Tap {c:Targeted}. Its activated abilities can't be activated this turn. | SpellDescription$ Tap target permanent. Its activated abilities can't be activated this turn.\nSVar:DBConstrict:DB$ Effect | RememberObjects$ ParentTarget | StaticAbilities$ DBCantBeActivated | ForgetOnMoved$ Battlefield\nSVar:DBCantBeActivated:Mode$ CantBeActivated | ValidCard$ Card.IsRemembered | Description$ Remembered activated abilities can't be activated.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Indestructible | SpellDescription$ CARDNAME gains indestructible until end of turn.\nDeckHas:Ability$Token|Sacrifice\nOracle:This spell can't be countered.\\nAt the beginning of each upkeep, create a 3/3 blue Serpent creature token named Koma's Coil.\\nSacrifice another Serpent: Choose one —\\n• Tap target permanent. Its activated abilities can't be activated this turn.\\n• Koma, Cosmos Serpent gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koma, Cosmos Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

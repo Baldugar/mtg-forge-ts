@@ -1,0 +1,23 @@
+{
+  "id": "mastermind-plum-corpus-m685",
+  "description": "M6 corpus — Mastermind Plum; in-hand parse.",
+  "seed": 61821,
+  "cards": {
+    "Mastermind Plum": "Name:Mastermind Plum\nManaCost:2 B\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile up to one target card from a graveyard. If an artifact card was exiled this way, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | Destination$ Exile | ValidTgts$ Card | TgtPrompt$ Select up to one target card in a graveyard | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | ConditionDefined$ Remembered | ConditionPresent$ Artifact | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ValidSA$ Spell.ManaFromTreasure | Execute$ TrigDraw | TriggerDescription$ Whenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Token\nDeckHints:Type$Artifact|Treasure & Ability$Graveyard\nOracle:Whenever Mastermind Plum attacks, exile up to one target card from a graveyard. If an artifact card was exiled this way, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nWhenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mastermind Plum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-prosperous-thief-corpus-m685",
+  "description": "M6 corpus — A-Prosperous Thief; in-hand parse.",
+  "seed": 61988,
+  "cards": {
+    "A-Prosperous Thief": "Name:A-Prosperous Thief\nManaCost:2 U\nTypes:Creature Human Ninja\nPT:2/4\nK:Ninjutsu:1 U\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.Ninja+YouCtrl,Creature.Rogue+YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever one or more Ninja or Rogue creatures you control deal combat damage to a player, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHints:Type$Ninja|Rogue\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Treasure\nOracle:Ninjutsu {1}{U}\\nWhenever one or more Ninja or Rogue creatures you control deal combat damage to a player, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Prosperous Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "citystalker-connoisseur-corpus-m685",
+  "description": "M6 corpus — Citystalker Connoisseur; in-hand parse.",
+  "seed": 61539,
+  "cards": {
+    "Citystalker Connoisseur": "Name:Citystalker Connoisseur\nManaCost:3 B\nTypes:Creature Vampire\nPT:3/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target opponent discards a nonland card with the greatest mana value among cards in their hand. Create a Blood token.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 1 | DiscardValid$ Card.nonLand+cmcEQX | Mode$ TgtChoose | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nSVar:X:Count$ValidHand Card.TargetedPlayerOwn$GreatestCardManaCost\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Blood\nOracle:Deathtouch\\nWhen Citystalker Connoisseur enters, target opponent discards a nonland card with the greatest mana value among cards in their hand. Create a Blood token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Citystalker Connoisseur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

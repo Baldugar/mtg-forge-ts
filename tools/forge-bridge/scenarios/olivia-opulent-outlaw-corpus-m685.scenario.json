@@ -1,0 +1,23 @@
+{
+  "id": "olivia-opulent-outlaw-corpus-m685",
+  "description": "M6 corpus — Olivia, Opulent Outlaw; in-hand parse.",
+  "seed": 61882,
+  "cards": {
+    "Olivia, Opulent Outlaw": "Name:Olivia, Opulent Outlaw\nManaCost:1 R W B\nTypes:Legendary Creature Vampire Assassin\nPT:3/3\nK:Flying\nK:Lifelink\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Outlaw+YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Whenever one or more outlaws you control deal combat damage to a player, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ PutCounterAll | Cost$ 3 Sac<2/Treasure> | ValidCards$ Creature.YouCtrl | ValidCardsDesc$ creature you control | CounterType$ P1P1 | CounterNum$ 2 | SorcerySpeed$ True | SpellDescription$ Put two +1/+1 counters on each creature you control. Activate only as a sorcery.\nDeckHas:Ability$LifeGain|Token|Sacrifice|Counters & Type$Treasure|Artifact\nDeckHints:Type$Assassin|Mercenary|Pirate|Rogue|Warlock\nOracle:Flying, lifelink\\nWhenever one or more outlaws you control deal combat damage to a player, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\\n{3}, Sacrifice two Treasures: Put two +1/+1 counters on each creature you control. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Olivia, Opulent Outlaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

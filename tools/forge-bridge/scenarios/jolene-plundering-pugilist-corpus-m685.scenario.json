@@ -1,0 +1,23 @@
+{
+  "id": "jolene-plundering-pugilist-corpus-m685",
+  "description": "M6 corpus — Jolene, Plundering Pugilist; in-hand parse.",
+  "seed": 61755,
+  "cards": {
+    "Jolene, Plundering Pugilist": "Name:Jolene, Plundering Pugilist\nManaCost:1 R G\nTypes:Legendary Creature Human Mercenary\nPT:4/2\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl+powerGE4 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you attack with one or more creatures with power 4 or greater, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ DealDamage | Cost$ 1 R Sac<1/Treasure> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nDeckHints:Type$Artifact|Treasure\nDeckHas:Ability$Token|Sacrifice\nOracle:Whenever you attack with one or more creatures with power 4 or greater, create a Treasure token.\\n{1}{R}, Sacrifice a Treasure: Jolene, Plundering Pugilist deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jolene, Plundering Pugilist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

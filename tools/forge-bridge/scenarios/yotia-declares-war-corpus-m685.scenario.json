@@ -1,0 +1,23 @@
+{
+  "id": "yotia-declares-war-corpus-m685",
+  "description": "M6 corpus — Yotia Declares War; in-hand parse.",
+  "seed": 62213,
+  "cards": {
+    "Yotia Declares War": "Name:Yotia Declares War\nManaCost:1 R\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:DBToken,TrigTap,DBAnimate\nSVar:DBToken:DB$ Token | TokenScript$ ornithopter | SpellDescription$ Create a 0/2 colorless Thopter artifact creature token with flying named Ornithopter.\nSVar:TrigTap:AB$ ImmediateTrigger | Cost$ Mandatory tapXType<X/Artifact> | Execute$ DBDamage | SpellDescription$ Tap any number of untapped artifacts you control. When you do, CARDNAME deals that much damage to target creature or planeswalker.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | NumDmg$ X\nSVar:X:Count$xPaid\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Artifact.YouCtrl | Power$ 4 | Toughness$ 4 | Types$ Artifact,Creature | SpellDescription$ Up to one target artifact you control becomes an artifact creature with base power and toughness 4/4 until end of turn.\nDeckHas:Ability$Token & Type$Artifact\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI — Create a 0/2 colorless Thopter artifact creature token with flying named Ornithopter.\\nII — Tap any number of untapped artifacts you control. When you do, Yotia Declares War deals that much damage to target creature or planeswalker.\\nIII — Up to one target artifact you control becomes an artifact creature with base power and toughness 4/4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yotia Declares War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

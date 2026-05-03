@@ -1,0 +1,23 @@
+{
+  "id": "flock-of-rabid-sheep-corpus-m685",
+  "description": "M6 corpus — Flock of Rabid Sheep; in-hand parse.",
+  "seed": 61637,
+  "cards": {
+    "Flock of Rabid Sheep": "Name:Flock of Rabid Sheep\nManaCost:X G G\nTypes:Sorcery\nA:SP$ Repeat | MaxRepeat$ X | RepeatSubAbility$ DBFlip | AILogic$ MaxX | StackDescription$ SpellDescription | SpellDescription$ Flip X coins. For each flip you win, create a 2/2 green Sheep creature token named Rabid Sheep.\nSVar:DBFlip:DB$ FlipACoin | WinSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ rabid_sheep | TokenOwner$ You\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Sheep\nOracle:Flip X coins. For each flip you win, create a 2/2 green Sheep creature token named Rabid Sheep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flock of Rabid Sheep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "smuggler-s-share-corpus-m685",
+  "description": "M6 corpus — Smuggler's Share; in-hand parse.",
+  "seed": 62042,
+  "cards": {
+    "Smuggler's Share": "Name:Smuggler's Share\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, draw a card for each opponent who drew two or more cards this turn, then create a Treasure token for each opponent who had two or more lands enter the battlefield under their control this turn.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_treasure_sac\nSVar:X:PlayerCountOpponents$ConditionGE2 CardsDrawn\nSVar:Y:PlayerCountOpponents$ConditionGE2 ThisTurnEntered_Battlefield_Land.YouCtrl\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice\nOracle:At the beginning of each end step, draw a card for each opponent who drew two or more cards this turn, then create a Treasure token for each opponent who had two or more lands enter the battlefield under their control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smuggler's Share"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

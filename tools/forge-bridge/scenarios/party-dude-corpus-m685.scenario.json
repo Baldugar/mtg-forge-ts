@@ -1,0 +1,23 @@
+{
+  "id": "party-dude-corpus-m685",
+  "description": "M6 corpus — Party Dude; in-hand parse.",
+  "seed": 61894,
+  "cards": {
+    "Party Dude": "Name:Party Dude\nManaCost:G\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Class enters, each player creates a Food token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ Player\nK:Class:2:1 G:AddTrigger$ TriggerChangesZone\nSVar:TriggerChangesZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever an artifact an opponent controls is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Class:3:4 G:AddTrigger$ TriggerAttack\nSVar:TriggerAttack:Mode$ AttackersDeclared | ValidAttackers$ Creature | AttackedTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever one or more of your opponents are attacked, up to one target attacking creature gets +X/+X until end of turn, where X is the number of cards in your hand.\nSVar:TrigPump:DB$ Pump | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.attacking | TgtPrompt$ Select up to one target attacking creature | KW$ Trample | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen this Class enters, each player creates a Food token.\\n{1}{G}: Level 2\\nWhenever an artifact an opponent controls is put into a graveyard from the battlefield, draw a card.\\n{4}{G}: Level 3\\nWhenever one or more of your opponents are attacked, up to one target attacking creature gets +X/+X until end of turn, where X is the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Party Dude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

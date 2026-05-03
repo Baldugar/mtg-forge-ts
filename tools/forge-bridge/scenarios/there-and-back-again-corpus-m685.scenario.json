@@ -1,0 +1,23 @@
+{
+  "id": "there-and-back-again-corpus-m685",
+  "description": "M6 corpus — There and Back Again; in-hand parse.",
+  "seed": 62133,
+  "cards": {
+    "There and Back Again": "Name:There and Back Again\nManaCost:3 R R\nTypes:Enchantment Saga\nK:Chapter:3:DBCantBlock,DBSearch,DBToken\nSVar:DBCantBlock:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | KW$ HIDDEN CARDNAME can't block. | SubAbility$ TrigTempt | IsCurse$ True | Duration$ AsLongAsControl | SpellDescription$ Up to one target creature can't block for as long as you control CARDNAME. The Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain | SpellDescription$ Search your library for a Mountain card, put it onto the battlefield, then shuffle.\nSVar:DBToken:DB$ Token | TokenScript$ smaug | SpellDescription$ Create Smaug, a legendary 6/6 red Dragon creature token with flying, haste, and \"When this creature dies, create fourteen Treasure tokens.\"\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Up to one target creature can't block for as long as you control There and Back Again. The Ring tempts you.\\nII — Search your library for a Mountain card, put it onto the battlefield, then shuffle.\\nIII — Create Smaug, a legendary 6/6 red Dragon creature token with flying, haste, and \"When this creature dies, create fourteen Treasure tokens.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "There and Back Again"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

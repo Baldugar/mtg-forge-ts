@@ -1,0 +1,23 @@
+{
+  "id": "elanor-gardner-corpus-m685",
+  "description": "M6 corpus — Elanor Gardner; in-hand parse.",
+  "seed": 61596,
+  "cards": {
+    "Elanor Gardner": "Name:Elanor Gardner\nManaCost:3 G\nTypes:Legendary Creature Halfling Scout\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | CheckSVar$ FoodCheck | OptionalDecider$ You | Execute$ TrigSearch | TriggerDescription$ At the beginning of your end step, if you sacrificed a Food this turn, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ChangeNum$ 1\nSVar:FoodCheck:PlayerCountPropertyYou$SacrificedThisTurn Food\nDeckHas:Ability$LifeGain|Token|Food\nDeckHints:Ability$Food\nOracle:When Elanor Gardner enters, create a Food token.\\nAt the beginning of your end step, if you sacrificed a Food this turn, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elanor Gardner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

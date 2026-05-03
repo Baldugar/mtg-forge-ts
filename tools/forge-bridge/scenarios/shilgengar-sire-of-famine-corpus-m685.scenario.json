@@ -1,0 +1,23 @@
+{
+  "id": "shilgengar-sire-of-famine-corpus-m685",
+  "description": "M6 corpus — Shilgengar, Sire of Famine; in-hand parse.",
+  "seed": 62027,
+  "cards": {
+    "Shilgengar, Sire of Famine": "Name:Shilgengar, Sire of Famine\nManaCost:3 B B\nTypes:Legendary Creature Elder Demon\nPT:6/6\nK:Flying\nA:AB$ Token | Cost$ Sac<1/Creature.Other/another creature> | TokenScript$ c_a_blood_draw | TokenAmount$ X | SpellDescription$ Create a Blood token. If you sacrificed an Angel this way, create a number of Blood tokens equal to its toughness instead.\nSVar:X:Count$Compare AngelSac EQ1.SacT.1\nSVar:SacT:Sacrificed$CardToughness\nSVar:AngelSac:Sacrificed$Valid Card.Angel\nA:AB$ ChangeZoneAll | Cost$ WB WB WB Sac<6/Blood.token/Blood token> | WithCountersType$ FINALITY | StaticEffect$ Animate | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return each creature card from your graveyard to the battlefield with a finality counter on it. Those creatures are Vampires in addition to their other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Vampire\nDeckHas:Ability$Sacrifice|Graveyard|Token & Type$Blood|Vampire\nDeckHints:Ability$Mill & Type$Angel\nOracle:Flying\\nSacrifice another creature: Create a Blood token. If you sacrificed an Angel this way, create a number of Blood tokens equal to its toughness instead.\\n{W/B}{W/B}{W/B}, Sacrifice six Blood tokens: Return each creature card from your graveyard to the battlefield with a finality counter on it. Those creatures are Vampires in addition to their other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shilgengar, Sire of Famine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

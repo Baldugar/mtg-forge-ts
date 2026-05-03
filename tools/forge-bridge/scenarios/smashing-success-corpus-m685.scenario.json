@@ -1,0 +1,23 @@
+{
+  "id": "smashing-success-corpus-m685",
+  "description": "M6 corpus — Smashing Success; in-hand parse.",
+  "seed": 62040,
+  "cards": {
+    "Smashing Success": "Name:Smashing Success\nManaCost:3 R\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact,Land | SubAbility$ DBToken | RememberDestroyed$ True | TgtPrompt$ Select target artifact or land | SpellDescription$ Destroy target artifact or land. If an artifact is destroyed this way, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Artifact | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:Destroy target artifact or land. If an artifact is destroyed this way, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smashing Success"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

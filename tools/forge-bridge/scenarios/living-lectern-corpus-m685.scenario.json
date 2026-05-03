@@ -1,0 +1,23 @@
+{
+  "id": "living-lectern-corpus-m685",
+  "description": "M6 corpus — Living Lectern; in-hand parse.",
+  "seed": 61792,
+  "cards": {
+    "Living Lectern": "Name:Living Lectern\nManaCost:1 U\nTypes:Artifact Creature Construct\nPT:0/4\nA:AB$ Draw | SorcerySpeed$ True | Cost$ 1 Sac<1/CARDNAME> | SubAbility$ DBToken | SpellDescription$ Draw a card. Create a Sorcerer Role token attached to up to one other target creature you control. Activate only as a sorcery. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\nSVar:DBToken:DB$ Token | TokenScript$ role_sorcerer | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl+Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target creature you control\nDeckHas:Ability$Token|Sacrifice & Type$Aura|Enchantment|Role\nOracle:{1}, Sacrifice Living Lectern: Draw a card. Create a Sorcerer Role token attached to up to one other target creature you control. Activate only as a sorcery. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living Lectern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

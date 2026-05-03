@@ -1,0 +1,23 @@
+{
+  "id": "corsair-captain-corpus-m685",
+  "description": "M6 corpus — Corsair Captain; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Corsair Captain": "Name:Corsair Captain\nManaCost:2 U\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Pirate.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1 | Description$ Other Pirates you control get +1/+1.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Pirate\nDeckHas:Ability$Token\nOracle:When Corsair Captain enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nOther Pirates you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corsair Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

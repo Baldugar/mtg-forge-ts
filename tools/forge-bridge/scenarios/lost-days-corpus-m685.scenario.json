@@ -1,0 +1,23 @@
+{
+  "id": "lost-days-corpus-m685",
+  "description": "M6 corpus — Lost Days; in-hand parse.",
+  "seed": 61798,
+  "cards": {
+    "Lost Days": "Name:Lost Days\nManaCost:4 U\nTypes:Instant Lesson\nA:SP$ ChangeZone | ValidTgts$ Creature,Enchantment | TgtPrompt$ Select target creature or enchantment | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 1 | DestinationAlternative$ Library | LibraryPositionAlternative$ -1 | SubAbility$ DBToken | SpellDescription$ The owner of target creature or enchantment puts it into their library second from the top or on the bottom. You create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nOracle:The owner of target creature or enchantment puts it into their library second from the top or on the bottom. You create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost Days"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "powerstone-engineer-corpus-m685",
+  "description": "M6 corpus — Powerstone Engineer; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Powerstone Engineer": "Name:Powerstone Engineer\nManaCost:1 W\nTypes:Creature Human Artificer\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nSVar:SacMe:2\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Powerstone Engineer dies, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Powerstone Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sierra-nuka-s-biggest-fan-corpus-m685",
+  "description": "M6 corpus — Sierra, Nuka's Biggest Fan; in-hand parse.",
+  "seed": 62032,
+  "cards": {
+    "Sierra, Nuka's Biggest Fan": "Name:Sierra, Nuka's Biggest Fan\nManaCost:3 W\nTypes:Legendary Creature Human Citizen\nPT:3/4\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ The Nuka-Cola Challenge — Whenever one or more creatures you control deal combat damage to a player, put a quest counter on CARDNAME and create a Food token.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Food | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you sacrifice a Food, target creature you control gets +X/+X until end of turn, where X is the number of quest counters on NICKNAME.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardCounters.QUEST\nDeckHas:Ability$Token|Counters & Type$Food\nDeckHints:Type$Food\nOracle:The Nuka-Cola Challenge — Whenever one or more creatures you control deal combat damage to a player, put a quest counter on Sierra, Nuka's Biggest Fan and create a Food token.\\nWhenever you sacrifice a Food, target creature you control gets +X/+X until end of turn, where X is the number of quest counters on Sierra.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sierra, Nuka's Biggest Fan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

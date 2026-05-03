@@ -1,0 +1,23 @@
+{
+  "id": "courier-of-comestibles-corpus-m685",
+  "description": "M6 corpus — Courier of Comestibles; in-hand parse.",
+  "seed": 61551,
+  "cards": {
+    "Courier of Comestibles": "Name:Courier of Comestibles\nManaCost:1 G\nTypes:Creature Human Citizen\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigChange:DB$ ChangeZone | Optional$ True | Origin$ Library | Destination$ Hand | ChangeType$ Food | ShuffleNonMandatory$ True | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Courier of Comestibles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

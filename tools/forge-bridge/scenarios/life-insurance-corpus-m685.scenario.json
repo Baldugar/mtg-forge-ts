@@ -1,0 +1,23 @@
+{
+  "id": "life-insurance-corpus-m685",
+  "description": "M6 corpus — Life Insurance; in-hand parse.",
+  "seed": 61788,
+  "cards": {
+    "Life Insurance": "Name:Life Insurance\nManaCost:3 W B\nTypes:Enchantment\nK:Extort\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a nontoken creature dies, you lose 1 life and create a Treasure token.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$LifeGain|Token|Sacrifice\nOracle:Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.)\\nWhenever a nontoken creature dies, you lose 1 life and create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life Insurance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

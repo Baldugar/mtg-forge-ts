@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-repossession-corpus-m685",
+  "description": "M6 corpus — Spiteful Repossession; in-hand parse.",
+  "seed": 62058,
+  "cards": {
+    "Spiteful Repossession": "Name:Spiteful Repossession\nManaCost:4 R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBDamage | DamageMap$ True | SubAbility$ DBTreasure | SpellDescription$ CARDNAME deals damage to each opponent who controls more lands than you equal to the difference.\nSVar:DBDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ Y | ConditionCheckSVar$ Y\nSVar:DBTreasure:DB$ Token | TokenAmount$ Z | TokenScript$ c_a_treasure_sac | SpellDescription$ Then create a number of Treasure tokens equal to the damage dealt this way.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:Count$Valid Land.RememberedPlayerCtrl/Minus.X\nSVar:Z:Count$TotalDamageDoneByThisTurn\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Spiteful Repossession deals damage to each opponent who controls more lands than you equal to the difference. Then create a number of Treasure tokens equal to the damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Repossession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ramirez-depietro-pillager-corpus-m685",
+  "description": "M6 corpus — Ramirez DePietro, Pillager; in-hand parse.",
+  "seed": 61936,
+  "cards": {
+    "Ramirez DePietro, Pillager": "Name:Ramirez DePietro, Pillager\nManaCost:2 U B\nTypes:Legendary Creature Human Pirate\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, you lose 2 life and create two Treasure tokens.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | SubAbility$ TrigToken\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nT:Mode$ DamageDoneOnce | ValidSource$ Pirate.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerDescription$ Whenever one or more Pirates you control deal combat damage to a player, exile the top card of that player's library. You may cast that card for as long as it remains exiled.\nSVar:TrigDig:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Remembered | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast that card for as long as it remains exiled.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Pirate\nDeckHas:Ability$Token|Sacrifice\nOracle:When Ramirez DePietro, Pillager enters, you lose 2 life and create two Treasure tokens.\\nWhenever one or more Pirates you control deal combat damage to a player, exile the top card of that player's library. You may cast that card for as long as it remains exiled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ramirez DePietro, Pillager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

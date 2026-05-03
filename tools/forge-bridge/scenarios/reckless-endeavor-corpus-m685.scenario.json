@@ -1,0 +1,23 @@
+{
+  "id": "reckless-endeavor-corpus-m685",
+  "description": "M6 corpus — Reckless Endeavor; in-hand parse.",
+  "seed": 61944,
+  "cards": {
+    "Reckless Endeavor": "Name:Reckless Endeavor\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ RollDice | Amount$ 2 | Sides$ 12 | ChosenSVar$ X | OtherSVar$ Y | SubAbility$ DBDamageAll | StackDescription$ SpellDescription | SpellDescription$ Roll two d12 and choose one result. CARDNAME deals damage equal to that result to each creature. Then create a number of Treasure tokens equal to the other result.\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ X | SubAbility$ DBToken | StackDescription$ None\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token|Sacrifice\nOracle:Roll two d12 and choose one result. Reckless Endeavor deals damage equal to that result to each creature. Then create a number of Treasure tokens equal to the other result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Endeavor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

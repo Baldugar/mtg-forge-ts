@@ -1,0 +1,23 @@
+{
+  "id": "faunsbane-troll-corpus-m685",
+  "description": "M6 corpus — Faunsbane Troll; in-hand parse.",
+  "seed": 61624,
+  "cards": {
+    "Faunsbane Troll": "Name:Faunsbane Troll\nManaCost:2 B G\nTypes:Creature Troll\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Monster Role token attached to it. (Enchanted creature gets +1/+1 and has trample.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_monster | AttachedTo$ Self\nA:AB$ Fight | Defined$ Self | Cost$ 1 Sac<1/Aura.Attached> | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | ReplaceDyingDefined$ Targeted | SorcerySpeed$ True | SpellDescription$ CARDNAME fights target creature you don't control. If that creature would die this turn, exile it instead. Activate only as a sorcery.\nDeckHas:Ability$Token|Sacrifice & Type$Aura|Enchantment|Role\nOracle:When Faunsbane Troll enters, create a Monster Role token attached to it. (Enchanted creature gets +1/+1 and has trample.)\\n{1}, Sacrifice an Aura attached to Faunsbane Troll: Faunsbane Troll fights target creature you don't control. If that creature would die this turn, exile it instead. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faunsbane Troll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

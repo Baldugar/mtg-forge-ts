@@ -1,0 +1,23 @@
+{
+  "id": "prosperous-partnership-corpus-m685",
+  "description": "M6 corpus — Prosperous Partnership; in-hand parse.",
+  "seed": 61926,
+  "cards": {
+    "Prosperous Partnership": "Name:Prosperous Partnership\nManaCost:1 R W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 green and white Citizen creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ gw_1_1_citizen\nA:AB$ Token | Cost$ tapXType<3/Creature> | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Citizen|Treasure\nOracle:When Prosperous Partnership enters, create two 1/1 green and white Citizen creature tokens.\\nTap three untapped creatures you control: Create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prosperous Partnership"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

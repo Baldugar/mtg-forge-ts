@@ -1,0 +1,23 @@
+{
+  "id": "meriadoc-brandybuck-corpus-m685",
+  "description": "M6 corpus — Meriadoc Brandybuck; in-hand parse.",
+  "seed": 61824,
+  "cards": {
+    "Meriadoc Brandybuck": "Name:Meriadoc Brandybuck\nManaCost:1 G\nTypes:Legendary Creature Halfling Citizen\nPT:2/2\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Halfling.YouCtrl | AttackedTarget$ Opponent | Execute$ TrigFood | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Halflings you control attack a player, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token|LifeGain & Type$Food|Artifact\nDeckHints:Type$Halfling\nOracle:Whenever one or more Halflings you control attack a player, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meriadoc Brandybuck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

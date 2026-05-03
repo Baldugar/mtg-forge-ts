@@ -1,0 +1,23 @@
+{
+  "id": "vinereap-mentor-corpus-m685",
+  "description": "M6 corpus — Vinereap Mentor; in-hand parse.",
+  "seed": 62185,
+  "cards": {
+    "Vinereap Mentor": "Name:Vinereap Mentor\nManaCost:B G\nTypes:Creature Squirrel Druid\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nOracle:When Vinereap Mentor enters or dies, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vinereap Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

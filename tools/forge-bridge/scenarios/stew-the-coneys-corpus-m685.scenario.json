@@ -1,0 +1,23 @@
+{
+  "id": "stew-the-coneys-corpus-m685",
+  "description": "M6 corpus — Stew the Coneys; in-hand parse.",
+  "seed": 62068,
+  "cards": {
+    "Stew the Coneys": "Name:Stew the Coneys\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ SoulsDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control.\nSVar:SoulsDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget | SubAbility$ DBFood\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | SpellDescription$ Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:X:ParentTargeted$CardPower\nDeckHas:Ability$Token|LifeGain|Graveyard & Type$Artifact|Food\nOracle:Target creature you control deals damage equal to its power to target creature you don't control. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stew the Coneys"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

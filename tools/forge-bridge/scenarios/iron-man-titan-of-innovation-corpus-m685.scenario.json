@@ -1,0 +1,23 @@
+{
+  "id": "iron-man-titan-of-innovation-corpus-m685",
+  "description": "M6 corpus — Iron Man, Titan of Innovation; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Iron Man, Titan of Innovation": "Name:Iron Man, Titan of Innovation\nManaCost:3 U R\nTypes:Legendary Artifact Creature Human Hero\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Genius Industrialist — Whenever NICKNAME attacks, create a Treasure token, then you may sacrifice a noncreature artifact. If you do, search your library for an artifact card with mana value equal to 1 plus the sacrificed artifact's mana value, put it onto the battlefield tapped, then shuffle.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Artifact.nonCreature | SacMessage$ noncreature artifact | Optional$ True | RememberSacrificed$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ConditionDefined$ Remembered | ConditionPresent$ Card | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact.cmcEQX | ChangeTypeDesc$ artifact card with mana value equal to 1 plus the sacrificed artifact's mana value | ChangeNum$ 1 | Tapped$ True | AILogic$ SacAndUpgrade | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost/Plus.1\nSVar:AIPreference:SacCost$Artifact\nDeckNeeds:Type$Artifact\nOracle:Flying, haste\\nGenius Industrialist — Whenever Iron Man attacks, create a Treasure token, then you may sacrifice a noncreature artifact. If you do, search your library for an artifact card with mana value equal to 1 plus the sacrificed artifact's mana value, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron Man, Titan of Innovation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

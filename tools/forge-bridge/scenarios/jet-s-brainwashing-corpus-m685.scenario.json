@@ -1,0 +1,23 @@
+{
+  "id": "jet-s-brainwashing-corpus-m685",
+  "description": "M6 corpus — Jet's Brainwashing; in-hand parse.",
+  "seed": 61751,
+  "cards": {
+    "Jet's Brainwashing": "Name:Jet's Brainwashing\nManaCost:R\nTypes:Sorcery\nK:Kicker:3\nA:SP$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SubAbility$ DBGainControl | SpellDescription$ Target creature can't block this turn. If this spell was kicked, gain control of that creature until end of turn, untap it, and it gains haste until end of turn. Create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:DBGainControl:DB$ GainControl | Defined$ Targeted | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | Condition$ Kicked | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nOracle:Kicker {3} (You may pay an additional {3} as you cast this spell.)\\nTarget creature can't block this turn. If this spell was kicked, gain control of that creature until end of turn, untap it, and it gains haste until end of turn.\\nCreate a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jet's Brainwashing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

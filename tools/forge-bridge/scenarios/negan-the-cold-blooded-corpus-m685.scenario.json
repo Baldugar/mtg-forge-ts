@@ -1,0 +1,23 @@
+{
+  "id": "negan-the-cold-blooded-corpus-m685",
+  "description": "M6 corpus — Negan, the Cold-Blooded; in-hand parse.",
+  "seed": 61859,
+  "cards": {
+    "Negan, the Cold-Blooded": "Name:Negan, the Cold-Blooded\nVariant:UniversesWithin:FlavorName:Malik, Grim Manipulator\nManaCost:2 R W B\nTypes:Legendary Creature Human Rogue\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When NICKNAME enters, you and target opponent each secretly choose a creature that player controls. Then those choices are revealed, and that player sacrifices those creatures.\nSVar:TrigChoose:DB$ ChooseCard | ValidTgts$ Opponent | Defined$ TargetedAndYou | Amount$ 1 | Mandatory$ True | Choices$ Creature.TargetedPlayerCtrl | Secretly$ True | Reveal$ True | SubAbility$ DBSacrificeAll\nSVar:DBSacrificeAll:DB$ SacrificeAll | ValidCards$ Creature.ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nT:Mode$ Sacrificed | ValidCard$ Creature.OppCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent sacrifices a creature, you create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Negan enters, you and target opponent each secretly choose a creature that player controls. Then those choices are revealed, and that player sacrifices those creatures.\\nWhenever an opponent sacrifices a creature, you create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Negan, the Cold-Blooded"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

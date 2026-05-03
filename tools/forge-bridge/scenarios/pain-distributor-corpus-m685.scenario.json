@@ -1,0 +1,23 @@
+{
+  "id": "pain-distributor-corpus-m685",
+  "description": "M6 corpus — Pain Distributor; in-hand parse.",
+  "seed": 61892,
+  "cards": {
+    "Pain Distributor": "Name:Pain Distributor\nManaCost:2 R\nTypes:Creature Devil Citizen\nPT:2/3\nK:Menace\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | ActivatorThisTurnCast$ EQ1 | Execute$ TrigTreasure | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts their first spell each turn, they create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ TriggeredActivator\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an artifact an opponent controls is put into a graveyard from the battlefield, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 1\nDeckHas:Ability$Token & Type$Treasure|Artifact\nOracle:Menace\\nWhenever a player casts their first spell each turn, they create a Treasure token.\\nWhenever an artifact an opponent controls is put into a graveyard from the battlefield, Pain Distributor deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pain Distributor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

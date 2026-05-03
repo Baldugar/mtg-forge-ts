@@ -1,0 +1,23 @@
+{
+  "id": "canyon-crawler-corpus-m685",
+  "description": "M6 corpus — Canyon Crawler; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Canyon Crawler": "Name:Canyon Crawler\nManaCost:4 B B\nTypes:Creature Spider Beast\nPT:6/6\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When this creature enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token:You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nK:TypeCycling:Swamp:2\nDeckHas:Ability$LifeGain|Token|Food\nOracle:Deathtouch\\nWhen this creature enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token:You gain 3 life.\")\\nSwampcycling {2} ({2}, Discard this card: Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canyon Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "messenger-hawk-corpus-m685",
+  "description": "M6 corpus — Messenger Hawk; in-hand parse.",
+  "seed": 61826,
+  "cards": {
+    "Messenger Hawk": "Name:Messenger Hawk\nManaCost:2 UB\nTypes:Creature Bird Scout\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ X | SVarCompare$ GE2 | AddPower$ 2 | Description$ This creature gets +2/+0 as long as you've drawn two or more cards this turn.\nSVar:X:Count$YouDrewThisTurn\nOracle:Flying\\nWhen this creature enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\\nThis creature gets +2/+0 as long as you've drawn two or more cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Messenger Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

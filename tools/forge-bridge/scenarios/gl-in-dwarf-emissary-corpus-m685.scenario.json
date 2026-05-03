@@ -1,0 +1,23 @@
+{
+  "id": "gl-in-dwarf-emissary-corpus-m685",
+  "description": "M6 corpus — Glóin, Dwarf Emissary; in-hand parse.",
+  "seed": 61678,
+  "cards": {
+    "Glóin, Dwarf Emissary": "Name:Glóin, Dwarf Emissary\nManaCost:2 R\nTypes:Legendary Creature Dwarf Advisor\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | ActivationLimit$ 1 | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a historic spell, create a Treasure token. This ability triggers only once each turn. (Legendaries, artifacts, and Sagas are historic.)\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ Goad | Cost$ T Sac<1/Treasure> | ValidTgts$ Creature | SpellDescription$ Goad target creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nDeckHas:Ability$Token|Sacrifice & Type$Treasure\nDeckHints:Type$Legendary|Saga|Artifact\nOracle:Whenever you cast a historic spell, create a Treasure token. This ability triggers only once each turn. (Legendaries, artifacts, and Sagas are historic.)\\n{T}, Sacrifice a Treasure: Goad target creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glóin, Dwarf Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

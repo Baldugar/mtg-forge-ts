@@ -1,0 +1,23 @@
+{
+  "id": "turn-into-a-pumpkin-corpus-m685",
+  "description": "M6 corpus — Turn into a Pumpkin; in-hand parse.",
+  "seed": 62161,
+  "cards": {
+    "Turn into a Pumpkin": "Name:Turn into a Pumpkin\nManaCost:3 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | AIManaPref$ U | SpellDescription$ Return target nonland permanent to its owner's hand. Draw a card. Adamant — If at least three blue mana was spent to cast this spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBDraw:DB$ Draw | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:X:Count$Adamant.Blue.1.0\nDeckHas:Ability$LifeGain|Token|Food\nOracle:Return target nonland permanent to its owner's hand. Draw a card.\\nAdamant — If at least three blue mana was spent to cast this spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turn into a Pumpkin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

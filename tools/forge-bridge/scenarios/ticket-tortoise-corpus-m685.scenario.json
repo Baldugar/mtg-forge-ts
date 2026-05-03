@@ -1,0 +1,23 @@
+{
+  "id": "ticket-tortoise-corpus-m685",
+  "description": "M6 corpus — Ticket Tortoise; in-hand parse.",
+  "seed": 62137,
+  "cards": {
+    "Ticket Tortoise": "Name:Ticket Tortoise\nManaCost:2\nTypes:Artifact Creature Turtle\nPT:3/1\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ X | SVarCompare$ GTY | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, if an opponent controls more lands than you, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nSVar:X:PlayerCountOpponents$HighestValid Land.YouCtrl\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:Defender\\nWhen this creature enters, if an opponent controls more lands than you, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ticket Tortoise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

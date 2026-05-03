@@ -1,0 +1,23 @@
+{
+  "id": "tombstone-stairwell-corpus-m685",
+  "description": "M6 corpus — Tombstone Stairwell; in-hand parse.",
+  "seed": 62147,
+  "cards": {
+    "Tombstone Stairwell": "Name:Tombstone Stairwell\nManaCost:2 B B\nTypes:World Enchantment\nK:Cumulative upkeep:1 B\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | IsPresent$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ At the beginning of each upkeep, if CARDNAME is on the battlefield, each player creates a 2/2 black Zombie creature token with haste named Tombspawn for each creature card in their graveyard.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBToken | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ tombspawn | TokenOwner$ Player.IsRemembered | RememberTokens$ True\nSVar:X:Count$ValidGraveyard Creature.RememberedPlayerCtrl\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ DestroyRemembered | TriggerDescription$ At the beginning of each end step or when CARDNAME leaves the battlefield, destroy all tokens created with CARDNAME. They can't be regenerated.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ DestroyRemembered | Secondary$ True | TriggerDescription$ At the beginning of each end step or when CARDNAME leaves the battlefield, destroy all tokens created with CARDNAME. They can't be regenerated.\nSVar:DestroyRemembered:DB$ DestroyAll | ValidCards$ Card.IsRemembered | NoRegen$ True | SubAbility$ DBCleanUp\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep {1}{B} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of each upkeep, if Tombstone Stairwell is on the battlefield, each player creates a 2/2 black Zombie creature token with haste named Tombspawn for each creature card in their graveyard.\\nAt the beginning of each end step or when Tombstone Stairwell leaves the battlefield, destroy all tokens created with Tombstone Stairwell. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tombstone Stairwell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

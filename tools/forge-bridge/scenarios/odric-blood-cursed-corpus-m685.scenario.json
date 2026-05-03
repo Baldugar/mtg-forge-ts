@@ -1,0 +1,23 @@
+{
+  "id": "odric-blood-cursed-corpus-m685",
+  "description": "M6 corpus — Odric, Blood-Cursed; in-hand parse.",
+  "seed": 61876,
+  "cards": {
+    "Odric, Blood-Cursed": "Name:Odric, Blood-Cursed\nManaCost:1 R W\nTypes:Legendary Creature Vampire Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create X Blood tokens, where X is the number of abilities from among flying, first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance found among creatures you control. (Count each ability only once.)\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_blood_draw\nSVar:X:Count$AbilityYouCtrl Flying,First Strike,Double Strike,Deathtouch,Haste,Hexproof,Indestructible,Lifelink,Menace,Reach,Trample,Vigilance\nSVar:BuffedBy:Creature.withFlying,Creature.withFirst Strike,Creature.withDouble Strike,Creature.withDeathtouch,Creature.withHaste,Creature.withHexproof,Creature.withIndestructible,Creature.withLifelink,Creature.withMenace,Creature.withReach,Creature.withTrample,Creature.withVigilance\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:When Odric, Blood-Cursed enters, create X Blood tokens, where X is the number of abilities from among flying, first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance found among creatures you control. (Count each ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Odric, Blood-Cursed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

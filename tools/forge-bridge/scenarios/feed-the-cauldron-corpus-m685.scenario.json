@@ -1,0 +1,23 @@
+{
+  "id": "feed-the-cauldron-corpus-m685",
+  "description": "M6 corpus — Feed the Cauldron; in-hand parse.",
+  "seed": 61627,
+  "cards": {
+    "Feed the Cauldron": "Name:Feed the Cauldron\nManaCost:2 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.cmcLE3 | TgtPrompt$ Select target creature with mana value 3 or less | SubAbility$ DBFood | SpellDescription$ Destroy target creature with mana value 3 or less.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | ConditionPlayerTurn$ True | SpellDescription$ If it's your turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nDeckHas:Ability$Token & Type$Artifact|Food\nOracle:Destroy target creature with mana value 3 or less. If it's your turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feed the Cauldron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

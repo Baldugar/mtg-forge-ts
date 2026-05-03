@@ -1,0 +1,23 @@
+{
+  "id": "jan-jansen-chaos-crafter-corpus-m685",
+  "description": "M6 corpus — Jan Jansen, Chaos Crafter; in-hand parse.",
+  "seed": 61748,
+  "cards": {
+    "Jan Jansen, Chaos Crafter": "Name:Jan Jansen, Chaos Crafter\nManaCost:R W B\nTypes:Legendary Creature Gnome Artificer\nPT:3/3\nK:Haste\nA:AB$ Token | Cost$ T Sac<1/Creature.Artifact/artifact creature> | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | SpellDescription$ Create two Treasure tokens.\nA:AB$ Token | Cost$ T Sac<1/Artifact.nonCreature/noncreature artifact> | TokenAmount$ 2 | TokenScript$ c_1_1_a_construct | SpellDescription$ Create two 1/1 colorless Construct artifact creature tokens.\nSVar:AIPreference:SacCost$Artifact.nonCreature+token+powerLE1+toughnessEQ1\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Construct|Artifact\nDeckNeeds:Type$Artifact\nOracle:Haste\\n{T}, Sacrifice an artifact creature: Create two Treasure tokens.\\n{T}, Sacrifice a noncreature artifact: Create two 1/1 colorless Construct artifact creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jan Jansen, Chaos Crafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

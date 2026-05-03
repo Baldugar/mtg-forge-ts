@@ -1,0 +1,23 @@
+{
+  "id": "racketeer-boss-corpus-m685",
+  "description": "M6 corpus — Racketeer Boss; in-hand parse.",
+  "seed": 61934,
+  "cards": {
+    "Racketeer Boss": "Name:Racketeer Boss\nManaCost:R G\nTypes:Creature Cat Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may choose 2 creature and/or planeswalker cards in your hand. They perpetually gain \"When you cast this spell, create a Treasure token and this spell perpetually loses this ability.\"\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn,Planeswalker.YouOwn | ChoiceTitle$ Choose up to two creature and/or planeswalker cards in your hand | MinAmount$ 0 | Amount$ 2 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ SpellCastTrig | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:SpellCastTrig:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When you cast this spell, create a Treasure token and this spell perpetually loses this ability.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SubAbility$ DBLosePerpAbility\nSVar:DBLosePerpAbility:DB$ LosePerpetual\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHints:Type$Planeswalker\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:When Racketeer Boss enters, choose up to two creature and/or planeswalker cards in your hand. They perpetually gain \"When you cast this spell, create a Treasure token and this spell perpetually loses this ability.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Racketeer Boss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

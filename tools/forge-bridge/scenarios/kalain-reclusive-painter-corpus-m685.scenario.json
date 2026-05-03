@@ -1,0 +1,23 @@
+{
+  "id": "kalain-reclusive-painter-corpus-m685",
+  "description": "M6 corpus — Kalain, Reclusive Painter; in-hand parse.",
+  "seed": 61763,
+  "cards": {
+    "Kalain, Reclusive Painter": "Name:Kalain, Reclusive Painter\nManaCost:B R\nTypes:Legendary Creature Human Elf Bard\nPT:1/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nR:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ EnterWithP1P1 | ReplacementResult$ Updated | Description$ Other creatures you control enter with an additional +1/+1 counter on them for each mana from a Treasure spent to cast them.\nSVar:EnterWithP1P1:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ Treasure\nSVar:Treasure:ReplacedCardLKI$CastTotalManaSpent Treasure\nDeckHas:Ability$Token|Sacrifice|Counters\nOracle:When Kalain, Reclusive Painter enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nOther creatures you control enter with an additional +1/+1 counter on them for each mana from a Treasure spent to cast them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kalain, Reclusive Painter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

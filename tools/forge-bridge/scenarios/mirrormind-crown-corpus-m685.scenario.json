@@ -1,0 +1,23 @@
+{
+  "id": "mirrormind-crown-corpus-m685",
+  "description": "M6 corpus — Mirrormind Crown; in-hand parse.",
+  "seed": 61839,
+  "cards": {
+    "Mirrormind Crown": "Name:Mirrormind Crown\nManaCost:4\nTypes:Artifact Equipment\nK:Equip:2\nR:Event$ CreateToken | ActiveZones$ Battlefield | IsPresent$ Card.Self+AttachedTo Creature | CheckSVar$ X | SVarCompare$ EQ0 | ValidPlayer$ You | Optional$ True | Layer$ Copy | ReplaceWith$ DBCopy | Description$ As long as this Equipment is attached to a creature, the first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of equipped creature.\nSVar:DBCopy:DB$ ReplaceToken | Type$ ReplaceToken | ValidChoices$ Card.EquippedBy | TokenScript$ Chosen\nSVar:X:Count$ThisTurnEntered_Battlefield_Card.tokenCreated+YouOwn\nOracle:As long as this Equipment is attached to a creature, the first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of equipped creature.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirrormind Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

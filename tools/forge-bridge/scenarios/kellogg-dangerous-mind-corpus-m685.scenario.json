@@ -1,0 +1,23 @@
+{
+  "id": "kellogg-dangerous-mind-corpus-m685",
+  "description": "M6 corpus — Kellogg, Dangerous Mind; in-hand parse.",
+  "seed": 61769,
+  "cards": {
+    "Kellogg, Dangerous Mind": "Name:Kellogg, Dangerous Mind\nManaCost:1 B R\nTypes:Legendary Creature Human Mercenary\nPT:3/2\nK:First Strike\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this creature attacks, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ GainControl | Cost$ Sac<5/Treasure> | ValidTgts$ Creature | LoseControl$ LeavesPlay,LoseControl | SorcerySpeed$ True | SpellDescription$ Gain control of target creature for as long as you control NICKNAME. Activate only as a sorcery.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Type$Treasure\nOracle:First strike, haste\\nWhenever Kellogg, Dangerous Mind attacks, create a Treasure token.\\nSacrifice five Treasures: Gain control of target creature for as long as you control Kellogg. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kellogg, Dangerous Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

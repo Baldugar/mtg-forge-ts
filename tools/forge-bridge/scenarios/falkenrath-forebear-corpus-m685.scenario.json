@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-forebear-corpus-m685",
+  "description": "M6 corpus — Falkenrath Forebear; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Falkenrath Forebear": "Name:Falkenrath Forebear\nManaCost:2 B\nTypes:Creature Vampire\nPT:3/1\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigToken | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a Blood token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ ChangeZone | Cost$ B Sac<2/Blood.token/Blood token> | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to the battlefield.\nDeckHas:Ability$Token|Sacrifice|Graveyard & Type$Blood\nOracle:Flying\\nFalkenrath Forebear can't block.\\nWhenever Falkenrath Forebear deals combat damage to a player, create a Blood token.\\n{B}, Sacrifice two Blood tokens: Return Falkenrath Forebear from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Forebear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tasteful-offering-corpus-m685",
+  "description": "M6 corpus — Tasteful Offering; in-hand parse.",
+  "seed": 62090,
+  "cards": {
+    "Tasteful Offering": "Name:Tasteful Offering\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Effect | Boon$ True | Duration$ Permanent | Triggers$ SacTrig | SubAbility$ DBToken | StackDescription$ REP You get_{p:You} gets & Create a_{p:You} creates a | SpellDescription$ You get a two-time boon with \"Whenever you sacrifice one or more permanents, seek a nonland card.\" Create a Food token.\nSVar:SacTrig:Mode$ SacrificedOnce | ValidCard$ Permanent | ValidPlayer$ You | TriggerZones$ Command | BoonAmount$ 2 | Execute$ TrigSeek | TriggerDescription$ Whenever you sacrifice one or more permanents, seek a nonland card.\nSVar:TrigSeek:DB$ Seek | Num$ 1 | Type$ Card.nonLand\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac\nDeckHas:Ability$LifeGain|Token\nOracle:You get a two-time boon with \"Whenever you sacrifice one or more permanents, seek a nonland card.\" Create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tasteful Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

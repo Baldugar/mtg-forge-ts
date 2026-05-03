@@ -1,0 +1,23 @@
+{
+  "id": "impetuous-lootmonger-corpus-m685",
+  "description": "M6 corpus — Impetuous Lootmonger; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Impetuous Lootmonger": "Name:Impetuous Lootmonger\nManaCost:1 R\nTypes:Creature Human Rogue\nPT:2/2\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard a card, then heist target opponent's library.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBHeist\nSVar:DBHeist:DB$ Heist | ValidTgts$ Opponent\nT:Mode$ SpellCast | ValidCard$ Card.YouDontOwn | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell you don't own, create a tapped Treasure token.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Discard|Token|Sacrifice & Type$Artifact|Treasure\nOracle:First strike\\nWhen Impetuous Lootmonger enters, discard a card, then heist target opponent's library.\\nWhenever you cast a spell you don't own, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impetuous Lootmonger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-ooze-corpus-m685",
+  "description": "M6 corpus — The Ooze; in-hand parse.",
+  "seed": 62121,
+  "cards": {
+    "The Ooze": "Name:The Ooze\nManaCost:2\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | ValidCard$ Creature.YouCtrl+counters_GE1_P1P1 | Origin$ Battlefield | Destination$ Any | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Exile target card from a graveyard. Create a Mutagen token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nSVar:X:TriggeredCard$CardCounters.P1P1\nOracle:Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\\n{T}: Exile target card from a graveyard. Create a Mutagen token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

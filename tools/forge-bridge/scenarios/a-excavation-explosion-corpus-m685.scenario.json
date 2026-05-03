@@ -1,0 +1,23 @@
+{
+  "id": "a-excavation-explosion-corpus-m685",
+  "description": "M6 corpus — A-Excavation Explosion; in-hand parse.",
+  "seed": 61979,
+  "cards": {
+    "A-Excavation Explosion": "Name:A-Excavation Explosion\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 4 | SubAbility$ DBToken | SpellDescription$ CARDNAME deals 4 damage to target creature or planeswalker. Create a tapped Powerstone token.\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Token & Type$Artifact\nOracle:Excavation Explosion deals 4 damage to target creature or planeswalker. Create a tapped Powerstone token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Excavation Explosion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

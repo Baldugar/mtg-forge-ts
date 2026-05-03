@@ -1,0 +1,23 @@
+{
+  "id": "scream-puff-corpus-m685",
+  "description": "M6 corpus — Scream Puff; in-hand parse.",
+  "seed": 62011,
+  "cards": {
+    "Scream Puff": "Name:Scream Puff\nManaCost:4 B\nTypes:Creature Horror\nPT:4/5\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigFood | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token & Type$Artifact|Food\nOracle:Deathtouch\\nWhenever Scream Puff deals combat damage to a player, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scream Puff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

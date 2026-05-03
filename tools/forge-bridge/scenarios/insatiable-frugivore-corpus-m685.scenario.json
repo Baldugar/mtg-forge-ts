@@ -1,0 +1,23 @@
+{
+  "id": "insatiable-frugivore-corpus-m685",
+  "description": "M6 corpus — Insatiable Frugivore; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Insatiable Frugivore": "Name:Insatiable Frugivore\nManaCost:3 B\nTypes:Creature Rat Berserker\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Food token, then you may exile three cards from your graveyard. If you do, repeat this process.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ c_a_food_sac | SubAbility$ DBStoreSVar\nSVar:DBStoreSVar:DB$ StoreSVar | SVar$ CheckNotPaid | Type$ Number | Expression$ 1 | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBToken | RepeatCheckSVar$ CheckNotPaid | RepeatSVarCompare$ GT0\nSVar:DBToken:DB$ Token | TokenOwner$ You | UnlessCost$ ExileFromGrave<3/Card> | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBStoreSVarT | TokenScript$ c_a_food_sac\nSVar:DBStoreSVarT:DB$ StoreSVar | SVar$ CheckNotPaid | Type$ Number | Expression$ 0\nA:AB$ PumpAll | Cost$ 3 B Sac<X/Food> | ValidCards$ Creature.YouCtrl | NumAtt$ +X | KW$ Menace | SpellDescription$ Creatures you control get +X/+0 and gain menace until end of turn.\nSVar:CheckNotPaid:Number$1\nSVar:X:Count$xPaid\nOracle:When Insatiable Frugivore enters, create a Food token, then you may exile three cards from your graveyard. If you do, repeat this process.\\n{3}{B}, Sacrifice X Foods: Creatures you control get +X/+0 and gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insatiable Frugivore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

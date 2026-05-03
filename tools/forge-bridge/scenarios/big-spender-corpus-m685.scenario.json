@@ -1,0 +1,23 @@
+{
+  "id": "big-spender-corpus-m685",
+  "description": "M6 corpus — Big Spender; in-hand parse.",
+  "seed": 61471,
+  "cards": {
+    "Big Spender": "Name:Big Spender\nManaCost:1 R\nTypes:Creature Devil Citizen\nPT:2/1\nK:Haste\nT:Mode$ AttackerBlockedOnce | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ Whenever one or more creatures you control become blocked, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ Draft | Cost$ Sac<2/Artifact> | Spellbook$ Arcane Encyclopedia,Daredevil Dragster,Diamond Mare,Filigree Familiar,Fountain of Renewal,Gilded Lotus,Golden Egg,Guild Globe,Heraldic Banner,Honored Heirloom,Key to the City,Prophetic Prism,Stuffed Bear,Treasure Vault,Zephyr Boots | SpellDescription$ Draft a card from CARDNAME's spellbook.\nSVar:AIPreference:SacCost$Treasure.Token,Artifact.Token\nDeckHas:Ability$Sacrifice|Token|Discard|LifeGain & Type$Treasure|Artifact|Horse|Fox|Food|Equipment|Bear\nDeckHints:Type$Treasure\nOracle:Haste\\nWhenever one or more creatures you control become blocked, create a Treasure token.\\nSacrifice two artifacts: Draft a card from Big Spender's spellbook.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Big Spender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

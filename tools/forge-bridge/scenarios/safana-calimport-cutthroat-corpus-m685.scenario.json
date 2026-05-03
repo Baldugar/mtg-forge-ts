@@ -1,0 +1,23 @@
+{
+  "id": "safana-calimport-cutthroat-corpus-m685",
+  "description": "M6 corpus — Safana, Calimport Cutthroat; in-hand parse.",
+  "seed": 61996,
+  "cards": {
+    "Safana, Calimport Cutthroat": "Name:Safana, Calimport Cutthroat\nManaCost:2 B\nTypes:Legendary Creature Human Rogue\nPT:3/2\nK:Menace\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.hasInitiative | Execute$ TrigTreasure | TriggerDescription$ At the beginning of your end step, if you have the initiative, create a Treasure token. If you've completed a dungeon, create three of those tokens instead.\nSVar:TrigTreasure:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac\nSVar:X:Count$Compare Y GE1.3.1\nSVar:Y:DungeonsCompleted$Amount\nK:Choose a Background\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice\nOracle:Menace\\nAt the beginning of your end step, if you have the initiative, create a Treasure token. If you've completed a dungeon, create three of those tokens instead.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Safana, Calimport Cutthroat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

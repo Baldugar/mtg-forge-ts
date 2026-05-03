@@ -1,0 +1,23 @@
+{
+  "id": "gorbag-of-minas-morgul-corpus-m685",
+  "description": "M6 corpus — Gorbag of Minas Morgul; in-hand parse.",
+  "seed": 61689,
+  "cards": {
+    "Gorbag of Minas Morgul": "Name:Gorbag of Minas Morgul\nManaCost:1 B\nTypes:Legendary Creature Orc Soldier\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Goblin.YouCtrl,Orc.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Goblin or Orc you control deals combat damage to a player, you may sacrifice it. When you do, ABILITY\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Card.TriggeredSource/that creature> | Execute$ TrigCharm | TriggerDescription$ When you do, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBTreasure\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nDeckHints:Type$Goblin|Orc\nDeckHas:Ability$Token|Sacrifice & Type$Treasure\nOracle:Whenever a Goblin or Orc you control deals combat damage to a player, you may sacrifice it. When you do, choose one—\\n• Draw a card.\\n• Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gorbag of Minas Morgul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

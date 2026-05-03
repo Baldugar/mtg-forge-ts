@@ -1,0 +1,23 @@
+{
+  "id": "forge-neverwinter-charlatan-corpus-m685",
+  "description": "M6 corpus — Forge, Neverwinter Charlatan; in-hand parse.",
+  "seed": 61641,
+  "cards": {
+    "Forge, Neverwinter Charlatan": "Name:Forge, Neverwinter Charlatan\nVariant:UniversesWithin:FlavorName:Evin, Waterdeep Opportunist\nManaCost:3 B\nTypes:Legendary Creature Human Rogue\nPT:2/4\nK:Menace\nK:Ward:Sac<1/Creature>\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +2/+0 for each Treasure you control.\nT:Mode$ Sacrificed | ValidCard$ Creature | Execute$ TrigTreasure | ActivationLimit$ 1 | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more players sacrifice one or more creatures, you create a tapped Treasure token. This ability triggers only once each turn.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nSVar:X:Count$Valid Treasure.YouCtrl/Twice\nDeckHints:Ability$Sacrifice & Type$Treasure\nDeckHas:Ability$Token & Type$Treasure|Artifact\nOracle:Menace\\nWard—Sacrifice a creature\\nForge, Neverwinter Charlatan gets +2/+0 for each Treasure you control.\\nWhenever one or more players sacrifice one or more creatures, you create a tapped Treasure token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forge, Neverwinter Charlatan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

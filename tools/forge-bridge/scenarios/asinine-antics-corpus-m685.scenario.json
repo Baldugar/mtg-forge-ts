@@ -1,0 +1,23 @@
+{
+  "id": "asinine-antics-corpus-m685",
+  "description": "M6 corpus — Asinine Antics; in-hand parse.",
+  "seed": 61451,
+  "cards": {
+    "Asinine Antics": "Name:Asinine Antics\nManaCost:2 U U\nTypes:Sorcery\nK:MayFlashCost:2\nA:SP$ RepeatEach | RepeatCards$ Creature.OppCtrl | Zone$ Battlefield | RepeatSubAbility$ DBToken | ChangeZoneTable$ True | SpellDescription$ For each creature your opponents control, create a Cursed Role token attached to that creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\nSVar:DBToken:DB$ Token | TokenScript$ role_cursed | AttachedTo$ Remembered\nDeckHas:Type$Aura|Role & Ability$Token\nOracle:You may cast Asinine Antics as though it had flash if you pay {2} more to cast it. \\nFor each creature your opponents control, create a Cursed Role token attached to that creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Asinine Antics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

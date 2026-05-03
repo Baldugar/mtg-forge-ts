@@ -1,0 +1,23 @@
+{
+  "id": "restless-anchorage-corpus-m685",
+  "description": "M6 corpus — Restless Anchorage; in-hand parse.",
+  "seed": 61952,
+  "cards": {
+    "Restless Anchorage": "Name:Restless Anchorage\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nA:AB$ Animate | Cost$ 1 W U | Defined$ Self | Power$ 2 | Toughness$ 3 | Types$ Creature,Bird | Colors$ White,Blue | OverwriteColors$ True | Keywords$ Flying | SpellDescription$ Until end of turn, CARDNAME becomes a 2/3 white and blue Bird creature with flying. It's still a land.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Map token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_map_sac_explore\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice|Counters & Type$Bird|Artifact|Map & Color$White|Blue\nOracle:Restless Anchorage enters tapped.\\n{T}: Add {W} or {U}\\n{1}{W}{U}: Until end of turn, Restless Anchorage becomes a 2/3 white and blue Bird creature with flying. It's still a land.\\nWhenever Restless Anchorage attacks, create a Map token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Anchorage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

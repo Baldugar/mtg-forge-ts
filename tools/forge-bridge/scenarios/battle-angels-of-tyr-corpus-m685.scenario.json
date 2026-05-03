@@ -1,0 +1,23 @@
+{
+  "id": "battle-angels-of-tyr-corpus-m685",
+  "description": "M6 corpus — Battle Angels of Tyr; in-hand parse.",
+  "seed": 61463,
+  "cards": {
+    "Battle Angels of Tyr": "Name:Battle Angels of Tyr\nManaCost:2 W W\nTypes:Creature Angel Knight\nPT:4/4\nK:Flying\nK:Myriad\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigDraw | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card if that player has more cards in hand than each other player. Then you create a Treasure token if that player controls more lands than each other player. Then you gain 3 life if that player has more life than each other player.\nSVar:TrigDraw:DB$ Draw | ConditionCheckSVar$ NumInHand | ConditionSVarCompare$ GTMostInHand | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | ConditionCheckSVar$ NumLands | ConditionSVarCompare$ GTMostLands | TokenScript$ c_a_treasure_sac | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ConditionCheckSVar$ NumLife | ConditionSVarCompare$ GTMostLife | LifeAmount$ 3\nSVar:NumInHand:TriggeredTarget$CardsInHand\nSVar:MostInHand:PlayerCountDefinedNonTriggeredTarget$HighestCardsInHand\nSVar:NumLands:TriggeredTarget$Valid Land.YouCtrl\nSVar:MostLands:PlayerCountDefinedNonTriggeredTarget$HighestValid Land.YouCtrl\nSVar:NumLife:TriggeredTarget$LifeTotal\nSVar:MostLife:PlayerCountDefinedNonTriggeredTarget$HighestLifeTotal\nDeckHas:Ability$Token|Sacrifice|LifeGain\nOracle:Flying, myriad\\nWhenever Battle Angels of Tyr deals combat damage to a player, draw a card if that player has more cards in hand than each other player. Then you create a Treasure token if that player controls more lands than each other player. Then you gain 3 life if that player has more life than each other player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battle Angels of Tyr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

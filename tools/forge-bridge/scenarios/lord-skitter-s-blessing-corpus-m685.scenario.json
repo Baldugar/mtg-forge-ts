@@ -1,0 +1,23 @@
+{
+  "id": "lord-skitter-s-blessing-corpus-m685",
+  "description": "M6 corpus — Lord Skitter's Blessing; in-hand parse.",
+  "seed": 61797,
+  "cards": {
+    "Lord Skitter's Blessing": "Name:Lord Skitter's Blessing\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Wicked Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_wicked | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | IsPresent$ Creature.enchanted+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your draw step, if you control an enchanted creature, you lose 1 life and you draw an additional card.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You\nDeckHas:Ability$Token & Type$Role|Aura\nDeckHints:Type$Aura\nOracle:When Lord Skitter's Blessing enters, create a Wicked Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\\nAt the beginning of your draw step, if you control an enchanted creature, you lose 1 life and you draw an additional card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord Skitter's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "charmed-clothier-corpus-m685",
+  "description": "M6 corpus — Charmed Clothier; in-hand parse.",
+  "seed": 61532,
+  "cards": {
+    "Charmed Clothier": "Name:Charmed Clothier\nManaCost:4 W\nTypes:Creature Faerie Advisor\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Royal Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_royal | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:Flying\\nWhen Charmed Clothier enters, create a Royal Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charmed Clothier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

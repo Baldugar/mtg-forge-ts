@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-the-grey-host-corpus-m685",
+  "description": "M6 corpus — Oath of the Grey Host; in-hand parse.",
+  "seed": 61873,
+  "cards": {
+    "Oath of the Grey Host": "Name:Oath of the Grey Host\nManaCost:3 B\nTypes:Enchantment Saga\nK:Chapter:3:DBFood,DBLoseLife,DBSpirit\nSVar:DBFood:DB$ Token | ValidTgts$ Opponent | TokenOwner$ TargetedAndYou | TokenScript$ c_a_food_sac | SpellDescription$ You and target opponent each create a Food token.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 3 | Defined$ Player.Opponent | SubAbility$ DBTreasure | SpellDescription$ Each opponent loses 3 life. Create a Treasure token.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nSVar:DBSpirit:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_spirit_flying | TokenTapped$ True | SpellDescription$ Create three tapped 1/1 white Spirit creature tokens with flying.\nDeckHas:Ability$Token|Sacrifice\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — You and target opponent each create a Food token.\\nII — Each opponent loses 3 life. Create a Treasure token.\\nIII — Create three tapped 1/1 white Spirit creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of the Grey Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

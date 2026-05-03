@@ -1,0 +1,23 @@
+{
+  "id": "drizzt-do-urden-corpus-m685",
+  "description": "M6 corpus — Drizzt Do'Urden; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Drizzt Do'Urden": "Name:Drizzt Do'Urden\nManaCost:3 G W\nTypes:Legendary Creature Elf Ranger\nPT:3/3\nK:Double Strike\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create Guenhwyvar, a legendary 4/1 green Cat creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ guenhwyvar\nT:Mode$ ChangesZone | ValidCard$ Creature.powerGTX | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dies, if it had power greater than NICKNAME's power, put a number of +1/+1 counters on NICKNAME equal to the difference.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ Z\nSVar:X:Count$CardPower\nSVar:Y:TriggeredCard$CardPower\nSVar:Z:SVar$Y/Minus.X\nDeckHas:Ability$Token|Counters\nOracle:Double strike\\nWhen Drizzt Do'Urden enters, create Guenhwyvar, a legendary 4/1 green Cat creature token with trample.\\nWhenever a creature dies, if it had power greater than Drizzt's power, put a number of +1/+1 counters on Drizzt equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drizzt Do'Urden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eager-trufflesnout-corpus-m685",
+  "description": "M6 corpus — Eager Trufflesnout; in-hand parse.",
+  "seed": 61592,
+  "cards": {
+    "Eager Trufflesnout": "Name:Eager Trufflesnout\nManaCost:2 G\nTypes:Creature Boar\nPT:4/2\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever this creature deals combat damage to a player, create a Food token. (It's an artifact with \"{2}, {T} Sacrifice this token: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nWhenever this creature deals combat damage to a player, create a Food token. (It's an artifact with \"{2}, {T} Sacrifice this token: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eager Trufflesnout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

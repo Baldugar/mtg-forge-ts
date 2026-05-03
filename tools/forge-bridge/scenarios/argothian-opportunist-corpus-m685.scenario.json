@@ -1,0 +1,23 @@
+{
+  "id": "argothian-opportunist-corpus-m685",
+  "description": "M6 corpus — Argothian Opportunist; in-hand parse.",
+  "seed": 61447,
+  "cards": {
+    "Argothian Opportunist": "Name:Argothian Opportunist\nManaCost:2 G\nTypes:Creature Human Scout\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Argothian Opportunist enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argothian Opportunist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

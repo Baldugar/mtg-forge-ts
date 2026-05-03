@@ -1,0 +1,23 @@
+{
+  "id": "currency-converter-corpus-m685",
+  "description": "M6 corpus — Currency Converter; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "Currency Converter": "Name:Currency Converter\nManaCost:1\nTypes:Artifact\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever you discard a card, you may exile that card from your graveyard.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile\nA:AB$ Draw | Cost$ 2 T | SubAbility$ DBDiscard | SpellDescription$ Draw a card,\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | SpellDescription$ then discard a card.\nA:AB$ ChangeZone | Cost$ T | Mandatory$ True | Hidden$ True | Origin$ Exile | Destination$ Graveyard | ChangeType$ Card.ExiledWithSource | ChangeTypeDesc$ card exiled with CARDNAME | ChangeNum$ 1 | Imprint$ True | SubAbility$ DBTreasure | SpellDescription$ Put a card exiled with CARDNAME into your graveyard.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | ConditionDefined$ Imprinted | ConditionPresent$ Land | SubAbility$ DBRogue | SpellDescription$ If it's a land card, create a Treasure token.\nSVar:DBRogue:DB$ Token | TokenScript$ b_2_2_rogue | ConditionDefined$ Imprinted | ConditionPresent$ Card.nonLand | SubAbility$ DBUnimprint | SpellDescription$ If it's a nonland card, create a 2/2 black Rogue creature token.\nSVar:DBUnimprint:DB$ Cleanup | ClearImprinted$ True\nDeckHas:Ability$Discard|Token|Sacrifice & Type$Treasure|Rogue\nDeckHints:Ability$Discard\nOracle:Whenever you discard a card, you may exile that card from your graveyard.\\n{2}, {T}: Draw a card, then discard a card.\\n{T}: Put a card exiled with Currency Converter into your graveyard. If it's a land card, create a Treasure token. If it's a nonland card, create a 2/2 black Rogue creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Currency Converter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

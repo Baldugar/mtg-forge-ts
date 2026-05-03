@@ -1,0 +1,23 @@
+{
+  "id": "indulge-corpus-m685",
+  "description": "M6 corpus — Indulge; in-hand parse.",
+  "seed": 61734,
+  "cards": {
+    "Indulge": "Name:Indulge\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Effect | CounterType$ P1P1 | CounterNum$ 3 | Triggers$ TriggerAttacks | AddSVar$ AE | SpellDescription$ Whenever a creature you control attacks this turn, create a 1/1 green and white Citizen creature token that's tapped and attacking.\nSVar:TriggerAttacks:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control attacks this turn, create a 1/1 green and white Citizen creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_citizen | TokenTapped$ True | TokenAttacking$ True\nSVar:AE:SVar:HasAttackEffect:TRUE\nAlternateMode:Split\nOracle:Whenever a creature you control attacks this turn, create a 1/1 green and white Citizen creature token that's tapped and attacking.\n\nALTERNATE\n\nName:Excess\nManaCost:1 R\nTypes:Sorcery\nK:Aftermath\nA:SP$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token for each creature you controlled that dealt combat damage to a player this turn.\nSVar:X:Count$NumCombatDamageThisTurn Creature.YouCtrl Player\nSVar:NeedsToPlayVar:X GE3\nDeckHas:Ability$Token|Sacrifice|Graveyard\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nCreate a Treasure token for each creature you controlled that dealt combat damage to a player this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indulge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

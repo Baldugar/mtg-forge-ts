@@ -1,0 +1,23 @@
+{
+  "id": "vault-21-house-gambit-corpus-m685",
+  "description": "M6 corpus — Vault 21: House Gambit; in-hand parse.",
+  "seed": 62178,
+  "cards": {
+    "Vault 21: House Gambit": "Name:Vault 21: House Gambit\nManaCost:1 R\nTypes:Enchantment Saga\nK:Chapter:3:DBLoot,DBLoot,DBReveal\nSVar:DBLoot:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw | SpellDescription$ Discard a card, then draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:DBReveal:DB$ Reveal | NumCards$ 5 | Optional$ True | RevealValid$ Card.nonLand+YouOwn | RememberRevealed$ True | SubAbility$ DBRepeat | SpellDescription$ Reveal up to five nonland cards from your hand. For each of those cards that has the same mana value as another card revealed this way, create a Treasure token.\nSVar:DBRepeat:DB$ RepeatEach | Zone$ Hand | UseImprinted$ True | RepeatCards$ Card.IsRemembered | RepeatSubAbility$ DBTally | SubAbility$ DBTreasure\nSVar:DBTally:DB$ StoreSVar | ConditionDefined$ Remembered | ConditionPresent$ Card.!IsImprinted+SharesCMCWith Imprinted | ConditionZone$ Hand | SVar$ TreasureNum | Type$ CountSVar | Expression$ TreasureNum/Plus.1\nSVar:DBTreasure:DB$ Token | TokenAmount$ TreasureNum | TokenScript$ c_a_treasure_sac | SubAbility$ DBReset\nSVar:DBReset:DB$ StoreSVar | SVar$ TreasureNum | Type$ Number | Expression$ 0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TreasureNum:Number$0\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice|Token|Discard\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Discard a card, then draw a card.\\nIII — Reveal up to five nonland cards from your hand. For each of those cards that has the same mana value as another card revealed this way, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vault 21: House Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

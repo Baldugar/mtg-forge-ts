@@ -1,0 +1,23 @@
+{
+  "id": "prizefight-corpus-m685",
+  "description": "M6 corpus — Prizefight; in-hand parse.",
+  "seed": 61919,
+  "cards": {
+    "Prizefight": "Name:Prizefight\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Choose target creature you control | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)\\nCreate a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prizefight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "smoke-spirits-aid-corpus-m685",
+  "description": "M6 corpus — Smoke Spirits' Aid; in-hand parse.",
+  "seed": 62041,
+  "cards": {
+    "Smoke Spirits' Aid": "Name:Smoke Spirits' Aid\nManaCost:X R\nTypes:Sorcery\nA:SP$ RepeatEach | ChangeZoneTable$ True | DefinedCards$ Targeted | RepeatSubAbility$ DBToken | ValidTgts$ Creature | TgtPrompt$ Select up to X target creatures | TargetMin$ 0 | TargetMax$ X | SpellDescription$ For each of up to X target creatures, create a red Aura enchantment token named Smoke Blessing attached to that creature. Those tokens have enchant creature and \"When enchanted creature dies, it deals 1 damage to its controller and you create a Treasure token.\"\nSVar:DBToken:DB$ Token | TokenScript$ smoke_blessing | AttachedTo$ Remembered\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Sacrifice & Type$Enchantment|Aura|Treasure|Artifact\nOracle:For each of up to X target creatures, create a red Aura enchantment token named Smoke Blessing attached to that creature. Those tokens have enchant creature and \"When enchanted creature dies, it deals 1 damage to its controller and you create a Treasure token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoke Spirits' Aid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

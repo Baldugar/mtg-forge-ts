@@ -1,0 +1,23 @@
+{
+  "id": "rinoa-heartilly-corpus-m685",
+  "description": "M6 corpus — Rinoa Heartilly; in-hand parse.",
+  "seed": 61961,
+  "cards": {
+    "Rinoa Heartilly": "Name:Rinoa Heartilly\nManaCost:3 G W\nTypes:Legendary Creature Human Rebel Warlock\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create Angelo, a legendary 1/1 green and white Dog creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ angelo | TokenOwner$ You\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature you control gets +1/+1 until end of turn for each creature you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When Rinoa Heartilly enters, create Angelo, a legendary 1/1 green and white Dog creature token.\\nAngelo Cannon — Whenever Rinoa Heartilly attacks, another target creature you control gets +1/+1 until end of turn for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rinoa Heartilly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

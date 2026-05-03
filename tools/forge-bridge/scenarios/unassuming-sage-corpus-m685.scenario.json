@@ -1,0 +1,23 @@
+{
+  "id": "unassuming-sage-corpus-m685",
+  "description": "M6 corpus — Unassuming Sage; in-hand parse.",
+  "seed": 62165,
+  "cards": {
+    "Unassuming Sage": "Name:Unassuming Sage\nManaCost:1 W\nTypes:Creature Human Peasant Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, you may pay {2}. If you do, create a Sorcerer Role token attached to it. (Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\nSVar:TrigToken:AB$ Token | Cost$ 2 | TokenScript$ role_sorcerer | AttachedTo$ Self\nDeckHas:Ability$Token & Type$Aura|Enchantment|Role\nOracle:When Unassuming Sage enters, you may pay {2}. If you do, create a Sorcerer Role token attached to it. (Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unassuming Sage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

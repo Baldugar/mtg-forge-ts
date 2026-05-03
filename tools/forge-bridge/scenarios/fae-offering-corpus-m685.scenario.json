@@ -1,0 +1,23 @@
+{
+  "id": "fae-offering-corpus-m685",
+  "description": "M6 corpus — Fae Offering; in-hand parse.",
+  "seed": 61616,
+  "cards": {
+    "Fae Offering": "Name:Fae Offering\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ Z | SVarCompare$ GE2 | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if you've cast both a creature spell and a noncreature spell this turn, create a Clue token, a Food token, and a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw,c_a_food_sac,c_a_treasure_sac | TokenOwner$ You\nSVar:X:Count$ThisTurnCast_Creature.YouCtrl/LimitMax.1\nSVar:Y:Count$ThisTurnCast_Card.nonCreature+YouCtrl/LimitMax.1\nSVar:Z:SVar$X/Plus.Y\nDeckHas:Ability$Token\nOracle:At the beginning of each end step, if you've cast both a creature spell and a noncreature spell this turn, create a Clue token, a Food token, and a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fae Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

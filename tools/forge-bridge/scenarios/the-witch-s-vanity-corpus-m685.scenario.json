@@ -1,0 +1,23 @@
+{
+  "id": "the-witch-s-vanity-corpus-m685",
+  "description": "M6 corpus — The Witch's Vanity; in-hand parse.",
+  "seed": 62131,
+  "cards": {
+    "The Witch's Vanity": "Name:The Witch's Vanity\nManaCost:1 B\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBFood,DBRole\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+cmcLE2 | TgtPrompt$ Select target creature an opponent controls with mana value 2 or less | SpellDescription$ Destroy target creature an opponent controls with mana value 2 or less.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | SpellDescription$ Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBRole:DB$ Token | TokenScript$ role_wicked | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SpellDescription$ Create a Wicked Role token attached to target creature you control.\nDeckHas:Ability$Sacrifice|LifeGain|Token & Type$Food|Artifact|Role|Aura\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Destroy target creature an opponent controls with mana value 2 or less.\\nII — Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nIII — Create a Wicked Role token attached to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Witch's Vanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

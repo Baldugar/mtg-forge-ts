@@ -1,0 +1,23 @@
+{
+  "id": "decadent-dragon-corpus-m685",
+  "description": "M6 corpus — Decadent Dragon; in-hand parse.",
+  "seed": 61574,
+  "cards": {
+    "Decadent Dragon": "Name:Decadent Dragon\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nSVar:HasAttackEffect:TRUE\nAlternateMode:Adventure\nOracle:Flying, trample\\nWhenever Decadent Dragon attacks, create a Treasure token.\n\nALTERNATE\n\nName:Expensive Taste\nManaCost:2 B\nTypes:Instant Adventure\nA:SP$ Dig | DigNum$ 2 | ChangeNum$ All | ValidTgts$ Opponent | DestinationZone$ Exile | RememberChanged$ True | ExileFaceDown$ True | WithMayLook$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play a card as long as it remains exiled.\nOracle:Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decadent Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

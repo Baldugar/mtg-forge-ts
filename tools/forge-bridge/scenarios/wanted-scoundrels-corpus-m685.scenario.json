@@ -1,0 +1,23 @@
+{
+  "id": "wanted-scoundrels-corpus-m685",
+  "description": "M6 corpus — Wanted Scoundrels; in-hand parse.",
+  "seed": 62198,
+  "cards": {
+    "Wanted Scoundrels": "Name:Wanted Scoundrels\nManaCost:1 B\nTypes:Creature Human Pirate\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, target opponent creates two Treasure tokens.\nSVar:TrigToken:DB$ Token | ValidTgts$ Opponent | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ Targeted\nOracle:When Wanted Scoundrels dies, target opponent creates two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wanted Scoundrels"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

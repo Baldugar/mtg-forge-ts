@@ -1,0 +1,23 @@
+{
+  "id": "exhibition-magician-corpus-m685",
+  "description": "M6 corpus — Exhibition Magician; in-hand parse.",
+  "seed": 61613,
+  "cards": {
+    "Exhibition Magician": "Name:Exhibition Magician\nManaCost:2 R\nTypes:Creature Human Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBToken2\nSVar:DBToken:DB$ Token | TokenScript$ gw_1_1_citizen | SpellDescription$ Create a 1/1 green and white Citizen creature token.\nSVar:DBToken2:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact|Citizen\nOracle:When Exhibition Magician enters, choose one —\\n• Create a 1/1 green and white Citizen creature token.\\n• Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exhibition Magician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

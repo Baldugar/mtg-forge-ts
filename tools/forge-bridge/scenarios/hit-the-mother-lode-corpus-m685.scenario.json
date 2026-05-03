@@ -1,0 +1,23 @@
+{
+  "id": "hit-the-mother-lode-corpus-m685",
+  "description": "M6 corpus — Hit the Mother Lode; in-hand parse.",
+  "seed": 61715,
+  "cards": {
+    "Hit the Mother Lode": "Name:Hit the Mother Lode\nManaCost:4 R R R\nTypes:Sorcery\nA:SP$ Discover | Num$ 10 | SubAbility$ DBTreasure | RememberDiscovered$ True | SpellDescription$ Discover 10.\nSVar:DBTreasure:DB$ Token | ConditionDefined$ Remembered | ConditionPresent$ Card.cmcLT10 | TokenScript$ c_a_treasure_sac | TokenAmount$ Remembered$CardManaCost/NMinus.10 | TokenTapped$ True | SubAbility$ DBCleanup | SpellDescription$ If the discovered card's mana value is less than 10, create a number of tapped Treasure tokens equal to the difference.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | StackDescription$ None | SpellDescription$ (To discover 10, exile cards from the top of your library until you exile a nonland card with mana value 10 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nDeckHas:Ability$Sacrifice|Token\nOracle:Discover 10. If the discovered card's mana value is less than 10, create a number of tapped Treasure tokens equal to the difference. (To discover 10, exile cards from the top of your library until you exile a nonland card with mana value 10 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hit the Mother Lode"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

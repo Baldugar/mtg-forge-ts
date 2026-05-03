@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-opulence-corpus-m685",
+  "description": "M6 corpus — Curse of Opulence; in-hand parse.",
+  "seed": 61564,
+  "cards": {
+    "Curse of Opulence": "Name:Curse of Opulence\nManaCost:R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | AttackedTarget$ Player.EnchantedBy | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player is attacked, create a Gold token. Each opponent attacking that player does the same. (A Gold token is an artifact with \"Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_gold_sac | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenOwner$ TriggeredAttackingPlayer.Opponent+controlsCreature.attacking Player.EnchantedBy | TokenScript$ c_a_gold_sac\nOracle:Enchant player\\nWhenever enchanted player is attacked, create a Gold token. Each opponent attacking that player does the same. (A Gold token is an artifact with \"Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Opulence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

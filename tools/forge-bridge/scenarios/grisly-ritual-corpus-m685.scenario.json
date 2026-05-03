@@ -1,0 +1,23 @@
+{
+  "id": "grisly-ritual-corpus-m685",
+  "description": "M6 corpus — Grisly Ritual; in-hand parse.",
+  "seed": 61700,
+  "cards": {
+    "Grisly Ritual": "Name:Grisly Ritual\nManaCost:5 B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBToken | SpellDescription$ Destroy target creature or planeswalker.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_blood_draw | SpellDescription$ Create two Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:Destroy target creature or planeswalker. Create two Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grisly Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

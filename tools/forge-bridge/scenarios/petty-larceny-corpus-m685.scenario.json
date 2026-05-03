@@ -1,0 +1,23 @@
+{
+  "id": "petty-larceny-corpus-m685",
+  "description": "M6 corpus — Petty Larceny; in-hand parse.",
+  "seed": 61898,
+  "cards": {
+    "Petty Larceny": "Name:Petty Larceny\nManaCost:3 B\nTypes:Sorcery\nK:Freerunning:1 B\nA:SP$ Dig | DigNum$ 2 | ValidTgts$ Opponent | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Look at the top two cards of target opponent's library and exile those cards face down. You may play those cards for as long as they remain exiled, and mana of any type can be spent to cast them. Create a Treasure token.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBTreasure | ForgetOnMoved$ Exile | Duration$ Permanent\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card for as long as it remains exiled, and mana of any type can be spent to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Assassin\nOracle:Freerunning {1}{B} (You may cast this spell for its freerunning cost if you dealt combat damage to a player this turn with an Assassin or commander.)\\nLook at the top two cards of target opponent's library and exile those cards face down. You may play those cards for as long as they remain exiled, and mana of any type can be spent to cast them. Create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petty Larceny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

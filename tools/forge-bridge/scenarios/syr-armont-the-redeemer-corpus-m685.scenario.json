@@ -1,0 +1,23 @@
+{
+  "id": "syr-armont-the-redeemer-corpus-m685",
+  "description": "M6 corpus — Syr Armont, the Redeemer; in-hand parse.",
+  "seed": 62087,
+  "cards": {
+    "Syr Armont, the Redeemer": "Name:Syr Armont, the Redeemer\nManaCost:3 G W\nTypes:Legendary Creature Human Knight\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Monster Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has trample.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_monster | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control\nS:Mode$ Continuous | Affected$ Creature.enchanted+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creatures you control get +1/+1.\nDeckHas:Ability$Token & Type$Aura|Enchantment|Role\nDeckHints:Type$Aura\nOracle:When Syr Armont, the Redeemer enters, create a Monster Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has trample.)\\nEnchanted creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Armont, the Redeemer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

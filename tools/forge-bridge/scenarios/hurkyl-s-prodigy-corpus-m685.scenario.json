@@ -1,0 +1,23 @@
+{
+  "id": "hurkyl-s-prodigy-corpus-m685",
+  "description": "M6 corpus — Hurkyl's Prodigy; in-hand parse.",
+  "seed": 61727,
+  "cards": {
+    "Hurkyl's Prodigy": "Name:Hurkyl's Prodigy\nManaCost:2 U\nTypes:Creature Human Soldier\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped Powerstone token.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks, you may pay {2}. If you do, CARDNAME can't be blocked this turn and it perpetually gets +2/+0.\nSVar:TrigUnblockable:AB$ Effect | Cost$ 2 | StaticAbilities$ Unblockable | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +2 | Duration$ Perpetual\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.EffectSource | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Artifact|Powerstone\nOracle:When Hurkyl's Prodigy enter, create a tapped Powerstone token.\\nWhenever Hurkyl's Prodigy attacks, you may pay {2}. If you do, Hurkyl's Prodigy can't be blocked this turn and it perpetually gets +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hurkyl's Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

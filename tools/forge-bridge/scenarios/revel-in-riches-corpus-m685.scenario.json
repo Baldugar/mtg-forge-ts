@@ -1,0 +1,23 @@
+{
+  "id": "revel-in-riches-corpus-m685",
+  "description": "M6 corpus — Revel in Riches; in-hand parse.",
+  "seed": 61959,
+  "cards": {
+    "Revel in Riches": "Name:Revel in Riches\nManaCost:4 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ DBTreasure | TriggerDescription$ Whenever a creature an opponent controls dies, create a Treasure token.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ Create a Treasure token.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | PresentCompare$ GE10 | IsPresent$ Treasure.YouCtrl | Execute$ TrigWinsGame | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you control ten or more Treasures, you win the game.\nSVar:TrigWinsGame:DB$ WinsGame | Defined$ You\nDeckHas:Ability$Token\nOracle:Whenever a creature an opponent controls dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nAt the beginning of your upkeep, if you control ten or more Treasures, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revel in Riches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hoard-robber-corpus-m685",
+  "description": "M6 corpus — Hoard Robber; in-hand parse.",
+  "seed": 61717,
+  "cards": {
+    "Hoard Robber": "Name:Hoard Robber\nManaCost:1 B\nTypes:Creature Tiefling Rogue\nPT:1/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Whenever Hoard Robber deals combat damage to a player, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoard Robber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

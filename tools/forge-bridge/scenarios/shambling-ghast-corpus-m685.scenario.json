@@ -1,0 +1,23 @@
+{
+  "id": "shambling-ghast-corpus-m685",
+  "description": "M6 corpus — Shambling Ghast; in-hand parse.",
+  "seed": 62023,
+  "cards": {
+    "Shambling Ghast": "Name:Shambling Ghast\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ BraveTheStench,SearchTheBody\nSVar:BraveTheStench:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls. | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Brave the Stench — Target creature an opponent controls gets -1/-1 until end of turn.\nSVar:SearchTheBody:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ Search the Body — Create a Treasure token.\nDeckHas:Ability$Token\nOracle:When Shambling Ghast dies, choose one —\\n• Brave the Stench — Target creature an opponent controls gets -1/-1 until end of turn.\\n• Search the Body — Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shambling Ghast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

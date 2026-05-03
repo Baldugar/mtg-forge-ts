@@ -1,0 +1,23 @@
+{
+  "id": "the-fourth-doctor-corpus-m685",
+  "description": "M6 corpus — The Fourth Doctor; in-hand parse.",
+  "seed": 62112,
+  "cards": {
+    "The Fourth Doctor": "Name:The Fourth Doctor\nManaCost:2 G U\nTypes:Legendary Creature Time Lord Doctor\nPT:4/4\nS:Mode$ Continuous | Affected$ Card.YouOwn+TopLibrary | EffectZone$ Battlefield | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl+Historic | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Library | Description$ Would You Like A . . . ? — Once each turn, you may play a historic land or cast a historic spell from the top of your library. When you do, create a Food token. (Artifacts, legendaries, and Sagas are historic.)\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.MayPlaySource | Execute$ TrigFood | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ When you do, create a Food token.\nT:Mode$ LandPlayed | ValidCard$ Land | ValidSA$ SpellAbility.MayPlaySource | TriggerZones$ Battlefield | Execute$ TrigFood | Secondary$ True | TriggerDescription$ When you do, create a Food token.\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHints:Type$Artifact|Legendary|Saga\nDeckHas:Ability$Token|Sacrifice & Type$Food|Artifact\nOracle:You may look at the top card of your library any time.\\nWould You Like A . . . ? — Once each turn, you may play a historic land or cast a historic spell from the top of your library. When you do, create a Food token. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fourth Doctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

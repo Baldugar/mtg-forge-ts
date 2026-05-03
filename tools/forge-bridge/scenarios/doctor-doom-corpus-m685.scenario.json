@@ -1,0 +1,23 @@
+{
+  "id": "doctor-doom-corpus-m685",
+  "description": "M6 corpus — Doctor Doom; in-hand parse.",
+  "seed": 61583,
+  "cards": {
+    "Doctor Doom": "Name:Doctor Doom\nManaCost:4 B B\nTypes:Legendary Creature Human Scientist Villain\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 3/3 colorless Robot Villain artifact creature tokens named Doombot.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ doombot | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | IsPresent$ Creature.Artifact+YouCtrl,Plan.YouCtrl | Description$ As long as you control an artifact creature or a Plan, CARDNAME has indestructible.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, you draw a card and lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:When Doctor Doom enters, create two 3/3 colorless Robot Villain artifact creature tokens named Doombot.\\nAs long as you control an artifact creature or a Plan, Doctor Doom has indestructible.\\nAt the beginning of your end step, you draw a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doctor Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

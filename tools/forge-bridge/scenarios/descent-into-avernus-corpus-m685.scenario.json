@@ -1,0 +1,23 @@
+{
+  "id": "descent-into-avernus-corpus-m685",
+  "description": "M6 corpus — Descent into Avernus; in-hand parse.",
+  "seed": 61576,
+  "cards": {
+    "Descent into Avernus": "Name:Descent into Avernus\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put two descent counters on CARDNAME. Then each player creates X Treasure tokens and CARDNAME deals X damage to each player, where X is the number of descent counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ DESCENT | CounterNum$ 2 | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenOwner$ Player | TokenAmount$ X | TokenScript$ c_a_treasure_sac | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Player | NumDmg$ X\nSVar:X:Count$CardCounters.DESCENT\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:At the beginning of your upkeep, put two descent counters on Descent into Avernus. Then each player creates X Treasure tokens and Descent into Avernus deals X damage to each player, where X is the number of descent counters on Descent into Avernus.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Descent into Avernus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

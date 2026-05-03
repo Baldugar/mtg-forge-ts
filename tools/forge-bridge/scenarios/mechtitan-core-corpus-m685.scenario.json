@@ -1,0 +1,23 @@
+{
+  "id": "mechtitan-core-corpus-m685",
+  "description": "M6 corpus — Mechtitan Core; in-hand parse.",
+  "seed": 61822,
+  "cards": {
+    "Mechtitan Core": "Name:Mechtitan Core\nManaCost:2\nTypes:Artifact Vehicle\nPT:2/4\nA:AB$ Token | Cost$ 5 Exile<1/CARDNAME> Exile<4/Artifact.Creature+Other;Vehicle.Other/other artifact creatures and/or Vehicle> | CostDesc$ {5}, Exile CARDNAME and four other artifact creatures and/or Vehicles you control: | TokenScript$ mechtitan | RememberTokens$ True | SubAbility$ DBEffect | SpellDescription$ Create Mechtitan, a legendary 10/10 Construct artifact creature token with flying, vigilance, trample, lifelink, and haste that's all colors.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigLeavesBattlefield | RememberObjects$ ExiledCards.Other | ForgetOnMoved$ Exile | ImprintCards$ Remembered | Duration$ Permanent | SubAbility$ DBCleanup | SpellDescription$ When that token leaves the battlefield, return all cards exiled with CARDNAME except CARDNAME to the battlefield tapped under their owners' control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigLeavesBattlefield:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted | Execute$ DBReturn | TriggerZones$ Command | TriggerDescription$ When that token leaves the battlefield, return all cards exiled with EFFECTSOURCE except EFFECTSOURCE to the battlefield tapped under their owners' control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Tapped$ True\nK:Crew:2\nDeckHints:Type$Vehicle\nOracle:{5}, Exile Mechtitan Core and four other artifact creatures and/or Vehicles you control: Create Mechtitan, a legendary 10/10 Construct artifact creature token with flying, vigilance, trample, lifelink, and haste that's all colors. When that token leaves the battlefield, return all cards exiled with Mechtitan Core except Mechtitan Core to the battlefield tapped under their owners' control.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mechtitan Core"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

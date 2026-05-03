@@ -1,0 +1,23 @@
+{
+  "id": "arterial-alchemy-corpus-m685",
+  "description": "M6 corpus — Arterial Alchemy; in-hand parse.",
+  "seed": 61448,
+  "cards": {
+    "Arterial Alchemy": "Name:Arterial Alchemy\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Blood token for each opponent you have. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_blood_draw\nSVar:X:PlayerCountOpponents$Amount\nS:Mode$ Continuous | Affected$ Blood.token+YouCtrl | AddType$ Equipment | AddStaticAbility$ BloodEquip | AddKeyword$ Equip:2 | Description$ Blood tokens you control are Equipment in addition to their other types and have \"Equipped creature gets +2/+0\" and equip {2}.\nSVar:BloodEquip:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nDeckHas:Ability$Token|Sacrifice & Type$Blood|Equipment\nDeckHints:Type$Blood\nOracle:When Arterial Alchemy enters, create a Blood token for each opponent you have. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nBlood tokens you control are Equipment in addition to their other types and have \"Equipped creature gets +2/+0\" and equip {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arterial Alchemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

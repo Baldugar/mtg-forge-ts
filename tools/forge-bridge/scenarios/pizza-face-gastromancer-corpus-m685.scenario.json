@@ -1,0 +1,23 @@
+{
+  "id": "pizza-face-gastromancer-corpus-m685",
+  "description": "M6 corpus — Pizza Face, Gastromancer; in-hand parse.",
+  "seed": 61907,
+  "cards": {
+    "Pizza Face, Gastromancer": "Name:Pizza Face, Gastromancer\nManaCost:3 B G\nTypes:Legendary Artifact Creature Food Mutant\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a Food token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Revolt$ True | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, put three +1/+1 counters on up to one other target artifact or creature. If it isn't a creature, it becomes a 0/0 Mutant creature in addition to its other types.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Artifact.Other,Creature.Other | ValidTgtsDesc$ another artifact or creature | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 3 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Card.nonCreature | Power$ 0 | Toughness$ 0 | Types$ Creature,Mutant | Duration$ Permanent\nA:AB$ GainLife | Cost$ 10 T Sac<1/CARDNAME/NICKNAME> | Defined$ You | LifeAmount$ 15 | SpellDescription$ You gain 15 life.\nDeckHas:Ability$LifeGain|Token|Food|Counters\nOracle:When Pizza Face enters, create a Food token.\\nDisappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, put three +1/+1 counters on up to one other target artifact or creature. If it isn't a creature, it becomes a 0/0 Mutant creature in addition to its other types.\\n{10}, {T}, Sacrifice Pizza Face: You gain 15 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pizza Face, Gastromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

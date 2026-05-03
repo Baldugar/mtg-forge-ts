@@ -1,0 +1,23 @@
+{
+  "id": "twisted-sewer-witch-corpus-m685",
+  "description": "M6 corpus — Twisted Sewer-Witch; in-hand parse.",
+  "seed": 62163,
+  "cards": {
+    "Twisted Sewer-Witch": "Name:Twisted Sewer-Witch\nManaCost:3 B B\nTypes:Creature Human Warlock\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 black Rat creature token with \"This creature can't block.\"Then for each Rat you control, create a Wicked Role token attached to that Rat. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatCards$ Creature.Rat+YouCtrl | Zone$ Battlefield | RepeatSubAbility$ DBToken | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenScript$ role_wicked | AttachedTo$ Remembered\nDeckHas:Ability$Token & Type$Role|Aura|Rat\nDeckNeeds:Type$Rat\nOracle:When Twisted Sewer-Witch enters, create a 1/1 black Rat creature token with \"This creature can't block.\" Then for each Rat you control, create a Wicked Role token attached to that Rat. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twisted Sewer-Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

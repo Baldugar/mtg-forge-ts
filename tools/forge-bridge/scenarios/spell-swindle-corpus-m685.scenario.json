@@ -1,0 +1,23 @@
+{
+  "id": "spell-swindle-corpus-m685",
+  "description": "M6 corpus — Spell Swindle; in-hand parse.",
+  "seed": 62051,
+  "cards": {
+    "Spell Swindle": "Name:Spell Swindle\nManaCost:3 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | RememberCounteredCMC$ True | SubAbility$ DBTreasureTokens | SpellDescription$ Counter target spell. Create X Treasure tokens, where X is that spell's mana value.\nSVar:DBTreasureTokens:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nDeckHas:Ability$Token\nOracle:Counter target spell. Create X Treasure tokens, where X is that spell's mana value. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Swindle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

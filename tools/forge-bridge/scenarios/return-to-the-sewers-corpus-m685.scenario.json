@@ -1,0 +1,23 @@
+{
+  "id": "return-to-the-sewers-corpus-m685",
+  "description": "M6 corpus — Return to the Sewers; in-hand parse.",
+  "seed": 61956,
+  "cards": {
+    "Return to the Sewers": "Name:Return to the Sewers\nManaCost:3 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | DestinationAlternative$ Library | LibraryPositionAlternative$ -1 | SubAbility$ DBToken | StackDescription$ REP Target creature's owner_{p:TargetedOwner} & puts it_puts {c:Targeted} & You create_{p:You} creates | SpellDescription$ Target creature's owner puts it on their choice of the top or bottom of their library. You create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nOracle:Target creature's owner puts it on their choice of the top or bottom of their library. You create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return to the Sewers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

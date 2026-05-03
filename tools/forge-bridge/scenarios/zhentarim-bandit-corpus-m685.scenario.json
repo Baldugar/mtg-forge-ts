@@ -1,0 +1,23 @@
+{
+  "id": "zhentarim-bandit-corpus-m685",
+  "description": "M6 corpus — Zhentarim Bandit; in-hand parse.",
+  "seed": 62218,
+  "cards": {
+    "Zhentarim Bandit": "Name:Zhentarim Bandit\nManaCost:1 B\nTypes:Creature Halfling Rogue\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, you may pay 1 life. If you do, create a Treasure token.\nSVar:TrigToken:AB$ Token | Cost$ PayLife<1> | TokenScript$ c_a_treasure_sac\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice\nOracle:Whenever Zhentarim Bandit attacks, you may pay 1 life. If you do, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zhentarim Bandit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

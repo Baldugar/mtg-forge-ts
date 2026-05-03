@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-celebrants-corpus-m685",
+  "description": "M6 corpus — Falkenrath Celebrants; in-hand parse.",
+  "seed": 61619,
+  "cards": {
+    "Falkenrath Celebrants": "Name:Falkenrath Celebrants\nManaCost:4 R\nTypes:Creature Vampire\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_blood_draw\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Falkenrath Celebrants enters, create two Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Celebrants"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

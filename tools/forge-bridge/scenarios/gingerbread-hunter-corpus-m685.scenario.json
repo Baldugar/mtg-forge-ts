@@ -1,0 +1,23 @@
+{
+  "id": "gingerbread-hunter-corpus-m685",
+  "description": "M6 corpus — Gingerbread Hunter; in-hand parse.",
+  "seed": 61672,
+  "cards": {
+    "Gingerbread Hunter": "Name:Gingerbread Hunter\nManaCost:4 G\nTypes:Creature Giant\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token & Type$Artifact|Food\nAlternateMode:Adventure\nOracle:When Gingerbread Hunter enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n\nALTERNATE\n\nName:Puny Snack\nManaCost:2 B\nTypes:Instant Adventure\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn. (Then exile this card. You may cast the creature later from exile.)\nOracle:Target creature gets -2/-2 until end of turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gingerbread Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

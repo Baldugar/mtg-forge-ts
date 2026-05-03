@@ -1,0 +1,23 @@
+{
+  "id": "hazel-s-brewmaster-corpus-m685",
+  "description": "M6 corpus — Hazel's Brewmaster; in-hand parse.",
+  "seed": 61708,
+  "cards": {
+    "Hazel's Brewmaster": "Name:Hazel's Brewmaster\nManaCost:3 B\nTypes:Creature Squirrel Warlock\nPT:3/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard and create a Food token.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard and create a Food token.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Card | Origin$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | Destination$ Exile | TgtPrompt$ Select up to one target card from a graveyard | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Food.YouCtrl | EffectZone$ Battlefield | GainsAbilitiesOf$ Creature.ExiledWithSource | GainsAbilitiesOfZones$ Exile | Description$ Foods you control have all activated abilities of all creature cards exiled with CARDNAME.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Graveyard & Type$Food|Artifact\nDeckHints:Ability$Graveyard|Mill\nOracle:Menace\\nWhenever Hazel's Brewmaster enters or attacks, exile up to one target card from a graveyard and create a Food token.\\nFoods you control have all activated abilities of all creature cards exiled with Hazel's Brewmaster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hazel's Brewmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

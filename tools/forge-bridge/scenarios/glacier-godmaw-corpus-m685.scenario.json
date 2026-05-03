@@ -1,0 +1,23 @@
+{
+  "id": "glacier-godmaw-corpus-m685",
+  "description": "M6 corpus — Glacier Godmaw; in-hand parse.",
+  "seed": 61674,
+  "cards": {
+    "Glacier Godmaw": "Name:Glacier Godmaw\nManaCost:5 G G\nTypes:Creature Leviathan\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_lander_sac_search | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Landfall — Whenever a land you control enters, creatures you control get +1/+1 and gain vigilance and haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance & Haste\nSVar:BuffedBy:Land\nDeckHas:Ability$Token\nOracle:Trample\\nWhen this creature enters, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\\nLandfall — Whenever a land you control enters, creatures you control get +1/+1 and gain vigilance and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glacier Godmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

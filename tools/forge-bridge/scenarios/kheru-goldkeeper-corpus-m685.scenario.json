@@ -1,0 +1,23 @@
+{
+  "id": "kheru-goldkeeper-corpus-m685",
+  "description": "M6 corpus — Kheru Goldkeeper; in-hand parse.",
+  "seed": 61771,
+  "cards": {
+    "Kheru Goldkeeper": "Name:Kheru Goldkeeper\nManaCost:1 B G U\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ ChangesZoneAll | Origin$ Graveyard | Destination$ Any | ValidCards$ Card.YouOwn | PlayerTurn$ True | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more cards leave your graveyard during your turn, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ Pump | PrecostDesc$ Renew — | Cost$ 2 B G U ExileFromGrave<1/CARDNAME/this card> | ActivationZone$ Graveyard | ValidTgts$ Creature | SorcerySpeed$ True | SubAbility$ DBCounter | SpellDescription$ Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.\nSVar:DBCounter:DB$ PutCounterAll | ValidCards$ Creature.targetedBy | CounterType$ P1P1 | CounterNum$ 2 | CounterType2$ Flying | CounterNum2$ 1\nDeckHas:Ability$Graveyard|Counters\nDeckHints:Ability$Graveyard\nOracle:Flying\\nWhenever one or more cards leave your graveyard during your turn, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\\nRenew — {2}{B}{G}{U}, Exile this card from your graveyard: Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kheru Goldkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "heartless-pillage-corpus-m685",
+  "description": "M6 corpus — Heartless Pillage; in-hand parse.",
+  "seed": 61710,
+  "cards": {
+    "Heartless Pillage": "Name:Heartless Pillage\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Opponent | Mode$ TgtChoose | NumCards$ 2 | SubAbility$ DBTreasure | SpellDescription$ Target opponent discards two cards. Raid — If you attacked this turn, create a Treasure token.\nSVar:DBTreasure:DB$ Token | ConditionCheckSVar$ RaidTest | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Target opponent discards two cards.\\nRaid — If you attacked this turn, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartless Pillage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

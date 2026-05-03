@@ -1,0 +1,23 @@
+{
+  "id": "gylwain-casting-director-corpus-m685",
+  "description": "M6 corpus — Gylwain, Casting Director; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Gylwain, Casting Director": "Name:Gylwain, Casting Director\nManaCost:1 G W\nTypes:Legendary Creature Human Bard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.!token+Other+YouCtrl | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBRoyal,DBSorcerer,DBMonster\nSVar:DBRoyal:DB$ Token | TokenScript$ role_royal | TokenOwner$ You | AttachedTo$ TriggeredCardLKICopy | SpellDescription$ Create a Royal Role token attached to that creature.\nSVar:DBSorcerer:DB$ Token | TokenScript$ role_sorcerer | TokenOwner$ You | AttachedTo$ TriggeredCardLKICopy | SpellDescription$ Create a Sorcerer Role token attached to that creature.\nSVar:DBMonster:DB$ Token | TokenScript$ role_monster | TokenOwner$ You | AttachedTo$ TriggeredCardLKICopy | SpellDescription$ Create a Monster Role token attached to that creature.\nDeckHas:Type$Aura|Role & Ability$Token\nOracle:Whenever Gylwain, Casting Director or another nontoken creature you control enters, choose one —\\n• Create a Royal Role token attached to that creature.\\n• Create a Sorcerer Role token attached to that creature.\\n• Create a Monster Role token attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gylwain, Casting Director"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

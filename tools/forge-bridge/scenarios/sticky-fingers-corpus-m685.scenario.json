@@ -1,0 +1,23 @@
+{
+  "id": "sticky-fingers-corpus-m685",
+  "description": "M6 corpus — Sticky Fingers; in-hand parse.",
+  "seed": 62069,
+  "cards": {
+    "Sticky Fingers": "Name:Sticky Fingers\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Menace | AddTrigger$ TriggerDamageDone | Description$ Enchanted creature has menace and \"Whenever this creature deals combat damage to a player, create a Treasure token.\" (It can't be blocked except by two or more creatures. The token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TriggerDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | CombatDamage$ True | ValidTarget$ Player | Execute$ DBToken | TriggerDescription$ Whenever this creature deals combat damage to a player, create a Treasure token. (The token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerDescription$ When enchanted creature dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Enchant creature\\nEnchanted creature has menace and \"Whenever this creature deals combat damage to a player, create a Treasure token.\" (It can't be blocked except by two or more creatures. The token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nWhen enchanted creature dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sticky Fingers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

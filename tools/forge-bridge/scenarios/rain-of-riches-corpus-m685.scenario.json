@@ -1,0 +1,23 @@
+{
+  "id": "rain-of-riches-corpus-m685",
+  "description": "M6 corpus — Rain of Riches; in-hand parse.",
+  "seed": 61935,
+  "cards": {
+    "Rain of Riches": "Name:Rain of Riches\nManaCost:3 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nS:Mode$ Continuous | Affected$ Card.YouCtrl+CastSa Spell.ManaFromTreasure | AffectedZone$ Stack | CheckSVar$ X | SVarCompare$ EQ0 | AddKeyword$ Cascade | Description$ The first spell you cast each turn that mana from a Treasure was spent to cast has cascade. (When you cast the spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+CastSa Spell.ManaFromTreasure\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Type$Treasure\nOracle:When Rain of Riches enters, create two Treasure tokens.\\nThe first spell you cast each turn that mana from a Treasure was spent to cast has cascade. (When you cast the spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rain of Riches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

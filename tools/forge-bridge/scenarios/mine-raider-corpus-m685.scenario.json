@@ -1,0 +1,23 @@
+{
+  "id": "mine-raider-corpus-m685",
+  "description": "M6 corpus — Mine Raider; in-hand parse.",
+  "seed": 61834,
+  "cards": {
+    "Mine Raider": "Name:Mine Raider\nManaCost:2 R\nTypes:Creature Human Rogue\nPT:3/2\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Card.Outlaw+StrictlyOther+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, if you control another outlaw, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. A Treasure token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token|Sacrifice\nOracle:Trample\\nWhen Mine Raider enters, if you control another outlaw, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. A Treasure token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mine Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

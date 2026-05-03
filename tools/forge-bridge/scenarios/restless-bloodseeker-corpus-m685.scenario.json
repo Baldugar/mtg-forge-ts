@@ -1,0 +1,23 @@
+{
+  "id": "restless-bloodseeker-corpus-m685",
+  "description": "M6 corpus — Restless Bloodseeker; in-hand parse.",
+  "seed": 61953,
+  "cards": {
+    "Restless Bloodseeker": "Name:Restless Bloodseeker\nManaCost:1 B\nTypes:Creature Vampire\nPT:1/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | Execute$ DBToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you gained life this turn, create a Blood token.\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ SetState | Cost$ Sac<2/Blood.token/Blood token> | Defined$ Self | SorcerySpeed$ True | Mode$ Transform | SpellDescription$ Transform CARDNAME. Activate only as a sorcery.\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood\nDeckNeeds:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:At the beginning of your end step, if you gained life this turn, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nSacrifice two Blood tokens: Transform Restless Bloodseeker. Activate only as a sorcery.\n\nALTERNATE\n\nName:Bloodsoaked Reveler\nManaCost:no cost\nColors:black\nTypes:Creature Vampire\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | Execute$ DBToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you gained life this turn, create a Blood token.\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ LoseLife | Cost$ 4 B | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nOracle:At the beginning of your end step, if you gained life this turn, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\n{4}{B}: Each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Bloodseeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

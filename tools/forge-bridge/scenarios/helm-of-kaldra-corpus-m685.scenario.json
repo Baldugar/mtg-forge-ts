@@ -1,0 +1,23 @@
+{
+  "id": "helm-of-kaldra-corpus-m685",
+  "description": "M6 corpus — Helm of Kaldra; in-hand parse.",
+  "seed": 61712,
+  "cards": {
+    "Helm of Kaldra": "Name:Helm of Kaldra\nManaCost:3\nTypes:Legendary Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike & Trample & Haste | Description$ Equipped creature has first strike, trample, and haste.\nA:AB$ Token | Cost$ 1 | TokenScript$ kaldra | SubAbility$ DBAttachEach | RememberTokens$ True | ConditionCheckSVar$ AllThree | ConditionSVarCompare$ EQ3 | AILogic$ Never | StackDescription$ {p:You} creates Kaldra, a legendary 4/4 colorless Avatar creature token. | SpellDescription$ If you control Equipment named Helm of Kaldra, Sword of Kaldra, and Shield of Kaldra, create Kaldra, a legendary 4/4 colorless Avatar creature token. Attach those Equipment to it.\nSVar:DBAttachEach:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Equipment.YouCtrl+namedHelm of Kaldra,Equipment.YouCtrl+namedSword of Kaldra,Equipment.YouCtrl+namedShield of Kaldra | ConditionDefined$ Remembered | ConditionPresent$ Card | RepeatSubAbility$ DBAttach | SubAbility$ DBCleanup | StackDescription$ {p:You} attaches Helm of Kaldra, Sword of Kaldra, and Shield of Kaldra to it.\nSVar:DBAttach:DB$ Attach | Object$ Imprinted | Defined$ Remembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AllThree:SVar$Sum/Plus.Shield\nSVar:Helm:Count$Valid Equipment.YouCtrl+namedHelm of Kaldra/LimitMax.1\nSVar:Sword:Count$Valid Equipment.YouCtrl+namedSword of Kaldra/LimitMax.1\nSVar:Shield:Count$Valid Equipment.YouCtrl+namedShield of Kaldra/LimitMax.1\nSVar:Sum:SVar$Helm/Plus.Sword\nDeckHints:Name$Sword of Kaldra|Shield of Kaldra\nOracle:Equipped creature has first strike, trample, and haste.\\n{1}: If you control Equipment named Helm of Kaldra, Sword of Kaldra, and Shield of Kaldra, create Kaldra, a legendary 4/4 colorless Avatar creature token. Attach those Equipment to it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Helm of Kaldra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

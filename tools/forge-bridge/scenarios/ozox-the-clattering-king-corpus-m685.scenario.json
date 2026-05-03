@@ -1,0 +1,23 @@
+{
+  "id": "ozox-the-clattering-king-corpus-m685",
+  "description": "M6 corpus — Ozox, the Clattering King; in-hand parse.",
+  "seed": 61891,
+  "cards": {
+    "Ozox, the Clattering King": "Name:Ozox, the Clattering King\nManaCost:2 B\nTypes:Legendary Creature Skeleton Noble\nPT:3/2\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerDescription$ When NICKNAME dies, create Jumblebones, a legendary 2/1 black Skeleton creature token with \"This creature can't block\" and \"When this creature leaves the battlefield, return target card named Ozox, the Clattering King from your graveyard to your hand.\"\nSVar:TrigToken:DB$ Token | TokenScript$ jumblebones\nDeckHas:Ability$Token\nOracle:Ozox, the Clattering King can't block.\\nWhen Ozox dies, create Jumblebones, a legendary 2/1 black Skeleton creature token with \"This creature can't block\" and \"When this creature leaves the battlefield, return target card named Ozox, the Clattering King from your graveyard to your hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ozox, the Clattering King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

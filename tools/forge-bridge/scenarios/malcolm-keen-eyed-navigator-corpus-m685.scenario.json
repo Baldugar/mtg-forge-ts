@@ -1,0 +1,23 @@
+{
+  "id": "malcolm-keen-eyed-navigator-corpus-m685",
+  "description": "M6 corpus — Malcolm, Keen-Eyed Navigator; in-hand parse.",
+  "seed": 61811,
+  "cards": {
+    "Malcolm, Keen-Eyed Navigator": "Name:Malcolm, Keen-Eyed Navigator\nManaCost:2 U\nTypes:Legendary Creature Siren Pirate\nPT:2/2\nK:Flying\nK:Partner\nT:Mode$ DamageAll | ValidSource$ Pirate.YouCtrl+inZoneBattlefield | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more Pirates you control deal damage to your opponents, you create a Treasure token for each opponent dealt damage. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:X:TriggeredPlayersTargets$Amount\nDeckHints:Type$Pirate\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever one or more Pirates you control deal damage to your opponents, you create a Treasure token for each opponent dealt damage. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malcolm, Keen-Eyed Navigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "volatile-fault-corpus-m685",
+  "description": "M6 corpus — Volatile Fault; in-hand parse.",
+  "seed": 62188,
+  "cards": {
+    "Volatile Fault": "Name:Volatile Fault\nManaCost:no cost\nTypes:Land Cave\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Destroy | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Land.nonBasic+OppCtrl | TgtPrompt$ Select target nonbasic land an opponent controls | SubAbility$ DBSearch | AILogic$ GhostQuarter | SpellDescription$ Destroy target nonbasic land an opponent controls. That player may search their library for a basic land card, put it onto the battlefield, then shuffle. You create a Treasure token.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ TargetedController | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBTreasure | StackDescription$ That land's controller may search their library for a basic land card, put it onto the battlefield, then shuffle. You create a Treasure token.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:{T}: Add {C}.\\n{1}, {T}, Sacrifice Volatile Fault: Destroy target nonbasic land an opponent controls. That player may search their library for a basic land card, put it onto the battlefield, then shuffle. You create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volatile Fault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

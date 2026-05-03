@@ -1,0 +1,23 @@
+{
+  "id": "segovian-sword-corpus-m685",
+  "description": "M6 corpus — Segovian Sword; in-hand parse.",
+  "seed": 62018,
+  "cards": {
+    "Segovian Sword": "Name:Segovian Sword\nManaCost:3\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ For Segovia! (When this Equipment enters the battlefield, create a -1/-1 blue Squid creature token, then attach this to it. Yes, it's a -1/-1 creature.)\nSVar:TrigToken:DB$ Token | TokenScript$ u_m1_m1_squid | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Squid\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Skulk | Description$ Equipped creature gets +2/+2 and has skulk.\nK:Equip:3\nOracle:For Segovia! (When this Equipment enters the battlefield, create a -1/-1 blue Squid creature token, then attach this to it. Yes, it's a -1/-1 creature.)\\nEquipped creature gets +2/+2 and has skulk. (It can't be blocked by creatures with greater power.)\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Segovian Sword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

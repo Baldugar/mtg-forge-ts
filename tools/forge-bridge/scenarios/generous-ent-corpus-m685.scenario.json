@@ -1,0 +1,23 @@
+{
+  "id": "generous-ent-corpus-m685",
+  "description": "M6 corpus — Generous Ent; in-hand parse.",
+  "seed": 61658,
+  "cards": {
+    "Generous Ent": "Name:Generous Ent\nManaCost:5 G\nTypes:Creature Treefolk\nPT:5/7\nK:Reach\nK:TypeCycling:Forest:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$LifeGain|Token|Food|Discard\nDeckHints:Ability$Food\nOracle:Reach\\nWhen Generous Ent enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nForestcycling {1} ({1}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Generous Ent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-bear-force-pilot-corpus-m685",
+  "description": "M6 corpus — The Bear Force Pilot; in-hand parse.",
+  "seed": 62103,
+  "cards": {
+    "The Bear Force Pilot": "Name:The Bear Force Pilot\nManaCost:1 G\nTypes:Legendary Creature Bear Pilot\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create a colorless artifact Vehicle token with flying, \"This creature gets +1/+1 for each Bear you control,\" and Crew 2.\nSVar:TrigToken:DB$ Token | TokenScript$ bear_force_one\nDeckHas:Ability$Token & Type$Artifact|Vehicle\nDeckHints:Type$Bear\nOracle:When The Bear Force Pilot enters the battlefield, create a colorless artifact Vehicle token with flying, \"This creature gets +1/+1 for each Bear you control,\" and Crew 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Bear Force Pilot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

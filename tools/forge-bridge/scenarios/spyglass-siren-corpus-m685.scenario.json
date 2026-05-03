@@ -1,0 +1,23 @@
+{
+  "id": "spyglass-siren-corpus-m685",
+  "description": "M6 corpus — Spyglass Siren; in-hand parse.",
+  "seed": 62062,
+  "cards": {
+    "Spyglass Siren": "Name:Spyglass Siren\nManaCost:U\nTypes:Creature Siren Pirate\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_map_sac_explore\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Artifact|Map\nOracle:Flying\\nWhen Spyglass Siren enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spyglass Siren"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

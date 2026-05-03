@@ -1,0 +1,23 @@
+{
+  "id": "prosperous-bandit-corpus-m685",
+  "description": "M6 corpus — Prosperous Bandit; in-hand parse.",
+  "seed": 61924,
+  "cards": {
+    "Prosperous Bandit": "Name:Prosperous Bandit\nManaCost:2 R\nTypes:Creature Raccoon Rogue\nPT:2/2\nK:Offspring:1\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever this creature deals combat damage to a player, create that many tapped Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ X | TokenTapped$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Offspring {1} (You may pay an additional {1} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nFirst strike\\nWhenever this creature deals combat damage to a player, create that many tapped Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prosperous Bandit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

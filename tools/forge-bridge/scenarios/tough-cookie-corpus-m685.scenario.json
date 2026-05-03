@@ -1,0 +1,23 @@
+{
+  "id": "tough-cookie-corpus-m685",
+  "description": "M6 corpus — Tough Cookie; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Tough Cookie": "Name:Tough Cookie\nManaCost:1 G\nTypes:Artifact Creature Food Golem\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ Animate | Cost$ 2 G | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select target noncreature artifact you control | Power$ 4 | Toughness$ 4 | Types$ Artifact,Creature | AILogic$ ValuableAttackerOrBlocker | SpellDescription$ Target noncreature artifact you control becomes a 4/4 artifact creature until end of turn.\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$LifeGain|Sacrifice|Token & Type$Food\nDeckHints:Type$Artifact\nOracle:When Tough Cookie enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n{2}{G}: Target noncreature artifact you control becomes a 4/4 artifact creature until end of turn.\\n{2}, {T}, Sacrifice Tough Cookie: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tough Cookie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

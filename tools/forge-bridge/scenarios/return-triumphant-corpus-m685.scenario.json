@@ -1,0 +1,23 @@
+{
+  "id": "return-triumphant-corpus-m685",
+  "description": "M6 corpus — Return Triumphant; in-hand parse.",
+  "seed": 61957,
+  "cards": {
+    "Return Triumphant": "Name:Return Triumphant\nManaCost:1 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3 | SubAbility$ DBToken | TgtPrompt$ Select target creature card from your graveyard with mana value 3 or less | SpellDescription$ Return target creature card with mana value 3 or less from your graveyard to the battlefield. Create a Young Hero Role token attached to it. (Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\" If you put another Role on the creature later, put this one into the graveyard.)\nSVar:DBToken:DB$ Token | TokenScript$ role_young_hero | TokenOwner$ You | AttachedTo$ Targeted\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:Return target creature card with mana value 3 or less from your graveyard to the battlefield. Create a Young Hero Role token attached to it. (Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\" If you put another Role on the creature later, put this one into the graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return Triumphant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glass-cast-heart-corpus-m685",
+  "description": "M6 corpus — Glass-Cast Heart; in-hand parse.",
+  "seed": 61675,
+  "cards": {
+    "Glass-Cast Heart": "Name:Glass-Cast Heart\nManaCost:2 B\nTypes:Artifact\nT:Mode$ AttackersDeclared | ValidAttackers$ Vampire.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Vampires you control attack, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ Token | Cost$ B T PayLife<1> | TokenScript$ wb_1_1_vampire_lifelink | StackDescription$ SpellDescription | SpellDescription$ Create a 1/1 white and black Vampire creature token with lifelink.\nA:AB$ LoseLife | Cost$ B B T Sac<1/CARDNAME> Sac<13/Blood.token/Blood token> | CostDesc$ {B}{B}, {T}, Sacrifice CARDNAME and thirteen Blood tokens: | Defined$ Player.Opponent | LifeAmount$ 13 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 13 life and you gain 13 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 13\nDeckHints:Type$Vampire\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood|Vampire\nOracle:Whenever one or more Vampires you control attack, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\n{B}, {T}, Pay 1 life: Create a 1/1 white and black Vampire creature token with lifelink.\\n{B}{B}, {T}, Sacrifice Glass-Cast Heart and thirteen Blood tokens: Each opponent loses 13 life and you gain 13 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glass-Cast Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

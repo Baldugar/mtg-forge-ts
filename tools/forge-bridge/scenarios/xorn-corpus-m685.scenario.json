@@ -1,0 +1,23 @@
+{
+  "id": "xorn-corpus-m685",
+  "description": "M6 corpus — Xorn; in-hand parse.",
+  "seed": 62212,
+  "cards": {
+    "Xorn": "Name:Xorn\nManaCost:2 R\nTypes:Creature Elemental\nPT:3/2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Treasure | ReplaceWith$ DBReplace | Description$ If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token.\nSVar:DBReplace:DB$ ReplaceToken | Type$ AddToken | Amount$ 1 | TokenScript$ c_a_treasure_sac\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Token & Type$Treasure\nOracle:If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "michelangelo-mutant-bff-corpus-m685",
+  "description": "M6 corpus — Michelangelo, Mutant BFF; in-hand parse.",
+  "seed": 61828,
+  "cards": {
+    "Michelangelo, Mutant BFF": "Name:Michelangelo, Mutant BFF\nManaCost:2 G G\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:4/4\nS:Mode$ MinMaxBlocker | ValidCard$ Creature.YouCtrl+HasCounters | Max$ 1 | Description$ Each creature you control with a counter on it can't be blocked by more than one creature.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME enters or attacks, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nSVar:NonStackingEffect:True\nSVar:PlayMain1:TRUE\nOracle:Each creature you control with a counter on it can't be blocked by more than one creature.\\nWhenever Michelangelo enters or attacks, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Michelangelo, Mutant BFF"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

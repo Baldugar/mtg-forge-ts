@@ -1,0 +1,23 @@
+{
+  "id": "vraska-relic-seeker-corpus-m685",
+  "description": "M6 corpus — Vraska, Relic Seeker; in-hand parse.",
+  "seed": 62195,
+  "cards": {
+    "Vraska, Relic Seeker": "Name:Vraska, Relic Seeker\nManaCost:4 B G\nTypes:Legendary Planeswalker Vraska\nLoyalty:6\nA:AB$ Token | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ b_2_2_pirate_menace | TokenOwner$ You | SpellDescription$ Create a 2/2 black Pirate creature token with menace.\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Artifact,Creature,Enchantment | TgtPrompt$ Select target artifact, creature, or enchantment | AILogic$ MinLoyalty.4 | SubAbility$ DBTreasure | SpellDescription$ Destroy target artifact, creature, or enchantment. Create a Treasure token.\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ SetLife | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | LifeAmount$ 1 | SpellDescription$ Target player's life total becomes 1.\nDeckHas:Ability$Token\nOracle:[+2]: Create a 2/2 black Pirate creature token with menace.\\n[-3]: Destroy target artifact, creature, or enchantment. Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n[-10]: Target player's life total becomes 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska, Relic Seeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

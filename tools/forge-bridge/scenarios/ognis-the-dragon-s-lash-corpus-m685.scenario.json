@@ -1,0 +1,23 @@
+{
+  "id": "ognis-the-dragon-s-lash-corpus-m685",
+  "description": "M6 corpus — Ognis, the Dragon's Lash; in-hand parse.",
+  "seed": 61878,
+  "cards": {
+    "Ognis, the Dragon's Lash": "Name:Ognis, the Dragon's Lash\nManaCost:1 BR R RG\nTypes:Legendary Creature Lizard Warrior\nPT:3/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+withHaste | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control with haste attacks, create a tapped Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nDeckNeeds:Ability&Haste\nOracle:Haste\\nWhenever a creature you control with haste attacks, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ognis, the Dragon's Lash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

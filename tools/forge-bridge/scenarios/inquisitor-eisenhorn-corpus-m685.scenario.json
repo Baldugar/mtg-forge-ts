@@ -1,0 +1,23 @@
+{
+  "id": "inquisitor-eisenhorn-corpus-m685",
+  "description": "M6 corpus — Inquisitor Eisenhorn; in-hand parse.",
+  "seed": 61736,
+  "cards": {
+    "Inquisitor Eisenhorn": "Name:Inquisitor Eisenhorn\nManaCost:2 U B\nTypes:Legendary Creature Human Inquisitor\nPT:2/3\nT:Mode$ Drawn | ValidCard$ Card.YouOwn | Number$ 1 | OptionalDecider$ You | Static$ True | ForReveal$ True | Execute$ DBReveal | TriggerZones$ Battlefield | TriggerDescription$ You may reveal the first card you draw each turn as you draw it. Whenever you reveal an instant or sorcery card this way, create Cherubael, a legendary 4/4 black Demon creature token with flying.\nSVar:DBReveal:DB$ Reveal | Defined$ You | RevealDefined$ TriggeredCard | RememberRevealed$ True | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Instant,Sorcery | SubAbility$ DBCleanup | Execute$ DBToken | TriggerDescription$ Whenever you reveal an instant or sorcery card this way, create Cherubael, a legendary 4/4 black Demon creature token with flying.\nSVar:DBToken:DB$ Token | TokenScript$ cherubael\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigInvestigate | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, investigate that many times. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Num$ X | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Type$Clue|Demon|Artifact & Ability$Token|Sacrifice\nOracle:You may reveal the first card you draw each turn as you draw it. Whenever you reveal an instant or sorcery card this way, create Cherubael, a legendary 4/4 black Demon creature token with flying.\\nWhenever Inquisitor Eisenhorn deals combat damage to a player, investigate that many times. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inquisitor Eisenhorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

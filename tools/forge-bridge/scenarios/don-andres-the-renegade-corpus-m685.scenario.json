@@ -1,0 +1,23 @@
+{
+  "id": "don-andres-the-renegade-corpus-m685",
+  "description": "M6 corpus — Don Andres, the Renegade; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Don Andres, the Renegade": "Name:Don Andres, the Renegade\nManaCost:1 U B R\nTypes:Legendary Creature Vampire Pirate\nPT:4/3\nS:Mode$ Continuous | Affected$ Creature.YouDontOwn+YouCtrl | AddPower$ 2 | AddToughness$ 2 | AddType$ Pirate | AddKeyword$ Menace & Deathtouch | Description$ Each creature you control but don't own gets +2/+2, has menace and deathtouch, and is a Pirate in addition to its other types.\nT:Mode$ SpellCast | ValidCard$ Card.YouDontOwn+nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a noncreature spell you don't own, create two tapped Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ You | TokenTapped$ True\nSVar:PlayMain1:TRUE\nDeckHints:Type$Vampire\nDeckHas:Ability$Token & Type$Treasure|Artifact\nOracle:Each creature you control but don't own gets +2/+2, has menace and deathtouch, and is a Pirate in addition to its other types.\\nWhenever you cast a noncreature spell you don't own, create two tapped Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Don Andres, the Renegade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

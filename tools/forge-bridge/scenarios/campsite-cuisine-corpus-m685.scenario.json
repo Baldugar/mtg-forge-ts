@@ -1,0 +1,23 @@
+{
+  "id": "campsite-cuisine-corpus-m685",
+  "description": "M6 corpus — Campsite Cuisine; in-hand parse.",
+  "seed": 61518,
+  "cards": {
+    "Campsite Cuisine": "Name:Campsite Cuisine\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Legendary+YouCtrl | Execute$ TrigFood | TriggerDescription$ Whenever this enchantment or a legendary creature you control enters, create a Food token.\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ AttackersDeclared | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack, you may sacrifice X Foods. When you do, up to X target attacking creatures each get +3/+3 and gain trample and indestructible until end of turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<X/Food> | Execute$ TrigPump | TriggerDescription$ When you do, up to X target attacking creatures each get +3/+3 and gain trample and indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select up to X target attacking creatures | NumAtt$ +3 | NumDef$ +3 | KW$ Trample & Indestructible\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Food\nDeckHints:Type$Legendary & Type$Creature\nOracle:Whenever this enchantment or a legendary creature you control enters, create a Food token.\\nWhenever you attack, you may sacrifice X Foods. When you do, up to X target attacking creatures each get +3/+3 and gain trample and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Campsite Cuisine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

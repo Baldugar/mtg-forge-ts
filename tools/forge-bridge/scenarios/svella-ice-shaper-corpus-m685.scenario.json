@@ -1,0 +1,23 @@
+{
+  "id": "svella-ice-shaper-corpus-m685",
+  "description": "M6 corpus — Svella, Ice Shaper; in-hand parse.",
+  "seed": 62081,
+  "cards": {
+    "Svella, Ice Shaper": "Name:Svella, Ice Shaper\nManaCost:1 R G\nTypes:Legendary Snow Creature Troll Warrior\nPT:2/4\nA:AB$ Token | Cost$ 3 T | TokenScript$ icy_manalith | TokenOwner$ You | SpellDescription$ Create a colorless snow artifact token named Icy Manalith with \"{T}: Add one mana of any color.\"\nA:AB$ PeekAndReveal | Cost$ 6 R G T | Defined$ You | PeekAmount$ 4 | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBPlay | SpellDescription$ Look at the top four cards of your library. You may cast a spell from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\nSVar:DBPlay:DB$ Play | ValidZone$ Library | Valid$ Card.IsRemembered+nonLand | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ 1 | ForgetPlayed$ True | SubAbility$ DBRestRandomOrder | StackDescription$ None\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{3}, {T}: Create a colorless snow artifact token named Icy Manalith with \"{T}: Add one mana of any color.\"\\n{6}{R}{G}, {T}: Look at the top four cards of your library. You may cast a spell from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Svella, Ice Shaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

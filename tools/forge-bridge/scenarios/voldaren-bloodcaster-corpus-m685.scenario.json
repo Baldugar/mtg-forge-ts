@@ -1,0 +1,23 @@
+{
+  "id": "voldaren-bloodcaster-corpus-m685",
+  "description": "M6 corpus — Voldaren Bloodcaster; in-hand parse.",
+  "seed": 62189,
+  "cards": {
+    "Voldaren Bloodcaster": "Name:Voldaren Bloodcaster\nManaCost:1 B\nTypes:Creature Vampire Wizard\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+!token+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control dies, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw\nT:Mode$ TokenCreated | ValidPlayer$ You | ValidToken$ Blood | IsPresent$ Blood.token+YouCtrl | PresentCompare$ GE5 | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ Whenever you create a Blood token, if you control five or more Blood tokens, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhenever Voldaren Bloodcaster or another nontoken creature you control dies, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nWhenever you create a Blood token, if you control five or more Blood tokens, transform Voldaren Bloodcaster.\n\nALTERNATE\n\nName:Bloodbat Summoner\nManaCost:no cost\nColors:black\nTypes:Creature Vampire Wizard\nPT:3/3\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, up to one target Blood token you control becomes a 2/2 black Bat creature with flying and haste in addition to its other types.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Blood.token+YouCtrl | TgtPrompt$ Select up to one target Blood token you control | TargetMin$ 0 | TargetMax$ 1 | Power$ 2 | Toughness$ 2 | Colors$ Black | OverwriteColors$ True | Types$ Creature,Bat | Keywords$ Flying & Haste | Duration$ Permanent\nOracle:Flying\\nAt the beginning of combat on your turn, up to one target Blood token you control becomes a 2/2 black Bat creature with flying and haste in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voldaren Bloodcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

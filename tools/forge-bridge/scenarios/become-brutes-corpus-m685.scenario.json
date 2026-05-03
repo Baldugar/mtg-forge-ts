@@ -1,0 +1,23 @@
+{
+  "id": "become-brutes-corpus-m685",
+  "description": "M6 corpus — Become Brutes; in-hand parse.",
+  "seed": 61467,
+  "cards": {
+    "Become Brutes": "Name:Become Brutes\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Pump | TargetMin$ 1 | KW$ Haste | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select one or two target creatures | SubAbility$ DBRepeat | SpellDescription$ One or two target creatures each gain haste until end of turn.\nSVar:DBRepeat:DB$ RepeatEach | DefinedCards$ Targeted | Zone$ Battlefield | RepeatSubAbility$ DBToken | ChangeZoneTable$ True | SpellDescription$ For each of those creatures, create a Monster Role token attached to it. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has trample.)\nSVar:DBToken:DB$ Token | TokenScript$ role_monster | AttachedTo$ Remembered\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:One or two target creatures each gain haste until end of turn. For each of those creatures, create a Monster Role token attached to it. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has trample.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Become Brutes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

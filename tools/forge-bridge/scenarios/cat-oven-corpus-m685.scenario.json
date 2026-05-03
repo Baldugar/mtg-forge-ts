@@ -1,0 +1,23 @@
+{
+  "id": "cat-oven-corpus-m685",
+  "description": "M6 corpus — Cat Oven; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Cat Oven": "Name:Cat Oven\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters the battlefield, create a Food token.\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac\nA:AB$ Token | Cost$ T Sac<1/Food> | TokenScript$ b_1_1_cat | SubAbility$ DBDrain | SpellDescription$ Create a 1/1 black Cat creature token. Each opponent loses 1 life and you gain 1 life.\nSVar:DBDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:AIPreference:SacCost$Food.token\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Food|Artifact|Cat\nDeckHints:Type$Food\nOracle:When Cat Oven enters the battlefield, create a Food token.\\n{T}, Sacrifice a Food: Create a 1/1 black Cat creature token. Each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cat Oven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

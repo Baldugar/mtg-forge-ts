@@ -1,0 +1,23 @@
+{
+  "id": "gluntch-the-bestower-corpus-m685",
+  "description": "M6 corpus — Gluntch, the Bestower; in-hand parse.",
+  "seed": 61679,
+  "cards": {
+    "Gluntch, the Bestower": "Name:Gluntch, the Bestower\nManaCost:1 G W\nTypes:Legendary Creature Jellyfish\nPT:0/5\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoosePlayer1 | TriggerDescription$ At the beginning of your end step, choose a player. They put two +1/+1 counters on a creature they control. Choose a second player to draw a card. Then choose a third player to create two Treasure tokens.\nSVar:TrigChoosePlayer1:DB$ ChoosePlayer | Defined$ You | Choices$ Player | RememberChosen$ True | ChoiceTitle$ Choose a player to put two +1/+1 counters on a creature they control | SubAbility$ Counters\nSVar:Counters:DB$ PutCounter | Defined$ ChosenPlayer | Choices$ Creature.ControlledBy ChosenPlayer | ChoiceTitle$ Choose a creature you control | Chooser$ ChosenPlayer | Placer$ ChosenPlayer | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ TrigChoosePlayer2\nSVar:TrigChoosePlayer2:DB$ ChoosePlayer | Defined$ You | Choices$ Player.!IsRemembered | RememberChosen$ True | ChoiceTitle$ Choose a player to draw a card | SubAbility$ Card\nSVar:Card:DB$ Draw | Defined$ ChosenPlayer | SubAbility$ TrigChoosePlayer3\nSVar:TrigChoosePlayer3:DB$ ChoosePlayer | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | Defined$ You | Choices$ Player.!IsRemembered | RememberChosen$ True | ChoiceTitle$ Choose a player to create two Treasure tokens | SubAbility$ Tokens\nSVar:Tokens:DB$ Token | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ ChosenPlayer | SubAbility$ CleanupFinal\nSVar:X:PlayerCountPlayers$Amount\nSVar:CleanupFinal:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters|Token|Sacrifice & Type$Treasure|Artifact\nOracle:Flying\\nAt the beginning of your end step, choose a player. They put two +1/+1 counters on a creature they control. Choose a second player to draw a card. Then choose a third player to create two Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gluntch, the Bestower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

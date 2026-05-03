@@ -1,0 +1,23 @@
+{
+  "id": "gemcutter-buccaneer-corpus-m685",
+  "description": "M6 corpus — Gemcutter Buccaneer; in-hand parse.",
+  "seed": 61656,
+  "cards": {
+    "Gemcutter Buccaneer": "Name:Gemcutter Buccaneer\nManaCost:3 R\nTypes:Creature Orc Pirate Artificer\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Pirate.Other+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another Pirate you control enters, create a tapped Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nS:Mode$ Continuous | Affected$ Treasure.YouCtrl | AddType$ Equipment | AddStaticAbility$ TreasureEquip | AddKeyword$ Equip:3 & Equip:1:Creature.Pirate+YouCtrl:Pirate | Description$ Treasures you control are Equipment in addition to their other types and have \"Equipped creature gets +2/+0,\" equip Pirate {1}, and equip {3}.\nSVar:TreasureEquip:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Equipment\nDeckHints:Type$Treasure|Pirate\nOracle:Whenever Gemcutter Buccaneer or another Pirate you control enters, create a tapped Treasure token.\\nTreasures you control are Equipment in addition to their other types and have \"Equipped creature gets +2/+0,\" equip Pirate {1}, and equip {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gemcutter Buccaneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

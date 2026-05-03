@@ -1,0 +1,23 @@
+{
+  "id": "farid-enterprising-salvager-corpus-m685",
+  "description": "M6 corpus — Farid, Enterprising Salvager; in-hand parse.",
+  "seed": 61623,
+  "cards": {
+    "Farid, Enterprising Salvager": "Name:Farid, Enterprising Salvager\nManaCost:2 R\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Artifact.!token+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken artifact you control is put into a graveyard from the battlefield, create a colorless artifact token named Scrap.\nSVar:TrigToken:DB$ Token | TokenScript$ scrap\nA:AB$ Charm | Cost$ 1 R Sac<1/Artifact> | Choices$ DBCounter,DBGoad,DBLoot\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on NICKNAME. It gains menace until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Menace\nSVar:DBGoad:DB$ Goad | ValidTgts$ Creature | SpellDescription$ Goad target creature.\nSVar:DBLoot:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw | SpellDescription$ Discard a card, then draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:AIPreference:SacCost$Artifact.token\nDeckHints:Type$Artifact\nDeckHas:Ability$Discard|Token|Counters & Type$Artifact & Keyword$Menace\nOracle:Whenever a nontoken artifact you control is put into a graveyard from the battlefield, create a colorless artifact token named Scrap.\\n{1}{R}, Sacrifice an artifact: Choose one —\\n• Put a +1/+1 counter on Farid. It gains menace until end of turn.\\n• Goad target creature.\\n• Discard a card, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farid, Enterprising Salvager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

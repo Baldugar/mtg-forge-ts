@@ -1,0 +1,23 @@
+{
+  "id": "shellshock-corpus-m685",
+  "description": "M6 corpus — Shellshock; in-hand parse.",
+  "seed": 62025,
+  "cards": {
+    "Shellshock": "Name:Shellshock\nManaCost:X R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | NumDmg$ X | RememberDamaged$ True | SubAbility$ DBToken | SpellDescription$ For each opponent, choose up to one target creature that player controls. CARDNAME deals X damage to each of those creatures. You create a Mutagen token for each creature dealt damage this way. (They're artifacts with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_mutagen_sac | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Valid Creature\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:For each opponent, choose up to one target creature that player controls. Shellshock deals X damage to each of those creatures. You create a Mutagen token for each creature dealt damage this way. (They're artifacts with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shellshock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

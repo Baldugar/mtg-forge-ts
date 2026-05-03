@@ -1,0 +1,23 @@
+{
+  "id": "mary-read-and-anne-bonny-corpus-m685",
+  "description": "M6 corpus — Mary Read and Anne Bonny; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Mary Read and Anne Bonny": "Name:Mary Read and Anne Bonny\nManaCost:1 U R\nTypes:Legendary Creature Human Assassin Pirate\nPT:3/3\nK:Haste\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nT:Mode$ Discarded | ValidCard$ Island.YouCtrl,Pirate.YouCtrl,Vehicle.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you discard an Island, Pirate, or Vehicle card, create a tapped Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | TokenTapped$ True\nOracle:Haste\\n{T}: Draw a card, then discard a card.\\nWhenever you discard an Island, Pirate, or Vehicle card, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mary Read and Anne Bonny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

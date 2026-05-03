@@ -1,0 +1,23 @@
+{
+  "id": "patient-naturalist-corpus-m685",
+  "description": "M6 corpus — Patient Naturalist; in-hand parse.",
+  "seed": 61895,
+  "cards": {
+    "Patient Naturalist": "Name:Patient Naturalist\nManaCost:2 G\nTypes:Creature Human Scout\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. Put a land card from among the milled cards into your hand. If you can't, create a Treasure token. (To mill three cards, put the top three cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | Imprint$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Land.YouOwn+IsImprinted | RememberChanged$ True | Hidden$ True | Mandatory$ True | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nDeckHas:Ability$Graveyard|Mill|Counters|Token & Type$Treasure|Artifact\nOracle:When Patient Naturalist enters, mill three cards. Put a land card from among the milled cards into your hand. If you can't, create a Treasure token. (To mill three cards, put the top three cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patient Naturalist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

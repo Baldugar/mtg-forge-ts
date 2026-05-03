@@ -1,0 +1,23 @@
+{
+  "id": "noggle-robber-corpus-m685",
+  "description": "M6 corpus — Noggle Robber; in-hand parse.",
+  "seed": 61868,
+  "cards": {
+    "Noggle Robber": "Name:Noggle Robber\nManaCost:1 RG RG\nTypes:Creature Noggle Rogue\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When this creature enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When this creature enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When this creature enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noggle Robber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

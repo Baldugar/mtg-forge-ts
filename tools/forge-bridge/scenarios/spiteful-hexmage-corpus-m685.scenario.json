@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-hexmage-corpus-m685",
+  "description": "M6 corpus — Spiteful Hexmage; in-hand parse.",
+  "seed": 62057,
+  "cards": {
+    "Spiteful Hexmage": "Name:Spiteful Hexmage\nManaCost:B\nTypes:Creature Human Warlock\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Cursed Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_cursed | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | AILogic$ Curse | TgtPrompt$ Select target creature you control\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:When Spiteful Hexmage enters, create a Cursed Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Hexmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "poetic-ingenuity-corpus-m685",
+  "description": "M6 corpus — Poetic Ingenuity; in-hand parse.",
+  "seed": 61911,
+  "cards": {
+    "Poetic Ingenuity": "Name:Poetic Ingenuity\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ AttackersDeclared | ValidAttackers$ Dinosaur.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more Dinosaurs you control attack, create that many Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac\nSVar:X:TriggerObjectsAttackers$Amount\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | ActivationLimit$ 1 | Execute$ TrigTokenBis | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell, create a 3/1 red Dinosaur creature token. This ability triggers only once each turn.\nSVar:TrigTokenBis:DB$ Token | TokenScript$ r_3_1_dinosaur\nDeckHas:Ability$Token & Type$Treasure|Artifact|Dinosaur\nDeckNeeds:Type$Dinosaur\nOracle:Whenever one or more Dinosaurs you control attack, create that many Treasure tokens.\\nWhenever you cast an artifact spell, create a 3/1 red Dinosaur creature token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poetic Ingenuity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

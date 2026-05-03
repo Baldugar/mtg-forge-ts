@@ -1,0 +1,23 @@
+{
+  "id": "dungeoneer-s-pack-corpus-m685",
+  "description": "M6 corpus — Dungeoneer's Pack; in-hand parse.",
+  "seed": 61591,
+  "cards": {
+    "Dungeoneer's Pack": "Name:Dungeoneer's Pack\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ TakeInitiative | Cost$ 2 T Sac<1/CARDNAME> | SubAbility$ DBGainLife | StackDescription$ REP You take_{p:You} takes & gain_gains & draw_draws & create_creates & . Activate only as a sorcery._. | SpellDescription$ You take the initiative, gain 3 life, draw a card, and create a Treasure token. Activate only as a sorcery. (A Treasure token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw | StackDescription$ None\nSVar:DBDraw:DB$ Draw | SubAbility$ DBTreasure | StackDescription$ None\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Sacrifice|LifeGain|Token & Type$Treasure\nOracle:Dungeoneer's Pack enters tapped.\\n{2}, {T}, Sacrifice Dungeoneer's Pack: You take the initiative, gain 3 life, draw a card, and create a Treasure token. Activate only as a sorcery. (A Treasure token is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dungeoneer's Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

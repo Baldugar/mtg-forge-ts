@@ -1,0 +1,23 @@
+{
+  "id": "storm-kiln-artist-corpus-m685",
+  "description": "M6 corpus — Storm-Kiln Artist; in-hand parse.",
+  "seed": 62073,
+  "cards": {
+    "Storm-Kiln Artist": "Name:Storm-Kiln Artist\nManaCost:3 R\nTypes:Creature Dwarf Shaman\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +1/+0 for each artifact you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:BuffedBy:Artifact,Instant,Sorcery\nDeckHas:Ability$Token\nDeckHints:Type$Instant|Sorcery|Artifact\nOracle:Storm-Kiln Artist gets +1/+0 for each artifact you control.\\nMagecraft — Whenever you cast or copy an instant or sorcery spell, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm-Kiln Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

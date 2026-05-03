@@ -1,0 +1,23 @@
+{
+  "id": "breeches-eager-pillager-corpus-m685",
+  "description": "M6 corpus — Breeches, Eager Pillager; in-hand parse.",
+  "seed": 61506,
+  "cards": {
+    "Breeches, Eager Pillager": "Name:Breeches, Eager Pillager\nManaCost:2 R\nTypes:Legendary Creature Goblin Pirate\nPT:3/3\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Pirate.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever a Pirate you control attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBUnblockable,DBExileTop | ChoiceRestriction$ ThisTurn\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nSVar:DBUnblockable:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Target creature can't block this turn.\nSVar:DBExileTop:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play it this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Treasure\nDeckHints:Type$Pirate\nOracle:First strike\\nWhenever a Pirate you control attacks, choose one that hasn't been chosen this turn —\\n• Create a Treasure token.\\n• Target creature can't block this turn.\\n• Exile the top card of your library. You may play it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breeches, Eager Pillager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

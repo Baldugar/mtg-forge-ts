@@ -1,0 +1,23 @@
+{
+  "id": "forsworn-paladin-corpus-m685",
+  "description": "M6 corpus — Forsworn Paladin; in-hand parse.",
+  "seed": 61643,
+  "cards": {
+    "Forsworn Paladin": "Name:Forsworn Paladin\nManaCost:B\nTypes:Creature Human Knight\nPT:1/1\nK:Menace\nA:AB$ Token | Cost$ 1 B T PayLife<1> | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ Create a Treasure token.\nA:AB$ Pump | Cost$ 2 B | ValidTgts$ Creature | NumAtt$ +2 | SubAbility$ DBDeathtouch | AIManaPref$ Treasure | SpellDescription$ Target creature gets +2/+0 until end of turn. If mana from a Treasure was spent to activate this ability, that creature also gains deathtouch until end of turn.\nSVar:DBDeathtouch:DB$ Pump | KW$ Deathtouch | Defined$ ParentTarget | ConditionCheckSVar$ TreasureCheck\nSVar:TreasureCheck:Count$TotalManaSpent Treasure\nOracle:Menace\\n{1}{B}, {T}, Pay 1 life: Create a Treasure token.\\n{2}{B}: Target creature gets +2/+0 until end of turn. If mana from a Treasure was spent to activate this ability, that creature also gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forsworn Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gingerbread-cabin-corpus-m685",
+  "description": "M6 corpus — Gingerbread Cabin; in-hand parse.",
+  "seed": 61671,
+  "cards": {
+    "Gingerbread Cabin": "Name:Gingerbread Cabin\nManaCost:no cost\nTypes:Land Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control three or more other Forests.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Forest.YouCtrl+Other | ConditionCompare$ LT3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+untapped | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters untapped, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\").\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$LifeGain|Token|Food\nDeckNeeds:Color$Green\nOracle:({T}: Add {G}.)\\nGingerbread Cabin enters tapped unless you control three or more other Forests.\\nWhen Gingerbread Cabin enters untapped, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gingerbread Cabin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

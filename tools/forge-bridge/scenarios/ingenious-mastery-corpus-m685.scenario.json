@@ -1,0 +1,23 @@
+{
+  "id": "ingenious-mastery-corpus-m685",
+  "description": "M6 corpus — Ingenious Mastery; in-hand parse.",
+  "seed": 61735,
+  "cards": {
+    "Ingenious Mastery": "Name:Ingenious Mastery\nManaCost:X 2 U\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 2 U | Description$ You may pay {2}{U} rather than pay this spell's mana cost. | StackDescription$ If the {2}{U} cost was paid, you draw three cards, then an opponent creates two Treasure tokens and they scry 2. If that cost wasn't paid, you draw X cards.\nA:SP$ Branch | BranchConditionSVar$ AltCostPaid | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ DBAltCostEffect | FalseSubAbility$ DBDrawX | SpellDescription$ If the {2}{U} cost was paid, you draw three cards, then an opponent creates two Treasure tokens and they scry 2. If that cost wasn't paid, you draw X cards.\nSVar:DBAltCostEffect:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ OppTreasureScry\nSVar:OppTreasureScry:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to create treasure tokens and scry 2 | SubAbility$ OppTreasure\nSVar:OppTreasure:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ ChosenPlayer | SubAbility$ OppScry\nSVar:OppScry:DB$ Scry | ScryNum$ 2 | Defined$ ChosenPlayer\nSVar:DBDrawX:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$xPaid\nSVar:AltCostPaid:Count$AltCost.1.0\nOracle:You may pay {2}{U} rather than pay this spell's mana cost.\\nIf the {2}{U} cost was paid, you draw three cards, then an opponent creates two Treasure tokens and they scry 2. If that cost wasn't paid, you draw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ingenious Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

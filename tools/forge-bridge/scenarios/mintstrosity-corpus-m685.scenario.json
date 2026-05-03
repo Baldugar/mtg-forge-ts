@@ -1,0 +1,23 @@
+{
+  "id": "mintstrosity-corpus-m685",
+  "description": "M6 corpus — Mintstrosity; in-hand parse.",
+  "seed": 61838,
+  "cards": {
+    "Mintstrosity": "Name:Mintstrosity\nManaCost:1 B\nTypes:Creature Horror\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token|LifeGain & Type$Artifact|Food\nOracle:When Mintstrosity dies, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mintstrosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

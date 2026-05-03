@@ -1,0 +1,23 @@
+{
+  "id": "food-coma-corpus-m685",
+  "description": "M6 corpus — Food Coma; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "Food Coma": "Name:Food Coma\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBFood | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token|LifeGain|Sacrifice & Type$Food\nOracle:When Food Coma enters, exile target creature an opponent controls until Food Coma leaves the battlefield. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Food Coma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

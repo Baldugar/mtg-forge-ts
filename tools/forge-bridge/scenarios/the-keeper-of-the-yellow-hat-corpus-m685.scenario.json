@@ -1,0 +1,23 @@
+{
+  "id": "the-keeper-of-the-yellow-hat-corpus-m685",
+  "description": "M6 corpus — The Keeper of the Yellow Hat; in-hand parse.",
+  "seed": 62117,
+  "cards": {
+    "The Keeper of the Yellow Hat": "Name:The Keeper of the Yellow Hat\nManaCost:W U\nTypes:Legendary Creature Human Wizard\nPT:1/1\nS:Mode$ CantBeCast | ValidCard$ Card.Self | EffectZone$ All | Caster$ Player.Active | CheckSVar$ Count$YourTurns | SVarCompare$ LE7 | Description$ You can't cast CARDNAME during your first seven turns of the game. (Keep track if you're playing with this!)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create a legendary artifact equipment token named Yellow Hat with equip {2} and \"Equipped creature gets +4/+4 and gains lifelink.\"\nSVar:TrigToken:DB$ Token | TokenScript$ yellow_hat\nDeckHas:Ability$Token & Type$Artifact|Equipment\nOracle:You can't cast Keeper of the Yellow Hat during your first seven turns of the game. (Keep track if you're playing with this!)\\nWhen The Keeper of the Yellow Hat enters the battlefield, create a legendary artifact equipment token named Yellow Hat with equip {2} and \"Equipped creature gets +4/+4 and gains lifelink.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Keeper of the Yellow Hat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

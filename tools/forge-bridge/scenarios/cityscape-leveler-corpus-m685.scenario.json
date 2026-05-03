@@ -1,0 +1,23 @@
+{
+  "id": "cityscape-leveler-corpus-m685",
+  "description": "M6 corpus — Cityscape Leveler; in-hand parse.",
+  "seed": 61538,
+  "cards": {
+    "Cityscape Leveler": "Name:Cityscape Leveler\nManaCost:8\nTypes:Artifact Creature Construct\nPT:8/8\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When you cast this spell and whenever CARDNAME attacks, destroy up to one target nonland permanent. Its controller creates a tapped Powerstone token.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | Secondary$ True | TriggerDescription$ When you cast this spell and whenever CARDNAME attacks, destroy up to one target nonland permanent. Its controller creates a tapped Powerstone token.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonland | TgtPrompt$ Select up to one target nonland permanent | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ TargetedController\nK:Unearth:8\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Token\nOracle:Trample\\nWhen you cast this spell and whenever Cityscape Leveler attacks, destroy up to one target nonland permanent. Its controller creates a tapped Powerstone token.\\nUnearth {8}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cityscape Leveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

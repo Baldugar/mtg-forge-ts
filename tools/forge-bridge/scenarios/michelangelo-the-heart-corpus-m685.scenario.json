@@ -1,0 +1,23 @@
+{
+  "id": "michelangelo-the-heart-corpus-m685",
+  "description": "M6 corpus — Michelangelo, the Heart; in-hand parse.",
+  "seed": 61829,
+  "cards": {
+    "Michelangelo, the Heart": "Name:Michelangelo, the Heart\nManaCost:1 G\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:2/1\nK:Trample\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | CheckSVar$ RaidTest | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Raid (the Fridge) — At the beginning of your second main phase, if you attacked this turn, put a +1/+1 counter on target creature and create a Food token.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac\nK:Partner:Character select\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Trample\\nRaid (the Fridge) — At the beginning of your second main phase, if you attacked this turn, put a +1/+1 counter on target creature and create a Food token.\\nPartner—Character select (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Michelangelo, the Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

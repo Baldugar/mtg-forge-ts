@@ -1,0 +1,23 @@
+{
+  "id": "creative-outburst-corpus-m685",
+  "description": "M6 corpus — Creative Outburst; in-hand parse.",
+  "seed": 61554,
+  "cards": {
+    "Creative Outburst": "Name:Creative Outburst\nManaCost:3 U U R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 5 | SubAbility$ DBDig | SpellDescription$ CARDNAME deals 5 damage to any target. Look at the top five cards of your library. Put one of them into your hand and the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ 5 | RestRandomOrder$ True | NoReveal$ True\nA:AB$ Token | Cost$ UR UR Discard<1/CARDNAME> | ActivationZone$ Hand | TokenScript$ c_a_treasure_sac | AILogic$ AlwaysOnDiscard | SpellDescription$ Create a Treasure token.\nDeckHas:Ability$Token\nOracle:Creative Outburst deals 5 damage to any target. Look at the top five cards of your library. Put one of them into your hand and the rest on the bottom of your library in a random order.\\n{U/R}{U/R}, Discard Creative Outburst: Create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creative Outburst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

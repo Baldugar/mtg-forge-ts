@@ -1,0 +1,23 @@
+{
+  "id": "fell-the-pheasant-corpus-m685",
+  "description": "M6 corpus — Fell the Pheasant; in-hand parse.",
+  "seed": 61628,
+  "cards": {
+    "Fell the Pheasant": "Name:Fell the Pheasant\nManaCost:1 G\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 5 | SubAbility$ DBToken | SpellDescription$ CARDNAME deals 5 damage to target creature with flying. Create a card token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token|LifeGain|Food\nOracle:Fell the Pheasant deals 5 damage to target creature with flying. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell the Pheasant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

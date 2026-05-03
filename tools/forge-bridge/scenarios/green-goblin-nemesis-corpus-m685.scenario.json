@@ -1,0 +1,23 @@
+{
+  "id": "green-goblin-nemesis-corpus-m685",
+  "description": "M6 corpus — Green Goblin, Nemesis; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Green Goblin, Nemesis": "Name:Green Goblin, Nemesis\nManaCost:2 B R\nTypes:Legendary Creature Goblin Human Villain\nPT:3/3\nK:Flying\nT:Mode$ Discarded | ValidCard$ Card.nonLand+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you discard a nonland card, put a +1/+1 counter on target Goblin you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Goblin.YouCtrl | TgtPrompt$ Select target Goblin you control | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Discarded | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ When you discard a land card, create a tapped Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nOracle:Flying\\nWhenever you discard a nonland card, put a +1/+1 counter on target Goblin you control.\\nWhen you discard a land card, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Green Goblin, Nemesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

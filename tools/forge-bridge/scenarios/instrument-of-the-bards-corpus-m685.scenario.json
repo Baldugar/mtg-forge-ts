@@ -1,0 +1,23 @@
+{
+  "id": "instrument-of-the-bards-corpus-m685",
+  "description": "M6 corpus — Instrument of the Bards; in-hand parse.",
+  "seed": 61739,
+  "cards": {
+    "Instrument of the Bards": "Name:Instrument of the Bards\nManaCost:G\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ HARMONY | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 3 G T | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ Search your library for a creature card with mana value equal to the number of harmony counters on CARDNAME, reveal it, and put it into your hand. If that card is legendary, create a Treasure token. Then shuffle.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.Legendary | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardCounters.HARMONY\nDeckHas:Ability$Token|Counters\nOracle:At the beginning of your upkeep, you may put a harmony counter on Instrument of the Bards.\\n{3}{G}, {T}: Search your library for a creature card with mana value equal to the number of harmony counters on Instrument of the Bards, reveal it, and put it into your hand. If that card is legendary, create a Treasure token. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Instrument of the Bards"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

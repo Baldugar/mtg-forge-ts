@@ -1,0 +1,23 @@
+{
+  "id": "culmination-of-studies-corpus-m685",
+  "description": "M6 corpus — Culmination of Studies; in-hand parse.",
+  "seed": 61560,
+  "cards": {
+    "Culmination of Studies": "Name:Culmination of Studies\nManaCost:X U R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBToken | SpellDescription$ Exile the top X cards of your library.\nSVar:DBToken:DB$ Token | TokenAmount$ L | TokenScript$ c_a_treasure_sac | SubAbility$ DBDraw | SpellDescription$ For each land card exiled this way, create a Treasure token.\nSVar:DBDraw:DB$ Draw | NumCards$ B | SubAbility$ DBDealDamage | StackDescription$ SpellDescription | SpellDescription$ For each blue card exiled this way, draw a card.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ R | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ For each red card exiled this way, CARDNAME deals 1 damage to each opponent.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:L:Remembered$Valid Card.Land\nSVar:B:Remembered$Valid Card.Blue\nSVar:R:Remembered$Valid Card.Red\nDeckHas:Ability$Token\nOracle:Exile the top X cards of your library. For each land card exiled this way, create a Treasure token. For each blue card exiled this way, draw a card. For each red card exiled this way, Culmination of Studies deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culmination of Studies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

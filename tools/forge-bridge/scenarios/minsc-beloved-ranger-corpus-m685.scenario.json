@@ -1,0 +1,23 @@
+{
+  "id": "minsc-beloved-ranger-corpus-m685",
+  "description": "M6 corpus — Minsc, Beloved Ranger; in-hand parse.",
+  "seed": 61836,
+  "cards": {
+    "Minsc, Beloved Ranger": "Name:Minsc, Beloved Ranger\nManaCost:R G W\nTypes:Legendary Creature Human Ranger\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigMinsc | TriggerDescription$ When CARDNAME enters, create Boo, a legendary 1/1 red Hamster creature token with trample and haste.\nSVar:TrigMinsc:DB$ Token | TokenScript$ boo | TokenOwner$ You\nA:AB$ Animate | Cost$ X | Power$ X | Toughness$ X | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Types$ Giant | SorcerySpeed$ True | AILogic$ SetPT | SpellDescription$ Until end of turn, target creature you control has base power and toughness X/X and becomes a Giant in addition to its other types. Activate only as a sorcery.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:When Minsc, Beloved Ranger enters, create Boo, a legendary 1/1 red Hamster creature token with trample and haste.\\n{X}: Until end of turn, target creature you control has base power and toughness X/X and becomes a Giant in addition to its other types. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minsc, Beloved Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

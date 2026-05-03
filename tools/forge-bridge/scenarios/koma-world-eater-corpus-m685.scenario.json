@@ -1,0 +1,23 @@
+{
+  "id": "koma-world-eater-corpus-m685",
+  "description": "M6 corpus — Koma, World-Eater; in-hand parse.",
+  "seed": 61781,
+  "cards": {
+    "Koma, World-Eater": "Name:Koma, World-Eater\nManaCost:3 G G U U\nTypes:Legendary Creature Serpent\nPT:8/12\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nK:Trample\nK:Ward:4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create four 3/3 blue Serpent creature tokens named Koma's Coil.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ komas_coil | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:This spell can't be countered.\\nTrample, ward {4}\\nWhenever Koma deals combat damage to a player, create four 3/3 blue Serpent creature tokens named Koma's Coil.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koma, World-Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

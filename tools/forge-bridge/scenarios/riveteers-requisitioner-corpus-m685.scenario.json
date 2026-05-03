@@ -1,0 +1,23 @@
+{
+  "id": "riveteers-requisitioner-corpus-m685",
+  "description": "M6 corpus — Riveteers Requisitioner; in-hand parse.",
+  "seed": 61964,
+  "cards": {
+    "Riveteers Requisitioner": "Name:Riveteers Requisitioner\nManaCost:1 R\nTypes:Creature Lizard Rogue\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nK:Blitz:2 R\nOracle:When Riveteers Requisitioner dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nBlitz {2}{R} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riveteers Requisitioner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

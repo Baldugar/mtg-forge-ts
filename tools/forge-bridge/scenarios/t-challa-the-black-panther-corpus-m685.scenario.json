@@ -1,0 +1,23 @@
+{
+  "id": "t-challa-the-black-panther-corpus-m685",
+  "description": "M6 corpus — T'Challa, the Black Panther; in-hand parse.",
+  "seed": 62094,
+  "cards": {
+    "T'Challa, the Black Panther": "Name:T'Challa, the Black Panther\nManaCost:1 G W\nTypes:Legendary Creature Human Noble Hero\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME enters or attacks, create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME enters or attacks, create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_vibranium | TokenOwner$ You\nT:Mode$ SpellCast | ValidCard$ Artifact.cmcGE4 | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell with mana value 4 or greater, put two +1/+1 counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Type$Artifact\nOracle:Whenever T'Challa enters or attacks, create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\\nWhenever you cast an artifact spell with mana value 4 or greater, put two +1/+1 counters on T'Challa.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "T'Challa, the Black Panther"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

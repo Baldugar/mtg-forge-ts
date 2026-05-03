@@ -1,0 +1,23 @@
+{
+  "id": "sidequest-catch-a-fish-corpus-m685",
+  "description": "M6 corpus — Sidequest: Catch a Fish; in-hand parse.",
+  "seed": 62030,
+  "cards": {
+    "Sidequest: Catch a Fish": "Name:Sidequest: Catch a Fish\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | TriggerDescription$ At the beginning of your upkeep, look at the top card of your library. If it's an artifact or creature card, you may reveal it and put it into your hand. If you put a card into your hand this way, create a Food token and transform this enchantment.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Artifact,Creature | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBToHand\nSVar:DBToHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.inZoneHand | ConditionCompare$ EQ1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionDefined$ Remembered | ConditionPresent$ Card.inZoneHand | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, look at the top card of your library. If it's an artifact or creature card, you may reveal it and put it into your hand. If you put a card into your hand this way, create a Food token and transform this enchantment.\n\nALTERNATE\n\nName:Cooking Campsite\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | Amount$ 1 | SpellDescription$ Add {W}.\nA:AB$ PutCounterAll | Cost$ 3 T Sac<1/Artifact> | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SpellDescription$ Put a +1/+1 counter on each creature you control. Activate only as a sorcery.\nOracle:{T}: Add {W}.\\n{3}, {T}, Sacrifice an artifact: Put a +1/+1 counter on each creature you control. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sidequest: Catch a Fish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

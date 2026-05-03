@@ -1,0 +1,23 @@
+{
+  "id": "koilos-roc-corpus-m685",
+  "description": "M6 corpus — Koilos Roc; in-hand parse.",
+  "seed": 61778,
+  "cards": {
+    "Koilos Roc": "Name:Koilos Roc\nManaCost:4 U\nTypes:Creature Bird\nPT:3/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Type$Artifact\nOracle:Flash\\nFlying\\nWhen Koilos Roc enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koilos Roc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

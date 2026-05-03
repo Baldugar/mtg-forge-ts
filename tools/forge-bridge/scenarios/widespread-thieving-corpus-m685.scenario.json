@@ -1,0 +1,23 @@
+{
+  "id": "widespread-thieving-corpus-m685",
+  "description": "M6 corpus — Widespread Thieving; in-hand parse.",
+  "seed": 62205,
+  "cards": {
+    "Widespread Thieving": "Name:Widespread Thieving\nManaCost:2 R\nTypes:Enchantment\nK:Hideaway:5\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, create a Treasure token. Then, you may pay {W}{U}{B}{R}{G}. If you do, you may play the exiled card without paying its mana cost.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | UnlessCost$ W U B R G | UnlessSwitched$ True | UnlessPayer$ You | Defined$ ExiledWith | Amount$ All | Controller$ You | WithoutManaCost$ True | Optional$ True\nSVar:BuffedBy:Card.MultiColor\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Hideaway 5 (When this enchantment enters, look at the top five cards of your library, exile one face down, then put the rest on the bottom in a random order.)\\nWhenever you cast a multicolored spell, create a Treasure token. Then, you may pay {W}{U}{B}{R}{G}. If you do, you may play the exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Widespread Thieving"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "old-flitterfang-corpus-m685",
+  "description": "M6 corpus — Old Flitterfang; in-hand parse.",
+  "seed": 61879,
+  "cards": {
+    "Old Flitterfang": "Name:Old Flitterfang\nManaCost:4 B\nTypes:Legendary Creature Rat Faerie\nPT:3/4\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ Morbid | TriggerZones$ Battlefield | Execute$ TrigFood | TriggerDescription$ At the beginning of each end step, if a creature died this turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:Morbid:Count$Morbid.1.0\nA:AB$ Pump | Cost$ 2 B Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nDeckHas:Ability$Token|Sacrifice & Type$Food|Artifact\nDeckHints:Ability$Sacrifice\nOracle:Flying\\nAt the beginning of each end step, if a creature died this turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n{2}{B}, Sacrifice another creature or artifact: Old Flitterfang gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Old Flitterfang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

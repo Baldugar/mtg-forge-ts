@@ -1,0 +1,23 @@
+{
+  "id": "sweettooth-witch-corpus-m685",
+  "description": "M6 corpus — Sweettooth Witch; in-hand parse.",
+  "seed": 62084,
+  "cards": {
+    "Sweettooth Witch": "Name:Sweettooth Witch\nManaCost:2 B\nTypes:Creature Human Warlock\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ LoseLife | Cost$ 2 Sac<1/Food> | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 2 | SpellDescription$ Target player loses 2 life.\nDeckHas:Ability$Token|Sacrifice & Type$Food|Artifact\nDeckHints:Type$Food\nOracle:When Sweettooth Witch enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n{2}, Sacrifice a Food: Target player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sweettooth Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

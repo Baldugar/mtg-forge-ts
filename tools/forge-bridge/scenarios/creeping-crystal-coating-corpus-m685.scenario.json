@@ -1,0 +1,23 @@
+{
+  "id": "creeping-crystal-coating-corpus-m685",
+  "description": "M6 corpus — Creeping Crystal Coating; in-hand parse.",
+  "seed": 61555,
+  "cards": {
+    "Creeping Crystal Coating": "Name:Creeping Crystal Coating\nManaCost:2 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddToughness$ 3 | AddTrigger$ TrigAttack | AddSVar$ CCCToken & HasAttackEffect | Description$ Enchanted creature gets +0/+3 and has \"Whenever this creature attacks, create a Food token.\" (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ CCCToken | TriggerDescription$ Whenever this creature attacks, create a Food token.\nSVar:CCCToken:DB$ Token | TokenScript$ c_a_food_sac\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice|LifeGain|Food\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets +0/+3 and has \"Whenever this creature attacks, create a Food token.\" (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creeping Crystal Coating"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "generous-plunderer-corpus-m685",
+  "description": "M6 corpus — Generous Plunderer; in-hand parse.",
+  "seed": 61659,
+  "cards": {
+    "Generous Plunderer": "Name:Generous Plunderer\nManaCost:1 R\nTypes:Creature Human Rogue\nPT:2/2\nK:Menace\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTreasure | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may create a Treasure token. When you do, target opponent creates a tapped Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | RememberOriginalTokens$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigToken | TriggerAmount$ Remembered$Amount | SubAbility$ DBCleanup | SpellDescription$ When you do, target opponent creates a tapped Treasure token.\nSVar:TrigToken:DB$ Token | ValidTgts$ Opponent | TokenOwner$ Targeted | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage to defending player equal to the number of artifacts they control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefendingPlayer | NumDmg$ X\nSVar:X:Count$Valid Artifact.ControlledBy TriggeredDefendingPlayer\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice & Type$Treasure\nOracle:Menace\\nAt the beginning of your upkeep, you may create a Treasure token. When you do, target opponent creates a tapped Treasure token.\\nWhenever Generous Plunderer attacks, it deals damage to defending player equal to the number of artifacts they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Generous Plunderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

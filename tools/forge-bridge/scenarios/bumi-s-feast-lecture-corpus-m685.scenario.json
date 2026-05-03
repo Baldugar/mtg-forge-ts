@@ -1,0 +1,23 @@
+{
+  "id": "bumi-s-feast-lecture-corpus-m685",
+  "description": "M6 corpus — Bumi's Feast Lecture; in-hand parse.",
+  "seed": 61510,
+  "cards": {
+    "Bumi's Feast Lecture": "Name:Bumi's Feast Lecture\nManaCost:1 G\nTypes:Sorcery Lesson\nA:SP$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SubAbility$ DBEarthbend | SpellDescription$ Create a Food token. Then earthbend X, where X is twice the number of Foods you control. (A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\" To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:DBEarthbend:DB$ Earthbend | Num$ X\nSVar:X:Count$Valid Food.YouCtrl/Twice\nDeckHas:Ability$LifeGain|Token|Food\nDeckHints:Ability$Food\nOracle:Create a Food token. Then earthbend X, where X is twice the number of Foods you control. (A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\" To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bumi's Feast Lecture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

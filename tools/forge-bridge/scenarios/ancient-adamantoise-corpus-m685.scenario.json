@@ -1,0 +1,23 @@
+{
+  "id": "ancient-adamantoise-corpus-m685",
+  "description": "M6 corpus — Ancient Adamantoise; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "Ancient Adamantoise": "Name:Ancient Adamantoise\nManaCost:5 G G G\nTypes:Creature Turtle\nPT:8/20\nK:Vigilance\nK:Ward:3\nS:Mode$ NoCleanupDamage | ValidCard$ Card.Self | Description$ Damage isn't removed from this creature during cleanup steps.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You,Permanent.Other+YouCtrl | DamageTarget$ Self | ReplaceWith$ DmgMe | Description$ All damage that would be dealt to you and other permanents you control is dealt to this creature instead.\nSVar:DmgMe:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Self | VarType$ Card\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature dies, exile it and create ten tapped Treasure tokens.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 10 | TokenTapped$ True\nOracle:Vigilance, ward {3}\\nDamage isn't removed from this creature during cleanup steps.\\nAll damage that would be dealt to you and other permanents you control is dealt to this creature instead.\\nWhen this creature dies, exile it and create ten tapped Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Adamantoise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

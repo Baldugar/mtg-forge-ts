@@ -1,0 +1,23 @@
+{
+  "id": "stone-retrieval-unit-corpus-m685",
+  "description": "M6 corpus — Stone Retrieval Unit; in-hand parse.",
+  "seed": 62071,
+  "cards": {
+    "Stone Retrieval Unit": "Name:Stone Retrieval Unit\nManaCost:4\nTypes:Artifact Creature Construct\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Stone Retrieval Unit enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone Retrieval Unit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

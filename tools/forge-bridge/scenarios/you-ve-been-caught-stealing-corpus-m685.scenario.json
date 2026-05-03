@@ -1,0 +1,23 @@
+{
+  "id": "you-ve-been-caught-stealing-corpus-m685",
+  "description": "M6 corpus — You've Been Caught Stealing; in-hand parse.",
+  "seed": 62217,
+  "cards": {
+    "You've Been Caught Stealing": "Name:You've Been Caught Stealing\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBBlock,DBToken\nSVar:DBBlock:DB$ Effect | StaticAbilities$ STBlock | SpellDescription$ Threaten the Merchant — Each creature blocks this turn if able.\nSVar:STBlock:Mode$ MustBlock | ValidCreature$ Creature | Description$ Each creature blocks this turn if able.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | SpellDescription$ Bribe the Guards — You create a Treasure token for each opponent who was dealt damage this turn. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:X:PlayerCountOpponents$HasPropertywasDealtDamageThisTurn\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Choose one —\\n• Threaten the Merchant — Each creature blocks this turn if able.\\n• Bribe the Guards — You create a Treasure token for each opponent who was dealt damage this turn. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "You've Been Caught Stealing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

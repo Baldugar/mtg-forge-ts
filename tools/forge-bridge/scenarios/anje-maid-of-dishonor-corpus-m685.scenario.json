@@ -1,0 +1,23 @@
+{
+  "id": "anje-maid-of-dishonor-corpus-m685",
+  "description": "M6 corpus — Anje, Maid of Dishonor; in-hand parse.",
+  "seed": 61443,
+  "cards": {
+    "Anje, Maid of Dishonor": "Name:Anje, Maid of Dishonor\nManaCost:2 B R\nTypes:Legendary Creature Vampire\nPT:4/5\nT:Mode$ ChangesZoneAll | ValidCards$ Vampire.YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME and/or one or more other Vampires you control enter, create a Blood token. This ability triggers only once per turn. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ LoseLife | Cost$ 2 Sac<1/Creature.Other;Blood.token/another creature or a Blood token> | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood\nDeckHints:Type$Vampire\nOracle:Whenever Anje, Maid of Dishonor and/or one or more other Vampires you control enter, create a Blood token. This ability triggers only once per turn. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\n{2}, Sacrifice another creature or a Blood token: Each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anje, Maid of Dishonor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

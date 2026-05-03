@@ -1,0 +1,23 @@
+{
+  "id": "stangg-corpus-m685",
+  "description": "M6 corpus — Stangg; in-hand parse.",
+  "seed": 62063,
+  "cards": {
+    "Stangg": "Name:Stangg\nManaCost:4 R G\nTypes:Legendary Creature Human Warrior\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigStangg | TriggerDescription$ When CARDNAME enters, create Stangg Twin, a legendary 3/4 red and green Human Warrior creature token.\nSVar:TrigStangg:DB$ Token | TokenScript$ stangg_twin | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedLKI | Triggers$ TrigExile,TrigSac | Duration$ Permanent | ForgetOnMoved$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigExile:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.EffectSource | Execute$ ExileTwin | TriggerDescription$ When EFFECTSOURCE leaves the battlefield, exile that token.\nSVar:ExileTwin:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile\nSVar:TrigSac:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsRemembered | Execute$ SacTwin | TriggerDescription$ When that token leaves the battlefield, sacrifice EFFECTSOURCE.\nSVar:SacTwin:DB$ SacrificeAll | Defined$ EffectSource\nDeckHas:Ability$Token\nOracle:When Stangg enters, create Stangg Twin, a legendary 3/4 red and green Human Warrior creature token. Exile that token when Stangg leaves the battlefield. Sacrifice Stangg when that token leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stangg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-brushstroke-corpus-m685",
+  "description": "M6 corpus — Sanguine Brushstroke; in-hand parse.",
+  "seed": 62002,
+  "cards": {
+    "Sanguine Brushstroke": "Name:Sanguine Brushstroke\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Blood token and conjure a card named Blood Artist onto the battlefield.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw | SubAbility$ DBMakeCard\nSVar:DBMakeCard:DB$ MakeCard | Conjure$ True | Name$ A-Blood Artist | Zone$ Battlefield\nT:Mode$ Sacrificed | ValidCard$ Blood.token+YouCtrl | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Blood token, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood\nOracle:When Sanguine Brushstroke enters the battlefield, create a Blood token and conjure a card named Blood Artist onto the battlefield.\\nWhenever you sacrifice a Blood token, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Brushstroke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

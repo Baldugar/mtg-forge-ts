@@ -1,0 +1,23 @@
+{
+  "id": "longstalk-brawl-corpus-m685",
+  "description": "M6 corpus — Longstalk Brawl; in-hand parse.",
+  "seed": 61795,
+  "cards": {
+    "Longstalk Brawl": "Name:Longstalk Brawl\nManaCost:G\nTypes:Sorcery\nK:Gift\nSVar:GiftAbility:DB$ Token | TokenScript$ u_1_1_fish | TokenTapped$ True | TokenOwner$ Promised | LockTokenScript$ True | GiftDescription$ a tapped Fish\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | ConditionZone$ Stack | ConditionPresent$ Card.Self+PromisedGift | ConditionCompare$ EQ1 | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBFight | SpellDescription$ Choose target creature you control and target creature you don't control. Put a +1/+1 counter on the creature you control if the gift was promised. Then those creatures fight each other.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nOracle:Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)\\nChoose target creature you control and target creature you don't control. Put a +1/+1 counter on the creature you control if the gift was promised. Then those creatures fight each other.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Longstalk Brawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

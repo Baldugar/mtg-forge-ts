@@ -1,0 +1,23 @@
+{
+  "id": "a-karn-living-legacy-corpus-m685",
+  "description": "M6 corpus — A-Karn, Living Legacy; in-hand parse.",
+  "seed": 61985,
+  "cards": {
+    "A-Karn, Living Legacy": "Name:A-Karn, Living Legacy\nManaCost:4\nTypes:Legendary Planeswalker Karn\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You | SpellDescription$ Create a tapped Powerstone token.\nA:AB$ ChooseNumber | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | Defined$ You | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBDig | SpellDescription$ Pay any amount of mana. Look at that many cards from the top of your library, then put one of those cards into your hand and the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | RestRandomOrder$ True | UnlessCost$ X | UnlessPayer$ You | UnlessSwitched$ True\nA:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | AILogic$ Always | Stackable$ False | Name$ Emblem — Karn, Living Legacy | Image$ emblem_karn_living_legacy | Duration$ Permanent | Abilities$ KarnPing | SpellDescription$ You get an emblem with \"Tap an untapped artifact you control: This emblem deals 1 damage to any target.\"\nSVar:KarnPing:AB$ DealDamage | Cost$ tapXType<1/Artifact> | ActivationZone$ Command | ValidTgts$ Any | NumDmg$ 1\nSVar:PlayMain1:TRUE\nSVar:X:Count$ChosenNumber\nDeckHas:Ability$Token & Type$Artifact\nDeckNeeds:Type$Artifact\nOracle:[+1]: Create a tapped Powerstone token.\\n[0]: Pay any amount of mana. Look at that many cards from the top of your library, then put one of those cards into your hand and the rest on the bottom of your library in a random order.\\n[-6]: You get an emblem with \"Tap an untapped artifact you control: This emblem deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Karn, Living Legacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

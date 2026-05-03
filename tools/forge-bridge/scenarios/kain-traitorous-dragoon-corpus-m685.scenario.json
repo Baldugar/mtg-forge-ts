@@ -1,0 +1,23 @@
+{
+  "id": "kain-traitorous-dragoon-corpus-m685",
+  "description": "M6 corpus — Kain, Traitorous Dragoon; in-hand parse.",
+  "seed": 61762,
+  "cards": {
+    "Kain, Traitorous Dragoon": "Name:Kain, Traitorous Dragoon\nManaCost:2 B\nTypes:Legendary Creature Human Knight\nPT:2/4\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Flying | Condition$ PlayerTurn | Description$ Jump — During your turn, NICKNAME has flying.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigControl | TriggerDescription$ Whenever Kain deals combat damage to a player, that player gains control of Kain. If they do, you draw that many cards, create that many tapped Treasure tokens, then lose that much life.\nSVar:TrigControl:DB$ GainControl | Defined$ Self | NewController$ TriggeredTarget | RememberControlled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ X | TokenTapped$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Jump — During your turn, Kain has flying.\\nWhenever Kain deals combat damage to a player, that player gains control of Kain. If they do, you draw that many cards, create that many tapped Treasure tokens, then lose that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kain, Traitorous Dragoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

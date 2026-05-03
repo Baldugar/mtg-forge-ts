@@ -1,0 +1,23 @@
+{
+  "id": "cavern-hoard-dragon-corpus-m685",
+  "description": "M6 corpus — Cavern-Hoard Dragon; in-hand parse.",
+  "seed": 61528,
+  "cards": {
+    "Cavern-Hoard Dragon": "Name:Cavern-Hoard Dragon\nManaCost:7 R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nK:Trample\nK:Haste\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the greatest number of artifacts an opponent controls.\nSVar:X:PlayerCountOpponents$HighestValid Artifact.YouCtrl\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you create a Treasure token for each artifact that player controls.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ Y\nSVar:Y:Count$Valid Artifact.ControlledBy TriggeredTarget\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:This spell costs {X} less to cast, where X is the greatest number of artifacts an opponent controls.\\nFlying, trample, haste\\nWhenever Cavern-Hoard Dragon deals combat damage to a player, you create a Treasure token for each artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavern-Hoard Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

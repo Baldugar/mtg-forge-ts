@@ -1,0 +1,23 @@
+{
+  "id": "gadwick-s-first-duel-corpus-m685",
+  "description": "M6 corpus — Gadwick's First Duel; in-hand parse.",
+  "seed": 61649,
+  "cards": {
+    "Gadwick's First Duel": "Name:Gadwick's First Duel\nManaCost:1 U\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBScry,DBCopy\nSVar:DBToken:DB$ Token | TokenScript$ role_cursed | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature | SpellDescription$ Create a Cursed Role token attached to up to one target creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | SpellDescription$ Scry 2.\nSVar:DBCopy:DB$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant.cmcLE3,Sorcery.cmcLE3 | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell with mana value 3 or less this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nDeckHas:Ability$Token & Type$Aura|Role\nDeckHints:Type$Instant|Sorcery\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a Cursed Role token attached to up to one target creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)\\nII — Scry 2.\\nIII — When you cast your next instant or sorcery spell with mana value 3 or less this turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gadwick's First Duel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

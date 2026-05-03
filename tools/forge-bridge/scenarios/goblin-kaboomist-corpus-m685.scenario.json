@@ -1,0 +1,23 @@
+{
+  "id": "goblin-kaboomist-corpus-m685",
+  "description": "M6 corpus — Goblin Kaboomist; in-hand parse.",
+  "seed": 61682,
+  "cards": {
+    "Goblin Kaboomist": "Name:Goblin Kaboomist\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a colorless artifact token named Land Mine with \"{R}, Sacrifice this artifact: This artifact deals 2 damage to target attacking creature without flying.\" Then flip a coin. If you lose the flip, CARDNAME deals 2 damage to itself.\nSVar:TrigToken:DB$ Token | TokenScript$ land_mine | TokenOwner$ You | SubAbility$ DBFlip\nSVar:DBFlip:DB$ FlipACoin | LoseSubAbility$ DmgSelf\nSVar:DmgSelf:DB$ DealDamage | Defined$ Self | NumDmg$ 2\nOracle:At the beginning of your upkeep, create a colorless artifact token named Land Mine with \"{R}, Sacrifice this artifact: This artifact deals 2 damage to target attacking creature without flying.\" Then flip a coin. If you lose the flip, Goblin Kaboomist deals 2 damage to itself.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Kaboomist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wily-goblin-corpus-m685",
+  "description": "M6 corpus — Wily Goblin; in-hand parse.",
+  "seed": 62206,
+  "cards": {
+    "Wily Goblin": "Name:Wily Goblin\nManaCost:R R\nTypes:Creature Goblin Pirate\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Wily Goblin enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wily Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

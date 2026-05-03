@@ -1,0 +1,23 @@
+{
+  "id": "replicating-ring-corpus-m685",
+  "description": "M6 corpus — Replicating Ring; in-hand parse.",
+  "seed": 61951,
+  "cards": {
+    "Replicating Ring": "Name:Replicating Ring\nManaCost:3\nTypes:Snow Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a night counter on CARDNAME. Then if it has eight or more night counters on it, remove all of them and create eight colorless snow artifact tokens named Replicated Ring with \"{T}: Add one mana of any color.\"\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ NIGHT | CounterNum$ 1 | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ ReplicateTimer | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ NIGHT | CounterNum$ All | SubAbility$ DBToken\nSVar:ReplicateTimer:Count$Valid Card.Self+counters_GE8_NIGHT\nSVar:DBToken:DB$ Token | TokenAmount$ 8 | TokenScript$ replicated_ring\nDeckHas:Ability$Counters|Token\nOracle:{T}: Add one mana of any color.\\nAt the beginning of your upkeep, put a night counter on Replicating Ring. Then if it has eight or more night counters on it, remove all of them and create eight colorless snow artifact tokens named Replicated Ring with \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Replicating Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

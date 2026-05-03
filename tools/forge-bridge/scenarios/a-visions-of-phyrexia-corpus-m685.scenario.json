@@ -1,0 +1,23 @@
+{
+  "id": "a-visions-of-phyrexia-corpus-m685",
+  "description": "M6 corpus — A-Visions of Phyrexia; in-hand parse.",
+  "seed": 61994,
+  "cards": {
+    "A-Visions of Phyrexia": "Name:A-Visions of Phyrexia\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top two cards of your library. You may play one of those cards this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | Triggers$ Play1,Play2 | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | AffectedZone$ Exile | Affected$ Card.IsRemembered | MayPlay$ True | Description$ You may play one of those cards this turn.\nSVar:Play1:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:Play2:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you didn't play a card from exile this turn, create a tapped Powerstone token.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nT:Mode$ LandPlayed | Origin$ Exile | ValidCard$ Land.YouCtrl | Execute$ StoreVar | Static$ True\nSVar:StoreVar:DB$ StoreSVar | SVar$ LandsPlayedFromExile | Type$ Number | Expression$ 1\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ StoreSVar | SVar$ LandsPlayedFromExile | Type$ Number | Expression$ 0\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+wasCastFromExile/Plus.LandsPlayedFromExile\nSVar:LandsPlayedFromExile:Number$0\nDeckHas:Ability$Token & Type$Artifact\nOracle:At the beginning of your upkeep, exile the top two cards of your library. You may play one of those cards this turn.\\nAt the beginning of your end step, if you didn't play a card from exile this turn, create a tapped Powerstone token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Visions of Phyrexia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sazacap-s-brew-corpus-m685",
+  "description": "M6 corpus — Sazacap's Brew; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "Sazacap's Brew": "Name:Sazacap's Brew\nManaCost:1 R\nTypes:Instant\nK:Gift\nSVar:GiftAbility:DB$ Token | TokenScript$ u_1_1_fish | TokenTapped$ True | TokenOwner$ Promised | LockTokenScript$ True | GiftDescription$ a tapped Fish\nA:SP$ Draw | Cost$ 1 R Discard<1/Card> | CostDesc$ As an additional cost to cast this spell, discard a card. | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBPump | SpellDescription$ Target player draws two cards. If the gift was promised, target creature you control gets +2/+0 until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TargetMin$ X | TargetMax$ X | TgtPrompt$ Select target creature you control | NumAtt$ +2\nSVar:X:Count$PromisedGift.1.0\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)\\nAs an additional cost to cast this spell, discard a card.\\nTarget player draws two cards. If the gift was promised, target creature you control gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sazacap's Brew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

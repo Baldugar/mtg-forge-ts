@@ -1,0 +1,23 @@
+{
+  "id": "blood-servitor-corpus-m685",
+  "description": "M6 corpus — Blood Servitor; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Blood Servitor": "Name:Blood Servitor\nManaCost:3\nTypes:Artifact Creature Construct\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBlood | TriggerDescription$ When CARDNAME enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigBlood:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:When Blood Servitor enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Servitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

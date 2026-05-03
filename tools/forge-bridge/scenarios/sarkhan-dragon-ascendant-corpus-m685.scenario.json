@@ -1,0 +1,23 @@
+{
+  "id": "sarkhan-dragon-ascendant-corpus-m685",
+  "description": "M6 corpus — Sarkhan, Dragon Ascendant; in-hand parse.",
+  "seed": 62005,
+  "cards": {
+    "Sarkhan, Dragon Ascendant": "Name:Sarkhan, Dragon Ascendant\nManaCost:1 R\nTypes:Legendary Creature Human Druid\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, you may behold a Dragon. If you do, create a Treasure token. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)\nSVar:TrigToken:AB$ Token | Cost$ Behold<1/Dragon> | TokenScript$ c_a_treasure_sac\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Dragon.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a Dragon you control enters, put a +1/+1 counter on NICKNAME. Until end of turn, NICKNAME becomes a Dragon in addition to its other types and gains flying.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Types$ Dragon | Keywords$ Flying\nOracle:When Sarkhan enters, you may behold a Dragon. If you do, create a Treasure token. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)\\nWhenever a Dragon you control enters, put a +1/+1 counter on Sarkhan. Until end of turn, Sarkhan becomes a Dragon in addition to its other types and gains flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan, Dragon Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

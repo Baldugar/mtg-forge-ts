@@ -1,0 +1,23 @@
+{
+  "id": "michonne-ruthless-survivor-corpus-m685",
+  "description": "M6 corpus — Michonne, Ruthless Survivor; in-hand parse.",
+  "seed": 61831,
+  "cards": {
+    "Michonne, Ruthless Survivor": "Name:Michonne, Ruthless Survivor\nVariant:UniversesWithin:FlavorName:Enkira, Hostile Scavenger\nManaCost:3 B G\nTypes:Legendary Creature Human Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create two Walker tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ walker | TokenOwner$ You | LockTokenScript$ True\nS:Mode$ Continuous | Affected$ Card.Self+equipped | AddHiddenKeyword$ CARDNAME must be blocked if able. | Description$ As long as NICKNAME is equipped, she must be blocked if able.\nSVar:EquipMe:Once\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | CheckSVar$ Zombies | NoResolvingCheck$ True | SVarCompare$ GE2 | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME and at least two Zombies attack, she gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Indestructible\nSVar:Zombies:Count$Valid Zombie.attacking\nOracle:When Michonne enters, create two Walker tokens.\\nAs long as Michonne is equipped, she must be blocked if able.\\nWhenever Michonne and at least two Zombies attack, she gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Michonne, Ruthless Survivor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bloodspatter-vampire-corpus-m685",
+  "description": "M6 corpus — Bloodspatter Vampire; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Bloodspatter Vampire": "Name:Bloodspatter Vampire\nManaCost:1 B\nTypes:Creature Vampire\nPT:2/1\nK:Flying\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ValidToken$ Clue | ReplaceWith$ TokenReplace | Description$ If an opponent would create a Clue, they create a Blood instead.\nSVar:TokenReplace:DB$ ReplaceToken | Type$ ReplaceToken | TokenScript$ c_a_blood_draw\nOracle:Flying\\nIf an opponent would create a Clue, they create a Blood instead. (It's an artifact with {1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodspatter Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

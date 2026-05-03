@@ -1,0 +1,23 @@
+{
+  "id": "orbital-plunge-corpus-m685",
+  "description": "M6 corpus — Orbital Plunge; in-hand parse.",
+  "seed": 61885,
+  "cards": {
+    "Orbital Plunge": "Name:Orbital Plunge\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 6 | ExcessSVar$ Excess | SubAbility$ DBToken | SpellDescription$ CARDNAME deals 6 damage to target creature. If excess damage was dealt this way, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_lander_sac_search | ConditionCheckSVar$ Excess\nDeckHas:Ability$Token\nOracle:Orbital Plunge deals 6 damage to target creature. If excess damage was dealt this way, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orbital Plunge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

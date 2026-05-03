@@ -1,0 +1,23 @@
+{
+  "id": "j-jonah-jameson-corpus-m685",
+  "description": "M6 corpus — J. Jonah Jameson; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "J. Jonah Jameson": "Name:J. Jonah Jameson\nVariant:UniversesWithin:FlavorName:Lazlo, Enthusiastic Accuser\nManaCost:2 R\nTypes:Legendary Creature Human Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect up to one target creature. (A suspected creature has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | Defined$ Targeted | Attributes$ Suspected\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+withMenace | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control with menace attacks, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:PlayMain1:TRUE\nOracle:When J. Jonah Jameson enters, suspect up to one target creature. (A suspected creature has menace and can't block.)\\nWhenever a creature you control with menace attacks, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "J. Jonah Jameson"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

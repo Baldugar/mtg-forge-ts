@@ -1,0 +1,23 @@
+{
+  "id": "astrid-peth-corpus-m685",
+  "description": "M6 corpus — Astrid Peth; in-hand parse.",
+  "seed": 61452,
+  "cards": {
+    "Astrid Peth": "Name:Astrid Peth\nManaCost:1 W\nTypes:Legendary Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a Food token.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a Food token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Food.YouCtrl,Clue.YouCtrl | Execute$ TrigExplore | TriggerZones$ Battlefield | TriggerDescription$ Brand-new Sky — Whenever you sacrifice a Clue or Food, CARDNAME explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)\nSVar:TrigExplore:DB$ Explore\nDeckHas:Ability$Sacrifice|Token|Counters & Type$Food|Artifact\nDeckHints:Type$Food|Clue\nOracle:Whenever Astrid Peth enters or attacks, create a Food token.\\nBrand-new Sky — Whenever you sacrifice a Clue or Food, Astrid Peth explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astrid Peth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

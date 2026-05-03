@@ -1,0 +1,23 @@
+{
+  "id": "most-wanted-corpus-m685",
+  "description": "M6 corpus — Most Wanted; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Most Wanted": "Name:Most Wanted\nManaCost:2 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Enchanted creature gets +2/+1.\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerDescription$ When enchanted creature dies, create two Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets +2/+1.\\nWhen enchanted creature dies, create two Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Most Wanted"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

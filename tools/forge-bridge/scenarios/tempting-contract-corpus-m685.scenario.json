@@ -1,0 +1,23 @@
+{
+  "id": "tempting-contract-corpus-m685",
+  "description": "M6 corpus — Tempting Contract; in-hand parse.",
+  "seed": 62095,
+  "cards": {
+    "Tempting Contract": "Name:Tempting Contract\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBRepeat | TriggerDescription$ At the beginning of your upkeep, each opponent may create a Treasure token. For each opponent who does, you create a Treasure token.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBOppToken | RepeatPlayers$ Opponent | RepeatOptionalForEachPlayer$ True | RepeatOptionalMessage$ Do you want to create a Treasure token? | ChangeZoneTable$ True | SubAbility$ DBToken\nSVar:DBOppToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ Player.IsRemembered | RememberTokens$ True\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountRememberedOwner$Amount\nDeckHas:Ability$Token|Sacrifice\nOracle:At the beginning of your upkeep, each opponent may create a Treasure token. For each opponent who does, you create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempting Contract"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

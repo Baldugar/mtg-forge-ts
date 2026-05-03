@@ -1,0 +1,23 @@
+{
+  "id": "overcooked-corpus-m685",
+  "description": "M6 corpus — Overcooked; in-hand parse.",
+  "seed": 61888,
+  "cards": {
+    "Overcooked": "Name:Overcooked\nManaCost:2 R\nTypes:Enchantment\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ Celebration — At the beginning of your end step, create a Food token. If two or more nonland permanents entered the battlefield under your control this turn, instead conjure a card named Food Fight onto the battlefield.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ Celebration | BranchConditionSVarCompare$ GE2 | TrueSubAbility$ DBConjure | FalseSubAbility$ DBFood\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Food Fight | Zone$ Battlefield\nSVar:Celebration:Count$ThisTurnEntered_Battlefield_Permanent.nonLand+YouCtrl\nDeckHas:Ability$Token & Type$Food\nOracle:Players can't gain life.\\nCelebration — At the beginning of your end step, create a Food token. If two or more nonland permanents entered the battlefield under your control this turn, instead conjure a card named Food Fight onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overcooked"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

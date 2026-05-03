@@ -1,0 +1,23 @@
+{
+  "id": "bonny-pall-clearcutter-corpus-m685",
+  "description": "M6 corpus — Bonny Pall, Clearcutter; in-hand parse.",
+  "seed": 61493,
+  "cards": {
+    "Bonny Pall, Clearcutter": "Name:Bonny Pall, Clearcutter\nManaCost:3 G U U\nTypes:Legendary Creature Giant Scout\nPT:6/5\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create Beau, a legendary blue Ox creature token with \"This creature's power and toughness are each equal to the number of lands you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ beau | TokenOwner$ You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, draw a card, then you may put a land card from your hand or graveyard onto the battlefield.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | ChangeType$ Land.YouOwn | ChangeNum$ 1 | Origin$ Hand,Graveyard | Hidden$ True | Destination$ Battlefield\nDeckHas:Ability$Token|Graveyard & Type$Ox\nOracle:Reach\\nWhen Bonny Pall, Clearcutter enters, create Beau, a legendary blue Ox creature token with \"This creature's power and toughness are each equal to the number of lands you control.\"\\nWhenever you attack, draw a card, then you may put a land card from your hand or graveyard onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bonny Pall, Clearcutter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

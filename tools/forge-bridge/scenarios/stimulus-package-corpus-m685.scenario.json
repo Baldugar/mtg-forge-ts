@@ -1,0 +1,23 @@
+{
+  "id": "stimulus-package-corpus-m685",
+  "description": "M6 corpus — Stimulus Package; in-hand parse.",
+  "seed": 62070,
+  "cards": {
+    "Stimulus Package": "Name:Stimulus Package\nManaCost:2 R G\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nA:AB$ Token | Cost$ Sac<1/Treasure> | TokenScript$ gw_1_1_citizen | SpellDescription$ Create a 1/1 green and white Citizen creature token.\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact|Citizen\nOracle:When Stimulus Package enters, create two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nSacrifice a Treasure: Create a 1/1 green and white Citizen creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stimulus Package"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

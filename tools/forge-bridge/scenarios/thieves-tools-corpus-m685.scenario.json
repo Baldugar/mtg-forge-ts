@@ -1,0 +1,23 @@
+{
+  "id": "thieves-tools-corpus-m685",
+  "description": "M6 corpus — Thieves' Tools; in-hand parse.",
+  "seed": 62134,
+  "cards": {
+    "Thieves' Tools": "Name:Thieves' Tools\nManaCost:1 B\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy+powerLE3 | Description$ Equipped creature can't be blocked as long as its power is 3 or less.\nDeckHas:Ability$Token|Sacrifice & Type$Treasure\nOracle:When Thieves' Tools enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nEquipped creature can't be blocked as long as its power is 3 or less.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thieves' Tools"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

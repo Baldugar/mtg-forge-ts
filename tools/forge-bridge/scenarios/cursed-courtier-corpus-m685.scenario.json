@@ -1,0 +1,23 @@
+{
+  "id": "cursed-courtier-corpus-m685",
+  "description": "M6 corpus — Cursed Courtier; in-hand parse.",
+  "seed": 61566,
+  "cards": {
+    "Cursed Courtier": "Name:Cursed Courtier\nManaCost:2 W\nTypes:Creature Human Noble\nPT:3/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Cursed Role token attached to it. (Enchanted creature is 1/1.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_cursed | AttachedTo$ Self\nDeckHas:Ability$Token|LifeGain & Type$Aura|Enchantment|Role\nOracle:Lifelink\\nWhen Cursed Courtier enters, create a Cursed Role token attached to it. (Enchanted creature is 1/1.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cursed Courtier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

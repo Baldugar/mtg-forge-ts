@@ -1,0 +1,23 @@
+{
+  "id": "lita-mechanical-engineer-corpus-m685",
+  "description": "M6 corpus — Lita, Mechanical Engineer; in-hand parse.",
+  "seed": 61790,
+  "cards": {
+    "Lita, Mechanical Engineer": "Name:Lita, Mechanical Engineer\nManaCost:2 W\nTypes:Legendary Artifact Creature Artificer\nPT:3/3\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your end step, untap each other artifact creature you control.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Artifact.Creature+YouCtrl+Other\nA:AB$ Token | Cost$ 3 W T | TokenScript$ zeppelin | SpellDescription$ Create a 5/5 colorless Vehicle artifact token named Zeppelin with flying and crew 3.\nDeckHas:Type$Vehicle & Ability$Token & Keyword$Flying\nDeckHints:Type$Artifact\nOracle:Vigilance\\nAt the beginning of your end step, untap each other artifact creature you control.\\n{3}{W}, {T}: Create a 5/5 colorless Vehicle artifact token named Zeppelin with flying and crew 3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lita, Mechanical Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

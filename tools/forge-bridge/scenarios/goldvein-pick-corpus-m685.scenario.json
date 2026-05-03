@@ -1,0 +1,23 @@
+{
+  "id": "goldvein-pick-corpus-m685",
+  "description": "M6 corpus — Goldvein Pick; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Goldvein Pick": "Name:Goldvein Pick\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nK:Equip:1\nDeckHas:Ability$Token\nOracle:Equipped creature gets +1/+1.\\nWhenever equipped creature deals combat damage to a player, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldvein Pick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

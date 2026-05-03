@@ -1,0 +1,23 @@
+{
+  "id": "lotho-corrupt-shirriff-corpus-m685",
+  "description": "M6 corpus — Lotho, Corrupt Shirriff; in-hand parse.",
+  "seed": 61799,
+  "cards": {
+    "Lotho, Corrupt Shirriff": "Name:Lotho, Corrupt Shirriff\nManaCost:W B\nTypes:Legendary Creature Halfling Rogue\nPT:2/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player | ActivatorThisTurnCast$ EQ2 | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player casts their second spell each turn, you lose 1 life and create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token\nOracle:Whenever a player casts their second spell each turn, you lose 1 life and create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotho, Corrupt Shirriff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nuka-cola-vending-machine-corpus-m685",
+  "description": "M6 corpus — Nuka-Cola Vending Machine; in-hand parse.",
+  "seed": 61870,
+  "cards": {
+    "Nuka-Cola Vending Machine": "Name:Nuka-Cola Vending Machine\nManaCost:3\nTypes:Artifact\nA:AB$ Token | Cost$ 1 T | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nT:Mode$ Sacrificed | ValidCard$ Food.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Food, create a tapped Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token & Type$Treasure|Food\nDeckHints:Type$Food\nOracle:{1}, {T}: Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nWhenever you sacrifice a Food, create a tapped Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nuka-Cola Vending Machine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

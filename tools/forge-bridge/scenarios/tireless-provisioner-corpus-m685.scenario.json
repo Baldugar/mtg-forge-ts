@@ -1,0 +1,23 @@
+{
+  "id": "tireless-provisioner-corpus-m685",
+  "description": "M6 corpus — Tireless Provisioner; in-hand parse.",
+  "seed": 62138,
+  "cards": {
+    "Tireless Provisioner": "Name:Tireless Provisioner\nManaCost:2 G\nTypes:Creature Elf Scout\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTokenChoice | TriggerDescription$ Landfall — Whenever a land you control enters, create a Food token or a Treasure token. (Food is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\" Treasure is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTokenChoice:DB$ GenericChoice | Defined$ You | Choices$ Food,Treasure | AILogic$ FoodOrTreasure | SpellDescription$ Whenever a land you control enters, create a Food token or a Treasure token.\nSVar:Food:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Food\nSVar:Treasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ Treasure\nDeckHas:Ability$Token|LifeGain\nOracle:Landfall — Whenever a land you control enters, create a Food token or a Treasure token. (Food is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\" Treasure is an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tireless Provisioner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

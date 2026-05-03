@@ -1,0 +1,23 @@
+{
+  "id": "stern-lesson-corpus-m685",
+  "description": "M6 corpus — Stern Lesson; in-hand parse.",
+  "seed": 62067,
+  "cards": {
+    "Stern Lesson": "Name:Stern Lesson\nManaCost:2 U\nTypes:Instant\nA:SP$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ TrigDiscard | SpellDescription$ Draw two cards, then discard a card. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Token|Discard & Type$Artifact\nOracle:Draw two cards, then discard a card. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stern Lesson"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

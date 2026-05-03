@@ -1,0 +1,23 @@
+{
+  "id": "rite-of-the-raging-storm-corpus-m685",
+  "description": "M6 corpus — Rite of the Raging Storm; in-hand parse.",
+  "seed": 61963,
+  "cards": {
+    "Rite of the Raging Storm": "Name:Rite of the Raging Storm\nManaCost:3 R R\nTypes:Enchantment\nS:Mode$ CantAttack | ValidCard$ Creature.namedLightning Rager | Target$ You,Planeswalker.YouCtrl | Description$ Creatures named Lightning Rager can't attack you or planeswalkers you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player creates a 5/1 red Elemental creature token named Lightning Rager. It has trample, haste, and \"At the beginning of the end step, sacrifice this creature.\"\nSVar:TrigToken:DB$ Token | TokenScript$ lightning_rager | TokenOwner$ TriggeredPlayer\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Creatures named Lightning Rager can't attack you or planeswalkers you control.\\nAt the beginning of each player's upkeep, that player creates a 5/1 red Elemental creature token named Lightning Rager. It has trample, haste, and \"At the beginning of the end step, sacrifice this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rite of the Raging Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "samwise-gamgee-corpus-m685",
+  "description": "M6 corpus — Samwise Gamgee; in-hand parse.",
+  "seed": 62001,
+  "cards": {
+    "Samwise Gamgee": "Name:Samwise Gamgee\nManaCost:G W\nTypes:Legendary Creature Halfling Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigFood | TriggerDescription$ Whenever another nontoken creature you control enters, create a Food token. (It's an artifact with \"{2}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ Sac<3/Food> | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.Historic+YouOwn | TgtPrompt$ Select target historic permanent in your graveyard | SpellDescription$ Return target historic card from your graveyard to your hand. (Artifacts, legendaries, and Sagas are historic.)\nDeckHas:Ability$Sacrifice|Token & Type$Food\nDeckHints:Type$Food\nOracle:Whenever another nontoken creature you control enters, create a Food token. (It's an artifact with \"{2}, Sacrifice this artifact: You gain 3 life.\")\\nSacrifice three Foods: Return target historic card from your graveyard to your hand. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Samwise Gamgee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

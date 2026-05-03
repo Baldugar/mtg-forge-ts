@@ -1,0 +1,23 @@
+{
+  "id": "loot-dispute-corpus-m685",
+  "description": "M6 corpus — Loot Dispute; in-hand parse.",
+  "seed": 61796,
+  "cards": {
+    "Loot Dispute": "Name:Loot Dispute\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative and create a Treasure token.\nSVar:TrigInitiative:DB$ TakeInitiative | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl | AttackedTarget$ Player.hasInitiative | Execute$ DBTreasure | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack the player who has the initiative, create a Treasure token.\nT:Mode$ DungeonCompleted | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you complete a dungeon, create a 5/5 red Dragon creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ r_5_5_dragon_flying\nDeckHas:Ability$Token|Sacrifice\nOracle:When Loot Dispute enters, you take the initiative and create a Treasure token.\\nWhenever you attack the player who has the initiative, create a Treasure token.\\nLoud Ruckus — Whenever you complete a dungeon, create a 5/5 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loot Dispute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

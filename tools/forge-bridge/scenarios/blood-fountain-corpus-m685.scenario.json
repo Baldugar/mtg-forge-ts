@@ -1,0 +1,23 @@
+{
+  "id": "blood-fountain-corpus-m685",
+  "description": "M6 corpus — Blood Fountain; in-hand parse.",
+  "seed": 61481,
+  "cards": {
+    "Blood Fountain": "Name:Blood Fountain\nManaCost:B\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nA:AB$ ChangeZone | Cost$ 3 B T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creature cards in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return up to two target creature cards from your graveyard to your hand.\nDeckHas:Ability$Token|Sacrifice|Graveyard & Type$Blood\nOracle:When Blood Fountain enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\n{3}{B}, {T}, Sacrifice Blood Fountain: Return up to two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Fountain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

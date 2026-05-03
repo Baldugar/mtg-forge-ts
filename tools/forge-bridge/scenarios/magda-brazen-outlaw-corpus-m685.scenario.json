@@ -1,0 +1,23 @@
+{
+  "id": "magda-brazen-outlaw-corpus-m685",
+  "description": "M6 corpus — Magda, Brazen Outlaw; in-hand parse.",
+  "seed": 61805,
+  "cards": {
+    "Magda, Brazen Outlaw": "Name:Magda, Brazen Outlaw\nManaCost:1 R\nTypes:Legendary Creature Dwarf Berserker\nPT:2/1\nS:Mode$ Continuous | Affected$ Dwarf.Other+YouCtrl | AddPower$ 1 | Description$ Other Dwarves you control get +1/+0.\nT:Mode$ Taps | ValidCard$ Dwarf.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Dwarf you control becomes tapped, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ Sac<5/Treasure> | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Artifact,Card.Dragon | ChangeNum$ 1 | StackDescription$ {p:You} searches their library for an Artifact or Dragon card, puts that card onto the battlefield, then shuffles their library. | SpellDescription$ Search your library for an artifact or Dragon card, put that card onto the battlefield, then shuffle.\nSVar:BuffedBy:Dwarf\nSVar:PlayMain1:TRUE\nDeckNeeds:Type$Dwarf\nDeckHints:Type$Dragon|Artifact\nDeckHas:Ability$Token|Sacrifice\nOracle:Other Dwarves you control get +1/+0.\\nWhenever a Dwarf you control becomes tapped, create a Treasure token.\\nSacrifice five Treasures: Search your library for an artifact or Dragon card, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magda, Brazen Outlaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

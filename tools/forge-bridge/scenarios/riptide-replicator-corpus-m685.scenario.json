@@ -1,0 +1,23 @@
+{
+  "id": "riptide-replicator-corpus-m685",
+  "description": "M6 corpus — Riptide Replicator; in-hand parse.",
+  "seed": 61962,
+  "cards": {
+    "Riptide Replicator": "Name:Riptide Replicator\nManaCost:X 4\nTypes:Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SubAbility$ ChooseCT | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color and a creature type.\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeck\nK:etbCounter:CHARGE:X\nSVar:X:Count$xPaid\nA:AB$ Token | Cost$ 4 T | TokenScript$ riptide_replicator | TokenTypes$ ChosenType | TokenOwner$ You | TokenColors$ ChosenColor | TokenPower$ Y | TokenToughness$ Y | SpellDescription$ Create an X/X creature token of the chosen color and type, where X is the number of charge counters on CARDNAME.\nSVar:Y:Count$CardCounters.CHARGE\nSVar:NeedsToPlayVar:Z GE6\nSVar:Z:Count$Valid Card.canProduceMana+YouCtrl+untapped\nOracle:As Riptide Replicator enters, choose a color and a creature type.\\nRiptide Replicator enters with X charge counters on it.\\n{4}, {T}: Create an X/X creature token of the chosen color and type, where X is the number of charge counters on Riptide Replicator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Replicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

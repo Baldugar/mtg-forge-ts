@@ -1,0 +1,23 @@
+{
+  "id": "tataru-taru-corpus-m685",
+  "description": "M6 corpus — Tataru Taru; in-hand parse.",
+  "seed": 62091,
+  "cards": {
+    "Tataru Taru": "Name:Tataru Taru\nManaCost:1 W\nTypes:Legendary Creature Dwarf Advisor\nPT:0/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and target opponent may draw a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ValidTgts$ Opponent | OptionalDecider$ Opponent\nT:Mode$ Drawn | ValidCard$ Card.OwnedBy Opponent.NonActive | TriggerZones$ Battlefield | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Scions' Secretary — Whenever an opponent draws a card, if it isn't that player's turn, create a tapped Treasure token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True\nOracle:When Tataru Taru enters, you draw a card and target opponent may draw a card.\\nScions' Secretary — Whenever an opponent draws a card, if it isn't that player's turn, create a tapped Treasure token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tataru Taru"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

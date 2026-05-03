@@ -1,0 +1,23 @@
+{
+  "id": "bartered-cow-corpus-m685",
+  "description": "M6 corpus — Bartered Cow; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Bartered Cow": "Name:Bartered Cow\nManaCost:3 W\nTypes:Creature Ox\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | TriggerController$ TriggeredCardController | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies or when you discard it, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nT:Mode$ Discarded | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerController$ TriggeredCardController | TriggerDescription$ When CARDNAME dies or when you discard it, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:SacMe:1\nSVar:DiscardMe:3\nDeckHas:Ability$Token|LifeGain|Food\nOracle:When Bartered Cow dies or when you discard it, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bartered Cow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

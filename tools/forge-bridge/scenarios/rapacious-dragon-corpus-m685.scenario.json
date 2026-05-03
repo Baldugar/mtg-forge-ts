@@ -1,0 +1,23 @@
+{
+  "id": "rapacious-dragon-corpus-m685",
+  "description": "M6 corpus — Rapacious Dragon; in-hand parse.",
+  "seed": 61938,
+  "cards": {
+    "Rapacious Dragon": "Name:Rapacious Dragon\nManaCost:4 R\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBTreasureTokens | TriggerDescription$ When CARDNAME enters, create two Treasure tokens.\nSVar:DBTreasureTokens:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Flying\\nWhen Rapacious Dragon enters, create two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rapacious Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

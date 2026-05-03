@@ -1,0 +1,23 @@
+{
+  "id": "tuktuk-the-explorer-corpus-m685",
+  "description": "M6 corpus — Tuktuk the Explorer; in-hand parse.",
+  "seed": 62160,
+  "cards": {
+    "Tuktuk the Explorer": "Name:Tuktuk the Explorer\nManaCost:2 R\nTypes:Legendary Creature Goblin\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create Tuktuk the Returned, a legendary 5/5 colorless Goblin Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ tuktuk_the_returned | TokenOwner$ TriggeredCardController\nSVar:SacMe:4\nOracle:Haste\\nWhen Tuktuk the Explorer dies, create Tuktuk the Returned, a legendary 5/5 colorless Goblin Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tuktuk the Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

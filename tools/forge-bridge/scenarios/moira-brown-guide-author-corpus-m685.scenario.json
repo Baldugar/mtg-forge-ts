@@ -1,0 +1,23 @@
+{
+  "id": "moira-brown-guide-author-corpus-m685",
+  "description": "M6 corpus — Moira Brown, Guide Author; in-hand parse.",
+  "seed": 61843,
+  "cards": {
+    "Moira Brown, Guide Author": "Name:Moira Brown, Guide Author\nManaCost:1 R W\nTypes:Legendary Creature Human Citizen\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a colorless Equipment artifact token named Wasteland Survival Guide with \"Equipped creature gets +1/+1 for each quest counter among permanents you control\" and equip {1}.\nSVar:TrigToken:DB$ Token | TokenScript$ wasteland_survival_guide\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, put a quest counter on target nonland permanent you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Permanent.nonLand+YouCtrl | TgtPrompt$ Select target nonland permanent you control | CounterType$ QUEST\nDeckHas:Ability$Token|Counters & Type$Artifact\nOracle:When Moira Brown, Guide Author enters, create a colorless Equipment artifact token named Wasteland Survival Guide with \"Equipped creature gets +1/+1 for each quest counter among permanents you control\" and equip {1}.\\nWhenever you attack, put a quest counter on target nonland permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moira Brown, Guide Author"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

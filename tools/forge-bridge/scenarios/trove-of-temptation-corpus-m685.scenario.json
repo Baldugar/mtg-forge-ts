@@ -1,0 +1,23 @@
+{
+  "id": "trove-of-temptation-corpus-m685",
+  "description": "M6 corpus — Trove of Temptation; in-hand parse.",
+  "seed": 62158,
+  "cards": {
+    "Trove of Temptation": "Name:Trove of Temptation\nManaCost:3 R\nTypes:Enchantment\nS:Mode$ PlayerMustAttack | ValidPlayer$ Opponent | MustAttack$ You,Planeswalker.YouCtrl | Description$ Each opponent must attack you or a planeswalker you control with at least one creature each combat if able.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBTreasureToken | TriggerDescription$ At the beginning of your end step, create a Treasure token.\nSVar:DBTreasureToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token|Sacrifice\nOracle:Each opponent must attack you or a planeswalker you control with at least one creature each combat if able.\\nAt the beginning of your end step, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trove of Temptation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

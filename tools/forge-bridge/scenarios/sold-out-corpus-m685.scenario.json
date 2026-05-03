@@ -1,0 +1,23 @@
+{
+  "id": "sold-out-corpus-m685",
+  "description": "M6 corpus — Sold Out; in-hand parse.",
+  "seed": 62044,
+  "cards": {
+    "Sold Out": "Name:Sold Out\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature | SubAbility$ DBToken | SpellDescription$ Exile target creature. If it was dealt damage this turn, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You | ConditionDefined$ Targeted | ConditionPresent$ Creature.wasDealtDamageThisTurn\nOracle:Exile target creature. If it was dealt damage this turn, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sold Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brandywine-farmer-corpus-m685",
+  "description": "M6 corpus — Brandywine Farmer; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Brandywine Farmer": "Name:Brandywine Farmer\nManaCost:2 G\nTypes:Creature Halfling Peasant\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters or leaves the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigFood | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Sacrifice|Token|LifeGain & Type$Artifact|Food\nOracle:When Brandywine Farmer enters or leaves the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brandywine Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

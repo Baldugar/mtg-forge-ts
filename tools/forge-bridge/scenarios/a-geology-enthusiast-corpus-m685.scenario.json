@@ -1,0 +1,23 @@
+{
+  "id": "a-geology-enthusiast-corpus-m685",
+  "description": "M6 corpus — A-Geology Enthusiast; in-hand parse.",
+  "seed": 61981,
+  "cards": {
+    "A-Geology Enthusiast": "Name:A-Geology Enthusiast\nManaCost:2 U U\nTypes:Creature Human Artificer\nPT:3/4\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a tapped Powerstone token.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nA:AB$ Draw | Cost$ 5 | SubAbility$ DBCounter | SpellDescription$ Draw a card and put a +1/+1 counter on CARDNAME.\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Artifact\nOracle:Vigilance\\nAt the beginning of your end step, create a tapped Powerstone token.\\n{5}: Draw a card and put a +1/+1 counter on Geology Enthusiast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Geology Enthusiast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

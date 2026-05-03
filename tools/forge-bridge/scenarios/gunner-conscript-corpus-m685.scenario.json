@@ -1,0 +1,23 @@
+{
+  "id": "gunner-conscript-corpus-m685",
+  "description": "M6 corpus — Gunner Conscript; in-hand parse.",
+  "seed": 61703,
+  "cards": {
+    "Gunner Conscript": "Name:Gunner Conscript\nManaCost:1 G\nTypes:Creature Human Mercenary\nPT:2/2\nK:Trample\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each Aura and Equipment attached to it.\nT:Mode$ ChangesZone | ValidCard$ Card.Self+enchanted | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, if it was enchanted, create a Junk token.\nT:Mode$ ChangesZone | ValidCard$ Card.Self+equipped | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, if it was equipped, create a Junk token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_junk_sac_exileplay\nSVar:X:Count$Valid Equipment.Attached,Aura.Attached\nSVar:EnchantMe:Multiple\nSVar:EquipMe:Multiple\nDeckHas:Ability$Token & Type$Artifact|Junk\nDeckNeeds:Type$Aura|Equipment\nOracle:Trample\\nGunner Conscript gets +1/+1 for each Aura and Equipment attached to it.\\nWhen Gunner Conscript dies, if it was enchanted, create a Junk token.\\nWhen Gunner Conscript dies, if it was equipped, create a Junk token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gunner Conscript"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

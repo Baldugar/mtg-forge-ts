@@ -1,0 +1,23 @@
+{
+  "id": "city-pigeon-corpus-m685",
+  "description": "M6 corpus — City Pigeon; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "City Pigeon": "Name:City Pigeon\nManaCost:W\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature leaves the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Food\nOracle:Flying\\nWhen this creature leaves the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "City Pigeon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

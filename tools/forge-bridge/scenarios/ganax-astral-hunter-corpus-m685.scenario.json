@@ -1,0 +1,23 @@
+{
+  "id": "ganax-astral-hunter-corpus-m685",
+  "description": "M6 corpus — Ganax, Astral Hunter; in-hand parse.",
+  "seed": 61654,
+  "cards": {
+    "Ganax, Astral Hunter": "Name:Ganax, Astral Hunter\nManaCost:4 R\nTypes:Legendary Creature Dragon\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Dragon.Other+YouCtrl | Execute$ TrigTreasure | TriggerDescription$ Whenever CARDNAME or another Dragon you control enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nK:Choose a Background\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nDeckHints:Type$Dragon\nOracle:Flying\\nWhenever Ganax, Astral Hunter or another Dragon you control enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ganax, Astral Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

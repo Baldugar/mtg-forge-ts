@@ -1,0 +1,23 @@
+{
+  "id": "verix-bladewing-corpus-m685",
+  "description": "M6 corpus — Verix Bladewing; in-hand parse.",
+  "seed": 62182,
+  "cards": {
+    "Verix Bladewing": "Name:Verix Bladewing\nManaCost:2 R R\nTypes:Legendary Creature Dragon\nPT:4/4\nK:Flying\nK:Kicker:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, create Karox Bladewing, a legendary 4/4 red Dragon creature token with flying.\nSVar:TrigKicker:DB$ Token | TokenScript$ karox_bladewing | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Kicker {3} (You may pay an additional {3} as you cast this spell.)\\nFlying\\nWhen Verix Bladewing enters, if it was kicked, create Karox Bladewing, a legendary 4/4 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verix Bladewing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

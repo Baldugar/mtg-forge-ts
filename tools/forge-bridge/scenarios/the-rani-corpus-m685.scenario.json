@@ -1,0 +1,23 @@
+{
+  "id": "the-rani-corpus-m685",
+  "description": "M6 corpus — The Rani; in-hand parse.",
+  "seed": 62122,
+  "cards": {
+    "The Rani": "Name:The Rani\nManaCost:1 U B R\nTypes:Legendary Creature Time Lord Scientist\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a red Aura enchantment token named Mark of the Rani attached to another target creature. That token has enchant creature and \"Enchanted creature gets +2/+2 and is goaded.\"\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a red Aura enchantment token named Mark of the Rani attached to another target creature. That token has enchant creature and \"Enchanted creature gets +2/+2 and is goaded.\"\nSVar:TrigToken:DB$ Token | TokenScript$ mark_of_the_rani | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature\nT:Mode$ DamageDone | ValidSource$ Creature.IsGoaded | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever a goaded creature deals combat damage to one of your opponents, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Enchantment|Aura|Artifact|Clue\nOracle:Whenever The Rani enters or attacks, create a red Aura enchantment token named Mark of the Rani attached to another target creature. That token has enchant creature and \"Enchanted creature gets +2/+2 and is goaded.\"\\nWhenever a goaded creature deals combat damage to one of your opponents, investigate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Rani"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

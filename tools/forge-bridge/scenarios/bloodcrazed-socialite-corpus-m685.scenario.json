@@ -1,0 +1,23 @@
+{
+  "id": "bloodcrazed-socialite-corpus-m685",
+  "description": "M6 corpus — Bloodcrazed Socialite; in-hand parse.",
+  "seed": 61485,
+  "cards": {
+    "Bloodcrazed Socialite": "Name:Bloodcrazed Socialite\nManaCost:3 B\nTypes:Creature Vampire\nPT:3/3\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Blood token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice a Blood token. If you do, it gets +2/+2 until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Blood.token/Blood token> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nDeckHints:Type$Blood\nOracle:Menace\\nWhen Bloodcrazed Socialite enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nWhenever Bloodcrazed Socialite attacks, you may sacrifice a Blood token. If you do, it gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodcrazed Socialite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

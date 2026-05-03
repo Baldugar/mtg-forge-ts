@@ -1,0 +1,23 @@
+{
+  "id": "fortifying-provisions-corpus-m685",
+  "description": "M6 corpus — Fortifying Provisions; in-hand parse.",
+  "seed": 61644,
+  "cards": {
+    "Fortifying Provisions": "Name:Fortifying Provisions\nManaCost:2 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddToughness$ 1 | Description$ Creatures you control get +0/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token|LifeGain|Food\nOracle:Creatures you control get +0/+1.\\nWhen Fortifying Provisions enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortifying Provisions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

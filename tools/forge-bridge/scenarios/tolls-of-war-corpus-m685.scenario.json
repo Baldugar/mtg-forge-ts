@@ -1,0 +1,23 @@
+{
+  "id": "tolls-of-war-corpus-m685",
+  "description": "M6 corpus — Tolls of War; in-hand parse.",
+  "seed": 62142,
+  "cards": {
+    "Tolls of War": "Name:Tolls of War\nManaCost:W B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigClue | TriggerDescription$ When this enchantment enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigClue:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nT:Mode$ Sacrificed | ValidCard$ Permanent.YouCtrl | Execute$ TrigAlly | TriggerZones$ Battlefield | ValidPlayer$ You | PlayerTurn$ True | ActivationLimit$ 1 | TriggerDescription$ Whenever you sacrifice a permanent during your turn, create a 1/1 white Ally creature token. This ability triggers only once each turn.\nSVar:TrigAlly:DB$ Token | TokenScript$ w_1_1_ally\nOracle:When this enchantment enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\\nWhenever you sacrifice a permanent during your turn, create a 1/1 white Ally creature token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolls of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

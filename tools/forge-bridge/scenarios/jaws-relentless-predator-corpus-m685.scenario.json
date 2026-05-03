@@ -1,0 +1,23 @@
+{
+  "id": "jaws-relentless-predator-corpus-m685",
+  "description": "M6 corpus — Jaws, Relentless Predator; in-hand parse.",
+  "seed": 61750,
+  "cards": {
+    "Jaws, Relentless Predator": "Name:Jaws, Relentless Predator\nManaCost:3 R R\nTypes:Legendary Creature Shark\nPT:5/5\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create that many Blood tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_blood_draw | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ Sacrificed | ValidCard$ Artifact.nonCreature | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a noncreature artifact is sacrificed or destroyed, NICKNAME deals 1 damage to each opponent.\nT:Mode$ Destroyed | ValidCard$ Artifact.nonCreature | Execute$ TrigDamage | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever a noncreature artifact is sacrificed or destroyed, NICKNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ Opponent\nDeckHints:Ability$Sacrifice|Token & Type$Blood|Treasure|Map|Clue\nDeckHas:Ability$Token|Sacrifice & Type$Artifact|Blood\nOracle:Trample, haste\\nWhenever Jaws deals combat damage to a player, create that many Blood tokens.\\nWhenever a noncreature artifact is sacrificed or destroyed, Jaws deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaws, Relentless Predator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

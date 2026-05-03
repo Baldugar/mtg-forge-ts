@@ -1,0 +1,23 @@
+{
+  "id": "revive-the-shire-corpus-m685",
+  "description": "M6 corpus — Revive the Shire; in-hand parse.",
+  "seed": 61960,
+  "cards": {
+    "Revive the Shire": "Name:Revive the Shire\nManaCost:1 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouCtrl | SubAbility$ DBFood | SpellDescription$ Return target permanent card from your graveyard to your hand. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac\nDeckHas:Ability$Token|LifeGain|Graveyard & Type$Artifact|Food\nOracle:Return target permanent card from your graveyard to your hand. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revive the Shire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

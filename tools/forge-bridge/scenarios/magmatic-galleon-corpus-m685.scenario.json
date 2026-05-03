@@ -1,0 +1,23 @@
+{
+  "id": "magmatic-galleon-corpus-m685",
+  "description": "M6 corpus — Magmatic Galleon; in-hand parse.",
+  "seed": 61809,
+  "cards": {
+    "Magmatic Galleon": "Name:Magmatic Galleon\nManaCost:3 R R\nTypes:Artifact Vehicle\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 5 damage to target creature an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 5\nT:Mode$ ExcessDamageAll | ValidTarget$ Creature.OppCtrl | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ Whenever one or more creatures your opponents control are dealt excess noncombat damage, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nK:Crew:2\nOracle:When Magmatic Galleon enters, it deals 5 damage to target creature an opponent controls.\\nWhenever one or more creatures your opponents control are dealt excess noncombat damage, create a Treasure token.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magmatic Galleon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

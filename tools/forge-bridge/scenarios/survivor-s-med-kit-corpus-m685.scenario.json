@@ -1,0 +1,23 @@
+{
+  "id": "survivor-s-med-kit-corpus-m685",
+  "description": "M6 corpus — Survivor's Med Kit; in-hand parse.",
+  "seed": 62080,
+  "cards": {
+    "Survivor's Med Kit": "Name:Survivor's Med Kit\nManaCost:1\nTypes:Artifact\nA:AB$ Charm | Cost$ 1 T | Choices$ DBDraw,DBFood,DBRadAway | ChoiceRestriction$ ThisGame\nSVar:DBDraw:DB$ Draw | SpellDescription$ Stimpak — Draw a card.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | SpellDescription$ Fancy Lads Snack Cakes — Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBRadAway:DB$ RemoveCounter | ValidTgts$ Player | CounterType$ RAD | CounterNum$ All | SubAbility$ DBSacSelf | SpellDescription$ RadAway — Target player loses all rad counters. Sacrifice CARDNAME.\nSVar:DBSacSelf:DB$ Sacrifice\nDeckHas:Ability$Sacrifice|LifeGain|Token & Type$Food\nOracle:{1}, {T}: Choose one that hasn't been chosen —\\n• Stimpak — Draw a card.\\n• Fancy Lads Snack Cakes — Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n• RadAway — Target player loses all rad counters. Sacrifice Survivor's Med Kit.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Survivor's Med Kit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

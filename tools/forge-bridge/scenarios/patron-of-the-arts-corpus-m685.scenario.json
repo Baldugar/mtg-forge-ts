@@ -1,0 +1,23 @@
+{
+  "id": "patron-of-the-arts-corpus-m685",
+  "description": "M6 corpus — Patron of the Arts; in-hand parse.",
+  "seed": 61896,
+  "cards": {
+    "Patron of the Arts": "Name:Patron of the Arts\nManaCost:2 R\nTypes:Creature Dragon Noble\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ TriggeredCardController\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:When Patron of the Arts enters or dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patron of the Arts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

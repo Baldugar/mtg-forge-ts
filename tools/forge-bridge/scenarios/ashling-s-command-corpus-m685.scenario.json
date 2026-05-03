@@ -1,0 +1,23 @@
+{
+  "id": "ashling-s-command-corpus-m685",
+  "description": "M6 corpus — Ashling's Command; in-hand parse.",
+  "seed": 61449,
+  "cards": {
+    "Ashling's Command": "Name:Ashling's Command\nManaCost:3 U R\nTypes:Kindred Instant Elemental\nA:SP$ Charm | Choices$ DBToken,DBDraw,DBDamage,DBTreasure | CharmNum$ 2\nSVar:DBToken:DB$ CopyPermanent | ValidTgts$ Card.Elemental+YouCtrl | TgtPrompt$ Select target Elemental you control | SpellDescription$ Create a token that's a copy of target Elemental you control.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Player | SpellDescription$ Target player draws two cards.\nSVar:DBDamage:DB$ DamageAll | ValidTgts$ Player | NumDmg$ 2 | ValidCards$ Creature | ValidDescription$ each creature target player controls | SpellDescription$ CARDNAME deals 2 damage to each creature target player controls.\nSVar:DBTreasure:DB$ Token | ValidTgts$ Player | TokenOwner$ ThisTargetedPlayer | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | SpellDescription$ Target player creates two Treasure tokens.\nDeckHas:Ability$Token & Type$Treasure|Artifact\nDeckHints:Type$Elemental\nOracle:Choose two —\\n• Create a token that's a copy of target Elemental you control.\\n• Target player draws two cards.\\n• Ashling's Command deals 2 damage to each creature target player controls.\\n• Target player creates two Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashling's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cache-grab-corpus-m685",
+  "description": "M6 corpus — Cache Grab; in-hand parse.",
+  "seed": 61516,
+  "cards": {
+    "Cache Grab": "Name:Cache Grab\nManaCost:1 G\nTypes:Instant\nA:SP$ Mill | NumCards$ 4 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill four cards. You may put a permanent card from among the cards milled this way into your hand. If you control a Squirrel or returned a Squirrel card to your hand this way, create a Food token. (To mill four cards, put the top four cards of your library into your graveyard. A Food token is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | Hidden$ True | ChangeType$ Permanent.IsRemembered | ChangeNum$ 1 | SelectPrompt$ You may choose a permanent card milled this way | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GT0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Squirrel.YouCtrl/Plus.Y\nSVar:Y:Remembered$Valid Squirrel\nDeckHas:Ability$Mill|LifeGain|Token\nDeckHints:Ability$Graveyard & Type$Squirrel\nOracle:Mill four cards. You may put a permanent card from among the cards milled this way into your hand. If you control a Squirrel or returned a Squirrel card to your hand this way, create a Food token. (To mill four cards, put the top four cards of your library into your graveyard. A Food token is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cache Grab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

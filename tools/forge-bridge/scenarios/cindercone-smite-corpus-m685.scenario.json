@@ -1,0 +1,23 @@
+{
+  "id": "cindercone-smite-corpus-m685",
+  "description": "M6 corpus — Cindercone Smite; in-hand parse.",
+  "seed": 61534,
+  "cards": {
+    "Cindercone Smite": "Name:Cindercone Smite\nManaCost:R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | SubAbility$ DBTreasure | SpellDescription$ CARDNAME deals 2 damage to target creature.\nSVar:DBTreasure:DB$ Token | ConditionCheckSVar$ X | TokenScript$ c_a_treasure_sac | SpellDescription$ Then create a Treasure token if you weren't the starting player.\nSVar:X:Count$StartingPlayer.0.1\nOracle:Cindercone Smite deals 2 damage to target creature. Then create a Treasure token if you weren't the starting player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cindercone Smite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

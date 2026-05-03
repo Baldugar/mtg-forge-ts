@@ -1,0 +1,23 @@
+{
+  "id": "elephant-mandrill-corpus-m685",
+  "description": "M6 corpus — Elephant-Mandrill; in-hand parse.",
+  "seed": 61598,
+  "cards": {
+    "Elephant-Mandrill": "Name:Elephant-Mandrill\nManaCost:2 G\nTypes:Creature Elephant Monkey\nPT:3/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, each player creates a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ Player\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, this creature gets +1/+1 until end of turn for each artifact your opponents control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Artifact.OppCtrl\nDeckHas:Ability$Token|Sacrifice|LifeGain|Food\nOracle:Reach\\nWhen this creature enters, each player creates a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\\nAt the beginning of combat on your turn, this creature gets +1/+1 until end of turn for each artifact your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elephant-Mandrill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

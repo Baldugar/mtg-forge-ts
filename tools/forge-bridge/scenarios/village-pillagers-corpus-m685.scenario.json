@@ -1,0 +1,23 @@
+{
+  "id": "village-pillagers-corpus-m685",
+  "description": "M6 corpus — Village Pillagers; in-hand parse.",
+  "seed": 62184,
+  "cards": {
+    "Village Pillagers": "Name:Village Pillagers\nManaCost:3 R R\nTypes:Creature Goblin Warrior\nPT:5/5\nK:Wither\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When this creature enters, it deals 1 damage to each creature your opponents control.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.OppCtrl | NumDmg$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+HasCounters | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ Whenever a creature an opponent controls with a counter on it dies, you create a tapped Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenAmount$ 1 | TokenScript$ c_a_treasure_sac | TokenOwner$ You | TokenTapped$ True\nOracle:Wither (This source deals damage to creatures in the form of -1/-1 counters.)\\nWhen this creature enters, it deals 1 damage to each creature your opponents control.\\nWhenever a creature an opponent controls with a counter on it dies, you create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Pillagers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

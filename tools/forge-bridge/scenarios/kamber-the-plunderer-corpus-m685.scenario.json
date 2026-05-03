@@ -1,0 +1,23 @@
+{
+  "id": "kamber-the-plunderer-corpus-m685",
+  "description": "M6 corpus — Kamber, the Plunderer; in-hand parse.",
+  "seed": 61765,
+  "cards": {
+    "Kamber, the Plunderer": "Name:Kamber, the Plunderer\nManaCost:3 B\nTypes:Legendary Creature Vampire Rogue\nPT:3/4\nK:Partner with:Laurine, the Diversion\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature an opponent controls dies, you gain 1 life and create a Blood token.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHints:Name$Laurine, the Diversion\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood\nOracle:Partner with Laurine, the Diversion (When this creature enters, target player may put Laurine into their hand from their library, then shuffle.)\\nLifelink\\nWhenever a creature an opponent controls dies, you gain 1 life and create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kamber, the Plunderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

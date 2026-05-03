@@ -1,0 +1,23 @@
+{
+  "id": "protective-parents-corpus-m685",
+  "description": "M6 corpus — Protective Parents; in-hand parse.",
+  "seed": 61930,
+  "cards": {
+    "Protective Parents": "Name:Protective Parents\nManaCost:2 W\nTypes:Creature Human Peasant\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Young Hero Role token attached to up to one target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\")\nSVar:TrigToken:DB$ Token | TokenScript$ role_young_hero | TokenOwner$ You | TargetMin$ 0 | TargetMax$ 1 | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control\nSVar:SacMe:2\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:When Protective Parents dies, create a Young Hero Role token attached to up to one target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protective Parents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

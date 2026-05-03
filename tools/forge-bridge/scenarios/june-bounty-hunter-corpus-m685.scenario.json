@@ -1,0 +1,23 @@
+{
+  "id": "june-bounty-hunter-corpus-m685",
+  "description": "M6 corpus — June, Bounty Hunter; in-hand parse.",
+  "seed": 61757,
+  "cards": {
+    "June, Bounty Hunter": "Name:June, Bounty Hunter\nManaCost:1 B\nTypes:Legendary Creature Human Mercenary\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+attacking | CheckSVar$ X | SVarCompare$ GE2 | Description$ NICKNAME can't be blocked as long as you've drawn two or more cards this turn.\nA:AB$ Token | Cost$ 1 Sac<1/Creature.Other/another creature> | TokenScript$ c_a_clue_draw | TokenOwner$ You | PlayerTurn$ True | SpellDescription$ Create a Clue token. Activate only during your turn. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:X:Count$YouDrewThisTurn\nOracle:June can't be blocked as long as you've drawn two or more cards this turn.\\n{1}, Sacrifice another creature: Create a Clue token. Activate only during your turn. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "June, Bounty Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

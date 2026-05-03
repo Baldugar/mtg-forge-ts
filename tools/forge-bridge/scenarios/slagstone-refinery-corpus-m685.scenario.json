@@ -1,0 +1,23 @@
+{
+  "id": "slagstone-refinery-corpus-m685",
+  "description": "M6 corpus — Slagstone Refinery; in-hand parse.",
+  "seed": 62037,
+  "cards": {
+    "Slagstone Refinery": "Name:Slagstone Refinery\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Artifact.!token+YouCtrl+Other,Card.Self | Origin$ Battlefield | Destination$ Graveyard,Exile | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another nontoken artifact you control is put into a graveyard from the battlefield or is put into exile from the battlefield, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHints:Type$Artifact\nDeckHas:Ability$Token\nOracle:Whenever Slagstone Refinery or another nontoken artifact you control is put into a graveyard from the battlefield or is put into exile from the battlefield, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slagstone Refinery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thrill-kill-disciple-corpus-m685",
+  "description": "M6 corpus — Thrill-Kill Disciple; in-hand parse.",
+  "seed": 62136,
+  "cards": {
+    "Thrill-Kill Disciple": "Name:Thrill-Kill Disciple\nManaCost:2 R\nTypes:Creature Human Mercenary\nPT:3/2\nK:Squad:1 Discard<1/Card>\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Junk token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_junk_sac_exileplay\nDeckHas:Ability$Token|Discard\nOracle:Squad—{1}, Discard a card. (As an additional cost to cast this spell, you may pay its squad cost any number of times. When this creature enters, create that many tokens that are copies of it.)\\nWhen Thrill-Kill Disciple dies, create a Junk token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thrill-Kill Disciple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "not-dead-after-all-corpus-m685",
+  "description": "M6 corpus — Not Dead After All; in-hand parse.",
+  "seed": 61869,
+  "cards": {
+    "Not Dead After All": "Name:Not Dead After All\nManaCost:B\nTypes:Instant\nA:SP$ Animate | Triggers$ TrigChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SpellDescription$ Until end of turn, target creature you control gains \"When this creature dies, return it to the battlefield tapped under its owner's control, then create a Wicked Role token attached to it.\" (Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\nSVar:TrigChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone2 | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control, then create a Wicked Role token attached to it. (Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\nSVar:TrigChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | Tapped$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ role_wicked | TokenOwner$ You | AttachedTo$ TriggeredNewCardLKICopy\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:Until end of turn, target creature you control gains \"When this creature dies, return it to the battlefield tapped under its owner's control, then create a Wicked Role token attached to it.\" (Enchanted creature gets +1/+1. When this Aura is put into a graveyard, each opponent loses 1 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Not Dead After All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

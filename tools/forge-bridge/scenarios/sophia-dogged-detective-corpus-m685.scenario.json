@@ -1,0 +1,23 @@
+{
+  "id": "sophia-dogged-detective-corpus-m685",
+  "description": "M6 corpus — Sophia, Dogged Detective; in-hand parse.",
+  "seed": 62047,
+  "cards": {
+    "Sophia, Dogged Detective": "Name:Sophia, Dogged Detective\nManaCost:1 G W U\nTypes:Legendary Creature Human Detective\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTokenTiny | TriggerDescription$ When CARDNAME enters, create Tiny, a legendary 2/2 green Dog Detective creature token with trample.\nSVar:TrigTokenTiny:DB$ Token | TokenScript$ tiny | TokenOwner$ You\nA:AB$ PutCounterAll | Cost$ 1 Sac<1/Artifact.token/artifact token> | ValidCards$ Dog.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ AtEOTOrBlock | SpellDescription$ Put a +1/+1 counter on each Dog you control.\nT:Mode$ DamageDone | ValidSource$ Dog.YouCtrl | Execute$ TrigTokenFoodClue | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Dog you control deals combat damage to a player, create a Food token, then investigate.\nSVar:TrigTokenFoodClue:DB$ Token | TokenScript$ c_a_food_sac | SubAbility$ DBInvestigate\nSVar:DBInvestigate:DB$ Investigate\nDeckNeeds:Ability$Token\nDeckHints:Ability$Food\nDeckHas:Ability$Investigate|Token|Sacrifice|LifeGain|Food\nOracle:When Sophia, Dogged Detective enters, create Tiny, a legendary 2/2 green Dog Detective creature token with trample.\\n{1}, Sacrifice an artifact token: Put a +1/+1 counter on each Dog you control.\\nWhenever a Dog you control deals combat damage to a player, create a Food token, then investigate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sophia, Dogged Detective"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

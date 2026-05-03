@@ -1,0 +1,23 @@
+{
+  "id": "repair-and-recharge-corpus-m685",
+  "description": "M6 corpus — Repair and Recharge; in-hand parse.",
+  "seed": 61950,
+  "cards": {
+    "Repair and Recharge": "Name:Repair and Recharge\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target artifact,enchantment or planeswalker card in your graveyard | ValidTgts$ Artifact.YouOwn,Enchantment.YouOwn,Planeswalker.YouOwn | SubAbility$ DBToken | SpellDescription$ Return target artifact, enchantment, or planeswalker card from your graveyard to the battlefield. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$Graveyard|Token & Type$Artifact\nDeckHints:Ability$Mill|Discard & Type$Enchantment|Artifact|Planeswalker\nOracle:Return target artifact, enchantment, or planeswalker card from your graveyard to the battlefield. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repair and Recharge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

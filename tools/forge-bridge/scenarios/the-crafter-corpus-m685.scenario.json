@@ -1,0 +1,23 @@
+{
+  "id": "the-crafter-corpus-m685",
+  "description": "M6 corpus — The Crafter; in-hand parse.",
+  "seed": 62109,
+  "cards": {
+    "The Crafter": "Name:The Crafter\nManaCost:3 R\nTypes:Legendary Artifact Creature Human\nPT:3/4\nK:Affinity:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create two colorless Scrap artifact tokens (They have no abilities.)\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ scrap\nA:AB$ Token | Cost$ T Sac<1/Artifact> | TokenScript$ bling | SpellDescription$ Create an equipment token named Bling with \"Equipped creature gets +1/+0\" and \"Equip {1}.\"\nSVar:AIPreference:SacCost$Artifact.nonCreature+nonEquipment+Token+powerLE1+toughnessEQ1\nDeckHas:Ability$Token|Sacrifice & Type$Equipment\nDeckHints:Type$Artifact\nOracle:Affinity for artifacts\\nWhen The Crafter enters the battlefield, create two colorless Scrap artifact tokens (They have no abilities.)\\n{T}, Sacrifice an artifact: Create an equipment token named Bling with \"Equipped creature gets +1/+0\" and \"Equip {1}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Crafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

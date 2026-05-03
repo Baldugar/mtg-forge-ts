@@ -1,0 +1,23 @@
+{
+  "id": "cataclysmic-prospecting-corpus-m685",
+  "description": "M6 corpus — Cataclysmic Prospecting; in-hand parse.",
+  "seed": 61527,
+  "cards": {
+    "Cataclysmic Prospecting": "Name:Cataclysmic Prospecting\nManaCost:X R R\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature | NumDmg$ X | SubAbility$ DBTreasure | SpellDescription$ CARDNAME deals X damage to each creature.\nSVar:DBTreasure:DB$ Token | TokenTapped$ True | TokenScript$ c_a_treasure_sac | TokenAmount$ Y | SpellDescription$ For each mana from a Desert spent to cast this spell, create a tapped Treasure token.\nSVar:X:Count$xPaid\nSVar:Y:Count$CastTotalManaSpent Desert\nDeckHas:Ability$Token & Type$Treasure|Artifact\nDeckNeeds:Type$Desert\nOracle:Cataclysmic Prospecting deals X damage to each creature. For each mana from a Desert spent to cast this spell, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cataclysmic Prospecting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

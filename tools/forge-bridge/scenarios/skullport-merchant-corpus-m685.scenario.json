@@ -1,0 +1,23 @@
+{
+  "id": "skullport-merchant-corpus-m685",
+  "description": "M6 corpus — Skullport Merchant; in-hand parse.",
+  "seed": 62035,
+  "cards": {
+    "Skullport Merchant": "Name:Skullport Merchant\nManaCost:2 B\nTypes:Creature Dwarf Citizen\nPT:1/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ Draw | Cost$ 1 B Sac<1/Creature.Other;Artifact.Treasure/another creature or treasure> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Token\nOracle:When Skullport Merchant enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n{1}{B}, Sacrifice another creature or a Treasure: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullport Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

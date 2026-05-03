@@ -1,0 +1,23 @@
+{
+  "id": "volo-itinerant-scholar-corpus-m685",
+  "description": "M6 corpus — Volo, Itinerant Scholar; in-hand parse.",
+  "seed": 62192,
+  "cards": {
+    "Volo, Itinerant Scholar": "Name:Volo, Itinerant Scholar\nManaCost:2 U\nTypes:Legendary Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create Volo's Journal, a legendary colorless artifact token with hexproof and \"Whenever you cast a creature spell, note one of its creature types that hasn't been noted for this artifact.\"\nSVar:TrigToken:DB$ Token | TokenScript$ volos_journal\nA:AB$ Pump | Cost$ 2 T | ValidTgts$ Permanent.namedVolo's Journal+YouCtrl | TgtPrompt$ Select target permanent you control named Volo's Journal | SubAbility$ DBDraw | StackDescription$ None | SpellDescription$ Draw a card for each creature type noted for target permanent you control named Volo's Journal.\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Targeted$CardNumNotedTypes\nK:Choose a Background\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Volo enters, create Volo's Journal, a legendary colorless artifact token with hexproof and \"Whenever you cast a creature spell, note one of its creature types that hasn't been noted for this artifact.\"\\n{2}, {T}: Draw a card for each creature type noted for target permanent you control named Volo's Journal.\\nChoose a Background\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volo, Itinerant Scholar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

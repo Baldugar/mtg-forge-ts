@@ -1,0 +1,23 @@
+{
+  "id": "starforged-sword-corpus-m685",
+  "description": "M6 corpus — Starforged Sword; in-hand parse.",
+  "seed": 62065,
+  "cards": {
+    "Starforged Sword": "Name:Starforged Sword\nManaCost:4\nTypes:Artifact Equipment\nK:Gift\nSVar:GiftAbility:DB$ Token | TokenScript$ u_1_1_fish | TokenTapped$ True | TokenOwner$ Promised | LockTokenScript$ True | GiftDescription$ a tapped Fish\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+PromisedGift | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, if the gift was promised, attach CARDNAME to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | RemoveKeyword$ Flying | Description$ Equipped creature gets +3/+3 and loses flying.\nK:Equip:3\nOracle:Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they create a tapped 1/1 blue Fish creature token.)\\nWhen Starforged Sword enters, if the gift was promised, attach Starforged Sword to target creature you control.\\nEquipped creature gets +3/+3 and loses flying.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starforged Sword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

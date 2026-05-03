@@ -1,0 +1,23 @@
+{
+  "id": "blood-petal-celebrant-corpus-m685",
+  "description": "M6 corpus — Blood Petal Celebrant; in-hand parse.",
+  "seed": 61483,
+  "cards": {
+    "Blood Petal Celebrant": "Name:Blood Petal Celebrant\nManaCost:1 R\nTypes:Creature Vampire\nPT:2/1\nS:Mode$ Continuous | Affected$ Card.Self+attacking | AddKeyword$ First Strike | Description$ CARDNAME has first strike as long as it's attacking.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:Blood Petal Celebrant has first strike as long as it's attacking.\\nWhen Blood Petal Celebrant dies, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Petal Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

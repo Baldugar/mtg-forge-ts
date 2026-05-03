@@ -1,0 +1,23 @@
+{
+  "id": "guild-artisan-corpus-m685",
+  "description": "M6 corpus — Guild Artisan; in-hand parse.",
+  "seed": 61701,
+  "cards": {
+    "Guild Artisan": "Name:Guild Artisan\nManaCost:1 R\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ AttacksPlayer | Description$ Commander creatures you own have \"Whenever this creature attacks a player, if no opponent has more life than that player, create two Treasure tokens.\" (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:AttacksPlayer:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player | Condition$ NoOpponentHasMoreLifeThanAttacked | Execute$ TrigTreasure | TriggerDescription$ Whenever this creature attacks a player, if no opponent has more life than that player, create two Treasure tokens.\nSVar:TrigTreasure:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Commander creatures you own have \"Whenever this creature attacks a player, if no other opponent has more life than that player, create two Treasure tokens.\" (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guild Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

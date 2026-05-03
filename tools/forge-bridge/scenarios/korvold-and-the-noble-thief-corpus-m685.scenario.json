@@ -1,0 +1,23 @@
+{
+  "id": "korvold-and-the-noble-thief-corpus-m685",
+  "description": "M6 corpus — Korvold and the Noble Thief; in-hand parse.",
+  "seed": 61782,
+  "cards": {
+    "Korvold and the Noble Thief": "Name:Korvold and the Noble Thief\nManaCost:3 R\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBToken,ExileMayPlay\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:ExileMayPlay:DB$ Dig | ValidTgts$ Opponent | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of target opponent's library. You may play those cards this turn.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nIII — Exile the top three cards of target opponent's library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Korvold and the Noble Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

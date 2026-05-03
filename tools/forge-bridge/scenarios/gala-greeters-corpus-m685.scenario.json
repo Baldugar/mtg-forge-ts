@@ -1,0 +1,23 @@
+{
+  "id": "gala-greeters-corpus-m685",
+  "description": "M6 corpus — Gala Greeters; in-hand parse.",
+  "seed": 61650,
+  "cards": {
+    "Gala Greeters": "Name:Gala Greeters\nManaCost:1 G\nTypes:Creature Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Alliance — Whenever another creature you control enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounter,DBToken,DBGainLife | ChoiceRestriction$ ThisTurn\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True | SpellDescription$ Create a tapped Treasure token.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nSVar:BuffedBy:Creature\nDeckHas:Ability$Counters|Token|LifeGain|Sacrifice & Type$Treasure|Artifact\nOracle:Alliance — Whenever another creature you control enters, choose one that hasn't been chosen this turn —\\n• Put a +1/+1 counter on Gala Greeters.\\n• Create a tapped Treasure token.\\n• You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gala Greeters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

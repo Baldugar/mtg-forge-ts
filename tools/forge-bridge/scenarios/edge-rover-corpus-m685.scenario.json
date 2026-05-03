@@ -1,0 +1,23 @@
+{
+  "id": "edge-rover-corpus-m685",
+  "description": "M6 corpus — Edge Rover; in-hand parse.",
+  "seed": 61594,
+  "cards": {
+    "Edge Rover": "Name:Edge Rover\nManaCost:G\nTypes:Artifact Creature Robot Scout\nPT:2/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature dies, each player creates a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_lander_sac_search | TokenOwner$ Player\nOracle:Reach\\nWhen this creature dies, each player creates a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edge Rover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

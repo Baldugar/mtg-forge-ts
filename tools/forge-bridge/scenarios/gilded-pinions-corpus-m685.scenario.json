@@ -1,0 +1,23 @@
+{
+  "id": "gilded-pinions-corpus-m685",
+  "description": "M6 corpus — Gilded Pinions; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Gilded Pinions": "Name:Gilded Pinions\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying.\nK:Equip:2\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:When Gilded Pinions enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nEquipped creature has flying.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilded Pinions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

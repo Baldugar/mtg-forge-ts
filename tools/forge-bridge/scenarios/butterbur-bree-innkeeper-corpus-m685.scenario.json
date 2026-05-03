@@ -1,0 +1,23 @@
+{
+  "id": "butterbur-bree-innkeeper-corpus-m685",
+  "description": "M6 corpus — Butterbur, Bree Innkeeper; in-hand parse.",
+  "seed": 61513,
+  "cards": {
+    "Butterbur, Bree Innkeeper": "Name:Butterbur, Bree Innkeeper\nManaCost:2 G W\nTypes:Legendary Creature Human Peasant\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | IsPresent$ Food.YouCtrl | PresentCompare$ EQ0 | TriggerDescription$ At the beginning of your end step, if you don't control a Food, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token|LifeGain|Sacrifice & Type$Food\nOracle:At the beginning of your end step, if you don't control a Food, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Butterbur, Bree Innkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

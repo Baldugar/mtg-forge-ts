@@ -1,0 +1,23 @@
+{
+  "id": "merry-bards-corpus-m685",
+  "description": "M6 corpus — Merry Bards; in-hand parse.",
+  "seed": 61825,
+  "cards": {
+    "Merry Bards": "Name:Merry Bards\nManaCost:2 R\nTypes:Creature Human Bard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediate | TriggerDescription$ When CARDNAME enters, you may pay {1}. When you do, create a Young Hero Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\")\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ 1 | Execute$ TrigToken | TriggerDescription$ When you do, create a Young Hero Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\")\nSVar:TrigToken:DB$ Token | TokenScript$ role_young_hero | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:When Merry Bards enters, you may pay {1}. When you do, create a Young Hero Role token attached to target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merry Bards"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

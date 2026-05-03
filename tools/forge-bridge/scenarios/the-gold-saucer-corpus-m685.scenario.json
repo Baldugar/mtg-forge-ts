@@ -1,0 +1,23 @@
+{
+  "id": "the-gold-saucer-corpus-m685",
+  "description": "M6 corpus — The Gold Saucer; in-hand parse.",
+  "seed": 62114,
+  "cards": {
+    "The Gold Saucer": "Name:The Gold Saucer\nManaCost:no cost\nTypes:Land Town\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ FlipACoin | Cost$ 2 T | WinSubAbility$ DBToken | AILogic$ AtOppEOT | SpellDescription$ Flip a coin. If you win the flip, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ Draw | Cost$ 3 T Sac<2/Artifact> | SpellDescription$ Draw a card.\nDeckHas:Ability$Token\nDeckHints:Type$Artifact\nOracle:{T}: Add {C}.\\n{2}, {T}: Flip a coin. If you win the flip, create a Treasure token.\\n{3}, {T}, Sacrifice two artifacts: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Gold Saucer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

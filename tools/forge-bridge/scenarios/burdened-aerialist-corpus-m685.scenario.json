@@ -1,0 +1,23 @@
+{
+  "id": "burdened-aerialist-corpus-m685",
+  "description": "M6 corpus — Burdened Aerialist; in-hand parse.",
+  "seed": 61512,
+  "cards": {
+    "Burdened Aerialist": "Name:Burdened Aerialist\nManaCost:2 U\nTypes:Creature Human Pirate\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Permanent.token+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a token, CARDNAME gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying\nDeckHas:Ability$Token\nOracle:When Burdened Aerialist enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nWhenever you sacrifice a token, Burdened Aerialist gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burdened Aerialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

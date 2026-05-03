@@ -1,0 +1,23 @@
+{
+  "id": "octomancer-corpus-m685",
+  "description": "M6 corpus — Octomancer; in-hand parse.",
+  "seed": 61875,
+  "cards": {
+    "Octomancer": "Name:Octomancer\nManaCost:3 G U\nTypes:Creature Frog Druid\nPT:3/3\nK:Gift\nSVar:GiftAbility:DB$ Token | TokenScript$ u_8_8_octopus | TokenOwner$ Promised | LockTokenScript$ True | GiftDescription$ an Octopus\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ At the beginning of each end step, create a token that's a copy of target creature token that entered the battlefield this turn.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Permanent.Creature+token+ThisTurnEntered | TgtPrompt$ Select target creature token that entered the battlefield this turn\nOracle:Gift an Octopus (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they create an 8/8 blue Octopus creature token.)\\nAt the beginning of each end step, create a token that's a copy of target creature token that entered the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Octomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

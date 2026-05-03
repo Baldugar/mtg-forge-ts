@@ -1,0 +1,23 @@
+{
+  "id": "hurska-sweet-tooth-corpus-m685",
+  "description": "M6 corpus — Hurska Sweet-Tooth; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Hurska Sweet-Tooth": "Name:Hurska Sweet-Tooth\nManaCost:2 G\nTypes:Legendary Creature Bear\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac\nT:Mode$ LifeGained | ValidPlayer$ You | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you gain life, you may pay {G/W}. When you do, target creature gets +X/+X until end of turn, where X is the amount of life you gained.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ GW | Execute$ TrigPump | TriggerDescription$ When you do, target creature gets +X/+X until end of turn, where X is the amount of life you gained.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +Spawner>TriggerCount$LifeAmount | NumDef$ +Spawner>TriggerCount$LifeAmount\nDeckHas:Ability$Sacrifice|Token & Type$Food|Artifact\nOracle:Whenever Hurska Sweet-Tooth attacks, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nWhenever you gain life, you may pay {G/W}. When you do, target creature gets +X/+X until end of turn, where X is the amount of life you gained.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hurska Sweet-Tooth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

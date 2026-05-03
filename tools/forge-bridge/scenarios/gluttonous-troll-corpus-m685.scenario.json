@@ -1,0 +1,23 @@
+{
+  "id": "gluttonous-troll-corpus-m685",
+  "description": "M6 corpus — Gluttonous Troll; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Gluttonous Troll": "Name:Gluttonous Troll\nManaCost:2 B G\nTypes:Creature Troll\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of Food tokens equal to the number of opponents you have. (Food tokens are artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:X:PlayerCountOpponents$Amount\nA:AB$ Pump | Cost$ 1 G Sac<1/Permanent.Other+nonLand/another nonland permanent> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token|LifeGain|Food|Sacrifice\nSVar:AIPreference:SacCost$Card.Food,Card.token,Card.cmcEQ1,Card.cmcEQ2\nOracle:Trample\\nWhen Gluttonous Troll enters, create a number of Food tokens equal to the number of opponents you have. (Food tokens are artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n{1}{G}, Sacrifice another nonland permanent: Gluttonous Troll gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gluttonous Troll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

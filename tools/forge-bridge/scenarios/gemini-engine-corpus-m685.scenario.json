@@ -1,0 +1,23 @@
+{
+  "id": "gemini-engine-corpus-m685",
+  "description": "M6 corpus — Gemini Engine; in-hand parse.",
+  "seed": 61657,
+  "cards": {
+    "Gemini Engine": "Name:Gemini Engine\nManaCost:6\nTypes:Artifact Creature Construct\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a colorless Construct artifact creature token named Twin that's attacking. Its power is equal to CARDNAME's power and its toughness is equal to CARDNAME's toughness. Sacrifice the token at end of combat.\nSVar:TrigToken:DB$ Token | TokenScript$ twin | TokenOwner$ You | TokenPower$ X | TokenToughness$ Y | TokenAttacking$ True | AtEOT$ SacrificeCombat\nSVar:X:Count$CardPower\nSVar:Y:Count$CardToughness\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Gemini Engine attacks, create a colorless Construct artifact creature token named Twin that's attacking. Its power is equal to Gemini Engine's power and its toughness is equal to Gemini Engine's toughness. Sacrifice the token at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gemini Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

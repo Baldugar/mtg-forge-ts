@@ -1,0 +1,23 @@
+{
+  "id": "visions-of-ruin-corpus-m685",
+  "description": "M6 corpus — Visions of Ruin; in-hand parse.",
+  "seed": 62187,
+  "cards": {
+    "Visions of Ruin": "Name:Visions of Ruin\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ Player.Opponent | SacValid$ Artifact | SubAbility$ DBToken | RememberSacrificed$ True | StackDescription$ SpellDescription | SpellDescription$ Each opponent sacrifices an artifact.\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_treasure_sac | SubAbility$ DBCleanup | SpellDescription$ For each artifact sacrificed this way, you create a Treasure token.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$RememberedSize\nK:Flashback:8 R R:ReduceCost$ X:This spell costs {X} less to cast this way, where X is the greatest mana value of a commander you own on the battlefield or in the command zone.\nSVar:X:Count$ValidBattlefield,Command Card.IsCommander+YouOwn$GreatestCardManaCost\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice\nOracle:Each opponent sacrifices an artifact. For each artifact sacrificed this way, you create a Treasure token.\\nFlashback {8}{R}{R}. This spell costs {X} less to cast this way, where X is the greatest mana value of a commander you own on the battlefield or in the command zone. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visions of Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

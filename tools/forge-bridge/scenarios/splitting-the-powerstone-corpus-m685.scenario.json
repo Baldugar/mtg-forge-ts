@@ -1,0 +1,23 @@
+{
+  "id": "splitting-the-powerstone-corpus-m685",
+  "description": "M6 corpus — Splitting the Powerstone; in-hand parse.",
+  "seed": 62061,
+  "cards": {
+    "Splitting the Powerstone": "Name:Splitting the Powerstone\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Token | Cost$ 2 U Sac<1/Artifact> | TokenAmount$ 2 | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You | SubAbility$ DBDraw | SpellDescription$ Create two tapped Powerstone tokens. If the sacrificed artifact was legendary, draw a card. (The tokens are artifacts with \"{T}: Add {C}. this mana can't be spent to cast a nonartifact spell.\")\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Sacrificed | ConditionPresent$ Card.Legendary\nDeckHints:Type$Artifact|Legendary\nDeckHas:Ability$Sacrifice|Token & Type$Artifact\nOracle:As an additional cost to cast this spell, sacrifice an artifact.\\nCreate two tapped Powerstone tokens. If the sacrificed artifact was legendary, draw a card. (The tokens are artifacts with \"{T}: Add {C}. this mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splitting the Powerstone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

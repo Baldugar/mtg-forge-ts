@@ -1,0 +1,23 @@
+{
+  "id": "iroh-tea-master-corpus-m685",
+  "description": "M6 corpus — Iroh, Tea Master; in-hand parse.",
+  "seed": 61744,
+  "cards": {
+    "Iroh, Tea Master": "Name:Iroh, Tea Master\nManaCost:1 R W\nTypes:Legendary Creature Human Citizen Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When NICKNAME enters, create a Food token.\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, you may have target opponent gain control of target permanent you control. When you do, create a 1/1 white Ally creature token. Put a +1/+1 counter on that token for each permanent you own that your opponents control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Opponent | SubAbility$ DBGiveControl\nSVar:DBGiveControl:DB$ GainControl | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | Defined$ Targeted | NewController$ ParentTarget | RememberControlled$ True | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | Execute$ TrigToken | ConditionDefined$ Remembered | ConditionPresent$ Card | TriggerDescription$ When you do, create a 1/1 white Ally creature token. Put a +1/+1 counter on that token for each permanent you own that your opponents control.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally | ImprintTokens$ True | TokenOwner$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Imprinted | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$Valid Permanent.YouOwn+OppCtrl\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain|Token|Food\nOracle:When Iroh enters, create a Food token.\\nAt the beginning of combat on your turn, you may have target opponent gain control of target permanent you control. When you do, create a 1/1 white Ally creature token. Put a +1/+1 counter on that token for each permanent you own that your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iroh, Tea Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

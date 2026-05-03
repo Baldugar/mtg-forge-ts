@@ -1,0 +1,23 @@
+{
+  "id": "static-net-corpus-m685",
+  "description": "M6 corpus — Static Net; in-hand parse.",
+  "seed": 62066,
+  "cards": {
+    "Static Net": "Name:Static Net\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life and create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nDeckHas:Ability$LifeGain|Token & Type$Artifact\nOracle:When Static Net enters, exile target nonland permanent an opponent controls until Static Net leaves the battlefield.\\nWhen Static Net enters, you gain 2 life and create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Static Net"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

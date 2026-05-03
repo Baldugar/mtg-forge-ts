@@ -1,0 +1,23 @@
+{
+  "id": "piggy-bank-corpus-m685",
+  "description": "M6 corpus — Piggy Bank; in-hand parse.",
+  "seed": 61902,
+  "cards": {
+    "Piggy Bank": "Name:Piggy Bank\nManaCost:1 R\nTypes:Artifact Creature Boar Toy\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Piggy Bank dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Piggy Bank"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

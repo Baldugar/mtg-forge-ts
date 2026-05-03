@@ -1,0 +1,23 @@
+{
+  "id": "geology-enthusiast-corpus-m685",
+  "description": "M6 corpus — Geology Enthusiast; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Geology Enthusiast": "Name:Geology Enthusiast\nManaCost:3 U U\nTypes:Creature Human Artificer\nPT:2/5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nA:AB$ Draw | Cost$ 6 | SubAbility$ DBCounter | SpellDescription$ Draw a card and put a +1/+1 counter on CARDNAME.\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Artifact\nOracle:At the beginning of your end step, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\\n{6}: Draw a card and put a +1/+1 counter on Geology Enthusiast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geology Enthusiast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

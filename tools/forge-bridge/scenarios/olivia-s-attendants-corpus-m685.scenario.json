@@ -1,0 +1,23 @@
+{
+  "id": "olivia-s-attendants-corpus-m685",
+  "description": "M6 corpus — Olivia's Attendants; in-hand parse.",
+  "seed": 61883,
+  "cards": {
+    "Olivia's Attendants": "Name:Olivia's Attendants\nManaCost:4 R R\nTypes:Creature Vampire\nPT:6/6\nK:Menace\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals damage, create that many Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_blood_draw\nSVar:X:TriggerCount$DamageAmount\nA:AB$ DealDamage | Cost$ 2 R | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:Menace\\nWhenever Olivia's Attendants deals damage, create that many Blood tokens. (They're artifacts with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\n{2}{R}: Olivia's Attendants deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Olivia's Attendants"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

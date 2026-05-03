@@ -1,0 +1,23 @@
+{
+  "id": "kamachal-ship-s-mascot-corpus-m685",
+  "description": "M6 corpus — Kamachal, Ship's Mascot; in-hand parse.",
+  "seed": 61764,
+  "cards": {
+    "Kamachal, Ship's Mascot": "Name:Kamachal, Ship's Mascot\nManaCost:2 R\nTypes:Legendary Creature Dinosaur Pirate\nPT:2/2\nK:Menace\nA:AB$ Pump | Cost$ R | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigTreasure | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create a Treasure token. Then exile from that player's library a random card with mana value equal to the damage dealt. You may cast that card this turn.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Choices$ Card.cmcEQX+ControlledBy TriggeredTarget | ChoiceZone$ Library | Amount$ 1 | AtRandom$ True | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Library | Destination$ Exile | ChangeType$ Card.ChosenCard | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | MayPlay$ True | Description$ You may cast that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token & Type$Treasure\nOracle:Menace\\n{R}: Kamachal, Ship's Mascot gets +1/+0 until end of turn.\\nWhenever Kamachal deals combat damage to a player, create a Treasure token. Then exile from that player's library a random card with mana value equal to the damage dealt. You may cast that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kamachal, Ship's Mascot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

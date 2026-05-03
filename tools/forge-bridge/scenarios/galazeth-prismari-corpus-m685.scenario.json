@@ -1,0 +1,23 @@
+{
+  "id": "galazeth-prismari-corpus-m685",
+  "description": "M6 corpus — Galazeth Prismari; in-hand parse.",
+  "seed": 61653,
+  "cards": {
+    "Galazeth Prismari": "Name:Galazeth Prismari\nManaCost:2 U R\nTypes:Legendary Creature Elder Dragon\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddAbility$ AnyMana | Description$ Artifacts you control have \"{T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Instant,Spell.Sorcery | SpellDescription$ Add one mana of any color. Spend this mana only to cast instant or sorcery spells.\nDeckHas:Ability$Token\nDeckNeeds:Type$Instant|Sorcery\nOracle:Flying\\nWhen Galazeth Prismari enters, create a Treasure token.\\nArtifacts you control have \"{T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galazeth Prismari"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

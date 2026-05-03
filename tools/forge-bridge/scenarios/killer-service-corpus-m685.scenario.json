@@ -1,0 +1,23 @@
+{
+  "id": "killer-service-corpus-m685",
+  "description": "M6 corpus — Killer Service; in-hand parse.",
+  "seed": 61773,
+  "cards": {
+    "Killer Service": "Name:Killer Service\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a number of Food tokens equal to the number of opponents you have. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenAmount$ X | TokenScript$ c_a_food_sac\nSVar:X:PlayerCountOpponents$Amount\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, you may pay {2} and sacrifice a token. If you do, create a 4/4 green Rhino Warrior creature token.\nSVar:TrigToken:AB$ Token | Cost$ 2 Sac<1/Permanent.token/token> | TokenScript$ g_4_4_rhino_warrior\nSVar:AIPreference:SacCost$Card.token+Food,Card.token+Treasure,Card.token+Artifact,Card.token+powerLE2+toughnessLE2\nDeckHas:Ability$Token|Food|Sacrifice & Type$Artifact|Food|Rhino|Warrior\nDeckHints:Ability$Food\nOracle:When Killer Service enters, create a number of Food tokens equal to the number of opponents you have. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nAt the beginning of your end step, you may pay {2} and sacrifice a token. If you do, create a 4/4 green Rhino Warrior creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Killer Service"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

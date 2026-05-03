@@ -1,0 +1,23 @@
+{
+  "id": "the-eleventh-hour-corpus-m685",
+  "description": "M6 corpus — The Eleventh Hour; in-hand parse.",
+  "seed": 62110,
+  "cards": {
+    "The Eleventh Hour": "Name:The Eleventh Hour\nManaCost:3 U\nTypes:Enchantment Saga\nK:Chapter:3:DBSearch,DBFood,DBCopy\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Doctor | ChangeNum$ 1 | SpellDescription$ Search your library for a Doctor card, reveal it, put it into your hand, then shuffle.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac,w_1_1_human_doctor_reduce | SpellDescription$ Create a Food token and a 1/1 white Human creature token with \"Doctor spells you cast cost {1} less to cast.\"\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Creature | NewName$ Prisoner Zero | SetCreatureTypes$ Alien | AddTypes$ Legendary | SpellDescription$ Create a token that's a copy of target creature, except it's a legendary Alien named Prisoner Zero.\nDeckHas:Ability$Token|Sacrifice & Type$Alien|Human|Food|Artifact|Creature\nDeckNeeds:Type$Doctor\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Search your library for a Doctor card, reveal it, put it into your hand, then shuffle.\\nII — Create a Food token and a 1/1 white Human creature token with \"Doctor spells you cast cost {1} less to cast.\"\\nIII — Create a token that's a copy of target creature, except it's a legendary Alien named Prisoner Zero.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Eleventh Hour"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

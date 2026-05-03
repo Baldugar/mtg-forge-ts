@@ -1,0 +1,23 @@
+{
+  "id": "rankle-and-torbran-corpus-m685",
+  "description": "M6 corpus — Rankle and Torbran; in-hand parse.",
+  "seed": 61937,
+  "cards": {
+    "Rankle and Torbran": "Name:Rankle and Torbran\nManaCost:1 B B R R\nTypes:Legendary Creature Faerie Dwarf\nPT:3/4\nK:Flying\nK:First Strike\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | Execute$ TrigCharm | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or battle, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Treasure,Sacrifice,Effect | MinCharmNum$ 0 | CharmNum$ 3\nSVar:Treasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ Player | SpellDescription$ Each player creates a Treasure token.\nSVar:Sacrifice:DB$ Sacrifice | SacValid$ Creature | Defined$ Player | SpellDescription$ Each player sacrifices a creature.\nSVar:Effect:DB$ Effect | ReplacementEffects$ MoreDamage | SpellDescription$ If a source would deal damage to a player or battle this turn, it deals that much damage plus 2 instead.\nSVar:MoreDamage:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Player,Battle | ReplaceWith$ DmgPlus2 | Description$ If a source would deal damage to a player or battle this turn, it deals that much damage plus 2 instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.2\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Flying, first strike, haste\\nWhenever Rankle and Torbran deals combat damage to a player or battle, choose any number —\\n• Each player creates a Treasure token.\\n• Each player sacrifices a creature.\\n• If a source would deal damage to a player or battle this turn, it deals that much damage plus 2 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rankle and Torbran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "esix-fractal-bloom-corpus-m685",
+  "description": "M6 corpus — Esix, Fractal Bloom; in-hand parse.",
+  "seed": 61608,
+  "cards": {
+    "Esix, Fractal Bloom": "Name:Esix, Fractal Bloom\nManaCost:4 G U\nTypes:Legendary Creature Fractal\nPT:4/4\nK:Flying\nR:Event$ CreateToken | ActiveZones$ Battlefield | CheckSVar$ X | SVarCompare$ EQ0 | ValidPlayer$ You | PlayerTurn$ True | Optional$ True | Layer$ Copy | ReplaceWith$ DBCopy | Description$ The first time you would create one or more tokens during each of your turns, you may instead choose a creature other than CARDNAME and create that many tokens that are copies of that creature.\nSVar:DBCopy:DB$ ReplaceToken | Type$ ReplaceToken | ValidChoices$ Creature.Other | TokenScript$ Chosen\nSVar:X:Count$ThisTurnEntered_Battlefield_Card.tokenCreated+YouOwn\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:Flying\\nThe first time you would create one or more tokens during each of your turns, you may instead choose a creature other than Esix, Fractal Bloom and create that many tokens that are copies of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esix, Fractal Bloom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mishra-claimed-by-gix-corpus-m685",
+  "description": "M6 corpus — Mishra, Claimed by Gix; in-hand parse.",
+  "seed": 61841,
+  "cards": {
+    "Mishra, Claimed by Gix": "Name:Mishra, Claimed by Gix\nManaCost:2 B R\nTypes:Legendary Creature Phyrexian Human Artificer\nPT:3/5\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigDrain | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, each opponent loses X life and you gain X life, where X is the number of attacking creatures. If CARDNAME and a creature named Phyrexian Dragon Engine are attacking, and you both own and control them, exile them, then meld them into Mishra, Lost to Phyrexia. It enters tapped and attacking.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ Meld\nSVar:Meld:DB$ Meld | ConditionPresent$ Card.Self+YouCtrl+YouOwn+attacking | ConditionCheckSVar$ Y | Name$ Mishra, Lost to Phyrexia | Tapped$ True | Attacking$ True | Primary$ Mishra, Claimed by Gix | Secondary$ Phyrexian Dragon Engine\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nSVar:Y:Count$Valid Creature.YouCtrl+YouOwn+namedPhyrexian Dragon Engine+attacking\nSVar:PlayMain1:TRUE\nDeckHints:Name$Phyrexian Dragon Engine\nMeldPair:Phyrexian Dragon Engine\nAlternateMode:Meld\nOracle:Whenever you attack, each opponent loses X life and you gain X life, where X is the number of attacking creatures. If Mishra, Claimed by Gix and a creature named Phyrexian Dragon Engine are attacking, and you both own and control them, exile them, then meld them into Mishra, Lost to Phyrexia. It enters tapped and attacking.\n\nALTERNATE\n\nName:Mishra, Lost to Phyrexia\nManaCost:no cost\nColors:black,red\nTypes:Legendary Artifact Creature Phyrexian Artificer\nPT:9/9\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME enters or attacks, ABILITY\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDiscard,DBDamage,DBDestroy,DBPump,DBCurse,DBToken | CharmNum$ 3\nSVar:DBDiscard:DB$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ TgtChoose | SpellDescription$ Target opponent discards two cards.\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ NICKNAME deals 3 damage to any target.\nSVar:DBDestroy:DB$ Destroy | TargetMax$ 1 | ValidTgts$ Artifact,Planeswalker | TgtPrompt$ Select target artifact or planeswalker | SpellDescription$ Destroy target artifact or planeswalker.\nSVar:DBPump:DB$ PumpAll | ValidCards$ Card.Creature+YouCtrl | KW$ Menace & Trample | SpellDescription$ Creatures you control gain menace and trample until end of turn.\nSVar:DBCurse:DB$ PumpAll | ValidCards$ Card.Creature+YouDontCtrl | NumAtt$ -1 | NumDef$ -1 | SpellDescription$ Creatures you don't control get -1/-1 until end of turn.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You | SpellDescription$ Create two tapped Powerstone tokens.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|LifeGain & Keyword$Menace|Trample\nOracle:Whenever Mishra, Lost to Phyrexia enters or attacks, choose three —\\n• Target opponent discards two cards.\\n• Mishra deals 3 damage to any target.\\n• Destroy target artifact or planeswalker.\\n• Creatures you control gain menace and trample until end of turn.\\n• Creatures you don't control get -1/-1 until end of turn.\\n• Create two tapped Powerstone tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra, Claimed by Gix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

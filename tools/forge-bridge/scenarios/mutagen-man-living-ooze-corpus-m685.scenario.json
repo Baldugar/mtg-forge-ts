@@ -1,0 +1,23 @@
+{
+  "id": "mutagen-man-living-ooze-corpus-m685",
+  "description": "M6 corpus — Mutagen Man, Living Ooze; in-hand parse.",
+  "seed": 61854,
+  "cards": {
+    "Mutagen Man, Living Ooze": "Name:Mutagen Man, Living Ooze\nManaCost:X G G\nTypes:Legendary Creature Ooze Mutant\nPT:2/3\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Artifact.token+YouCtrl | Type$ Ability | Amount$ 1 | AffectedZone$ Battlefield | Description$ Activated abilities of artifact tokens you control cost {1} less to activate.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create X Mutagen tokens. (They're artifacts with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Counters\nOracle:Trample\\nActivated abilities of artifact tokens you control cost {1} less to activate.\\nWhen Mutagen Man enters, create X Mutagen tokens. (They're artifacts with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutagen Man, Living Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

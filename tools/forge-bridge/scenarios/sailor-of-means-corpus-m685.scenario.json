@@ -1,0 +1,23 @@
+{
+  "id": "sailor-of-means-corpus-m685",
+  "description": "M6 corpus — Sailor of Means; in-hand parse.",
+  "seed": 61998,
+  "cards": {
+    "Sailor of Means": "Name:Sailor of Means\nManaCost:2 U\nTypes:Creature Human Pirate\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nOracle:When Sailor of Means enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sailor of Means"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

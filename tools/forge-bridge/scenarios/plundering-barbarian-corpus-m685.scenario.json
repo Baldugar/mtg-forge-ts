@@ -1,0 +1,23 @@
+{
+  "id": "plundering-barbarian-corpus-m685",
+  "description": "M6 corpus — Plundering Barbarian; in-hand parse.",
+  "seed": 61909,
+  "cards": {
+    "Plundering Barbarian": "Name:Plundering Barbarian\nManaCost:2 R\nTypes:Creature Dwarf Barbarian\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ SmashTheChest,PryItOpen\nSVar:SmashTheChest:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Smash the Chest — Destroy target artifact.\nSVar:PryItOpen:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ Pry It Open — Create a Treasure token.\nDeckHas:Ability$Token\nOracle:When Plundering Barbarian enters, choose one —\\n• Smash the Chest — Destroy target artifact.\\n• Pry It Open — Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plundering Barbarian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

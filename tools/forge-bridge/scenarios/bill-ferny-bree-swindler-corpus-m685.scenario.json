@@ -1,0 +1,23 @@
+{
+  "id": "bill-ferny-bree-swindler-corpus-m685",
+  "description": "M6 corpus — Bill Ferny, Bree Swindler; in-hand parse.",
+  "seed": 61473,
+  "cards": {
+    "Bill Ferny, Bree Swindler": "Name:Bill Ferny, Bree Swindler\nManaCost:1 U\nTypes:Legendary Creature Human Rogue\nPT:2/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME becomes blocked, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTreasure,DBChoose\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | ValidTgts$ Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ DBHorseDonate | SpellDescription$ Target opponent gains control of target Horse you control. If they do, remove NICKNAME from combat and create three Treasure tokens.\nSVar:DBHorseDonate:DB$ GainControl | ValidTgts$ Horse.YouCtrl | NewController$ TargetedPlayer | TgtPrompt$ Select target Horse you control | RememberControlled$ True | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBTreasureTree\nSVar:DBTreasureTree:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Sacrifice & Type$Treasure\nDeckHints:Type$Horse\nOracle:Whenever Bill Ferny, Bree Swindler becomes blocked, choose one —\\n• Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n• Target opponent gains control of target Horse you control. If they do, remove Bill Ferny from combat and create three Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bill Ferny, Bree Swindler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

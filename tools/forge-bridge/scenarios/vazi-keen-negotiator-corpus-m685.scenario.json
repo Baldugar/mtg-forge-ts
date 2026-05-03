@@ -1,0 +1,23 @@
+{
+  "id": "vazi-keen-negotiator-corpus-m685",
+  "description": "M6 corpus — Vazi, Keen Negotiator; in-hand parse.",
+  "seed": 62180,
+  "cards": {
+    "Vazi, Keen Negotiator": "Name:Vazi, Keen Negotiator\nManaCost:2 B R G\nTypes:Legendary Creature Human Advisor\nPT:3/3\nK:Haste\nA:AB$ Token | Cost$ T | ValidTgts$ Opponent | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ Targeted | SpellDescription$ Target opponent creates X Treasure tokens, where X is the number of Treasure tokens you created this turn.\nSVar:X:Count$ThisTurnEntered_Battlefield_Card.tokenCreated+Treasure+YouOwn\nT:Mode$ SpellAbilityCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | ValidSA$ SpellAbility.ManaFromTreasure | Execute$ TrigPutCounter | TriggerDescription$ Whenever an opponent casts a spell or activates an ability, if mana from a Treasure was spent to cast or activate it, put a +1/+1 counter on target creature, then draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Token & Type$Treasure\nOracle:Haste\\n{T}: Target opponent creates X Treasure tokens, where X is the number of Treasure tokens you created this turn.\\nWhenever an opponent casts a spell or activates an ability, if mana from a Treasure was spent to cast or activate it, put a +1/+1 counter on target creature, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vazi, Keen Negotiator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

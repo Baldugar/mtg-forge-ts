@@ -1,0 +1,23 @@
+{
+  "id": "apothecary-white-corpus-m685",
+  "description": "M6 corpus — Apothecary White; in-hand parse.",
+  "seed": 61444,
+  "cards": {
+    "Apothecary White": "Name:Apothecary White\nManaCost:3 W\nTypes:Legendary Creature Human Cleric\nPT:3/4\nK:Vigilance\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigFood | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you create a Food token for each player being attacked. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:Y:PlayerCountPropertyYou$OpponentsAttackedThisCombat\nA:AB$ Token | Cost$ W T tapXType<X/Food> | TokenAmount$ X | TokenScript$ w_1_1_human | TokenOwner$ You | SpellDescription$ Create X 1/1 white Human creature tokens.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Vigilance\\nWhenever you attack, you create a Food token for each player being attacked. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\n{W}, {T}, Tap X untapped Foods you control: Create X 1/1 white Human creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apothecary White"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

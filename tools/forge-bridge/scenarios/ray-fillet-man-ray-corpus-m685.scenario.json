@@ -1,0 +1,23 @@
+{
+  "id": "ray-fillet-man-ray-corpus-m685",
+  "description": "M6 corpus — Ray Fillet, Man Ray; in-hand parse.",
+  "seed": 61943,
+  "cards": {
+    "Ray Fillet, Man Ray": "Name:Ray Fillet, Man Ray\nManaCost:3 U\nTypes:Legendary Creature Fish Mutant\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nA:AB$ Draw | Cost$ 2 SubCounter<1/P1P1/Creature.YouCtrl/a creature you control> | SpellDescription$ Draw a card.\nDeckHas:Ability$Token|Sacrifice|Counters\nOracle:Flying\\nWhen Ray Fillet enters, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\\n{2}, Remove a +1/+1 counter from a creature you control: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ray Fillet, Man Ray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

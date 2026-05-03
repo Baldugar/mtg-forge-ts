@@ -1,0 +1,23 @@
+{
+  "id": "the-reaver-cleaver-corpus-m685",
+  "description": "M6 corpus — The Reaver Cleaver; in-hand parse.",
+  "seed": 62123,
+  "cards": {
+    "The Reaver Cleaver": "Name:The Reaver Cleaver\nManaCost:2 R\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Trample | AddTrigger$ TrigDamageDone | Description$ Equipped creature gets +1/+1 and has trample and \"Whenever this creature deals combat damage to a player or planeswalker, create that many Treasure tokens.\"\nSVar:TrigDamageDone:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player or planeswalker, create that many Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token & Type$Treasure|Artifact\nOracle:Equipped creature gets +1/+1 and has trample and \"Whenever this creature deals combat damage to a player or planeswalker, create that many Treasure tokens.\"\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Reaver Cleaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

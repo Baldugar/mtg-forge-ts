@@ -1,0 +1,23 @@
+{
+  "id": "voldaren-epicure-corpus-m685",
+  "description": "M6 corpus — Voldaren Epicure; in-hand parse.",
+  "seed": 62190,
+  "cards": {
+    "Voldaren Epicure": "Name:Voldaren Epicure\nManaCost:R\nTypes:Creature Vampire\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg1 | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each opponent. Create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigDmg1:DB$ DealDamage | NumDmg$ 1 | Defined$ Player.Opponent | SubAbility$ DBBlood\nSVar:DBBlood:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Blood\nOracle:When Voldaren Epicure enters, it deals 1 damage to each opponent. Create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voldaren Epicure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gadrak-the-crown-scourge-corpus-m685",
+  "description": "M6 corpus — Gadrak, the Crown-Scourge; in-hand parse.",
+  "seed": 61648,
+  "cards": {
+    "Gadrak, the Crown-Scourge": "Name:Gadrak, the Crown-Scourge\nManaCost:2 R\nTypes:Legendary Creature Dragon\nPT:5/4\nK:Flying\nS:Mode$ CantAttack | ValidCard$ Card.Self | IsPresent$ Artifact.YouCtrl | PresentCompare$ LE3 | Description$ CARDNAME can't attack unless you control four or more artifacts.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a Treasure token for each nontoken creature that died this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:Y:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.!token\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Token\nDeckHints:Type$Artifact\nOracle:Flying\\nGadrak, the Crown-Scourge can't attack unless you control four or more artifacts.\\nAt the beginning of your end step, create a Treasure token for each nontoken creature that died this turn. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gadrak, the Crown-Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

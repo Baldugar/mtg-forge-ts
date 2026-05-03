@@ -1,0 +1,23 @@
+{
+  "id": "hot-dog-cart-corpus-m685",
+  "description": "M6 corpus — Hot Dog Cart; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Hot Dog Cart": "Name:Hot Dog Cart\nVariant:UniversesWithin:FlavorName:Treat Trolley\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When this artifact enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When this artifact enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hot Dog Cart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

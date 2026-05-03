@@ -1,0 +1,23 @@
+{
+  "id": "terisiare-s-devastation-corpus-m685",
+  "description": "M6 corpus — Terisiare's Devastation; in-hand parse.",
+  "seed": 62097,
+  "cards": {
+    "Terisiare's Devastation": "Name:Terisiare's Devastation\nManaCost:X 2 B B\nTypes:Sorcery\nA:SP$ LoseLife | LifeAmount$ X | SubAbility$ DBToken | SpellDescription$ You lose X life and create X tapped Powerstone tokens. Then all creatures get -1/-1 until end of turn for each artifact you control. (The tokens are artifacts with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_powerstone | TokenTapped$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -Y | NumDef$ -Y | StackDescription$ Then all creatures get -1/-1 until end of turn for each artifact {p:You} controls.\nSVar:Y:Count$Valid Artifact.YouCtrl\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Type$Artifact\nOracle:You lose X life and create X tapped Powerstone tokens. Then all creatures get -1/-1 until end of turn for each artifact you control. (The tokens are artifacts with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terisiare's Devastation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

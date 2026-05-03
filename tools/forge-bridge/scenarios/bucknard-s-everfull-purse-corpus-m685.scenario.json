@@ -1,0 +1,23 @@
+{
+  "id": "bucknard-s-everfull-purse-corpus-m685",
+  "description": "M6 corpus — Bucknard's Everfull Purse; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Bucknard's Everfull Purse": "Name:Bucknard's Everfull Purse\nManaCost:2\nTypes:Artifact\nA:AB$ RollDice | Cost$ 1 T | Defined$ You | Sides$ 4 | ResultSVar$ X | SubAbility$ DBTreasure | StackDescription$ SpellDescription | SpellDescription$ Roll a d4 and create a number of Treasure tokens equal to the result. The player to your right gains control of CARDNAME.\nSVar:DBTreasure:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBPass\nSVar:DBPass:DB$ GainControl | Defined$ Self | NewController$ NextPlayerToYourRight\nDeckHas:Ability$Token\nOracle:{1}, {T}: Roll a d4 and create a number of Treasure tokens equal to the result. The player to your right gains control of Bucknard's Everfull Purse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bucknard's Everfull Purse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

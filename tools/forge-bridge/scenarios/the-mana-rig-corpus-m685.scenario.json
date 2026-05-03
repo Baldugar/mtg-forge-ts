@@ -1,0 +1,23 @@
+{
+  "id": "the-mana-rig-corpus-m685",
+  "description": "M6 corpus — The Mana Rig; in-hand parse.",
+  "seed": 62118,
+  "cards": {
+    "The Mana Rig": "Name:The Mana Rig\nManaCost:3\nTypes:Legendary Artifact\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPowerStone | TriggerDescription$ Whenever you cast a multicolored spell, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigPowerStone:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You\nA:AB$ Dig | Cost$ T X X X | DigNum$ X | ChangeNum$ 2 | RestRandomOrder$ True | Optional$ True | SpellDescription$ Look at the top X cards of your library. Put up to two of them into your hand and the rest on the bottom of your library in a random order.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Artifact\nOracle:Whenever you cast a multicolored spell, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\\n{X}{X}{X}, {T}:Look at the top X cards of your library. Put up to two of them into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Mana Rig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

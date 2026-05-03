@@ -1,0 +1,23 @@
+{
+  "id": "the-art-of-tea-corpus-m685",
+  "description": "M6 corpus — The Art of Tea; in-hand parse.",
+  "seed": 62100,
+  "cards": {
+    "The Art of Tea": "Name:The Art of Tea\nManaCost:1 G\nTypes:Instant Lesson\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken | SpellDescription$ Put a +1/+1 counter on up to one target creature you control. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac\nDeckHas:Ability$Counters|Token|Sacrifice|LifeGain|Food\nOracle:Put a +1/+1 counter on up to one target creature you control. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Art of Tea"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

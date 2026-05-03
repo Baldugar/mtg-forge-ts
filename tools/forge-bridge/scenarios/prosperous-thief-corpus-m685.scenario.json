@@ -1,0 +1,23 @@
+{
+  "id": "prosperous-thief-corpus-m685",
+  "description": "M6 corpus — Prosperous Thief; in-hand parse.",
+  "seed": 61928,
+  "cards": {
+    "Prosperous Thief": "Name:Prosperous Thief\nManaCost:2 U\nTypes:Creature Human Ninja\nPT:3/2\nK:Ninjutsu:1 U\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.Ninja+YouCtrl,Creature.Rogue+YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever one or more Ninja or Rogue creatures you control deal combat damage to a player, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHints:Type$Ninja|Rogue\nDeckHas:Ability$Token|Sacrifice\nOracle:Ninjutsu {1}{U} ({1}{U}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhenever one or more Ninja or Rogue creatures you control deal combat damage to a player, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prosperous Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

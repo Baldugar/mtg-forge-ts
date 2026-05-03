@@ -1,0 +1,23 @@
+{
+  "id": "sam-loyal-attendant-corpus-m685",
+  "description": "M6 corpus — Sam, Loyal Attendant; in-hand parse.",
+  "seed": 61999,
+  "cards": {
+    "Sam, Loyal Attendant": "Name:Sam, Loyal Attendant\nManaCost:1 G W\nTypes:Legendary Creature Halfling Peasant\nPT:2/4\nK:Partner with:Frodo, Adventurous Hobbit:Frodo\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac\nS:Mode$ ReduceCost | ValidCard$ Food.YouCtrl | Type$ Ability | Amount$ 1 | AffectedZone$ Battlefield | Description$ Activated abilities of Foods you control cost {1} less to activate.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Type$Food\nOracle:Partner with Frodo, Adventurous Hobbit (When this creature enters, target player may put Frodo into their hand from their library, then shuffle.)\\nAt the beginning of combat on your turn, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nActivated abilities of Foods you control cost {1} less to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sam, Loyal Attendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

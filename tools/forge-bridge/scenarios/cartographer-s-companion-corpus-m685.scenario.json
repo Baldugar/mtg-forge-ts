@@ -1,0 +1,23 @@
+{
+  "id": "cartographer-s-companion-corpus-m685",
+  "description": "M6 corpus — Cartographer's Companion; in-hand parse.",
+  "seed": 61522,
+  "cards": {
+    "Cartographer's Companion": "Name:Cartographer's Companion\nManaCost:3\nTypes:Artifact Creature Gnome\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_map_sac_explore\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Artifact|Map\nOracle:When Cartographer's Companion enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cartographer's Companion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

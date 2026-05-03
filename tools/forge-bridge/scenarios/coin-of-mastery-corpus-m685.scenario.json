@@ -1,0 +1,23 @@
+{
+  "id": "coin-of-mastery-corpus-m685",
+  "description": "M6 corpus — Coin of Mastery; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Coin of Mastery": "Name:Coin of Mastery\nManaCost:4\nTypes:Artifact\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Each creature you control enters with an additional +1/+1 counter on it for each mana from an artifact source spent to cast it.\nSVar:X:ReplacedCard$CastTotalManaSpent Artifact\nA:AB$ Token | Cost$ T | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nDeckHas:Ability$Counters\nOracle:Each creature you control enters with an additional +1/+1 counter on it for each mana from an artifact source spent to cast it.\\n{T}: Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coin of Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

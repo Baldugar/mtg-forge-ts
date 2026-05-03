@@ -1,0 +1,23 @@
+{
+  "id": "charming-scoundrel-corpus-m685",
+  "description": "M6 corpus — Charming Scoundrel; in-hand parse.",
+  "seed": 61533,
+  "cards": {
+    "Charming Scoundrel": "Name:Charming Scoundrel\nManaCost:1 R\nTypes:Creature Human Rogue\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBLoot,DBTreasure,DBToken\nSVar:DBLoot:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw | SpellDescription$ Discard a card, then draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ role_wicked | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SpellDescription$ Create a Wicked Role token attached to target creature you control.\nDeckHas:Ability$Token|Discard & Type$Aura|Enchantment|Role|Treasure\nOracle:Haste\\nWhen Charming Scoundrel enters, choose one —\\n• Discard a card, then draw a card.\\n• Create a Treasure token.\\n• Create a Wicked Role token attached to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charming Scoundrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

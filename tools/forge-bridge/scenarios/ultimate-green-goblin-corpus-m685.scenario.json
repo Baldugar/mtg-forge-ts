@@ -1,0 +1,23 @@
+{
+  "id": "ultimate-green-goblin-corpus-m685",
+  "description": "M6 corpus — Ultimate Green Goblin; in-hand parse.",
+  "seed": 62164,
+  "cards": {
+    "Ultimate Green Goblin": "Name:Ultimate Green Goblin\nVariant:UniversesWithin:FlavorName:Ruzic, Booed but Victorious\nManaCost:1 BR BR\nTypes:Legendary Creature Goblin Villain\nPT:5/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your upkeep, discard a card, then create a Treasure token.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nK:Mayhem:2 BR\nOracle:At the beginning of your upkeep, discard a card, then create a Treasure token.\\nMayhem {2}{B/R} (You may cast this card from your graveyard for {2}{B/R} if you discarded it this turn. Timing rules still apply.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultimate Green Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

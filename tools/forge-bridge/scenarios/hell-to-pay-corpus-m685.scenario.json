@@ -1,0 +1,23 @@
+{
+  "id": "hell-to-pay-corpus-m685",
+  "description": "M6 corpus — Hell to Pay; in-hand parse.",
+  "seed": 61711,
+  "cards": {
+    "Hell to Pay": "Name:Hell to Pay\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | ExcessSVar$ Excess | ExcessSVarCondition$ Card.targetedBy | SubAbility$ DBToken | SpellDescription$ CARDNAME deals X damage to target creature.\nSVar:X:Count$xPaid\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ Excess | TokenTapped$ True | SpellDescription$ Create a number of tapped Treasure tokens equal to the amount of excess damage dealt to that creature this way.\nDeckHas:Type$Treasure|Artifact & Ability$Token|Sacrifice\nOracle:Hell to Pay deals X damage to target creature. Create a number of tapped Treasure tokens equal to the amount of excess damage dealt to that creature this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hell to Pay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

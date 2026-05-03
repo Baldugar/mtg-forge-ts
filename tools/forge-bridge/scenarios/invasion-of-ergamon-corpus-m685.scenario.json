@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-ergamon-corpus-m685",
+  "description": "M6 corpus — Invasion of Ergamon; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Invasion of Ergamon": "Name:Invasion of Ergamon\nManaCost:R G\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, create a Treasure token. Then you may discard a card. If you do, draw a card.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBLoot\nSVar:DBLoot:DB$ Draw | UnlessCost$ Discard<1/Card> | UnlessSwitched$ True | UnlessPayer$ You\nDeckHas:Ability$Discard|Token & Type$Treasure\nDeckHints:Type$Battle\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Ergamon enters, create a Treasure token. Then you may discard a card. If you do, draw a card.\n\nALTERNATE\n\nName:Truga Cliffcharger\nManaCost:no cost\nColors:red,green\nTypes:Creature Rhino\nPT:3/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, search your library for a land or battle card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChangeZone:AB$ ChangeZone | Cost$ Discard<1/Card> | Origin$ Library | Destination$ Hand | ChangeType$ Land,Battle | ChangeNum$ 1\nOracle:Trample\\nWhen Truga Cliffcharger enters, you may discard a card. If you do, search your library for a land or battle card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Ergamon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

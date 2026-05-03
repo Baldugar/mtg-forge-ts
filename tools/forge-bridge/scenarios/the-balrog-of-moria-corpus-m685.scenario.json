@@ -1,0 +1,23 @@
+{
+  "id": "the-balrog-of-moria-corpus-m685",
+  "description": "M6 corpus — The Balrog of Moria; in-hand parse.",
+  "seed": 62101,
+  "cards": {
+    "The Balrog of Moria": "Name:The Balrog of Moria\nManaCost:4 B B R\nTypes:Legendary Creature Avatar Demon\nPT:8/8\nK:Trample\nK:Haste\nK:Cycling:3 R\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME dies, you may exile it. When you do, for each opponent, exile up to one target creature that player controls.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> | Execute$ TrigExile | TriggerDescription$ When you do, for each opponent, exile up to one target creature that player controls.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ For each opponent, select up to one target creature | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When you cycle CARDNAME, create two Treasure tokens.\nSVar:TrigTreasure:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac\nSVar:OneEach:PlayerCountOpponents$Amount\nDeckHas:Ability$Token|Discard\nOracle:Trample, haste\\nWhen The Balrog of Moria dies, you may exile it. When you do, for each opponent, exile up to one target creature that player controls.\\nCycling {3}{R} ({3}{R}, Discard this card: Draw a card.)\\nWhen you cycle The Balrog of Moria, create two Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Balrog of Moria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blooming-blast-corpus-m685",
+  "description": "M6 corpus — Blooming Blast; in-hand parse.",
+  "seed": 61490,
+  "cards": {
+    "Blooming Blast": "Name:Blooming Blast\nManaCost:1 R\nTypes:Instant\nK:Gift\nSVar:GiftAbility:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ Promised | GiftDescription$ a Treasure\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 2 damage to target creature. If the gift was promised, CARDNAME also deals 3 damage to that creature's controller.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 3 | ConditionZone$ Stack | ConditionPresent$ Card.Self+PromisedGift | ConditionCompare$ EQ1\nOracle:Gift a Treasure (You may promise an opponent a gift as you cast this spell. If you do, they create a Treasure token before its other effects. It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nBlooming Blast deals 2 damage to target creature. If the gift was promised, Blooming Blast also deals 3 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blooming Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

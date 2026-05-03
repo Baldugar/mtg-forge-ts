@@ -1,0 +1,23 @@
+{
+  "id": "atsushi-the-blazing-sky-corpus-m685",
+  "description": "M6 corpus — Atsushi, the Blazing Sky; in-hand parse.",
+  "seed": 61453,
+  "cards": {
+    "Atsushi, the Blazing Sky": "Name:Atsushi, the Blazing Sky\nManaCost:2 R R\nTypes:Legendary Creature Dragon Spirit\nPT:4/4\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ ExileTwo,CreateTreasure\nSVar:ExileTwo:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of your library. Until the end of your next turn, you may play those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play the exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CreateTreasure:DB$ Token | TokenAmount$ 3 | TokenScript$ c_a_treasure_sac | SpellDescription$ Create three Treasure tokens.\nDeckHas:Ability$Token|Sacrifice\nOracle:Flying, trample\\nWhen Atsushi, the Blazing Sky dies, choose one —\\n• Exile the top two cards of your library. Until the end of your next turn, you may play those cards.\\n• Create three Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atsushi, the Blazing Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mabel-heir-to-cragflame-corpus-m685",
+  "description": "M6 corpus — Mabel, Heir to Cragflame; in-hand parse.",
+  "seed": 61803,
+  "cards": {
+    "Mabel, Heir to Cragflame": "Name:Mabel, Heir to Cragflame\nManaCost:1 R W\nTypes:Legendary Creature Mouse Soldier\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Mouse+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Mice creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create Cragflame, a legendary colorless Equipment artifact token with \"Equipped creature gets +1/+1 and has vigilance, trample, and haste\" and equip {2}.\nSVar:TrigToken:DB$ Token | TokenScript$ cragflame\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Artifact|Equipment\nDeckHints:Type$Mouse\nOracle:Other Mice creatures you control get +1/+1.\\nWhen Mabel, Heir to Cragflame enters, create Cragflame, a legendary colorless Equipment artifact token with \"Equipped creature gets +1/+1 and has vigilance, trample, and haste\" and equip {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mabel, Heir to Cragflame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

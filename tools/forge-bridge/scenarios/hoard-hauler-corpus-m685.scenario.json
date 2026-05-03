@@ -1,0 +1,23 @@
+{
+  "id": "hoard-hauler-corpus-m685",
+  "description": "M6 corpus — Hoard Hauler; in-hand parse.",
+  "seed": 61716,
+  "cards": {
+    "Hoard Hauler": "Name:Hoard Hauler\nManaCost:3 R\nTypes:Artifact Vehicle\nPT:5/5\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a Treasure token for each artifact they control.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ X\nSVar:X:Count$Valid Artifact.ControlledBy TriggeredTarget\nK:Crew:3\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Trample\\nWhenever Hoard Hauler deals combat damage to a player, create a Treasure token for each artifact they control.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoard Hauler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

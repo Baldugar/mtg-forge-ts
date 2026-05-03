@@ -1,0 +1,23 @@
+{
+  "id": "song-of-e-rendil-corpus-m685",
+  "description": "M6 corpus — Song of Eärendil; in-hand parse.",
+  "seed": 62045,
+  "cards": {
+    "Song of Eärendil": "Name:Song of Eärendil\nManaCost:3 G U\nTypes:Enchantment Saga\nK:Chapter:3:DBScry,DBToken,DBCounter\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBDraw | SpellDescription$ Scry 2, then draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac,u_2_2_bird_flying | SpellDescription$ Create a Treasure token and a 2/2 blue Bird creature token with flying.\nSVar:DBCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+withoutFlying | CounterType$ Flying | CounterNum$ 1 | SpellDescription$ Put a flying counter on each creature you control without flying.\nDeckHas:Ability$Counters|Token & Type$Bird|Treasure|Artifact\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Scry 2, then draw two cards.\\nII — Create a Treasure token and a 2/2 blue Bird creature token with flying.\\nIII — Put a flying counter on each creature you control without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Song of Eärendil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

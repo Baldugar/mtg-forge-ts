@@ -1,0 +1,23 @@
+{
+  "id": "rufus-shinra-corpus-m685",
+  "description": "M6 corpus — Rufus Shinra; in-hand parse.",
+  "seed": 61975,
+  "cards": {
+    "Rufus Shinra": "Name:Rufus Shinra\nManaCost:1 W B\nTypes:Legendary Creature Human Noble\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+namedDarkstar | PresentCompare$ EQ0 | TriggerDescription$ Whenever CARDNAME attacks, if you don't control a creature named Darkstar, create Darkstar, a legendary 2/2 white and black Dog creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ darkstar\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Dog\nOracle:Whenever Rufus Shinra attacks, if you don't control a creature named Darkstar, create Darkstar, a legendary 2/2 white and black Dog creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rufus Shinra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

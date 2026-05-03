@@ -1,0 +1,23 @@
+{
+  "id": "involuntary-employment-corpus-m685",
+  "description": "M6 corpus — Involuntary Employment; in-hand parse.",
+  "seed": 61743,
+  "cards": {
+    "Involuntary Employment": "Name:Involuntary Employment\nManaCost:3 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature | Untap$ True | AddKWs$ Haste | LoseControl$ EOT | SubAbility$ DBToken | SpellDescription$ Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Involuntary Employment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

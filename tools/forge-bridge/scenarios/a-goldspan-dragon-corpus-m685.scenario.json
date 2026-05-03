@@ -1,0 +1,23 @@
+{
+  "id": "a-goldspan-dragon-corpus-m685",
+  "description": "M6 corpus — A-Goldspan Dragon; in-hand parse.",
+  "seed": 61983,
+  "cards": {
+    "A-Goldspan Dragon": "Name:A-Goldspan Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nS:Mode$ Continuous | Affected$ Card.Treasure+YouCtrl | AddAbility$ Mana | Description$ Treasures you control have \"{T}, Sacrifice this artifact: Add two mana of any one color.\"\nSVar:Mana:AB$ Mana | Cost$ T Sac<1/CARDNAME/this artifact> | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:Flying, haste\\nWhenever Goldspan Dragon attacks, create a Treasure token.\\nTreasures you control have \"{T}, Sacrifice this artifact: Add two mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Goldspan Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

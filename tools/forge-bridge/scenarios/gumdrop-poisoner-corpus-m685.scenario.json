@@ -1,0 +1,23 @@
+{
+  "id": "gumdrop-poisoner-corpus-m685",
+  "description": "M6 corpus — Gumdrop Poisoner; in-hand parse.",
+  "seed": 61702,
+  "cards": {
+    "Gumdrop Poisoner": "Name:Gumdrop Poisoner\nManaCost:2 B\nTypes:Creature Human Warlock\nPT:3/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDebuff | TriggerDescription$ When CARDNAME enters, up to one target creature gets -X/-X until end of turn, where X is the amount of life you gained this turn.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain|Token & Type$Food\nDeckHints:Ability$LifeGain\nAlternateMode:Adventure\nOracle:Lifelink\\nWhen Gumdrop Poisoner enters, up to one target creature gets -X/-X until end of turn, where X is the amount of life you gained this turn.\n\nALTERNATE\n\nName:Tempt with Treats\nManaCost:B\nTypes:Instant Adventure\nA:SP$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Create a Food token. (Then exile this card. You may cast the creature later from exile.)\nOracle:Create a Food token. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gumdrop Poisoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

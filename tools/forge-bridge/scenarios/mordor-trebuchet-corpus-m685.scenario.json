@@ -1,0 +1,23 @@
+{
+  "id": "mordor-trebuchet-corpus-m685",
+  "description": "M6 corpus — Mordor Trebuchet; in-hand parse.",
+  "seed": 61851,
+  "cards": {
+    "Mordor Trebuchet": "Name:Mordor Trebuchet\nManaCost:2 B\nTypes:Artifact Creature Wall\nPT:1/4\nK:Defender\nT:Mode$ AttackersDeclared | ValidAttackers$ Goblin.YouCtrl,Orc.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you attack with one or more Goblins and/or Orcs, create a 2/1 colorless Construct artifact creature token with flying named Ballistic Boulder that's tapped and attacking. Sacrifice that token at end of combat.\nSVar:TrigToken:DB$ Token | TokenScript$ ballistic_boulder | TokenTapped$ True | TokenAttacking$ True | AtEOT$ SacrificeCombat\nDeckHints:Type$Goblin|Orc\nDeckHas:Ability$Token & Type$Artifact|Construct\nOracle:Defender\\nWhenever you attack with one or more Goblins and/or Orcs, create a 2/1 colorless Construct artifact creature token with flying named Ballistic Boulder that's tapped and attacking. Sacrifice that token at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mordor Trebuchet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

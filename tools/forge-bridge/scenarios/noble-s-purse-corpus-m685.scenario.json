@@ -1,0 +1,23 @@
+{
+  "id": "noble-s-purse-corpus-m685",
+  "description": "M6 corpus — Noble's Purse; in-hand parse.",
+  "seed": 61866,
+  "cards": {
+    "Noble's Purse": "Name:Noble's Purse\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ EntersTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped and with three coin counters on it.\nSVar:EntersTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | CounterType$ COIN | CounterNum$ 3\nA:AB$ Token | Cost$ T SubCounter<1/COIN> | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nDeckHas:Ability$Counters|Token|Sacrifice\nOracle:Noble's Purse enters tapped and with three coin counters on it.\\n{T}, Remove a coin counter from Noble's Purse: Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noble's Purse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

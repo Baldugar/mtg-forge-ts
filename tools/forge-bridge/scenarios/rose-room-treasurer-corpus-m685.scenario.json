@@ -1,0 +1,23 @@
+{
+  "id": "rose-room-treasurer-corpus-m685",
+  "description": "M6 corpus — Rose Room Treasurer; in-hand parse.",
+  "seed": 61971,
+  "cards": {
+    "Rose Room Treasurer": "Name:Rose Room Treasurer\nManaCost:3 R\nTypes:Creature Ogre Warrior\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ Alliance — Whenever another creature you control enters, create a Treasure token if this is the first or second time this ability has resolved this turn. Otherwise, you may pay {X}. When you do, CARDNAME deals X damage to any target.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | SubAbility$ DBChooseX | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ LE2\nSVar:DBChooseX:DB$ ChooseNumber | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ GT2 | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | UnlessCost$ X | UnlessPayer$ You | UnlessSwitched$ True | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ GT2 | Execute$ TrigDamage | RememberSVarAmount$ X | TriggerDescription$ When you do, CARDNAME deals X damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Y\nSVar:Resolved:Count$ResolvedThisTurn\nSVar:X:Count$ChosenNumber\nSVar:Y:Count$TriggerRememberAmount\nDeckHas:Ability$Token|Sacrifice\nOracle:Alliance — Whenever another creature you control enters, create a Treasure token if this is the first or second time this ability has resolved this turn. Otherwise, you may pay {X}. When you do, Rose Room Treasurer deals X damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rose Room Treasurer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

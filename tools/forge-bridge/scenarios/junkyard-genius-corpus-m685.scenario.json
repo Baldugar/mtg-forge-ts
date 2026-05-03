@@ -1,0 +1,23 @@
+{
+  "id": "junkyard-genius-corpus-m685",
+  "description": "M6 corpus — Junkyard Genius; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "Junkyard Genius": "Name:Junkyard Genius\nManaCost:1 B R\nTypes:Creature Human Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nA:AB$ PumpAll | Cost$ 1 B R Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +1 | KW$ Menace & Haste | SpellDescription$ Until end of turn, other creatures you control get +1/+0 and gain menace and haste.\nSVar:PlayMain1:TRUE\nSVar:AIPreference:SacCost$Artifact.token,Creature.Other+cmcLE2,Artifact.cmcEQ1\nDeckHas:Ability$Token|Sacrifice & Type$Artifact\nDeckHints:Type$Artifact\nOracle:When Junkyard Genius enters, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\\n{1}{B}{R}, Sacrifice another creature or artifact: Until end of turn, other creatures you control get +1/+0 and gain menace and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junkyard Genius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

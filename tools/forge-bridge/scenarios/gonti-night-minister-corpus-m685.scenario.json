@@ -1,0 +1,23 @@
+{
+  "id": "gonti-night-minister-corpus-m685",
+  "description": "M6 corpus — Gonti, Night Minister; in-hand parse.",
+  "seed": 61688,
+  "cards": {
+    "Gonti, Night Minister": "Name:Gonti, Night Minister\nManaCost:2 B B\nTypes:Legendary Creature Aetherborn Rogue\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Card | ValidSAonCard$ Spell.YouDontOwn | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigTreasure | TriggerDescription$ Whenever a player casts a spell they don't own, that player creates a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ TriggeredActivator\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever a creature deals combat damage to one of your opponents, its controller looks at the top card of that opponent's library and exiles it face down. They may play that card for as long as it remains exiled. Mana of any type can be spent to cast a spell this way.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Defined$ TriggeredTarget | ForceReveal$ TriggeredSourceController | DefinedExiler$ TriggeredSourceController | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | EffectOwner$ TriggeredSourceController | Duration$ Permanent\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayLookAt$ You | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card for as long as it remains exiled, and mana of any type can be spent to cast it.\nDeckHas:Ability$Token\nOracle:Whenever a player casts a spell they don't own, that player creates a Treasure token.\\nWhenever a creature deals combat damage to one of your opponents, its controller looks at the top card of that opponent's library and exiles it face down. They may play that card for as long as it remains exiled. Mana of any type can be spent to cast a spell this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gonti, Night Minister"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

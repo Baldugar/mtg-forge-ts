@@ -1,0 +1,23 @@
+{
+  "id": "splinter-the-mentor-corpus-m685",
+  "description": "M6 corpus — Splinter, the Mentor; in-hand parse.",
+  "seed": 62060,
+  "cards": {
+    "Splinter, the Mentor": "Name:Splinter, the Mentor\nManaCost:1 B\nTypes:Legendary Creature Mutant Ninja Rat\nPT:2/2\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+!token+YouCtrl | Origin$ Battlefield | Destination$ Any | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME or another nontoken creature you control leaves the battlefield, create a Mutagen token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nK:Partner:Character select\nDeckHas:Ability$Token & Type$Artifact|Mutagen\nOracle:Menace\\nWhenever Splinter or another nontoken creature you control leaves the battlefield, create a Mutagen token.\\nPartner—Character select (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splinter, the Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

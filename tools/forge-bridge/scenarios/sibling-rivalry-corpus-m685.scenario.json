@@ -1,0 +1,23 @@
+{
+  "id": "sibling-rivalry-corpus-m685",
+  "description": "M6 corpus — Sibling Rivalry; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Sibling Rivalry": "Name:Sibling Rivalry\nManaCost:3 R\nTypes:Sorcery\nA:SP$ GainControl | ValidTgts$ Creature,Artifact | LoseControl$ EOT | Untap$ True | AddKWs$ Haste | SubAbility$ DBToken | SpellDescription$ Gain control of target artifact or creature until end of turn. Untap it. It gains haste until end of turn. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:DBToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nSVar:PlayMain1:ALWAYS\nDeckHas:Ability$Token & Type$Artifact\nOracle:Gain control of target artifact or creature until end of turn. Untap it. It gains haste until end of turn. Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibling Rivalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

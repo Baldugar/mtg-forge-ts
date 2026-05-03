@@ -1,0 +1,23 @@
+{
+  "id": "redcap-thief-corpus-m685",
+  "description": "M6 corpus — Redcap Thief; in-hand parse.",
+  "seed": 61947,
+  "cards": {
+    "Redcap Thief": "Name:Redcap Thief\nManaCost:2 R\nTypes:Creature Goblin Rogue\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Token\nOracle:When Redcap Thief enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redcap Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cat-collector-corpus-m685",
+  "description": "M6 corpus — Cat Collector; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Cat Collector": "Name:Cat Collector\nManaCost:2 W\nTypes:Creature Human Citizen\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When this creature enters, create a Food token. (It's an artifact with \"2, {T}, Sacrifice this token: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | FirstTime$ True | PlayerTurn$ True | Execute$ DBToken | TriggerDescription$ Whenever you gain life for the first time during each of your turns, create a 1/1 white Cat creature token.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_cat | TokenOwner$ You\nDeckHas:Ability$LifeGain|Token|Food\nDeckHints:Ability$LifeGain\nOracle:When this creature enters, create a Food token. (It's an artifact with \"2, {T}, Sacrifice this token: You gain 3 life.\")\\nWhenever you gain life for the first time during each of your turns, create a 1/1 white Cat creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cat Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

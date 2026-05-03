@@ -1,0 +1,23 @@
+{
+  "id": "rocketeer-boostbuggy-corpus-m685",
+  "description": "M6 corpus — Rocketeer Boostbuggy; in-hand parse.",
+  "seed": 61968,
+  "cards": {
+    "Rocketeer Boostbuggy": "Name:Rocketeer Boostbuggy\nManaCost:R G\nTypes:Artifact Vehicle\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this Vehicle attacks, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ Animate | Cost$ 3 | Defined$ Self | Types$ Artifact,Creature | Duration$ Permanent | Exhaust$ True | SubAbility$ DBPutCounter | SpellDescription$ This Vehicle becomes an artifact creature. Put a +1/+1 counter on it. (Activate each exhaust ability only once.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nK:Crew:1\nDeckHas:Ability$Token|Counters\nOracle:Whenever this Vehicle attacks, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\\nExhaust — {3}: This Vehicle becomes an artifact creature. Put a +1/+1 counter on it. (Activate each exhaust ability only once.)\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rocketeer Boostbuggy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

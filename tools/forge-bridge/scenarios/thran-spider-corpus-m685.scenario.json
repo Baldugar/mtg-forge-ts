@@ -1,0 +1,23 @@
+{
+  "id": "thran-spider-corpus-m685",
+  "description": "M6 corpus — Thran Spider; in-hand parse.",
+  "seed": 62135,
+  "cards": {
+    "Thran Spider": "Name:Thran Spider\nManaCost:3\nTypes:Artifact Creature Spider\nPT:2/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, you and target opponent each create a tapped Powerstone token.\nSVar:TrigToken:DB$ Token | ValidTgts$ Opponent | TokenOwner$ TargetedAndYou | TokenTapped$ True | TokenScript$ c_a_powerstone\nA:AB$ Dig | Cost$ 7 | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Artifact | RestRandomOrder$ True | ForceRevealToController$ True | SpellDescription$ Look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nDeckHints:Type$Artifact\nDeckHas:Ability$Token\nOracle:Reach\\nWhen Thran Spider enters, you and target opponent each create a tapped Powerstone token.\\n{7}: Look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thran Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

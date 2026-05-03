@@ -1,0 +1,23 @@
+{
+  "id": "orchard-strider-corpus-m685",
+  "description": "M6 corpus — Orchard Strider; in-hand parse.",
+  "seed": 61886,
+  "cards": {
+    "Orchard Strider": "Name:Orchard Strider\nManaCost:4 G G\nTypes:Creature Treefolk\nPT:6/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenAmount$ 2\nK:TypeCycling:Basic:1 G\nDeckHas:Ability$Token|LifeGain\nOracle:When Orchard Strider enters, create two Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nBasic landcycling {1}{G} ({1}{G}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orchard Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

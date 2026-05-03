@@ -1,0 +1,23 @@
+{
+  "id": "foreboding-fruit-corpus-m685",
+  "description": "M6 corpus — Foreboding Fruit; in-hand parse.",
+  "seed": 61639,
+  "cards": {
+    "Foreboding Fruit": "Name:Foreboding Fruit\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBLoseLife | AIManaPref$ B | SpellDescription$ Target player draws two cards and loses 2 life. Adamant — If at least three black mana was spent to cast this spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Targeted | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:X:Count$Adamant.Black.1.0\nDeckHas:Ability$Token|LifeGain|Food\nOracle:Target player draws two cards and loses 2 life.\\nAdamant — If at least three black mana was spent to cast this spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foreboding Fruit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

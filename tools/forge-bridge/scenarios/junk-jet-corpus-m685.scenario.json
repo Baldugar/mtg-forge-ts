@@ -1,0 +1,23 @@
+{
+  "id": "junk-jet-corpus-m685",
+  "description": "M6 corpus — Junk Jet; in-hand parse.",
+  "seed": 61759,
+  "cards": {
+    "Junk Jet": "Name:Junk Jet\nManaCost:1 R\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Junk token. (It's an artifact with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_junk_sac_exileplay | TokenOwner$ You\nA:AB$ Pump | Cost$ 3 Sac<1/Artifact.Other/another artifact> | Defined$ Equipped | NumAtt$ Double | SpellDescription$ Double equipped creature's power until end of turn.\nK:Equip:1\nDeckHints:Ability$Token & Type$Treasure|Food|Junk|Map|Clue\nDeckHas:Ability$Token|Counters & Type$Artifact|Junk\nOracle:When Junk Jet enters, create a Junk token. (It's an artifact with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\\n{3}, Sacrifice another artifact: Double equipped creature's power until end of turn.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junk Jet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

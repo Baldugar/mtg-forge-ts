@@ -1,0 +1,23 @@
+{
+  "id": "late-to-dinner-corpus-m685",
+  "description": "M6 corpus — Late to Dinner; in-hand parse.",
+  "seed": 61786,
+  "cards": {
+    "Late to Dinner": "Name:Late to Dinner\nManaCost:3 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn | TgtPrompt$ Choose target creature card in your graveyard | SubAbility$ DBToken | SpellDescription$ Return target creature card from your graveyard to the battlefield. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac\nDeckHas:Ability$Graveyard|Token|Sacrifice|LifeGain\nOracle:Return target creature card from your graveyard to the battlefield. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Late to Dinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

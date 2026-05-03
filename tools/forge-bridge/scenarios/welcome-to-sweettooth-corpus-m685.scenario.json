@@ -1,0 +1,23 @@
+{
+  "id": "welcome-to-sweettooth-corpus-m685",
+  "description": "M6 corpus — Welcome to Sweettooth; in-hand parse.",
+  "seed": 62202,
+  "cards": {
+    "Welcome to Sweettooth": "Name:Welcome to Sweettooth\nManaCost:1 G\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBFood,DBPutCounter\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human | TokenOwner$ You | SpellDescription$ Create a 1/1 white Human creature token.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | SpellDescription$ Create a Food token.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Put X +1/+1 counters on target creature you control, where X is one plus the number of Foods you control.\nSVar:X:Count$Valid Food.YouCtrl/Plus.1\nDeckHas:Ability$Token|Counters & Type$Human|Food\nDeckHints:Ability$Token & Type$Food\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a 1/1 white Human creature token.\\nII — Create a Food token.\\nIII — Put X +1/+1 counters on target creature you control, where X is one plus the number of Foods you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Welcome to Sweettooth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

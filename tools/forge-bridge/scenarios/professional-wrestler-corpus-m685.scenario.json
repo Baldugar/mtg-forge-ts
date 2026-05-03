@@ -1,0 +1,23 @@
+{
+  "id": "professional-wrestler-corpus-m685",
+  "description": "M6 corpus — Professional Wrestler; in-hand parse.",
+  "seed": 61921,
+  "cards": {
+    "Professional Wrestler": "Name:Professional Wrestler\nVariant:UniversesWithin:FlavorName:Favored Fighter\nManaCost:3 G\nTypes:Creature Human Warrior Performer\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When this creature enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nS:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ CARDNAME can't be blocked by more than one creature.\nDeckHas:Ability$Token\nOracle:When this creature enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\\nThis creature can't be blocked by more than one creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Professional Wrestler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

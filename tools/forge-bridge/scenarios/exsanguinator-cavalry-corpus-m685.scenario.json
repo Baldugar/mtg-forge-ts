@@ -1,0 +1,23 @@
+{
+  "id": "exsanguinator-cavalry-corpus-m685",
+  "description": "M6 corpus — Exsanguinator Cavalry; in-hand parse.",
+  "seed": 61615,
+  "cards": {
+    "Exsanguinator Cavalry": "Name:Exsanguinator Cavalry\nManaCost:2 B\nTypes:Creature Vampire Knight\nPT:2/3\nK:Menace\nK:Lifelink\nT:Mode$ DamageDone | ValidSource$ Knight.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Knight you control deals combat damage to a player, put a +1/+1 counter on that creature and create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_blood_draw\nDeckHas:Ability$LifeGain|Token|Counters & Type$Blood|Artifact\nDeckHints:Type$Knight\nOracle:Menace, lifelink\\nWhenever a Knight you control deals combat damage to a player, put a +1/+1 counter on that creature and create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exsanguinator Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

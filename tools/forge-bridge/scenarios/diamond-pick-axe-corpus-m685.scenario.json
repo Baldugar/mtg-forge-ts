@@ -1,0 +1,23 @@
+{
+  "id": "diamond-pick-axe-corpus-m685",
+  "description": "M6 corpus — Diamond Pick-Axe; in-hand parse.",
+  "seed": 61577,
+  "cards": {
+    "Diamond Pick-Axe": "Name:Diamond Pick-Axe\nManaCost:R\nTypes:Artifact Equipment\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ TrigAttack | Description$ Equipped creature gets +1/+1 and has \"Whenever this creature attacks, create a Treasure token.\" (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this creature attacks, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token & Type$Treasure\nK:Equip:2\nOracle:Indestructible (Effects that say \"destroy\" don't destroy this artifact.)\\nEquipped creature gets +1/+1 and has \"Whenever this creature attacks, create a Treasure token.\" (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diamond Pick-Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

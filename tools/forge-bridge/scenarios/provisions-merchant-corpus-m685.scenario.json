@@ -1,0 +1,23 @@
+{
+  "id": "provisions-merchant-corpus-m685",
+  "description": "M6 corpus — Provisions Merchant; in-hand parse.",
+  "seed": 61931,
+  "cards": {
+    "Provisions Merchant": "Name:Provisions Merchant\nManaCost:2 G G\nTypes:Creature Beast Peasant\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice a Food. If you do, attacking creatures get +1/+1 and gain trample until end of turn.\nSVar:TrigPumpAll:AB$ PumpAll | Cost$ Sac<1/Food> | ValidCards$ Creature.attacking | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain|Token|Counters & Type$Food\nOracle:When Provisions Merchant enters, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nWhenever Provisions Merchant attacks, you may sacrifice a Food. If you do, attacking creatures get +1/+1 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Provisions Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "honk-corpus-m685",
+  "description": "M6 corpus — HONK!; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "HONK!": "Name:HONK!\nManaCost:G\nTypes:Instant\nA:SP$ Charm | Choices$ TheGooseIsLoose,TheGooseLaidAnEgg\nSVar:TheGooseIsLoose:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBGiveFood | SpellDescription$ The Goose is Loose — Destroy target artifact or enchantment. Its controller creates a Food token.\nSVar:DBGiveFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ TargetedController\nSVar:TheGooseLaidAnEgg:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGetFood | SpellDescription$ The Goose Laid an Egg — Put a +1/+1 counter on target creature. You create a Food token.\nSVar:DBGetFood:DB$ Token | TokenScript$ c_a_food_sac\nDeckHas:Ability$Token|Counters|LifeGain & Type$Food|Artifact\nOracle:Choose one —\\n• The Goose is Loose — Destroy target artifact or enchantment. Its controller creates a Food token.\\n• The Goose Laid an Egg — Put a +1/+1 counter on target creature. You create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "HONK!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "treasure-map-corpus-m685",
+  "description": "M6 corpus — Treasure Map; in-hand parse.",
+  "seed": 62155,
+  "cards": {
+    "Treasure Map": "Name:Treasure Map\nManaCost:2\nTypes:Artifact\nA:AB$ Scry | Cost$ 1 T | ScryNum$ 1 | SubAbility$ DBLandmark | SpellDescription$ Scry 1. Put a landmark counter on CARDNAME. Then if there are three or more landmark counters on it, remove those counters, transform CARDNAME, and create three Treasure tokens.\nSVar:DBLandmark:DB$ PutCounter | Defined$ Self | CounterType$ LANDMARK | CounterNum$ 1 | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ XMarksTheSpot | TrueSubAbility$ DBRemoveCtrs\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ LANDMARK | CounterNum$ All | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | SubAbility$ DBTreasureTokens\nSVar:DBTreasureTokens:DB$ Token | TokenAmount$ 3 | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:XMarksTheSpot:Count$Valid Card.Self+counters_GE3_LANDMARK\nDeckHas:Ability$Token\nAlternateMode:DoubleFaced\nOracle:{1}, {T}: Scry 1. Put a landmark counter on Treasure Map. Then if there are three or more landmark counters on it, remove those counters, transform Treasure Map, and create three Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n\nALTERNATE\n\nName:Treasure Cove\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Draw | Cost$ T Sac<1/Treasure> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:(Transforms from Treasure Map.)\\n{T}: Add {C}.\\n{T}, Sacrifice a Treasure: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasure Map"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "obsessive-pursuit-corpus-m685",
+  "description": "M6 corpus — Obsessive Pursuit; in-hand parse.",
+  "seed": 61874,
+  "cards": {
+    "Obsessive Pursuit": "Name:Obsessive Pursuit\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When this enchantment enters and at the beginning of your upkeep, you lose 1 life and create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ When this enchantment enters and at the beginning of your upkeep, you lose 1 life and create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you attack, put X +1/+1 counters on target attacking creature, where X is the number of permanents you've sacrificed this turn. If X is three or greater, that creature gains lifelink until end of turn.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Lifelink | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3\nSVar:X:PlayerCountPropertyYou$SacrificedThisTurn Permanent\nOracle:When this enchantment enters and at the beginning of your upkeep, you lose 1 life and create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\\nWhenever you attack, put X +1/+1 counters on target attacking creature, where X is the number of permanents you've sacrificed this turn. If X is three or greater, that creature gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obsessive Pursuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

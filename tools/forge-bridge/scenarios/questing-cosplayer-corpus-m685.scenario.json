@@ -1,0 +1,23 @@
+{
+  "id": "questing-cosplayer-corpus-m685",
+  "description": "M6 corpus — Questing Cosplayer; in-hand parse.",
+  "seed": 61933,
+  "cards": {
+    "Questing Cosplayer": "Name:Questing Cosplayer\nManaCost:1 G\nTypes:Creature Human Bard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create a Questing Role token and attach it to target creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature has all the abilities of Questing Beast.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_questing | AttachedTo$ Targeted | ValidTgts$ Creature | TokenOwner$ You\nDeckHas:Type$Aura|Role & Ability$Token\nDeckHints:Type$Aura\nOracle:When Questing Cosplayer enters the battlefield, create a Questing Role token and attach it to target creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature has all the abilities of Questing Beast.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Questing Cosplayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

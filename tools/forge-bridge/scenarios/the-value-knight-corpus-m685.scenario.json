@@ -1,0 +1,23 @@
+{
+  "id": "the-value-knight-corpus-m685",
+  "description": "M6 corpus — The Value Knight; in-hand parse.",
+  "seed": 62129,
+  "cards": {
+    "The Value Knight": "Name:The Value Knight\nManaCost:3 U\nTypes:Legendary Creature Human Knight\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create Syr Acha, a 1/1 legendary red artifact creature Food Knight token with \"{2}, {T}, Sacrifice this token: You gain 3 life. Until end of turn, if you would draw a card, draw two cards instead.\"\nSVar:TrigToken:DB$ Token | TokenScript$ syr_acha\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Token|Counters & Type$Artifact|Food\nOracle:When The Value Knight enters the battlefield, create Syr Acha, a 1/1 legendary red artifact creature Food Knight token with \"{2}, {T}, Sacrifice this token: You gain 3 life. Until end of turn, if you would draw a card, draw two cards instead.\"\\nWhenever you draw a card, put a +1/+1 counter on The Value Knight.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Value Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "storm-fleet-negotiator-corpus-m685",
+  "description": "M6 corpus — Storm Fleet Negotiator; in-hand parse.",
+  "seed": 62072,
+  "cards": {
+    "Storm Fleet Negotiator": "Name:Storm Fleet Negotiator\nManaCost:2 U\nTypes:Creature Siren Pirate\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerZones$ Battlefield | TriggerDescription$ Parley — Whenever CARDNAME attacks, each player reveals the top card of their library. For each nonland card revealed this way, you create a Map token. Then each player draws a card. (A Map token is an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nSVar:TrigPeek:DB$ PeekAndReveal | Defined$ Player | RememberRevealed$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_map_sac_explore | TokenAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.nonLand\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Map|Artifact\nOracle:Flying\\nParley — Whenever Storm Fleet Negotiator attacks, each player reveals the top card of their library. For each nonland card revealed this way, you create a Map token. Then each player draws a card. (A Map token is an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm Fleet Negotiator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

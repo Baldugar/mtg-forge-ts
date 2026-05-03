@@ -1,0 +1,23 @@
+{
+  "id": "the-belligerent-corpus-m685",
+  "description": "M6 corpus — The Belligerent; in-hand parse.",
+  "seed": 62104,
+  "cards": {
+    "The Belligerent": "Name:The Belligerent\nManaCost:2 U R\nTypes:Legendary Artifact Vehicle\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Treasure token. Until end of turn, you may look at the top card of your library any time, and you may play lands and cast spells from the top of your library.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ StaticMayLookAndPlay\nSVar:StaticMayLookAndPlay:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ Player | MayPlay$ True | Description$ You may look at the top card of your library any time, and you may play lands and cast spells from the top of your library.\nK:Crew:3\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Treasure\nOracle:Whenever The Belligerent attacks, create a Treasure token. Until end of turn, you may look at the top card of your library any time, and you may play lands and cast spells from the top of your library.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Belligerent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

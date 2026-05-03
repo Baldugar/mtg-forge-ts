@@ -1,0 +1,23 @@
+{
+  "id": "white-glove-gourmand-corpus-m685",
+  "description": "M6 corpus — White Glove Gourmand; in-hand parse.",
+  "seed": 62204,
+  "cards": {
+    "White Glove Gourmand": "Name:White Glove Gourmand\nManaCost:2 W B\nTypes:Creature Human Noble\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigHumanToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Human Soldier creature tokens.\nSVar:TrigHumanToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigFoodToken | TriggerDescription$ At the beginning of your end step, if another Human died under your control this turn, create a Food token.\nSVar:TrigFoodToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Human.Other+YouCtrl\nDeckHas:Ability$Token|Food\nDeckHints:Type$Human\nOracle:When White Glove Gourmand enters, create two 1/1 white Human Soldier creature tokens.\\nAt the beginning of your end step, if another Human died under your control this turn, create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Glove Gourmand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

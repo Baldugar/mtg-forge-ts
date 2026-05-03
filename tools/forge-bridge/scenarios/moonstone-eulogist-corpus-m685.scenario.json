@@ -1,0 +1,23 @@
+{
+  "id": "moonstone-eulogist-corpus-m685",
+  "description": "M6 corpus — Moonstone Eulogist; in-hand parse.",
+  "seed": 61850,
+  "cards": {
+    "Moonstone Eulogist": "Name:Moonstone Eulogist\nManaCost:3 B B\nTypes:Creature Bat Warlock\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature an opponent controls dies, you create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You\nT:Mode$ Sacrificed | ValidCard$ Artifact | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an artifact, put a +1/+1 counter on CARDNAME and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Token|Sacrifice|Counters & Type$Artifact|Blood\nOracle:Flying\\nWhenever a creature an opponent controls dies, you create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice an artifact, put a +1/+1 counter on Moonstone Eulogist and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonstone Eulogist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

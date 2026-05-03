@@ -1,0 +1,23 @@
+{
+  "id": "planewide-celebration-corpus-m685",
+  "description": "M6 corpus — Planewide Celebration; in-hand parse.",
+  "seed": 61908,
+  "cards": {
+    "Planewide Celebration": "Name:Planewide Celebration\nManaCost:5 G G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBToken,DBReturn,DBProliferate,DBGainLife | CharmNum$ 4 | CanRepeatModes$ True\nSVar:DBToken:DB$ Token | TokenScript$ all_2_2_citizen | SpellDescription$ Create a 2/2 Citizen creature token that's all colors.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Choose target permanent in your graveyard. | SpellDescription$ Return target permanent from your graveyard to your hand.\nSVar:DBProliferate:DB$ Proliferate | SpellDescription$ Proliferate.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nDeckHas:Ability$Proliferate|Token|LifeGain|Counters|Graveyard & Type$Citizen\nOracle:Choose four. You may choose the same mode more than once.\\n• Create a 2/2 Citizen creature token that's all colors.\\n• Return target permanent card from your graveyard to your hand.\\n• Proliferate.\\n• You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planewide Celebration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

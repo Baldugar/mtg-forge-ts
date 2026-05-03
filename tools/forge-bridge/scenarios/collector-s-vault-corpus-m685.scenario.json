@@ -1,0 +1,23 @@
+{
+  "id": "collector-s-vault-corpus-m685",
+  "description": "M6 corpus — Collector's Vault; in-hand parse.",
+  "seed": 61542,
+  "cards": {
+    "Collector's Vault": "Name:Collector's Vault\nManaCost:2\nTypes:Artifact\nA:AB$ Draw | Cost$ 2 T | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card. Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Discard|Token & Type$Treasure\nOracle:{2}, {T}: Draw a card, then discard a card. Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collector's Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

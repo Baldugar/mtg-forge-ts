@@ -1,0 +1,23 @@
+{
+  "id": "knuckles-the-echidna-corpus-m685",
+  "description": "M6 corpus — Knuckles the Echidna; in-hand parse.",
+  "seed": 61777,
+  "cards": {
+    "Knuckles the Echidna": "Name:Knuckles the Echidna\nManaCost:2 R R\nTypes:Legendary Creature Echidna Warrior\nPT:2/4\nK:Double Strike\nK:Trample\nK:Haste\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | PresentCompare$ GE30 | IsPresent$ Artifact.YouCtrl | Execute$ TrigWinsGame | TriggerZones$ Battlefield | TriggerDescription$ Treasure Hunter — At the beginning of your upkeep, if you control thirty or more artifacts, you win the game.\nSVar:TrigWinsGame:DB$ WinsGame | Defined$ You\nDeckHas:Ability$Token\nDeckHints:Type$Artifact\nOracle:Double strike, trample, haste\\nWhenever one or more creatures you control deal combat damage to a player, create a Treasure token.\\nTreasure Hunter — At the beginning of your upkeep, if you control thirty or more artifacts, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knuckles the Echidna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

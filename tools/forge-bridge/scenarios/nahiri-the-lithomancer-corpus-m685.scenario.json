@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-the-lithomancer-corpus-m685",
+  "description": "M6 corpus — Nahiri, the Lithomancer; in-hand parse.",
+  "seed": 61856,
+  "cards": {
+    "Nahiri, the Lithomancer": "Name:Nahiri, the Lithomancer\nManaCost:3 W W\nTypes:Legendary Planeswalker Nahiri\nLoyalty:3\nText:CARDNAME can be your commander.\nA:AB$ Token | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ w_1_1_kor_soldier | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach | SpellDescription$ Create a 1/1 white Kor Soldier creature token. You may attach an Equipment you control to it.\nSVar:DBAttach:DB$ Attach | Optional$ True | Choices$ Equipment.YouCtrl | ChoiceTitle$ Choose an Equipment you control | Defined$ Remembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ChangeZone | Cost$ SubCounter<2/LOYALTY> | Origin$ Hand,Graveyard | Destination$ Battlefield | Hidden$ True | Planeswalker$ True | ChangeType$ Equipment.YouCtrl | Optional$ True | SpellDescription$ You may put an Equipment card from your hand or graveyard onto the battlefield.\nA:AB$ Token | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | TokenScript$ stoneforged_blade | TokenOwner$ You | SpellDescription$ Create a colorless Equipment artifact token named Stoneforged Blade. It has indestructible, \"Equipped creature gets +5/+5 and has double strike,\" and equip {0}.\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nDeckNeeds:Type$Equipment\nOracle:[+2]: Create a 1/1 white Kor Soldier creature token. You may attach an Equipment you control to it.\\n[-2]: You may put an Equipment card from your hand or graveyard onto the battlefield.\\n[-10]: Create a colorless Equipment artifact token named Stoneforged Blade. It has indestructible, \"Equipped creature gets +5/+5 and has double strike,\" and equip {0}.\\nNahiri, the Lithomancer can be your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri, the Lithomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

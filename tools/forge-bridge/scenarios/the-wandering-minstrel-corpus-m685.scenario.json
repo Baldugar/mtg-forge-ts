@@ -1,0 +1,23 @@
+{
+  "id": "the-wandering-minstrel-corpus-m685",
+  "description": "M6 corpus — The Wandering Minstrel; in-hand parse.",
+  "seed": 62130,
+  "cards": {
+    "The Wandering Minstrel": "Name:The Wandering Minstrel\nManaCost:G U\nTypes:Legendary Creature Human Bard\nPT:1/3\nR:Event$ Moved | ValidCard$ Land.YouCtrl | Destination$ Battlefield | ReplaceWith$ ETBUntapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Lands you control enter untapped.\nSVar:ETBUntapped:DB$ Untap | ETB$ True | Defined$ ReplacedCard\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Town.YouCtrl | PresentCompare$ GE5 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ The Minstrel's Ballad — At the beginning of combat on your turn, if you control five or more Towns, create a 2/2 Elemental creature token that's all colors.\nSVar:TrigToken:DB$ Token | TokenScript$ all_2_2_elemental | TokenOwner$ You\nA:AB$ PumpAll | Cost$ 3 W U B R G | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +X | NumDef$ +X | SpellDescription$ Other creatures you control get +X/+X until end of turn, where X is the number of Towns you control.\nSVar:X:Count$Valid Town.YouCtrl\nOracle:Lands you control enter untapped.\\nThe Minstrel's Ballad — At the beginning of combat on your turn, if you control five or more Towns, create a 2/2 Elemental creature token that's all colors.\\n{3}{W}{U}{B}{R}{G}: Other creatures you control get +X/+X until end of turn, where X is the number of Towns you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wandering Minstrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

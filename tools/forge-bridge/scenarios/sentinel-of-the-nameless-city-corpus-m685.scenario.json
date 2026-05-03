@@ -1,0 +1,23 @@
+{
+  "id": "sentinel-of-the-nameless-city-corpus-m685",
+  "description": "M6 corpus — Sentinel of the Nameless City; in-hand parse.",
+  "seed": 62021,
+  "cards": {
+    "Sentinel of the Nameless City": "Name:Sentinel of the Nameless City\nManaCost:2 G\nTypes:Creature Merfolk Warrior Scout\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME enters or attacks, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_map_sac_explore\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Artifact|Map\nOracle:Vigilance\\nWhenever Sentinel of the Nameless City enters or attacks, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sentinel of the Nameless City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

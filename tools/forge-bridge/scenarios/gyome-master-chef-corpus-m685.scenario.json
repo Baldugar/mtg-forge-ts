@@ -1,0 +1,23 @@
+{
+  "id": "gyome-master-chef-corpus-m685",
+  "description": "M6 corpus — Gyome, Master Chef; in-hand parse.",
+  "seed": 61705,
+  "cards": {
+    "Gyome, Master Chef": "Name:Gyome, Master Chef\nManaCost:2 B G\nTypes:Legendary Creature Troll Warlock\nPT:5/3\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a number of Food tokens equal to the number of nontoken creatures you had enter the battlefield under your control this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ Pump | Cost$ 1 Sac<1/Food> | ValidTgts$ Creature | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ Target creature gains indestructible until end of turn. Tap it.\nSVar:DBTap:DB$ Tap | Defined$ Targeted\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.!token+YouCtrl\nDeckHints:Ability$Food\nOracle:Trample\\nAt the beginning of your end step, create a number of Food tokens equal to the number of nontoken creatures you had enter under your control this turn.\\n{1}, Sacrifice a Food: Target creature gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gyome, Master Chef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

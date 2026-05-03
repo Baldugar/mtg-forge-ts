@@ -1,0 +1,23 @@
+{
+  "id": "misfortune-teller-corpus-m685",
+  "description": "M6 corpus — Misfortune Teller; in-hand parse.",
+  "seed": 61840,
+  "cards": {
+    "Misfortune Teller": "Name:Misfortune Teller\nManaCost:3 B\nTypes:Creature Human Warlock\nPT:3/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME enters or deals combat damage to a player, exile target card from a graveyard. If it was a creature card, create a 2/2 black Rogue creature token. If it was a land card, create a Treasure token. Otherwise, you gain 3 life.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or deals combat damage to a player, exile target card from a graveyard. If it was a creature card, create a 2/2 black Rogue creature token. If it was a land card, create a Treasure token. Otherwise, you gain 3 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_rogue | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBTreasure\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ EQ1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Creature,Land | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Rogue|Artifact|Treasure\nOracle:Deathtouch\\nWhenever Misfortune Teller enters or deals combat damage to a player, exile target card from a graveyard. If it was a creature card, create a 2/2 black Rogue creature token. If it was a land card, create a Treasure token. Otherwise, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Misfortune Teller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brackish-blunder-corpus-m685",
+  "description": "M6 corpus — Brackish Blunder; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "Brackish Blunder": "Name:Brackish Blunder\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBToken | SpellDescription$ Return target creature to its owner's hand.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_map_sac_explore | ConditionDefined$ Targeted | ConditionPresent$ Card.tapped | SpellDescription$ If it was tapped, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Artifact|Map\nOracle:Return target creature to its owner's hand. If it was tapped, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brackish Blunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

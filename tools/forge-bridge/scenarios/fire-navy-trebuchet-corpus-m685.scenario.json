@@ -1,0 +1,23 @@
+{
+  "id": "fire-navy-trebuchet-corpus-m685",
+  "description": "M6 corpus — Fire Navy Trebuchet; in-hand parse.",
+  "seed": 61634,
+  "cards": {
+    "Fire Navy Trebuchet": "Name:Fire Navy Trebuchet\nManaCost:2 B\nTypes:Artifact Creature Wall\nPT:0/4\nK:Defender\nK:Reach\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you attack, create a 2/1 colorless Construct artifact creature token with flying named Ballistic Boulder that's tapped and attacking. Sacrifice that token at the beginning of the next end step.\nSVar:TrigToken:DB$ Token | TokenScript$ ballistic_boulder | TokenTapped$ True | TokenAttacking$ True | AtEOT$ Sacrifice\nDeckHas:Ability$Token & Type$Artifact|Construct\nOracle:Defender, reach\\nWhenever you attack, create a 2/1 colorless Construct artifact creature token with flying named Ballistic Boulder that's tapped and attacking. Sacrifice that token at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Navy Trebuchet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

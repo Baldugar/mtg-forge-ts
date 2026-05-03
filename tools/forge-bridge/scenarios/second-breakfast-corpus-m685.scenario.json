@@ -1,0 +1,23 @@
+{
+  "id": "second-breakfast-corpus-m685",
+  "description": "M6 corpus — Second Breakfast; in-hand parse.",
+  "seed": 62015,
+  "cards": {
+    "Second Breakfast": "Name:Second Breakfast\nManaCost:2 W\nTypes:Instant\nA:SP$ Pump | TargetMin$ 0 | TargetMax$ 2 | NumAtt$ +2 | NumDef$ +1 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | SubAbility$ DBFood | SpellDescription$ Up to two target creatures each get +2/+1 until end of turn.\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nDeckHas:Ability$Sacrifice|Token|LifeGain & Type$Artifact|Food\nOracle:Up to two target creatures each get +2/+1 until end of turn. Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Second Breakfast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

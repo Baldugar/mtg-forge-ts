@@ -1,0 +1,23 @@
+{
+  "id": "raphael-the-muscle-corpus-m685",
+  "description": "M6 corpus — Raphael, the Muscle; in-hand parse.",
+  "seed": 61940,
+  "cards": {
+    "Raphael, the Muscle": "Name:Raphael, the Muscle\nManaCost:4 R\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:4/4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.YouCtrl+HasCounters | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ Double all damage that creatures you control with counters on them would deal.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a Mutagen token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nK:Partner:Character select\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Double all damage that creatures you control with counters on them would deal.\\nWhen Raphael enters, create a Mutagen token.\\nPartner—Character select (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raphael, the Muscle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

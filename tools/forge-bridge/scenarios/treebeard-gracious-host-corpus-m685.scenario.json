@@ -1,0 +1,23 @@
+{
+  "id": "treebeard-gracious-host-corpus-m685",
+  "description": "M6 corpus — Treebeard, Gracious Host; in-hand parse.",
+  "seed": 62157,
+  "cards": {
+    "Treebeard, Gracious Host": "Name:Treebeard, Gracious Host\nManaCost:2 G W\nTypes:Legendary Creature Treefolk\nPT:0/5\nK:Trample\nK:Ward:2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two Food tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenAmount$ 2\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you gain life, put that many +1/+1 counters on target Halfling or Treefolk.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.Halfling,Creature.Treefolk | TgtPrompt$ Select target Halfling or Treefolk | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$LifeAmount\nDeckHints:Ability$Counters|LifeGain|Token\nDeckHas:Ability$Counters|LifeGain|Token\nOracle:Trample, ward {2}\\nWhen Treebeard, Gracious Host enters, create two Food tokens.\\nWhenever you gain life, put that many +1/+1 counters on target Halfling or Treefolk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treebeard, Gracious Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

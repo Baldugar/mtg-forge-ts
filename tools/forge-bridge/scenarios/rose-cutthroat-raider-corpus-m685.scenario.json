@@ -1,0 +1,23 @@
+{
+  "id": "rose-cutthroat-raider-corpus-m685",
+  "description": "M6 corpus — Rose, Cutthroat Raider; in-hand parse.",
+  "seed": 61970,
+  "cards": {
+    "Rose, Cutthroat Raider": "Name:Rose, Cutthroat Raider\nManaCost:2 R R\nTypes:Legendary Artifact Creature Robot\nPT:3/2\nK:First Strike\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ You | CheckSVar$ RaidTest | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Raid — At end of combat on your turn, if you attacked this turn, create a Junk token for each opponent you attacked. (It's an artifact with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_junk_sac_exileplay | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nSVar:X:PlayerCountPropertyYou$OpponentsAttackedThisTurn\nT:Mode$ Sacrificed | ValidCard$ Junk.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Whenever you sacrifice a Junk, add {R}.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 1\nDeckHas:Ability$Sacrifice|Token & Type$Junk|Artifact\nOracle:First strike\\nRaid — At end of combat on your turn, if you attacked this turn, create a Junk token for each opponent you attacked. (It's an artifact with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\\nWhenever you sacrifice a Junk, add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rose, Cutthroat Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

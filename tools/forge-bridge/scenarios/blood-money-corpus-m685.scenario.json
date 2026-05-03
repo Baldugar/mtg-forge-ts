@@ -1,0 +1,23 @@
+{
+  "id": "blood-money-corpus-m685",
+  "description": "M6 corpus — Blood Money; in-hand parse.",
+  "seed": 61482,
+  "cards": {
+    "Blood Money": "Name:Blood Money\nManaCost:5 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBTreasure | SpellDescription$ Destroy all creatures.\nSVar:DBTreasure:DB$ Token | TokenAmount$ X | TokenTapped$ True | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SubAbility$ DBCleanup | SpellDescription$ For each nontoken creature destroyed this way, create a tapped Treasure token.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.!token\nDeckHas:Ability$Token|Sacrifice\nOracle:Destroy all creatures. For each nontoken creature destroyed this way, create a tapped Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Money"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

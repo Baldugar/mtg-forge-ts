@@ -1,0 +1,23 @@
+{
+  "id": "the-spear-of-leonidas-corpus-m685",
+  "description": "M6 corpus — The Spear of Leonidas; in-hand parse.",
+  "seed": 62126,
+  "cards": {
+    "The Spear of Leonidas": "Name:The Spear of Leonidas\nManaCost:2 R\nTypes:Legendary Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigChoose | TriggerDescription$ Whenever equipped creature attacks, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBPump,DBToken,DBLoot\nSVar:DBPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Double Strike | SpellDescription$ Bull Rush — It gains double strike until end of turn.\nSVar:DBToken:DB$ Token | TokenScript$ phobos | TokenOwner$ You | SpellDescription$ Summon — Create Phobos, a legendary 3/2 red Horse creature token.\nSVar:DBLoot:DB$ Discard | Mode$ TgtChoose | NumCards$ 2 | SubAbility$ DBDraw | SpellDescription$ Revelation — Discard two cards, then draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nK:Equip:2\nDeckHas:Ability$Discard\nOracle:Whenever equipped creature attacks, choose one —\\n• Bull Rush — It gains double strike until end of turn.\\n• Summon — Create Phobos, a legendary 3/2 red Horse creature token.\\n• Revelation — Discard two cards, then draw two cards.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Spear of Leonidas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

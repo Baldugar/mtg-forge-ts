@@ -1,0 +1,23 @@
+{
+  "id": "graham-o-brien-corpus-m685",
+  "description": "M6 corpus — Graham O'Brien; in-hand parse.",
+  "seed": 61691,
+  "cards": {
+    "Graham O'Brien": "Name:Graham O'Brien\nManaCost:1 G\nTypes:Legendary Creature Human Pilot\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Paradox — Whenever you cast a spell from anywhere other than your hand, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nK:Doctor's companion\nDeckHas:Ability$Token|Sacrifice & Type$Food|Artifact\nOracle:Paradox — Whenever you cast a spell from anywhere other than your hand, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graham O'Brien"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

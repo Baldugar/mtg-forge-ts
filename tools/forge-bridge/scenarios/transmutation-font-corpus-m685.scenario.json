@@ -1,0 +1,23 @@
+{
+  "id": "transmutation-font-corpus-m685",
+  "description": "M6 corpus — Transmutation Font; in-hand parse.",
+  "seed": 62152,
+  "cards": {
+    "Transmutation Font": "Name:Transmutation Font\nManaCost:5\nTypes:Artifact\nA:AB$ GenericChoice | Cost$ T | Defined$ You | Choices$ Blood,Clue,Food | SpellDescription$ Create your choice of a Blood token, a Clue token, or a Food token.\nSVar:Blood:DB$ Token | TokenScript$ c_a_blood_draw | TokenOwner$ You | SpellDescription$ Blood\nSVar:Clue:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You | SpellDescription$ Clue\nSVar:Food:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Food\nA:AB$ ChangeZone | Cost$ 3 T Sac<3/Artifact.token+WithDifferentNames/artifact tokens with different names> | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact | ChangeNum$ 1 | SorcerySpeed$ True | SpellDescription$ Search your library for an artifact card, put it onto the battlefield, then shuffle.\nSVar:AIPreference:SacCost$Artifact.token\nOracle:{T}: Create your choice of a Blood token, a Clue token, or a Food token.\\n{3}, {T}, Sacrifice three artifact tokens with different names: Search your library for an artifact card, put it onto the battlefield, then shuffle. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transmutation Font"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

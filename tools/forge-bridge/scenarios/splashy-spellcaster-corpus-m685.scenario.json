@@ -1,0 +1,23 @@
+{
+  "id": "splashy-spellcaster-corpus-m685",
+  "description": "M6 corpus — Splashy Spellcaster; in-hand parse.",
+  "seed": 62059,
+  "cards": {
+    "Splashy Spellcaster": "Name:Splashy Spellcaster\nManaCost:3 U\nTypes:Creature Elemental Wizard\nPT:2/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create a Sorcerer Role token attached to up to one other target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\nSVar:TrigToken:DB$ Token | TokenScript$ role_sorcerer | TargetMin$ 0 | TargetMax$ 1 | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select up to one other target creature you control\nDeckHas:Ability$Token & Type$Role|Aura\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, create a Sorcerer Role token attached to up to one other target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has \"Whenever this creature attacks, scry 1.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splashy Spellcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

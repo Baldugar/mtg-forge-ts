@@ -1,0 +1,23 @@
+{
+  "id": "jewel-thief-corpus-m685",
+  "description": "M6 corpus — Jewel Thief; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "Jewel Thief": "Name:Jewel Thief\nManaCost:2 G\nTypes:Creature Cat Rogue\nPT:3/3\nK:Vigilance\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Vigilance, trample\\nWhen Jewel Thief enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jewel Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

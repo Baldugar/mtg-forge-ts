@@ -1,0 +1,23 @@
+{
+  "id": "seedship-agrarian-corpus-m685",
+  "description": "M6 corpus — Seedship Agrarian; in-hand parse.",
+  "seed": 62016,
+  "cards": {
+    "Seedship Agrarian": "Name:Seedship Agrarian\nManaCost:3 G\nTypes:Creature Insect Scientist\nPT:3/3\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this creature becomes tapped, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_lander_sac_search\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Land\nDeckHas:Ability$Token\nOracle:Whenever this creature becomes tapped, create a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")\\nLandfall — Whenever a land you control enters, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seedship Agrarian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

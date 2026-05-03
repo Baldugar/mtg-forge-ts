@@ -1,0 +1,23 @@
+{
+  "id": "forecasting-fortune-teller-corpus-m685",
+  "description": "M6 corpus — Forecasting Fortune Teller; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "Forecasting Fortune Teller": "Name:Forecasting Fortune Teller\nManaCost:1 U\nTypes:Creature Human Advisor Ally\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nOracle:When this creature enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forecasting Fortune Teller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

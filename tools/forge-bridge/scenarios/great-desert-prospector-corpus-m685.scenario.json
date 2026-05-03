@@ -1,0 +1,23 @@
+{
+  "id": "great-desert-prospector-corpus-m685",
+  "description": "M6 corpus — Great Desert Prospector; in-hand parse.",
+  "seed": 61692,
+  "cards": {
+    "Great Desert Prospector": "Name:Great Desert Prospector\nManaCost:4 W\nTypes:Creature Human Artificer\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a tapped powerstone token for each other creature you control. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenTapped$ True | TokenScript$ c_a_powerstone\nSVar:X:Count$Valid Creature.YouCtrl+StrictlyOther\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Great Desert Surveyor enters, create a tapped powerstone token for each other creature you control. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Great Desert Prospector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

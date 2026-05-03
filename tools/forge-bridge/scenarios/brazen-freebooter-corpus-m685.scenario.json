@@ -1,0 +1,23 @@
+{
+  "id": "brazen-freebooter-corpus-m685",
+  "description": "M6 corpus — Brazen Freebooter; in-hand parse.",
+  "seed": 61504,
+  "cards": {
+    "Brazen Freebooter": "Name:Brazen Freebooter\nManaCost:3 R\nTypes:Creature Human Pirate\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, create a Treasure token.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Brazen Freebooter enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brazen Freebooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

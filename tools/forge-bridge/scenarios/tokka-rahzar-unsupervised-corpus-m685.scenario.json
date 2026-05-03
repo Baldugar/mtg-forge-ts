@@ -1,0 +1,23 @@
+{
+  "id": "tokka-rahzar-unsupervised-corpus-m685",
+  "description": "M6 corpus — Tokka & Rahzar, Unsupervised; in-hand parse.",
+  "seed": 62141,
+  "cards": {
+    "Tokka & Rahzar, Unsupervised": "Name:Tokka & Rahzar, Unsupervised\nManaCost:2 R\nTypes:Legendary Creature Turtle Wolf Mutant\nPT:3/3\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.Other+!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | ActivationLimit$ 1 | TriggerDescription$ Whenever another nontoken creature you control leaves the battlefield, put a +1/+1 counter on NICKNAME and create a Treasure token. This ability triggers only once each turn.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Ability$Counters\nOracle:First strike\\nWhenever another nontoken creature you control leaves the battlefield, put a +1/+1 counter on Tokka & Rahzar and create a Treasure token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tokka & Rahzar, Unsupervised"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

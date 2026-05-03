@@ -1,0 +1,23 @@
+{
+  "id": "visions-of-phyrexia-corpus-m685",
+  "description": "M6 corpus — Visions of Phyrexia; in-hand parse.",
+  "seed": 62186,
+  "cards": {
+    "Visions of Phyrexia": "Name:Visions of Phyrexia\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library. You may play it this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffectYou\nSVar:DBEffectYou:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you didn't play a card from exile this turn, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone\nT:Mode$ LandPlayed | Origin$ Exile | ValidCard$ Land.YouCtrl | Execute$ StoreVar | Static$ True\nSVar:StoreVar:DB$ StoreSVar | SVar$ LandsPlayedFromExile | Type$ Number | Expression$ 1\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ StoreSVar | SVar$ LandsPlayedFromExile | Type$ Number | Expression$ 0\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+wasCastFromExile/Plus.LandsPlayedFromExile\nSVar:LandsPlayedFromExile:Number$0\nDeckHas:Ability$Token & Type$Artifact\nOracle:At the beginning of your upkeep, exile the top card of your library. You may play that card this turn.\\nAt the beginning of your end step, if you didn't play a card from exile this turn, create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Visions of Phyrexia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

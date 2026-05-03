@@ -1,0 +1,23 @@
+{
+  "id": "monument-to-endurance-corpus-m685",
+  "description": "M6 corpus — Monument to Endurance; in-hand parse.",
+  "seed": 61848,
+  "cards": {
+    "Monument to Endurance": "Name:Monument to Endurance\nManaCost:3\nTypes:Artifact\nT:Mode$ Discarded | ValidCard$ Card.YouOwn | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever you discard a card, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBToken,DBLoseLife | ChoiceRestriction$ ThisTurn\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3 | SpellDescription$ Each opponent loses 3 life.\nDeckNeeds:Ability$Discard\nDeckHas:Ability$Token\nOracle:Whenever you discard a card, choose one that hasn't been chosen this turn —\\n• Draw a card.\\n• Create a Treasure token.\\n• Each opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monument to Endurance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

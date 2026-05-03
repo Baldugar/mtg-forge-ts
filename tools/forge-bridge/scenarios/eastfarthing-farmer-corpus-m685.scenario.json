@@ -1,0 +1,23 @@
+{
+  "id": "eastfarthing-farmer-corpus-m685",
+  "description": "M6 corpus — Eastfarthing Farmer; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Eastfarthing Farmer": "Name:Eastfarthing Farmer\nManaCost:2 W\nTypes:Creature Halfling Peasant\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ When CARDNAME enters, create a Food token. When you do, target creature you control gets +1/+1 until end of turn for each Food you control. (A Food token is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | RememberOriginalTokens$ True | SubAbility$ DBImmediateTrig\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | TriggerAmount$ Remembered$Amount | Execute$ TrigPump | SubAbility$ DBCleanup | TriggerDescription$ When you do, target creature you control gets +1/+1 until end of turn for each Food you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Food.YouCtrl\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Food\nDeckHas:Ability$Token|LifeGain|Sacrifice & Type$Food\nDeckHints:Type$Food\nOracle:When Eastfarthing Farmer enters, create a Food token. When you do, target creature you control gets +1/+1 until end of turn for each Food you control. (A Food token is an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eastfarthing Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

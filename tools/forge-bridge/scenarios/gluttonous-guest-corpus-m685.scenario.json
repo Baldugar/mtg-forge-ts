@@ -1,0 +1,23 @@
+{
+  "id": "gluttonous-guest-corpus-m685",
+  "description": "M6 corpus — Gluttonous Guest; in-hand parse.",
+  "seed": 61680,
+  "cards": {
+    "Gluttonous Guest": "Name:Gluttonous Guest\nManaCost:2 B\nTypes:Creature Vampire\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_blood_draw\nT:Mode$ Sacrificed | ValidCard$ Blood.token+YouCtrl | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Blood token, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Blood\nOracle:When Gluttonous Guest enters, create a Blood token. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")\\nWhenever you sacrifice a Blood token, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gluttonous Guest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

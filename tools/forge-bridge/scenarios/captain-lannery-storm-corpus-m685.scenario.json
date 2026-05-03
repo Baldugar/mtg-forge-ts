@@ -1,0 +1,23 @@
+{
+  "id": "captain-lannery-storm-corpus-m685",
+  "description": "M6 corpus — Captain Lannery Storm; in-hand parse.",
+  "seed": 61520,
+  "cards": {
+    "Captain Lannery Storm": "Name:Captain Lannery Storm\nManaCost:2 R\nTypes:Legendary Creature Human Pirate\nPT:2/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nT:Mode$ Sacrificed | ValidCard$ Treasure.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Treasure, CARDNAME gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nOracle:Haste\\nWhenever Captain Lannery Storm attacks, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nWhenever you sacrifice a Treasure, Captain Lannery Storm gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain Lannery Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

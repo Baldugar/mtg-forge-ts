@@ -1,0 +1,23 @@
+{
+  "id": "venser-corpse-puppet-corpus-m685",
+  "description": "M6 corpus — Venser, Corpse Puppet; in-hand parse.",
+  "seed": 62181,
+  "cards": {
+    "Venser, Corpse Puppet": "Name:Venser, Corpse Puppet\nManaCost:U B\nTypes:Legendary Creature Phyrexian Zombie Wizard\nPT:1/3\nK:Lifelink\nK:Toxic:1\nT:Mode$ Proliferate | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ Whenever you proliferate, ABILITY\nSVar:TrigChoose:DB$ Charm | Choices$ DBToken,DBPump\nSVar:DBToken:DB$ Token | TokenScript$ the_hollow_sentinel | TokenOwner$ You | ConditionPresent$ Creature.YouCtrl+namedThe Hollow Sentinel | ConditionCompare$ EQ0 | SpellDescription$ If you don't control a creature named The Hollow Sentinel, create The Hollow Sentinel, a legendary 3/3 colorless Phyrexian Golem artifact creature token.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.Artifact+YouCtrl | TgtPrompt$ Select target artifact creature you control | KW$ Flying & Lifelink | SpellDescription$ Target artifact creature you control gains flying and lifelink until end of turn.\nOracle:Lifelink, toxic 1\\nWhenever you proliferate, choose one —\\n• If you don't control a creature named The Hollow Sentinel, create The Hollow Sentinel, a legendary 3/3 colorless Phyrexian Golem artifact creature token.\\n• Target artifact creature you control gains flying and lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venser, Corpse Puppet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

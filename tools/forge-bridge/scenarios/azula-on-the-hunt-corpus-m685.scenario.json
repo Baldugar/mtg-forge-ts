@@ -1,0 +1,23 @@
+{
+  "id": "azula-on-the-hunt-corpus-m685",
+  "description": "M6 corpus — Azula, On the Hunt; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Azula, On the Hunt": "Name:Azula, On the Hunt\nManaCost:3 B\nTypes:Legendary Creature Human Noble\nPT:4/3\nK:Firebending:2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever NICKNAME attacks, you lose 1 life and create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nOracle:Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)\\nWhenever Azula attacks, you lose 1 life and create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azula, On the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

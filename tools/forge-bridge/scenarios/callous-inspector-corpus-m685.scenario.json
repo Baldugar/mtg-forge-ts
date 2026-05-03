@@ -1,0 +1,23 @@
+{
+  "id": "callous-inspector-corpus-m685",
+  "description": "M6 corpus — Callous Inspector; in-hand parse.",
+  "seed": 61517,
+  "cards": {
+    "Callous Inspector": "Name:Callous Inspector\nManaCost:B\nTypes:Creature Human Soldier\nPT:1/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this creature dies, it deals 1 damage to you. Create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ You | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen this creature dies, it deals 1 damage to you. Create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Callous Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mahadi-emporium-master-corpus-m685",
+  "description": "M6 corpus — Mahadi, Emporium Master; in-hand parse.",
+  "seed": 61810,
+  "cards": {
+    "Mahadi, Emporium Master": "Name:Mahadi, Emporium Master\nManaCost:1 B R\nTypes:Legendary Creature Devil\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a Treasure token for each creature that died this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHints:Ability$Token\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:At the beginning of your end step, create a Treasure token for each creature that died this turn. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mahadi, Emporium Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

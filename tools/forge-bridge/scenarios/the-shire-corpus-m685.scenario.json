@@ -1,0 +1,23 @@
+{
+  "id": "the-shire-corpus-m685",
+  "description": "M6 corpus — The Shire; in-hand parse.",
+  "seed": 62125,
+  "cards": {
+    "The Shire": "Name:The Shire\nManaCost:no cost\nTypes:Legendary Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Token | Cost$ 1 G T tapXType<1/Creature> | TokenScript$ c_a_food_sac | SpellDescription$ Create a Food token.\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Type$Legendary\nOracle:The Shire enters tapped unless you control a legendary creature.\\n{T}: Add {G}.\\n{1}{G}, {T}, Tap an untapped creature you control: Create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Shire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

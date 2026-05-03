@@ -1,0 +1,23 @@
+{
+  "id": "skybeast-tracker-corpus-m685",
+  "description": "M6 corpus — Skybeast Tracker; in-hand parse.",
+  "seed": 62036,
+  "cards": {
+    "Skybeast Tracker": "Name:Skybeast Tracker\nManaCost:3 G\nTypes:Creature Giant Archer\nPT:2/4\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE5 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFood | TriggerDescription$ Whenever you cast a spell with mana value 5 or greater, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Token & Type$Artifact|Food\nOracle:Reach\\nWhenever you cast a spell with mana value 5 or greater, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skybeast Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

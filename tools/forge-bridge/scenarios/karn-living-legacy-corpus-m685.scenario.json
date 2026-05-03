@@ -1,0 +1,23 @@
+{
+  "id": "karn-living-legacy-corpus-m685",
+  "description": "M6 corpus — Karn, Living Legacy; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "Karn, Living Legacy": "Name:Karn, Living Legacy\nManaCost:4\nTypes:Legendary Planeswalker Karn\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenTapped$ True | TokenScript$ c_a_powerstone | TokenOwner$ You | SpellDescription$ Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nA:AB$ ChooseNumber | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBDig | SpellDescription$ Pay any amount of mana. Look at that many cards from the top of your library, then put one of those cards into your hand and the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ Y | ChangeNum$ 1 | RestRandomOrder$ True | UnlessCost$ Y | UnlessPayer$ You | UnlessSwitched$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | AILogic$ Always | Stackable$ False | Name$ Emblem — Karn, Living Legacy | Image$ emblem_karn_living_legacy | Duration$ Permanent | Abilities$ KarnPing | SpellDescription$ You get an emblem with \"Tap an untapped artifact you control: This emblem deals 1 damage to any target.\"\nSVar:KarnPing:AB$ DealDamage | Cost$ tapXType<1/Artifact> | ActivationZone$ Command | ValidTgts$ Any | NumDmg$ 1\nSVar:PlayMain1:TRUE\nSVar:Y:Count$ChosenNumber\nDeckHas:Ability$Token & Type$Artifact\nDeckNeeds:Type$Artifact\nOracle:[+1]: Create a tapped Powerstone token. (It's an artifact with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\\n[-1]: Pay any amount of mana. Look at that many cards from the top of your library, then put one of those cards into your hand and the rest on the bottom of your library in a random order.\\n[-7]: You get an emblem with \"Tap an untapped artifact you control: This emblem deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karn, Living Legacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

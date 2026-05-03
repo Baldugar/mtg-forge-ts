@@ -1,0 +1,23 @@
+{
+  "id": "rocco-street-chef-corpus-m685",
+  "description": "M6 corpus — Rocco, Street Chef; in-hand parse.",
+  "seed": 61967,
+  "cards": {
+    "Rocco, Street Chef": "Name:Rocco, Street Chef\nManaCost:R G W\nTypes:Legendary Creature Elf Druid\nPT:2/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your end step, each player exiles the top card of their library. Until your next end step, each player may play the card they exiled this way.\nSVar:TrigExile:DB$ Dig | Defined$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ UntilYourNextEndStep | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayPlayer$ CardOwner | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until your next end step, each player may play the card they exiled this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player plays a land from exile or casts a spell from exile, you put a +1/+1 counter on target creature and create a Food token.\nT:Mode$ LandPlayed | Origin$ Exile | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigCounter | Secondary$ True | TriggerDescription$ Whenever a player plays a land from exile or casts a spell from exile, you put a +1/+1 counter on target creature and create a Food token.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBTokenFood\nSVar:DBTokenFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Sacrifice|Token|Counters|LifeGain & Type$Artifact\nDeckHints:Keyword$Cascade\nOracle:At the beginning of your end step, each player exiles the top card of their library. Until your next end step, each player may play the card they exiled this way.\\nWhenever a player plays a land from exile or casts a spell from exile, you put a +1/+1 counter on target creature and create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rocco, Street Chef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

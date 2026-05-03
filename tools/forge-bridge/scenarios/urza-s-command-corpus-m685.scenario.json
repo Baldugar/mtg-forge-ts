@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-command-corpus-m685",
+  "description": "M6 corpus — Urza's Command; in-hand parse.",
+  "seed": 62171,
+  "cards": {
+    "Urza's Command": "Name:Urza's Command\nManaCost:2 U U\nTypes:Instant\nA:SP$ Charm | Choices$ DBPump,DBPowerStone,DBKarnstruct,DBDraw | CharmNum$ 2\nSVar:DBPump:DB$ PumpAll | ValidCards$ Card.Creature+YouDontCtrl | NumAtt$ -2 | SpellDescription$ Creatures you don't control get -2/-0 until end of turn.\nSVar:DBPowerStone:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone | SpellDescription$ Create a tapped Powerstone token.\nSVar:DBKarnstruct:DB$ Token | TokenScript$ c_0_0_a_construct_total_artifacts | TokenTapped$ True | SpellDescription$ Create a tapped 0/0 colorless Construct artifact creature token with \"This creature gets +1/+1 for each artifact you control.\"\nSVar:DBDraw:DB$ Scry | ScryNum$ 1 | SubAbility$ Draw | SpellDescription$ Scry 1, then draw a card.\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Token & Type$Artifact|Construct\nDeckHints:Type$Urza\nOracle:Choose two —\\n• Creatures you don't control get -2/-0 until end of turn.\\n• Create a tapped Powerstone token.\\n• Create a tapped 0/0 colorless Construct artifact creature token with \"This creature gets +1/+1 for each artifact you control.\"\\n• Scry 1, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

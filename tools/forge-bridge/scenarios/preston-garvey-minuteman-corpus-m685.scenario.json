@@ -1,0 +1,23 @@
+{
+  "id": "preston-garvey-minuteman-corpus-m685",
+  "description": "M6 corpus — Preston Garvey, Minuteman; in-hand parse.",
+  "seed": 61916,
+  "cards": {
+    "Preston Garvey, Minuteman": "Name:Preston Garvey, Minuteman\nManaCost:2 R G W\nTypes:Legendary Creature Human Soldier\nPT:4/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, create a green Aura enchantment token named Settlement attached to up to one target land you control. It has enchant land and \"Enchanted land has '{T}: Add one mana of any color.'\"\nSVar:TrigToken:DB$ Token | TokenScript$ settlement | TokenOwner$ You | TargetMin$ 0 | TargetMax$ 1 | AttachedTo$ Targeted | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select up to one target land you control\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntapAll | TriggerDescription$ Whenever CARDNAME attacks, untap each enchanted permanent you control.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Permanent.enchanted+YouCtrl\nSVar:BuffedBy:Permanent.enchanted\nDeckHas:Ability$Token\nOracle:At the beginning of combat on your turn, create a green Aura enchantment token named Settlement attached to up to one target land you control. It has enchant land and \"Enchanted land has '{T}: Add one mana of any color.'\"\\nWhenever Preston Garvey, Minuteman attacks, untap each enchanted permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preston Garvey, Minuteman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

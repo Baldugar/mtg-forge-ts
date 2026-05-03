@@ -1,0 +1,23 @@
+{
+  "id": "zoo-escapees-corpus-m685",
+  "description": "M6 corpus — Zoo Escapees; in-hand parse.",
+  "seed": 62222,
+  "cards": {
+    "Zoo Escapees": "Name:Zoo Escapees\nManaCost:1 G\nTypes:Creature Boar Rhino\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigToken | TriggerDescription$ When this creature leaves the battlefield, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nOracle:When this creature leaves the battlefield, create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zoo Escapees"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

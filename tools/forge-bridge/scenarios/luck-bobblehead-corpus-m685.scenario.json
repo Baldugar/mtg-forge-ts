@@ -1,0 +1,23 @@
+{
+  "id": "luck-bobblehead-corpus-m685",
+  "description": "M6 corpus — Luck Bobblehead; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Luck Bobblehead": "Name:Luck Bobblehead\nManaCost:3\nTypes:Artifact Bobblehead\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ RollDice | Cost$ 1 T | Amount$ X | Sides$ 6 | MaxRollsResults$ True | EvenOddResults$ True | SubAbility$ DBCreateTreasure | StackDescription$ SpellDescription | SpellDescription$ Roll X six-sided dice, where X is the number of Bobbleheads you control. Create a tapped Treasure token for each even result. If you rolled 6 exactly seven times, you win the game.\nSVar:DBCreateTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenTapped$ True | TokenAmount$ Y | SubAbility$ DBWinGame\nSVar:DBWinGame:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ MaxRolls | ConditionSVarCompare$ EQ7\nSVar:Y:SVar$EvenResults\nSVar:X:Count$Valid Card.Bobblehead+YouCtrl\nOracle:{T}: Add one mana of any color.\\n{1}, {T}: Roll X six-sided dice, where X is the number of Bobbleheads you control. Create a tapped Treasure token for each even result. If you rolled 6 exactly seven times, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luck Bobblehead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

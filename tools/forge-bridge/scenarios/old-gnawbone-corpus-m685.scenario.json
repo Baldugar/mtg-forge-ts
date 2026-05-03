@@ -1,0 +1,23 @@
+{
+  "id": "old-gnawbone-corpus-m685",
+  "description": "M6 corpus — Old Gnawbone; in-hand parse.",
+  "seed": 61880,
+  "cards": {
+    "Old Gnawbone": "Name:Old Gnawbone\nManaCost:5 G G\nTypes:Legendary Creature Dragon\nPT:7/7\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature you control deals combat damage to a player, create that many Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever a creature you control deals combat damage to a player, create that many Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Old Gnawbone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

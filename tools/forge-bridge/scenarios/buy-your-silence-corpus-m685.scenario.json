@@ -1,0 +1,23 @@
+{
+  "id": "buy-your-silence-corpus-m685",
+  "description": "M6 corpus — Buy Your Silence; in-hand parse.",
+  "seed": 61514,
+  "cards": {
+    "Buy Your Silence": "Name:Buy Your Silence\nManaCost:4 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SubAbility$ DBTreasure | StackDescription$ SpellDescription | SpellDescription$ Exile target nonland permanent. Its controller creates a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:DBTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ TargetedController\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Exile target nonland permanent. Its controller creates a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Buy Your Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

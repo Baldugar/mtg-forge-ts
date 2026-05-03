@@ -1,0 +1,23 @@
+{
+  "id": "potatoes-corpus-m685",
+  "description": "M6 corpus — Potatoes; in-hand parse.",
+  "seed": 61914,
+  "cards": {
+    "Potatoes": "Name:Potatoes\nManaCost:0\nTypes:Artifact Food\nA:AB$ Charm | Cost$ 2 T Sac<1/CARDNAME> | Choices$ Boil,Mash,Stew\nSVar:Boil:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ Boil — CARDNAME deals 1 damage to any target.\nSVar:Mash:DB$ Token | TokenScript$ c_a_food_sac | TokenAmount$ 2 | SpellDescription$ Mash — Create two Food tokens.\nSVar:Stew:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw | SpellDescription$ Stew — Gain 3 life. Draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Sacrifice\nOracle:{2}, {T}, Sacrifice Potatoes: Choose one —\\n• Boil — Potatoes deals 1 damage to any target.\\n• Mash — Create two Food tokens.\\n• Stew — Gain 3 life. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Potatoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

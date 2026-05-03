@@ -1,0 +1,23 @@
+{
+  "id": "casey-raph-hotheads-corpus-m685",
+  "description": "M6 corpus — Casey & Raph, Hotheads; in-hand parse.",
+  "seed": 61524,
+  "cards": {
+    "Casey & Raph, Hotheads": "Name:Casey & Raph, Hotheads\nManaCost:4 R\nTypes:Legendary Creature Mutant Ninja Human Turtle\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enter, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBExile,DBToken | AdditionalDescription$ . Each mode must target a different player.\nSVar:DBExile:DB$ Dig | ValidTgts$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Target player exiles the top card of their library. Until that player's next end step, they may play that card without paying its mana cost.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CRPlay | Duration$ Permanent | ExileOnMoved$ Exile | RememberObjects$ Remembered & RememberedOwner | Triggers$ RemoveTrigger | SubAbility$ DBCleanup\nSVar:CRPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayPlayer$ CardOwner | AffectedZone$ Exile | Description$ Until that player's next end step, they may play that card without paying its mana cost.\nSVar:RemoveTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.IsRemembered | Static$ True | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TargetUnique$ True | TokenOwner$ ThisTargetedPlayer | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | SpellDescription$ Target player creates two Treasure tokens.\nOracle:When Casey & Raph enter, choose one or both. Each mode must target a different player.\\n• Target player exiles the top card of their library. Until that player's next end step, they may play that card without paying its mana cost.\\n• Target player creates two Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Casey & Raph, Hotheads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mister-gutsy-corpus-m685",
+  "description": "M6 corpus — Mister Gutsy; in-hand parse.",
+  "seed": 61842,
+  "cards": {
+    "Mister Gutsy": "Name:Mister Gutsy\nManaCost:2\nTypes:Artifact Creature Robot Soldier\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Aura,Equipment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Aura or Equipment spell, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ P1P1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create X Junk tokens, where X is the number of +1/+1 counters on it. (They're artifacts with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_junk_sac_exileplay | TokenOwner$ TriggeredCardController\nSVar:X:TriggeredCard$CardCounters.P1P1\nDeckHas:Ability$Counters|Token & Type$Junk|Artifact\nDeckNeeds:Type$Aura|Equipment\nOracle:Whenever you cast an Aura or Equipment spell, put a +1/+1 counter on Mister Gutsy.\\nWhen Mister Gutsy dies, create X Junk tokens, where X is the number of +1/+1 counters on it. (They're artifacts with \"{T}, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mister Gutsy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ignis-scientia-corpus-m685",
+  "description": "M6 corpus — Ignis Scientia; in-hand parse.",
+  "seed": 61730,
+  "cards": {
+    "Ignis Scientia": "Name:Ignis Scientia\nManaCost:1 G U\nTypes:Legendary Creature Human Advisor\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | ChangeValid$ Land | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | Tapped$ True\nA:AB$ ChangeZone | PrecostDesc$ I've Come Up with a New Recipe! — | Cost$ 1 G U T | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Exile target card from a graveyard. If a creature card was exiled this way, create a Food token.\nSVar:DBToken:DB$ Token | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ GE1 | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$LifeGain|Token\nOracle:When Ignis Scientia enters, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.\\nI've Come Up with a New Recipe! — {1}{G}{U}, {T}: Exile target card from a graveyard. If a creature card was exiled this way, create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ignis Scientia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

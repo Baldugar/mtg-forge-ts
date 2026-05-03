@@ -1,0 +1,23 @@
+{
+  "id": "redtooth-genealogist-corpus-m685",
+  "description": "M6 corpus — Redtooth Genealogist; in-hand parse.",
+  "seed": 61949,
+  "cards": {
+    "Redtooth Genealogist": "Name:Redtooth Genealogist\nManaCost:2 G\nTypes:Creature Elf Advisor\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a Royal Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)\nSVar:TrigToken:DB$ Token | TokenScript$ role_royal | TokenOwner$ You | AttachedTo$ Targeted | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control\nDeckHas:Ability$Token & Type$Role|Aura\nOracle:When Redtooth Genealogist enters, create a Royal Role token attached to another target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redtooth Genealogist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

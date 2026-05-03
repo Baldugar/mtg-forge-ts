@@ -1,0 +1,23 @@
+{
+  "id": "bram-baguette-brawler-corpus-m685",
+  "description": "M6 corpus — Bram, Baguette Brawler; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Bram, Baguette Brawler": "Name:Bram, Baguette Brawler\nManaCost:1 W\nTypes:Legendary Creature Human Peasant\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters the battlefield, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Food.nonCreature+YouCtrl | AddType$ Equipment | AddStaticAbility$ FoodEquip | AddKeyword$ Equip:1 | Description$ Each noncreature Food you control is an Equipment with equip {1} and \"Equipped creature gets +1/+1.\"\nSVar:FoodEquip:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nDeckHas:Ability$Token|Sacrifice & Type$Food|Artifact|Equipment\nDeckHints:Type$Food\nOracle:When Bram, Baguette Brawler enters the battlefield, create a Food token.\\nEach noncreature Food you control is an Equipment with equip {1} and \"Equipped creature gets +1/+1.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bram, Baguette Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

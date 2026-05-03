@@ -1,0 +1,23 @@
+{
+  "id": "prosperous-pirates-corpus-m685",
+  "description": "M6 corpus — Prosperous Pirates; in-hand parse.",
+  "seed": 61927,
+  "cards": {
+    "Prosperous Pirates": "Name:Prosperous Pirates\nManaCost:4 U\nTypes:Creature Human Pirate\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBTreasureTokens | TriggerDescription$ When CARDNAME enters, create two Treasure tokens.\nSVar:DBTreasureTokens:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Prosperous Pirates enters, create two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prosperous Pirates"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

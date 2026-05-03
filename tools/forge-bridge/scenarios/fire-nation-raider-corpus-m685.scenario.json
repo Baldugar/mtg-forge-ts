@@ -1,0 +1,23 @@
+{
+  "id": "fire-nation-raider-corpus-m685",
+  "description": "M6 corpus — Fire Nation Raider; in-hand parse.",
+  "seed": 61632,
+  "cards": {
+    "Fire Nation Raider": "Name:Fire Nation Raider\nManaCost:3 R\nTypes:Creature Human Soldier\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigToken | TriggerDescription$ Raid — When this creature enters, if you attacked this turn, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.)\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When this creature enters, if you attacked this turn, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Nation Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

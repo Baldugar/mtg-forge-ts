@@ -1,0 +1,23 @@
+{
+  "id": "scion-of-opulence-corpus-m685",
+  "description": "M6 corpus — Scion of Opulence; in-hand parse.",
+  "seed": 62010,
+  "cards": {
+    "Scion of Opulence": "Name:Scion of Opulence\nManaCost:2 R\nTypes:Creature Vampire Noble\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Vampire.Other+!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken Vampire you control dies, create a Treasure token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nA:AB$ Dig | Cost$ R Sac<2/Artifact> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIPreference:SacCost$Artifact.token\nDeckHas:Ability$Token|Sacrifice\nOracle:Whenever Scion of Opulence or another nontoken Vampire you control dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n{R}, Sacrifice two artifacts: Exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scion of Opulence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

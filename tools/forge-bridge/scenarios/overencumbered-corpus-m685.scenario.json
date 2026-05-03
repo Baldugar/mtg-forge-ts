@@ -1,0 +1,23 @@
+{
+  "id": "overencumbered-corpus-m685",
+  "description": "M6 corpus — Overencumbered; in-hand parse.",
+  "seed": 61889,
+  "cards": {
+    "Overencumbered": "Name:Overencumbered\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Opponent\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, enchanted opponent creates a Clue token, a Food token, and a Junk token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw,c_a_food_sac,c_a_junk_sac_exileplay | TokenOwner$ EnchantedPlayer\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ Opponent.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ At the beginning of combat on enchanted opponent's turn, that player may pay {1} for each artifact they control. If they don't, creatures can't attack this combat.\nSVar:TrigEffect:DB$ Effect | UnlessCost$ Y | UnlessPayer$ EnchantedPlayer | Duration$ UntilEndOfCombat | StaticAbilities$ StaticCantAttack\nSVar:StaticCantAttack:Mode$ CantAttack | ValidCard$ Creature | Description$ Creatures can't attack this turn.\nSVar:Y:Count$Valid Artifact.EnchantedPlayerCtrl\nDeckHas:Ability$Token & Type$Clue|Food|Junk\nOracle:Enchant opponent\\nWhen Overencumbered enters, enchanted opponent creates a Clue token, a Food token, and a Junk token.\\nAt the beginning of combat on enchanted opponent's turn, that player may pay {1} for each artifact they control. If they don't, creatures can't attack this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overencumbered"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

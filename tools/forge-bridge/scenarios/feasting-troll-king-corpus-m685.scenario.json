@@ -1,0 +1,23 @@
+{
+  "id": "feasting-troll-king-corpus-m685",
+  "description": "M6 corpus — Feasting Troll King; in-hand parse.",
+  "seed": 61625,
+  "cards": {
+    "Feasting Troll King": "Name:Feasting Troll King\nManaCost:2 G G G G\nTypes:Creature Troll Noble\nPT:7/6\nK:Vigilance\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, create three Food tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ c_a_food_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ Sac<3/Food> | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | PlayerTurn$ True | SpellDescription$ Return CARDNAME from your graveyard to the battlefield. Activate only during your turn.\nSVar:DiscardMe:1\nSVar:AIPreference:SacCost$Card.Food\nDeckHas:Ability$Token|LifeGain|Food\nDeckHints:Ability$Food\nOracle:Vigilance, trample\\nWhen Feasting Troll King enters, if you cast it from your hand, create three Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\\nSacrifice three Foods: Return Feasting Troll King from your graveyard to the battlefield. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feasting Troll King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

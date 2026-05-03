@@ -1,0 +1,23 @@
+{
+  "id": "swashbuckler-extraordinaire-corpus-m685",
+  "description": "M6 corpus — Swashbuckler Extraordinaire; in-hand parse.",
+  "seed": 62083,
+  "cards": {
+    "Swashbuckler Extraordinaire": "Name:Swashbuckler Extraordinaire\nManaCost:2 R\nTypes:Creature Dragon Rogue Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you may sacrifice one or more Treasures. When you do, up to that many target creatures gain double strike until end of turn.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | Amount$ X | SacValid$ Treasure | Optional$ True | RememberSacrificed$ True | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | Execute$ DBPump | ConditionDefined$ RememberedLKI | ConditionPresent$ Card | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ When you do, up to that many target creatures gain double strike until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | KW$ Double Strike | TargetMin$ 0 | TargetMax$ DBSize | TgtPrompt$ Select target creatures | StackDescription$ {c:Targeted} gain double strike until end of turn. | SpellDescription$ Up to that many target creatures gain double strike until end of turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBSize:TriggerRemembered$Amount\nSVar:X:Count$Valid Treasure.YouCtrl\nAI:RemoveDeck:All\nDeckHas:Ability$Token|Sacrifice & Type$Treasure|Artifact\nOracle:When Swashbuckler Extraordinaire enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\nWhenever you attack, you may sacrifice one or more Treasures. When you do, up to that many target creatures gain double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swashbuckler Extraordinaire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

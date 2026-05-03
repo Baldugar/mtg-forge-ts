@@ -1,0 +1,23 @@
+{
+  "id": "magic-pot-corpus-m685",
+  "description": "M6 corpus — Magic Pot; in-hand parse.",
+  "seed": 61807,
+  "cards": {
+    "Magic Pot": "Name:Magic Pot\nManaCost:3\nTypes:Artifact Creature Goblin Construct\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 2 T | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile target card from a graveyard.\nDeckHas:Ability$Token\nOracle:When this creature dies, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\\n{2}, {T}: Exile target card from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magic Pot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

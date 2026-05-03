@@ -1,0 +1,23 @@
+{
+  "id": "yotian-courier-corpus-m685",
+  "description": "M6 corpus — Yotian Courier; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Yotian Courier": "Name:Yotian Courier\nManaCost:U R\nTypes:Creature Human Artificer\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Powerstone,Seek | ChoiceRestriction$ YourLastCombat\nSVar:Powerstone:DB$ Token | TokenTapped$ True | TokenScript$ c_a_powerstone | SpellDescription$ Create a tapped Powerstone token.\nSVar:Seek:DB$ Seek | Type$ Card.nonLand+cmcEQX | SpellDescription$ Seek a nonland card with mana value equal to the number of Powerstones you control.\nSVar:X:Count$Valid Powerstone.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Artifact\nDeckNeeds:Type$Artifact\nOracle:Flying\\nWhenever Yotian Courier attacks, choose one that wasn't chosen during your last combat —\\n• Create a tapped Powerstone token.\\n• Seek a nonland card with mana value equal to the number of Powerstones you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yotian Courier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

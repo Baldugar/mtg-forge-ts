@@ -1,0 +1,23 @@
+{
+  "id": "discerning-financier-corpus-m685",
+  "description": "M6 corpus — Discerning Financier; in-hand parse.",
+  "seed": 61581,
+  "cards": {
+    "Discerning Financier": "Name:Discerning Financier\nManaCost:2 W\nTypes:Creature Human Noble\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTreasure | CheckSVar$ Y | SVarCompare$ GTX | TriggerDescription$ At the beginning of your upkeep, if an opponent controls more lands than you, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl\nA:AB$ ChoosePlayer | Cost$ 2 W | Choices$ Player.Other | ChoiceTitle$ Choose another player | SubAbility$ DBGainControl | SpellDescription$ Choose another player. That player gains control of target Treasure you control. You draw a card.\nSVar:DBGainControl:DB$ GainControl | NewController$ Player.Chosen | ValidTgts$ Treasure.YouCtrl | TgtPrompt$ Select target Treasure you control | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Token & Type$Treasure\nOracle:At the beginning of your upkeep, if an opponent controls more lands than you, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n{2}{W}: Choose another player. That player gains control of target Treasure you control. You draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discerning Financier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

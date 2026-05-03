@@ -1,0 +1,23 @@
+{
+  "id": "gimli-of-the-glittering-caves-corpus-m685",
+  "description": "M6 corpus — Gimli of the Glittering Caves; in-hand parse.",
+  "seed": 61670,
+  "cards": {
+    "Gimli of the Glittering Caves": "Name:Gimli of the Glittering Caves\nManaCost:2 R\nTypes:Legendary Creature Dwarf Warrior\nPT:1/1\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Legendary+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another legendary creature you control enters, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create a Treasure token.\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nSVar:BuffedBy:Creature.Legendary\nDeckHas:Ability$Counters|Token\nOracle:Double strike\\nWhenever another legendary creature you control enters, put a +1/+1 counter on Gimli of the Glittering Caves.\\nWhenever Gimli deals combat damage to a player, create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gimli of the Glittering Caves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

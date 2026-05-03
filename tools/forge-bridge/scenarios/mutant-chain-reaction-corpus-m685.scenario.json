@@ -1,0 +1,23 @@
+{
+  "id": "mutant-chain-reaction-corpus-m685",
+  "description": "M6 corpus — Mutant Chain Reaction; in-hand parse.",
+  "seed": 61855,
+  "cards": {
+    "Mutant Chain Reaction": "Name:Mutant Chain Reaction\nManaCost:2 G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment,Creature.withFlying | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact, enchantment, or creature with flying | SubAbility$ DBToken | SpellDescription$ Destroy up to one target artifact, enchantment, or creature with flying. Create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\nSVar:DBToken:DB$ Token | TokenScript$ c_a_mutagen_sac | TokenOwner$ You\nOracle:Destroy up to one target artifact, enchantment, or creature with flying. Create a Mutagen token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutant Chain Reaction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -297,9 +297,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const manaCostHasAltCost = lines.some(
       (l) => l.startsWith("ManaCost:") && /<[^>]*\/[^>]*>/.test(l),
     );
-    const skip =
-      manaCostHasAltCost ||
-      hasExoticToken;
+    const skip = manaCostHasAltCost;
     if (skip) continue;
     const inHandOnly =
       isAura ||
@@ -317,6 +315,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       hasAltCostInManaCost ||
       usesAvatarMechanics ||
       hasAnyAsNumber ||
+      hasExoticToken ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||

@@ -1,0 +1,23 @@
+{
+  "id": "madame-vastra-corpus-m685",
+  "description": "M6 corpus — Madame Vastra; in-hand parse.",
+  "seed": 61804,
+  "cards": {
+    "Madame Vastra": "Name:Madame Vastra\nManaCost:2 G U\nTypes:Legendary Creature Lizard Detective\nPT:3/3\nK:Partner with:Jenny Flint\nK:CARDNAME must be blocked if able.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, create a Clue token and a Food token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac,c_a_clue_draw | TokenOwner$ You\nDeckHints:Name$Jenny Flint\nDeckHas:Ability$Token|Sacrifice & Type$Clue|Food\nOracle:Partner with Jenny Flint (When this creature enters, target player may put Jenny Flint into their hand from their library, then shuffle.)\\nMadame Vastra must be blocked if able.\\nWhenever a creature dealt damage by Madame Vastra this turn dies, create a Clue token and a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Madame Vastra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

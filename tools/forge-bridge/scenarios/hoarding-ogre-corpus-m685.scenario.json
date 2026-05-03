@@ -1,0 +1,23 @@
+{
+  "id": "hoarding-ogre-corpus-m685",
+  "description": "M6 corpus — Hoarding Ogre; in-hand parse.",
+  "seed": 61718,
+  "cards": {
+    "Hoarding Ogre": "Name:Hoarding Ogre\nManaCost:3 R\nTypes:Creature Ogre\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigRollDice | TriggerDescription$ Whenever CARDNAME attacks, ABILITY\nSVar:TrigRollDice:DB$ RollDice | Sides$ 20 | ResultSubAbilities$ 1-9:Token1,10-19:Token2,20:Token3 | SpellDescription$ roll a d20.\nSVar:Token1:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ 1—9 VERT Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\nSVar:Token2:DB$ Token | TokenAmount$ 2 | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ 10—19 VERT Create two Treasure tokens.\nSVar:Token3:DB$ Token | TokenAmount$ 3 | TokenScript$ c_a_treasure_sac | TokenOwner$ You | SpellDescription$ 20 VERT Create three Treasure tokens.\nDeckHas:Ability$Token\nOracle:Whenever Hoarding Ogre attacks, roll a d20.\\n1—9 | Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")\\n10—19 | Create two Treasure tokens.\\n20 | Create three Treasure tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarding Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

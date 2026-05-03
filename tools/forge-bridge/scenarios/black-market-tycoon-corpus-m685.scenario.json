@@ -1,0 +1,23 @@
+{
+  "id": "black-market-tycoon-corpus-m685",
+  "description": "M6 corpus — Black Market Tycoon; in-hand parse.",
+  "seed": 61479,
+  "cards": {
+    "Black Market Tycoon": "Name:Black Market Tycoon\nManaCost:R G\nTypes:Creature Cat Rogue\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to you for each Treasure you control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ X\nSVar:X:Count$Valid Treasure.YouCtrl/Times.2\nA:AB$ Token | Cost$ T | TokenScript$ c_a_treasure_sac | SpellDescription$ Create a Treasure token.\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:At the beginning of your upkeep, Black Market Tycoon deals 2 damage to you for each Treasure you control.\\n{T}: Create a Treasure token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Market Tycoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

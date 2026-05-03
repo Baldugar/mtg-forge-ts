@@ -1,0 +1,23 @@
+{
+  "id": "marut-corpus-m685",
+  "description": "M6 corpus — Marut; in-hand parse.",
+  "seed": 61817,
+  "cards": {
+    "Marut": "Name:Marut\nManaCost:8\nTypes:Artifact Creature Construct\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigTreasure | TriggerDescription$ When CARDNAME enters, if mana from a Treasure was spent to cast it, create a Treasure token for each mana from a Treasure spent to cast it.\nSVar:TrigTreasure:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac\nSVar:X:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nDeckHas:Ability$Sacrifice|Token & Type$Treasure|Artifact\nOracle:Trample\\nWhen Marut enters, if mana from a Treasure was spent to cast it, create a Treasure token for each mana from a Treasure spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

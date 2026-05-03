@@ -1,0 +1,23 @@
+{
+  "id": "tolsimir-midnight-s-light-corpus-m685",
+  "description": "M6 corpus — Tolsimir, Midnight's Light; in-hand parse.",
+  "seed": 62144,
+  "cards": {
+    "Tolsimir, Midnight's Light": "Name:Tolsimir, Midnight's Light\nManaCost:2 G W W\nTypes:Legendary Creature Elf Scout\nPT:3/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create Voja Fenstalker, a legendary 5/5 green and white Wolf creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ voja_fenstalker | TokenOwner$ You\nT:Mode$ Attacks | ValidCard$ Wolf.YouCtrl | IsPresent$ Card.Self+attackedThisCombat | TriggerZones$ Battlefield | Execute$ TrigForceBlock | NoResolvingCheck$ True | TriggerDescription$ Whenever a Wolf you control attacks, if NICKNAME attacked this combat, target creature an opponent controls blocks that Wolf this combat if able.\nSVar:TrigForceBlock:DB$ MustBlock | DefinedAttacker$ TriggeredAttacker | Duration$ UntilEndOfCombat | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nDeckHas:Ability$LifeGain|Token & Type$Wolf\nDeckHints:Type$Wolf\nOracle:Lifelink\\nWhen Tolsimir, Midnight's Light enters, create Voja Fenstalker, a legendary 5/5 green and white Wolf creature token with trample.\\nWhenever a Wolf you control attacks, if Tolsimir attacked this combat, target creature an opponent controls blocks that Wolf this combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tolsimir, Midnight's Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

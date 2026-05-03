@@ -1,0 +1,23 @@
+{
+  "id": "cirith-ungol-patrol-corpus-m685",
+  "description": "M6 corpus — Cirith Ungol Patrol; in-hand parse.",
+  "seed": 61535,
+  "cards": {
+    "Cirith Ungol Patrol": "Name:Cirith Ungol Patrol\nManaCost:4 B\nTypes:Creature Orc Soldier\nPT:4/5\nA:AB$ Draw | Cost$ 1 T Sac<1/Creature.Other/another creature> | NumCards$ 1 | SubAbility$ DBFood | SpellDescription$ Draw a card, then create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:DBFood:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You\nDeckHas:Ability$Sacrifice|Token|LifeGain & Type$Artifact|Food\nOracle:{1}, {T}, Sacrifice another creature: Draw a card, then create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cirith Ungol Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
