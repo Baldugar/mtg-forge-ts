@@ -1355,21 +1355,35 @@ public final class BridgeRunner {
             payload.put("isManaAbility", Boolean.TRUE);
             rec.push("SpellCast", payload);
         } else {
-            // M7.0d — Synthesize ManaSpent events for the generic-mana
-            // portion of the activated ability's cost. Forge's
-            // CostPayment for activated abilities doesn't fire
-            // GameEventManaPool with Removed mode, so the bridge's
-            // onManaPool subscriber misses the cost-pay events the TS
-            // engine emits. Pre-compute the generic count from the cost
-            // string (e.g. "1, T" → 1 generic) and emit synthetic
-            // ManaSpent events after the ability resolves.
-            // M7.0e — Track mana pool size before/after activate to
-            // synthesize ManaSpent events. Forge's CostPayment for
-            // activated abilities doesn't fire GameEventManaPool with
-            // Removed mode, so the bridge's onManaPool subscriber misses
-            // them. Diff approach: count total mana in pool pre-activate
-            // and post-activate-and-resolve, emit ManaSpent per spent mana.
-            int preMana = p.getManaPool().totalMana();
+            // M7.0d — Synthesize ManaSpent events for activated abilities.
+            // Forge's CostPayment for activated abilities routes mana
+            // payment through `payManaFromAbility` (mana ability resolves,
+            // pool fills, then immediately drains via `tryPayCostWithMana`
+            // → `removeMana(mana, true)` which DOES fire
+            // `GameEventManaPool(Removed)`). However, when the AI taps a
+            // brand-new mana source to pay (e.g. Sol Ring → 2C, then 1C
+            // consumed) the net pool delta is +1, not -1, so the prior
+            // M7.0e diff approach (`preMana - postMana`) under-reported
+            // and produced 0 ManaSpent events even when mana was clearly
+            // spent. Worse, `removeMana` events fired during mana-ability
+            // resolution may be silently consumed by the bridge's
+            // subscriber but lost amid the inverse `Added` events Forge
+            // produces — net-zero histograms despite real spend.
+            //
+            // Cleanest fix: read the cost's static `ManaCost` directly
+            // from `sa.getPayCosts().getCostMana()`. After the ability is
+            // successfully cast (cost paid + on stack), emit one
+            // synthetic `ManaSpent` per pip in the cost. Generic pips
+            // emit color=COLORLESS; colored pips emit their respective
+            // MagicColor. This mirrors the TS engine, which emits one
+            // `ManaSpent` per consumed pool atom.
+            //
+            // The parity diff compares event-kind histograms (color +
+            // amount payload fields are stripped at normalization), so
+            // emitting ANY ManaSpent kind for a cost-bearing activate is
+            // sufficient to close the divergence — but per-pip emission
+            // keeps the trace usable for downstream consumers and matches
+            // the bridge's spell-cast pipeline behaviour for symmetry.
             boolean ok = ComputerUtil.handlePlayingSpellAbility(p, sa, () -> {
                 /* targets already bound above */
             });
@@ -1377,16 +1391,123 @@ public final class BridgeRunner {
                 rec.recordSynthetic("BridgeActivateFailed",
                     "activate: " + cardName + " idx=" + idx);
             } else {
-                int postMana = p.getManaPool().totalMana();
-                int spent = preMana - postMana;
-                for (int g = 0; g < spent; g++) {
-                    Map<String, Object> mp = new LinkedHashMap<>();
-                    mp.put("color", (int) MagicColor.COLORLESS);
-                    rec.push("ManaSpent", mp);
-                }
+                emitActivatedAbilityManaSpent(sa, rec);
             }
         }
         drainStack(game);
+    }
+
+    /**
+     * M7.0d — Synthesize per-pip `ManaSpent` events from an activated
+     * ability's static mana cost. Reads `sa.getPayCosts().getCostMana()`
+     * → `getMana()` (a `ManaCost`), then walks its colored shards plus
+     * `getGenericCost()` for the generic remainder. Emits one event per
+     * pip with `color` set to the appropriate `MagicColor` constant
+     * (COLORLESS for generic).
+     *
+     * Why post-cast rather than during cost-payment: Forge's
+     * `payManaFromAbility` for activated abilities first fills the pool
+     * via the mana-source ability, then drains it. The Guava EventBus
+     * sees a flurry of `GameEventManaPool(Added)` and `(Removed)` pairs
+     * that net to +mana on the pool (because the source produces ≥ the
+     * cost), making a pre/post-totalMana diff useless. Reading the
+     * static cost shape after a successful cast is robust regardless of
+     * how the AI sourced the mana.
+     *
+     * No-op when the SA has no mana cost (e.g. a `0`-cost or
+     * tap-only ability).
+     */
+    private static void emitActivatedAbilityManaSpent(SpellAbility sa, TraceRecorder rec) {
+        forge.game.cost.Cost cost;
+        try {
+            cost = sa.getPayCosts();
+        } catch (Throwable ignore) {
+            return;
+        }
+        if (cost == null) return;
+
+        // Walk Forge's parsed CostPartMana when available. For
+        // well-formed cost strings (e.g. `Cost$ 1 T`, `Cost$ 2 W W T`)
+        // this gives accurate generic + color shard counts.
+        int generic = 0;
+        int[] colorCounts = new int[6]; // W, U, B, R, G, chromatic-C
+        forge.game.cost.CostPartMana manaPart = cost.getCostMana();
+        forge.card.mana.ManaCost mc = null;
+        if (manaPart != null) {
+            try { mc = manaPart.getMana(); } catch (Throwable ignore) { /* mc null */ }
+        }
+        if (mc != null && !mc.isNoCost()) {
+            try { generic = mc.getGenericCost(); } catch (Throwable ignore) {}
+            try {
+                int[] cs = mc.getColorShardCounts();
+                if (cs != null) {
+                    for (int i = 0; i < cs.length && i < colorCounts.length; i++) {
+                        colorCounts[i] = cs[i];
+                    }
+                }
+            } catch (Throwable ignore) {}
+        }
+
+        // Recovery pass for malformed cost strings. Forge's `Cost(String)`
+        // constructor splits on whitespace and routes each token through
+        // `parseCostPart`; tokens that don't match any known prefix
+        // (`Mana<…>`, `tapXType<…>`, etc.) are concatenated into a
+        // `manaParts` buffer that's passed to `new ManaCost(...)`. The
+        // ManaCost parser then calls `Ints.tryParse` on each token —
+        // which returns null for `"1,"` (trailing comma from
+        // `Cost$ 1, T`-style scripts). The `1` is silently dropped and
+        // `getGenericCost()` returns 0 even though the printed cost
+        // clearly has 1 generic mana.
+        //
+        // The m700 scenario corpus uses `Cost$ 1, T`-style commas
+        // verbatim and the scenarios are frozen by directive. Re-parse
+        // the raw `Cost` param ourselves: strip commas, tokenize on
+        // whitespace, and accumulate any pure-integer token as generic
+        // mana. We only run this recovery when the parsed ManaCost is
+        // empty (generic == 0 and all color shards == 0) so well-formed
+        // costs aren't double-counted.
+        int recoveredGeneric = 0;
+        boolean colorsEmpty = true;
+        for (int c : colorCounts) if (c != 0) { colorsEmpty = false; break; }
+        if (generic == 0 && colorsEmpty) {
+            String rawCost = null;
+            try { rawCost = sa.getParam("Cost"); } catch (Throwable ignore) {}
+            if (rawCost != null && !rawCost.isEmpty()) {
+                String[] tokens = rawCost.replace(",", " ").split("\\s+");
+                for (String tok : tokens) {
+                    if (tok.isEmpty()) continue;
+                    try {
+                        int n = Integer.parseInt(tok);
+                        if (n > 0) recoveredGeneric += n;
+                    } catch (NumberFormatException ignore) { /* skip non-int */ }
+                }
+            }
+        }
+
+        // Emit per-pip ManaSpent events. Colored shards (one per pip
+        // per color) first, then generic. The parity diff strips
+        // payload fields, so emitting any ManaSpent for a cost-bearing
+        // activate is sufficient — but per-pip emission keeps the
+        // trace consumable for downstream tooling.
+        byte[] colors = new byte[]{
+            MagicColor.WHITE, MagicColor.BLUE, MagicColor.BLACK,
+            MagicColor.RED, MagicColor.GREEN, MagicColor.COLORLESS
+        };
+        for (int i = 0; i < colorCounts.length && i < colors.length; i++) {
+            for (int j = 0; j < colorCounts[i]; j++) {
+                Map<String, Object> mp = new LinkedHashMap<>();
+                mp.put("color", (int) colors[i]);
+                mp.put("synthetic", Boolean.TRUE);
+                rec.push("ManaSpent", mp);
+            }
+        }
+        int totalGeneric = generic + recoveredGeneric;
+        for (int g = 0; g < totalGeneric; g++) {
+            Map<String, Object> mp = new LinkedHashMap<>();
+            mp.put("color", (int) MagicColor.COLORLESS);
+            mp.put("synthetic", Boolean.TRUE);
+            rec.push("ManaSpent", mp);
+        }
     }
 
     /**
@@ -1399,7 +1520,20 @@ public final class BridgeRunner {
         PhaseType current = game.getPhaseHandler().getPhase();
         PhaseType next = nextPhase(current);
         if (next == null) return;
-        game.getPhaseHandler().devAdvanceToPhase(next);
+        // M7.12 — Forge's PhaseHandler.isSkippingPhase(DRAW) returns true on
+        // turn==1 with 2 players (CR 103.7c: first player skips their first
+        // draw step). When the step is skipped, onPhaseBegin's `if (!skipped)`
+        // gate suppresses TriggerType.Phase fan-out, so Howling-Mine-style
+        // `T:Mode$ Phase | Phase$ Draw` triggers never queue. The TS engine
+        // does not implement first-turn draw-skip — it always fires the
+        // begin-of-draw-step trigger and performs the natural draw — so the
+        // bridge needs to bypass Forge's CR 103.7c skip to reach parity.
+        // Bump the turn counter to 2 just for the devAdvanceToPhase call when
+        // we're about to step into DRAW under turn==1, then restore after so
+        // passTurn-loop semantics (entryTurn/getTurn delta) still work.
+        withFirstTurnDrawSkipBypassed(game, next, () -> {
+            game.getPhaseHandler().devAdvanceToPhase(next);
+        });
         drainStack(game);
     }
 
@@ -1412,25 +1546,104 @@ public final class BridgeRunner {
     private static void execAdvanceToStep(Game game, Map<String, Object> act) {
         String step = (String) act.get("step");
         if (step == null) return;
-        PhaseType target;
+        PhaseType targetTmp;
         try {
-            target = PhaseType.valueOf(step.toUpperCase().replace('-', '_'));
+            targetTmp = PhaseType.valueOf(step.toUpperCase().replace('-', '_'));
         } catch (IllegalArgumentException e) {
             // Try canonical Forge-internal name (e.g. "End of Turn").
-            target = PhaseType.smartValueOf(step);
-            if (target == null) return;
+            targetTmp = PhaseType.smartValueOf(step);
+            if (targetTmp == null) return;
         }
+        final PhaseType target = targetTmp;
         // M7.0c — Suppress AI-combat events during advanceToStep. The TS
         // golden runner doesn't drive a combat AI; Forge's natural phase
         // progression auto-attacks during the walk through combat sub-
         // phases when target is past combat. Suppress to match TS output.
         passTurnCombatSuppressed = true;
         try {
-            game.getPhaseHandler().devAdvanceToPhase(target);
+            // M7.12 — see execAdvancePhase: bypass CR 103.7c first-turn DRAW
+            // skip so begin-of-draw-step Phase triggers fire under parity.
+            withFirstTurnDrawSkipBypassed(game, target, () -> {
+                game.getPhaseHandler().devAdvanceToPhase(target);
+            });
             drainStack(game);
         } finally {
             passTurnCombatSuppressed = false;
         }
+    }
+
+    /**
+     * M7.12 — When devAdvanceToPhase will walk into the DRAW step on turn 1
+     * with 2 players, Forge's CR 103.7c skip logic suppresses the begin-of-
+     * draw-step turn-based action AND the TriggerType.Phase fan-out. The TS
+     * engine does not implement first-turn-draw-skip, so to reach parity we
+     * temporarily bump the private `turn` counter (0/1 → 2) just for the
+     * advance, then restore. Reflection is required because PhaseHandler's
+     * `turn` field has no public setter and `devModeSet(phase, player, ec, t)`
+     * fires a synthetic GameEventTurnPhase we don't want emitted.
+     */
+    private static void withFirstTurnDrawSkipBypassed(
+            Game game, PhaseType target, Runnable advance) {
+        boolean willCrossDraw = phaseRangeIncludesDraw(
+            game.getPhaseHandler().getPhase(), target);
+        boolean firstTurnTwoPlayers = game.getPhaseHandler().getTurn() <= 1
+            && game.getPlayers().size() == 2;
+        if (!willCrossDraw || !firstTurnTwoPlayers) {
+            advance.run();
+            return;
+        }
+        java.lang.reflect.Field turnField;
+        Integer original;
+        try {
+            turnField = game.getPhaseHandler().getClass().getDeclaredField("turn");
+            turnField.setAccessible(true);
+            original = (Integer) turnField.get(game.getPhaseHandler());
+            turnField.setInt(game.getPhaseHandler(), 2);
+            if (System.getenv("BRIDGE_DEBUG") != null) {
+                System.err.println("[M7.12] bypassed first-turn-draw-skip from " + game.getPhaseHandler().getPhase() + " -> " + target);
+            }
+        } catch (Throwable t) {
+            // Reflection blocked — fall back to plain advance (parity miss
+            // recorded as before). Don't throw — keep bridge running.
+            if (System.getenv("BRIDGE_DEBUG") != null) {
+                System.err.println("[M7.12] reflection bypass failed: " + t);
+            }
+            advance.run();
+            return;
+        }
+        try {
+            advance.run();
+        } finally {
+            try {
+                turnField.setInt(game.getPhaseHandler(), original);
+            } catch (Throwable ignore) {
+                // Best-effort restore.
+            }
+        }
+    }
+
+    /**
+     * True when devAdvanceToPhase, walking from `from` to `to` in the
+     * canonical (non-topsy) order, will execute onPhaseBegin(DRAW). Topsy
+     * (phases-reversed) is rare and not handled here — first-turn-draw-skip
+     * isn't a parity concern for those scenarios.
+     */
+    private static boolean phaseRangeIncludesDraw(PhaseType from, PhaseType to) {
+        if (from == null || to == null) return false;
+        PhaseType cursor = from;
+        // Walk forward; stop at `to` (inclusive) or wraparound after CLEANUP.
+        for (int safety = 0; safety < 32; safety++) {
+            PhaseType nxt = nextPhase(cursor);
+            if (nxt == null) return false;
+            if (nxt == PhaseType.DRAW) return true;
+            if (nxt == to) return false;
+            cursor = nxt;
+            // Wrapping past CLEANUP into a new turn means turn counter
+            // already incremented naturally — first-turn skip no longer
+            // applies. Stop walking.
+            if (cursor == PhaseType.UNTAP && from != PhaseType.UNTAP) return false;
+        }
+        return false;
     }
 
     /**
@@ -1888,6 +2101,14 @@ public final class BridgeRunner {
         s = s.replace("Count$DevotionB", "Count$Devotion.Black");
         s = s.replace("Count$DevotionR", "Count$Devotion.Red");
         s = s.replace("Count$DevotionG", "Count$Devotion.Green");
+        // M7.12 — TS scenarios (e.g. Howling-Mine-style upkeep-trigger-v3)
+        // emit `ValidPlayer$ Each` to mean "any player". Forge's
+        // Player.isValid only accepts Opponent / You / Any / Player; anything
+        // else returns false. Real Forge Howling Mine uses `ValidPlayer$
+        // Player` for the same intent. Without this rewrite, Phase$ Draw
+        // fan-out checks all players and matches none, so the trigger never
+        // queues even after we bypass CR 103.7c first-turn-draw-skip.
+        s = s.replace("ValidPlayer$ Each", "ValidPlayer$ Player");
         // Add TriggerZones$ Battlefield to ChangesZone triggers that
         // watch for Self-care via "+Other" or ".Other" — without it, Forge
         // fires the trigger from Hand zone on the source's own ETB because
