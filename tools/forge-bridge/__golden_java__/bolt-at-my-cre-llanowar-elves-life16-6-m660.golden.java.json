@@ -1,0 +1,100 @@
+{
+  "scenarioId": "bolt-at-my-cre-llanowar-elves-life16-6-m660",
+  "seed": 57030,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 8
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Llanowar Elves (1)]",
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "sourceName": "Lightning Bolt",
+        "amount": 3,
+        "type": "Normal"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 2,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 16
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}
