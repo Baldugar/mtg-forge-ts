@@ -25,6 +25,7 @@ export type GameVariant =
   | "Oathbreaker"
   | "TinyLeaders"
   | "Brawl"
+  | "Conspiracy"
   | "Planechase"
   | "Vanguard"
   | "Archenemy"
