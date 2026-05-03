@@ -1,0 +1,93 @@
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+
+  Reference browser-worker consumer for @mtg-forge-ts.
+  Loads the engine packages off the main thread via a Web Worker so the UI
+  stays responsive while parsing / future game ticks happen in the worker.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mtg-forge-ts — browser-worker reference consumer</title>
+    <style>
+      :root {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        color-scheme: light dark;
+      }
+      body {
+        max-width: 880px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+      }
+      header h1 {
+        margin-bottom: 0.25rem;
+      }
+      header p {
+        margin-top: 0;
+        opacity: 0.75;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      textarea {
+        width: 100%;
+        min-height: 12rem;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 13px;
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
+      button {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      #result {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border: 1px solid currentColor;
+        border-radius: 4px;
+        white-space: pre-wrap;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 12px;
+        min-height: 4rem;
+      }
+      .status {
+        margin-top: 0.5rem;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>mtg-forge-ts — browser-worker</h1>
+      <p>
+        Parses a Forge <code>.txt</code> card script using
+        <code>@mtg-forge-ts/cards</code> running inside a Web Worker.
+      </p>
+    </header>
+
+    <main>
+      <label for="card-input">Card script</label>
+      <textarea
+        id="card-input"
+        spellcheck="false"
+        autocomplete="off"
+      ></textarea>
+
+      <button id="parse-btn" type="button">Parse in worker</button>
+      <div id="status" class="status">Worker: not yet started.</div>
+
+      <h2>Result</h2>
+      <pre id="result"></pre>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -33,6 +33,28 @@ importers:
         specifier: ^5.6.0
         version: 5.9.3
 
+  examples/browser-worker:
+    dependencies:
+      '@mtg-forge-ts/cards':
+        specifier: workspace:*
+        version: link:../../packages/cards
+      '@mtg-forge-ts/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@mtg-forge-ts/game':
+        specifier: workspace:*
+        version: link:../../packages/game
+    devDependencies:
+      '@types/node':
+        specifier: ^20.19.39
+        version: 20.19.39
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vite:
+        specifier: ^5.4.21
+        version: 5.4.21(@types/node@20.19.39)
+
   examples/cli:
     dependencies:
       '@mtg-forge-ts/cards':
