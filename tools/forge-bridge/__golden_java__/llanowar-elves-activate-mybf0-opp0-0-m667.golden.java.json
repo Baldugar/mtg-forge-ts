@@ -1,0 +1,38 @@
+{
+  "scenarioId": "llanowar-elves-activate-mybf0-opp0-0-m667",
+  "seed": 59936,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardTappedChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "tapped": true
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "description": "{T}: Add {G}.",
+        "isManaAbility": true
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}
