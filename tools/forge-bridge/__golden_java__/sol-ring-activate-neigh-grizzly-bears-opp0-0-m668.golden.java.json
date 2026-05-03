@@ -1,0 +1,49 @@
+{
+  "scenarioId": "sol-ring-activate-neigh-grizzly-bears-opp0-0-m668",
+  "seed": 60320,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardTappedChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "tapped": true
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "description": "{T}: Add {C}{C}.",
+        "isManaAbility": true
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Grizzly Bears",
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}
