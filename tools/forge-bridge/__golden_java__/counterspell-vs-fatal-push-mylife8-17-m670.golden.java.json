@@ -1,0 +1,89 @@
+{
+  "scenarioId": "counterspell-vs-fatal-push-mylife8-17-m670",
+  "seed": 60881,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Fatal Push",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 4
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Soul Warden (1)]",
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Soul Warden",
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Fatal Push",
+        "cardId": 3,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 8
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Soul Warden",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}

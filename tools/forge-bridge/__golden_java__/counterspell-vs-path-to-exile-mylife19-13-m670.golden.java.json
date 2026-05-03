@@ -1,0 +1,89 @@
+{
+  "scenarioId": "counterspell-vs-path-to-exile-mylife19-13-m670",
+  "seed": 60877,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Path to Exile",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 1
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Goblin Guide (1)]",
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Goblin Guide",
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Exile"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Path to Exile",
+        "cardId": 3,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 19
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Goblin Guide",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}

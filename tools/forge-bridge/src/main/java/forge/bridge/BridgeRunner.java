@@ -466,6 +466,35 @@ public final class BridgeRunner {
             }
             game.getAction().checkStateEffects(true);
         }
+        // M6.70 — After all actions resolve, emit synthetic PlayerLost
+        // events for any player matching CR 704.5 loss conditions. Forge's
+        // event bus has GameEventGameOutcome only for full match end; in
+        // bridge per-action runs we want a per-player loss signal so the
+        // parity harness pairs with the TS engine's PlayerLost SBA event.
+        // We check life ≤ 0 (704.5a) and poison ≥ 10 (704.5c) directly,
+        // bypassing Player.hasLost() which depends on getOutcome() being
+        // set by a fully-running match loop the bridge doesn't drive.
+        for (int i = 0; i < game.getRegisteredPlayers().size(); i++) {
+            try {
+                List<Player> allPlayers = game.getRegisteredPlayers();
+                if (i >= allPlayers.size()) continue;
+                Player pl = allPlayers.get(i);
+                String reason = null;
+                if (pl.getLife() <= 0) reason = "life";
+                else if (pl.getPoisonCounters() >= 10) reason = "poison";
+                if (reason != null) {
+                    Map<String, Object> payload = new LinkedHashMap<>();
+                    payload.put("playerSeat", i);
+                    payload.put("reason", reason);
+                    rec.recordSyntheticPayload("PlayerLost", payload);
+                }
+            } catch (Throwable t) {
+                // Defensive — never let the loss-emit pass crash the bridge.
+                if (System.getenv("BRIDGE_DEBUG") != null) {
+                    System.err.println("PlayerLost-emit failed for seat " + i + ": " + t);
+                }
+            }
+        }
     }
 
     private static void execEtb(Game game, Map<String, Object> act, TraceRecorder rec) {
@@ -1847,6 +1876,15 @@ public final class BridgeRunner {
             ev.put("phase", "Main1");
             Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("detail", detail);
+            ev.put("payload", payload);
+            bucket().add(ev);
+        }
+
+        void recordSyntheticPayload(String kind, Map<String, Object> payload) {
+            Map<String, Object> ev = new LinkedHashMap<>();
+            ev.put("kind", kind);
+            ev.put("turn", 1);
+            ev.put("phase", "Main1");
             ev.put("payload", payload);
             bucket().add(ev);
         }

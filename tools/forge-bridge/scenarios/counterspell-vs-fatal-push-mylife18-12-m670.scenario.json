@@ -1,0 +1,57 @@
+{
+  "id": "counterspell-vs-fatal-push-mylife18-12-m670",
+  "description": "M6.70 — Counterspell vs opp Fatal Push; my life 18.",
+  "seed": 60876,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Doom Blade": "Name:Doom Blade\nManaCost:1 B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.\nOracle:Doom Blade parse.\n",
+    "Murder": "Name:Murder\nManaCost:1 B B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.\nOracle:Murder parse.\n",
+    "Fatal Push": "Name:Fatal Push\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Fatal Push.\nOracle:Fatal Push parse.\n",
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 18,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Fatal Push"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Fatal Push",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Grizzly Bears"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

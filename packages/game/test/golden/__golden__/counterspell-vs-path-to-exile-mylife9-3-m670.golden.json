@@ -1,0 +1,132 @@
+{
+  "scenarioId": "counterspell-vs-path-to-exile-mylife9-3-m670",
+  "seed": 60867,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 9,
+        "delta": -11,
+        "cause": "scenarioSetup"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "CardTargeted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "targetId": 1,
+        "sourceCardId": 2,
+        "targetingSeat": 1
+      }
+    },
+    {
+      "kind": "CrimeCommitted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "sourceCardId": 2,
+        "victimSeat": 0,
+        "victimCardId": 1
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "color": 1,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "payerSeat": 1
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "cardId": 2,
+        "controllerSeat": 1
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Exile",
+        "fromSeat": 0,
+        "cause": "effect"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      9,
+      20
+    ],
+    "handSizes": [
+      1,
+      0
+    ],
+    "battlefield": [],
+    "graveyards": [
+      [],
+      [
+        "Path to Exile"
+      ]
+    ],
+    "stackSize": 0
+  }
+}
