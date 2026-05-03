@@ -1696,14 +1696,30 @@ public final class BridgeRunner {
         s = s.replace("Count$DevotionR", "Count$Devotion.Red");
         s = s.replace("Count$DevotionG", "Count$Devotion.Green");
         // Add TriggerZones$ Battlefield to ChangesZone triggers that
-        // watch for Self-care via "+Other" — without it, Forge fires the
-        // trigger from Hand zone on the source's own ETB. Detection: any
-        // T:Mode$ ChangesZone line containing "+Other" and not already
-        // having TriggerZones$.
+        // watch for Self-care via "+Other" or ".Other" — without it, Forge
+        // fires the trigger from Hand zone on the source's own ETB because
+        // (a) the trigger is registered immediately on script parse, with
+        // no host-zone restriction; (b) the etbLKI substitution at perform
+        // Test time replaces the entering card with an LKI clone whose
+        // identity differs from the source host, so the `Other` filter
+        // in CardProperty (`card.equals(source)`) returns false on the LKI
+        // clone and the trigger PASSES — even though logically Soul Warden's
+        // own ETB shouldn't trigger Soul Warden. Real Forge ships Soul
+        // Warden / Suture Priest / Essence Warden / etc. with `TriggerZones$
+        // Battlefield` baked into the script, which prevents the trigger
+        // from firing at all when the host is in Hand. Synthetic test cards
+        // built from the M2 cohort omit it because they shorthand the
+        // canonical Forge spelling. M6.54: detect both `+Other` (multi-
+        // filter Other qualifier) AND `.Other` (post-class Other qualifier);
+        // both syntaxes invoke the same CardProperty.testIsValidCard branch
+        // and need the same hand-zone exclusion. Closes the 20 soul-warden-
+        // etb-mix scenarios that surfaced as Java-only `SpellCast` /
+        // `LifeTotalChanged` / `StackItemResolved` (ts-runner-shallow).
         StringBuilder sb = new StringBuilder();
         for (String line : s.split("\\r?\\n", -1)) {
             if (line.startsWith("T:Mode$ ChangesZone")
-                && (line.contains("+Other") || line.contains("Other+"))
+                && (line.contains("+Other") || line.contains("Other+")
+                    || line.contains(".Other"))
                 && !line.contains("TriggerZones$")) {
                 int execIdx = line.indexOf("| Execute$");
                 if (execIdx > 0) {

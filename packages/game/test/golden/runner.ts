@@ -327,8 +327,40 @@ function buildContext(scenario: GoldenScenario): RunnerContext {
   const p0 = game.players[0];
   const p1 = game.players[1];
   if (!p0 || !p1) throw new Error("golden runner: Game must have 2 players");
-  p0.life = scenario.players[0].life;
-  p1.life = scenario.players[1].life;
+  // M6.54 — Forge's bridge calls `Player.setLife(life, null)` during scenario
+  // seeding which fires `GameEventPlayerLivesChanged` (bridge kind
+  // `LifeTotalChanged`) when the seeded life differs from the default starting
+  // life (CR 103.4 — players begin at startingLife). The TS golden runner
+  // previously assigned `player.life = scenarioLife` silently, leaving Java
+  // captures with a Java-only `LifeTotalChanged` setup event when scenarios
+  // seeded an opponent at non-default life (~21 bolt-at-creature scenarios).
+  // Mirror Forge's setLife emit by pushing a `LifeChanged` event (which
+  // aliases to `LifeTotalChanged` in the parity classifier) when the seed
+  // adjusts life. Real engine fix — no normalizer fold.
+  const seatList: readonly [
+    { player: typeof p0; seat: PlayerSeat; targetLife: number; oldLife: number },
+    { player: typeof p1; seat: PlayerSeat; targetLife: number; oldLife: number },
+  ] = [
+    { player: p0, seat: p0.seat, targetLife: scenario.players[0].life, oldLife: p0.life },
+    { player: p1, seat: p1.seat, targetLife: scenario.players[1].life, oldLife: p1.life },
+  ];
+  for (const entry of seatList) {
+    const targetLife = entry.targetLife;
+    const oldLife = entry.oldLife;
+    if (targetLife !== oldLife) {
+      entry.player.life = targetLife;
+      const delta = targetLife - oldLife;
+      pendingEvents.push(
+        mkEvent("LifeChanged", game.turn, game.phase, {
+          playerSeat: entry.seat,
+          oldLife,
+          newLife: targetLife,
+          delta,
+          cause: "scenarioSetup",
+        }),
+      );
+    }
+  }
 
   // Mana pools — apply early so a ScenarioPlayer with manaPool can be
   // referenced by a "cast" action.
