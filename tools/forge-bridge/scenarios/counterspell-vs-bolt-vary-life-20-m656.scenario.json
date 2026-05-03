@@ -1,0 +1,46 @@
+{
+  "id": "counterspell-vs-bolt-vary-life-20-m656",
+  "description": "M6.56 — Counterspell vs Lightning Bolt (my 16, opp 20).",
+  "seed": 55508,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 16,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "player",
+        "seat": 0
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
