@@ -37,11 +37,33 @@ export class SurveilEffect extends SpellAbilityEffect {
     const n = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "You";
 
-    // Resolve target seat — MVP: always controller.
-    // TODO(SP3): when Targeted is supported, resolve from sa.targets[0].
+    // Resolve target seat. Defaults to controller for "You" / "Self" /
+    // absent. For "Targeted" / "TargetedPlayer" / "TargetedController",
+    // walk sa.targetRefs (preferred — kind-discriminated) or sa.targets to
+    // find the first card or player ref and resolve to its controller seat.
     let seat = sa.controllerSeat;
-    if (definedRaw.toLowerCase() === "you" || definedRaw.toLowerCase() === "self") {
+    const tok = definedRaw.trim();
+    const tokLower = tok.toLowerCase();
+    if (tokLower === "you" || tokLower === "self" || tok === "") {
       seat = sa.controllerSeat;
+    } else if (tok === "Targeted" || tok === "TargetedPlayer" || tok === "TargetedController") {
+      if (sa.targetRefs.length > 0) {
+        const ref = sa.targetRefs[0];
+        if (ref?.kind === "player") seat = ref.seat;
+        else if (ref?.kind === "card") {
+          const card = game.cards.get(ref.id);
+          if (card) seat = card.controllerSeat;
+        }
+      } else if (sa.targets.length > 0) {
+        const id = sa.targets[0];
+        if (id !== undefined) {
+          const card = game.cards.get(id);
+          if (card) seat = card.controllerSeat;
+        }
+      }
+    } else if (tok === "Opponent") {
+      const n = sa.controllerSeat as unknown as number;
+      seat = (n === 0 ? 1 : 0) as unknown as typeof seat;
     }
 
     // Wave 77 — layer the SurveilNum static modifier on the printed count.
