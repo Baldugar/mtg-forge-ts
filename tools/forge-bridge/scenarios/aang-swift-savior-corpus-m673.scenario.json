@@ -1,0 +1,23 @@
+{
+  "id": "aang-swift-savior-corpus-m673",
+  "description": "M6 corpus — Aang, Swift Savior; in-hand parse.",
+  "seed": 61440,
+  "cards": {
+    "Aang, Swift Savior": "Name:Aang, Swift Savior\nManaCost:1 W U\nTypes:Legendary Creature Human Avatar Ally\nPT:2/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAirbend | TriggerDescription$ When NICKNAME enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\nSVar:TrigAirbend:DB$ Airbend | ValidTgts$ Creature.Other,Card.inZoneStack | TgtPrompt$ Select up to another target creature or spell | TgtZone$ Battlefield,Stack | TargetMin$ 0\nA:AB$ SetState | Cost$ Waterbend<8> | Defined$ Self | Mode$ Transform | SpellDescription$ Transform NICKNAME.\nAlternateMode:DoubleFaced\nOracle:Flash\\nFlying\\nWhen Aang enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\\nWaterbend {8}: Transform Aang.\n\nALTERNATE\n\nName:Aang and La, Ocean's Fury\nManaCost:no cost\nTypes:Legendary Creature Avatar Spirit Ally\nPT:5/5\nK:Reach\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME attack, put a +1/+1 counter on each tapped creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+tapped | CounterType$ P1P1 | CounterNum$ 1\nOracle:Reach, trample\\nWhenever Aang and La attack, put a +1/+1 counter on each tapped creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aang, Swift Savior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

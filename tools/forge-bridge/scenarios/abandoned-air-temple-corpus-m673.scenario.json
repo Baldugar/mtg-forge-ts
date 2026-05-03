@@ -1,0 +1,25 @@
+{
+  "id": "abandoned-air-temple-corpus-m673",
+  "description": "M6 corpus — Abandoned Air Temple; ETB-on-bf.",
+  "seed": 61453,
+  "cards": {
+    "Abandoned Air Temple": "Name:Abandoned Air Temple\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a basic land.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ PutCounterAll | Cost$ 3 W T | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ AtEOTOrBlock | SpellDescription$ Put a +1/+1 counter on each creature you control.\nOracle:This land enters tapped unless you control a basic land.\\n{T}: Add {W}.\\n{3}{W}, {T}: Put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abandoned Air Temple"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

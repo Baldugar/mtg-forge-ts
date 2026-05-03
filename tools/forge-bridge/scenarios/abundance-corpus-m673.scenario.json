@@ -1,0 +1,25 @@
+{
+  "id": "abundance-corpus-m673",
+  "description": "M6 corpus — Abundance; ETB-on-bf.",
+  "seed": 61508,
+  "cards": {
+    "Abundance": "Name:Abundance\nManaCost:2 G G\nTypes:Enchantment\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ AbundantChoice | Optional$ True | Description$ If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.\nSVar:AbundantChoice:DB$ GenericChoice | Choices$ DigLand,DigNonland | Defined$ You\nSVar:DigLand:DB$ DigUntil | Valid$ Card.Land | ValidDescription$ land | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | SpellDescription$ Land\nSVar:DigNonland:DB$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | SpellDescription$ Nonland\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abundance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

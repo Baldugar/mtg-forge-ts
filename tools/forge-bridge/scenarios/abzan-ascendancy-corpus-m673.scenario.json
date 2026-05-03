@@ -1,0 +1,25 @@
+{
+  "id": "abzan-ascendancy-corpus-m673",
+  "description": "M6 corpus — Abzan Ascendancy; ETB-on-bf.",
+  "seed": 61523,
+  "cards": {
+    "Abzan Ascendancy": "Name:Abzan Ascendancy\nManaCost:W B G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckHas:Ability$Counters|Token\nOracle:When Abzan Ascendancy enters, put a +1/+1 counter on each creature you control.\\nWhenever a nontoken creature you control dies, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abzan Ascendancy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

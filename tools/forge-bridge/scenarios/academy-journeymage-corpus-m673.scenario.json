@@ -1,0 +1,25 @@
+{
+  "id": "academy-journeymage-corpus-m673",
+  "description": "M6 corpus — Academy Journeymage; ETB-on-bf.",
+  "seed": 61537,
+  "cards": {
+    "Academy Journeymage": "Name:Academy Journeymage\nManaCost:4 U\nTypes:Creature Human Wizard\nPT:3/2\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Wizard.YouCtrl | Description$ This spell costs {1} less to cast if you control a Wizard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature an opponent controls to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nDeckHints:Type$Wizard\nOracle:This spell costs {1} less to cast if you control a Wizard.\\nWhen Academy Journeymage enters, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Academy Journeymage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

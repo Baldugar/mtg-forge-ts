@@ -1,0 +1,25 @@
+{
+  "id": "abyssal-gatekeeper-corpus-m673",
+  "description": "M6 corpus — Abyssal Gatekeeper; ETB-on-bf.",
+  "seed": 61513,
+  "cards": {
+    "Abyssal Gatekeeper": "Name:Abyssal Gatekeeper\nManaCost:1 B\nTypes:Creature Horror\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, each player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Player\nOracle:When Abyssal Gatekeeper dies, each player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abyssal Gatekeeper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

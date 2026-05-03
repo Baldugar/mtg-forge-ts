@@ -306,6 +306,17 @@ const entries: readonly TokenEntry[] = [
     oracle: "",
   },
   {
+    id: "b_1_1_harpy_flying",
+    name: "Harpy Token",
+    types: types("Creature Harpy"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(B),
+    manaCost: null,
+    keywords: [kw("Flying")],
+    abilities: [],
+    oracle: "Flying",
+  },
+  {
     id: "u_2_1_ninja",
     name: "Ninja Token",
     types: types("Creature Ninja"),

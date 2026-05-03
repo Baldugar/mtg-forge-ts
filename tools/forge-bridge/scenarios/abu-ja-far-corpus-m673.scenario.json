@@ -1,0 +1,25 @@
+{
+  "id": "abu-ja-far-corpus-m673",
+  "description": "M6 corpus — Abu Ja'far; ETB-on-bf.",
+  "seed": 61503,
+  "cards": {
+    "Abu Ja'far": "Name:Abu Ja'far\nManaCost:W\nTypes:Creature Human\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy all creatures blocking or blocked by it. They can't be regenerated.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.blockingSource,Creature.blockedBySource | NoRegen$ True\nOracle:When Abu Ja'far dies, destroy all creatures blocking or blocked by it. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abu Ja'far"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "abstergo-entertainment-corpus-m673",
+  "description": "M6 corpus — Abstergo Entertainment; ETB-on-bf.",
+  "seed": 61499,
+  "cards": {
+    "Abstergo Entertainment": "Name:Abstergo Entertainment\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ ChangeZone | Cost$ 3 T Exile<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card.Historic+YouOwn | TgtPrompt$ Select target historic card in your graveyard | AILogic$ BestCard | SubAbility$ ExileAll | SpellDescription$ Return up to one target historic card from your graveyard to your hand, then exile all graveyards.\nSVar:ExileAll:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card\nDeckHas:Ability$Mana.Colorless\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:{T}: Add {C}.\\n{1}, {T}: Add one mana of any color.\\n{3}, {T}, Exile Abstergo Entertainment: Return up to one target historic card from your graveyard to your hand, then exile all graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abstergo Entertainment"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

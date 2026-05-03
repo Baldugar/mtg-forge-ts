@@ -1,0 +1,25 @@
+{
+  "id": "abominable-treefolk-corpus-m673",
+  "description": "M6 corpus — Abominable Treefolk; ETB-on-bf.",
+  "seed": 61478,
+  "cards": {
+    "Abominable Treefolk": "Name:Abominable Treefolk\nManaCost:2 G U\nTypes:Snow Creature Treefolk\nPT:*/*\nK:Trample\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of snow permanents you control.\nSVar:X:Count$Valid Permanent.Snow+YouCtrl\nSVar:BuffedBy:Permanent.Snow\nSVar:NoZeroToughnessAI:True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:PlayMain1:TRUE\nOracle:Trample\\nAbominable Treefolk's power and toughness are each equal to the number of snow permanents you control.\\nWhen Abominable Treefolk enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abominable Treefolk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "absorb-energy-corpus-m673",
+  "description": "M6 corpus — Absorb Energy; in-hand parse.",
+  "seed": 61495,
+  "cards": {
+    "Absorb Energy": "Name:Absorb Energy\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | RememberForCounter$ True | SubAbility$ DBAnimate | SpellDescription$ Counter target spell.\nSVar:DBAnimate:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.YouOwn+sharesCardTypeWith Remembered | staticAbilities$ ReduceCost | SubAbility$ DBCleanup | SpellDescription$ Cards in your hand that share a card type with that spell perpetually gain \"This spell costs {1} less to cast.\"\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Counter target spell. Cards in your hand that share a card type with that spell perpetually gain \"This spell costs {1} less to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Absorb Energy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

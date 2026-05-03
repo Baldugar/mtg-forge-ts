@@ -1,0 +1,23 @@
+{
+  "id": "absorb-identity-corpus-m673",
+  "description": "M6 corpus — Absorb Identity; in-hand parse.",
+  "seed": 61496,
+  "cards": {
+    "Absorb Identity": "Name:Absorb Identity\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | RememberLKI$ True | SubAbility$ CloneArmy | SpellDescription$ Return target creature to its owner's hand. You may have Shapeshifters you control become copies of that creature until end of turn.\nSVar:CloneArmy:DB$ Clone | Defined$ Remembered | CloneTarget$ Valid Shapeshifter.YouCtrl | Duration$ UntilEndOfTurn | SubAbility$ DBCleanup | Optional$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Shapeshifter\nOracle:Return target creature to its owner's hand. You may have Shapeshifters you control become copies of that creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Absorb Identity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

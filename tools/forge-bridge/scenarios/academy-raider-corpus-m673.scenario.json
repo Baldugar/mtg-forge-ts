@@ -1,0 +1,25 @@
+{
+  "id": "academy-raider-corpus-m673",
+  "description": "M6 corpus — Academy Raider; ETB-on-bf.",
+  "seed": 61539,
+  "cards": {
+    "Academy Raider": "Name:Academy Raider\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:1/1\nK:Intimidate\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card>\nAI:RemoveDeck:Random\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Academy Raider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

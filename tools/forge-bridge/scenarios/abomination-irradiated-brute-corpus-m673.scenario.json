@@ -1,0 +1,25 @@
+{
+  "id": "abomination-irradiated-brute-corpus-m673",
+  "description": "M6 corpus — Abomination, Irradiated Brute; ETB-on-bf.",
+  "seed": 61480,
+  "cards": {
+    "Abomination, Irradiated Brute": "Name:Abomination, Irradiated Brute\nManaCost:2 G G\nTypes:Legendary Creature Gamma Villain\nPT:4/4\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Gamma.YouCtrl,Villain.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a Gamma or Villain you control deals combat damage to a player, put that many +1/+1 counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Gamma|Villain\nOracle:Trample\\nWhenever a Gamma or Villain you control deals combat damage to a player, put that many +1/+1 counters on Abomination.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abomination, Irradiated Brute"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "abiding-grace-corpus-m673",
+  "description": "M6 corpus — Abiding Grace; ETB-on-bf.",
+  "seed": 61472,
+  "cards": {
+    "Abiding Grace": "Name:Abiding Grace\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ At the beginning of your end step, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBGainLife,DBChangeZone\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card with mana value 1 in your graveyard | ValidTgts$ Creature.cmcEQ1+YouCtrl | SpellDescription$ Return target creature card with mana value 1 from your graveyard to the battlefield.\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your end step, choose one —\\n• You gain 1 life.\\n• Return target creature card with mana value 1 from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abiding Grace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "abstruse-appropriation-corpus-m673",
+  "description": "M6 corpus — Abstruse Appropriation; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "Abstruse Appropriation": "Name:Abstruse Appropriation\nManaCost:2 W B\nTypes:Instant\nK:Devoid\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | RememberChanged$ True | TgtPrompt$ Select target nonland permanent | SubAbility$ DBEffect | SpellDescription$ Exile target nonland permanent.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ MayPlay,ManaConvert | SubAbility$ DBCleanup | Duration$ Permanent | ForgetOnMoved$ Exile | SpellDescription$ You may cast that card for as long as it remains exiled, and you may spend colorless mana as though it were mana of any color to cast that spell.\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast that card for as long as it remains exiled.\nSVar:ManaConvert:Mode$ ManaConvert | ValidPlayer$ You | ValidCard$ Card.IsRemembered | ValidSA$ Spell.MayPlaySource | ManaConversion$ C->AnyColor | AffectedZone$ Exile | Description$ You may spend colorless mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Devoid\\nExile target nonland permanent. You may cast that card for as long as it remains exiled, and you may spend colorless mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abstruse Appropriation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

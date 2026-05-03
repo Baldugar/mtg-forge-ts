@@ -1,0 +1,23 @@
+{
+  "id": "abeyance-corpus-m673",
+  "description": "M6 corpus — Abeyance; in-hand parse.",
+  "seed": 61469,
+  "cards": {
+    "Abeyance": "Name:Abeyance\nManaCost:1 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Player | StaticAbilities$ STCantBeCast,STCantBeActivated | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SubAbility$ DBDraw | SpellDescription$ Until end of turn, target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Instant,Sorcery | Caster$ Player.IsRemembered | Description$ Target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.\nSVar:STCantBeActivated:Mode$ CantBeActivated | ValidCard$ Card | ValidSA$ Activated.!ManaAbility | Activator$ Player.IsRemembered\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Until end of turn, target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abeyance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

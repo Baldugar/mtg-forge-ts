@@ -1,0 +1,23 @@
+{
+  "id": "aberrant-researcher-corpus-m673",
+  "description": "M6 corpus — Aberrant Researcher; in-hand parse.",
+  "seed": 61467,
+  "cards": {
+    "Aberrant Researcher": "Name:Aberrant Researcher\nManaCost:3 U\nTypes:Creature Human Insect\nPT:3/2\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill a card. If an instant or sorcery card was milled this way, transform CARDNAME.\nSVar:TrigMill:DB$ Mill | Defined$ You | RememberMilled$ True | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.Instant,Card.Sorcery | SubAbility$ DBCleanup | Mode$ Transform\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Ability$Delirium & Type$Instant|Sorcery\nAlternateMode:DoubleFaced\nOracle:Flying\\nAt the beginning of your upkeep, mill a card. If an instant or sorcery card was milled this way, transform Aberrant Researcher.\n\nALTERNATE\n\nName:Perfected Form\nManaCost:no cost\nColors:blue\nTypes:Creature Insect Horror\nPT:5/4\nK:Flying\nOracle:Flying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aberrant Researcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

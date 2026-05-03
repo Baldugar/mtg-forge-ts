@@ -1,0 +1,25 @@
+{
+  "id": "absolving-lammasu-corpus-m673",
+  "description": "M6 corpus — Absolving Lammasu; ETB-on-bf.",
+  "seed": 61493,
+  "cards": {
+    "Absolving Lammasu": "Name:Absolving Lammasu\nManaCost:4 W\nTypes:Creature Lammasu\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAbsolve | TriggerDescription$ When CARDNAME enters, all suspected creatures are no longer suspected.\nSVar:TrigAbsolve:DB$ AlterAttribute | Defined$ Valid Creature.IsSuspected | Attributes$ Suspected | Activate$ False\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 3 life and suspect up to one target creature an opponent controls. (A suspected creature has menace and can't block.)\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 3 | SubAbility$ DBSuspect\nSVar:DBSuspect:DB$ AlterAttribute | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select up to one target creature an opponent controls | TargetMin$ 0 | TargetMax$ 1 | Attributes$ Suspected\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Absolving Lammasu enters, all suspected creatures are no longer suspected.\\nWhen Absolving Lammasu dies, you gain 3 life and suspect up to one target creature an opponent controls. (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Absolving Lammasu"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

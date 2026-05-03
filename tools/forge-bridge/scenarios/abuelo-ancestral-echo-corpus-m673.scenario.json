@@ -1,0 +1,25 @@
+{
+  "id": "abuelo-ancestral-echo-corpus-m673",
+  "description": "M6 corpus — Abuelo, Ancestral Echo; ETB-on-bf.",
+  "seed": 61504,
+  "cards": {
+    "Abuelo, Ancestral Echo": "Name:Abuelo, Ancestral Echo\nManaCost:1 W U\nTypes:Legendary Creature Spirit\nPT:2/2\nK:Flying\nK:Ward:2\nA:AB$ ChangeZone | Cost$ 1 W U | ValidTgts$ Creature.Other+YouCtrl,Artifact.Other+YouCtrl | TgtPrompt$ Select another target creature or artifact you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile another target creature or artifact you control. Return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | RememberObjects$ RememberedLKI | TriggerDescription$ Return that card to the battlefield under its owner's control at the beginning of the next end step. | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Artifact\nOracle:Flying, ward {2}\\n{1}{W}{U}: Exile another target creature or artifact you control. Return it to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abuelo, Ancestral Echo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

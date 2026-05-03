@@ -1,0 +1,23 @@
+{
+  "id": "abundant-growth-corpus-m673",
+  "description": "M6 corpus — Abundant Growth; in-hand parse.",
+  "seed": 61510,
+  "cards": {
+    "Abundant Growth": "Name:Abundant Growth\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ FreeCard | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:FreeCard:DB$ Draw\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ AbundantGrowthTap | Description$ Enchanted land has \"{T}: Add one mana of any color.\"\nSVar:AbundantGrowthTap:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Enchant land\\nWhen Abundant Growth enters, draw a card.\\nEnchanted land has \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abundant Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "abduction-corpus-m673",
+  "description": "M6 corpus — Abduction; in-hand parse.",
+  "seed": 61464,
+  "cards": {
+    "Abduction": "Name:Abduction\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap enchanted creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigReturnOwner | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under its owner's control.\nSVar:TrigReturnOwner:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:Enchant creature\\nWhen Abduction enters, untap enchanted creature.\\nYou control enchanted creature.\\nWhen enchanted creature dies, return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abduction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

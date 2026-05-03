@@ -1,0 +1,25 @@
+{
+  "id": "abattoir-ghoul-corpus-m673",
+  "description": "M6 corpus — Abattoir Ghoul; ETB-on-bf.",
+  "seed": 61457,
+  "cards": {
+    "Abattoir Ghoul": "Name:Abattoir Ghoul\nManaCost:3 B\nTypes:Creature Zombie\nPT:3/2\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, you gain life equal to that creature's toughness.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredCard$CardToughness\nOracle:First strike\\nWhenever a creature dealt damage by Abattoir Ghoul this turn dies, you gain life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abattoir Ghoul"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

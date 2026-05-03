@@ -1,0 +1,25 @@
+{
+  "id": "abhorrent-overlord-corpus-m673",
+  "description": "M6 corpus — Abhorrent Overlord; ETB-on-bf.",
+  "seed": 61471,
+  "cards": {
+    "Abhorrent Overlord": "Name:Abhorrent Overlord\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 black Harpy creature tokens with flying equal to your devotion to black.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_harpy_flying | TokenOwner$ You\nSVar:X:Count$Devotion.Black\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nOracle:Flying\\nWhen Abhorrent Overlord enters, create a number of 1/1 black Harpy creature tokens with flying equal to your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\\nAt the beginning of your upkeep, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abhorrent Overlord"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

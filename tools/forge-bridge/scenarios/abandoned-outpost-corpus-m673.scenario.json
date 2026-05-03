@@ -1,0 +1,25 @@
+{
+  "id": "abandoned-outpost-corpus-m673",
+  "description": "M6 corpus — Abandoned Outpost; ETB-on-bf.",
+  "seed": 61455,
+  "cards": {
+    "Abandoned Outpost": "Name:Abandoned Outpost\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nOracle:Abandoned Outpost enters tapped.\\n{T}: Add {W}.\\n{T}, Sacrifice Abandoned Outpost: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abandoned Outpost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

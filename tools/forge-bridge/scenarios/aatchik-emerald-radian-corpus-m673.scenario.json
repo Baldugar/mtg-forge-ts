@@ -1,0 +1,25 @@
+{
+  "id": "aatchik-emerald-radian-corpus-m673",
+  "description": "M6 corpus — Aatchik, Emerald Radian; ETB-on-bf.",
+  "seed": 61447,
+  "cards": {
+    "Aatchik, Emerald Radian": "Name:Aatchik, Emerald Radian\nManaCost:3 B B G\nTypes:Legendary Creature Insect Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 1/1 green Insect creature token for each artifact and/or creature card in your graveyard.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_insect\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Insect.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another Insect you control dies, put a +1/+1 counter on NICKNAME. Each opponent loses 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nSVar:X:Count$ValidGraveyard Artifact.YouOwn,Creature.YouOwn\nDeckHas:Ability$Token\nDeckHints:Type$Insect\nOracle:When Aatchik enters, create a 1/1 green Insect creature token for each artifact and/or creature card in your graveyard.\\nWhenever another Insect you control dies, put a +1/+1 counter on Aatchik. Each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aatchik, Emerald Radian"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "abzan-monument-corpus-m673",
+  "description": "M6 corpus — Abzan Monument; ETB-on-bf.",
+  "seed": 61530,
+  "cards": {
+    "Abzan Monument": "Name:Abzan Monument\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this artifact enters, search your library for a basic Plains, Swamp, or Forest card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains.Basic,Swamp.Basic,Forest.Basic | ChangeTypeDesc$ basic Plains, Swamp, or Forest\nA:AB$ Token | Cost$ 1 W B G T Sac<1/CARDNAME> | TokenPower$ X | TokenToughness$ X | TokenScript$ w_x_x_spirit | TokenOwner$ You | SorcerySpeed$ True | SpellDescription$ Create an X/X white Spirit creature token, where X is the greatest toughness among creatures you control. Activate only as a sorcery.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardToughness\nDeckHas:Ability$Token\nOracle:When this artifact enters, search your library for a basic Plains, Swamp, or Forest card, reveal it, put it into your hand, then shuffle.\\n{1}{W}{B}{G}, {T}, Sacrifice this artifact: Create an X/X white Spirit creature token, where X is the greatest toughness among creatures you control. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abzan Monument"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

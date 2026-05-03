@@ -1,0 +1,25 @@
+{
+  "id": "abigale-eloquent-first-year-corpus-m673",
+  "description": "M6 corpus — Abigale, Eloquent First-Year; ETB-on-bf.",
+  "seed": 61473,
+  "cards": {
+    "Abigale, Eloquent First-Year": "Name:Abigale, Eloquent First-Year\nManaCost:WB WB\nTypes:Legendary Creature Bird Bard\nPT:1/1\nK:Flying\nK:First Strike\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ When NICKNAME enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | TargetMin$ 0 | TargetMax$ 1 | RemoveAllAbilities$ True | Duration$ Permanent | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterTypes$ Flying,First Strike,Lifelink\nSVar:PlayMain1:TRUE\nOracle:Flying, first strike, lifelink\\nWhen Abigale enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abigale, Eloquent First-Year"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

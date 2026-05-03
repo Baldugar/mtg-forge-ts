@@ -1,0 +1,23 @@
+{
+  "id": "aang-s-journey-corpus-m673",
+  "description": "M6 corpus — Aang's Journey; in-hand parse.",
+  "seed": 61444,
+  "cards": {
+    "Aang's Journey": "Name:Aang's Journey\nManaCost:2\nTypes:Sorcery Lesson\nK:Kicker:2\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBChangeZone | SpellDescription$ Search your library for a basic land card. If this spell was kicked, instead search your library for a basic land card and a Shrine card. Reveal those cards, put them into your hand, then shuffle. You gain 2 life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ EACH Land.Basic & Shrine | ChangeTypeDesc$ basic land card and a Shrine card | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:X:Count$TimesKicked\nOracle:Kicker {2} (You may pay an additional {2} as you cast this spell.)\\nSearch your library for a basic land card. If this spell was kicked, instead search your library for a basic land card and a Shrine card. Reveal those cards, put them into your hand, then shuffle.\\nYou gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aang's Journey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

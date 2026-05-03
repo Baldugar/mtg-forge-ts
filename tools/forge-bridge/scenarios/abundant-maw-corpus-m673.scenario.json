@@ -1,0 +1,25 @@
+{
+  "id": "abundant-maw-corpus-m673",
+  "description": "M6 corpus — Abundant Maw; ETB-on-bf.",
+  "seed": 61512,
+  "cards": {
+    "Abundant Maw": "Name:Abundant Maw\nManaCost:8\nTypes:Creature Eldrazi Leech\nPT:6/4\nK:Emerge:6 B\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When you cast this spell, target opponent loses 3 life and you gain 3 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:Emerge {6}{B} (You may cast this spell by sacrificing a creature and paying the emerge cost reduced by that creature's mana value.)\\nWhen you cast this spell, target opponent loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abundant Maw"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "abomination-corpus-m673",
+  "description": "M6 corpus — Abomination; ETB-on-bf.",
+  "seed": 61479,
+  "cards": {
+    "Abomination": "Name:Abomination\nManaCost:3 B B\nTypes:Creature Horror\nPT:2/6\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.Green,Creature.White | ValidBlocker$ Card.Self | Execute$ DelTrigBlocked | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.Green,Creature.White | Execute$ DelTrigBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Destroy blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Destroy blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nOracle:Whenever Abomination blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abomination"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

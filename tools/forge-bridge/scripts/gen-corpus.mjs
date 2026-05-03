@@ -62,15 +62,61 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     if (!nameLine?.startsWith("Name:")) continue;
     const nm = nameLine.slice(5).trim();
     if (covered.has(nm)) continue;
-    // Skip cards with `no cost` mana cost that aren't permanents (Schemes,
-    // Conspiracies, Vanguards, Phenomena, Planes) — the bridge doesn't
-    // support those zone types yet.
-    const typesLine = lines.find((l) => l.startsWith("Types:"));
-    if (typesLine) {
-      const t = typesLine.slice(6);
-      if (/Scheme|Conspiracy|Vanguard|Phenomenon|Plane(\b|$)|Dungeon/.test(t)) continue;
-    }
-    uncovered.push({ name: nm, script: txt, types: typesLine ?? "" });
+    // Skip card classes whose ETB-on-bf setup would diverge from Forge:
+    //   - Schemes/Conspiracies/Vanguards/Phenomena/Planes/Dungeons live in
+    //     non-battlefield zones the bridge doesn't replicate.
+    //   - Auras (K:Enchant:) need a legal attachment target per CR 303.4
+    //     to stay on the battlefield. Forge fizzles them; TS golden runner
+    //     stamps them on bf. → in-hand only.
+    //   - Sagas need lore-counter chapters to fire correctly; bridge timing
+    //     diverges. → in-hand only.
+    //   - Cards with K:etbCounter trigger CounterAdded on TS that Forge's
+    //     bridge captures via a different event path (replacement, not
+    //     GameEventCardCounters). → in-hand only.
+    //   - Vehicles need crewing to be active.
+    //   - Battles need defense counters seeded.
+    const typesLine = lines.find((l) => l.startsWith("Types:")) ?? "";
+    const t = typesLine.slice(6);
+    if (/Scheme|Conspiracy|Vanguard|Phenomenon|Plane(\b|$)|Dungeon/.test(t)) continue;
+    const isAura = lines.some((l) => l.startsWith("K:Enchant:"));
+    const isSaga = /\bSaga\b/.test(t);
+    const isVehicle = /\bVehicle\b/.test(t);
+    const isBattle = /\bBattle\b/.test(t);
+    const hasEtbCounter = lines.some((l) => l.startsWith("K:etbCounter"));
+    // M6.73 — additional filters surfaced by 100-card pilot:
+    //   - DFC/MDFC/Transform cards (AlternateMode:) often have face-specific
+    //     timing the setup path doesn't replicate cleanly.
+    //   - Lands with ETB triggers (Abraded Bluffs deals 1 damage to opp) —
+    //     bridge AI doesn't always pick the trigger's target during setup
+    //     drain-stack, leaving a TS-only damage emission.
+    //   - Flash creatures with alternate-cost transforms (Aang) auto-trigger
+    //     SetState in Forge's AI, tapping creatures pre-action.
+    const hasAlternateMode = lines.some((l) => l.startsWith("AlternateMode:"));
+    const isLand = /\bLand\b/.test(t);
+    const hasSelfEtbTrigger = lines.some((l) =>
+      l.startsWith("T:") && l.includes("ChangesZone") && l.includes("Battlefield") && l.includes("Card.Self"),
+    );
+    const hasFlash = lines.some((l) => l.startsWith("K:Flash"));
+    const hasSetStateAbility = lines.some((l) =>
+      l.startsWith("A:") && l.includes("SP$ SetState") || l.includes("AB$ SetState"),
+    );
+    // Avatar TLA effects (Airbend/Earthbend/Waterbend/Firebend) and other
+    // niche Forge effects the TS engine treats as no-ops, leading to
+    // auto-tap fallback paths that don't match Forge.
+    const usesNicheEffect = lines.some((l) =>
+      /\bDB\$ (Airbend|Earthbend|Waterbend|Firebend|Mutate|Companion)/.test(l),
+    );
+    const inHandOnly =
+      isAura ||
+      isSaga ||
+      isVehicle ||
+      isBattle ||
+      hasEtbCounter ||
+      hasAlternateMode ||
+      (isLand && hasSelfEtbTrigger) ||
+      (hasFlash && hasSetStateAbility) ||
+      usesNicheEffect;
+    uncovered.push({ name: nm, script: txt, types: typesLine, inHandOnly });
     if (uncovered.length >= count) break outer;
   }
 }
@@ -89,7 +135,8 @@ let seed = 0xf000;
 let out = "";
 for (const card of uncovered) {
   const t = card.types;
-  const isPermanent = /\b(Creature|Artifact|Enchantment|Land|Planeswalker|Battle)\b/.test(t);
+  const isPermanent =
+    !card.inHandOnly && /\b(Creature|Artifact|Enchantment|Land|Planeswalker)\b/.test(t);
   const id = `${slug(card.name)}-corpus-${wave}`;
   const desc = `M6 corpus — ${card.name}; ${isPermanent ? "ETB-on-bf" : "in-hand parse"}.`;
   if (isPermanent) {

@@ -1,0 +1,25 @@
+{
+  "id": "abbot-of-keral-keep-corpus-m673",
+  "description": "M6 corpus — Abbot of Keral Keep; ETB-on-bf.",
+  "seed": 61461,
+  "cards": {
+    "Abbot of Keral Keep": "Name:Abbot of Keral Keep\nManaCost:1 R\nTypes:Creature Human Monk\nPT:2/1\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile the top card of your library. Until end of turn, you may play that card.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:ALWAYS\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Abbot of Keral Keep enters, exile the top card of your library. Until end of turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abbot of Keral Keep"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

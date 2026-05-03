@@ -1,0 +1,25 @@
+{
+  "id": "aang-s-iceberg-corpus-m673",
+  "description": "M6 corpus — Aang's Iceberg; ETB-on-bf.",
+  "seed": 61443,
+  "cards": {
+    "Aang's Iceberg": "Name:Aang's Iceberg\nManaCost:2 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Permanent.nonLand+Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target nonland permanent | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nA:AB$ Sacrifice | Cost$ Waterbend<3> | SacValid$ Self | RememberSacrificed$ True | SubAbility$ DBScry | SpellDescription$ Sacrifice this enchantment. If you do, scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:Flash\\nWhen this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield.\\nWaterbend {3}: Sacrifice this enchantment. If you do, scry 2. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aang's Iceberg"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "abzan-charm-corpus-m673",
+  "description": "M6 corpus — Abzan Charm; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Abzan Charm": "Name:Abzan Charm\nManaCost:W B G\nTypes:Instant\nA:SP$ Charm | Choices$ DBExile,DBDraw,DBCounters\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Creature.powerGE3 | TgtPrompt$ Choose target creature with power 3 or greater | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature with power 3 or greater.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBLoseLife | SpellDescription$ You draw two cards and you lose 2 life.\nSVar:DBCounters:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2 | TargetMin$ 1 | TargetMax$ 2 | DividedAsYouChoose$ 2 | SpellDescription$ Distribute two +1/+1 counters among one or two target creatures.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ You | StackDescription$ None\nOracle:Choose one —\\n• Exile target creature with power 3 or greater.\\n• You draw two cards and you lose 2 life.\\n• Distribute two +1/+1 counters among one or two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abzan Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "abnormal-endurance-corpus-m673",
+  "description": "M6 corpus — Abnormal Endurance; in-hand parse.",
+  "seed": 61475,
+  "cards": {
+    "Abnormal Endurance": "Name:Abnormal Endurance\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SpellDescription$ Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\" | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Triggers$ AbnormalEnduranceChangeZone | Defined$ ParentTarget\nSVar:AbnormalEnduranceChangeZone:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ AbnormalEnduranceTrigChangeZone | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control.\nSVar:AbnormalEnduranceTrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abnormal Endurance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

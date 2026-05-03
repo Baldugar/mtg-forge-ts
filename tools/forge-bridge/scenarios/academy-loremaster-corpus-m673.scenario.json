@@ -1,0 +1,25 @@
+{
+  "id": "academy-loremaster-corpus-m673",
+  "description": "M6 corpus — Academy Loremaster; ETB-on-bf.",
+  "seed": 61538,
+  "cards": {
+    "Academy Loremaster": "Name:Academy Loremaster\nManaCost:U U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's draw step, that player may draw an additional card. If they do, spells they cast this turn cost {2} more to cast.\nSVar:TrigDraw:DB$ Effect | UnlessCost$ Draw<1/Player.TriggeredPlayer> | UnlessPayer$ TriggeredPlayer | UnlessSwitched$ True | StaticAbilities$ RaiseCost\nSVar:RaiseCost:Mode$ RaiseCost | ValidCard$ Card.ActivePlayerCtrl | Type$ Spell | Amount$ 2 | Description$ Spells they cast this turn cost {2} more to cast.\nOracle:At the beginning of each player's draw step, that player may draw an additional card. If they do, spells they cast this turn cost {2} more to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Academy Loremaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

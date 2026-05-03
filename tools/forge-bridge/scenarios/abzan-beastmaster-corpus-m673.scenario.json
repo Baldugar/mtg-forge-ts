@@ -1,0 +1,25 @@
+{
+  "id": "abzan-beastmaster-corpus-m673",
+  "description": "M6 corpus — Abzan Beastmaster; ETB-on-bf.",
+  "seed": 61525,
+  "cards": {
+    "Abzan Beastmaster": "Name:Abzan Beastmaster\nManaCost:2 G\nTypes:Creature Dog Shaman\nPT:2/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToughDraw | TriggerDescription$ At the beginning of your upkeep, draw a card if you control the creature with the greatest toughness or tied for the greatest toughness.\nSVar:TrigToughDraw:DB$ Draw | Defined$ You | ConditionPresent$ Creature.YouCtrl | ConditionCompare$ GE1 | ConditionCheckSVar$ YourTough | ConditionSVarCompare$ GEOppsTough\nSVar:YourTough:Count$Valid Creature.YouCtrl$GreatestCardToughness\nSVar:OppsTough:Count$Valid Creature.YouDontCtrl$GreatestCardToughness\nOracle:At the beginning of your upkeep, draw a card if you control the creature with the greatest toughness or tied for the greatest toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abzan Beastmaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

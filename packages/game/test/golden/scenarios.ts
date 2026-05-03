@@ -117055,4 +117055,2203 @@ Oracle:Flying\\nLand creatures you control have vigilance.\\nAt the beginning of
     ],
     actions: [],
   },
+  {
+    id: "aang-swift-savior-corpus-m673",
+    description: "M6 corpus — Aang, Swift Savior; in-hand parse.",
+    seed: 0xf000,
+    cards: {
+      "Aang, Swift Savior": `Name:Aang, Swift Savior
+ManaCost:1 W U
+Types:Legendary Creature Human Avatar Ally
+PT:2/3
+K:Flash
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigAirbend | TriggerDescription\$ When NICKNAME enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+SVar:TrigAirbend:DB\$ Airbend | ValidTgts\$ Creature.Other,Card.inZoneStack | TgtPrompt\$ Select up to another target creature or spell | TgtZone\$ Battlefield,Stack | TargetMin\$ 0
+A:AB\$ SetState | Cost\$ Waterbend<8> | Defined\$ Self | Mode\$ Transform | SpellDescription\$ Transform NICKNAME.
+AlternateMode:DoubleFaced
+Oracle:Flash\\nFlying\\nWhen Aang enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\\nWaterbend {8}: Transform Aang.
+
+ALTERNATE
+
+Name:Aang and La, Ocean's Fury
+ManaCost:no cost
+Types:Legendary Creature Avatar Spirit Ally
+PT:5/5
+K:Reach
+K:Trample
+T:Mode\$ Attacks | ValidCard\$ Card.Self | Execute\$ TrigPutCounterAll | TriggerDescription\$ Whenever NICKNAME attack, put a +1/+1 counter on each tapped creature you control.
+SVar:TrigPutCounterAll:DB\$ PutCounterAll | ValidCards\$ Creature.YouCtrl+tapped | CounterType\$ P1P1 | CounterNum\$ 1
+Oracle:Reach, trample\\nWhenever Aang and La attack, put a +1/+1 counter on each tapped creature you control.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aang, Swift Savior"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-the-last-airbender-corpus-m673",
+    description: "M6 corpus — Aang, the Last Airbender; in-hand parse.",
+    seed: 0xf001,
+    cards: {
+      "Aang, the Last Airbender": `Name:Aang, the Last Airbender
+ManaCost:3 W
+Types:Legendary Creature Human Avatar Ally
+PT:3/2
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigAirbend | TriggerDescription\$ When NICKNAME enters, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+SVar:TrigAirbend:DB\$ Airbend | ValidTgts\$ Permanent.nonLand+Other | TgtPrompt\$ Select up to one another target nonland permanent | TargetMin\$ 0 | TargetMax\$ 1
+T:Mode\$ SpellCast | ValidCard\$ Lesson | ValidActivatingPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigPump | TriggerDescription\$ Whenever you cast a Lesson spell, NICKNAME gains lifelink until end of turn.
+SVar:TrigPump:DB\$ Pump | Defined\$ Self | KW\$ Lifelink
+SVar:BuffedBy:Lesson
+DeckHints:Type\$Lesson
+Oracle:Flying\\nWhen Aang enters, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\\nWhenever you cast a Lesson spell, Aang gains lifelink until end of turn.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aang, the Last Airbender"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-s-defense-corpus-m673",
+    description: "M6 corpus — Aang's Defense; in-hand parse.",
+    seed: 0xf002,
+    cards: {
+      "Aang's Defense": `Name:Aang's Defense
+ManaCost:W
+Types:Instant
+A:SP\$ Pump | ValidTgts\$ Creature.blocking+YouCtrl | NumAtt\$ +2 | NumDef\$ +2 | TgtPrompt\$ Select target blocking creature you control | SubAbility\$ DBDraw | SpellDescription\$ Target blocking creature you control gets +2/+2 until end of turn. Draw a card.
+SVar:DBDraw:DB\$ Draw
+Oracle:Target blocking creature you control gets +2/+2 until end of turn.\\nDraw a card.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aang's Defense"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-s-iceberg-corpus-m673",
+    description: "M6 corpus — Aang's Iceberg; ETB-on-bf.",
+    seed: 0xf003,
+    cards: {
+      "Aang's Iceberg": `Name:Aang's Iceberg
+ManaCost:2 W
+Types:Enchantment
+K:Flash
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigExile | TriggerDescription\$ When this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield.
+SVar:TrigExile:DB\$ ChangeZone | IsCurse\$ True | ValidTgts\$ Permanent.nonLand+Other | TargetMin\$ 0 | TargetMax\$ 1 | TgtPrompt\$ Select up to one other target nonland permanent | Origin\$ Battlefield | Destination\$ Exile | Duration\$ UntilHostLeavesPlay
+A:AB\$ Sacrifice | Cost\$ Waterbend<3> | SacValid\$ Self | RememberSacrificed\$ True | SubAbility\$ DBScry | SpellDescription\$ Sacrifice this enchantment. If you do, scry 2.
+SVar:DBScry:DB\$ Scry | ScryNum\$ 2 | ConditionDefined\$ Remembered | ConditionPresent\$ Card | SubAbility\$ DBCleanup
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+SVar:PlayMain1:TRUE
+SVar:OblivionRing:TRUE
+Oracle:Flash\\nWhen this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield.\\nWaterbend {3}: Sacrifice this enchantment. If you do, scry 2. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang's Iceberg" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-s-journey-corpus-m673",
+    description: "M6 corpus — Aang's Journey; in-hand parse.",
+    seed: 0xf004,
+    cards: {
+      "Aang's Journey": `Name:Aang's Journey
+ManaCost:2
+Types:Sorcery Lesson
+K:Kicker:2
+A:SP\$ ChangeZone | Origin\$ Library | Destination\$ Hand | ChangeType\$ Land.Basic | ChangeTypeDesc\$ basic land | ConditionCheckSVar\$ X | ConditionSVarCompare\$ EQ0 | SubAbility\$ DBChangeZone | SpellDescription\$ Search your library for a basic land card. If this spell was kicked, instead search your library for a basic land card and a Shrine card. Reveal those cards, put them into your hand, then shuffle. You gain 2 life.
+SVar:DBChangeZone:DB\$ ChangeZone | Origin\$ Library | Destination\$ Hand | ChangeType\$ EACH Land.Basic & Shrine | ChangeTypeDesc\$ basic land card and a Shrine card | ConditionCheckSVar\$ X | ConditionSVarCompare\$ EQ1 | SubAbility\$ DBGainLife
+SVar:DBGainLife:DB\$ GainLife | LifeAmount\$ 2
+SVar:X:Count\$TimesKicked
+Oracle:Kicker {2} (You may pay an additional {2} as you cast this spell.)\\nSearch your library for a basic land card. If this spell was kicked, instead search your library for a basic land card and a Shrine card. Reveal those cards, put them into your hand, then shuffle.\\nYou gain 2 life.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aang's Journey"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aarakocra-sneak-corpus-m673",
+    description: "M6 corpus — Aarakocra Sneak; ETB-on-bf.",
+    seed: 0xf005,
+    cards: {
+      "Aarakocra Sneak": `Name:Aarakocra Sneak
+ManaCost:3 U
+Types:Creature Bird Rogue
+PT:1/4
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigInitiative | TriggerDescription\$ When CARDNAME enters, you take the initiative.
+SVar:TrigInitiative:DB\$ TakeInitiative
+Oracle:Flying\\nWhen Aarakocra Sneak enters, you take the initiative.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aarakocra Sneak" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aardvark-sloth-corpus-m673",
+    description: "M6 corpus — Aardvark Sloth; ETB-on-bf.",
+    seed: 0xf006,
+    cards: {
+      "Aardvark Sloth": `Name:Aardvark Sloth
+ManaCost:3 W
+Types:Creature Sloth Beast
+PT:3/3
+K:Lifelink
+Oracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aardvark Sloth" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aatchik-emerald-radian-corpus-m673",
+    description: "M6 corpus — Aatchik, Emerald Radian; ETB-on-bf.",
+    seed: 0xf007,
+    cards: {
+      "Aatchik, Emerald Radian": `Name:Aatchik, Emerald Radian
+ManaCost:3 B B G
+Types:Legendary Creature Insect Druid
+PT:3/3
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigToken | TriggerDescription\$ When NICKNAME enters, create a 1/1 green Insect creature token for each artifact and/or creature card in your graveyard.
+SVar:TrigToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ g_1_1_insect
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Insect.YouCtrl+Other | TriggerZones\$ Battlefield | Execute\$ TrigPutCounter | TriggerDescription\$ Whenever another Insect you control dies, put a +1/+1 counter on NICKNAME. Each opponent loses 1 life.
+SVar:TrigPutCounter:DB\$ PutCounter | Defined\$ Self | CounterType\$ P1P1 | CounterNum\$ 1 | SubAbility\$ DBLoseLife
+SVar:DBLoseLife:DB\$ LoseLife | Defined\$ Player.Opponent | LifeAmount\$ 1
+SVar:X:Count\$ValidGraveyard Artifact.YouOwn,Creature.YouOwn
+DeckHas:Ability\$Token
+DeckHints:Type\$Insect
+Oracle:When Aatchik enters, create a 1/1 green Insect creature token for each artifact and/or creature card in your graveyard.\\nWhenever another Insect you control dies, put a +1/+1 counter on Aatchik. Each opponent loses 1 life.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aatchik, Emerald Radian" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abaddon-the-despoiler-corpus-m673",
+    description: "M6 corpus — Abaddon the Despoiler; ETB-on-bf.",
+    seed: 0xf008,
+    cards: {
+      "Abaddon the Despoiler": `Name:Abaddon the Despoiler
+ManaCost:2 U B R
+Types:Legendary Creature Astartes Warrior
+PT:5/5
+K:Trample
+S:Mode\$ Continuous | Condition\$ PlayerTurn | Affected\$ Card.YouCtrl+YouOwn+wasCastFromHand+cmcLEX | AffectedZone\$ Stack | AddKeyword\$ Cascade | Description\$ Mark of Chaos Ascendant — During your turn, spells you cast from your hand with mana value X or less have cascade, where X is the total amount of life your opponents have lost this turn.
+SVar:X:Count\$LifeOppsLostThisTurn
+Oracle:Trample\\nMark of Chaos Ascendant — During your turn, spells you cast from your hand with mana value X or less have cascade, where X is the total amount of life your opponents have lost this turn.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abaddon the Despoiler" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandon-attachments-corpus-m673",
+    description: "M6 corpus — Abandon Attachments; in-hand parse.",
+    seed: 0xf009,
+    cards: {
+      "Abandon Attachments": `Name:Abandon Attachments
+ManaCost:1 UR
+Types:Instant Lesson
+A:SP\$ Draw | NumCards\$ 2 | UnlessCost\$ Discard<1/Card> | UnlessPayer\$ You | UnlessSwitched\$ True | SpellDescription\$ You may discard a card. If you do, draw two cards.
+DeckHas:Ability\$Discard
+Oracle:You may discard a card. If you do, draw two cards.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abandon Attachments"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandon-hope-corpus-m673",
+    description: "M6 corpus — Abandon Hope; in-hand parse.",
+    seed: 0xf00a,
+    cards: {
+      "Abandon Hope": `Name:Abandon Hope
+ManaCost:X 1 B
+Types:Sorcery
+A:SP\$ Discard | Cost\$ X 1 B Discard<X/Card/card> | ValidTgts\$ Opponent | Mode\$ LookYouChoose | NumCards\$ X | SpellDescription\$ Look at target opponent's hand and choose X cards from it. That player discards those cards.
+SVar:X:Count\$xPaid
+AI:RemoveDeck:All
+Oracle:As an additional cost to cast this spell, discard X cards.\\nLook at target opponent's hand and choose X cards from it. That player discards those cards.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abandon Hope"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandon-reason-corpus-m673",
+    description: "M6 corpus — Abandon Reason; in-hand parse.",
+    seed: 0xf00b,
+    cards: {
+      "Abandon Reason": `Name:Abandon Reason
+ManaCost:2 R
+Types:Instant
+A:SP\$ Pump | TargetMin\$ 0 | TargetMax\$ 2 | NumAtt\$ +1 | KW\$ First Strike | ValidTgts\$ Creature | TgtPrompt\$ Select up to two target creatures | SpellDescription\$ Up to two target creatures each get +1/+0 and gain first strike until end of turn.
+K:Madness:1 R
+DeckHints:Ability\$Discard
+Oracle:Up to two target creatures each get +1/+0 and gain first strike until end of turn.\\nMadness {1}{R} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abandon Reason"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandon-the-post-corpus-m673",
+    description: "M6 corpus — Abandon the Post; in-hand parse.",
+    seed: 0xf00c,
+    cards: {
+      "Abandon the Post": `Name:Abandon the Post
+ManaCost:1 R
+Types:Sorcery
+K:Flashback:3 R
+A:SP\$ Pump | ValidTgts\$ Creature | KW\$ HIDDEN CARDNAME can't block. | IsCurse\$ True | TargetMin\$ 0 | TargetMax\$ 2 | TgtPrompt\$ Select up to two target creatures | StackDescription\$ {c:Targeted} can't block this turn. | SpellDescription\$ Up to two target creatures can't block this turn.
+Oracle:Up to two target creatures can't block this turn.\\nFlashback {3}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abandon the Post"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandoned-air-temple-corpus-m673",
+    description: "M6 corpus — Abandoned Air Temple; ETB-on-bf.",
+    seed: 0xf00d,
+    cards: {
+      "Abandoned Air Temple": `Name:Abandoned Air Temple
+ManaCost:no cost
+Types:Land
+R:Event\$ Moved | ValidCard\$ Card.Self | Destination\$ Battlefield | ReplaceWith\$ LandTapped | ReplacementResult\$ Updated | Description\$ This land enters tapped unless you control a basic land.
+SVar:LandTapped:DB\$ Tap | Defined\$ Self | ETB\$ True | ConditionPresent\$ Land.Basic+YouCtrl | ConditionCompare\$ EQ0
+A:AB\$ Mana | Cost\$ T | Produced\$ W | SpellDescription\$ Add {W}.
+A:AB\$ PutCounterAll | Cost\$ 3 W T | ValidCards\$ Creature.YouCtrl | CounterType\$ P1P1 | CounterNum\$ 1 | AILogic\$ AtEOTOrBlock | SpellDescription\$ Put a +1/+1 counter on each creature you control.
+Oracle:This land enters tapped unless you control a basic land.\\n{T}: Add {W}.\\n{3}{W}, {T}: Put a +1/+1 counter on each creature you control.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abandoned Air Temple" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandoned-campground-corpus-m673",
+    description: "M6 corpus — Abandoned Campground; ETB-on-bf.",
+    seed: 0xf00e,
+    cards: {
+      "Abandoned Campground": `Name:Abandoned Campground
+ManaCost:no cost
+Types:Land
+R:Event\$ Moved | ValidCard\$ Card.Self | Destination\$ Battlefield | ReplaceWith\$ LandTapped | ReplacementResult\$ Updated | Description\$ CARDNAME enters tapped unless a player has 13 or less life.
+SVar:LandTapped:DB\$ Tap | Defined\$ Self | ETB\$ True | ConditionCheckSVar\$ X | ConditionSVarCompare\$ GT13
+SVar:X:PlayerCountPlayers\$LowestLifeTotal
+A:AB\$ Mana | Cost\$ T | Produced\$ Combo W U | SpellDescription\$ Add {W} or {U}.
+Oracle:Abandoned Campground enters tapped unless a player has 13 or less life.\\n{T}: Add {W} or {U}.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abandoned Campground" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandoned-outpost-corpus-m673",
+    description: "M6 corpus — Abandoned Outpost; ETB-on-bf.",
+    seed: 0xf00f,
+    cards: {
+      "Abandoned Outpost": `Name:Abandoned Outpost
+ManaCost:no cost
+Types:Land
+A:AB\$ Mana | Cost\$ T | Produced\$ W | SpellDescription\$ Add {W}.
+A:AB\$ Mana | Cost\$ T Sac<1/CARDNAME> | Produced\$ Any | SpellDescription\$ Add one mana of any color.
+R:Event\$ Moved | ValidCard\$ Card.Self | Destination\$ Battlefield | ReplacementResult\$ Updated | ReplaceWith\$ ETBTapped | Description\$ CARDNAME enters tapped.
+SVar:ETBTapped:DB\$ Tap | Defined\$ Self | ETB\$ True
+Oracle:Abandoned Outpost enters tapped.\\n{T}: Add {W}.\\n{T}, Sacrifice Abandoned Outpost: Add one mana of any color.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abandoned Outpost" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abandoned-sarcophagus-corpus-m673",
+    description: "M6 corpus — Abandoned Sarcophagus; ETB-on-bf.",
+    seed: 0xf010,
+    cards: {
+      "Abandoned Sarcophagus": `Name:Abandoned Sarcophagus
+ManaCost:3
+Types:Artifact
+S:Mode\$ Continuous | Affected\$ Card.nonLand+YouOwn+withCycling,Card.nonLand+YouOwn+withTypeCycling | MayPlay\$ True | AffectedZone\$ Graveyard | Description\$ You may cast spells that have a cycling ability from your graveyard.
+R:Event\$ Moved | ValidCard\$ Card.YouOwn+withCycling,Card.YouOwn+withTypeCycling | Destination\$ Graveyard | Cycling\$ False | ReplaceWith\$ Exile | ActiveZones\$ Battlefield | Description\$ If a card that has a cycling ability would be put into your graveyard from anywhere and it wasn't cycled, exile it instead.
+SVar:Exile:DB\$ ChangeZone | Hidden\$ True | Origin\$ All | Destination\$ Exile | Defined\$ ReplacedCard
+# TODO: Add Ability\$Cycling to Cycling cards for the purpose of this and other similar cards for deck hints
+AI:RemoveDeck:Random
+Oracle:You may cast spells that have a cycling ability from your graveyard.\\nIf a card that has a cycling ability would be put into your graveyard from anywhere and it wasn't cycled, exile it instead.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abandoned Sarcophagus" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abattoir-ghoul-corpus-m673",
+    description: "M6 corpus — Abattoir Ghoul; ETB-on-bf.",
+    seed: 0xf011,
+    cards: {
+      "Abattoir Ghoul": `Name:Abattoir Ghoul
+ManaCost:3 B
+Types:Creature Zombie
+PT:3/2
+K:First Strike
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Creature.DamagedBy | TriggerZones\$ Battlefield | Execute\$ TrigGainLife | TriggerDescription\$ Whenever a creature dealt damage by CARDNAME this turn dies, you gain life equal to that creature's toughness.
+SVar:TrigGainLife:DB\$ GainLife | Defined\$ You | LifeAmount\$ X
+SVar:X:TriggeredCard\$CardToughness
+Oracle:First strike\\nWhenever a creature dealt damage by Abattoir Ghoul this turn dies, you gain life equal to that creature's toughness.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abattoir Ghoul" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abbey-gargoyles-corpus-m673",
+    description: "M6 corpus — Abbey Gargoyles; ETB-on-bf.",
+    seed: 0xf012,
+    cards: {
+      "Abbey Gargoyles": `Name:Abbey Gargoyles
+ManaCost:2 W W W
+Types:Creature Gargoyle
+PT:3/4
+K:Flying
+K:Protection from red
+Oracle:Flying, protection from red
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abbey Gargoyles" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abbey-griffin-corpus-m673",
+    description: "M6 corpus — Abbey Griffin; ETB-on-bf.",
+    seed: 0xf013,
+    cards: {
+      "Abbey Griffin": `Name:Abbey Griffin
+ManaCost:3 W
+Types:Creature Griffin
+PT:2/2
+K:Flying
+K:Vigilance
+Oracle:Flying, vigilance
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abbey Griffin" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abbey-matron-corpus-m673",
+    description: "M6 corpus — Abbey Matron; ETB-on-bf.",
+    seed: 0xf014,
+    cards: {
+      "Abbey Matron": `Name:Abbey Matron
+ManaCost:2 W
+Types:Creature Human Cleric
+PT:1/3
+A:AB\$ Pump | Cost\$ W T | Defined\$ Self | NumDef\$ +3 | SpellDescription\$ CARDNAME gets +0/+3 until end of turn.
+Oracle:{W}, {T}: Abbey Matron gets +0/+3 until end of turn.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abbey Matron" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abbot-of-keral-keep-corpus-m673",
+    description: "M6 corpus — Abbot of Keral Keep; ETB-on-bf.",
+    seed: 0xf015,
+    cards: {
+      "Abbot of Keral Keep": `Name:Abbot of Keral Keep
+ManaCost:1 R
+Types:Creature Human Monk
+PT:2/1
+K:Prowess
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigExile | TriggerDescription\$ When CARDNAME enters, exile the top card of your library. Until end of turn, you may play that card.
+SVar:TrigExile:DB\$ Dig | Defined\$ You | DigNum\$ 1 | ChangeNum\$ All | DestinationZone\$ Exile | RememberChanged\$ True | SubAbility\$ DBEffect
+SVar:DBEffect:DB\$ Effect | RememberObjects\$ RememberedCard | StaticAbilities\$ Play | SubAbility\$ DBCleanup | ExileOnMoved\$ Exile
+SVar:Play:Mode\$ Continuous | MayPlay\$ True | Affected\$ Card.IsRemembered | AffectedZone\$ Exile | Description\$ You may play remembered card.
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+SVar:PlayMain1:ALWAYS
+Oracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Abbot of Keral Keep enters, exile the top card of your library. Until end of turn, you may play that card.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abbot of Keral Keep" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abby-merciless-soldier-corpus-m673",
+    description: "M6 corpus — Abby, Merciless Soldier; ETB-on-bf.",
+    seed: 0xf016,
+    cards: {
+      "Abby, Merciless Soldier": `Name:Abby, Merciless Soldier
+ManaCost:1 R G
+Types:Legendary Creature Human Survivor
+PT:4/4
+K:Partner:Survivors
+T:Mode\$ SpellCast | ValidCard\$ Card.Self | Execute\$ TrigToken | TriggerDescription\$ When you cast this spell, create a number of 1/1 black Fungus Zombie creature tokens named Cordyceps Infected equal to the amount of mana spent to cast it.
+SVar:TrigToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ cordyceps_infected | TokenOwner\$ You
+SVar:X:Count\$CastTotalManaSpent
+R:Event\$ Moved | ValidCard\$ Card.Self | Destination\$ Battlefield | ReplaceWith\$ DBChooseOpp | Layer\$ Control | Description\$ NICKNAME enters under the control of an opponent of your choice.
+SVar:DBChooseOpp:DB\$ ChoosePlayer | Defined\$ You | Choices\$ Player.Opponent | ChoiceTitle\$ Choose an opponent to give control to | AILogic\$ Curse | SubAbility\$ MoveToPlay
+SVar:MoveToPlay:DB\$ ChangeZone | Hidden\$ True | Origin\$ All | Destination\$ Battlefield | Defined\$ ReplacedCard | GainControl\$ ChosenPlayer
+DeckHas:Ability\$Token
+Oracle:When you cast this spell, create a number of 1/1 black Fungus Zombie creature tokens named Cordyceps Infected equal to the amount of mana spent to cast it.\\nAbby enters under the control of an opponent of your choice.\\nPartner—Survivors (You can have two commanders if both have this ability.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abby, Merciless Soldier" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abdel-adrian-gorion-s-ward-corpus-m673",
+    description: "M6 corpus — Abdel Adrian, Gorion's Ward; ETB-on-bf.",
+    seed: 0xf017,
+    cards: {
+      "Abdel Adrian, Gorion's Ward": `Name:Abdel Adrian, Gorion's Ward
+ManaCost:4 W
+Types:Legendary Creature Human Warrior
+PT:4/4
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigExile | TriggerDescription\$ When CARDNAME enters, exile any number of other nonland permanents you control until NICKNAME leaves the battlefield. Create a 1/1 white Soldier creature token for each permanent exiled this way.
+SVar:TrigExile:DB\$ ChangeZone | Origin\$ Battlefield | Destination\$ Exile | Hidden\$ True | ChangeType\$ Permanent.Other+nonLand+YouCtrl | ChangeNum\$ MaxTgts | RememberLKI\$ True | SelectPrompt\$ Choose any number of other nonland permanents you control | Duration\$ UntilHostLeavesPlay | SubAbility\$ DBToken
+SVar:DBToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ w_1_1_soldier | SubAbility\$ DBCleanup
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+SVar:X:Remembered\$Amount
+SVar:MaxTgts:Count\$Valid Permanent.Other+nonLand+YouCtrl
+K:Choose a Background
+AI:RemoveDeck:Random
+DeckHas:Ability\$Token & Type\$Soldier
+Oracle:When Abdel Adrian, Gorion's Ward enters, exile any number of other nonland permanents you control until Abdel Adrian leaves the battlefield. Create a 1/1 white Soldier creature token for each permanent exiled this way.\\nChoose a Background (You can have a Background as a second commander.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abdel Adrian, Gorion's Ward" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abduction-corpus-m673",
+    description: "M6 corpus — Abduction; in-hand parse.",
+    seed: 0xf018,
+    cards: {
+      Abduction: `Name:Abduction
+ManaCost:2 U U
+Types:Enchantment Aura
+K:Enchant:Creature
+SVar:AttachAILogic:GainControl
+S:Mode\$ Continuous | Affected\$ Card.EnchantedBy | GainControl\$ You | Description\$ You control enchanted creature.
+T:Mode\$ ChangesZone | ValidCard\$ Card.Self | Origin\$ Any | Destination\$ Battlefield | Execute\$ TrigUntap | TriggerDescription\$ When CARDNAME enters, untap enchanted creature.
+SVar:TrigUntap:DB\$ Untap | Defined\$ Enchanted
+T:Mode\$ ChangesZone | ValidCard\$ Card.AttachedBy | Origin\$ Battlefield | Destination\$ Graveyard | Execute\$ TrigReturnOwner | TriggerDescription\$ When enchanted creature dies, return that card to the battlefield under its owner's control.
+SVar:TrigReturnOwner:DB\$ ChangeZone | Defined\$ TriggeredNewCardLKICopy | Origin\$ Graveyard | Destination\$ Battlefield
+SVar:PlayMain1:TRUE
+Oracle:Enchant creature\\nWhen Abduction enters, untap enchanted creature.\\nYou control enchanted creature.\\nWhen enchanted creature dies, return that card to the battlefield under its owner's control.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abduction"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aberrant-corpus-m673",
+    description: "M6 corpus — Aberrant; ETB-on-bf.",
+    seed: 0xf019,
+    cards: {
+      Aberrant: `Name:Aberrant
+ManaCost:X 1 G
+Types:Creature Tyranid Mutant
+PT:0/0
+K:Ravenous
+K:Trample
+T:Mode\$ DamageDone | ValidSource\$ Card.Self | ValidTarget\$ Player | Execute\$ TrigDestroy | CombatDamage\$ True | TriggerDescription\$ Heavy Power Hammer — Whenever CARDNAME deals combat damage to a player, destroy target artifact or enchantment that player controls.
+SVar:TrigDestroy:DB\$ Destroy | ValidTgts\$ Artifact.ControlledBy TriggeredTarget,Enchantment.ControlledBy TriggeredTarget | TgtPrompt\$ Select target artifact or enchantment damaged player controls
+SVar:X:Count\$xPaid
+DeckHas:Ability\$Counters
+Oracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nTrample\\nHeavy Power Hammer — Whenever Aberrant deals combat damage to a player, destroy target artifact or enchantment that player controls.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aberrant" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aberrant-mind-sorcerer-corpus-m673",
+    description: "M6 corpus — Aberrant Mind Sorcerer; ETB-on-bf.",
+    seed: 0xf01a,
+    cards: {
+      "Aberrant Mind Sorcerer": `Name:Aberrant Mind Sorcerer
+ManaCost:4 U
+Types:Creature Human Elf Shaman Sorcerer
+PT:3/4
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigPump | TriggerDescription\$ Psionic Spells — When CARDNAME enters, choose target instant or sorcery card in your graveyard, then ABILITY
+SVar:TrigPump:DB\$ Pump | ValidTgts\$ Instant.YouOwn,Sorcery.YouOwn | TgtZone\$ Graveyard | TgtPrompt\$ Choose target instant or sorcery card in your graveyard | SubAbility\$ DBRollDice
+SVar:DBRollDice:DB\$ RollDice | Sides\$ 20 | ResultSubAbilities\$ 1-9:DBLibrary,10-20:DBHand | SpellDescription\$ roll a d20.
+SVar:DBLibrary:DB\$ ChangeZone | Defined\$ Targeted | Origin\$ Graveyard | Destination\$ Library | LibraryPosition\$ 0 | Optional\$ True | SpellDescription\$ 1—9 VERT You may put that card on top of your library.
+SVar:DBHand:DB\$ ChangeZone | Defined\$ Targeted | Origin\$ Graveyard | Destination\$ Hand | SpellDescription\$ 10—20 VERT Return that card to your hand.
+Oracle:Psionic Spells — When Aberrant Mind Sorcerer enters, choose target instant or sorcery card in your graveyard, then roll a d20.\\n1—9 | You may put that card on top of your library.\\n10—20 | Return that card to your hand.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aberrant Mind Sorcerer" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aberrant-researcher-corpus-m673",
+    description: "M6 corpus — Aberrant Researcher; in-hand parse.",
+    seed: 0xf01b,
+    cards: {
+      "Aberrant Researcher": `Name:Aberrant Researcher
+ManaCost:3 U
+Types:Creature Human Insect
+PT:3/2
+K:Flying
+T:Mode\$ Phase | Phase\$ Upkeep | ValidPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigMill | TriggerDescription\$ At the beginning of your upkeep, mill a card. If an instant or sorcery card was milled this way, transform CARDNAME.
+SVar:TrigMill:DB\$ Mill | Defined\$ You | RememberMilled\$ True | SubAbility\$ DBTransform
+SVar:DBTransform:DB\$ SetState | Defined\$ Self | ConditionDefined\$ Remembered | ConditionPresent\$ Card.Instant,Card.Sorcery | SubAbility\$ DBCleanup | Mode\$ Transform
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+DeckHints:Ability\$Delirium & Type\$Instant|Sorcery
+AlternateMode:DoubleFaced
+Oracle:Flying\\nAt the beginning of your upkeep, mill a card. If an instant or sorcery card was milled this way, transform Aberrant Researcher.
+
+ALTERNATE
+
+Name:Perfected Form
+ManaCost:no cost
+Colors:blue
+Types:Creature Insect Horror
+PT:5/4
+K:Flying
+Oracle:Flying
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aberrant Researcher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aberrant-return-corpus-m673",
+    description: "M6 corpus — Aberrant Return; in-hand parse.",
+    seed: 0xf01c,
+    cards: {
+      "Aberrant Return": `Name:Aberrant Return
+ManaCost:4 B B
+Types:Sorcery
+A:SP\$ ChangeZone | Origin\$ Graveyard | Destination\$ Battlefield | GainControl\$ True | TgtPrompt\$ Choose one, two, or three target creature cards in graveyards | ValidTgts\$ Creature | TargetMin\$ 1 | TargetMax\$ 3 | WithCountersType\$ M1M1 | SpellDescription\$ Put one, two, or three target creature cards from graveyards onto the battlefield under your control. Each of them enters with an additional -1/-1 counter on it.
+Oracle:Put one, two, or three target creature cards from graveyards onto the battlefield under your control. Each of them enters with an additional -1/-1 counter on it.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aberrant Return"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abeyance-corpus-m673",
+    description: "M6 corpus — Abeyance; in-hand parse.",
+    seed: 0xf01d,
+    cards: {
+      Abeyance: `Name:Abeyance
+ManaCost:1 W
+Types:Instant
+A:SP\$ Effect | ValidTgts\$ Player | StaticAbilities\$ STCantBeCast,STCantBeActivated | RememberObjects\$ Targeted | AILogic\$ BeginningOfOppTurn | SubAbility\$ DBDraw | SpellDescription\$ Until end of turn, target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.
+SVar:STCantBeCast:Mode\$ CantBeCast | ValidCard\$ Instant,Sorcery | Caster\$ Player.IsRemembered | Description\$ Target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.
+SVar:STCantBeActivated:Mode\$ CantBeActivated | ValidCard\$ Card | ValidSA\$ Activated.!ManaAbility | Activator\$ Player.IsRemembered
+SVar:DBDraw:DB\$ Draw | SpellDescription\$ Draw a card.
+Oracle:Until end of turn, target player can't cast instant or sorcery spells, and that player can't activate abilities that aren't mana abilities.\\nDraw a card.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abeyance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abhorrent-oculus-corpus-m673",
+    description: "M6 corpus — Abhorrent Oculus; ETB-on-bf.",
+    seed: 0xf01e,
+    cards: {
+      "Abhorrent Oculus": `Name:Abhorrent Oculus
+ManaCost:2 U
+Types:Creature Eye
+PT:5/5
+A:SP\$ PermanentCreature | Cost\$ 2 U ExileFromGrave<6/Card>
+K:Flying
+T:Mode\$ Phase | Phase\$ Upkeep | ValidPlayer\$ Opponent | TriggerZones\$ Battlefield | Execute\$ TrigDread | TriggerDescription\$ At the beginning of each opponent's upkeep, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature, and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
+SVar:TrigDread:DB\$ ManifestDread
+Oracle:As an additional cost to cast this spell, exile six cards from your graveyard.\\nFlying\\nAt the beginning of each opponent's upkeep, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature, and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abhorrent Oculus" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abhorrent-overlord-corpus-m673",
+    description: "M6 corpus — Abhorrent Overlord; ETB-on-bf.",
+    seed: 0xf01f,
+    cards: {
+      "Abhorrent Overlord": `Name:Abhorrent Overlord
+ManaCost:5 B B
+Types:Creature Demon
+PT:6/6
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigToken | TriggerDescription\$ When CARDNAME enters, create a number of 1/1 black Harpy creature tokens with flying equal to your devotion to black.
+SVar:TrigToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ b_1_1_harpy_flying | TokenOwner\$ You
+SVar:X:Count\$Devotion.Black
+T:Mode\$ Phase | Phase\$ Upkeep | ValidPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigSac | TriggerDescription\$ At the beginning of your upkeep, sacrifice a creature.
+SVar:TrigSac:DB\$ Sacrifice | Defined\$ You | SacValid\$ Creature
+Oracle:Flying\\nWhen Abhorrent Overlord enters, create a number of 1/1 black Harpy creature tokens with flying equal to your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\\nAt the beginning of your upkeep, sacrifice a creature.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abhorrent Overlord" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abiding-grace-corpus-m673",
+    description: "M6 corpus — Abiding Grace; ETB-on-bf.",
+    seed: 0xf020,
+    cards: {
+      "Abiding Grace": `Name:Abiding Grace
+ManaCost:2 W
+Types:Enchantment
+T:Mode\$ Phase | Phase\$ End of Turn | ValidPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigCharm | TriggerDescription\$ At the beginning of your end step, ABILITY
+SVar:TrigCharm:DB\$ Charm | Choices\$ DBGainLife,DBChangeZone
+SVar:DBGainLife:DB\$ GainLife | Defined\$ You | LifeAmount\$ 1 | SpellDescription\$ You gain 1 life.
+SVar:DBChangeZone:DB\$ ChangeZone | Origin\$ Graveyard | Destination\$ Battlefield | TgtPrompt\$ Choose target creature card with mana value 1 in your graveyard | ValidTgts\$ Creature.cmcEQ1+YouCtrl | SpellDescription\$ Return target creature card with mana value 1 from your graveyard to the battlefield.
+DeckHas:Ability\$LifeGain
+Oracle:At the beginning of your end step, choose one —\\n• You gain 1 life.\\n• Return target creature card with mana value 1 from your graveyard to the battlefield.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abiding Grace" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abigale-eloquent-first-year-corpus-m673",
+    description: "M6 corpus — Abigale, Eloquent First-Year; ETB-on-bf.",
+    seed: 0xf021,
+    cards: {
+      "Abigale, Eloquent First-Year": `Name:Abigale, Eloquent First-Year
+ManaCost:WB WB
+Types:Legendary Creature Bird Bard
+PT:1/1
+K:Flying
+K:First Strike
+K:Lifelink
+T:Mode\$ ChangesZone | ValidCard\$ Card.Self | Origin\$ Any | Destination\$ Battlefield | Execute\$ TrigAnimate | TriggerDescription\$ When NICKNAME enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.
+SVar:TrigAnimate:DB\$ Animate | ValidTgts\$ Creature.Other | TgtPrompt\$ Select up to one other target creature | TargetMin\$ 0 | TargetMax\$ 1 | RemoveAllAbilities\$ True | Duration\$ Permanent | SubAbility\$ DBPutCounter
+SVar:DBPutCounter:DB\$ PutCounter | Defined\$ Targeted | CounterTypes\$ Flying,First Strike,Lifelink
+SVar:PlayMain1:TRUE
+Oracle:Flying, first strike, lifelink\\nWhen Abigale enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abigale, Eloquent First-Year" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abjure-corpus-m673",
+    description: "M6 corpus — Abjure; in-hand parse.",
+    seed: 0xf022,
+    cards: {
+      Abjure: `Name:Abjure
+ManaCost:U
+Types:Instant
+A:SP\$ Counter | Cost\$ U Sac<1/Permanent.Blue/blue permanent> | TargetType\$ Spell | TgtPrompt\$ Select target spell | ValidTgts\$ Card | SpellDescription\$ Counter target spell.
+SVar:NeedsToPlay:Permanent.Blue+cmcLE2+YouCtrl
+AI:RemoveDeck:Random
+Oracle:As an additional cost to cast this spell, sacrifice a blue permanent.\\nCounter target spell.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abjure"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abnormal-endurance-corpus-m673",
+    description: "M6 corpus — Abnormal Endurance; in-hand parse.",
+    seed: 0xf023,
+    cards: {
+      "Abnormal Endurance": `Name:Abnormal Endurance
+ManaCost:1 B
+Types:Instant
+A:SP\$ Pump | ValidTgts\$ Creature | NumAtt\$ +2 | SpellDescription\$ Until end of turn, target creature gets +2/+0 and gains "When this creature dies, return it to the battlefield tapped under its owner's control." | SubAbility\$ DBAnimate
+SVar:DBAnimate:DB\$ Animate | Triggers\$ AbnormalEnduranceChangeZone | Defined\$ ParentTarget
+SVar:AbnormalEnduranceChangeZone:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Card.Self | Execute\$ AbnormalEnduranceTrigChangeZone | TriggerController\$ TriggeredCardController | TriggerDescription\$ When this creature dies, return it to the battlefield tapped under its owner's control.
+SVar:AbnormalEnduranceTrigChangeZone:DB\$ ChangeZone | Origin\$ Graveyard | Destination\$ Battlefield | Tapped\$ True | Defined\$ TriggeredNewCardLKICopy
+Oracle:Until end of turn, target creature gets +2/+0 and gains "When this creature dies, return it to the battlefield tapped under its owner's control."
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abnormal Endurance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aboleth-spawn-corpus-m673",
+    description: "M6 corpus — Aboleth Spawn; ETB-on-bf.",
+    seed: 0xf024,
+    cards: {
+      "Aboleth Spawn": `Name:Aboleth Spawn
+ManaCost:2 U
+Types:Creature Fish Horror
+PT:2/3
+K:Flash
+K:Ward:2
+T:Mode\$ AbilityTriggered | TriggerZones\$ Battlefield | ValidDestination\$ Battlefield | ValidMode\$ ChangesZone,ChangesZoneAll | Execute\$ DBProbingTelepathy | ValidSource\$ Creature.OppCtrl | TriggeredOwnAbility\$ True | TriggerDescription\$ Probing Telepathy — Whenever a creature entering under an opponent's control causes a triggered ability of that creature to trigger, you may copy that ability. You may choose new targets for the copy.
+SVar:DBProbingTelepathy:DB\$ CopySpellAbility | Defined\$ TriggeredSpellAbility | Optional\$ True | MayChooseTarget\$ True
+Oracle:Flash\\nWard {2}\\nProbing Telepathy — Whenever a creature entering under an opponent's control causes a triggered ability of that creature to trigger, you may copy that ability. You may choose new targets for the copy.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aboleth Spawn" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abolish-corpus-m673",
+    description: "M6 corpus — Abolish; in-hand parse.",
+    seed: 0xf025,
+    cards: {
+      Abolish: `Name:Abolish
+ManaCost:1 W W
+Types:Instant
+A:SP\$ Destroy | ValidTgts\$ Artifact,Enchantment | TgtPrompt\$ Select target artifact or enchantment | SpellDescription\$ Destroy target artifact or enchantment.
+S:Mode\$ AlternativeCost | ValidSA\$ Spell.Self | EffectZone\$ All | Cost\$ Discard<1/Plains> | Description\$ You may discard a Plains card rather than pay this spell's mana cost.
+Oracle:You may discard a Plains card rather than pay this spell's mana cost.\\nDestroy target artifact or enchantment.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abolish"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abominable-treefolk-corpus-m673",
+    description: "M6 corpus — Abominable Treefolk; ETB-on-bf.",
+    seed: 0xf026,
+    cards: {
+      "Abominable Treefolk": `Name:Abominable Treefolk
+ManaCost:2 G U
+Types:Snow Creature Treefolk
+PT:*/*
+K:Trample
+S:Mode\$ Continuous | CharacteristicDefining\$ True | SetPower\$ X | SetToughness\$ X | Description\$ CARDNAME's power and toughness are each equal to the number of snow permanents you control.
+SVar:X:Count\$Valid Permanent.Snow+YouCtrl
+SVar:BuffedBy:Permanent.Snow
+SVar:NoZeroToughnessAI:True
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigTap | TriggerDescription\$ When CARDNAME enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.
+SVar:TrigTap:DB\$ Tap | ValidTgts\$ Creature.OppCtrl | TgtPrompt\$ Choose target creature an opponent controls. | SubAbility\$ DBPump
+SVar:DBPump:DB\$ Pump | Defined\$ Targeted | KW\$ HIDDEN This card doesn't untap during your next untap step. | Duration\$ Permanent
+SVar:PlayMain1:TRUE
+Oracle:Trample\\nAbominable Treefolk's power and toughness are each equal to the number of snow permanents you control.\\nWhen Abominable Treefolk enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abominable Treefolk" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abomination-corpus-m673",
+    description: "M6 corpus — Abomination; ETB-on-bf.",
+    seed: 0xf027,
+    cards: {
+      Abomination: `Name:Abomination
+ManaCost:3 B B
+Types:Creature Horror
+PT:2/6
+T:Mode\$ AttackerBlockedByCreature | ValidCard\$ Creature.Green,Creature.White | ValidBlocker\$ Card.Self | Execute\$ DelTrigBlocked | TriggerDescription\$ Whenever CARDNAME blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.
+T:Mode\$ AttackerBlockedByCreature | ValidCard\$ Card.Self | ValidBlocker\$ Creature.Green,Creature.White | Execute\$ DelTrigBlocker | Secondary\$ True | TriggerDescription\$ Whenever CARDNAME blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.
+SVar:DelTrigBlocked:DB\$ DelayedTrigger | Mode\$ Phase | Phase\$ EndCombat | ValidPlayer\$ Player | Execute\$ TrigDestroy | RememberObjects\$ TriggeredAttackerLKICopy | TriggerDescription\$ Destroy blocked creature at end of combat.
+SVar:DelTrigBlocker:DB\$ DelayedTrigger | Mode\$ Phase | Phase\$ EndCombat | ValidPlayer\$ Player | Execute\$ TrigDestroy | RememberObjects\$ TriggeredBlockerLKICopy | TriggerDescription\$ Destroy blocking creature at end of combat.
+SVar:TrigDestroy:DB\$ Destroy | Defined\$ DelayTriggerRememberedLKI
+Oracle:Whenever Abomination blocks or becomes blocked by a green or white creature, destroy that creature at end of combat.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abomination" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abomination-irradiated-brute-corpus-m673",
+    description: "M6 corpus — Abomination, Irradiated Brute; ETB-on-bf.",
+    seed: 0xf028,
+    cards: {
+      "Abomination, Irradiated Brute": `Name:Abomination, Irradiated Brute
+ManaCost:2 G G
+Types:Legendary Creature Gamma Villain
+PT:4/4
+K:Trample
+T:Mode\$ DamageDone | ValidSource\$ Gamma.YouCtrl,Villain.YouCtrl | ValidTarget\$ Player | TriggerZones\$ Battlefield | CombatDamage\$ True | Execute\$ TrigPutCounter | TriggerDescription\$ Whenever a Gamma or Villain you control deals combat damage to a player, put that many +1/+1 counters on NICKNAME.
+SVar:TrigPutCounter:DB\$ PutCounter | Defined\$ Self | CounterType\$ P1P1 | CounterNum\$ X
+SVar:X:TriggerCount\$DamageAmount
+DeckHints:Type\$Gamma|Villain
+Oracle:Trample\\nWhenever a Gamma or Villain you control deals combat damage to a player, put that many +1/+1 counters on Abomination.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abomination, Irradiated Brute" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abomination-of-gudul-corpus-m673",
+    description: "M6 corpus — Abomination of Gudul; ETB-on-bf.",
+    seed: 0xf029,
+    cards: {
+      "Abomination of Gudul": `Name:Abomination of Gudul
+ManaCost:3 B G U
+Types:Creature Horror
+PT:3/4
+K:Flying
+K:Morph:2 B G U
+T:Mode\$ DamageDone | ValidSource\$ Card.Self | ValidTarget\$ Player | CombatDamage\$ True | Execute\$ TrigLoot | TriggerDescription\$ Whenever CARDNAME deals combat damage to a player, you may draw a card. If you do, discard a card.
+SVar:TrigLoot:AB\$ Discard | Defined\$ You | Mode\$ TgtChoose | Cost\$ Draw<1/You>
+Oracle:Flying\\nWhenever Abomination of Gudul deals combat damage to a player, you may draw a card. If you do, discard a card.\\nMorph {2}{B}{G}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abomination of Gudul" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abomination-of-llanowar-corpus-m673",
+    description: "M6 corpus — Abomination of Llanowar; ETB-on-bf.",
+    seed: 0xf02a,
+    cards: {
+      "Abomination of Llanowar": `Name:Abomination of Llanowar
+ManaCost:1 B G
+Types:Legendary Creature Elf Horror
+PT:*/*
+K:Vigilance
+K:Menace
+S:Mode\$ Continuous | CharacteristicDefining\$ True | SetPower\$ X | SetToughness\$ X | Description\$ CARDNAME's power and toughness are each equal to the number of Elves you control plus the number of Elf cards in your graveyard.
+SVar:X:Count\$ValidBattlefield,Graveyard Elf.YouCtrl
+SVar:BuffedBy:Elf
+SVar:NoZeroToughnessAI:True
+DeckNeeds:Type\$Elf
+Oracle:Vigilance; menace (This creature can't be blocked except by two or more creatures.)\\nAbomination of Llanowar's power and toughness are each equal to the number of Elves you control plus the number of Elf cards in your graveyard.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abomination of Llanowar" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aboroth-corpus-m673",
+    description: "M6 corpus — Aboroth; ETB-on-bf.",
+    seed: 0xf02b,
+    cards: {
+      Aboroth: `Name:Aboroth
+ManaCost:4 G G
+Types:Creature Elemental
+PT:9/9
+K:Cumulative upkeep:AddCounter<1/M1M1>:Put a -1/-1 counter on CARDNAME.
+Oracle:Cumulative upkeep—Put a -1/-1 counter on Aboroth. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aboroth" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aboshan-cephalid-emperor-corpus-m673",
+    description: "M6 corpus — Aboshan, Cephalid Emperor; ETB-on-bf.",
+    seed: 0xf02c,
+    cards: {
+      "Aboshan, Cephalid Emperor": `Name:Aboshan, Cephalid Emperor
+ManaCost:4 U U
+Types:Legendary Creature Octopus Noble
+PT:3/3
+A:AB\$ Tap | Cost\$ tapXType<1/Octopus> | ValidTgts\$ Permanent | SpellDescription\$ Tap target permanent.
+A:AB\$ TapAll | Cost\$ U U U | ValidCards\$ Creature.withoutFlying | SpellDescription\$ Tap all creatures without flying.
+Oracle:Tap an untapped Octopus you control: Tap target permanent.\\n{U}{U}{U}: Tap all creatures without flying.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aboshan, Cephalid Emperor" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aboshan-s-desire-corpus-m673",
+    description: "M6 corpus — Aboshan's Desire; in-hand parse.",
+    seed: 0xf02d,
+    cards: {
+      "Aboshan's Desire": `Name:Aboshan's Desire
+ManaCost:U
+Types:Enchantment Aura
+K:Enchant:Creature
+SVar:AttachAILogic:Pump
+S:Mode\$ Continuous | Affected\$ Creature.EnchantedBy | AddKeyword\$ Flying | Description\$ Enchanted creature has flying.
+S:Mode\$ Continuous | Affected\$ Creature.EnchantedBy | AddKeyword\$ Shroud | Condition\$ Threshold | Description\$ Threshold — Enchanted creature has shroud as long as there are seven or more cards in your graveyard. (It can't be the target of spells or abilities.)
+Oracle:Enchant creature\\nEnchanted creature has flying.\\nThreshold — Enchanted creature has shroud as long as there are seven or more cards in your graveyard. (It can't be the target of spells or abilities.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aboshan's Desire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "about-face-corpus-m673",
+    description: "M6 corpus — About Face; in-hand parse.",
+    seed: 0xf02e,
+    cards: {
+      "About Face": `Name:About Face
+ManaCost:R
+Types:Instant
+A:SP\$ Pump | ValidTgts\$ Creature | KW\$ HIDDEN CARDNAME's power and toughness are switched | SpellDescription\$ Switch target creature's power and toughness until end of turn.
+AI:RemoveDeck:All
+Oracle:Switch target creature's power and toughness until end of turn.
+`,
+    },
+    players: [
+      { life: 20, hand: ["About Face"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abrade-corpus-m673",
+    description: "M6 corpus — Abrade; in-hand parse.",
+    seed: 0xf02f,
+    cards: {
+      Abrade: `Name:Abrade
+ManaCost:1 R
+Types:Instant
+A:SP\$ Charm | Choices\$ DBDmg,DBDestroy
+SVar:DBDmg:DB\$ DealDamage | ValidTgts\$ Creature | NumDmg\$ 3 | SpellDescription\$ CARDNAME deals 3 damage to target creature.
+SVar:DBDestroy:DB\$ Destroy | ValidTgts\$ Artifact | SpellDescription\$ Destroy target artifact.
+Oracle:Choose one —\\n• Abrade deals 3 damage to target creature.\\n• Destroy target artifact.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abrade"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abraded-bluffs-corpus-m673",
+    description: "M6 corpus — Abraded Bluffs; in-hand parse.",
+    seed: 0xf030,
+    cards: {
+      "Abraded Bluffs": `Name:Abraded Bluffs
+ManaCost:no cost
+Types:Land Desert
+R:Event\$ Moved | ValidCard\$ Card.Self | Destination\$ Battlefield | ReplacementResult\$ Updated | ReplaceWith\$ ETBTapped | Description\$ CARDNAME enters tapped.
+SVar:ETBTapped:DB\$ Tap | Defined\$ Self | ETB\$ True
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigDealDamage | TriggerDescription\$ When CARDNAME enters, it deals 1 damage to target opponent.
+SVar:TrigDealDamage:DB\$ DealDamage | ValidTgts\$ Opponent | NumDmg\$ 1
+A:AB\$ Mana | Cost\$ T | Produced\$ Combo R W | SpellDescription\$ Add {R} or {W}.
+Oracle:Abraded Bluffs enters tapped.\\nWhen Abraded Bluffs enters, it deals 1 damage to target opponent.\\n{T}:Add {R} or {W}.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abraded Bluffs"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absolute-grace-corpus-m673",
+    description: "M6 corpus — Absolute Grace; ETB-on-bf.",
+    seed: 0xf031,
+    cards: {
+      "Absolute Grace": `Name:Absolute Grace
+ManaCost:1 W
+Types:Enchantment
+S:Mode\$ Continuous | Affected\$ Creature | AddKeyword\$ Protection from black | Description\$ All creatures have protection from black.
+SVar:NonStackingEffect:True
+AI:RemoveDeck:Random
+Oracle:All creatures have protection from black.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absolute Grace" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absolute-law-corpus-m673",
+    description: "M6 corpus — Absolute Law; ETB-on-bf.",
+    seed: 0xf032,
+    cards: {
+      "Absolute Law": `Name:Absolute Law
+ManaCost:1 W
+Types:Enchantment
+S:Mode\$ Continuous | Affected\$ Creature | AddKeyword\$ Protection from red | Description\$ All creatures have protection from red.
+SVar:NonStackingEffect:True
+AI:RemoveDeck:Random
+Oracle:All creatures have protection from red.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absolute Law" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absolute-virtue-corpus-m673",
+    description: "M6 corpus — Absolute Virtue; ETB-on-bf.",
+    seed: 0xf033,
+    cards: {
+      "Absolute Virtue": `Name:Absolute Virtue
+ManaCost:6 W U
+Types:Legendary Creature Avatar Warrior
+PT:8/8
+R:Event\$ Counter | ValidCard\$ Card.Self | ValidSA\$ Spell | Layer\$ CantHappen | Description\$ This spell can't be countered.
+K:Flying
+S:Mode\$ Continuous | Affected\$ You | AddKeyword\$ Protection:Player.Opponent:each of your opponents | Description\$ You have protection from each of your opponents. (You can't be dealt damage, enchanted, or targeted by anything controlled by your opponents.)
+Oracle:This spell can't be countered.\\nFlying\\nYou have protection from each of your opponents. (You can't be dealt damage, enchanted, or targeted by anything controlled by your opponents.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absolute Virtue" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absolver-thrull-corpus-m673",
+    description: "M6 corpus — Absolver Thrull; ETB-on-bf.",
+    seed: 0xf034,
+    cards: {
+      "Absolver Thrull": `Name:Absolver Thrull
+ManaCost:3 W
+Types:Creature Thrull Cleric
+PT:2/3
+K:Haunt:TrigDestroy
+SVar:TrigDestroy:DB\$ Destroy | ValidTgts\$ Enchantment | SpellDescription\$ Destroy target enchantment.
+Oracle:Haunt (When this creature dies, exile it haunting target creature.)\\nWhen Absolver Thrull enters or the creature it haunts dies, destroy target enchantment.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absolver Thrull" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absolving-lammasu-corpus-m673",
+    description: "M6 corpus — Absolving Lammasu; ETB-on-bf.",
+    seed: 0xf035,
+    cards: {
+      "Absolving Lammasu": `Name:Absolving Lammasu
+ManaCost:4 W
+Types:Creature Lammasu
+PT:4/3
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigAbsolve | TriggerDescription\$ When CARDNAME enters, all suspected creatures are no longer suspected.
+SVar:TrigAbsolve:DB\$ AlterAttribute | Defined\$ Valid Creature.IsSuspected | Attributes\$ Suspected | Activate\$ False
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Card.Self | Execute\$ TrigGainLife | TriggerDescription\$ When CARDNAME dies, you gain 3 life and suspect up to one target creature an opponent controls. (A suspected creature has menace and can't block.)
+SVar:TrigGainLife:DB\$ GainLife | Defined\$ TriggeredCardController | LifeAmount\$ 3 | SubAbility\$ DBSuspect
+SVar:DBSuspect:DB\$ AlterAttribute | ValidTgts\$ Creature.OppCtrl | TgtPrompt\$ Select up to one target creature an opponent controls | TargetMin\$ 0 | TargetMax\$ 1 | Attributes\$ Suspected
+DeckHas:Ability\$LifeGain
+Oracle:Flying\\nWhen Absolving Lammasu enters, all suspected creatures are no longer suspected.\\nWhen Absolving Lammasu dies, you gain 3 life and suspect up to one target creature an opponent controls. (A suspected creature has menace and can't block.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absolving Lammasu" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absorb-corpus-m673",
+    description: "M6 corpus — Absorb; in-hand parse.",
+    seed: 0xf036,
+    cards: {
+      Absorb: `Name:Absorb
+ManaCost:W U U
+Types:Instant
+A:SP\$ Counter | TargetType\$ Spell | TgtPrompt\$ Select target spell | ValidTgts\$ Card | SpellDescription\$ Counter target spell. You gain 3 life. | SubAbility\$ DBGainLife
+SVar:DBGainLife:DB\$ GainLife | LifeAmount\$ 3
+Oracle:Counter target spell. You gain 3 life.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Absorb"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absorb-energy-corpus-m673",
+    description: "M6 corpus — Absorb Energy; in-hand parse.",
+    seed: 0xf037,
+    cards: {
+      "Absorb Energy": `Name:Absorb Energy
+ManaCost:1 U U
+Types:Instant
+A:SP\$ Counter | TargetType\$ Spell | TgtPrompt\$ Select target spell | ValidTgts\$ Card | RememberForCounter\$ True | SubAbility\$ DBAnimate | SpellDescription\$ Counter target spell.
+SVar:DBAnimate:DB\$ AnimateAll | Zone\$ Hand | Duration\$ Perpetual | ValidCards\$ Card.YouOwn+sharesCardTypeWith Remembered | staticAbilities\$ ReduceCost | SubAbility\$ DBCleanup | SpellDescription\$ Cards in your hand that share a card type with that spell perpetually gain "This spell costs {1} less to cast."
+SVar:ReduceCost:Mode\$ ReduceCost | ValidCard\$ Card.Self | Type\$ Spell | Amount\$ 1 | EffectZone\$ All | Description\$ This spell costs {1} less to cast.
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+Oracle:Counter target spell. Cards in your hand that share a card type with that spell perpetually gain "This spell costs {1} less to cast."
+`,
+    },
+    players: [
+      { life: 20, hand: ["Absorb Energy"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absorb-identity-corpus-m673",
+    description: "M6 corpus — Absorb Identity; in-hand parse.",
+    seed: 0xf038,
+    cards: {
+      "Absorb Identity": `Name:Absorb Identity
+ManaCost:1 U
+Types:Instant
+A:SP\$ ChangeZone | ValidTgts\$ Creature | Origin\$ Battlefield | Destination\$ Hand | RememberLKI\$ True | SubAbility\$ CloneArmy | SpellDescription\$ Return target creature to its owner's hand. You may have Shapeshifters you control become copies of that creature until end of turn.
+SVar:CloneArmy:DB\$ Clone | Defined\$ Remembered | CloneTarget\$ Valid Shapeshifter.YouCtrl | Duration\$ UntilEndOfTurn | SubAbility\$ DBCleanup | Optional\$ True
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+DeckHints:Type\$Shapeshifter
+Oracle:Return target creature to its owner's hand. You may have Shapeshifters you control become copies of that creature until end of turn.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Absorb Identity"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absorb-vis-corpus-m673",
+    description: "M6 corpus — Absorb Vis; in-hand parse.",
+    seed: 0xf039,
+    cards: {
+      "Absorb Vis": `Name:Absorb Vis
+ManaCost:6 B
+Types:Sorcery
+K:TypeCycling:Basic:1 B
+A:SP\$ LoseLife | ValidTgts\$ Player | TgtPrompt\$ Select a player | LifeAmount\$ 4 | SubAbility\$ DBGainLife | SpellDescription\$ Target player loses 4 life and you gain 4 life.
+SVar:DBGainLife:DB\$ GainLife | Defined\$ You | LifeAmount\$ 4
+Oracle:Target player loses 4 life and you gain 4 life.\\nBasic landcycling {1}{B} ({1}{B}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Absorb Vis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "absorbing-man-and-titania-corpus-m673",
+    description: "M6 corpus — Absorbing Man and Titania; ETB-on-bf.",
+    seed: 0xf03a,
+    cards: {
+      "Absorbing Man and Titania": `Name:Absorbing Man and Titania
+ManaCost:3 R G
+Types:Legendary Creature Human Villain
+PT:4/5
+R:Event\$ DamageDone | ActiveZones\$ Battlefield | ValidSource\$ Creature.YouCtrl | ValidTarget\$ Permanent,Player | ReplaceWith\$ DmgTwice | Description\$ Double all damage that creature sources you control would deal.
+SVar:DmgTwice:DB\$ ReplaceEffect | VarName\$ DamageAmount | VarValue\$ X
+SVar:X:ReplaceCount\$DamageAmount/Twice
+SVar:PlayMain1:TRUE
+Oracle:Double all damage that creature sources you control would deal.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Absorbing Man and Titania" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abstergo-entertainment-corpus-m673",
+    description: "M6 corpus — Abstergo Entertainment; ETB-on-bf.",
+    seed: 0xf03b,
+    cards: {
+      "Abstergo Entertainment": `Name:Abstergo Entertainment
+ManaCost:no cost
+Types:Legendary Land
+A:AB\$ Mana | Cost\$ T | Produced\$ C | SpellDescription\$ Add {C}.
+A:AB\$ Mana | Cost\$ 1 T | Produced\$ Any | SpellDescription\$ Add one mana of any color.
+A:AB\$ ChangeZone | Cost\$ 3 T Exile<1/CARDNAME> | Origin\$ Graveyard | Destination\$ Hand | TargetMin\$ 0 | TargetMax\$ 1 | ValidTgts\$ Card.Historic+YouOwn | TgtPrompt\$ Select target historic card in your graveyard | AILogic\$ BestCard | SubAbility\$ ExileAll | SpellDescription\$ Return up to one target historic card from your graveyard to your hand, then exile all graveyards.
+SVar:ExileAll:DB\$ ChangeZoneAll | Origin\$ Graveyard | Destination\$ Exile | ChangeType\$ Card
+DeckHas:Ability\$Mana.Colorless
+DeckHints:Color\$Colorless & Keyword\$Devoid
+Oracle:{T}: Add {C}.\\n{1}, {T}: Add one mana of any color.\\n{3}, {T}, Exile Abstergo Entertainment: Return up to one target historic card from your graveyard to your hand, then exile all graveyards.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abstergo Entertainment" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abstruse-appropriation-corpus-m673",
+    description: "M6 corpus — Abstruse Appropriation; in-hand parse.",
+    seed: 0xf03c,
+    cards: {
+      "Abstruse Appropriation": `Name:Abstruse Appropriation
+ManaCost:2 W B
+Types:Instant
+K:Devoid
+A:SP\$ ChangeZone | Origin\$ Battlefield | Destination\$ Exile | ValidTgts\$ Permanent.nonLand | RememberChanged\$ True | TgtPrompt\$ Select target nonland permanent | SubAbility\$ DBEffect | SpellDescription\$ Exile target nonland permanent.
+SVar:DBEffect:DB\$ Effect | RememberObjects\$ Remembered | StaticAbilities\$ MayPlay,ManaConvert | SubAbility\$ DBCleanup | Duration\$ Permanent | ForgetOnMoved\$ Exile | SpellDescription\$ You may cast that card for as long as it remains exiled, and you may spend colorless mana as though it were mana of any color to cast that spell.
+SVar:MayPlay:Mode\$ Continuous | MayPlay\$ True | Affected\$ Card.IsRemembered+nonLand | AffectedZone\$ Exile | Description\$ You may cast that card for as long as it remains exiled.
+SVar:ManaConvert:Mode\$ ManaConvert | ValidPlayer\$ You | ValidCard\$ Card.IsRemembered | ValidSA\$ Spell.MayPlaySource | ManaConversion\$ C->AnyColor | AffectedZone\$ Exile | Description\$ You may spend colorless mana as though it were mana of any color to cast that spell.
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+Oracle:Devoid\\nExile target nonland permanent. You may cast that card for as long as it remains exiled, and you may spend colorless mana as though it were mana of any color to cast that spell.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abstruse Appropriation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abstruse-archaic-corpus-m673",
+    description: "M6 corpus — Abstruse Archaic; ETB-on-bf.",
+    seed: 0xf03d,
+    cards: {
+      "Abstruse Archaic": `Name:Abstruse Archaic
+ManaCost:4
+Types:Creature Avatar
+PT:3/4
+K:Vigilance
+A:AB\$ CopySpellAbility | Cost\$ 1 T | TgtPrompt\$ Select target activated or triggered ability you control from a colorless source | TargetType\$ Activated.YouCtrl,Triggered.YouCtrl | ValidTgts\$ Card.Colorless,Emblem | AILogic\$ AlwaysCopyActivatedAbilities | MayChooseTarget\$ True | SpellDescription\$ Copy target activated or triggered ability you control from a colorless source. You may choose new targets for the copy. (Mana abilities can't be targeted.)
+DeckHints:Type\$Artifact|Eldrazi
+Oracle:Vigilance\\n{1}, {T}: Copy target activated or triggered ability you control from a colorless source. You may choose new targets for the copy. (Mana abilities can't be targeted.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abstruse Archaic" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abstruse-interference-corpus-m673",
+    description: "M6 corpus — Abstruse Interference; in-hand parse.",
+    seed: 0xf03e,
+    cards: {
+      "Abstruse Interference": `Name:Abstruse Interference
+ManaCost:2 U
+Types:Instant
+K:Devoid
+A:SP\$ Counter | TargetType\$ Spell | TgtPrompt\$ Select target spell | ValidTgts\$ Card | UnlessCost\$ 1 | SubAbility\$ DBToken | SpellDescription\$ Counter target spell unless its controller pays {1}.
+SVar:DBToken:DB\$ Token | TokenScript\$ c_1_1_eldrazi_scion_sac | TokenOwner\$ You | SpellDescription\$ You create a 1/1 colorless Eldrazi Scion creature token. It has "Sacrifice this creature: Add {C}." ({C} represents colorless mana.)
+DeckHas:Ability\$Mana.Colorless|Token
+DeckHints:Type\$Eldrazi
+Oracle:Devoid (This card has no color.)\\nCounter target spell unless its controller pays {1}. You create a 1/1 colorless Eldrazi Scion creature token. It has "Sacrifice this creature: Add {C}." ({C} represents colorless mana.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abstruse Interference"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abu-ja-far-corpus-m673",
+    description: "M6 corpus — Abu Ja'far; ETB-on-bf.",
+    seed: 0xf03f,
+    cards: {
+      "Abu Ja'far": `Name:Abu Ja'far
+ManaCost:W
+Types:Creature Human
+PT:0/1
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Card.Self | Execute\$ TrigDestroy | TriggerDescription\$ When CARDNAME dies, destroy all creatures blocking or blocked by it. They can't be regenerated.
+SVar:TrigDestroy:DB\$ DestroyAll | ValidCards\$ Creature.blockingSource,Creature.blockedBySource | NoRegen\$ True
+Oracle:When Abu Ja'far dies, destroy all creatures blocking or blocked by it. They can't be regenerated.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abu Ja'far" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abuelo-ancestral-echo-corpus-m673",
+    description: "M6 corpus — Abuelo, Ancestral Echo; ETB-on-bf.",
+    seed: 0xf040,
+    cards: {
+      "Abuelo, Ancestral Echo": `Name:Abuelo, Ancestral Echo
+ManaCost:1 W U
+Types:Legendary Creature Spirit
+PT:2/2
+K:Flying
+K:Ward:2
+A:AB\$ ChangeZone | Cost\$ 1 W U | ValidTgts\$ Creature.Other+YouCtrl,Artifact.Other+YouCtrl | TgtPrompt\$ Select another target creature or artifact you control | Origin\$ Battlefield | Destination\$ Exile | RememberChanged\$ True | SubAbility\$ DelTrig | SpellDescription\$ Exile another target creature or artifact you control. Return it to the battlefield under its owner's control at the beginning of the next end step.
+SVar:DelTrig:DB\$ DelayedTrigger | Mode\$ Phase | Phase\$ End of Turn | Execute\$ TrigBounce | RememberObjects\$ RememberedLKI | TriggerDescription\$ Return that card to the battlefield under its owner's control at the beginning of the next end step. | SubAbility\$ DBCleanup
+SVar:TrigBounce:DB\$ ChangeZone | Origin\$ Exile | Destination\$ Battlefield | Defined\$ DelayTriggerRememberedLKI
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+DeckHints:Type\$Artifact
+Oracle:Flying, ward {2}\\n{1}{W}{U}: Exile another target creature or artifact you control. Return it to the battlefield under its owner's control at the beginning of the next end step.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abuelo, Ancestral Echo" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abuelo-s-awakening-corpus-m673",
+    description: "M6 corpus — Abuelo's Awakening; in-hand parse.",
+    seed: 0xf041,
+    cards: {
+      "Abuelo's Awakening": `Name:Abuelo's Awakening
+ManaCost:X 3 W
+Types:Sorcery
+A:SP\$ ChangeZone | Origin\$ Graveyard | Destination\$ Battlefield | ValidTgts\$ Artifact.YouOwn,Enchantment.nonAura+YouOwn | TgtPrompt\$ Select target artifact or non-Aura enchantment in your graveyard | StaticEffect\$ Animate | WithCountersType\$ P1P1 | WithCountersAmount\$ X | SpellDescription\$ Return target artifact or non-Aura enchantment card from your graveyard to the battlefield with X additional +1/+1 counters on it. It's a 1/1 Spirit creature with flying in addition to its other types.
+SVar:Animate:Mode\$ Continuous | Affected\$ Card.IsRemembered | AddType\$ Creature & Spirit | SetPower\$ 1 | SetToughness\$ 1 | AddKeyword\$ Flying
+SVar:X:Count\$xPaid
+DeckHas:Ability\$Graveyard|Counters & Type\$Spirit
+DeckHints:Ability\$Mill & Type\$Artifact|Enchantment
+Oracle:Return target artifact or non-Aura enchantment card from your graveyard to the battlefield with X additional +1/+1 counters on it. It's a 1/1 Spirit creature with flying in addition to its other types.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abuelo's Awakening"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abuna-acolyte-corpus-m673",
+    description: "M6 corpus — Abuna Acolyte; ETB-on-bf.",
+    seed: 0xf042,
+    cards: {
+      "Abuna Acolyte": `Name:Abuna Acolyte
+ManaCost:1 W
+Types:Creature Cat Cleric
+PT:1/1
+A:AB\$ PreventDamage | Cost\$ T | ValidTgts\$ Any | Amount\$ 1 | SpellDescription\$ Prevent the next 1 damage that would be dealt to any target this turn.
+A:AB\$ PreventDamage | Cost\$ T | ValidTgts\$ Creature.Artifact | Amount\$ 2 | TgtPrompt\$ Select target artifact creature | SpellDescription\$ Prevent the next 2 damage that would be dealt to target artifact creature this turn.
+SVar:NonCombatPriority:10
+Oracle:{T}: Prevent the next 1 damage that would be dealt to any target this turn.\\n{T}: Prevent the next 2 damage that would be dealt to target artifact creature this turn.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abuna Acolyte" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abuna-s-chant-corpus-m673",
+    description: "M6 corpus — Abuna's Chant; in-hand parse.",
+    seed: 0xf043,
+    cards: {
+      "Abuna's Chant": `Name:Abuna's Chant
+ManaCost:3 W
+Types:Instant
+K:Entwine:2
+A:SP\$ Charm | Choices\$ DBGainLife,DBPreventDmg
+SVar:DBGainLife:DB\$ GainLife | LifeAmount\$ 5 | SpellDescription\$ You gain 5 life.
+SVar:DBPreventDmg:DB\$ PreventDamage | ValidTgts\$ Creature | Amount\$ 5 | SpellDescription\$ Prevent the next 5 damage that would be dealt to target creature this turn.
+Oracle:Choose one —\\n• You gain 5 life.\\n• Prevent the next 5 damage that would be dealt to target creature this turn.\\nEntwine {2} (Choose both if you pay the entwine cost.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abuna's Chant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abundance-corpus-m673",
+    description: "M6 corpus — Abundance; ETB-on-bf.",
+    seed: 0xf044,
+    cards: {
+      Abundance: `Name:Abundance
+ManaCost:2 G G
+Types:Enchantment
+R:Event\$ Draw | ActiveZones\$ Battlefield | ValidPlayer\$ You | ReplaceWith\$ AbundantChoice | Optional\$ True | Description\$ If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.
+SVar:AbundantChoice:DB\$ GenericChoice | Choices\$ DigLand,DigNonland | Defined\$ You
+SVar:DigLand:DB\$ DigUntil | Valid\$ Card.Land | ValidDescription\$ land | FoundDestination\$ Hand | RevealedDestination\$ Library | RevealedLibraryPosition\$ -1 | SpellDescription\$ Land
+SVar:DigNonland:DB\$ DigUntil | Valid\$ Card.nonLand | ValidDescription\$ nonland | FoundDestination\$ Hand | RevealedDestination\$ Library | RevealedLibraryPosition\$ -1 | SpellDescription\$ Nonland
+AI:RemoveDeck:All
+SVar:NonStackingEffect:True
+Oracle:If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abundance" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abundant-countryside-corpus-m673",
+    description: "M6 corpus — Abundant Countryside; ETB-on-bf.",
+    seed: 0xf045,
+    cards: {
+      "Abundant Countryside": `Name:Abundant Countryside
+ManaCost:no cost
+Types:Land
+A:AB\$ Mana | Cost\$ T | Produced\$ C | SpellDescription\$ Add {C}.
+A:AB\$ Mana | Cost\$ T | Produced\$ Any | RestrictValid\$ Spell.Creature | SpellDescription\$ Add one mana of any color. Spend this mana only to cast a creature spell.
+A:AB\$ Token | Cost\$ 6 T | TokenScript\$ c_1_1_shapeshifter_changeling | TokenOwner\$ You | SpellDescription\$ Create a 1/1 colorless Shapeshifter creature token with changeling. (It's every creature type.)
+DeckHas:Ability\$Mana.Colorless|Token
+Oracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell.\\n{6}, {T}: Create a 1/1 colorless Shapeshifter creature token with changeling. (It's every creature type.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abundant Countryside" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abundant-growth-corpus-m673",
+    description: "M6 corpus — Abundant Growth; in-hand parse.",
+    seed: 0xf046,
+    cards: {
+      "Abundant Growth": `Name:Abundant Growth
+ManaCost:G
+Types:Enchantment Aura
+K:Enchant:Land
+SVar:AttachAILogic:Pump
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ FreeCard | TriggerDescription\$ When CARDNAME enters, draw a card.
+SVar:FreeCard:DB\$ Draw
+S:Mode\$ Continuous | Affected\$ Card.EnchantedBy | AddAbility\$ AbundantGrowthTap | Description\$ Enchanted land has "{T}: Add one mana of any color."
+SVar:AbundantGrowthTap:AB\$ Mana | Cost\$ T | Produced\$ Any | SpellDescription\$ Add one mana of any color.
+Oracle:Enchant land\\nWhen Abundant Growth enters, draw a card.\\nEnchanted land has "{T}: Add one mana of any color."
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abundant Growth"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abundant-harvest-corpus-m673",
+    description: "M6 corpus — Abundant Harvest; in-hand parse.",
+    seed: 0xf047,
+    cards: {
+      "Abundant Harvest": `Name:Abundant Harvest
+ManaCost:G
+Types:Sorcery
+A:SP\$ GenericChoice | Choices\$ DigLand,DigNonland | SpellDescription\$ Choose land or nonland. Reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and the rest on the bottom of your library in a random order.
+SVar:DigLand:DB\$ DigUntil | Valid\$ Card.Land | ValidDescription\$ land | FoundDestination\$ Hand | RevealedDestination\$ Library | RevealedLibraryPosition\$ -1 | RevealRandomOrder\$ True | SpellDescription\$ Land
+SVar:DigNonland:DB\$ DigUntil | Valid\$ Card.nonLand | ValidDescription\$ nonland | FoundDestination\$ Hand | RevealedDestination\$ Library | RevealedLibraryPosition\$ -1 | RevealRandomOrder\$ True | SpellDescription\$ Nonland
+AI:RemoveDeck:All
+Oracle:Choose land or nonland. Reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and the rest on the bottom of your library in a random order.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abundant Harvest"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abundant-maw-corpus-m673",
+    description: "M6 corpus — Abundant Maw; ETB-on-bf.",
+    seed: 0xf048,
+    cards: {
+      "Abundant Maw": `Name:Abundant Maw
+ManaCost:8
+Types:Creature Eldrazi Leech
+PT:6/4
+K:Emerge:6 B
+T:Mode\$ SpellCast | ValidCard\$ Card.Self | Execute\$ TrigDrain | TriggerDescription\$ When you cast this spell, target opponent loses 3 life and you gain 3 life.
+SVar:TrigDrain:DB\$ LoseLife | ValidTgts\$ Opponent | LifeAmount\$ 3 | SubAbility\$ DBGainLife
+SVar:DBGainLife:DB\$ GainLife | Defined\$ You | LifeAmount\$ 3
+Oracle:Emerge {6}{B} (You may cast this spell by sacrificing a creature and paying the emerge cost reduced by that creature's mana value.)\\nWhen you cast this spell, target opponent loses 3 life and you gain 3 life.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abundant Maw" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-gatekeeper-corpus-m673",
+    description: "M6 corpus — Abyssal Gatekeeper; ETB-on-bf.",
+    seed: 0xf049,
+    cards: {
+      "Abyssal Gatekeeper": `Name:Abyssal Gatekeeper
+ManaCost:1 B
+Types:Creature Horror
+PT:1/1
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Card.Self | Execute\$ TrigSac | TriggerDescription\$ When CARDNAME dies, each player sacrifices a creature.
+SVar:TrigSac:DB\$ Sacrifice | SacValid\$ Creature | Defined\$ Player
+Oracle:When Abyssal Gatekeeper dies, each player sacrifices a creature.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Gatekeeper" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-gorestalker-corpus-m673",
+    description: "M6 corpus — Abyssal Gorestalker; ETB-on-bf.",
+    seed: 0xf04a,
+    cards: {
+      "Abyssal Gorestalker": `Name:Abyssal Gorestalker
+ManaCost:4 B B
+Types:Creature Horror
+PT:6/6
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigSac | TriggerDescription\$ When CARDNAME enters, each player sacrifices two creatures.
+SVar:TrigSac:DB\$ Sacrifice | Defined\$ Player | Amount\$ 2 | SacValid\$ Creature
+DeckHas:Ability\$Sacrifice
+Oracle:When Abyssal Gorestalker enters, each player sacrifices two creatures.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Gorestalker" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-harvester-corpus-m673",
+    description: "M6 corpus — Abyssal Harvester; ETB-on-bf.",
+    seed: 0xf04b,
+    cards: {
+      "Abyssal Harvester": `Name:Abyssal Harvester
+ManaCost:1 B B
+Types:Creature Demon Warlock
+PT:3/2
+A:AB\$ ChangeZone | Cost\$ T | Origin\$ Graveyard | Destination\$ Exile | ValidTgts\$ Creature.ThisTurnEntered | RememberChanged\$ True | TgtPrompt\$ Select target creature card from a graveyard that was put there this turn | SubAbility\$ DBCopy | SpellDescription\$ Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.
+SVar:DBCopy:DB\$ CopyPermanent | Defined\$ Remembered | Controller\$ You | AddTypes\$ Nightmare | RememberTokens\$ True | SubAbility\$ DBChangeZoneAll
+SVar:DBChangeZoneAll:DB\$ ChangeZoneAll | ChangeType\$ Nightmare.token+!IsRemembered+YouCtrl | Origin\$ Battlefield | Destination\$ Exile | SubAbility\$ DBCleanup
+SVar:DBCleanup:DB\$ Cleanup | ClearRemembered\$ True
+Oracle:{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Harvester" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-horror-corpus-m673",
+    description: "M6 corpus — Abyssal Horror; ETB-on-bf.",
+    seed: 0xf04c,
+    cards: {
+      "Abyssal Horror": `Name:Abyssal Horror
+ManaCost:4 B B
+Types:Creature Horror
+PT:2/2
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigDiscard | TriggerDescription\$ When CARDNAME enters, target player discards two cards.
+SVar:TrigDiscard:DB\$ Discard | ValidTgts\$ Player | TgtPrompt\$ Select a player | NumCards\$ 2 | Mode\$ TgtChoose
+Oracle:Flying\\nWhen Abyssal Horror enters, target player discards two cards.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Horror" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-hunter-corpus-m673",
+    description: "M6 corpus — Abyssal Hunter; ETB-on-bf.",
+    seed: 0xf04d,
+    cards: {
+      "Abyssal Hunter": `Name:Abyssal Hunter
+ManaCost:3 B
+Types:Creature Human Assassin
+PT:1/1
+A:AB\$ Tap | Cost\$ B T | ValidTgts\$ Creature | SubAbility\$ DBDamage | SpellDescription\$ Tap target creature. This creature deals damage equal to its power to that creature.
+SVar:DBDamage:DB\$ DealDamage | Defined\$ Targeted | NumDmg\$ X
+SVar:X:Count\$CardPower
+SVar:NonCombatPriority:4
+Oracle:{B}, {T}: Tap target creature. This creature deals damage equal to its power to that creature.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Hunter" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-nightstalker-corpus-m673",
+    description: "M6 corpus — Abyssal Nightstalker; ETB-on-bf.",
+    seed: 0xf04e,
+    cards: {
+      "Abyssal Nightstalker": `Name:Abyssal Nightstalker
+ManaCost:3 B
+Types:Creature Nightstalker
+PT:2/2
+T:Mode\$ AttackerUnblocked | ValidCard\$ Card.Self | TriggerZones\$ Battlefield | Execute\$ TrigDiscards | TriggerDescription\$ Whenever CARDNAME attacks and isn't blocked, defending player discards a card.
+SVar:TrigDiscards:DB\$ Discard | Defined\$ TriggeredDefendingPlayer | Mode\$ TgtChoose
+Oracle:Whenever Abyssal Nightstalker attacks and isn't blocked, defending player discards a card.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Nightstalker" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-nocturnus-corpus-m673",
+    description: "M6 corpus — Abyssal Nocturnus; ETB-on-bf.",
+    seed: 0xf04f,
+    cards: {
+      "Abyssal Nocturnus": `Name:Abyssal Nocturnus
+ManaCost:1 B B
+Types:Creature Horror
+PT:2/2
+T:Mode\$ Discarded | ValidCard\$ Card.OppOwn | TriggerZones\$ Battlefield | Execute\$ TrigPump | TriggerDescription\$ Whenever an opponent discards a card, CARDNAME gets +2/+2 and gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)
+SVar:TrigPump:DB\$ Pump | Defined\$ Self | NumAtt\$ +2 | NumDef\$ +2 | KW\$ Fear
+Oracle:Whenever an opponent discards a card, Abyssal Nocturnus gets +2/+2 and gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Nocturnus" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-persecutor-corpus-m673",
+    description: "M6 corpus — Abyssal Persecutor; ETB-on-bf.",
+    seed: 0xf050,
+    cards: {
+      "Abyssal Persecutor": `Name:Abyssal Persecutor
+ManaCost:2 B B
+Types:Creature Demon
+PT:6/6
+K:Flying
+K:Trample
+R:Event\$ GameWin | ActiveZones\$ Battlefield | ValidPlayer\$ You | Layer\$ CantHappen | Description\$ You can't win the game and your opponents can't lose the game.
+R:Event\$ GameLoss | ActiveZones\$ Battlefield | ValidPlayer\$ Opponent | Layer\$ CantHappen | Secondary\$ True | Description\$ You can't win the game and your opponents can't lose the game.
+AI:RemoveDeck:All
+Oracle:Flying, trample\\nYou can't win the game and your opponents can't lose the game.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Persecutor" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abyssal-specter-corpus-m673",
+    description: "M6 corpus — Abyssal Specter; ETB-on-bf.",
+    seed: 0xf051,
+    cards: {
+      "Abyssal Specter": `Name:Abyssal Specter
+ManaCost:2 B B
+Types:Creature Specter
+PT:2/3
+K:Flying
+T:Mode\$ DamageDone | ValidSource\$ Card.Self | ValidTarget\$ Player | Execute\$ TrigDiscard | TriggerZones\$ Battlefield | TriggerDescription\$ Whenever CARDNAME deals damage to a player, that player discards a card.
+SVar:TrigDiscard:DB\$ Discard | Defined\$ TriggeredTarget | Mode\$ TgtChoose
+Oracle:Flying\\nWhenever Abyssal Specter deals damage to a player, that player discards a card.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abyssal Specter" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-advantage-corpus-m673",
+    description: "M6 corpus — Abzan Advantage; in-hand parse.",
+    seed: 0xf052,
+    cards: {
+      "Abzan Advantage": `Name:Abzan Advantage
+ManaCost:1 W
+Types:Instant
+A:SP\$ Sacrifice | ValidTgts\$ Player | SacValid\$ Enchantment | SubAbility\$ DBBolster | SpellDescription\$ Target player sacrifices an enchantment. Bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)
+SVar:DBBolster:DB\$ PutCounter | Bolster\$ 1
+DeckHas:Ability\$Counters
+Oracle:Target player sacrifices an enchantment. Bolster 1. (Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abzan Advantage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-ascendancy-corpus-m673",
+    description: "M6 corpus — Abzan Ascendancy; ETB-on-bf.",
+    seed: 0xf053,
+    cards: {
+      "Abzan Ascendancy": `Name:Abzan Ascendancy
+ManaCost:W B G
+Types:Enchantment
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigPutCounters | TriggerDescription\$ When CARDNAME enters, put a +1/+1 counter on each creature you control.
+SVar:TrigPutCounters:DB\$ PutCounterAll | ValidCards\$ Creature.YouCtrl | CounterType\$ P1P1 | CounterNum\$ 1
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Creature.YouCtrl+!token | TriggerZones\$ Battlefield | Execute\$ TrigToken | TriggerDescription\$ Whenever a nontoken creature you control dies, create a 1/1 white Spirit creature token with flying.
+SVar:TrigToken:DB\$ Token | TokenScript\$ w_1_1_spirit_flying | TokenOwner\$ You
+SVar:PlayMain1:TRUE
+SVar:NeedsToPlay:Creature.YouCtrl
+DeckHas:Ability\$Counters|Token
+Oracle:When Abzan Ascendancy enters, put a +1/+1 counter on each creature you control.\\nWhenever a nontoken creature you control dies, create a 1/1 white Spirit creature token with flying.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Ascendancy" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-banner-corpus-m673",
+    description: "M6 corpus — Abzan Banner; ETB-on-bf.",
+    seed: 0xf054,
+    cards: {
+      "Abzan Banner": `Name:Abzan Banner
+ManaCost:3
+Types:Artifact
+A:AB\$ Mana | Cost\$ T | Produced\$ Combo W B G | SpellDescription\$ Add {W}, {B} or {G}.
+A:AB\$ Draw | Cost\$ W B G T Sac<1/CARDNAME> | SpellDescription\$ Draw a card.
+AI:RemoveDeck:Random
+DeckNeeds:Color\$White|Black|Green
+Oracle:{T}: Add {W}, {B}, or {G}.\\n{W}{B}{G}, {T}, Sacrifice Abzan Banner: Draw a card.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Banner" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-beastmaster-corpus-m673",
+    description: "M6 corpus — Abzan Beastmaster; ETB-on-bf.",
+    seed: 0xf055,
+    cards: {
+      "Abzan Beastmaster": `Name:Abzan Beastmaster
+ManaCost:2 G
+Types:Creature Dog Shaman
+PT:2/1
+T:Mode\$ Phase | Phase\$ Upkeep | ValidPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigToughDraw | TriggerDescription\$ At the beginning of your upkeep, draw a card if you control the creature with the greatest toughness or tied for the greatest toughness.
+SVar:TrigToughDraw:DB\$ Draw | Defined\$ You | ConditionPresent\$ Creature.YouCtrl | ConditionCompare\$ GE1 | ConditionCheckSVar\$ YourTough | ConditionSVarCompare\$ GEOppsTough
+SVar:YourTough:Count\$Valid Creature.YouCtrl\$GreatestCardToughness
+SVar:OppsTough:Count\$Valid Creature.YouDontCtrl\$GreatestCardToughness
+Oracle:At the beginning of your upkeep, draw a card if you control the creature with the greatest toughness or tied for the greatest toughness.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Beastmaster" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-charm-corpus-m673",
+    description: "M6 corpus — Abzan Charm; in-hand parse.",
+    seed: 0xf056,
+    cards: {
+      "Abzan Charm": `Name:Abzan Charm
+ManaCost:W B G
+Types:Instant
+A:SP\$ Charm | Choices\$ DBExile,DBDraw,DBCounters
+SVar:DBExile:DB\$ ChangeZone | ValidTgts\$ Creature.powerGE3 | TgtPrompt\$ Choose target creature with power 3 or greater | Origin\$ Battlefield | Destination\$ Exile | SpellDescription\$ Exile target creature with power 3 or greater.
+SVar:DBDraw:DB\$ Draw | NumCards\$ 2 | SubAbility\$ DBLoseLife | SpellDescription\$ You draw two cards and you lose 2 life.
+SVar:DBCounters:DB\$ PutCounter | ValidTgts\$ Creature | CounterType\$ P1P1 | CounterNum\$ 2 | TargetMin\$ 1 | TargetMax\$ 2 | DividedAsYouChoose\$ 2 | SpellDescription\$ Distribute two +1/+1 counters among one or two target creatures.
+SVar:DBLoseLife:DB\$ LoseLife | LifeAmount\$ 2 | Defined\$ You | StackDescription\$ None
+Oracle:Choose one —\\n• Exile target creature with power 3 or greater.\\n• You draw two cards and you lose 2 life.\\n• Distribute two +1/+1 counters among one or two target creatures.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abzan Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-devotee-corpus-m673",
+    description: "M6 corpus — Abzan Devotee; ETB-on-bf.",
+    seed: 0xf057,
+    cards: {
+      "Abzan Devotee": `Name:Abzan Devotee
+ManaCost:1 B
+Types:Creature Dog Cleric
+PT:2/1
+A:AB\$ Mana | Cost\$ 1 | Produced\$ Combo W B G | ActivationLimit\$ 1 | SpellDescription\$ Add {W}, {B}, or {G}. Activate only once each turn.
+A:AB\$ ChangeZone | Cost\$ 2 B | Origin\$ Graveyard | Destination\$ Hand | ActivationZone\$ Graveyard | SpellDescription\$ Return this card from your graveyard to your hand.
+SVar:DiscardMe:1
+SVar:SacMe:3
+Oracle:{1}: Add {W}, {B}, or {G}. Activate only once each turn.\\n{2}{B}: Return this card from your graveyard to your hand.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Devotee" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-guide-corpus-m673",
+    description: "M6 corpus — Abzan Guide; ETB-on-bf.",
+    seed: 0xf058,
+    cards: {
+      "Abzan Guide": `Name:Abzan Guide
+ManaCost:3 W B G
+Types:Creature Human Warrior
+PT:4/4
+K:Lifelink
+K:Morph:2 W B G
+Oracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nMorph {2}{W}{B}{G} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Guide" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-kin-guard-corpus-m673",
+    description: "M6 corpus — Abzan Kin-Guard; ETB-on-bf.",
+    seed: 0xf059,
+    cards: {
+      "Abzan Kin-Guard": `Name:Abzan Kin-Guard
+ManaCost:3 G
+Types:Creature Human Warrior
+PT:3/3
+S:Mode\$ Continuous | Affected\$ Card.Self | AddKeyword\$ Lifelink | IsPresent\$ Permanent.White+YouCtrl,Permanent.Black+YouCtrl | Description\$ CARDNAME has lifelink as long as you control a white or black permanent.
+SVar:BuffedBy:Permanent.White,Permanent.Black
+DeckHints:Color\$Black|White
+Oracle:Abzan Kin-Guard has lifelink as long as you control a white or black permanent.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Kin-Guard" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-monument-corpus-m673",
+    description: "M6 corpus — Abzan Monument; ETB-on-bf.",
+    seed: 0xf05a,
+    cards: {
+      "Abzan Monument": `Name:Abzan Monument
+ManaCost:2
+Types:Artifact
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigChange | TriggerDescription\$ When this artifact enters, search your library for a basic Plains, Swamp, or Forest card, reveal it, put it into your hand, then shuffle.
+SVar:TrigChange:DB\$ ChangeZone | Origin\$ Library | Destination\$ Hand | ChangeType\$ Plains.Basic,Swamp.Basic,Forest.Basic | ChangeTypeDesc\$ basic Plains, Swamp, or Forest
+A:AB\$ Token | Cost\$ 1 W B G T Sac<1/CARDNAME> | TokenPower\$ X | TokenToughness\$ X | TokenScript\$ w_x_x_spirit | TokenOwner\$ You | SorcerySpeed\$ True | SpellDescription\$ Create an X/X white Spirit creature token, where X is the greatest toughness among creatures you control. Activate only as a sorcery.
+SVar:X:Count\$Valid Creature.YouCtrl\$GreatestCardToughness
+DeckHas:Ability\$Token
+Oracle:When this artifact enters, search your library for a basic Plains, Swamp, or Forest card, reveal it, put it into your hand, then shuffle.\\n{1}{W}{B}{G}, {T}, Sacrifice this artifact: Create an X/X white Spirit creature token, where X is the greatest toughness among creatures you control. Activate only as a sorcery.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Monument" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-runemark-corpus-m673",
+    description: "M6 corpus — Abzan Runemark; in-hand parse.",
+    seed: 0xf05b,
+    cards: {
+      "Abzan Runemark": `Name:Abzan Runemark
+ManaCost:2 W
+Types:Enchantment Aura
+K:Enchant:Creature
+SVar:AttachAILogic:Pump
+S:Mode\$ Continuous | Affected\$ Creature.EnchantedBy | AddPower\$ 2 | AddToughness\$ 2 | Description\$ Enchanted creature gets +2/+2.
+S:Mode\$ Continuous | Affected\$ Card.EnchantedBy | AddKeyword\$ Vigilance | IsPresent\$ Permanent.Black+YouCtrl,Permanent.Green+YouCtrl | Description\$ Enchanted creature has vigilance as long as you control a black or green permanent.
+SVar:BuffedBy:Permanent.Black,Permanent.Green
+DeckHints:Color\$Black|Green
+Oracle:Enchant creature\\nEnchanted creature gets +2/+2.\\nEnchanted creature has vigilance as long as you control a black or green permanent.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abzan Runemark"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "abzan-skycaptain-corpus-m673",
+    description: "M6 corpus — Abzan Skycaptain; ETB-on-bf.",
+    seed: 0xf05c,
+    cards: {
+      "Abzan Skycaptain": `Name:Abzan Skycaptain
+ManaCost:3 W
+Types:Creature Bird Soldier
+PT:2/2
+K:Flying
+T:Mode\$ ChangesZone | Origin\$ Battlefield | Destination\$ Graveyard | ValidCard\$ Card.Self | Execute\$ TrigBolster | TriggerDescription\$ When CARDNAME dies, bolster 2.
+SVar:TrigBolster:DB\$ PutCounter | Bolster\$ 2
+DeckHas:Ability\$Counters
+Oracle:Flying\\nWhen Abzan Skycaptain dies, bolster 2. (Choose a creature with the least toughness among creatures you control and put two +1/+1 counters on it.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Abzan Skycaptain" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academic-dispute-corpus-m673",
+    description: "M6 corpus — Academic Dispute; in-hand parse.",
+    seed: 0xf05d,
+    cards: {
+      "Academic Dispute": `Name:Academic Dispute
+ManaCost:R
+Types:Instant
+A:SP\$ Effect | ValidTgts\$ Creature | RememberObjects\$ Targeted | ExileOnMoved\$ Battlefield | StaticAbilities\$ MustBlock | SubAbility\$ DBPump | StackDescription\$ {c:Targeted} blocks this turn if able. | SpellDescription\$ Target creature blocks this turn if able.
+SVar:MustBlock:Mode\$ MustBlock | ValidCreature\$ Card.IsRemembered | Description\$ This creature blocks this turn if able.
+SVar:DBPump:DB\$ Pump | Defined\$ Targeted | KW\$ Reach | Optional\$ True | OptionQuestion\$ Do you want TARGETS to gain reach? | SubAbility\$ DBLearn | StackDescription\$ SpellDescription | SpellDescription\$ You may have it gain reach until end of turn.
+SVar:DBLearn:DB\$ Learn | SpellDescription\$ Learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)
+Oracle:Target creature blocks this turn if able. You may have it gain reach until end of turn.\\nLearn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)
+`,
+    },
+    players: [
+      { life: 20, hand: ["Academic Dispute"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academic-probation-corpus-m673",
+    description: "M6 corpus — Academic Probation; in-hand parse.",
+    seed: 0xf05e,
+    cards: {
+      "Academic Probation": `Name:Academic Probation
+ManaCost:1 W
+Types:Sorcery Lesson
+A:SP\$ Charm | Choices\$ DBNameCard,DBPump
+SVar:DBNameCard:DB\$ NameCard | Defined\$ You | ValidCards\$ Card.nonLand | ValidDescription\$ nonland | SubAbility\$ DBEffect | SpellDescription\$ Choose a nonland card name. Until your next turn, your opponents can't cast spells with the chosen name.
+SVar:DBEffect:DB\$ Effect | StaticAbilities\$ CantCast | Duration\$ UntilYourNextTurn
+SVar:CantCast:Mode\$ CantBeCast | ValidCard\$ Card.nonLand+NamedCard | Caster\$ Opponent | Description\$ Your opponents can't cast spells with the chosen name.
+SVar:DBPump:DB\$ Effect | ValidTgts\$ Permanent.nonLand | TgtPrompt\$ Choose target nonland permanent | RememberObjects\$ Targeted | StaticAbilities\$ DBCantStatic | ForgetOnMoved\$ Battlefield | IsCurse\$ True | Duration\$ UntilYourNextTurn | SpellDescription\$ Choose target nonland permanent. Until your next turn, it can't attack or block, and its activated abilities can't be activated.
+SVar:DBCantStatic:Mode\$ CantAttack,CantBlock,CantBeActivated | ValidCard\$ Card.IsRemembered | Description\$ Remembered permanent can't attack or block, and its activated abilities can't be activated.
+Oracle:Choose one —\\n• Choose a nonland card name. Opponents can't cast spells with the chosen name until your next turn.\\n• Choose target nonland permanent. Until your next turn, it can't attack or block, and its activated abilities can't be activated.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Academic Probation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academy-drake-corpus-m673",
+    description: "M6 corpus — Academy Drake; in-hand parse.",
+    seed: 0xf05f,
+    cards: {
+      "Academy Drake": `Name:Academy Drake
+ManaCost:2 U
+Types:Creature Drake
+PT:2/2
+K:Flying
+K:Kicker:4
+K:etbCounter:P1P1:2:CheckSVar\$ WasKicked:If CARDNAME was kicked, it enters with two +1/+1 counters on it.
+SVar:WasKicked:Count\$Kicked.1.0
+DeckHas:Ability\$Counters
+Oracle:Kicker {4} (You may pay an additional {4} as you cast this spell.)\\nFlying\\nIf Academy Drake was kicked, it enters with two +1/+1 counters on it.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Academy Drake"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academy-elite-corpus-m673",
+    description: "M6 corpus — Academy Elite; in-hand parse.",
+    seed: 0xf060,
+    cards: {
+      "Academy Elite": `Name:Academy Elite
+ManaCost:3 U
+Types:Creature Human Wizard
+PT:0/0
+K:etbCounter:P1P1:X:no Condition:CARDNAME enters with X +1/+1 counters on it, where X is the number of instant and sorcery cards in all graveyards.
+SVar:X:Count\$ValidGraveyard Instant,Sorcery
+SVar:NeedsToPlayVar:X GT2
+A:AB\$ Draw | Cost\$ 2 U SubCounter<1/P1P1> | SpellDescription\$ Draw a card, then discard a card. | SubAbility\$ DBDiscard
+SVar:DBDiscard:DB\$ Discard | Defined\$ You | Mode\$ TgtChoose
+Oracle:Academy Elite enters with X +1/+1 counters on it, where X is the number of instant and sorcery cards in all graveyards.\\n{2}{U}, Remove a +1/+1 counter from Academy Elite: Draw a card, then discard a card.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Academy Elite"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academy-journeymage-corpus-m673",
+    description: "M6 corpus — Academy Journeymage; ETB-on-bf.",
+    seed: 0xf061,
+    cards: {
+      "Academy Journeymage": `Name:Academy Journeymage
+ManaCost:4 U
+Types:Creature Human Wizard
+PT:3/2
+S:Mode\$ ReduceCost | ValidCard\$ Card.Self | Type\$ Spell | Amount\$ 1 | EffectZone\$ All | IsPresent\$ Wizard.YouCtrl | Description\$ This spell costs {1} less to cast if you control a Wizard.
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigChangeZone | TriggerDescription\$ When CARDNAME enters, return target creature an opponent controls to its owner's hand.
+SVar:TrigChangeZone:DB\$ ChangeZone | ValidTgts\$ Creature.OppCtrl | TgtPrompt\$ Select target creature an opponent controls | Origin\$ Battlefield | Destination\$ Hand
+DeckHints:Type\$Wizard
+Oracle:This spell costs {1} less to cast if you control a Wizard.\\nWhen Academy Journeymage enters, return target creature an opponent controls to its owner's hand.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Academy Journeymage" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academy-loremaster-corpus-m673",
+    description: "M6 corpus — Academy Loremaster; ETB-on-bf.",
+    seed: 0xf062,
+    cards: {
+      "Academy Loremaster": `Name:Academy Loremaster
+ManaCost:U U
+Types:Creature Human Wizard
+PT:2/3
+T:Mode\$ Phase | Phase\$ Draw | ValidPlayer\$ Player | TriggerZones\$ Battlefield | Execute\$ TrigDraw | TriggerDescription\$ At the beginning of each player's draw step, that player may draw an additional card. If they do, spells they cast this turn cost {2} more to cast.
+SVar:TrigDraw:DB\$ Effect | UnlessCost\$ Draw<1/Player.TriggeredPlayer> | UnlessPayer\$ TriggeredPlayer | UnlessSwitched\$ True | StaticAbilities\$ RaiseCost
+SVar:RaiseCost:Mode\$ RaiseCost | ValidCard\$ Card.ActivePlayerCtrl | Type\$ Spell | Amount\$ 2 | Description\$ Spells they cast this turn cost {2} more to cast.
+Oracle:At the beginning of each player's draw step, that player may draw an additional card. If they do, spells they cast this turn cost {2} more to cast.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Academy Loremaster" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "academy-raider-corpus-m673",
+    description: "M6 corpus — Academy Raider; ETB-on-bf.",
+    seed: 0xf063,
+    cards: {
+      "Academy Raider": `Name:Academy Raider
+ManaCost:2 R
+Types:Creature Human Warrior
+PT:1/1
+K:Intimidate
+T:Mode\$ DamageDone | ValidSource\$ Card.Self | ValidTarget\$ Player | Execute\$ TrigDiscard | CombatDamage\$ True | OptionalDecider\$ You | TriggerDescription\$ Whenever CARDNAME deals combat damage to a player, you may discard a card. If you do, draw a card.
+SVar:TrigDiscard:AB\$ Draw | Cost\$ Discard<1/Card>
+AI:RemoveDeck:Random
+Oracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Academy Raider" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
 ];

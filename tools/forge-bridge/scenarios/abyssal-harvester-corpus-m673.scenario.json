@@ -1,0 +1,25 @@
+{
+  "id": "abyssal-harvester-corpus-m673",
+  "description": "M6 corpus — Abyssal Harvester; ETB-on-bf.",
+  "seed": 61515,
+  "cards": {
+    "Abyssal Harvester": "Name:Abyssal Harvester\nManaCost:1 B B\nTypes:Creature Demon Warlock\nPT:3/2\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.ThisTurnEntered | RememberChanged$ True | TgtPrompt$ Select target creature card from a graveyard that was put there this turn | SubAbility$ DBCopy | SpellDescription$ Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | Controller$ You | AddTypes$ Nightmare | RememberTokens$ True | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Nightmare.token+!IsRemembered+YouCtrl | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abyssal Harvester"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

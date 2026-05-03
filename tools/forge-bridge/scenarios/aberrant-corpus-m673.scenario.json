@@ -1,0 +1,25 @@
+{
+  "id": "aberrant-corpus-m673",
+  "description": "M6 corpus — Aberrant; ETB-on-bf.",
+  "seed": 61465,
+  "cards": {
+    "Aberrant": "Name:Aberrant\nManaCost:X 1 G\nTypes:Creature Tyranid Mutant\nPT:0/0\nK:Ravenous\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Heavy Power Hammer — Whenever CARDNAME deals combat damage to a player, destroy target artifact or enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget,Enchantment.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact or enchantment damaged player controls\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nTrample\\nHeavy Power Hammer — Whenever Aberrant deals combat damage to a player, destroy target artifact or enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aberrant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

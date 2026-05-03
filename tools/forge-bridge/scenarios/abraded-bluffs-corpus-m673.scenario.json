@@ -1,0 +1,23 @@
+{
+  "id": "abraded-bluffs-corpus-m673",
+  "description": "M6 corpus — Abraded Bluffs; in-hand parse.",
+  "seed": 61488,
+  "cards": {
+    "Abraded Bluffs": "Name:Abraded Bluffs\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to target opponent.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Abraded Bluffs enters tapped.\\nWhen Abraded Bluffs enters, it deals 1 damage to target opponent.\\n{T}:Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abraded Bluffs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

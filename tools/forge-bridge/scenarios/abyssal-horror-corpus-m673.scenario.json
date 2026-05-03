@@ -1,0 +1,25 @@
+{
+  "id": "abyssal-horror-corpus-m673",
+  "description": "M6 corpus — Abyssal Horror; ETB-on-bf.",
+  "seed": 61516,
+  "cards": {
+    "Abyssal Horror": "Name:Abyssal Horror\nManaCost:4 B B\nTypes:Creature Horror\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player discards two cards.\nSVar:TrigDiscard:DB$ Discard | ValidTgts$ Player | TgtPrompt$ Select a player | NumCards$ 2 | Mode$ TgtChoose\nOracle:Flying\\nWhen Abyssal Horror enters, target player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abyssal Horror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

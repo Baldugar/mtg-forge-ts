@@ -1,0 +1,23 @@
+{
+  "id": "abundant-harvest-corpus-m673",
+  "description": "M6 corpus — Abundant Harvest; in-hand parse.",
+  "seed": 61511,
+  "cards": {
+    "Abundant Harvest": "Name:Abundant Harvest\nManaCost:G\nTypes:Sorcery\nA:SP$ GenericChoice | Choices$ DigLand,DigNonland | SpellDescription$ Choose land or nonland. Reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:DigLand:DB$ DigUntil | Valid$ Card.Land | ValidDescription$ land | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SpellDescription$ Land\nSVar:DigNonland:DB$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SpellDescription$ Nonland\nAI:RemoveDeck:All\nOracle:Choose land or nonland. Reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Abundant Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

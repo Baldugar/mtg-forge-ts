@@ -1,0 +1,25 @@
+{
+  "id": "abandoned-campground-corpus-m673",
+  "description": "M6 corpus — Abandoned Campground; ETB-on-bf.",
+  "seed": 61454,
+  "cards": {
+    "Abandoned Campground": "Name:Abandoned Campground\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless a player has 13 or less life.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GT13\nSVar:X:PlayerCountPlayers$LowestLifeTotal\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nOracle:Abandoned Campground enters tapped unless a player has 13 or less life.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abandoned Campground"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

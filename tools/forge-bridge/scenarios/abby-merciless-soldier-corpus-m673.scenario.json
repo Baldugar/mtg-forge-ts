@@ -1,0 +1,25 @@
+{
+  "id": "abby-merciless-soldier-corpus-m673",
+  "description": "M6 corpus — Abby, Merciless Soldier; ETB-on-bf.",
+  "seed": 61462,
+  "cards": {
+    "Abby, Merciless Soldier": "Name:Abby, Merciless Soldier\nManaCost:1 R G\nTypes:Legendary Creature Human Survivor\nPT:4/4\nK:Partner:Survivors\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you cast this spell, create a number of 1/1 black Fungus Zombie creature tokens named Cordyceps Infected equal to the amount of mana spent to cast it.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ cordyceps_infected | TokenOwner$ You\nSVar:X:Count$CastTotalManaSpent\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBChooseOpp | Layer$ Control | Description$ NICKNAME enters under the control of an opponent of your choice.\nSVar:DBChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ MoveToPlay\nSVar:MoveToPlay:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | GainControl$ ChosenPlayer\nDeckHas:Ability$Token\nOracle:When you cast this spell, create a number of 1/1 black Fungus Zombie creature tokens named Cordyceps Infected equal to the amount of mana spent to cast it.\\nAbby enters under the control of an opponent of your choice.\\nPartner—Survivors (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Abby, Merciless Soldier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
