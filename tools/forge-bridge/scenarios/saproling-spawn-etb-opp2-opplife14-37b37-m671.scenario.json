@@ -1,0 +1,38 @@
+{
+  "id": "saproling-spawn-etb-opp2-opplife14-37b37-m671",
+  "description": "M6.71 — Saproling spawn ETB; opp 2 creatures; opp life 14.",
+  "seed": 62636,
+  "cards": {
+    "Saproling Spawner M671": "Name:Saproling Spawner M671\nManaCost:1 G\nTypes:Creature Plant\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenAmount$ 1\nOracle:Saproling spawn parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saproling Spawner M671"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 14,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        },
+        {
+          "card": "Goblin Guide"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Saproling Spawner M671",
+      "controller": 0
+    }
+  ]
+}

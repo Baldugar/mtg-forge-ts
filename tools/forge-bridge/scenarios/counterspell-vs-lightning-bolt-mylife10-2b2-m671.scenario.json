@@ -1,0 +1,51 @@
+{
+  "id": "counterspell-vs-lightning-bolt-mylife10-2b2-m671",
+  "description": "M6.71 — Counterspell vs opp Lightning Bolt; my life 10.",
+  "seed": 61506,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 10,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Goblin Guide"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "player",
+        "seat": 0
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

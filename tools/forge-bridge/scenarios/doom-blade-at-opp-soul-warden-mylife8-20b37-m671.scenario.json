@@ -1,0 +1,45 @@
+{
+  "id": "doom-blade-at-opp-soul-warden-mylife8-20b37-m671",
+  "description": "M6.71 — Doom Blade at opp Soul Warden; my life 8.",
+  "seed": 62103,
+  "cards": {
+    "Doom Blade": "Name:Doom Blade\nManaCost:1 B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.\nOracle:Doom Blade parse.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 8,
+      "hand": [
+        "Doom Blade"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Doom Blade",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

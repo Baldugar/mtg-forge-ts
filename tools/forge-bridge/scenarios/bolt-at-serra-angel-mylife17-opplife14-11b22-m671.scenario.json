@@ -1,0 +1,44 @@
+{
+  "id": "bolt-at-serra-angel-mylife17-opplife14-11b22-m671",
+  "description": "M6.71 — Bolt at opp Serra Angel; my life 17, opp life 14.",
+  "seed": 61813,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n"
+  },
+  "players": [
+    {
+      "life": 17,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 14,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Serra Angel"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

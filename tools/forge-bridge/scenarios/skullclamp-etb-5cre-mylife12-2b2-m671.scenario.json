@@ -1,0 +1,50 @@
+{
+  "id": "skullclamp-etb-5cre-mylife12-2b2-m671",
+  "description": "M6.71 — Skullclamp ETB w/ 5 mine; my life 12.",
+  "seed": 61515,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 12,
+      "hand": [
+        "Skullclamp"
+      ],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        },
+        {
+          "card": "Grizzly Bears"
+        },
+        {
+          "card": "Goblin Guide"
+        },
+        {
+          "card": "Soul Warden"
+        },
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp",
+      "controller": 0
+    }
+  ]
+}

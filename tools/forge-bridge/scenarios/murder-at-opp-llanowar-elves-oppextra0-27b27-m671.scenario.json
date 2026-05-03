@@ -1,0 +1,46 @@
+{
+  "id": "murder-at-opp-llanowar-elves-oppextra0-27b27-m671",
+  "description": "M6.71 — Murder at opp Llanowar Elves; opp extra 0.",
+  "seed": 62310,
+  "cards": {
+    "Murder": "Name:Murder\nManaCost:1 B B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.\nOracle:Murder parse.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murder"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Murder",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Llanowar Elves"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

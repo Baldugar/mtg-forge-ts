@@ -1,0 +1,29 @@
+{
+  "id": "saproling-spawn-etb-opp0-opplife15-24b24-m671",
+  "description": "M6.71 — Saproling spawn ETB; opp 0 creatures; opp life 15.",
+  "seed": 62220,
+  "cards": {
+    "Saproling Spawner M671": "Name:Saproling Spawner M671\nManaCost:1 G\nTypes:Creature Plant\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenAmount$ 1\nOracle:Saproling spawn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saproling Spawner M671"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 15,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Saproling Spawner M671",
+      "controller": 0
+    }
+  ]
+}

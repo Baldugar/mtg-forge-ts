@@ -1,0 +1,52 @@
+{
+  "id": "counterspell-vs-doom-blade-mylife11-10b10-m671",
+  "description": "M6.71 — Counterspell vs opp Doom Blade; my life 11.",
+  "seed": 61762,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Doom Blade": "Name:Doom Blade\nManaCost:1 B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.\nOracle:Doom Blade parse.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 11,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Doom Blade"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Doom Blade",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

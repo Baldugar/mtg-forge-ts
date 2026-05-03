@@ -1,0 +1,44 @@
+{
+  "id": "fatal-push-at-opp-grizzly-bears-opplife17-30b30-m671",
+  "description": "M6.71 — Fatal Push at opp Grizzly Bears; opp life 17.",
+  "seed": 62407,
+  "cards": {
+    "Fatal Push": "Name:Fatal Push\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Fatal Push.\nOracle:Fatal Push parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fatal Push"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    },
+    {
+      "life": 17,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Fatal Push",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Grizzly Bears"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

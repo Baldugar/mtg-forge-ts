@@ -1,0 +1,51 @@
+{
+  "id": "counterspell-vs-path-to-exile-mylife9-39b39-m671",
+  "description": "M6.71 — Counterspell vs opp Path to Exile; my life 9.",
+  "seed": 62690,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature. Its controller may search their library for a basic land card.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 9,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Path to Exile"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Path to Exile",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Grizzly Bears"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

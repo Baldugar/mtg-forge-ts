@@ -1,0 +1,52 @@
+{
+  "id": "counterspell-vs-doom-blade-mylife16-5b5-m671",
+  "description": "M6.71 — Counterspell vs opp Doom Blade; my life 16.",
+  "seed": 61602,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Doom Blade": "Name:Doom Blade\nManaCost:1 B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.\nOracle:Doom Blade parse.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 16,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Goblin Guide"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Doom Blade"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Doom Blade",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Goblin Guide"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

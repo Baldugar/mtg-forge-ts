@@ -1,0 +1,41 @@
+{
+  "id": "helix-face-mylife13-opplife17-13b13-m671",
+  "description": "M6.71 — Helix face; my life 13, opp life 17.",
+  "seed": 61860,
+  "cards": {
+    "Lightning Helix": "Name:Lightning Helix\nManaCost:R W\nTypes:Instant\nA:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife | SpellDescription$ Helix.\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nOracle:Lightning Helix parse.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 13,
+      "hand": [
+        "Lightning Helix"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "W"
+      ]
+    },
+    {
+      "life": 17,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Helix",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

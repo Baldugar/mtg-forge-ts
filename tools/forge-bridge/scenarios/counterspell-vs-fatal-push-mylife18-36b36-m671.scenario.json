@@ -1,0 +1,51 @@
+{
+  "id": "counterspell-vs-fatal-push-mylife18-36b36-m671",
+  "description": "M6.71 — Counterspell vs opp Fatal Push; my life 18.",
+  "seed": 62594,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Fatal Push": "Name:Fatal Push\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Fatal Push.\nOracle:Fatal Push parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 18,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Fatal Push"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Fatal Push",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Grizzly Bears"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

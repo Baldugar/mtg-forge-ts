@@ -1,0 +1,44 @@
+{
+  "id": "path-to-exile-at-opp-soul-warden-opplife9-15b22-m671",
+  "description": "M6.71 — Path to Exile at opp Soul Warden; opp life 9.",
+  "seed": 61940,
+  "cards": {
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature. Its controller may search their library for a basic land card.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path to Exile"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 9,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Path to Exile",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

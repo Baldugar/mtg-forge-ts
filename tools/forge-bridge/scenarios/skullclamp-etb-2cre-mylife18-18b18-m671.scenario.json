@@ -1,0 +1,38 @@
+{
+  "id": "skullclamp-etb-2cre-mylife18-18b18-m671",
+  "description": "M6.71 — Skullclamp ETB w/ 2 mine; my life 18.",
+  "seed": 62027,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 18,
+      "hand": [
+        "Skullclamp"
+      ],
+      "battlefield": [
+        {
+          "card": "Goblin Guide"
+        },
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "skullclamp-etb-4cre-mylife8-39b39-m671",
+  "description": "M6.71 — Skullclamp ETB w/ 4 mine; my life 8.",
+  "seed": 62699,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 8,
+      "hand": [
+        "Skullclamp"
+      ],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        },
+        {
+          "card": "Serra Angel"
+        },
+        {
+          "card": "Grizzly Bears"
+        },
+        {
+          "card": "Goblin Guide"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp",
+      "controller": 0
+    }
+  ]
+}

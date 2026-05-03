@@ -1,0 +1,53 @@
+{
+  "id": "counterspell-vs-murder-mylife7-38b38-m671",
+  "description": "M6.71 — Counterspell vs opp Murder; my life 7.",
+  "seed": 62658,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n",
+    "Murder": "Name:Murder\nManaCost:1 B B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.\nOracle:Murder parse.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 7,
+      "hand": [
+        "Counterspell"
+      ],
+      "battlefield": [
+        {
+          "card": "Goblin Guide"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [
+        "Murder"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Murder",
+      "castingPlayer": 1,
+      "target": {
+        "kind": "card",
+        "name": "Goblin Guide"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

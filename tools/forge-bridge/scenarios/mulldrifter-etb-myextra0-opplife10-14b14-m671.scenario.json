@@ -1,0 +1,29 @@
+{
+  "id": "mulldrifter-etb-myextra0-opplife10-14b14-m671",
+  "description": "M6.71 — Mulldrifter ETB; my extra 0; opp life 10.",
+  "seed": 61901,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 10,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mulldrifter",
+      "controller": 0
+    }
+  ]
+}

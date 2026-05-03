@@ -1,0 +1,44 @@
+{
+  "id": "swords-to-plowshares-at-opp-soul-warden-mylife11-29b29-m671",
+  "description": "M6.71 — Swords to Plowshares at opp Soul Warden; my life 11.",
+  "seed": 62369,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife | SpellDescription$ Exile target creature.\nSVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Exile target creature. Its controller gains life equal to its power.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 11,
+      "hand": [
+        "Swords to Plowshares"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Swords to Plowshares",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

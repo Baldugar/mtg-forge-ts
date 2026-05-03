@@ -1,0 +1,44 @@
+{
+  "id": "swords-to-plowshares-at-opp-serra-angel-mylife16-6b6-m671",
+  "description": "M6.71 — Swords to Plowshares at opp Serra Angel; my life 16.",
+  "seed": 61633,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife | SpellDescription$ Exile target creature.\nSVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Exile target creature. Its controller gains life equal to its power.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n"
+  },
+  "players": [
+    {
+      "life": 16,
+      "hand": [
+        "Swords to Plowshares"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Swords to Plowshares",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Serra Angel"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

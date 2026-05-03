@@ -1,0 +1,44 @@
+{
+  "id": "swords-to-plowshares-at-opp-goblin-guide-mylife14-22b22-m671",
+  "description": "M6.71 — Swords to Plowshares at opp Goblin Guide; my life 14.",
+  "seed": 62145,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife | SpellDescription$ Exile target creature.\nSVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Exile target creature. Its controller gains life equal to its power.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n"
+  },
+  "players": [
+    {
+      "life": 14,
+      "hand": [
+        "Swords to Plowshares"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Guide"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Swords to Plowshares",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Goblin Guide"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

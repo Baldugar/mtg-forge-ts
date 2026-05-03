@@ -1,0 +1,38 @@
+{
+  "id": "serra-angel-etb-myextra2-opplife9-15b15-m671",
+  "description": "M6.71 — Serra Angel ETB; my extra 2; opp life 9.",
+  "seed": 61935,
+  "cards": {
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serra Angel"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        },
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    },
+    {
+      "life": 9,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Serra Angel",
+      "controller": 0
+    }
+  ]
+}

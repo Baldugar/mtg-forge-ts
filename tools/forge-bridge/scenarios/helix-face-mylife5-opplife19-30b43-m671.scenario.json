@@ -1,0 +1,40 @@
+{
+  "id": "helix-face-mylife5-opplife19-30b43-m671",
+  "description": "M6.71 — Helix face; my life 5, opp life 19.",
+  "seed": 62422,
+  "cards": {
+    "Lightning Helix": "Name:Lightning Helix\nManaCost:R W\nTypes:Instant\nA:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife | SpellDescription$ Helix.\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nOracle:Lightning Helix parse.\n"
+  },
+  "players": [
+    {
+      "life": 5,
+      "hand": [
+        "Lightning Helix"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "W"
+      ]
+    },
+    {
+      "life": 19,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Helix",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

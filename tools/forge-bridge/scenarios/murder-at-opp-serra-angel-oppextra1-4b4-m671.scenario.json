@@ -1,0 +1,50 @@
+{
+  "id": "murder-at-opp-serra-angel-oppextra1-4b4-m671",
+  "description": "M6.71 — Murder at opp Serra Angel; opp extra 1.",
+  "seed": 61574,
+  "cards": {
+    "Murder": "Name:Murder\nManaCost:1 B B\nTypes:Instant\nA:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.\nOracle:Murder parse.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murder"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        },
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Murder",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Serra Angel"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

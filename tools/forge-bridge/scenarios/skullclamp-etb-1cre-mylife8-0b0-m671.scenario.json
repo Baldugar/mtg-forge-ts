@@ -1,0 +1,34 @@
+{
+  "id": "skullclamp-etb-1cre-mylife8-0b0-m671",
+  "description": "M6.71 — Skullclamp ETB w/ 1 mine; my life 8.",
+  "seed": 61451,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 8,
+      "hand": [
+        "Skullclamp"
+      ],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp",
+      "controller": 0
+    }
+  ]
+}

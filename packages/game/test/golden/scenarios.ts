@@ -116048,4 +116048,781 @@ Oracle:Lightning Bolt deals 3 damage to any target.
       ],
     };
   }),
+
+  // 7810-8809: M6.71 — 1000 action-driven scenarios (40 blocks x 25 themes).
+  ...((): GoldenScenario[] => {
+    const out: GoldenScenario[] = [];
+    const M671_CARDS = {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "Lightning Helix": `Name:Lightning Helix
+ManaCost:R W
+Types:Instant
+A:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife | SpellDescription$ Helix.
+SVar:DBLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Lightning Helix parse.
+`,
+      "Path to Exile": `Name:Path to Exile
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.
+Oracle:Exile target creature. Its controller may search their library for a basic land card.
+`,
+      "Swords to Plowshares": `Name:Swords to Plowshares
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife | SpellDescription$ Exile target creature.
+SVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X
+SVar:X:Targeted$CardPower
+Oracle:Exile target creature. Its controller gains life equal to its power.
+`,
+      Counterspell: `Name:Counterspell
+ManaCost:U U
+Types:Instant
+A:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.
+Oracle:Counter target spell.
+`,
+      "Doom Blade": `Name:Doom Blade
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.
+Oracle:Doom Blade parse.
+`,
+      Murder: `Name:Murder
+ManaCost:1 B B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.
+Oracle:Murder parse.
+`,
+      "Fatal Push": `Name:Fatal Push
+ManaCost:B
+Types:Instant
+A:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Fatal Push.
+Oracle:Fatal Push parse.
+`,
+      "Glorious Anthem": `Name:Glorious Anthem
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.
+Oracle:Creatures you control get +1/+1.
+`,
+      "Sol Ring": `Name:Sol Ring
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.
+Oracle:{T}: Add {C}{C}.
+`,
+      "Llanowar Elves":
+        "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+      Skullclamp: `Name:Skullclamp
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Skullclamp parse.
+`,
+      "Saproling Spawner M671": `Name:Saproling Spawner M671
+ManaCost:1 G
+Types:Creature Plant
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenAmount$ 1
+Oracle:Saproling spawn parse.
+`,
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Soul Warden":
+        "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+      "Serra Angel":
+        "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+      "Angel of Mercy": `Name:Angel of Mercy
+ManaCost:4 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
+`,
+      "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+      "Goblin Guide":
+        "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    };
+    const oppMana671: Record<string, ManaPoolEntry[]> = {
+      "Doom Blade": ["B", "C"],
+      Murder: ["B", "B", "C"],
+      "Fatal Push": ["B"],
+      "Path to Exile": ["W"],
+      "Lightning Bolt": ["R"],
+    };
+    const targetsCre = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Serra Angel", "Llanowar Elves"];
+    const myPool5 = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves", "Serra Angel"];
+    const oppPool4 = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+
+    for (let b = 0; b < 40; b++) {
+      const seedBase = 0xf000 + b * 32;
+
+      // Theme 1: Path to Exile (varied opp creature + life)
+      {
+        const i = b;
+        const target = targetsCre[(i + b) % 5];
+        const opLife = 5 + ((i + b) % 16);
+        out.push({
+          id: `path-to-exile-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Path to Exile at opp ${target}; opp life ${opLife}.`,
+          seed: seedBase + 0,
+          cards: {
+            "Path to Exile": M671_CARDS["Path to Exile"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: 20, hand: ["Path to Exile"], battlefield: [], manaPool: ["W"] },
+            { life: opLife, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Path to Exile",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 2: Swords to Plowshares (varied target + my-life)
+      {
+        const i = b;
+        const target = targetsCre[(i + b * 2) % 5];
+        const myLife = 4 + ((i + b) % 17);
+        out.push({
+          id: `swords-to-plowshares-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Swords to Plowshares at opp ${target}; my life ${myLife}.`,
+          seed: seedBase + 1,
+          cards: {
+            "Swords to Plowshares": M671_CARDS["Swords to Plowshares"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Swords to Plowshares"], battlefield: [], manaPool: ["W"] },
+            { life: 20, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Swords to Plowshares",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 3: Counterspell vs varied opp instants
+      {
+        const i = b;
+        const oppSpells = ["Doom Blade", "Murder", "Fatal Push", "Path to Exile", "Lightning Bolt"];
+        const oppSpell = oppSpells[(i + b) % 5];
+        const myLife = 6 + ((i + b) % 15);
+        const tgts = ["Grizzly Bears", "Goblin Guide", "Soul Warden"];
+        const tgt = tgts[(i + b) % 3];
+        const target =
+          oppSpell === "Lightning Bolt"
+            ? { kind: "player" as const, seat: SEAT0 }
+            : { kind: "card" as const, name: tgt };
+        out.push({
+          id: `counterspell-vs-${oppSpell.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Counterspell vs opp ${oppSpell}; my life ${myLife}.`,
+          seed: seedBase + 2,
+          cards: {
+            Counterspell: M671_CARDS.Counterspell,
+            [oppSpell]: M671_CARDS[oppSpell as keyof typeof M671_CARDS],
+            [tgt]: M671_CARDS[tgt as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Counterspell"], battlefield: [{ card: tgt }], manaPool: ["U", "U"] },
+            { life: 20, hand: [oppSpell], battlefield: [], manaPool: oppMana671[oppSpell] },
+          ],
+          actions: [
+            { kind: "cast", cardName: oppSpell, castingPlayer: SEAT1, target },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 4: Lightning Bolt at varied creature/face
+      {
+        const i = b;
+        const toFace = (i + b) % 2 === 1;
+        const target = targetsCre[(i + b) % 5];
+        const myLife = 5 + ((i + b) % 16);
+        const opLife = 4 + ((i + b) % 17);
+        out.push({
+          id: `bolt-${toFace ? "face" : `at-${target.toLowerCase().replace(/\s+/g, "-")}`}-mylife${myLife}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Bolt ${toFace ? "face" : `at opp ${target}`}; my life ${myLife}, opp life ${opLife}.`,
+          seed: seedBase + 3,
+          cards: {
+            "Lightning Bolt": M671_CARDS["Lightning Bolt"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+            { life: opLife, hand: [], battlefield: toFace ? [] : [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Lightning Bolt",
+              castingPlayer: SEAT0,
+              target: toFace ? { kind: "player", seat: SEAT1 } : { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 5: Lightning Helix at varied targets/life
+      {
+        const i = b;
+        const toFace = (i + b) % 2 === 0;
+        const targetsH = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+        const target = targetsH[(i + b) % 4];
+        const myLife = 4 + ((i + b) % 17);
+        const opLife = 6 + ((i + b) % 15);
+        out.push({
+          id: `helix-${toFace ? "face" : `at-${target.toLowerCase().replace(/\s+/g, "-")}`}-mylife${myLife}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Helix ${toFace ? "face" : `at opp ${target}`}; my life ${myLife}, opp life ${opLife}.`,
+          seed: seedBase + 4,
+          cards: {
+            "Lightning Helix": M671_CARDS["Lightning Helix"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Lightning Helix"], battlefield: [], manaPool: ["R", "W"] },
+            { life: opLife, hand: [], battlefield: toFace ? [] : [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Lightning Helix",
+              castingPlayer: SEAT0,
+              target: toFace ? { kind: "player", seat: SEAT1 } : { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 6: Doom Blade with varied my-life
+      {
+        const i = b;
+        const target = targetsCre[(i + b * 3) % 5];
+        const myLife = 3 + ((i + b) % 18);
+        out.push({
+          id: `doom-blade-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Doom Blade at opp ${target}; my life ${myLife}.`,
+          seed: seedBase + 5,
+          cards: {
+            "Doom Blade": M671_CARDS["Doom Blade"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Doom Blade"], battlefield: [], manaPool: ["B", "C"] },
+            { life: 20, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Doom Blade",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 7: Murder with varied opp-board mix
+      {
+        const i = b;
+        const target = targetsCre[(i + b) % 5];
+        const opCount = (i + 1) % 4;
+        const opExtra = oppPool4.slice(0, opCount).map((c) => ({ card: c }));
+        const cards: Record<string, string> = {
+          Murder: M671_CARDS.Murder,
+          [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+        };
+        for (const c of oppPool4.slice(0, opCount)) cards[c] = M671_CARDS[c as keyof typeof M671_CARDS];
+        out.push({
+          id: `murder-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-oppextra${opCount}-${b}b${i}-m671`,
+          description: `M6.71 — Murder at opp ${target}; opp extra ${opCount}.`,
+          seed: seedBase + 6,
+          cards,
+          players: [
+            { life: 20, hand: ["Murder"], battlefield: [], manaPool: ["B", "B", "C"] },
+            { life: 20, hand: [], battlefield: [{ card: target }, ...opExtra] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Murder",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 8: Fatal Push at opp creatures
+      {
+        const i = b;
+        const targetsFP = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+        const target = targetsFP[(i + b) % 4];
+        const opLife = 5 + ((i + b) % 16);
+        out.push({
+          id: `fatal-push-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Fatal Push at opp ${target}; opp life ${opLife}.`,
+          seed: seedBase + 7,
+          cards: {
+            "Fatal Push": M671_CARDS["Fatal Push"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: 20, hand: ["Fatal Push"], battlefield: [], manaPool: ["B"] },
+            { life: opLife, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Fatal Push",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 9: Glorious Anthem ETB on varied boards
+      {
+        const i = b;
+        const myCount = 1 + ((i + b) % 9);
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: myPool5[(i + b + j) % 5] }));
+        const myLife = 6 + ((i + b) % 15);
+        const cards: Record<string, string> = { "Glorious Anthem": M671_CARDS["Glorious Anthem"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `glorious-anthem-board-${myCount}cre-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Glorious Anthem ETB w/ ${myCount} mine; my life ${myLife}.`,
+          seed: seedBase + 8,
+          cards,
+          players: [
+            { life: myLife, hand: ["Glorious Anthem"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Glorious Anthem", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 10: Sol Ring activate
+      {
+        const i = b;
+        const myCount = 1 + ((i + b) % 4);
+        const myBf = [
+          { card: "Sol Ring" },
+          ...Array.from({ length: myCount }, (_, j) => ({ card: myPool5[(i + b + j) % 5] })),
+        ];
+        const cards: Record<string, string> = { "Sol Ring": M671_CARDS["Sol Ring"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `sol-ring-activate-${myCount}neigh-${b}b${i}-m671`,
+          description: `M6.71 — Sol Ring activate w/ ${myCount} neighbours.`,
+          seed: seedBase + 9,
+          cards,
+          players: [
+            { life: 20, hand: [], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "activate", sourceCardName: "Sol Ring", activatingPlayer: SEAT0 }],
+        });
+      }
+
+      // Theme 11: Llanowar Elves activate
+      {
+        const i = b;
+        const myCount = 1 + ((i + b) % 4);
+        const lePool = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Serra Angel", "Sol Ring"];
+        const myBf = [
+          { card: "Llanowar Elves" },
+          ...Array.from({ length: myCount }, (_, j) => ({ card: lePool[(i + b + j) % 5] })),
+        ];
+        const cards: Record<string, string> = { "Llanowar Elves": M671_CARDS["Llanowar Elves"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `llanowar-elves-activate-${myCount}neigh-${b}b${i}-m671`,
+          description: `M6.71 — Llanowar Elves activate w/ ${myCount} neighbours.`,
+          seed: seedBase + 10,
+          cards,
+          players: [
+            { life: 20, hand: [], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "activate", sourceCardName: "Llanowar Elves", activatingPlayer: SEAT0 }],
+        });
+      }
+
+      // Theme 12: Skullclamp ETB
+      {
+        const i = b;
+        const myCount = 1 + ((i + b) % 5);
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: myPool5[(i + b + j) % 5] }));
+        const myLife = 8 + ((i + b) % 13);
+        const cards: Record<string, string> = { Skullclamp: M671_CARDS.Skullclamp };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `skullclamp-etb-${myCount}cre-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Skullclamp ETB w/ ${myCount} mine; my life ${myLife}.`,
+          seed: seedBase + 11,
+          cards,
+          players: [
+            { life: myLife, hand: ["Skullclamp"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Skullclamp", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 13: Saproling token-spawn ETB
+      {
+        const i = b;
+        const opCount = (i + b) % 4;
+        const opBf = oppPool4.slice(0, opCount).map((c) => ({ card: c }));
+        const opLife = 12 + ((i + b) % 9);
+        const cards: Record<string, string> = {
+          "Saproling Spawner M671": M671_CARDS["Saproling Spawner M671"],
+        };
+        for (const e of opBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `saproling-spawn-etb-opp${opCount}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Saproling spawn ETB; opp ${opCount} creatures; opp life ${opLife}.`,
+          seed: seedBase + 12,
+          cards,
+          players: [
+            { life: 20, hand: ["Saproling Spawner M671"], battlefield: [] },
+            { life: opLife, hand: [], battlefield: opBf },
+          ],
+          actions: [{ kind: "etb", cardName: "Saproling Spawner M671", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 14: Mulldrifter ETB
+      {
+        const i = b;
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: myPool5[(i + b + j) % 5] }));
+        const opLife = 8 + ((i + b) % 13);
+        const cards: Record<string, string> = { Mulldrifter: M671_CARDS.Mulldrifter };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `mulldrifter-etb-myextra${myCount}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Mulldrifter ETB; my extra ${myCount}; opp life ${opLife}.`,
+          seed: seedBase + 13,
+          cards,
+          players: [
+            { life: 20, hand: ["Mulldrifter"], battlefield: myBf },
+            { life: opLife, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Mulldrifter", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 15: Soul Warden ETB
+      {
+        const i = b;
+        const swPool = ["Grizzly Bears", "Goblin Guide", "Llanowar Elves", "Serra Angel"];
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: swPool[(i + b + j) % 4] }));
+        const myLife = 6 + ((i + b) % 15);
+        const cards: Record<string, string> = { "Soul Warden": M671_CARDS["Soul Warden"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `soul-warden-etb-myextra${myCount}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Soul Warden ETB; my extra ${myCount}; my life ${myLife}.`,
+          seed: seedBase + 14,
+          cards,
+          players: [
+            { life: myLife, hand: ["Soul Warden"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Soul Warden", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 16: Serra Angel ETB
+      {
+        const i = b;
+        const saPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: saPool[(i + b + j) % 4] }));
+        const opLife = 7 + ((i + b) % 14);
+        const cards: Record<string, string> = { "Serra Angel": M671_CARDS["Serra Angel"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `serra-angel-etb-myextra${myCount}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Serra Angel ETB; my extra ${myCount}; opp life ${opLife}.`,
+          seed: seedBase + 15,
+          cards,
+          players: [
+            { life: 20, hand: ["Serra Angel"], battlefield: myBf },
+            { life: opLife, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Serra Angel", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 17: Angel of Mercy ETB
+      {
+        const i = b;
+        const amPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: amPool[(i + b + j) % 4] }));
+        const myLife = 5 + ((i + b) % 16);
+        const cards: Record<string, string> = { "Angel of Mercy": M671_CARDS["Angel of Mercy"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `angel-of-mercy-etb-myextra${myCount}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Angel of Mercy ETB; my extra ${myCount}; my life ${myLife}.`,
+          seed: seedBase + 16,
+          cards,
+          players: [
+            { life: myLife, hand: ["Angel of Mercy"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Angel of Mercy", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 18: Grizzly Bears ETB
+      {
+        const i = b;
+        const gbPool = ["Goblin Guide", "Soul Warden", "Llanowar Elves", "Serra Angel"];
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: gbPool[(i + b + j) % 4] }));
+        const opLife = 6 + ((i + b) % 15);
+        const cards: Record<string, string> = { "Grizzly Bears": M671_CARDS["Grizzly Bears"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `grizzly-bears-etb-myextra${myCount}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Grizzly Bears ETB; my extra ${myCount}; opp life ${opLife}.`,
+          seed: seedBase + 17,
+          cards,
+          players: [
+            { life: 20, hand: ["Grizzly Bears"], battlefield: myBf },
+            { life: opLife, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Grizzly Bears", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 19: Goblin Guide ETB
+      {
+        const i = b;
+        const ggPool = ["Grizzly Bears", "Soul Warden", "Llanowar Elves", "Serra Angel"];
+        const myCount = (i + b) % 4;
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: ggPool[(i + b + j) % 4] }));
+        const myLife = 7 + ((i + b) % 14);
+        const cards: Record<string, string> = { "Goblin Guide": M671_CARDS["Goblin Guide"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `goblin-guide-etb-myextra${myCount}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Goblin Guide ETB; my extra ${myCount}; my life ${myLife}.`,
+          seed: seedBase + 18,
+          cards,
+          players: [
+            { life: myLife, hand: ["Goblin Guide"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Goblin Guide", controller: SEAT0 }],
+        });
+      }
+
+      // Theme 20: Lightning Bolt at face (varied life)
+      {
+        const i = b;
+        const myLife = 4 + ((i + b) % 17);
+        const opLife = 3 + ((i + b) % 18);
+        out.push({
+          id: `bolt-face-life-mylife${myLife}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Bolt face; my life ${myLife}; opp life ${opLife}.`,
+          seed: seedBase + 19,
+          cards: { "Lightning Bolt": M671_CARDS["Lightning Bolt"] },
+          players: [
+            { life: myLife, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+            { life: opLife, hand: [], battlefield: [] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Lightning Bolt",
+              castingPlayer: SEAT0,
+              target: { kind: "player", seat: SEAT1 },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 21: Path to Exile (alt opp creature + life rotation)
+      {
+        const i = b + 7;
+        const target = targetsCre[(i + b) % 5];
+        const opLife = 5 + ((i + b * 2) % 16);
+        out.push({
+          id: `path-to-exile-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Path to Exile at opp ${target}; opp life ${opLife}.`,
+          seed: seedBase + 20,
+          cards: {
+            "Path to Exile": M671_CARDS["Path to Exile"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: 20, hand: ["Path to Exile"], battlefield: [], manaPool: ["W"] },
+            { life: opLife, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Path to Exile",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 22: Bolt at varied creature (alt rotation)
+      {
+        const i = b + 11;
+        const target = targetsCre[(i + b) % 5];
+        const myLife = 5 + ((i + b * 2) % 16);
+        const opLife = 4 + ((i + b * 2) % 17);
+        out.push({
+          id: `bolt-at-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Bolt at opp ${target}; my life ${myLife}, opp life ${opLife}.`,
+          seed: seedBase + 21,
+          cards: {
+            "Lightning Bolt": M671_CARDS["Lightning Bolt"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+            { life: opLife, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Lightning Bolt",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 23: Helix at face (alt rotation)
+      {
+        const i = b + 13;
+        const myLife = 4 + ((i + b * 2) % 17);
+        const opLife = 6 + ((i + b * 2) % 15);
+        out.push({
+          id: `helix-face-mylife${myLife}-opplife${opLife}-${b}b${i}-m671`,
+          description: `M6.71 — Helix face; my life ${myLife}, opp life ${opLife}.`,
+          seed: seedBase + 22,
+          cards: { "Lightning Helix": M671_CARDS["Lightning Helix"] },
+          players: [
+            { life: myLife, hand: ["Lightning Helix"], battlefield: [], manaPool: ["R", "W"] },
+            { life: opLife, hand: [], battlefield: [] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Lightning Helix",
+              castingPlayer: SEAT0,
+              target: { kind: "player", seat: SEAT1 },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 24: Doom Blade alt rotation
+      {
+        const i = b + 17;
+        const target = targetsCre[(i + b) % 5];
+        const myLife = 3 + ((i + b * 2) % 18);
+        out.push({
+          id: `doom-blade-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Doom Blade at opp ${target}; my life ${myLife}.`,
+          seed: seedBase + 23,
+          cards: {
+            "Doom Blade": M671_CARDS["Doom Blade"],
+            [target]: M671_CARDS[target as keyof typeof M671_CARDS],
+          },
+          players: [
+            { life: myLife, hand: ["Doom Blade"], battlefield: [], manaPool: ["B", "C"] },
+            { life: 20, hand: [], battlefield: [{ card: target }] },
+          ],
+          actions: [
+            {
+              kind: "cast",
+              cardName: "Doom Blade",
+              castingPlayer: SEAT0,
+              target: { kind: "card", name: target },
+            },
+            { kind: "resolveTopOfStack" },
+          ],
+        });
+      }
+
+      // Theme 25: Glorious Anthem ETB alt rotation (1-9 creatures)
+      {
+        const i = b + 19;
+        const myCount = 1 + ((i + b) % 9);
+        const myBf = Array.from({ length: myCount }, (_, j) => ({ card: myPool5[(i + b + j) % 5] }));
+        const myLife = 6 + ((i + b) % 15);
+        const cards: Record<string, string> = { "Glorious Anthem": M671_CARDS["Glorious Anthem"] };
+        for (const e of myBf) cards[e.card] = M671_CARDS[e.card as keyof typeof M671_CARDS];
+        out.push({
+          id: `glorious-anthem-board-${myCount}cre-mylife${myLife}-${b}b${i}-m671`,
+          description: `M6.71 — Glorious Anthem ETB w/ ${myCount} mine; my life ${myLife}.`,
+          seed: seedBase + 24,
+          cards,
+          players: [
+            { life: myLife, hand: ["Glorious Anthem"], battlefield: myBf },
+            { life: 20, hand: [], battlefield: [] },
+          ],
+          actions: [{ kind: "etb", cardName: "Glorious Anthem", controller: SEAT0 }],
+        });
+      }
+    }
+    return out;
+  })(),
 ];
