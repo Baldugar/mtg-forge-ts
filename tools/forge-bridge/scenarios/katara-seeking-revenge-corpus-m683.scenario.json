@@ -1,0 +1,23 @@
+{
+  "id": "katara-seeking-revenge-corpus-m683",
+  "description": "M6 corpus — Katara, Seeking Revenge; in-hand parse.",
+  "seed": 61450,
+  "cards": {
+    "Katara, Seeking Revenge": "Name:Katara, Seeking Revenge\nManaCost:3 UB\nTypes:Legendary Creature Human Warrior Ally\nPT:3/3\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Waterbend<2> | Description$ As an additional cost to cast this spell, you may waterbend {2}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, draw a card, then discard a card unless her additional cost was paid.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ X | Mode$ TgtChoose\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ Y | AddToughness$ Y | Description$ NICKNAME gets +1/+1 for each Lesson card in your graveyard.\nSVar:X:CastSA>Count$OptionalGenericCostPaid.0.1\nSVar:Y:Count$ValidGraveyard Lesson.YouOwn\nDeckHas:Ability$Discard\nOracle:As an additional cost to cast this spell, you may waterbend {2}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\\nWhen Katara enters, draw a card, then discard a card unless her additional cost was paid.\\nKatara gets +1/+1 for each Lesson card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katara, Seeking Revenge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "foggy-swamp-visions-corpus-m683",
+  "description": "M6 corpus — Foggy Swamp Visions; in-hand parse.",
+  "seed": 61444,
+  "cards": {
+    "Foggy Swamp Visions": "Name:Foggy Swamp Visions\nManaCost:1 B B\nTypes:Sorcery\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ Waterbend<X> | EffectZone$ All | Description$ As an additional cost to cast this spell, waterbend {X}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nA:SP$ ChangeZone | Announce$ X | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | TgtPrompt$ Choose X target creature cards from graveyards | TargetMin$ X | TargetMax$ X | SubAbility$ DBClone | RememberChanged$ True | SpellDescription$ Exile X target creature cards from graveyards. For each creature card exiled this way, create a token that's a copy of it. At the beginning of your next end step, sacrifice those tokens.\nSVar:DBClone:DB$ CopyPermanent | Defined$ Remembered | AtEOT$ YourSacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Graveyard\nOracle:As an additional cost to cast this spell, waterbend {X}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\\nExile X target creature cards from graveyards. For each creature card exiled this way, create a token that's a copy of it. At the beginning of your next end step, sacrifice those tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foggy Swamp Visions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

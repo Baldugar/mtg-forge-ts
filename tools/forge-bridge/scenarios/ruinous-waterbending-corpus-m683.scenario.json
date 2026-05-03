@@ -1,0 +1,23 @@
+{
+  "id": "ruinous-waterbending-corpus-m683",
+  "description": "M6 corpus — Ruinous Waterbending; in-hand parse.",
+  "seed": 61453,
+  "cards": {
+    "Ruinous Waterbending": "Name:Ruinous Waterbending\nManaCost:1 B B\nTypes:Sorcery Lesson\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Waterbend<4> | Description$ As an additional cost to cast this spell, you may waterbend {4}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SubAbility$ DBEffect | SpellDescription$ All creatures get -2/-2 until end of turn. If this spell's additional cost was paid, whenever a creature dies this turn, you gain 1 life.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDies | Condition$ OptionalCost | ConditionOptionalPaid$ True\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature dies this turn, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:As an additional cost to cast this spell, you may waterbend {4}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\\nAll creatures get -2/-2 until end of turn. If this spell's additional cost was paid, whenever a creature dies this turn, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruinous Waterbending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

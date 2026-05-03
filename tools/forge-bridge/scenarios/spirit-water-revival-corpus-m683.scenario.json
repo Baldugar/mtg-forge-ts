@@ -1,0 +1,23 @@
+{
+  "id": "spirit-water-revival-corpus-m683",
+  "description": "M6 corpus — Spirit Water Revival; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Spirit Water Revival": "Name:Spirit Water Revival\nManaCost:1 U U\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Waterbend<6> | Description$ As an additional cost to cast this spell, you may waterbend {6}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ConditionCheckSVar$ X | SubAbility$ DBDraw | SpellDescription$ Draw two cards. If this spell's additional cost was paid, instead shuffle your graveyard into your library, draw seven cards, and you have no maximum hand size for the rest of the game. Exile CARDNAME.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ Permanent | ConditionCheckSVar$ X | SubAbility$ DBExile\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size for the rest of the game.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Count$OptionalGenericCostPaid.1.0\nSVar:Y:Count$OptionalGenericCostPaid.7.2\nOracle:As an additional cost to cast this spell, you may waterbend {6}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\\nDraw two cards. If this spell's additional cost was paid, instead shuffle your graveyard into your library, draw seven cards, and you have no maximum hand size for the rest of the game.\\nExile Spirit Water Revival.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Water Revival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

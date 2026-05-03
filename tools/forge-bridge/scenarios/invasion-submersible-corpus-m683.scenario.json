@@ -1,0 +1,23 @@
+{
+  "id": "invasion-submersible-corpus-m683",
+  "description": "M6 corpus — Invasion Submersible; in-hand parse.",
+  "seed": 61448,
+  "cards": {
+    "Invasion Submersible": "Name:Invasion Submersible\nManaCost:2 U\nTypes:Artifact Vehicle\nPT:0/0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this Vehicle enters, return up to one other target nonland permanent to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonLand+Other | TgtPrompt$ Select up to one other target nonland permanent\nA:AB$ Animate | Cost$ Waterbend<3> | Defined$ Self | Types$ Artifact,Creature | Exhaust$ True | Duration$ Permanent | SubAbility$ DBPutCounter | SpellDescription$ This Vehicle becomes an artifact creature. Put three +1/+1 counters on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 3\nOracle:When this Vehicle enters, return up to one other target nonland permanent to its owner's hand.\\nExhaust — Waterbend {3}: This Vehicle becomes an artifact creature. Put three +1/+1 counters on it. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}. Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Submersible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

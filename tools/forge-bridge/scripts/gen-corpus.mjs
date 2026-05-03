@@ -299,7 +299,6 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     );
     const skip =
       manaCostHasAltCost ||
-      usesAvatarMechanics ||
       hasAnyAsNumber ||
       hasExoticToken;
     if (skip) continue;
@@ -317,6 +316,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       hasComplexMechanic ||
       hasOffspring ||
       hasAltCostInManaCost ||
+      usesAvatarMechanics ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||

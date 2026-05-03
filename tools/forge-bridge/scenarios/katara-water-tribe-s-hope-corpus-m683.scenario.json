@@ -1,0 +1,23 @@
+{
+  "id": "katara-water-tribe-s-hope-corpus-m683",
+  "description": "M6 corpus — Katara, Water Tribe's Hope; in-hand parse.",
+  "seed": 61451,
+  "cards": {
+    "Katara, Water Tribe's Hope": "Name:Katara, Water Tribe's Hope\nManaCost:2 W U U\nTypes:Legendary Creature Human Warrior Ally\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 1/1 white Ally creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally | TokenOwner$ You\nA:AB$ AnimateAll | Cost$ Waterbend<X> | XMin$ 1 | ValidCards$ Creature.YouCtrl | PlayerTurn$ True | Power$ X | Toughness$ X | SpellDescription$ Creatures you control have base power and toughness X/X until end of turn. X can't be 0. Activate only during your turn.\nSVar:X:Count$xPaid\nOracle:Vigilance\\nWhen Katara enters, create a 1/1 white Ally creature token.\\nWaterbend {X}: Creatures you control have base power and toughness X/X until end of turn. X can't be 0. Activate only during your turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katara, Water Tribe's Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

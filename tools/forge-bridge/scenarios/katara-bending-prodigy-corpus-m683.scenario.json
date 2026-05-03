@@ -1,0 +1,23 @@
+{
+  "id": "katara-bending-prodigy-corpus-m683",
+  "description": "M6 corpus — Katara, Bending Prodigy; in-hand parse.",
+  "seed": 61449,
+  "cards": {
+    "Katara, Bending Prodigy": "Name:Katara, Bending Prodigy\nTypes:Legendary Creature Human Warrior Ally\nManaCost:2 U\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if NICKNAME is tapped, put a +1/+1 counter on her.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Draw | Cost$ Waterbend<6> | NumCards$ 1 | SpellDescription$ Draw a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nOracle:At the beginning of your end step, if Katara is tapped, put a +1/+1 counter on her.\\nWaterbend {6}: Draw a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katara, Bending Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

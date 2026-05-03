@@ -1,0 +1,23 @@
+{
+  "id": "water-whip-corpus-m683",
+  "description": "M6 corpus — Water Whip; in-hand parse.",
+  "seed": 61459,
+  "cards": {
+    "Water Whip": "Name:Water Whip\nManaCost:U U\nTypes:Sorcery\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ Waterbend<5> | EffectZone$ All | Description$ As an additional cost to cast this spell, waterbend {5}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return up to two target creatures to their owners' hands. Draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nOracle:As an additional cost to cast this spell, waterbend {5}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\\nReturn up to two target creatures to their owners' hands. Draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Water Whip"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

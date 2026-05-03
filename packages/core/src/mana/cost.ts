@@ -760,6 +760,16 @@ export class ManaCost {
         // that already normalize blank costs to "".
         return new ManaCost([], true);
       }
+      // M6.82 — Forge alt-cost expressions in mana-cost slots (Avatar
+      // bending mechanics like "Waterbend<5>", "Earthbend<3>", or "no cost"
+      // sentinels) are non-mana costs the cost-payment pipeline handles
+      // separately. Recognize the alt-cost shape (Identifier<...>) and
+      // treat as NO_COST for mana-symbol purposes — actual cost payment
+      // is driven by the dedicated cost-part handlers (see
+      // forge.bridge / packages/game/src/altcost/*).
+      if (/^[A-Za-z][A-Za-z]*</.test(trimmed) || trimmed.toLowerCase() === "no cost") {
+        return new ManaCost([], true);
+      }
       // Any whitespace anywhere in the trimmed input → Forge canonical form.
       if (/\s/.test(trimmed)) {
         return new ManaCost(parseSpaceSeparated(trimmed), false);

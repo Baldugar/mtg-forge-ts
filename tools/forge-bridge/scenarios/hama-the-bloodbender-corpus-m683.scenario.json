@@ -1,0 +1,23 @@
+{
+  "id": "hama-the-bloodbender-corpus-m683",
+  "description": "M6 corpus — Hama, the Bloodbender; in-hand parse.",
+  "seed": 61447,
+  "cards": {
+    "Hama, the Bloodbender": "Name:Hama, the Bloodbender\nManaCost:2 UB UB UB\nTypes:Legendary Creature Human Warlock\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When NICKNAME enters, target opponent mills three cards. Exile up to one noncreature, nonland card from that player's graveyard. For as long as you control NICKNAME, you may cast the exiled card during your turn by waterbending {X} rather than paying its mana cost, where X is its mana value. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to mill | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Optional$ True | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonCreature+nonLand | Hidden$ True | ChangeNum$ 1 | IsCurse$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ AsLongAsControl | ExileOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Condition$ PlayerTurn | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlayAltManaCost$ Waterbend<ConvertedManaCost> | Description$ You may cast that card during your turn by waterbending {X} rather than paying its mana cost, where X is its mana value.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Hama enters, target opponent mills three cards. Exile up to one noncreature, nonland card from that player's graveyard. For as long as you control Hama, you may cast the exiled card during your turn by waterbending {X} rather than paying its mana cost, where X is its mana value. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hama, the Bloodbender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
