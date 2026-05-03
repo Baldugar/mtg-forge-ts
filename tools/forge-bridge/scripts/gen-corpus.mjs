@@ -299,7 +299,6 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     );
     const skip =
       manaCostHasAltCost ||
-      hasAnyAsNumber ||
       hasExoticToken;
     if (skip) continue;
     const inHandOnly =
@@ -317,6 +316,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       hasOffspring ||
       hasAltCostInManaCost ||
       usesAvatarMechanics ||
+      hasAnyAsNumber ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||

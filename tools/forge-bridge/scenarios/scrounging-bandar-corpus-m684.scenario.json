@@ -1,0 +1,23 @@
+{
+  "id": "scrounging-bandar-corpus-m684",
+  "description": "M6 corpus — Scrounging Bandar; in-hand parse.",
+  "seed": 61442,
+  "cards": {
+    "Scrounging Bandar": "Name:Scrounging Bandar\nManaCost:1 G\nTypes:Creature Cat Monkey\nPT:0/0\nK:etbCounter:P1P1:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMoveCounter | TriggerDescription$ At the beginning of your upkeep, you may move any number of +1/+1 counters from CARDNAME onto another target creature.\nSVar:TrigMoveCounter:DB$ MoveCounter | ValidTgts$ Creature.Other | Source$ Self | CounterType$ P1P1 | CounterNum$ Any\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Scrounging Bandar enters with two +1/+1 counters on it.\\nAt the beginning of your upkeep, you may move any number of +1/+1 counters from Scrounging Bandar onto another target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrounging Bandar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

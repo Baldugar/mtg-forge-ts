@@ -1,0 +1,23 @@
+{
+  "id": "forgotten-ancient-corpus-m684",
+  "description": "M6 corpus — Forgotten Ancient; in-hand parse.",
+  "seed": 61440,
+  "cards": {
+    "Forgotten Ancient": "Name:Forgotten Ancient\nManaCost:3 G\nTypes:Creature Elemental\nPT:0/3\nT:Mode$ SpellCast | ValidCard$ Card | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever a player casts a spell, you may put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMoveCounter | TriggerDescription$ At the beginning of your upkeep, you may move any number of +1/+1 counters from CARDNAME onto other creatures.\nSVar:TrigMoveCounter:DB$ MoveCounter | Source$ Self | ValidDefined$ Creature.Other | CounterType$ P1P1 | CounterNum$ Any | AILogic$ ToValid | StackDescription$ You may move any number of +1/+1 counters from CARDNAME onto other creatures.\nOracle:Whenever a player casts a spell, you may put a +1/+1 counter on Forgotten Ancient.\\nAt the beginning of your upkeep, you may move any number of +1/+1 counters from Forgotten Ancient onto other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgotten Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "galloping-lizrog-corpus-m684",
+  "description": "M6 corpus — Galloping Lizrog; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "Galloping Lizrog": "Name:Galloping Lizrog\nManaCost:3 G U\nTypes:Creature Frog Lizard\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigRemoveCounters | TriggerDescription$ When CARDNAME enters, you may remove any number of +1/+1 counters from among creatures you control. If you do, put twice that many +1/+1 counters on CARDNAME.\nSVar:TrigRemoveCounters:DB$ RemoveCounter | Choices$ Creature.YouCtrl+counters_GE1_P1P1 | ChoiceOptional$ True | CounterType$ P1P1 | CounterNum$ Any | SubAbility$ DBPutCounters | RememberAmount$ True | StackDescription$ You may remove any number of +1/+1 counters from among creatures you control.\nSVar:DBPutCounters:DB$ PutCounter | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber/Twice\nDeckHints:Ability$Counters\nDeckHas:Ability$Counters\nOracle:Trample\\nWhen Galloping Lizrog enters, you may remove any number of +1/+1 counters from among creatures you control. If you do, put twice that many +1/+1 counters on Galloping Lizrog.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galloping Lizrog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

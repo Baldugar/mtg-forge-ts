@@ -1,0 +1,23 @@
+{
+  "id": "slippery-bogbonder-corpus-m684",
+  "description": "M6 corpus — Slippery Bogbonder; in-hand parse.",
+  "seed": 61443,
+  "cards": {
+    "Slippery Bogbonder": "Name:Slippery Bogbonder\nManaCost:3 G\nTypes:Creature Human Druid\nPT:3/3\nK:Flash\nK:Hexproof\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a hexproof counter on target creature. Then move any number of counters from among creatures you control onto that creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ Hexproof | CounterNum$ 1 | SubAbility$ MoveAllCounter\nSVar:MoveAllCounter:DB$ MoveCounter | ValidSource$ Creature.YouCtrl | CounterType$ All | CounterNum$ Any | Defined$ Targeted\nOracle:Flash\\nHexproof\\nWhen Slippery Bogbonder enters, put a hexproof counter on target creature. Then move any number of counters from among creatures you control onto that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slippery Bogbonder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
