@@ -1,0 +1,25 @@
+{
+  "id": "angelic-accord-corpus-m675",
+  "description": "M6 corpus — Angelic Accord; ETB-on-bf.",
+  "seed": 61518,
+  "cards": {
+    "Angelic Accord": "Name:Angelic Accord\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ YouLifeGained | SVarCompare$ GE4 | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if you gained 4 or more life this turn, create a 4/4 white Angel creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nAI:RemoveDeck:Random\nOracle:At the beginning of each end step, if you gained 4 or more life this turn, create a 4/4 white Angel creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angelic Accord"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

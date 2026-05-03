@@ -1,0 +1,23 @@
+{
+  "id": "aven-warcraft-corpus-m675",
+  "description": "M6 corpus — Aven Warcraft; in-hand parse.",
+  "seed": 62163,
+  "cards": {
+    "Aven Warcraft": "Name:Aven Warcraft\nManaCost:2 W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumDef$ +2 | SubAbility$ ChooseColor | SpellDescription$ Creatures you control get +0/+2 until end of turn. Threshold — If there are seven or more cards in your graveyard, choose a color. Creatures you control also gain protection from the chosen color until end of turn.\nSVar:ChooseColor:DB$ ProtectionAll | Condition$ Threshold | ValidCards$ Creature.YouCtrl | Gains$ Choice | Choices$ AnyColor\nDeckHints:Ability$Graveyard\nOracle:Creatures you control get +0/+2 until end of turn.\\nThreshold — If there are seven or more cards in your graveyard, choose a color. Creatures you control also gain protection from the chosen color until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Warcraft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

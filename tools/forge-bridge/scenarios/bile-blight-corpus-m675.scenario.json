@@ -1,0 +1,23 @@
+{
+  "id": "bile-blight-corpus-m675",
+  "description": "M6 corpus — Bile Blight; in-hand parse.",
+  "seed": 62683,
+  "cards": {
+    "Bile Blight": "Name:Bile Blight\nManaCost:B B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | IsCurse$ True | RememberTargets$ True | NumAtt$ -3 | NumDef$ -3 | SubAbility$ DBPumpAll | SpellDescription$ Target creature and all creatures with the same name as that creature get -3/-3 until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Remembered.sameName+Other+Creature | NumAtt$ -3 | NumDef$ -3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target creature and all other creatures with the same name as that creature get -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bile Blight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

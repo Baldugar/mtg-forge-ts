@@ -1,0 +1,23 @@
+{
+  "id": "blood-on-the-snow-corpus-m675",
+  "description": "M6 corpus — Blood on the Snow; in-hand parse.",
+  "seed": 62939,
+  "cards": {
+    "Blood on the Snow": "Name:Blood on the Snow\nManaCost:4 B B\nTypes:Snow Sorcery\nA:SP$ Charm | Choices$ DestroyCtrs,DestroyPWs | SubAbility$ NoopDesc\nSVar:DestroyCtrs:DB$ DestroyAll | ValidCards$ Creature | SubAbility$ DBReturn | SpellDescription$ Destroy all creatures.\nSVar:DestroyPWs:DB$ DestroyAll | ValidCards$ Planeswalker | SubAbility$ DBReturn | SpellDescription$ Destroy all planeswalkers.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouOwn+cmcLEX,Planeswalker.YouOwn+cmcLEX | ChangeTypeDesc$ creature or planeswalker card with mana value X or less\nSVar:NoopDesc:DB$ Cleanup | SpellDescription$ Then return a creature or planeswalker card with mana value X or less from your graveyard to the battlefield, where X is the amount of {S} spent to cast this spell. ({S} is mana from a snow source.)\nSVar:X:Count$CastTotalManaSpent Snow\nSVar:AIPreference:ManaFrom$Snow\nAI:RemoveDeck:Random\nDeckHints:Type$Snow\nOracle:Choose one —\\n• Destroy all creatures.\\n• Destroy all planeswalkers.\\nThen return a creature or planeswalker card with mana value X or less from your graveyard to the battlefield, where X is the amount of {S} spent to cast this spell. ({S} is mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood on the Snow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

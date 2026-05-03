@@ -1,0 +1,23 @@
+{
+  "id": "armory-automaton-corpus-m675",
+  "description": "M6 corpus — Armory Automaton; in-hand parse.",
+  "seed": 61867,
+  "cards": {
+    "Armory Automaton": "Name:Armory Automaton\nManaCost:3\nTypes:Artifact Creature Construct\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAttach | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or attacks, you may attach any number of target Equipment to it. (Control of the Equipment doesn't change.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBAttach | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks, you may attach any number of target Equipment to it. (Control of the Equipment doesn't change.)\nSVar:DBAttach:DB$ Attach | ValidTgts$ Equipment | TargetMin$ 0 | TargetMax$ MaxTargets | Object$ Targeted | Defined$ Self\nSVar:MaxTargets:Count$Valid Equipment\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Armory Automaton enters or attacks, you may attach any number of target Equipment to it. (Control of the Equipment doesn't change.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armory Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

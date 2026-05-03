@@ -1,0 +1,25 @@
+{
+  "id": "arms-scavenger-corpus-m675",
+  "description": "M6 corpus — Arms Scavenger; ETB-on-bf.",
+  "seed": 61875,
+  "cards": {
+    "Arms Scavenger": "Name:Arms Scavenger\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraft | TriggerDescription$ At the beginning of your upkeep, draft a card from CARDNAME's spellbook, then exile it. Until end of turn, you may play that card.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Boots of Speed,Cliffhaven Kitesail,Colossus Hammer,Dueling Rapier,Spare Dagger,Tormentor's Helm,Goldvein Pick,Jousting Lance,Mask of Immolation,Mirror Shield,Relic Axe,Rogue's Gloves,Scavenged Blade,Shield of the Realm,Ceremonial Knife | RememberDrafted$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Defined$ Remembered | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ExileOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of turn, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ ReduceCost | ValidCard$ Card | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 1 | Condition$ PlayerTurn | Description$ Equip abilities you activate cost {1} less to activate.\nDeckHints:Type$Equipment\nOracle:At the beginning of your upkeep, draft a card from Arms Scavenger's spellbook, then exile it. Until end of turn, you may play that card.\\nEquip abilities you activate cost {1} less to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arms Scavenger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

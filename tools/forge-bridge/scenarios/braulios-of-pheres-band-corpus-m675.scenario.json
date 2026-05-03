@@ -1,0 +1,25 @@
+{
+  "id": "braulios-of-pheres-band-corpus-m675",
+  "description": "M6 corpus — Braulios of Pheres Band; ETB-on-bf.",
+  "seed": 63291,
+  "cards": {
+    "Braulios of Pheres Band": "Name:Braulios of Pheres Band\nManaCost:3 G G\nTypes:Legendary Creature Centaur Scout\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw a card, then you may put a land card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ You\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:Braulios of Pheres Band's power and toughness are each equal to the number of lands you control.\\nWhenever Braulios of Pheres Band attacks, draw a card, then you may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Braulios of Pheres Band"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

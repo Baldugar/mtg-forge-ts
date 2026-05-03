@@ -1,0 +1,25 @@
+{
+  "id": "bria-riptide-rogue-corpus-m675",
+  "description": "M6 corpus — Bria, Riptide Rogue; ETB-on-bf.",
+  "seed": 63348,
+  "cards": {
+    "Bria, Riptide Rogue": "Name:Bria, Riptide Rogue\nManaCost:2 U R\nTypes:Legendary Creature Otter Rogue\nPT:3/3\nK:Prowess\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Prowess | Description$ Other creatures you control have prowess.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUnblockable | TriggerDescription$ Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.YouCtrl | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:BuffedBy:Card.nonCreature\nOracle:Prowess\\nOther creatures you control have prowess.\\nWhenever you cast a noncreature spell, target creature you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bria, Riptide Rogue"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

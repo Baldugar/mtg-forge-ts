@@ -1,0 +1,25 @@
+{
+  "id": "arbor-colossus-corpus-m675",
+  "description": "M6 corpus — Arbor Colossus; ETB-on-bf.",
+  "seed": 61693,
+  "cards": {
+    "Arbor Colossus": "Name:Arbor Colossus\nManaCost:2 G G G\nTypes:Creature Giant\nPT:6/6\nK:Reach\nA:AB$ PutCounter | Cost$ 3 G G G | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME becomes monstrous, destroy target creature with flying an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+withFlying | TgtPrompt$ Select target creature with flying an opponent controls\nDeckHas:Ability$Counters\nOracle:Reach\\n{3}{G}{G}{G}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Arbor Colossus becomes monstrous, destroy target creature with flying an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arbor Colossus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

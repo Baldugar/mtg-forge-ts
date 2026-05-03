@@ -1,0 +1,25 @@
+{
+  "id": "artificer-class-corpus-m675",
+  "description": "M6 corpus — Artificer Class; ETB-on-bf.",
+  "seed": 61902,
+  "cards": {
+    "Artificer Class": "Name:Artificer Class\nManaCost:1 U\nTypes:Enchantment Class\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Card.Artifact | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 1 | Description$ The first artifact spell you cast each turn costs {1} less to cast.\nK:Class:2:1 U:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 2 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDigUntil | Secondary$ True | TriggerDescription$ When this Class becomes level 2, reveal cards from the top of your library until you reveal an artifact card. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Artifact | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nK:Class:3:5 U:AddTrigger$ TriggerEndTurn\nSVar:TriggerEndTurn:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ CopyArtifact | Secondary$ True | TriggerDescription$ At the beginning of your end step, create a token that's a copy of target artifact you control.\nSVar:CopyArtifact:DB$ CopyPermanent | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control to copy\nDeckHas:Ability$Token\nDeckNeeds:Type$Artifact\nOracle:(Gain the next level as a sorcery to add its ability.)\\nThe first artifact spell you cast each turn costs {1} less to cast.\\n{1}{U}: Level 2\\nWhen this Class becomes level 2, reveal cards from the top of your library until you reveal an artifact card. Put that card into your hand and the rest on the bottom of your library in a random order.\\n{5}{U}: Level 3\\nAt the beginning of your end step, create a token that's a copy of target artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Artificer Class"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

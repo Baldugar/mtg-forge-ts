@@ -1,0 +1,23 @@
+{
+  "id": "angler-drake-corpus-m675",
+  "description": "M6 corpus — Angler Drake; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Angler Drake": "Name:Angler Drake\nManaCost:4 U U\nTypes:Creature Drake\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Angler Drake enters, you may return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angler Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

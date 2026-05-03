@@ -1,0 +1,25 @@
+{
+  "id": "bane-of-the-living-corpus-m675",
+  "description": "M6 corpus — Bane of the Living; ETB-on-bf.",
+  "seed": 62326,
+  "cards": {
+    "Bane of the Living": "Name:Bane of the Living\nManaCost:2 B B\nTypes:Creature Insect\nPT:4/3\nK:Morph:X B B\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, all creatures get -X/-X until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Morph {X}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Bane of the Living is turned face up, all creatures get -X/-X until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bane of the Living"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

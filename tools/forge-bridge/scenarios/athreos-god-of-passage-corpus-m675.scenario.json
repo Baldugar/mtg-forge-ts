@@ -1,0 +1,25 @@
+{
+  "id": "athreos-god-of-passage-corpus-m675",
+  "description": "M6 corpus — Athreos, God of Passage; ETB-on-bf.",
+  "seed": 62019,
+  "cards": {
+    "Athreos, God of Passage": "Name:Athreos, God of Passage\nManaCost:1 W B\nTypes:Legendary Enchantment Creature God\nPT:5/4\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to white and black is less than seven, NICKNAME isn't a creature.\nSVar:X:Count$DevotionDual.White.Black\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouOwn+Other | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever another creature you own dies, return it to your hand unless target opponent pays 3 life.\nSVar:TrigReturn:DB$ ChangeZone | ThisDefinedAndTgts$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand | UnlessCost$ PayLife<3> | UnlessPayer$ Targeted | ValidTgts$ Opponent | IsCurse$ True\nSVar:BuffedBy:Permanent.White,Permanent.Black\nOracle:Indestructible\\nAs long as your devotion to white and black is less than seven, Athreos isn't a creature.\\nWhenever another creature you own dies, return it to your hand unless target opponent pays 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Athreos, God of Passage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

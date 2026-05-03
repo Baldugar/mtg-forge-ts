@@ -1,0 +1,23 @@
+{
+  "id": "bloodline-keeper-corpus-m675",
+  "description": "M6 corpus — Bloodline Keeper; in-hand parse.",
+  "seed": 62977,
+  "cards": {
+    "Bloodline Keeper": "Name:Bloodline Keeper\nManaCost:2 B B\nTypes:Creature Vampire\nPT:3/3\nK:Flying\nA:AB$ Token | Cost$ T | TokenOwner$ You | TokenScript$ b_2_2_vampire_flying | SpellDescription$ Create a 2/2 black Vampire creature token with flying.\nA:AB$ SetState | Cost$ B | Defined$ Self | IsPresent$ Card.Vampire+YouCtrl | PresentCompare$ GE5 | Mode$ Transform | SpellDescription$ Transform CARDNAME. Activate only if you control five or more Vampires.\nAlternateMode:DoubleFaced\nOracle:Flying\\n{T}: Create a 2/2 black Vampire creature token with flying.\\n{B}: Transform Bloodline Keeper. Activate only if you control five or more Vampires.\n\nALTERNATE\n\nName:Lord of Lineage\nManaCost:no cost\nColors:black\nTypes:Creature Vampire\nPT:5/5\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.Vampire+Other+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Other Vampire creatures you control get +2/+2.\nA:AB$ Token | Cost$ T | TokenOwner$ You | TokenScript$ b_2_2_vampire_flying | SpellDescription$ Create a 2/2 black Vampire creature token with flying.\nOracle:Flying\\nOther Vampire creatures you control get +2/+2.\\n{T}: Create a 2/2 black Vampire creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodline Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

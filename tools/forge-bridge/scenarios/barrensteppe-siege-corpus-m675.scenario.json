@@ -1,0 +1,23 @@
+{
+  "id": "barrensteppe-siege-corpus-m675",
+  "description": "M6 corpus — Barrensteppe Siege; in-hand parse.",
+  "seed": 62397,
+  "cards": {
+    "Barrensteppe Siege": "Name:Barrensteppe Siege\nManaCost:2 W B\nTypes:Enchantment\nK:ETBReplacement:Other:SiegeChoice\nSVar:SiegeChoice:DB$ GenericChoice | Choices$ Abzan,Mardu | Defined$ You | SetChosenMode$ True | ShowChoice$ ExceptSelf | SpellDescription$ As this enchantment enters, choose Abzan or Mardu.\nSVar:Abzan:DB$ Pump | SpellDescription$ Abzan\nSVar:Mardu:DB$ Pump | SpellDescription$ Mardu\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeAbzan | AddTrigger$ AbzanTrigger | Description$ • Abzan — At the beginning of your end step, put a +1/+1 counter on each creature you control.\nSVar:AbzanTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self+ChosenModeMardu | AddTrigger$ MarduTrigger | Description$ • Mardu — At the beginning of your end step, if a creature died under your control this turn, each opponent sacrifices a creature of their choice.\nSVar:MarduTrigger:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, if a creature died under your control this turn, each opponent sacrifices a creature of their choice.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Player.Opponent\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nDeckHas:Ability$Counters\nOracle:As this enchantment enters, choose Abzan or Mardu.\\n• Abzan — At the beginning of your end step, put a +1/+1 counter on each creature you control.\\n• Mardu — At the beginning of your end step, if a creature died under your control this turn, each opponent sacrifices a creature of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrensteppe Siege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "anchovy-banana-pizza-corpus-m675",
+  "description": "M6 corpus — Anchovy & Banana Pizza; in-hand parse.",
+  "seed": 61463,
+  "cards": {
+    "Anchovy & Banana Pizza": "Name:Anchovy & Banana Pizza\nManaCost:2 B B\nTypes:Artifact Food\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this artifact enters, destroy target creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:When this artifact enters, destroy target creature.\\n{2}, {T}, Sacrifice this artifact: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anchovy & Banana Pizza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

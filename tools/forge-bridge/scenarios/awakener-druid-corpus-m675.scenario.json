@@ -1,0 +1,23 @@
+{
+  "id": "awakener-druid-corpus-m675",
+  "description": "M6 corpus — Awakener Druid; in-hand parse.",
+  "seed": 62184,
+  "cards": {
+    "Awakener Druid": "Name:Awakener Druid\nManaCost:2 G\nTypes:Creature Human Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, target Forest becomes a 4/5 green Treefolk creature for as long as CARDNAME is on the battlefield. It's still a land.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Forest | TgtPrompt$ Select target Forest | Types$ Creature,Treefolk | Power$ 4 | Toughness$ 5 | Colors$ Green | OverwriteColors$ True | Duration$ AsLongAsInPlay\nOracle:When Awakener Druid enters, target Forest becomes a 4/5 green Treefolk creature for as long as Awakener Druid remains on the battlefield. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awakener Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

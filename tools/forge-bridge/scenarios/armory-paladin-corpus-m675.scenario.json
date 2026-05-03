@@ -1,0 +1,25 @@
+{
+  "id": "armory-paladin-corpus-m675",
+  "description": "M6 corpus — Armory Paladin; ETB-on-bf.",
+  "seed": 61870,
+  "cards": {
+    "Armory Paladin": "Name:Armory Paladin\nManaCost:1 R W\nTypes:Creature Human Knight\nPT:3/3\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Aura,Equipment | ValidActivatingPlayer$ You | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Aura or Equipment spell, exile the top card of your library. You may play that card until the end of your next turn.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Equipment|Aura\nOracle:Trample\\nWhenever you cast an Aura or Equipment spell, exile the top card of your library. You may play that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Armory Paladin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

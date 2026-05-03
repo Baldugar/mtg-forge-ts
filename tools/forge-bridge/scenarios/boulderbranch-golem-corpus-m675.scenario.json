@@ -1,0 +1,23 @@
+{
+  "id": "boulderbranch-golem-corpus-m675",
+  "description": "M6 corpus — Boulderbranch Golem; in-hand parse.",
+  "seed": 63220,
+  "cards": {
+    "Boulderbranch Golem": "Name:Boulderbranch Golem\nManaCost:7\nTypes:Artifact Creature Golem\nPT:6/5\nK:Prototype:3 G:3:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters, you gain life equal to its power.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$CardPower\nDeckHas:Ability$LifeGain\nOracle:Prototype {3}{G} — 3/3 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nWhen Boulderbranch Golem enters, you gain life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boulderbranch Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bottomless-pit-corpus-m675",
+  "description": "M6 corpus — Bottomless Pit; ETB-on-bf.",
+  "seed": 63216,
+  "cards": {
+    "Bottomless Pit": "Name:Bottomless Pit\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of each player's upkeep, that player discards a card at random.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredPlayer | NumCards$ 1 | Mode$ Random\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bottomless Pit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

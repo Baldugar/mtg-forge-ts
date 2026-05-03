@@ -1,0 +1,23 @@
+{
+  "id": "break-the-spell-corpus-m675",
+  "description": "M6 corpus — Break the Spell; in-hand parse.",
+  "seed": 63319,
+  "cards": {
+    "Break the Spell": "Name:Break the Spell\nManaCost:W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Enchantment | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Destroy target enchantment. If a permanent you controlled or a token was destroyed this way, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ RememberedLKI | ConditionPresent$ Permanent.YouCtrl,Card.token | ConditionCompare$ EQ1 | ConditionDescription$ a permanent you controlled or a token, | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target enchantment. If a permanent you controlled or a token was destroyed this way, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Break the Spell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

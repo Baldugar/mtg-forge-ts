@@ -1,0 +1,25 @@
+{
+  "id": "bloodletter-quill-corpus-m675",
+  "description": "M6 corpus — Bloodletter Quill; ETB-on-bf.",
+  "seed": 62974,
+  "cards": {
+    "Bloodletter Quill": "Name:Bloodletter Quill\nManaCost:3\nTypes:Artifact\nA:AB$ Draw | Cost$ 2 T AddCounter<1/BLOOD> | NumCards$ 1 | SpellDescription$ Draw a card, then you lose 1 life for each blood counter on CARDNAME. | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nA:AB$ RemoveCounter | Cost$ U B | CounterType$ BLOOD | CounterNum$ 1 | SpellDescription$ Remove a blood counter from CARDNAME.\nSVar:X:Count$CardCounters.BLOOD\nOracle:{2}, {T}, Put a blood counter on Bloodletter Quill: Draw a card, then you lose 1 life for each blood counter on Bloodletter Quill.\\n{U}{B}: Remove a blood counter from Bloodletter Quill.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodletter Quill"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

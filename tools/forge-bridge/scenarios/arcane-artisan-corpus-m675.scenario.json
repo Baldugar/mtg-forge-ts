@@ -1,0 +1,23 @@
+{
+  "id": "arcane-artisan-corpus-m675",
+  "description": "M6 corpus — Arcane Artisan; in-hand parse.",
+  "seed": 61708,
+  "cards": {
+    "Arcane Artisan": "Name:Arcane Artisan\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:0/3\nA:AB$ Draw | Cost$ 2 U T | ValidTgts$ Player | SubAbility$ DBExile | SpellDescription$ Target player draws a card, then exiles a card from their hand. If a creature card is exiled this way, that player creates a token that's a copy of that card.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | Mandatory$ True | Imprint$ True | DefinedPlayer$ Targeted | SubAbility$ DBToken\nSVar:DBToken:DB$ CopyPermanent | Defined$ Imprinted | Controller$ Targeted | ConditionDefined$ Imprinted | ConditionPresent$ Creature | RememberTokens$ True | SubAbility$ ClearImprinted | StackDescription$ If a creature card is exiled this way, {p:Targeted} creates a token that's a copy of that card.\nSVar:ClearImprinted:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DelTrigLeaves | TriggerDescription$ When CARDNAME leaves the battlefield, exile all tokens created with it at the beginning of the next end step.\nSVar:DelTrigLeaves:DB$ DelayedTrigger | RememberObjects$ Remembered | Mode$ Phase | Phase$ End of Turn | Execute$ TrigExileAll | SubAbility$ DBCleanup | TriggerDescription$ Exile all tokens created with CARDNAME.\nSVar:TrigExileAll:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Battlefield | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{2}{U}, {T}: Target player draws a card, then exiles a card from their hand. If a creature card is exiled this way, that player creates a token that's a copy of that card.\\nWhen Arcane Artisan leaves the battlefield, exile all tokens created with it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcane Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

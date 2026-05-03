@@ -1,0 +1,23 @@
+{
+  "id": "belligerent-hatchling-corpus-m675",
+  "description": "M6 corpus — Belligerent Hatchling; in-hand parse.",
+  "seed": 62587,
+  "cards": {
+    "Belligerent Hatchling": "Name:Belligerent Hatchling\nManaCost:3 RW\nTypes:Creature Elemental\nPT:6/6\nK:etbCounter:M1M1:4\nK:First Strike\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a red spell, remove a -1/-1 counter from CARDNAME.\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a white spell, remove a -1/-1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nSVar:BuffedBy:Card.Red,Card.White\nOracle:First strike\\nBelligerent Hatchling enters with four -1/-1 counters on it.\\nWhenever you cast a red spell, remove a -1/-1 counter from Belligerent Hatchling.\\nWhenever you cast a white spell, remove a -1/-1 counter from Belligerent Hatchling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Belligerent Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

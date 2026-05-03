@@ -1,0 +1,23 @@
+{
+  "id": "astral-wingspan-corpus-m675",
+  "description": "M6 corpus — Astral Wingspan; in-hand parse.",
+  "seed": 62007,
+  "cards": {
+    "Astral Wingspan": "Name:Astral Wingspan\nManaCost:4 U\nTypes:Enchantment Aura\nK:Convoke\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying | Description$ Enchanted creature gets +2/+2 and has flying.\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nEnchant creature\\nWhen Astral Wingspan enters, draw a card.\\nEnchanted creature gets +2/+2 and has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astral Wingspan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

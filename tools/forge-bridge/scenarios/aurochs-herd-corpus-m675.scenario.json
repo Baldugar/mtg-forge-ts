@@ -1,0 +1,23 @@
+{
+  "id": "aurochs-herd-corpus-m675",
+  "description": "M6 corpus — Aurochs Herd; in-hand parse.",
+  "seed": 62091,
+  "cards": {
+    "Aurochs Herd": "Name:Aurochs Herd\nManaCost:5 G\nTypes:Creature Aurochs\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Aurochs card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Aurochs | ShuffleNonMandatory$ True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Aurochs.attacking+Other\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Aurochs\nOracle:Trample\\nWhen Aurochs Herd enters, you may search your library for an Aurochs card, reveal it, put it into your hand, then shuffle.\\nWhenever Aurochs Herd attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aurochs Herd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

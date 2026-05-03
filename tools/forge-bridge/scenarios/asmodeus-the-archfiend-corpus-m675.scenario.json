@@ -1,0 +1,25 @@
+{
+  "id": "asmodeus-the-archfiend-corpus-m675",
+  "description": "M6 corpus — Asmodeus the Archfiend; ETB-on-bf.",
+  "seed": 61965,
+  "cards": {
+    "Asmodeus the Archfiend": "Name:Asmodeus the Archfiend\nManaCost:4 B B\nTypes:Legendary Creature Devil God\nPT:6/6\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ExileTop | Description$ Binding Contract — If you would draw a card, exile the top card of your library face down instead.\nSVar:ExileTop:DB$ ChangeZone | Defined$ TopOfLibrary | Origin$ Library | Destination$ Exile | ExileFaceDown$ True\nA:AB$ Draw | Cost$ B B B | NumCards$ 7 | SpellDescription$ Draw seven cards.\nA:AB$ ChangeZoneAll | Cost$ B | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Hand | RememberChanged$ True | SubAbility$ DBLoseLife | SpellDescription$ Return all cards exiled with CARDNAME to their owner's hand and you lose that much life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Binding Contract — If you would draw a card, exile the top card of your library face down instead.\\n{B}{B}{B}: Draw seven cards.\\n{B}: Return all cards exiled with Asmodeus the Archfiend to their owner's hand and you lose that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Asmodeus the Archfiend"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

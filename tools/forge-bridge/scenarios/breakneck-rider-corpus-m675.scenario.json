@@ -1,0 +1,23 @@
+{
+  "id": "breakneck-rider-corpus-m675",
+  "description": "M6 corpus — Breakneck Rider; in-hand parse.",
+  "seed": 63326,
+  "cards": {
+    "Breakneck Rider": "Name:Breakneck Rider\nManaCost:1 R R\nTypes:Creature Human Scout Werewolf\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Breakneck Rider.\n\nALTERNATE\n\nName:Neck Breaker\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:4/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+attacking | AddPower$ 1 | AddKeyword$ Trample | Description$ Attacking creatures you control get +1/+0 and have trample.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Attacking creatures you control get +1/+0 and have trample.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Neck Breaker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breakneck Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "balan-wandering-knight-corpus-m675",
+  "description": "M6 corpus — Balan, Wandering Knight; ETB-on-bf.",
+  "seed": 62268,
+  "cards": {
+    "Balan, Wandering Knight": "Name:Balan, Wandering Knight\nManaCost:2 W W\nTypes:Legendary Creature Cat Knight\nPT:3/3\nK:First Strike\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Double Strike | IsPresent$ Equipment.Attached | PresentCompare$ GE2 | Description$ CARDNAME has double strike as long as two or more Equipment are attached to it.\nA:AB$ RepeatEach | Cost$ 1 W | RepeatSubAbility$ DBAttach | RepeatCards$ Equipment.YouCtrl | AILogic$ EquipAll | SpellDescription$ Attach all Equipment you control to NICKNAME.\nSVar:DBAttach:DB$ Attach | Object$ Remembered | Defined$ Self\nSVar:EquipMe:Multiple\nOracle:First strike\\nBalan, Wandering Knight has double strike as long as two or more Equipment are attached to it.\\n{1}{W}: Attach all Equipment you control to Balan.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Balan, Wandering Knight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "artisan-of-forms-corpus-m675",
+  "description": "M6 corpus — Artisan of Forms; ETB-on-bf.",
+  "seed": 61910,
+  "cards": {
+    "Artisan of Forms": "Name:Artisan of Forms\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigArtisanCopy | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, you may have CARDNAME become a copy of target creature, except it has this ability.\nSVar:TrigArtisanCopy:DB$ Clone | ValidTgts$ Creature | TgtPrompt$ Select target creature to copy | Optional$ True | GainThisAbility$ True | AddSVars$ TrigArtisanCopy | AILogic$ CloneBestCreature\nOracle:Heroic — Whenever you cast a spell that targets Artisan of Forms, you may have Artisan of Forms become a copy of target creature, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Artisan of Forms"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "auriok-steelshaper-corpus-m675",
+  "description": "M6 corpus — Auriok Steelshaper; ETB-on-bf.",
+  "seed": 62085,
+  "cards": {
+    "Auriok Steelshaper": "Name:Auriok Steelshaper\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/1\nS:Mode$ ReduceCost | ValidCard$ Card | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 1 | Description$ Equip costs you pay cost {1} less.\nS:Mode$ Continuous | Affected$ Creature.Soldier+YouCtrl,Creature.Knight+YouCtrl | AddPower$ 1 | AddToughness$ 1 | IsPresent$ Card.Self+equipped | Description$ As long as CARDNAME is equipped, each creature you control that's a Soldier or a Knight gets +1/+1.\nSVar:EquipMe:Once\nAI:RemoveDeck:Random\nDeckNeeds:Type$Equipment\nDeckHints:Type$Soldier|Knight\nOracle:Equip costs you pay cost {1} less.\\nAs long as Auriok Steelshaper is equipped, each creature you control that's a Soldier or a Knight gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Auriok Steelshaper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

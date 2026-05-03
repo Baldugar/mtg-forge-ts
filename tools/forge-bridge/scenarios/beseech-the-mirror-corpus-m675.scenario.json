@@ -1,0 +1,23 @@
+{
+  "id": "beseech-the-mirror-corpus-m675",
+  "description": "M6 corpus — Beseech the Mirror; in-hand parse.",
+  "seed": 62652,
+  "cards": {
+    "Beseech the Mirror": "Name:Beseech the Mirror\nManaCost:1 B B B\nTypes:Sorcery\nK:Bargain\nA:SP$ ChangeZone | ChangeNum$ 1 | ChangeType$ Card | Mandatory$ True | SubAbility$ DBPlay | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SpellDescription$ Search your library for a card, exile it face down, then shuffle. If this spell was bargained, you may cast the exiled card without paying its mana cost if that spell's mana value is 4 or less. Put the exiled card into your hand if it wasn't cast this way.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell.cmcLE4 | Condition$ Bargain | ImprintPlayed$ True | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All | SubAbility$ DBReturnHand\nSVar:DBReturnHand:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | Hidden$ True | ConditionDefined$ Imprinted | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nDeckHints:Type$Artifact|Enchantment & Ability$Token\nDeckHas:Ability$Sacrifice\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nSearch your library for a card, exile it face down, then shuffle. If this spell was bargained, you may cast the exiled card without paying its mana cost if that spell's mana value is 4 or less. Put the exiled card into your hand if it wasn't cast this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beseech the Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

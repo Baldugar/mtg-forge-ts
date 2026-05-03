@@ -1,0 +1,23 @@
+{
+  "id": "arboreal-grazer-corpus-m675",
+  "description": "M6 corpus — Arboreal Grazer; in-hand parse.",
+  "seed": 61697,
+  "cards": {
+    "Arboreal Grazer": "Name:Arboreal Grazer\nManaCost:G\nTypes:Creature Sloth Beast\nPT:0/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a land card from your hand onto the battlefield tapped.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.YouCtrl\nOracle:Reach\\nWhen Arboreal Grazer enters, you may put a land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arboreal Grazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

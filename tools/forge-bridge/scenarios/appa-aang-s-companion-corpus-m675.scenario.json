@@ -1,0 +1,25 @@
+{
+  "id": "appa-aang-s-companion-corpus-m675",
+  "description": "M6 corpus — Appa, Aang's Companion; ETB-on-bf.",
+  "seed": 61639,
+  "cards": {
+    "Appa, Aang's Companion": "Name:Appa, Aang's Companion\nManaCost:3 W\nTypes:Legendary Creature Bison Ally\nPT:2/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME attacks, another target attacking creature without flying gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+attacking+withoutFlying | TgtPrompt$ Select another target attacking creature without flying | KW$ Flying\nSVar:HasAttackEffect:TRUE\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhenever Appa attacks, another target attacking creature without flying gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Appa, Aang's Companion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

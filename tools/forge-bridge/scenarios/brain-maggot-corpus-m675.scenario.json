@@ -1,0 +1,23 @@
+{
+  "id": "brain-maggot-corpus-m675",
+  "description": "M6 corpus — Brain Maggot; in-hand parse.",
+  "seed": 63258,
+  "cards": {
+    "Brain Maggot": "Name:Brain Maggot\nManaCost:1 B\nTypes:Enchantment Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card until CARDNAME leaves the battlefield.\nSVar:TrigReveal:DB$ RevealHand | Defined$ Targeted | ValidTgts$ Opponent | SubAbility$ ExileCard\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:When Brain Maggot enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card until Brain Maggot leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brain Maggot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

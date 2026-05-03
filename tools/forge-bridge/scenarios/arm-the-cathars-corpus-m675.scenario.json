@@ -1,0 +1,23 @@
+{
+  "id": "arm-the-cathars-corpus-m675",
+  "description": "M6 corpus — Arm the Cathars; in-hand parse.",
+  "seed": 61833,
+  "cards": {
+    "Arm the Cathars": "Name:Arm the Cathars\nManaCost:1 W W\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature (+3/+3) | NumAtt$ +3 | NumDef$ +3 | KW$ Vigilance | SubAbility$ DBPump | StackDescription$ REP target creature_{c:ThisTargetedCard} | SpellDescription$ Until end of turn, target creature gets +3/+3,\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to one other target creature (+2/+2) | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ +2 | NumDef$ +2 | KW$ Vigilance | TargetUnique$ True | SubAbility$ DBPump2 | StackDescription$ REP up to one other target creature_{c:ThisTargetedCard} | SpellDescription$ up to one other target creature gets +2/+2,\nSVar:DBPump2:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to one other target creature (+1/+1) | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance | TargetUnique$ True | SubAbility$ DBPump3 | StackDescription$ REP up to one other target creature_{c:ThisTargetedCard} | SpellDescription$ and up to one other target creature gets +1/+1.\nSVar:DBPump3:DB$ Pump | Defined$ Targeted | KW$ Vigilance | StackDescription$ REP Those creatures_{c:Targeted} | SpellDescription$ Those creatures gain vigilance until end of turn.\nOracle:Until end of turn, target creature gets +3/+3, up to one other target creature gets +2/+2, and up to one other target creature gets +1/+1. Those creatures gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arm the Cathars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

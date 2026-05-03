@@ -1,0 +1,23 @@
+{
+  "id": "ashcloud-phoenix-corpus-m675",
+  "description": "M6 corpus — Ashcloud Phoenix; in-hand parse.",
+  "seed": 61930,
+  "cards": {
+    "Ashcloud Phoenix": "Name:Ashcloud Phoenix\nManaCost:2 R R\nTypes:Creature Phoenix\nPT:4/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, return it to the battlefield face down under your control.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | FaceDown$ True | GainControl$ True\nK:Morph:4 R R\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, it deals 2 damage to each player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player | NumDmg$ 2\nSVar:SacMe:1\nOracle:Flying\\nWhen Ashcloud Phoenix dies, return it to the battlefield face down under your control.\\nMorph {4}{R}{R} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Ashcloud Phoenix is turned face up, it deals 2 damage to each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashcloud Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

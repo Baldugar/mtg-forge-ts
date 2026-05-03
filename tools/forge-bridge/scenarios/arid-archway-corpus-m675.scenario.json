@@ -1,0 +1,23 @@
+{
+  "id": "arid-archway-corpus-m675",
+  "description": "M6 corpus — Arid Archway; in-hand parse.",
+  "seed": 61827,
+  "cards": {
+    "Arid Archway": "Name:Arid Archway\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return a land you control to its owner's hand. If another Desert was returned this way, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouCtrl | RememberLKI$ True | AILogic$ NeverBounceItself | SubAbility$ DBSurveil\nSVar:DBSurveil:DB$ Surveil | Amount$ 1 | ConditionDefined$ RememberedLKI | ConditionPresent$ Desert.Other | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Desert\nSVar:NeedsToPlay:Land.YouCtrl\nOracle:Arid Archway enters tapped.\\nWhen Arid Archway enters, return a land you control to its owner's hand. If another Desert was returned this way, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{T}: Add {C}{C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arid Archway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

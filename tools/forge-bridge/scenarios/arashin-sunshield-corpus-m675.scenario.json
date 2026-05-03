@@ -1,0 +1,23 @@
+{
+  "id": "arashin-sunshield-corpus-m675",
+  "description": "M6 corpus — Arashin Sunshield; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Arashin Sunshield": "Name:Arashin Sunshield\nManaCost:3 W\nTypes:Creature Human Warrior\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, exile up to two target cards from a single graveyard.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | TargetsWithSameController$ True | ValidTgts$ Card | TgtPrompt$ Select up to two target cards from a single graveyard\nA:AB$ Tap | Cost$ W T | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nDeckHas:Ability$Graveyard\nOracle:When this creature enters, exile up to two target cards from a single graveyard.\\n{W}, {T}: Tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arashin Sunshield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

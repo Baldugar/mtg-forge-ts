@@ -1,0 +1,23 @@
+{
+  "id": "architects-of-will-corpus-m675",
+  "description": "M6 corpus — Architects of Will; in-hand parse.",
+  "seed": 61755,
+  "cards": {
+    "Architects of Will": "Name:Architects of Will\nManaCost:2 U B\nTypes:Artifact Creature Human Wizard\nPT:3/3\nK:Cycling:UB\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRearrange | TriggerDescription$ When CARDNAME enters, look at the top three cards of target player's library, then put them back in any order.\nSVar:TrigRearrange:DB$ RearrangeTopOfLibrary | ValidTgts$ Player | NumCards$ 3\nOracle:When Architects of Will enters, look at the top three cards of target player's library, then put them back in any order.\\nCycling {U/B} ({U/B}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Architects of Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "angel-s-grace-corpus-m675",
+  "description": "M6 corpus — Angel's Grace; in-hand parse.",
+  "seed": 61545,
+  "cards": {
+    "Angel's Grace": "Name:Angel's Grace\nManaCost:W\nTypes:Instant\nK:Split second\nA:SP$ Effect | ReplacementEffects$ DBYouCantLose,DBOppCantWin,SelflessDamage | AILogic$ Fog | SpellDescription$ You can't lose the game this turn and your opponents can't win the game this turn. Until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:DBYouCantLose:Event$ GameLoss | ValidPlayer$ You | Layer$ CantHappen | Description$ You can't lose the game and your opponents can't win the game.\nSVar:DBOppCantWin:Event$ GameWin | ValidPlayer$ Opponent | Layer$ CantHappen | Secondary$ True | Description$ You can't lose the game and your opponents can't win the game.\nSVar:SelflessDamage:Event$ LifeReduced | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | ReplaceWith$ ReduceLoss | Description$ Until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nOracle:Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\\nYou can't lose the game this turn and your opponents can't win the game this turn. Until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel's Grace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ascent-of-the-worthy-corpus-m675",
+  "description": "M6 corpus — Ascent of the Worthy; in-hand parse.",
+  "seed": 61924,
+  "cards": {
+    "Ascent of the Worthy": "Name:Ascent of the Worthy\nManaCost:1 W B\nTypes:Enchantment Saga\nK:Chapter:3:DBChoose,DBChoose,DBChangeZone\nSVar:DBChoose:DB$ ChooseCard | Choices$ Creature.YouCtrl | Mandatory$ True | SubAbility$ DBEffect | SpellDescription$ Choose a creature you control. Until your next turn, all damage that would be dealt to creatures you control is dealt to that creature instead.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DamageEvent | ExileOnMoved$ Battlefield | RememberObjects$ ChosenCard | Duration$ UntilYourNextTurn\nSVar:DamageEvent:Event$ DamageDone | ActiveZones$ Command | ValidTarget$ Creature.YouCtrl | ReplaceWith$ GideonSac | DamageTarget$ Remembered | Description$ All damage that would be dealt this turn to creatures you control is dealt to the chosen creature instead (if it's still on the battlefield).\nSVar:GideonSac:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | WithCountersType$ Flying | StaticEffect$ Animate | SpellDescription$ Return target creature card from your graveyard to the battlefield with a flying counter on it. That creature is an Angel Warrior in addition to its other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Angel & Warrior\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Choose a creature you control. Until your next turn, all damage that would be dealt to creatures you control is dealt to that creature instead.\\nIII — Return target creature card from your graveyard to the battlefield with a flying counter on it. That creature is an Angel Warrior in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ascent of the Worthy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

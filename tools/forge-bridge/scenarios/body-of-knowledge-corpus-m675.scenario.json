@@ -1,0 +1,25 @@
+{
+  "id": "body-of-knowledge-corpus-m675",
+  "description": "M6 corpus — Body of Knowledge; ETB-on-bf.",
+  "seed": 63043,
+  "cards": {
+    "Body of Knowledge": "Name:Body of Knowledge\nManaCost:3 U U\nTypes:Creature Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME is dealt damage, draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Y\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nSVar:NeedsToPlayVar:X GE2\nOracle:Body of Knowledge's power and toughness are each equal to the number of cards in your hand.\\nYou have no maximum hand size.\\nWhenever Body of Knowledge is dealt damage, draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Body of Knowledge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

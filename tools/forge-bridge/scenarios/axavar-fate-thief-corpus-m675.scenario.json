@@ -1,0 +1,25 @@
+{
+  "id": "axavar-fate-thief-corpus-m675",
+  "description": "M6 corpus — Axavar, Fate Thief; ETB-on-bf.",
+  "seed": 62193,
+  "cards": {
+    "Axavar, Fate Thief": "Name:Axavar, Fate Thief\nManaCost:2 B R\nTypes:Legendary Creature Drix Pirate\nPT:4/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDiscard | TriggerDescription$ Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, discard a card, then heist target opponent's library.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBHeist\nSVar:DBHeist:DB$ Heist | ValidTgts$ Opponent\nSVar:X:Count$Void.1.0\nK:Warp:BR\nOracle:Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, discard a card, then heist target opponent's library.\\nWarp {B/R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Axavar, Fate Thief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

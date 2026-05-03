@@ -1,0 +1,23 @@
+{
+  "id": "break-out-corpus-m675",
+  "description": "M6 corpus — Break Out; in-hand parse.",
+  "seed": 63317,
+  "cards": {
+    "Break Out": "Name:Break Out\nManaCost:R G\nTypes:Sorcery\nA:SP$ PeekAndReveal | Defined$ You | PeekAmount$ 6 | NoReveal$ True | RememberPeeked$ True | SubAbility$ PickOne | StackDescription$ SpellDescription | SpellDescription$ Look at the top six cards of your library. You may reveal a creature card from among them. If that card has mana value 2 or less, you may put it onto the battlefield and it gains haste until end of turn. If you didn't put the revealed card onto the battlefield this way, put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:PickOne:DB$ ChooseCard | Defined$ You | Amount$ 1 | ChoiceTitle$ Choose a creature card to reveal | Choices$ Card.Creature+IsRemembered | ChoiceZone$ Library | Reveal$ True | SubAbility$ DBChangeZoneBattlefield\nSVar:DBChangeZoneBattlefield:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Defined$ ChosenCard | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature+cmcLE2+ChosenCard | ConditionCompare$ EQ1 | Optional$ True | Imprint$ True | SubAbility$ DBPump | StackDescription$ None\nSVar:DBPump:DB$ Pump | KW$ Haste | Defined$ Imprinted | ConditionDefined$ Remembered | ConditionPresent$ Creature.IsImprinted+inZoneBattlefield | ConditionCompare$ EQ1 | SubAbility$ DBChangeZoneHand | StackDescription$ None\nSVar:DBChangeZoneHand:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Library | Destination$ Hand | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature+ChosenCard+inZoneBattlefield | ConditionCompare$ EQ0 | SubAbility$ DBRestRandomOrder | StackDescription$ None\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearChosenCard$ True | ClearRemembered$ True\nOracle:Look at the top six cards of your library. You may reveal a creature card from among them. If that card has mana value 2 or less, you may put it onto the battlefield and it gains haste until end of turn. If you didn't put the revealed card onto the battlefield this way, put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Break Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "battle-plan-corpus-m675",
+  "description": "M6 corpus — Battle Plan; ETB-on-bf.",
+  "seed": 62478,
+  "cards": {
+    "Battle Plan": "Name:Battle Plan\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2\nSVar:PlayMain1:TRUE\nK:TypeCycling:Basic:1 R\nOracle:At the beginning of combat on your turn, target creature you control gets +2/+0 until end of turn.\\nBasic landcycling {1}{R} ({1}{R}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battle Plan"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

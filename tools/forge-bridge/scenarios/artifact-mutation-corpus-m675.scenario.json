@@ -1,0 +1,23 @@
+{
+  "id": "artifact-mutation-corpus-m675",
+  "description": "M6 corpus — Artifact Mutation; in-hand parse.",
+  "seed": 61898,
+  "cards": {
+    "Artifact Mutation": "Name:Artifact Mutation\nManaCost:R G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact | NoRegen$ True | SubAbility$ TrigToken | SpellDescription$ Destroy target artifact. It can't be regenerated.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | SpellDescription$ Create X 1/1 green Saproling creature tokens, where X is that artifact's mana value.\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Saproling\nOracle:Destroy target artifact. It can't be regenerated. Create X 1/1 green Saproling creature tokens, where X is that artifact's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artifact Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

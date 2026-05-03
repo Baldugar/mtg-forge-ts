@@ -1,0 +1,23 @@
+{
+  "id": "boros-fury-shield-corpus-m675",
+  "description": "M6 corpus — Boros Fury-Shield; in-hand parse.",
+  "seed": 63186,
+  "cards": {
+    "Boros Fury-Shield": "Name:Boros Fury-Shield\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | SubAbility$ DBDamage | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt by target attacking or blocking creature this turn. If {R} was spent to cast this spell, CARDNAME deals damage to that creature's controller equal to the creature's power.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | ConditionManaSpent$ R\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target attacking or blocking creature this turn.\nSVar:X:Targeted$CardPower\nAI:RemoveDeck:All\nOracle:Prevent all combat damage that would be dealt by target attacking or blocking creature this turn. If {R} was spent to cast this spell, Boros Fury-Shield deals damage to that creature's controller equal to the creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boros Fury-Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "back-for-seconds-corpus-m675",
+  "description": "M6 corpus — Back for Seconds; in-hand parse.",
+  "seed": 62240,
+  "cards": {
+    "Back for Seconds": "Name:Back for Seconds\nManaCost:2 B\nTypes:Sorcery\nK:Bargain\nA:SP$ Pump | Origin$ Graveyard | TgtZone$ Graveyard | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose up to two target creature cards in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBCheat | SpellDescription$ Return up to two target creature cards from your graveyard to your hand. If this spell was bargained, you may put one of those cards with mana value 4 or less onto the battlefield instead of putting it into your hand.\nSVar:DBCheat:DB$ ChangeZone | ChooseFromDefined$ Targeted.cmcLE4 | OptionalPrompt$ Do you want to put one of those creature cards with mana value 4 or less onto the battlefield instead of putting it into your hand? | Optional$ True | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | Condition$ Bargain | ChangeNum$ 1 | SubAbility$ DBChangeAll\nSVar:DBChangeAll:DB$ ChangeZone | Defined$ Targeted | Origin$ Graveyard | Destination$ Hand\nDeckHints:Type$Artifact|Enchantment & Ability$Token\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nReturn up to two target creature cards from your graveyard to your hand. If this spell was bargained, you may put one of those cards with mana value 4 or less onto the battlefield instead of putting it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Back for Seconds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

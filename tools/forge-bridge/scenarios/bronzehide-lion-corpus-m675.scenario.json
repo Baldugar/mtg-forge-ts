@@ -1,0 +1,23 @@
+{
+  "id": "bronzehide-lion-corpus-m675",
+  "description": "M6 corpus — Bronzehide Lion; in-hand parse.",
+  "seed": 63432,
+  "cards": {
+    "Bronzehide Lion": "Name:Bronzehide Lion\nManaCost:G W\nTypes:Creature Cat\nPT:3/3\nA:AB$ Pump | Cost$ G W | KW$ Indestructible | Defined$ Self | SpellDescription$ CARDNAME gains indestructible until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, return it to the battlefield. It's an Aura enchantment with enchant creature you control and \"{G}{W}: Enchanted creature gains indestructible until end of turn,\" and it loses all other abilities.\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Aura & Enchantment | RemoveCardTypes$ True | RemoveAllAbilities$ True | AddKeyword$ Enchant:Creature.YouCtrl:creature you control | AddAbility$ ABPump\nSVar:ABPump:AB$ Pump | Cost$ G W | KW$ Indestructible | Defined$ Enchanted | SpellDescription$ Enchanted creature gains indestructible until end of turn.\nOracle:{G}{W}: Bronzehide Lion gains indestructible until end of turn.\\nWhen Bronzehide Lion dies, return it to the battlefield. It's an Aura enchantment with enchant creature you control and \"{G}{W}: Enchanted creature gains indestructible until end of turn,\" and it loses all other abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bronzehide Lion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

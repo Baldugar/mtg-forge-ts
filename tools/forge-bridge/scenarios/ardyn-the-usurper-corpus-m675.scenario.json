@@ -1,0 +1,25 @@
+{
+  "id": "ardyn-the-usurper-corpus-m675",
+  "description": "M6 corpus — Ardyn, the Usurper; ETB-on-bf.",
+  "seed": 61801,
+  "cards": {
+    "Ardyn, the Usurper": "Name:Ardyn, the Usurper\nManaCost:5 B B B\nTypes:Legendary Creature Elder Human Noble\nPT:4/4\nS:Mode$ Continuous | Affected$ Demon.YouCtrl | AddKeyword$ Menace & Lifelink & Haste | Description$ Demons you control have menace, lifelink, and haste.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Starscourge — At the beginning of combat on your turn, exile up to one target creature card from a graveyard. If you exiled a card this way, create a token that's a copy of that card, except it's a 5/5 black Demon.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | RememberChanged$ True | TgtPrompt$ Select up to one target creature card from a graveyard | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 5 | SetToughness$ 5 | SetColor$ Black | SetCreatureTypes$ Demon | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Demon\nOracle:Demons you control have menace, lifelink, and haste.\\nStarscourge — At the beginning of combat on your turn, exile up to one target creature card from a graveyard. If you exiled a card this way, create a token that's a copy of that card, except it's a 5/5 black Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ardyn, the Usurper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

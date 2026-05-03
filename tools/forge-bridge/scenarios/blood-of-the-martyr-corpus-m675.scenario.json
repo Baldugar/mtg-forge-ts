@@ -1,0 +1,23 @@
+{
+  "id": "blood-of-the-martyr-corpus-m675",
+  "description": "M6 corpus — Blood of the Martyr; in-hand parse.",
+  "seed": 62938,
+  "cards": {
+    "Blood of the Martyr": "Name:Blood of the Martyr\nManaCost:W W W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ MartyrDamage | SpellDescription$ Until end of turn, if damage would be dealt to any creature, you may have that damage dealt to you instead.\nSVar:MartyrDamage:Event$ DamageDone | ValidTarget$ Creature | Optional$ True | OptionalDecider$ You | DamageTarget$ You | ReplaceWith$ DmgYou | Description$ Until end of turn, if damage would be dealt to any creature, you may have that damage dealt to you instead.\nSVar:DmgYou:DB$ ReplaceEffect | VarName$ Affected | VarValue$ You | VarType$ Player\nAI:RemoveDeck:All\nOracle:Until end of turn, if damage would be dealt to any creature, you may have that damage dealt to you instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood of the Martyr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

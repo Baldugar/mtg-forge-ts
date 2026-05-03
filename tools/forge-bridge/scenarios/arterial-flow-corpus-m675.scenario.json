@@ -1,0 +1,23 @@
+{
+  "id": "arterial-flow-corpus-m675",
+  "description": "M6 corpus — Arterial Flow; in-hand parse.",
+  "seed": 61892,
+  "cards": {
+    "Arterial Flow": "Name:Arterial Flow\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Discard | Defined$ Player.Opponent | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBLoseLife | SpellDescription$ Each opponent discards two cards. If you control a Vampire, each opponent loses 2 life and you gain 2 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | ConditionPresent$ Vampire.YouCtrl | ConditionCompare$ GE1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ConditionPresent$ Vampire.YouCtrl | ConditionCompare$ GE1 | LifeAmount$ 2\nDeckHints:Type$Vampire\nOracle:Each opponent discards two cards. If you control a Vampire, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arterial Flow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ardoz-cobbler-of-war-corpus-m675",
+  "description": "M6 corpus — Ardoz, Cobbler of War; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Ardoz, Cobbler of War": "Name:Ardoz, Cobbler of War\nManaCost:1 R\nTypes:Legendary Creature Goblin Shaman\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl,Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control enters, that creature gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCardLKICopy | NumAtt$ +2\nA:AB$ Token | Cost$ 3 R | TokenScript$ r_1_1_goblin_haste | TokenOwner$ You | SorcerySpeed$ True | SpellDescription$ Create a 1/1 red Goblin creature token with haste. Activate only as a sorcery.\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nOracle:Haste\\nWhenever Ardoz, Cobbler of War or another creature you control enters, that creature gets +2/+0 until end of turn.\\n{3}{R}: Create a 1/1 red Goblin creature token with haste. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ardoz, Cobbler of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

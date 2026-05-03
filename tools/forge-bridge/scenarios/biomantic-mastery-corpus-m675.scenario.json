@@ -1,0 +1,23 @@
+{
+  "id": "biomantic-mastery-corpus-m675",
+  "description": "M6 corpus — Biomantic Mastery; in-hand parse.",
+  "seed": 62697,
+  "cards": {
+    "Biomantic Mastery": "Name:Biomantic Mastery\nManaCost:4 GU GU GU\nTypes:Sorcery\nA:SP$ Draw | Defined$ You | ValidTgts$ Player | NumCards$ X | SubAbility$ DBDraw | SpellDescription$ Draw a card for each creature target player controls, then draw a card for each creature another target player controls.\nSVar:DBDraw:DB$ Draw | Defined$ You | ValidTgts$ Player | TargetUnique$ True | NumCards$ X\nSVar:X:ThisTargetedPlayer$Valid Creature.YouCtrl\nOracle:Draw a card for each creature target player controls, then draw a card for each creature another target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biomantic Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

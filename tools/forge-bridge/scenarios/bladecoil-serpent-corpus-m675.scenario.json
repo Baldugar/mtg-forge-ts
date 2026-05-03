@@ -1,0 +1,23 @@
+{
+  "id": "bladecoil-serpent-corpus-m675",
+  "description": "M6 corpus — Bladecoil Serpent; in-hand parse.",
+  "seed": 62772,
+  "cards": {
+    "Bladecoil Serpent": "Name:Bladecoil Serpent\nManaCost:X 6\nTypes:Artifact Creature Serpent\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ UU | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, for each {U}{U} spent to cast it, draw a card.\nSVar:TrigDraw:DB$ Draw | NumCards$ UU\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ BB | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, for each {B}{B} spent to cast it, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ BB | Mode$ TgtChoose\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RR | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, for each {R}{R} spent to cast it, it gets +1/+0 and gains trample and haste until end of turn.\nSVar:TrigPump:DB$ Pump | KW$ Trample & Haste | NumAtt$ +RR\nSVar:UU:Count$EachSpentToCast.U/HalfDown\nSVar:BB:Count$EachSpentToCast.B/HalfDown\nSVar:RR:Count$EachSpentToCast.R/HalfDown\nSVar:X:Count$xPaid\nDeckHints:Color$Blue|Black|Red\nOracle:When Bladecoil Serpent enters, for each {U}{U} spent to cast it, draw a card.\\nWhen Bladecoil Serpent enters, for each {B}{B} spent to cast it, each opponent discards a card.\\nWhen Bladecoil Serpent enters, for each {R}{R} spent to cast it, it gets +1/+0 and gains trample and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bladecoil Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

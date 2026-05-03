@@ -1,0 +1,23 @@
+{
+  "id": "back-alley-gardener-corpus-m675",
+  "description": "M6 corpus — Back-Alley Gardener; in-hand parse.",
+  "seed": 62239,
+  "cards": {
+    "Back-Alley Gardener": "Name:Back-Alley Gardener\nManaCost:R G W\nTypes:Creature Elf Druid\nPT:3/4\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.Other+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigSeek | TriggerDescription$ Alliance — Whenever one or more other creatures you control enter, seek a land card, then put it onto the battlefield tapped. This ability triggers only once each turn.\nSVar:TrigSeek:DB$ Seek | Type$ Land | RememberFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Creature\nOracle:Alliance — Whenever one or more other creatures you control enter, seek a land card, then put it onto the battlefield tapped. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Back-Alley Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

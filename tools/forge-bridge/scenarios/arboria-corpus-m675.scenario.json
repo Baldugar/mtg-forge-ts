@@ -1,0 +1,25 @@
+{
+  "id": "arboria-corpus-m675",
+  "description": "M6 corpus — Arboria; ETB-on-bf.",
+  "seed": 61699,
+  "cards": {
+    "Arboria": "Name:Arboria\nManaCost:2 G G\nTypes:World Enchantment\n# Sorry for the double negative. Players can only be attacked if they did \"something\" on their last turn\nS:Mode$ CantAttack | ValidCard$ Creature | Target$ Player.!IsRemembered | Description$ Creatures can't attack a player unless that player cast a spell or put a nontoken permanent onto the battlefield during their last turn.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player.Active+!IsRemembered | Static$ True | Execute$ RememberCaster\nSVar:RememberCaster:DB$ Pump | Defined$ TriggeredCardController | RememberObjects$ TriggeredCardController\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.ActivePlayerCtrl+!token | Static$ True | Execute$ RememberController\nSVar:RememberController:DB$ Pump | Defined$ TriggeredCardController | RememberObjects$ TriggeredCardController\nT:Mode$ TurnBegin | ValidPlayer$ Player | Execute$ ClearActivePlayer | Static$ True\nSVar:ClearActivePlayer:DB$ Cleanup | ForgetDefined$ ActivePlayer\nOracle:Creatures can't attack a player unless that player cast a spell or put a nontoken permanent onto the battlefield during their last turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arboria"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "banishment-corpus-m675",
+  "description": "M6 corpus — Banishment; in-hand parse.",
+  "seed": 62339,
+  "cards": {
+    "Banishment": "Name:Banishment\nManaCost:3 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls and all other nonland permanents that player controls with the same name as that permanent until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ Pump | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ TargetedCard.Self,Permanent.nonLand+NotDefinedTargeted+sharesNameWith Targeted+OppCtrl | Duration$ UntilHostLeavesPlay\nOracle:When Banishment enters, exile target nonland permanent an opponent controls and all other nonland permanents your opponents control with the same name as that permanent until Banishment leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banishment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

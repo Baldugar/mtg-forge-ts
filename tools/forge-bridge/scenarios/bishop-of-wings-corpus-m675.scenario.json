@@ -1,0 +1,25 @@
+{
+  "id": "bishop-of-wings-corpus-m675",
+  "description": "M6 corpus — Bishop of Wings; ETB-on-bf.",
+  "seed": 62719,
+  "cards": {
+    "Bishop of Wings": "Name:Bishop of Wings\nManaCost:W W\nTypes:Creature Human Cleric\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Angel.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever an Angel you control enters, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Angel.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an Angel you control dies, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nDeckHas:Ability$Token|LifeGain\nOracle:Whenever an Angel you control enters, you gain 4 life.\\nWhenever an Angel you control dies, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bishop of Wings"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

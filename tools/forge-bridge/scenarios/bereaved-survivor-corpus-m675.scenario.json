@@ -1,0 +1,23 @@
+{
+  "id": "bereaved-survivor-corpus-m675",
+  "description": "M6 corpus — Bereaved Survivor; in-hand parse.",
+  "seed": 62644,
+  "cards": {
+    "Bereaved Survivor": "Name:Bereaved Survivor\nManaCost:2 W\nTypes:Creature Human Peasant\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ When another creature you control dies, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When another creature you control dies, transform Bereaved Survivor.\n\nALTERNATE\n\nName:Dauntless Avenger\nManaCost:no cost\nColors:white\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, return target creature card with mana value 2 or less from your graveyard to the battlefield tapped and attacking.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE2 | Tapped$ True | Attacking$ True\nOracle:Whenever Dauntless Avenger attacks, return target creature card with mana value 2 or less from your graveyard to the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bereaved Survivor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

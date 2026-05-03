@@ -1,0 +1,25 @@
+{
+  "id": "balduvian-warlord-corpus-m675",
+  "description": "M6 corpus — Balduvian Warlord; ETB-on-bf.",
+  "seed": 62285,
+  "cards": {
+    "Balduvian Warlord": "Name:Balduvian Warlord\nManaCost:3 R\nTypes:Creature Human Barbarian\nPT:3/2\nA:AB$ RemoveFromCombat | Cost$ T | ActivationPhases$ Declare Blockers | ValidTgts$ Creature.blocking | TgtPrompt$ Select target blocking creature | Defined$ Targeted | UnblockCreaturesBlockedOnlyBy$ Targeted | SubAbility$ ChooseAttacker | SpellDescription$ Remove target blocking creature from combat. Creatures it was blocking that hadn't become blocked by another creature this combat become unblocked.\nSVar:ChooseAttacker:DB$ ChooseCard | Defined$ You | Choices$ Creature.attacking | ChoiceTitle$ Choose an attacker to block | Mandatory$ True | SubAbility$ Block | StackDescription$ None\nSVar:Block:DB$ Block | DefinedAttacker$ ChosenCard | DefinedBlocker$ ParentTarget | SpellDescription$ Then it blocks an attacking creature of your choice. Activate only during the declare blockers step. | StackDescription$ SpellDescription | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{T}: Remove target blocking creature from combat. Creatures it was blocking that hadn't become blocked by another creature this combat become unblocked, then it blocks an attacking creature of your choice. Activate only during the declare blockers step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Balduvian Warlord"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

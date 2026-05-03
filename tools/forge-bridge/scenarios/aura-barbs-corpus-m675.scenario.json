@@ -1,0 +1,23 @@
+{
+  "id": "aura-barbs-corpus-m675",
+  "description": "M6 corpus — Aura Barbs; in-hand parse.",
+  "seed": 62061,
+  "cards": {
+    "Aura Barbs": "Name:Aura Barbs\nManaCost:2 R\nTypes:Instant Arcane\nA:SP$ DealDamage | NumDmg$ 2 | DamageSource$ Valid Enchantment | Defined$ CardController | RelativeTarget$ True | SubAbility$ DBAuraDmg | StackDescription$ SpellDescription | SpellDescription$ Each enchantment deals 2 damage to its controller, then each Aura attached to a creature deals 2 damage to the creature it's attached to.\nSVar:DBAuraDmg:DB$ DealDamage | NumDmg$ 2 | DamageSource$ Valid Aura.AttachedTo Creature | Defined$ Enchanted | RelativeTarget$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each enchantment deals 2 damage to its controller, then each Aura attached to a creature deals 2 damage to the creature it's attached to.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aura Barbs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "brass-knuckles-corpus-m675",
+  "description": "M6 corpus — Brass Knuckles; ETB-on-bf.",
+  "seed": 63286,
+  "cards": {
+    "Brass Knuckles": "Name:Brass Knuckles\nManaCost:4\nTypes:Artifact Equipment\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it. (The copy becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Double Strike | IsPresent$ Equipment.AttachedTo Creature.EquippedBy | PresentCompare$ GE2 | Description$ Equipped creature has double strike as long as two or more Equipment are attached to it.\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ EqMe | Secondary$ True\nSVar:EqMe:SVar:EquipMe:Multiple\nDeckHas:Ability$Token\nOracle:When you cast this spell, copy it. (The copy becomes a token.)\\nEquipped creature has double strike as long as two or more Equipment are attached to it.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brass Knuckles"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

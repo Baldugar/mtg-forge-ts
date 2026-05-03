@@ -1,0 +1,25 @@
+{
+  "id": "archivist-of-oghma-corpus-m675",
+  "description": "M6 corpus — Archivist of Oghma; ETB-on-bf.",
+  "seed": 61760,
+  "cards": {
+    "Archivist of Oghma": "Name:Archivist of Oghma\nManaCost:1 W\nTypes:Creature Halfling Cleric\nPT:2/2\nK:Flash\nT:Mode$ SearchedLibrary | ValidPlayer$ Player.Opponent | SearchOwnLibrary$ True | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent searches their library, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Flash\\nWhenever an opponent searches their library, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archivist of Oghma"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

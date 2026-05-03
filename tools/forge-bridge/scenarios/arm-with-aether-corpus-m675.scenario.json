@@ -1,0 +1,23 @@
+{
+  "id": "arm-with-aether-corpus-m675",
+  "description": "M6 corpus — Arm with Aether; in-hand parse.",
+  "seed": 61834,
+  "cards": {
+    "Arm with Aether": "Name:Arm with Aether\nManaCost:2 U\nTypes:Sorcery\nA:SP$ AnimateAll | ValidCards$ Creature.YouCtrl | Triggers$ Trig | SpellDescription$ Until end of turn, creatures you control gain \"Whenever this creature deals damage to an opponent, you may return target creature that player controls to its owner's hand.\"\nSVar:Trig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ Eff | TriggerDescription$ Whenever this creature deals damage to an opponent, you may return target creature that player controls to its owner's hand.\nSVar:Eff:DB$ ChangeZone | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target creature that player controls. | Origin$ Battlefield | Destination$ Hand\nOracle:Until end of turn, creatures you control gain \"Whenever this creature deals damage to an opponent, you may return target creature that player controls to its owner's hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arm with Aether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

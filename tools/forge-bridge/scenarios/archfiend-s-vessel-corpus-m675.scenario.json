@@ -1,0 +1,23 @@
+{
+  "id": "archfiend-s-vessel-corpus-m675",
+  "description": "M6 corpus — Archfiend's Vessel; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "Archfiend's Vessel": "Name:Archfiend's Vessel\nManaCost:B\nTypes:Creature Human Cleric\nPT:1/1\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | ValidCard$ Card.Self+YouOwn | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if it entered from your graveyard or you cast it from your graveyard, exile it. If you do, create a 5/5 black Demon creature token with flying.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self+wasCastFromYourGraveyardByYou | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When CARDNAME enters, if it entered from your graveyard or you cast it from your graveyard, exile it. If you do, create a 5/5 black Demon creature token with flying.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | SubAbility$ DBToken | RememberChanged$ True\nSVar:DBToken:DB$ Token | TokenScript$ b_5_5_demon_flying | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | ConditionCompare$ GE1\nDeckHas:Ability$Token\nDeckHints:Ability$Graveyard\nOracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen Archfiend's Vessel enters, if it entered from your graveyard or you cast it from your graveyard, exile it. If you do, create a 5/5 black Demon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archfiend's Vessel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bellowing-crier-corpus-m675",
+  "description": "M6 corpus — Bellowing Crier; in-hand parse.",
+  "seed": 62594,
+  "cards": {
+    "Bellowing Crier": "Name:Bellowing Crier\nManaCost:1 U\nTypes:Creature Frog Advisor\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:When Bellowing Crier enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bellowing Crier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

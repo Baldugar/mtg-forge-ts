@@ -1,0 +1,23 @@
+{
+  "id": "bonds-of-faith-corpus-m675",
+  "description": "M6 corpus — Bonds of Faith; in-hand parse.",
+  "seed": 63109,
+  "cards": {
+    "Bonds of Faith": "Name:Bonds of Faith\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Human\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Human | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2 as long as it's a Human.\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy+nonHuman | Description$ Otherwise, it can't attack or block.\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 as long as it's a Human. Otherwise, it can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bonds of Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

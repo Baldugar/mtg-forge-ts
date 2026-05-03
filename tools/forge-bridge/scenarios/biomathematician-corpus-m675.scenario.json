@@ -1,0 +1,23 @@
+{
+  "id": "biomathematician-corpus-m675",
+  "description": "M6 corpus — Biomathematician; in-hand parse.",
+  "seed": 62699,
+  "cards": {
+    "Biomathematician": "Name:Biomathematician\nManaCost:1 G U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 0/0 green and blue Fractal creature token. Put a +1/+1 counter on each Fractal you control.\nSVar:TrigToken:DB$ Token | TokenScript$ gu_0_0_fractal | TokenOwner$ You | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounterAll | ValidCards$ Creature.Fractal+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Biomathematician enters, create a 0/0 green and blue Fractal creature token. Put a +1/+1 counter on each Fractal you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biomathematician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

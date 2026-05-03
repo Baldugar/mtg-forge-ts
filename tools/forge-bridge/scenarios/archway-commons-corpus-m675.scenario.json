@@ -1,0 +1,23 @@
+{
+  "id": "archway-commons-corpus-m675",
+  "description": "M6 corpus — Archway Commons; in-hand parse.",
+  "seed": 61775,
+  "cards": {
+    "Archway Commons": "Name:Archway Commons\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NeedsToPlay:Land.untapped+YouCtrl\nOracle:Archway Commons enters tapped.\\nWhen Archway Commons enters, sacrifice it unless you pay {1}.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archway Commons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

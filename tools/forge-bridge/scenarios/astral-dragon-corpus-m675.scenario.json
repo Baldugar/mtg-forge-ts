@@ -1,0 +1,23 @@
+{
+  "id": "astral-dragon-corpus-m675",
+  "description": "M6 corpus — Astral Dragon; in-hand parse.",
+  "seed": 62005,
+  "cards": {
+    "Astral Dragon": "Name:Astral Dragon\nManaCost:6 U U\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Project Image — When CARDNAME enters, create two tokens that are copies of target noncreature permanent, except they're 3/3 Dragon creatures in addition to their other types, and they have flying.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Permanent.nonCreature | NumCopies$ 2 | SetPower$ 3 | SetToughness$ 3 | AddTypes$ Dragon & Creature | AddKeywords$ Flying | TgtPrompt$ Select target noncreature permanent\nDeckHas:Ability$Token\nOracle:Flying\\nProject Image — When Astral Dragon enters, create two tokens that are copies of target noncreature permanent, except they're 3/3 Dragon creatures in addition to their other types, and they have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astral Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

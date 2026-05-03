@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-the-ruins-corpus-m675",
+  "description": "M6 corpus — Angel of the Ruins; in-hand parse.",
+  "seed": 61511,
+  "cards": {
+    "Angel of the Ruins": "Name:Angel of the Ruins\nManaCost:5 W W\nTypes:Artifact Creature Angel\nPT:5/7\nK:Flying\nK:TypeCycling:Plains:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to two target artifacts and/or enchantments.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | TargetMin$ 0 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile up to two target artifacts and/or enchantments.\nDeckHints:Type$Artifact\nOracle:Flying\\nWhen Angel of the Ruins enters, exile up to two target artifacts and/or enchantments.\\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of the Ruins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

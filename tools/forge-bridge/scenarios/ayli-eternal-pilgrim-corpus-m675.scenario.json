@@ -1,0 +1,25 @@
+{
+  "id": "ayli-eternal-pilgrim-corpus-m675",
+  "description": "M6 corpus — Ayli, Eternal Pilgrim; ETB-on-bf.",
+  "seed": 62207,
+  "cards": {
+    "Ayli, Eternal Pilgrim": "Name:Ayli, Eternal Pilgrim\nManaCost:W B\nTypes:Legendary Creature Kor Cleric\nPT:2/3\nK:Deathtouch\nA:AB$ GainLife | Cost$ 1 Sac<1/Creature.Other/another creature> | Defined$ You | LifeAmount$ Toughness | SpellDescription$ You gain life equal to the sacrificed creature's toughness.\nA:AB$ ChangeZone | Cost$ 1 W B Sac<1/Creature.Other/another creature> | CheckSVar$ X | SVarCompare$ GEY | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target nonland permanent. Activate only if you have at least 10 life more than your starting life total.\nSVar:Toughness:Sacrificed$CardToughness\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife/Plus.10\nOracle:Deathtouch\\n{1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.\\n{1}{W}{B}, Sacrifice another creature: Exile target nonland permanent. Activate only if you have at least 10 life more than your starting life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ayli, Eternal Pilgrim"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "basilica-skullbomb-corpus-m675",
+  "description": "M6 corpus — Basilica Skullbomb; ETB-on-bf.",
+  "seed": 62434,
+  "cards": {
+    "Basilica Skullbomb": "Name:Basilica Skullbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nA:AB$ Pump | Cost$ 2 W Sac<1/CARDNAME> | ValidTgts$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBDraw | KW$ Flying | TgtPrompt$ Select target creature you control | SorcerySpeed$ True | SpellDescription$ Target creature you control gets +2/+2 and gains flying until end of turn. Draw a card. Activate only as a sorcery.\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nDeckHas:Color$White & Ability$Sacrifice\nOracle:{1}, Sacrifice Basilica Skullbomb: Draw a card.\\n{2}{W}, Sacrifice Basilica Skullbomb: Target creature you control gets +2/+2 and gains flying until end of turn. Draw a card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Basilica Skullbomb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

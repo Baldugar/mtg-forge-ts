@@ -1,0 +1,25 @@
+{
+  "id": "ballroom-brawlers-corpus-m675",
+  "description": "M6 corpus — Ballroom Brawlers; ETB-on-bf.",
+  "seed": 62298,
+  "cards": {
+    "Ballroom Brawlers": "Name:Ballroom Brawlers\nManaCost:3 W W\nTypes:Creature Human Warrior\nPT:3/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSelectTargetCreature | TriggerDescription$ Whenever CARDNAME attacks, CARDNAME and up to one other target creature you control both gain your choice of first strike or lifelink until end of turn.\nSVar:TrigSelectTargetCreature:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | ThisDefinedAndTgts$ Self | KWChoice$ First Strike,Lifelink | TgtPrompt$ Select up to one other target creature\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever Ballroom Brawlers attacks, Ballroom Brawlers and up to one other target creature you control both gain your choice of first strike or lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ballroom Brawlers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

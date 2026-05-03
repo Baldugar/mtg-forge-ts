@@ -1,0 +1,25 @@
+{
+  "id": "breeding-pool-corpus-m675",
+  "description": "M6 corpus — Breeding Pool; ETB-on-bf.",
+  "seed": 63343,
+  "cards": {
+    "Breeding Pool": "Name:Breeding Pool\nManaCost:no cost\nTypes:Land Forest Island\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 2 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<2> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:({T}: Add {G} or {U}.)\\nAs Breeding Pool enters, you may pay 2 life. If you don't, it enters tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Breeding Pool"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

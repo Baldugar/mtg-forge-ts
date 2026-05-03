@@ -1,0 +1,23 @@
+{
+  "id": "analyze-the-pollen-corpus-m675",
+  "description": "M6 corpus — Analyze the Pollen; in-hand parse.",
+  "seed": 61446,
+  "cards": {
+    "Analyze the Pollen": "Name:Analyze the Pollen\nManaCost:G\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<8> | Description$ As an additional cost to cast this spell, you may collect evidence 8. (Exile cards with total mana value 8 or greater from your graveyard.)\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ConditionDefined$ Collected | ConditionPresent$ Card | ConditionCompare$ EQ0 | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBChangeZone | SpellDescription$ Search your library for a basic land card. If evidence was collected, instead search your library for a creature or land card. Reveal that card, put it into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land,Creature | ChangeNum$ 1 | ConditionDefined$ Collected | ConditionPresent$ Card\nDeckHints:Ability$Graveyard|Discard|Dredge|Mill\nOracle:As an additional cost to cast this spell, you may collect evidence 8. (Exile cards with total mana value 8 or greater from your graveyard.)\\nSearch your library for a basic land card. If evidence was collected, instead search your library for a creature or land card. Reveal that card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Analyze the Pollen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

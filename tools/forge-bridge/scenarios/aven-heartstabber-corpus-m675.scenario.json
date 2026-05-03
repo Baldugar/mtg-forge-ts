@@ -1,0 +1,23 @@
+{
+  "id": "aven-heartstabber-corpus-m675",
+  "description": "M6 corpus — Aven Heartstabber; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Aven Heartstabber": "Name:Aven Heartstabber\nManaCost:U B\nTypes:Creature Bird Assassin\nPT:1/1\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Deathtouch | CheckSVar$ X | SVarCompare$ GE5 | Description$ As long as there are five or more mana values among cards in your graveyard, CARDNAME gets +2/+2 and has deathtouch.\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME dies, mill two cards, then draw a card.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | Defined$ You\nDeckHas:Ability$Graveyard|Mill\nOracle:Flying\\nAs long as there are five or more mana values among cards in your graveyard, Aven Heartstabber gets +2/+2 and has deathtouch.\\nWhen Aven Heartstabber dies, mill two cards, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Heartstabber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

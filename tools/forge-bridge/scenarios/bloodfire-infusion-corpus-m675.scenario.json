@@ -1,0 +1,23 @@
+{
+  "id": "bloodfire-infusion-corpus-m675",
+  "description": "M6 corpus — Bloodfire Infusion; in-hand parse.",
+  "seed": 62966,
+  "cards": {
+    "Bloodfire Infusion": "Name:Bloodfire Infusion\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nA:AB$ DamageAll | Cost$ R Sac<1/Card.AttachedBy/enchanted creature> | ActivationZone$ Battlefield | ValidCards$ Creature | NumDmg$ X | ValidDescription$ each creature | SpellDescription$ CARDNAME deals damage equal to the sacrificed creature's power to each creature.\nSVar:X:Sacrificed$CardPower\nAI:RemoveDeck:All\nOracle:Enchant creature you control\\n{R}, Sacrifice enchanted creature: Bloodfire Infusion deals damage equal to the sacrificed creature's power to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodfire Infusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-indemnity-corpus-m675",
+  "description": "M6 corpus — Angel of Indemnity; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Angel of Indemnity": "Name:Angel of Indemnity\nManaCost:5 W\nTypes:Creature Angel Warrior\nPT:5/5\nK:Flying\nK:Lifelink\nK:Encore:6 W W\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return target permanent card with mana value 4 or less from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.YouCtrl+cmcLE4 | TgtPrompt$ Select target permanent card with mana value 4 or less in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nDeckHas:Ability$LifeGain|Graveyard|Token\nOracle:Flying, lifelink\\nWhen Angel of Indemnity enters, return target permanent card with mana value 4 or less from your graveyard to the battlefield.\\nEncore {6}{W}{W} ({6}{W}{W}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Indemnity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

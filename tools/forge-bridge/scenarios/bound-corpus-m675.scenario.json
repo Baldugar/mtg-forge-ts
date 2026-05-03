@@ -1,0 +1,23 @@
+{
+  "id": "bound-corpus-m675",
+  "description": "M6 corpus — Bound; in-hand parse.",
+  "seed": 63227,
+  "cards": {
+    "Bound": "Name:Bound\nManaCost:3 B G\nTypes:Instant\nA:SP$ Sacrifice | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBReturnChoose | SpellDescription$ Sacrifice a creature. Return up to X cards from your graveyard to your hand, where X is the number of colors that creature was. Exile this card.\nSVar:DBReturnChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.YouOwn | ChoiceZone$ Graveyard | Amount$ X | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ChosenCard | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | Defined$ Self | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardNumColors\nAlternateMode:Split\nOracle:Sacrifice a creature. Return up to X cards from your graveyard to your hand, where X is the number of colors that creature was. Exile this card.\n\nALTERNATE\n\nName:Determined\nManaCost:G U\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ CantBeCountered | SubAbility$ DBDraw | SpellDescription$ Other spells you control can't be countered this turn. Draw a card.\nSVar:CantBeCountered:Event$ Counter | ValidSA$ Spell.YouCtrl | Layer$ CantHappen | Description$ Other spells you control can't be countered this turn.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Other spells you control can't be countered this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

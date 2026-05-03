@@ -1,0 +1,23 @@
+{
+  "id": "angelic-destiny-corpus-m675",
+  "description": "M6 corpus — Angelic Destiny; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Angelic Destiny": "Name:Angelic Destiny\nManaCost:2 W W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Flying & First Strike | AddType$ Angel | Description$ Enchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted creature dies, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nOracle:Enchant creature\\nEnchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.\\nWhen enchanted creature dies, return Angelic Destiny to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angelic Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

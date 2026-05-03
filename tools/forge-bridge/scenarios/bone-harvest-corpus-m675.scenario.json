@@ -1,0 +1,23 @@
+{
+  "id": "bone-harvest-corpus-m675",
+  "description": "M6 corpus — Bone Harvest; in-hand parse.",
+  "seed": 63117,
+  "cards": {
+    "Bone Harvest": "Name:Bone Harvest\nManaCost:2 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Library | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Put any number of target creature cards from your graveyard on top of your library. Draw a card at the beginning of next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Put any number of target creature cards from your graveyard on top of your library.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bone Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

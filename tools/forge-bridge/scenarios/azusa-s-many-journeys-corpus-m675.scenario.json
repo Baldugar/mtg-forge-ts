@@ -1,0 +1,23 @@
+{
+  "id": "azusa-s-many-journeys-corpus-m675",
+  "description": "M6 corpus — Azusa's Many Journeys; in-hand parse.",
+  "seed": 62235,
+  "cards": {
+    "Azusa's Many Journeys": "Name:Azusa's Many Journeys\nManaCost:1 G\nTypes:Enchantment Saga\nK:Chapter:3:DBEffect,DBGainLife,DBTransform\nSVar:DBEffect:DB$ Effect | StaticAbilities$ Exploration | SpellDescription$ You may play an additional land this turn.\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — You may play an additional land this turn.\\nII — You gain 3 life.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Likeness of the Seeker\nManaCost:no cost\nColors:green\nTypes:Enchantment Creature Human Monk\nPT:3/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME becomes blocked, untap up to three lands you control.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land.YouCtrl | Amount$ 3\nOracle:Whenever Likeness of the Seeker becomes blocked, untap up to three lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azusa's Many Journeys"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "anvil-of-bogardan-corpus-m675",
+  "description": "M6 corpus — Anvil of Bogardan; ETB-on-bf.",
+  "seed": 61613,
+  "cards": {
+    "Anvil of Bogardan": "Name:Anvil of Bogardan\nManaCost:2\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's draw step, that player draws an additional card, then discards a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TriggeredPlayer | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:Players have no maximum hand size.\\nAt the beginning of each player's draw step, that player draws an additional card, then discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anvil of Bogardan"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

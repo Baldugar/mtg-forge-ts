@@ -1,0 +1,23 @@
+{
+  "id": "brine-hag-corpus-m675",
+  "description": "M6 corpus — Brine Hag; in-hand parse.",
+  "seed": 63389,
+  "cards": {
+    "Brine Hag": "Name:Brine Hag\nManaCost:2 U U\nTypes:Creature Hag\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME dies, change the base power and toughness of all creatures that dealt damage to it this turn to 0/2. (This effect lasts indefinitely.)\nSVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Creature.Damaged | Power$ 0 | Toughness$ 2 | Duration$ Permanent\nOracle:When Brine Hag dies, change the base power and toughness of all creatures that dealt damage to it this turn to 0/2. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brine Hag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

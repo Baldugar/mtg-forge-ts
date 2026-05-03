@@ -1,0 +1,23 @@
+{
+  "id": "birth-of-the-imperium-corpus-m675",
+  "description": "M6 corpus — Birth of the Imperium; in-hand parse.",
+  "seed": 62712,
+  "cards": {
+    "Birth of the Imperium": "Name:Birth of the Imperium\nManaCost:2 W U B\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBSacrifice,DBDraw\nSVar:DBToken:DB$ Token | TokenScript$ w_2_2_astartes_warrior_vigilance | TokenAmount$ X | SpellDescription$ Create a 2/2 white Astartes Warrior creature token with vigilance for each opponent you have.\nSVar:X:PlayerCountOpponents$Amount\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature | SpellDescription$ Each opponent sacrifices a creature.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | NumCardsDesc$ two cards for each opponent who controls fewer creatures than you | SpellDescription$ Draw two cards for each opponent who controls fewer creatures than you.\nSVar:Y:PlayerCountOpponents$HasPropertyhasFewerCreaturesInPlayThanYou/Times.2\nDeckHas:Ability$Token & Type$Astartes|Warrior\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a 2/2 white Astartes Warrior creature token with vigilance for each opponent you have.\\nII — Each opponent sacrifices a creature.\\nIII — Draw two cards for each opponent who controls fewer creatures than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Birth of the Imperium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

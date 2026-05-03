@@ -1,0 +1,25 @@
+{
+  "id": "brightling-corpus-m675",
+  "description": "M6 corpus — Brightling; ETB-on-bf.",
+  "seed": 63367,
+  "cards": {
+    "Brightling": "Name:Brightling\nManaCost:1 W W\nTypes:Creature Shapeshifter\nPT:3/3\nA:AB$ Pump | Cost$ W | KW$ Vigilance | Defined$ Self | SpellDescription$ CARDNAME gains vigilance until end of turn.\nA:AB$ Pump | Cost$ W | KW$ Lifelink | Defined$ Self | SpellDescription$ CARDNAME gains lifelink until end of turn.\nA:AB$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nA:AB$ GenericChoice | Cost$ 1 | Choices$ PumpAtt,PumpDef | SpellDescription$ CARDNAME gets +1/-1 or -1/+1 until end of turn.\nSVar:PumpAtt:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ -1 | SpellDescription$ CARDNAME gets +1/-1 until end of turn.\nSVar:PumpDef:DB$ Pump | Defined$ Self | NumAtt$ -1 | NumDef$ +1 | SpellDescription$ CARDNAME gets -1/+1 until end of turn.\nOracle:{W}: Brightling gains vigilance until end of turn.\\n{W}: Brightling gains lifelink until end of turn.\\n{W}: Return Brightling to its owner's hand.\\n{1}: Brightling gets +1/-1 or -1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brightling"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

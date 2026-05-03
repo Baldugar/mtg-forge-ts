@@ -1,0 +1,23 @@
+{
+  "id": "binding-grasp-corpus-m675",
+  "description": "M6 corpus — Binding Grasp; in-hand parse.",
+  "seed": 62691,
+  "cards": {
+    "Binding Grasp": "Name:Binding Grasp\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}{U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1 U\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddToughness$ 1 | Description$ Enchanted creature gets +0/+1.\nSVar:PlayMain1:TRUE\nOracle:Enchant creature\\nAt the beginning of your upkeep, sacrifice Binding Grasp unless you pay {1}{U}.\\nYou control enchanted creature.\\nEnchanted creature gets +0/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Binding Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

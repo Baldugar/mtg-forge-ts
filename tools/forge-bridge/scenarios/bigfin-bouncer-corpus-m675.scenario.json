@@ -1,0 +1,23 @@
+{
+  "id": "bigfin-bouncer-corpus-m675",
+  "description": "M6 corpus — Bigfin Bouncer; in-hand parse.",
+  "seed": 62679,
+  "cards": {
+    "Bigfin Bouncer": "Name:Bigfin Bouncer\nManaCost:3 U\nTypes:Creature Shark Pirate\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, return target creature an opponent controls to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nOracle:When this creature enters, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bigfin Bouncer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

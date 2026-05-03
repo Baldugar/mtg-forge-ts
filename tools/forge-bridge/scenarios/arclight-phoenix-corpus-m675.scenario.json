@@ -1,0 +1,25 @@
+{
+  "id": "arclight-phoenix-corpus-m675",
+  "description": "M6 corpus — Arclight Phoenix; ETB-on-bf.",
+  "seed": 61779,
+  "cards": {
+    "Arclight Phoenix": "Name:Arclight Phoenix\nManaCost:3 R\nTypes:Creature Phoenix\nPT:3/2\nK:Flying\nK:Haste\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigReturn | TriggerDescription$ At the beginning of combat on your turn, if you've cast three or more instant and sorcery spells this turn, return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nDeckNeeds:Type$Instant|Sorcery\nOracle:Flying, haste\\nAt the beginning of combat on your turn, if you've cast three or more instant and sorcery spells this turn, return Arclight Phoenix from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arclight Phoenix"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

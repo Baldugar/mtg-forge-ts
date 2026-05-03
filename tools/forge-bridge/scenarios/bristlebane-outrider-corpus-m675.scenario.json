@@ -1,0 +1,25 @@
+{
+  "id": "bristlebane-outrider-corpus-m675",
+  "description": "M6 corpus — Bristlebane Outrider; ETB-on-bf.",
+  "seed": 63406,
+  "cards": {
+    "Bristlebane Outrider": "Name:Bristlebane Outrider\nManaCost:3 G\nTypes:Creature Kithkin Knight\nPT:3/5\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ This creature can't be blocked by creatures with power 2 or less.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | CheckSVar$ X | Description$ As long as another creature entered the battlefield under your control this turn, this creature gets +2/+0.\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl+StrictlyOther\nOracle:This creature can't be blocked by creatures with power 2 or less.\\nAs long as another creature entered the battlefield under your control this turn, this creature gets +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bristlebane Outrider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

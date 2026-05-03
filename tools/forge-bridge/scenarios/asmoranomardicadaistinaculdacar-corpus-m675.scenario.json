@@ -1,0 +1,23 @@
+{
+  "id": "asmoranomardicadaistinaculdacar-corpus-m675",
+  "description": "M6 corpus — Asmoranomardicadaistinaculdacar; in-hand parse.",
+  "seed": 61966,
+  "cards": {
+    "Asmoranomardicadaistinaculdacar": "Name:Asmoranomardicadaistinaculdacar\nManaCost:no cost\nColors:black,red\nTypes:Legendary Creature Human Wizard\nPT:3/3\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ BR | CheckSVar$ X | Description$ As long as you've discarded a card this turn, you may pay {B/R} to cast this spell.\nSVar:X:PlayerCountPropertyYou$CardsDiscardedThisTurn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a card named The Underworld Cookbook, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedThe Underworld Cookbook | ShuffleNonMandatory$ True\nA:AB$ DealDamage | Cost$ Sac<2/Food> | ValidTgts$ Creature | DamageSource$ Targeted | NumDmg$ 6 | SpellDescription$ Target creature deals 6 damage to itself.\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Discard\nDeckNeeds:Name$The Underworld Cookbook\nOracle:As long as you've discarded a card this turn, you may pay {B/R} to cast this spell.\\nWhen Asmoranomardicadaistinaculdacar enters, you may search your library for a card named The Underworld Cookbook, reveal it, put it into your hand, then shuffle.\\nSacrifice two Foods: Target creature deals 6 damage to itself.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Asmoranomardicadaistinaculdacar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

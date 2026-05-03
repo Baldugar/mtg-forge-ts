@@ -1,0 +1,23 @@
+{
+  "id": "benalish-emissary-corpus-m675",
+  "description": "M6 corpus — Benalish Emissary; in-hand parse.",
+  "seed": 62612,
+  "cards": {
+    "Benalish Emissary": "Name:Benalish Emissary\nManaCost:2 W\nTypes:Creature Human Wizard\nPT:1/4\nK:Kicker:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target land.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Land\nSVar:NeedsToPlayKicked:Land.OppCtrl\nDeckHints:Color$Green\nOracle:Kicker {1}{G} (You may pay an additional {1}{G} as you cast this spell.)\\nWhen Benalish Emissary enters, if it was kicked, destroy target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Benalish Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

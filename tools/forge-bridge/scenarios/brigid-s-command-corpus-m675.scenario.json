@@ -1,0 +1,23 @@
+{
+  "id": "brigid-s-command-corpus-m675",
+  "description": "M6 corpus — Brigid's Command; in-hand parse.",
+  "seed": 63373,
+  "cards": {
+    "Brigid's Command": "Name:Brigid's Command\nManaCost:1 G W\nTypes:Kindred Sorcery Kithkin\nA:SP$ Charm | Choices$ DBCopy,DBToken,DBPump,DBFight | CharmNum$ 2\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Kithkin.YouCtrl | TgtPrompt$ Select target Kithkin you control | SpellDescription$ Create a token that's a copy of target Kithkin you control.\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenScript$ gw_1_1_kithkin | TokenOwner$ TargetedPlayer | StackDescription$ SpellDescription | SpellDescription$ Target player creates a 1/1 green and white Kithkin creature token.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +3 | NumDef$ +3 | TgtPrompt$ Select target creature you control | SpellDescription$ Target creature you control gets +3/+3 until end of turn.\nSVar:DBFight:DB$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBFight2 | SpellDescription$ Target creature you control fights target creature an opponent controls.\nSVar:DBFight2:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls.\nDeckHas:Ability$Token\nDeckHints:Type$Kithkin\nOracle:Choose two —\\n• Create a token that's a copy of target Kithkin you control.\\n• Target player creates a 1/1 green and white Kithkin creature token.\\n• Target creature you control gets +3/+3 until end of turn.\\n• Target creature you control fights target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brigid's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

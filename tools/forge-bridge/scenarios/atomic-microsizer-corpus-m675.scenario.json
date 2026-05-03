@@ -1,0 +1,25 @@
+{
+  "id": "atomic-microsizer-corpus-m675",
+  "description": "M6 corpus — Atomic Microsizer; ETB-on-bf.",
+  "seed": 62024,
+  "cards": {
+    "Atomic Microsizer": "Name:Atomic Microsizer\nManaCost:U\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigUnblockable | TriggerDescription$ Whenever equipped creature attacks, choose up to one target creature. That creature can't be blocked this turn and has base power and toughness 1/1 until end of turn.\nSVar:TrigUnblockable:DB$ Effect | TgtPrompt$ Select up to one target creature | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | SubAbility$ DBAnimate\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Power$ 1 | Toughness$ 1\nOracle:Equipped creature gets +1/+0.\\nWhenever equipped creature attacks, choose up to one target creature. That creature can't be blocked this turn and has base power and toughness 1/1 until end of turn.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Atomic Microsizer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

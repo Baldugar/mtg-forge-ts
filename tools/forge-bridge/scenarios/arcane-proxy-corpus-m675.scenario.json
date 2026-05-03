@@ -1,0 +1,23 @@
+{
+  "id": "arcane-proxy-corpus-m675",
+  "description": "M6 corpus — Arcane Proxy; in-hand parse.",
+  "seed": 61718,
+  "cards": {
+    "Arcane Proxy": "Name:Arcane Proxy\nManaCost:7\nTypes:Artifact Creature Wizard\nPT:4/3\nK:Prototype:1 U U:2:1\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if you cast it, exile target instant or sorcery card with mana value less than or equal to CARDNAME's power from your graveyard. Copy that card. You may cast the copy without paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select target instant or sorcery card with mana value less than or equal to CARDNAME's power | ValidTgts$ Instant.YouOwn+cmcLEX,Sorcery.YouOwn+cmcLEX | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | Controller$ You | CopyCard$ True | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardPower\nDeckHints:Type$Instant|Sorcery & Color$Blue\nOracle:Prototype {1}{U}{U} — 2/1 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nWhen Arcane Proxy enters, if you cast it, exile target instant or sorcery card with mana value less than or equal to Arcane Proxy's power from your graveyard. Copy that card. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcane Proxy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

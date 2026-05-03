@@ -1,0 +1,25 @@
+{
+  "id": "ashes-of-the-abhorrent-corpus-m675",
+  "description": "M6 corpus — Ashes of the Abhorrent; ETB-on-bf.",
+  "seed": 61941,
+  "cards": {
+    "Ashes of the Abhorrent": "Name:Ashes of the Abhorrent\nManaCost:1 W\nTypes:Enchantment\nS:Mode$ CantBeCast | ValidCard$ Card | Origin$ Graveyard | Description$ Players can't cast spells from graveyards.\nS:Mode$ CantBeActivated | ValidCard$ Card | AffectedZone$ Graveyard | Description$ Players can't activate abilities of cards in graveyards.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigGain | TriggerDescription$ Whenever a creature dies, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Players can't cast spells from graveyards or activate abilities of cards in graveyards.\\nWhenever a creature dies, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashes of the Abhorrent"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "benalish-commander-corpus-m675",
+  "description": "M6 corpus — Benalish Commander; ETB-on-bf.",
+  "seed": 62611,
+  "cards": {
+    "Benalish Commander": "Name:Benalish Commander\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to the number of Soldiers you control.\nK:Suspend:X:XMin1 X W W\nT:Mode$ CounterRemoved | ValidCard$ Card.Self | TriggerZones$ Exile | CounterType$ TIME | Execute$ TrigToken | TriggerDescription$ Whenever a time counter is removed from CARDNAME while it's exiled, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Soldier.YouCtrl\nSVar:NoZeroToughnessAI:True\nOracle:Benalish Commander's power and toughness are each equal to the number of Soldiers you control.\\nSuspend X—{X}{W}{W}. X can't be 0.\\nWhenever a time counter is removed from Benalish Commander while it's exiled, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Benalish Commander"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

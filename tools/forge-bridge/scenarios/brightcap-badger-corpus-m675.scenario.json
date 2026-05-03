@@ -1,0 +1,23 @@
+{
+  "id": "brightcap-badger-corpus-m675",
+  "description": "M6 corpus — Brightcap Badger; in-hand parse.",
+  "seed": 63362,
+  "cards": {
+    "Brightcap Badger": "Name:Brightcap Badger\nManaCost:3 G\nTypes:Creature Badger Druid\nPT:3/4\nS:Mode$ Continuous | Affected$ Fungus.YouCtrl,Saproling.YouCtrl | AddAbility$ Mana | Description$ Each Fungus and Saproling you control has \"{T}: Add {G}.\"\nSVar:Mana:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1 | SpellDescription$ Add {G}.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nDeckHas:Ability$Token\nDeckHints:Type$Fungus|Saproling\nAlternateMode:Adventure\nOracle:Each Fungus and Saproling you control has \"{T}: Add {G}.\"\\nAt the beginning of your end step, create a 1/1 green Saproling creature token.\n\nALTERNATE\n\nName:Fungus Frolic\nManaCost:2 G\nTypes:Instant Adventure\nA:SP$ Token | TokenScript$ g_1_1_saproling | TokenAmount$ 2 | TokenOwner$ You | SpellDescription$ Create two 1/1 green Saproling creature tokens.\nOracle:Create two 1/1 green Saproling creature tokens. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brightcap Badger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

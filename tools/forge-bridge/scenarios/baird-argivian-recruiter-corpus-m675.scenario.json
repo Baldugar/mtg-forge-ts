@@ -1,0 +1,25 @@
+{
+  "id": "baird-argivian-recruiter-corpus-m675",
+  "description": "M6 corpus — Baird, Argivian Recruiter; ETB-on-bf.",
+  "seed": 62262,
+  "cards": {
+    "Baird, Argivian Recruiter": "Name:Baird, Argivian Recruiter\nManaCost:R W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | IsPresent$ Creature.YouCtrl+powerGTbasePower | TriggerDescription$ At the beginning of your end step, if you control a creature with power greater than its base power, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:At the beginning of your end step, if you control a creature with power greater than its base power, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Baird, Argivian Recruiter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

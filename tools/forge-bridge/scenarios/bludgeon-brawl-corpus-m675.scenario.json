@@ -1,0 +1,25 @@
+{
+  "id": "bludgeon-brawl-corpus-m675",
+  "description": "M6 corpus — Bludgeon Brawl; ETB-on-bf.",
+  "seed": 63022,
+  "cards": {
+    "Bludgeon Brawl": "Name:Bludgeon Brawl\nManaCost:2 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Artifact.nonCreature+nonEquipment | AddKeyword$ Equip:X:::XAlternative$ Number$ConvertedManaCost | AddType$ Equipment | RemoveArtifactTypes$ True | AddStaticAbility$ EquipPump | Description$ Each noncreature, non-Equipment artifact is an Equipment with equip {X} and \"Equipped creature gets +X/+0,\" where X is that artifact's mana value.\nSVar:EquipPump:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ ConvertedManaCost | Description$ Equipped creature gets +X/+0, where X is CARDNAME's mana value.\nAI:RemoveDeck:Random\nOracle:Each noncreature, non-Equipment artifact is an Equipment with equip {X} and \"Equipped creature gets +X/+0,\" where X is that artifact's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bludgeon Brawl"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

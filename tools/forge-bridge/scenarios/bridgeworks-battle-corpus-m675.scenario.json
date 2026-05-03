@@ -1,0 +1,23 @@
+{
+  "id": "bridgeworks-battle-corpus-m675",
+  "description": "M6 corpus — Bridgeworks Battle; in-hand parse.",
+  "seed": 63358,
+  "cards": {
+    "Bridgeworks Battle": "Name:Bridgeworks Battle\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBFight | SpellDescription$ Target creature you control gets +2/+2 until end of turn. Then it fights up to one target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you don't control\nSVar:PlayMain1:TRUE\nAlternateMode:Modal\nOracle:Target creature you control gets +2/+2 until end of turn. Then it fights up to one target creature you don't control.\n\nALTERNATE\n\nName:Tanglespan Bridgeworks\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:As Tanglespan Bridgeworks enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bridgeworks Battle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

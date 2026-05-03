@@ -1,0 +1,23 @@
+{
+  "id": "aragorn-and-arwen-wed-corpus-m675",
+  "description": "M6 corpus — Aragorn and Arwen, Wed; in-hand parse.",
+  "seed": 61675,
+  "cards": {
+    "Aragorn and Arwen, Wed": "Name:Aragorn and Arwen, Wed\nManaCost:4 G W\nTypes:Legendary Creature Human Elf Noble\nPT:3/6\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever CARDNAME enters or attacks, put a +1/+1 counter on each other creature you control. You gain 1 life for each other creature you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put a +1/+1 counter on each other creature you control. You gain 1 life for each other creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+StrictlyOther\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters|LifeGain\nOracle:Vigilance\\nWhenever Aragorn and Arwen, Wed enters or attacks, put a +1/+1 counter on each other creature you control. You gain 1 life for each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aragorn and Arwen, Wed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "barren-glory-corpus-m675",
+  "description": "M6 corpus — Barren Glory; ETB-on-bf.",
+  "seed": 62396,
+  "cards": {
+    "Barren Glory": "Name:Barren Glory\nManaCost:4 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Other | PresentZone$ Battlefield | PresentPlayer$ You | PresentCompare$ EQ0 | IsPresent2$ Card | PresentZone2$ Hand | PresentPlayer2$ You | PresentCompare2$ EQ0 | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if you control no permanents other than CARDNAME and have no cards in hand, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if you control no permanents other than Barren Glory and have no cards in hand, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barren Glory"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

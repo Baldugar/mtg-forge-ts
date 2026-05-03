@@ -1,0 +1,23 @@
+{
+  "id": "barrage-of-boulders-corpus-m675",
+  "description": "M6 corpus — Barrage of Boulders; in-hand parse.",
+  "seed": 62390,
+  "cards": {
+    "Barrage of Boulders": "Name:Barrage of Boulders\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.YouDontCtrl | ValidDescription$ each creature you don't control. | SubAbility$ DBPumpAll | SpellDescription$ CARDNAME deals 1 damage to each creature you don't control. Ferocious — If you control a creature with power 4 or greater, creatures can't block this turn.\nSVar:DBPumpAll:DB$ Effect | StaticAbilities$ KWPump | AILogic$ Evasion | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures can't block this turn.\nSVar:X:Count$Valid Creature.powerGE4+YouCtrl\nOracle:Barrage of Boulders deals 1 damage to each creature you don't control.\\nFerocious — If you control a creature with power 4 or greater, creatures can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrage of Boulders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

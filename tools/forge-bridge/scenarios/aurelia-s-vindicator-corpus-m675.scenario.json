@@ -1,0 +1,23 @@
+{
+  "id": "aurelia-s-vindicator-corpus-m675",
+  "description": "M6 corpus — Aurelia's Vindicator; in-hand parse.",
+  "seed": 62077,
+  "cards": {
+    "Aurelia's Vindicator": "Name:Aurelia's Vindicator\nManaCost:2 W W\nTypes:Creature Angel\nPT:4/2\nK:Flying\nK:Lifelink\nK:Ward:2\nK:Disguise:X 3 W\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME is turned face up, exile up to X other target creatures from the battlefield and/or creature cards from graveyards.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ X | IsCurse$ True | ValidTgts$ Creature.Other | TgtPrompt$ Choose up to X other target creatures from the battlefield and/or creature cards from graveyards | Origin$ Battlefield,Graveyard | Destination$ Exile\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to their owners' hands.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Hand\nSVar:X:Count$xPaid\nDeckHas:Ability$Graveyard\nOracle:Flying, lifelink, ward {2}\\nDisguise {X}{3}{W}\\nWhen Aurelia's Vindicator is turned face up, exile up to X other target creatures from the battlefield and/or creature cards from graveyards.\\nWhen Aurelia's Vindicator leaves the battlefield, return the exiled cards to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aurelia's Vindicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

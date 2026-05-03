@@ -1,0 +1,23 @@
+{
+  "id": "appa-the-vigilant-corpus-m675",
+  "description": "M6 corpus — Appa, the Vigilant; in-hand parse.",
+  "seed": 61642,
+  "cards": {
+    "Appa, the Vigilant": "Name:Appa, the Vigilant\nManaCost:5 W W\nTypes:Legendary Creature Bison Ally\nPT:6/6\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Whenever NICKNAME or another Ally you control enters, creatures you control get +1/+1 and gain flying and vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Flying & Vigilance\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Flying, vigilance\\nWhenever Appa or another Ally you control enters, creatures you control get +1/+1 and gain flying and vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Appa, the Vigilant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

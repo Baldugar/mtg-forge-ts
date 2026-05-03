@@ -1,0 +1,23 @@
+{
+  "id": "blight-breath-catoblepas-corpus-m675",
+  "description": "M6 corpus — Blight-Breath Catoblepas; in-hand parse.",
+  "seed": 62837,
+  "cards": {
+    "Blight-Breath Catoblepas": "Name:Blight-Breath Catoblepas\nManaCost:4 B B\nTypes:Creature Beast\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -X/-X until end of turn, where X is your devotion to black.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$Devotion.Black\nSVar:PlayMain1:TRUE\nOracle:When Blight-Breath Catoblepas enters, target creature an opponent controls gets -X/-X until end of turn, where X is your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blight-Breath Catoblepas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

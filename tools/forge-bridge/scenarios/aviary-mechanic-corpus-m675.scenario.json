@@ -1,0 +1,23 @@
+{
+  "id": "aviary-mechanic-corpus-m675",
+  "description": "M6 corpus — Aviary Mechanic; in-hand parse.",
+  "seed": 62174,
+  "cards": {
+    "Aviary Mechanic": "Name:Aviary Mechanic\nManaCost:1 W\nTypes:Creature Dwarf Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return another permanent you control to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | AILogic$ BounceOwnTrigger | Mandatory$ True | ChangeType$ Permanent.Other+YouCtrl\nOracle:When Aviary Mechanic enters, you may return another permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aviary Mechanic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

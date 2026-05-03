@@ -1,0 +1,23 @@
+{
+  "id": "big-apple-3-a-m-corpus-m675",
+  "description": "M6 corpus — Big Apple, 3 a.m.; in-hand parse.",
+  "seed": 62677,
+  "cards": {
+    "Big Apple, 3 a.m.": "Name:Big Apple, 3 a.m.\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As this land enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nA:AB$ Token | Cost$ 5 T | TokenAmount$ X | TokenScript$ b_1_1_rat | SpellDescription$ Create a 1/1 black Rat creature token for each opponent you have.\nSVar:X:PlayerCountOpponents$Amount\nDeckHas:Ability$Token\nOracle:This land enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\\n{5}, {T}: Create a 1/1 black Rat creature token for each opponent you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Big Apple, 3 a.m."
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "azorius-justiciar-corpus-m675",
+  "description": "M6 corpus — Azorius Justiciar; in-hand parse.",
+  "seed": 62222,
+  "cards": {
+    "Azorius Justiciar": "Name:Azorius Justiciar\nManaCost:2 W W\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ Detain | TriggerDescription$ When CARDNAME enters, detain up to two target creatures your opponents control. (Until your next turn, those creatures can't attack or block and their activated abilities can't be activated.)\nSVar:Detain:DB$ Detain | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.OppCtrl | ValidTgtsDesc$ creature your opponent controls\nSVar:PlayMain1:TRUE\nOracle:When Azorius Justiciar enters, detain up to two target creatures your opponents control. (Until your next turn, those creatures can't attack or block and their activated abilities can't be activated.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azorius Justiciar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

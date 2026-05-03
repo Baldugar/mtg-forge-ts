@@ -1,0 +1,23 @@
+{
+  "id": "archaeomancer-s-map-corpus-m675",
+  "description": "M6 corpus — Archaeomancer's Map; in-hand parse.",
+  "seed": 61729,
+  "cards": {
+    "Archaeomancer's Map": "Name:Archaeomancer's Map\nManaCost:2 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for up to two basic Plains cards, reveal them, put them into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains.Basic | ChangeNum$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.OppCtrl+ControllerControlsMoreLand | TriggerZones$ Battlefield | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever a land enters under an opponent's control, if that player controls more lands than you, you may put a land card from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land.YouCtrl\nOracle:When Archaeomancer's Map enters, search your library for up to two basic Plains cards, reveal them, put them into your hand, then shuffle.\\nWhenever a land enters under an opponent's control, if that player controls more lands than you, you may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archaeomancer's Map"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

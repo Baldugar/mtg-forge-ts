@@ -1,0 +1,23 @@
+{
+  "id": "blooming-stinger-corpus-m675",
+  "description": "M6 corpus — Blooming Stinger; in-hand parse.",
+  "seed": 63008,
+  "cards": {
+    "Blooming Stinger": "Name:Blooming Stinger\nManaCost:1 G\nTypes:Creature Plant Scorpion\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, another target creature you control gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Deathtouch\nOracle:Deathtouch\\nWhen this creature enters, another target creature you control gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blooming Stinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brood-monitor-corpus-m675",
+  "description": "M6 corpus — Brood Monitor; in-hand parse.",
+  "seed": 63436,
+  "cards": {
+    "Brood Monitor": "Name:Brood Monitor\nManaCost:4 G G\nTypes:Creature Eldrazi Drone\nPT:3/3\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You\nDeckHas:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nWhen Brood Monitor enters, create three 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brood Monitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

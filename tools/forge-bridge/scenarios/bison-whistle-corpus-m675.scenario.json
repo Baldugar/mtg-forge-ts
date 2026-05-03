@@ -1,0 +1,25 @@
+{
+  "id": "bison-whistle-corpus-m675",
+  "description": "M6 corpus — Bison Whistle; ETB-on-bf.",
+  "seed": 62722,
+  "cards": {
+    "Bison Whistle": "Name:Bison Whistle\nManaCost:1 G\nTypes:Artifact\nA:AB$ PeekAndReveal | Cost$ 1 T | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBChangeZone1 | SpellDescription$ Look at the top card of your library. If it's a Bison card, you may put it onto the battlefield. If it's a creature card, you may reveal it and put it into your hand. Otherwise, you may put it into your graveyard.\nSVar:DBChangeZone1:DB$ Dig | DestinationZone$ Battlefield | DigNum$ 1 | ChangeNum$ All | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Bison | ConditionCompare$ GE1 | ForgetChanged$ True | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ Dig | DestinationZone$ Hand | DigNum$ 1 | ChangeNum$ All | Optional$ True | ForceRevealToController$ True | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | ForgetChanged$ True | SubAbility$ DBChangeZone3\nSVar:DBChangeZone3:DB$ Dig | DestinationZone$ Graveyard | DigNum$ 1 | ChangeNum$ All | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{1}, {T}: Look at the top card of your library. If it's a Bison card, you may put it onto the battlefield. If it's a creature card, you may reveal it and put it into your hand. Otherwise, you may put it into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bison Whistle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

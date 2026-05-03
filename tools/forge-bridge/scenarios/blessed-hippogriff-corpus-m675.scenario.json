@@ -1,0 +1,23 @@
+{
+  "id": "blessed-hippogriff-corpus-m675",
+  "description": "M6 corpus — Blessed Hippogriff; in-hand parse.",
+  "seed": 62820,
+  "cards": {
+    "Blessed Hippogriff": "Name:Blessed Hippogriff\nManaCost:3 W\nTypes:Creature Hippogriff\nPT:2/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target attacking creature without flying gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+withoutFlying | TgtPrompt$ Select target attacking creature without flying | KW$ Flying\nAlternateMode:Adventure\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Blessed Hippogriff attacks, target attacking creature without flying gains flying until end of turn.\n\nALTERNATE\n\nName:Tyr's Blessing\nManaCost:W\nTypes:Instant Adventure\nA:SP$ Pump | ValidTgts$ Creature | KW$ Indestructible | SpellDescription$ Target creature gains indestructible until end of turn.\nOracle:Target creature gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessed Hippogriff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "balancing-act-corpus-m675",
+  "description": "M6 corpus — Balancing Act; in-hand parse.",
+  "seed": 62271,
+  "cards": {
+    "Balancing Act": "Name:Balancing Act\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ Balance | Valid$ Permanent | AILogic$ BalancePermanents | SubAbility$ BalanceHands | SpellDescription$ Each player chooses a number of permanents they control equal to the number of permanents controlled by the player who controls the fewest, then sacrifices the rest. Each player discards cards the same way.\nSVar:BalanceHands:DB$ Balance | Zone$ Hand\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each player chooses a number of permanents they control equal to the number of permanents controlled by the player who controls the fewest, then sacrifices the rest. Each player discards cards the same way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balancing Act"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

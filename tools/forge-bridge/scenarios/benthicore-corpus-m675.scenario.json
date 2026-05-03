@@ -1,0 +1,23 @@
+{
+  "id": "benthicore-corpus-m675",
+  "description": "M6 corpus — Benthicore; in-hand parse.",
+  "seed": 62642,
+  "cards": {
+    "Benthicore": "Name:Benthicore\nManaCost:6 U\nTypes:Creature Elemental\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 blue Merfolk Wizard creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_merfolk_wizard | TokenOwner$ You\nA:AB$ Untap | Cost$ tapXType<2/Merfolk> | SubAbility$ GainShroud | SpellDescription$ Untap CARDNAME.\nSVar:GainShroud:DB$ Pump | Defined$ Self | KW$ Shroud | SpellDescription$ CARDNAME gains shroud until end of turn.\nOracle:When Benthicore enters, create two 1/1 blue Merfolk Wizard creature tokens.\\nTap two untapped Merfolk you control: Untap Benthicore. It gains shroud until end of turn. (It can't be the target of spells or abilities.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Benthicore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "battleflight-eagle-corpus-m675",
+  "description": "M6 corpus — Battleflight Eagle; in-hand parse.",
+  "seed": 62496,
+  "cards": {
+    "Battleflight Eagle": "Name:Battleflight Eagle\nManaCost:4 W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +2/+2 and gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | KW$ Flying\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Battleflight Eagle enters, target creature gets +2/+2 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battleflight Eagle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

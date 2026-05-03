@@ -1,0 +1,23 @@
+{
+  "id": "blossoming-sands-corpus-m675",
+  "description": "M6 corpus — Blossoming Sands; in-hand parse.",
+  "seed": 63016,
+  "cards": {
+    "Blossoming Sands": "Name:Blossoming Sands\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nDeckHas:Ability$LifeGain\nOracle:Blossoming Sands enters tapped.\\nWhen Blossoming Sands enters, you gain 1 life.\\n{T}: Add {G} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blossoming Sands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

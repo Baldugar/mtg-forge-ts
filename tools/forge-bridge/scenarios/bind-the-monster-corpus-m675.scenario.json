@@ -1,0 +1,23 @@
+{
+  "id": "bind-the-monster-corpus-m675",
+  "description": "M6 corpus — Bind the Monster; in-hand parse.",
+  "seed": 62688,
+  "cards": {
+    "Bind the Monster": "Name:Bind the Monster\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature. It deals damage to you equal to its power.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ X | DamageSource$ Enchanted\nSVar:X:Enchanted$CardPower\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Enchant creature\\nWhen Bind the Monster enters, tap enchanted creature. It deals damage to you equal to its power.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bind the Monster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

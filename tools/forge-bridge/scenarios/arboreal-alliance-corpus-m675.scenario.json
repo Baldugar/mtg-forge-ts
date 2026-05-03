@@ -1,0 +1,23 @@
+{
+  "id": "arboreal-alliance-corpus-m675",
+  "description": "M6 corpus — Arboreal Alliance; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Arboreal Alliance": "Name:Arboreal Alliance\nManaCost:X G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create an X/X green Treefolk creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_x_x_treefolk | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$xPaid\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Elf+YouCtrl | Execute$ TrigPopulate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack with one or more Elves, populate. (Create a token that's a copy of a creature token you control.)\nSVar:TrigPopulate:DB$ CopyPermanent | Populate$ True\nDeckHas:Ability$Token & Type$Treefolk\nDeckHints:Type$Elf\nOracle:When Arboreal Alliance enters, create an X/X green Treefolk creature token.\\nWhenever you attack with one or more Elves, populate. (Create a token that's a copy of a creature token you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arboreal Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

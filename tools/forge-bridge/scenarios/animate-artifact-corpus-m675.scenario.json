@@ -1,0 +1,23 @@
+{
+  "id": "animate-artifact-corpus-m675",
+  "description": "M6 corpus — Animate Artifact; in-hand parse.",
+  "seed": 61569,
+  "cards": {
+    "Animate Artifact": "Name:Animate Artifact\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAITgts:Card.nonCreature\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Card.AttachedBy+nonCreature | SetPower$ AffectedX | SetToughness$ AffectedX | AddType$ Creature | Description$ As long as enchanted artifact isn't a creature, it's an artifact creature with power and toughness each equal to its mana value.\nSVar:AffectedX:Count$CardManaCost\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:Enchant artifact\\nAs long as enchanted artifact isn't a creature, it's an artifact creature with power and toughness each equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animate Artifact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

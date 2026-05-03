@@ -1,0 +1,25 @@
+{
+  "id": "bloodgift-demon-corpus-m675",
+  "description": "M6 corpus — Bloodgift Demon; ETB-on-bf.",
+  "seed": 62971,
+  "cards": {
+    "Bloodgift Demon": "Name:Bloodgift Demon\nManaCost:3 B B\nTypes:Creature Demon\nPT:5/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, target player draws a card and loses 1 life.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Player | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 1\nOracle:Flying\\nAt the beginning of your upkeep, target player draws a card and loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodgift Demon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

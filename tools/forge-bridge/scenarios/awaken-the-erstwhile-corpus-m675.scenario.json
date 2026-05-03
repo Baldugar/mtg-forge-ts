@@ -1,0 +1,23 @@
+{
+  "id": "awaken-the-erstwhile-corpus-m675",
+  "description": "M6 corpus — Awaken the Erstwhile; in-hand parse.",
+  "seed": 62181,
+  "cards": {
+    "Awaken the Erstwhile": "Name:Awaken the Erstwhile\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDiscard | SpellDescription$ Each player discards all the cards in their hand, then creates that many 2/2 black Zombie creature tokens.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ Player.IsRemembered | SubAbility$ DBCleanup\nSVar:X:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard|Token\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Each player discards all the cards in their hand, then creates that many 2/2 black Zombie creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awaken the Erstwhile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

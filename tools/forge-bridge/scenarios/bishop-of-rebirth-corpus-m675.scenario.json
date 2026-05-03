@@ -1,0 +1,25 @@
+{
+  "id": "bishop-of-rebirth-corpus-m675",
+  "description": "M6 corpus — Bishop of Rebirth; ETB-on-bf.",
+  "seed": 62718,
+  "cards": {
+    "Bishop of Rebirth": "Name:Bishop of Rebirth\nManaCost:3 W W\nTypes:Creature Vampire Cleric\nPT:3/4\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature card with mana value 3 or less\nOracle:Vigilance\\nWhenever Bishop of Rebirth attacks, you may return target creature card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bishop of Rebirth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

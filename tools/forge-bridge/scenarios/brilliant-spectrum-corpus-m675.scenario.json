@@ -1,0 +1,23 @@
+{
+  "id": "brilliant-spectrum-corpus-m675",
+  "description": "M6 corpus — Brilliant Spectrum; in-hand parse.",
+  "seed": 63377,
+  "cards": {
+    "Brilliant Spectrum": "Name:Brilliant Spectrum\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SpellDescription$ Converge — Draw X cards, where X is the number of colors of mana spent to cast this spell. Then discard two cards. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose\nSVar:X:Count$Converge\nAI:RemoveDeck:All\nOracle:Converge — Draw X cards, where X is the number of colors of mana spent to cast this spell. Then discard two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brilliant Spectrum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

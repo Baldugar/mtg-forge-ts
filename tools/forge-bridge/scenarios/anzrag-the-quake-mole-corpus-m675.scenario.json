@@ -1,0 +1,25 @@
+{
+  "id": "anzrag-the-quake-mole-corpus-m675",
+  "description": "M6 corpus — Anzrag, the Quake-Mole; ETB-on-bf.",
+  "seed": 61616,
+  "cards": {
+    "Anzrag, the Quake-Mole": "Name:Anzrag, the Quake-Mole\nManaCost:2 R G\nTypes:Legendary Creature Mole God\nPT:8/4\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUntapAll | TriggerDescription$ Whenever CARDNAME becomes blocked, untap each creature you control. After this combat phase, there is an additional combat phase.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nA:AB$ Pump | Cost$ 3 R R G G | Defined$ Self | KW$ HIDDEN CARDNAME must be blocked if able. | AILogic$ Pump | SpellDescription$ NICKNAME must be blocked each combat this turn if able.\nOracle:Whenever Anzrag, the Quake-Mole becomes blocked, untap each creature you control. After this combat phase, there is an additional combat phase.\\n{3}{R}{R}{G}{G}: Anzrag must be blocked each combat this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anzrag, the Quake-Mole"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

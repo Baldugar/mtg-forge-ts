@@ -1,0 +1,23 @@
+{
+  "id": "aven-fogbringer-corpus-m675",
+  "description": "M6 corpus — Aven Fogbringer; in-hand parse.",
+  "seed": 62148,
+  "cards": {
+    "Aven Fogbringer": "Name:Aven Fogbringer\nManaCost:3 U\nTypes:Creature Bird Wizard\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target land to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Land | Origin$ Battlefield | Destination$ Hand\nOracle:Flying\\nWhen Aven Fogbringer enters, return target land to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Fogbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

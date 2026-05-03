@@ -1,0 +1,23 @@
+{
+  "id": "boggart-harbinger-corpus-m675",
+  "description": "M6 corpus — Boggart Harbinger; in-hand parse.",
+  "seed": 63067,
+  "cards": {
+    "Boggart Harbinger": "Name:Boggart Harbinger\nManaCost:2 B\nTypes:Creature Goblin Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Goblin card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Goblin | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:When Boggart Harbinger enters, you may search your library for a Goblin card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boggart Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

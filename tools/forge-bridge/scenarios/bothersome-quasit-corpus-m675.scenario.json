@@ -1,0 +1,25 @@
+{
+  "id": "bothersome-quasit-corpus-m675",
+  "description": "M6 corpus — Bothersome Quasit; ETB-on-bf.",
+  "seed": 63213,
+  "cards": {
+    "Bothersome Quasit": "Name:Bothersome Quasit\nManaCost:2 R\nTypes:Creature Demon\nPT:3/2\nK:Menace\nS:Mode$ CantBlock | ValidCard$ Creature.IsGoaded+OppCtrl | Description$ Goaded creatures your opponents control can't block.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ DBGoad | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, goad target creature an opponent controls.\nSVar:DBGoad:DB$ Goad | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nSVar:BuffedBy:Card.nonCreature\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nGoaded creatures your opponents control can't block.\\nWhenever you cast a noncreature spell, goad target creature an opponent controls. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bothersome Quasit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

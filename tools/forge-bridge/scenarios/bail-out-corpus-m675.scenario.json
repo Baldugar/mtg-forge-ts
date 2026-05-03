@@ -1,0 +1,23 @@
+{
+  "id": "bail-out-corpus-m675",
+  "description": "M6 corpus — Bail Out; in-hand parse.",
+  "seed": 62261,
+  "cards": {
+    "Bail Out": "Name:Bail Out\nManaCost:B\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Triggers$ BailOutTrigCZ | SpellDescription$ Until end of turn, target creature you control gains \"When this creature dies, return it to the battlefield tapped under its owner's control. It deals 1 damage to each opponent.\"\nSVar:BailOutTrigCZ:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ BailOutChangeZone | TriggerController$ TriggeredCardController | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control. It deals 1 damage to each opponent.\nSVar:BailOutChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | Tapped$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nK:Overload:2 B B\nOracle:Until end of turn, target creature you control gains \"When this creature dies, return it to the battlefield tapped under its owner's control. It deals 1 damage to each opponent.\"\\nOverload {2}{B}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bail Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

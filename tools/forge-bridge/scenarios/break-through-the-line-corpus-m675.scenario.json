@@ -1,0 +1,25 @@
+{
+  "id": "break-through-the-line-corpus-m675",
+  "description": "M6 corpus — Break Through the Line; ETB-on-bf.",
+  "seed": 63320,
+  "cards": {
+    "Break Through the Line": "Name:Break Through the Line\nManaCost:1 R\nTypes:Enchantment\nA:AB$ Pump | Cost$ R | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | KW$ Haste | SubAbility$ DBUnblockable | StackDescription$ {c:Targeted} gains haste until end of turn and can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less gains haste until end of turn and can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{R}: Target creature with power 2 or less gains haste until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Break Through the Line"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bat-whisperer-corpus-m675",
+  "description": "M6 corpus — Bat Whisperer; in-hand parse.",
+  "seed": 62450,
+  "cards": {
+    "Bat Whisperer": "Name:Bat Whisperer\nManaCost:3 B\nTypes:Creature Vampire\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, create a 1/1 black Bat creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_bat_flying | TokenOwner$ You\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Token\nOracle:When Bat Whisperer enters, if an opponent lost life this turn, create a 1/1 black Bat creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bat Whisperer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

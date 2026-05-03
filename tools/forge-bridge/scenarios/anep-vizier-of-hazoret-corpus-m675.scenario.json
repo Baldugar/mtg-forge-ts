@@ -1,0 +1,25 @@
+{
+  "id": "anep-vizier-of-hazoret-corpus-m675",
+  "description": "M6 corpus — Anep, Vizier of Hazoret; ETB-on-bf.",
+  "seed": 61490,
+  "cards": {
+    "Anep, Vizier of Hazoret": "Name:Anep, Vizier of Hazoret\nManaCost:2 R\nTypes:Legendary Creature Jackal Warrior\nPT:4/2\nK:Trample\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigExile | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, exile the top two cards of your library. Until the end of your next turn, you may play those cards. (An exerted creature won't untap during your next untap step.)\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ When you do, exile the top two cards of your library. Until the end of your next turn, you may play those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play the exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Trample\\nYou may exert Anep, Vizier of Hazoret as it attacks. When you do, exile the top two cards of your library. Until the end of your next turn, you may play those cards. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anep, Vizier of Hazoret"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

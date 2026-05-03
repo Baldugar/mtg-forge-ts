@@ -1,0 +1,25 @@
+{
+  "id": "battlefield-thaumaturge-corpus-m675",
+  "description": "M6 corpus — Battlefield Thaumaturge; ETB-on-bf.",
+  "seed": 62495,
+  "cards": {
+    "Battlefield Thaumaturge": "Name:Battlefield Thaumaturge\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nS:Mode$ ReduceCost | ValidCard$ Instant.YouCtrl,Sorcery.YouCtrl | Relative$ True | Type$ Spell | Amount$ ReduceCost | EffectZone$ All | Description$ Each instant and sorcery spell you cast costs {1} less to cast for each creature it targets.\nSVar:ReduceCost:TargetedObjectsDistinct$Valid Creature.inZoneBattlefield\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, CARDNAME gains hexproof until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Hexproof\nOracle:Each instant and sorcery spell you cast costs {1} less to cast for each creature it targets.\\nHeroic — Whenever you cast a spell that targets Battlefield Thaumaturge, Battlefield Thaumaturge gains hexproof until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battlefield Thaumaturge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

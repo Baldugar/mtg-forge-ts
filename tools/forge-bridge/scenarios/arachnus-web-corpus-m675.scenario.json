@@ -1,0 +1,23 @@
+{
+  "id": "arachnus-web-corpus-m675",
+  "description": "M6 corpus — Arachnus Web; in-hand parse.",
+  "seed": 61674,
+  "cards": {
+    "Arachnus Web": "Name:Arachnus Web\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.powerLT4\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature.EnchantedBy+powerGE4 | Execute$ TrigDestroy | TriggerDescription$ At the beginning of the end step, if enchanted creature's power is 4 or greater, destroy CARDNAME.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self\nDeckHints:Name$Arachnus Spinner\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\\nAt the beginning of the end step, if enchanted creature's power is 4 or greater, destroy Arachnus Web.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arachnus Web"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

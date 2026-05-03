@@ -1,0 +1,23 @@
+{
+  "id": "bartz-and-boko-corpus-m675",
+  "description": "M6 corpus — Bartz and Boko; in-hand parse.",
+  "seed": 62419,
+  "cards": {
+    "Bartz and Boko": "Name:Bartz and Boko\nManaCost:3 G G\nTypes:Legendary Creature Human Bird\nPT:4/3\nK:Affinity:Bird\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, each other Bird you control deals damage equal to its power to target creature an opponent controls.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | SubAbility$ DBEachDamage\nSVar:DBEachDamage:DB$ EachDamage | DefinedDamagers$ Valid Bird.Other+YouCtrl | Defined$ ParentTarget | NumDmg$ Count$CardPower\nDeckHints:Type$Bird\nOracle:Affinity for Birds (This spell costs {1} less to cast for each Bird you control.)\\nWhen Bartz and Boko enters, each other Bird you control deals damage equal to its power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bartz and Boko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

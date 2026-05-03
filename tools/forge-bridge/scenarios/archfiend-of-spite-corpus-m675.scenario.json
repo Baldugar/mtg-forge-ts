@@ -1,0 +1,25 @@
+{
+  "id": "archfiend-of-spite-corpus-m675",
+  "description": "M6 corpus — Archfiend of Spite; ETB-on-bf.",
+  "seed": 61751,
+  "cards": {
+    "Archfiend of Spite": "Name:Archfiend of Spite\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ DBLoseLife | TriggerDescription$ Whenever a source an opponent controls deals damage to CARDNAME, that source's controller loses that much life unless they sacrifice that many permanents.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredSourceController | LifeAmount$ X | UnlessCost$ Sac<X/Permanent> | UnlessPayer$ TriggeredSourceController\nSVar:X:TriggerCount$DamageAmount\nK:Madness:3 B B\nOracle:Flying\\nWhenever a source an opponent controls deals damage to Archfiend of Spite, that source's controller loses that much life unless they sacrifice that many permanents.\\nMadness {3}{B}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archfiend of Spite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

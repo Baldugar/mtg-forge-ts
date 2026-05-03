@@ -1,0 +1,25 @@
+{
+  "id": "arabella-abandoned-doll-corpus-m675",
+  "description": "M6 corpus — Arabella, Abandoned Doll; ETB-on-bf.",
+  "seed": 61667,
+  "cards": {
+    "Arabella, Abandoned Doll": "Name:Arabella, Abandoned Doll\nManaCost:R W\nTypes:Legendary Artifact Creature Toy\nPT:1/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ Whenever CARDNAME attacks, it deals X damage to each opponent and you gain X life, where X is the number of creatures you control with power 2 or less.\nSVar:TrigDamageAll:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+powerLE2\nOracle:Whenever Arabella, Abandoned Doll attacks, it deals X damage to each opponent and you gain X life, where X is the number of creatures you control with power 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arabella, Abandoned Doll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

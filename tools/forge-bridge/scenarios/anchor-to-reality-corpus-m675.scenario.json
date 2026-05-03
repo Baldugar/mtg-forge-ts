@@ -1,0 +1,23 @@
+{
+  "id": "anchor-to-reality-corpus-m675",
+  "description": "M6 corpus — Anchor to Reality; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Anchor to Reality": "Name:Anchor to Reality\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ 2 U U Sac<1/Artifact;Creature/artifact or creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Equipment,Vehicle | RememberChanged$ True | SubAbility$ DBScry | SpellDescription$ Search your library for an Equipment or Vehicle card, put that card onto the battlefield, then shuffle.\nSVar:DBScry:DB$ Scry | ConditionDefined$ Remembered | ConditionPresent$ Card | ScryNum$ X | SubAbility$ DBCleanup | SpellDescription$ If it has mana value less than the sacrificed permanent's mana value, scry 2.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Compare Y LTZ.2.0\nSVar:Y:Remembered$CardManaCost\nSVar:Z:Sacrificed$CardManaCost\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact|Creature|Equipment|Vehicle\nOracle:As an additional cost to cast this spell, sacrifice an artifact or creature.\\nSearch your library for an Equipment or Vehicle card, put that card onto the battlefield, then shuffle. If it has mana value less than the sacrificed permanent's mana value, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anchor to Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

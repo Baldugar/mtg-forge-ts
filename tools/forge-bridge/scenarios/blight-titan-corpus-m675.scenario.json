@@ -1,0 +1,23 @@
+{
+  "id": "blight-titan-corpus-m675",
+  "description": "M6 corpus — Blight Titan; in-hand parse.",
+  "seed": 62844,
+  "cards": {
+    "Blight Titan": "Name:Blight Titan\nManaCost:4 B B\nTypes:Creature Phyrexian Giant\nPT:6/6\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME enters or attacks, mill two cards, then incubate X, where X is the number of creature cards in your graveyard. (Create an Incubator token with X +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME enters or attacks, mill two cards, then incubate X, where X is the number of creature cards in your graveyard. (Create an Incubator token with X +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 2 | SubAbility$ DBIncubate\nSVar:DBIncubate:DB$ Incubate | Amount$ X\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nDeckHints:Ability$Graveyard\nDeckHas:Ability$Counters|Token & Type$Artifact\nOracle:Deathtouch\\nWhenever Blight Titan enters or attacks, mill two cards, then incubate X, where X is the number of creature cards in your graveyard. (Create an Incubator token with X +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blight Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

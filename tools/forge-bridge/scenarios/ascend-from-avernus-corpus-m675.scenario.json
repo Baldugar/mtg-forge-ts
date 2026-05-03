@@ -1,0 +1,23 @@
+{
+  "id": "ascend-from-avernus-corpus-m675",
+  "description": "M6 corpus — Ascend from Avernus; in-hand parse.",
+  "seed": 61918,
+  "cards": {
+    "Ascend from Avernus": "Name:Ascend from Avernus\nManaCost:X W W W\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouOwn+cmcLEX,Planeswalker.YouOwn+cmcLEX | SubAbility$ DBChange | SpellDescription$ Return all creature and planeswalker cards with mana value X or less from your graveyard to the battlefield.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nSVar:X:Count$xPaid\nDeckHas:Ability$Graveyard\nDeckHints:Type$Planeswalker & Ability$Discard|Sacrifice\nOracle:Return all creature and planeswalker cards with mana value X or less from your graveyard to the battlefield. Exile Ascend from Avernus.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ascend from Avernus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

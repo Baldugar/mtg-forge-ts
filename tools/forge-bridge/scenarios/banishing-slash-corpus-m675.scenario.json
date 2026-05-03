@@ -1,0 +1,23 @@
+{
+  "id": "banishing-slash-corpus-m675",
+  "description": "M6 corpus — Banishing Slash; in-hand parse.",
+  "seed": 62337,
+  "cards": {
+    "Banishing Slash": "Name:Banishing Slash\nManaCost:W W\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact,Enchantment,Creature.tapped | TgtPrompt$ Select up to one target artifact, enchantment or tapped creature | SubAbility$ DBToken | SpellDescription$ Destroy up to one target artifact, enchantment, or tapped creature.\nSVar:DBToken:DB$ Token | ConditionPresent$ Artifact.YouCtrl | ConditionPresent2$ Enchantment.YouCtrl | TokenScript$ w_2_2_samurai_vigilance | SpellDescription$ Then if you control an artifact and an enchantment, create a 2/2 white Samurai creature token with vigilance.\nDeckHints:Type$Artifact|Enchantment\nDeckHas:Ability$Token & Type$Samurai\nOracle:Destroy up to one target artifact, enchantment, or tapped creature. Then if you control an artifact and an enchantment, create a 2/2 white Samurai creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banishing Slash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

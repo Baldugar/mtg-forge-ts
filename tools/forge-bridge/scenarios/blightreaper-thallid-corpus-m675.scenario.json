@@ -1,0 +1,23 @@
+{
+  "id": "blightreaper-thallid-corpus-m675",
+  "description": "M6 corpus — Blightreaper Thallid; in-hand parse.",
+  "seed": 62858,
+  "cards": {
+    "Blightreaper Thallid": "Name:Blightreaper Thallid\nManaCost:1 B\nTypes:Creature Fungus\nPT:2/2\nA:AB$ SetState | Cost$ 3 GP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery.\nAlternateMode:DoubleFaced\nOracle:{3}{G/P}: Transform Blightreaper Thallid. Activate only as a sorcery. ({G/P} can be paid with either {G} or 2 life.)\n\nALTERNATE\n\nName:Blightsower Thallid\nManaCost:no cost\nColors:black,green\nTypes:Creature Phyrexian Fungus\nPT:3/3\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature transforms into CARDNAME or dies, create a 1/1 green Phyrexian Saproling creature token.\nT:Mode$ ChangesZone | Destination$ Graveyard | Origin$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigToken | TriggerDescription$ When this creature transforms into CARDNAME or dies, create a 1/1 green Phyrexian Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_phyrexian_saproling\nDeckHas:Ability$Token & Type$Saproling\nOracle:When this creature transforms into Blightsower Thallid or dies, create a 1/1 green Phyrexian Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blightreaper Thallid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

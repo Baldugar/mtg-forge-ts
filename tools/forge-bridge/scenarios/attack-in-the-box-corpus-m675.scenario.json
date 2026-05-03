@@ -1,0 +1,25 @@
+{
+  "id": "attack-in-the-box-corpus-m675",
+  "description": "M6 corpus — Attack-in-the-Box; ETB-on-bf.",
+  "seed": 62031,
+  "cards": {
+    "Attack-in-the-Box": "Name:Attack-in-the-Box\nManaCost:3\nTypes:Artifact Creature Toy\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have it get +4/+0 until end of turn. If you do, sacrifice it at the beginning of the next end step.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +4 | AtEOT$ Sacrifice\nOracle:Whenever Attack-in-the-box attacks, you may have it get +4/+0 until end of turn. If you do, sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Attack-in-the-Box"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

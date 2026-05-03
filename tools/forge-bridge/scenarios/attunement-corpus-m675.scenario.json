@@ -1,0 +1,25 @@
+{
+  "id": "attunement-corpus-m675",
+  "description": "M6 corpus — Attunement; ETB-on-bf.",
+  "seed": 62039,
+  "cards": {
+    "Attunement": "Name:Attunement\nManaCost:2 U\nTypes:Enchantment\nA:AB$ Draw | Cost$ Return<1/CARDNAME> | NumCards$ 3 | SpellDescription$ Draw three cards, then discard four cards. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 4 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:Return Attunement to its owner's hand: Draw three cards, then discard four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Attunement"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

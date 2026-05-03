@@ -1,0 +1,23 @@
+{
+  "id": "arcane-savant-corpus-m675",
+  "description": "M6 corpus — Arcane Savant; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Arcane Savant": "Name:Arcane Savant\nManaCost:3 U U\nTypes:Creature Human Wizard\nPT:3/3\nK:MayEffectFromOpeningDeck:DBReveal\nSVar:DBReveal:DB$ Reveal | RevealDefined$ Self | SubAbility$ DBExile | SpellDescription$ Before you shuffle your deck to start the game, you may reveal this card from your deck and exile an instant or sorcery card you drafted that isn't in your deck.\nSVar:DBExile:DB$ ChangeZone | Origin$ Sideboard | Destination$ Exile | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | Optional$ True | RememberChanged$ True | SubAbility$ DBPump | ConditionGameTypes$ Draft,QuestDraft | SelectPrompt$ Exile with CARDNAME\nSVar:DBPump:DB$ Pump | NoteCards$ Remembered | NoteCardsFor$ ArcaneSavant | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ When CARDNAME enters, copy a card you exiled with cards named Arcane Savant. You may cast the copy without paying its mana cost.\nSVar:TrigPlay:DB$ Play | Valid$ Card.YouOwn+NotedForArcaneSavant | ValidSA$ Spell | ValidZone$ Exile | Amount$ 1 | WithoutManaCost$ True | Optional$ True | CopyCard$ True | SpellDescription$ You may copy the exiled card. If you do, you may cast the copy without paying its mana cost. | SubAbility$ DBCleanup\nOracle:Before you shuffle your deck to start the game, you may reveal this card from your deck and exile an instant or sorcery card you drafted that isn't in your deck.\\nWhen Arcane Savant enters, copy a card you exiled with cards named Arcane Savant. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcane Savant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

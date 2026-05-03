@@ -1,0 +1,23 @@
+{
+  "id": "backlash-corpus-m675",
+  "description": "M6 corpus — Backlash; in-hand parse.",
+  "seed": 62248,
+  "cards": {
+    "Backlash": "Name:Backlash\nManaCost:1 B R\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature.untapped | TgtPrompt$ Select target untapped creature | SubAbility$ DBDamage | SpellDescription$ Tap target untapped creature. That creature deals damage equal to its power to its controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | DamageSource$ Targeted | NumDmg$ X\nSVar:X:Targeted$CardPower\nOracle:Tap target untapped creature. That creature deals damage equal to its power to its controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Backlash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

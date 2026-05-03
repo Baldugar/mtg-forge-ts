@@ -1,0 +1,23 @@
+{
+  "id": "blood-tithe-corpus-m675",
+  "description": "M6 corpus — Blood Tithe; in-hand parse.",
+  "seed": 62948,
+  "cards": {
+    "Blood Tithe": "Name:Blood Tithe\nManaCost:3 B\nTypes:Sorcery\nA:SP$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 3 life. You gain life equal to the life lost this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ You gain life equal to the life lost this way.\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:Each opponent loses 3 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Tithe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

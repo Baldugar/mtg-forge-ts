@@ -1,0 +1,23 @@
+{
+  "id": "biogenic-ooze-corpus-m675",
+  "description": "M6 corpus — Biogenic Ooze; in-hand parse.",
+  "seed": 62694,
+  "cards": {
+    "Biogenic Ooze": "Name:Biogenic Ooze\nManaCost:3 G G\nTypes:Creature Ooze\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 green Ooze creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_ooze\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on each Ooze you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Ooze.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Artifact\nA:AB$ Token | Cost$ 1 G G G | TokenScript$ g_2_2_ooze | SpellDescription$ Create a 2/2 green Ooze creature token.\nDeckHas:Ability$Token|Counters\nOracle:When Biogenic Ooze enters, create a 2/2 green Ooze creature token.\\nAt the beginning of your end step, put a +1/+1 counter on each Ooze you control.\\n{1}{G}{G}{G}: Create a 2/2 green Ooze creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biogenic Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

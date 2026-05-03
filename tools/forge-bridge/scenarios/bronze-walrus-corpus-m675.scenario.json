@@ -1,0 +1,23 @@
+{
+  "id": "bronze-walrus-corpus-m675",
+  "description": "M6 corpus — Bronze Walrus; in-hand parse.",
+  "seed": 63429,
+  "cards": {
+    "Bronze Walrus": "Name:Bronze Walrus\nManaCost:3\nTypes:Artifact Creature Walrus\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Bronze Walrus enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bronze Walrus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

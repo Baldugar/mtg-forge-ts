@@ -1,0 +1,25 @@
+{
+  "id": "bridge-from-below-corpus-m675",
+  "description": "M6 corpus — Bridge from Below; ETB-on-bf.",
+  "seed": 63357,
+  "cards": {
+    "Bridge from Below": "Name:Bridge from Below\nManaCost:B B B\nTypes:Enchantment\nA:SP$ PermanentNoncreature | Cost$ B B B | AILogic$ Never\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouOwn | Execute$ TrigToken | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | TriggerZones$ Graveyard | TriggerDescription$ Whenever a nontoken creature is put into your graveyard from the battlefield, if CARDNAME is in your graveyard, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppOwn | Execute$ TrigChange | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | TriggerZones$ Graveyard | TriggerDescription$ When a creature is put into an opponent's graveyard from the battlefield, if CARDNAME is in your graveyard, exile CARDNAME.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile\nAI:RemoveDeck:Random\nSVar:DiscardMe:5\nSVar:SacMe:5\nOracle:Whenever a nontoken creature is put into your graveyard from the battlefield, if Bridge from Below is in your graveyard, create a 2/2 black Zombie creature token.\\nWhen a creature is put into an opponent's graveyard from the battlefield, if Bridge from Below is in your graveyard, exile Bridge from Below.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bridge from Below"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

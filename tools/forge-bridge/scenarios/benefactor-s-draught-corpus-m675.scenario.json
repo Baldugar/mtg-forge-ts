@@ -1,0 +1,23 @@
+{
+  "id": "benefactor-s-draught-corpus-m675",
+  "description": "M6 corpus — Benefactor's Draught; in-hand parse.",
+  "seed": 62627,
+  "cards": {
+    "Benefactor's Draught": "Name:Benefactor's Draught\nManaCost:1 G\nTypes:Instant\nA:SP$ UntapAll | ValidCards$ Creature | SubAbility$ DBEffect | SpellDescription$ Untap all creatures. Until end of turn, whenever a creature an opponent controls blocks, draw a card. Draw a card.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigBlock | SubAbility$ DBDraw\nSVar:TrigBlock:Mode$ Blocks | ValidCard$ Creature.OppCtrl | Execute$ EffDraw | TriggerDescription$ Whenever a creature an opponent controls blocks, draw a card.\nSVar:EffDraw:DB$ Draw\nSVar:DBDraw:DB$ Draw\nOracle:Untap all creatures. Until end of turn, whenever a creature an opponent controls blocks, draw a card.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Benefactor's Draught"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

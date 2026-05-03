@@ -1,0 +1,25 @@
+{
+  "id": "bloodthirster-corpus-m675",
+  "description": "M6 corpus — Bloodthirster; ETB-on-bf.",
+  "seed": 62997,
+  "cards": {
+    "Bloodthirster": "Name:Bloodthirster\nManaCost:5 R\nTypes:Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, untap it. After this combat phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nS:Mode$ CantAttack | ValidCard$ Card.Self | Target$ Player.attackedBySourceThisTurn | Description$ CARDNAME can't attack a player it has already attacked this turn.\nOracle:Flying, trample\\nWhenever Bloodthirster deals combat damage to a player, untap it. After this combat phase, there is an additional combat phase.\\nBloodthirster can't attack a player it has already attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodthirster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bramble-elemental-corpus-m675",
+  "description": "M6 corpus — Bramble Elemental; ETB-on-bf.",
+  "seed": 63269,
+  "cards": {
+    "Bramble Elemental": "Name:Bramble Elemental\nManaCost:3 G G\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ Attached | ValidSource$ Aura | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an Aura becomes attached to CARDNAME, create two 1/1 green Saproling creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenOwner$ TriggeredTargetController | TokenScript$ g_1_1_saproling\nSVar:EnchantMe:Multiple\nDeckHas:Ability$Token\nOracle:Whenever an Aura becomes attached to Bramble Elemental, create two 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bramble Elemental"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ashuza-s-breath-corpus-m675",
+  "description": "M6 corpus — Ashuza's Breath; in-hand parse.",
+  "seed": 61964,
+  "cards": {
+    "Ashuza's Breath": "Name:Ashuza's Breath\nManaCost:1 R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatCards$ Creature | Zone$ Battlefield | RepeatSubAbility$ DBDealDamage | SpellDescription$ For each creature, choose a number from 0 to 2 at random. CARDNAME deals that much damage to that creature.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ X | Defined$ Remembered\nSVar:X:Count$Random.0.2\nOracle:For each creature, choose a number from 0 to 2 at random. Ashuza's Breath deals that much damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashuza's Breath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

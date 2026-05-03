@@ -1,0 +1,23 @@
+{
+  "id": "bedlam-reveler-corpus-m675",
+  "description": "M6 corpus — Bedlam Reveler; in-hand parse.",
+  "seed": 62559,
+  "cards": {
+    "Bedlam Reveler": "Name:Bedlam Reveler\nManaCost:6 R R\nTypes:Creature Devil Horror\nPT:3/4\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each instant and sorcery card in your graveyard.\nK:Prowess\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard your hand, then draw three cards.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 3\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nDeckHints:Ability$Graveyard\nOracle:This spell costs {1} less to cast for each instant and sorcery card in your graveyard.\\nProwess\\nWhen Bedlam Reveler enters, discard your hand, then draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bedlam Reveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

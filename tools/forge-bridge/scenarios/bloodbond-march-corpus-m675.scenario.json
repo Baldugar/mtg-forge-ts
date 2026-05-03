@@ -1,0 +1,25 @@
+{
+  "id": "bloodbond-march-corpus-m675",
+  "description": "M6 corpus — Bloodbond March; ETB-on-bf.",
+  "seed": 62953,
+  "cards": {
+    "Bloodbond March": "Name:Bloodbond March\nManaCost:2 B G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a player casts a creature spell, each player returns all cards with the same name as that spell from their graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Triggered.sameName | Origin$ Graveyard | Destination$ Battlefield\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a creature spell, each player returns all cards with the same name as that spell from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodbond March"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

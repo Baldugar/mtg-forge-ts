@@ -1,0 +1,23 @@
+{
+  "id": "arrow-storm-corpus-m675",
+  "description": "M6 corpus — Arrow Storm; in-hand parse.",
+  "seed": 61889,
+  "cards": {
+    "Arrow Storm": "Name:Arrow Storm\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | ConditionCheckSVar$ RaidTest | ConditionSVarCompare$ EQ0 | SubAbility$ DBDmg | SpellDescription$ CARDNAME deals 4 damage to any target. Raid — If you attacked this turn, instead CARDNAME deals 5 damage to that permanent or player and the damage can't be prevented.\nSVar:DBDmg:DB$ DealDamage | Defined$ Targeted | NumDmg$ 5 | NoPrevention$ True | ConditionCheckSVar$ RaidTest | StackDescription$ Raid — If you attacked this turn, instead CARDNAME deals 5 damage to {Targeted} and the damage can't be prevented.\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Arrow Storm deals 4 damage to any target.\\nRaid — If you attacked this turn, instead Arrow Storm deals 5 damage to that permanent or player and the damage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arrow Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

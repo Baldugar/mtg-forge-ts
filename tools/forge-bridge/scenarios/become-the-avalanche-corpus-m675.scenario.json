@@ -1,0 +1,23 @@
+{
+  "id": "become-the-avalanche-corpus-m675",
+  "description": "M6 corpus — Become the Avalanche; in-hand parse.",
+  "seed": 62554,
+  "cards": {
+    "Become the Avalanche": "Name:Become the Avalanche\nManaCost:4 G G\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SubAbility$ DBPumpAll | SpellDescription$ Draw a card for each creature you control with power 4 or greater. Then creatures you control get +X/+X until end of turn, where X is the number of cards in your hand.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +Y | NumDef$ +Y\nSVar:X:Count$Valid Creature.powerGE4+YouCtrl\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:Draw a card for each creature you control with power 4 or greater. Then creatures you control get +X/+X until end of turn, where X is the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Become the Avalanche"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

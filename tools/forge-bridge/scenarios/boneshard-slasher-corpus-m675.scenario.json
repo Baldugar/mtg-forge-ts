@@ -1,0 +1,25 @@
+{
+  "id": "boneshard-slasher-corpus-m675",
+  "description": "M6 corpus — Boneshard Slasher; ETB-on-bf.",
+  "seed": 63135,
+  "cards": {
+    "Boneshard Slasher": "Name:Boneshard Slasher\nManaCost:1 B\nTypes:Creature Horror\nPT:1/1\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ SpellTarget | AddSVar$ SlasherSac & SlasherTarget | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +2/+2 and has \"When CARDNAME becomes the target of a spell or ability, sacrifice it.\"\nSVar:SpellTarget:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ SlasherSac | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, sacrifice it.\nSVar:SlasherSac:DB$ Sacrifice\nSVar:SlasherTarget:Targeting:Dies\nOracle:Flying\\nThreshold — As long as there are seven or more cards in your graveyard, Boneshard Slasher gets +2/+2 and has \"When Boneshard Slasher becomes the target of a spell or ability, sacrifice it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boneshard Slasher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

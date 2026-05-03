@@ -1,0 +1,23 @@
+{
+  "id": "azorius-herald-corpus-m675",
+  "description": "M6 corpus — Azorius Herald; in-hand parse.",
+  "seed": 62221,
+  "cards": {
+    "Azorius Herald": "Name:Azorius Herald\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 4 life.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless {U} was spent to cast it.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nSVar:TrigSac:DB$ Sacrifice | ConditionManaNotSpent$ U\nSVar:ManaNeededToAvoidNegativeEffect:blue\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:Azorius Herald can't be blocked.\\nWhen Azorius Herald enters, you gain 4 life.\\nWhen Azorius Herald enters, sacrifice it unless {U} was spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azorius Herald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

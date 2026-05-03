@@ -1,0 +1,23 @@
+{
+  "id": "bonds-of-mortality-corpus-m675",
+  "description": "M6 corpus — Bonds of Mortality; in-hand parse.",
+  "seed": 63110,
+  "cards": {
+    "Bonds of Mortality": "Name:Bonds of Mortality\nManaCost:1 G\nTypes:Enchantment\nA:AB$ AnimateAll | Cost$ G | ValidCards$ Creature.OppCtrl | RemoveKeywords$ Hexproof & Indestructible | SpellDescription$ Creatures your opponents control lose hexproof and indestructible until end of turn. | StackDescription$ SpellDescription\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:All\nOracle:When Bonds of Mortality enters, draw a card.\\n{G}: Creatures your opponents control lose hexproof and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bonds of Mortality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

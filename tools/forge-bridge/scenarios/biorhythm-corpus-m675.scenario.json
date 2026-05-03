@@ -1,0 +1,23 @@
+{
+  "id": "biorhythm-corpus-m675",
+  "description": "M6 corpus — Biorhythm; in-hand parse.",
+  "seed": 62703,
+  "cards": {
+    "Biorhythm": "Name:Biorhythm\nManaCost:6 G G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBSetLife | SpellDescription$ Each player's life total becomes the number of creatures they control.\nSVar:DBSetLife:DB$ SetLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl\nAI:RemoveDeck:All\nOracle:Each player's life total becomes the number of creatures they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biorhythm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

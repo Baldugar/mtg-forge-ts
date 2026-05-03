@@ -1,0 +1,23 @@
+{
+  "id": "archon-of-justice-corpus-m675",
+  "description": "M6 corpus — Archon of Justice; in-hand parse.",
+  "seed": 61768,
+  "cards": {
+    "Archon of Justice": "Name:Archon of Justice\nManaCost:3 W W\nTypes:Creature Archon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, exile target permanent.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Exile\nOracle:Flying\\nWhen Archon of Justice dies, exile target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archon of Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

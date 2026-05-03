@@ -1,0 +1,25 @@
+{
+  "id": "anurid-scavenger-corpus-m675",
+  "description": "M6 corpus — Anurid Scavenger; ETB-on-bf.",
+  "seed": 61611,
+  "cards": {
+    "Anurid Scavenger": "Name:Anurid Scavenger\nManaCost:2 G\nTypes:Creature Frog Beast\nPT:3/3\nK:Protection from black\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you put a card from your graveyard on the bottom of your library.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ PutCardToLibFromGrave<1/-1/Card>\nSVar:NeedsToPlayVar:Y GE3\nSVar:Y:Count$ValidGraveyard Card.YouOwn\nOracle:Protection from black\\nAt the beginning of your upkeep, sacrifice Anurid Scavenger unless you put a card from your graveyard on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anurid Scavenger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

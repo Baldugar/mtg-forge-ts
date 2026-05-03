@@ -1,0 +1,25 @@
+{
+  "id": "awakening-corpus-m675",
+  "description": "M6 corpus — Awakening; ETB-on-bf.",
+  "seed": 62185,
+  "cards": {
+    "Awakening": "Name:Awakening\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigUntapAll | TriggerDescription$ At the beginning of each upkeep, untap all creatures and lands.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature,Land\nSVar:UntapsEachTurn:Creature,Land\nAI:RemoveDeck:Random\nOracle:At the beginning of each upkeep, untap all creatures and lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Awakening"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

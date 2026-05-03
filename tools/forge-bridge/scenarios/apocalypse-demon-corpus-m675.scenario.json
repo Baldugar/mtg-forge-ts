@@ -1,0 +1,25 @@
+{
+  "id": "apocalypse-demon-corpus-m675",
+  "description": "M6 corpus — Apocalypse Demon; ETB-on-bf.",
+  "seed": 61632,
+  "cards": {
+    "Apocalypse Demon": "Name:Apocalypse Demon\nManaCost:4 B B\nTypes:Creature Demon\nPT:*/*\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your graveyard.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of your upkeep, tap CARDNAME unless you sacrifice another creature.\nSVar:TrigTap:DB$ Tap | UnlessCost$ Sac<1/Creature.Other/another creature> | UnlessPayer$ You | Defined$ Self\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Flying\\nApocalypse Demon's power and toughness are each equal to the number of cards in your graveyard.\\nAt the beginning of your upkeep, tap Apocalypse Demon unless you sacrifice another creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Apocalypse Demon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "apocalypse-hydra-corpus-m675",
+  "description": "M6 corpus — Apocalypse Hydra; in-hand parse.",
+  "seed": 61633,
+  "cards": {
+    "Apocalypse Hydra": "Name:Apocalypse Hydra\nManaCost:X R G\nTypes:Creature Hydra\nPT:0/0\nK:etbCounter:P1P1:Y:no Condition:CARDNAME enters with X +1/+1 counters on it. If X is 5 or more, it enters with an additional X +1/+1 counters on it.\nA:AB$ DealDamage | Cost$ 1 R SubCounter<1/P1P1> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ It deals 1 damage to any target.\n# This xPaid doesn't do anything, it's just needed to make Cost work properly\nSVar:X:Count$xPaid\nSVar:Y:Count$Compare X LT5.X.Z\nSVar:Z:Count$xPaid/Twice\nDeckHas:Ability$Counters\nDeckHints:Ability$Proliferate\nOracle:Apocalypse Hydra enters with X +1/+1 counters on it. If X is 5 or more, it enters with an additional X +1/+1 counters on it.\\n{1}{R}, Remove a +1/+1 counter from Apocalypse Hydra: It deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apocalypse Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

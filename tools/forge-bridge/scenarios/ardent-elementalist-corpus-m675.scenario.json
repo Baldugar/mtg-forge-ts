@@ -1,0 +1,23 @@
+{
+  "id": "ardent-elementalist-corpus-m675",
+  "description": "M6 corpus — Ardent Elementalist; in-hand parse.",
+  "seed": 61794,
+  "cards": {
+    "Ardent Elementalist": "Name:Ardent Elementalist\nManaCost:3 R\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtPrompt$ Select target instant or sorcery card in your graveyard\nDeckNeeds:Type$Instant|Sorcery\nOracle:When Ardent Elementalist enters, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ardent Elementalist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

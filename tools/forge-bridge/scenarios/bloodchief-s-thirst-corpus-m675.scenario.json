@@ -1,0 +1,23 @@
+{
+  "id": "bloodchief-s-thirst-corpus-m675",
+  "description": "M6 corpus — Bloodchief's Thirst; in-hand parse.",
+  "seed": 62955,
+  "cards": {
+    "Bloodchief's Thirst": "Name:Bloodchief's Thirst\nManaCost:B\nTypes:Sorcery\nK:Kicker:2 B\nA:SP$ Destroy | ValidTgts$ Creature.cmcLE2,Planeswalker.cmcLE2 | TargetMin$ X | TargetMax$ X | TgtPrompt$ Select target creature or planeswalker with mana value 2 or less | SubAbility$ DBDestroy | AILogic$ AssumeAtLeastOneTarget | StackDescription$ SpellDescription | SpellDescription$ Destroy target creature or planeswalker with mana value 2 or less.\nSVar:DBDestroy:DB$ Destroy | TargetMin$ Y | TargetMax$ Y | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | StackDescription$ SpellDescription | SpellDescription$ If this spell was kicked, instead destroy target creature or planeswalker.\nSVar:X:Count$Kicked.0.1\nSVar:Y:Count$Kicked.1.0\nOracle:Kicker {2}{B} (You may pay an additional {2}{B} as you cast this spell.)\\nDestroy target creature or planeswalker with mana value 2 or less. If this spell was kicked, instead destroy target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodchief's Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

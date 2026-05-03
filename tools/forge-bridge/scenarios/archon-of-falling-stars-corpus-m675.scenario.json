@@ -1,0 +1,23 @@
+{
+  "id": "archon-of-falling-stars-corpus-m675",
+  "description": "M6 corpus — Archon of Falling Stars; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "Archon of Falling Stars": "Name:Archon of Falling Stars\nManaCost:4 W W\nTypes:Creature Archon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may return target enchantment card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Enchantment.YouOwn\nOracle:Flying\\nWhen Archon of Falling Stars dies, you may return target enchantment card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archon of Falling Stars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

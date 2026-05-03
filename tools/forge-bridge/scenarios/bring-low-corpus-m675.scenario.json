@@ -1,0 +1,23 @@
+{
+  "id": "bring-low-corpus-m675",
+  "description": "M6 corpus — Bring Low; in-hand parse.",
+  "seed": 63395,
+  "cards": {
+    "Bring Low": "Name:Bring Low\nManaCost:3 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals 3 damage to target creature. If that creature has a +1/+1 counter on it, CARDNAME deals 5 damage to it instead.\nSVar:Y:Targeted$Valid Creature.counters_GE1_P1P1\nSVar:X:Count$Compare Y GE1.5.3\nOracle:Bring Low deals 3 damage to target creature. If that creature has a +1/+1 counter on it, Bring Low deals 5 damage to it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bring Low"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

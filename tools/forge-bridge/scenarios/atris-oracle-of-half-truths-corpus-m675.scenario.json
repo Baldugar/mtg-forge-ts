@@ -1,0 +1,23 @@
+{
+  "id": "atris-oracle-of-half-truths-corpus-m675",
+  "description": "M6 corpus — Atris, Oracle of Half-Truths; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Atris, Oracle of Half-Truths": "Name:Atris, Oracle of Half-Truths\nManaCost:2 U B\nTypes:Legendary Creature Human Advisor\nPT:3/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBChoosePlayer | TriggerDescription$ When CARDNAME enters, target opponent looks at the top three cards of your library and separates them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard.\nSVar:DBChoosePlayer:DB$ Pump | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBPeekAndReveal\nSVar:DBPeekAndReveal:DB$ PeekAndReveal | Defined$ You | PeekAmount$ 3 | NoPeek$ True | NoReveal$ True | RememberPeeked$ True | SubAbility$ Separate\nSVar:Separate:DB$ TwoPiles | Defined$ You | Separator$ Targeted | Chooser$ You | DefinedCards$ Remembered | ChosenPile$ DBHand | UnchosenPile$ DBGrave | Zone$ Library | FaceDown$ One | StackDescription$ None\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nOracle:Menace\\nWhen Atris, Oracle of Half-Truths enters, target opponent looks at the top three cards of your library and separates them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atris, Oracle of Half-Truths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

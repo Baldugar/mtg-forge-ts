@@ -1,0 +1,23 @@
+{
+  "id": "archway-angel-corpus-m675",
+  "description": "M6 corpus — Archway Angel; in-hand parse.",
+  "seed": 61774,
+  "cards": {
+    "Archway Angel": "Name:Archway Angel\nManaCost:5 W\nTypes:Creature Angel\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each Gate you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Gate.YouCtrl/Times.2\nDeckHas:Ability$LifeGain\nDeckHints:Type$Gate\nOracle:Flying\\nWhen Archway Angel enters, you gain 2 life for each Gate you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archway Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

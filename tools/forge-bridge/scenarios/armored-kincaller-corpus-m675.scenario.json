@@ -1,0 +1,23 @@
+{
+  "id": "armored-kincaller-corpus-m675",
+  "description": "M6 corpus — Armored Kincaller; in-hand parse.",
+  "seed": 61858,
+  "cards": {
+    "Armored Kincaller": "Name:Armored Kincaller\nManaCost:2 G\nTypes:Creature Dinosaur\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, you may reveal a Dinosaur card from your hand. If you do or if you control another Dinosaur, you gain 3 life.\nSVar:TrigReveal:DB$ Reveal | RevealValid$ Dinosaur | RememberRevealed$ True | Optional$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ConditionCheckSVar$ Count$RememberedSize/Plus.DinoControlled | LifeAmount$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DinoControlled:Count$Valid Dinosaur.Other+YouCtrl\nDeckHints:Type$Dinosaur\nDeckHas:Ability$LifeGain\nOracle:When Armored Kincaller enters, you may reveal a Dinosaur card from your hand. If you do or if you control another Dinosaur, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armored Kincaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

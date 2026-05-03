@@ -1,0 +1,25 @@
+{
+  "id": "angelic-captain-corpus-m675",
+  "description": "M6 corpus — Angelic Captain; ETB-on-bf.",
+  "seed": 61523,
+  "cards": {
+    "Angelic Captain": "Name:Angelic Captain\nManaCost:3 R W\nTypes:Creature Angel Ally\nPT:4/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each other attacking Ally.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Ally.attacking+Other\nDeckHints:Type$Ally\nOracle:Flying\\nWhenever Angelic Captain attacks, it gets +1/+1 until end of turn for each other attacking Ally.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angelic Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

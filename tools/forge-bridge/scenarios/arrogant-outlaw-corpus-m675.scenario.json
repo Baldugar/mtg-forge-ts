@@ -1,0 +1,23 @@
+{
+  "id": "arrogant-outlaw-corpus-m675",
+  "description": "M6 corpus — Arrogant Outlaw; in-hand parse.",
+  "seed": 61886,
+  "cards": {
+    "Arrogant Outlaw": "Name:Arrogant Outlaw\nManaCost:2 B\nTypes:Creature Vampire Noble\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, each opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$LifeGain\nOracle:When Arrogant Outlaw enters, if an opponent lost life this turn, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arrogant Outlaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

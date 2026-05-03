@@ -1,0 +1,25 @@
+{
+  "id": "augur-of-autumn-corpus-m675",
+  "description": "M6 corpus — Augur of Autumn; ETB-on-bf.",
+  "seed": 62054,
+  "cards": {
+    "Augur of Autumn": "Name:Augur of Autumn\nManaCost:1 G G\nTypes:Creature Human Druid\nPT:2/3\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Land.TopLibrary+YouCtrl | AffectedZone$ Library | MayPlay$ True | Description$ You may play lands from the top of your library.\nS:Mode$ Continuous | CheckSVar$ X | SVarCompare$ GE3 | Affected$ Creature.TopLibrary+nonLand+YouCtrl | AffectedZone$ Library | MayPlay$ True | Description$ Coven — As long as you control three or more creatures with different powers, you may cast creature spells from the top of your library.\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:You may look at the top card of your library any time.\\nYou may play lands from the top of your library.\\nCoven — As long as you control three or more creatures with different powers, you may cast creature spells from the top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Augur of Autumn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

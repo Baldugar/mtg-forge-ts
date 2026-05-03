@@ -1,0 +1,23 @@
+{
+  "id": "ashen-rider-corpus-m675",
+  "description": "M6 corpus — Ashen Rider; in-hand parse.",
+  "seed": 61937,
+  "cards": {
+    "Ashen Rider": "Name:Ashen Rider\nManaCost:4 W W B B\nTypes:Creature Archon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters or dies, exile target permanent.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, exile target permanent.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Exile\nOracle:Flying\\nWhen Ashen Rider enters or dies, exile target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashen Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "borrowed-malevolence-corpus-m675",
+  "description": "M6 corpus — Borrowed Malevolence; in-hand parse.",
+  "seed": 63199,
+  "cards": {
+    "Borrowed Malevolence": "Name:Borrowed Malevolence\nManaCost:B\nTypes:Instant\nK:Escalate:2\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ GrowCreature,ShrinkCreature\nSVar:GrowCreature:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | TgtPrompt$ Select target creature (+1/+1) | SpellDescription$ Target creature gets +1/+1 until end of turn.\nSVar:ShrinkCreature:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature (-1/-1) | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Target creature gets -1/-1 until end of turn.\nOracle:Escalate {2} (Pay this cost for each mode chosen beyond the first.)\\nChoose one or both —\\n• Target creature gets +1/+1 until end of turn.\\n• Target creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Borrowed Malevolence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

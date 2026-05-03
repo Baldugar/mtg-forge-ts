@@ -1,0 +1,23 @@
+{
+  "id": "author-of-shadows-corpus-m675",
+  "description": "M6 corpus — Author of Shadows; in-hand parse.",
+  "seed": 62100,
+  "cards": {
+    "Author of Shadows": "Name:Author of Shadows\nManaCost:4 B\nTypes:Creature Shade Warlock\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, exile all cards from all opponents' graveyards. Choose a nonland card exiled this way. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.YouDontOwn | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Card.nonLand+IsRemembered | ChoiceTitle$ Choose a nonland card exiled this way | ChoiceZone$ Exile | Mandatory$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ ChosenCard | StaticAbilities$ STPlay | Duration$ Permanent | ExileOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:When Author of Shadows enters, exile all cards from all opponents' graveyards. Choose a nonland card exiled this way. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Author of Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

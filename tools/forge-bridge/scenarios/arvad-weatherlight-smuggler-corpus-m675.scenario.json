@@ -1,0 +1,25 @@
+{
+  "id": "arvad-weatherlight-smuggler-corpus-m675",
+  "description": "M6 corpus — Arvad, Weatherlight Smuggler; ETB-on-bf.",
+  "seed": 61914,
+  "cards": {
+    "Arvad, Weatherlight Smuggler": "Name:Arvad, Weatherlight Smuggler\nManaCost:W B\nTypes:Legendary Creature Vampire Knight\nPT:1/1\nK:Deathtouch\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield,Graveyard | CheckSVar$ X | Execute$ TrigPump | TriggerDescription$ At the beginning of your end step, if a creature died this turn, CARDNAME perpetually gets +X/+X where X is the number of creatures that died this turn. This ability also triggers if NICKNAME is in your graveyard.\nSVar:TrigPump:DB$ Pump | Defined$ Self | PumpZone$ Battlefield,Graveyard | NumAtt$ +X | NumDef$ +X | Duration$ Perpetual\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$Graveyard|LifeGain\nDeckHints:Ability$Sacrifice|Graveyard\nOracle:Deathtouch, lifelink\\nAt the beginning of your end step, if a creature died this turn, Arvad, Weatherlight Smuggler perpetually gets +X/+X where X is the number of creatures that died this turn. This ability also triggers if Arvad is in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arvad, Weatherlight Smuggler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

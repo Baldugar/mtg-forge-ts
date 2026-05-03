@@ -1,0 +1,25 @@
+{
+  "id": "brackish-trudge-corpus-m675",
+  "description": "M6 corpus — Brackish Trudge; ETB-on-bf.",
+  "seed": 63245,
+  "cards": {
+    "Brackish Trudge": "Name:Brackish Trudge\nManaCost:2 B\nTypes:Creature Fungus Beast\nPT:4/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | CheckSVar$ X | SpellDescription$ Return CARDNAME from your graveyard to your hand. Activate only if you gained life this turn.\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nOracle:Brackish Trudge enters tapped.\\n{1}{B}: Return Brackish Trudge from your graveyard to your hand. Activate only if you gained life this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brackish Trudge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

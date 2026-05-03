@@ -1,0 +1,25 @@
+{
+  "id": "attentive-skywarden-corpus-m675",
+  "description": "M6 corpus — Attentive Skywarden; ETB-on-bf.",
+  "seed": 62035,
+  "cards": {
+    "Attentive Skywarden": "Name:Attentive Skywarden\nManaCost:2 W\nTypes:Creature Phyrexian Kor\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | Execute$ TrigTransform | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or battle, transform up to one target Incubator token you control.\nSVar:TrigTransform:DB$ SetState | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Incubator.token+YouCtrl | TgtPrompt$ Select target Incubator token you control | Mode$ Transform\nDeckNeeds:Type$Incubator\nOracle:Flying\\nWhenever Attentive Skywarden deals combat damage to a player or battle, transform up to one target Incubator token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Attentive Skywarden"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

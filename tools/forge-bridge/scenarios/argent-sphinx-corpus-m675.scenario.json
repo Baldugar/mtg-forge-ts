@@ -1,0 +1,25 @@
+{
+  "id": "argent-sphinx-corpus-m675",
+  "description": "M6 corpus — Argent Sphinx; ETB-on-bf.",
+  "seed": 61809,
+  "cards": {
+    "Argent Sphinx": "Name:Argent Sphinx\nManaCost:2 U U\nTypes:Creature Sphinx\nPT:4/3\nK:Flying\nA:AB$ ChangeZone | Cost$ U | Defined$ Self | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | Activation$ Metalcraft | PrecostDesc$ Metalcraft — | SpellDescription$ Exile CARDNAME. Return it to the battlefield under your control at the beginning of the next end step. Activate only if you control three or more artifacts.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ Remembered | TriggerDescription$ Return CARDNAME to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nOracle:Flying\\nMetalcraft — {U}: Exile Argent Sphinx. Return it to the battlefield under your control at the beginning of the next end step. Activate only if you control three or more artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Argent Sphinx"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ashiok-s-erasure-corpus-m675",
+  "description": "M6 corpus — Ashiok's Erasure; in-hand parse.",
+  "seed": 61948,
+  "cards": {
+    "Ashiok's Erasure": "Name:Ashiok's Erasure\nManaCost:2 U U\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target spell.\nS:Mode$ CantBeCast | ValidCard$ Card.nonLand+sharesNameWith Remembered.ExiledWithSource | Caster$ Opponent | Description$ Your opponents can't cast spells with the same name as the card exiled by CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to its owner's hand.\nSVar:TrigExile:DB$ ChangeZone | TargetType$ Spell | ValidTgts$ Card | TgtZone$ Stack | Origin$ Stack | Destination$ Exile | IsCurse$ True | TgtPrompt$ Choose target spell | RememberChanged$ True\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nWhen Ashiok's Erasure enters, exile target spell.\\nYour opponents can't cast spells with the same name as the exiled card.\\nWhen Ashiok's Erasure leaves the battlefield, return the exiled card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashiok's Erasure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "auditore-ambush-corpus-m675",
+  "description": "M6 corpus — Auditore Ambush; in-hand parse.",
+  "seed": 62049,
+  "cards": {
+    "Auditore Ambush": "Name:Auditore Ambush\nManaCost:2 U B\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBUnsummon,DBSearch\nSVar:DBUnsummon:DB$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature to return to owner's hand | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nSVar:DBSearch:DB$ ChangeZone | ValidTgts$ Player | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.namedEzio; Blade of Vengeance | Optional$ True | ChangeNum$ 1 | Chooser$ Targeted | SpellDescription$ Target player searches their library and/or graveyard for a card named Ezio, Blade of Vengeance, reveals it, and puts it into their hand. If they search their library this way, they shuffle.\nOracle:Choose one or both —\\n• Return target creature to its owner's hand.\\n• Target player searches their library and/or graveyard for a card named Ezio, Blade of Vengeance, reveals it, and puts it into their hand. If they search their library this way, they shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Auditore Ambush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "blood-seeker-corpus-m675",
+  "description": "M6 corpus — Blood Seeker; ETB-on-bf.",
+  "seed": 62946,
+  "cards": {
+    "Blood Seeker": "Name:Blood Seeker\nManaCost:1 B\nTypes:Creature Vampire Shaman\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDrain | TriggerDescription$ Whenever a creature an opponent controls enters, you may have that player lose 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredCardController | LifeAmount$ 1\nOracle:Whenever a creature an opponent controls enters, you may have that player lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blood Seeker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

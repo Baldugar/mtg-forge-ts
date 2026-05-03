@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-glory-s-rise-corpus-m675",
+  "description": "M6 corpus — Angel of Glory's Rise; in-hand parse.",
+  "seed": 61499,
+  "cards": {
+    "Angel of Glory's Rise": "Name:Angel of Glory's Rise\nManaCost:5 W W\nTypes:Creature Angel\nPT:4/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ExileAll | TriggerDescription$ When CARDNAME enters, exile all Zombies, then return all Human creature cards from your graveyard to the battlefield.\nSVar:ExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Zombie | SubAbility$ ReturnOfTheHumans\nSVar:ReturnOfTheHumans:DB$ ChangeZoneAll | ChangeType$ Creature.Human+YouCtrl | Origin$ Graveyard | Destination$ Battlefield\nOracle:Flying\\nWhen Angel of Glory's Rise enters, exile all Zombies, then return all Human creature cards from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Glory's Rise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "artificer-s-epiphany-corpus-m675",
+  "description": "M6 corpus — Artificer's Epiphany; in-hand parse.",
+  "seed": 61904,
+  "cards": {
+    "Artificer's Epiphany": "Name:Artificer's Epiphany\nManaCost:2 U\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards. If you control no artifacts, discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ EQ0 | Mode$ TgtChoose\nOracle:Draw two cards. If you control no artifacts, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artificer's Epiphany"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bone-shaman-corpus-m675",
+  "description": "M6 corpus — Bone Shaman; ETB-on-bf.",
+  "seed": 63123,
+  "cards": {
+    "Bone Shaman": "Name:Bone Shaman\nManaCost:2 R R\nTypes:Creature Giant Shaman\nPT:3/3\nA:AB$ Animate | Cost$ B | Defined$ Self | staticAbilities$ BoneShamanStatic | AILogic$ BoneManCantRegenerate | StackDescription$ SpellDescription | SpellDescription$ Until end of turn, CARDNAME gains \"Creatures dealt damage by CARDNAME this turn can't be regenerated this turn.\"\nSVar:BoneShamanStatic:Mode$ CantRegenerate | ValidCard$ Creature.DamagedBy | Description$ Creatures dealt damage by CARDNAME this turn can't be regenerated this turn.\nAI:RemoveDeck:All\nOracle:{B}: Until end of turn, Bone Shaman gains \"Creatures dealt damage by Bone Shaman this turn can't be regenerated this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bone Shaman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

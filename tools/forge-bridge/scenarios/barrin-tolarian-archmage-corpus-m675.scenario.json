@@ -1,0 +1,23 @@
+{
+  "id": "barrin-tolarian-archmage-corpus-m675",
+  "description": "M6 corpus — Barrin, Tolarian Archmage; in-hand parse.",
+  "seed": 62406,
+  "cards": {
+    "Barrin, Tolarian Archmage": "Name:Barrin, Tolarian Archmage\nManaCost:1 U U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one target creature or planeswalker to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.Other,Planeswalker | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Choose target creature or planeswalker\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if a permanent was put into your hand from the battlefield this turn, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:Count$ThisTurnEntered_Hand_from_Battlefield_Permanent.YouOwn\nOracle:When Barrin, Tolarian Archmage enters, return up to one other target creature or planeswalker to its owner's hand.\\nAt the beginning of your end step, if a permanent was put into your hand from the battlefield this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrin, Tolarian Archmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

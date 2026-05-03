@@ -1,0 +1,23 @@
+{
+  "id": "bounty-of-skemfar-corpus-m675",
+  "description": "M6 corpus — Bounty of Skemfar; in-hand parse.",
+  "seed": 63241,
+  "cards": {
+    "Bounty of Skemfar": "Name:Bounty of Skemfar\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 6 | Reveal$ True | ChangeNum$ 1 | Optional$ True | ChangeValid$ Land | DestinationZone$ Battlefield | Tapped$ True | DestinationZone2$ Library | LibraryPosition2$ 0 | SkipReorder$ True | RememberChanged$ True | SubAbility$ DBElf | SpellDescription$ Reveal the top six cards of your library. You may put a land card from among them onto the battlefield tapped and an Elf card from among them into your hand. Put the rest on the bottom of your library in a random order. | StackDescription$ SpellDescription\nSVar:DBElf:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Elf | RestRandomOrder$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Compare Y GE1.5.6\nSVar:Y:Remembered$Amount\nDeckHints:Type$Elf\nOracle:Reveal the top six cards of your library. You may put a land card from among them onto the battlefield tapped and an Elf card from among them into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bounty of Skemfar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

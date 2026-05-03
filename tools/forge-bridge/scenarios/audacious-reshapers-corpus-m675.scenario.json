@@ -1,0 +1,25 @@
+{
+  "id": "audacious-reshapers-corpus-m675",
+  "description": "M6 corpus — Audacious Reshapers; ETB-on-bf.",
+  "seed": 62044,
+  "cards": {
+    "Audacious Reshapers": "Name:Audacious Reshapers\nManaCost:2 R\nTypes:Creature Human Artificer\nPT:3/3\nA:AB$ DigUntil | Cost$ T Sac<1/Artifact> | Valid$ Artifact | ValidDescription$ artifact | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberRevealed$ True | SubAbility$ DBDealDamage | SpellDescription$ Reveal cards from the top of your library until you reveal an artifact card. Put that card onto the battlefield and the rest on the bottom of your library in a random order. CARDNAME deals damage to you equal to the number of cards revealed this way.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:{T}, Sacrifice an artifact: Reveal cards from the top of your library until you reveal an artifact card. Put that card onto the battlefield and the rest on the bottom of your library in a random order. Audacious Reshapers deals damage to you equal to the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Audacious Reshapers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "black-widow-intel-expert-corpus-m675",
+  "description": "M6 corpus — Black Widow, Intel Expert; ETB-on-bf.",
+  "seed": 62751,
+  "cards": {
+    "Black Widow, Intel Expert": "Name:Black Widow, Intel Expert\nManaCost:2 W\nTypes:Legendary Creature Human Spy Hero\nPT:3/3\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME deals combat damage to an opponent, you and that player each draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You & TriggeredTarget | NumCards$ 2\nOracle:First strike\\nWhenever Black Widow deals combat damage to an opponent, you and that player each draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Black Widow, Intel Expert"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

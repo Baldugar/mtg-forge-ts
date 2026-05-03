@@ -1,0 +1,23 @@
+{
+  "id": "backfire-corpus-m675",
+  "description": "M6 corpus — Backfire; in-hand parse.",
+  "seed": 62247,
+  "cards": {
+    "Backfire": "Name:Backfire\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever enchanted creature deals damage to you, CARDNAME deals that much damage to that creature's controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature deals damage to you, Backfire deals that much damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Backfire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

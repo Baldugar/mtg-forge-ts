@@ -1,0 +1,25 @@
+{
+  "id": "boltbender-corpus-m675",
+  "description": "M6 corpus — Boltbender; ETB-on-bf.",
+  "seed": 63090,
+  "cards": {
+    "Boltbender": "Name:Boltbender\nManaCost:3 R\nTypes:Creature Goblin Wizard\nPT:4/2\nK:Disguise:1 R\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChangeTgts | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ When CARDNAME is turned face up, you may choose new targets for any number of other spells and/or abilities.\nSVar:TrigChangeTgts:DB$ ChangeTargets | Defined$ ValidStack SpellAbility | Optional$ True\nAI:RemoveDeck:All\nOracle:Disguise {1}{R} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Boltbender is turned face up, you may choose new targets for any number of other spells and/or abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boltbender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

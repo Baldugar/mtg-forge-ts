@@ -1,0 +1,23 @@
+{
+  "id": "ancestral-statue-corpus-m675",
+  "description": "M6 corpus — Ancestral Statue; in-hand parse.",
+  "seed": 61459,
+  "cards": {
+    "Ancestral Statue": "Name:Ancestral Statue\nManaCost:4\nTypes:Artifact Creature Golem\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a nonland permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.nonLand+YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE3\nOracle:When Ancestral Statue enters, return a nonland permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancestral Statue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

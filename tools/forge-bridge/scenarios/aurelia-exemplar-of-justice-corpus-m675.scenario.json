@@ -1,0 +1,25 @@
+{
+  "id": "aurelia-exemplar-of-justice-corpus-m675",
+  "description": "M6 corpus — Aurelia, Exemplar of Justice; ETB-on-bf.",
+  "seed": 62076,
+  "cards": {
+    "Aurelia, Exemplar of Justice": "Name:Aurelia, Exemplar of Justice\nManaCost:2 R W\nTypes:Legendary Creature Angel\nPT:2/5\nK:Flying\nK:Mentor\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBPump | TriggerDescription$ At the beginning of combat on your turn, choose up to one target creature you control. Until end of turn, that creature gets +2/+0, gains trample if it's red, and gains vigilance if it's white.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +2 | SubAbility$ DBPump1\nSVar:DBPump1:DB$ Pump | Defined$ Targeted | KW$ Trample | ConditionDefined$ Targeted | ConditionPresent$ Card.Red | SubAbility$ DBPump2\nSVar:DBPump2:DB$ Pump | Defined$ Targeted | KW$ Vigilance | ConditionDefined$ Targeted | ConditionPresent$ Card.White\nDeckHas:Ability$Counters\nOracle:Flying\\nMentor (Whenever this creature attacks, put a +1/+1 counter on target attacking creature with lesser power.)\\nAt the beginning of combat on your turn, choose up to one target creature you control. Until end of turn, that creature gets +2/+0, gains trample if it's red, and gains vigilance if it's white.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aurelia, Exemplar of Justice"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

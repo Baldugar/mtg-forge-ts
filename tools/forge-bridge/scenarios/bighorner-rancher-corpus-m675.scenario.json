@@ -1,0 +1,25 @@
+{
+  "id": "bighorner-rancher-corpus-m675",
+  "description": "M6 corpus — Bighorner Rancher; ETB-on-bf.",
+  "seed": 62680,
+  "cards": {
+    "Bighorner Rancher": "Name:Bighorner Rancher\nManaCost:4 G\nTypes:Creature Human Ranger\nPT:2/5\nK:Vigilance\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add an amount of {G} equal to the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nA:AB$ GainLife | Cost$ Sac<1/CARDNAME> | LifeAmount$ Y | SpellDescription$ You gain life equal to the greatest toughness among other creatures you control.\nSVar:Y:Count$Valid Creature.YouCtrl$GreatestCardToughness\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:Vigilance\\n{T}: Add an amount of {G} equal to the greatest power among creatures you control.\\nSacrifice Bighorner Rancher: You gain life equal to the greatest toughness among other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bighorner Rancher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

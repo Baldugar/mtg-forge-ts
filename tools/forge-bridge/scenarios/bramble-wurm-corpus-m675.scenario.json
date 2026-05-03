@@ -1,0 +1,23 @@
+{
+  "id": "bramble-wurm-corpus-m675",
+  "description": "M6 corpus — Bramble Wurm; in-hand parse.",
+  "seed": 63271,
+  "cards": {
+    "Bramble Wurm": "Name:Bramble Wurm\nManaCost:6 G\nTypes:Creature Wurm\nPT:7/6\nK:Reach\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 5 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 5\nA:AB$ GainLife | Cost$ 2 G ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | LifeAmount$ 5 | SpellDescription$ You gain 5 life.\nDeckHas:Ability$LifeGain\nOracle:Reach, trample\\nWhen Bramble Wurm enters, you gain 5 life.\\n{2}{G}, Exile Bramble Wurm from your graveyard: You gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bramble Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

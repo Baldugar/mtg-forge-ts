@@ -1,0 +1,25 @@
+{
+  "id": "arbiter-of-the-ideal-corpus-m675",
+  "description": "M6 corpus — Arbiter of the Ideal; ETB-on-bf.",
+  "seed": 61689,
+  "cards": {
+    "Arbiter of the Ideal": "Name:Arbiter of the Ideal\nManaCost:4 U U\nTypes:Creature Sphinx\nPT:4/5\nK:Flying\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Inspired — Whenever CARDNAME becomes untapped, reveal the top card of your library. If it's an artifact, creature, or land card, you may put it onto the battlefield with a manifestation counter on it. That permanent is an enchantment in addition to its other types.\nSVar:TrigReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | Optional$ True | ChangeValid$ Artifact,Creature,Land | DestinationZone$ Battlefield | LibraryPosition2$ 0 | WithCounters$ MANIFESTATION | StaticEffect$ Enchantment\nSVar:Enchantment:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment\nOracle:Flying\\nInspired — Whenever Arbiter of the Ideal becomes untapped, reveal the top card of your library. If it's an artifact, creature, or land card, you may put it onto the battlefield with a manifestation counter on it. That permanent is an enchantment in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arbiter of the Ideal"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

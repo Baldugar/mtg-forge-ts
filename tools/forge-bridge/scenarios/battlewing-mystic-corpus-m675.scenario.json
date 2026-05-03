@@ -1,0 +1,23 @@
+{
+  "id": "battlewing-mystic-corpus-m675",
+  "description": "M6 corpus — Battlewing Mystic; in-hand parse.",
+  "seed": 62505,
+  "cards": {
+    "Battlewing Mystic": "Name:Battlewing Mystic\nManaCost:1 U\nTypes:Creature Bird Wizard\nPT:2/1\nK:Kicker:R\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, if it was kicked, discard your hand, then draw two cards.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nDeckHas:Ability$Discard\nDeckHints:Color$Red\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nFlying\\nWhen Battlewing Mystic enters, if it was kicked, discard your hand, then draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battlewing Mystic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

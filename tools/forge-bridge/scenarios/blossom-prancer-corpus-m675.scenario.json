@@ -1,0 +1,23 @@
+{
+  "id": "blossom-prancer-corpus-m675",
+  "description": "M6 corpus — Blossom Prancer; in-hand parse.",
+  "seed": 63012,
+  "cards": {
+    "Blossom Prancer": "Name:Blossom Prancer\nManaCost:3 G G\nTypes:Creature Spirit\nPT:4/4\nK:Reach\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBDig | TriggerDescription$ When CARDNAME enters, look at the top five cards of your library. You may reveal a creature or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. If you didn't put a card into your hand this way, you gain 4 life.\nSVar:DBDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Creature,Enchantment | RestRandomOrder$ True | RememberChanged$ True | SubAbility$ DBGainLife | StackDescription$ None\nSVar:DBGainLife:DB$ GainLife | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | Defined$ You | LifeAmount$ 4 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nDeckHints:Type$Enchantment|Creature\nOracle:Reach\\nWhen Blossom Prancer enters, look at the top five cards of your library. You may reveal a creature or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. If you didn't put a card into your hand this way, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blossom Prancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

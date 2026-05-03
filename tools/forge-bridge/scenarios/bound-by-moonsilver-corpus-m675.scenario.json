@@ -1,0 +1,23 @@
+{
+  "id": "bound-by-moonsilver-corpus-m675",
+  "description": "M6 corpus — Bound by Moonsilver; in-hand parse.",
+  "seed": 63226,
+  "cards": {
+    "Bound by Moonsilver": "Name:Bound by Moonsilver\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantTransform | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block, or transform.\nA:AB$ Attach | Cost$ Sac<1/Permanent.Other/another permanent> | ValidTgts$ Creature | AILogic$ Curse | SorcerySpeed$ True | ActivationLimit$ 1 | SpellDescription$ Attach CARDNAME to target creature. Activate only as a sorcery and only once each turn.\nSVar:AIPreference:SacCost$Card.token,Permanent.nonLand+cmcLE2,Land.Basic\nOracle:Enchant creature\\nEnchanted creature can't attack, block, or transform.\\nSacrifice another permanent: Attach Bound by Moonsilver to target creature. Activate only as a sorcery and only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bound by Moonsilver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

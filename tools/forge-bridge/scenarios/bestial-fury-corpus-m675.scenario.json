@@ -1,0 +1,23 @@
+{
+  "id": "bestial-fury-corpus-m675",
+  "description": "M6 corpus — Bestial Fury; in-hand parse.",
+  "seed": 62660,
+  "cards": {
+    "Bestial Fury": "Name:Bestial Fury\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DelTrigSlowtrip | TriggerDescription$ When CARDNAME enters, draw a card at the beginning of the next turn's upkeep.\nT:Mode$ AttackerBlocked | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever enchanted creature becomes blocked, it gets +4/+0 and gains trample until end of turn.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +4 | KW$ Trample\nOracle:Enchant creature\\nWhen Bestial Fury enters, draw a card at the beginning of the next turn's upkeep.\\nWhenever enchanted creature becomes blocked, it gets +4/+0 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bestial Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "borderland-explorer-corpus-m675",
+  "description": "M6 corpus — Borderland Explorer; in-hand parse.",
+  "seed": 63168,
+  "cards": {
+    "Borderland Explorer": "Name:Borderland Explorer\nManaCost:1 G\nTypes:Creature Elf Scout\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, each player may discard a card. Each player who discarded a card this way may search their library for a basic land card, reveal it, put it into their hand, then shuffle.\nSVar:TrigChoose:DB$ GenericChoice | TempRemember$ Chooser | ShowChoice$ ExceptSelf | Defined$ Player | Choices$ Discard,No | SubAbility$ DBDiscard\nSVar:Discard:DB$ Pump | Defined$ Remembered | NoteCards$ Self | NoteCardsFor$ Discard | SpellDescription$ Discard a card.\nSVar:No:DB$ Pump | SpellDescription$ Do not discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.NotedForDiscard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBSearch\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | DefinedPlayer$ RememberedOwner | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBClearNotes\nSVar:DBClearNotes:DB$ Pump | Defined$ Player | ClearNotedCardsFor$ Discard\nDeckHas:Ability$Discard\nOracle:When Borderland Explorer enters, each player may discard a card. Each player who discarded a card this way may search their library for a basic land card, reveal it, put it into their hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Borderland Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "auriok-survivors-corpus-m675",
+  "description": "M6 corpus — Auriok Survivors; in-hand parse.",
+  "seed": 62087,
+  "cards": {
+    "Auriok Survivors": "Name:Auriok Survivors\nManaCost:5 W\nTypes:Creature Human Soldier\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target Equipment card from your graveyard to the battlefield. If you do, you may attach it to CARDNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Equipment.YouCtrl | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ Targeted | Defined$ Self | Optional$ True\nOracle:When Auriok Survivors enters, you may return target Equipment card from your graveyard to the battlefield. If you do, you may attach it to Auriok Survivors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Auriok Survivors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

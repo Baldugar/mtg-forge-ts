@@ -1,0 +1,23 @@
+{
+  "id": "baffling-end-corpus-m675",
+  "description": "M6 corpus — Baffling End; in-hand parse.",
+  "seed": 62258,
+  "cards": {
+    "Baffling End": "Name:Baffling End\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls with mana value 3 or less.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl+cmcLE3 | TgtPrompt$ Select target creature an opponent controls with mana value 3 or less | Origin$ Battlefield | Destination$ Exile\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME leaves the battlefield, target opponent creates a 3/3 green Dinosaur creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_dinosaur_trample | ValidTgts$ Opponent | TokenOwner$ Targeted\nOracle:When Baffling End enters, exile target creature an opponent controls with mana value 3 or less.\\nWhen Baffling End leaves the battlefield, target opponent creates a 3/3 green Dinosaur creature token with trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baffling End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

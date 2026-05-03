@@ -1,0 +1,23 @@
+{
+  "id": "aquitect-s-defenses-corpus-m675",
+  "description": "M6 corpus — Aquitect's Defenses; in-hand parse.",
+  "seed": 61663,
+  "cards": {
+    "Aquitect's Defenses": "Name:Aquitect's Defenses\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.YouCtrl:creature you control\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When this Aura enters, enchanted creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ Hexproof\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Enchanted creature gets +1/+2.\nSVar:AttachAILogic:Pump\nOracle:Flash\\nEnchant creature you control\\nWhen this Aura enters, enchanted creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\\nEnchanted creature gets +1/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aquitect's Defenses"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

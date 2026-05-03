@@ -1,0 +1,25 @@
+{
+  "id": "bane-alley-broker-corpus-m675",
+  "description": "M6 corpus — Bane Alley Broker; ETB-on-bf.",
+  "seed": 62324,
+  "cards": {
+    "Bane Alley Broker": "Name:Bane Alley Broker\nManaCost:1 U B\nTypes:Creature Human Rogue\nPT:0/3\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBExile | SpellDescription$ Draw a card, then exile a card from your hand face down.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | ExileFaceDown$ True | Mandatory$ True\nS:Mode$ Continuous | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | MayLookAt$ You | Description$ You may look at cards exiled with CARDNAME.\nA:AB$ ChangeZone | Cost$ U B T | Origin$ Exile | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Card.ExiledWithSource | SpellDescription$ Return a card exiled with CARDNAME to its owner's hand.\nOracle:{T}: Draw a card, then exile a card from your hand face down.\\nYou may look at cards exiled with Bane Alley Broker.\\n{U}{B}, {T}: Return a card exiled with Bane Alley Broker to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bane Alley Broker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

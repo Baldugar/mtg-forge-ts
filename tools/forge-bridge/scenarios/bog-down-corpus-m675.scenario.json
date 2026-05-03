@@ -1,0 +1,23 @@
+{
+  "id": "bog-down-corpus-m675",
+  "description": "M6 corpus — Bog Down; in-hand parse.",
+  "seed": 63045,
+  "cards": {
+    "Bog Down": "Name:Bog Down\nManaCost:2 B\nTypes:Sorcery\nK:Kicker:Sac<2/Land>\nA:SP$ Discard | ValidTgts$ Player | NumCards$ WasKicked | Mode$ TgtChoose | SpellDescription$ Target player discards two cards. If CARDNAME was kicked, that player discards three cards instead.\nSVar:WasKicked:Count$Kicked.3.2\nSVar:NeedsToPlayKickedVar:Z GE3\nSVar:Z:Count$ValidHand Card.OppOwn\nSVar:AIPreference:SacCost$Land.basic+YouCtrl\nOracle:Kicker—Sacrifice two lands. (You may sacrifice two lands in addition to any other costs as you cast this spell.)\\nTarget player discards two cards. If this spell was kicked, that player discards three cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bog Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

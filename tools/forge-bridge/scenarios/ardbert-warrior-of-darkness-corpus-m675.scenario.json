@@ -1,0 +1,25 @@
+{
+  "id": "ardbert-warrior-of-darkness-corpus-m675",
+  "description": "M6 corpus — Ardbert, Warrior of Darkness; ETB-on-bf.",
+  "seed": 61792,
+  "cards": {
+    "Ardbert, Warrior of Darkness": "Name:Ardbert, Warrior of Darkness\nManaCost:1 W B\nTypes:Legendary Creature Spirit Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCountersAll1 | TriggerDescription$ Whenever you cast a white spell, put a +1/+1 counter on each legendary creature you control. They gain vigilance until end of turn.\nSVar:TrigPutCountersAll1:DB$ PutCounterAll | ValidCards$ Creature.Legendary+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll1\nSVar:DBPumpAll1:DB$ PumpAll | ValidCards$ Creature.Legendary+YouCtrl | KW$ Vigilance\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCountersAll2 | TriggerDescription$ Whenever you cast a black spell, put a +1/+1 counter on each legendary creature you control. They gain menace until end of turn.\nSVar:TrigPutCountersAll2:DB$ PutCounterAll | ValidCards$ Creature.Legendary+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll2\nSVar:DBPumpAll2:DB$ PumpAll | ValidCards$ Creature.Legendary+YouCtrl | KW$ Menace\nOracle:Whenever you cast a white spell, put a +1/+1 counter on each legendary creature you control. They gain vigilance until end of turn.\\nWhenever you cast a black spell, put a +1/+1 counter on each legendary creature you control. They gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ardbert, Warrior of Darkness"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "avacynian-missionaries-corpus-m675",
+  "description": "M6 corpus — Avacynian Missionaries; in-hand parse.",
+  "seed": 62114,
+  "cards": {
+    "Avacynian Missionaries": "Name:Avacynian Missionaries\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Card.Self+equipped | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if CARDNAME is equipped, transform it.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:EquipMe:Once\nDeckHints:Type$Equipment\nAlternateMode:DoubleFaced\nOracle:At the beginning of your end step, if Avacynian Missionaries is equipped, transform it.\n\nALTERNATE\n\nName:Lunarch Inquisitors\nManaCost:no cost\nColors:white\nTypes:Creature Human Cleric\nPT:4/4\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When this creature transforms into CARDNAME, you may exile another target creature until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | Duration$ UntilHostLeavesPlay\nOracle:When this creature transforms into Lunarch Inquisitors, you may exile another target creature until Lunarch Inquisitors leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avacynian Missionaries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

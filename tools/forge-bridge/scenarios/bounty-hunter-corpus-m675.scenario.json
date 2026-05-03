@@ -1,0 +1,25 @@
+{
+  "id": "bounty-hunter-corpus-m675",
+  "description": "M6 corpus — Bounty Hunter; ETB-on-bf.",
+  "seed": 63239,
+  "cards": {
+    "Bounty Hunter": "Name:Bounty Hunter\nManaCost:2 B B\nTypes:Creature Human Archer Minion\nPT:2/2\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | CounterType$ BOUNTY | CounterNum$ 1 | IsCurse$ True | SpellDescription$ Put a bounty counter on target nonblack creature.\nA:AB$ Destroy | Cost$ T | ValidTgts$ Creature.counters_GE1_BOUNTY | TgtPrompt$ Select target creature with a bounty counter on it | SpellDescription$ Destroy target creature with a bounty counter on it.\nSVar:NonCombatPriority:5\nDeckHints:Name$Chevill, Bane of Monsters|Mathas, Fiend Seeker|Termination Facilitator\nOracle:{T}: Put a bounty counter on target nonblack creature.\\n{T}: Destroy target creature with a bounty counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bounty Hunter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

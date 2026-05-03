@@ -1,0 +1,23 @@
+{
+  "id": "anti-magic-aura-corpus-m675",
+  "description": "M6 corpus — Anti-Magic Aura; in-hand parse.",
+  "seed": 61605,
+  "cards": {
+    "Anti-Magic Aura": "Name:Anti-Magic Aura\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantTarget | ValidTarget$ Creature.EnchantedBy | ValidSA$ Spell | Description$ Enchanted creature can't be the target of spells.\nS:Mode$ CantAttach | ValidCard$ Aura.Other | Target$ Creature.EnchantedBy | Description$ Enchanted creature can't be enchanted by other Auras.\nOracle:Enchant creature\\nEnchanted creature can't be the target of spells and can't be enchanted by other Auras.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anti-Magic Aura"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bramble-familiar-corpus-m675",
+  "description": "M6 corpus — Bramble Familiar; in-hand parse.",
+  "seed": 63270,
+  "cards": {
+    "Bramble Familiar": "Name:Bramble Familiar\nManaCost:1 G\nTypes:Creature Elemental Raccoon\nPT:2/2\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ ChangeZone | Cost$ 1 G T Discard<1/Card> | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nDeckHas:Ability$Mill|Discard\nAlternateMode:Adventure\nOracle:{T}: Add {G}.\\n{1}{G}, {T}, Discard a card: Return Bramble Familiar to its owner's hand.\n\nALTERNATE\n\nName:Fetch Quest\nManaCost:5 G G\nTypes:Sorcery Adventure\nA:SP$ Mill | NumCards$ 7 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill seven cards, then put a creature, enchantment, or land card from among cards milled this way onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Mandatory$ True | Origin$ Graveyard,Exile | Destination$ Battlefield | ChangeType$ Creature.IsRemembered,Enchantment.IsRemembered,Land.IsRemembered | SelectPrompt$ Choose a creature, enchantment, or land card from among cards milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mill seven cards, then put a creature, enchantment, or land card from among cards milled this way onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bramble Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

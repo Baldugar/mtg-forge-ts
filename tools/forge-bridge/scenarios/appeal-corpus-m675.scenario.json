@@ -1,0 +1,23 @@
+{
+  "id": "appeal-corpus-m675",
+  "description": "M6 corpus — Appeal; in-hand parse.",
+  "seed": 61643,
+  "cards": {
+    "Appeal": "Name:Appeal\nManaCost:G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | KW$ Trample | SpellDescription$ Until end of turn, target creature gains trample and gets +X/+X, where X is the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nAlternateMode:Split\nOracle:Until end of turn, target creature gains trample and gets +X/+X, where X is the number of creatures you control.\n\nALTERNATE\n\nName:Authority\nManaCost:1 W\nTypes:Sorcery\nK:Aftermath\nA:SP$ Tap | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target creature your opponent controls | ValidTgts$ Creature.OppCtrl | SubAbility$ DBPumpAll | SpellDescription$ Tap up to two target creatures your opponents control. Creatures you control gain vigilance until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nTap up to two target creatures your opponents control. Creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Appeal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

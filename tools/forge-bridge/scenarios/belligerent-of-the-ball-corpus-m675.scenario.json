@@ -1,0 +1,25 @@
+{
+  "id": "belligerent-of-the-ball-corpus-m675",
+  "description": "M6 corpus — Belligerent of the Ball; ETB-on-bf.",
+  "seed": 62588,
+  "cards": {
+    "Belligerent of the Ball": "Name:Belligerent of the Ball\nManaCost:2 R\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | CheckSVar$ Celebration | SVarCompare$ GE2 | TriggerDescription$ Celebration — At the beginning of combat on your turn, if two or more nonland permanents entered the battlefield under your control this turn, target creature you control gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +1 | KW$ Menace\nSVar:Celebration:Count$ThisTurnEntered_Battlefield_Permanent.nonLand+YouCtrl\nOracle:Celebration — At the beginning of combat on your turn, if two or more nonland permanents entered the battlefield under your control this turn, target creature you control gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Belligerent of the Ball"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

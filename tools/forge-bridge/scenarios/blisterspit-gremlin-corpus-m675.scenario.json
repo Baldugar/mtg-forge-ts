@@ -1,0 +1,25 @@
+{
+  "id": "blisterspit-gremlin-corpus-m675",
+  "description": "M6 corpus — Blisterspit Gremlin; ETB-on-bf.",
+  "seed": 62897,
+  "cards": {
+    "Blisterspit Gremlin": "Name:Blisterspit Gremlin\nManaCost:R\nTypes:Creature Gremlin\nPT:1/1\nA:AB$ DealDamage | Cost$ 1 T | NumDmg$ 1 | Defined$ Player.Opponent | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:BuffedBy:Card.nonLand+nonCreature\nOracle:{1}, {T}: Blisterspit Gremlin deals 1 damage to each opponent.\\nWhenever you cast a noncreature spell, untap Blisterspit Gremlin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blisterspit Gremlin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

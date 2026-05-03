@@ -1,0 +1,25 @@
+{
+  "id": "aura-flux-corpus-m675",
+  "description": "M6 corpus — Aura Flux; ETB-on-bf.",
+  "seed": 62065,
+  "cards": {
+    "Aura Flux": "Name:Aura Flux\nManaCost:2 U\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Enchantment.Other | AddTrigger$ UpkeepCostTrigger | Description$ Other enchantments have \"At the beginning of your upkeep, sacrifice this enchantment unless you pay {2}.\"\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {2}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 2\nAI:RemoveDeck:Random\nOracle:Other enchantments have \"At the beginning of your upkeep, sacrifice this enchantment unless you pay {2}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aura Flux"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

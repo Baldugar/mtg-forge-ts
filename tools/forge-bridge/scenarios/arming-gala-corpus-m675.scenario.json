@@ -1,0 +1,25 @@
+{
+  "id": "arming-gala-corpus-m675",
+  "description": "M6 corpus — Arming Gala; ETB-on-bf.",
+  "seed": 61845,
+  "cards": {
+    "Arming Gala": "Name:Arming Gala\nManaCost:3 G W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPerpetualP1P1 | TriggerDescription$ At the beginning of your end step, creatures you control and creature cards in your hand, library, and graveyard perpetually get +1/+1.\nSVar:TrigPerpetualP1P1:DB$ PumpAll | ValidCards$ Creature.YouCtrl | PumpZone$ Battlefield,Hand,Library,Graveyard | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nOracle:At the beginning of your end step, creatures you control and creature cards in your hand, library, and graveyard perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arming Gala"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

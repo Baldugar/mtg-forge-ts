@@ -1,0 +1,23 @@
+{
+  "id": "beacon-of-immortality-corpus-m675",
+  "description": "M6 corpus — Beacon of Immortality; in-hand parse.",
+  "seed": 62522,
+  "cards": {
+    "Beacon of Immortality": "Name:Beacon of Immortality\nManaCost:5 W\nTypes:Instant\nA:SP$ SetLife | ValidTgts$ Player | LifeAmount$ X | SubAbility$ DBShuffle | SpellDescription$ Double target player's life total. Shuffle CARDNAME into its owner's library.\nSVar:DBShuffle:DB$ ChangeZone | Origin$ Stack | Destination$ Library | Shuffle$ True | Defined$ Parent\nSVar:X:TargetedPlayer$LifeTotal/Twice\nOracle:Double target player's life total. Shuffle Beacon of Immortality into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beacon of Immortality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

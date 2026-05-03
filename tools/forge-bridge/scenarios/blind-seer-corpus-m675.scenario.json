@@ -1,0 +1,25 @@
+{
+  "id": "blind-seer-corpus-m675",
+  "description": "M6 corpus — Blind Seer; ETB-on-bf.",
+  "seed": 62870,
+  "cards": {
+    "Blind Seer": "Name:Blind Seer\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nA:AB$ ChooseColor | Cost$ 1 U | Defined$ You | SubAbility$ Animate | SpellDescription$ Target spell or permanent becomes the color of your choice until end of turn.\nSVar:Animate:DB$ Animate | ValidTgts$ Card | TgtPrompt$ Select target spell or permanent to change the color of | TgtZone$ Stack,Battlefield | Colors$ ChosenColor | OverwriteColors$ True\nAI:RemoveDeck:All\nOracle:{1}{U}: Target spell or permanent becomes the color of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blind Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

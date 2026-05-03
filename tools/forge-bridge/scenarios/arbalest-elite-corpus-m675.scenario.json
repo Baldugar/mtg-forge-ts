@@ -1,0 +1,25 @@
+{
+  "id": "arbalest-elite-corpus-m675",
+  "description": "M6 corpus — Arbalest Elite; ETB-on-bf.",
+  "seed": 61688,
+  "cards": {
+    "Arbalest Elite": "Name:Arbalest Elite\nManaCost:2 W W\nTypes:Creature Human Archer\nPT:2/3\nA:AB$ DealDamage | Cost$ 2 W T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 3 | SubAbility$ DBStayTapped | SpellDescription$ CARDNAME deals 3 damage to target attacking or blocking creature. CARDNAME doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{2}{W}, {T}: Arbalest Elite deals 3 damage to target attacking or blocking creature. Arbalest Elite doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arbalest Elite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blinding-fog-corpus-m675",
+  "description": "M6 corpus — Blinding Fog; in-hand parse.",
+  "seed": 62877,
+  "cards": {
+    "Blinding Fog": "Name:Blinding Fog\nManaCost:2 G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | SubAbility$ DBPumpAll | SpellDescription$ Prevent all damage that would be dealt to creatures this turn. Creatures you control gain hexproof until end of turn. (They can't be the targets of spells or abilities your opponents control.)\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Creature | Description$ Prevent all damage that would be dealt to creatures this turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Hexproof\nAI:RemoveDeck:All\nOracle:Prevent all damage that would be dealt to creatures this turn. Creatures you control gain hexproof until end of turn. (They can't be the targets of spells or abilities your opponents control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blinding Fog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

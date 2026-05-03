@@ -1,0 +1,25 @@
+{
+  "id": "binding-mummy-corpus-m675",
+  "description": "M6 corpus — Binding Mummy; ETB-on-bf.",
+  "seed": 62692,
+  "cards": {
+    "Binding Mummy": "Name:Binding Mummy\nManaCost:1 W\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Zombie.Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever another Zombie you control enters, you may tap target artifact or creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature\nOracle:Whenever another Zombie you control enters, you may tap target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Binding Mummy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

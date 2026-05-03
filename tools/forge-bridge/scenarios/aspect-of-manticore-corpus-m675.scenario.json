@@ -1,0 +1,23 @@
+{
+  "id": "aspect-of-manticore-corpus-m675",
+  "description": "M6 corpus — Aspect of Manticore; in-hand parse.",
+  "seed": 61969,
+  "cards": {
+    "Aspect of Manticore": "Name:Aspect of Manticore\nManaCost:2 R\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, enchanted creature gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ First Strike\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | Description$ Enchanted creature gets +2/+0.\nOracle:Flash\\nEnchant creature\\nWhen Aspect of Manticore enters, enchanted creature gains first strike until end of turn.\\nEnchanted creature gets +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aspect of Manticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

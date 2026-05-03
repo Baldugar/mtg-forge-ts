@@ -1,0 +1,23 @@
+{
+  "id": "autumn-s-veil-corpus-m675",
+  "description": "M6 corpus — Autumn's Veil; in-hand parse.",
+  "seed": 62110,
+  "cards": {
+    "Autumn's Veil": "Name:Autumn's Veil\nManaCost:G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ AntiMagic | StaticAbilities$ STCantBeTarget | SpellDescription$ Spells you control can't be countered by blue or black spells this turn, and creatures you control can't be the targets of blue or black spells this turn.\nSVar:AntiMagic:Event$ Counter | ValidSA$ Spell.YouCtrl | ValidCause$ Spell.Blue,Spell.Black | Layer$ CantHappen | Description$ Spells you control can't be countered by blue or black spells this turn.\nSVar:STCantBeTarget:Mode$ CantTarget | ValidTarget$ Creature.YouCtrl | ValidSource$ Card.Blue,Card.Black | ValidSA$ Spell | Description$ Creatures you control can't be the targets of blue or black spells this turn.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Spells you control can't be countered by blue or black spells this turn, and creatures you control can't be the targets of blue or black spells this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Autumn's Veil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

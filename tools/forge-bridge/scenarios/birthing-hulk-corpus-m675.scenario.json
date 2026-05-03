@@ -1,0 +1,23 @@
+{
+  "id": "birthing-hulk-corpus-m675",
+  "description": "M6 corpus — Birthing Hulk; in-hand parse.",
+  "seed": 62715,
+  "cards": {
+    "Birthing Hulk": "Name:Birthing Hulk\nManaCost:6 G\nTypes:Creature Eldrazi Drone\nPT:5/4\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\" ({C} represents colorless mana.)\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You\nA:AB$ Regenerate | Cost$ 1 C | SpellDescription$ Regenerate CARDNAME.\nDeckNeeds:Ability$Mana.Colorless\nDeckHints:Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:Devoid (This card has no color.)\\nWhen Birthing Hulk enters, create two 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\" ({C} represents colorless mana.)\\n{1}{C}: Regenerate Birthing Hulk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Birthing Hulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

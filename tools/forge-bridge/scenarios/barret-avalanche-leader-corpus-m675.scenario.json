@@ -1,0 +1,25 @@
+{
+  "id": "barret-avalanche-leader-corpus-m675",
+  "description": "M6 corpus — Barret, Avalanche Leader; ETB-on-bf.",
+  "seed": 62400,
+  "cards": {
+    "Barret, Avalanche Leader": "Name:Barret, Avalanche Leader\nManaCost:2 R G\nTypes:Legendary Creature Human Rebel\nPT:4/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Equipment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Avalanche! — Whenever an Equipment you control enters, create a 2/2 red Rebel creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_rebel | TokenOwner$ You\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, attach up to one target Equipment you control to target Rebel you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target Equipment you control | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | ValidTgts$ Rebel.YouCtrl | TgtPrompt$ Select target Rebel you control\nDeckHas:Ability$Token\nDeckNeeds:Type$Equipment\nOracle:Reach\\nAvalanche! — Whenever an Equipment you control enters, create a 2/2 red Rebel creature token.\\nAt the beginning of combat on your turn, attach up to one target Equipment you control to target Rebel you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barret, Avalanche Leader"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

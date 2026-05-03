@@ -1,0 +1,25 @@
+{
+  "id": "arthur-marigold-knight-corpus-m675",
+  "description": "M6 corpus — Arthur, Marigold Knight; ETB-on-bf.",
+  "seed": 61896,
+  "cards": {
+    "Arthur, Marigold Knight": "Name:Arthur, Marigold Knight\nManaCost:2 U R W\nTypes:Legendary Creature Mouse Knight\nPT:4/5\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME and at least one other creature attack, look at the top six cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking. Put the rest on the bottom of your library in a random order. Return that creature to its owner's hand at end of combat.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | Reveal$ True | ChangeValid$ Creature | DestinationZone$ Battlefield | Tapped$ True | Attacking$ True | RestRandomOrder$ True | RememberChanged$ True | SubAbility$ DBDelayedTrigger\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigBounce | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ Return that creature to its owner's hand at end of combat.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Haste\\nWhenever Arthur, Marigold Knight and at least one other creature attack, look at the top six cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking. Put the rest on the bottom of your library in a random order. Return that creature to its owner's hand at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arthur, Marigold Knight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

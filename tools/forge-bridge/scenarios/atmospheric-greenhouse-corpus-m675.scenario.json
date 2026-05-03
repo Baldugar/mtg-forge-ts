@@ -1,0 +1,23 @@
+{
+  "id": "atmospheric-greenhouse-corpus-m675",
+  "description": "M6 corpus — Atmospheric Greenhouse; in-hand parse.",
+  "seed": 62021,
+  "cards": {
+    "Atmospheric Greenhouse": "Name:Atmospheric Greenhouse\nManaCost:4 G\nTypes:Artifact Spacecraft\nPT:5/4\nK:Station:8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounters | TriggerDescription$ When this Spacecraft enters, put a +1/+1 counter on each creature you control.\nSVar:TrigCounters:DB$ PutCounterAll | CounterType$ P1P1 | CounterNum$ 1 | ValidCards$ Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_CHARGE | AddType$ Creature | AddKeyword$ Flying & Trample | Description$ STATION 8+ Flying, trample\nOracle:When this Spacecraft enters, put a +1/+1 counter on each creature you control.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 8+.)\\nSTATION 8+\\nFlying, trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atmospheric Greenhouse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

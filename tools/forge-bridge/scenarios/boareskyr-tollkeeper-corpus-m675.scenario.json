@@ -1,0 +1,23 @@
+{
+  "id": "boareskyr-tollkeeper-corpus-m675",
+  "description": "M6 corpus — Boareskyr Tollkeeper; in-hand parse.",
+  "seed": 63040,
+  "cards": {
+    "Boareskyr Tollkeeper": "Name:Boareskyr Tollkeeper\nManaCost:1 W\nTypes:Creature Orc Knight\nPT:3/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals all creature and land cards in their hand. Choose one of them. That card perpetually gains \"This permanent enters tapped.\"\nSVar:TrigReveal:DB$ Reveal | ValidTgts$ Opponent | RevealAllValid$ Creature.TargetedPlayerOwn,Land.TargetedPlayerOwn | SubAbility$ DBChooseCard | RememberRevealed$ True\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.IsRemembered | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Duration$ Perpetual | Defined$ ChosenCard | Replacements$ ReplaceETB | SubAbility$ DBCleanup\nSVar:ReplaceETB:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ This permanent enters tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:When Boareskyr Tollkeeper enters, target opponent reveals all creature and land cards in their hand. Choose one of them. That card perpetually gains \"This permanent enters tapped.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boareskyr Tollkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

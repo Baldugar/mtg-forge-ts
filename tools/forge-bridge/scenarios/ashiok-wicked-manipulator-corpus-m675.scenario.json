@@ -1,0 +1,25 @@
+{
+  "id": "ashiok-wicked-manipulator-corpus-m675",
+  "description": "M6 corpus — Ashiok, Wicked Manipulator; ETB-on-bf.",
+  "seed": 61946,
+  "cards": {
+    "Ashiok, Wicked Manipulator": "Name:Ashiok, Wicked Manipulator\nManaCost:3 B B\nTypes:Legendary Planeswalker Ashiok\nLoyalty:5\nR:Event$ PayLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ExileTop | Amount$ LEY | Description$ If you would pay life while your library has at least that many cards in it, exile that many cards from the top of your library instead.\nSVar:ExileTop:DB$ ChangeZoneAll | TypeLimit$ X | ChangeType$ Card.NotDefinedReplacedSimultaneousETB | Defined$ You | Origin$ Library | Destination$ Exile\nSVar:X:ReplaceCount$Amount\nSVar:Y:Count$ValidLibrary Card.YouOwn\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 2 | ChangeNum$ 1 | DestinationZone2$ Exile | NoReveal$ True | SpellDescription$ Look at the top two cards of your library. Exile one of them and put the other into your hand.\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenAmount$ 2 | TokenScript$ b_1_1_nightmare_exile_counter | TokenOwner$ You | SpellDescription$ Create two 1/1 black Nightmare creature tokens with \"At the beginning of combat on your turn, if a card was put into exile this turn, put a +1/+1 counter on this creature.\"\nA:AB$ Dig | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | DigNum$ Z | ChangeNum$ All | DestinationZone$ Exile | SpellDescription$ Target player exiles the top X cards of their library, where X is the total mana value of cards you own in exile.\nSVar:Z:Count$ValidExile Card.YouOwn$CardManaCost\nAI:RemoveDeck:Random\nOracle:If you would pay life while your library has at least that many cards in it, exile that many cards from the top of your library instead.\\n+1: Look at the top two cards of your library. Exile one of them and put the other into your hand.\\n-2: Create two 1/1 black Nightmare creature tokens with \"At the beginning of combat on your turn, if a card was put into exile this turn, put a +1/+1 counter on this creature.\"\\n-7: Target player exiles the top X cards of their library, where X is the total mana value of cards you own in exile.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashiok, Wicked Manipulator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

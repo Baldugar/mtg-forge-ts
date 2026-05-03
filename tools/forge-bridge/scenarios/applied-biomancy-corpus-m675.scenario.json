@@ -1,0 +1,23 @@
+{
+  "id": "applied-biomancy-corpus-m675",
+  "description": "M6 corpus — Applied Biomancy; in-hand parse.",
+  "seed": 61650,
+  "cards": {
+    "Applied Biomancy": "Name:Applied Biomancy\nManaCost:G U\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBPump,DBUnsummon\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature to get +1/+1 | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Target creature gets +1/+1 until end of turn.\nSVar:DBUnsummon:DB$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature to return to owner's hand | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nOracle:Choose one or both —\\n• Target creature gets +1/+1 until end of turn.\\n• Return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Applied Biomancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

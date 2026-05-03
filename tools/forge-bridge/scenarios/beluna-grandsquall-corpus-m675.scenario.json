@@ -1,0 +1,23 @@
+{
+  "id": "beluna-grandsquall-corpus-m675",
+  "description": "M6 corpus — Beluna Grandsquall; in-hand parse.",
+  "seed": 62607,
+  "cards": {
+    "Beluna Grandsquall": "Name:Beluna Grandsquall\nManaCost:G U R\nTypes:Legendary Creature Giant Noble\nPT:4/4\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Permanent.AdventureCard | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Permanent spells you cast that have an Adventure cost {1} less to cast.\nDeckHints:Type$Adventure\nDeckHas:Ability$Mill\nAlternateMode:Adventure\nOracle:Trample\\nPermanent spells you cast that have an Adventure cost {1} less to cast.\n\nALTERNATE\n\nName:Seek Thrills\nManaCost:2 G U R\nTypes:Instant Adventure\nA:SP$ Mill | NumCards$ 7 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill seven cards. Then put all cards that have an Adventure from among the milled cards into your hand.\nSVar:DBChangeZone:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered+AdventureCard | Origin$ Graveyard,Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mill seven cards. Then put all cards that have an Adventure from among the milled cards into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beluna Grandsquall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

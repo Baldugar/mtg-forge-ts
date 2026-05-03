@@ -1,0 +1,25 @@
+{
+  "id": "arcades-sabboth-corpus-m675",
+  "description": "M6 corpus — Arcades Sabboth; ETB-on-bf.",
+  "seed": 61705,
+  "cards": {
+    "Arcades Sabboth": "Name:Arcades Sabboth\nManaCost:2 G G W W U U\nTypes:Legendary Creature Elder Dragon\nPT:7/7\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {G}{W}{U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ G W U\nS:Mode$ Continuous | Affected$ Creature.!attacking+untapped+YouCtrl | AddToughness$ 2 | Description$ Each untapped creature you control gets +0/+2 as long as it's not attacking.\nA:AB$ Pump | Cost$ W | Defined$ Self | NumDef$ +1 | SpellDescription$ CARDNAME gets +0/+1 until end of turn.\nDeckHints:Type$Wall & Keyword$Defender\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Arcades Sabboth unless you pay {G}{W}{U}.\\nEach untapped creature you control gets +0/+2 as long as it's not attacking.\\n{W}: Arcades Sabboth gets +0/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arcades Sabboth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

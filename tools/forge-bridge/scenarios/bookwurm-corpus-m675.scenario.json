@@ -1,0 +1,23 @@
+{
+  "id": "bookwurm-corpus-m675",
+  "description": "M6 corpus — Bookwurm; in-hand parse.",
+  "seed": 63149,
+  "cards": {
+    "Bookwurm": "Name:Bookwurm\nManaCost:7 G\nTypes:Creature Wurm\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ ChangeZone | Cost$ 2 G | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 2 | ActivationZone$ Graveyard | SpellDescription$ Put CARDNAME from your graveyard into your library third from the top.\nOracle:Trample\\nWhen Bookwurm enters, you gain 3 life and draw a card.\\n{2}{G}: Put Bookwurm from your graveyard into your library third from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bookwurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

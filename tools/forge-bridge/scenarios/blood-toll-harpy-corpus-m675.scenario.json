@@ -1,0 +1,23 @@
+{
+  "id": "blood-toll-harpy-corpus-m675",
+  "description": "M6 corpus — Blood-Toll Harpy; in-hand parse.",
+  "seed": 62949,
+  "cards": {
+    "Blood-Toll Harpy": "Name:Blood-Toll Harpy\nManaCost:2 B\nTypes:Creature Harpy\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 1\nOracle:Flying\\nWhen Blood-Toll Harpy enters, each player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood-Toll Harpy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bee-bee-gun-corpus-m675",
+  "description": "M6 corpus — Bee-Bee Gun; ETB-on-bf.",
+  "seed": 62561,
+  "cards": {
+    "Bee-Bee Gun": "Name:Bee-Bee Gun\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature gains \"{2}: This creature fights another target creature.\"\nSVar:TrigCrank:DB$ Animate | ValidTgts$ Creature | Abilities$ ABFight | AITgts$ Creature.YouCtrl\nSVar:ABFight:AB$ Fight | Cost$ 2 | Defined$ Self | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | SpellDescription$ CARDNAME fights another target creature.\nOracle:Whenever you crank Bee-Bee Gun, until end of turn, target creature gains \"{2}: This creature fights another target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bee-Bee Gun"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

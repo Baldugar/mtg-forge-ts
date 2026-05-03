@@ -1,0 +1,23 @@
+{
+  "id": "aura-finesse-corpus-m675",
+  "description": "M6 corpus — Aura Finesse; in-hand parse.",
+  "seed": 62064,
+  "cards": {
+    "Aura Finesse": "Name:Aura Finesse\nManaCost:U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Aura.YouCtrl | TgtPrompt$ Select target aura you control | SubAbility$ FinesseAttach | StackDescription$ None | SpellDescription$ Attach target Aura you control to target creature. Draw a card.\nSVar:FinesseAttach:DB$ Attach | Object$ ParentTarget | ValidTgts$ Creature | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:All\nOracle:Attach target Aura you control to target creature.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aura Finesse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

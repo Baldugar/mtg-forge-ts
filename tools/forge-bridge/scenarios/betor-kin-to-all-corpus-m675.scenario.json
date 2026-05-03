@@ -1,0 +1,25 @@
+{
+  "id": "betor-kin-to-all-corpus-m675",
+  "description": "M6 corpus — Betor, Kin to All; ETB-on-bf.",
+  "seed": 62663,
+  "cards": {
+    "Betor, Kin to All": "Name:Betor, Kin to All\nManaCost:2 W B G\nTypes:Legendary Creature Spirit Dragon\nPT:5/7\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE10 | TriggerDescription$ At the beginning of your end step, if creatures you control have total toughness 10 or greater, draw a card. Then if creatures you control have total toughness 20 or greater, untap each creature you control. Then if creatures you control have total toughness 40 or greater, each opponent loses half their life, rounded up.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | ConditionCheckSVar$ X | ConditionSVarCompare$ GE20 | SubAbility$ RepeatLoseLife\nSVar:RepeatLoseLife:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBLoseLife | ConditionCheckSVar$ X | ConditionSVarCompare$ GE40\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ HalfUp\nSVar:HalfUp:PlayerCountRemembered$LifeTotal/HalfUp\nSVar:X:Count$Valid Creature.YouCtrl$CardToughness\nOracle:Flying\\nAt the beginning of your end step, if creatures you control have total toughness 10 or greater, draw a card. Then if creatures you control have total toughness 20 or greater, untap each creature you control. Then if creatures you control have total toughness 40 or greater, each opponent loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Betor, Kin to All"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

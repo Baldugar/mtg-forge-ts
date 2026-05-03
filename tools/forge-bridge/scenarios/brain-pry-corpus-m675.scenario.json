@@ -1,0 +1,23 @@
+{
+  "id": "brain-pry-corpus-m675",
+  "description": "M6 corpus — Brain Pry; in-hand parse.",
+  "seed": 63259,
+  "cards": {
+    "Brain Pry": "Name:Brain Pry\nManaCost:1 B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ValidDescription$ nonland | SubAbility$ RevealHand | SpellDescription$ Choose a nonland card name. Target player reveals their hand. That player discards a card with that name. If they can't, you draw a card.\nSVar:RevealHand:DB$ RevealHand | RememberRevealed$ True | ValidTgts$ Player | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ TgtChoose | DiscardValid$ Card.NamedCard | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nAI:RemoveDeck:All\nOracle:Choose a nonland card name. Target player reveals their hand. That player discards a card with that name. If they can't, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brain Pry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

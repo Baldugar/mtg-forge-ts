@@ -1,0 +1,23 @@
+{
+  "id": "armament-of-nyx-corpus-m675",
+  "description": "M6 corpus — Armament of Nyx; in-hand parse.",
+  "seed": 61840,
+  "cards": {
+    "Armament of Nyx": "Name:Armament of Nyx\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Enchantment\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Enchantment | AddKeyword$ Double Strike | Description$ Enchanted creature has double strike as long as it's an enchantment. Otherwise, prevent all damage that would be dealt by enchanted creature.\nR:Event$ DamageDone | Prevent$ True | ValidSource$ Creature.EnchantedBy+nonEnchantment | Secondary$ True | Description$ Otherwise, prevent all damage that would be dealt by enchanted creature.\nOracle:Enchant creature\\nEnchanted creature has double strike as long as it's an enchantment. Otherwise, prevent all damage that would be dealt by enchanted creature. (A creature with double strike deals both first-strike and regular combat damage.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armament of Nyx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

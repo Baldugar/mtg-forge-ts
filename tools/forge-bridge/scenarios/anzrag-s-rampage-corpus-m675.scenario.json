@@ -1,0 +1,23 @@
+{
+  "id": "anzrag-s-rampage-corpus-m675",
+  "description": "M6 corpus — Anzrag's Rampage; in-hand parse.",
+  "seed": 61617,
+  "cards": {
+    "Anzrag's Rampage": "Name:Anzrag's Rampage\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Artifact.YouDontCtrl | ValidDescription$ artifacts you don't control | SubAbility$ DBDig | SpellDescription$ Destroy all artifacts you don't control, then exile the top X cards of your library, where X is the number of artifacts that were put into graveyards from the battlefield this turn.\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Imprint$ True | ChangeType$ Creature.IsRemembered | Hidden$ True | Optional$ True | ChangeNum$ 1 | SubAbility$ DBAnimate | SpellDescription$ You may put a creature card exiled this way onto the battlefield. It gains haste. Return it to your hand at the beginning of the next end step.\nSVar:DBAnimate:DB$ Animate | Keywords$ Haste | Duration$ Permanent | Defined$ Imprinted | SubAbility$ DBCleanup | AtEOT$ Hand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Artifact\nDeckHints:Ability$Sacrifice & Type$Artifact\nOracle:Destroy all artifacts you don't control, then exile the top X cards of your library, where X is the number of artifacts that were put into graveyards from the battlefield this turn. You may put a creature card exiled this way onto the battlefield. It gains haste. Return it to your hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anzrag's Rampage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

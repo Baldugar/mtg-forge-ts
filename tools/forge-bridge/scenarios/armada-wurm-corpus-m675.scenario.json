@@ -1,0 +1,23 @@
+{
+  "id": "armada-wurm-corpus-m675",
+  "description": "M6 corpus — Armada Wurm; in-hand parse.",
+  "seed": 61835,
+  "cards": {
+    "Armada Wurm": "Name:Armada Wurm\nManaCost:2 G G W W\nTypes:Creature Wurm\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 5/5 green Wurm creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ g_5_5_wurm_trample | TokenOwner$ TriggeredCardController\nOracle:Trample\\nWhen Armada Wurm enters, create a 5/5 green Wurm creature token with trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armada Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

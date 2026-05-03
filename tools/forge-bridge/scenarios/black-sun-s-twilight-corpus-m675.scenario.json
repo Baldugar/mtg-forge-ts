@@ -1,0 +1,23 @@
+{
+  "id": "black-sun-s-twilight-corpus-m675",
+  "description": "M6 corpus — Black Sun's Twilight; in-hand parse.",
+  "seed": 62745,
+  "cards": {
+    "Black Sun's Twilight": "Name:Black Sun's Twilight\nManaCost:X B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SubAbility$ DBReanimate | SpellDescription$ Up to one target creature gets -X/-X until end of turn. If X is 5 or more, return a creature card with mana value X or less from your graveyard to the battlefield tapped.\nSVar:DBReanimate:DB$ ChangeZone | Origin$ Graveyard | Chooser$ You | ChangeNum$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5 | Destination$ Battlefield | Hidden$ True | Tapped$ True | ChangeType$ Creature.YouOwn+cmcLEX\nSVar:X:Count$xPaid\nDeckHas:Ability$Graveyard\nOracle:Up to one target creature gets -X/-X until end of turn. If X is 5 or more, return a creature card with mana value X or less from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Sun's Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

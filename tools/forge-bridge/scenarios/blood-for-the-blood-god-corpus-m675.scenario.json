@@ -1,0 +1,23 @@
+{
+  "id": "blood-for-the-blood-god-corpus-m675",
+  "description": "M6 corpus — Blood for the Blood God!; in-hand parse.",
+  "seed": 62928,
+  "cards": {
+    "Blood for the Blood God!": "Name:Blood for the Blood God!\nManaCost:8 B B R\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature that died this turn.\nA:SP$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBDraw | SpellDescription$ Discard your hand, then draw eight cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 8 | SubAbility$ DBKhorne\nSVar:DBKhorne:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 8 | SubAbility$ DBChangeZone | SpellDescription$ CARDNAME deals 8 damage to each opponent.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:NeedsToPlayVar:Y LE3\nSVar:Y:Count$ValidHand Card.YouOwn\nDeckHas:Ability$Discard\nOracle:This spell costs {1} less to cast for each creature that died this turn.\\nDiscard your hand, then draw eight cards. Blood for the Blood God! deals 8 damage to each opponent. Exile Blood for the Blood God!.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood for the Blood God!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "autarch-mammoth-corpus-m675",
+  "description": "M6 corpus — Autarch Mammoth; in-hand parse.",
+  "seed": 62099,
+  "cards": {
+    "Autarch Mammoth": "Name:Autarch Mammoth\nManaCost:4 G G\nTypes:Creature Elephant Mount\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever this creature enters and whenever it attacks while saddled, create a 3/3 green Elephant creature token.\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever this creature enters and whenever it attacks while saddled, create a 3/3 green Elephant creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_elephant\nK:Saddle:5\nDeckHas:Ability$Token\nOracle:Whenever this creature enters and whenever it attacks while saddled, create a 3/3 green Elephant creature token.\\nSaddle 5 (Tap any number of other creatures you control with total power 5 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Autarch Mammoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

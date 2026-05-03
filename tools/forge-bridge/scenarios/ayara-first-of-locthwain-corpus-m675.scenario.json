@@ -1,0 +1,23 @@
+{
+  "id": "ayara-first-of-locthwain-corpus-m675",
+  "description": "M6 corpus — Ayara, First of Locthwain; in-hand parse.",
+  "seed": 62204,
+  "cards": {
+    "Ayara, First of Locthwain": "Name:Ayara, First of Locthwain\nManaCost:B B B\nTypes:Legendary Creature Elf Noble\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Black+Other+YouCtrl | Execute$ TrigDrain | TriggerDescription$ Whenever CARDNAME or another black creature you control enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Draw | Cost$ T Sac<1/Creature.Other+Black/another black creature> | SpellDescription$ Draw a card.\nAI:RemoveDeck:Random\nOracle:Whenever Ayara, First of Locthwain or another black creature you control enters, each opponent loses 1 life and you gain 1 life.\\n{T}, Sacrifice another black creature: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ayara, First of Locthwain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

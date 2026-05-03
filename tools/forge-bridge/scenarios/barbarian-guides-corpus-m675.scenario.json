@@ -1,0 +1,25 @@
+{
+  "id": "barbarian-guides-corpus-m675",
+  "description": "M6 corpus — Barbarian Guides; ETB-on-bf.",
+  "seed": 62354,
+  "cards": {
+    "Barbarian Guides": "Name:Barbarian Guides\nManaCost:2 R\nTypes:Creature Human Barbarian\nPT:1/2\nA:AB$ ChooseType | Cost$ 2 R T | Defined$ You | Type$ Land | SubAbility$ DBPump | StackDescription$ SpellDescription | SpellDescription$ Choose a land type. Target creature you control gains snow landwalk of the chosen type until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Landwalk:ChosenType.Snow:Snow ChosenType | DefinedKW$ ChosenType | StackDescription$ None | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | RememberObjects$ ParentTarget | Execute$ TrigReturn | SpellDescription$ Return that creature to its owner's hand at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{2}{R}, {T}: Choose a land type. Target creature you control gains snow landwalk of the chosen type until end of turn. Return that creature to its owner's hand at the beginning of the next end step. (It can't be blocked as long as defending player controls a snow land of that type.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barbarian Guides"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

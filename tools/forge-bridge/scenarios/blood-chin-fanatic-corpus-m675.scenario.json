@@ -1,0 +1,25 @@
+{
+  "id": "blood-chin-fanatic-corpus-m675",
+  "description": "M6 corpus — Blood-Chin Fanatic; ETB-on-bf.",
+  "seed": 62920,
+  "cards": {
+    "Blood-Chin Fanatic": "Name:Blood-Chin Fanatic\nManaCost:1 B B\nTypes:Creature Orc Warrior\nPT:3/3\nA:AB$ LoseLife | Cost$ 1 B Sac<1/Creature.Other+Warrior/another Warrior creature> | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ X | SubAbility$ DBGainLife | SpellDescription$ Target player loses X life and you gain X life, where X is the sacrificed creature's power.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Sacrificed$CardPower\nDeckHints:Type$Warrior\nOracle:{1}{B}, Sacrifice another Warrior creature: Target player loses X life and you gain X life, where X is the sacrificed creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blood-Chin Fanatic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

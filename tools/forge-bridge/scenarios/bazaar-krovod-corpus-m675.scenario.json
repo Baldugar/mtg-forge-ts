@@ -1,0 +1,25 @@
+{
+  "id": "bazaar-krovod-corpus-m675",
+  "description": "M6 corpus — Bazaar Krovod; ETB-on-bf.",
+  "seed": 62514,
+  "cards": {
+    "Bazaar Krovod": "Name:Bazaar Krovod\nManaCost:4 W\nTypes:Creature Beast\nPT:2/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature gets +0/+2 until end of turn. Untap that creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature. | NumDef$ +2 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nOracle:Whenever Bazaar Krovod attacks, another target attacking creature gets +0/+2 until end of turn. Untap that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bazaar Krovod"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

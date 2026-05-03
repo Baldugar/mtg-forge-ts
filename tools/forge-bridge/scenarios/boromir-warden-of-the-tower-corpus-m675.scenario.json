@@ -1,0 +1,25 @@
+{
+  "id": "boromir-warden-of-the-tower-corpus-m675",
+  "description": "M6 corpus — Boromir, Warden of the Tower; ETB-on-bf.",
+  "seed": 63181,
+  "cards": {
+    "Boromir, Warden of the Tower": "Name:Boromir, Warden of the Tower\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigCounter | ValidSA$ Spell.ManaSpent EQ0 | TriggerDescription$ Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl | KW$ Indestructible | SubAbility$ TrigTempt | SpellDescription$ Creatures you control gain indestructible until end of turn. The Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nOracle:Vigilance\\nWhenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.\\nSacrifice Boromir, Warden of the Tower: Creatures you control gain indestructible until end of turn. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boromir, Warden of the Tower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

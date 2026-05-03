@@ -1,0 +1,25 @@
+{
+  "id": "archfiend-of-depravity-corpus-m675",
+  "description": "M6 corpus — Archfiend of Depravity; ETB-on-bf.",
+  "seed": 61748,
+  "cards": {
+    "Archfiend of Depravity": "Name:Archfiend of Depravity\nManaCost:3 B B\nTypes:Creature Demon\nPT:5/4\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of each opponent's end step, that player chooses up to two creatures they control, then sacrifices the rest.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ TriggeredPlayer | MinAmount$ 0 | Amount$ 2 | TargetControls$ True | Choices$ Creature | ChoiceTitle$ Choose up to two creatures to keep | Reveal$ True | SubAbility$ DBSacrificeAll\nSVar:DBSacrificeAll:DB$ SacrificeAll | ValidCards$ Creature.nonChosenCard | Controller$ TriggeredPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nAt the beginning of each opponent's end step, that player chooses up to two creatures they control, then sacrifices the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archfiend of Depravity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

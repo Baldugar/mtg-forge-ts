@@ -1,0 +1,25 @@
+{
+  "id": "arashi-the-sky-asunder-corpus-m675",
+  "description": "M6 corpus — Arashi, the Sky Asunder; ETB-on-bf.",
+  "seed": 61679,
+  "cards": {
+    "Arashi, the Sky Asunder": "Name:Arashi, the Sky Asunder\nManaCost:3 G G\nTypes:Legendary Creature Spirit\nPT:5/5\nA:AB$ DealDamage | Cost$ X G T | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature with flying.\nA:AB$ DamageAll | PrecostDesc$ Channel — | Cost$ X G G Discard<1/NICKNAME> | ActivationZone$ Hand | ValidCards$ Creature.withFlying | NumDmg$ X | ValidDescription$ each creature with flying. | SpellDescription$ NICKNAME deals X damage to each creature with flying.\nSVar:X:Count$xPaid\nOracle:{X}{G}, {T}: Arashi, the Sky Asunder deals X damage to target creature with flying.\\nChannel — {X}{G}{G}, Discard Arashi: Arashi deals X damage to each creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arashi, the Sky Asunder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

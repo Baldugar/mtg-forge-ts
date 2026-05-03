@@ -1,0 +1,23 @@
+{
+  "id": "bazaar-trademage-corpus-m675",
+  "description": "M6 corpus — Bazaar Trademage; in-hand parse.",
+  "seed": 62515,
+  "cards": {
+    "Bazaar Trademage": "Name:Bazaar Trademage\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards, then discard three cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards, then discard three cards. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 3 | Mode$ TgtChoose\nAI:RemoveDeck:All\nOracle:Flying\\nWhen Bazaar Trademage enters, draw two cards, then discard three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bazaar Trademage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

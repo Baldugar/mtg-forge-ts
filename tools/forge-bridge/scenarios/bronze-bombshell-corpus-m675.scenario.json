@@ -1,0 +1,23 @@
+{
+  "id": "bronze-bombshell-corpus-m675",
+  "description": "M6 corpus — Bronze Bombshell; in-hand parse.",
+  "seed": 63422,
+  "cards": {
+    "Bronze Bombshell": "Name:Bronze Bombshell\nManaCost:4\nTypes:Artifact Creature Construct\nPT:4/1\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.Self+OwnerDoesntControl | Execute$ TrigSac | TriggerDescription$ When a player other than CARDNAME's owner controls it, that player sacrifices it. If the player does, CARDNAME deals 7 damage to the player.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ Self | RememberSacrificed$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ RememberedController | NumDmg$ 7 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DonateMe:5\nOracle:When a player other than Bronze Bombshell's owner controls it, that player sacrifices it. If the player does, Bronze Bombshell deals 7 damage to the player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bronze Bombshell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

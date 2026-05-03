@@ -1,0 +1,23 @@
+{
+  "id": "bloodtithe-collector-corpus-m675",
+  "description": "M6 corpus — Bloodtithe Collector; in-hand parse.",
+  "seed": 63003,
+  "cards": {
+    "Bloodtithe Collector": "Name:Bloodtithe Collector\nManaCost:4 B\nTypes:Creature Vampire Noble\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ Player.Opponent | NumCards$ 1\nSVar:X:Count$LifeOppsLostThisTurn\nOracle:Flying\\nWhen Bloodtithe Collector enters, if an opponent lost life this turn, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodtithe Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

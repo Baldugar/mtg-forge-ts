@@ -1,0 +1,23 @@
+{
+  "id": "armed-and-armored-corpus-m675",
+  "description": "M6 corpus — Armed and Armored; in-hand parse.",
+  "seed": 61841,
+  "cards": {
+    "Armed and Armored": "Name:Armed and Armored\nManaCost:1 W\nTypes:Instant\nA:SP$ AnimateAll | Types$ Creature,Artifact | ValidCards$ Vehicle.YouCtrl | SubAbility$ ArmDwarf | StackDescription$ Vehicles {p:You} controls become artifact creatures until end of turn. | SpellDescription$ Vehicles you control become artifact creatures until end of turn. Choose a Dwarf you control. Attach any number of Equipment you control to it.\nSVar:ArmDwarf:DB$ Attach | Object$ Valid Equipment.YouCtrl | Defined$ Valid Dwarf.YouCtrl | Optional$ True | StackDescription$ {p:You} chooses a Dwarf they control and attaches any number of Equipment they control to it.\nAI:RemoveDeck:All\nDeckHints:Type$Equipment\nDeckNeeds:Type$Vehicle|Dwarf\nOracle:Vehicles you control become artifact creatures until end of turn. Choose a Dwarf you control. Attach any number of Equipment you control to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armed and Armored"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

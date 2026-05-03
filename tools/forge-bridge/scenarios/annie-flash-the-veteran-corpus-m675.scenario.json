@@ -1,0 +1,23 @@
+{
+  "id": "annie-flash-the-veteran-corpus-m675",
+  "description": "M6 corpus — Annie Flash, the Veteran; in-hand parse.",
+  "seed": 61581,
+  "cards": {
+    "Annie Flash, the Veteran": "Name:Annie Flash, the Veteran\nManaCost:3 R G W\nTypes:Legendary Creature Human Rogue\nPT:4/5\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+wasCastByYou | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if you cast it, return target permanent card with mana value 3 or less from your graveyard to the battlefield tapped.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+cmcLE3 | TgtPrompt$ Select target permanent card with mana value 3 or less in your graveyard | Tapped$ True\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ ExileTwo | TriggerDescription$ Whenever NICKNAME becomes tapped, exile the top two cards of your library. You may play those cards this turn.\nSVar:ExileTwo:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ EndOfTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nOracle:Flash\\nWhen Annie Flash, the Veteran enters, if you cast it, return target permanent card with mana value 3 or less from your graveyard to the battlefield tapped.\\nWhenever Annie Flash becomes tapped, exile the top two cards of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Annie Flash, the Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

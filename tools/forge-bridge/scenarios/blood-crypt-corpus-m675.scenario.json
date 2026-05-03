@@ -1,0 +1,25 @@
+{
+  "id": "blood-crypt-corpus-m675",
+  "description": "M6 corpus — Blood Crypt; ETB-on-bf.",
+  "seed": 62923,
+  "cards": {
+    "Blood Crypt": "Name:Blood Crypt\nManaCost:no cost\nTypes:Land Swamp Mountain\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 2 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<2> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:({T}: Add {B} or {R}.)\\nAs Blood Crypt enters, you may pay 2 life. If you don't, it enters tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blood Crypt"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

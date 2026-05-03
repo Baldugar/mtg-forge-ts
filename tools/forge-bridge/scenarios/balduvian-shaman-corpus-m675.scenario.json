@@ -1,0 +1,25 @@
+{
+  "id": "balduvian-shaman-corpus-m675",
+  "description": "M6 corpus — Balduvian Shaman; ETB-on-bf.",
+  "seed": 62282,
+  "cards": {
+    "Balduvian Shaman": "Name:Balduvian Shaman\nManaCost:U\nTypes:Creature Human Cleric Shaman\nPT:1/1\nA:AB$ ChangeText | Cost$ T | ValidTgts$ Enchantment.YouCtrl+White+withoutCumulative upkeep | TgtPrompt$ Choose target white enchantment you control that doesn't have cumulative upkeep | ChangeColorWord$ Choose Choose | Duration$ Permanent | SubAbility$ DBCumUpkeep | SpellDescription$ Change the text of target white enchantment you control that doesn't have cumulative upkeep by replacing all instances of one color word with another. (For example, you may change \"black creatures can't attack\" to \"blue creatures can't attack.\") That enchantment gains \"Cumulative upkeep 1.\" (At the beginning of its controller's upkeep, that player puts an age counter on it, then sacrifices it unless they pay its upkeep cost for each age counter on it.)\nSVar:DBCumUpkeep:DB$ Pump | Defined$ ParentTarget | KW$ Cumulative upkeep:1 | Duration$ Permanent\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{T}: Change the text of target white enchantment you control that doesn't have cumulative upkeep by replacing all instances of one color word with another. (For example, you may change \"black creatures can't attack\" to \"blue creatures can't attack.\") That enchantment gains \"Cumulative upkeep {1}.\" (At the beginning of its controller's upkeep, that player puts an age counter on it, then sacrifices it unless they pay its upkeep cost for each age counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Balduvian Shaman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

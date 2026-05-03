@@ -1,0 +1,23 @@
+{
+  "id": "argivian-welcome-corpus-m675",
+  "description": "M6 corpus — Argivian Welcome; in-hand parse.",
+  "seed": 61817,
+  "cards": {
+    "Argivian Welcome": "Name:Argivian Welcome\nManaCost:W U\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.powerGE4 | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature with power 4 or greater | SubAbility$ DBChoose | SpellDescription$ Destroy up to one target creature with power 4 or greater.\nSVar:DBChoose:DB$ ChooseCard | Mandatory$ True | ChoiceZone$ Hand | Choices$ Card.nonLand+YouOwn | ChoiceDesc$ nonland | ChoiceTitle$ Choose a nonland card in your hand | Amount$ 1 | SubAbility$ DBPump | SpellDescription$ ,,,,,,Choose a nonland card in your hand.\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | KW$ Flash | Duration$ Perpetual | PumpZone$ Hand | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains flash.\nOracle:Destroy up to one target creature with power 4 or greater.\\nChoose a nonland card in your hand. It perpetually gains flash.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argivian Welcome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

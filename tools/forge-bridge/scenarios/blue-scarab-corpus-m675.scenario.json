@@ -1,0 +1,23 @@
+{
+  "id": "blue-scarab-corpus-m675",
+  "description": "M6 corpus — Blue Scarab; in-hand parse.",
+  "seed": 63026,
+  "cards": {
+    "Blue Scarab": "Name:Blue Scarab\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | ValidBlocker$ Creature.Blue | Description$ Enchanted creature can't be blocked by blue creatures.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | IsPresent$ Permanent.Blue+OppCtrl | Description$ Enchanted creature gets +2/+2 as long as an opponent controls a blue permanent.\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature can't be blocked by blue creatures.\\nEnchanted creature gets +2/+2 as long as an opponent controls a blue permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blue Scarab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

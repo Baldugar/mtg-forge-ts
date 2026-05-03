@@ -1,0 +1,25 @@
+{
+  "id": "breathstealer-s-crypt-corpus-m675",
+  "description": "M6 corpus — Breathstealer's Crypt; ETB-on-bf.",
+  "seed": 63339,
+  "cards": {
+    "Breathstealer's Crypt": "Name:Breathstealer's Crypt\nManaCost:2 U B\nTypes:Enchantment\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ Player | ReplaceWith$ RevealedDraw | Description$ If a player would draw a card, instead they draw a card and reveal it. If it's a creature card, that player discards it unless they pay 3 life.\nSVar:RevealedDraw:DB$ Draw | Defined$ ReplacedPlayer | NumCards$ 1 | SubAbility$ TrigReveal | RememberDrawn$ True\nSVar:TrigReveal:DB$ Reveal | Defined$ ReplacedPlayer | RevealDefined$ Remembered | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ ReplacedPlayer | Mode$ Defined | DefinedCards$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | UnlessPayer$ ReplacedPlayer | UnlessCost$ PayLife<3> | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:If a player would draw a card, instead they draw a card and reveal it. If it's a creature card, that player discards it unless they pay 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Breathstealer's Crypt"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

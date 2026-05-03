@@ -1,0 +1,25 @@
+{
+  "id": "bounty-board-corpus-m675",
+  "description": "M6 corpus — Bounty Board; ETB-on-bf.",
+  "seed": 63238,
+  "cards": {
+    "Bounty Board": "Name:Bounty Board\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ PutCounter | Cost$ 1 T | ValidTgts$ Creature | CounterType$ BOUNTY | CounterNum$ 1 | IsCurse$ True | SorcerySpeed$ True | SpellDescription$ Put a bounty counter on target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.counters_GE1_BOUNTY | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature with a bounty counter on it dies, each of its controller's opponents draws a card and gains 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ Player.OpponentOf TriggeredCardController | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player.OpponentOf TriggeredCardController | NumCards$ 1\nDeckHints:Name$Bounty Hunter|Mathas, Fiend Seeker|Termination Facilitator|Chevill, Bane of Monsters\nDeckHints:Ability$LifeGain\nOracle:{T}: Add one mana of any color.\\n{1}, {T}: Put a bounty counter on target creature. Activate only as a sorcery.\\nWhenever a creature with a bounty counter on it dies, each of its controller's opponents draws a card and gains 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bounty Board"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

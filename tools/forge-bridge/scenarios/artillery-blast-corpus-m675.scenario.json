@@ -1,0 +1,23 @@
+{
+  "id": "artillery-blast-corpus-m675",
+  "description": "M6 corpus — Artillery Blast; in-hand parse.",
+  "seed": 61909,
+  "cards": {
+    "Artillery Blast": "Name:Artillery Blast\nManaCost:1 W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | NumDmg$ X | SpellDescription$ Domain — CARDNAME deals X damage to target tapped creature, where X is 1 plus the number of basic land types among lands you control.\nSVar:X:Count$Domain/Plus.1\nAI:RemoveDeck:Random\nOracle:Domain — Artillery Blast deals X damage to target tapped creature, where X is 1 plus the number of basic land types among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artillery Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

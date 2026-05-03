@@ -1,0 +1,25 @@
+{
+  "id": "and-ril-narsil-reforged-corpus-m675",
+  "description": "M6 corpus — Andúril, Narsil Reforged; ETB-on-bf.",
+  "seed": 61489,
+  "cards": {
+    "Andúril, Narsil Reforged": "Name:Andúril, Narsil Reforged\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Ascend\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigCounter | TriggerDescription$ Whenever equipped creature attacks, put a +1/+1 counter on each creature you control. If you have the city's blessing, put two +1/+1 counters on each creature you control instead.\nSVar:TrigCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ X\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE\nSVar:X:Count$Blessing.2.1\nK:Equip:3\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nWhenever equipped creature attacks, put a +1/+1 counter on each creature you control. If you have the city's blessing, put two +1/+1 counters on each creature you control instead.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Andúril, Narsil Reforged"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

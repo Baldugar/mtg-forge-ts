@@ -1,0 +1,23 @@
+{
+  "id": "balance-of-power-corpus-m675",
+  "description": "M6 corpus — Balance of Power; in-hand parse.",
+  "seed": 62270,
+  "cards": {
+    "Balance of Power": "Name:Balance of Power\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ Y | Defined$ You | ValidTgts$ Opponent | ConditionCheckSVar$ Y | SpellDescription$ If target opponent has more cards in hand than you, draw cards equal to the difference.\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:TargetedPlayer$CardsInHand/Minus.X\nAI:RemoveDeck:All\nOracle:If target opponent has more cards in hand than you, draw cards equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balance of Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

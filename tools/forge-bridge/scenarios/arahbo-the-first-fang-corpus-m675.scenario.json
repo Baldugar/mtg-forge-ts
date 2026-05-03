@@ -1,0 +1,23 @@
+{
+  "id": "arahbo-the-first-fang-corpus-m675",
+  "description": "M6 corpus — Arahbo, the First Fang; in-hand parse.",
+  "seed": 61678,
+  "cards": {
+    "Arahbo, the First Fang": "Name:Arahbo, the First Fang\nManaCost:2 W\nTypes:Legendary Creature Cat Avatar\nPT:2/2\nS:Mode$ Continuous | Affected$ Cat.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Cats you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Cat.!token+Other+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME or another nontoken Cat you control enters, create a 1/1 white Cat creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat\nDeckHas:Ability$Token\nDeckHints:Type$Cat\nOracle:Other Cats you control get +1/+1.\\nWhenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arahbo, the First Fang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "b-o-b-bevy-of-beebles-corpus-m675",
+  "description": "M6 corpus — B.O.B. (Bevy of Beebles); in-hand parse.",
+  "seed": 63042,
+  "cards": {
+    "B.O.B. (Bevy of Beebles)": "Name:B.O.B. (Bevy of Beebles)\nManaCost:3 U U\nTypes:Legendary Planeswalker B.O.B.\nLoyalty:0\nK:ETBReplacement:Other:TrigFour\nSVar:TrigFour:DB$ Token | TokenAmount$ 4 | TokenScript$ u_1_1_beeble | SpellDescription$ As B.O.B. enters, create four 1/1 blue Beeble creature tokens.\nT:Mode$ CounterRemovedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ LOYALTY | CheckSVar$ Beeb | SVarCompare$ GTLoy | Execute$ TrigSac | Static$ True | TriggerDescription$ The number of loyalty counters on B.O.B. is equal to the number of Beebles you control. (Create or sacrifice Beebles whenever B.O.B. gains or loses loyalty.)\nSVar:TrigSac:DB$ Sacrifice | Amount$ Amt | SacValid$ Beeble\nSVar:Amt:TriggerCount$Amount\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ LOYALTY | CheckSVar$ Loy | SVarCompare$ GTBeeb | Execute$ TrigCreate | Static$ True | Secondary$ True\nSVar:TrigCreate:DB$ Token | TokenAmount$ Amt | TokenScript$ u_1_1_beeble\nSVar:Loy:Count$CardCounters.LOYALTY\nSVar:Beeb:Count$Valid Beeble.YouCtrl\nK:The number of loyalty counters on CARDNAME is equal to the number of Beebles you control.\nSVar:NHand:Count$ValidHand Card.YouOwn\nA:AB$ Effect | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Beeble | TgtPrompt$ Select up to X target Beebles | TargetMin$ 0 | TargetMax$ NHand | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | StackDescription$ SpellDescription | SpellDescription$ Up to X target Beebles can't be blocked this turn, where X is the number of cards in your hand.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ These creatures can't be blocked this turn.\nA:AB$ Draw | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | SpellDescription$ Draw a card.\nDeckHas:Ability$Token & Type$Beeble\nOracle:As B.O.B. enters, create four 1/1 blue Beeble creature tokens.\\nThe number of loyalty counters on B.O.B. is equal to the number of Beebles you control. (Create or sacrifice Beebles whenever B.O.B. gains or loses loyalty.)\\n[+1]: Up to X target Beebles can't be blocked this turn, where X is the number of cards in your hand.\\n[-1]: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "B.O.B. (Bevy of Beebles)"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

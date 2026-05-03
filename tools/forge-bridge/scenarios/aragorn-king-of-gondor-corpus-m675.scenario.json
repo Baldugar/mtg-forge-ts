@@ -1,0 +1,23 @@
+{
+  "id": "aragorn-king-of-gondor-corpus-m675",
+  "description": "M6 corpus — Aragorn, King of Gondor; in-hand parse.",
+  "seed": 61677,
+  "cards": {
+    "Aragorn, King of Gondor": "Name:Aragorn, King of Gondor\nManaCost:1 U R W\nTypes:Legendary Creature Human Noble\nPT:4/4\nK:Vigilance\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TgtNoBlock | TriggerDescription$ Whenever NICKNAME attacks, up to one target creature can't block this turn. If you're the monarch, creatures can't block this turn.\nSVar:TgtNoBlock:DB$ Pump | SubAbility$ AllNoBlock | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | StackDescription$ {c:Targeted} can't block this turn.\nSVar:AllNoBlock:DB$ Effect | StaticAbilities$ KWPump | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | AILogic$ Evasion\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures can't block this turn.\nSVar:X:Count$Monarch.1.0\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Vigilance, lifelink\\nWhen Aragorn, King of Gondor enters, you become the monarch.\\nWhenever Aragorn attacks, up to one target creature can't block this turn. If you're the monarch, creatures can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aragorn, King of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

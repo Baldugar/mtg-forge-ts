@@ -1,0 +1,25 @@
+{
+  "id": "benthic-biomancer-corpus-m675",
+  "description": "M6 corpus — Benthic Biomancer; ETB-on-bf.",
+  "seed": 62637,
+  "cards": {
+    "Benthic Biomancer": "Name:Benthic Biomancer\nManaCost:U\nTypes:Creature Merfolk Wizard Mutant\nPT:1/1\nA:AB$ PutCounter | Cost$ 1 U | Adapt$ 1\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigDraw | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:{1}{U}: Adapt 1. (If this creature has no +1/+1 counters on it, put a +1/+1 counter on it.)\\nWhenever one or more +1/+1 counters are put on Benthic Biomancer, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Benthic Biomancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bloatfly-swarm-corpus-m675",
+  "description": "M6 corpus — Bloatfly Swarm; in-hand parse.",
+  "seed": 62911,
+  "cards": {
+    "Bloatfly Swarm": "Name:Bloatfly Swarm\nManaCost:3 B\nTypes:Creature Insect Mutant\nPT:0/0\nK:Flying\nK:etbCounter:P1P1:5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+counters_GE1_P1P1 | ReplaceWith$ Counters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME while it has a +1/+1 counter on it, prevent that damage, remove that many +1/+1 counters it, then give each player a rad counter for each +1/+1 counter removed this way.\nSVar:Counters:DB$ RemoveCounter | Defined$ ReplacedTarget | CounterType$ P1P1 | CounterNum$ Y | RememberAmount$ True | SubAbility$ DBRadiation\nSVar:DBRadiation:DB$ Radiation | Defined$ Player | Num$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:ReplaceCount$DamageAmount\nSVar:Z:Count$RememberedNumber\nDeckHas:Ability$Counters\nOracle:Flying\\nBloatfly Swarm enters with five +1/+1 counters on it.\\nIf damage would be dealt to Bloatfly Swarm while it has a +1/+1 counter on it, prevent that damage, remove that many +1/+1 counters from it, then give each player a rad counter for each +1/+1 counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloatfly Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "awe-strike-corpus-m675",
+  "description": "M6 corpus — Awe Strike; in-hand parse.",
+  "seed": 62189,
+  "cards": {
+    "Awe Strike": "Name:Awe Strike\nManaCost:W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | TgtPrompt$ Select target creature to entrance | Name$ Awe Struck | ReplacementEffects$ StrikeWithAwe | ExileOnMoved$ Battlefield | RememberObjects$ Targeted | AILogic$ Fog | SpellDescription$ The next time target creature would deal damage this turn, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:StrikeWithAwe:Event$ DamageDone | ValidSource$ Card.IsRemembered | ReplaceWith$ GainLifeInstead | PreventionEffect$ True | Description$ The next time the targeted creature would deal damage this turn, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:GainLifeInstead:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nOracle:The next time target creature would deal damage this turn, prevent that damage. You gain life equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awe Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

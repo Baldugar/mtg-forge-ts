@@ -1,0 +1,23 @@
+{
+  "id": "archangel-avacyn-corpus-m675",
+  "description": "M6 corpus — Archangel Avacyn; in-hand parse.",
+  "seed": 61732,
+  "cards": {
+    "Archangel Avacyn": "Name:Archangel Avacyn\nManaCost:3 W W\nTypes:Legendary Creature Angel\nPT:4/4\nK:Flash\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control gain indestructible until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible\nT:Mode$ ChangesZone | ValidCard$ Creature.nonAngel+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDelayTransform | TriggerZones$ Battlefield | TriggerDescription$ When a non-Angel creature you control dies, transform CARDNAME at the beginning of the next upkeep.\nSVar:TrigDelayTransform:DB$ DelayedTrigger | Mode$ Phase | Phase$ Upkeep | Execute$ TrigTransform | TriggerDescription$ Transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Flash\\nFlying, vigilance\\nWhen Archangel Avacyn enters, creatures you control gain indestructible until end of turn.\\nWhen a non-Angel creature you control dies, transform Archangel Avacyn at the beginning of the next upkeep.\n\nALTERNATE\n\nName:Avacyn, the Purifier\nManaCost:no cost\nColors:red\nTypes:Legendary Creature Angel\nPT:6/5\nK:Flying\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ Whenever this creature transforms into CARDNAME, it deals 3 damage to each other creature and each opponent.\nSVar:TrigDamageAll:DB$ DamageAll | NumDmg$ 3 | ValidCards$ Creature.StrictlyOther | ValidPlayers$ Player.Opponent | ValidDescription$ each other creature and each opponent.\nOracle:Flying\\nWhen this creature transforms into Avacyn, the Purifier, it deals 3 damage to each other creature and each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archangel Avacyn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

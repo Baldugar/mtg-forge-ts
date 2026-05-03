@@ -1,0 +1,25 @@
+{
+  "id": "balduvian-fallen-corpus-m675",
+  "description": "M6 corpus — Balduvian Fallen; ETB-on-bf.",
+  "seed": 62278,
+  "cards": {
+    "Balduvian Fallen": "Name:Balduvian Fallen\nManaCost:3 B\nTypes:Creature Zombie\nPT:3/5\nK:Cumulative upkeep:1\nT:Mode$ PayCumulativeUpkeep | ValidCard$ Card.Self | Paid$ True | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME's cumulative upkeep is paid, it gets +1/+0 until end of turn for each {B} or {R} spent this way.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$TriggeredPayingMana.B.R\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhenever Balduvian Fallen's cumulative upkeep is paid, it gets +1/+0 until end of turn for each {B} or {R} spent this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Balduvian Fallen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

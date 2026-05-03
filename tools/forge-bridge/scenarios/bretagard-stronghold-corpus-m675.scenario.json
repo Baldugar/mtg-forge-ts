@@ -1,0 +1,25 @@
+{
+  "id": "bretagard-stronghold-corpus-m675",
+  "description": "M6 corpus — Bretagard Stronghold; ETB-on-bf.",
+  "seed": 63346,
+  "cards": {
+    "Bretagard Stronghold": "Name:Bretagard Stronghold\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ PutCounter | Cost$ G W W T Sac<1/CARDNAME> | CounterNum$ 1 | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to two target creatures you control | SorcerySpeed$ True | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on each of up to two target creatures you control. They gain vigilance and lifelink until end of turn. Activate only as a sorcery.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Vigilance & Lifelink | StackDescription$ {c:Targeted} gain vigilance and lifelink until end of turn.\nDeckHas:Ability$Sacrifice|Counters|LifeGain\nOracle:Bretagard Stronghold enters tapped.\\n{T}: Add {G}.\\n{G}{W}{W}, {T}, Sacrifice Bretagard Stronghold: Put a +1/+1 counter on each of up to two target creatures you control. They gain vigilance and lifelink until end of turn. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bretagard Stronghold"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

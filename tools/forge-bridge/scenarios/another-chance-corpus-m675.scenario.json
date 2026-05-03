@@ -1,0 +1,23 @@
+{
+  "id": "another-chance-corpus-m675",
+  "description": "M6 corpus — Another Chance; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Another Chance": "Name:Another Chance\nManaCost:2 B\nTypes:Instant\nA:SP$ Mill | NumCards$ 2 | Defined$ You | Optional$ True | SubAbility$ DBChangeZone | SpellDescription$ You may mill two cards. Then return up to two creature cards from your graveyard to your hand. (To mill two cards, put the top two cards of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.YouCtrl | ChangeTypeDesc$ Creature | SelectPrompt$ Select up to two creature cards from your graveyard to return to your hand | ChangeNum$ 2 | Hidden$ True\nDeckHas:Ability$Graveyard|Mill\nOracle:You may mill two cards. Then return up to two creature cards from your graveyard to your hand. (To mill two cards, put the top two cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Another Chance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

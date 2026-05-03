@@ -1,0 +1,23 @@
+{
+  "id": "angelic-gift-corpus-m675",
+  "description": "M6 corpus — Angelic Gift; in-hand parse.",
+  "seed": 61530,
+  "cards": {
+    "Angelic Gift": "Name:Angelic Gift\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ Enchanted creature has flying.\nOracle:Enchant creature\\nWhen Angelic Gift enters, draw a card.\\nEnchanted creature has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angelic Gift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

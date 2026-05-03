@@ -1,0 +1,25 @@
+{
+  "id": "beamsplitter-mage-corpus-m675",
+  "description": "M6 corpus — Beamsplitter Mage; ETB-on-bf.",
+  "seed": 62525,
+  "cards": {
+    "Beamsplitter Mage": "Name:Beamsplitter Mage\nManaCost:U R\nTypes:Creature Vedalken Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Card.Self | CanTargetOtherCondition$ Creature.YouCtrl | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery that targets only CARDNAME, if you control one or more other creatures that spell could target, choose one of those creatures. Copy that spell. The copy targets the chosen creature.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ You | CopyForEachCanTarget$ Creature.YouCtrl | ChooseOnlyOne$ True\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell that targets only Beamsplitter Mage, if you control one or more other creatures that spell could target, choose one of those creatures. Copy that spell. The copy targets the chosen creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Beamsplitter Mage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "angel-of-deliverance-corpus-m675",
+  "description": "M6 corpus — Angel of Deliverance; ETB-on-bf.",
+  "seed": 61492,
+  "cards": {
+    "Angel of Deliverance": "Name:Angel of Deliverance\nManaCost:6 W W\nTypes:Creature Angel\nPT:6/6\nK:Flying\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigChange | Delirium$ True | TriggerZones$ Battlefield | TriggerDescription$ Delirium — Whenever CARDNAME deals damage, if there are four or more card types among cards in your graveyard, exile target creature an opponent controls.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Exile\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$Delirium\nDeckHints:Ability$Graveyard|Discard\nOracle:Flying\\nDelirium — Whenever Angel of Deliverance deals damage, if there are four or more card types among cards in your graveyard, exile target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angel of Deliverance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

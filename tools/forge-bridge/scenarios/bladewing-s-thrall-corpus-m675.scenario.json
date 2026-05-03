@@ -1,0 +1,25 @@
+{
+  "id": "bladewing-s-thrall-corpus-m675",
+  "description": "M6 corpus — Bladewing's Thrall; ETB-on-bf.",
+  "seed": 62785,
+  "cards": {
+    "Bladewing's Thrall": "Name:Bladewing's Thrall\nManaCost:2 B B\nTypes:Creature Zombie\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Flying | IsPresent$ Dragon.YouCtrl | Description$ CARDNAME has flying as long as you control a Dragon.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Dragon | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ When a Dragon enters, you may return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:BuffedBy:Dragon\nOracle:Bladewing's Thrall has flying as long as you control a Dragon.\\nWhen a Dragon enters, you may return Bladewing's Thrall from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bladewing's Thrall"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

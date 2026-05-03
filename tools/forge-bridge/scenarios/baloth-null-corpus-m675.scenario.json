@@ -1,0 +1,23 @@
+{
+  "id": "baloth-null-corpus-m675",
+  "description": "M6 corpus — Baloth Null; in-hand parse.",
+  "seed": 62305,
+  "cards": {
+    "Baloth Null": "Name:Baloth Null\nManaCost:4 B G\nTypes:Creature Zombie Beast\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to two target creature cards from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 2\nOracle:When Baloth Null enters, return up to two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baloth Null"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

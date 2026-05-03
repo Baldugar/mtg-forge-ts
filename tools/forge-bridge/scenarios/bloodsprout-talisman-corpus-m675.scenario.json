@@ -1,0 +1,25 @@
+{
+  "id": "bloodsprout-talisman-corpus-m675",
+  "description": "M6 corpus — Bloodsprout Talisman; ETB-on-bf.",
+  "seed": 62990,
+  "cards": {
+    "Bloodsprout Talisman": "Name:Bloodsprout Talisman\nManaCost:B G\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChooseCard | Cost$ T PayLife<1> | Mandatory$ True | ChoiceZone$ Hand | Choices$ Card.nonLand+YouOwn | ChoiceDesc$ nonland | ChoiceTitle$ Choose a nonland card in your hand | SubAbility$ DBAnimate | SpellDescription$ Choose a nonland card in your hand.\nSVar:DBAnimate:DB$ Animate | Duration$ Perpetual | Defined$ ChosenCard | staticAbilities$ ReduceCost | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"This spell costs {1} less to cast.\"\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Bloodsprout Talisman enters tapped.\\n{T}, Pay 1 life: Choose a nonland card in your hand. It perpetually gains \"This spell costs {1} less to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodsprout Talisman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "armadillo-cloak-corpus-m675",
+  "description": "M6 corpus — Armadillo Cloak; in-hand parse.",
+  "seed": 61836,
+  "cards": {
+    "Armadillo Cloak": "Name:Armadillo Cloak\nManaCost:1 G W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Trample | Description$ Enchanted creature gets +2/+2 and has trample.\nT:Mode$ DamageDealtOnce | ValidSource$ Card.AttachedBy | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:LikeLifeLink:True\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and has trample.\\nWhenever enchanted creature deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armadillo Cloak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

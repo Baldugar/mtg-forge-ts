@@ -1,0 +1,25 @@
+{
+  "id": "ashling-flame-dancer-corpus-m675",
+  "description": "M6 corpus — Ashling, Flame Dancer; ETB-on-bf.",
+  "seed": 61952,
+  "cards": {
+    "Ashling, Flame Dancer": "Name:Ashling, Flame Dancer\nManaCost:2 R R\nTypes:Legendary Creature Elemental Shaman\nPT:4/4\nS:Mode$ UnspentMana | ValidPlayer$ You | ManaType$ Red | Description$ You don't lose unspent red mana as steps and phases end.\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, discard a card, then draw a card. If this is the second time this ability has resolved this turn, CARDNAME deals 2 damage to each opponent and each creature they control. If it's the third time, add {R}{R}{R}{R}.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | NumDmg$ 2 | ValidPlayers$ Player.Opponent | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2 | ValidCards$ Creature.OppCtrl | ValidDescription$ each opponent and each creature they control | SubAbility$ DBAddMana\nSVar:DBAddMana:DB$ Mana | Produced$ R | Amount$ 4 | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ3\nSVar:Resolved:Count$ResolvedThisTurn\nDeckHints:Type$Instant|Sorcery\nOracle:You don't lose unspent red mana as steps and phases end.\\nMagecraft — Whenever you cast or copy an instant or sorcery spell, discard a card, then draw a card. If this is the second time this ability has resolved this turn, Ashling, Flame Dancer deals 2 damage to each opponent and each creature they control. If it's the third time, add {R}{R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashling, Flame Dancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

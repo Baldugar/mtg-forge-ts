@@ -1,0 +1,23 @@
+{
+  "id": "ayara-widow-of-the-realm-corpus-m675",
+  "description": "M6 corpus — Ayara, Widow of the Realm; in-hand parse.",
+  "seed": 62205,
+  "cards": {
+    "Ayara, Widow of the Realm": "Name:Ayara, Widow of the Realm\nManaCost:1 B B\nTypes:Legendary Creature Elf Noble\nPT:3/3\nA:AB$ DealDamage | Cost$ T Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | ValidTgts$ Opponent,Battle | TgtPrompt$ Select target opponent or battle | SubAbility$ DBGainLife | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target opponent or battle and you gain X life, where X is the sacrificed permanent's mana value.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Sacrificed$CardManaCost\nA:AB$ SetState | Cost$ 5 RP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform NICKNAME. Activate only as a sorcery.\nDeckHas:Ability$Sacrifice|LifeGain\nAlternateMode:DoubleFaced\nOracle:{T}, Sacrifice another creature or artifact: Ayara, Widow of the Realm deals X damage to target opponent or battle and you gain X life, where X is the sacrificed permanent's mana value.\\n{5}{R/P}: Transform Ayara. Activate only as a sorcery. ({R/P} can be paid with {R} or 2 life.)\n\nALTERNATE\n\nName:Ayara, Furnace Queen\nManaCost:no cost\nColors:black,red\nTypes:Legendary Creature Phyrexian Elf Noble\nPT:4/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of combat on your turn, return up to one target artifact or creature card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouOwn,Creature.YouOwn | TgtPrompt$ Select up to one target artifact or creature from your graveyard | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Keywords$ Haste | Defined$ Targeted | Duration$ Permanent | AtEOT$ Exile\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:At the beginning of combat on your turn, return up to one target artifact or creature card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ayara, Widow of the Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

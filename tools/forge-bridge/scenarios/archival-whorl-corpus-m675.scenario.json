@@ -1,0 +1,23 @@
+{
+  "id": "archival-whorl-corpus-m675",
+  "description": "M6 corpus — Archival Whorl; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Archival Whorl": "Name:Archival Whorl\nManaCost:3 U U\nTypes:Sorcery\nK:Gift\nSVar:GiftAbility:DB$ MakeCard | Name$ Rhystic Study | Defined$ Promised | Zone$ Battlefield | GiftDescription$ a Rhystic Study\nA:SP$ ChangeZoneAll | Origin$ Graveyard,Hand | Destination$ Library | ChangeType$ Card.YouOwn | Shuffle$ True | SubAbility$ DBDraw | SpellDescription$ Shuffle your hand and graveyard into your library, then draw seven cards. If the gift wasn't promised, each other player also shuffles their hand and graveyard into their library, then draws seven cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 7 | SubAbility$ DBChangeZoneAllOpponents\nSVar:DBChangeZoneAllOpponents:DB$ ChangeZoneAll | ConditionPresent$ Card.PromisedGift | ConditionCompare$ EQ0 | Origin$ Graveyard,Hand | Destination$ Library | ChangeType$ Card.OwnedBy Player.Other | Shuffle$ True | SubAbility$ DBDrawBis\nSVar:DBDrawBis:DB$ Draw | Defined$ Player.Other | ConditionPresent$ Card.PromisedGift | ConditionCompare$ EQ0 | NumCards$ 7\nOracle:Gift a Rhystic Study\\nShuffle your hand and graveyard into your library, then draw seven cards. If the gift wasn't promised, each other player also shuffles their hand and graveyard into their library, then draws seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archival Whorl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

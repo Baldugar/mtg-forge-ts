@@ -1,0 +1,23 @@
+{
+  "id": "bronzebeak-foragers-corpus-m675",
+  "description": "M6 corpus — Bronzebeak Foragers; in-hand parse.",
+  "seed": 63430,
+  "cards": {
+    "Bronzebeak Foragers": "Name:Bronzebeak Foragers\nManaCost:3 W\nTypes:Creature Dinosaur\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, for each opponent, exile up to one target nonland permanent that player controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtPrompt$ Select up to one target nonland permanent each opponent controls | Duration$ UntilHostLeavesPlay\nA:AB$ ChangeZone | Cost$ X W | Origin$ Exile | Destination$ Graveyard | TgtPrompt$ Select target permanent card exiled with CARDNAME with mana value X | SubAbility$ TrigLife | ValidTgts$ Permanent.ExiledWithSource+cmcEQX | SpellDescription$ Put target card with mana value X exiled with CARDNAME into its owner's graveyard. You gain X life.\nSVar:TrigLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$xPaid\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When Bronzebeak Foragers enters, for each opponent, exile up to one target nonland permanent that player controls until Bronzebeak Foragers leaves the battlefield.\\n{X}{W}: Put target card with mana value X exiled with Bronzebeak Foragers into its owner's graveyard. You gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bronzebeak Foragers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

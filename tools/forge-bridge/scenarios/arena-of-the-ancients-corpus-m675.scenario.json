@@ -1,0 +1,23 @@
+{
+  "id": "arena-of-the-ancients-corpus-m675",
+  "description": "M6 corpus — Arena of the Ancients; in-hand parse.",
+  "seed": 61806,
+  "cards": {
+    "Arena of the Ancients": "Name:Arena of the Ancients\nManaCost:3\nTypes:Artifact\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.Legendary | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Legendary creatures don't untap during their controllers' untap steps.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all legendary creatures.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.Legendary\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Legendary creatures don't untap during their controllers' untap steps.\\nWhen Arena of the Ancients enters, tap all legendary creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arena of the Ancients"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

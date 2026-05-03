@@ -1,0 +1,23 @@
+{
+  "id": "awol-corpus-m675",
+  "description": "M6 corpus — AWOL; in-hand parse.",
+  "seed": 62192,
+  "cards": {
+    "AWOL": "Name:AWOL\nManaCost:2 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBRemove | SpellDescription$ Exile target attacking creature. Then remove it from the game. Then put it into the absolutely-removed-from-the-freaking-game-forever zone.\nSVar:DBRemove:DB$ RemoveFromGame | Defined$ Targeted | StackDescription$ Then remove it from the game. Then put it into the absolutely-removed-from-the-freaking-game-forever zone.\nOracle:Exile target attacking creature. Then remove it from the game. Then put it into the absolutely-removed-from-the-freaking-game-forever zone.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "AWOL"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

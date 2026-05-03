@@ -1,0 +1,23 @@
+{
+  "id": "breath-of-fury-corpus-m675",
+  "description": "M6 corpus — Breath of Fury; in-hand parse.",
+  "seed": 63331,
+  "cards": {
+    "Breath of Fury": "Name:Breath of Fury\nManaCost:2 R R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ When enchanted creature deals combat damage to a player, sacrifice it and attach CARDNAME to a creature you control. If you do, untap all creatures you control and after this phase, there is an additional combat phase.\nSVar:TrigSacrifice:DB$ SacrificeAll | ValidCards$ Card.EnchantedBy | SubAbility$ StillFurious\nSVar:StillFurious:DB$ Attach | Object$ Self | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature you control to attach Breath of Fury to | RememberAttached$ True | SubAbility$ CatchBreath\nSVar:CatchBreath:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ TheFuryContinues | ConditionDefined$ Remembered | ConditionPresent$ Card\nSVar:TheFuryContinues:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Enchant creature you control\\nWhen enchanted creature deals combat damage to a player, sacrifice it and attach Breath of Fury to a creature you control. If you do, untap all creatures you control and after this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breath of Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

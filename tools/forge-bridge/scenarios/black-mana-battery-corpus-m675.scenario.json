@@ -1,0 +1,25 @@
+{
+  "id": "black-mana-battery-corpus-m675",
+  "description": "M6 corpus — Black Mana Battery; ETB-on-bf.",
+  "seed": 62741,
+  "cards": {
+    "Black Mana Battery": "Name:Black Mana Battery\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 2 T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/CHARGE> | Produced$ B | AILogic$ ManaRitualBattery.1 | AINoRecursiveCheck$ True | SubAbility$ DBMana | SpellDescription$ Add {B}, then add an additional {B} for each charge counter removed this way.\nSVar:DBMana:DB$ Mana | Produced$ B | Amount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:{2}, {T}: Put a charge counter on Black Mana Battery.\\n{T}, Remove any number of charge counters from Black Mana Battery: Add {B}, then add an additional {B} for each charge counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Black Mana Battery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

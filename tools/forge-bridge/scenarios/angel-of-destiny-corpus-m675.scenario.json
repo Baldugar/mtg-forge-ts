@@ -1,0 +1,25 @@
+{
+  "id": "angel-of-destiny-corpus-m675",
+  "description": "M6 corpus — Angel of Destiny; ETB-on-bf.",
+  "seed": 61494,
+  "cards": {
+    "Angel of Destiny": "Name:Angel of Destiny\nManaCost:3 W W\nTypes:Creature Angel Cleric\nPT:2/6\nK:Flying\nK:Double Strike\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, you and that player each gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You & TriggeredTarget | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Z | SVarCompare$ GEY | Execute$ TrigLose | TriggerDescription$ At the beginning of your end step, if you have at least 15 life more than your starting life total, each player CARDNAME attacked this turn loses the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ Player.attackedBySourceThisTurn\nSVar:Z:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife/Plus.15\nDeckHas:Ability$LifeGain\nOracle:Flying, double strike\\nWhenever a creature you control deals combat damage to a player, you and that player each gain that much life.\\nAt the beginning of your end step, if you have at least 15 life more than your starting life total, each player Angel of Destiny attacked this turn loses the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angel of Destiny"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

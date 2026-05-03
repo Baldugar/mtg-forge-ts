@@ -1,0 +1,25 @@
+{
+  "id": "battery-bearer-corpus-m675",
+  "description": "M6 corpus — Battery Bearer; ETB-on-bf.",
+  "seed": 62463,
+  "cards": {
+    "Battery Bearer": "Name:Battery Bearer\nManaCost:2 G U\nTypes:Creature Human Artificer\nPT:3/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddAbility$ AnyMana | Description$ Creatures you control have \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | RestrictValid$ CantCastNonArtifactSpells | SpellDescription$ Add {C}. This mana can't be spent to cast a nonartifact spell.\nT:Mode$ SpellCast | ValidCard$ Artifact.cmcGE6 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ DBDraw | TriggerDescription$ Whenever you cast an artifact spell with mana value 6 or greater, draw a card.\nSVar:DBDraw:DB$ Draw\nDeckNeeds:Type$Artifact\nOracle:Creatures you control have \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\"\\nWhenever you cast an artifact spell with mana value 6 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battery Bearer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blessed-defiance-corpus-m675",
+  "description": "M6 corpus — Blessed Defiance; in-hand parse.",
+  "seed": 62819,
+  "cards": {
+    "Blessed Defiance": "Name:Blessed Defiance\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2 | KW$ Lifelink | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature you control gets +2/+0 and gains lifelink until end of turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ DBToken | SpellDescription$ When that creature dies this turn, create a 1/1 white Spirit creature token with flying.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_spirit_flying\nDeckHas:Ability$Token\nOracle:Target creature you control gets +2/+0 and gains lifelink until end of turn. When that creature dies this turn, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessed Defiance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

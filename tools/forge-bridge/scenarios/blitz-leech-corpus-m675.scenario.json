@@ -1,0 +1,23 @@
+{
+  "id": "blitz-leech-corpus-m675",
+  "description": "M6 corpus — Blitz Leech; in-hand parse.",
+  "seed": 62900,
+  "cards": {
+    "Blitz Leech": "Name:Blitz Leech\nManaCost:5 B\nTypes:Creature Leech\nPT:5/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-2 until end of turn. Remove all counters from that creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Targeted | CounterType$ All | CounterNum$ All | StackDescription$ None\nOracle:Flash\\nWhen Blitz Leech enters, target creature an opponent controls gets -2/-2 until end of turn. Remove all counters from that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blitz Leech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

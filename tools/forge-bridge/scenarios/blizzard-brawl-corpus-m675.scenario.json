@@ -1,0 +1,23 @@
+{
+  "id": "blizzard-brawl-corpus-m675",
+  "description": "M6 corpus — Blizzard Brawl; in-hand parse.",
+  "seed": 62905,
+  "cards": {
+    "Blizzard Brawl": "Name:Blizzard Brawl\nManaCost:G\nTypes:Snow Sorcery\nA:SP$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | ConditionPresent$ Permanent.Snow+YouCtrl | ConditionCompare$ GE3 | NumAtt$ +1 | KW$ Indestructible | StackDescription$ None | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature you don't control. The creature you control gets +1/+0 and gains indestructible until end of turn before it fights if you control three or more snow permanents.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nDeckHints:Type$Snow\nOracle:Choose target creature you control and target creature you don't control. If you control three or more snow permanents, the creature you control gets +1/+0 and gains indestructible until end of turn. Then those creatures fight each other. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blizzard Brawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

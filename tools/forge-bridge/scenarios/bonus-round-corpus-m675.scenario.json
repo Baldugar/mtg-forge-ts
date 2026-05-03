@@ -1,0 +1,23 @@
+{
+  "id": "bonus-round-corpus-m675",
+  "description": "M6 corpus — Bonus Round; in-hand parse.",
+  "seed": 63145,
+  "cards": {
+    "Bonus Round": "Name:Bonus Round\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ Effect | Triggers$ TrigSpellCast | SpellDescription$ Until end of turn, whenever a player casts an instant or sorcery spell, that player copies it and may choose new targets for the copy.\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Instant,Sorcery | TriggerZones$ Command | ValidActivatingPlayer$ Player | Execute$ TrigCopySpell | TriggerDescription$ Until end of turn, whenever a player casts an instant or sorcery spell, that player copies it and may choose new targets for the copy.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | Controller$ TriggeredCardController | MayChooseTarget$ True\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:Until end of turn, whenever a player casts an instant or sorcery spell, that player copies it and may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bonus Round"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

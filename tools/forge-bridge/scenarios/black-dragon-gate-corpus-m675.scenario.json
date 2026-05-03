@@ -1,0 +1,23 @@
+{
+  "id": "black-dragon-gate-corpus-m675",
+  "description": "M6 corpus — Black Dragon Gate; in-hand parse.",
+  "seed": 62738,
+  "cards": {
+    "Black Dragon Gate": "Name:Black Dragon Gate\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ black | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than black.\nA:AB$ Mana | Cost$ T | Produced$ Combo B Chosen | SpellDescription$ Add {B} or one mana of the chosen color.\nDeckHints:Type$Gate\nOracle:Black Dragon Gate enters tapped.\\nAs Black Dragon Gate enters, choose a color other than black.\\n{T}: Add {B} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Dragon Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

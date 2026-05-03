@@ -1,0 +1,23 @@
+{
+  "id": "armored-skaab-corpus-m675",
+  "description": "M6 corpus — Armored Skaab; in-hand parse.",
+  "seed": 61860,
+  "cards": {
+    "Armored Skaab": "Name:Armored Skaab\nManaCost:2 U\nTypes:Creature Zombie Warrior\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nOracle:When Armored Skaab enters, mill four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armored Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

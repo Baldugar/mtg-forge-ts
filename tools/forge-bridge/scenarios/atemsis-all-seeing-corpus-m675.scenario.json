@@ -1,0 +1,25 @@
+{
+  "id": "atemsis-all-seeing-corpus-m675",
+  "description": "M6 corpus — Atemsis, All-Seeing; ETB-on-bf.",
+  "seed": 62018,
+  "cards": {
+    "Atemsis, All-Seeing": "Name:Atemsis, All-Seeing\nManaCost:3 U U U\nTypes:Legendary Creature Sphinx\nPT:4/5\nK:Flying\nA:AB$ Draw | Cost$ 2 U T | NumCards$ 2 | SpellDescription$ Draw two cards, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ TrigReveal | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, you may reveal your hand. If cards with at least six different mana values are revealed this way, that player loses the game.\nSVar:TrigReveal:DB$ RevealHand | Defined$ You | RememberRevealed$ True | SubAbility$ DBLoseGame\nSVar:DBLoseGame:DB$ LosesGame | Defined$ TriggeredTarget | ConditionCheckSVar$ X | ConditionSVarCompare$ GE6 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$DifferentCardManaCost\nOracle:Flying\\n{2}{U}, {T}: Draw two cards, then discard a card.\\nWhenever Atemsis, All-Seeing deals damage to an opponent, you may reveal your hand. If cards with at least six different mana values are revealed this way, that player loses the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Atemsis, All-Seeing"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

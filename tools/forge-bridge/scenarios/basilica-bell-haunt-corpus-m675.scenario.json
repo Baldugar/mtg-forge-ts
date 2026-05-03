@@ -1,0 +1,23 @@
+{
+  "id": "basilica-bell-haunt-corpus-m675",
+  "description": "M6 corpus — Basilica Bell-Haunt; in-hand parse.",
+  "seed": 62430,
+  "cards": {
+    "Basilica Bell-Haunt": "Name:Basilica Bell-Haunt\nManaCost:W W B B\nTypes:Creature Spirit\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card and you gain 3 life.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose | SubAbility$ GainLife\nSVar:GainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nOracle:When Basilica Bell-Haunt enters, each opponent discards a card and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Basilica Bell-Haunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

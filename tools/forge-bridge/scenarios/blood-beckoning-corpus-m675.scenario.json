@@ -1,0 +1,23 @@
+{
+  "id": "blood-beckoning-corpus-m675",
+  "description": "M6 corpus — Blood Beckoning; in-hand parse.",
+  "seed": 62917,
+  "cards": {
+    "Blood Beckoning": "Name:Blood Beckoning\nManaCost:B\nTypes:Sorcery\nK:Kicker:3\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | TargetMin$ X | TargetMax$ X | SpellDescription$ Return target creature card from your graveyard to your hand. If this spell was kicked, instead return two target creature cards from your graveyard to your hand.\nSVar:X:Count$Kicked.2.1\nDeckHas:Ability$Graveyard\nOracle:Kicker {3} (You may pay an additional {3} as you cast this spell.)\\nReturn target creature card from your graveyard to your hand. If this spell was kicked, instead return two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Beckoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "baboon-spirit-corpus-m675",
+  "description": "M6 corpus — Baboon Spirit; ETB-on-bf.",
+  "seed": 62238,
+  "cards": {
+    "Baboon Spirit": "Name:Baboon Spirit\nManaCost:2 U\nTypes:Creature Monkey Spirit\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Spirit.!token+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another nontoken Spirit you control enters, create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit_spiritshadow\nA:AB$ ChangeZone | Cost$ 3 U | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile another target creature you control. Return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | RememberObjects$ RememberedLKI | TriggerDescription$ Return that card to the battlefield under its owner's control at the beginning of the next end step. | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nDeckHints:Type$Spirit\nOracle:Whenever another nontoken Spirit you control enters, create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\\n{3}{U}: Exile another target creature you control. Return it to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Baboon Spirit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

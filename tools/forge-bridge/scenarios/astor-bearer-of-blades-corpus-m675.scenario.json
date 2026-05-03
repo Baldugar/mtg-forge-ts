@@ -1,0 +1,23 @@
+{
+  "id": "astor-bearer-of-blades-corpus-m675",
+  "description": "M6 corpus — Astor, Bearer of Blades; in-hand parse.",
+  "seed": 62002,
+  "cards": {
+    "Astor, Bearer of Blades": "Name:Astor, Bearer of Blades\nManaCost:2 R W\nTypes:Legendary Creature Human Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top seven cards of your library. You may reveal an Equipment or Vehicle card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 7 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Equipment,Vehicle | RestRandomOrder$ True | Reveal$ True\nS:Mode$ Continuous | Affected$ Equipment.YouCtrl | AddKeyword$ Equip:1 | Description$ Equipment you control have equip {1}.\nS:Mode$ Continuous | Affected$ Vehicle.YouCtrl | AddKeyword$ Crew:1 | Description$ Vehicles you control have crew 1.\nDeckNeeds:Type$Equipment|Vehicle\nOracle:When Astor, Bearer of Blades enters, look at the top seven cards of your library. You may reveal an Equipment or Vehicle card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\\nEquipment you control have equip {1}.\\nVehicles you control have crew 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astor, Bearer of Blades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

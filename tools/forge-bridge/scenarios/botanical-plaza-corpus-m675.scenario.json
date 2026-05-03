@@ -1,0 +1,25 @@
+{
+  "id": "botanical-plaza-corpus-m675",
+  "description": "M6 corpus — Botanical Plaza; ETB-on-bf.",
+  "seed": 63211,
+  "cards": {
+    "Botanical Plaza": "Name:Botanical Plaza\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nA:AB$ Draw | Cost$ 2 G W T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Botanical Plaza enters tapped.\\n{T}: Add {G} or {W}.\\n{2}{G}{W}, {T}, Sacrifice Botanical Plaza: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Botanical Plaza"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

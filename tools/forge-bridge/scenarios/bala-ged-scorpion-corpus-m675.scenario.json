@@ -1,0 +1,23 @@
+{
+  "id": "bala-ged-scorpion-corpus-m675",
+  "description": "M6 corpus — Bala Ged Scorpion; in-hand parse.",
+  "seed": 62265,
+  "cards": {
+    "Bala Ged Scorpion": "Name:Bala Ged Scorpion\nManaCost:3 B\nTypes:Creature Scorpion\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target creature with power 1 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.powerLE1 | TgtPrompt$ Select target creature with power 1 or less.\nOracle:When Bala Ged Scorpion enters, you may destroy target creature with power 1 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bala Ged Scorpion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

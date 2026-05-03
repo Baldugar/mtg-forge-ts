@@ -1,0 +1,23 @@
+{
+  "id": "brindle-shoat-corpus-m675",
+  "description": "M6 corpus — Brindle Shoat; in-hand parse.",
+  "seed": 63386,
+  "cards": {
+    "Brindle Shoat": "Name:Brindle Shoat\nManaCost:1 G\nTypes:Creature Boar\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 3/3 green Boar creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_boar | TokenOwner$ TriggeredCardController\nSVar:SacMe:4\nOracle:When Brindle Shoat dies, create a 3/3 green Boar creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brindle Shoat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

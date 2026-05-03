@@ -1,0 +1,23 @@
+{
+  "id": "believe-in-the-cleave-corpus-m675",
+  "description": "M6 corpus — Believe in the Cleave; in-hand parse.",
+  "seed": 62583,
+  "cards": {
+    "Believe in the Cleave": "Name:Believe in the Cleave\nManaCost:3 R\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {1} less to cast for each attacking creature you control.\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Double Strike & Trample | SpellDescription$ Target creature gets +1/+1 and gains double strike and trample until end of turn. | StackDescription$ SpellDescription\nOracle:Believe in the Cleave costs {1} less to cast for each attacking creature you control.\\nTarget creature gets +1/+1 and gains double strike and trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Believe in the Cleave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

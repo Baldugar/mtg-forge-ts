@@ -1,0 +1,25 @@
+{
+  "id": "barbed-wire-corpus-m675",
+  "description": "M6 corpus — Barbed Wire; ETB-on-bf.",
+  "seed": 62369,
+  "cards": {
+    "Barbed Wire": "Name:Barbed Wire\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nA:AB$ Effect | Cost$ 2 | RememberObjects$ Self | ReplacementEffects$ DBPrevent | ForgetOnMoved$ Battlefield | SpellDescription$ Prevent the next 1 damage that would be dealt by CARDNAME this turn. | StackDescription$ SpellDescription\nSVar:DBPrevent:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.IsRemembered | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ Prevent the next 1 damage that would be dealt by EFFECTSOURCE this turn.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ ShieldAmount\nSVar:ShieldAmount:Number$1\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, Barbed Wire deals 1 damage to that player.\\n{2}: Prevent the next 1 damage that would be dealt by Barbed Wire this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barbed Wire"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "boonweaver-giant-corpus-m675",
+  "description": "M6 corpus — Boonweaver Giant; in-hand parse.",
+  "seed": 63160,
+  "cards": {
+    "Boonweaver Giant": "Name:Boonweaver Giant\nManaCost:6 W\nTypes:Creature Giant Monk\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your graveyard, hand, and/or library for an Aura card and put it onto the battlefield attached to CARDNAME. If you search your library this way, shuffle it.\nSVar:TrigSearch:DB$ ChangeZone | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard,Hand | Destination$ Battlefield | ChangeType$ Aura.YouOwn | AttachedTo$ Self | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nDeckNeeds:Type$Aura\nOracle:When Boonweaver Giant enters, you may search your graveyard, hand, and/or library for an Aura card and put it onto the battlefield attached to Boonweaver Giant. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boonweaver Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

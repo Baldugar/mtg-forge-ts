@@ -1,0 +1,25 @@
+{
+  "id": "aura-shards-corpus-m675",
+  "description": "M6 corpus — Aura Shards; ETB-on-bf.",
+  "seed": 62071,
+  "cards": {
+    "Aura Shards": "Name:Aura Shards\nManaCost:1 G W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDestroy | TriggerDescription$ Whenever a creature you control enters, you may destroy target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment\nSVar:BuffedBy:Creature\nOracle:Whenever a creature you control enters, you may destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aura Shards"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

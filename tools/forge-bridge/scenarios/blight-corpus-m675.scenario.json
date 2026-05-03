@@ -1,0 +1,23 @@
+{
+  "id": "blight-corpus-m675",
+  "description": "M6 corpus — Blight; in-hand parse.",
+  "seed": 62836,
+  "cards": {
+    "Blight": "Name:Blight\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerDescription$ When enchanted land becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\nWhen enchanted land becomes tapped, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

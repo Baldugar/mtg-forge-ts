@@ -1,0 +1,23 @@
+{
+  "id": "ashnod-s-intervention-corpus-m675",
+  "description": "M6 corpus — Ashnod's Intervention; in-hand parse.",
+  "seed": 61961,
+  "cards": {
+    "Ashnod's Intervention": "Name:Ashnod's Intervention\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target creature gets +2/+0 and gains \"When this creature dies or is put into exile from the battlefield, return it to its owner's hand.\"\nSVar:DBAnimate:DB$ Animate | Triggers$ TrigDieExile | Defined$ ParentTarget | StackDescription$ None\nSVar:TrigDieExile:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this creature dies or is put into exile from the battlefield, return it to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard,Exile | Destination$ Hand\nOracle:Until end of turn, target creature gets +2/+0 and gains \"When this creature dies or is put into exile from the battlefield, return it to its owner's hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashnod's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

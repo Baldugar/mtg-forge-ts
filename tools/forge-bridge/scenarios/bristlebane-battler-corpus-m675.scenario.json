@@ -1,0 +1,23 @@
+{
+  "id": "bristlebane-battler-corpus-m675",
+  "description": "M6 corpus — Bristlebane Battler; in-hand parse.",
+  "seed": 63405,
+  "cards": {
+    "Bristlebane Battler": "Name:Bristlebane Battler\nManaCost:1 G\nTypes:Creature Kithkin Soldier\nPT:6/6\nK:Trample\nK:Ward:2\nK:etbCounter:M1M1:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1_M1M1 | NoResolvingCheck$ True | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever another creature you control enters while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:Trample, ward {2}\\nThis creature enters with five -1/-1 counters on it.\\nWhenever another creature you control enters while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bristlebane Battler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

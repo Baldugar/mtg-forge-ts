@@ -1,0 +1,23 @@
+{
+  "id": "blot-out-the-sky-corpus-m675",
+  "description": "M6 corpus — Blot Out the Sky; in-hand parse.",
+  "seed": 63020,
+  "cards": {
+    "Blot Out the Sky": "Name:Blot Out the Sky\nManaCost:X W B\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ wb_2_1_inkling_flying | TokenTapped$ True | SubAbility$ BlotDestroy | SpellDescription$ Create X tapped 2/1 white and black Inkling creature tokens with flying. If X is 6 or more, destroy all noncreature, nonland permanents.\nSVar:BlotDestroy:DB$ DestroyAll | ValidCards$ Permanent.nonCreature+nonLand | ConditionCheckSVar$ X | ConditionSVarCompare$ GE6\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Create X tapped 2/1 white and black Inkling creature tokens with flying. If X is 6 or more, destroy all noncreature, nonland permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blot Out the Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

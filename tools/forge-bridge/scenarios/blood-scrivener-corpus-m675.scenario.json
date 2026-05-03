@@ -1,0 +1,25 @@
+{
+  "id": "blood-scrivener-corpus-m675",
+  "description": "M6 corpus — Blood Scrivener; ETB-on-bf.",
+  "seed": 62945,
+  "cards": {
+    "Blood Scrivener": "Name:Blood Scrivener\nManaCost:1 B\nTypes:Creature Zombie Wizard\nPT:2/1\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | Hellbent$ True | ReplaceWith$ DrawTwo | Description$ If you would draw a card while you have no cards in hand, instead you draw two cards and you lose 1 life.\nSVar:DrawTwo:DB$ Draw | NumCards$ 2 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:If you would draw a card while you have no cards in hand, instead you draw two cards and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blood Scrivener"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "battletide-alchemist-corpus-m675",
+  "description": "M6 corpus — Battletide Alchemist; ETB-on-bf.",
+  "seed": 62503,
+  "cards": {
+    "Battletide Alchemist": "Name:Battletide Alchemist\nManaCost:3 W W\nTypes:Creature Kithkin Cleric\nPT:3/4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Player | ReplaceWith$ DBReplace | PreventionEffect$ True | Optional$ True | OptionalDecider$ You | AILogic$ ProtectFriendly | Description$ If a source would deal damage to a player, you may prevent X of that damage, where X is the number of Clerics you control.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ AlchemicX\nSVar:AlchemicX:Count$Valid Cleric.YouCtrl\nOracle:If a source would deal damage to a player, you may prevent X of that damage, where X is the number of Clerics you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battletide Alchemist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

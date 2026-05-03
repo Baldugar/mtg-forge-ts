@@ -1,0 +1,25 @@
+{
+  "id": "battlegate-mimic-corpus-m675",
+  "description": "M6 corpus — Battlegate Mimic; ETB-on-bf.",
+  "seed": 62499,
+  "cards": {
+    "Battlegate Mimic": "Name:Battlegate Mimic\nManaCost:1 RW\nTypes:Creature Shapeshifter\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.Red+White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a spell that's both red and white, CARDNAME has base power and toughness 4/2 until end of turn and gains first strike until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 2 | Keywords$ First Strike\nSVar:BuffedBy:Card.Red+White\nOracle:Whenever you cast a spell that's both red and white, Battlegate Mimic has base power and toughness 4/2 until end of turn and gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battlegate Mimic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

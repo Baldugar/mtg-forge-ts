@@ -1,0 +1,25 @@
+{
+  "id": "bamboozling-beeble-corpus-m675",
+  "description": "M6 corpus — Bamboozling Beeble; ETB-on-bf.",
+  "seed": 62318,
+  "cards": {
+    "Bamboozling Beeble": "Name:Bamboozling Beeble\nManaCost:U\nTypes:Creature Beeble\nPT:1/1\nK:Protection:Robot\nA:AB$ Effect | Cost$ 1 T | ValidTgts$ Player | ReplacementEffects$ RigRoll | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next time target player would roll one or more dice this turn, instead they roll that many dice plus one and you choose one of those rolls to ignore.\nSVar:RigRoll:Event$ RollDice | ValidPlayer$ Player.IsRemembered | ReplaceWith$ PlusRoll | Description$ The next time target player would roll one or more dice this turn, instead they roll that many dice plus one and you choose one of those rolls to ignore.\nSVar:PlusRoll:DB$ ReplaceEffect | VarName$ Number | VarValue$ ReplaceCount$Number/Plus.1 | SubAbility$ IgnoreRoll\nSVar:IgnoreRoll:DB$ ReplaceEffect | VarName$ IgnoreChosen | VarType$ Map | VarKey$ You | VarValue$ 1 | SubAbility$ DBExileEffect\nSVar:DBExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Protection from Robots\\n{1}, {T}: The next time target player would roll one or more dice this turn, instead they roll that many dice plus one and you choose one of those rolls to ignore.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bamboozling Beeble"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

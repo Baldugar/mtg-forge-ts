@@ -1,0 +1,25 @@
+{
+  "id": "blackcleave-cliffs-corpus-m675",
+  "description": "M6 corpus — Blackcleave Cliffs; ETB-on-bf.",
+  "seed": 62754,
+  "cards": {
+    "Blackcleave Cliffs": "Name:Blackcleave Cliffs\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nOracle:Blackcleave Cliffs enters tapped unless you control two or fewer other lands.\\n{T}: Add {B} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blackcleave Cliffs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

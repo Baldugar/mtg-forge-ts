@@ -1,0 +1,25 @@
+{
+  "id": "bioplasm-corpus-m675",
+  "description": "M6 corpus — Bioplasm; ETB-on-bf.",
+  "seed": 62701,
+  "cards": {
+    "Bioplasm": "Name:Bioplasm\nManaCost:3 G G\nTypes:Creature Ooze\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile the top card of your library. If it's a creature card, CARDNAME gets +X/+Y until end of turn, where X is the exiled creature card's power and Y is its toughness.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +Y | ConditionDefined$ Remembered | ConditionPresent$ Creature | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nSVar:Y:Remembered$CardToughness\nOracle:Whenever Bioplasm attacks, exile the top card of your library. If it's a creature card, Bioplasm gets +X/+Y until end of turn, where X is the exiled creature card's power and Y is its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bioplasm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "assembly-hall-corpus-m675",
+  "description": "M6 corpus — Assembly Hall; ETB-on-bf.",
+  "seed": 61995,
+  "cards": {
+    "Assembly Hall": "Name:Assembly Hall\nManaCost:5\nTypes:Artifact\nA:AB$ Reveal | Cost$ 4 T | Defined$ You | RevealValid$ Creature | RememberRevealed$ True | SubAbility$ DBChangeZone | SpellDescription$ Reveal a creature card in your hand. Search your library for a card with the same name as that card, reveal it, put it into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Remembered.sameName | SubAbility$ DBCleanup | StackDescription$ Search your library for a permanent card with the same name as the revealed creature and put it into your hand. Then shuffle.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{4}, {T}: Reveal a creature card in your hand. Search your library for a card with the same name as that card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Assembly Hall"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "bog-serpent-corpus-m675",
+  "description": "M6 corpus — Bog Serpent; in-hand parse.",
+  "seed": 63053,
+  "cards": {
+    "Bog Serpent": "Name:Bog Serpent\nManaCost:5 B\nTypes:Creature Serpent\nPT:5/5\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsSwamp | Description$ CARDNAME can't attack unless defending player controls a Swamp.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Swamp.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Swamps, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Swamp.YouCtrl\nOracle:Bog Serpent can't attack unless defending player controls a Swamp.\\nWhen you control no Swamps, sacrifice Bog Serpent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bog Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

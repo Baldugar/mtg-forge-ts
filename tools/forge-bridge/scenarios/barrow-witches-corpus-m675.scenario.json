@@ -1,0 +1,23 @@
+{
+  "id": "barrow-witches-corpus-m675",
+  "description": "M6 corpus — Barrow Witches; in-hand parse.",
+  "seed": 62413,
+  "cards": {
+    "Barrow Witches": "Name:Barrow Witches\nManaCost:4 B\nTypes:Creature Human Warlock\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target Knight card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Knight+YouOwn | TgtPrompt$ Select target Knight card in your graveyard\nDeckHints:Type$Knight\nOracle:When Barrow Witches enters, return target Knight card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrow Witches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

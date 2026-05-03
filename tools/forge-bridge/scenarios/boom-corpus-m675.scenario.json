@@ -1,0 +1,23 @@
+{
+  "id": "boom-corpus-m675",
+  "description": "M6 corpus — Boom; in-hand parse.",
+  "seed": 63151,
+  "cards": {
+    "Boom": "Name:Boom\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Pump | TgtPrompt$ Choose target land you control to destroy | ValidTgts$ Land.YouCtrl | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyOpp | SpellDescription$ Destroy target land you control and target land you don't control. | StackDescription$ None\nSVar:DestroyOpp:DB$ Pump | TgtPrompt$ Choose target land you don't control to destroy | ValidTgts$ Land.YouDontCtrl | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nAlternateMode:Split\nOracle:Destroy target land you control and target land you don't control.\n\nALTERNATE\n\nName:Bust\nManaCost:5 R\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Land | SpellDescription$ Destroy all lands.\nOracle:Destroy all lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

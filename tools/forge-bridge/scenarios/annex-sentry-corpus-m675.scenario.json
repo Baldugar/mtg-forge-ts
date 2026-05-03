@@ -1,0 +1,23 @@
+{
+  "id": "annex-sentry-corpus-m675",
+  "description": "M6 corpus — Annex Sentry; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "Annex Sentry": "Name:Annex Sentry\nManaCost:2 W\nTypes:Artifact Creature Phyrexian Cleric\nPT:1/4\nK:Toxic:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target artifact or creature an opponent controls with mana value 3 or less until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact.OppCtrl+cmcLE3,Creature.OppCtrl+cmcLE3 | TgtPrompt$ Select target artifact or creature an opponent controls with mana value 3 or less | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.OppCtrl+cmcLE3\nOracle:Toxic 1 (Players dealt combat damage by this creature also get a poison counter.)\\nWhen Annex Sentry enters, exile target artifact or creature an opponent controls with mana value 3 or less until Annex Sentry leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Annex Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

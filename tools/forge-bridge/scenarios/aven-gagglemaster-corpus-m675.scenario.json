@@ -1,0 +1,23 @@
+{
+  "id": "aven-gagglemaster-corpus-m675",
+  "description": "M6 corpus — Aven Gagglemaster; in-hand parse.",
+  "seed": 62149,
+  "cards": {
+    "Aven Gagglemaster": "Name:Aven Gagglemaster\nManaCost:3 W W\nTypes:Creature Bird Warrior\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each creature you control with flying.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+withFlying/Twice\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Aven Gagglemaster enters, you gain 2 life for each creature you control with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aven Gagglemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

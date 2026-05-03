@@ -1,0 +1,25 @@
+{
+  "id": "ancient-runes-corpus-m675",
+  "description": "M6 corpus — Ancient Runes; ETB-on-bf.",
+  "seed": 61479,
+  "cards": {
+    "Ancient Runes": "Name:Ancient Runes\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals damage to that player equal to the number of artifacts they control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Artifact.ActivePlayerCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, Ancient Runes deals damage to that player equal to the number of artifacts they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ancient Runes"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

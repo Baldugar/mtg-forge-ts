@@ -1,0 +1,23 @@
+{
+  "id": "blex-vexing-pest-corpus-m675",
+  "description": "M6 corpus — Blex, Vexing Pest; in-hand parse.",
+  "seed": 62835,
+  "cards": {
+    "Blex, Vexing Pest": "Name:Blex, Vexing Pest\nManaCost:2 G\nTypes:Legendary Creature Pest\nPT:3/2\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Pest.Other+YouCtrl,Bat.Other+YouCtrl,Insect.Other+YouCtrl,Snake.Other+YouCtrl,Spider.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Pests, Bats, Insects, Snakes, and Spiders you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredCardController | LifeAmount$ 4\nDeckHas:Ability$LifeGain|Graveyard\nDeckHints:Type$Pest|Bat|Insect|Snake|Spider\nAlternateMode:Modal\nOracle:Other Pests, Bats, Insects, Snakes, and Spiders you control get +1/+1.\\nWhen Blex, Vexing Pest dies, you gain 4 life.\n\nALTERNATE\n\nName:Search for Blex\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 5 | ChangeNum$ Any | DestinationZone$ Hand | RememberChanged$ True | DestinationZone2$ Graveyard | SubAbility$ DBLoseLife | StackDescription$ SpellDescription | SpellDescription$ Look at the top five cards of your library. You may put any number of them into your hand and the rest into your graveyard.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ You | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ You lose 3 life for each card you put into your hand this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card/Times.3\nOracle:Look at the top five cards of your library. You may put any number of them into your hand and the rest into your graveyard. You lose 3 life for each card you put into your hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blex, Vexing Pest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

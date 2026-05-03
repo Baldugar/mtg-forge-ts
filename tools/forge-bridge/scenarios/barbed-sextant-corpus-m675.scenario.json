@@ -1,0 +1,25 @@
+{
+  "id": "barbed-sextant-corpus-m675",
+  "description": "M6 corpus — Barbed Sextant; ETB-on-bf.",
+  "seed": 62365,
+  "cards": {
+    "Barbed Sextant": "Name:Barbed Sextant\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ 1 T Sac<1/CARDNAME> | Produced$ Any | SubAbility$ DelTrigSlowtrip | SpellDescription$ Add one mana of any color. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nOracle:{1}, {T}, Sacrifice Barbed Sextant: Add one mana of any color. Draw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barbed Sextant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

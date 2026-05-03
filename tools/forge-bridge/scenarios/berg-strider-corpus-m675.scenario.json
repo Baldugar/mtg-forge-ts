@@ -1,0 +1,23 @@
+{
+  "id": "berg-strider-corpus-m675",
+  "description": "M6 corpus — Berg Strider; in-hand parse.",
+  "seed": 62647,
+  "cards": {
+    "Berg Strider": "Name:Berg Strider\nManaCost:4 U\nTypes:Snow Creature Giant Wizard\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target artifact or creature an opponent controls. If {S} was spent to cast this spell, that permanent doesn't untap during its controller's next untap step. ({S} is mana from a snow source.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Choose target artifact or creature an opponent controls | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | ConditionCheckSVar$ S | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | ConditionDescription$ If {S} was spent to cast this spell,\nSVar:S:Count$CastTotalManaSpent Snow\nSVar:AIPreference:ManaFrom$Snow\nDeckNeeds:Type$Snow\nOracle:When Berg Strider enters, tap target artifact or creature an opponent controls. If {S} was spent to cast this spell, that permanent doesn't untap during its controller's next untap step. ({S} is mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Berg Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

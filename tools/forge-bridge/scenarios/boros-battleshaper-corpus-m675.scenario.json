@@ -1,0 +1,25 @@
+{
+  "id": "boros-battleshaper-corpus-m675",
+  "description": "M6 corpus — Boros Battleshaper; ETB-on-bf.",
+  "seed": 63182,
+  "cards": {
+    "Boros Battleshaper": "Name:Boros Battleshaper\nManaCost:5 R W\nTypes:Creature Minotaur Soldier\nPT:5/5\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigMustAttackBlock | TriggerDescription$ At the beginning of each combat, up to one target creature attacks or blocks this combat if able and up to one target creature can't attack or block this combat.\nSVar:TrigMustAttackBlock:DB$ Effect | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature (attacks or blocks this combat if able) | RememberObjects$ ThisTargetedCard | ExileOnMoved$ Battlefield | StaticAbilities$ MustAttack,MustBlock | IsCurse$ True | Duration$ UntilEndOfCombat | SubAbility$ DBCantAttackBlock\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks or blocks this combat if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered\nSVar:DBCantAttackBlock:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature (can't attack or block this combat) | KW$ HIDDEN CARDNAME can't attack or block. | IsCurse$ True | Duration$ UntilEndOfCombat\nAI:RemoveDeck:All\nOracle:At the beginning of each combat, up to one target creature attacks or blocks this combat if able and up to one target creature can't attack or block this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boros Battleshaper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

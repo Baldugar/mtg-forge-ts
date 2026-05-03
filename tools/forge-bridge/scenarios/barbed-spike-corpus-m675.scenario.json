@@ -1,0 +1,23 @@
+{
+  "id": "barbed-spike-corpus-m675",
+  "description": "M6 corpus — Barbed Spike; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Barbed Spike": "Name:Barbed Spike\nManaCost:1 W\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 colorless Thopter artifact creature token with flying, then attach CARDNAME to it.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nK:Equip:2\nDeckHas:Ability$Token\nOracle:When Barbed Spike enters, create a 1/1 colorless Thopter artifact creature token with flying, then attach Barbed Spike to it.\\nEquipped creature gets +1/+0.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barbed Spike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

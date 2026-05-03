@@ -1,0 +1,23 @@
+{
+  "id": "brass-herald-corpus-m675",
+  "description": "M6 corpus — Brass Herald; in-hand parse.",
+  "seed": 63285,
+  "cards": {
+    "Brass Herald": "Name:Brass Herald\nManaCost:6\nTypes:Artifact Creature Golem\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.ChosenType | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures of the chosen type get +1/+1.\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeckNonToken\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top four cards of your library. Put all creature cards of the chosen type revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature.ChosenType\nSVar:PlayMain1:TRUE\nOracle:As Brass Herald enters, choose a creature type.\\nWhen Brass Herald enters, reveal the top four cards of your library. Put all creature cards of the chosen type revealed this way into your hand and the rest on the bottom of your library in any order.\\nCreatures of the chosen type get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brass Herald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

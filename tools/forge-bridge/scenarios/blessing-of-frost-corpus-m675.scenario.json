@@ -1,0 +1,23 @@
+{
+  "id": "blessing-of-frost-corpus-m675",
+  "description": "M6 corpus — Blessing of Frost; in-hand parse.",
+  "seed": 62831,
+  "cards": {
+    "Blessing of Frost": "Name:Blessing of Frost\nManaCost:3 G\nTypes:Snow Sorcery\nA:SP$ PutCounter | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose any number of creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ X | ChoiceAmount$ X | MinChoiceAmount$ 0 | DividedAsYouChoose$ X | SubAbility$ DBDraw | SpellDescription$ Distribute X +1/+1 counters among any number of creatures you control, where X is the amount of {S} spent to cast this spell.\nSVar:X:Count$CastTotalManaSpent Snow\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SpellDescription$ Then draw a card for each creature you control with power 4 or greater.\nSVar:Y:Count$Valid Creature.powerGE4+YouCtrl\nSVar:AIPreference:ManaFrom$Snow\nDeckHints:Type$Snow\nDeckHas:Ability$Counters\nOracle:Distribute X +1/+1 counters among any number of creatures you control, where X is the amount of {S} spent to cast this spell. Then draw a card for each creature you control with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessing of Frost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

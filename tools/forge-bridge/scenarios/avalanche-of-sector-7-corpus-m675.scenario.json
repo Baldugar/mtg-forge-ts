@@ -1,0 +1,25 @@
+{
+  "id": "avalanche-of-sector-7-corpus-m675",
+  "description": "M6 corpus — Avalanche of Sector 7; ETB-on-bf.",
+  "seed": 62121,
+  "cards": {
+    "Avalanche of Sector 7": "Name:Avalanche of Sector 7\nManaCost:2 R\nTypes:Legendary Creature Human Rebel\nPT:*/3\nK:Menace\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of artifacts your opponents control.\nT:Mode$ AbilityCast | ValidCard$ Artifact.inZoneBattlefield | ValidSA$ Activated.OppCtrl | ValidSAonCard$ Activated.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent activates an ability of an artifact they control, CARDNAME deals 1 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredActivator\nSVar:X:Count$Valid Artifact.OppCtrl\nOracle:Menace\\nAvalanche of Sector 7's power is equal to the number of artifacts your opponents control.\\nWhenever an opponent activates an ability of an artifact they control, Avalanche of Sector 7 deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Avalanche of Sector 7"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bone-mask-corpus-m675",
+  "description": "M6 corpus — Bone Mask; ETB-on-bf.",
+  "seed": 63118,
+  "cards": {
+    "Bone Mask": "Name:Bone Mask\nManaCost:4\nTypes:Artifact\nA:AB$ ChooseSource | Cost$ 2 T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage. Exile cards from the top of your library equal to the damage prevented this way.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ ExileFromLibInstead | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage.\nSVar:ExileFromLibInstead:DB$ Dig | Defined$ You | DestinationZone$ Exile | DigNum$ X | ChangeNum$ All\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{2}, {T}: The next time a source of your choice would deal damage to you this turn, prevent that damage. Exile cards from the top of your library equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bone Mask"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

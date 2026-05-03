@@ -1,0 +1,25 @@
+{
+  "id": "breath-of-the-sleepless-corpus-m675",
+  "description": "M6 corpus — Breath of the Sleepless; ETB-on-bf.",
+  "seed": 63334,
+  "cards": {
+    "Breath of the Sleepless": "Name:Breath of the Sleepless\nManaCost:3 U\nTypes:Enchantment\nS:Mode$ CastWithFlash | ValidCard$ Spirit | ValidSA$ Spell | EffectZone$ Battlefield | Caster$ You | Description$ You may cast Spirit spells as though they had flash.\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigTap | TriggerDescription$ Whenever you cast a creature spell during an opponent's turn, tap up to one target creature.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature\nSVar:BuffedBy:Creature.withFlash\nDeckHints:Type$Spirit\nOracle:You may cast Spirit spells as though they had flash.\\nWhenever you cast a creature spell during an opponent's turn, tap up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Breath of the Sleepless"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

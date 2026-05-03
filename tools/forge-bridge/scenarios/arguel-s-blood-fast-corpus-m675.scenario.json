@@ -1,0 +1,23 @@
+{
+  "id": "arguel-s-blood-fast-corpus-m675",
+  "description": "M6 corpus — Arguel's Blood Fast; in-hand parse.",
+  "seed": 61826,
+  "cards": {
+    "Arguel's Blood Fast": "Name:Arguel's Blood Fast\nManaCost:1 B\nTypes:Legendary Enchantment\nA:AB$ Draw | Cost$ 1 B PayLife<2> | SpellDescription$ Draw a card.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ DBTransform | LifeTotal$ You | LifeAmount$ LE5 | TriggerDescription$ At the beginning of your upkeep, if you have 5 or less life, you may transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAI:RemoveDeck:Random\nAlternateMode:DoubleFaced\nOracle:{1}{B}, Pay 2 life: Draw a card.\\nAt the beginning of your upkeep, if you have 5 or less life, you may transform Arguel's Blood Fast.\n\nALTERNATE\n\nName:Temple of Aclazotz\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1 | SpellDescription$ Add {B}.\nA:AB$ GainLife | Cost$ T Sac<1/Creature> | LifeAmount$ X | SpellDescription$ You gain life equal to the sacrificed creature's toughness.\nSVar:X:Sacrificed$CardToughness\nOracle:(Transforms from Arguel's Blood Fast.)\\n{T}: Add {B}.\\n{T}, Sacrifice a creature: You gain life equal to the sacrificed creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arguel's Blood Fast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

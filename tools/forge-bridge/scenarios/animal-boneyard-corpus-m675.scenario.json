@@ -1,0 +1,23 @@
+{
+  "id": "animal-boneyard-corpus-m675",
+  "description": "M6 corpus — Animal Boneyard; in-hand parse.",
+  "seed": 61566,
+  "cards": {
+    "Animal Boneyard": "Name:Animal Boneyard\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddAbility$ GainLife | AddSVar$ AnimalBoneyardX | Description$ Enchanted land has \"{T}, Sacrifice a creature: You gain life equal to the sacrificed creature's toughness.\"\nSVar:GainLife:AB$ GainLife | Cost$ T Sac<1/Creature> | LifeAmount$ AnimalBoneyardX | SpellDescription$ You gain life equal to the sacrificed creature's toughness.\nSVar:AnimalBoneyardX:Sacrificed$CardToughness\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\nEnchanted land has \"{T}, Sacrifice a creature: You gain life equal to the sacrificed creature's toughness.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animal Boneyard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

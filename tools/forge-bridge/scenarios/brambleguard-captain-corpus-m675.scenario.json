@@ -1,0 +1,25 @@
+{
+  "id": "brambleguard-captain-corpus-m675",
+  "description": "M6 corpus — Brambleguard Captain; ETB-on-bf.",
+  "seed": 63276,
+  "cards": {
+    "Brambleguard Captain": "Name:Brambleguard Captain\nManaCost:3 R\nTypes:Creature Mouse Soldier\nPT:2/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +X/+0 until end of turn, where X is CARDNAME's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X\nSVar:X:Count$CardPower\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, target creature you control gets +X/+0 until end of turn, where X is Brambleguard Captain's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brambleguard Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "belltower-sphinx-corpus-m675",
+  "description": "M6 corpus — Belltower Sphinx; ETB-on-bf.",
+  "seed": 62602,
+  "cards": {
+    "Belltower Sphinx": "Name:Belltower Sphinx\nManaCost:4 U\nTypes:Creature Sphinx\nPT:2/5\nK:Flying\nT:Mode$ DamageDone | ValidTarget$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever a source deals damage to CARDNAME, that source's controller mills that many cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredSourceController | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Flying\\nWhenever a source deals damage to Belltower Sphinx, that source's controller mills that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Belltower Sphinx"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

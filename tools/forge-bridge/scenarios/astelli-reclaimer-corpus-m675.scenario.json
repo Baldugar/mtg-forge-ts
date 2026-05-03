@@ -1,0 +1,23 @@
+{
+  "id": "astelli-reclaimer-corpus-m675",
+  "description": "M6 corpus — Astelli Reclaimer; in-hand parse.",
+  "seed": 62001,
+  "cards": {
+    "Astelli Reclaimer": "Name:Astelli Reclaimer\nManaCost:3 W W\nTypes:Creature Angel Warrior\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, return target noncreature, nonland permanent card with mana value X or less from your graveyard to the battlefield, where X is the amount of mana spent to cast this creature.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.nonCreature+nonLand+YouOwn+cmcLEX | TgtPrompt$ Select target noncreature, nonland permanent card with mana value X or less in your graveyard\nK:Warp:2 W\nSVar:X:Count$CastTotalManaSpent\nOracle:Flying\\nWhen this creature enters, return target noncreature, nonland permanent card with mana value X or less from your graveyard to the battlefield, where X is the amount of mana spent to cast this creature.\\nWarp {2}{W}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astelli Reclaimer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

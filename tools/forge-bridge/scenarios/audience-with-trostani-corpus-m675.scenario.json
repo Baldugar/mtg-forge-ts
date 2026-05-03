@@ -1,0 +1,23 @@
+{
+  "id": "audience-with-trostani-corpus-m675",
+  "description": "M6 corpus — Audience with Trostani; in-hand parse.",
+  "seed": 62048,
+  "cards": {
+    "Audience with Trostani": "Name:Audience with Trostani\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_0_1_plant | SubAbility$ DBDraw | SpellDescription$ Create a 0/1 green Plant creature token, then draw cards equal to the number of differently named creature tokens you control.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | StackDescription$ None\nSVar:X:Count$Valid Creature.YouCtrl+token$DifferentCardNames\nDeckHas:Ability$Token & Type$Plant\nDeckHints:Ability$Token\nOracle:Create a 0/1 green Plant creature token, then draw cards equal to the number of differently named creature tokens you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Audience with Trostani"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

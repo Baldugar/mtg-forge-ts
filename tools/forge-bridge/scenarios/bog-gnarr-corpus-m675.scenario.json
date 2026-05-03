@@ -1,0 +1,25 @@
+{
+  "id": "bog-gnarr-corpus-m675",
+  "description": "M6 corpus — Bog Gnarr; ETB-on-bf.",
+  "seed": 63048,
+  "cards": {
+    "Bog Gnarr": "Name:Bog Gnarr\nManaCost:4 G\nTypes:Creature Beast\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Black | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a player casts a black spell, CARDNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nSVar:BuffedBy:Card.Black\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nDeckHints:Color$Black\nOracle:Whenever a player casts a black spell, Bog Gnarr gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bog Gnarr"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

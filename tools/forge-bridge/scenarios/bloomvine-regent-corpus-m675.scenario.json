@@ -1,0 +1,23 @@
+{
+  "id": "bloomvine-regent-corpus-m675",
+  "description": "M6 corpus — Bloomvine Regent; in-hand parse.",
+  "seed": 63009,
+  "cards": {
+    "Bloomvine Regent": "Name:Bloomvine Regent\nManaCost:3 G G\nTypes:Creature Dragon\nPT:4/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Dragon.Other+YouCtrl | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature or another Dragon you control enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nAlternateMode:Omen\nOracle:Flying\\nWhenever this creature or another Dragon you control enters, you gain 3 life.\n\nALTERNATE\n\nName:Claim Territory\nManaCost:2 G\nTypes:Sorcery Omen\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Forest.Basic | ChangeTypeDesc$ basic Forest | ChangeNum$ 2 | RememberChanged$ True | Reveal$ True | Shuffle$ False | StackDescription$ SpellDescription | SubAbility$ DBChangeZone1 | SpellDescription$ Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.IsRemembered | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put onto the battlefield | Tapped$ True | Shuffle$ False | SubAbility$ DBChangeZone2 | StackDescription$ None\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.IsRemembered | Mandatory$ True | NoLooking$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloomvine Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

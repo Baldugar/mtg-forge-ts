@@ -1,0 +1,23 @@
+{
+  "id": "ancient-excavation-corpus-m675",
+  "description": "M6 corpus — Ancient Excavation; in-hand parse.",
+  "seed": 61471,
+  "cards": {
+    "Ancient Excavation": "Name:Ancient Excavation\nManaCost:2 U B\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SubAbility$ DBDiscard | RememberDrawn$ AllReplaced | SpellDescription$ Draw cards equal to the number of cards in your hand, then discard a card for each card drawn this way.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:Remembered$Amount\nK:TypeCycling:Basic:2\nOracle:Draw cards equal to the number of cards in your hand, then discard a card for each card drawn this way.\\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Excavation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

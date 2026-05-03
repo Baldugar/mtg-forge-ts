@@ -1,0 +1,25 @@
+{
+  "id": "battered-golem-corpus-m675",
+  "description": "M6 corpus — Battered Golem; ETB-on-bf.",
+  "seed": 62456,
+  "cards": {
+    "Battered Golem": "Name:Battered Golem\nManaCost:3\nTypes:Artifact Creature Golem\nPT:3/2\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever an artifact enters, you may untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:This creature doesn't untap during your untap step.\\nWhenever an artifact enters, you may untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battered Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

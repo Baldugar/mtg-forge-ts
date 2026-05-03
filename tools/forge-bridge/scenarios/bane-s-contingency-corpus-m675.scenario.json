@@ -1,0 +1,23 @@
+{
+  "id": "bane-s-contingency-corpus-m675",
+  "description": "M6 corpus — Bane's Contingency; in-hand parse.",
+  "seed": 62330,
+  "cards": {
+    "Bane's Contingency": "Name:Bane's Contingency\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | StackDescription$ SpellDescription | SubAbility$ DBScry | SpellDescription$ Counter target spell. If that spell targets a commander you control, instead counter that spell, scry 2, then draw a card.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionCheckSVar$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:Count$Compare CheckTgt GE1.1.0\nSVar:CheckTgt:TargetedByTarget$Valid Card.IsCommander+YouCtrl+inZoneBattlefield\nOracle:Counter target spell. If that spell targets a commander you control, instead counter that spell, scry 2, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bane's Contingency"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

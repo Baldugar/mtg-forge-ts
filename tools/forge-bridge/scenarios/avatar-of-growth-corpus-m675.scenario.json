@@ -1,0 +1,23 @@
+{
+  "id": "avatar-of-growth-corpus-m675",
+  "description": "M6 corpus — Avatar of Growth; in-hand parse.",
+  "seed": 62128,
+  "cards": {
+    "Avatar of Growth": "Name:Avatar of Growth\nManaCost:4 G G\nTypes:Creature Elemental Avatar\nPT:4/4\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each opponent you have.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, each player searches their library for up to two basic land cards, puts them onto the battlefield, then shuffles.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | DefinedPlayer$ Player | ChangeNum$ 2 | Shuffle$ True\nSVar:X:PlayerCountOpponents$Amount\nOracle:This spell costs {1} less to cast for each opponent you have.\\nTrample\\nWhen Avatar of Growth enters, each player searches their library for up to two basic land cards, puts them onto the battlefield, then shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avatar of Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brinebarrow-intruder-corpus-m675",
+  "description": "M6 corpus — Brinebarrow Intruder; in-hand parse.",
+  "seed": 63392,
+  "cards": {
+    "Brinebarrow Intruder": "Name:Brinebarrow Intruder\nManaCost:U\nTypes:Creature Human Rogue\nPT:1/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ -2 | IsCurse$ True | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature\nOracle:Flash\\nWhen Brinebarrow Intruder enters, target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brinebarrow Intruder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

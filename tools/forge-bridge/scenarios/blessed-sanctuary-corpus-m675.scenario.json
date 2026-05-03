@@ -1,0 +1,25 @@
+{
+  "id": "blessed-sanctuary-corpus-m675",
+  "description": "M6 corpus — Blessed Sanctuary; ETB-on-bf.",
+  "seed": 62826,
+  "cards": {
+    "Blessed Sanctuary": "Name:Blessed Sanctuary\nManaCost:3 W W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ You,Creature.YouCtrl | IsCombat$ False | Description$ Prevent all noncombat damage that would be dealt to you and creatures you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control enters, create a 2/2 white Unicorn creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_unicorn | TokenOwner$ You\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nOracle:Prevent all noncombat damage that would be dealt to you and creatures you control.\\nWhenever a nontoken creature you control enters, create a 2/2 white Unicorn creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blessed Sanctuary"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

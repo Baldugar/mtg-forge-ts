@@ -1,0 +1,23 @@
+{
+  "id": "befriending-the-moths-corpus-m675",
+  "description": "M6 corpus — Befriending the Moths; in-hand parse.",
+  "seed": 62567,
+  "cards": {
+    "Befriending the Moths": "Name:Befriending the Moths\nManaCost:3 W\nTypes:Enchantment Saga\nK:Chapter:3:DBPump,DBPump,DBTransform\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1 | KW$ Flying | SpellDescription$ Target creature you control gets +1/+1 and gains flying until end of turn.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Target creature you control gets +1/+1 and gains flying until end of turn.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Imperial Moth\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Insect\nPT:2/4\nK:Flying\nOracle:Flying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Befriending the Moths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

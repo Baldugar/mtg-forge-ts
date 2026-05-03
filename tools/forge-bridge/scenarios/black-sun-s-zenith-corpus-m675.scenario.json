@@ -1,0 +1,23 @@
+{
+  "id": "black-sun-s-zenith-corpus-m675",
+  "description": "M6 corpus — Black Sun's Zenith; in-hand parse.",
+  "seed": 62746,
+  "cards": {
+    "Black Sun's Zenith": "Name:Black Sun's Zenith\nManaCost:X B B\nTypes:Sorcery\nA:SP$ PutCounterAll | ValidCards$ Creature | CounterType$ M1M1 | CounterNum$ X | SubAbility$ DBShuffle | IsCurse$ True | SpellDescription$ Put X -1/-1 counters on each creature. Shuffle CARDNAME into its owner's library.\nSVar:X:Count$xPaid\nSVar:DBShuffle:DB$ ChangeZone | Origin$ Stack | Destination$ Library | Shuffle$ True | Defined$ Parent\nAI:RemoveDeck:All\nOracle:Put X -1/-1 counters on each creature. Shuffle Black Sun's Zenith into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Sun's Zenith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

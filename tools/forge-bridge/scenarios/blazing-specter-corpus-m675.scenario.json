@@ -1,0 +1,25 @@
+{
+  "id": "blazing-specter-corpus-m675",
+  "description": "M6 corpus — Blazing Specter; ETB-on-bf.",
+  "seed": 62812,
+  "cards": {
+    "Blazing Specter": "Name:Blazing Specter\nManaCost:2 B R\nTypes:Creature Specter\nPT:2/2\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying, haste\\nWhenever Blazing Specter deals combat damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blazing Specter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

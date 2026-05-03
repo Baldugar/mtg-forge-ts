@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-fury-corpus-m675",
+  "description": "M6 corpus — Angel of Fury; in-hand parse.",
+  "seed": 61498,
+  "cards": {
+    "Angel of Fury": "Name:Angel of Fury\nManaCost:4 W W\nTypes:Creature Angel\nPT:3/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, you may shuffle it into its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Flying\\nWhen Angel of Fury dies, you may shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

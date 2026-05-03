@@ -1,0 +1,23 @@
+{
+  "id": "bladewing-the-risen-corpus-m675",
+  "description": "M6 corpus — Bladewing the Risen; in-hand parse.",
+  "seed": 62784,
+  "cards": {
+    "Bladewing the Risen": "Name:Bladewing the Risen\nManaCost:3 B B R R\nTypes:Legendary Creature Zombie Dragon\nPT:4/4\nK:Flying\nA:AB$ PumpAll | Cost$ B R | ValidCards$ Creature.Dragon | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Dragon creatures get +1/+1 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target Dragon permanent card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.Dragon+YouOwn | TgtPrompt$ Choose target Dragon permanent in your graveyard.\nOracle:Flying\\nWhen Bladewing the Risen enters, you may return target Dragon permanent card from your graveyard to the battlefield.\\n{B}{R}: Dragon creatures get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bladewing the Risen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

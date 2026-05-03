@@ -1,0 +1,23 @@
+{
+  "id": "avarax-corpus-m675",
+  "description": "M6 corpus — Avarax; in-hand parse.",
+  "seed": 62123,
+  "cards": {
+    "Avarax": "Name:Avarax\nManaCost:3 R R\nTypes:Creature Beast\nPT:3/3\nK:Haste\nA:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a card named Avarax, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedAvarax | ShuffleNonMandatory$ True\nDeckHints:Name$Avarax\nOracle:Haste\\nWhen Avarax enters, you may search your library for a card named Avarax, reveal it, put it into your hand, then shuffle.\\n{1}{R}: Avarax gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avarax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "breya-s-apprentice-corpus-m675",
+  "description": "M6 corpus — Breya's Apprentice; in-hand parse.",
+  "seed": 63347,
+  "cards": {
+    "Breya's Apprentice": "Name:Breya's Apprentice\nManaCost:2 R\nTypes:Artifact Creature Human Artificer\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nA:AB$ Charm | Cost$ T Sac<1/Artifact> | Choices$ DBImpulse,DBPump | Defined$ You\nSVar:DBImpulse:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. Until the end of your next turn, you may play that card.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ StaticMayPlay | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:StaticMayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ Until the end of your next turn, you may play that card.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SpellDescription$ Target creature gets +2/+0 until end of turn.\nDeckHas:Ability$Token\nOracle:When Breya's Apprentice enters, create a 1/1 colorless Thopter artifact creature token with flying.\\n{T}, Sacrifice an artifact: Choose one —\\n• Exile the top card of your library. Until the end of your next turn, you may play that card.\\n• Target creature gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breya's Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

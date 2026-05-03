@@ -1,0 +1,25 @@
+{
+  "id": "bellowing-mauler-corpus-m675",
+  "description": "M6 corpus — Bellowing Mauler; ETB-on-bf.",
+  "seed": 62597,
+  "cards": {
+    "Bellowing Mauler": "Name:Bellowing Mauler\nManaCost:4 B\nTypes:Creature Ogre Warrior\nPT:4/6\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRepeatEach | TriggerDescription$ At the beginning of your end step, each player loses 4 life unless they sacrifice a nontoken creature.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatSubAbility$ DBLoseLife | RepeatPlayers$ Player\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 4 | UnlessCost$ Sac<1/Creature.!token/a nontoken creature> | UnlessPayer$ Remembered\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your end step, each player loses 4 life unless they sacrifice a nontoken creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bellowing Mauler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

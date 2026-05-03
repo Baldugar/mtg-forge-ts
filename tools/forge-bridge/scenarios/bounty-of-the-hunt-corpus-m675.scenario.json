@@ -1,0 +1,23 @@
+{
+  "id": "bounty-of-the-hunt-corpus-m675",
+  "description": "M6 corpus — Bounty of the Hunt; in-hand parse.",
+  "seed": 63242,
+  "cards": {
+    "Bounty of the Hunt": "Name:Bounty of the Hunt\nManaCost:3 G G\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute counters to | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 3 | RemovePhase$ Cleanup | SpellDescription$ Distribute three +1/+1 counters among one, two, or three target creatures. For each +1/+1 counter you put on a creature this way, remove a +1/+1 counter from that creature at the beginning of the next cleanup step.\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ ExileFromHand<1/Card.Green+Other> | Description$ You may exile a green card from your hand rather than pay this spell's mana cost.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:You may exile a green card from your hand rather than pay this spell's mana cost.\\nDistribute three +1/+1 counters among one, two, or three target creatures. For each +1/+1 counter you put on a creature this way, remove a +1/+1 counter from that creature at the beginning of the next cleanup step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bounty of the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

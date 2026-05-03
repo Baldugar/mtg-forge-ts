@@ -1,0 +1,25 @@
+{
+  "id": "blinkmoth-urn-corpus-m675",
+  "description": "M6 corpus — Blinkmoth Urn; ETB-on-bf.",
+  "seed": 62888,
+  "cards": {
+    "Blinkmoth Urn": "Name:Blinkmoth Urn\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ Player | TriggerZones$ Battlefield | PresentDefined$ Self | IsPresent$ Card.untapped | Execute$ TrigGetMana | TriggerDescription$ At the beginning of each player's first main phase, if CARDNAME is untapped, that player adds {C} for each artifact they control.\nSVar:TrigGetMana:DB$ Mana | Produced$ C | Amount$ X | Defined$ TriggeredPlayer\nSVar:X:Count$Valid Artifact.ActivePlayerCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's first main phase, if Blinkmoth Urn is untapped, that player adds {C} for each artifact they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blinkmoth Urn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

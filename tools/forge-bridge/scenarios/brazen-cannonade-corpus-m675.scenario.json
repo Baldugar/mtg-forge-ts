@@ -1,0 +1,25 @@
+{
+  "id": "brazen-cannonade-corpus-m675",
+  "description": "M6 corpus — Brazen Cannonade; ETB-on-bf.",
+  "seed": 63301,
+  "cards": {
+    "Brazen Cannonade": "Name:Brazen Cannonade\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.attacking+YouCtrl | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever an attacking creature you control dies, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 2\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigExile | TriggerDescription$ Raid — At the beginning of each of your postcombat main phases, if you attacked this turn, exile the top card of your library. Until end of combat on your next turn, you may play that card.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ UntilEndOfCombatYourNextTurn\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of combat on your next turn, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Whenever an attacking creature you control dies, Brazen Cannonade deals 2 damage to each opponent.\\nRaid — At the beginning of each of your postcombat main phases, if you attacked this turn, exile the top card of your library. Until end of combat on your next turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brazen Cannonade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

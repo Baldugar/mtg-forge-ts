@@ -1,0 +1,25 @@
+{
+  "id": "archfiend-of-despair-corpus-m675",
+  "description": "M6 corpus — Archfiend of Despair; ETB-on-bf.",
+  "seed": 61749,
+  "cards": {
+    "Archfiend of Despair": "Name:Archfiend of Despair\nManaCost:6 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nS:Mode$ CantGainLife | ValidPlayer$ Player.Opponent | Description$ Your opponents can't gain life.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ RepeatOpps | TriggerDescription$ At the beginning of each end step, each opponent loses life equal to the life they lost this turn. (Damage causes loss of life.)\nSVar:RepeatOpps:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TrigLoseLife\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X\nSVar:X:PlayerCountRemembered$LifeLostThisTurn\nOracle:Flying\\nYour opponents can't gain life.\\nAt the beginning of each end step, each opponent loses life equal to the life that player lost this turn. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archfiend of Despair"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

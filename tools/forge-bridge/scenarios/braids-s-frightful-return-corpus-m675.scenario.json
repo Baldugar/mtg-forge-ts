@@ -1,0 +1,23 @@
+{
+  "id": "braids-s-frightful-return-corpus-m675",
+  "description": "M6 corpus — Braids's Frightful Return; in-hand parse.",
+  "seed": 63253,
+  "cards": {
+    "Braids's Frightful Return": "Name:Braids's Frightful Return\nManaCost:2 B\nTypes:Enchantment Saga\nK:Read ahead\nK:Chapter:3:ABDiscard,DBChangeZone,DBSacrificeOpp\nSVar:ABDiscard:AB$ Discard | Cost$ Sac<1/Creature> | CostDesc$ You may sacrifice a creature. | Mode$ TgtChoose | Defined$ Opponent | SpellDescription$ If you do, each opponent discards a card.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:DBSacrificeOpp:DB$ Sacrifice | ValidTgts$ Opponent | Optional$ True | SacValid$ Permanent.nonLand+!token | RememberSacrificed$ True | SubAbility$ DBDraw | SpellDescription$ Target opponent may sacrifice a nonland, nontoken permanent. If they don't, they lose 2 life and you draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | LifeAmount$ 2 | Defined$ Targeted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard|Sacrifice\nOracle:Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\\nI — You may sacrifice a creature. If you do, each opponent discards a card.\\nII — Return target creature card from your graveyard to your hand.\\nIII — Target opponent may sacrifice a nonland, nontoken permanent. If they don't, they lose 2 life and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Braids's Frightful Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

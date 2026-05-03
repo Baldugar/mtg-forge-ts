@@ -1,0 +1,23 @@
+{
+  "id": "become-the-pilot-corpus-m675",
+  "description": "M6 corpus — Become the Pilot; in-hand parse.",
+  "seed": 62555,
+  "cards": {
+    "Become the Pilot": "Name:Become the Pilot\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Enchant:Creature.!IsCommander:noncommander creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2 and can't be blocked unless it's attacking its owner or a permanent its owner controls.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | ValidBlocker$ Creature.!ControlledBy EnchantedOwner\nOracle:Enchant noncommander creature\\nYou control enchanted creature.\\nEnchanted creature gets +2/+2 and can't be blocked unless it's attacking its owner or a permanent its owner controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Become the Pilot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

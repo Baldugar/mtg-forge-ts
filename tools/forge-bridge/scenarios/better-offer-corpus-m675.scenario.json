@@ -1,0 +1,23 @@
+{
+  "id": "better-offer-corpus-m675",
+  "description": "M6 corpus — Better Offer; in-hand parse.",
+  "seed": 62668,
+  "cards": {
+    "Better Offer": "Name:Better Offer\nManaCost:X U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ValidTgts$ Opponent | ChangeType$ Creature.cmcLEX+TargetedPlayerOwn | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True | GainControl$ True | RememberChanged$ True | SubAbility$ DBAnimate | StackDescription$ {p:You} puts a random creature card with mana value X or less from {p:Targeted}'s library onto the battlefield under their control. | SpellDescription$ Put a random creature card with mana value X or less from target opponent's library onto the battlefield under your control.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ X | Toughness$ X | Keywords$ Ward:1 | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually has base power and toughness X/X and gains ward {1}.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Put a random creature card with mana value X or less from target opponent's library onto the battlefield under your control. It perpetually has base power and toughness X/X and gains ward {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Better Offer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

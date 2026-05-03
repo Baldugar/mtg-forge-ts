@@ -1,0 +1,23 @@
+{
+  "id": "bloodsoaked-insight-corpus-m675",
+  "description": "M6 corpus — Bloodsoaked Insight; in-hand parse.",
+  "seed": 62989,
+  "cards": {
+    "Bloodsoaked Insight": "Name:Bloodsoaked Insight\nManaCost:5 BR BR\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each 1 life your opponents have lost this turn.\nSVar:X:Count$LifeOppsLostThisTurn\nA:SP$ Dig | ValidTgts$ Opponent | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Target opponent exiles the top three cards of their library. Until the end of your next turn, you may play those cards. If you cast a spell this way, mana of any type can be spent to cast it.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STLookPlay | Duration$ UntilTheEndOfYourNextTurn | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STLookPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play those cards for as long as they remain exiled, and you may spend mana as though it were mana of any type to cast spells this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:Modal\nOracle:This spell costs 1 less to cast for each 1 life your opponents have lost this turn.\\nTarget opponent exiles the top three cards of their library. Until the end of your next turn, you may play those cards. If you cast a spell this way, mana of any type can be spent to cast it.\n\nALTERNATE\n\nName:Sanguine Morass\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nOracle:Sanguine Morass enters tapped.\\n{T}: Add {B} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodsoaked Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

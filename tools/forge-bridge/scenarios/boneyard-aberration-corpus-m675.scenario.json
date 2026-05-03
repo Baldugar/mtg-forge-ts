@@ -1,0 +1,23 @@
+{
+  "id": "boneyard-aberration-corpus-m675",
+  "description": "M6 corpus — Boneyard Aberration; in-hand parse.",
+  "seed": 63137,
+  "cards": {
+    "Boneyard Aberration": "Name:Boneyard Aberration\nManaCost:4 B\nTypes:Creature Skeleton Dog\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile it. If you do, conjure three Reassembling Skeleton cards into your graveyard.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | Name$ Reassembling Skeleton | Zone$ Graveyard | Amount$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:When Boneyard Aberration dies, exile it. If you do, conjure three Reassembling Skeleton cards into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boneyard Aberration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "anthem-of-rakdos-corpus-m675",
+  "description": "M6 corpus — Anthem of Rakdos; ETB-on-bf.",
+  "seed": 61603,
+  "cards": {
+    "Anthem of Rakdos": "Name:Anthem of Rakdos\nManaCost:2 B R R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ AnthemPump | TriggerDescription$ Whenever a creature you control attacks, it gets +2/+0 until end of turn and CARDNAME deals 1 damage to you.\nSVar:AnthemPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +2 | SubAbility$ RakdosBurn\nSVar:RakdosBurn:DB$ DealDamage | Defined$ You | NumDmg$ 1\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent,Player | Hellbent$ True | ReplaceWith$ DmgTwice | Description$ Hellbent — As long as you have no cards in hand, if a source you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Card\nDeckHints:Ability$Discard\nOracle:Whenever a creature you control attacks, it gets +2/+0 until end of turn and Anthem of Rakdos deals 1 damage to you.\\nHellbent — As long as you have no cards in hand, if a source you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anthem of Rakdos"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "blood-hypnotist-corpus-m675",
+  "description": "M6 corpus — Blood Hypnotist; ETB-on-bf.",
+  "seed": 62933,
+  "cards": {
+    "Blood Hypnotist": "Name:Blood Hypnotist\nManaCost:2 R\nTypes:Creature Vampire\nPT:3/3\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ Sacrificed | ValidCard$ Blood.token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | ActivationLimit$ 1 | TriggerDescription$ Whenever you sacrifice one or more Blood tokens, target creature can't block this turn. This ability triggers only once each turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True\nDeckNeeds:Type$Blood\nOracle:Blood Hypnotist can't block.\\nWhenever you sacrifice one or more Blood tokens, target creature can't block this turn. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blood Hypnotist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "baki-s-curse-corpus-m675",
+  "description": "M6 corpus — Baki's Curse; in-hand parse.",
+  "seed": 62264,
+  "cards": {
+    "Baki's Curse": "Name:Baki's Curse\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatCards$ Creature | Zone$ Battlefield | RepeatSubAbility$ DBDmg | DamageMap$ True | SpellDescription$ CARDNAME deals 2 damage to each creature for each Aura attached to that creature.\nSVar:DBDmg:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Aura.AttachedTo Creature.IsRemembered/Times.2\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Baki's Curse deals 2 damage to each creature for each Aura attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baki's Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

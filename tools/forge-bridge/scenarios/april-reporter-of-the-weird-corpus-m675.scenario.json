@@ -1,0 +1,25 @@
+{
+  "id": "april-reporter-of-the-weird-corpus-m675",
+  "description": "M6 corpus — April, Reporter of the Weird; ETB-on-bf.",
+  "seed": 61657,
+  "cards": {
+    "April, Reporter of the Weird": "Name:April, Reporter of the Weird\nManaCost:2 U\nTypes:Legendary Creature Human Detective\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, draw that many cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Discard\nOracle:Whenever April deals combat damage to a player, draw that many cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "April, Reporter of the Weird"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

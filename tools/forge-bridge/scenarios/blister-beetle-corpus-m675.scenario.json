@@ -1,0 +1,23 @@
+{
+  "id": "blister-beetle-corpus-m675",
+  "description": "M6 corpus — Blister Beetle; in-hand parse.",
+  "seed": 62890,
+  "cards": {
+    "Blister Beetle": "Name:Blister Beetle\nManaCost:1 B\nTypes:Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:When Blister Beetle enters, target creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blister Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

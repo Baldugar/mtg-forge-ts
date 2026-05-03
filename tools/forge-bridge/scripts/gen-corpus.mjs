@@ -43,7 +43,10 @@ for (const f of fs.readdirSync(scenariosDir)) {
   try {
     const j = JSON.parse(fs.readFileSync(path.join(scenariosDir, f), "utf8"));
     for (const name of Object.keys(j.cards ?? {})) {
-      const base = name.replace(/\s+M6\d+(\s+M6\d+)?$/i, "").replace(/\s+v\d$/i, "").trim();
+      const base = name
+        .replace(/\s+M6\d+(\s+M6\d+)?$/i, "")
+        .replace(/\s+v\d$/i, "")
+        .trim();
       covered.add(base);
     }
   } catch {}
@@ -82,7 +85,9 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const isSaga = /\bSaga\b/.test(t);
     const isVehicle = /\bVehicle\b/.test(t);
     const isBattle = /\bBattle\b/.test(t);
-    const hasEtbCounter = lines.some((l) => l.startsWith("K:etbCounter"));
+    const hasEtbCounter = lines.some(
+      (l) => l.startsWith("K:etbCounter") || l.startsWith("K:ETBReplacement"),
+    );
     // M6.73 — additional filters surfaced by 100-card pilot:
     //   - DFC/MDFC/Transform cards (AlternateMode:) often have face-specific
     //     timing the setup path doesn't replicate cleanly.
@@ -93,12 +98,16 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     //     SetState in Forge's AI, tapping creatures pre-action.
     const hasAlternateMode = lines.some((l) => l.startsWith("AlternateMode:"));
     const isLand = /\bLand\b/.test(t);
-    const hasSelfEtbTrigger = lines.some((l) =>
-      l.startsWith("T:") && l.includes("ChangesZone") && l.includes("Battlefield") && l.includes("Card.Self"),
+    const hasSelfEtbTrigger = lines.some(
+      (l) =>
+        l.startsWith("T:") &&
+        l.includes("ChangesZone") &&
+        l.includes("Battlefield") &&
+        l.includes("Card.Self"),
     );
     const hasFlash = lines.some((l) => l.startsWith("K:Flash"));
-    const hasSetStateAbility = lines.some((l) =>
-      l.startsWith("A:") && l.includes("SP$ SetState") || l.includes("AB$ SetState"),
+    const hasSetStateAbility = lines.some(
+      (l) => (l.startsWith("A:") && l.includes("SP$ SetState")) || l.includes("AB$ SetState"),
     );
     // Avatar TLA effects (Airbend/Earthbend/Waterbend/Firebend) and other
     // niche Forge effects the TS engine treats as no-ops, leading to
@@ -111,21 +120,57 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // treats these as alternate costs but our parser hits them as mana
     // symbols. Check ANY line for these patterns since they appear in
     // S$ RaiseCost / SP$ / AB$ Cost$ fields, not just ManaCost:.
-    const hasAltCostInManaCost = lines.some((l) =>
-      /Cost\$\s+Discard</.test(l) || /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
+    const hasAltCostInManaCost = lines.some(
+      (l) => /Cost\$\s+Discard</.test(l) || /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
     );
     // Cards that reference AI-only Count$ selectors we don't yet support.
     const usesUnsupportedCount = lines.some(
-      (l) => l.includes("Count$") && /Count\$Emerged|Count\$Imprinted\.|Count\$Reveal/.test(l),
+      (l) =>
+        l.includes("Count$") &&
+        /Count\$Emerged|Count\$Imprinted\.|Count\$Reveal|Count\$Party|Count\$MostProminent/.test(l),
+    );
+    // SVar referenced as a trigger Execute that resolves to AB$ (activated
+    // ability) — TS only supports DB$ in trigger execute resolution. Forge
+    // uses AB$ for "may sacrifice an artifact, if you do, draw a card"
+    // patterns (Benthic Criminologists). Skip until TS supports AB$ as
+    // trigger execute.
+    const triggerExecutesActivated = lines.some((line) => {
+      const m = /Execute\$\s+(\w+)/.exec(line);
+      if (!m) return false;
+      const svarName = m[1];
+      return lines.some(
+        (l2) => l2.startsWith(`SVar:${svarName}:AB$`),
+      );
+    });
+    // Mana cost or Cost$ uses Avatar mechanics (Waterbend<N>, Earthbend<N>,
+    // Airbend<N>, Firebend<N>) which embed alt-cost in the mana cost slot.
+    const usesAvatarMechanics = lines.some(
+      (l) => /(?:ManaCost:|Cost\$).*\b(?:Waterbend|Earthbend|Airbend|Firebend)</.test(l),
+    );
+    // SVar with literal "Any" used as numeric — TS evaluator throws.
+    const hasAnyAsNumber = lines.some(
+      (l) => /^SVar:[^:]+:.*\bAny\b/.test(l) && !l.includes("Any.YouCtrl"),
+    );
+    // Tokens that don't follow the standard `<color>_<P>_<T>_<subtype>...`
+    // naming (e.g. "sword", "beau", "c_a_lander_sac_search") — synthesize
+    // fallback can't infer their PT/subtype so we skip the cards using them.
+    const hasExoticToken = lines.some(
+      (l) =>
+        l.includes("TokenScript$") &&
+        /TokenScript\$\s+(?!(?:[wubrgcm]+_(?:\d+|x)_(?:\d+|x))[\w_]*)[a-z][a-z_]*/i.test(l),
+    );
+    // SVar selectors not yet supported by the TS evaluator.
+    const usesUnsupportedSVar = lines.some(
+      (l) =>
+        l.startsWith("SVar:") &&
+        /\b(PlayerCountPlayers|TriggeredCard|TriggeredAttacker|TriggeredBlocker|TriggeredSourceSA)\b/.test(l),
     );
     // Cards with ETB triggers that put counters somewhere — bridge captures
     // CounterAdded events but the TS engine emits it for K:etbCounter only,
     // not for trigger-driven PutCounter via DB$ PutCounter. Until parity
     // tightens at the emission level, exclude these from corpus expansion.
     const hasPutCounterInTrigger = lines.some(
-      (l) =>
-        l.startsWith("SVar:") &&
-        /\bDB\$ PutCounter\b|\bAB\$ PutCounter\b/.test(l),
+      (l) => l.startsWith("SVar:") && /\bDB\$ PutCounter\b|\bAB\$ PutCounter\b/.test(l),
     );
     // Cards using mechanic-specific events the bridge doesn't subscribe to
     // (Clash, Roll-a-die, Investigate, Suspect, GainControl) — TS emits
@@ -146,21 +191,56 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
         l.startsWith("K:Partner with") ||
         l.startsWith("K:Doctor's companion") ||
         l.startsWith("K:Friends forever") ||
+        l.startsWith("K:Modular") ||
+        l.startsWith("K:Riot") ||
+        l.startsWith("K:Backup") ||
+        l.startsWith("K:Job select") ||
+        l.startsWith("K:Mutate") ||
+        l.startsWith("K:Disturb") ||
+        l.startsWith("K:Eternalize") ||
+        l.startsWith("K:Embalm") ||
+        l.startsWith("K:Living Weapon") ||
+        l.startsWith("K:Reinforce") ||
+        l.startsWith("K:Champion") ||
+        l.startsWith("K:Devour") ||
+        l.startsWith("K:Soulshift") ||
+        l.startsWith("K:Squad") ||
+        l.startsWith("K:Unearth") ||
+        l.startsWith("K:Amplify") ||
+        l.startsWith("K:Annihilator") ||
+        l.startsWith("K:Bloodthirst") ||
+        l.startsWith("K:Cumulative Upkeep") ||
+        l.startsWith("K:Dethrone") ||
+        l.startsWith("K:Echo") ||
+        l.startsWith("K:Evoke") ||
+        l.startsWith("K:Exalted") ||
+        l.startsWith("K:Fading") ||
+        l.startsWith("K:Vanishing") ||
+        l.startsWith("K:Persist") ||
+        l.startsWith("K:Undying") ||
+        l.startsWith("K:Wither") ||
+        l.startsWith("K:Haunt") ||
+        l.startsWith("K:For Mirrodin") ||
+        l.startsWith("K:Reconfigure") ||
+        l.startsWith("K:Suspect") ||
+        l.startsWith("K:Disturb") ||
+        l.startsWith("K:Friends forever") ||
+        l.startsWith("K:Adapt") ||
+        l.startsWith("K:Monstrosity") ||
         /\bDB\$ Venture\b/.test(l) ||
         l.startsWith("K:Venture"),
     );
     // ImmediateTrigger / ImmediateAbility — chained "When you do" triggers
     // that fire on action completion. TS engine doesn't yet handle this.
-    const hasImmediateTrigger = lines.some((l) =>
-      /\b(AB|DB|SP)\$ ImmediateTrigger\b/.test(l),
-    );
+    const hasImmediateTrigger = lines.some((l) => /\b(AB|DB|SP)\$ ImmediateTrigger\b/.test(l));
     // ETB triggers requiring AI to pick a target (Opponent/Player/Creature)
     // diverge between bridge AI and TS RandomLegalController. Filter when
     // the card has a self-ETB trigger AND its referenced SVar uses ValidTgts$.
-    const hasEtbTriggerWithTargetedPlayer = lines.some((l) =>
-      l.startsWith("SVar:") &&
-      /\b(DB|AB)\$ (Discard|Mill|Search|DealDamage|GainLife|LoseLife|ChooseCard|ChoosePlayer)\b/.test(l) &&
-      /ValidTgts\$ (Opponent|Player|Creature)/.test(l),
+    const hasEtbTriggerWithTargetedPlayer = lines.some(
+      (l) =>
+        l.startsWith("SVar:") &&
+        /\b(DB|AB)\$ (Discard|Mill|Search|DealDamage|GainLife|LoseLife|ChooseCard|ChoosePlayer)\b/.test(l) &&
+        /ValidTgts\$ (Opponent|Player|Creature)/.test(l),
     );
     // Cards whose ETB triggers require choosePlayer / chooseCard with min>0
     // and the bridge AI / TS RandomLegalController doesn't have a default —
@@ -180,7 +260,12 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       hasOffspring ||
       hasEtbTriggerWithTargetedPlayer ||
       hasImmediateTrigger ||
-      hasComplexMechanic;
+      hasComplexMechanic ||
+      triggerExecutesActivated ||
+      usesAvatarMechanics ||
+      hasAnyAsNumber ||
+      hasExoticToken ||
+      usesUnsupportedSVar;
     if (skip) continue;
     const inHandOnly =
       isAura ||
@@ -202,9 +287,12 @@ console.error(`Generating ${uncovered.length} corpus scenarios with tag '${wave}
 
 // 3) Emit TS scenario entries.
 function slug(s) {
-  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
-function escape(s) {
+function escapeBackticks(s) {
   return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
 }
 
@@ -212,34 +300,55 @@ let seed = 0xf000;
 let out = "";
 for (const card of uncovered) {
   const t = card.types;
+  // M6.75 — Default permanents-with-any-ETB-trigger to in-hand only. The
+  // ETB-on-bf scenario surfaces fan-out + counter divergences both engines
+  // are still aligning. Pure-vanilla permanents (no Card.Self ETB trigger)
+  // still go to ETB.
+  const hasAnyEtbTrigger = card.script
+    .split("\n")
+    .some(
+      (l) =>
+        l.startsWith("T:") &&
+        // Self-ETB OR ChangesZoneAll (when other cards enter) OR
+        // Mode$ Always (passive state-based triggers like "sacrifice if you
+        // control no Swamps") all surface fan-out divergences.
+        ((l.includes("ChangesZone") &&
+          l.includes("Battlefield") &&
+          (l.includes("Card.Self") || l.includes("ChangesZoneAll"))) ||
+          l.includes("Mode$ Always")),
+    );
   const isPermanent =
-    !card.inHandOnly && /\b(Creature|Artifact|Enchantment|Land|Planeswalker)\b/.test(t);
+    !card.inHandOnly && !hasAnyEtbTrigger &&
+    /\b(Creature|Artifact|Enchantment|Land|Planeswalker)\b/.test(t);
   const id = `${slug(card.name)}-corpus-${wave}`;
   const desc = `M6 corpus — ${card.name}; ${isPermanent ? "ETB-on-bf" : "in-hand parse"}.`;
+  const nameJson = JSON.stringify(card.name);
+  const scriptLit = `\`${escapeBackticks(card.script)}\``;
+  const descEsc = desc.replace(/"/g, '\\"');
   if (isPermanent) {
-    out += `  {\n`;
+    out += "  {\n";
     out += `    id: "${id}",\n`;
-    out += `    description: "${desc.replace(/"/g, '\\"')}",\n`;
+    out += `    description: "${descEsc}",\n`;
     out += `    seed: 0x${seed.toString(16)},\n`;
-    out += `    cards: { ${JSON.stringify(card.name)}: \`${escape(card.script)}\` },\n`;
-    out += `    players: [\n`;
-    out += `      { life: 20, hand: [], battlefield: [{ card: ${JSON.stringify(card.name)} }] },\n`;
-    out += `      { life: 20, hand: [], battlefield: [] },\n`;
-    out += `    ],\n`;
-    out += `    actions: [],\n`;
-    out += `  },\n`;
+    out += `    cards: { ${nameJson}: ${scriptLit} },\n`;
+    out += "    players: [\n";
+    out += `      { life: 20, hand: [], battlefield: [{ card: ${nameJson} }] },\n`;
+    out += "      { life: 20, hand: [], battlefield: [] },\n";
+    out += "    ],\n";
+    out += "    actions: [],\n";
+    out += "  },\n";
   } else {
-    out += `  {\n`;
+    out += "  {\n";
     out += `    id: "${id}",\n`;
-    out += `    description: "${desc.replace(/"/g, '\\"')}",\n`;
+    out += `    description: "${descEsc}",\n`;
     out += `    seed: 0x${seed.toString(16)},\n`;
-    out += `    cards: { ${JSON.stringify(card.name)}: \`${escape(card.script)}\` },\n`;
-    out += `    players: [\n`;
-    out += `      { life: 20, hand: [${JSON.stringify(card.name)}], battlefield: [] },\n`;
-    out += `      { life: 20, hand: [], battlefield: [] },\n`;
-    out += `    ],\n`;
-    out += `    actions: [],\n`;
-    out += `  },\n`;
+    out += `    cards: { ${nameJson}: ${scriptLit} },\n`;
+    out += "    players: [\n";
+    out += `      { life: 20, hand: [${nameJson}], battlefield: [] },\n`;
+    out += "      { life: 20, hand: [], battlefield: [] },\n";
+    out += "    ],\n";
+    out += "    actions: [],\n";
+    out += "  },\n";
   }
   seed++;
 }

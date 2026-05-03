@@ -1,0 +1,23 @@
+{
+  "id": "ballad-of-the-black-flag-corpus-m675",
+  "description": "M6 corpus — Ballad of the Black Flag; in-hand parse.",
+  "seed": 62292,
+  "cards": {
+    "Ballad of the Black Flag": "Name:Ballad of the Black Flag\nManaCost:1 U U\nTypes:Enchantment Saga\nK:Chapter:4:DBMill,DBMill,DBMill,DBCostReduction\nSVar:DBMill:DB$ Mill | NumCards$ 3 | Defined$ You | Imprint$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.Historic+YouOwn+IsImprinted | Hidden$ True | Optional$ True | SubAbility$ DBCleanup | SpellDescription$ Mill three cards. You may put a historic card from among them into your hand. (Artifacts, legendaries, and Sagas are historic.)\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:DBCostReduction:DB$ Effect | StaticAbilities$ ReduceSPCost\nSVar:ReduceSPCost:Mode$ ReduceCost | ValidCard$ Card.Historic | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Historic spells you cast this turn cost {2} less to cast.\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Mill three cards. You may put a historic card from among them into your hand. (Artifacts, legendaries, and Sagas are historic.)\\nIV — Historic spells you cast this turn cost {2} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ballad of the Black Flag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

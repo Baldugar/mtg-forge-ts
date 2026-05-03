@@ -1,0 +1,23 @@
+{
+  "id": "bringer-of-green-zenith-s-twilight-corpus-m675",
+  "description": "M6 corpus — Bringer of Green Zenith's Twilight; in-hand parse.",
+  "seed": 63398,
+  "cards": {
+    "Bringer of Green Zenith's Twilight": "Name:Bringer of Green Zenith's Twilight\nManaCost:X G G\nTypes:Creature Phyrexian Bringer\nPT:2/2\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ W U B R G | Description$ You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost. If you do, X is 5.\nK:etbCounter:P1P1:Y:no condition:CARDNAME enters the battlefield with X +1/+1 counters on it. If X was 5 or greater, it enters with twice that many counters instead.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, shuffle it into its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Destination$ Library | Shuffle$ True | Defined$ TriggeredNewCardLKICopy\nSVar:X:Count$xPaid\nSVar:AltCostPaid:Count$AltCost.5.X\nSVar:Y:Count$Compare AltCostPaid LT5.AltCostPaid.Z\nSVar:Z:SVar$AltCostPaid/Twice\nDeckHas:Ability$Counters\nOracle:You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost. If you do, X is 5.\\nBringer of Green Zenith's Twilight enters the battlefield with X +1/+1 counters on it. If X was 5 or greater, it enters with twice that many counters instead.\\nWhen Bringer of Green Zenith's Twilight dies, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bringer of Green Zenith's Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

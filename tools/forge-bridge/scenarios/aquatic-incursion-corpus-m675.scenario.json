@@ -1,0 +1,23 @@
+{
+  "id": "aquatic-incursion-corpus-m675",
+  "description": "M6 corpus — Aquatic Incursion; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Aquatic Incursion": "Name:Aquatic Incursion\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 blue Merfolk creature tokens with hexproof.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_merfolk_hexproof\nA:AB$ Effect | Cost$ 3 U | ValidTgts$ Merfolk | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target Merfolk can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHints:Type$Merfolk\nOracle:When Aquatic Incursion enters, create two 1/1 blue Merfolk creature tokens with hexproof. (They can't be the targets of spells or abilities your opponents control.)\\n{3}{U}: Target Merfolk can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aquatic Incursion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

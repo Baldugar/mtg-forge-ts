@@ -1,0 +1,25 @@
+{
+  "id": "avacyn-s-collar-corpus-m675",
+  "description": "M6 corpus — Avacyn's Collar; ETB-on-bf.",
+  "seed": 62116,
+  "cards": {
+    "Avacyn's Collar": "Name:Avacyn's Collar\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ Vigilance | Description$ Equipped creature gets +1/+0 and has vigilance.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy+Human | Execute$ TrigToken | TriggerDescription$ Whenever equipped creature dies, if it was a Human, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nDeckHints:Type$Human\nDeckHas:Ability$Token\nOracle:Equipped creature gets +1/+0 and has vigilance.\\nWhenever equipped creature dies, if it was a Human, create a 1/1 white Spirit creature token with flying.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Avacyn's Collar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

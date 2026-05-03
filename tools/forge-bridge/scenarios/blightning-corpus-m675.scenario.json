@@ -1,0 +1,23 @@
+{
+  "id": "blightning-corpus-m675",
+  "description": "M6 corpus — Blightning; in-hand parse.",
+  "seed": 62857,
+  "cards": {
+    "Blightning": "Name:Blightning\nManaCost:1 B R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3 | SubAbility$ DBDiscard | SpellDescription$ CARDNAME deals 3 damage to target player or planeswalker. That player or that planeswalker's controller discards two cards.\nSVar:DBDiscard:DB$ Discard | Defined$ TargetedPlayer | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBDiscard2\nSVar:DBDiscard2:DB$ Discard | Defined$ TargetedController | NumCards$ 2 | Mode$ TgtChoose\nOracle:Blightning deals 3 damage to target player or planeswalker. That player or that planeswalker's controller discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

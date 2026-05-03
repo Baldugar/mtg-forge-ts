@@ -1,0 +1,23 @@
+{
+  "id": "barbarian-outcast-corpus-m675",
+  "description": "M6 corpus — Barbarian Outcast; in-hand parse.",
+  "seed": 62357,
+  "cards": {
+    "Barbarian Outcast": "Name:Barbarian Outcast\nManaCost:1 R\nTypes:Creature Human Barbarian Beast\nPT:2/2\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Swamp.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Swamps, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Swamp.YouCtrl\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:When you control no Swamps, sacrifice Barbarian Outcast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barbarian Outcast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

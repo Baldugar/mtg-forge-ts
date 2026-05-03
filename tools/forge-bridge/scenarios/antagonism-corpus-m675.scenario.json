@@ -1,0 +1,25 @@
+{
+  "id": "antagonism-corpus-m675",
+  "description": "M6 corpus — Antagonism; ETB-on-bf.",
+  "seed": 61600,
+  "cards": {
+    "Antagonism": "Name:Antagonism\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ TeaseYou | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's end step, CARDNAME deals 2 damage to that player unless one of their opponents was dealt damage this turn.\nSVar:TeaseYou:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2 | ConditionCheckSVar$ AntagonismX | ConditionSVarCompare$ LE0\nSVar:AntagonismX:TriggeredPlayer$DamageToOppsThisTurn\nSVar:Check:PlayerCountOpponents$DamageToOppsThisTurn\nSVar:NeedsToPlayVar:Check GE1\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's end step, Antagonism deals 2 damage to that player unless one of their opponents was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Antagonism"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

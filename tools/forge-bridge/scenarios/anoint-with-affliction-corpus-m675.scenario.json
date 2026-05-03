@@ -1,0 +1,23 @@
+{
+  "id": "anoint-with-affliction-corpus-m675",
+  "description": "M6 corpus — Anoint with Affliction; in-hand parse.",
+  "seed": 61589,
+  "cards": {
+    "Anoint with Affliction": "Name:Anoint with Affliction\nManaCost:1 B\nTypes:Instant\nA:SP$ ChangeZone | Defined$ Targeted | ValidTgts$ Creature | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | Origin$ Battlefield | Destination$ Exile | SubAbility$ NotPoisoned | SpellDescription$ Exile target creature if it has mana value 3 or less. Corrupted — Exile that creature instead if its controller has three or more poison counters.\nSVar:NotPoisoned:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile | ConditionDefined$ Targeted | ConditionPresent$ Creature.cmcLE3\nSVar:X:TargetedController$Counters.Poison\nDeckHints:Ability$Proliferate & Keyword$Infect|Toxic\nOracle:Exile target creature if it has mana value 3 or less.\\nCorrupted — Exile that creature instead if its controller has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anoint with Affliction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

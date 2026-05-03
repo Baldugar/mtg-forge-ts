@@ -1,0 +1,25 @@
+{
+  "id": "bottle-of-suleiman-corpus-m675",
+  "description": "M6 corpus — Bottle of Suleiman; ETB-on-bf.",
+  "seed": 63215,
+  "cards": {
+    "Bottle of Suleiman": "Name:Bottle of Suleiman\nManaCost:4\nTypes:Artifact\nA:AB$ FlipACoin | Cost$ 1 Sac<1/CARDNAME> | WinSubAbility$ DBToken | LoseSubAbility$ DBDamage | SpellDescription$ Flip a coin. If you win the flip, create a 5/5 colorless Djinn artifact creature token with flying. If you lose the flip, CARDNAME deals 5 damage to you.\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ 5\nSVar:DBToken:DB$ Token | TokenScript$ c_5_5_a_djinn_flying | TokenOwner$ You\nDeckHas:Ability$Token & Type$Djinn & Keyword$Flying\nOracle:{1}, Sacrifice Bottle of Suleiman: Flip a coin. If you win the flip, create a 5/5 colorless Djinn artifact creature token with flying. If you lose the flip, Bottle of Suleiman deals 5 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bottle of Suleiman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

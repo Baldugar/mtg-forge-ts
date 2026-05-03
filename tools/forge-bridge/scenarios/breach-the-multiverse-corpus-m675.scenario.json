@@ -1,0 +1,23 @@
+{
+  "id": "breach-the-multiverse-corpus-m675",
+  "description": "M6 corpus — Breach the Multiverse; in-hand parse.",
+  "seed": 63308,
+  "cards": {
+    "Breach the Multiverse": "Name:Breach the Multiverse\nManaCost:5 B B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 10 | Defined$ Player | SubAbility$ DBForEach | SpellDescription$ Each player mills ten cards. For each player, choose a creature or planeswalker card in that player's graveyard. Put those cards onto the battlefield under your control. Then each creature you control becomes a Phyrexian in addition to its other types.\nSVar:DBForEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBChangeZone\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | Choices$ Creature.RememberedPlayerCtrl,Planeswalker.RememberedPlayerCtrl | ChoiceZone$ Graveyard | Mandatory$ True | Amount$ 1 | ChoiceTitle$ Choose a creature or planeswalker card in this player's graveyard | ImprintChosen$ True\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | GainControl$ True | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBAnimate | StackDescription$ None\nSVar:DBAnimate:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | Types$ Phyrexian | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearImprinted$ True\nDeckHas:Ability$Graveyard|Mill\nOracle:Each player mills ten cards. For each player, choose a creature or planeswalker card in that player's graveyard. Put those cards onto the battlefield under your control. Then each creature you control becomes a Phyrexian in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breach the Multiverse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

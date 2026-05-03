@@ -1,0 +1,23 @@
+{
+  "id": "apex-altisaur-corpus-m675",
+  "description": "M6 corpus — Apex Altisaur; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Apex Altisaur": "Name:Apex Altisaur\nManaCost:7 G G\nTypes:Creature Dinosaur\nPT:10/10\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, it fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nT:Mode$ DamageDoneOnce | Execute$ TrigFight2 | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, it fights up to one target creature you don't control.\nSVar:TrigFight2:DB$ Fight | Defined$ TriggeredTargetLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nSVar:HasCombatEffect:TRUE\nOracle:When Apex Altisaur enters, it fights up to one target creature you don't control.\\nEnrage — Whenever Apex Altisaur is dealt damage, it fights up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apex Altisaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

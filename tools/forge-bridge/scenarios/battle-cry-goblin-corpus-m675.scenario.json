@@ -1,0 +1,25 @@
+{
+  "id": "battle-cry-goblin-corpus-m675",
+  "description": "M6 corpus — Battle Cry Goblin; ETB-on-bf.",
+  "seed": 62467,
+  "cards": {
+    "Battle Cry Goblin": "Name:Battle Cry Goblin\nManaCost:1 R\nTypes:Creature Goblin\nPT:2/2\nA:AB$ PumpAll | Cost$ 1 R | ValidCards$ Creature.Goblin+YouCtrl | NumAtt$ +1 | KW$ Haste | SpellDescription$ Goblins you control get +1/+0 and gain haste until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, create a 1/1 red Goblin creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nDeckHas:Ability$Token\nOracle:{1}{R}: Goblins you control get +1/+0 and gain haste until end of turn.\\nPack tactics — Whenever Battle Cry Goblin attacks, if you attacked with creatures with total power 6 or greater this combat, create a 1/1 red Goblin creature token that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battle Cry Goblin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

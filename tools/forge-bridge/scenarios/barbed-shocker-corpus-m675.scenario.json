@@ -1,0 +1,25 @@
+{
+  "id": "barbed-shocker-corpus-m675",
+  "description": "M6 corpus — Barbed Shocker; ETB-on-bf.",
+  "seed": 62366,
+  "cards": {
+    "Barbed Shocker": "Name:Barbed Shocker\nManaCost:3 R\nTypes:Creature Insect\nPT:2/2\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals damage to a player, that player discards all the cards in their hand, then draws that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ TriggeredTarget | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Trample, haste\\nWhenever Barbed Shocker deals damage to a player, that player discards all the cards in their hand, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barbed Shocker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

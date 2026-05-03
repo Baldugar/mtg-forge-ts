@@ -1,0 +1,23 @@
+{
+  "id": "binding-agony-corpus-m675",
+  "description": "M6 corpus — Binding Agony; in-hand parse.",
+  "seed": 62690,
+  "cards": {
+    "Binding Agony": "Name:Binding Agony\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever enchanted creature is dealt damage, CARDNAME deals that much damage to that creature's controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredTargetController | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature is dealt damage, Binding Agony deals that much damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Binding Agony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

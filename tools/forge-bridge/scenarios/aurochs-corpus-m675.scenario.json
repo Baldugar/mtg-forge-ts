@@ -1,0 +1,25 @@
+{
+  "id": "aurochs-corpus-m675",
+  "description": "M6 corpus — Aurochs; ETB-on-bf.",
+  "seed": 62090,
+  "cards": {
+    "Aurochs": "Name:Aurochs\nManaCost:3 G\nTypes:Creature Aurochs\nPT:2/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Aurochs.attacking+Other\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Aurochs\nOracle:Trample\\nWhenever Aurochs attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aurochs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

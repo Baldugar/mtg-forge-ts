@@ -1,0 +1,25 @@
+{
+  "id": "archelos-lagoon-mystic-corpus-m675",
+  "description": "M6 corpus — Archelos, Lagoon Mystic; ETB-on-bf.",
+  "seed": 61740,
+  "cards": {
+    "Archelos, Lagoon Mystic": "Name:Archelos, Lagoon Mystic\nManaCost:1 B G U\nTypes:Legendary Creature Turtle Shaman\nPT:2/4\nR:Event$ Moved | ValidCard$ Permanent | Destination$ Battlefield | IsPresent$ Card.Self+tapped | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ As long as CARDNAME is tapped, other permanents enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nR:Event$ Moved | ValidCard$ Permanent | Destination$ Battlefield | IsPresent$ Card.Self+untapped | ReplaceWith$ ETBUntapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ As long as NICKNAME is untapped, other permanents enter untapped.\nSVar:ETBUntapped:DB$ Untap | ETB$ True | Defined$ ReplacedCard\nOracle:As long as Archelos, Lagoon Mystic is tapped, other permanents enter tapped.\\nAs long as Archelos is untapped, other permanents enter untapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archelos, Lagoon Mystic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

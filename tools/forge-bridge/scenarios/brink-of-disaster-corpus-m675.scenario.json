@@ -1,0 +1,23 @@
+{
+  "id": "brink-of-disaster-corpus-m675",
+  "description": "M6 corpus — Brink of Disaster; in-hand parse.",
+  "seed": 63403,
+  "cards": {
+    "Brink of Disaster": "Name:Brink of Disaster\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature,Land:creature or land\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerDescription$ When enchanted permanent becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature or land\\nWhen enchanted permanent becomes tapped, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brink of Disaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

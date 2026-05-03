@@ -1,0 +1,25 @@
+{
+  "id": "bramblearmor-brawler-corpus-m675",
+  "description": "M6 corpus — Bramblearmor Brawler; ETB-on-bf.",
+  "seed": 63272,
+  "cards": {
+    "Bramblearmor Brawler": "Name:Bramblearmor Brawler\nManaCost:2 G G\nTypes:Creature Raccoon Warrior\nPT:5/5\nK:Trample\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Player.Opponent | Execute$ TrigPerpetualP1P1 | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a noncreature spell, creature cards in your library perpetually get +1/+1.\nSVar:TrigPerpetualP1P1:DB$ PumpAll | ValidCards$ Creature.YouOwn | PumpZone$ Library | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nOracle:This spell can't be countered.\\nTrample\\nWhenever an opponent casts a noncreature spell, creature cards in your library perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bramblearmor Brawler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

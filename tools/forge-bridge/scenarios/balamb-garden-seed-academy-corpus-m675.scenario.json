@@ -1,0 +1,23 @@
+{
+  "id": "balamb-garden-seed-academy-corpus-m675",
+  "description": "M6 corpus — Balamb Garden, SeeD Academy; in-hand parse.",
+  "seed": 62266,
+  "cards": {
+    "Balamb Garden, SeeD Academy": "Name:Balamb Garden, SeeD Academy\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nA:AB$ SetState | Cost$ 5 G U T | ReduceCost$ X | Defined$ Self | Mode$ Transform | AILogic$ Always | SpellDescription$ Transform this land. This ability costs {1} less to activate for each other Town you control.\nSVar:X:Count$Valid Town.YouCtrl+Other\nAlternateMode:DoubleFaced\nDeckHints:Type$Town\nOracle:This land enters tapped.\\n{T}: Add {G} or {U}.\\n{5}{G}{U}, {T}: Transform this land. This ability costs {1} less to activate for each other Town you control.\n\nALTERNATE\n\nName:Balamb Garden, Airborne\nManaCost:no cost\nTypes:Legendary Artifact Vehicle\nPT:5/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME attacks, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Crew:1\nOracle:Flying\\nWhenever Balamb Garden attacks, draw a card.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balamb Garden, SeeD Academy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

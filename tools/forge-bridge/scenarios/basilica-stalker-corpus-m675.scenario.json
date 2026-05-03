@@ -1,0 +1,25 @@
+{
+  "id": "basilica-stalker-corpus-m675",
+  "description": "M6 corpus — Basilica Stalker; ETB-on-bf.",
+  "seed": 62435,
+  "cards": {
+    "Basilica Stalker": "Name:Basilica Stalker\nManaCost:5 B\nTypes:Creature Vampire Detective\nPT:3/4\nK:Flying\nK:Disguise:4 B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you gain 1 life and surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBSurveil\nSVar:DBSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$LifeGain|Graveyard|Surveil\nOracle:Flying\\nWhenever Basilica Stalker deals combat damage to a player, you gain 1 life and surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\nDisguise {4}{B} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Basilica Stalker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

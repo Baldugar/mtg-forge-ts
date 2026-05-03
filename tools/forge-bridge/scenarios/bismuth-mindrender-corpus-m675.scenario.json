@@ -1,0 +1,25 @@
+{
+  "id": "bismuth-mindrender-corpus-m675",
+  "description": "M6 corpus — Bismuth Mindrender; ETB-on-bf.",
+  "seed": 62721,
+  "cards": {
+    "Bismuth Mindrender": "Name:Bismuth Mindrender\nManaCost:3 B\nTypes:Creature Eldrazi\nPT:4/3\nK:Devoid\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles cards from the top of their library until they exile a nonland card. You may cast that card by paying life equal to that spell's mana value rather than paying its mana cost.\nSVar:TrigDigUntil:DB$ DigUntil | Defined$ TriggeredTarget | Valid$ Card.nonLand | ValidDescription$ nonland card | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidZone$ Exile | Valid$ Card.nonLand+IsRemembered | ValidSA$ Spell | PlayCost$ PayLife<ConvertedManaCost> | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Devoid\\nMenace\\nWhenever Bismuth Mindrender deals combat damage to a player, that player exiles cards from the top of their library until they exile a nonland card. You may cast that card by paying life equal to that spell's mana value rather than paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bismuth Mindrender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

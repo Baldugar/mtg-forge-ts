@@ -1,0 +1,25 @@
+{
+  "id": "blitz-hellion-corpus-m675",
+  "description": "M6 corpus — Blitz Hellion; ETB-on-bf.",
+  "seed": 62899,
+  "cards": {
+    "Blitz Hellion": "Name:Blitz Hellion\nManaCost:3 R G\nTypes:Creature Hellion\nPT:7/7\nK:Trample\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of the end step, CARDNAME's owner shuffles it into their library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | Shuffle$ True | Defined$ Self\nOracle:Trample, haste\\nAt the beginning of the end step, Blitz Hellion's owner shuffles it into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blitz Hellion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

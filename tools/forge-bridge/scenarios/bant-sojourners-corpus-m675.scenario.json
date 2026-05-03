@@ -1,0 +1,23 @@
+{
+  "id": "bant-sojourners-corpus-m675",
+  "description": "M6 corpus — Bant Sojourners; in-hand parse.",
+  "seed": 62348,
+  "cards": {
+    "Bant Sojourners": "Name:Bant Sojourners\nManaCost:1 G W U\nTypes:Creature Human Soldier\nPT:2/4\nK:Cycling:2 W\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigToken | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME or it dies, you may create a 1/1 white Soldier creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When you cycle CARDNAME or it dies, you may create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You\nOracle:When you cycle Bant Sojourners or it dies, you may create a 1/1 white Soldier creature token.\\nCycling {2}{W} ({2}{W}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bant Sojourners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

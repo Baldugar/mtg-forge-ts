@@ -1,0 +1,23 @@
+{
+  "id": "arashin-foremost-corpus-m675",
+  "description": "M6 corpus — Arashin Foremost; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Arashin Foremost": "Name:Arashin Foremost\nManaCost:1 W W\nTypes:Creature Human Warrior\nPT:2/2\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME enters or attacks, another target Warrior creature you control gains double strike until end of turn.\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, another target Warrior creature you control gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Warrior+YouCtrl+Other | TgtPrompt$ Select another target Warrior creature you control | KW$ Double Strike\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nDeckHints:Type$Warrior\nOracle:Double strike\\nWhenever Arashin Foremost enters or attacks, another target Warrior creature you control gains double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arashin Foremost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

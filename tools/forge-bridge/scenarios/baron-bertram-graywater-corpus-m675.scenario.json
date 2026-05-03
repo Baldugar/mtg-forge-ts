@@ -1,0 +1,23 @@
+{
+  "id": "baron-bertram-graywater-corpus-m675",
+  "description": "M6 corpus — Baron Bertram Graywater; in-hand parse.",
+  "seed": 62387,
+  "cards": {
+    "Baron Bertram Graywater": "Name:Baron Bertram Graywater\nManaCost:2 W B\nTypes:Legendary Creature Vampire Noble\nPT:3/4\nT:Mode$ ChangesZoneAll | ValidCards$ Card.token+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigToken | TriggerDescription$ Whenever one or more tokens you control enter, create a 1/1 black Vampire Rogue creature token with lifelink. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_vampire_rogue_lifelink\nA:AB$ Draw | Cost$ 1 B Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice|Token|LifeGain & Type$Rogue\nDeckHints:Ability$Token\nOracle:Whenever one or more tokens you control enter, create a 1/1 black Vampire Rogue creature token with lifelink. This ability triggers only once each turn.\\n{1}{B}, Sacrifice another creature or artifact: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baron Bertram Graywater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

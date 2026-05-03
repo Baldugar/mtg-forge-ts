@@ -1,0 +1,23 @@
+{
+  "id": "balduvian-atrocity-corpus-m675",
+  "description": "M6 corpus — Balduvian Atrocity; in-hand parse.",
+  "seed": 62273,
+  "cards": {
+    "Balduvian Atrocity": "Name:Balduvian Atrocity\nManaCost:2 B\nTypes:Creature Phyrexian Berserker\nPT:2/3\nK:Kicker:R\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, if it was kicked, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains haste. Sacrifice it at the beginning of the next end step.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature card with mana value 3 or less | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste | AtEOT$ Sacrifice\nDeckHints:Ability$Graveyard\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nMenace\\nWhen Balduvian Atrocity enters, if it was kicked, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balduvian Atrocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

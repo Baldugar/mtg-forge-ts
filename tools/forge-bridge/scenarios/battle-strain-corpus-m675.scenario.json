@@ -1,0 +1,25 @@
+{
+  "id": "battle-strain-corpus-m675",
+  "description": "M6 corpus — Battle Strain; ETB-on-bf.",
+  "seed": 62486,
+  "cards": {
+    "Battle Strain": "Name:Battle Strain\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Blocks | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature blocks, CARDNAME deals 1 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredBlockerController | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a creature blocks, Battle Strain deals 1 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battle Strain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

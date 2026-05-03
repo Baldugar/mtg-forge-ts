@@ -1,0 +1,25 @@
+{
+  "id": "boros-strike-captain-corpus-m675",
+  "description": "M6 corpus — Boros Strike-Captain; ETB-on-bf.",
+  "seed": 63195,
+  "cards": {
+    "Boros Strike-Captain": "Name:Boros Strike-Captain\nManaCost:1 RW RW\nTypes:Creature Minotaur Soldier\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, exile the top card of your library. During any turn you attacked with three or more creatures, you may play that card.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | CheckSVar$ X | SVarCompare$ GE3 | AffectedZone$ Exile | MayPlay$ True | Description$ During any turn you attacked with three or more creatures, you may play that card.\nSVar:X:Count$AttackersDeclared\nOracle:Battalion — Whenever Boros Strike-Captain and at least two other creatures attack, exile the top card of your library. During any turn you attacked with three or more creatures, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boros Strike-Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

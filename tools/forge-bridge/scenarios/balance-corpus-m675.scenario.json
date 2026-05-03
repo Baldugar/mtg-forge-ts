@@ -1,0 +1,23 @@
+{
+  "id": "balance-corpus-m675",
+  "description": "M6 corpus — Balance; in-hand parse.",
+  "seed": 62269,
+  "cards": {
+    "Balance": "Name:Balance\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Balance | Valid$ Land | AILogic$ BalanceCreaturesAndLands | SubAbility$ BalanceHands | SpellDescription$ Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.\nSVar:BalanceHands:DB$ Balance | Zone$ Hand | SubAbility$ BalanceCreatures\nSVar:BalanceCreatures:DB$ Balance | Valid$ Creature\nDeckHas:Ability$Discard|Sacrifice\nDeckHints:Type$Artifact|Enchantment|Planeswalker\nOracle:Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ascendant-acolyte-corpus-m675",
+  "description": "M6 corpus — Ascendant Acolyte; in-hand parse.",
+  "seed": 61919,
+  "cards": {
+    "Ascendant Acolyte": "Name:Ascendant Acolyte\nManaCost:4 G\nTypes:Creature Human Monk\nPT:1/1\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each +1/+1 counter among other creatures you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDouble | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, double the number of +1/+1 counters on CARDNAME.\nSVar:TrigDouble:DB$ MultiplyCounter | Defined$ Self | CounterType$ P1P1\nSVar:X:Count$Valid Creature.YouCtrl+Other$CardCounters.P1P1\nSVar:NeedsToPlay:Creature.YouCtrl+counters_GE1_P1P1\nDeckHas:Ability$Counters\nOracle:Ascendant Acolyte enters with a +1/+1 counter on it for each +1/+1 counter among other creatures you control.\\nAt the beginning of your upkeep, double the number of +1/+1 counters on Ascendant Acolyte.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ascendant Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

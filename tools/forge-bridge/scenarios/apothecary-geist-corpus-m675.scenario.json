@@ -1,0 +1,23 @@
+{
+  "id": "apothecary-geist-corpus-m675",
+  "description": "M6 corpus — Apothecary Geist; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "Apothecary Geist": "Name:Apothecary Geist\nManaCost:3 W\nTypes:Creature Spirit\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | IsPresent$ Spirit.Other+YouCtrl | TriggerDescription$ When CARDNAME enters, if you control another Spirit, gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHints:Type$Spirit\nOracle:Flying\\nWhen Apothecary Geist enters, if you control another Spirit, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apothecary Geist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

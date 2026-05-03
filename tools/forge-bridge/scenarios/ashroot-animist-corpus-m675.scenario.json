@@ -1,0 +1,25 @@
+{
+  "id": "ashroot-animist-corpus-m675",
+  "description": "M6 corpus — Ashroot Animist; ETB-on-bf.",
+  "seed": 61963,
+  "cards": {
+    "Ashroot Animist": "Name:Ashroot Animist\nManaCost:2 R G\nTypes:Creature Lizard Druid\nPT:4/4\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, another target creature you control gains trample and gets +X/+X until end of turn, where X is this creature's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:Trample\\nWhenever this creature attacks, another target creature you control gains trample and gets +X/+X until end of turn, where X is this creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashroot Animist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

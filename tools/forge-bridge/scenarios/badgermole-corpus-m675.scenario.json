@@ -1,0 +1,23 @@
+{
+  "id": "badgermole-corpus-m675",
+  "description": "M6 corpus — Badgermole; in-hand parse.",
+  "seed": 62254,
+  "cards": {
+    "Badgermole": "Name:Badgermole\nManaCost:4 G\nTypes:Creature Badger Mole\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 2\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Trample | Description$ Creatures you control with +1/+1 counters on them have trample.\nDeckHints:Ability$Counters\nOracle:When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\\nCreatures you control with +1/+1 counters on them have trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Badgermole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

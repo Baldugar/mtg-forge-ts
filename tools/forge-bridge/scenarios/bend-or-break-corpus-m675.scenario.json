@@ -1,0 +1,23 @@
+{
+  "id": "bend-or-break-corpus-m675",
+  "description": "M6 corpus — Bend or Break; in-hand parse.",
+  "seed": 62623,
+  "cards": {
+    "Bend or Break": "Name:Bend or Break\nManaCost:3 R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoosePlayer | SpellDescription$ Each player separates all nontoken lands they control into two piles. For each player, one of their piles is chosen by one of their opponents of their choice. Destroy all lands in the chosen piles. Tap all lands in the other piles.\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ Remembered | Choices$ Player.OpponentOf Remembered | AILogic$ Curse | SubAbility$ DBTwoPiles\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ Remembered | Separator$ Remembered | Chooser$ ChosenPlayer | ChosenPile$ DBBreak | UnchosenPile$ DBBend | ValidCards$ Land.!token+RememberedPlayerCtrl | Zone$ Battlefield | SubAbility$ DBCleanupChosen\nSVar:DBBreak:DB$ DestroyAll | ValidCards$ Land.IsRemembered\nSVar:DBBend:DB$ TapAll | ValidCards$ Land.IsRemembered\nSVar:DBCleanupChosen:DB$ Cleanup | ClearChosenPlayer$ True\nAI:RemoveDeck:All\nOracle:Each player separates all nontoken lands they control into two piles. For each player, one of their piles is chosen by one of their opponents of their choice. Destroy all lands in the chosen piles. Tap all lands in the other piles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bend or Break"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "baba-lysaga-night-witch-corpus-m675",
+  "description": "M6 corpus — Baba Lysaga, Night Witch; ETB-on-bf.",
+  "seed": 62237,
+  "cards": {
+    "Baba Lysaga, Night Witch": "Name:Baba Lysaga, Night Witch\nManaCost:1 B G\nTypes:Legendary Creature Human Warlock\nPT:3/3\nA:AB$ LoseLife | Cost$ T Sac<X/Permanent> | XMaxLimit$ 3 | CostDesc$ {T}, Sacrifice up to three permanents: | Defined$ Player.Opponent | LifeAmount$ 3 | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3 | NumCards$ 3 | SubAbility$ DBGainThree | SpellDescription$ If there were three or more card types among the sacrificed permanents, each opponent loses 3 life, you gain 3 life, and you draw three cards.\nSVar:DBGainThree:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDrawThree | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3\nSVar:DBDrawThree:DB$ Draw | NumCards$ 3 | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3\nSVar:X:Count$xPaid\nSVar:Y:Sacrificed$CardTypes\nDeckHas:Ability$Sacrifice\nOracle:{T}, Sacrifice up to three permanents: If there were three or more card types among the sacrificed permanents, each opponent loses 3 life, you gain 3 life, and you draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Baba Lysaga, Night Witch"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

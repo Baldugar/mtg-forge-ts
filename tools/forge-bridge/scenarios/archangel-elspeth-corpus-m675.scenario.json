@@ -1,0 +1,25 @@
+{
+  "id": "archangel-elspeth-corpus-m675",
+  "description": "M6 corpus — Archangel Elspeth; ETB-on-bf.",
+  "seed": 61733,
+  "cards": {
+    "Archangel Elspeth": "Name:Archangel Elspeth\nManaCost:2 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ w_1_1_soldier_lifelink | SpellDescription$ Create a 1/1 white Soldier creature token with lifelink.\nA:AB$ PutCounter | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | CounterType$ P1P1 | CounterNum$ 2 | ValidTgts$ Creature | SubAbility$ DBAnimate | SpellDescription$ Put two +1/+1 counters on target creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Angel | Keywords$ Flying | Duration$ Permanent | StackDescription$ SpellDescription | SpellDescription$ It becomes an Angel in addition to its other types and gains flying.\nA:AB$ ChangeZoneAll | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Permanent.nonLand+YouOwn+cmcLE3 | SpellDescription$ Return all nonland permanent cards with mana value 3 or less from your graveyard to the battlefield.\nDeckHas:Ability$Token|LifeGain|Counters|Graveyard & Type$Soldier|Angel\nOracle:[+1]: Create a 1/1 white Soldier creature token with lifelink.\\n[-2]: Put two +1/+1 counters on target creature. It becomes an Angel in addition to its other types and gains flying.\\n[-6]: Return all nonland permanent cards with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archangel Elspeth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

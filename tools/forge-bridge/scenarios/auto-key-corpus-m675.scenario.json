@@ -1,0 +1,25 @@
+{
+  "id": "auto-key-corpus-m675",
+  "description": "M6 corpus — Auto-Key; ETB-on-bf.",
+  "seed": 62102,
+  "cards": {
+    "Auto-Key": "Name:Auto-Key\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature becomes an artifact in addition to its other types and gains \"{T}: You gain 3 life.\"\nSVar:TrigCrank:DB$ Animate | ValidTgts$ Creature | Types$ Artifact | Abilities$ ABLife | AILogic$ Worst | AITgts$ Creature.untapped+YouCtrl\nSVar:ABLife:AB$ GainLife | Cost$ T | LifeAmount$ 3 | SpellDescription$ Gain 3 life.\nOracle:Whenever you crank Auto-Key, until end of turn, target creature becomes an artifact in addition to its other types and gains \"{T}: You gain 3 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Auto-Key"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blessed-wine-corpus-m675",
+  "description": "M6 corpus — Blessed Wine; in-hand parse.",
+  "seed": 62828,
+  "cards": {
+    "Blessed Wine": "Name:Blessed Wine\nManaCost:1 W\nTypes:Instant\nA:SP$ GainLife | LifeAmount$ 1 | SpellDescription$ You gain 1 life. Draw a card at the beginning of next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:You gain 1 life.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessed Wine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

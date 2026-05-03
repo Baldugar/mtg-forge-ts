@@ -1,0 +1,23 @@
+{
+  "id": "beskir-shieldmate-corpus-m675",
+  "description": "M6 corpus — Beskir Shieldmate; in-hand parse.",
+  "seed": 62654,
+  "cards": {
+    "Beskir Shieldmate": "Name:Beskir Shieldmate\nManaCost:1 W\nTypes:Creature Human Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Human Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_warrior | TokenOwner$ You\nSVar:SacMe:2\nDeckHas:Ability$Token\nOracle:When Beskir Shieldmate dies, create a 1/1 white Human Warrior creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beskir Shieldmate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

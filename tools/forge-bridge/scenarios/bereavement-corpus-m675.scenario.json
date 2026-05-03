@@ -1,0 +1,25 @@
+{
+  "id": "bereavement-corpus-m675",
+  "description": "M6 corpus — Bereavement; ETB-on-bf.",
+  "seed": 62645,
+  "cards": {
+    "Bereavement": "Name:Bereavement\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Green | TriggerZones$ Battlefield | Execute$ BereavementDiscard | TriggerDescription$ Whenever a green creature dies, its controller discards a card.\nSVar:BereavementDiscard:DB$ Discard | Defined$ TriggeredCardController | Mode$ TgtChoose | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a green creature dies, its controller discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bereavement"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

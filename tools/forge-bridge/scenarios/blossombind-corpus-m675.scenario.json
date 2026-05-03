@@ -1,0 +1,23 @@
+{
+  "id": "blossombind-corpus-m675",
+  "description": "M6 corpus — Blossombind; in-hand parse.",
+  "seed": 63013,
+  "cards": {
+    "Blossombind": "Name:Blossombind\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.EnchantedBy | Layer$ CantHappen | Description$ Enchanted creature can't become untapped and can't have counters put on it.\nS:Mode$ CantPutCounter | ValidCard$ Card.EnchantedBy | Secondary$ True | Description$ Enchanted creature can't become untapped and can't have counters put on it.\nOracle:Enchant creature\\nWhen this Aura enters, tap enchanted creature.\\nEnchanted creature can't become untapped and can't have counters put on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blossombind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

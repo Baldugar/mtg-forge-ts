@@ -1,0 +1,25 @@
+{
+  "id": "bloodthirsty-conqueror-corpus-m675",
+  "description": "M6 corpus — Bloodthirsty Conqueror; ETB-on-bf.",
+  "seed": 62999,
+  "cards": {
+    "Bloodthirsty Conqueror": "Name:Bloodthirsty Conqueror\nManaCost:3 B B\nTypes:Creature Vampire Knight\nPT:5/5\nK:Flying\nK:Deathtouch\nT:Mode$ LifeLost | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigLifeGain | TriggerDescription$ Whenever an opponent loses life, you gain that much life. (Damage causes loss of life.)\nSVar:TrigLifeGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount\nDeckHas:Ability$LifeGain\nOracle:Flying, deathtouch\\nWhenever an opponent loses life, you gain that much life. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodthirsty Conqueror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

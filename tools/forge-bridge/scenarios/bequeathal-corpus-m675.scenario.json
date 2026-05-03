@@ -1,0 +1,23 @@
+{
+  "id": "bequeathal-corpus-m675",
+  "description": "M6 corpus — Bequeathal; in-hand parse.",
+  "seed": 62643,
+  "cards": {
+    "Bequeathal": "Name:Bequeathal\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigDraw | TriggerDescription$ When enchanted creature dies, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Enchant creature\\nWhen enchanted creature dies, you draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bequeathal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "archangel-s-light-corpus-m675",
+  "description": "M6 corpus — Archangel's Light; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Archangel's Light": "Name:Archangel's Light\nManaCost:7 W\nTypes:Sorcery\nA:SP$ GainLife | LifeAmount$ X | SubAbility$ DBShuffle | SpellDescription$ You gain 2 life for each card in your graveyard, then shuffle your graveyard into your library.\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nSVar:X:Count$ValidGraveyard Card.YouOwn/Times.2\nOracle:You gain 2 life for each card in your graveyard, then shuffle your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archangel's Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

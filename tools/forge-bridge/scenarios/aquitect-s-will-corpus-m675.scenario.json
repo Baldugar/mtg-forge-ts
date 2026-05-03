@@ -1,0 +1,23 @@
+{
+  "id": "aquitect-s-will-corpus-m675",
+  "description": "M6 corpus — Aquitect's Will; in-hand parse.",
+  "seed": 61664,
+  "cards": {
+    "Aquitect's Will": "Name:Aquitect's Will\nManaCost:U\nTypes:Kindred Sorcery Merfolk\nA:SP$ PutCounter | ValidTgts$ Land | CounterType$ FLOOD | CounterNum$ 1 | SubAbility$ DBEffect | SpellDescription$ Put a flood counter on target land. That land is an island in addition to its other types for as long as it has a flood counter on it. If you control a Merfolk, draw a card.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ FountainStatic | ForgetOnMoved$ Battlefield | ForgetCounter$ FLOOD | Duration$ Permanent | SubAbility$ DBDraw\nSVar:FountainStatic:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Island | Description$ That land is an island in addition to its other types for as long as it has a flood counter on it.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Merfolk.YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a Merfolk,\nDeckHints:Type$Merfolk\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Put a flood counter on target land. That land is an Island in addition to its other types for as long as it has a flood counter on it. If you control a Merfolk, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aquitect's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

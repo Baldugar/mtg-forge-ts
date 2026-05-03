@@ -1,0 +1,25 @@
+{
+  "id": "brazen-blademaster-corpus-m675",
+  "description": "M6 corpus — Brazen Blademaster; ETB-on-bf.",
+  "seed": 63299,
+  "cards": {
+    "Brazen Blademaster": "Name:Brazen Blademaster\nManaCost:2 R\nTypes:Creature Orc Pirate\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Artifact.YouCtrl | PresentCompare$ GE2 | NoResolvingCheck$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while you control two or more artifacts, it gets +2/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Artifact\nOracle:Whenever Brazen Blademaster attacks while you control two or more artifacts, it gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brazen Blademaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

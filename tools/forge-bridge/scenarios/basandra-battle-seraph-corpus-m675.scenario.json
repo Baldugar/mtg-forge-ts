@@ -1,0 +1,25 @@
+{
+  "id": "basandra-battle-seraph-corpus-m675",
+  "description": "M6 corpus — Basandra, Battle Seraph; ETB-on-bf.",
+  "seed": 62424,
+  "cards": {
+    "Basandra, Battle Seraph": "Name:Basandra, Battle Seraph\nManaCost:3 R W\nTypes:Legendary Creature Angel\nPT:4/4\nK:Flying\nS:Mode$ CantBeCast | ValidCard$ Card | Phases$ BeginCombat->EndCombat | Description$ Players can't cast spells during combat.\nA:AB$ Effect | Cost$ R | ValidTgts$ Creature | StaticAbilities$ MustAttack | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Target creature attacks this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks this turn if able.\nOracle:Flying\\nPlayers can't cast spells during combat.\\n{R}: Target creature attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Basandra, Battle Seraph"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "barrow-ghoul-corpus-m675",
+  "description": "M6 corpus — Barrow Ghoul; ETB-on-bf.",
+  "seed": 62411,
+  "cards": {
+    "Barrow Ghoul": "Name:Barrow Ghoul\nManaCost:1 B\nTypes:Creature Zombie\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you exile the top creature card of your graveyard.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ ExileFromGrave<1/Card.TopGraveyardCreature>\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$ValidGraveyard Creature.YouOwn\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:At the beginning of your upkeep, sacrifice Barrow Ghoul unless you exile the top creature card of your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barrow Ghoul"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

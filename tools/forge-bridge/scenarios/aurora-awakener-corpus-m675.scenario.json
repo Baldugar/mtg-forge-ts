@@ -1,0 +1,23 @@
+{
+  "id": "aurora-awakener-corpus-m675",
+  "description": "M6 corpus — Aurora Awakener; in-hand parse.",
+  "seed": 62093,
+  "cards": {
+    "Aurora Awakener": "Name:Aurora Awakener\nManaCost:6 G\nTypes:Creature Giant Druid\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Vivid — When this creature enters, reveal cards from the top of your library until you reveal X permanent cards, where X is the number of colors among permanents you control. Put any number of those permanents onto the battlefield, then put the rest of the revealed cards on the bottom of your libray in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Amount$ X | Valid$ Permanent | ValidDescription$ permanent | RevealedDestination$ Library | OptionalFoundMove$ True | RevealedLibraryPosition$ -1 | FoundDestination$ Battlefield | RevealRandomOrder$ True\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Trample\\nVivid — When this creature enters, reveal cards from the top of your library until you reveal X permanent cards, where X is the number of colors among permanents you control. Put any number of those permanents onto the battlefield, then put the rest of the revealed cards on the bottom of your libray in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aurora Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

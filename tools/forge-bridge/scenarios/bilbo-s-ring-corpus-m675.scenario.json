@@ -1,0 +1,25 @@
+{
+  "id": "bilbo-s-ring-corpus-m675",
+  "description": "M6 corpus — Bilbo's Ring; ETB-on-bf.",
+  "seed": 62682,
+  "cards": {
+    "Bilbo's Ring": "Name:Bilbo's Ring\nManaCost:3\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Hexproof | Condition$ PlayerTurn | Description$ During your turn, equipped creature has hexproof and can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy | Secondary$ True | Condition$ PlayerTurn | Description$ During your turn, equipped creature has hexproof and can't be blocked.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Alone$ True | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature attacks alone, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nK:Equip:4\nK:Equip:1:Halfling.YouCtrl:Halfling you control\nDeckHints:Type$Halfling\nOracle:During your turn, equipped creature has hexproof and can't be blocked.\\nWhenever equipped creature attacks alone, you draw a card and you lose 1 life.\\nEquip Halfling {1} ({1}: Attach to target Halfling you control. Equip only as a sorcery.)\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bilbo's Ring"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

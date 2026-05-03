@@ -1,0 +1,25 @@
+{
+  "id": "battle-scarred-goblin-corpus-m675",
+  "description": "M6 corpus — Battle-Scarred Goblin; ETB-on-bf.",
+  "seed": 62482,
+  "cards": {
+    "Battle-Scarred Goblin": "Name:Battle-Scarred Goblin\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME becomes blocked, it deals 1 damage to each creature blocking it.\nSVar:TrigDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.blockingSource\nOracle:Whenever Battle-Scarred Goblin becomes blocked, it deals 1 damage to each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Battle-Scarred Goblin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

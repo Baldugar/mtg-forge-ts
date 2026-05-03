@@ -1,0 +1,25 @@
+{
+  "id": "ancestor-dragon-corpus-m675",
+  "description": "M6 corpus — Ancestor Dragon; ETB-on-bf.",
+  "seed": 61451,
+  "cards": {
+    "Ancestor Dragon": "Name:Ancestor Dragon\nManaCost:4 W W\nTypes:Creature Dragon\nPT:5/6\nK:Flying\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever one or more creatures you control attack, you gain 1 life for each attacking creature.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.attacking\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever one or more creatures you control attack, you gain 1 life for each attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ancestor Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

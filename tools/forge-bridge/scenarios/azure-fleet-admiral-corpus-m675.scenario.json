@@ -1,0 +1,23 @@
+{
+  "id": "azure-fleet-admiral-corpus-m675",
+  "description": "M6 corpus — Azure Fleet Admiral; in-hand parse.",
+  "seed": 62233,
+  "cards": {
+    "Azure Fleet Admiral": "Name:Azure Fleet Admiral\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | ValidBlocker$ Creature.ControlledBy Player.isMonarch | Description$ CARDNAME can't be blocked by creatures the monarch controls.\nOracle:When Azure Fleet Admiral enters, you become the monarch.\\nAzure Fleet Admiral can't be blocked by creatures the monarch controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azure Fleet Admiral"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

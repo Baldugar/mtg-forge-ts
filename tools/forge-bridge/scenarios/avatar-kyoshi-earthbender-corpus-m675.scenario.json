@@ -1,0 +1,23 @@
+{
+  "id": "avatar-kyoshi-earthbender-corpus-m675",
+  "description": "M6 corpus — Avatar Kyoshi, Earthbender; in-hand parse.",
+  "seed": 62126,
+  "cards": {
+    "Avatar Kyoshi, Earthbender": "Name:Avatar Kyoshi, Earthbender\nManaCost:5 G G G\nTypes:Legendary Creature Human Avatar\nPT:6/6\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Hexproof | Condition$ PlayerTurn | Description$ During your turn, NICKNAME has hexproof.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigEarthbend | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, earthbend 8, then untap that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put eight +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 8 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nOracle:During your turn, Avatar Kyoshi has hexproof.\\nAt the beginning of combat on your turn, earthbend 8, then untap that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put eight +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avatar Kyoshi, Earthbender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

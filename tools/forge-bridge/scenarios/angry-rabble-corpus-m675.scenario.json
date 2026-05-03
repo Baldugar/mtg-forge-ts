@@ -1,0 +1,25 @@
+{
+  "id": "angry-rabble-corpus-m675",
+  "description": "M6 corpus — Angry Rabble; ETB-on-bf.",
+  "seed": 61560,
+  "cards": {
+    "Angry Rabble": "Name:Angry Rabble\nVariant:UniversesWithin:FlavorName:Galvanized Workforce\nManaCost:1 R\nTypes:Creature Human Citizen\nPT:2/2\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE4 | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with mana value 4 or greater, this creature deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nA:AB$ PutCounter | Cost$ 5 R | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SorcerySpeed$ True | SpellDescription$ Put two +1/+1 counters on this creature. Activate only as a sorcery.\nSVar:BuffedBy:Card.cmcGE4\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever you cast a spell with mana value 4 or greater, this creature deals 1 damage to each opponent.\\n{5}{R}: Put two +1/+1 counters on this creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angry Rabble"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

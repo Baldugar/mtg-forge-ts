@@ -1,0 +1,23 @@
+{
+  "id": "broken-bond-corpus-m675",
+  "description": "M6 corpus — Broken Bond; in-hand parse.",
+  "seed": 63413,
+  "cards": {
+    "Broken Bond": "Name:Broken Bond\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBChangeZone | SpellDescription$ Destroy target artifact or enchantment. You may put a land card from your hand onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ You\nOracle:Destroy target artifact or enchantment. You may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broken Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ancient-vendetta-corpus-m675",
+  "description": "M6 corpus — Ancient Vendetta; in-hand parse.",
+  "seed": 61485,
+  "cards": {
+    "Ancient Vendetta": "Name:Ancient Vendetta\nManaCost:3 B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | SubAbility$ DBExile | StackDescription$ REP Choose a_{p:You} chooses a & Search target opponent's_{p:You} searches {p:Targeted}'s & and exile_and exiles & That player_{p:Targeted} | SpellDescription$ Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles.\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Opponent | ChangeType$ Card.NamedCard | Origin$ Graveyard,Hand,Library | DefinedPlayer$ Targeted | Chooser$ You | Destination$ Exile | ChangeNum$ 4 | Hidden$ True\nOracle:Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Vendetta"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

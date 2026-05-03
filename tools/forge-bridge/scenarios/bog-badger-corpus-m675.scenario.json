@@ -1,0 +1,23 @@
+{
+  "id": "bog-badger-corpus-m675",
+  "description": "M6 corpus — Bog Badger; in-hand parse.",
+  "seed": 63044,
+  "cards": {
+    "Bog Badger": "Name:Bog Badger\nManaCost:2 G\nTypes:Creature Badger\nPT:3/3\nK:Kicker:B\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, if it was kicked, creatures you control gain menace until end of turn. (A creature with menace can't be blocked except by two or more creatures.)\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Menace\nDeckHas:Keyword$Menace\nOracle:Kicker {B} (You may pay an additional {B} as you cast this spell.)\\nWhen Bog Badger enters, if it was kicked, creatures you control gain menace until end of turn. (A creature with menace can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bog Badger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

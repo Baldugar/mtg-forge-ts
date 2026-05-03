@@ -1,0 +1,25 @@
+{
+  "id": "arcum-dagsson-corpus-m675",
+  "description": "M6 corpus — Arcum Dagsson; ETB-on-bf.",
+  "seed": 61786,
+  "cards": {
+    "Arcum Dagsson": "Name:Arcum Dagsson\nManaCost:3 U\nTypes:Legendary Creature Human Artificer\nPT:2/2\nA:AB$ SacrificeAll | Cost$ T | Defined$ Targeted | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature | SubAbility$ DBChange | SpellDescription$ Target artifact creature's controller sacrifices it. That player may search their library for a noncreature artifact card, put it onto the battlefield, then shuffle.\nSVar:DBChange:DB$ ChangeZone | Optional$ True | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact.nonCreature | DefinedPlayer$ TargetedController | ShuffleNonMandatory$ True\nOracle:{T}: Target artifact creature's controller sacrifices it. That player may search their library for a noncreature artifact card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arcum Dagsson"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

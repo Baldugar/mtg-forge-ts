@@ -1,0 +1,25 @@
+{
+  "id": "astrolabe-corpus-m675",
+  "description": "M6 corpus — Astrolabe; ETB-on-bf.",
+  "seed": 62008,
+  "cards": {
+    "Astrolabe": "Name:Astrolabe\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ 1 T Sac<1/CARDNAME> | Produced$ Any | Amount$ 2 | SubAbility$ DelTrigSlowtrip | SpellDescription$ Add two mana of any one color. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card at the beginning of the next turn's upkeep.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nOracle:{1}, {T}, Sacrifice Astrolabe: Add two mana of any one color. Draw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Astrolabe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

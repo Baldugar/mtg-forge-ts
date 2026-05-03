@@ -1,0 +1,25 @@
+{
+  "id": "bonecache-overseer-corpus-m675",
+  "description": "M6 corpus — Bonecache Overseer; ETB-on-bf.",
+  "seed": 63128,
+  "cards": {
+    "Bonecache Overseer": "Name:Bonecache Overseer\nManaCost:B\nTypes:Creature Squirrel Warlock\nPT:1/1\nA:AB$ Draw | Cost$ T PayLife<1> | CheckSVar$ X | SVarCompare$ GE3 | SpellDescription$ Draw a card. Activate only if three or more cards left your graveyard this turn or if you've sacrificed a Food this turn.\nSVar:X:Count$LeftGraveyardThisTurn Card.YouOwn/Plus.Y\nSVar:Y:PlayerCountPropertyYou$SacrificedThisTurn Food/Times.3\nDeckHints:Type$Food\nDeckHints:Ability$Graveyard\nOracle:{T}, Pay 1 life: Draw a card. Activate only if three or more cards left your graveyard this turn or if you've sacrificed a Food this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bonecache Overseer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

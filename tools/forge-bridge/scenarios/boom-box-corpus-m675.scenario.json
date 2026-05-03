@@ -1,0 +1,25 @@
+{
+  "id": "boom-box-corpus-m675",
+  "description": "M6 corpus — Boom Box; ETB-on-bf.",
+  "seed": 63150,
+  "cards": {
+    "Boom Box": "Name:Boom Box\nManaCost:2\nTypes:Artifact\nA:AB$ Pump | Cost$ 6 T Sac<1/CARDNAME> | ValidTgts$ Artifact | TgtPrompt$ Select up to one target artifact | TargetMin$ 0 | TargetMax$ 1 | IsCurse$ True | AILogic$ Destroy | SubAbility$ DestroyCreature | SpellDescription$ Destroy up to one target artifact, up to one target creature, and up to one target land.\nSVar:DestroyCreature:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyLand\nSVar:DestroyLand:DB$ Pump | ValidTgts$ Land | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target land | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nDeckHas:Ability$Sacrifice\nOracle:{6}, {T}, Sacrifice Boom Box: Destroy up to one target artifact, up to one target creature, and up to one target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boom Box"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "boarded-window-corpus-m675",
+  "description": "M6 corpus — Boarded Window; ETB-on-bf.",
+  "seed": 63038,
+  "cards": {
+    "Boarded Window": "Name:Boarded Window\nManaCost:3\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Creature.attackingYou | AddPower$ -1 | Description$ Creatures attacking you get -1/-0.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE4 | Execute$ TrigExile | TriggerDescription$ At the beginning of each end step, if you were dealt 4 or more damage this turn, exile CARDNAME.\nSVar:TrigExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile\nSVar:X:Count$LifeYouLostThisTurn\nOracle:Creatures attacking you get -1/-0.\\nAt the beginning of each end step, if you were dealt 4 or more damage this turn, exile Boarded Window.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boarded Window"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

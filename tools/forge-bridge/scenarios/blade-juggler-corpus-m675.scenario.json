@@ -1,0 +1,23 @@
+{
+  "id": "blade-juggler-corpus-m675",
+  "description": "M6 corpus — Blade Juggler; in-hand parse.",
+  "seed": 62765,
+  "cards": {
+    "Blade Juggler": "Name:Blade Juggler\nManaCost:4 B\nTypes:Creature Human Rogue\nPT:3/2\nK:Spectacle:2 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to you and you draw a card.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Spectacle {2}{B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\\nWhen Blade Juggler enters, it deals 1 damage to you and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blade Juggler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

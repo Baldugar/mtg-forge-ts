@@ -1,0 +1,25 @@
+{
+  "id": "autumn-willow-corpus-m675",
+  "description": "M6 corpus — Autumn Willow; ETB-on-bf.",
+  "seed": 62108,
+  "cards": {
+    "Autumn Willow": "Name:Autumn Willow\nManaCost:4 G G\nTypes:Legendary Creature Avatar\nPT:4/4\nK:Shroud\nA:AB$ Effect | Cost$ G | StaticAbilities$ STLoseAB | RememberObjects$ TargetedPlayer | Duration$ UntilHostLeavesPlayOrEOT | ValidTgts$ Player | TgtPrompt$ Select target player to be able to target CARDNAME | StackDescription$ Until end of turn, {p:Targeted} can target CARDNAME as though it didn't have shroud. | SpellDescription$ Until end of turn, CARDNAME can be the target of spells and abilities controlled by target player as though it didn't have shroud.\nSVar:STLoseAB:Mode$ IgnoreShroud | Activator$ Player.IsRemembered | ValidEntity$ Card.EffectSource | Description$ Until end of turn, EFFECTSOURCE can be the target of spells and abilities controlled by target player as though it didn't have shroud.\nAI:RemoveDeck:All\nOracle:Shroud (This creature can't be the target of spells or abilities.)\\n{G}: Until end of turn, Autumn Willow can be the target of spells and abilities controlled by target player as though it didn't have shroud.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Autumn Willow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

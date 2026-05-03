@@ -1,0 +1,25 @@
+{
+  "id": "barret-wallace-corpus-m675",
+  "description": "M6 corpus — Barret Wallace; ETB-on-bf.",
+  "seed": 62401,
+  "cards": {
+    "Barret Wallace": "Name:Barret Wallace\nManaCost:3 R\nTypes:Legendary Creature Human Rebel\nPT:4/4\nK:Reach\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage equal to the number of equipped creatures you control to defending player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefendingPlayer | NumDmg$ X\nSVar:X:Count$Valid Creature.YouCtrl+equipped\nDeckNeeds:Type$Equipment\nOracle:Reach\\nWhenever Barret Wallace attacks, it deals damage equal to the number of equipped creatures you control to defending player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barret Wallace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

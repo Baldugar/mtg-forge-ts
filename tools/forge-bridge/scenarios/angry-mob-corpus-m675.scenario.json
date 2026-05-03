@@ -1,0 +1,25 @@
+{
+  "id": "angry-mob-corpus-m675",
+  "description": "M6 corpus — Angry Mob; ETB-on-bf.",
+  "seed": 61559,
+  "cards": {
+    "Angry Mob": "Name:Angry Mob\nManaCost:2 W W\nTypes:Creature Human\nPT:2+*/2+*\nK:Trample\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Condition$ PlayerTurn | Description$ During your turn, CARDNAME's power and toughness are each equal to 2 plus the number of Swamps your opponents control. During turns other than yours, CARDNAME's power and toughness are each 2.\nSVar:X:Count$Valid Swamp.OppCtrl/Plus.2\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ 2 | SetToughness$ 2 | Condition$ NotPlayerTurn\nAI:RemoveDeck:Random\nDeckHints:Name$Urborg, Tomb of Yawgmoth & Keyword$Landwalk:Swamp\nOracle:Trample\\nDuring your turn, Angry Mob's power and toughness are each equal to 2 plus the number of Swamps your opponents control. During turns other than yours, Angry Mob's power and toughness are each 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angry Mob"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

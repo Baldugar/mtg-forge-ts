@@ -1,0 +1,25 @@
+{
+  "id": "ashaya-soul-of-the-wild-corpus-m675",
+  "description": "M6 corpus — Ashaya, Soul of the Wild; ETB-on-bf.",
+  "seed": 61929,
+  "cards": {
+    "Ashaya, Soul of the Wild": "Name:Ashaya, Soul of the Wild\nManaCost:3 G G\nTypes:Legendary Creature Elemental\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nS:Mode$ Continuous | Affected$ Creature.!token+YouCtrl | AddType$ Forest & Land | Description$ Nontoken creatures you control are Forest lands in addition to their other types. (They're still affected by summoning sickness.)\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:Count$Valid Creature.!token+YouCtrl\nSVar:Z:SVar$X/Plus.Y\nSVar:NeedsToPlayVar:Z GE4\nSVar:BuffedBy:Land,Creature\nOracle:Ashaya, Soul of the Wild's power and toughness are each equal to the number of lands you control.\\nNontoken creatures you control are Forest lands in addition to their other types. (They're still affected by summoning sickness.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashaya, Soul of the Wild"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ancient-spring-corpus-m675",
+  "description": "M6 corpus — Ancient Spring; ETB-on-bf.",
+  "seed": 61482,
+  "cards": {
+    "Ancient Spring": "Name:Ancient Spring\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ W B | SpellDescription$ Add {W}{B}.\nAI:RemoveDeck:All\nOracle:Ancient Spring enters tapped.\\n{T}: Add {U}.\\n{T}, Sacrifice Ancient Spring: Add {W}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ancient Spring"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "belbe-corrupted-observer-corpus-m675",
+  "description": "M6 corpus — Belbe, Corrupted Observer; ETB-on-bf.",
+  "seed": 62578,
+  "cards": {
+    "Belbe, Corrupted Observer": "Name:Belbe, Corrupted Observer\nManaCost:B G\nTypes:Legendary Creature Phyrexian Zombie Elf\nPT:2/2\nT:Mode$ Phase | Phase$ Main2 | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ At the beginning of each postcombat main phase, the active player adds {C}{C} for each of your opponents who lost life this turn. (Damage causes loss of life.)\nSVar:TrigMana:DB$ Mana | Produced$ C | Amount$ X | Defined$ TriggeredPlayer\nSVar:X:PlayerCountOpponents$HasPropertyLostLifeThisTurn/Twice\nOracle:At the beginning of each postcombat main phase, the active player adds {C}{C} for each of your opponents who lost life this turn. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Belbe, Corrupted Observer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

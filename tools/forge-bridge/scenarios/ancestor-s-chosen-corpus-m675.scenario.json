@@ -1,0 +1,23 @@
+{
+  "id": "ancestor-s-chosen-corpus-m675",
+  "description": "M6 corpus — Ancestor's Chosen; in-hand parse.",
+  "seed": 61452,
+  "cards": {
+    "Ancestor's Chosen": "Name:Ancestor's Chosen\nManaCost:5 W W\nTypes:Creature Human Cleric\nPT:4/4\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life for each card in your graveyard.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nWhen Ancestor's Chosen enters, you gain 1 life for each card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancestor's Chosen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

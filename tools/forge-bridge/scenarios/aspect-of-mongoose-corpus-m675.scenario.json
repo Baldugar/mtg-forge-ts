@@ -1,0 +1,23 @@
+{
+  "id": "aspect-of-mongoose-corpus-m675",
+  "description": "M6 corpus — Aspect of Mongoose; in-hand parse.",
+  "seed": 61970,
+  "cards": {
+    "Aspect of Mongoose": "Name:Aspect of Mongoose\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Shroud | Description$ Enchanted creature has shroud. (It can't be the target of spells or abilities.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:Enchant creature\\nEnchanted creature has shroud. (It can't be the target of spells or abilities.)\\nWhen Aspect of Mongoose is put into a graveyard from the battlefield, return Aspect of Mongoose to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aspect of Mongoose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

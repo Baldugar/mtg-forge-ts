@@ -1,0 +1,25 @@
+{
+  "id": "bontu-the-glorified-corpus-m675",
+  "description": "M6 corpus — Bontu the Glorified; ETB-on-bf.",
+  "seed": 63142,
+  "cards": {
+    "Bontu the Glorified": "Name:Bontu the Glorified\nManaCost:2 B\nTypes:Legendary Creature God\nPT:4/6\nK:Menace\nK:Indestructible\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ EQ0 | Description$ NICKNAME can't attack or block unless a creature died under your control this turn.\nA:AB$ Scry | Cost$ 1 B Sac<1/Creature.Other/another creature> | ScryNum$ 1 | SubAbility$ DBLoseLife | SpellDescription$ Scry 1. Each opponent loses 1 life and you gain 1 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nOracle:Menace, indestructible\\nBontu the Glorified can't attack or block unless a creature died under your control this turn.\\n{1}{B}, Sacrifice another creature: Scry 1. Each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bontu the Glorified"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

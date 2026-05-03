@@ -1,0 +1,23 @@
+{
+  "id": "bessie-the-doctor-s-roadster-corpus-m675",
+  "description": "M6 corpus — Bessie, the Doctor's Roadster; in-hand parse.",
+  "seed": 62658,
+  "cards": {
+    "Bessie, the Doctor's Roadster": "Name:Bessie, the Doctor's Roadster\nManaCost:2\nTypes:Legendary Artifact Vehicle\nPT:3/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, another target legendary creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.Legendary+Other | TgtPrompt$ Select another target legendary creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Crew:2\nOracle:Haste\\nWhenever Bessie attacks, another target legendary creature can't be blocked this turn.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bessie, the Doctor's Roadster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

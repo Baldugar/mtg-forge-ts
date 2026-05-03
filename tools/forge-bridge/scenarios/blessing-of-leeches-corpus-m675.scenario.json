@@ -1,0 +1,23 @@
+{
+  "id": "blessing-of-leeches-corpus-m675",
+  "description": "M6 corpus — Blessing of Leeches; in-hand parse.",
+  "seed": 62832,
+  "cards": {
+    "Blessing of Leeches": "Name:Blessing of Leeches\nManaCost:2 B\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ Regenerate | Cost$ 0 | Defined$ Enchanted | SpellDescription$ Regenerate enchanted creature.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Flash\\nEnchant creature\\nAt the beginning of your upkeep, you lose 1 life.\\n{0}: Regenerate enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blessing of Leeches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

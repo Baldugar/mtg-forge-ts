@@ -1,0 +1,25 @@
+{
+  "id": "boon-reflection-corpus-m675",
+  "description": "M6 corpus — Boon Reflection; ETB-on-bf.",
+  "seed": 63159,
+  "cards": {
+    "Boon Reflection": "Name:Boon Reflection\nManaCost:4 W\nTypes:Enchantment\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainDouble | AILogic$ DoubleLife | Description$ If you would gain life, you gain twice that much life instead.\nSVar:GainDouble:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Twice\nSVar:PlayMain1:True\nDeckHints:Keyword$Lifelink\nDeckNeeds:Ability$LifeGain\nOracle:If you would gain life, you gain twice that much life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boon Reflection"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

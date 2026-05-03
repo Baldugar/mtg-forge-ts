@@ -1,0 +1,23 @@
+{
+  "id": "bad-deal-corpus-m675",
+  "description": "M6 corpus — Bad Deal; in-hand parse.",
+  "seed": 62252,
+  "cards": {
+    "Bad Deal": "Name:Bad Deal\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ You draw two cards and each opponent discards two cards. Each player loses 2 life.\nSVar:DBDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Player\nDeckHas:Ability$Discard\nOracle:You draw two cards and each opponent discards two cards. Each player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bad Deal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

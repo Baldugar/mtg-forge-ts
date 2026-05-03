@@ -1,0 +1,23 @@
+{
+  "id": "anticausal-vestige-corpus-m675",
+  "description": "M6 corpus — Anticausal Vestige; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Anticausal Vestige": "Name:Anticausal Vestige\nManaCost:6\nTypes:Creature Eldrazi\nPT:7/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When this creature leaves the battlefield, draw a card, then you may put a permanent card with mana value less than or equal to the number of lands you control from your hand onto the battlefield tapped.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Permanent.YouCtrl+cmcLEX | Origin$ Hand | Tapped$ True | Destination$ Battlefield | TgtPrompt$ Select permanent card with mana value less than or equal to the number of lands you control\nSVar:X:Count$Valid Land.YouCtrl\nK:Warp:4\nOracle:When this creature leaves the battlefield, draw a card, then you may put a permanent card with mana value less than or equal to the number of lands you control from your hand onto the battlefield tapped.\\nWarp {4} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anticausal Vestige"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

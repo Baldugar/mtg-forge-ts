@@ -1,0 +1,25 @@
+{
+  "id": "bone-dancer-corpus-m675",
+  "description": "M6 corpus — Bone Dancer; ETB-on-bf.",
+  "seed": 63113,
+  "cards": {
+    "Bone Dancer": "Name:Bone Dancer\nManaCost:1 B B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ DBChangeZone | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may put the top creature card of defending player's graveyard onto the battlefield under your control. If you do, CARDNAME assigns no combat damage this turn.\nSVar:DBChangeZone:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.TopGraveyardCreature+DefenderCtrl | GainControl$ True | ChangeNum$ 1 | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:NeedsOrderedGraveyard:OPPONENT\nOracle:Whenever Bone Dancer attacks and isn't blocked, you may put the top creature card of defending player's graveyard onto the battlefield under your control. If you do, Bone Dancer assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bone Dancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

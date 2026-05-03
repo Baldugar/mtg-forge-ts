@@ -1,0 +1,23 @@
+{
+  "id": "begin-the-invasion-corpus-m675",
+  "description": "M6 corpus — Begin the Invasion; in-hand parse.",
+  "seed": 62570,
+  "cards": {
+    "Begin the Invasion": "Name:Begin the Invasion\nManaCost:X W U B R G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | DifferentNames$ True | ChangeTypeDesc$ battle cards with different names | Destination$ Battlefield | ChangeType$ Card.Battle | ChangeNum$ X | SpellDescription$ Search your library for up to X battle cards with different names, put them onto the battlefield, then shuffle.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckNeeds:Type$Battle\nOracle:Search your library for up to X battle cards with different names, put them onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Begin the Invasion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

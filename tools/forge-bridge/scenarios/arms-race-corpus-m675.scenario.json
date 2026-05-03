@@ -1,0 +1,25 @@
+{
+  "id": "arms-race-corpus-m675",
+  "description": "M6 corpus — Arms Race; ETB-on-bf.",
+  "seed": 61874,
+  "cards": {
+    "Arms Race": "Name:Arms Race\nManaCost:3 R\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 3 R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact.YouCtrl | SubAbility$ DBPump | RememberChanged$ True | ForgetOtherRemembered$ True | AILogic$ BeforeCombat | SpellDescription$ You may put an artifact card from your hand onto the battlefield. The artifact gains haste. Sacrifice it at the beginning of the next end step.\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | Duration$ Permanent | AtEOT$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NonStackingEffect:True\nSVar:PlayMain1:ALWAYS\nAI:RemoveDeck:Random\nDeckHas:Keyword$Haste & Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:{3}{R}: You may put an artifact card from your hand onto the battlefield. The artifact gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arms Race"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

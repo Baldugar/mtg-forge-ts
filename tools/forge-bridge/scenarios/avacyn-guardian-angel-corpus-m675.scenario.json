@@ -1,0 +1,25 @@
+{
+  "id": "avacyn-guardian-angel-corpus-m675",
+  "description": "M6 corpus — Avacyn, Guardian Angel; ETB-on-bf.",
+  "seed": 62113,
+  "cards": {
+    "Avacyn, Guardian Angel": "Name:Avacyn, Guardian Angel\nManaCost:2 W W W\nTypes:Legendary Creature Angel\nPT:5/4\nK:Flying\nK:Vigilance\nA:AB$ ChooseColor | Cost$ 1 W | Defined$ You | SubAbility$ DBEffect | SpellDescription$ Prevent all damage that would be dealt to another target creature this turn by sources of the color of your choice.\nSVar:DBEffect:DB$ Effect | Name$ Avacyn, Guardian Angel Effect — Protect Creature | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | ReplacementEffects$ RPreventCreature | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield\nSVar:RPreventCreature:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Card.IsRemembered | ValidSource$ Card.ChosenColor | Description$ Prevent all damage that would be dealt to another target creature this turn by sources of the color of your choice.\nA:AB$ ChooseColor | Cost$ 5 W W | Defined$ You | SubAbility$ DBEffect2 | SpellDescription$ Prevent all damage that would be dealt to target player or planeswalker this turn by sources of the color of your choice.\nSVar:DBEffect2:DB$ Effect | Name$ Avacyn, Guardian Angel's Effect — Protect Player | ValidTgts$ Player,Planeswalker | ReplacementEffects$ RPreventPlayer | AILogic$ Fog | RememberObjects$ Targeted\nSVar:RPreventPlayer:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Player.IsRemembered,Planeswalker.IsRemembered | ValidSource$ Card.ChosenColor | Description$ Prevent all damage that would be dealt to target player or planeswalker this turn by sources of the color of your choice.\nAI:RemoveDeck:All\nOracle:Flying, vigilance\\n{1}{W}: Prevent all damage that would be dealt to another target creature this turn by sources of the color of your choice.\\n{5}{W}{W}: Prevent all damage that would be dealt to target player or planeswalker this turn by sources of the color of your choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Avacyn, Guardian Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

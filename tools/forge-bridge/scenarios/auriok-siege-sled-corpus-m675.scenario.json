@@ -1,0 +1,25 @@
+{
+  "id": "auriok-siege-sled-corpus-m675",
+  "description": "M6 corpus — Auriok Siege Sled; ETB-on-bf.",
+  "seed": 62084,
+  "cards": {
+    "Auriok Siege Sled": "Name:Auriok Siege Sled\nManaCost:6\nTypes:Artifact Creature Juggernaut\nPT:3/5\nA:AB$ MustBlock | Cost$ 1 | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature to block this creature | SpellDescription$ Target artifact creature blocks CARDNAME this turn if able.\nA:AB$ Effect | Cost$ 1 | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target artifact creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nAI:RemoveDeck:All\nOracle:{1}: Target artifact creature blocks Auriok Siege Sled this turn if able.\\n{1}: Target artifact creature can't block Auriok Siege Sled this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Auriok Siege Sled"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

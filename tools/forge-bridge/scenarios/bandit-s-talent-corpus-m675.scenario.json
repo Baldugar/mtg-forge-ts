@@ -1,0 +1,23 @@
+{
+  "id": "bandit-s-talent-corpus-m675",
+  "description": "M6 corpus — Bandit's Talent; in-hand parse.",
+  "seed": 62322,
+  "cards": {
+    "Bandit's Talent": "Name:Bandit's Talent\nManaCost:1 B\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards two cards unless they discard a nonland card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 2 | Mode$ TgtChoose | UnlessType$ Card.nonLand\nK:Class:2:B:AddTrigger$ TriggerUpkeep\nSVar:TriggerUpkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | CheckSVar$ X | SVarCompare$ LE1 | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, they lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2\nK:Class:3:3 B:AddTrigger$ TriggerDraw\nSVar:TriggerDraw:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card for each opponent who has one or fewer cards in hand.\nSVar:TrigDraw:DB$ Draw | NumCards$ Y | Defined$ TriggeredPlayer\nSVar:X:Count$ValidHand Card.ActivePlayerCtrl\nSVar:Y:PlayerCountOpponents$HasPropertyHasCardsInHand_Card_LE1\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen Bandit's Talent enters, each opponent discards two cards unless they discard a nonland card.\\n{B}: Level 2\\nAt the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, they lose 2 life.\\n{3}{B}: Level 3\\nAt the beginning of your draw step, draw an additional card for each opponent who has one or fewer cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bandit's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

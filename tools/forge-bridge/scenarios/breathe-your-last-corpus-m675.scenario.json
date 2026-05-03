@@ -1,0 +1,23 @@
+{
+  "id": "breathe-your-last-corpus-m675",
+  "description": "M6 corpus — Breathe Your Last; in-hand parse.",
+  "seed": 63336,
+  "cards": {
+    "Breathe Your Last": "Name:Breathe Your Last\nManaCost:1 B B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature or planeswalker. You gain 1 life for each of its colors.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Targeted$CardNumColors\nDeckHas:Ability$LifeGain\nOracle:Destroy target creature or planeswalker. You gain 1 life for each of its colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breathe Your Last"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

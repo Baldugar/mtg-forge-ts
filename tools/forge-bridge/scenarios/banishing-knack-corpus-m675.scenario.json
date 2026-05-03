@@ -1,0 +1,23 @@
+{
+  "id": "banishing-knack-corpus-m675",
+  "description": "M6 corpus — Banishing Knack; in-hand parse.",
+  "seed": 62335,
+  "cards": {
+    "Banishing Knack": "Name:Banishing Knack\nManaCost:U\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature | Abilities$ ABChangeZone | SpellDescription$ Until end of turn, target creature gains \"{T}: Return target nonland permanent to its owner's hand.\"\nSVar:ABChangeZone:AB$ ChangeZone | Cost$ T | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nAI:RemoveDeck:All\nOracle:Until end of turn, target creature gains \"{T}: Return target nonland permanent to its owner's hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banishing Knack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

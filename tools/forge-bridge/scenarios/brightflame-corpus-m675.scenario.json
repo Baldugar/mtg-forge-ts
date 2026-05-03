@@ -1,0 +1,23 @@
+{
+  "id": "brightflame-corpus-m675",
+  "description": "M6 corpus — Brightflame; in-hand parse.",
+  "seed": 63365,
+  "cards": {
+    "Brightflame": "Name:Brightflame\nManaCost:X R R W W\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | Radiance$ True | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ Radiance — CARDNAME deals X damage to target creature and each other creature that shares a color with it. You gain life equal to the damage dealt this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:X:Count$xPaid\nSVar:Y:Count$TotalDamageDoneByThisTurn\nAI:RemoveDeck:All\nOracle:Radiance — Brightflame deals X damage to target creature and each other creature that shares a color with it. You gain life equal to the damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brightflame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

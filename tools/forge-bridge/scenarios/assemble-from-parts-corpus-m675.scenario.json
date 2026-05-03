@@ -1,0 +1,23 @@
+{
+  "id": "assemble-from-parts-corpus-m675",
+  "description": "M6 corpus — Assemble from Parts; in-hand parse.",
+  "seed": 61991,
+  "cards": {
+    "Assemble from Parts": "Name:Assemble from Parts\nManaCost:B\nTypes:Instant\nA:SP$ Animate | TgtZone$ Graveyard | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card in your graveyard | Abilities$ ABShuffle | Duration$ Perpetual | StackDescription$ REP Target creature card in your graveyard_{c:Targeted} | SpellDescription$ Target creature card in your graveyard perpetually gains \"{1}{B}{B}, Exile this card from your graveyard: Shuffle it into your library. Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. Activate only as a sorcery.\"\nSVar:ABShuffle:AB$ ChangeZone | Cost$ 1 B B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | Origin$ All | Destination$ Library | Shuffle$ True | Defined$ Self | SubAbility$ DBCopy | SorcerySpeed$ True | StackDescription$ Shuffle CARDNAME into your library. | SpellDescription$ Shuffle it into your library.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Self | SetPower$ 4 | SetToughness$ 4 | AddTypes$ Zombie | SetColor$ Black | StackDescription$ Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. | SpellDescription$ Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. Activate only as a sorcery.\nDeckHas:Ability$Token|Graveyard\nOracle:Target creature card in your graveyard perpetually gains \"{1}{B}{B}, Exile this card from your graveyard: Shuffle it into your library. Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Assemble from Parts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "badgermole-cub-corpus-m675",
+  "description": "M6 corpus — Badgermole Cub; in-hand parse.",
+  "seed": 62255,
+  "cards": {
+    "Badgermole Cub": "Name:Badgermole Cub\nManaCost:1 G\nTypes:Creature Badger Mole\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 1\nT:Mode$ TapsForMana | ValidCard$ Creature | Activator$ You | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap a creature for mana, add an additional {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 1\nOracle:When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)\\nWhenever you tap a creature for mana, add an additional {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Badgermole Cub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

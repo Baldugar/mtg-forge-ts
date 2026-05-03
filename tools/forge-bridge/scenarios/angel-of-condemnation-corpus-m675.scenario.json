@@ -1,0 +1,25 @@
+{
+  "id": "angel-of-condemnation-corpus-m675",
+  "description": "M6 corpus — Angel of Condemnation; ETB-on-bf.",
+  "seed": 61491,
+  "cards": {
+    "Angel of Condemnation": "Name:Angel of Condemnation\nManaCost:2 W W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nK:Vigilance\nA:AB$ ChangeZone | Cost$ 2 W T | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | RememberObjects$ RememberedLKI | TriggerDescription$ Return that card to the battlefield under its owner's control at the beginning of the next end step. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nA:AB$ ChangeZone | Cost$ 2 W T Exert<1/CARDNAME> | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | Duration$ UntilHostLeavesPlay | SpellDescription$ Exile another target creature until CARDNAME leaves the battlefield. (An exerted creature won't untap during your next untap step.)\nOracle:Flying, vigilance\\n{2}{W}, {T}: Exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\\n{2}{W}, {T}, Exert Angel of Condemnation: Exile another target creature until Angel of Condemnation leaves the battlefield. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angel of Condemnation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

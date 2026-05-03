@@ -1,0 +1,23 @@
+{
+  "id": "audacious-swap-corpus-m675",
+  "description": "M6 corpus — Audacious Swap; in-hand parse.",
+  "seed": 62045,
+  "cards": {
+    "Audacious Swap": "Name:Audacious Swap\nManaCost:3 R\nTypes:Instant\nK:Casualty:2\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonEnchantment | TgtPrompt$ Select target nonenchantment permanent | Origin$ Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ DBExile | SpellDescription$ The owner of target nonenchantment permanent shuffles it into their library,\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ TargetedOwner | RememberChanged$ True | SubAbility$ DBPutLand | SpellDescription$ then exiles the top card of their library.\nSVar:DBPutLand:DB$ ChangeZone | ConditionDefined$ Remembered | ConditionPresent$ Land | Defined$ Remembered | DefinedDesc$ it | Origin$ Exile | Destination$ Battlefield | ForgetChanged$ True | SubAbility$ DBCast | SpellDescription$ If it's a land card, they put it onto the battlefield.\nSVar:DBCast:DB$ Play | ConditionDefined$ Remembered | ConditionPresent$ Card | Defined$ Remembered | DefinedDesc$ it | ValidSA$ Spell | Controller$ RememberedOwner | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup | SpellDescription$ Otherwise, they may cast it without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:Casualty 2 (As you cast this spell, you may sacrifice a creature with power 2 or greater. When you do, copy this spell and you may choose a new target for the copy.)\\nThe owner of target nonenchantment permanent shuffles it into their library, then exiles the top card of their library. If it's a land card, they put it onto the battlefield. Otherwise, they may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Audacious Swap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

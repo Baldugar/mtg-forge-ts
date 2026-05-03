@@ -1,0 +1,23 @@
+{
+  "id": "boneclad-necromancer-corpus-m675",
+  "description": "M6 corpus — Boneclad Necromancer; in-hand parse.",
+  "seed": 63130,
+  "cards": {
+    "Boneclad Necromancer": "Name:Boneclad Necromancer\nManaCost:3 B B\nTypes:Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile target creature card from a graveyard. If you do, create a 2/2 black Zombie creature token.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | SubAbility$ DBToken | RememberChanged$ True\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:When Boneclad Necromancer enters, you may exile target creature card from a graveyard. If you do, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boneclad Necromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

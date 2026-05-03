@@ -1,0 +1,25 @@
+{
+  "id": "aurora-phoenix-corpus-m675",
+  "description": "M6 corpus — Aurora Phoenix; ETB-on-bf.",
+  "seed": 62097,
+  "cards": {
+    "Aurora Phoenix": "Name:Aurora Phoenix\nManaCost:4 R R\nTypes:Creature Phoenix\nPT:5/3\nK:Flying\nK:Cascade\nT:Mode$ SpellCast | ValidCard$ Card.withCascade | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a spell with cascade, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\nCascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\\nWhenever you cast a spell with cascade, return Aurora Phoenix from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aurora Phoenix"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

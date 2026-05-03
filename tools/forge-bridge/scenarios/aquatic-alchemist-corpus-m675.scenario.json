@@ -1,0 +1,23 @@
+{
+  "id": "aquatic-alchemist-corpus-m675",
+  "description": "M6 corpus — Aquatic Alchemist; in-hand parse.",
+  "seed": 61660,
+  "cards": {
+    "Aquatic Alchemist": "Name:Aquatic Alchemist\nManaCost:1 U\nTypes:Creature Elemental\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first instant or sorcery spell each turn, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nDeckHas:Ability$Graveyard\nDeckHints:Type$Instant|Sorcery\nAlternateMode:Adventure\nOracle:Whenever you cast your first instant or sorcery spell each turn, Aquatic Alchemist gets +2/+0 until end of turn.\n\nALTERNATE\n\nName:Bubble Up\nManaCost:2 U\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | TgtPrompt$ Choose target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | Origin$ Graveyard | Destination$ Library | SpellDescription$ Put target instant or sorcery card from your graveyard on top of your library. (Then exile this card. You may cast the creature later from exile.)\nOracle:Put target instant or sorcery card from your graveyard on top of your library. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aquatic Alchemist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

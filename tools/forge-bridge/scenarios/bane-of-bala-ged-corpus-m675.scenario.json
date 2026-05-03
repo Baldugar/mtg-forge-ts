@@ -1,0 +1,25 @@
+{
+  "id": "bane-of-bala-ged-corpus-m675",
+  "description": "M6 corpus — Bane of Bala Ged; ETB-on-bf.",
+  "seed": 62325,
+  "cards": {
+    "Bane of Bala Ged": "Name:Bane of Bala Ged\nManaCost:7\nTypes:Creature Eldrazi\nPT:7/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, defending player exiles two permanents they control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | DefinedPlayer$ TriggeredDefendingPlayer | Mandatory$ True | ChangeType$ Permanent | ChangeNum$ 2 | Chooser$ DefendingPlayer | Hidden$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Bane of Bala Ged attacks, defending player exiles two permanents they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bane of Bala Ged"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

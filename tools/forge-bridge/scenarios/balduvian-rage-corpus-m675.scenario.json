@@ -1,0 +1,23 @@
+{
+  "id": "balduvian-rage-corpus-m675",
+  "description": "M6 corpus — Balduvian Rage; in-hand parse.",
+  "seed": 62281,
+  "cards": {
+    "Balduvian Rage": "Name:Balduvian Rage\nManaCost:X R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumAtt$ +X | SpellDescription$ Target attacking creature gets +X/+0 until end of turn. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nSVar:X:Count$xPaid\nOracle:Target attacking creature gets +X/+0 until end of turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balduvian Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

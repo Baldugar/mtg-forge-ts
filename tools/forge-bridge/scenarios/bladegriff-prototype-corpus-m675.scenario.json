@@ -1,0 +1,25 @@
+{
+  "id": "bladegriff-prototype-corpus-m675",
+  "description": "M6 corpus — Bladegriff Prototype; ETB-on-bf.",
+  "seed": 62779,
+  "cards": {
+    "Bladegriff Prototype": "Name:Bladegriff Prototype\nManaCost:5\nTypes:Artifact Creature Griffin\nPT:3/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, destroy target nonland permanent of that player's choice that one of your opponents controls.\nSVar:TrigDestroy:DB$ Destroy | TargetingPlayer$ TriggeredTarget | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent controlled by opponent of damaging player\nOracle:Flying\\nWhenever Bladegriff Prototype deals combat damage to a player, destroy target nonland permanent of that player's choice that one of your opponents controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bladegriff Prototype"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

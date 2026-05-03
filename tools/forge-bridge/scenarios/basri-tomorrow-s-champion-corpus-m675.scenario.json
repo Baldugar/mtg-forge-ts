@@ -1,0 +1,25 @@
+{
+  "id": "basri-tomorrow-s-champion-corpus-m675",
+  "description": "M6 corpus — Basri, Tomorrow's Champion; ETB-on-bf.",
+  "seed": 62442,
+  "cards": {
+    "Basri, Tomorrow's Champion": "Name:Basri, Tomorrow's Champion\nManaCost:W\nTypes:Legendary Creature Human Knight\nPT:2/1\nA:AB$ Token | Cost$ W T Exert<1/NICKNAME> | TokenScript$ w_1_1_cat_lifelink | TokenOwner$ You | SpellDescription$ Create a 1/1 white Cat creature token with lifelink. (An exerted creature won't untap during your next untap step.)\nK:Cycling:2 W\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When you cycle this card, Cats you control gain hexproof and indestructible until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Cat.YouCtrl | KW$ Hexproof & Indestructible\nDeckHas:Ability$Token\nOracle:{W}, {T}, Exert Basri: Create a 1/1 white Cat creature token with lifelink. (An exerted creature won't untap during your next untap step.)\\nCycling {2}{W} ({2}{W}, Discard this card: Draw a card.)\\nWhen you cycle this card, Cats you control gain hexproof and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Basri, Tomorrow's Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

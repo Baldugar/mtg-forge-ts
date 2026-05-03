@@ -1,0 +1,25 @@
+{
+  "id": "blossoming-bogbeast-corpus-m675",
+  "description": "M6 corpus — Blossoming Bogbeast; ETB-on-bf.",
+  "seed": 63014,
+  "cards": {
+    "Blossoming Bogbeast": "Name:Blossoming Bogbeast\nManaCost:4 G\nTypes:Creature Beast\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME attacks, you gain 2 life. Then creatures you control gain trample and get +X/+X until end of turn, where X is the amount of life you gained this turn.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever Blossoming Bogbeast attacks, you gain 2 life. Then creatures you control gain trample and get +X/+X until end of turn, where X is the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blossoming Bogbeast"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

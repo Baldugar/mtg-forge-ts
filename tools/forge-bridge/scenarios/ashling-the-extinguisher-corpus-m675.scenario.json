@@ -1,0 +1,25 @@
+{
+  "id": "ashling-the-extinguisher-corpus-m675",
+  "description": "M6 corpus — Ashling, the Extinguisher; ETB-on-bf.",
+  "seed": 61953,
+  "cards": {
+    "Ashling, the Extinguisher": "Name:Ashling, the Extinguisher\nManaCost:2 B B\nTypes:Legendary Creature Elemental Shaman\nPT:4/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, choose target creature that player controls. The player sacrifices that creature.\nSVar:TrigDestroy:DB$ SacrificeAll | Defined$ Targeted | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature that player controls\nSVar:MustBeBlocked:True\nOracle:Whenever Ashling, the Extinguisher deals combat damage to a player, choose target creature that player controls. The player sacrifices that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ashling, the Extinguisher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

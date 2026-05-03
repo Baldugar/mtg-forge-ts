@@ -1,0 +1,23 @@
+{
+  "id": "bloodline-bidding-corpus-m675",
+  "description": "M6 corpus — Bloodline Bidding; in-hand parse.",
+  "seed": 62975,
+  "cards": {
+    "Bloodline Bidding": "Name:Bloodline Bidding\nManaCost:6 B B\nTypes:Sorcery\nK:Convoke\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBChangeZoneAll | AILogic$ MostProminentInComputerGraveyard | SpellDescription$ Choose a creature type. Return all creature cards of the chosen type from your graveyard to the battlefield.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Creature.ChosenType+YouOwn | Origin$ Graveyard | Destination$ Battlefield\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nChoose a creature type. Return all creature cards of the chosen type from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodline Bidding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

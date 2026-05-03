@@ -1,0 +1,23 @@
+{
+  "id": "arbaaz-mir-corpus-m675",
+  "description": "M6 corpus — Arbaaz Mir; in-hand parse.",
+  "seed": 61687,
+  "cards": {
+    "Arbaaz Mir": "Name:Arbaaz Mir\nManaCost:R W\nTypes:Legendary Creature Human Assassin\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Permanent.!token+Historic+Other+YouCtrl | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME or another nontoken historic permanent you control enters, CARDNAME deals 1 damage to each opponent and you gain 1 life. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Whenever Arbaaz Mir or another nontoken historic permanent you control enters, Arbaaz Mir deals 1 damage to each opponent and you gain 1 life. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arbaaz Mir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

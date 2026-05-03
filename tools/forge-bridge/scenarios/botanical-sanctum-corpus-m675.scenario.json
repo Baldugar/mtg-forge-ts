@@ -1,0 +1,25 @@
+{
+  "id": "botanical-sanctum-corpus-m675",
+  "description": "M6 corpus — Botanical Sanctum; ETB-on-bf.",
+  "seed": 63212,
+  "cards": {
+    "Botanical Sanctum": "Name:Botanical Sanctum\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nOracle:Botanical Sanctum enters tapped unless you control two or fewer other lands.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Botanical Sanctum"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

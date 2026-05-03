@@ -1,0 +1,23 @@
+{
+  "id": "brinelin-the-moon-kraken-corpus-m675",
+  "description": "M6 corpus — Brinelin, the Moon Kraken; in-hand parse.",
+  "seed": 63393,
+  "cards": {
+    "Brinelin, the Moon Kraken": "Name:Brinelin, the Moon Kraken\nManaCost:6 U U\nTypes:Legendary Creature Kraken\nPT:6/8\nK:Partner\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters or whenever you cast a spell with mana value 6 or greater, you may return target nonland permanent to its owner's hand.\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE6 | ValidActivatingPlayer$ You | Execute$ TrigReturn | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When CARDNAME enters or whenever you cast a spell with mana value 6 or greater, you may return target nonland permanent to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand\nOracle:When Brinelin, the Moon Kraken enters or whenever you cast a spell with mana value 6 or greater, you may return target nonland permanent to its owner's hand.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brinelin, the Moon Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

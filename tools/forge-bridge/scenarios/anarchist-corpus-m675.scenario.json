@@ -1,0 +1,23 @@
+{
+  "id": "anarchist-corpus-m675",
+  "description": "M6 corpus — Anarchist; in-hand parse.",
+  "seed": 61448,
+  "cards": {
+    "Anarchist": "Name:Anarchist\nManaCost:4 R\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Sorcery.YouCtrl\nOracle:When Anarchist enters, you may return target sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anarchist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

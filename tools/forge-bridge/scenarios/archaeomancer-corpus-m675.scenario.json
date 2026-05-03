@@ -1,0 +1,23 @@
+{
+  "id": "archaeomancer-corpus-m675",
+  "description": "M6 corpus — Archaeomancer; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Archaeomancer": "Name:Archaeomancer\nManaCost:2 U U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nOracle:When Archaeomancer enters, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archaeomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

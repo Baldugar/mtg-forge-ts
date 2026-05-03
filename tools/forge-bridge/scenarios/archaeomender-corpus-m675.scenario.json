@@ -1,0 +1,23 @@
+{
+  "id": "archaeomender-corpus-m675",
+  "description": "M6 corpus — Archaeomender; in-hand parse.",
+  "seed": 61730,
+  "cards": {
+    "Archaeomender": "Name:Archaeomender\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target artifact card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact from your graveyard\nDeckHints:Type$Artifact\nOracle:When Archaeomender enters, return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archaeomender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

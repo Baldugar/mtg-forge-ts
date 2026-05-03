@@ -1,0 +1,23 @@
+{
+  "id": "bloodsworn-squire-corpus-m675",
+  "description": "M6 corpus — Bloodsworn Squire; in-hand parse.",
+  "seed": 62994,
+  "cards": {
+    "Bloodsworn Squire": "Name:Bloodsworn Squire\nManaCost:3 B\nTypes:Creature Vampire Soldier\nPT:3/3\nA:AB$ Pump | Cost$ 1 B Discard<1/Card> | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn.\nSVar:DBTap:DB$ Tap | Defined$ Self | SubAbility$ DBTransform | StackDescription$ SpellDescription | SpellDescription$ Tap it.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionPresent$ Creature.YouOwn | ConditionCompare$ GE4 | ConditionZone$ Graveyard | StackDescription$ SpellDescription | SpellDescription$ Then if there are four or more creature cards in your graveyard, transform CARDNAME.\nSVar:AIPreference:DiscardCost$Creature\nDeckHas:Ability$Discard\nDeckHints:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:{1}{B}, Discard a card: Bloodsworn Squire gains indestructible until end of turn. Tap it. Then if there are four or more creature cards in your graveyard, transform Bloodsworn Squire. (Damage and effects that say \"destroy\" don't destroy it.)\n\nALTERNATE\n\nName:Bloodsworn Knight\nManaCost:no cost\nColors:black\nTypes:Creature Vampire Knight\nPT:*/*\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nA:AB$ Pump | Cost$ 1 B Discard<1/Card> | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn.\nSVar:DBTap:DB$ Tap | Defined$ Self | StackDescription$ SpellDescription | SpellDescription$ Tap it.\nSVar:AIPreference:DiscardCost$Creature\nOracle:Bloodsworn Knight's power and toughness are each equal to the number of creature cards in your graveyard.\\n{1}{B}, Discard a card: Bloodsworn Knight gains indestructible until end of turn. Tap it. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodsworn Squire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

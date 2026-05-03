@@ -191,6 +191,125 @@ const paperCardFromEntry = (entry: TokenEntry): PaperCard => {
   };
 };
 
+/**
+ * Fallback synthesizer: parse a Forge token-id string and build a PaperCard
+ * if the id follows Forge's naming convention. Returns null if the id is too
+ * exotic for the heuristic; caller falls back to the unknown-token error.
+ *
+ * Convention: `<colors>_<power>_<toughness>_<subtype1>[_<subtype2>...][_<keyword>...]`
+ *   - `<colors>` is one of `c` (colorless), `w/u/b/r/g`, multi-color combos
+ *     (`wb`, `bg`, `rg`, etc.), `m` (multi).
+ *   - `<power>` and `<toughness>` are integers or `x` for variable.
+ *   - Remaining underscore-separated tokens are subtypes; some are keywords
+ *     baked into known suffixes (`flying`, `hexproof`, `lifelink`, etc.).
+ *   - An `a` token between colors and stats means Artifact (e.g.
+ *     `c_1_1_a_servo`).
+ */
+const COLOR_LETTER_TO_COLOR: ReadonlyMap<string, Color> = new Map([
+  ["w", Color.White],
+  ["u", Color.Blue],
+  ["b", Color.Black],
+  ["r", Color.Red],
+  ["g", Color.Green],
+]);
+const KEYWORD_SUFFIXES: ReadonlySet<string> = new Set([
+  "flying",
+  "vigilance",
+  "trample",
+  "haste",
+  "lifelink",
+  "deathtouch",
+  "hexproof",
+  "menace",
+  "reach",
+  "first",
+  "double",
+  "shroud",
+  "indestructible",
+  "defender",
+  "tappump",
+]);
+
+const synthesizeFromId = (id: string): PaperCard | null => {
+  const parts = id.split("_");
+  if (parts.length < 4) return null;
+  const colorPart = parts[0];
+  const powerPart = parts[1];
+  const toughnessPart = parts[2];
+  if (!colorPart || !powerPart || !toughnessPart) return null;
+  // Validate color part: single char from c/w/u/b/r/g/m, or multi-char from same set.
+  const colors: Color[] = [];
+  if (colorPart === "c" || colorPart === "m") {
+    // colorless or multi (Forge sometimes uses m for multicolor) — leave empty
+  } else {
+    for (const ch of colorPart) {
+      const c = COLOR_LETTER_TO_COLOR.get(ch);
+      if (c === undefined) return null;
+      colors.push(c);
+    }
+  }
+  // Power/toughness validation.
+  if (!/^(\d+|x)$/i.test(powerPart) || !/^(\d+|x)$/i.test(toughnessPart)) return null;
+  const remaining = parts.slice(3);
+  // Optional 'a' marker for Artifact creatures.
+  let isArtifact = false;
+  if (remaining[0] === "a") {
+    isArtifact = true;
+    remaining.shift();
+  }
+  // Split remaining into subtypes vs keywords by suffix lookup. Anything not in
+  // the keyword set is a subtype.
+  const subtypes: string[] = [];
+  const keywordIds: unknown[] = [];
+  for (const tok of remaining) {
+    if (KEYWORD_SUFFIXES.has(tok)) {
+      const id = keywordIdFromDisplayName(
+        tok === "first"
+          ? "First Strike"
+          : tok === "double"
+            ? "Double Strike"
+            : tok.charAt(0).toUpperCase() + tok.slice(1),
+      );
+      if (id !== null) keywordIds.push(id);
+    } else {
+      subtypes.push(tok.charAt(0).toUpperCase() + tok.slice(1));
+    }
+  }
+  // Build the type line: optionally Artifact + Creature + subtypes.
+  const primaryTypes = isArtifact ? "Artifact Creature" : "Creature";
+  const subtypeStr = subtypes.join(" ");
+  const typeLineText = subtypeStr.length > 0 ? `${primaryTypes} — ${subtypeStr}` : primaryTypes;
+  const typeLine = TypeLine.parse(typeLineText);
+  const colorSet = ColorSet.of(...colors);
+  const name = subtypes.length > 0 ? `${subtypes.join(" ")} Token` : "Token";
+  const definition: CardDefinition = {
+    name,
+    oracle: "",
+    types: typeLine,
+    manaCost: null,
+    pt: {
+      power: powerPart === "x" ? "0" : powerPart,
+      toughness: toughnessPart === "x" ? "0" : toughnessPart,
+    },
+    colors: colorSet,
+    abilities: [],
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: keywordIds,
+    svars: new Map(),
+  };
+  return {
+    name,
+    edition: "TOK",
+    collectorNumber: "0",
+    language: "en",
+    foil: false,
+    flags: DEFAULT_PAPER_CARD_FLAGS,
+    definition,
+  };
+};
+
 // ---------------------------------------------------------------------------
 // TokenEffect
 // ---------------------------------------------------------------------------
@@ -239,12 +358,22 @@ export class TokenEffect extends SpellAbilityEffect {
       paperCards = [];
       for (const id of ids) {
         const entry = tokenDatabase.get(id);
-        if (entry === undefined) {
-          throw new Error(
-            `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
-          );
+        if (entry !== undefined) {
+          paperCards.push(paperCardFromEntry(entry));
+          continue;
         }
-        paperCards.push(paperCardFromEntry(entry));
+        // Fall back to parsing the id by Forge's naming convention:
+        //   <colors>_<power>_<toughness>_<subtype1>[_<subtype2>...][_<keyword>...]
+        // e.g. "w_1_1_soldier", "rg_2_2_human_warrior", "c_1_1_a_servo"
+        // ("a" prefix denotes Artifact), "u_3_2_reflection".
+        const synthesized = synthesizeFromId(id);
+        if (synthesized !== null) {
+          paperCards.push(synthesized);
+          continue;
+        }
+        throw new Error(
+          `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
+        );
       }
     } else {
       const power = hasParam(sa, "TokenPower") ? evaluateParamRaw(sa, "TokenPower") : "0";

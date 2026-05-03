@@ -1,0 +1,25 @@
+{
+  "id": "applied-aeronautics-corpus-m675",
+  "description": "M6 corpus — Applied Aeronautics; ETB-on-bf.",
+  "seed": 61649,
+  "cards": {
+    "Applied Aeronautics": "Name:Applied Aeronautics\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature gets +1/+0, gains flying, and becomes an artifact in addition to its other types.\nSVar:TrigCrank:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | KW$ Flying | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Artifact\nOracle:Whenever you crank Applied Aeronautics, until end of turn, target creature gets +1/+0, gains flying, and becomes an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Applied Aeronautics"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

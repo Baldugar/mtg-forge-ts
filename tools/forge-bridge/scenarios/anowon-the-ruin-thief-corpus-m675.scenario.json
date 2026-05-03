@@ -1,0 +1,25 @@
+{
+  "id": "anowon-the-ruin-thief-corpus-m675",
+  "description": "M6 corpus — Anowon, the Ruin Thief; ETB-on-bf.",
+  "seed": 61596,
+  "cards": {
+    "Anowon, the Ruin Thief": "Name:Anowon, the Ruin Thief\nManaCost:2 U B\nTypes:Legendary Creature Vampire Rogue\nPT:2/4\nS:Mode$ Continuous | Affected$ Rogue.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Rogues you control get +1/+1.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Rogue.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever one or more Rogues you control deal combat damage to a player, that player mills a card for each 1 damage dealt to them. If the player mills at least one creature card this way, you draw a card. (To mill a card, a player puts the top card of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ X | RememberMilled$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Creature | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Mill\nDeckNeeds:Type$Rogue\nOracle:Other Rogues you control get +1/+1.\\nWhenever one or more Rogues you control deal combat damage to a player, that player mills a card for each 1 damage dealt to them. If the player mills at least one creature card this way, you draw a card. (To mill a card, a player puts the top card of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anowon, the Ruin Thief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

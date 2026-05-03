@@ -1,0 +1,23 @@
+{
+  "id": "arachnogenesis-corpus-m675",
+  "description": "M6 corpus — Arachnogenesis; in-hand parse.",
+  "seed": 61670,
+  "cards": {
+    "Arachnogenesis": "Name:Arachnogenesis\nManaCost:2 G\nTypes:Instant\nA:SP$ Token | TokenAmount$ X | TokenScript$ g_1_2_spider_reach | TokenOwner$ You | SubAbility$ DBCurseNonSpiders | SpellDescription$ Create X 1/2 green Spider creature tokens with reach, where X is the number of creatures attacking you. Prevent all combat damage that would be dealt this turn by non-Spider creatures.\nSVar:DBCurseNonSpiders:DB$ Effect | ReplacementEffects$ Curse\nSVar:Curse:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidSource$ Creature.nonSpider | Description$ Prevent all combat damage that would be dealt this turn by non-Spider creatures.\nSVar:X:Count$Valid Creature.attackingYou\nOracle:Create X 1/2 green Spider creature tokens with reach, where X is the number of creatures attacking you. Prevent all combat damage that would be dealt this turn by non-Spider creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arachnogenesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

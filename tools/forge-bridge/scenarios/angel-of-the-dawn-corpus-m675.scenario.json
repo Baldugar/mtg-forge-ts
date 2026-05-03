@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-the-dawn-corpus-m675",
+  "description": "M6 corpus — Angel of the Dawn; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Angel of the Dawn": "Name:Angel of the Dawn\nManaCost:4 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 and gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance\nOracle:Flying\\nWhen Angel of the Dawn enters, creatures you control get +1/+1 and gain vigilance until end of turn.\nSVar:PlayMain1:TRUE\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of the Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

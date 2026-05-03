@@ -1,0 +1,23 @@
+{
+  "id": "behold-the-beyond-corpus-m675",
+  "description": "M6 corpus — Behold the Beyond; in-hand parse.",
+  "seed": 62575,
+  "cards": {
+    "Behold the Beyond": "Name:Behold the Beyond\nManaCost:5 B B\nTypes:Sorcery\nA:SP$ Discard | Mode$ Hand | SubAbility$ DBSearch | SpellDescription$ Discard your hand. Search your library for three cards, put them into your hand, then shuffle.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Mandatory$ True | ChangeType$ Card | ChangeNum$ 3\nAI:RemoveDeck:All\nOracle:Discard your hand. Search your library for three cards, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Behold the Beyond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

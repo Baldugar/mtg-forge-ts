@@ -1,0 +1,23 @@
+{
+  "id": "blind-fury-corpus-m675",
+  "description": "M6 corpus — Blind Fury; in-hand parse.",
+  "seed": 62867,
+  "cards": {
+    "Blind Fury": "Name:Blind Fury\nManaCost:2 R R\nTypes:Instant\nA:SP$ AnimateAll | ValidCards$ Creature | RemoveKeywords$ Trample | SubAbility$ BlindFuryEffect | SpellDescription$ All creatures lose trample until end of turn. If a creature would deal combat damage to a creature this turn, it deals double that damage to that creature instead.\nSVar:BlindFuryEffect:DB$ Effect | ReplacementEffects$ FuryCombatEvent\nSVar:FuryCombatEvent:Event$ DamageDone | ValidSource$ Creature | ValidTarget$ Creature | ReplaceWith$ DmgTwice | IsCombat$ True | Description$ If a creature would deal combat damage to a creature this turn, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:All\nOracle:All creatures lose trample until end of turn. If a creature would deal combat damage to a creature this turn, it deals double that damage to that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blind Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

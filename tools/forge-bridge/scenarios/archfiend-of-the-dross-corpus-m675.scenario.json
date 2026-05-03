@@ -1,0 +1,23 @@
+{
+  "id": "archfiend-of-the-dross-corpus-m675",
+  "description": "M6 corpus — Archfiend of the Dross; in-hand parse.",
+  "seed": 61752,
+  "cards": {
+    "Archfiend of the Dross": "Name:Archfiend of the Dross\nManaCost:2 B B\nTypes:Creature Phyrexian Demon\nPT:6/6\nK:Flying\nK:etbCounter:OIL:4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCtr | TriggerDescription$ At the beginning of your upkeep, remove an oil counter from CARDNAME. Then if it has no oil counters on it, you lose the game.\nSVar:TrigRemoveCtr:DB$ RemoveCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1 | SubAbility$ LoseGame\nSVar:LoseGame:DB$ LosesGame | Defined$ You | ConditionDefined$ Self | ConditionPresent$ Card.counters_EQ0_OIL\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature an opponent controls dies, its controller loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Flying\\nArchfiend of the Dross enters with four oil counters on it.\\nAt the beginning of your upkeep, remove an oil counter from Archfiend of the Dross. Then if it has no oil counters on it, you lose the game.\\nWhenever a creature an opponent controls dies, its controller loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archfiend of the Dross"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

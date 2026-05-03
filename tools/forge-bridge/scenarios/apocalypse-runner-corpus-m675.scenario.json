@@ -1,0 +1,23 @@
+{
+  "id": "apocalypse-runner-corpus-m675",
+  "description": "M6 corpus — Apocalypse Runner; in-hand parse.",
+  "seed": 61634,
+  "cards": {
+    "Apocalypse Runner": "Name:Apocalypse Runner\nManaCost:2 B R\nTypes:Artifact Vehicle\nPT:6/5\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature.powerLE2+YouCtrl | TgtPrompt$ Select target creature you control with power 2 or less | KW$ Lifelink | SubAbility$ DBUnblockable | SpellDescription$ Target creature you control with power 2 or less gains lifelink until end of turn and can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Crew:3\nOracle:{T}: Target creature you control with power 2 or less gains lifelink until end of turn and can't be blocked this turn.\\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apocalypse Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

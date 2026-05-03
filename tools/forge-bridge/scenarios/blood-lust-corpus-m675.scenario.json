@@ -1,0 +1,23 @@
+{
+  "id": "blood-lust-corpus-m675",
+  "description": "M6 corpus — Blood Lust; in-hand parse.",
+  "seed": 62935,
+  "cards": {
+    "Blood Lust": "Name:Blood Lust\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | NumAtt$ +4 | NumDef$ -X | ValidTgts$ Creature | SpellDescription$ If target creature has toughness 5 or greater, it gets +4/-4 until end of turn. Otherwise, it gets +4/-X until end of turn, where X is its toughness minus 1.\nSVar:X:Count$Compare T GE4.4.T\nSVar:T:Targeted$CardToughness/Minus.1\nOracle:If target creature has toughness 5 or greater, it gets +4/-4 until end of turn. Otherwise, it gets +4/-X until end of turn, where X is its toughness minus 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Lust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

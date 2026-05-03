@@ -1,0 +1,23 @@
+{
+  "id": "boseiju-reaches-skyward-corpus-m675",
+  "description": "M6 corpus — Boseiju Reaches Skyward; in-hand parse.",
+  "seed": 63205,
+  "cards": {
+    "Boseiju Reaches Skyward": "Name:Boseiju Reaches Skyward\nManaCost:3 G\nTypes:Enchantment Saga\nK:Chapter:3:DBSearch,DBPut,DBTransform\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Forest.Basic | ChangeNum$ 2 | SpellDescription$ Search your library for up to two basic Forest cards, reveal them, put them into your hand, then shuffle.\nSVar:DBPut:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0 | ValidTgts$ Land.YouOwn | TgtPrompt$ Select up to one target land card | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Put up to one target land card from your graveyard on top of your library.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Search your library for up to two basic Forest cards, reveal them, put them into your hand, then shuffle.\\nII — Put up to one target land card from your graveyard on top of your library.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Branch of Boseiju\nManaCost:no cost\nColors:green\nTypes:Enchantment Creature Plant\nPT:0/0\nK:Reach\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each land you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:Reach\\nBranch of Boseiju gets +1/+1 for each land you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boseiju Reaches Skyward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

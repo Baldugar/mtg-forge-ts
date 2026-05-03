@@ -1,0 +1,23 @@
+{
+  "id": "battle-menu-corpus-m675",
+  "description": "M6 corpus — Battle Menu; in-hand parse.",
+  "seed": 62475,
+  "cards": {
+    "Battle Menu": "Name:Battle Menu\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBAttack,DBAbility,DBMagic,DBItem | Defined$ You\nSVar:DBAttack:DB$ Token | TokenScript$ w_2_2_knight | SpellDescription$ Attack — Create a 2/2 white Knight creature token.\nSVar:DBAbility:DB$ Pump | ValidTgts$ Creature | NumDef$ +4 | SpellDescription$ Ability — Target creature gets +0/+4 until end of turn.\nSVar:DBMagic:DB$ Destroy | ValidTgts$ Creature.powerGE4 | TgtPrompt$ Select target creature with power 4 or greater | SpellDescription$ Magic — Destroy target creature with power 4 or greater.\nSVar:DBItem:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ Item — You gain 4 life.\nDeckHas:Ability$Token\nOracle:Choose one —\\n• Attack — Create a 2/2 white Knight creature token.\\n• Ability — Target creature gets +0/+4 until end of turn.\\n• Magic — Destroy target creature with power 4 or greater.\\n• Item — You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battle Menu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

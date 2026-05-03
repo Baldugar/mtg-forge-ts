@@ -1,0 +1,25 @@
+{
+  "id": "bellowing-aegisaur-corpus-m675",
+  "description": "M6 corpus — Bellowing Aegisaur; ETB-on-bf.",
+  "seed": 62592,
+  "cards": {
+    "Bellowing Aegisaur": "Name:Bellowing Aegisaur\nManaCost:5 W\nTypes:Creature Dinosaur\nPT:3/5\nT:Mode$ DamageDoneOnce | Execute$ PutCounterAll | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, put a +1/+1 counter on each other creature you control.\nSVar:PutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.StrictlyOther+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each other creature you control.\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Enrage — Whenever Bellowing Aegisaur is dealt damage, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bellowing Aegisaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

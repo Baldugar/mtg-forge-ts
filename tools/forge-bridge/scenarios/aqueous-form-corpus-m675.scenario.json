@@ -1,0 +1,23 @@
+{
+  "id": "aqueous-form-corpus-m675",
+  "description": "M6 corpus — Aqueous Form; in-hand parse.",
+  "seed": 61662,
+  "cards": {
+    "Aqueous Form": "Name:Aqueous Form\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | Description$ Enchanted creature can't be blocked.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ DBScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, scry 1.\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nEnchanted creature can't be blocked.\\nWhenever enchanted creature attacks, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aqueous Form"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

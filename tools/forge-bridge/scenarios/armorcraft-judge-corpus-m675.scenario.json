@@ -1,0 +1,23 @@
+{
+  "id": "armorcraft-judge-corpus-m675",
+  "description": "M6 corpus — Armorcraft Judge; in-hand parse.",
+  "seed": 61851,
+  "cards": {
+    "Armorcraft Judge": "Name:Armorcraft Judge\nManaCost:3 G\nTypes:Creature Elf Artificer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each creature you control with a +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$Valid Creature.YouCtrl+counters_GE1_P1P1\nDeckHints:Ability$Counters\nOracle:When Armorcraft Judge enters, draw a card for each creature you control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armorcraft Judge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

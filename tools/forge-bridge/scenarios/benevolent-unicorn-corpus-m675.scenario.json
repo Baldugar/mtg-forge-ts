@@ -1,0 +1,25 @@
+{
+  "id": "benevolent-unicorn-corpus-m675",
+  "description": "M6 corpus — Benevolent Unicorn; ETB-on-bf.",
+  "seed": 62633,
+  "cards": {
+    "Benevolent Unicorn": "Name:Benevolent Unicorn\nManaCost:1 W\nTypes:Creature Unicorn\nPT:1/2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Spell | ValidTarget$ Permanent,Player | ReplaceWith$ DmgMinus1 | Description$ If a spell would deal damage to a permanent or player, it deals that much damage minus 1 to that permanent or player instead.\nSVar:DmgMinus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Minus.1\nOracle:If a spell would deal damage to a permanent or player, it deals that much damage minus 1 to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Benevolent Unicorn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

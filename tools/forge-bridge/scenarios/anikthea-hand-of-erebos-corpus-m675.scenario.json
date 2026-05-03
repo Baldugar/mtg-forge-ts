@@ -1,0 +1,23 @@
+{
+  "id": "anikthea-hand-of-erebos-corpus-m675",
+  "description": "M6 corpus — Anikthea, Hand of Erebos; in-hand parse.",
+  "seed": 61564,
+  "cards": {
+    "Anikthea, Hand of Erebos": "Name:Anikthea, Hand of Erebos\nManaCost:2 W B G\nTypes:Legendary Enchantment Creature Demigod\nPT:4/4\nK:Menace\nS:Mode$ Continuous | Affected$ Creature.Other+Enchantment+YouCtrl | AddKeyword$ Menace | Description$ Other enchantment creatures you control have menace.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever NICKNAME enters or attacks, exile up to one target non-Aura enchantment card from your graveyard. Create a token that's a copy of that card, except it's a 3/3 black Zombie creature in addition to its other types.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, exile up to one target non-Aura enchantment card from your graveyard. Create a token that's a copy of that card, except it's a 3/3 black Zombie creature in addition to its other types.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Enchantment.nonAura+YouCtrl | Origin$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | Destination$ Exile | TgtPrompt$ Select up to one target non-Aura enchantment card from your graveyard | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 3 | SetToughness$ 3 | AddTypes$ Creature & Zombie | SetColor$ Black | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Graveyard\nDeckHints:Ability$Graveyard|Mill\nDeckNeeds:Type$Enchantment\nOracle:Menace\\nOther enchantment creatures you control have menace.\\nWhenever Anikthea enters or attacks, exile up to one target non-Aura enchantment card from your graveyard. Create a token that's a copy of that card, except it's a 3/3 black Zombie creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anikthea, Hand of Erebos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

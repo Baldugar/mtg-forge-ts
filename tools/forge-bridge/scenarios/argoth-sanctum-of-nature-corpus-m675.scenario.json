@@ -1,0 +1,23 @@
+{
+  "id": "argoth-sanctum-of-nature-corpus-m675",
+  "description": "M6 corpus — Argoth, Sanctum of Nature; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Argoth, Sanctum of Nature": "Name:Argoth, Sanctum of Nature\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary green creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl+Green | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Token | Cost$ 2 G G T | TokenScript$ g_2_2_bear | SorcerySpeed$ True | SubAbility$ DBMill | SpellDescription$ Create a 2/2 green Bear creature token, then mill three cards. Activate only as a sorcery.\nSVar:DBMill:DB$ Mill | NumCards$ 3 | Defined$ You\nDeckHas:Ability$Token & Type$Bear\nDeckNeeds:Name$Titania, Voice of Gaea\nMeldPair:Titania, Voice of Gaea\nAlternateMode:Meld\nOracle:Argoth, Sanctum of Nature enters tapped unless you control a legendary green creature.\\n{T}: Add {G}.\\n{2}{G}{G}, {T}:Create a 2/2 green Bear creature token, then mill three cards. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argoth, Sanctum of Nature"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

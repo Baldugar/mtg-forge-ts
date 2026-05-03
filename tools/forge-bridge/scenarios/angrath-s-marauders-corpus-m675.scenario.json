@@ -1,0 +1,25 @@
+{
+  "id": "angrath-s-marauders-corpus-m675",
+  "description": "M6 corpus — Angrath's Marauders; ETB-on-bf.",
+  "seed": 61557,
+  "cards": {
+    "Angrath's Marauders": "Name:Angrath's Marauders\nManaCost:5 R R\nTypes:Creature Human Pirate\nPT:4/4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a source you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:If a source you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Angrath's Marauders"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

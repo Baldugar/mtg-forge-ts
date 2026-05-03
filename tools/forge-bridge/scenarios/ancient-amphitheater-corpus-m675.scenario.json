@@ -1,0 +1,25 @@
+{
+  "id": "ancient-amphitheater-corpus-m675",
+  "description": "M6 corpus — Ancient Amphitheater; ETB-on-bf.",
+  "seed": 61464,
+  "cards": {
+    "Ancient Amphitheater": "Name:Ancient Amphitheater\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Giant card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Giant> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:As Ancient Amphitheater enters, you may reveal a Giant card from your hand. If you don't, Ancient Amphitheater enters tapped.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ancient Amphitheater"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

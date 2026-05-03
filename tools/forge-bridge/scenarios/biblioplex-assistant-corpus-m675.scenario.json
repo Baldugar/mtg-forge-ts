@@ -1,0 +1,23 @@
+{
+  "id": "biblioplex-assistant-corpus-m675",
+  "description": "M6 corpus — Biblioplex Assistant; in-hand parse.",
+  "seed": 62674,
+  "cards": {
+    "Biblioplex Assistant": "Name:Biblioplex Assistant\nManaCost:4\nTypes:Artifact Creature Gargoyle\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put up to one target instant or sorcery card from your graveyard on top of your library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtPrompt$ Select target instant or sorcery card from your graveyard | TargetMin$ 0 | TargetMax$ 1\nOracle:Flying\\nWhen Biblioplex Assistant enters, put up to one target instant or sorcery card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biblioplex Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ash-zealot-corpus-m675",
+  "description": "M6 corpus — Ash Zealot; ETB-on-bf.",
+  "seed": 61927,
+  "cards": {
+    "Ash Zealot": "Name:Ash Zealot\nManaCost:R R\nTypes:Creature Human Warrior\nPT:2/2\nK:First Strike\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromGraveyard | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell from a graveyard, CARDNAME deals 3 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 3\nOracle:First strike, haste\\nWhenever a player casts a spell from a graveyard, Ash Zealot deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ash Zealot"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "anya-merciless-angel-corpus-m675",
+  "description": "M6 corpus — Anya, Merciless Angel; ETB-on-bf.",
+  "seed": 61615,
+  "cards": {
+    "Anya, Merciless Angel": "Name:Anya, Merciless Angel\nManaCost:3 R W\nTypes:Legendary Creature Angel\nPT:4/4\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +3/+3 for each opponent whose life total is less than half their starting life total.\nSVar:X:SVar$Y/Times.3\nSVar:Y:PlayerCountOpponents$ConditionLTZ LifeTotal\nSVar:Z:PlayerCountDefinedPlayer.PlayerUID_RelativePlayerUID$StartingLife/HalfDown\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | CheckSVar$ Y | Description$ As long as an opponent's life total is less than half their starting life total, NICKNAME has indestructible.\nOracle:Flying\\nAnya, Merciless Angel gets +3/+3 for each opponent whose life total is less than half their starting life total.\\nAs long as an opponent's life total is less than half their starting life total, Anya has indestructible.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anya, Merciless Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

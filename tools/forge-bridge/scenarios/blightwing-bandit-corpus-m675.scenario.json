@@ -1,0 +1,25 @@
+{
+  "id": "blightwing-bandit-corpus-m675",
+  "description": "M6 corpus — Blightwing Bandit; ETB-on-bf.",
+  "seed": 62864,
+  "cards": {
+    "Blightwing Bandit": "Name:Blightwing Bandit\nManaCost:3 B\nTypes:Creature Faerie Rogue\nPT:2/2\nK:Flying\nK:Deathtouch\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigDig | TriggerDescription$ Whenever you cast your first spell during each opponent's turn, look at the top card of that player's library, then exile it face down. You may play that card for as long as it remains exiled, and mana of any type can be spent to cast it.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Defined$ ActivePlayer | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card for as long as it remains exiled, and mana of any type can be spent to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying, deathtouch\\nWhenever you cast your first spell during each opponent's turn, look at the top card of that player's library, then exile it face down. You may play that card for as long as it remains exiled, and mana of any type can be spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Blightwing Bandit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

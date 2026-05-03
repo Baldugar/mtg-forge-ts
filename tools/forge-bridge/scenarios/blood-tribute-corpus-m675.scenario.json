@@ -1,0 +1,23 @@
+{
+  "id": "blood-tribute-corpus-m675",
+  "description": "M6 corpus — Blood Tribute; in-hand parse.",
+  "seed": 62950,
+  "cards": {
+    "Blood Tribute": "Name:Blood Tribute\nManaCost:4 B B\nTypes:Sorcery\nK:Kicker:tapXType<1/Vampire>\nA:SP$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses half their life, rounded up. If this spell was kicked, you gain life equal to the life lost this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | Condition$ Kicked | ConditionDescription$ If it was kicked,\nSVar:X:TargetedPlayer$LifeTotal/HalfUp\n# This SVar will be overridden by AF LoseLife\nSVar:AFLifeLost:TargetedPlayer$LifeTotal/HalfUp\nDeckNeeds:Type$Vampire\nOracle:Kicker—Tap an untapped Vampire you control. (You may tap a Vampire you control in addition to any other costs as you cast this spell.)\\nTarget opponent loses half their life, rounded up. If this spell was kicked, you gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Tribute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "brine-seer-corpus-m675",
+  "description": "M6 corpus — Brine Seer; ETB-on-bf.",
+  "seed": 63390,
+  "cards": {
+    "Brine Seer": "Name:Brine Seer\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Reveal | Cost$ 2 U T | Defined$ You | RevealValid$ Card.Blue | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBCounter | SpellDescription$ Reveal any number of blue cards in your hand. Counter target spell unless its controller pays {1} for each card revealed this way.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:{2}{U}, {T}: Reveal any number of blue cards in your hand. Counter target spell unless its controller pays {1} for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brine Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

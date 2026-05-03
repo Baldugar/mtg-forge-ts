@@ -1,0 +1,25 @@
+{
+  "id": "barbed-foliage-corpus-m675",
+  "description": "M6 corpus — Barbed Foliage; ETB-on-bf.",
+  "seed": 62364,
+  "cards": {
+    "Barbed Foliage": "Name:Barbed Foliage\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ You | Execute$ TrigDebuff | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature attacks you, it loses flanking until end of turn.\nSVar:TrigDebuff:DB$ Debuff | Defined$ TriggeredAttackerLKICopy | Keywords$ Flanking\nT:Mode$ Attacks | ValidCard$ Creature.withoutFlying | Attacked$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature without flying attacks you, CARDNAME deals 1 damage to it.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredAttackerLKICopy\nOracle:Whenever a creature attacks you, it loses flanking until end of turn.\\nWhenever a creature without flying attacks you, Barbed Foliage deals 1 damage to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barbed Foliage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

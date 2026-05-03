@@ -1,0 +1,23 @@
+{
+  "id": "artifact-possession-corpus-m675",
+  "description": "M6 corpus — Artifact Possession; in-hand parse.",
+  "seed": 61899,
+  "cards": {
+    "Artifact Possession": "Name:Artifact Possession\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Artifact:artifact\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted artifact becomes tapped or a player activates an ability of enchanted artifact without {T} in its activation cost, CARDNAME deals 2 damage to that artifact's controller.\nT:Mode$ AbilityCast | ValidCard$ Card.AttachedBy | ValidSA$ Activated.!hasTapCost | TriggerZones$ Battlefield | Execute$ TrigDamage | Secondary$ True | TriggerDescription$ Whenever an artifact becomes tapped or a player activates an ability of enchanted artifact without {T} in its activation cost, CARDNAME deals 2 damage to that artifact's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardController | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Enchant artifact\\nWhenever enchanted artifact becomes tapped or a player activates an ability of enchanted artifact without {T} in its activation cost, Artifact Possession deals 2 damage to that artifact's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artifact Possession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

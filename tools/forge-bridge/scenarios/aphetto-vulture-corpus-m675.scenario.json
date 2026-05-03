@@ -1,0 +1,23 @@
+{
+  "id": "aphetto-vulture-corpus-m675",
+  "description": "M6 corpus — Aphetto Vulture; in-hand parse.",
+  "seed": 61628,
+  "cards": {
+    "Aphetto Vulture": "Name:Aphetto Vulture\nManaCost:4 B B\nTypes:Creature Zombie Bird\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, you may put target Zombie card from your graveyard on top of your library.\nSVar:TrigChange:DB$ ChangeZone | TgtPrompt$ Choose target Zombie card in your graveyard | ValidTgts$ Zombie | TargetsWithDefinedController$ TriggeredCardController | Origin$ Graveyard | Destination$ Library | SpellDescription$ Put target Zombie card from your graveyard on top of your library.\nOracle:Flying\\nWhen Aphetto Vulture dies, you may put target Zombie card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aphetto Vulture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

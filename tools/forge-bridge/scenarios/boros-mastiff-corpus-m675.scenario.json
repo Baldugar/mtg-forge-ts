@@ -1,0 +1,25 @@
+{
+  "id": "boros-mastiff-corpus-m675",
+  "description": "M6 corpus — Boros Mastiff; ETB-on-bf.",
+  "seed": 63192,
+  "cards": {
+    "Boros Mastiff": "Name:Boros Mastiff\nManaCost:1 W\nTypes:Creature Dog\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionPump | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME gets lifelink until end of turn.\nSVar:TrigBattalionPump:DB$ Pump | Defined$ Self | KW$ Lifelink\nOracle:Battalion — Whenever Boros Mastiff and at least two other creatures attack, Boros Mastiff gains lifelink until end of turn. (Damage dealt by a creature with lifelink also causes its controller to gain that much life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Boros Mastiff"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

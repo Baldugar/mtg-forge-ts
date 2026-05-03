@@ -1,0 +1,23 @@
+{
+  "id": "armed-response-corpus-m675",
+  "description": "M6 corpus — Armed Response; in-hand parse.",
+  "seed": 61843,
+  "cards": {
+    "Armed Response": "Name:Armed Response\nManaCost:2 W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target attacking creature equal to the number of Equipment you control.\nSVar:X:Count$Valid Equipment.YouCtrl\nAI:RemoveDeck:Random\nOracle:Armed Response deals damage to target attacking creature equal to the number of Equipment you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Armed Response"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

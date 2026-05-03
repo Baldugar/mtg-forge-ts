@@ -1,0 +1,25 @@
+{
+  "id": "bladewing-deathless-tyrant-corpus-m675",
+  "description": "M6 corpus — Bladewing, Deathless Tyrant; ETB-on-bf.",
+  "seed": 62783,
+  "cards": {
+    "Bladewing, Deathless Tyrant": "Name:Bladewing, Deathless Tyrant\nManaCost:5 B R\nTypes:Legendary Creature Dragon Skeleton\nPT:6/6\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, for each creature card in your graveyard, create a 2/2 black Zombie Knight creature token with menace.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie_knight_menace | TokenAmount$ X | TokenOwner$ You\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Token & Type$Zombie|Knight\nDeckHints:Ability$Graveyard\nOracle:Flying, haste\\nWhenever Bladewing, Deathless Tyrant deals combat damage to a player or planeswalker, for each creature card in your graveyard, create a 2/2 black Zombie Knight creature token with menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bladewing, Deathless Tyrant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

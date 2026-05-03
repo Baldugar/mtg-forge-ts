@@ -1,0 +1,25 @@
+{
+  "id": "bloodcurdler-corpus-m675",
+  "description": "M6 corpus — Bloodcurdler; ETB-on-bf.",
+  "seed": 62959,
+  "cards": {
+    "Bloodcurdler": "Name:Bloodcurdler\nManaCost:1 B\nTypes:Creature Horror\nPT:1/1\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill a card.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ EndScream | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +1/+1 and has \"At the beginning of your end step, exile two cards from your graveyard.\"\nSVar:EndScream:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ BloodExile | Secondary$ True | TriggerDescription$ At the beginning of your end step, exile two cards from your graveyard.\nSVar:BloodExile:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card.YouCtrl | ChangeNum$ 2 | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Exile\nAI:RemoveDeck:Random\nDeckHints:Ability$Graveyard\nOracle:Flying\\nAt the beginning of your upkeep, mill a card.\\nThreshold — As long as there are seven or more cards in your graveyard, Bloodcurdler gets +1/+1 and has \"At the beginning of your end step, exile two cards from your graveyard.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodcurdler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ancient-stone-idol-corpus-m675",
+  "description": "M6 corpus — Ancient Stone Idol; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Ancient Stone Idol": "Name:Ancient Stone Idol\nManaCost:10\nTypes:Artifact Creature Golem\nPT:12/12\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each attacking creature.\nSVar:X:Count$Valid Creature.attacking\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 6/12 colorless Construct artifact creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ c_6_12_a_construct_trample | TokenOwner$ You\nSVar:SacMe:4\nOracle:Flash\\nThis spell costs {1} less to cast for each attacking creature.\\nTrample\\nWhen Ancient Stone Idol dies, create a 6/12 colorless Construct artifact creature token with trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Stone Idol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

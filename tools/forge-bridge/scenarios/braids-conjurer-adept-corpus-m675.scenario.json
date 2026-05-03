@@ -1,0 +1,25 @@
+{
+  "id": "braids-conjurer-adept-corpus-m675",
+  "description": "M6 corpus — Braids, Conjurer Adept; ETB-on-bf.",
+  "seed": 63252,
+  "cards": {
+    "Braids, Conjurer Adept": "Name:Braids, Conjurer Adept\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of each player's upkeep, that player may put an artifact, creature, or land card from their hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature,Artifact,Land | DefinedPlayer$ TriggeredPlayer | ChangeNum$ 1\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player may put an artifact, creature, or land card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Braids, Conjurer Adept"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blue-dragon-corpus-m675",
+  "description": "M6 corpus — Blue Dragon; in-hand parse.",
+  "seed": 63023,
+  "cards": {
+    "Blue Dragon": "Name:Blue Dragon\nManaCost:5 U U\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Lightning Breath — When CARDNAME enters, until your next turn, target creature an opponent controls gets -3/-0, up to one other target creature gets -2/-0, and up to one other target creature gets -1/-0.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls (-3/-0) | NumAtt$ -3 | Duration$ UntilYourNextTurn | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Choose up to one other target creature (-2/-0) | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ -2 | TargetUnique$ True | Duration$ UntilYourNextTurn | SubAbility$ DBPump2\nSVar:DBPump2:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Choose up to one other target creature (-1/-0) | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ -1 | TargetUnique$ True | Duration$ UntilYourNextTurn\nSVar:PlayMain1:TRUE\nOracle:Flying\\nLightning Breath — When Blue Dragon enters, until your next turn, target creature an opponent controls gets -3/-0, up to one other target creature gets -2/-0, and up to one other target creature gets -1/-0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blue Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

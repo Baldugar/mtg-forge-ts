@@ -1,0 +1,25 @@
+{
+  "id": "archwing-dragon-corpus-m675",
+  "description": "M6 corpus — Archwing Dragon; ETB-on-bf.",
+  "seed": 61778,
+  "cards": {
+    "Archwing Dragon": "Name:Archwing Dragon\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:EndOfTurnLeavePlay:True\nOracle:Flying, haste\\nAt the beginning of the end step, return Archwing Dragon to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archwing Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

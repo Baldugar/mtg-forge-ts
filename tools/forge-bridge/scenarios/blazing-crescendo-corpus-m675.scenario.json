@@ -1,0 +1,23 @@
+{
+  "id": "blazing-crescendo-corpus-m675",
+  "description": "M6 corpus — Blazing Crescendo; in-hand parse.",
+  "seed": 62806,
+  "cards": {
+    "Blazing Crescendo": "Name:Blazing Crescendo\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +1 | SubAbility$ DBExile | SpellDescription$ Target creature gets +3/+1 until end of turn.,,,,,,\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. Until the end of your next turn, you may play that card.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | Duration$ UntilTheEndOfYourNextTurn | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target creature gets +3/+1 until end of turn.\\nExile the top card of your library. Until the end of your next turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blazing Crescendo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

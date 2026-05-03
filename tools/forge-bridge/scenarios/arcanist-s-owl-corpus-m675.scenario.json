@@ -1,0 +1,23 @@
+{
+  "id": "arcanist-s-owl-corpus-m675",
+  "description": "M6 corpus — Arcanist's Owl; in-hand parse.",
+  "seed": 61723,
+  "cards": {
+    "Arcanist's Owl": "Name:Arcanist's Owl\nManaCost:WU WU WU WU\nTypes:Artifact Creature Bird\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal an artifact or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Artifact,Enchantment | RestRandomOrder$ True\nOracle:Flying\\nWhen Arcanist's Owl enters, look at the top four cards of your library. You may reveal an artifact or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcanist's Owl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

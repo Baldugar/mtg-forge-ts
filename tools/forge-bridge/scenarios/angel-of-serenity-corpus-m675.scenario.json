@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-serenity-corpus-m675",
+  "description": "M6 corpus — Angel of Serenity; in-hand parse.",
+  "seed": 61506,
+  "cards": {
+    "Angel of Serenity": "Name:Angel of Serenity\nManaCost:4 W W W\nTypes:Creature Angel\nPT:5/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile up to three other target creatures from the battlefield and/or creature cards from graveyards.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to their owners' hands.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | IsCurse$ True | ValidTgts$ Creature.Other | TgtPrompt$ Choose another target creature | RememberChanged$ True | Origin$ Battlefield,Graveyard | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Angel of Serenity enters, you may exile up to three other target creatures from the battlefield and/or creature cards from graveyards.\\nWhen Angel of Serenity leaves the battlefield, return the exiled cards to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Serenity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

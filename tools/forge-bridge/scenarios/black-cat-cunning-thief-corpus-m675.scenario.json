@@ -1,0 +1,23 @@
+{
+  "id": "black-cat-cunning-thief-corpus-m675",
+  "description": "M6 corpus — Black Cat, Cunning Thief; in-hand parse.",
+  "seed": 62736,
+  "cards": {
+    "Black Cat, Cunning Thief": "Name:Black Cat, Cunning Thief\nVariant:UniversesWithin:FlavorName:Wrench, Speedway Saboteur\nManaCost:3 B B\nTypes:Legendary Creature Human Rogue Villain\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When NICKNAME enters, look at the top nine cards of target opponent's library, exile two of them face down, then put the rest on the bottom of their library in a random order. You may play the exiled cards for as long as they remain exiled. Mana of any type can be spent to cast spells this way.\nSVar:TrigDig:DB$ Dig | ValidTgts$ Opponent | DigNum$ 9 | ChangeNum$ 2 | DestinationZone$ Exile | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | ExileFaceDown$ True | WithMayLook$ True | ChangeValid$ Card | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards for as long as they remain exiled. Mana of any type can be spent to cast spells this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nOracle:When Black Cat enters, look at the top nine cards of target opponent's library, exile two of them face down, then put the rest on the bottom of their library in a random order. You may play the exiled cards for as long as they remain exiled. Mana of any type can be spent to cast spells this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Cat, Cunning Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

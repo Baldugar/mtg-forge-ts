@@ -1,0 +1,23 @@
+{
+  "id": "blot-out-corpus-m675",
+  "description": "M6 corpus — Blot Out; in-hand parse.",
+  "seed": 63019,
+  "cards": {
+    "Blot Out": "Name:Blot Out\nManaCost:2 B\nTypes:Instant\nA:SP$ ChooseCard | ValidTgts$ Opponent | Choices$ Creature.TargetedPlayerCtrl+cmcEQX,Planeswalker.TargetedPlayerCtrl+cmcEQX | ChoiceTitle$ Choose a creature or planeswalker with the highest mana value among creatures and planeswalkers you control | Mandatory$ True | SubAbility$ DBExile | StackDescription$ REP Target opponent_{p:Targeted} | SpellDescription$ Target opponent exiles a creature or planeswalker they control with the greatest mana value among creatures and planeswalkers they control.\nSVar:DBExile:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Exile | StackDescription$ None\nSVar:X:Count$Valid Creature.TargetedPlayerCtrl,Planeswalker.TargetedPlayerCtrl$GreatestCardManaCost\nOracle:Target opponent exiles a creature or planeswalker they control with the greatest mana value among creatures and planeswalkers they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blot Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

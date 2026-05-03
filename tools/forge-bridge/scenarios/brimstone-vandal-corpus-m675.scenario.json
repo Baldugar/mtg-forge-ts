@@ -1,0 +1,25 @@
+{
+  "id": "brimstone-vandal-corpus-m675",
+  "description": "M6 corpus — Brimstone Vandal; ETB-on-bf.",
+  "seed": 63383,
+  "cards": {
+    "Brimstone Vandal": "Name:Brimstone Vandal\nManaCost:2 R\nTypes:Creature Devil\nPT:2/3\nK:Menace\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nIf it's neither day nor night, it becomes day as Brimstone Vandal enters.\\nWhenever day becomes night or night becomes day, Brimstone Vandal deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brimstone Vandal"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "brain-gorgers-corpus-m675",
+  "description": "M6 corpus — Brain Gorgers; ETB-on-bf.",
+  "seed": 63256,
+  "cards": {
+    "Brain Gorgers": "Name:Brain Gorgers\nManaCost:3 B\nTypes:Creature Zombie\nPT:4/2\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When you cast CARDNAME, any player may sacrifice a creature. If a player does, counter CARDNAME.\nSVar:TrigCounter:DB$ Counter | UnlessCost$ Sac<1/Creature> | Defined$ TriggeredSpellAbility | UnlessPayer$ Player | UnlessSwitched$ True\nK:Madness:1 B\nOracle:When you cast this spell, any player may sacrifice a creature. If a player does, counter Brain Gorgers.\\nMadness {1}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brain Gorgers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

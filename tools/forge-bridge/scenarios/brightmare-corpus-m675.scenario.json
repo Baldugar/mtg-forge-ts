@@ -1,0 +1,23 @@
+{
+  "id": "brightmare-corpus-m675",
+  "description": "M6 corpus — Brightmare; in-hand parse.",
+  "seed": 63368,
+  "cards": {
+    "Brightmare": "Name:Brightmare\nManaCost:2 W\nTypes:Creature Unicorn\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap up to one target creature. You gain life equal to that creature's power.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardPower\nDeckHas:Ability$LifeGain\nOracle:When Brightmare enters, tap up to one target creature. You gain life equal to that creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

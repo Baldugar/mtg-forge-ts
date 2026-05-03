@@ -1,0 +1,25 @@
+{
+  "id": "anrakyr-the-traveller-corpus-m675",
+  "description": "M6 corpus — Anrakyr the Traveller; ETB-on-bf.",
+  "seed": 61597,
+  "cards": {
+    "Anrakyr the Traveller": "Name:Anrakyr the Traveller\nManaCost:4 B\nTypes:Legendary Artifact Creature Necron\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCast | OptionalDecider$ You | TriggerDescription$ Lord of the Pyrrhian Legions — Whenever CARDNAME attacks, you may cast an artifact spell from your hand or graveyard by paying life equal to its mana value rather than paying its mana cost.\nSVar:TrigCast:DB$ Play | ValidZone$ Hand,Graveyard | Valid$ Artifact.YouOwn | ValidSA$ Spell | Controller$ You | Optional$ True | Amount$ 1 | PlayCost$ PayLife<ConvertedManaCost>\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact\nOracle:Lord of the Pyrrhian Legions — Whenever Anrakyr the Traveller attacks, you may cast an artifact spell from your hand or graveyard by paying life equal to its mana value rather than paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Anrakyr the Traveller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "backdraft-corpus-m675",
+  "description": "M6 corpus — Backdraft; in-hand parse.",
+  "seed": 62245,
+  "cards": {
+    "Backdraft": "Name:Backdraft\nManaCost:1 R\nTypes:Instant\nT:Mode$ Phase | Phase$ Untap | Execute$ DBForget | Static$ True\nSVar:DBForget:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ DamageDone | ValidSource$ Sorcery.!IsRemembered | Execute$ TrigRememberPlayer | Static$ True\nSVar:TrigRememberPlayer:DB$ Pump | Defined$ TriggeredSourceController | RememberObjects$ TriggeredSourceController | SubAbility$ DBRememberSorcery\nSVar:DBRememberSorcery:DB$ Pump | Defined$ TriggeredSourceLKICopy | RememberObjects$ TriggeredSourceLKICopy\nA:SP$ ChoosePlayer | Defined$ You | Choices$ Player.IsRemembered | SubAbility$ DBChooseSpell | SpellDescription$ Choose a player who cast one or more sorcery spells this turn. CARDNAME deals damage to that player equal to half the damage dealt by one of those sorcery spells this turn, rounded down.\nSVar:DBChooseSpell:DB$ ChooseCard | DefinedCards$ RememberedLKI.ControlledBy ChosenPlayer | Mandatory$ True | ChoiceTitle$ Choose a Sorcery | ImprintChosen$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearChosenCard$ True | ClearChosenPlayer$ True\nSVar:X:ImprintedLKI$TotalDamageDoneByThisTurn/HalfDown\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose a player who cast one or more sorcery spells this turn. Backdraft deals damage to that player equal to half the damage dealt by one of those sorcery spells this turn, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Backdraft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

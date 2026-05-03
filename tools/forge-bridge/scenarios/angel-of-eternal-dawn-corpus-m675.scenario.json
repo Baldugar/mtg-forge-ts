@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-eternal-dawn-corpus-m675",
+  "description": "M6 corpus — Angel of Eternal Dawn; in-hand parse.",
+  "seed": 61495,
+  "cards": {
+    "Angel of Eternal Dawn": "Name:Angel of Eternal Dawn\nManaCost:2 W\nTypes:Creature Angel\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDay | TriggerDescription$ When CARDNAME enters, it becomes day.\nSVar:TrigDay:DB$ DayTime | Value$ Day\nS:Mode$ CantChangeDayTime | NewTime$ Night | Description$ It can't become night.\nS:Mode$ CantBeCast | ValidCard$ Card | cmcGT$ Turns | Caster$ Opponent | Description$ Your opponents can't cast spells with mana value greater than the number of turns they have begun.\nOracle:Flying\\nWhen Angel of Eternal Dawn enters, it becomes day.\\nIt can't become night.\\nYour opponents can't cast spells with mana value greater than the number of turns they have begun.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Eternal Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-grace-corpus-m675",
+  "description": "M6 corpus — Angel of Grace; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "Angel of Grace": "Name:Angel of Grace\nManaCost:3 W W\nTypes:Creature Angel\nPT:5/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ SelflessDamage | Description$ Until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:SelflessDamage:Event$ LifeReduced | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | ReplaceWith$ ReduceLoss | Description$ Until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nA:AB$ SetLife | Cost$ 4 W W ExileFromGrave<1/CARDNAME> | Defined$ You | ActivationZone$ Graveyard | LifeAmount$ 10 | SpellDescription$ Your life total becomes 10.\nAI:RemoveDeck:Random\nOracle:Flash\\nFlying\\nWhen Angel of Grace enters, until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\\n{4}{W}{W}, Exile Angel of Grace from your graveyard: Your life total becomes 10.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Grace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

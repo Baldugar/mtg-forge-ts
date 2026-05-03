@@ -1,0 +1,23 @@
+{
+  "id": "baral-s-expertise-corpus-m675",
+  "description": "M6 corpus — Baral's Expertise; in-hand parse.",
+  "seed": 62352,
+  "cards": {
+    "Baral's Expertise": "Name:Baral's Expertise\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBPlay | SpellDescription$ Return up to three target artifacts and/or creatures to their owners' hands. You may cast a spell with mana value 4 or less from your hand without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLE4 | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nOracle:Return up to three target artifacts and/or creatures to their owners' hands.\\nYou may cast a spell with mana value 4 or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baral's Expertise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

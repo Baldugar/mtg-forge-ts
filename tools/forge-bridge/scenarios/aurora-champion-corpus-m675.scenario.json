@@ -1,0 +1,25 @@
+{
+  "id": "aurora-champion-corpus-m675",
+  "description": "M6 corpus — Aurora Champion; ETB-on-bf.",
+  "seed": 62094,
+  "cards": {
+    "Aurora Champion": "Name:Aurora Champion\nManaCost:2 W\nTypes:Creature Elf Warrior\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Warrior.Other+YourTeamCtrl | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, if your team controls another Warrior, tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:BuffedBy:Warrior\nOracle:Whenever Aurora Champion attacks, if your team controls another Warrior, tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aurora Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

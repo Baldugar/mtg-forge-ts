@@ -1,0 +1,23 @@
+{
+  "id": "black-vise-corpus-m675",
+  "description": "M6 corpus — Black Vise; in-hand parse.",
+  "seed": 62748,
+  "cards": {
+    "Black Vise": "Name:Black Vise\nManaCost:1\nTypes:Artifact\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | AILogic$ MostCardsInHand | SpellDescription$ As CARDNAME enters, choose an opponent.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.Chosen | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the chosen player's upkeep, CARDNAME deals X damage to that player, where X is the number of cards in their hand minus 4.\nSVar:TrigDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ X\nSVar:X:Count$ValidHand Card.ChosenCtrl/Minus.4\nOracle:As Black Vise enters, choose an opponent.\\nAt the beginning of the chosen player's upkeep, Black Vise deals X damage to that player, where X is the number of cards in their hand minus 4.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Black Vise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

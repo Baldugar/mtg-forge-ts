@@ -1,0 +1,25 @@
+{
+  "id": "bloodthirsty-ogre-corpus-m675",
+  "description": "M6 corpus — Bloodthirsty Ogre; ETB-on-bf.",
+  "seed": 63000,
+  "cards": {
+    "Bloodthirsty Ogre": "Name:Bloodthirsty Ogre\nManaCost:2 B\nTypes:Creature Ogre Warrior Shaman\nPT:3/1\nA:AB$ PutCounter | Cost$ T | CounterType$ DEVOTION | CounterNum$ 1 | SpellDescription$ Put a devotion counter on CARDNAME.\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsPresent$ Demon.YouCtrl | SpellDescription$ Target creature gets -X/-X until end of turn, where X is the number of devotion counters on CARDNAME. Activate only if you control a Demon.\nSVar:X:Count$CardCounters.DEVOTION\nSVar:BuffedBy:Demon\nDeckHints:Type$Demon\nOracle:{T}: Put a devotion counter on Bloodthirsty Ogre.\\n{T}: Target creature gets -X/-X until end of turn, where X is the number of devotion counters on Bloodthirsty Ogre. Activate only if you control a Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bloodthirsty Ogre"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

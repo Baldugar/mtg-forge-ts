@@ -1,0 +1,25 @@
+{
+  "id": "attended-healer-corpus-m675",
+  "description": "M6 corpus — Attended Healer; ETB-on-bf.",
+  "seed": 62032,
+  "cards": {
+    "Attended Healer": "Name:Attended Healer\nManaCost:3 W\nTypes:Creature Kor Cleric\nPT:2/3\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | FirstTime$ True | Execute$ DBToken | TriggerDescription$ Whenever you gain life for the first time each turn, create a 1/1 white Cat creature token.\nA:AB$ Pump | Cost$ 2 W | ValidTgts$ Cleric.Other | TgtPrompt$ Select another target Cleric | KW$ Lifelink | SpellDescription$ Another target Cleric gains lifelink until end of turn.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_cat | TokenOwner$ You | SpellDescription$ Whenever you gain life for the first time each turn, create a 1/1 white Cat creature token.\nDeckHints:Ability$LifeGain & Type$Cleric\nDeckHas:Ability$Token\nOracle:Whenever you gain life for the first time each turn, create a 1/1 white Cat creature token.\\n{2}{W}: Another target Cleric gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Attended Healer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

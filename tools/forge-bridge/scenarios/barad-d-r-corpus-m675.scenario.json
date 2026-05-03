@@ -1,0 +1,25 @@
+{
+  "id": "barad-d-r-corpus-m675",
+  "description": "M6 corpus — Barad-dûr; ETB-on-bf.",
+  "seed": 62351,
+  "cards": {
+    "Barad-dûr": "Name:Barad-dûr\nManaCost:no cost\nTypes:Legendary Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Amass | Cost$ X X B T | Type$ Orc | Num$ X | CheckSVar$ Morbid | SpellDescription$ Amass Orcs X. Activate only if a creature died this turn.\nSVar:Morbid:Count$Morbid.1.0\nSVar:X:Count$xPaid\nDeckHints:Type$Legendary & Type$Creature\nDeckHas:Ability$Token|Counters & Type$Orc\nOracle:Barad-dûr enters tapped unless you control a legendary creature.\\n{T}: Add {B}.\\n{X}{X}{B}, {T}: Amass Orcs X. Activate only if a creature died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Barad-dûr"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "battalion-foot-soldier-corpus-m675",
+  "description": "M6 corpus — Battalion Foot Soldier; in-hand parse.",
+  "seed": 62455,
+  "cards": {
+    "Battalion Foot Soldier": "Name:Battalion Foot Soldier\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for any number of cards named Battalion Foot Soldier, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedBattalion Foot Soldier | ChangeNum$ X | ShuffleNonMandatory$ True\nSVar:X:Count$ValidLibrary Card.YouOwn+namedBattalion Foot Soldier\nOracle:When Battalion Foot Soldier enters, you may search your library for any number of cards named Battalion Foot Soldier, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battalion Foot Soldier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "base-camp-corpus-m675",
+  "description": "M6 corpus — Base Camp; ETB-on-bf.",
+  "seed": 62425,
+  "cards": {
+    "Base Camp": "Name:Base Camp\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Cleric,Spell.Rogue,Spell.Warrior,Spell.Wizard,Activated.Cleric+inZoneBattlefield,Activated.Rogue+inZoneBattlefield,Activated.Warrior+inZoneBattlefield,Activated.Wizard+inZoneBattlefield | SpellDescription$ Add one mana of any color. Spend this mana only to cast a Cleric, Rogue, Warrior, or Wizard spell or to activate an ability of a Cleric, Rogue, Warrior, or Wizard.\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Base Camp enters tapped.\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a Cleric, Rogue, Warrior, or Wizard spell or to activate an ability of a Cleric, Rogue, Warrior, or Wizard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Base Camp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

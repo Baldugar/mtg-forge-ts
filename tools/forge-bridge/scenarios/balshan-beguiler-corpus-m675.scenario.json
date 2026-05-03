@@ -1,0 +1,25 @@
+{
+  "id": "balshan-beguiler-corpus-m675",
+  "description": "M6 corpus — Balshan Beguiler; ETB-on-bf.",
+  "seed": 62309,
+  "cards": {
+    "Balshan Beguiler": "Name:Balshan Beguiler\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ BalshanDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player reveals the top two cards of their library. You choose one of those cards and put it into their graveyard.\nSVar:BalshanDig:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 2 | ChangeNum$ 1 | DestinationZone$ Graveyard | LibraryPosition2$ 0 | Reveal$ True\nAI:RemoveDeck:Random\nOracle:Whenever Balshan Beguiler deals combat damage to a player, that player reveals the top two cards of their library. You choose one of those cards and put it into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Balshan Beguiler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

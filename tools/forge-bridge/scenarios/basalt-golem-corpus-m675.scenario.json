@@ -1,0 +1,25 @@
+{
+  "id": "basalt-golem-corpus-m675",
+  "description": "M6 corpus — Basalt Golem; ETB-on-bf.",
+  "seed": 62423,
+  "cards": {
+    "Basalt Golem": "Name:Basalt Golem\nManaCost:5\nTypes:Artifact Creature Golem\nPT:2/4\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Artifact.Creature | Description$ CARDNAME can't be blocked by artifact creatures.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigEndCombat | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, that creature's controller sacrifices it at end of combat. If the player does, they create a 0/2 colorless Wall artifact creature token with defender.\nSVar:TrigEndCombat:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigSacBlocker | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ At end of combat, the controller of the creature that blocked CARDNAME sacrifices that creature. If the player does, they create a 0/2 colorless Wall artifact creature token with defender.\nSVar:TrigSacBlocker:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI | SubAbility$ DBToken | RememberSacrificed$ True\nSVar:DBToken:DB$ Token | TokenScript$ c_0_2_a_wall_defender | TokenOwner$ DelayTriggerRememberedController | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Basalt Golem can't be blocked by artifact creatures.\\nWhenever Basalt Golem becomes blocked by a creature, that creature's controller sacrifices it at end of combat. If the player does, they create a 0/2 colorless Wall artifact creature token with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Basalt Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

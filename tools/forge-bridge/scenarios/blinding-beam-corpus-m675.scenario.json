@@ -1,0 +1,23 @@
+{
+  "id": "blinding-beam-corpus-m675",
+  "description": "M6 corpus — Blinding Beam; in-hand parse.",
+  "seed": 62874,
+  "cards": {
+    "Blinding Beam": "Name:Blinding Beam\nManaCost:2 W\nTypes:Instant\nK:Entwine:1\nA:SP$ Charm | Choices$ DBTap,DBEffect\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Select two target creatures | SpellDescription$ Tap two target creatures.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Player | IsCurse$ True | ReplacementEffects$ DontUntap | Triggers$ RestoreSight | RememberObjects$ Targeted | Duration$ Permanent | SpellDescription$ Creatures don't untap during target player's next untap step.\nSVar:DontUntap:Event$ Untap | ValidCard$ Creature | ValidStepTurnToController$ Player.IsRemembered | Layer$ CantHappen | Description$ Creatures don't untap during target player's next untap step.\nSVar:RestoreSight:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.IsRemembered | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Tap two target creatures.\\n• Creatures don't untap during target player's next untap step.\\nEntwine {1} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blinding Beam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

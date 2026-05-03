@@ -1,0 +1,23 @@
+{
+  "id": "big-game-hunter-corpus-m675",
+  "description": "M6 corpus — Big Game Hunter; in-hand parse.",
+  "seed": 62678,
+  "cards": {
+    "Big Game Hunter": "Name:Big Game Hunter\nManaCost:1 B B\nTypes:Creature Human Rebel Assassin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature with power 4 or greater. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.powerGE4 | NoRegen$ True | TgtPrompt$ Select target creature with power 4 or greater.\nK:Madness:B\nOracle:When Big Game Hunter enters, destroy target creature with power 4 or greater. It can't be regenerated.\\nMadness {B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Big Game Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

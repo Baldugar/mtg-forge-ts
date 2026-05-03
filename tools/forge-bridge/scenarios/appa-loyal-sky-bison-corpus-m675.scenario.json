@@ -1,0 +1,23 @@
+{
+  "id": "appa-loyal-sky-bison-corpus-m675",
+  "description": "M6 corpus — Appa, Loyal Sky Bison; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "Appa, Loyal Sky Bison": "Name:Appa, Loyal Sky Bison\nManaCost:4 W W\nTypes:Legendary Creature Bison Ally\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever NICKNAME enters or attacks, ABILITY\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPump,DBAirbend\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Flying | SpellDescription$ Target creature you control gains flying until end of turn.\nSVar:DBAirbend:DB$ Airbend | ValidTgts$ Permanent.Other+nonLand+YouCtrl | TgtPrompt$ Select another target nonland permanent you control | SpellDescription$ Airbend another target nonland permanent you control.\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Appa enters or attacks, choose one —\\n• Target creature you control gains flying until end of turn.\\n• Airbend another target nonland permanent you control. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Appa, Loyal Sky Bison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "beledros-witherbloom-corpus-m675",
+  "description": "M6 corpus — Beledros Witherbloom; ETB-on-bf.",
+  "seed": 62582,
+  "cards": {
+    "Beledros Witherbloom": "Name:Beledros Witherbloom\nManaCost:5 B G\nTypes:Legendary Creature Elder Dragon\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each upkeep, create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\nSVar:TrigToken:DB$ Token | TokenScript$ bg_1_1_pest_lifegain | TokenOwner$ You\nA:AB$ UntapAll | Cost$ PayLife<10> | ActivationLimit$ 1 | ValidCards$ Land.YouCtrl | SpellDescription$ Untap all lands you control. Activate only once each turn.\nDeckHas:Ability$Token|LifeGain\nOracle:Flying\\nAt the beginning of each upkeep, create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\\nPay 10 life: Untap all lands you control. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Beledros Witherbloom"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

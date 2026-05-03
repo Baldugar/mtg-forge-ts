@@ -1,0 +1,23 @@
+{
+  "id": "banish-to-another-universe-corpus-m675",
+  "description": "M6 corpus — Banish to Another Universe; in-hand parse.",
+  "seed": 62334,
+  "cards": {
+    "Banish to Another Universe": "Name:Banish to Another Universe\nManaCost:4 W\nTypes:Enchantment\nK:Affinity:Historic\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nDeckHints:Type$Artifact|Legendary|Saga\nOracle:Affinity for historic permanents (This spell costs {1} less to cast for each artifact, legendary, and/or Saga permanent you control.)\\nWhen Banish to Another Universe enters, exile target nonland permanent an opponent controls until Banish to Another Universe leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banish to Another Universe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

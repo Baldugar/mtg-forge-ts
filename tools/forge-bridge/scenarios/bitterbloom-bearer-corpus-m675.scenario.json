@@ -1,0 +1,25 @@
+{
+  "id": "bitterbloom-bearer-corpus-m675",
+  "description": "M6 corpus — Bitterbloom Bearer; ETB-on-bf.",
+  "seed": 62732,
+  "cards": {
+    "Bitterbloom Bearer": "Name:Bitterbloom Bearer\nManaCost:B B\nTypes:Creature Faerie Rogue\nPT:1/1\nK:Flash\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life and create a 1/1 black Faerie creature token with flying.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ ub_1_1_faerie_flying | TokenOwner$ You\nSVar:AICastPreference:NeverCastIfLifeBelow$ 4\nDeckHas:Ability$Token\nOracle:Flash\\nFlying\\nAt the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black Faerie creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bitterbloom Bearer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

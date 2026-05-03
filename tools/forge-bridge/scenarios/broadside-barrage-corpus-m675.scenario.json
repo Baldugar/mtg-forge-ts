@@ -1,0 +1,23 @@
+{
+  "id": "broadside-barrage-corpus-m675",
+  "description": "M6 corpus — Broadside Barrage; in-hand parse.",
+  "seed": 63411,
+  "cards": {
+    "Broadside Barrage": "Name:Broadside Barrage\nManaCost:1 U R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker. | NumDmg$ 5 | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals 5 damage to target creature or planeswalker. Draw a card, then discard a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:Broadside Barrage deals 5 damage to target creature or planeswalker. Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broadside Barrage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

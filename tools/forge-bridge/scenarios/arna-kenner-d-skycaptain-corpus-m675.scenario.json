@@ -1,0 +1,25 @@
+{
+  "id": "arna-kenner-d-skycaptain-corpus-m675",
+  "description": "M6 corpus — Arna Kennerüd, Skycaptain; ETB-on-bf.",
+  "seed": 61878,
+  "cards": {
+    "Arna Kennerüd, Skycaptain": "Name:Arna Kennerüd, Skycaptain\nManaCost:2 W U B\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:Flying\nK:Lifelink\nK:Ward:Discard<1/Card>\nT:Mode$ Attacks | ValidCard$ Creature.modified+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDoubleCounters | TriggerDescription$ Whenever a modified creature you control attacks, double the number of each kind of counter on it. Then for each nontoken permanent attached to it, create a token that's a copy of that permanent attached to that creature.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | Defined$ TriggeredAttackerLKICopy | SubAbility$ DBCopyPermanents\nSVar:DBCopyPermanents:DB$ CopyPermanent | Defined$ Valid Permanent.!token+AttachedTo TriggeredAttackerLKICopy | AttachedTo$ TriggeredAttackerLKICopy\nDeckHints:Type$Equipment|Aura|Counters\nDeckHas:Ability$Token|LifeGain\nOracle:Flying, lifelink\\nWard—Discard a card.\\nWhenever a modified creature you control attacks, double the number of each kind of counter on it. Then for each nontoken permanent attached to it, create a token that's a copy of that permanent attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arna Kennerüd, Skycaptain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

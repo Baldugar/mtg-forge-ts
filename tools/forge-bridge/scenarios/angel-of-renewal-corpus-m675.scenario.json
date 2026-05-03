@@ -1,0 +1,23 @@
+{
+  "id": "angel-of-renewal-corpus-m675",
+  "description": "M6 corpus — Angel of Renewal; in-hand parse.",
+  "seed": 61504,
+  "cards": {
+    "Angel of Renewal": "Name:Angel of Renewal\nManaCost:5 W\nTypes:Creature Angel Ally\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life for each creature you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Angel of Renewal enters, you gain 1 life for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angel of Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

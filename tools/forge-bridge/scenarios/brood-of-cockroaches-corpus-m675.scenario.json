@@ -1,0 +1,23 @@
+{
+  "id": "brood-of-cockroaches-corpus-m675",
+  "description": "M6 corpus — Brood of Cockroaches; in-hand parse.",
+  "seed": 63437,
+  "cards": {
+    "Brood of Cockroaches": "Name:Brood of Cockroaches\nManaCost:1 B\nTypes:Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+YouOwn | Execute$ DelTrigLeaves | TriggerDescription$ When CARDNAME is put into your graveyard from the battlefield, at the beginning of the next end step, you lose 1 life and return CARDNAME to your hand.\nSVar:DelTrigLeaves:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | RememberObjects$ TriggeredNewCardLKICopy | Execute$ DBLoseLife | TriggerDescription$ Lose 1 life and return CARDNAME to your hand.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Hand\nSVar:SacMe:1\nOracle:When Brood of Cockroaches is put into your graveyard from the battlefield, at the beginning of the next end step, you lose 1 life and return Brood of Cockroaches to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brood of Cockroaches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

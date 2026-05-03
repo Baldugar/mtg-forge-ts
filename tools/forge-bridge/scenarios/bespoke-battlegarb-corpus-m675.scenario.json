@@ -1,0 +1,25 @@
+{
+  "id": "bespoke-battlegarb-corpus-m675",
+  "description": "M6 corpus — Bespoke Battlegarb; ETB-on-bf.",
+  "seed": 62656,
+  "cards": {
+    "Bespoke Battlegarb": "Name:Bespoke Battlegarb\nManaCost:1 R\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAttach | CheckSVar$ Celebration | SVarCompare$ GE2 | TriggerDescription$ Celebration — At the beginning of combat on your turn, if two or more nonland permanents entered the battlefield under your control this turn, attach CARDNAME to up to one target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you control\nK:Equip:2\nSVar:Celebration:Count$ThisTurnEntered_Battlefield_Permanent.nonLand+YouCtrl\nOracle:Equipped creature gets +2/+0.\\nCelebration — At the beginning of combat on your turn, if two or more nonland permanents entered the battlefield under your control this turn, attach Bespoke Battlegarb to up to one target creature you control.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bespoke Battlegarb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

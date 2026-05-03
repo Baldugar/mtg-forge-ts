@@ -1,0 +1,25 @@
+{
+  "id": "arcades-the-strategist-corpus-m675",
+  "description": "M6 corpus — Arcades, the Strategist; ETB-on-bf.",
+  "seed": 61706,
+  "cards": {
+    "Arcades, the Strategist": "Name:Arcades, the Strategist\nManaCost:1 G W U\nTypes:Legendary Creature Elder Dragon\nPT:3/5\nK:Flying\nK:Vigilance\nS:Mode$ CombatDamageToughness | ValidCard$ Creature.withDefender+YouCtrl | Description$ Each creature you control with defender assigns combat damage equal to its toughness rather than its power and can attack as though it didn't have defender.\nS:Mode$ CanAttackDefender | ValidCard$ Creature.withDefender+YouCtrl | Secondary$ True | Description$ Each creature you control with defender assigns combat damage equal to its toughness rather than its power and can attack as though it didn't have defender.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.withDefender+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control with defender enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckNeeds:Keyword$Defender\nOracle:Flying, vigilance\\nWhenever a creature you control with defender enters, draw a card.\\nEach creature you control with defender assigns combat damage equal to its toughness rather than its power and can attack as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Arcades, the Strategist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

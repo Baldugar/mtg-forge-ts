@@ -1,0 +1,23 @@
+{
+  "id": "blood-sun-corpus-m675",
+  "description": "M6 corpus — Blood Sun; in-hand parse.",
+  "seed": 62947,
+  "cards": {
+    "Blood Sun": "Name:Blood Sun\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Land | RemoveNonManaAbilities$ True | Description$ All lands lose all abilities except mana abilities.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:When Blood Sun enters, draw a card.\\nAll lands lose all abilities except mana abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

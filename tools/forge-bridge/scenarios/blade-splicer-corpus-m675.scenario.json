@@ -1,0 +1,23 @@
+{
+  "id": "blade-splicer-corpus-m675",
+  "description": "M6 corpus — Blade Splicer; in-hand parse.",
+  "seed": 62769,
+  "cards": {
+    "Blade Splicer": "Name:Blade Splicer\nManaCost:2 W\nTypes:Creature Phyrexian Human Artificer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_3_a_phyrexian_golem | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Golem+YouCtrl | AddKeyword$ First Strike | Description$ Golems you control have first strike.\nOracle:When Blade Splicer enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\\nGolems you control have first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blade Splicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

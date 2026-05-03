@@ -1,0 +1,25 @@
+{
+  "id": "archdemon-of-unx-corpus-m675",
+  "description": "M6 corpus — Archdemon of Unx; ETB-on-bf.",
+  "seed": 61739,
+  "cards": {
+    "Archdemon of Unx": "Name:Archdemon of Unx\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a non-Zombie creature, then create a 2/2 black Zombie creature token.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.nonZombie | SacMessage$ non-Zombie Creature | SubAbility$ MakeToken\nSVar:MakeToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nAI:RemoveDeck:Random\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a non-Zombie creature, then create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Archdemon of Unx"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

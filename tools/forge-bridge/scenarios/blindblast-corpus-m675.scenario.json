@@ -1,0 +1,23 @@
+{
+  "id": "blindblast-corpus-m675",
+  "description": "M6 corpus — Blindblast; in-hand parse.",
+  "seed": 62872,
+  "cards": {
+    "Blindblast": "Name:Blindblast\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | SubAbility$ DBPumpCurse | SpellDescription$ CARDNAME deals 1 damage to target creature. That creature can't block this turn.\nSVar:DBPumpCurse:DB$ Pump | Defined$ Targeted | IsCurse$ True | KW$ HIDDEN CARDNAME can't block. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:PlayMain1:TRUE\nOracle:Blindblast deals 1 damage to target creature. That creature can't block this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blindblast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

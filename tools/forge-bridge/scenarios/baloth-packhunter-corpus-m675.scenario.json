@@ -1,0 +1,23 @@
+{
+  "id": "baloth-packhunter-corpus-m675",
+  "description": "M6 corpus — Baloth Packhunter; in-hand parse.",
+  "seed": 62306,
+  "cards": {
+    "Baloth Packhunter": "Name:Baloth Packhunter\nManaCost:3 G\nTypes:Creature Beast\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put two +1/+1 counters on each other creature you control named Baloth Packhunter.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.StrictlyOther+namedBaloth Packhunter | CounterType$ P1P1 | CounterNum$ 2\nDeckHints:Name$Baloth Packhunter\nDeckHas:Ability$Counters\nOracle:Trample\\nWhen Baloth Packhunter enters, put two +1/+1 counters on each other creature you control named Baloth Packhunter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baloth Packhunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

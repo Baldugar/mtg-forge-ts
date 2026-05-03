@@ -1,0 +1,25 @@
+{
+  "id": "at-knifepoint-corpus-m675",
+  "description": "M6 corpus — At Knifepoint; ETB-on-bf.",
+  "seed": 62010,
+  "cards": {
+    "At Knifepoint": "Name:At Knifepoint\nManaCost:1 B R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.Outlaw+YouCtrl | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, outlaws you control have first strike. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Whenever you commit a crime, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\" This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nDeckHas:Ability$Token & Type$Mercenary\nDeckHints:Type$Assassin|Mercenary|Pirate|Rogue|Warlock\nOracle:During your turn, outlaws you control have first strike. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\\nWhenever you commit a crime, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\" This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "At Knifepoint"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

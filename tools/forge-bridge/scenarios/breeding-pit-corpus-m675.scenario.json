@@ -1,0 +1,25 @@
+{
+  "id": "breeding-pit-corpus-m675",
+  "description": "M6 corpus — Breeding Pit; ETB-on-bf.",
+  "seed": 63342,
+  "cards": {
+    "Breeding Pit": "Name:Breeding Pit\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {B}{B}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ B B\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 0/1 black Thrull creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_0_1_thrull | TokenOwner$ You\nSVar:PitSac:SVar:SacMe:1\nOracle:At the beginning of your upkeep, sacrifice Breeding Pit unless you pay {B}{B}.\\nAt the beginning of your end step, create a 0/1 black Thrull creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Breeding Pit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
