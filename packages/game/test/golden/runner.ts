@@ -35,8 +35,10 @@ import {
   Color,
   DEFAULT_PAPER_CARD_FLAGS,
   ManaProduced,
+  PhaseStep,
   SeededRng,
   ZoneType,
+  canonicalPhaseSequence,
   isPermanentType,
   mkEvent,
   mkPlayerSeat,
@@ -50,6 +52,7 @@ import type { GameMeta } from "../../src/game-meta.js";
 import type { GameRules } from "../../src/game-rules.js";
 import { Game } from "../../src/game.js";
 import { ManaPool } from "../../src/mana/mana-pool.js";
+import { PhaseHandler } from "../../src/phase/phase-handler.js";
 import { resolveStackItem } from "../../src/resolve/effect-resolve.js";
 import type { StackItem, StackItemResolver } from "../../src/stack/stack-item.js";
 import { Battlefield } from "../../src/zone/zones/battlefield.js";
@@ -287,6 +290,12 @@ export function compareTrace(expected: GoldenTrace, actual: GoldenTrace): TraceD
 interface RunnerContext {
   readonly game: Game;
   readonly action: GameAction;
+  /**
+   * M7.0 — phase driver lives on the runner so multi-turn scenarios
+   * can step through Untap → Cleanup → next-turn-Untap. Lazy in the
+   * pre-existing single-action paths (built on first phase action).
+   */
+  readonly phaseHandler: PhaseHandler;
   readonly seats: readonly [PlayerSeat, PlayerSeat];
   readonly cardDefs: ReadonlyMap<string, CardDefinition>;
   /** Track entity ids per name so target lookup is deterministic. */
@@ -388,6 +397,7 @@ function buildContext(scenario: GoldenScenario): RunnerContext {
   const ctx: RunnerContext = {
     game,
     action: new GameAction(game),
+    phaseHandler: new PhaseHandler(game),
     seats,
     cardDefs,
     cardsByName,
@@ -502,6 +512,153 @@ function runAction(ctx: RunnerContext, action: ScenarioAction): void {
     case "activate":
       runActivate(ctx, action);
       return;
+    case "advancePhase":
+      runAdvancePhase(ctx);
+      return;
+    case "advanceToStep":
+      runAdvanceToStep(ctx, action);
+      return;
+    case "passTurn":
+      runPassTurn(ctx);
+      return;
+  }
+}
+
+// ── Multi-turn phase driver (M7.0) ───────────────────────────────────────────
+//
+// The golden runner historically captures single-action recipes; M7.0
+// extends it with phase-driver actions so multi-turn sequences (combat
+// across turns, upkeep triggers, end-of-turn cleanup, mana pool empty
+// between phases, …) can be locked as parity goldens.
+//
+// Implementation notes:
+//   - The PhaseHandler.runStep generator emits StepStarted +
+//     turn-based-action events + an SP1 priority window + StepEnded.
+//     We answer the priority window with `pass` so the step closes
+//     deterministically, then drain the stack so any triggers queued
+//     by the TBAs (upkeep "at the beginning of upkeep" triggers,
+//     end-of-turn warp exile, etc.) fan out before the next phase.
+//   - `advancePhase` walks the canonicalPhaseSequence by one step; if
+//     the current step is the last one (Cleanup) it wraps to Untap of
+//     the next turn, so a chain of advancePhase calls can carry the
+//     game through any number of turns.
+//   - `passTurn` loops advancePhase until game.turn increments by 1.
+//     We pin `entryTurn` BEFORE the loop because Cleanup → Untap of
+//     turn N+1 happens inside advancePhase, and we want the loop to
+//     exit on that boundary.
+
+const STEP_FROM_PHASESTEP: ReadonlyMap<PhaseStep, PhaseStep> = new Map(
+  canonicalPhaseSequence.map((s) => [s, s]),
+);
+
+/**
+ * Walk the phase handler one step forward in canonical phase order. If
+ * the current phase is `Cleanup` the next step is `Untap` of the next
+ * turn — game.turn is incremented by the TurnQueue-level transition,
+ * which we mimic locally by bumping `game.turn` ourselves and rotating
+ * `game.activePlayer` at the wrap point.
+ */
+function runAdvancePhase(ctx: RunnerContext): void {
+  const game = ctx.game;
+  const cur = game.phase;
+  const seq = canonicalPhaseSequence;
+  const idx = seq.indexOf(cur);
+  // If unrecognized (engine fresh-init may sit at an undefined value),
+  // start from Untap.
+  const nextIdx = idx < 0 ? 0 : (idx + 1) % seq.length;
+  const next = seq[nextIdx];
+  if (next === undefined) return;
+  // Wrap detection: Cleanup → Untap of next turn. Mirror the
+  // TurnQueue's between-turn bookkeeping (turn increment + active
+  // seat rotation) so triggers / SBAs that read `game.turn` see the
+  // correct value during the new turn's TBAs.
+  if (cur === PhaseStep.Cleanup && next === PhaseStep.Untap) {
+    game.turn += 1;
+    // Rotate active seat between the two seats. Multi-player tables
+    // aren't in scope for the M7.0 corpus; SP1 is 2-player.
+    const seats = ctx.seats;
+    game.activePlayer = game.activePlayer === seats[0] ? seats[1] : seats[0];
+  }
+  game.phase = next;
+  drivePhaseStep(ctx, next);
+}
+
+/** Advance until the engine reaches the named step. Wraps around turns. */
+function runAdvanceToStep(ctx: RunnerContext, action: { readonly step: PhaseStep }): void {
+  const target = STEP_FROM_PHASESTEP.get(action.step);
+  if (target === undefined) {
+    throw new Error(`golden runner: unknown phase step '${String(action.step)}'`);
+  }
+  // Cap at 26 advancements (2 full turns) — defensive against an
+  // unrecognized step that would never match.
+  for (let i = 0; i < 26; i++) {
+    if (ctx.game.phase === target) return;
+    runAdvancePhase(ctx);
+  }
+  if (ctx.game.phase !== target) {
+    throw new Error(
+      `golden runner: advanceToStep '${String(target)}' did not converge after 26 iterations (cur=${String(ctx.game.phase)})`,
+    );
+  }
+}
+
+/** Loop advancePhase until `game.turn` increments by exactly one. */
+function runPassTurn(ctx: RunnerContext): void {
+  const entryTurn = ctx.game.turn;
+  // Cap at 26 advancements (the full canonical sequence is 13 steps;
+  // 2x is generous if the entry phase is mid-turn).
+  for (let i = 0; i < 26; i++) {
+    runAdvancePhase(ctx);
+    if (ctx.game.turn > entryTurn) return;
+  }
+  throw new Error(
+    `golden runner: passTurn did not advance turn after 26 iterations (entry=${entryTurn}, cur=${ctx.game.turn})`,
+  );
+}
+
+/**
+ * Drive a single PhaseHandler.runStep generator end-to-end. We answer
+ * the SP1 priority window with `pass` (the only legal action besides
+ * `concede`) and patch through any decisions surfaced by TBAs
+ * (cleanup-step discard, etc.) using the same default-driven controller
+ * pattern the cast / resolve drivers use elsewhere in this file.
+ */
+function drivePhaseStep(ctx: RunnerContext, step: PhaseStep): void {
+  const controller = new RandomLegalController(ctx.game.rng);
+  const gen = ctx.phaseHandler.runStep(step) as Generator<
+    { kind: string; event?: GameEvent; request?: DecisionRequest },
+    void,
+    DecisionResponse
+  >;
+  let next = gen.next();
+  let safety = 0;
+  while (!next.done) {
+    safety++;
+    if (safety > 5000) {
+      throw new Error(`golden runner: runaway phase-step generator at step=${String(step)}`);
+    }
+    const y = next.value;
+    if (y.kind === "event" && y.event) {
+      ctx.pendingEvents.push(y.event);
+      next = gen.next();
+      continue;
+    }
+    if (y.kind === "decision" && y.request) {
+      const req = y.request as DecisionRequest;
+      // Priority windows always pass — multi-turn scenarios test
+      // engine-driven phase transitions, not in-step casting.
+      if (req.kind === "priority") {
+        next = gen.next({ kind: "priority", action: { kind: "pass" } } as DecisionResponse);
+        continue;
+      }
+      // Forward to the standard controller for any TBAs that surface
+      // a decision (cleanup chooseCard, etc.). It returns deterministic
+      // first-legal answers so traces are stable.
+      const resp = controller.decide(req);
+      next = gen.next(resp);
+      continue;
+    }
+    next = gen.next();
   }
 }
 

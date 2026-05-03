@@ -18,7 +18,7 @@
 // in the cast/resolve/ETB/static paths — driving full turns adds noise
 // (mulligan/draw/discard events) that swamps the signal we care about.
 
-import type { PlayerSeat } from "@mtg-forge-ts/core";
+import type { PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 
 /**
  * Top-level scenario spec. Stored alongside its captured trace as
@@ -109,6 +109,29 @@ export type ScenarioAction =
       readonly sourceCardName: string;
       readonly activatingPlayer: PlayerSeat;
       readonly abilityIndex?: number;
+    }
+  // M7.0 — multi-turn parity. The phase-driver actions advance the
+  // phase handler one or more steps. Each kind drains pending triggers
+  // (and resolves the resulting stack) between every step traversal so
+  // upkeep / EOT triggers + cleanup-step state-based wipes fan out
+  // exactly as they would mid-turn. Java BridgeRunner already supports
+  // matching `advancePhase` / `advanceToStep` action handlers
+  // (BridgeRunner.java:453); `passTurn` is implemented as a loop of
+  // advancePhase calls until `game.turn` increments by 1 (TS-side).
+  | {
+      readonly kind: "advancePhase";
+    }
+  | {
+      readonly kind: "advanceToStep";
+      /**
+       * Target step. PhaseStep enum values are PascalCase strings
+       * (Untap, Upkeep, …, Cleanup) — same identifiers Forge uses, so
+       * the bridge can map them directly via PhaseType.smartValueOf.
+       */
+      readonly step: PhaseStep;
+    }
+  | {
+      readonly kind: "passTurn";
     };
 
 /**
