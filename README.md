@@ -26,6 +26,14 @@ Start with [`2026-04-23-mtg-forge-ts-master-spec.md`](docs/superpowers/specs/202
 
 GPL-3.0-or-later (derivative work of Card-Forge/forge, which uses the same license).
 
-Monetization of consuming apps is unrestricted; distributed derivative works must also be GPL-3.0-or-later.
+Monetization of consuming apps is unrestricted; distributed derivative works must also be GPL-3.0-or-later. See [GPL_DOWNSTREAM.md](GPL_DOWNSTREAM.md) for the plain-language summary of what GPL means for users of these packages (TL;DR: SaaS / internal use is unrestricted; distributing binaries that link our code requires GPL-compatible licensing).
 
 Attribution and upstream credits are tracked in `NOTICE`.
+
+## Project policies
+
+- [LICENSE](LICENSE) — full GPL-3.0-or-later text.
+- [GPL_DOWNSTREAM.md](GPL_DOWNSTREAM.md) — plain-language summary for downstream consumers.
+- [CONTRIBUTING.md](CONTRIBUTING.md) — how to contribute, DCO, changeset flow.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — Contributor Covenant 2.1.
+- [SECURITY.md](SECURITY.md) — vulnerability disclosure.
