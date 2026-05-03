@@ -116825,4 +116825,234 @@ Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
     }
     return out;
   })(),
+  {
+    id: "a-golden-opportunity-corpus-m672",
+    description: "M6 corpus — A Golden Opportunity; ETB-on-bf.",
+    seed: 0xf000,
+    cards: {
+      "A Golden Opportunity": `Name:A Golden Opportunity
+ManaCost:2 G
+Types:Enchantment Saga
+K:Chapter:3:DBConjureGoos,DBConjureEgg,DBConjureEgg
+SVar:DBConjureGoos:DB\$ MakeCard | Conjure\$ True | Name\$ Gilded Goose | Zone\$ Battlefield | SpellDescription\$ Conjure a card named Gilded Goose onto the battlefield.
+SVar:DBConjureEgg:AB\$ MakeCard | Cost\$ tapXType<1/Bird> Sac<1/Artifact> | Conjure\$ True | Name\$ Golden Egg | Zone\$ Battlefield | SpellDescription\$ You may tap an untapped Bird you control and sacrifice an artifact. If you do, conjure a card named Golden Egg onto the battlefield.
+DeckHas:Ability\$Token|LifeGain|Sacrifice & Type\$Food|Bird|Artifact
+Oracle:(As this Saga enters and after your draw step add a lore counter. Sacrifice after III.)\\nI — Conjure a card named Gilded Goose onto the battlefield.\\nII, III — You may tap an untapped Bird you control and sacrifice an artifact. If you do, conjure a card named Golden Egg onto the battlefield.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "A Golden Opportunity" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "a-killer-among-us-corpus-m672",
+    description: "M6 corpus — A Killer Among Us; ETB-on-bf.",
+    seed: 0xf001,
+    cards: {
+      "A Killer Among Us": `Name:A Killer Among Us
+ManaCost:4 G
+Types:Enchantment
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigToken | TriggerDescription\$ When CARDNAME enters, create a 1/1 white Human creature token, a 1/1 blue Merfolk creature token, and a 1/1 red Goblin creature token. Then secretly choose Human, Merfolk, or Goblin.
+SVar:TrigToken:DB\$ Token | TokenScript\$ w_1_1_human,u_1_1_merfolk,r_1_1_goblin | SubAbility\$ DBChooseType
+SVar:DBChooseType:DB\$ ChooseType | Type\$ Creature | ValidTypes\$ Human,Merfolk,Goblin | Secretly\$ True
+A:AB\$ PutCounter | Cost\$ Sac<1/CARDNAME> RevealChosen<Type/creature type> | ValidTgts\$ Creature.token+attacking | TgtPrompt\$ Select target attacking creature token | AITgts\$ Creature.token+attacking+ChosenType | Defined\$ Targeted.ChosenType | CounterType\$ P1P1 | CounterNum\$ 3 | SubAbility\$ DBPump | StackDescription\$ REP target attacking creature token_{c:Targeted} & put_{p:You} puts | SpellDescription\$ If target attacking creature token is the chosen type, put three +1/+1 counters on it and it gains deathtouch until end of turn.
+SVar:DBPump:DB\$ Pump | Defined\$ Targeted.ChosenType | KW\$ Deathtouch | StackDescription\$ None
+DeckHas:Ability\$Token|Sacrifice
+Oracle:When A Killer Among Us enters, create a 1/1 white Human creature token, a 1/1 blue Merfolk creature token, and a 1/1 red Goblin creature token. Then secretly choose Human, Merfolk, or Goblin.\\nSacrifice A Killer Among Us, Reveal the chosen creature type: If target attacking creature token is the chosen type, put three +1/+1 counters on it and it gains deathtouch until end of turn.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "A Killer Among Us" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "a-little-chat-corpus-m672",
+    description: "M6 corpus — A Little Chat; in-hand parse.",
+    seed: 0xf002,
+    cards: {
+      "A Little Chat": `Name:A Little Chat
+ManaCost:1 U
+Types:Instant
+K:Casualty:1
+A:SP\$ Dig | DigNum\$ 2 | ChangeNum\$ 1 | NoReveal\$ True | SpellDescription\$ Look at the top two cards of your library. Put one of them into your hand and the other on the bottom of your library.
+Oracle:Casualty 1 (As you cast this spell, you may sacrifice a creature with power 1 or greater. When you do, copy this spell.)\\nLook at the top two cards of your library. Put one of them into your hand and the other on the bottom of your library.
+`,
+    },
+    players: [
+      { life: 20, hand: ["A Little Chat"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "a-realm-reborn-corpus-m672",
+    description: "M6 corpus — A Realm Reborn; ETB-on-bf.",
+    seed: 0xf003,
+    cards: {
+      "A Realm Reborn": `Name:A Realm Reborn
+ManaCost:4 G G
+Types:Enchantment
+S:Mode\$ Continuous | Affected\$ Permanent.Other+YouCtrl | AddAbility\$ AnyMana | Description\$ Other permanents you control have "{T}: Add one mana of any color."
+SVar:AnyMana:AB\$ Mana | Cost\$ T | Produced\$ Any | Amount\$ 1 | SpellDescription\$ Add one mana of any color.
+Oracle:Other permanents you control have "{T}: Add one mana of any color."
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "A Realm Reborn" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "a-tale-for-the-ages-corpus-m672",
+    description: "M6 corpus — A Tale for the Ages; ETB-on-bf.",
+    seed: 0xf004,
+    cards: {
+      "A Tale for the Ages": `Name:A Tale for the Ages
+ManaCost:1 W
+Types:Enchantment
+S:Mode\$ Continuous | Affected\$ Creature.enchanted+YouCtrl | AddPower\$ 2 | AddToughness\$ 2 | Description\$ Enchanted creatures you control get +2/+2.
+DeckNeeds:Type\$Aura
+Oracle:Enchanted creatures you control get +2/+2.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "A Tale for the Ages" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-a-lot-to-learn-corpus-m672",
+    description: "M6 corpus — Aang, A Lot to Learn; ETB-on-bf.",
+    seed: 0xf005,
+    cards: {
+      "Aang, A Lot to Learn": `Name:Aang, A Lot to Learn
+ManaCost:2 GW
+Types:Legendary Creature Human Avatar Ally
+PT:3/2
+S:Mode\$ Continuous | Affected\$ Card.Self | AddKeyword\$ Vigilance | IsPresent\$ Lesson.YouOwn | PresentZone\$ Graveyard | Description\$ NICKNAME has vigilance as long as there's a Lesson card in your graveyard.
+T:Mode\$ ChangesZone | ValidCard\$ Creature.Other+YouCtrl | Origin\$ Battlefield | Destination\$ Graveyard | TriggerZones\$ Battlefield | Execute\$ TrigPutCounter | TriggerDescription\$ Whenever another creature you control dies, put a +1/+1 counter on NICKNAME.
+SVar:TrigPutCounter:DB\$ PutCounter | CounterType\$ P1P1 | CounterNum\$ 1
+DeckHints:Type\$Lesson
+Oracle:Aang has vigilance as long as there's a Lesson card in your graveyard.\\nWhenever another creature you control dies, put a +1/+1 counter on Aang.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang, A Lot to Learn" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-air-nomad-corpus-m672",
+    description: "M6 corpus — Aang, Air Nomad; ETB-on-bf.",
+    seed: 0xf006,
+    cards: {
+      "Aang, Air Nomad": `Name:Aang, Air Nomad
+ManaCost:3 W W
+Types:Legendary Creature Human Avatar Ally
+PT:5/4
+K:Flying
+K:Vigilance
+S:Mode\$ Continuous | Affected\$ Creature.Other+YouCtrl | AddKeyword\$ Vigilance | Description\$ Other creatures you control have vigilance.
+SVar:PlayMain1:TRUE
+Oracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nVigilance (Attacking doesn't cause this creature to tap.)\\nOther creatures you control have vigilance.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang, Air Nomad" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-airbending-master-corpus-m672",
+    description: "M6 corpus — Aang, Airbending Master; ETB-on-bf.",
+    seed: 0xf007,
+    cards: {
+      "Aang, Airbending Master": `Name:Aang, Airbending Master
+ManaCost:4 W
+Types:Legendary Creature Human Avatar Ally
+PT:4/4
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigAirbend | TriggerDescription\$ When NICKNAME enters, airbend another target creature. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+SVar:TrigAirbend:DB\$ Airbend | ValidTgts\$ Creature.Other | TgtPrompt\$ Select another target creature
+T:Mode\$ ChangesZoneAll | ValidCards\$ Creature.YouCtrl | Origin\$ Battlefield | Destination\$ Ante,Command,Exile,Hand,Library | TriggerZones\$ Battlefield | Execute\$ TrigExperience | TriggerDescription\$ Whenever one or more creatures you control leave the battlefield without dying, you get an experience counter.
+SVar:TrigExperience:DB\$ PutCounter | Defined\$ You | CounterType\$ Experience | CounterNum\$ 1
+T:Mode\$ Phase | Phase\$ Upkeep | ValidPlayer\$ You | TriggerZones\$ Battlefield | Execute\$ TrigToken | TriggerDescription\$ At the beginning of your upkeep, create a 1/1 white Ally creature token for each experience counter you have.
+SVar:TrigToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ w_1_1_ally | TokenOwner\$ You
+SVar:X:Count\$YourCountersExperience
+Oracle:When Aang enters, airbend another target creature. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\\nWhenever one or more creatures you control leave the battlefield without dying, you get an experience counter.\\nAt the beginning of your upkeep, create a 1/1 white Ally creature token for each experience counter you have.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang, Airbending Master" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-and-katara-corpus-m672",
+    description: "M6 corpus — Aang and Katara; ETB-on-bf.",
+    seed: 0xf008,
+    cards: {
+      "Aang and Katara": `Name:Aang and Katara
+ManaCost:3 G W U
+Types:Legendary Creature Human Avatar Ally
+PT:5/5
+T:Mode\$ ChangesZone | Origin\$ Any | Destination\$ Battlefield | ValidCard\$ Card.Self | Execute\$ TrigToken | TriggerDescription\$ Whenever CARDNAME enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.
+T:Mode\$ Attacks | ValidCard\$ Card.Self | Execute\$ TrigToken | Secondary\$ True | TriggerDescription\$ Whenever CARDNAME enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.
+SVar:TrigToken:DB\$ Token | TokenAmount\$ X | TokenScript\$ w_1_1_ally | TokenOwner\$ You
+SVar:X:Count\$Valid Artifact.YouCtrl+tapped,Creature.YouCtrl+tapped
+DeckHas:Ability\$Token
+Oracle:Whenever Aang and Katara enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang and Katara" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+  {
+    id: "aang-at-the-crossroads-corpus-m672",
+    description: "M6 corpus — Aang, at the Crossroads; ETB-on-bf.",
+    seed: 0xf009,
+    cards: {
+      "Aang, at the Crossroads": `Name:Aang, at the Crossroads
+ManaCost:2 G W U
+Types:Legendary Creature Human Avatar Ally
+PT:3/3
+K:Flying
+T:Mode\$ ChangesZone | ValidCard\$ Card.Self | Origin\$ Any | Destination\$ Battlefield | Execute\$ TrigDig | TriggerDescription\$ When NICKNAME enters, look at the top five cards of your library. You may put a creature card with mana value 4 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.
+SVar:TrigDig:DB\$ Dig | DigNum\$ 5 | ChangeNum\$ 1 | ChangeValid\$ Creature.cmcLE4 | Optional\$ True | DestinationZone\$ Battlefield | DestinationZone2\$ Library | LibraryPosition\$ -1 | RestRandomOrder\$ True
+T:Mode\$ ChangesZone | ValidCard\$ Creature.Other+YouCtrl | Origin\$ Battlefield | Destination\$ Any | Execute\$ TrigDelayTransform | TriggerZones\$ Battlefield | TriggerDescription\$ When another creature you control leaves the battlefield, transform NICKNAME at the beginning of the next upkeep.
+SVar:TrigDelayTransform:DB\$ DelayedTrigger | Mode\$ Phase | Phase\$ Upkeep | Execute\$ TrigTransform | TriggerDescription\$ Transform NICKNAME.
+SVar:TrigTransform:DB\$ SetState | Defined\$ Self | Mode\$ Transform
+AlternateMode:DoubleFaced
+Oracle:Flying\\nWhen Aang enters, look at the top five cards of your library. You may put a creature card with mana value 4 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\\nWhen another creature you control leaves the battlefield, transform Aang at the beginning of the next upkeep.
+
+ALTERNATE
+
+Name:Aang, Destined Savior
+ManaCost:no cost
+Types:Legendary Creature Avatar Ally
+PT:4/4
+K:Flying
+S:Mode\$ Continuous | Affected\$ Creature.Land+YouCtrl | AddKeyword\$ Vigilance | Description\$ Land creatures you control have vigilance.
+T:Mode\$ Phase | Phase\$ BeginCombat | ValidPlayer\$ You | Execute\$ TrigEarthbend | TriggerZones\$ Battlefield | TriggerDescription\$ At the beginning of combat on your turn, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+SVar:TrigEarthbend:DB\$ Earthbend | Num\$ 2
+Oracle:Flying\\nLand creatures you control have vigilance.\\nAt the beginning of combat on your turn, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Aang, at the Crossroads" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
 ];

@@ -1,0 +1,25 @@
+{
+  "id": "aang-and-katara-corpus-m672",
+  "description": "M6 corpus — Aang and Katara; ETB-on-bf.",
+  "seed": 61448,
+  "cards": {
+    "Aang and Katara": "Name:Aang and Katara\nManaCost:3 G W U\nTypes:Legendary Creature Human Avatar Ally\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_ally | TokenOwner$ You\nSVar:X:Count$Valid Artifact.YouCtrl+tapped,Creature.YouCtrl+tapped\nDeckHas:Ability$Token\nOracle:Whenever Aang and Katara enter or attack, create X 1/1 white Ally creature tokens, where X is the number of tapped artifacts and/or creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aang and Katara"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -270,6 +270,17 @@ const entries: readonly TokenEntry[] = [
     abilities: [],
     oracle: "",
   },
+  {
+    id: "w_1_1_human",
+    name: "Human Token",
+    types: types("Creature Human"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(W),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
 
   // --- mono-blue creatures ---
   {
@@ -282,6 +293,17 @@ const entries: readonly TokenEntry[] = [
     keywords: [kw("Flying")],
     abilities: [],
     oracle: "Flying",
+  },
+  {
+    id: "u_1_1_merfolk",
+    name: "Merfolk Token",
+    types: types("Creature Merfolk"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(U),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
   },
   {
     id: "u_2_1_ninja",

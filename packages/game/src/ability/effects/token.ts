@@ -223,16 +223,29 @@ export class TokenEffect extends SpellAbilityEffect {
     if (count <= 0) return;
 
     // ---- Build the PaperCard (TokenScript$ vs inline form) -------------
-    let paperCard: PaperCard;
+    // CR 113.1d / Forge — TokenScript$ may be comma-separated (e.g.
+    // "w_1_1_human,u_1_1_merfolk,r_1_1_goblin") to mint one token per
+    // entry. Each entry resolves independently against the token database;
+    // we loop over them and create each token. Common pattern in
+    // multi-token-creating spells like A Killer Among Us, Stitch Together,
+    // Captive Audience, Wedding Ring, etc.
+    let paperCards: PaperCard[];
     if (hasParam(sa, "TokenScript")) {
-      const id = evaluateParamRaw(sa, "TokenScript").trim();
-      const entry = tokenDatabase.get(id);
-      if (entry === undefined) {
-        throw new Error(
-          `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
-        );
+      const raw = evaluateParamRaw(sa, "TokenScript").trim();
+      const ids = raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      paperCards = [];
+      for (const id of ids) {
+        const entry = tokenDatabase.get(id);
+        if (entry === undefined) {
+          throw new Error(
+            `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
+          );
+        }
+        paperCards.push(paperCardFromEntry(entry));
       }
-      paperCard = paperCardFromEntry(entry);
     } else {
       const power = hasParam(sa, "TokenPower") ? evaluateParamRaw(sa, "TokenPower") : "0";
       const toughness = hasParam(sa, "TokenToughness") ? evaluateParamRaw(sa, "TokenToughness") : "0";
@@ -240,14 +253,16 @@ export class TokenEffect extends SpellAbilityEffect {
       const typesRaw = hasParam(sa, "TokenTypes") ? evaluateParamRaw(sa, "TokenTypes") : "Creature";
       const colorsRaw = hasParam(sa, "TokenColors") ? evaluateParamRaw(sa, "TokenColors") : "";
       const keywordsRaw = hasParam(sa, "TokenKeywords") ? evaluateParamRaw(sa, "TokenKeywords") : "";
-      paperCard = synthesizeTokenPaperCard({
-        name,
-        power,
-        toughness,
-        typesRaw,
-        colorsRaw,
-        keywordsRaw,
-      });
+      paperCards = [
+        synthesizeTokenPaperCard({
+          name,
+          power,
+          toughness,
+          typesRaw,
+          colorsRaw,
+          keywordsRaw,
+        }),
+      ];
     }
 
     // ---- Create the tokens. We capture the returned ids so post-create
@@ -262,11 +277,15 @@ export class TokenEffect extends SpellAbilityEffect {
       hasParam(sa, "RememberTokens") ? evaluateParamRaw(sa, "RememberTokens") : undefined,
     );
 
-    const ids = yield* game.action.createToken({
-      paperCard,
-      controller: sa.controllerSeat,
-      count,
-    });
+    const ids: (typeof sa.targets)[number][] = [];
+    for (const paperCard of paperCards) {
+      const created = yield* game.action.createToken({
+        paperCard,
+        controller: sa.controllerSeat,
+        count,
+      });
+      ids.push(...created);
+    }
 
     if (ids.length === 0) return;
 

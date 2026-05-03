@@ -1,0 +1,25 @@
+{
+  "id": "aang-at-the-crossroads-corpus-m672",
+  "description": "M6 corpus — Aang, at the Crossroads; ETB-on-bf.",
+  "seed": 61449,
+  "cards": {
+    "Aang, at the Crossroads": "Name:Aang, at the Crossroads\nManaCost:2 G W U\nTypes:Legendary Creature Human Avatar Ally\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When NICKNAME enters, look at the top five cards of your library. You may put a creature card with mana value 4 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Creature.cmcLE4 | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Any | Execute$ TrigDelayTransform | TriggerZones$ Battlefield | TriggerDescription$ When another creature you control leaves the battlefield, transform NICKNAME at the beginning of the next upkeep.\nSVar:TrigDelayTransform:DB$ DelayedTrigger | Mode$ Phase | Phase$ Upkeep | Execute$ TrigTransform | TriggerDescription$ Transform NICKNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhen Aang enters, look at the top five cards of your library. You may put a creature card with mana value 4 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\\nWhen another creature you control leaves the battlefield, transform Aang at the beginning of the next upkeep.\n\nALTERNATE\n\nName:Aang, Destined Savior\nManaCost:no cost\nTypes:Legendary Creature Avatar Ally\nPT:4/4\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.Land+YouCtrl | AddKeyword$ Vigilance | Description$ Land creatures you control have vigilance.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigEarthbend | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 2\nOracle:Flying\\nLand creatures you control have vigilance.\\nAt the beginning of combat on your turn, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aang, at the Crossroads"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
