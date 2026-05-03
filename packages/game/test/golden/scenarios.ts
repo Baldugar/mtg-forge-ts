@@ -113530,4 +113530,240 @@ Oracle:Equipped creature gets +1/-1.\\nWhenever equipped creature dies, draw two
       actions: [{ kind: "etb", cardName: "Skullclamp", controller: SEAT0 }],
     };
   }),
+
+  // 6560-6584: M6.66 — Doom Blade at opp creature, varied my-life and opp-board.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const targets = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Serra Angel", "Llanowar Elves"];
+    const target = targets[i % 5];
+    const myLife = 5 + (i % 16); // 5..20
+    const opPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+    const opNeigh = opPool[(i + 2) % 4];
+    return {
+      id: `doom-blade-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-oppneigh-${opNeigh.toLowerCase().replace(/\s+/g, "-")}-${i}-m666`,
+      description: `M6.66 — Doom Blade at opp ${target}; my life ${myLife}; opp neigh ${opNeigh}.`,
+      seed: 0xe800 + i,
+      cards: {
+        "Doom Blade": `Name:Doom Blade
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.
+Oracle:Doom Blade parse.
+`,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Goblin Guide":
+          "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        "Soul Warden":
+          "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+        "Serra Angel":
+          "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+      },
+      players: [
+        { life: myLife, hand: ["Doom Blade"], battlefield: [], manaPool: ["B", "C"] },
+        { life: 20, hand: [], battlefield: [{ card: target }, { card: opNeigh }] },
+      ],
+      actions: [
+        {
+          kind: "cast",
+          cardName: "Doom Blade",
+          castingPlayer: SEAT0,
+          target: { kind: "card", name: target },
+        },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 6585-6609: M6.66 — Murder at opp creature, varied my-life and opp board.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const targets = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Serra Angel", "Llanowar Elves"];
+    const target = targets[i % 5];
+    const myLife = 6 + (i % 15); // 6..20
+    const opPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden"];
+    const opCount = i % 3; // 0..2
+    const opExtra = opPool.slice(0, opCount).map((c) => ({ card: c }));
+    return {
+      id: `murder-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-mylife${myLife}-oppextra${opCount}-${i}-m666`,
+      description: `M6.66 — Murder at opp ${target}; my life ${myLife}; opp extra ${opCount}.`,
+      seed: 0xe830 + i,
+      cards: {
+        Murder: `Name:Murder
+ManaCost:1 B B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Murder.
+Oracle:Murder parse.
+`,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Goblin Guide":
+          "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        "Soul Warden":
+          "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+        "Serra Angel":
+          "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+      },
+      players: [
+        { life: myLife, hand: ["Murder"], battlefield: [], manaPool: ["B", "B", "C"] },
+        { life: 20, hand: [], battlefield: [{ card: target }, ...opExtra] },
+      ],
+      actions: [
+        {
+          kind: "cast",
+          cardName: "Murder",
+          castingPlayer: SEAT0,
+          target: { kind: "card", name: target },
+        },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 6610-6634: M6.66 — Lightning Bolt at opp creature/face, varied opp life.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const targets = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves"];
+    const target = targets[i % 4];
+    const opLife = 4 + (i % 17); // 4..20
+    return {
+      id: `bolt-at-opp-${target.toLowerCase().replace(/\s+/g, "-")}-opplife${opLife}-${i}-m666`,
+      description: `M6.66 — Bolt at opp ${target}; opp life ${opLife}.`,
+      seed: 0xe860 + i,
+      cards: {
+        "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Goblin Guide":
+          "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        "Soul Warden":
+          "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+      },
+      players: [
+        { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+        { life: opLife, hand: [], battlefield: [{ card: target }] },
+      ],
+      actions: [
+        {
+          kind: "cast",
+          cardName: "Lightning Bolt",
+          castingPlayer: SEAT0,
+          target: { kind: "card", name: target },
+        },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 6635-6659: M6.66 — Lightning Helix at opp face, varied my-life (life gain).
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const myLife = 3 + (i % 18); // 3..20
+    const opLife = 8 + (i % 13); // 8..20
+    return {
+      id: `helix-at-opp-face-mylife${myLife}-opplife${opLife}-${i}-m666`,
+      description: `M6.66 — Helix at opp face; my life ${myLife}, opp life ${opLife}.`,
+      seed: 0xe890 + i,
+      cards: {
+        "Lightning Helix": `Name:Lightning Helix
+ManaCost:R W
+Types:Instant
+A:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife | SpellDescription$ Helix.
+SVar:DBLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Lightning Helix parse.
+`,
+      },
+      players: [
+        { life: myLife, hand: ["Lightning Helix"], battlefield: [], manaPool: ["R", "W"] },
+        { life: opLife, hand: [], battlefield: [] },
+      ],
+      actions: [
+        {
+          kind: "cast",
+          cardName: "Lightning Helix",
+          castingPlayer: SEAT0,
+          target: { kind: "player", seat: SEAT1 },
+        },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 6660-6684: M6.66 — Sol Ring activate-for-mana, varied my-bf neighbour mix + opp board.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const myPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden", "Llanowar Elves", "Serra Angel"];
+    const neighA = myPool[i % 5];
+    const neighB = myPool[(i + 3) % 5];
+    const opPool = ["Grizzly Bears", "Goblin Guide", "Soul Warden"];
+    const opCount = i % 3; // 0..2
+    const opBf = opPool.slice(0, opCount).map((c) => ({ card: c }));
+    return {
+      id: `sol-ring-activate-myneigh-${neighA.toLowerCase().replace(/\s+/g, "-")}-${neighB.toLowerCase().replace(/\s+/g, "-")}-opp${opCount}-${i}-m666`,
+      description: `M6.66 — Sol Ring activate w/ ${neighA}+${neighB}; opp ${opCount}.`,
+      seed: 0xe8c0 + i,
+      cards: {
+        "Sol Ring": `Name:Sol Ring
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.
+Oracle:{T}: Add {C}{C}.
+`,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Goblin Guide":
+          "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        "Soul Warden":
+          "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+        "Serra Angel":
+          "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+      },
+      players: [
+        {
+          life: 20,
+          hand: [],
+          battlefield: [{ card: "Sol Ring" }, { card: neighA }, { card: neighB }],
+        },
+        { life: 20, hand: [], battlefield: opBf },
+      ],
+      actions: [{ kind: "activate", sourceCardName: "Sol Ring", activatingPlayer: SEAT0 }],
+    };
+  }),
+
+  // 6685-6709: M6.66 — Glorious Anthem ETB on smaller boards (1-3 creatures), varied opp life.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    const myCount = 1 + (i % 3); // 1..3
+    const myPool = ["Grizzly Bears", "Goblin Guide", "Llanowar Elves", "Soul Warden"];
+    const myBf = Array.from({ length: myCount }, (_, j) => ({ card: myPool[(i + j) % 4] }));
+    const opLife = 5 + (i % 16); // 5..20
+    return {
+      id: `glorious-anthem-smallboard-${myCount}cre-opp${opLife}-${i}-m666`,
+      description: `M6.66 — Glorious Anthem ETB w/ ${myCount} mine; opp ${opLife} life.`,
+      seed: 0xe8f0 + i,
+      cards: {
+        "Glorious Anthem": `Name:Glorious Anthem
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.
+Oracle:Creatures you control get +1/+1.
+`,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Goblin Guide":
+          "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+        "Soul Warden":
+          "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+      },
+      players: [
+        { life: 20, hand: ["Glorious Anthem"], battlefield: myBf },
+        { life: opLife, hand: [], battlefield: [] },
+      ],
+      actions: [{ kind: "etb", cardName: "Glorious Anthem", controller: SEAT0 }],
+    };
+  }),
 ];
