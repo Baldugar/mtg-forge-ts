@@ -43,9 +43,16 @@ jobs:
         run: pnpm -r build
 
       - name: Typecheck
+        # scenarios.ts holds ~40k golden scenarios inline (parity-validation
+        # cohort); tsc default 2GB heap OOMs on the macos-arm64 runners. Bump
+        # to 6GB so all matrix cells survive.
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: pnpm typecheck
 
       - name: Test
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: pnpm -r test
 
       - name: Biome check

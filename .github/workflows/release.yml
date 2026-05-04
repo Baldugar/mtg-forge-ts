@@ -46,9 +46,13 @@ jobs:
         run: pnpm -r build
 
       - name: Typecheck
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: pnpm typecheck
 
       - name: Test
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: pnpm -r test
 
       - name: Biome check
