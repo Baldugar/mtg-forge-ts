@@ -164,11 +164,19 @@ interface CardEntry {
 }
 
 const HUMAN_DECK: ReadonlyArray<CardEntry> = [
-  ...Array.from({ length: 8 }, (_, i) => ({
+  // 4 Mountains for Lightning Bolt (R) and 4 Forests for Grizzly Bears (1G).
+  // The mixed mana base lets you actually cast everything in your deck.
+  ...Array.from({ length: 4 }, (_, i) => ({
     source: MOUNTAIN_SRC,
     file: "mountain.txt",
     edition: "PLY",
     collectorNumber: `M${String(i + 1).padStart(2, "0")}`,
+  })),
+  ...Array.from({ length: 4 }, (_, i) => ({
+    source: FOREST_SRC,
+    file: "forest.txt",
+    edition: "PLY",
+    collectorNumber: `F${String(i + 1).padStart(2, "0")}`,
   })),
   ...Array.from({ length: 4 }, (_, i) => ({
     source: LIGHTNING_BOLT_SRC,
@@ -185,7 +193,15 @@ const HUMAN_DECK: ReadonlyArray<CardEntry> = [
 ];
 
 const AI_DECK: ReadonlyArray<CardEntry> = [
-  ...Array.from({ length: 8 }, (_, i) => ({
+  // Mirror the human's mana base — 4 Mountains + 4 Forests so the AI can
+  // also cast both Lightning Bolt (R) and Grizzly Bears (1G).
+  ...Array.from({ length: 4 }, (_, i) => ({
+    source: MOUNTAIN_SRC,
+    file: "mountain.txt",
+    edition: "PLY",
+    collectorNumber: `M${String(i + 1).padStart(2, "0")}`,
+  })),
+  ...Array.from({ length: 4 }, (_, i) => ({
     source: FOREST_SRC,
     file: "forest.txt",
     edition: "PLY",
