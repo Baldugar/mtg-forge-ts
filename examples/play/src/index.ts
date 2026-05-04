@@ -581,6 +581,35 @@ function resolveToken(game: Game, token: string): EntityId | null {
 // Decision handlers
 // ---------------------------------------------------------------------------
 
+async function handleHumanMulligan(
+  state: DriverState,
+  req: { kind: "mulligan"; playerSeat: PlayerSeat; currentHand: readonly EntityId[]; mulligansSoFar: number },
+): Promise<DecisionResponse> {
+  const handCards = req.currentHand.map((id) => state.game.cards.get(id)?.paperCard.name ?? "?");
+  output.write("\n=== Mulligan decision ===\n");
+  output.write(`Opening hand (${handCards.length} cards, ${req.mulligansSoFar} mulligans so far):\n`);
+  for (let i = 0; i < handCards.length; i++) {
+    output.write(`  [${i + 1}] ${handCards[i]}\n`);
+  }
+  output.write(
+    dim(
+      "  London mulligan: keep = play this hand. mull = shuffle + redraw 7 (cost: scry-N to bottom on keep).\n",
+    ),
+  );
+  while (true) {
+    const ans = (await state.rl.question(bold("Mulligan? [keep/mull]: "))).trim().toLowerCase();
+    if (ans === "" || ans === "keep" || ans === "k") {
+      output.write(dim("  → keep\n"));
+      return { kind: "mulligan", keep: true };
+    }
+    if (ans === "mull" || ans === "m" || ans === "mulligan") {
+      output.write(dim("  → mulligan\n"));
+      return { kind: "mulligan", keep: false };
+    }
+    output.write(red("  ! type 'keep' or 'mull'.\n"));
+  }
+}
+
 async function handleHumanPriority(
   state: DriverState,
   legal: ReadonlyArray<PriorityAction>,
@@ -611,7 +640,26 @@ async function handleHumanPriority(
   if (fullLegal.some((a) => a.kind === "playLand")) hints.push("play <H#>");
   if (fullLegal.some((a) => a.kind === "castSpell")) hints.push("cast <H#>");
   if (hints.length > 0) {
-    output.write(dim(`  legal: ${hints.join(" | ")} (mana auto-tapped on cast)\n`));
+    output.write(dim(`  legal: ${hints.join(" | ")} | pass | concede | help\n`));
+    output.write(dim("  (mana auto-taps when you cast; type 'help' for full command list)\n"));
+  } else {
+    // Quiet phase (Untap/Upkeep/Draw/Combat sub-steps with no creatures, etc.).
+    // Most users want to skip through these — surface the reason + suggest pass.
+    const phaseName = String(state.lastPhase);
+    const handHasLand = zoneIds(state.game, mkPlayerSeat(0), ZoneType.Hand).some((id) => {
+      const card = state.game.cards.get(id);
+      return card?.paperCard.definition?.types?.types?.includes(CardType.Land) ?? false;
+    });
+    if (handHasLand && !["Main1", "Main2"].includes(phaseName)) {
+      output.write(
+        dim(
+          `  (You have lands in hand but it's the ${phaseName} step — pass to reach Main1 to play them.)\n`,
+        ),
+      );
+    } else {
+      output.write(dim(`  (Nothing castable here — type 'pass' to advance.)\n`));
+    }
+    output.write(dim("  legal: pass | concede | help\n"));
   }
 
   while (true) {
@@ -627,6 +675,18 @@ async function handleHumanPriority(
     }
     if (raw.toLowerCase() === "concede") {
       return { kind: "priority", action: { kind: "concede" } };
+    }
+    if (raw.toLowerCase() === "help" || raw.toLowerCase() === "?") {
+      output.write(dim("\n  --- commands ---\n"));
+      output.write(dim("  pass       Pass priority. Lands play in your Main phases (1 land/turn).\n"));
+      output.write(dim("  play H#    Play the land at hand index H# (e.g. 'play H2').\n"));
+      output.write(dim("  cast H#    Cast the spell at hand index H#. Mana auto-taps from your lands.\n"));
+      output.write(dim("  attack     Auto-declare all your creatures attacking.\n"));
+      output.write(dim("  concede    Lose immediately.\n"));
+      output.write(dim("  quit       Same as concede + exits the program.\n"));
+      output.write(dim("  help / ?   Show this list.\n"));
+      output.write(dim("\n  Tokens: H# = hand, Y# = your battlefield, O# = opponent's battlefield.\n\n"));
+      continue;
     }
     const lower = raw.toLowerCase();
 
@@ -943,8 +1003,7 @@ async function decideHuman(state: DriverState, req: DecisionRequest): Promise<De
     case "chooseX":
       return handleHumanChooseX(state, req);
     case "mulligan":
-      output.write(dim("  (keeping opening hand)\n"));
-      return { kind: "mulligan", keep: true };
+      return await handleHumanMulligan(state, req);
     default:
       return aiFallback(state, req);
   }
@@ -980,6 +1039,14 @@ async function main(): Promise<void> {
     lastPhase: "—",
     quit: false,
   };
+
+  // Pin the human (seat 0) as the starting player. setupGame's default rolls
+  // a random first player; combined with the turn-queue seeding below
+  // (which hardcodes seat 0 as the first turn) this would mismatch and the
+  // CR 103.7c "first player skips draw" rule wouldn't apply to seat 0 (the
+  // engine compares game.startingPlayer against the active turn's seat —
+  // both must be 0 for the skip).
+  game.startingPlayer = mkPlayerSeat(0);
 
   // Drive setupGame manually — same shape as runGame but we control the
   // turn queue afterwards so the match runs many turns instead of just two.
