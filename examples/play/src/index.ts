@@ -630,6 +630,52 @@ async function handleHumanPriority(
   state: DriverState,
   legal: ReadonlyArray<PriorityAction>,
 ): Promise<DecisionResponse> {
+  // Auto-pass through "uninteresting" steps so the user only gets prompted
+  // at moments where they can actually do something:
+  //   - Untap (CR 502.5 — no player gets priority anyway)
+  //   - Combat sub-steps when no creature is attacking this combat:
+  //       DeclareBlockers / FirstStrikeDamage / CombatDamage / EndOfCombat
+  //     are all skippable per CR 506.5 (no attackers → skip declare blockers
+  //     and combat damage steps) and CR 510.1 (first-strike step only when
+  //     a participant has first/double strike).
+  // The TS engine doesn't yet wire combat-skip detection into PhaseHandler,
+  // so we replicate the rule here at the prompt layer.
+  const phase = String(state.lastPhase);
+  const seat0Bf = zoneIds(state.game, mkPlayerSeat(0), ZoneType.Battlefield);
+  const seat1Bf = zoneIds(state.game, mkPlayerSeat(1), ZoneType.Battlefield);
+  const anyAttacker = [...seat0Bf, ...seat1Bf].some((id) => {
+    const card = state.game.cards.get(id);
+    return card?.attackedThisCombat === true;
+  });
+  const noAttackers = !anyAttacker;
+  const skippableCombatStep =
+    noAttackers &&
+    (phase === "DeclareBlockers" ||
+      phase === "FirstStrikeDamage" ||
+      phase === "CombatDamage" ||
+      phase === "EndOfCombat");
+  if (phase === "Untap" || skippableCombatStep) {
+    return { kind: "priority", action: { kind: "pass" } };
+  }
+  // Auto-pass when the user has nothing playable AND nothing is on the
+  // stack to react to. Forces a prompt only at meaningful moments
+  // (Main1/Main2 with castable cards, Combat with attackers, or stack
+  // resolution windows). Otherwise the user is just typing 'pass' through
+  // dozens of empty priority windows on every step of every turn.
+  const probeLegal = enumerateLegalActions(state.game, mkPlayerSeat(0));
+  const hasMeaningfulAction = probeLegal.some(
+    (a) => a.kind === "playLand" || a.kind === "castSpell" || a.kind === "activateAbility",
+  );
+  // Stack-emptiness check via Game's stack field (kept private; we query
+  // through a duck-typed accessor since direct Game.stack isn't exported).
+  const stackEmpty =
+    (state.game as unknown as { stack?: { size: number } }).stack?.size === 0 ||
+    (state.game as unknown as { stack?: { size: number } }).stack === undefined;
+  const inCombatWithAttackers = anyAttacker && phase.startsWith("Combat");
+  if (!hasMeaningfulAction && stackEmpty && !inCombatWithAttackers) {
+    return { kind: "priority", action: { kind: "pass" } };
+  }
+
   output.write(`\n${renderBoard(state.game, state.lastTurn, state.lastPhase)}\n`);
   // The current SP1 PhaseHandler emits a "minimal" priority window with only
   // {pass, concede} in the request — it does NOT yet route through the full
